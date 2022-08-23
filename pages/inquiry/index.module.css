@@ -1,0 +1,16 @@
+.imageContainer {
+  aspect-ratio: 3/4;
+  height: auto;
+  position: relative;
+  width: 100%;
+}
+
+.imageContainer img {
+  object-fit: cover;
+}
+
+.formContainer {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+}

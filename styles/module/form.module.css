@@ -1,0 +1,14 @@
+.navigation {
+  align-content: end;
+  display: grid;
+  gap: 1rem;
+  grid-auto-flow: column;
+  margin-block-start: 2rem;
+}
+
+.field {
+  display: grid;
+  gap: 1rem;
+  grid-auto-flow: column;
+  grid-template-columns: 2fr 3fr;
+}

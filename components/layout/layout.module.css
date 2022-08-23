@@ -1,0 +1,12 @@
+.container {
+  display: grid;
+  gap: 1rem;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+.main {
+  justify-self: center;
+  max-width: 60rem;
+  min-width: 60rem;
+}

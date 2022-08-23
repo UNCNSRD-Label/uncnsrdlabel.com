@@ -1,0 +1,47 @@
+@keyframes filter-animation {
+  0% {
+    filter: invert(50%) sepia(75%) saturate(2500%) brightness(120%) contrast(120%) hue-rotate(0deg);
+  }
+  
+  50% {
+    filter: invert(50%) sepia(75%) saturate(2500%) brightness(120%) contrast(120%) hue-rotate(180deg);
+  }
+  
+  100% {
+    filter: invert(50%) sepia(75%) saturate(2500%) brightness(120%) contrast(120%) hue-rotate(360deg);
+  }
+}
+
+.header {
+  align-items: center;
+  display: grid;
+  gap: 1rem;
+  grid-auto-flow: column;
+  justify-content: space-between;
+  padding: 1rem 2.5rem;
+  position: sticky;
+  top: 0;
+  width: 100%;
+}
+
+.nav {
+  display: grid;
+  font-family: 'Bomber Escort', cursive;
+  font-size: 2.5rem;
+  gap: 3rem;
+  grid-auto-flow: column;
+  justify-content: center;
+}
+
+.logoContainer {
+  aspect-ratio: 5/1;
+  display: grid;
+  gap: 1rem;
+  height: 6rem;
+  position: relative;
+}
+
+.logo {
+  animation: filter-animation 10s infinite;
+  filter: invert(50%) sepia(75%) saturate(2500%) brightness(120%) contrast(120%) hue-rotate(360deg);
+}

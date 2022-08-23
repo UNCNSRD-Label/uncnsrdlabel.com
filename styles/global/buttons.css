@@ -1,0 +1,33 @@
+.button {
+  appearance: none;
+  background-color: var(--tw-color-transparent);
+  border: none;
+  color: var(--tw-color-black);
+  cursor: pointer;
+  font: inherit;
+}
+
+@media (prefers-color-scheme: dark) {
+  .button {
+    color: var(--tw-color-white);
+  }
+}
+
+.button__filled {
+  background-color: var(--tw-color-purple-700);
+  color: var(--tw-color-white);
+  padding: 1rem;
+}
+
+.button__filled:focus,
+.button__filled:hover {
+  background-color: var(--tw-color-purple-500);
+}
+
+.button__filled.disabled {
+  background-color: var(--tw-color-purple-200);
+}
+
+.button.hidden {
+  display: none;
+}
