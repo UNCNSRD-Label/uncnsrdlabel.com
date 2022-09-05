@@ -1,3 +1,4 @@
+import { clsx } from "clsx"
 import Head from 'next/head'
 
 import Header from '@components/header'
@@ -7,9 +8,10 @@ import styles from './layout.module.css'
 
 type Props = {
   children?: React.ReactNode
+  showHeaderAndFooter?: boolean
 }
 
-export const Layout: React.FC<Props> = ({ children }) => {
+export const Layout: React.FC<Props> = ({ children, showHeaderAndFooter = true }) => {
   return (
     <>
       <Head>
@@ -25,10 +27,10 @@ export const Layout: React.FC<Props> = ({ children }) => {
         <meta name="theme-color" content="#ffffff" />
       </Head>
 
-      <div className={styles.container}>
-        <Header />
-        <main className={styles.main}>{children}</main>
-        <Footer />
+      <div className={clsx(styles.container, showHeaderAndFooter && styles.show_header_and_footer)}>
+        {showHeaderAndFooter && <Header />}
+        <main className={clsx(styles.main)}>{children}</main>
+        {showHeaderAndFooter && <Footer />}
       </div>
     </>
   )

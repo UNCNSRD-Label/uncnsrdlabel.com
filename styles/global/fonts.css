@@ -5,3 +5,27 @@
   font-display: swap;
   src: url(/fonts/bomber-escort/bomberescort.ttf) format("ttf");
 }
+
+@font-face {
+  font-family: "Bomber Escort";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/bomber-escort/bomberescortital.ttf) format("ttf");
+}
+
+@font-face {
+  font-family: "Bomber Escort Outline";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/bomber-escort/bomberescortout.ttf) format("ttf");
+}
+
+@font-face {
+  font-family: "Bomber Escort Outline";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/bomber-escort/bomberescortoutital.ttf) format("ttf");
+}

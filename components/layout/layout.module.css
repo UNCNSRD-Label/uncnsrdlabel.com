@@ -1,12 +1,19 @@
 .container {
   display: grid;
   gap: 1rem;
-  grid-template-rows: auto 1fr auto;
   min-height: 100vh;
+
+  &.show_header_and_footer {
+    grid-template-rows: auto 1fr auto;
+  }  
 }
 
 .main {
-  justify-self: center;
-  max-width: 60rem;
-  min-width: 60rem;
+  background-color: red;
+
+  &.constrain_width {
+    justify-self: center;
+    max-block-size: 60rem;
+    min-block-size: 60rem;
+  }
 }
