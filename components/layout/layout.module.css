@@ -9,8 +9,6 @@
 }
 
 .main {
-  background-color: red;
-
   &.constrain_width {
     justify-self: center;
     max-block-size: 60rem;
