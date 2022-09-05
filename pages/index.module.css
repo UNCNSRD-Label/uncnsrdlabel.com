@@ -5,6 +5,7 @@
   display: grid;
   height: 100%;
   place-content: center;
+  place-items: center;
 }
 
 .logotype {
@@ -22,11 +23,21 @@
   font-family: 'Bomber Escort Outline', cursive;
   font-size: clamp(1.5rem, 40vw, 10rem); 
   font-style: italic;
-  /* max-inline-size: 50vw; */
   padding: 2rem;
-  text-shadow: -0.2rem 0.2rem 0.2rem rgb(0 0 0 / 60%);
+  text-shadow: -0.2rem 0.2rem 0.2rem rgb(0 0 0 / 20%);
 }
 
 .copy {
   display: none;
+}
+
+.form {
+  display: grid;
+  grid-auto-flow: column;
+  max-inline-size: 60%;
+  width: 100%;
+
+  & :is(button, input) {
+    filter: drop-shadow(0rem 0.4rem 0.3rem black);
+  }
 }

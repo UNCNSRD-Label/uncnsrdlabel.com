@@ -31,6 +31,11 @@ export default function Home() {
 
         <h1 className={styles.title}>uncnsrd</h1>
 
+        <form className={styles.form}>
+            <input type="email" id="email" name="email" placeholder="Enter your email for first access" />
+            <button className="button__filled">Notify Me</button>
+        </form>
+
         <section className={styles.copy}>
           <h1 className={styles.title}>UNCNSRD</h1>
           <p>
