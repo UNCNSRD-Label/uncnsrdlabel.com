@@ -5,8 +5,7 @@ form select,
 form textarea,
 form fieldset,
 form optgroup,
-form label,
-.StripeElement {
+form label {
   font-family: inherit;
   font-size: 100%;
   color: inherit;
@@ -68,23 +67,46 @@ form select {
   text-transform: none;
 }
 
-form input::placeholder {
-  color: rgb(var(--color-primary) / 1);
-  opacity: .75;
-}
-
 form {
   display: grid;
   gap: 1rem;
-  
+
   &.rows {
     grid-template-rows: 1fr auto;
   }
-}
 
-fieldset {
-  border: none;
-  display: grid;
-  gap: 1rem;
-  padding: initial;
+  &.transparent {
+    .button__filled {
+      background-color: rgb(var(--color-primary) / 0.6);
+
+      &:focus,
+      &:hover {
+        background-color: rgb(var(--color-primary) / 0.8);
+      }
+
+      &.disabled {
+        background-color: rgb(var(--color-primary) / 0.4);
+      }
+    }
+
+    input {
+      background-color: rgb(var(--color-input-background) / 0.6);
+
+      &::placeholder {
+        color: rgb(var(--color-input) / 1);
+      }
+
+      &:focus,
+      &:hover {
+        background-color: rgb(var(--color-input-background) / 0.8);
+      }
+    }
+  }
+
+  fieldset {
+    border: none;
+    display: grid;
+    gap: 1rem;
+    padding: initial;
+  }
 }

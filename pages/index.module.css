@@ -19,7 +19,7 @@
   background-clip: text;
   background-color: #ffffff;
   color: transparent;
-  filter: drop-shadow(0rem 0rem 0.1rem black);
+  filter: drop-shadow(0rem 0rem 0.1rem var(--tw-color-black));
   font-family: 'Bomber Escort Outline', cursive;
   font-size: clamp(1.5rem, 40vw, 10rem); 
   font-style: italic;
@@ -38,6 +38,7 @@
   width: 100%;
 
   & :is(button, input) {
-    filter: drop-shadow(0rem 0.4rem 0.3rem black);
+    /* filter: drop-shadow(0rem 0.4rem 0.3rem var(--tw-color-black)); */
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
   }
 }

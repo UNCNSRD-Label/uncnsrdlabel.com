@@ -1,3 +1,4 @@
+import { clsx } from "clsx";
 import Head from "next/head";
 import Image from "next/future/image";
 import Link from "next/link";
@@ -31,9 +32,14 @@ export default function Home() {
 
         <h1 className={styles.title}>uncnsrd</h1>
 
-        <form className={styles.form}>
-            <input type="email" id="email" name="email" placeholder="Enter your email for first access" />
-            <button className="button__filled">Notify Me</button>
+        <form className={clsx(styles.form, "transparent")}>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email for first access"
+          />
+          <button className="button__filled">Notify Me</button>
         </form>
 
         <section className={styles.copy}>

@@ -7,5 +7,7 @@
     --color-primary: 100 100 100;
     --color-secondary: 255 115 179;
     --color-tertiary: 111 114 185;
+    --color-input: 0 0 0;
+    --color-input-background: 255 255 255;
   }
 }
