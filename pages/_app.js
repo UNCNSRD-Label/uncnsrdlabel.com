@@ -3,10 +3,6 @@ import '../styles/global/globals.css'
 function MyApp({ Component, pageProps }) {
   return <>
   <Component {...pageProps} />
-    <script
-      async type="text/javascript"
-      src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rb5sXk"
-    ></script>
 
     {/* <script>
       var _learnq = _learnq || [];
