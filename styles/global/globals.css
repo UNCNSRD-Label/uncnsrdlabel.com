@@ -24,11 +24,13 @@ body {
 
 html {
   color-scheme: light;
+  min-height: 100vh;
 }
 
 body {
   background-color: var(--tw-color-white);
   color: var(--tw-color-black);
+  min-height: 100%;
 }
 
 a {

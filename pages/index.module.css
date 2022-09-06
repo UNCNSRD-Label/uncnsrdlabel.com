@@ -4,7 +4,6 @@
   background-size: contain;
   display: grid;
   height: 100%;
-  place-content: center;
   place-items: center;
 }
 
@@ -21,7 +20,7 @@
   color: transparent;
   filter: drop-shadow(0rem 0rem 0.1rem var(--tw-color-black));
   font-family: 'Bomber Escort Outline', cursive;
-  font-size: clamp(1.5rem, 40vw, 10rem); 
+  font-size: clamp(1.5rem, 10vw, 10rem); 
   font-style: italic;
   padding: 2rem;
   text-shadow: -0.2rem 0.2rem 0.2rem rgb(0 0 0 / 20%);
@@ -29,11 +28,6 @@
 
 .copy {
   display: none;
-}
-
-.form {
-  max-inline-size: 60%;
-  width: 100%;
 }
 
 .valid {

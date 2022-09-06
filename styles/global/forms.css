@@ -71,10 +71,6 @@ form {
   display: grid;
   gap: 1rem;
 
-  &.columns {
-    grid-template-columns: 1fr auto;
-  }
-
   &.transparent {
     & :is(button, input, select, textarea) {
       filter: drop-shadow(0rem 0.4rem 0.3rem var(--tw-color-black));
@@ -122,9 +118,12 @@ form {
     color: var(--tw-color-white);
     font-family: 'Bomber Escort', cursive;
     grid-column: -1/1;
-    /* min-block-size: 4rem; */
     padding: 1rem;
     text-align: center;
+
+    &:not(.invalid, .valid) {
+      display: none;
+    }
 
     &.invalid {
       background-color: rgb(var(--color-feedback-invalid-background) / 0.9);

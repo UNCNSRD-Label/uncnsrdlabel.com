@@ -78,18 +78,19 @@ export default function Home() {
         <h1 className={styles.title}>UNCNSRD</h1>
 
         <form
-          className={clsx(styles.form, "columns", "transparent")}
+          className={clsx(styles.form, "grid", "md:grid-cols-3", "gap-10", "md:gap-8", "w-3/4", "max-w-screen-sm", "justify-items-center", "md:justify-items-stretch", "transparent")}
           onSubmit={handleSubmit}
           ref={signupFormRef}
         >
           <input
+            className={clsx("text-center", "md:col-span-2", "md:text-left")}
             type="email"
             id="email"
             name="email"
             placeholder="Enter your email for first access"
             required
           />
-          <button className="button__filled">Notify Me</button>
+          <button className={clsx("button__filled")}>Notify Me</button>
           <output
             className={clsx("output")}
             ref={signupFormFeedbackRef}

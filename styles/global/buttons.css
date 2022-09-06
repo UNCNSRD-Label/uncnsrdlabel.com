@@ -16,7 +16,8 @@
 .button__filled {
   background-color: var(--color-button-background);
   color: rgb(var(--color-button) / 0.8);
-  padding: 1rem;
+  padding-block: 1rem;
+  padding-inline: 3rem;
 }
 
 .button__filled:focus,
