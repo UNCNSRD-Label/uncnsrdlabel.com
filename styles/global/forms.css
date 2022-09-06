@@ -116,7 +116,7 @@ form {
     border-color: transparent;
     border-width: 0.1rem;
     color: var(--tw-color-white);
-    font-family: 'Bomber Escort', cursive;
+    font-family: 'Bomber Escort', serif;
     grid-column: -1/1;
     padding: 1rem;
     text-align: center;
@@ -133,7 +133,7 @@ form {
     &.valid {
       background-color: rgb(var(--color-feedback-valid-background) / 0.9);
       /* border-color: rgb(var(--color-feedback-valid-border) / 0.9); */
-      font-size: 2rem;
+      font-size: 1.5rem;
     }
   }
 

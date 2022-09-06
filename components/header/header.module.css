@@ -26,7 +26,7 @@
 
 .nav {
   display: grid;
-  font-family: 'Bomber Escort', cursive;
+  font-family: 'Bomber Escort', serif;
   font-size: 2.5rem;
   gap: 3rem;
   grid-auto-flow: column;

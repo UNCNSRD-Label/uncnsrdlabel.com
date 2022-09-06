@@ -90,7 +90,7 @@ export default function Home() {
             placeholder="Enter your email for first access"
             required
           />
-          <button className={clsx("button__filled")}>Notify Me</button>
+          <button className={clsx("button", "button__filled")}>Notify Me</button>
           <output
             className={clsx("output")}
             ref={signupFormFeedbackRef}

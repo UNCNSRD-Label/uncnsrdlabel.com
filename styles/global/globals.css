@@ -30,6 +30,7 @@ html {
 body {
   background-color: var(--tw-color-white);
   color: var(--tw-color-black);
+  font-family: 'Montserrat', sans-serif;
   min-height: 100%;
 }
 
