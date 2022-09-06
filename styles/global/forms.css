@@ -71,14 +71,19 @@ form {
   display: grid;
   gap: 1rem;
 
-  &.rows {
-    grid-template-rows: 1fr auto;
+  &.columns {
+    grid-template-columns: 1fr auto;
   }
 
   &.transparent {
-    & :is(button, input) {
+    & :is(button, input, select, textarea) {
       filter: drop-shadow(0rem 0.4rem 0.3rem var(--tw-color-black));
       box-shadow: 0rem 1rem 1rem -0.75rem rgba(0,0,0,0.5), 0.5rem 0.5rem 1.5rem 0.5rem rgba(0,0,0,0);
+    }
+
+    & :is(button, input, select, textarea, fieldset, optgroup, label, output) {
+      transition-duration: 400ms;
+      transition-property: background-color, border-color, box-shadow, color, filter, opacity;
     }
 
     .button__filled {
@@ -107,6 +112,29 @@ form {
       &:hover {
         background-color: rgb(var(--color-input-background) / 0.8);
       }
+    }
+  }
+
+  output {
+    background-color: transparent;
+    border-color: transparent;
+    border-width: 0.1rem;
+    color: var(--tw-color-white);
+    font-family: 'Bomber Escort', cursive;
+    grid-column: -1/1;
+    /* min-block-size: 4rem; */
+    padding: 1rem;
+    text-align: center;
+
+    &.invalid {
+      background-color: rgb(var(--color-feedback-invalid-background) / 0.9);
+      /* border-color: rgb(var(--color-feedback-invalid-border) / 0.9); */
+    }
+
+    &.valid {
+      background-color: rgb(var(--color-feedback-valid-background) / 0.9);
+      /* border-color: rgb(var(--color-feedback-valid-border) / 0.9); */
+      font-size: 2rem;
     }
   }
 

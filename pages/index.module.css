@@ -32,8 +32,13 @@
 }
 
 .form {
-  display: grid;
-  grid-auto-flow: column;
   max-inline-size: 60%;
   width: 100%;
+}
+
+.valid {
+  & :is(button, input, select, textarea) {
+    opacity: 0;
+    pointer-events: none;
+  }
 }

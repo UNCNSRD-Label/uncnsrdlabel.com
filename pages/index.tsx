@@ -1,7 +1,7 @@
 import { clsx } from "clsx";
 import Head from "next/head";
-import Image from "next/future/image";
-import Link from "next/link";
+
+import { useRef, FormEvent } from "react";
 
 import styles from "./index.module.css";
 
@@ -12,6 +12,50 @@ type Props = {
 };
 
 export default function Home() {
+  const signupFormRef = useRef<HTMLFormElement>(null);
+  const signupFormFeedbackRef = useRef<HTMLOutputElement>(null);
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const data = {
+      email: event?.target?.email.value,
+    };
+
+    const JSONdata = JSON.stringify(data);
+
+    const response = await fetch("/api/signup", {
+      body: JSONdata,
+
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    });
+
+    const result = await response.json();
+
+    console.log(result);
+
+    if (signupFormRef.current) {
+      if (result.status === 200) {
+        signupFormRef.current.classList.add(styles.valid);
+      } else {
+        signupFormRef.current.classList.add(styles.invalid);
+      }
+    }
+
+    if (signupFormFeedbackRef.current) {
+      if (result.status === 200) {
+        signupFormFeedbackRef.current.classList.add("valid");
+        signupFormFeedbackRef.current.textContent = "We'll notify you when we have something to show you";
+      } else {
+        signupFormFeedbackRef.current.classList.add("invalid");
+        signupFormFeedbackRef.current.textContent = "An error occurred";
+      }
+    }
+  };
+
   return (
     <Layout showHeaderAndFooter={false}>
       <Head>
@@ -32,14 +76,25 @@ export default function Home() {
 
         <h1 className={styles.title}>UNCNSRD</h1>
 
-        <form className={clsx(styles.form, "transparent")}>
+        <form
+          action="/api/klaviyo"
+          className={clsx(styles.form, "columns", "transparent")}
+          method="POST"
+          onSubmit={handleSubmit}
+          ref={signupFormRef}
+        >
           <input
             type="email"
             id="email"
             name="email"
             placeholder="Enter your email for first access"
+            required
           />
           <button className="button__filled">Notify Me</button>
+          <output
+            className={clsx("output")}
+            ref={signupFormFeedbackRef}
+          />
         </form>
 
         <section className={styles.copy}>
