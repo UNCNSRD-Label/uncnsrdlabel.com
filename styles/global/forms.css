@@ -76,24 +76,31 @@ form {
   }
 
   &.transparent {
+    & :is(button, input) {
+      filter: drop-shadow(0rem 0.4rem 0.3rem var(--tw-color-black));
+      box-shadow: 0rem 1rem 1rem -0.75rem rgba(0,0,0,0.5), 0.5rem 0.5rem 1.5rem 0.5rem rgba(0,0,0,0);
+    }
+
     .button__filled {
-      background-color: rgb(var(--color-primary) / 0.6);
+      background-color: rgb(var(--color-button-background) / 0.75);
+      color: rgb(var(--color-button) / 0.9);
 
       &:focus,
       &:hover {
-        background-color: rgb(var(--color-primary) / 0.8);
+        background-color: rgb(var(--color-button-background) / 0.85);
       }
 
       &.disabled {
-        background-color: rgb(var(--color-primary) / 0.4);
+        background-color: rgb(var(--color-button-background) / 0.5);
       }
     }
 
     input {
-      background-color: rgb(var(--color-input-background) / 0.6);
+      background-color: rgb(var(--color-input-background) / 0.75);
+      color: rgb(var(--color-input) / 0.9);
 
       &::placeholder {
-        color: rgb(var(--color-input) / 1);
+        color: rgb(var(--color-input) / 0.9);
       }
 
       &:focus,

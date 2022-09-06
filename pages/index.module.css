@@ -36,9 +36,4 @@
   grid-auto-flow: column;
   max-inline-size: 60%;
   width: 100%;
-
-  & :is(button, input) {
-    /* filter: drop-shadow(0rem 0.4rem 0.3rem var(--tw-color-black)); */
-    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
-  }
 }

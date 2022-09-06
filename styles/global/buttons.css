@@ -14,21 +14,18 @@
 }
 
 .button__filled {
-  /* background-color: var(--tw-color-purple-700); */
-  /* background-color: rgb(from var(--tw-color-purple-700) r g b / 80%); */
-  /* background-color: #0080FF80; */
-  background-color: rgb(var(--color-primary) / 0.8);
-  color: var(--tw-color-white);
+  background-color: var(--color-button-background);
+  color: rgb(var(--color-button) / 0.8);
   padding: 1rem;
 }
 
 .button__filled:focus,
 .button__filled:hover {
-  background-color: rgb(var(--color-primary) / 1);
+  background-color: rgb(var(--color-button-background) / 1);
 }
 
 .button__filled.disabled {
-  background-color: rgb(var(--color-primary) / 0.4);
+  background-color: rgb(var(--color-button-background) / 0.4);
 }
 
 .button.hidden {

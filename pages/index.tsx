@@ -30,7 +30,7 @@ export default function Home() {
           </a>
         </Link> */}
 
-        <h1 className={styles.title}>uncnsrd</h1>
+        <h1 className={styles.title}>UNCNSRD</h1>
 
         <form className={clsx(styles.form, "transparent")}>
           <input
