@@ -78,9 +78,7 @@ export default function Home() {
         <h1 className={styles.title}>UNCNSRD</h1>
 
         <form
-          action="/api/klaviyo"
           className={clsx(styles.form, "columns", "transparent")}
-          method="POST"
           onSubmit={handleSubmit}
           ref={signupFormRef}
         >
