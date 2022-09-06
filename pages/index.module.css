@@ -1,7 +1,7 @@
 .container {
   background-image: url(/images/art/background.jpg);
   background-position: center;
-  background-size: contain;
+  background-size: cover;
   display: grid;
   height: 100%;
   place-items: center;
