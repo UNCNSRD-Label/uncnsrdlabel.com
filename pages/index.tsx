@@ -19,6 +19,7 @@ export default function Home() {
     event.preventDefault();
 
     const data = {
+      // @ts-ignore
       email: event?.target?.email.value,
     };
 
