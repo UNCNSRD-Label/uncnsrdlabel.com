@@ -1,5 +1,7 @@
 import { clsx } from "clsx";
 import Head from "next/head";
+import Image from "next/future/image";
+import Link from "next/link";
 
 import { useRef, FormEvent } from "react";
 
@@ -64,7 +66,7 @@ export default function Home() {
       </Head>
 
       <div className={styles.container}>
-        {/* <Link href="https://www.uncnsrdswim.com" passHref>
+        <Link href="https://www.uncnsrdswim.com" passHref>
           <a className={styles.logotype} title="uncnsrdswim.com">
             <Image
               alt="UNCNSRD logo"
@@ -73,9 +75,9 @@ export default function Home() {
               src="/images/logos/logotype-with-shadow.svg"
             />
           </a>
-        </Link> */}
+        </Link>
 
-        <h1 className={styles.title}>UNCNSRD</h1>
+        {/* <h1 className={styles.title}>UNCNSRD</h1> */}
 
         <form
           className={clsx(styles.form, "grid", "md:grid-cols-3", "gap-10", "md:gap-8", "w-3/4", "max-w-screen-sm", "justify-items-center", "md:justify-items-stretch", "transparent")}

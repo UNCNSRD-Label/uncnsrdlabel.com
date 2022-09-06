@@ -10,6 +10,7 @@
 
 .logotype {
   block-size: 50vh;
+  filter: brightness(1.25);
   inline-size: 80vw;
   min-inline-size: 50vw;
   position: relative;
