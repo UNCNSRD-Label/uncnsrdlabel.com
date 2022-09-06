@@ -1,4 +1,5 @@
 .container {
+  align-content: center;
   background-image: url(/images/art/background.jpg);
   background-position: center;
   background-size: cover;
