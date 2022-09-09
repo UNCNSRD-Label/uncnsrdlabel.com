@@ -51,7 +51,9 @@ export default function Home() {
     if (signupFormFeedbackRef.current) {
       if (result.status === 200) {
         signupFormFeedbackRef.current.classList.add("valid");
-        signupFormFeedbackRef.current.textContent = "We'll notify you when we have something to show you";
+        signupFormFeedbackRef.current.innerHTML =
+          `<p>Sexy not sorry</p>
+          <p>Watch this space!</p>`;
       } else {
         signupFormFeedbackRef.current.classList.add("invalid");
         signupFormFeedbackRef.current.textContent = "An error occurred";
@@ -66,13 +68,12 @@ export default function Home() {
       </Head>
 
       <div className={styles.container}>
-        <Link href="https://www.uncnsrdswim.com" passHref>
-          <a className={styles.logotype} title="uncnsrdswim.com">
+        <Link href="https://www.uncnsrdlabel.com" passHref>
+          <a className={styles.logotype} title="uncnsrdlabel.com">
             <Image
               alt="UNCNSRD logo"
               fill
-              sizes="25vw, 50vw"
-              src="/images/logos/logotype-with-shadow.svg"
+              src="/images/logos/logotype.svg"
             />
           </a>
         </Link>
@@ -80,23 +81,35 @@ export default function Home() {
         {/* <h1 className={styles.title}>UNCNSRD</h1> */}
 
         <form
-          className={clsx(styles.form, "grid", "md:grid-cols-3", "gap-10", "md:gap-8", "w-3/4", "max-w-screen-sm", "justify-items-center", "md:justify-items-stretch", "transparent")}
+          className={clsx(
+            styles.form,
+            "grid",
+            "md:grid-cols-3",
+            "gap-4",
+            "md:gap-2",
+            "w-3/4",
+            "max-w-md",
+            "justify-items-center",
+            "items-end",
+            "md:justify-items-stretch",
+            "transparent"
+          )}
           onSubmit={handleSubmit}
           ref={signupFormRef}
         >
-          <input
-            className={clsx("text-center", "md:col-span-2", "md:text-left")}
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Enter your email for first access"
-            required
-          />
-          <button className={clsx("button", "button__filled")}>Notify Me</button>
-          <output
-            className={clsx("output")}
-            ref={signupFormFeedbackRef}
-          />
+          <div className={clsx("field", "md:col-span-2")}>
+            <label htmlFor="email">get first hand access here</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+            />
+          </div>
+          <button className={clsx("button", "button__filled")}>
+            Notify Me
+          </button>
+          <output className={clsx("output")} ref={signupFormFeedbackRef} />
         </form>
 
         <section className={styles.copy}>

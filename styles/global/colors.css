@@ -12,9 +12,9 @@
     --color-input-background: 255 255 255;
     /* --color-feedback-valid-background: 0 75 0; */
     /* --color-feedback-valid-border: 0 255 0; */
-    --color-feedback-invalid-background: 75 0 0;
-    --color-feedback-invalid-border: 255 0 0;
-    --color-feedback-valid-background: 0 0 0;
-    --color-feedback-valid-border: 0 0 0;
+    --color-feedback-invalid-background: 50 50 50;
+    --color-feedback-invalid-border: 50 50 50;
+    --color-feedback-valid-background: 50 50 50;
+    --color-feedback-valid-border: 50 50 50;
   }
 }

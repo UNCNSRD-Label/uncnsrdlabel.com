@@ -72,19 +72,28 @@ form {
   gap: 1rem;
 
   &.transparent {
-    & :is(button, input, select, textarea) {
-      filter: drop-shadow(0rem 0.4rem 0.3rem var(--tw-color-black));
-      box-shadow: 0rem 1rem 1rem -0.75rem rgba(0,0,0,0.5), 0.5rem 0.5rem 1.5rem 0.5rem rgba(0,0,0,0);
-    }
-
-    & :is(button, input, select, textarea, fieldset, optgroup, label, output) {
-      transition-duration: 400ms;
+    & :is(button, input, select, textarea, fieldset, optgroup, output) {
+      border-color: transparent;
+      border-style: solid;
+      border-width: 0.1rem;
+      padding-block: 1rem;
+      padding-inline: 1rem;
+      text-transform: lowercase;
+      transition-duration: 250ms;
       transition-property: background-color, border-color, box-shadow, color, filter, opacity;
     }
 
+    .button {
+      font-size: 0.875rem;
+      line-height: 1.5rem;
+    }
+
     .button__filled {
-      background-color: rgb(var(--color-button-background) / 0.75);
+      background-color: rgb(var(--color-button-background) / 0.5);
+      border-color: rgb(var(--color-button-background) / 0.25);
       color: rgb(var(--color-button) / 0.9);
+      filter: drop-shadow(0rem 0.4rem 0.5rem var(--tw-color-black));
+      /* box-shadow: 0rem 0.5rem 0.25rem 0.25rem rgba(0,0,0,1); */
 
       &:focus,
       &:hover {
@@ -96,8 +105,13 @@ form {
       }
     }
 
-    input {
-      background-color: rgb(var(--color-input-background) / 0.75);
+    label {
+      font-size: 1rem;
+    }
+
+    & :is(input, select, textarea, optgroup) {
+      background-color: rgb(var(--color-input-background) / 0.5);
+      border-color: rgb(var(--color-input-background) / 0.75);
       color: rgb(var(--color-input) / 0.9);
 
       &::placeholder {
@@ -113,27 +127,25 @@ form {
 
   output {
     background-color: transparent;
-    border-color: transparent;
-    border-width: 0.1rem;
     color: var(--tw-color-white);
-    font-family: 'Bomber Escort', serif;
     grid-column: -1/1;
     padding: 1rem;
     text-align: center;
+    text-transform: lowercase;
 
     &:not(.invalid, .valid) {
       display: none;
     }
 
     &.invalid {
-      background-color: rgb(var(--color-feedback-invalid-background) / 0.9);
-      /* border-color: rgb(var(--color-feedback-invalid-border) / 0.9); */
+      background-color: rgb(var(--color-feedback-invalid-background) / 0.5);
+      /* border-color: rgb(var(--color-feedback-invalid-border) / 0.5); */
     }
 
     &.valid {
-      background-color: rgb(var(--color-feedback-valid-background) / 0.9);
-      /* border-color: rgb(var(--color-feedback-valid-border) / 0.9); */
-      font-size: 1.5rem;
+      background-color: rgb(var(--color-feedback-valid-background) / 0.5);
+      /* border-color: rgb(var(--color-feedback-valid-border) / 0.5); */
+      font-size: 2.75rem;
     }
   }
 

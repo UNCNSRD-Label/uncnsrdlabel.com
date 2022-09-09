@@ -5,6 +5,7 @@
   color: var(--tw-color-black);
   cursor: pointer;
   font: inherit;
+  text-transform: lowercase;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,8 +17,6 @@
 .button__filled {
   background-color: var(--color-button-background);
   color: rgb(var(--color-button) / 0.8);
-  padding-block: 1rem;
-  padding-inline: 3rem;
 }
 
 .button__filled:focus,
