@@ -15,9 +15,10 @@
 }
 
 .logotype {
-  block-size: 13rem;
+  block-size: 10rem;
   filter: contrast(0.6) brightness(1.25) drop-shadow(-0.4vw -0.2vw 0.3vw black);
-  inline-size: 90vw;
+  inline-size: 75vw;
+  margin-block-end: 1rem;
   min-inline-size: 50vw;
   position: relative;
 }
