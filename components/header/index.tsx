@@ -14,7 +14,7 @@ export const Header: React.FC<Props> = ({ children }) => {
     <header className={styles.header}>
       <Link href="/" passHref>
         <a className={styles.logoContainer}>
-          <Image alt="UNCNSRD logo" className={styles.logo} fill sizes="100vw" src="/images/logos/logotype.svg" />
+          <Image alt="UNCNSRD logo" className={styles.logoImage} fill sizes="(max-width: 320px) 100vw, (max-width: 768px) 50vw, (max-width: 1200px) 30vw, 20vw" src="/images/logos/logotype.svg" />
         </a>
       </Link>
       <nav className={styles.nav}>

@@ -24,15 +24,6 @@
   width: 100%;
 }
 
-.nav {
-  display: grid;
-  font-family: 'Bomber Escort', serif;
-  font-size: 2.5rem;
-  gap: 3rem;
-  grid-auto-flow: column;
-  justify-content: center;
-}
-
 .logoContainer {
   aspect-ratio: 5/1;
   display: grid;
@@ -41,7 +32,16 @@
   position: relative;
 }
 
-.logo {
+.logoImage {
   animation: filter-animation 10s infinite;
   filter: invert(50%) sepia(75%) saturate(2500%) brightness(120%) contrast(120%) hue-rotate(360deg);
+}
+
+.nav {
+  display: grid;
+  font-family: 'Bomber Escort', serif;
+  font-size: 2.5rem;
+  gap: 3rem;
+  grid-auto-flow: column;
+  justify-content: center;
 }

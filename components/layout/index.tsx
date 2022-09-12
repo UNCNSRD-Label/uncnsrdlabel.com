@@ -8,11 +8,13 @@ import styles from "./layout.module.css";
 
 type Props = {
   children?: React.ReactNode;
+  constrainWidth?: boolean;
   showHeaderAndFooter?: boolean;
 };
 
 export const Layout: React.FC<Props> = ({
   children,
+  constrainWidth = false,
   showHeaderAndFooter = true,
 }) => {
   return (
@@ -50,6 +52,7 @@ export const Layout: React.FC<Props> = ({
       <div
         className={clsx(
           styles.container,
+          constrainWidth && styles.constrain_width,
           showHeaderAndFooter && styles.show_header_and_footer
         )}
       >

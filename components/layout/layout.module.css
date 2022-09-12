@@ -5,13 +5,13 @@
 
   &.show_header_and_footer {
     grid-template-rows: auto 1fr auto;
-  }  
-}
+  }
 
-.main {
   &.constrain_width {
-    justify-self: center;
-    max-block-size: 60rem;
-    min-block-size: 60rem;
+    main {
+      justify-self: center;
+      max-inline-size: 60rem;
+      min-inline-size: 60rem;
+    }
   }
 }
