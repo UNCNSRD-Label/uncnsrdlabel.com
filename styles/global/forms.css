@@ -106,6 +106,7 @@ form {
     }
 
     label {
+      color: var(--tw-color-white);
       font-size: 1rem;
     }
 
