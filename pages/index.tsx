@@ -68,7 +68,7 @@ export default function Home() {
       </Head>
 
       <div className={styles.container}>
-        <Link href="https://www.uncnsrdlabel.com" passHref>
+        <Link href="/" passHref>
           <a className={styles.logotype} title="uncnsrdlabel.com">
             <Image
               alt="UNCNSRD logo"
