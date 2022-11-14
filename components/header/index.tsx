@@ -1,5 +1,5 @@
 import { clsx } from "clsx";
-import Image from "next/future/image";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -12,20 +12,20 @@ type Props = {
 export const Header: React.FC<Props> = ({ children }) => {
   return (
     <header className={styles.header}>
-      <Link href="/" passHref>
-        <a className={styles.logoContainer}>
-          <Image alt="UNCNSRD logo" className={styles.logoImage} fill sizes="(max-width: 320px) 100vw, (max-width: 768px) 50vw, (max-width: 1200px) 30vw, 20vw" src="/images/logos/logotype.svg" />
-        </a>
+      <Link href="/" passHref className={styles.logoContainer}>
+
+        <Image alt="UNCNSRD logo" className={styles.logoImage} fill sizes="(max-width: 320px) 100vw, (max-width: 768px) 50vw, (max-width: 1200px) 30vw, 20vw" src="/images/logos/logotype.svg" />
+
       </Link>
       <nav className={styles.nav}>
-        <Link href="/shop" passHref>
-          <a className={styles.navLink}>Shop</a>
+        <Link href="/shop" passHref className={styles.navLink}>
+          Shop
         </Link>
-        <Link href="/collection" passHref>
-          <a className={styles.navLink}>Collection</a>
+        <Link href="/collection" passHref className={styles.navLink}>
+          Collection
         </Link>
-        <Link href="/culture" passHref>
-          <a className={styles.navLink}>Culture</a>
+        <Link href="/culture" passHref className={styles.navLink}>
+          Culture
         </Link>
       </nav>
       <button className={clsx("button")}>

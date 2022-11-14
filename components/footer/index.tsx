@@ -1,4 +1,4 @@
-import Image from "next/future/image";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -12,7 +12,7 @@ export const Footer: React.FC<Props> = ({ children }) => {
   return (
     <footer className={styles.footer}>
       <Link href="/" passHref>
-        <a>Lorem ipsum</a>
+        Lorem ipsum
       </Link>
       {children}
     </footer>

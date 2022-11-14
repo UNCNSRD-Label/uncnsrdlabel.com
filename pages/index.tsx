@@ -1,6 +1,6 @@
 import { clsx } from "clsx";
 import Head from "next/head";
-import Image from "next/future/image";
+import Image from "next/image";
 import Link from "next/link";
 
 import { useRef, FormEvent } from "react";
@@ -68,14 +68,12 @@ export default function Home() {
       </Head>
 
       <div className={styles.container}>
-        <Link href="/" passHref>
-          <a className={styles.logotype} title="uncnsrdlabel.com">
-            <Image
-              alt="UNCNSRD logo"
-              fill
-              src="/images/logos/logotype.svg"
-            />
-          </a>
+        <Link href="/" passHref className={styles.logotype} title="uncnsrdlabel.com">
+          <Image
+            alt="UNCNSRD logo"
+            fill
+            src="/images/logos/logotype.svg"
+          />
         </Link>
 
         {/* <h1 className={styles.title}>UNCNSRD</h1> */}
