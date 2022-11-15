@@ -1,0 +1,6 @@
+.valid {
+  & :is(button, input, select, textarea, div) {
+    opacity: 0;
+    pointer-events: none;
+  }
+}

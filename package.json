@@ -7,27 +7,35 @@
     "dev": "next dev",
     "find:unused": "npx next-unused",
     "lint": "next lint",
-    "prettier:fix": "prettier --write .",
-    "start": "next start"
+    "lint-staged": "lint-staged",
+    "prettier:check": "prettier --check --ignore-unknown .",
+    "prettier:fix": "prettier --write --ignore-unknown .",
+    "start": "next start",
+    "test": "npm prettier:check && npm lint"
   },
   "dependencies": {
-    "clsx": "1.2.1",
+    "@heroicons/react": "^2.0.13",
+    "@next/font": "^13.0.3",
+    "@tailwindcss/forms": "^0.5.3",
+    "clsx": "^1.2.1",
     "cross-fetch": "^3.1.5",
+    "dinero.js": "^2.0.0-alpha.8",
     "email-validator": "^2.0.4",
     "js-cookie": "^3.0.1",
     "keen-slider": "^6.8.3",
-    "next": "13.0.3",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-use-wizard": "2.2.1",
-    "tailwindcss-colors-css-variables": "1.1.2-rc.2"
+    "next": "^13.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-use-wizard": "^2.2.1",
+    "tailwindcss-colors-css-variables": "^1.1.2-rc.2"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^13.0.3",
     "@types/body-scroll-lock": "^3.1.0",
     "@types/js-cookie": "^3.0.2",
-    "@types/node": "18.11.9",
-    "@types/react": "18.0.25",
+    "@types/node": "^18.11.9",
+    "@types/react": "^18.0.25",
+    "@vercel/git-hooks": "^1.0.0",
     "autoprefixer": "^10.4.13",
     "eslint": "^8.27.0",
     "eslint-config-next": "^13.0.3",
@@ -40,17 +48,20 @@
     "postcss-nesting": "^10.2.0",
     "postcss-preset-env": "^7.8.3",
     "prettier": "^2.7.1",
-    "tailwindcss": "^3.2.4"
+    "prettier-plugin-tailwindcss": "^0.1.13",
+    "tailwindcss": "^3.2.4",
+    "typescript": "^4.8.4"
+  },
+  "git": {
+    "pre-commit": "lint-staged"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
       "eslint",
-      "prettier --write",
-      "git add"
+      "prettier --write --ignore-unknown"
     ],
     "**/*.{md,mdx,json}": [
-      "prettier --write",
-      "git add"
+      "prettier --write --ignore-unknown"
     ]
   },
   "next-unused": {

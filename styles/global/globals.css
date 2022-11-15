@@ -8,6 +8,7 @@
 @import "./colors.css";
 @import "./forms.css";
 @import "./icons.css";
+@import "./utilities.css";
 
 * {
   box-sizing: border-box;
@@ -42,7 +43,7 @@ html {
 body {
   background-color: var(--tw-color-white);
   color: var(--tw-color-black);
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-montserrat);
   min-height: 100%;
 }
 

@@ -1,16 +1,25 @@
 .container {
   align-content: center;
   background-image: url(/images/art/lp1.jpg);
+  background-image: image-set(
+    url("/images/art/lp1.avif") type("image/avif"),
+    url("/images/art/lp1.webp") type("image/webp"),
+    url("/images/art/lp1.jpg") type("image/jpeg")
+  );
   background-position: center;
   background-size: cover;
   display: grid;
-  height: 100%;
   place-items: center;
 }
 
 @screen md {
   .container {
     background-image: url(/images/art/desktop.jpg);
+    background-image: image-set(
+      url("/images/art/desktop.avif") type("image/avif"),
+      url("/images/art/desktop.webp") type("image/webp"),
+      url("/images/art/desktop.jpg") type("image/jpeg")
+    );
   }
 }
 
@@ -37,13 +46,6 @@
 
 .copy {
   display: none;
-}
-
-.valid {
-  & :is(button, input, select, textarea, div) {
-    opacity: 0;
-    pointer-events: none;
-  }
 }
 
 .artGallery {
