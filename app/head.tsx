@@ -1,20 +1,54 @@
 import Script from "next/script";
 
 export default function Head() {
+  const title = "UNCNSRD";
+  const description =
+    "UNCNSRD is multifunctional swimwear for female figures who aren’t afraid to show off their assets and want to feel unapologetically sexy.";
+
   return (
     <>
+      <title>{title}</title>
+
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <title>UNCNSRD</title>
+
+      <meta charSet="utf-8" />
+      <meta httpEquiv="content-type" content="text/html" />
+      <meta name="language" content="english" />
+
+      <meta name="description" content={description} />
       <meta
-        name="description"
-        content="UNCNSRD is multifunctional swimwear for female figures who aren’t afraid to show off their assets and want to feel unapologetically sexy."
+        name="keywords"
+        content="Software Engineer,Product Manager,Project Manager,Data Scientist,Computer Scientist"
+      />
+      <meta name="robots" content="index,follow" />
+      <meta name="distribution" content="web" />
+
+      <meta name="author" content="Karlito Who Else" />
+      <meta name="designer" content="Karlito Who Else" />
+      <meta name="publisher" content="Karlito Who Else" />
+
+      <link rel="manifest" href="/site.webmanifest" />
+
+      <link rel="apple-touch-startup-image" href="/startup.png" />
+
+      <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+      <link
+        rel="apple-touch-icon"
+        sizes="16x16"
+        href="/icons/favicon-16x16.png"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="32x32"
+        href="/icons/favicon-32x32.png"
       />
       <link
         rel="apple-touch-icon"
         sizes="180x180"
-        href="/apple-touch-icon.png"
+        href="/icons/apple-touch-icon.png"
       />
-      <link rel="icon" href="/favicon.ico" />
+
+      <link rel="shortcut icon" href="/favicon.ico" />
       <link
         rel="icon"
         type="image/png"
@@ -27,10 +61,30 @@ export default function Head() {
         sizes="16x16"
         href="/favicon-16x16.png"
       />
-      <link rel="manifest" href="/site.webmanifest" />
+
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+
       <meta name="msapplication-TileColor" content="#da532c" />
-      <meta name="theme-color" content="#ffffff" />
+      <meta name="theme-color" content="#000000" />
+
+      <meta name="og:title" content={title} />
+      <meta name="og:type" content="site" />
+      <meta name="og:url" content={process.env.HOST} />
+      <meta name="og:image" content={"/icons/share.png"} />
+      <meta name="og:site_name" content={title} />
+      <meta name="og:description" content={description} />
+
+      {/* Meta Tags for HTML pages on Mobile */}
+      {/* <meta name="format-detection" content="telephone=yes"/>
+        <meta name="HandheldFriendly" content="true"/>  */}
+
+      {/* 
+      Twitter Summary card
+        documentation: https://dev.twitter.com/cards/getting-started
+        Be sure validate your Twitter card markup on the documentation site. */}
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:site" content="@onirenaud" />
+
       {process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID && (
         <>
           <Script
