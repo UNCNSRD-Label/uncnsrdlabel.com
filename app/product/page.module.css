@@ -1,10 +1,10 @@
 .container {
   align-content: center;
-  background-image: url(/images/art/lp1.jpg);
+  /* background-image: url("/images/art/lp1.jpg"); */
   background-image: image-set(
-    url("/images/art/lp1.avif") type("image/avif"),
-    url("/images/art/lp1.webp") type("image/webp"),
-    url("/images/art/lp1.jpg") type("image/jpeg")
+    url("/images/art/lp1.avif") type("image/avif") 1x,
+    url("/images/art/lp1.webp") type("image/webp") 1x,
+    url("/images/art/lp1.jpg") type("image/jpeg") 1x
   );
   background-position: center;
   background-size: cover;
@@ -14,11 +14,11 @@
 
 @screen md {
   .container {
-    background-image: url(/images/art/desktop.jpg);
+    /* background-image: url("/images/art/desktop.jpg"); */
     background-image: image-set(
-      url("/images/art/desktop.avif") type("image/avif"),
-      url("/images/art/desktop.webp") type("image/webp"),
-      url("/images/art/desktop.jpg") type("image/jpeg")
+      url("/images/art/desktop.avif") type("image/avif") 1x,
+      url("/images/art/desktop.webp") type("image/webp") 1x,
+      url("/images/art/desktop.jpg") type("image/jpeg") 1x
     );
   }
 }
