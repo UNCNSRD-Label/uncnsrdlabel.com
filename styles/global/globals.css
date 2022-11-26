@@ -26,20 +26,6 @@ html {
   color-scheme: light;
 }
 
-@supports (height: 100dvh) {
-  html {
-    height: 100dvh;
-  }
-}
-
-@supports not (height: 100dvh) {
-  html {
-    height: calc(
-      100vh - (env(safe-area-inset-top) + env(safe-area-inset-bottom))
-    );
-  }
-}
-
 body {
   background-color: var(--tw-color-white);
   color: var(--tw-color-black);

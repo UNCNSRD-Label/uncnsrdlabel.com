@@ -48,7 +48,7 @@ export default function Page() {
   return (
     <>
       <title>UNCNSRD - Home</title>
-      <article className={clsx(styles.container, "viewportHeight")}>
+      <article className={clsx(styles.container, "fitViewport")}>
         <Link
           href="/"
           passHref

@@ -10,7 +10,7 @@ export default function Page() {
   return (
     <>
       <title>UNCNSRD - Home</title>
-      <div className={clsx(styles.container, "viewportHeight")}>
+      <div className={clsx(styles.container, "fitViewport")}>
         <Link
           href="/"
           passHref

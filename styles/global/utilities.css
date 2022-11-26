@@ -6,7 +6,10 @@
   }
 }
 
-.viewportHeight {
+.fitViewport {
+  inset: 0;
+  position: fixed;
+
   @supports (height: 100dvh) {
     height: 100dvh;
   }
@@ -14,6 +17,16 @@
   @supports not (height: 100dvh) {
     height: calc(
         100vh - (env(safe-area-inset-top) + env(safe-area-inset-bottom))
+    );
+  }
+
+  @supports (width: 100dvw) {
+    width: 100dvw;
+  }
+
+  @supports not (width: 100dvw) {
+    width: calc(
+        100vw - (env(safe-area-inset-left) + env(safe-area-inset-right))
     );
   }
 }
