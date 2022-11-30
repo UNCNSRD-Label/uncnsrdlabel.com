@@ -8,7 +8,6 @@
 
 .fitViewport {
   inset: 0;
-  position: fixed;
 
   @supports (height: 100dvh) {
     height: 100dvh;

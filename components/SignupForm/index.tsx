@@ -1,17 +1,15 @@
 "use client";
 
 import { clsx } from "clsx";
-import React from "react";
-
-import { useRef, FormEvent } from "react";
+import React, { useRef, FC, FormEvent, ReactNode } from "react";
 
 import styles from "./index.module.css";
 
 type Props = {
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
-export const Component: React.FC<Props> = ({ children }) => {
+export const Component: FC<Props> = ({ children }) => {
   const signupFormRef = useRef<HTMLFormElement>(null);
   const signupFormFeedbackRef = useRef<HTMLOutputElement>(null);
 

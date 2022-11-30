@@ -30,10 +30,9 @@ export default function Page() {
       >
         <Lollipops route="/" position-y={-0.75} />
       </Scene>
-      <div className={clsx(styles.container, "fitViewport")}>
+      <div className={clsx(styles.container, "fitViewport", "fixed")}>
         {/* <Link
           href="/"
-          passHref
           className={styles.logotype}
           title="uncnsrdlabel.com"
         >

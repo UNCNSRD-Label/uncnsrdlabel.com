@@ -1,0 +1,10 @@
+.root {
+  align-content: center;
+  display: grid;
+  place-items: center;
+}
+
+.figure {
+  aspect-ratio: 3/4;
+  position: relative;
+}

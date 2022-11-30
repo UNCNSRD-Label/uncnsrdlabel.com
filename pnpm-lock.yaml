@@ -54,6 +54,8 @@ specifiers:
   tailwindcss-colors-css-variables: ^1.1.2-rc.2
   three: ^0.146.0
   three-stdlib: ^2.19.0
+  timeline-composer: ^0.1.7
+  type-fest: ^3.3.0
   typescript: 4.9.3
 
 dependencies:
@@ -82,6 +84,8 @@ dependencies:
   tailwindcss-colors-css-variables: 1.1.2-rc.2
   three: 0.146.0
   three-stdlib: 2.19.0_three@0.146.0
+  timeline-composer: 0.1.7_biqbaboplfbrettd7655fr4n2y
+  type-fest: 3.3.0
 
 devDependencies:
   '@graphql-codegen/cli': 2.14.0_rqjlw7vynvrdxkczmtjek63zxa
@@ -2180,6 +2184,14 @@ packages:
       react: 18.2.0
     dev: false
 
+  /@hmans/use-animation-frame/0.0.2_react@18.2.0:
+    resolution: {integrity: sha512-2490t71vjTBvgqT/NEzJNlE63I4vtUEQN2o+++qtt4elxB2LderUVVhgWwMEDvKpHoj2rg0YZ3F9Vc+t8tLP1Q==}
+    peerDependencies:
+      react: '>=18.1.0'
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /@humanwhocodes/config-array/0.11.7:
     resolution: {integrity: sha512-kBbPWzN8oVMLb0hOUYXhmxggL/1cJE6ydvjDIGi9EnAGUyA7cLVKQg+d/Dsm+KZwx2czGHrCmMVLiyg8s5JPKw==}
     engines: {node: '>=10.10.0'}
@@ -2671,7 +2683,7 @@ packages:
       graphql: 16.6.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-      type-fest: 3.2.0
+      type-fest: 3.3.0
       worktop: 0.7.3
     transitivePeerDependencies:
       - '@types/react'
@@ -7968,6 +7980,17 @@ packages:
       xtend: 4.0.2
     dev: true
 
+  /timeline-composer/0.1.7_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-T657BmhofTU4eyIfAwDjJrY/dmfXh9uccXBxV3vlvq03HNakzVX2qhUP5ipeIJROvkKoxhXmnJdzVyK0Nu5P8g==}
+    peerDependencies:
+      react: ^18.2.0
+      react-dom: ^18.2.0
+    dependencies:
+      '@hmans/use-animation-frame': 0.0.2_react@18.2.0
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
   /tiny-glob/0.2.9:
     resolution: {integrity: sha512-g/55ssRPUjShh+xkfx9UPDXqhckHEsHr4Vd9zX55oSdGZc/MD0m3sferOkwWtp98bv+kcVfEHtRJgBVJzelrzg==}
     dependencies:
@@ -8130,8 +8153,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /type-fest/3.2.0:
-    resolution: {integrity: sha512-Il3wdLRzWvbAEtocgxGQA9YOoRVeVUGOMBtel5LdEpNeEAol6GJTLw8GbX6Z8EIMfvfhoOXs2bwOijtAZdK5og==}
+  /type-fest/3.3.0:
+    resolution: {integrity: sha512-gezeeOIZyQLGW5uuCeEnXF1aXmtt2afKspXz3YqoOcZ3l/YMJq1pujvgT+cz/Nw1O/7q/kSav5fihJHsC/AOUg==}
     engines: {node: '>=14.16'}
     dev: false
 

@@ -1,0 +1,8 @@
+Model Information:
+* title:	Female Sportswear 2
+* source:	https://sketchfab.com/3d-models/female-sportswear-2-260712ec2e4d46b39b65d1e0a5a01555
+* author:	polyfarm (https://sketchfab.com/polyfarm)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

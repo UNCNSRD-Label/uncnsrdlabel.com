@@ -1,0 +1,11 @@
+Model Information:
+* title:	Bikini
+* source:	https://sketchfab.com/3d-models/bikini-0c82e90457534a99b9221633c8ed10b3
+* author:	aprilpolubiec (https://sketchfab.com/aprilpolubiec)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Bikini" (https://sketchfab.com/3d-models/bikini-0c82e90457534a99b9221633c8ed10b3) by aprilpolubiec (https://sketchfab.com/aprilpolubiec) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

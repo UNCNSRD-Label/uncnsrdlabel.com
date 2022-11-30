@@ -1,0 +1,39 @@
+.article {
+  @apply grid grid-cols-2 overflow-auto;
+}
+
+.gallery {
+  @apply grid overflow-auto;
+
+  .figure {
+    aspect-ratio: 3/4;
+    position: relative;
+    
+    &:has(.model) {
+      height: 50vh;
+    }
+  
+    .image {
+      
+    }
+
+    .model {
+      background-color: rgb(235, 235, 235);
+    }
+  }
+}
+
+.details {
+  @apply grid overflow-auto;
+
+  /* @apply sticky; */
+  /* bottom: 100vh; */
+
+  .title {
+
+  }
+
+  .copy {
+    
+  }
+}

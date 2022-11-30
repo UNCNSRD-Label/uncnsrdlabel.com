@@ -1,0 +1,17 @@
+.article {
+  align-content: center;
+  display: grid;
+  place-items: center;
+
+  @screen md {
+
+  }
+}
+
+.title {
+
+}
+
+.copy {
+  
+}

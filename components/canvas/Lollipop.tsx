@@ -22,34 +22,40 @@ type GLTFResult = GLTF & {
   };
 };
 
-export function Model(props: JSX.IntrinsicElements["group"]) {
-  const { nodes, materials } = useGLTF(
-    "/models/lollipop/scene.gltf"
-  ) as GLTFResult;
-  return (
-    <group {...props} dispose={null}>
-      <group position={[0, 0.09, -0.6]} rotation={[-1.27, 0, 0]} scale={0.43}>
-        <group rotation={[Math.PI / 2, 0, 0]}>
-          <group position={[0, 1.52, 0]} scale={[0.13, 2.61, 0.13]}>
-            <mesh
-              castShadow
-              receiveShadow
-              geometry={nodes.Object_4.geometry}
-              material={materials["Material.001"]}
-            />
-          </group>
-          <group position={[0, 4.2, 0]}>
-            <mesh
-              castShadow
-              receiveShadow
-              geometry={nodes.Object_6.geometry}
-              material={materials["Material.002"]}
-            />
+// eslint-disable-next-line react/display-name
+export const Model = React.forwardRef(
+  (props: JSX.IntrinsicElements["group"], ref) => {
+    const { nodes, materials } = useGLTF(
+      "/models/lollipop/scene.gltf"
+    ) as GLTFResult;
+
+    return (
+      <group {...props} dispose={null} ref={ref}>
+        <group position={[0, 0.09, -0.6]} rotation={[-1.27, 0, 0]} scale={0.43}>
+          <group rotation={[Math.PI / 2, 0, 0]}>
+            <group position={[0, 1.52, 0]} scale={[0.13, 2.61, 0.13]}>
+              <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.Object_4.geometry}
+                material={materials["Material.001"]}
+              />
+            </group>
+            <group position={[0, 4.2, 0]}>
+              <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.Object_6.geometry}
+                material={materials["Material.002"]}
+              />
+            </group>
           </group>
         </group>
       </group>
-    </group>
-  );
-}
+    );
+  }
+);
 
-useGLTF.preload("/scene.gltf");
+export default Model;
+
+useGLTF.preload("/models/lollipop/scene.gltf");

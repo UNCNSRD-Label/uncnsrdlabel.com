@@ -1,0 +1,272 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 2132,
+      "max": [
+        17.243019104003906,
+        146.20556640625,
+        19.480844497680664
+      ],
+      "min": [
+        -15.073873519897461,
+        93.50495910644531,
+        -19.32147789001465
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 25584,
+      "componentType": 5126,
+      "count": 2132,
+      "max": [
+        0.999972939491272,
+        0.9980923533439636,
+        0.9999852776527405
+      ],
+      "min": [
+        -0.9997736811637878,
+        -0.9999483227729797,
+        -0.9999080896377563
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 2132,
+      "max": [
+        0.9997743964195251,
+        0.9821032881736755,
+        0.9999613761901855,
+        1.0
+      ],
+      "min": [
+        -0.998171329498291,
+        -0.7874525189399719,
+        -0.9999246597290039,
+        1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 2132,
+      "max": [
+        0.9884471893310547,
+        0.9750660061836243
+      ],
+      "min": [
+        0.010768800973892212,
+        0.027488216757774353
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 7731,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "3dia (https://sketchfab.com/3dia)",
+      "license": "SKETCHFAB Standard (https://sketchfab.com/licenses)",
+      "source": "https://sketchfab.com/3d-models/fringe-bandeau-bikini-two-piece-bikini-set-a136697bc72845d3bc540794a4aba587",
+      "title": "Fringe Bandeau Bikini Two Piece Bikini Set"
+    },
+    "generator": "Sketchfab-12.68.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 30924,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 17056,
+      "byteOffset": 30924,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 51168,
+      "byteOffset": 47980,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 34112,
+      "byteOffset": 99148,
+      "byteStride": 16,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 133260,
+      "uri": "scene.bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "textures/BikiniMaterial_baseColor.jpeg"
+    },
+    {
+      "uri": "textures/BikiniMaterial_metallicRoughness.png"
+    },
+    {
+      "uri": "textures/BikiniMaterial_normal.jpeg"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "BikiniMaterial",
+      "normalTexture": {
+        "index": 2
+      },
+      "occlusionTexture": {
+        "index": 1,
+        "strength": 0.2893081761006289
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.5283018867924528,
+        "metallicRoughnessTexture": {
+          "index": 1
+        },
+        "roughnessFactor": 0.660377358490566
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "FringesBikiniSet_BikiniMaterial_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        2.111910343170166,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        4.689382977863068e-16,
+        -2.111910343170166,
+        0.0,
+        0.0,
+        2.111910343170166,
+        4.689382977863068e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.009999999776482582,
+        0.0,
+        0.0,
+        -0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "33f0a48e446e491196c890ff69261fc4.fbx"
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4
+      ],
+      "name": "FringesBikiniSet"
+    },
+    {
+      "mesh": 0,
+      "name": "FringesBikiniSet_BikiniMaterial_0"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    }
+  ]
+}

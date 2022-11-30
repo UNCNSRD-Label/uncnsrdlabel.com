@@ -1,0 +1,369 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 3544,
+      "max": [
+        15.872299194335938,
+        161.978515625,
+        17.493345260620117
+      ],
+      "min": [
+        -15.645015716552734,
+        93.47186279296875,
+        -17.65224838256836
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 42528,
+      "componentType": 5126,
+      "count": 3544,
+      "max": [
+        0.999283492565155,
+        0.9926663637161255,
+        0.9987907409667969
+      ],
+      "min": [
+        -0.9999580979347229,
+        -0.9997603893280029,
+        -0.9998390078544617
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 3544,
+      "max": [
+        0.999986469745636,
+        0.9999943971633911,
+        0.9999999403953552,
+        1.0
+      ],
+      "min": [
+        -0.9993878602981567,
+        -0.9999961256980896,
+        -0.9999774694442749,
+        -1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 3544,
+      "max": [
+        0.9913442730903625,
+        0.9928751587867737
+      ],
+      "min": [
+        0.006281211040914059,
+        0.01699453592300415
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 17736,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 85056,
+      "componentType": 5126,
+      "count": 377,
+      "max": [
+        14.561698913574219,
+        138.5316162109375,
+        3.8619384765625
+      ],
+      "min": [
+        13.589367866516113,
+        129.7623291015625,
+        -3.821929931640625
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 89580,
+      "componentType": 5126,
+      "count": 377,
+      "max": [
+        0.9999194741249084,
+        0.9800363183021545,
+        0.9932668805122375
+      ],
+      "min": [
+        -0.9996155500411987,
+        -0.9982630014419556,
+        -0.9936614632606506
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 28352,
+      "componentType": 5126,
+      "count": 377,
+      "max": [
+        0.9233324527740479,
+        0.44690239429473877
+      ],
+      "min": [
+        0.5496671199798584,
+        0.3869421184062958
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 70944,
+      "componentType": 5125,
+      "count": 2064,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "3dia (https://sketchfab.com/3dia)",
+      "license": "SKETCHFAB Standard (https://sketchfab.com/licenses)",
+      "source": "https://sketchfab.com/3d-models/chest-buckle-tie-female-swimsuit-57908b6002164649a9485f2fda41ae17",
+      "title": "Chest Buckle Tie Female Swimsuit"
+    },
+    "generator": "Sketchfab-12.68.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 79200,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 31368,
+      "byteOffset": 79200,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 94104,
+      "byteOffset": 110568,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 56704,
+      "byteOffset": 204672,
+      "byteStride": 16,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 261376,
+      "uri": "scene.bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "textures/Fabric_baseColor.jpeg"
+    },
+    {
+      "uri": "textures/Fabric_metallicRoughness.png"
+    },
+    {
+      "uri": "textures/Fabric_normal.png"
+    },
+    {
+      "uri": "textures/Metal_metallicRoughness.png"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Fabric",
+      "normalTexture": {
+        "index": 2
+      },
+      "occlusionTexture": {
+        "index": 1
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.16352201257861634,
+        "metallicRoughnessTexture": {
+          "index": 1
+        }
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "Metal",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.5830405017641959,
+          0.5213937573404515,
+          0.5213937573404515,
+          1.0
+        ],
+        "metallicRoughnessTexture": {
+          "index": 3
+        },
+        "roughnessFactor": 0.16981132075471697
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Swimsuit_Fabric_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Swimsuit_Metal_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 6,
+            "POSITION": 5,
+            "TEXCOORD_0": 7
+          },
+          "indices": 8,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.8527812957763672,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        4.1140009083315103e-16,
+        -1.8527812957763672,
+        0.0,
+        0.0,
+        1.8527812957763672,
+        4.1140009083315103e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.009999999776482582,
+        0.0,
+        0.0,
+        -0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "89905f550984416cb9be1ab249bc4d66.fbx"
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4,
+        5
+      ],
+      "name": "Swimsuit"
+    },
+    {
+      "mesh": 0,
+      "name": "Swimsuit_Fabric_0"
+    },
+    {
+      "mesh": 1,
+      "name": "Swimsuit_Metal_0"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    },
+    {
+      "sampler": 0,
+      "source": 3
+    }
+  ]
+}

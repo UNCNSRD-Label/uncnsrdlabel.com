@@ -12,7 +12,7 @@ type Props = {
 export const Component: React.FC<Props> = ({ children }) => {
   return (
     <header className={styles.header}>
-      <Link href="/" passHref className={styles.logoContainer}>
+      <Link href="/" className={styles.logoContainer}>
         <Image
           alt="UNCNSRD logo"
           className={styles.logoImage}
@@ -22,13 +22,13 @@ export const Component: React.FC<Props> = ({ children }) => {
         />
       </Link>
       <nav className={styles.nav}>
-        <Link href="/shop" passHref className={styles.navLink}>
+        <Link href="/shop" className={styles.navLink}>
           Shop
         </Link>
-        <Link href="/collection" passHref className={styles.navLink}>
+        <Link href="/collection" className={styles.navLink}>
           Collection
         </Link>
-        <Link href="/culture" passHref className={styles.navLink}>
+        <Link href="/culture" className={styles.navLink}>
           Culture
         </Link>
       </nav>

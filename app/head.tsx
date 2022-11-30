@@ -1,9 +1,14 @@
+import { useRouter } from "next/router";
 import Script from "next/script";
 
 export default function Head() {
+  const { defaultLocale, locale, locales, pathname } = useRouter();
+
   const title = "UNCNSRD";
   const description =
     "UNCNSRD is multifunctional swimwear for female figures who aren’t afraid to show off their assets and want to feel unapologetically sexy.";
+
+  const url = `${process.env.NEXT_PUBLIC_VERCEL_URL}${pathname}`;
 
   return (
     <>
@@ -28,6 +33,35 @@ export default function Head() {
       <meta name="publisher" content="Karlito Who Else" />
 
       <link rel="manifest" href="/site.webmanifest" />
+
+      <link rel="canonical" href={url} />
+
+      <link
+        rel="alternate"
+        hrefLang="x-default"
+        href={`${process.env.NEXT_PUBLIC_VERCEL_URL}${defaultLocale}${pathname}`}
+      />
+      {locales?.map((locale) => (
+        <link
+          key={`hrefLang=${locale}`}
+          rel="alternate"
+          hrefLang={locale}
+          href={`${process.env.NEXT_PUBLIC_VERCEL_URL}${locale}${pathname}`}
+        />
+      ))}
+
+      <link
+        rel="alternate"
+        type="application/json+oembed"
+        href={`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/oembed${pathname}`}
+      />
+
+      <link
+        rel="search"
+        href="/opensearch.xml"
+        type="application/opensearchdescription+xml"
+        title={`Search uncnsrdlabel.com`}
+      />
 
       <link rel="apple-touch-startup-image" href="/startup.png" />
 
@@ -69,7 +103,7 @@ export default function Head() {
 
       <meta name="og:title" content={title} />
       <meta name="og:type" content="site" />
-      <meta name="og:url" content={process.env.HOST} />
+      <meta name="og:url" content={process.env.NEXT_PUBLIC_HOST} />
       <meta name="og:image" content={"/icons/share.png"} />
       <meta name="og:site_name" content={title} />
       <meta name="og:description" content={description} />
@@ -82,8 +116,36 @@ export default function Head() {
       Twitter Summary card
         documentation: https://dev.twitter.com/cards/getting-started
         Be sure validate your Twitter card markup on the documentation site. */}
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:site" content="@onirenaud" />
+      {/* <meta name="twitter:card" content="summary" /> */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@UNCNSRD" />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+
+      <link
+        rel="preconnect"
+        href="https://cdn.shopify.com"
+        crossOrigin="anonymous"
+      />
+
+      <Script
+        type="application/ld+json"
+        id="WebSite"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: { title },
+            url,
+            email: "hello@uncnsrdlabel.com",
+            potentialAction: {
+              "@type": "SearchAction",
+              target: `${process.env.NEXT_PUBLIC_VERCEL_URL}/search?query={search_term_string}`,
+              "query-input": "required name=search_term_string",
+            },
+          }),
+        }}
+      />
 
       {process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID && (
         <>
