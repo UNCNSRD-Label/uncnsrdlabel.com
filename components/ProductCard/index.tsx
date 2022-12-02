@@ -30,13 +30,13 @@ type Props = {
   //     >;
   //   };
   // };
-  data: PartialDeep<Omit<Product, "metafields">>;
+  data: PartialDeep<Product, { recurseIntoArrays: true }>;
 } & React.HTMLAttributes<HTMLElement>;
 
 export const Component: FC<Props> = ({ className, data }) => {
   const { handle, id, publishedAt, title, variants } = data;
 
-  const image = variants?.nodes?.[0].image;
+  const image = variants?.nodes?.[0]?.image;
 
   return (
     <article
@@ -52,10 +52,10 @@ export const Component: FC<Props> = ({ className, data }) => {
             {title}
           </h2>
         </header>
-        {image && (
+        {image?.url && (
           <figure className={clsx(styles.figure)}>
             <Image
-              alt={image.altText ?? IMAGE_ALT_TEXT_FALLBACK}
+              alt={image?.altText ?? IMAGE_ALT_TEXT_FALLBACK}
               className={clsx(styles.image)}
               fill
               itemProp="image"
@@ -63,7 +63,7 @@ export const Component: FC<Props> = ({ className, data }) => {
               sizes={`(max-inline-size: ${theme.screens.xs.max}) 100vw,
                       (max-inline-size: ${theme.screens.md.max}) 50vw,
                       25vw`}
-              src={image.url}
+              src={image?.url}
               title={title ?? IMAGE_TITLE_FALLBACK}
             />
             <figcaption className={clsx(styles.figcaption)}>
