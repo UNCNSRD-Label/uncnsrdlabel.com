@@ -110,7 +110,7 @@ export default function Head() {
 
       <meta name="og:title" content={title} />
       <meta name="og:type" content="site" />
-      <meta name="og:url" content={process.env.NEXT_PUBLIC_HOST} />
+      <meta name="og:url" content={process.env.NEXT_PUBLIC_VERCEL_URL} />
       <meta name="og:image" content={"/icons/share.png"} />
       <meta name="og:site_name" content={title} />
       <meta name="og:description" content={description} />
