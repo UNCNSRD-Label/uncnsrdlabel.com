@@ -1,0 +1,8 @@
+.container {
+    pointer-events: none;
+    position: fixed;
+
+    > * {
+        pointer-events: auto;       
+    }
+}

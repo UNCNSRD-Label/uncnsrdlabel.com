@@ -8,18 +8,24 @@
   .figure {
     aspect-ratio: 3/4;
     position: relative;
+    width: 100%;
     
     &:has(.model) {
+      background-color: rgb(235, 235, 235);
       height: 50vh;
     }
-  
+ 
+    &:global(.fitViewport) {
+      background-color: red;
+    }
+
     .image {
       
     }
 
-    .model {
+    /* .model {
       background-color: rgb(235, 235, 235);
-    }
+    } */
   }
 }
 

@@ -50,15 +50,13 @@ export default function RootLayout({
           showHeaderAndFooter && styles.showHeaderAndFooter
         )}
       >
-        <Providers>
-          {showHeaderAndFooter && <Header constrainWidth={constrainWidth} />}
-          <main
-            className={clsx(styles.main, constrainWidth && "constrainWidth")}
-          >
-            {children}
-          </main>
-          {showHeaderAndFooter && <Footer constrainWidth={constrainWidth} />}
-        </Providers>
+        {/* <Providers> */}
+        {showHeaderAndFooter && <Header constrainWidth={constrainWidth} />}
+        <main className={clsx(styles.main, constrainWidth && "constrainWidth")}>
+          {children}
+        </main>
+        {showHeaderAndFooter && <Footer constrainWidth={constrainWidth} />}
+        {/* </Providers> */}
       </body>
     </html>
   );

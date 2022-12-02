@@ -10,17 +10,15 @@
   background-size: cover;
   display: grid;
   place-items: center;
-}
 
-@screen md {
-  .container {
+  @media screen and (min-width: theme(screens.md.min)) {
     background-image: url("/images/art/desktop.jpg");
     background-image: image-set(
       url("/images/art/desktop.avif") type("image/avif") 1x,
       url("/images/art/desktop.webp") type("image/webp") 1x,
       url("/images/art/desktop.jpg") type("image/jpeg") 1x
     );
-  }
+  }  
 }
 
 .logotype {

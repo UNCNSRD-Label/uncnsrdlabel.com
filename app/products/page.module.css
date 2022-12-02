@@ -3,7 +3,7 @@
   display: grid;
   place-items: center;
 
-  @screen md {
+  @media screen and (min-width: theme(screens.md.min)) {
 
   }
 }
