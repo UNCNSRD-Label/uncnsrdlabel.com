@@ -4,17 +4,16 @@
 // import { useRouter } from 'next/router'
 import { useCursor, MeshDistortMaterial } from "@react-three/drei";
 
-export default function Blob({ route, ...props }) {
+export default function Blob() {
   // const router = useRouter()
   // const [hovered, hover] = useState(false)
   // useCursor(hovered)
   const hovered = false;
   return (
     <mesh
-      // onClick={() => router.push(route)}
-      // onPointerOver={() => hover(true)}
-      // onPointerOut={() => hover(false)}
-      {...props}
+    // onClick={() => router.push(route)}
+    // onPointerOver={() => hover(true)}
+    // onPointerOut={() => hover(false)}
     >
       <sphereGeometry args={[1, 64, 64]} />
       <MeshDistortMaterial

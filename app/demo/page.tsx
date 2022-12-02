@@ -11,15 +11,8 @@ export default function Page() {
   return (
     <>
       <title>UNCNSRD - Demo</title>
-      <Scene
-        className={clsx("pointer-events-none")}
-        // eventSource={ref}
-        eventPrefix="client"
-        shadows
-        dpr={[1, 2]}
-        camera={{ position: [0, 160, 160], fov: 20 }}
-      >
-        <Demo route="/" position-y={-0.75} />
+      <Scene>
+        <Demo />
       </Scene>
     </>
   );

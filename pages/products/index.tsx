@@ -62,9 +62,9 @@ export default function Page({
       </header>
       <section className={styles.copy}></section>
       <main className={clsx(styles.main)}>
-        {data.products.nodes.map((node, index) => (
+        {/* {data.products.nodes.map((node, index) => (
           <ProductCard key={index} data={node} />
-        ))}
+        ))} */}
       </main>
       <aside>
         <h2>Related Products</h2>

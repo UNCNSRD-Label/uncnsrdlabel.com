@@ -51,11 +51,11 @@ export default function RootLayout({
         )}
       >
         {/* <Providers> */}
-        {showHeaderAndFooter && <Header constrainWidth={constrainWidth} />}
+        {showHeaderAndFooter && <Header data-constrainWidth={constrainWidth} />}
         <main className={clsx(styles.main, constrainWidth && "constrainWidth")}>
           {children}
         </main>
-        {showHeaderAndFooter && <Footer constrainWidth={constrainWidth} />}
+        {showHeaderAndFooter && <Footer data-constrainWidth={constrainWidth} />}
         {/* </Providers> */}
       </body>
     </html>

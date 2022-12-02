@@ -25,7 +25,7 @@ type GLTFResult = GLTF & {
 export default function Model(props: JSX.IntrinsicElements["group"]) {
   const { nodes, materials } = useGLTF(
     "/models/chest_buckle_tie_female_swimsuit/scene.gltf"
-  ) as GLTFResult;
+  ) as any as GLTFResult;
   return (
     <group {...props} dispose={null}>
       <Center>

@@ -23,7 +23,7 @@ type GLTFResult = GLTF & {
 export default function Model(props: JSX.IntrinsicElements["group"]) {
   const { nodes, materials } = useGLTF(
     "/models/female_corded_two_piece_bikini_set/scene.gltf"
-  ) as GLTFResult;
+  ) as any as GLTFResult;
   return (
     <group {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]}>

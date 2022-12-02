@@ -1,9 +1,9 @@
 "use client";
 
 import type {
-  StorefrontImage,
-  StorefrontProduct,
-  StorefrontProductVariant,
+  // Image,
+  Product,
+  // ProductVariant,
 } from "@shopify/hydrogen-react/storefront-api-types";
 import type { PartialDeep } from "type-fest";
 
@@ -30,13 +30,13 @@ type Props = {
   //     >;
   //   };
   // };
-  data: PartialDeep<StorefrontProduct>;
+  data: PartialDeep<Omit<Product, "metafields">>;
 } & React.HTMLAttributes<HTMLElement>;
 
 export const Component: FC<Props> = ({ className, data }) => {
   const { handle, id, publishedAt, title, variants } = data;
 
-  const image = variants.nodes?.[0].image;
+  const image = variants?.nodes?.[0].image;
 
   return (
     <article
@@ -72,7 +72,7 @@ export const Component: FC<Props> = ({ className, data }) => {
           </figure>
         )}
       </Link>
-      <footer>
+      {/* <footer>
         <div itemProp="offers" itemScope itemType="https://schema.org/Offer">
           <span itemProp="priceCurrency" content="USD">
             $
@@ -83,7 +83,7 @@ export const Component: FC<Props> = ({ className, data }) => {
           <link itemProp="availability" href="https://schema.org/InStock" />
           In stock
         </div>
-      </footer>
+      </footer> */}
     </article>
   );
 };

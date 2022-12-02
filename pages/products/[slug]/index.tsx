@@ -1,7 +1,7 @@
 import type {
-  StorefrontImage,
-  StorefrontProduct,
-  StorefrontProductVariant,
+  // Image,
+  // Product,
+  ProductVariant,
 } from "@shopify/hydrogen-react/storefront-api-types";
 import type { GetServerSideProps } from "next";
 
@@ -10,13 +10,13 @@ import type { ProductQuery } from "#/gql/graphql";
 import { clsx } from "clsx";
 import {
   AddToCartButton,
-  Image as ShopifyImage,
-  Money,
+  // Image as ShopifyImage,
+  // Money,
   ProductPrice,
   ProductProvider,
   type StorefrontApiResponseOk,
   useShop,
-  ModelViewer,
+  // ModelViewer,
 } from "@shopify/hydrogen-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -102,7 +102,12 @@ export default function Page({
 
   const url = `${process.env.NEXT_PUBLIC_VERCEL_URL}${pathname}`;
 
-  const getAvailability = (variant: StorefrontProductVariant) => {
+  const getAvailability = (
+    variant: Pick<
+      ProductVariant,
+      "availableForSale" | "currentlyNotInStock" | "quantityAvailable"
+    >
+  ) => {
     let availability = "PreOrder";
 
     if (variant.currentlyNotInStock) {
@@ -168,7 +173,7 @@ export default function Page({
           }}
         />
         <title>{product.seo.title} &ndash; UNCNSRD</title>
-        <meta name="description" content={product.seo.description} />
+        <meta name="description" content={product.seo.description!} />
 
         {/* <link rel="canonical" href={url} /> */}
         {/* <link rel="alternate" hrefLang="x-default" href={`${process.env.NEXT_PUBLIC_VERCEL_URL}${defaultLocale}${pathname}`} /> */}
@@ -183,9 +188,9 @@ export default function Page({
         {/* <link rel="alternate" type="application/json+oembed" href={`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/oembed${pathname}`} /> */}
 
         <meta property="og:url" content={url} />
-        <meta property="og:title" content={product.seo.title} />
+        <meta property="og:title" content={product.seo.title!} />
         <meta property="og:type" content="product" />
-        <meta property="og:description" content={product.seo.description} />
+        <meta property="og:description" content={product.seo.description!} />
         <meta property="og:image" content={product.images?.nodes?.[0]?.url} />
         <meta
           property="og:image:secure_url"
@@ -204,8 +209,8 @@ export default function Page({
 
         <meta name="twitter:site" content="@UNCNSRD" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={product.seo.title} />
-        <meta name="twitter:description" content={product.seo.description} />
+        <meta name="twitter:title" content={product.seo.title!} />
+        <meta name="twitter:description" content={product.seo.description!} />
 
         <section className={clsx(styles.gallery)}>
           {product.images.nodes.map((image, index) => (
@@ -227,19 +232,7 @@ export default function Page({
             </figure>
           ))}
           <figure className={clsx(styles.figure)}>
-            <Scene
-              className={clsx(styles.model, "pointer-events-none")}
-              // eventSource={ref}
-              eventPrefix="client"
-              shadows
-              dpr={[1, 2]}
-              camera={{
-                position: [0, 0, -2_000],
-                fov: 20,
-                near: 0.01,
-                far: 100_000,
-              }}
-            >
+            <Scene>
               <FemaleSportswear2 position={[0, 0, 0]} rotation={[0, 0, 0]} />
             </Scene>
             <figcaption className={clsx(styles.figcaption)}>

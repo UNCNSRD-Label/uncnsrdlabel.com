@@ -25,10 +25,8 @@ import { Lifetime } from "timeline-composer";
 import { Model as Lollipop } from "./Lollipop";
 
 function Light() {
-  const ref = useRef();
-  useFrame((_) => (ref.current.rotation.x = _.clock.elapsedTime));
   return (
-    <group ref={ref}>
+    <group>
       <rectAreaLight
         width={15}
         height={100}
@@ -69,7 +67,7 @@ function Rig() {
   );
 }
 
-export default function Lollipops({ route, ...props }) {
+export default function Lollipops(props: JSX.IntrinsicElements["mesh"]) {
   // const router = useRouter()
   const [hovered, hover] = useState(false);
   useCursor(hovered);

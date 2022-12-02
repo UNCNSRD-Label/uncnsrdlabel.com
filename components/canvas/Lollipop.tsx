@@ -24,10 +24,10 @@ type GLTFResult = GLTF & {
 
 // eslint-disable-next-line react/display-name
 export const Model = React.forwardRef(
-  (props: JSX.IntrinsicElements["group"], ref) => {
+  (props: JSX.IntrinsicElements["group"], ref: React.Ref<THREE.Group>) => {
     const { nodes, materials } = useGLTF(
       "/models/lollipop/scene.gltf"
-    ) as GLTFResult;
+    ) as any as GLTFResult;
 
     return (
       <group {...props} dispose={null} ref={ref}>
