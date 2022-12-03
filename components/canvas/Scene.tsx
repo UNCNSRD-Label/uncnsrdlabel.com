@@ -13,7 +13,7 @@ export const Component: FC<{ children: React.ReactNode }> = ({ children }) => {
       shadows
       dpr={[1, 2]}
       camera={{
-        // position: [0, 0, -2_000],
+        position: [0, 0, -2_000],
         fov: 20,
         near: 0.01,
         far: 100_000,

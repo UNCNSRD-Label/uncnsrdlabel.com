@@ -1,45 +1,50 @@
 .article {
-  @apply grid grid-cols-2 overflow-auto;
-}
+  @apply grid grid-cols-2;
 
-.gallery {
-  @apply grid overflow-auto;
+  .gallery {
+    @apply grid;
 
-  .figure {
-    aspect-ratio: 3/4;
-    position: relative;
-    width: 100%;
-    
-    &:has(.model) {
-      background-color: rgb(235, 235, 235);
-      height: 50vh;
+    .figure {
+      aspect-ratio: 3/4;
+      position: relative;
+      width: 100%;
+
+      &:global(.fitViewport) {
+        background-color: red;
+      }
+
+      &.model {
+        background-color: rgb(235, 235, 235);
+        background-color: red;
+        min-block-size: min(50vh, 40rem);
+      }
+
+      .image {
+      }
     }
- 
-    &:global(.fitViewport) {
-      background-color: red;
-    }
+  }
 
-    .image {
-      
-    }
+  .stickyContainer {
+    .details {
+      @apply grid sticky;
+      top: 0;
 
-    /* .model {
-      background-color: rgb(235, 235, 235);
-    } */
+      .header {
+        color: blue;
+        .heading {
+          color: red;
+        }
+      }
+
+      .title {
+      }
+
+      .copy {
+      }
+    }
   }
 }
 
-.details {
-  @apply grid overflow-auto;
-
-  /* @apply sticky; */
-  /* bottom: 100vh; */
-
-  .title {
-
-  }
-
-  .copy {
-    
-  }
+.aside {
+  min-block-size: 50vh;
 }

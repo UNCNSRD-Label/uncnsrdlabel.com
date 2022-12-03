@@ -1,8 +1,4 @@
-import type {
-  // Image,
-  // Product,
-  ProductVariant,
-} from "@shopify/hydrogen-react/storefront-api-types";
+import type { ProductVariant } from "@shopify/hydrogen-react/storefront-api-types";
 import type { GetServerSideProps } from "next";
 
 import type { ProductQuery } from "#/gql/graphql";
@@ -23,6 +19,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Script from "next/script";
 import { request } from "graphql-request";
+import { Suspense, useRef, useState, Ref } from "react";
 
 import { graphql } from "#/gql";
 
@@ -32,6 +29,7 @@ import {
 } from "#/lib/constants/messages";
 import { theme } from "#/lib/constants/style";
 
+import { Backdrop, Stage } from "@react-three/drei";
 import FemaleSportswear2 from "#/components/canvas/FemaleSportswear2";
 import Scene from "#/components/canvas/Scene";
 
@@ -127,57 +125,56 @@ export default function Page({
 
   return (
     <ProductProvider data={product}>
-      <article className={clsx(styles.article, "fitViewport")}>
-        <Script
-          type="application/ld+json"
-          id={product.handle}
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Product",
-              identifier: product.id,
-              datePublished: product.publishedAt,
-              name: product.title,
-              description: product.description,
-              image: product.images?.nodes?.[0]?.url,
-              brand: product.vendor,
-              url,
-              offers: {
-                "@type": "AggregateOffer",
-                // lowPrice: new Intl.NumberFormat(locale, {
-                //   style: "currency",
-                //   currency: product.priceRange.minVariantPrice.currencyCode,
-                // }).format(
-                //   Number.parseInt(product.priceRange.minVariantPrice.amount, 10)
-                // ),
-                // highPrice: new Intl.NumberFormat(locale, {
-                //   style: "currency",
-                //   currency: product.priceRange.maxVariantPrice.currencyCode,
-                // }).format(
-                //   Number.parseInt(product.priceRange.maxVariantPrice.amount, 10)
-                // ),
-                offerCount: 1,
-                offers: [
-                  product.variants.nodes.map((variant, index) => ({
-                    "@type": "Offer",
-                    url,
-                    title: variant.title,
-                    priceCurrency: variant.price.currencyCode,
-                    price: variant.price.amount,
-                    availability: getAvailability(variant),
-                    itemCondition: "https://schema.org/NewCondition",
-                  })),
-                ],
-              },
-            }),
-          }}
-        />
-        <title>{product.seo.title} &ndash; UNCNSRD</title>
-        <meta name="description" content={product.seo.description!} />
+      <Script
+        type="application/ld+json"
+        id={product.handle}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            identifier: product.id,
+            datePublished: product.publishedAt,
+            name: product.title,
+            description: product.description,
+            image: product.images?.nodes?.[0]?.url,
+            brand: product.vendor,
+            url,
+            offers: {
+              "@type": "AggregateOffer",
+              // lowPrice: new Intl.NumberFormat(locale, {
+              //   style: "currency",
+              //   currency: product.priceRange.minVariantPrice.currencyCode,
+              // }).format(
+              //   Number.parseInt(product.priceRange.minVariantPrice.amount, 10)
+              // ),
+              // highPrice: new Intl.NumberFormat(locale, {
+              //   style: "currency",
+              //   currency: product.priceRange.maxVariantPrice.currencyCode,
+              // }).format(
+              //   Number.parseInt(product.priceRange.maxVariantPrice.amount, 10)
+              // ),
+              offerCount: 1,
+              offers: [
+                product.variants.nodes.map((variant, index) => ({
+                  "@type": "Offer",
+                  url,
+                  title: variant.title,
+                  priceCurrency: variant.price.currencyCode,
+                  price: variant.price.amount,
+                  availability: getAvailability(variant),
+                  itemCondition: "https://schema.org/NewCondition",
+                })),
+              ],
+            },
+          }),
+        }}
+      />
+      <title>{`${product.seo.title} &ndash; UNCNSRD`}</title>
+      <meta name="description" content={product.seo.description!} />
 
-        {/* <link rel="canonical" href={url} /> */}
-        {/* <link rel="alternate" hrefLang="x-default" href={`${process.env.NEXT_PUBLIC_VERCEL_URL}${defaultLocale}${pathname}`} /> */}
-        {/* {locales?.map((locale) => (
+      {/* <link rel="canonical" href={url} /> */}
+      {/* <link rel="alternate" hrefLang="x-default" href={`${process.env.NEXT_PUBLIC_VERCEL_URL}${defaultLocale}${pathname}`} /> */}
+      {/* {locales?.map((locale) => (
         <link
           key={`hrefLang=${locale}`}
           rel="alternate"
@@ -185,33 +182,37 @@ export default function Page({
           href={`${process.env.NEXT_PUBLIC_VERCEL_URL}${locale}${pathname}`}
         />
       ))} */}
-        {/* <link rel="alternate" type="application/json+oembed" href={`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/oembed${pathname}`} /> */}
+      {/* <link rel="alternate" type="application/json+oembed" href={`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/oembed${pathname}`} /> */}
 
-        <meta property="og:url" content={url} />
-        <meta property="og:title" content={product.seo.title!} />
-        <meta property="og:type" content="product" />
-        <meta property="og:description" content={product.seo.description!} />
-        <meta property="og:image" content={product.images?.nodes?.[0]?.url} />
-        <meta
-          property="og:image:secure_url"
-          content={product.images?.nodes?.[0]?.url}
-        />
-        <meta property="og:image:width" content="1400" />
-        <meta property="og:image:height" content="2625" />
-        <meta
-          property="og:price:amount"
-          content={product.priceRange.minVariantPrice.amount}
-        />
-        <meta
-          property="og:price:currency"
-          content={product.priceRange.minVariantPrice.currencyCode}
-        />
+      <meta property="og:url" content={url} />
+      <meta property="og:title" content={product.seo.title!} />
+      <meta property="og:type" content="product" />
+      <meta property="og:description" content={product.seo.description!} />
+      <meta property="og:image" content={product.images?.nodes?.[0]?.url} />
+      <meta
+        property="og:image:secure_url"
+        content={product.images?.nodes?.[0]?.url}
+      />
+      <meta property="og:image:width" content="1400" />
+      <meta property="og:image:height" content="2625" />
+      <meta
+        property="og:price:amount"
+        content={product.priceRange.minVariantPrice.amount}
+      />
+      <meta
+        property="og:price:currency"
+        content={product.priceRange.minVariantPrice.currencyCode}
+      />
 
-        <meta name="twitter:site" content="@UNCNSRD" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={product.seo.title!} />
-        <meta name="twitter:description" content={product.seo.description!} />
+      <meta name="twitter:site" content="@UNCNSRD" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={product.seo.title!} />
+      <meta name="twitter:description" content={product.seo.description!} />
 
+      <header className={clsx(styles.header)}>
+        <h1 className={clsx(styles.heading)}>UNCNSRD</h1>
+      </header>
+      <article className={clsx(styles.article)}>
         <section className={clsx(styles.gallery)}>
           {product.images.nodes.map((image, index) => (
             <figure key={index} className={clsx(styles.figure)}>
@@ -231,82 +232,104 @@ export default function Page({
               </figcaption>
             </figure>
           ))}
-          <figure className={clsx(styles.figure)}>
-            <Scene>
-              <FemaleSportswear2 position={[0, 0, 0]} rotation={[0, 0, 0]} />
-            </Scene>
+          <figure className={clsx(styles.figure, styles.model)}>
+            <Suspense>
+              <Scene>
+                <Stage
+                  shadows="accumulative"
+                  adjustCamera
+                  intensity={0.5}
+                  environment="city"
+                >
+                  <FemaleSportswear2
+                    position={[0, 0, 0]}
+                    rotation={[0, 0, 0]}
+                  />
+                  <Backdrop
+                    floor={0.25} // Stretches the floor segment, 0.25 by default
+                    position={[0, 0, 20]}
+                    receiveShadow={true}
+                    segments={20} // Mesh-resolution, 20 by default
+                  >
+                    <meshStandardMaterial color="#fff" />
+                  </Backdrop>
+                </Stage>
+              </Scene>
+            </Suspense>
             <figcaption className={clsx(styles.figcaption)}>
               Featured image for {product.title}
             </figcaption>
           </figure>
         </section>
-        <div className={clsx(styles.details)}>
-          <header className={clsx(styles.header)}>
-            <Link
-              href="/experience"
-              className={styles.backLink}
-              title="Return to the experience page"
-            >
-              Return to the experience page
-            </Link>
-            <h1 className={clsx(styles.heading)}>{product.title}</h1>
-          </header>
-          <section className={clsx(styles.overview)}>
-            Lorem
-            <br />
-            Lorem
-            <br />
-            Lorem
-            <br />
-            Lorem
-            <br />
-            Lorem
-            <br />
-            Lorem
-            <br />
-            Lorem
-            <br />
-            Lorem
-            <br />
-            Lorem
-            <br />
-            Lorem
-            <br />
-            Lorem
-            <br />
-            Lorem
-            <br />
-            Lorem
-            <br />
-            Lorem
-            <br />
-            Lorem
-            <br />
-            Lorem
-            <br />
-            Lorem
-            <br />
-            Lorem
-            <br />
-            Lorem
-            <br />
-            Lorem
-            <br />
-            Lorem
-            <br />
-            Lorem
-            <br />
-            Lorem
-            <br />
-            Lorem
-            <br />
+        <div className={clsx(styles.stickyContainer)}>
+          <section className={clsx(styles.details)}>
+            <header className={clsx(styles.header)}>
+              <Link
+                href="/experience"
+                className={styles.backLink}
+                title="Return to the experience page"
+              >
+                Return to the experience page
+              </Link>
+              <h1 className={clsx(styles.heading)}>{product.title}</h1>
+            </header>
+            <div>
+              Lorem
+              <br />
+              Lorem
+              <br />
+              Lorem
+              <br />
+              Lorem
+              <br />
+              Lorem
+              <br />
+              Lorem
+              <br />
+              Lorem
+              <br />
+              Lorem
+              <br />
+              Lorem
+              <br />
+              Lorem
+              <br />
+              Lorem
+              <br />
+              Lorem
+              <br />
+              Lorem
+              <br />
+              Lorem
+              <br />
+              Lorem
+              <br />
+              Lorem
+              <br />
+              Lorem
+              <br />
+              Lorem
+              <br />
+              Lorem
+              <br />
+              Lorem
+              <br />
+              Lorem
+              <br />
+              Lorem
+              <br />
+              Lorem
+              <br />
+              Lorem
+              <br />
+            </div>
+            <ProductPrice data={product} />
+            <AddToCartButton>Add To Bag</AddToCartButton>
+            <footer></footer>
           </section>
-          <ProductPrice data={product} />
-          <AddToCartButton>Add To Bag</AddToCartButton>
-          <footer></footer>
         </div>
       </article>
-      <aside>
+      <aside className={clsx(styles.aside)}>
         Ipsum
         <br />
         Ipsum
