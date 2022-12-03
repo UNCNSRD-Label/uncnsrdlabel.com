@@ -15,7 +15,7 @@
 
       &.model {
         background-color: rgb(235, 235, 235);
-        background-color: red;
+        /* background-color: red; */
         min-block-size: min(50vh, 40rem);
       }
 

@@ -8,7 +8,7 @@ title: Female Sportswear 2
 
 import * as THREE from "three";
 import React, { useRef } from "react";
-import { useGLTF, Center } from "@react-three/drei";
+import { useGLTF, Center, BBAnchor } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 
 type GLTFResult = GLTF & {
@@ -28,66 +28,69 @@ export default function Model(props: JSX.IntrinsicElements["group"]) {
   const { nodes, materials } = useGLTF(
     "/models/female_sportswear_2/scene-transformed.glb"
   ) as any as GLTFResult;
+
   return (
     <group {...props} dispose={null}>
-      <Center>
-        <group rotation={[-Math.PI / 2, 0, 0]}>
-          <group rotation={[Math.PI / 2, 0, 0]}>
-            <group
-              position={[0, 1587.95, -20.53]}
-              rotation={[-Math.PI / 2, 0, 0]}
-            >
-              <group position={[0, -22.55, -1588.43]}>
-                <mesh
-                  castShadow
-                  receiveShadow
-                  geometry={nodes["1_Head_Mannequin_0"].geometry}
-                  material={materials.Mannequin}
-                />
-              </group>
+      {/* <BBAnchor anchor={[0, 1, 0]}> */}
+      {/* <Center> */}
+      <group rotation={[-Math.PI / 2, 0, 0]}>
+        <group rotation={[Math.PI / 2, 0, 0]}>
+          <group
+            position={[0, 1587.95, -20.53]}
+            rotation={[-Math.PI / 2, 0, 0]}
+          >
+            <group position={[0, -22.55, -1588.43]}>
+              <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes["1_Head_Mannequin_0"].geometry}
+                material={materials.Mannequin}
+              />
             </group>
-            <group
-              position={[0.12, 1218.42, -19.76]}
-              rotation={[-Math.PI / 2, 0, 0]}
-            >
-              <group position={[-0.12, -19.76, -1218.42]}>
-                <mesh
-                  castShadow
-                  receiveShadow
-                  geometry={nodes.Tshirt_low_Sportswear2_0.geometry}
-                  material={materials.Sportswear2}
-                />
-              </group>
+          </group>
+          <group
+            position={[0.12, 1218.42, -19.76]}
+            rotation={[-Math.PI / 2, 0, 0]}
+          >
+            <group position={[-0.12, -19.76, -1218.42]}>
+              <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.Tshirt_low_Sportswear2_0.geometry}
+                material={materials.Sportswear2}
+              />
             </group>
-            <group
-              position={[0.52, 747.56, -36.86]}
-              rotation={[-Math.PI / 2, 0, 0]}
-            >
-              <group position={[-0.52, -36.86, -747.56]}>
-                <mesh
-                  castShadow
-                  receiveShadow
-                  geometry={nodes["1_Body_Mannequin_0"].geometry}
-                  material={materials.Mannequin}
-                />
-              </group>
+          </group>
+          <group
+            position={[0.52, 747.56, -36.86]}
+            rotation={[-Math.PI / 2, 0, 0]}
+          >
+            <group position={[-0.52, -36.86, -747.56]}>
+              <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes["1_Body_Mannequin_0"].geometry}
+                material={materials.Mannequin}
+              />
             </group>
-            <group
-              position={[0.07, 902.98, -55.47]}
-              rotation={[-Math.PI / 2, 0, 0]}
-            >
-              <group position={[-0.07, -55.47, -902.98]}>
-                <mesh
-                  castShadow
-                  receiveShadow
-                  geometry={nodes.Shorts_low_Sportswear2_0.geometry}
-                  material={materials.Sportswear2}
-                />
-              </group>
+          </group>
+          <group
+            position={[0.07, 902.98, -55.47]}
+            rotation={[-Math.PI / 2, 0, 0]}
+          >
+            <group position={[-0.07, -55.47, -902.98]}>
+              <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.Shorts_low_Sportswear2_0.geometry}
+                material={materials.Sportswear2}
+              />
             </group>
           </group>
         </group>
-      </Center>
+      </group>
+      {/* </Center> */}
+      {/* </BBAnchor> */}
     </group>
   );
 }

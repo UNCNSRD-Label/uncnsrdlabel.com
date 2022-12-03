@@ -19,7 +19,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Script from "next/script";
 import { request } from "graphql-request";
-import { Suspense, useRef, useState, Ref } from "react";
+import { Suspense } from "react";
 
 import { graphql } from "#/gql";
 
@@ -29,9 +29,18 @@ import {
 } from "#/lib/constants/messages";
 import { theme } from "#/lib/constants/style";
 
-import { Backdrop, Stage } from "@react-three/drei";
+import {
+  Backdrop,
+  BakeShadows,
+  Image as DreiImage,
+  Stage,
+  useTexture,
+} from "@react-three/drei";
+
 import FemaleSportswear2 from "#/components/canvas/FemaleSportswear2";
 import Scene from "#/components/canvas/Scene";
+import Floor from "#/components/canvas/Floor";
+import Logo from "#/components/canvas/Logo";
 
 import {
   getStorefrontApiUrl,
@@ -236,24 +245,48 @@ export default function Page({
             <Suspense>
               <Scene>
                 <Stage
-                  shadows="accumulative"
-                  adjustCamera
+                  shadows="contact"
+                  adjustCamera={0.25}
                   intensity={0.5}
-                  environment="city"
+                  environment="warehouse"
                 >
+                  <Logo
+                    position={[650, 1_500, 1_000]}
+                    rotation={[0, Math.PI / 1, 0]}
+                  />
                   <FemaleSportswear2
-                    position={[0, 0, 0]}
-                    rotation={[0, 0, 0]}
+                    castShadow
+                    receiveShadow
+                    position={[0, 0, -1_000]}
+                    rotation={[0, Math.PI / 1, 0]}
                   />
                   <Backdrop
-                    floor={0.25} // Stretches the floor segment, 0.25 by default
-                    position={[0, 0, 20]}
-                    receiveShadow={true}
-                    segments={20} // Mesh-resolution, 20 by default
+                    floor={0.5} // Stretches the floor segment, 0.25 by default
+                    position={[0, 0, 0]}
+                    castShadow
+                    receiveShadow
+                    rotation={[0, Math.PI / 1, 0]}
+                    scale={2_500}
+                    // segments={20} // Mesh-resolution, 20 by default
                   >
-                    <meshStandardMaterial color="#fff" />
+                    {/* <meshStandardMaterial color="rgb(235, 235, 235)" /> */}
+                    <meshStandardMaterial color="#aaa" />
                   </Backdrop>
+                  {/* <EffectComposer>
+                    <DepthOfField
+                      focusDistance={0}
+                      focalLength={0.02}
+                      bokehScale={2}
+                      height={480}
+                    />
+                  </EffectComposer> */}
+                  <BakeShadows />
+                  {/* <Sky distance={450000} sunPosition={[0, 1, 0]} inclination={0} azimuth={0.25} /> */}
+                  {/* <RandomizedLight castShadow amount={8} frames={100} position={[5, 5, -10]} /> */}
                 </Stage>
+                {/* <Floor /> */}
+                {/* <DreiImage url="/images/textures/concrete-1024.jpg" opacity={1} position={[0, -1250, 0]} rotation={[Math.PI / -2, 0, Math.PI / 4]} scale={7_500} zoom={0.5} /> */}
+                {/* <meshStandardMaterial {...floorProps} /> */}
               </Scene>
             </Suspense>
             <figcaption className={clsx(styles.figcaption)}>
