@@ -223,7 +223,6 @@ export default function Page({
                 fill
                 priority
                 sizes={`(max-inline-size: ${theme.screens.xs.max}) 100vw,
-                      (max-inline-size: ${theme.screens.md.max}) 50vw,
                       25vw`}
                 src={image.url}
                 title={product.title ?? IMAGE_TITLE_FALLBACK}
