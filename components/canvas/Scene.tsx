@@ -6,11 +6,13 @@ import {
   CameraShake,
   OrbitControls,
   Preload,
+  // Sky,
 } from "@react-three/drei";
 import React, { FC } from "react";
 
 // import Floor from "#/components/canvas/Floor";
 import Logo from "#/components/canvas/Logo";
+// import Ocean from "#/components/canvas/Ocean";
 
 export const Component: FC<{ children: React.ReactNode }> = ({ children }) => {
   // Everything defined in here will persist between route changes, only children are swapped
@@ -27,8 +29,10 @@ export const Component: FC<{ children: React.ReactNode }> = ({ children }) => {
         far: 100_000,
       }}
     >
+      <directionalLight intensity={0.125} position={[500, 500, -5_000]} />
+      <directionalLight intensity={0.125} position={[500, 500, 5_000]} />
       <spotLight
-        position={[5, 10, -15]}
+        position={[0, 2_500, -5_000]}
         intensity={0.125}
         angle={0.1}
         penumbra={1}
@@ -49,6 +53,8 @@ export const Component: FC<{ children: React.ReactNode }> = ({ children }) => {
       >
         <meshStandardMaterial color="#aaa" />
       </Backdrop>
+      {/* <Ocean position={[0, -3885, 0]} />
+      <Sky distance={45_0000} inclination={0} azimuth={0.25} sunPosition={[500, 150, 1000]} turbidity={0.1} /> */}
       <OrbitControls makeDefault />
       <CameraShake
         maxYaw={0.025}

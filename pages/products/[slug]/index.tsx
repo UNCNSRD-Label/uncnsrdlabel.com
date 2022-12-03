@@ -6,7 +6,7 @@ import type { ProductQuery } from "#/gql/graphql";
 import { clsx } from "clsx";
 import {
   AddToCartButton,
-  // Image as ShopifyImage,
+  Image as ShopifyImage,
   // Money,
   ProductPrice,
   ProductProvider,
@@ -236,10 +236,12 @@ export default function Page({
             <Suspense>
               <Scene>
                 <Stage
-                  shadows="contact"
                   adjustCamera={0.5}
-                  intensity={0.5}
+                  // environment="dawn"
                   environment="warehouse"
+                  intensity={0.5}
+                  preset="portrait"
+                  shadows="contact"
                 >
                   <FemaleSportswear2
                     castShadow
