@@ -1,6 +1,9 @@
 .article {
   @apply grid;
+
+  @media screen and (min-width: theme(screens.md.min)) {
   grid-template-columns: 3fr 2fr;
+  }
 
   .gallery {
     .figure {
@@ -29,7 +32,11 @@
   }
 
   .gallerFeatured {
-    @apply grid snap-y pt-32;
+    @apply grid snap-y pt-16;
+
+    @media screen and (min-width: theme(screens.md.min)) {
+      @apply grid snap-y pt-32;
+    }
   }
 
   .galleryAdditional {
@@ -38,8 +45,12 @@
 
   .stickyContainer {
     .details {
-      @apply grid sticky p-16 pt-44 divide-y prose prose-sm;
+      @apply grid sticky p-4 divide-y prose prose-sm;
       top: 0;
+
+      @media screen and (min-width: theme(screens.md.min)) {
+        @apply p-16 pt-44;
+      }
 
       > * {
         @apply py-6;
@@ -66,7 +77,7 @@
 
       .section {
         &.sectionActions {
-          @apply grid align-middle grid-flow-col justify-between;
+          @apply grid align-middle grid-flow-col justify-between gap-8;
         }
 
         &.sectionDescription {

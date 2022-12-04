@@ -71,6 +71,7 @@ dependencies:
   '@react-three/postprocessing': 2.7.0_7l5c7g5ph6e5ybhvldx3hsiylq
   '@shopify/hydrogen-react': 2022.10.4_ib3m5ricvtkl2cll7qpr2f6lvq
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.4
+  '@tailwindcss/typography': 0.5.8_tailwindcss@3.2.4
   clsx: 1.2.1
   cross-fetch: 3.1.5_encoding@0.1.13
   daisyui: 2.42.1_2lwn2upnx27dqeg6hqdu7sq75m
@@ -97,7 +98,6 @@ devDependencies:
   '@graphql-codegen/cli': 2.15.0_j56n4gn5atmenz7atsajttyory
   '@graphql-codegen/client-preset': 1.2.1_rjjjs2nwgns3bcvnnqb5eu5nry
   '@next/bundle-analyzer': 13.0.6
-  '@tailwindcss/typography': 0.5.8_tailwindcss@3.2.4
   '@types/body-scroll-lock': 3.1.0
   '@types/js-cookie': 3.0.2
   '@types/node': 18.11.10
@@ -2731,7 +2731,7 @@ packages:
       lodash.merge: 4.6.2
       postcss-selector-parser: 6.0.10
       tailwindcss: 3.2.4_postcss@8.4.19
-    dev: true
+    dev: false
 
   /@tootallnate/once/2.0.0:
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
@@ -5868,7 +5868,7 @@ packages:
 
   /lodash.castarray/4.4.0:
     resolution: {integrity: sha512-aVx8ztPv7/2ULbArGJ2Y42bG1mEQ5mGjpdvrbJcJFU3TbYybe+QlLS4pst9zV52ymy2in1KpFPiZnAOATxD4+Q==}
-    dev: true
+    dev: false
 
   /lodash.clamp/4.0.3:
     resolution: {integrity: sha512-HvzRFWjtcguTW7yd8NJBshuNaCa8aqNFtnswdT7f/cMd/1YKy5Zzoq4W/Oxvnx9l7aeY258uSdDfM793+eLsVg==}
@@ -5896,7 +5896,6 @@ packages:
 
   /lodash.isplainobject/4.0.6:
     resolution: {integrity: sha512-oSXzaWypCMHkPC3NvBEaPHf0KsA5mvPrOPgQWDsbg8n7orZ290M0BmC/jgRZ4vcJ6DTAhjrsSYgdsW/F+MFOBA==}
-    dev: true
 
   /lodash.isstring/4.0.1:
     resolution: {integrity: sha512-0wJxfxH1wgO3GrbuP+dTTk7op+6L41QCXbGINEmD+ny/G/eCqGzxyCsh7159S+mgDDcoarnBw6PC1PS5+wUGgw==}
@@ -5904,7 +5903,6 @@ packages:
 
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
-    dev: true
 
   /lodash.omit/4.5.0:
     resolution: {integrity: sha512-XeqSp49hNGmlkj2EJlfrQFIzQ6lXdNro9sddtQzcJY8QaoC2GO0DT7xaIokHeyM+mIT0mPMlPvkYzg2xCuHdZg==}

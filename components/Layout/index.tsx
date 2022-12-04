@@ -49,16 +49,28 @@ export const Layout: React.FC<Props> = ({
         <meta name="theme-color" content="#ffffff" />
       </Head>
 
-      <div
-        className={clsx(
-          styles.container,
-          constrainWidth && styles.constrain_width,
-          showHeaderAndFooter && styles.show_header_and_footer
-        )}
-      >
-        {showHeaderAndFooter && <Header />}
-        <main className={clsx(styles.main)}>{children}</main>
-        {showHeaderAndFooter && <Footer />}
+      <div className="drawer">
+        <input
+          id="my-drawer-3"
+          type="checkbox"
+          className={clsx(styles.drawerToggle, "drawer-toggle")}
+        />
+        <div className="drawer-content flex flex-col">
+          <Header />
+          <main className={clsx(styles.main, "flex-1")}>{children}</main>
+          <Footer />
+        </div>
+        <div className="drawer-side">
+          <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
+          <ul className="menu p-4 w-80 bg-base-100">
+            <li>
+              <a>Sidebar Item 1</a>
+            </li>
+            <li>
+              <a>Sidebar Item 2</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </>
   );

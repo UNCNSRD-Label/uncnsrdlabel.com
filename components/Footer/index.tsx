@@ -45,14 +45,14 @@ export const Footer: React.FC<Props> = ({ children }) => {
         </nav>
       </div>
       <SignupForm className={clsx(styles.signupForm)} />
-      <span className={styles.copyright}>
-        &copy; {new Date().getFullYear()} UNCNSRD
-      </span>
       <menu className={styles.social}>
         <SocialIcon url="https://www.instagram.com/uncnsrdlabel" />
         <SocialIcon url="https://twitter.com/uncnsrdlabel" />
         <SocialIcon url="https://www.facebook.com/uncnsrdlabel" />
       </menu>
+      <span className={styles.copyright}>
+        &copy; {new Date().getFullYear()} UNCNSRD
+      </span>
       {children}
     </footer>
   );
