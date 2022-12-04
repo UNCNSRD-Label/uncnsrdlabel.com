@@ -170,7 +170,7 @@ export default function Page({
           }),
         }}
       />
-      <title>{`${product.seo.title} &ndash; UNCNSRD`}</title>
+      <title>{product.seo.title || "UNCNSRD"}</title>
       <meta name="description" content={product.seo.description!} />
 
       {/* <link rel="canonical" href={url} /> */}
@@ -210,9 +210,6 @@ export default function Page({
       <meta name="twitter:title" content={product.seo.title!} />
       <meta name="twitter:description" content={product.seo.description!} />
 
-      <header className={clsx(styles.header)}>
-        <h1 className={clsx(styles.heading)}>UNCNSRD</h1>
-      </header>
       <article className={clsx(styles.article)}>
         <section className={clsx(styles.gallery)}>
           {product.images.nodes.map((image, index) => (
@@ -253,128 +250,47 @@ export default function Page({
               </Scene>
             </Suspense>
             <figcaption className={clsx(styles.figcaption)}>
-              Featured image for {product.title}
+              3D model view for {product.title}
             </figcaption>
           </figure>
         </section>
         <div className={clsx(styles.stickyContainer)}>
           <section className={clsx(styles.details)}>
+            {/* <Link
+              href="/experience"
+              className={styles.backLink}
+              title="Return to the experience page"
+            >
+              Return to the experience page
+            </Link> */}
             <header className={clsx(styles.header)}>
               <Link
-                href="/experience"
-                className={styles.backLink}
-                title="Return to the experience page"
+                href="/bikinis/tops"
+                className={styles.categoryLink}
+                title="Go to category page"
               >
-                Return to the experience page
+                Bikini Tops
+                {/* {product.category} */}
               </Link>
               <h1 className={clsx(styles.heading)}>{product.title}</h1>
+              <ProductPrice className={clsx(styles.price)} data={product} />
+              <div
+                className={clsx(styles.description)}
+                dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
+              />
             </header>
-            <div>
-              Lorem
-              <br />
-              Lorem
-              <br />
-              Lorem
-              <br />
-              Lorem
-              <br />
-              Lorem
-              <br />
-              Lorem
-              <br />
-              Lorem
-              <br />
-              Lorem
-              <br />
-              Lorem
-              <br />
-              Lorem
-              <br />
-              Lorem
-              <br />
-              Lorem
-              <br />
-              Lorem
-              <br />
-              Lorem
-              <br />
-              Lorem
-              <br />
-              Lorem
-              <br />
-              Lorem
-              <br />
-              Lorem
-              <br />
-              Lorem
-              <br />
-              Lorem
-              <br />
-              Lorem
-              <br />
-              Lorem
-              <br />
-              Lorem
-              <br />
-              Lorem
-              <br />
-            </div>
-            <ProductPrice data={product} />
-            <AddToCartButton>Add To Bag</AddToCartButton>
+            <section className={clsx(styles.section)}>
+              <AddToCartButton>Add To Bag</AddToCartButton>
+              <button>Add To Wishlist</button>
+            </section>
+            <section className={clsx(styles.section)}>
+              <button>Select Size</button>
+            </section>
             <footer></footer>
           </section>
         </div>
       </article>
-      <aside className={clsx(styles.aside)}>
-        Ipsum
-        <br />
-        Ipsum
-        <br />
-        Ipsum
-        <br />
-        Ipsum
-        <br />
-        Ipsum
-        <br />
-        Ipsum
-        <br />
-        Ipsum
-        <br />
-        Ipsum
-        <br />
-        Ipsum
-        <br />
-        Ipsum
-        <br />
-        Ipsum
-        <br />
-        Ipsum
-        <br />
-        Ipsum
-        <br />
-        Ipsum
-        <br />
-        Ipsum
-        <br />
-        Ipsum
-        <br />
-        Ipsum
-        <br />
-        Ipsum
-        <br />
-        Ipsum
-        <br />
-        Ipsum
-        <br />
-        Ipsum
-        <br />
-        Ipsum
-        <br />
-        Ipsum
-        <br />
-        Ipsum
-        <br />
-      </aside>
+      <aside className={clsx(styles.aside)}>Lorem ipsum</aside>
     </ProductProvider>
   );
 }
@@ -391,6 +307,16 @@ const query = graphql(`
       vendor
       description
       descriptionHtml
+      # hasOnlyDefaultVariant
+      # productCategory {
+      #   fullName
+      #   isLeaf
+      #   isRoot
+      #   name
+      # }
+      # productType
+      # status
+      # templateSuffix
       seo {
         title
         description

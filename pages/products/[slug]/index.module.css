@@ -1,10 +1,12 @@
 .article {
-  @apply grid grid-cols-2;
+  @apply grid;
+  grid-template-columns: 3fr 2fr;
 
   .gallery {
-    @apply grid;
+    @apply bg-white grid snap-y pt-32;
 
     .figure {
+      @apply snap-start;
       aspect-ratio: 3/4;
       position: relative;
       width: 100%;
@@ -14,26 +16,63 @@
       }
 
       &.model {
-        background-color: rgb(235, 235, 235);
-        /* background-color: red; */
+        background-color: var(--tw-color-text-neutral-900);
         min-block-size: min(50vh, 40rem);
       }
 
       .image {
+      }
+
+      .figcaption {
+        display: none;
       }
     }
   }
 
   .stickyContainer {
     .details {
-      @apply grid sticky;
+      @apply grid sticky p-36 pt-44 divide-y;
       top: 0;
 
+      > * {
+        @apply py-6;
+      }
+
       .header {
-        color: blue;
-        .heading {
-          color: red;
+        align-items: center;
+        display: grid;
+        gap: 1rem;
+        grid-auto-flow: column;
+        grid-template-areas:
+          "categoryLink ."
+          "heading price"
+          "description description";
+        grid-template-columns: auto 1fr;
+        justify-content: space-between;
+
+        .categoryLink {
+          grid-area: categoryLink;
         }
+
+        .heading {
+          @apply text-2xl;
+          font-family: 'Bomber Escort Outline', cursive;
+          grid-area: heading;
+        }
+
+        .price {
+          @apply justify-self-end;
+          grid-area: price;
+        }
+
+        .description {
+          @apply text-sm;
+          grid-area: description;
+        }
+      }
+
+      .section {
+
       }
 
       .title {
