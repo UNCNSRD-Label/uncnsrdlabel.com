@@ -1,19 +1,17 @@
 "use client";
 
-import type { Object3D } from "three";
-
 import { extend, useThree, useLoader, useFrame } from "@react-three/fiber";
-import React, { Suspense, useRef, useMemo } from "react";
+import React, { FC, useRef, useMemo } from "react";
 import * as THREE from "three";
 import { Water } from "three-stdlib";
 
 extend({ Water });
 
-export default function Ocean(
-  props: Omit<React.RefAttributes<typeof Water>, "src">
-) {
+export const Component: FC<{
+  props: Omit<React.RefAttributes<typeof Water>, "src">;
+}> = (props) => {
   console.log({ props });
-  const ref = useRef();
+  const ref = useRef(null);
   const gl = useThree((state) => state.gl);
   const waterNormals = useLoader(
     THREE.TextureLoader,
@@ -35,12 +33,14 @@ export default function Ocean(
     }),
     [waterNormals, gl.outputEncoding]
   );
-  // @ts-ignore
   useFrame(
-    (state, delta) => (ref.current.material.uniforms.time.value += delta)
+    (state, delta) =>
+      // @ts-ignore
+      (ref.current.material.uniforms.time.value += delta)
   );
-  // @ts-ignore
+
   return (
+    // @ts-ignore
     <water
       ref={ref}
       args={[geom, config]}
@@ -48,4 +48,6 @@ export default function Ocean(
       {...props}
     />
   );
-}
+};
+
+export default Component;
