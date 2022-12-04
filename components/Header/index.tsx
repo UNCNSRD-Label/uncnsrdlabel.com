@@ -1,17 +1,19 @@
 import { clsx } from "clsx";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { ReactNode } from "react";
 
 import styles from "./index.module.css";
 
 type Props = {
   children?: React.ReactNode;
+  className?: ReactNode;
+  position?: "fixed" | "sticky"
 };
 
-export const Component: React.FC<Props> = ({ children }) => {
+export const Component: React.FC<Props> = ({ children, className, position = "fixed" }) => {
   return (
-    <header className={styles.header}>
+    <header className={clsx(styles.header, position, className)}>
       <Link href="/" className={styles.logoContainer}>
         <Image
           alt="UNCNSRD logo"

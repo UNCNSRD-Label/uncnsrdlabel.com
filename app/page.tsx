@@ -22,7 +22,7 @@ export default function Page() {
 
         {/* <h1 className={styles.title}>UNCNSRD</h1> */}
 
-        <SignupForm />
+        <SignupForm className={clsx("items-end", "justify-items-center", "max-w-md", "md:justify-items-stretch", "transparent", "w-3/4",)} />
 
         <section className={styles.copy}>
           <h1 className={styles.title}>UNCNSRD</h1>

@@ -7,9 +7,11 @@ import styles from "./index.module.css";
 
 type Props = {
   children?: ReactNode;
+  className?: ReactNode;
+  theme?: "dark" | "light"
 };
 
-export const Component: FC<Props> = ({ children }) => {
+export const Component: FC<Props> = ({ children, className, theme = "light" }) => {
   const signupFormRef = useRef<HTMLFormElement>(null);
   const signupFormFeedbackRef = useRef<HTMLOutputElement>(null);
 
@@ -59,17 +61,12 @@ export const Component: FC<Props> = ({ children }) => {
   return (
     <form
       className={clsx(
+        className,
+        theme,
         styles.form,
-        "grid",
         "md:grid-cols-3",
         "gap-4",
-        "md:gap-2",
-        "w-3/4",
-        "max-w-md",
-        "justify-items-center",
-        "items-end",
-        "md:justify-items-stretch",
-        "transparent"
+        "md:gap-2"
       )}
       onSubmit={handleSubmit}
       ref={signupFormRef}

@@ -47,7 +47,8 @@ export default function RootLayout({
       <body
         className={clsx(
           styles.container,
-          showHeaderAndFooter && styles.showHeaderAndFooter
+          showHeaderAndFooter && styles.showHeaderAndFooter,
+          "fitViewport"
         )}
       >
         {/* <Providers> */}

@@ -1,6 +1,58 @@
 .footer {
+  @apply bg-gray-500/10;
+  align-content: center;
+  column-gap: 1rem;
+  display: grid;
+  grid-template-areas:
+    "navigationLinks navigationLinks . . signupForm"
+    "socialLinks socialLinks copyright . signupForm";
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  margin-block-start: 4rem;
+  padding: 2rem 4rem;
+  row-gap: 4rem;
+
+  :is(blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre) {
+    color: inherit;
+  }
+}
+
+.navigationLinks {
+  display: grid;
+  gap: 1rem;
+  grid-area: navigationLinks;
+  grid-auto-flow: column;
+
+  nav {
     display: grid;
     gap: 1rem;
-    justify-content: center;
-    padding: 1rem;
+  }
+
+  .clientService {
+  }
+
+  .navigationLegal {
+  }
+}
+
+.copyright {
+  @apply text-sm;
+  display: grid;
+  grid-area: copyright;
+  place-content: center;
+}
+
+.signupForm {
+  align-content: start;
+  align-items: start;
+  grid-area: signupForm;
+}
+
+.social {
+  @apply text-gray-900;
+  align-content: center;
+  display: grid;
+  gap: 1rem;
+  grid-area: socialLinks;
+  grid-auto-flow: column;
+  justify-content: start;
 }
