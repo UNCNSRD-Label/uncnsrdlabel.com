@@ -19,6 +19,8 @@ export const Component: FC<{ children: React.ReactNode }> = ({ children }) => {
 
   return (
     <Canvas
+      frameloop="demand"
+      resize={{ scroll: false }}
       eventPrefix="client"
       shadows
       dpr={[1, 2]}
