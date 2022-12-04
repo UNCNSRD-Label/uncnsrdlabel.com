@@ -9,6 +9,7 @@ import { request } from "graphql-request";
 
 import { graphql } from "#/gql";
 
+import { Layout } from "#/components/Layout";
 import ProductCard from "#/components/ProductCard";
 
 import {
@@ -48,7 +49,7 @@ export default function Page({
   }
 
   return (
-    <>
+    <Layout showHeaderAndFooter={true}>
       <title>UNCNSRD - Home</title>
       <header>
         <Link
@@ -69,7 +70,7 @@ export default function Page({
       <aside>
         <h2>Related Products</h2>
       </aside>
-    </>
+    </Layout>
   );
 }
 

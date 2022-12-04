@@ -1,0 +1,17 @@
+.container {
+  display: grid;
+  gap: 1rem;
+  min-height: 100vh;
+
+  &.show_header_and_footer {
+    grid-template-rows: auto 1fr auto;
+  }
+
+  &.constrain_width {
+    main {
+      justify-self: center;
+      max-inline-size: 60rem;
+      min-inline-size: 60rem;
+    }
+  }
+}

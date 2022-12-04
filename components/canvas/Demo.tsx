@@ -1,12 +1,8 @@
 "use client";
 
 import { OrbitControls, Stage } from "@react-three/drei";
-import {
-  EffectComposer,
-  DepthOfField,
-  Glitch,
-  Scanline,
-} from "@react-three/postprocessing";
+import { Canvas } from "@react-three/fiber";
+import { EffectComposer, Glitch, Scanline } from "@react-three/postprocessing";
 import * as THREE from "three";
 
 import { Suspense } from "react";
@@ -15,8 +11,17 @@ import Logo from "#/components/canvas/Logo";
 
 export default function Demo() {
   return (
-    <>
-      {/* <fog attach="fog" args={["lightblue", 60, 100]} /> */}
+    <Canvas
+      eventPrefix="client"
+      shadows
+      dpr={[1, 2]}
+      camera={{
+        position: [0, 0, -2_000],
+        fov: 35,
+        near: 0.01,
+        far: 100_000,
+      }}
+    >
       <Suspense>
         <Stage
           shadows="accumulative"
@@ -24,7 +29,7 @@ export default function Demo() {
           intensity={0.5}
           environment="city"
         >
-          <Logo />
+          <Logo rotation={[0, -Math.PI / 1, 0]} />
           <ambientLight intensity={0.5} />
           <spotLight position={[50, 50, -30]} castShadow />
           <pointLight position={[-10, -10, -10]} color="red" intensity={3} />
@@ -34,12 +39,6 @@ export default function Demo() {
       </Suspense>
       <OrbitControls makeDefault />
       <EffectComposer>
-        {/* <DepthOfField
-          focusDistance={0}
-          focalLength={0.02}
-          bokehScale={2}
-          height={480}
-        /> */}
         <Scanline />
         <Glitch
         // chromaticAberrationOffset={new THREE.Vector2(10, 20, 30)}
@@ -51,6 +50,6 @@ export default function Demo() {
         // ratio={1}
         />
       </EffectComposer>
-    </>
+    </Canvas>
   );
 }

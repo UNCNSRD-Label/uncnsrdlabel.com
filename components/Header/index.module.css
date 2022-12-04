@@ -15,6 +15,7 @@
 .header {
   @apply z-30;
   align-items: center;
+  contain: auto;
   display: grid;
   gap: 1rem;
   grid-auto-flow: column;
