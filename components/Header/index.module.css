@@ -58,7 +58,7 @@
   grid-auto-flow: column;
   justify-content: center;
 
-  @media screen and (min-width: theme(screens.md.min)) {
+  @media screen and (min-width: theme(screens.lg.min)) {
     display: grid;
   }
 

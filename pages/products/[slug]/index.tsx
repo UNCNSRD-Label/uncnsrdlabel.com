@@ -214,7 +214,7 @@ export default function Page({
         <meta name="twitter:description" content={product.seo.description!} />
 
         <article className={clsx(styles.article)}>
-          <section className={clsx(styles.gallery, styles.gallerFeatured)}>
+          <section className={clsx(styles.gallery, styles.galleryFeatured)}>
             {product.images.nodes.slice(0, 2).map((image, index) => (
               <figure key={index} className={clsx(styles.figure)}>
                 <Image
@@ -280,7 +280,7 @@ export default function Page({
               </header>
               <section className={clsx(styles.section, styles.sectionActions)}>
                 <AddToCartButton
-                  className={clsx("btn", "btn-primary", "btn-wide")}
+                  className={clsx("btn", "btn-primary", "lg:btn-wide")}
                 >
                   Add to bag
                 </AddToCartButton>
