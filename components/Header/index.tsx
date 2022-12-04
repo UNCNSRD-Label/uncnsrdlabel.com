@@ -9,10 +9,14 @@ import styles from "./index.module.css";
 type Props = {
   children?: React.ReactNode;
   className?: ReactNode;
-  position?: "fixed" | "sticky"
+  position?: "fixed" | "sticky";
 };
 
-export const Component: React.FC<Props> = ({ children, className, position = "fixed" }) => {
+export const Component: React.FC<Props> = ({
+  children,
+  className,
+  position = "fixed",
+}) => {
   return (
     <header className={clsx(styles.header, position, className)}>
       <Link href="/" className={styles.logoContainer}>
@@ -35,8 +39,12 @@ export const Component: React.FC<Props> = ({ children, className, position = "fi
           Culture
         </Link>
       </nav>
-      <button className={clsx("btn", "btn-ghost", "btn-lg")}>
-        <RiSearchLine aria-hidden="true" className={clsx("icon")} title="Add To Wishlist" />
+      <button className={clsx("btn", "btn-ghost")}>
+        <RiSearchLine
+          aria-hidden="true"
+          className={clsx("icon")}
+          title="Search this site"
+        />
         <span className={clsx("sr-only")}>Search this site</span>
       </button>
       {children}

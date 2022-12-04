@@ -12,6 +12,7 @@ specifiers:
   '@react-three/postprocessing': ^2.7.0
   '@shopify/hydrogen-react': 2022.10.4
   '@tailwindcss/forms': ^0.5.3
+  '@tailwindcss/typography': ^0.5.8
   '@types/body-scroll-lock': ^3.1.0
   '@types/js-cookie': ^3.0.2
   '@types/node': ^18.11.10
@@ -96,6 +97,7 @@ devDependencies:
   '@graphql-codegen/cli': 2.15.0_j56n4gn5atmenz7atsajttyory
   '@graphql-codegen/client-preset': 1.2.1_rjjjs2nwgns3bcvnnqb5eu5nry
   '@next/bundle-analyzer': 13.0.6
+  '@tailwindcss/typography': 0.5.8_tailwindcss@3.2.4
   '@types/body-scroll-lock': 3.1.0
   '@types/js-cookie': 3.0.2
   '@types/node': 18.11.10
@@ -2718,6 +2720,18 @@ packages:
       mini-svg-data-uri: 1.4.4
       tailwindcss: 3.2.4_postcss@8.4.19
     dev: false
+
+  /@tailwindcss/typography/0.5.8_tailwindcss@3.2.4:
+    resolution: {integrity: sha512-xGQEp8KXN8Sd8m6R4xYmwxghmswrd0cPnNI2Lc6fmrC3OojysTBJJGSIVwPV56q4t6THFUK3HJ0EaWwpglSxWw==}
+    peerDependencies:
+      tailwindcss: '>=3.0.0 || insiders'
+    dependencies:
+      lodash.castarray: 4.4.0
+      lodash.isplainobject: 4.0.6
+      lodash.merge: 4.6.2
+      postcss-selector-parser: 6.0.10
+      tailwindcss: 3.2.4_postcss@8.4.19
+    dev: true
 
   /@tootallnate/once/2.0.0:
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
@@ -5850,6 +5864,10 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       p-locate: 5.0.0
+    dev: true
+
+  /lodash.castarray/4.4.0:
+    resolution: {integrity: sha512-aVx8ztPv7/2ULbArGJ2Y42bG1mEQ5mGjpdvrbJcJFU3TbYybe+QlLS4pst9zV52ymy2in1KpFPiZnAOATxD4+Q==}
     dev: true
 
   /lodash.clamp/4.0.3:

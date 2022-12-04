@@ -3,8 +3,6 @@
   grid-template-columns: 3fr 2fr;
 
   .gallery {
-    @apply bg-white grid snap-y pt-32;
-
     .figure {
       @apply snap-start;
       aspect-ratio: 3/4;
@@ -16,7 +14,7 @@
       }
 
       &.model {
-        background-color: var(--tw-color-text-neutral-900);
+        background-color: hsl(var(--b2));
         contain: strict;
         min-block-size: min(50vh, 40rem);
       }
@@ -30,56 +28,49 @@
     }
   }
 
+  .gallerFeatured {
+    @apply grid snap-y pt-32;
+  }
+
+  .galleryAdditional {
+    @apply col-span-full grid grid-cols-2 gap-1 mt-1;
+  }
+
   .stickyContainer {
     .details {
-      @apply grid sticky p-36 pt-44 divide-y;
+      @apply grid sticky p-16 pt-44 divide-y prose prose-sm;
       top: 0;
 
       > * {
         @apply py-6;
-      }
+      }  
 
       .header {
-        align-items: center;
-        display: grid;
-        gap: 1rem;
-        grid-auto-flow: column;
-        grid-template-areas:
-          "categoryLink ."
-          "heading price"
-          "description description";
-        grid-template-columns: auto 1fr;
-        justify-content: space-between;
 
         .categoryLink {
-          grid-area: categoryLink;
+          display: none;
         }
 
         .heading {
-          @apply text-2xl;
-          font-family: 'Bomber Escort Outline', cursive;
-          grid-area: heading;
+          
         }
 
         .price {
-          @apply justify-self-end;
-          grid-area: price;
+
         }
 
         .description {
-          @apply text-sm;
-          grid-area: description;
-
-          > p:not(last-child) {
-            @apply mb-4;
-          }
+          
         }
       }
 
       .section {
-
         &.sectionActions {
           @apply grid align-middle grid-flow-col justify-between;
+        }
+
+        &.sectionDescription {
+          
         }
       }
 
@@ -93,5 +84,5 @@
 }
 
 .aside {
-  min-block-size: 50vh;
+  display: none;
 }

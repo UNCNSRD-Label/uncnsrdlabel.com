@@ -1,13 +1,13 @@
 .footer {
-  @apply bg-gray-500/10;
+  @apply mt-1;
   align-content: center;
+  background-color: hsl(var(--b2));
   column-gap: 1rem;
   display: grid;
   grid-template-areas:
-    "navigationLinks navigationLinks . . signupForm"
-    "socialLinks socialLinks copyright . signupForm";
+    "navigationLinks navigationLinks . signupForm signupForm"
+    "socialLinks socialLinks copyright signupForm signupForm";
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  margin-block-start: 4rem;
   padding: 2rem 4rem;
   row-gap: 4rem;
 

@@ -1,3 +1,11 @@
+.form {
+  @apply grid gap-2;
+}
+
+.field {
+  @apply grid gap-2;
+}
+
 .valid {
   & :is(button, input, select, textarea, div) {
     opacity: 0;

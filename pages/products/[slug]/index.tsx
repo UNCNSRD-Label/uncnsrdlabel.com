@@ -1,5 +1,6 @@
 import type { ProductVariant } from "@shopify/hydrogen-react/storefront-api-types";
 import type { GetServerSideProps } from "next";
+import { RiHeartAddLine } from "react-icons/ri";
 
 import type { ProductQuery } from "#/gql/graphql";
 
@@ -213,8 +214,8 @@ export default function Page({
         <meta name="twitter:description" content={product.seo.description!} />
 
         <article className={clsx(styles.article)}>
-          <section className={clsx(styles.gallery)}>
-            {product.images.nodes.map((image, index) => (
+          <section className={clsx(styles.gallery, styles.gallerFeatured)}>
+            {product.images.nodes.slice(0, 2).map((image, index) => (
               <figure key={index} className={clsx(styles.figure)}>
                 <Image
                   alt={image.altText ?? IMAGE_ALT_TEXT_FALLBACK}
@@ -246,7 +247,7 @@ export default function Page({
                       castShadow
                       receiveShadow
                       position={[0, 0, 0]}
-                      rotation={[0, Math.PI / 1, 0]}
+                      rotation={[0, Math.PI / 4, 0]}
                     />
                   </Stage>
                 </Scene>
@@ -276,28 +277,225 @@ export default function Page({
                 </Link>
                 <h1 className={clsx(styles.heading)}>{product.title}</h1>
                 <ProductPrice className={clsx(styles.price)} data={product} />
-                <div
-                  className={clsx(styles.description)}
-                  dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
-                />
               </header>
               <section className={clsx(styles.section, styles.sectionActions)}>
-                <AddToCartButton className={clsx("btn", "btn-primary", "btn-wide")}>
-                  Add To Bag
+                <AddToCartButton
+                  className={clsx("btn", "btn-primary", "btn-wide")}
+                >
+                  Add to bag
                 </AddToCartButton>
-                <button className={clsx("btn", "btn-circle", "gap-2")}>
-                  <RiHeartAddLine aria-hidden="true" className={clsx("icon")} title="Add To Wishlist" />
-                  <span className={clsx("sr-only")}>Add To Wishlist</span>
+                <button
+                  className={clsx("btn", "btn-circle", "btn-outline", "gap-2")}
+                >
+                  <RiHeartAddLine
+                    aria-hidden="true"
+                    className={clsx("icon")}
+                    title="Add to wishlist"
+                  />
+                  <span className={clsx("sr-only")}>Add to wishlist</span>
                 </button>
               </section>
-              <section className={clsx(styles.section)}>
-                <button>Select Size</button>
+              <section
+                className={clsx(styles.section, styles.sectionDescription)}
+                // className={clsx(styles.description)}
+                dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
+              />
+              <section
+                className={clsx(
+                  styles.section,
+                  "not-prose",
+                  "dropdown",
+                  "dropdown-top",
+                  "dropdown-hover"
+                )}
+              >
+                <label tabIndex={0} className="btn m-1">
+                  Select Size
+                </label>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+                >
+                  <li>
+                    <a>XS</a>
+                  </li>
+                  <li>
+                    <a>S</a>
+                  </li>
+                  <li>
+                    <a>M</a>
+                  </li>
+                  <li>
+                    <a>L</a>
+                  </li>
+                  <li>
+                    <a>XL</a>
+                  </li>
+                </ul>
+              </section>
+
+              <section
+                className={clsx(
+                  styles.section,
+                  styles.sectionSizing,
+                  "collapse",
+                  "collapse-plus"
+                )}
+                tabIndex={0}
+              >
+                <div className="collapse-title text-xl font-medium">Sizing</div>
+                <div className="collapse-content">
+                  <p>Womenswear style with a slim fit.</p>
+                </div>
+              </section>
+              <section
+                className={clsx(
+                  styles.section,
+                  styles.sectionComposition,
+                  "collapse",
+                  "collapse-plus"
+                )}
+                tabIndex={0}
+              >
+                <div className="collapse-title text-xl font-medium">
+                  Composition
+                </div>
+                <div className="collapse-content">
+                  <p>72% Rayon / 28% Polybutylene</p>
+                </div>
+              </section>
+              <section
+                className={clsx(
+                  styles.section,
+                  styles.sectionShipping,
+                  "collapse",
+                  "collapse-plus"
+                )}
+                tabIndex={0}
+              >
+                <div className="collapse-title text-xl font-medium">
+                  Shipping
+                </div>
+                <div className="collapse-content">
+                  <p>
+                    As soon as your order is shipped, you will receive a
+                    shipping confirmation e-mail with a tracking number.
+                  </p>
+                  <div className="overflow-x-auto">
+                    <table className="table w-full">
+                      <thead>
+                        <tr>
+                          <th>Region</th>
+                          <th>Time</th>
+                          <th>Cost</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Netherlands</td>
+                          <td>3 - 7 business days</td>
+                          <td>Free</td>
+                        </tr>
+                        <tr>
+                          <td>Europe Zone 1</td>
+                          <td>5 - 9 business days</td>
+                          <td>Free</td>
+                        </tr>
+                        <tr>
+                          <td>Europe Zone 2</td>
+                          <td>7 - 10 business days</td>
+                          <td>€ 10,00 (Free over €99)</td>
+                        </tr>
+                        <tr>
+                          <td>Outside Europe</td>
+                          <td>9 - 12 business days</td>
+                          <td>€ 10,00 (Free over €250)</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </section>
+              <section
+                className={clsx(
+                  styles.section,
+                  styles.sectionReturns,
+                  "collapse",
+                  "collapse-plus"
+                )}
+                tabIndex={0}
+              >
+                <div className="collapse-title text-xl font-medium">
+                  Returns
+                </div>
+                <div className="collapse-content">
+                  <p>
+                    Our returns policy is very simple - we will accept returns
+                    for any reason, and issue a refund or store credit. Anything
+                    that has been purchased online can be returned to our
+                    warehouse.{" "}
+                  </p>
+                  <p>
+                    To begin the returns process, please go to our{" "}
+                    <a
+                      href="https://www.returnform.com/dailypaperclothing"
+                      target="_blank"
+                      rel="noreferrer"
+                      title="Return Portal Daily Paper"
+                    >
+                      Return Portal
+                    </a>
+                    . You will need your order number along with the email you
+                    used when making your purchase. Please fill out the form and
+                    follow the directions to make your return. Through our
+                    Return Portal you can buy a return label at a discounted
+                    price.
+                  </p>
+                  <p>
+                    All products must be returned within 14 days of receipt.
+                  </p>
+                  <p>All products must be unworn and unwashed.</p>
+                  <p>
+                    All products must have all original Daily Paper tags still
+                    attached.
+                  </p>
+                  <p>
+                    For hygiene reasons, underwear briefs, bodies, swimwear,
+                    pierced jewellery and earbuds cannot be returned or
+                    exchanged unless faulty.
+                  </p>
+                  <p>
+                    Any products purchased in our sale can not be returned in
+                    our in-store.
+                  </p>
+                </div>
               </section>
               <footer></footer>
             </section>
           </div>
+          <section className={clsx(styles.gallery, styles.galleryAdditional)}>
+            {product.images.nodes.slice(2).map((image, index) => (
+              <figure key={index} className={clsx(styles.figure)}>
+                <Image
+                  alt={image.altText ?? IMAGE_ALT_TEXT_FALLBACK}
+                  className={clsx(styles.image)}
+                  fill
+                  priority
+                  sizes={`(max-inline-size: ${theme.screens.xs.max}) 100vw,
+                      25vw`}
+                  src={image.url}
+                  title={product.title ?? IMAGE_TITLE_FALLBACK}
+                />
+                <figcaption className={clsx(styles.figcaption)}>
+                  Featured image for {product.title}
+                </figcaption>
+              </figure>
+            ))}
+          </section>
         </article>
-        <aside className={clsx(styles.aside)}>Lorem ipsum</aside>
+        <aside className={clsx(styles.aside)}>
+          <h2>Related Products</h2>
+        </aside>
       </Layout>
     </ProductProvider>
   );

@@ -8,10 +8,14 @@ import styles from "./index.module.css";
 type Props = {
   children?: ReactNode;
   className?: ReactNode;
-  theme?: "dark" | "light"
+  theme?: "dark" | "light";
 };
 
-export const Component: FC<Props> = ({ children, className, theme = "light" }) => {
+export const Component: FC<Props> = ({
+  children,
+  className,
+  theme = "light",
+}) => {
   const signupFormRef = useRef<HTMLFormElement>(null);
   const signupFormFeedbackRef = useRef<HTMLOutputElement>(null);
 
@@ -62,22 +66,30 @@ export const Component: FC<Props> = ({ children, className, theme = "light" }) =
     <form
       className={clsx(
         className,
-        theme,
-        styles.form,
-        "md:grid-cols-3",
-        "gap-4",
-        "md:gap-2"
+        // theme,
+        // styles.form,
+        "grid",
+        "grid-cols-1",
+        "gap-6"
       )}
       onSubmit={handleSubmit}
       ref={signupFormRef}
     >
-      <div className={clsx("field", "md:col-span-2")}>
-        <label htmlFor="email">get first hand access here</label>
-        <input type="email" id="email" name="email" required />
+      <div className="form-control">
+        <label className="label">
+          <span className="label-text">Your Email</span>
+        </label>
+        <label className="input-group">
+          <span>Email</span>
+          <input
+            type="text"
+            placeholder="info@site.com"
+            className="input input-bordered w-full"
+            required
+          />
+        </label>
       </div>
-      <button className={clsx("btn", "btn-secondary")}>
-        Notify Me
-      </button>
+      <button className={clsx("btn", "btn-primary")}>Notify me</button>
       <output className={clsx("output")} ref={signupFormFeedbackRef} />
     </form>
   );

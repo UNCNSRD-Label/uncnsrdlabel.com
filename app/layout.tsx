@@ -22,7 +22,7 @@ import styles from "#/app/layout.module.css";
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
-  weight: "300",
+  weight: ["300", "400", "500", "600", "800"],
 });
 
 export default function RootLayout({
@@ -35,14 +35,7 @@ export default function RootLayout({
   showHeaderAndFooter?: boolean;
 }) {
   return (
-    <html
-      lang="en"
-      className={clsx(
-        montserrat.variable,
-        "fitViewport",
-        "[color-scheme:dark]"
-      )}
-    >
+    <html lang="en" className={clsx(montserrat.variable, "fitViewport")}>
       <head />
       <body
         className={clsx(

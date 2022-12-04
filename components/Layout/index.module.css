@@ -1,6 +1,5 @@
 .container {
   display: grid;
-  gap: 1rem;
   min-height: 100vh;
 
   &.show_header_and_footer {
