@@ -70,7 +70,9 @@ export const Component: React.FC<Props> = ({
           className={clsx(
             "btn",
             "btn-ghost",
+            "btn-circle",
             "btn-xs",
+            "md:btn-sm",
             "hidden",
             "tablet:block"
           )}
@@ -82,7 +84,15 @@ export const Component: React.FC<Props> = ({
           />
           <span className={clsx("sr-only")}>Search this site</span>
         </button>
-        <button className={clsx("btn", "btn-ghost", "btn-xs")}>
+        <button
+          className={clsx(
+            "btn",
+            "btn-ghost",
+            "btn-circle",
+            "btn-xs",
+            "md:btn-sm"
+          )}
+        >
           <RiWomenLine
             aria-hidden="true"
             className={clsx("icon")}
@@ -90,7 +100,15 @@ export const Component: React.FC<Props> = ({
           />
           <span className={clsx("sr-only")}>View my account</span>
         </button>
-        <button className={clsx("btn", "btn-ghost", "btn-xs")}>
+        <button
+          className={clsx(
+            "btn",
+            "btn-ghost",
+            "btn-circle",
+            "btn-xs",
+            "md:btn-sm"
+          )}
+        >
           <RiShoppingBag2Line
             aria-hidden="true"
             className={clsx("icon")}

@@ -15,8 +15,8 @@ export const Footer: React.FC<Props> = ({ children }) => {
   return (
     <footer className={clsx(styles.footer)}>
       <div className={styles.navigationLinks}>
-        <nav className={clsx(styles.navigationLegal, "prose", "prose-slate")}>
-          <h2>Legal</h2>
+        <nav className={clsx(styles.navigationLegal, "prose", "prose-sm")}>
+          <h2 className={styles.header}>Legal</h2>
           <Link href="/terms-of-service">Terms of Service</Link>
           <Link href="/privacy-policy">Privacy Policy</Link>
           <Link href="/cookie-policy">Cookie Policy</Link>
@@ -25,8 +25,8 @@ export const Footer: React.FC<Props> = ({ children }) => {
             Warranty and Returns Agreement
           </Link>
         </nav>
-        <nav className={clsx(styles.clientService, "prose", "prose-slate")}>
-          <h2>Client Service</h2>
+        <nav className={clsx(styles.clientService, "prose", "prose-sm")}>
+          <h2 className={styles.header}>Client Service</h2>
           <a href="/faq" title="Go to FAQs">
             FAQs
           </a>

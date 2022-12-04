@@ -50,6 +50,14 @@
   }
 }
 
+.menu {
+  @apply gap-2;
+
+  @media screen and (min-width: theme(screens.lg.min)) {
+    @apply gap-4;
+  }
+}
+
 .nav {
   display: none;
   font-family: 'Bomber Escort Outline', serif;

@@ -1,5 +1,5 @@
 .footer {
-  @apply mt-1 px-4 py-4 gap-4;
+  @apply mt-1 px-4 pb-4 pt-8 gap-4;
   align-content: center;
   background-color: hsl(var(--b2));
   column-gap: 1rem;
@@ -16,7 +16,7 @@
   @media screen and (min-width: theme(screens.lg.min)) {
     @apply px-16 pb-8 pt-16 grid-cols-5 gap-16;
     grid-template-areas:
-      "navigationLinks navigationLinks . signupForm signupForm"
+      "navigationLinks navigationLinks navigationLinks signupForm signupForm"
       "socialLinks socialLinks copyright . .";
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
@@ -38,6 +38,10 @@
   nav {
     display: grid;
     gap: 1rem;
+
+    .header {
+      
+    }
   }
 
   .clientService {
