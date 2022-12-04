@@ -17,6 +17,7 @@
 
       &.model {
         background-color: var(--tw-color-text-neutral-900);
+        contain: strict;
         min-block-size: min(50vh, 40rem);
       }
 
@@ -68,11 +69,18 @@
         .description {
           @apply text-sm;
           grid-area: description;
+
+          > p:not(last-child) {
+            @apply mb-4;
+          }
         }
       }
 
       .section {
 
+        &.sectionActions {
+          @apply grid align-middle grid-flow-col justify-between;
+        }
       }
 
       .title {

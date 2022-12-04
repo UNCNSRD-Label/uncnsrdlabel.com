@@ -16,16 +16,6 @@ module.exports = {
       maxWidth: {
         "8xl": "1920px",
       },
-      colors: {
-        transparent: "transparent",
-        current: "currentColor",
-        black: colors.black,
-        white: colors.white,
-        gray: colors.gray,
-        emerald: colors.emerald,
-        indigo: colors.indigo,
-        yellow: colors.yellow,
-      },
       screens: {
         landscape: { raw: "(orientation: landscape)" },
         portrait: { raw: "(orientation: portrait)" },
@@ -39,5 +29,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [require("daisyui"), require("@tailwindcss/forms")],
 };

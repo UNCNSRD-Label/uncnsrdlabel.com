@@ -2,11 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "tailwindcss-colors-css-variables/css/tailwindcss-colors.css";
 @import "./animations.css";
-@import "./buttons.css";
-@import "./colors.css";
-@import "./forms.css";
 @import "./icons.css";
 @import "./utilities.css";
 

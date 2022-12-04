@@ -281,9 +281,14 @@ export default function Page({
                   dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
                 />
               </header>
-              <section className={clsx(styles.section)}>
-                <AddToCartButton>Add To Bag</AddToCartButton>
-                <button>Add To Wishlist</button>
+              <section className={clsx(styles.section, styles.sectionActions)}>
+                <AddToCartButton className={clsx("btn", "btn-primary", "btn-wide")}>
+                  Add To Bag
+                </AddToCartButton>
+                <button className={clsx("btn", "btn-circle", "gap-2")}>
+                  <RiHeartAddLine aria-hidden="true" className={clsx("icon")} title="Add To Wishlist" />
+                  <span className={clsx("sr-only")}>Add To Wishlist</span>
+                </button>
               </section>
               <section className={clsx(styles.section)}>
                 <button>Select Size</button>

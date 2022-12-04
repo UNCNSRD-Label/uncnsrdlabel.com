@@ -75,7 +75,9 @@ export const Component: FC<Props> = ({ children, className, theme = "light" }) =
         <label htmlFor="email">get first hand access here</label>
         <input type="email" id="email" name="email" required />
       </div>
-      <button className={clsx("button", "button__filled")}>Notify Me</button>
+      <button className={clsx("btn", "btn-secondary")}>
+        Notify Me
+      </button>
       <output className={clsx("output")} ref={signupFormFeedbackRef} />
     </form>
   );

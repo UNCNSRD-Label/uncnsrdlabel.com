@@ -1,11 +1,4 @@
 .icon {
-  background-size: cover;
-  filter: invert(1);
-  display: block;
-  height: 2rem;
-  width: 2rem;
-}
-
-.icon__loupe {
-  background-image: url(/icons/loupe.svg);
+  height: 2em;
+  width: 2em;
 }

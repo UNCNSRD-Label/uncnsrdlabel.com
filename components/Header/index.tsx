@@ -2,6 +2,7 @@ import { clsx } from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import React, { ReactNode } from "react";
+import { RiSearchLine } from "react-icons/ri";
 
 import styles from "./index.module.css";
 
@@ -34,12 +35,8 @@ export const Component: React.FC<Props> = ({ children, className, position = "fi
           Culture
         </Link>
       </nav>
-      <button className={clsx("button")}>
-        <span
-          className={clsx("icon", "icon__loupe")}
-          title="Search this site"
-          aria-hidden="true"
-        ></span>
+      <button className={clsx("btn", "btn-ghost", "btn-lg")}>
+        <RiSearchLine aria-hidden="true" className={clsx("icon")} title="Add To Wishlist" />
         <span className={clsx("sr-only")}>Search this site</span>
       </button>
       {children}

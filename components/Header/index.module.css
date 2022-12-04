@@ -15,7 +15,7 @@
 .header {
   @apply z-30;
   align-items: center;
-  contain: auto;
+  contain: content;
   display: grid;
   gap: 1rem;
   grid-auto-flow: column;
@@ -47,7 +47,6 @@
 }
 
 .nav {
-  @apply drop-shadow;
   display: grid;
   font-family: 'Bomber Escort Outline', serif;
   font-size: 2.5rem;
