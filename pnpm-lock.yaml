@@ -41,10 +41,8 @@ specifiers:
   next-compose-plugins: ^2.2.1
   next-pwa: ^5.6.0
   npm-run-all: ^4.1.5
-  open-props: ^1.5.1
   postcss: ^8.4.19
   postcss-flexbugs-fixes: ^5.0.2
-  postcss-jit-props: ^1.0.8
   postcss-nesting: ^10.2.0
   postcss-preset-env: ^7.8.3
   prettier: ^2.8.0
@@ -81,8 +79,6 @@ dependencies:
   keen-slider: 6.8.5
   next: 13.0.6_biqbaboplfbrettd7655fr4n2y
   next-pwa: 5.6.0_next@13.0.6
-  open-props: 1.5.1
-  postcss-jit-props: 1.0.8_postcss@8.4.19
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-social-icons: 5.15.0_react@18.2.0
@@ -4807,6 +4803,7 @@ packages:
 
   /globalyzer/0.1.0:
     resolution: {integrity: sha512-40oNTM9UfG6aBmuKxk/giHn5nQ8RVz/SS4Ir6zgzOv9/qC3kKZ9v4etGTcJbEl/NyVQH7FGU7d+X1egr57Md2Q==}
+    dev: true
 
   /globby/11.1.0:
     resolution: {integrity: sha512-jhIXaOzy1sb8IyocaruWSn1TjmnBVs8Ayhcy83rmxNJ8q2uWKCAj3CnJY+KpGSXCueAPc0i05kVvVKtP1t9S3g==}
@@ -4843,6 +4840,7 @@ packages:
 
   /globrex/0.1.2:
     resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
+    dev: true
 
   /glsl-inject-defines/1.0.3:
     resolution: {integrity: sha512-W49jIhuDtF6w+7wCMcClk27a2hq8znvHtlGnrYkSWEr8tHe9eA2dcnohlcAmxLYBSpSSdzOkRdyPTrx9fw49+A==}
@@ -6295,10 +6293,6 @@ packages:
       mimic-fn: 4.0.0
     dev: true
 
-  /open-props/1.5.1:
-    resolution: {integrity: sha512-FA1T/0neIXWaJToPhS4HjBrgEFOeVOAUls9cOe1ME1BV4G25sIKdRNdZhzNNgOQ2RtfuZCTGtSKVnhjdD4Gzvg==}
-    dev: false
-
   /open/8.4.0:
     resolution: {integrity: sha512-XgFPPM+B28FtCCgSb9I+s9szOC1vZRSwgWsRUA5ylIxRTgKozqjOCrVOqGsYABPYK5qnfqClxZTFBa8PKt2v6Q==}
     engines: {node: '>=12'}
@@ -6752,16 +6746,6 @@ packages:
     dependencies:
       postcss: 8.4.19
     dev: true
-
-  /postcss-jit-props/1.0.8_postcss@8.4.19:
-    resolution: {integrity: sha512-cM9RAnigzeWzEmr6Vd+oycL83ae0gBmEJQySWvoBFeUc81PhRn/oS/QzIafU3OFhG6sFbMYZr4rO927+PzT7uQ==}
-    engines: {node: '>=10.0.0'}
-    peerDependencies:
-      postcss: ^8.2.8
-    dependencies:
-      postcss: 8.4.19
-      tiny-glob: 0.2.9
-    dev: false
 
   /postcss-js/4.0.0_postcss@8.4.19:
     resolution: {integrity: sha512-77QESFBwgX4irogGVPgQ5s07vLvFqWr228qZY+w6lW599cRlK/HmnlivnnVUxkjHnCu4J16PDMHcH+e+2HbvTQ==}
@@ -8030,6 +8014,7 @@ packages:
     dependencies:
       globalyzer: 0.1.0
       globrex: 0.1.2
+    dev: true
 
   /tiny-inflate/1.0.3:
     resolution: {integrity: sha512-pkY1fj1cKHb2seWDy0B16HeWyczlJA9/WW3u3c4z/NiWDsO3DOU5D7nhTLE9CF0yXv/QZFY7sEJmj24dK+Rrqw==}
