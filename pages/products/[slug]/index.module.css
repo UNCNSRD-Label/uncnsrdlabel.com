@@ -57,9 +57,7 @@
       }
 
       > * {
-        @media screen and (min-width: theme(screens.md.min)) {
-          @apply py-6;
-        }
+        @apply py-6;
       }  
 
       .header {
