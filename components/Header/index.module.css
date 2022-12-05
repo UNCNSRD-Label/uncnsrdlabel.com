@@ -14,15 +14,9 @@
 
 .header {
   @apply z-30;
-  /* align-items: center; */
-  /* contain: content; */
-  /* display: grid; */
-  /* gap: 1rem; */
-  /* grid-auto-flow: column; */
-  /* justify-content: space-between; */
-  /* padding: 1rem 2.5rem; */
-  /* top: 0; */
-  /* width: 100%; */
+  display: grid;
+  grid-auto-flow: column;
+  padding-inline: var(--viewport-margin-inline);
 
   &.fixed {
     position: fixed;
@@ -38,11 +32,7 @@
   display: grid;
   gap: 1rem;
   position: relative;
-  width: 40vw;
-
-  @media screen and (min-width: theme(screens.md.min)) {
-    width: 25vw;
-  }
+  block-size: 100%;
 
   .logoImage {
     animation: filter-animation 10s infinite;
