@@ -13,37 +13,35 @@ type Props = {
 
 export const Footer: React.FC<Props> = ({ children }) => {
   return (
-    <footer className={clsx(styles.footer)}>
-      <div className={styles.navigationLinks}>
-        <nav className={clsx(styles.navigationLegal, "prose", "prose-sm")}>
-          <h2 className={styles.header}>Legal</h2>
-          <Link href="/terms-of-service">Terms of Service</Link>
-          <Link href="/privacy-policy">Privacy Policy</Link>
-          <Link href="/cookie-policy">Cookie Policy</Link>
-          <Link href="/disclaimer">Disclaimer</Link>
-          <Link href="/warranty-and-returns-agreement">
-            Warranty and Returns Agreement
-          </Link>
-        </nav>
-        <nav className={clsx(styles.clientService, "prose", "prose-sm")}>
-          <h2 className={styles.header}>Client Service</h2>
-          <a href="/faq" title="Go to FAQs">
-            FAQs
-          </a>
-          <a href="/orders/track" title="Go to Track your Order">
-            Track your order
-          </a>
-          <a href="/orders/shipping" title="Go to Shipping">
-            Track your order
-          </a>
-          <a href="/orders/returns" title="Go to Returns">
-            Returns
-          </a>
-          <a href="/orders/payment" title="Go to Payment">
-            Payment
-          </a>
-        </nav>
-      </div>
+    <footer className={clsx(styles.footer, "footer")}>
+      <nav className={clsx(styles.nav, styles.legal)}>
+        <h2 className={styles.title}>Legal</h2>
+        <Link href="/terms-of-service">Terms of Service</Link>
+        <Link href="/privacy-policy">Privacy Policy</Link>
+        <Link href="/cookie-policy">Cookie Policy</Link>
+        <Link href="/disclaimer">Disclaimer</Link>
+        <Link href="/warranty-and-returns-agreement">
+          Warranty and Returns Agreement
+        </Link>
+      </nav>
+      <nav className={clsx(styles.nav, styles.clientService)}>
+        <h2 className={styles.title}>Client Service</h2>
+        <a href="/faq" title="Go to FAQs">
+          FAQs
+        </a>
+        <a href="/orders/track" title="Go to Track your Order">
+          Track your order
+        </a>
+        <a href="/orders/shipping" title="Go to Shipping">
+          Track your order
+        </a>
+        <a href="/orders/returns" title="Go to Returns">
+          Returns
+        </a>
+        <a href="/orders/payment" title="Go to Payment">
+          Payment
+        </a>
+      </nav>
       <SignupForm className={clsx(styles.signupForm)} />
       <menu className={styles.social}>
         <SocialIcon url="https://www.instagram.com/uncnsrdlabel" />

@@ -10,6 +10,5 @@ export default function Logo(
     "src"
   >
 ) {
-  console.log({ props });
   return <Svg src={"/images/logos/logotype.svg"} {...props} />;
 }

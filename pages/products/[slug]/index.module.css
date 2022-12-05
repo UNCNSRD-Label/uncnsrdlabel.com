@@ -2,10 +2,21 @@
   @apply grid;
 
   @media screen and (min-width: theme(screens.md.min)) {
-  grid-template-columns: 3fr 2fr;
+    grid-template-columns: 3fr 2fr;
   }
 
   .gallery {
+    @apply pt-16 bg-white;
+
+    .steps {
+      @apply sticky z-10;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 0;
+      overflow: visible;
+      display: none;
+    }
+
     .figure {
       @apply snap-start;
       aspect-ratio: 3/4;
@@ -29,63 +40,57 @@
         display: none;
       }
     }
-  }
 
-  .galleryFeatured {
-    @apply grid snap-y pt-16;
+    &.galleryFeatured {
+      @apply grid snap-y;
 
-    @media screen and (min-width: theme(screens.md.min)) {
-      @apply grid snap-y pt-32;
+      @media screen and (min-width: theme(screens.md.min)) {
+        @apply grid snap-y;
+      }
     }
-  }
 
-  .galleryAdditional {
-    @apply col-span-full grid grid-cols-2 gap-1 mt-1;
+    &.galleryAdditional {
+      @apply col-span-full grid grid-cols-2 gap-1 mt-1;
+    }
   }
 
   .stickyContainer {
     .details {
-      @apply grid sticky p-4 divide-y prose prose-sm;
+      @apply grid sticky p-8 divide-y;
       top: 0;
 
       @media screen and (min-width: theme(screens.md.min)) {
-        @apply p-8 pt-24;
+        @apply p-16 pt-24;
       }
 
       @media screen and (min-width: theme(screens.lg.min)) {
-        @apply p-16 pt-44;
+        @apply p-24 pt-44;
       }
 
-      > * {
-        @apply py-6;
-      }  
-
       .header {
+        @apply py-6;
 
         .categoryLink {
           display: none;
         }
 
         .heading {
-          
         }
 
         .price {
-
         }
 
         .description {
-          
         }
       }
 
       .section {
         &.sectionActions {
-          @apply grid align-middle grid-flow-col justify-between gap-8 px-4;
+          @apply grid align-middle grid-flow-col justify-between gap-8 px-4 py-6;
         }
 
         &.sectionDescription {
-          
+          @apply py-6;
         }
       }
 

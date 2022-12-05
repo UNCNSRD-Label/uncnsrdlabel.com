@@ -8,17 +8,12 @@
   @media screen and (min-width: theme(screens.md.min)) {
     @apply px-8 pb-8 pt-16 grid-cols-5 gap-x-4 gap-y-16;
     grid-template-areas:
-      "navigationLinks navigationLinks navigationLinks signupForm signupForm"
+      "navigationLinks1 navigationLinks2 navigationLinks3 signupForm signupForm"
       "socialLinks socialLinks copyright . .";
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 
   @media screen and (min-width: theme(screens.lg.min)) {
     @apply px-16 pb-8 pt-16 grid-cols-5 gap-16;
-    grid-template-areas:
-      "navigationLinks navigationLinks navigationLinks signupForm signupForm"
-      "socialLinks socialLinks copyright . .";
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 
   :is(blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre) {
@@ -26,55 +21,62 @@
   }
 }
 
-.navigationLinks {
-  @apply grid-cols-2;
-  display: grid;
-  gap: 1rem;
+.nav {
+  /* @apply grid gap-4 prose prose-xs prose-a:link prose-a:link-hover; */
+  @apply grid gap-4;
+
   @media screen and (min-width: theme(screens.md.min)) {
-    grid-area: navigationLinks;
-  }
-  grid-auto-flow: column;
+    &:nth-of-type(1) {
+      grid-area: navigationLinks1;
+    }
 
-  nav {
-    display: grid;
-    gap: 1rem;
+    &:nth-of-type(2) {
+      grid-area: navigationLinks2;
+    }
 
-    .header {
-      
+    &:nth-of-type(3) {
+      grid-area: navigationLinks3;
     }
   }
 
-  .clientService {
+  &.clientService {
   }
 
-  .navigationLegal {
+  &.navigationLegal {
+  }
+
+  .title {
+    @apply footer-title;
   }
 }
 
 .copyright {
-  @apply text-sm;
+  @apply text-xs;
   display: grid;
+  place-self: center;
+
   @media screen and (min-width: theme(screens.md.min)) {
     grid-area: copyright;
   }
-  place-content: center;
 }
 
 .signupForm {
   align-content: start;
   align-items: start;
+
   @media screen and (min-width: theme(screens.md.min)) {
     grid-area: signupForm;
-    align-self: end;
+  }
+
+  .label {
+    @apply footer-title font-bold m-0;
   }
 }
 
 .social {
-  @apply text-gray-900;
   align-content: center;
   display: grid;
   gap: 1rem;
-
   grid-auto-flow: column;
   justify-content: center;
 

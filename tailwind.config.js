@@ -9,7 +9,12 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   daisyui: {
-    themes: ["lofi", "dark"],
+    themes: true,
+    base: true,
+    utils: true,
+    logs: true,
+    themes: ["lofi", "black"],
+    darkTheme: "black",
   },
   future: {
     hoverOnlyWhenSupported: true,
@@ -37,6 +42,13 @@ module.exports = {
         xl: { min: "1280px", max: "1535px" },
         "2xl": { min: "1536px" },
       },
+      typography: (theme) => ({
+        xs: {
+          css: {
+            fontSize: "0.75rem",
+          },
+        },
+      }),
     },
   },
   plugins: [

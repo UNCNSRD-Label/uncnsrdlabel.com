@@ -66,8 +66,8 @@ export const Component: FC<Props> = ({
     <form
       className={clsx(
         className,
-        // theme,
-        // styles.form,
+        theme,
+        styles.form,
         "grid",
         "grid-cols-1",
         "gap-6"
@@ -75,21 +75,23 @@ export const Component: FC<Props> = ({
       onSubmit={handleSubmit}
       ref={signupFormRef}
     >
-      <div className="form-control">
-        <label className="label">
-          <span className="label-text">Your Email</span>
+      <div className={clsx(styles.formControl, "form-control")}>
+        <label className={clsx(styles.label, "label")}>
+          <span className="label-text">Sign up to the mailing list</span>
         </label>
         <label className="input-group">
           <span>Email</span>
           <input
             type="text"
-            placeholder="info@site.com"
+            placeholder="Your email address"
             className="input input-bordered w-full"
             required
           />
         </label>
       </div>
-      <button className={clsx("btn", "btn-primary")}>Notify me</button>
+      <button className={clsx("btn", "btn-primary", "btn-block")}>
+        Notify me
+      </button>
       <output className={clsx("output")} ref={signupFormFeedbackRef} />
     </form>
   );

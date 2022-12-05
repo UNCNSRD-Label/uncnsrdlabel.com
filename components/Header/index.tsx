@@ -100,22 +100,25 @@ export const Component: React.FC<Props> = ({
           />
           <span className={clsx("sr-only")}>View my account</span>
         </button>
-        <button
-          className={clsx(
-            "btn",
-            "btn-ghost",
-            "btn-circle",
-            "btn-xs",
-            "md:btn-sm"
-          )}
-        >
-          <RiShoppingBag2Line
-            aria-hidden="true"
-            className={clsx("icon")}
-            title="View my shopping bag"
-          />
-          <span className={clsx("sr-only")}>View my shopping bag</span>
-        </button>
+        <div className="indicator">
+          <span className="indicator-item badge badge-secondary">99+</span>
+          <button
+            className={clsx(
+              "btn",
+              "btn-ghost",
+              "btn-circle",
+              "btn-xs",
+              "md:btn-sm"
+            )}
+          >
+            <RiShoppingBag2Line
+              aria-hidden="true"
+              className={clsx("icon")}
+              title="View my shopping bag"
+            />
+            <span className={clsx("sr-only")}>View my shopping bag</span>
+          </button>
+        </div>
       </menu>
     </header>
   );

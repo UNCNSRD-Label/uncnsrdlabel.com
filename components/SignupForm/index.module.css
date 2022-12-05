@@ -2,6 +2,14 @@
   @apply grid gap-2;
 }
 
+.formControl {
+  @apply grid gap-4;
+}
+
+.label {
+  @apply footer-title font-bold p-0;
+}
+
 .field {
   @apply grid gap-2;
 }

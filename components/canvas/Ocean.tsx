@@ -10,7 +10,6 @@ extend({ Water });
 export const Component: FC<{
   props: Omit<React.RefAttributes<typeof Water>, "src">;
 }> = (props) => {
-  console.log({ props });
   const ref = useRef(null);
   const gl = useThree((state) => state.gl);
   const waterNormals = useLoader(

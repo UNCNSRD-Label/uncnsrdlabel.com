@@ -215,6 +215,12 @@ export default function Page({
 
         <article className={clsx(styles.article)}>
           <section className={clsx(styles.gallery, styles.galleryFeatured)}>
+            <ul className={clsx(styles.steps, "steps", "steps-vertical")}>
+              <li className="step step-primary">Register</li>
+              <li className="step step-primary">Choose plan</li>
+              <li className="step">Purchase</li>
+              <li className="step">Receive Product</li>
+            </ul>
             {product.images.nodes.slice(0, 2).map((image, index) => (
               <figure key={index} className={clsx(styles.figure)}>
                 <Image
@@ -266,18 +272,37 @@ export default function Page({
             >
               Return to the experience page
             </Link> */}
-              <header className={clsx(styles.header)}>
+              <header className={clsx(styles.header, "prose", "prose-xs")}>
                 <Link
                   href="/bikinis/tops"
                   className={styles.categoryLink}
                   title="Go to category page"
                 >
                   Bikini Tops
-                  {/* {product.category} */}
                 </Link>
                 <h1 className={clsx(styles.heading)}>{product.title}</h1>
                 <ProductPrice className={clsx(styles.price)} data={product} />
               </header>
+              <section
+                className={clsx(
+                  styles.section,
+                  "not-prose",
+                  "dropdown",
+                  "dropdown-top",
+                  "dropdown-hover"
+                )}
+              >
+                <select className="select select-ghost w-full">
+                  <option disabled selected>
+                    Select size
+                  </option>
+                  <option>XS</option>
+                  <option>S</option>
+                  <option>M</option>
+                  <option>L</option>
+                  <option>XL</option>
+                </select>
+              </section>
               <section className={clsx(styles.section, styles.sectionActions)}>
                 <AddToCartButton
                   className={clsx("btn", "btn-primary", "lg:btn-wide")}
@@ -297,43 +322,12 @@ export default function Page({
               </section>
               <section
                 className={clsx(styles.section, styles.sectionDescription)}
-                // className={clsx(styles.description)}
-                dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
-              />
-              <section
-                className={clsx(
-                  styles.section,
-                  "not-prose",
-                  "dropdown",
-                  "dropdown-top",
-                  "dropdown-hover"
-                )}
               >
-                <label tabIndex={0} className="btn m-1">
-                  Select Size
-                </label>
-                <ul
-                  tabIndex={0}
-                  className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-                >
-                  <li>
-                    <a>XS</a>
-                  </li>
-                  <li>
-                    <a>S</a>
-                  </li>
-                  <li>
-                    <a>M</a>
-                  </li>
-                  <li>
-                    <a>L</a>
-                  </li>
-                  <li>
-                    <a>XL</a>
-                  </li>
-                </ul>
+                <div
+                  className={clsx("prose", "prose-xs")}
+                  dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
+                />
               </section>
-
               <section
                 className={clsx(
                   styles.section,
@@ -343,7 +337,7 @@ export default function Page({
                 )}
                 tabIndex={0}
               >
-                <div className="collapse-title text-xl font-medium">Sizing</div>
+                <div className="collapse-title text-base">Sizing</div>
                 <div className="collapse-content">
                   <p>Womenswear style with a slim fit.</p>
                 </div>
@@ -357,9 +351,7 @@ export default function Page({
                 )}
                 tabIndex={0}
               >
-                <div className="collapse-title text-xl font-medium">
-                  Composition
-                </div>
+                <div className="collapse-title text-base">Composition</div>
                 <div className="collapse-content">
                   <p>72% Rayon / 28% Polybutylene</p>
                 </div>
@@ -373,9 +365,7 @@ export default function Page({
                 )}
                 tabIndex={0}
               >
-                <div className="collapse-title text-xl font-medium">
-                  Shipping
-                </div>
+                <div className="collapse-title text-base">Shipping</div>
                 <div className="collapse-content">
                   <p>
                     As soon as your order is shipped, you will receive a
@@ -425,9 +415,7 @@ export default function Page({
                 )}
                 tabIndex={0}
               >
-                <div className="collapse-title text-xl font-medium">
-                  Returns
-                </div>
+                <div className="collapse-title text-base">Returns</div>
                 <div className="collapse-content">
                   <p>
                     Our returns policy is very simple - we will accept returns
