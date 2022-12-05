@@ -1,5 +1,12 @@
+.nav {
+  padding-block-start: calc(var(--viewport-margin-block-start) * 2);
+  padding-inline: var(--viewport-margin-inline);
+}
+
 .main {
   @apply grid gap-4 grid-cols-4;
+  padding-block-start: calc(var(--viewport-margin-block-start) * 2);
+  padding-inline: var(--viewport-margin-inline);
 }
 
 .productCard {

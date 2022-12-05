@@ -12,6 +12,7 @@
   .gallery {
     .steps {
       @apply sticky z-10;
+      padding-inline-start: var(--viewport-margin-inline);
       top: 50%;
       transform: translateY(-50%);
       overflow: visible;
@@ -42,7 +43,9 @@
     }
 
     &.galleryFeatured {
-      @apply bg-white grid snap-y pt-16 scroll-pt-16;
+      @apply bg-white grid snap-y;
+      padding-block-start: var(--viewport-margin-block-start);
+      scroll-padding-block-start: var(--viewport-margin-block-start);
       scroll-behavior: smooth;
 
       @media screen and (max-width: theme(screens.sm.max)) {
@@ -65,19 +68,20 @@
 
   .stickyContainer {
     .details {
-      @apply grid sticky px-8 divide-y;
+      @apply grid sticky divide-y;
+      padding-inline: var(--viewport-margin-inline);
       top: 0;
 
       @media screen and (min-width: theme(screens.md.min)) {
-        @apply p-16 pt-24;
+        @apply pb-16 pt-24;
       }
 
       @media screen and (min-width: theme(screens.lg.min)) {
-        @apply p-24 pt-44;
+        @apply pb-24 pt-44;
       }
 
       .header {
-        @apply pt-4 grid grid-flow-col gap-4;
+        @apply pt-4 grid grid-flow-col gap-4 items-center;
 
         @media screen and (min-width: theme(screens.md.min)) {
           @apply py-6;
