@@ -75,11 +75,11 @@ export const Component: FC<Props> = ({
       onSubmit={handleSubmit}
       ref={signupFormRef}
     >
-      <div className={clsx(styles.formControl, "form-control")}>
+      <div className={clsx(styles.formControl, "form-control", "w-full")}>
         <label className={clsx(styles.label, "label")}>
           <span className="label-text">Sign up to the mailing list</span>
         </label>
-        <label className="input-group">
+        <label className="input-group w-full">
           <span>Email</span>
           <input
             type="text"

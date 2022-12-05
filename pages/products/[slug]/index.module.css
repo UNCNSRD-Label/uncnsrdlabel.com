@@ -2,19 +2,19 @@
   @apply grid;
 
   @media screen and (min-width: theme(screens.md.min)) {
+    grid-template-columns: 2fr 2fr;
+  }
+
+  @media screen and (min-width: theme(screens.lg.min)) {
     grid-template-columns: 3fr 2fr;
   }
 
   .gallery {
-    @apply pt-16 bg-white;
-
     .steps {
       @apply sticky z-10;
       top: 50%;
       transform: translateY(-50%);
-      height: 0;
       overflow: visible;
-      display: none;
     }
 
     .figure {
@@ -42,10 +42,19 @@
     }
 
     &.galleryFeatured {
-      @apply grid snap-y;
+      @apply bg-white grid snap-y pt-16 scroll-pt-16;
+      scroll-behavior: smooth;
+
+      @media screen and (max-width: theme(screens.sm.max)) {
+        @apply overflow-y-auto;
+        /* max-block-size: 75vh; */
+        /* @NOTE: 133.33vw is equivalent to the 3/4 aspect ratio of the images in the gallery */
+        /* @NOTE: 4rem is equivalent to the pt-16 and scroll-pt-16 values to offset the image below the header */
+        max-block-size: calc(133.33vw + 4rem);
+      }
 
       @media screen and (min-width: theme(screens.md.min)) {
-        @apply grid snap-y;
+        
       }
     }
 
@@ -56,7 +65,7 @@
 
   .stickyContainer {
     .details {
-      @apply grid sticky p-8 divide-y;
+      @apply grid sticky px-8 divide-y;
       top: 0;
 
       @media screen and (min-width: theme(screens.md.min)) {
@@ -68,7 +77,11 @@
       }
 
       .header {
-        @apply py-6;
+        @apply pt-4 grid grid-flow-col gap-4;
+
+        @media screen and (min-width: theme(screens.md.min)) {
+          @apply py-6;
+        }
 
         .categoryLink {
           display: none;

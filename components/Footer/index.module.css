@@ -61,6 +61,7 @@
 }
 
 .signupForm {
+  @apply w-full;
   align-content: start;
   align-items: start;
 

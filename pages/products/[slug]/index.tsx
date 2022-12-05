@@ -21,6 +21,15 @@ import { useRouter } from "next/router";
 import Script from "next/script";
 import { request } from "graphql-request";
 import { Suspense } from "react";
+import {
+  Link as ReactScrollLink,
+  Button,
+  Element,
+  Events,
+  animateScroll as scroll,
+  scrollSpy,
+  scroller,
+} from "react-scroll";
 
 import { graphql } from "#/gql";
 
@@ -214,54 +223,81 @@ export default function Page({
         <meta name="twitter:description" content={product.seo.description!} />
 
         <article className={clsx(styles.article)}>
-          <section className={clsx(styles.gallery, styles.galleryFeatured)}>
-            <ul className={clsx(styles.steps, "steps", "steps-vertical")}>
-              <li className="step step-primary">Register</li>
-              <li className="step step-primary">Choose plan</li>
-              <li className="step">Purchase</li>
-              <li className="step">Receive Product</li>
-            </ul>
+          <section
+            className={clsx(styles.gallery, styles.galleryFeatured)}
+            id="galleryFeatured"
+          >
+            {/* @TODO: Add WAI-ARI */}
+            <menu className={clsx(styles.steps, "steps", "steps-vertical")}>
+              {product.images.nodes.slice(0, 2).map((image, index) => (
+                <ReactScrollLink
+                  key={index}
+                  to={`galleryFeatured-${index}`}
+                  containerId="galleryFeatured"
+                  className="step"
+                  spy={true}
+                  smooth={false}
+                >
+                  <span className={clsx("sr-only")}>
+                    Scroll to item {index}
+                  </span>
+                </ReactScrollLink>
+              ))}
+              <ReactScrollLink
+                to={`galleryFeatured-3`}
+                containerId="galleryFeatured"
+                className="step"
+                spy={true}
+                smooth={false}
+              >
+                <span className={clsx("sr-only")}>Scroll to item 3</span>
+              </ReactScrollLink>
+            </menu>
             {product.images.nodes.slice(0, 2).map((image, index) => (
-              <figure key={index} className={clsx(styles.figure)}>
-                <Image
-                  alt={image.altText ?? IMAGE_ALT_TEXT_FALLBACK}
-                  className={clsx(styles.image)}
-                  fill
-                  priority
-                  sizes={`(max-inline-size: ${theme.screens.xs.max}) 100vw,
-                      25vw`}
-                  src={image.url}
-                  title={product.title ?? IMAGE_TITLE_FALLBACK}
-                />
+              <Element key={index} name={`galleryFeatured-${index}`}>
+                <figure className={clsx(styles.figure)}>
+                  <Image
+                    alt={image.altText ?? IMAGE_ALT_TEXT_FALLBACK}
+                    className={clsx(styles.image)}
+                    fill
+                    priority
+                    sizes={`(max-inline-size: ${theme.screens.xs.max}) 100vw,
+                        25vw`}
+                    src={image.url}
+                    title={product.title ?? IMAGE_TITLE_FALLBACK}
+                  />
+                  <figcaption className={clsx(styles.figcaption)}>
+                    Featured image for {product.title}
+                  </figcaption>
+                </figure>
+              </Element>
+            ))}
+            <Element name={`galleryFeatured-3`}>
+              <figure className={clsx(styles.figure, styles.model)}>
+                <Suspense>
+                  <Scene>
+                    <Stage
+                      adjustCamera={0.5}
+                      // environment="dawn"
+                      environment="warehouse"
+                      intensity={0.5}
+                      preset="portrait"
+                      shadows="contact"
+                    >
+                      <FemaleSportswear2
+                        castShadow
+                        receiveShadow
+                        position={[0, 0, 0]}
+                        rotation={[0, Math.PI / 4, 0]}
+                      />
+                    </Stage>
+                  </Scene>
+                </Suspense>
                 <figcaption className={clsx(styles.figcaption)}>
-                  Featured image for {product.title}
+                  3D model view for {product.title}
                 </figcaption>
               </figure>
-            ))}
-            <figure className={clsx(styles.figure, styles.model)}>
-              <Suspense>
-                <Scene>
-                  <Stage
-                    adjustCamera={0.5}
-                    // environment="dawn"
-                    environment="warehouse"
-                    intensity={0.5}
-                    preset="portrait"
-                    shadows="contact"
-                  >
-                    <FemaleSportswear2
-                      castShadow
-                      receiveShadow
-                      position={[0, 0, 0]}
-                      rotation={[0, Math.PI / 4, 0]}
-                    />
-                  </Stage>
-                </Scene>
-              </Suspense>
-              <figcaption className={clsx(styles.figcaption)}>
-                3D model view for {product.title}
-              </figcaption>
-            </figure>
+            </Element>
           </section>
           <div className={clsx(styles.stickyContainer)}>
             <section className={clsx(styles.details)}>
