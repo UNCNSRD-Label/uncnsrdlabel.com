@@ -18,6 +18,7 @@ specifiers:
   '@types/node': ^18.11.10
   '@types/react': ^18.0.26
   '@types/react-dom': 18.0.9
+  '@types/react-scroll': ^1.8.5
   '@types/three': ^0.146.0
   '@vercel/git-hooks': ^1.0.0
   autoprefixer: ^10.4.13
@@ -105,6 +106,7 @@ devDependencies:
   '@types/node': 18.11.10
   '@types/react': 18.0.26
   '@types/react-dom': 18.0.9
+  '@types/react-scroll': 1.8.5
   '@types/three': 0.146.0
   '@vercel/git-hooks': 1.0.0
   autoprefixer: 10.4.13_postcss@8.4.19
@@ -2832,6 +2834,12 @@ packages:
     dependencies:
       '@types/react': 18.0.26
     dev: false
+
+  /@types/react-scroll/1.8.5:
+    resolution: {integrity: sha512-+adEt41hQHMX4aoBOD9Y336QzQzAtlFXTrsFWToS+efgqsYXUOo0JKLeI0O5GLE50Peap6DsbUQRK6gnv8t6wQ==}
+    dependencies:
+      '@types/react': 18.0.26
+    dev: true
 
   /@types/react/18.0.26:
     resolution: {integrity: sha512-hCR3PJQsAIXyxhTNSiDFY//LhnMZWpNNr5etoCqx/iUfGc5gXWtQR2Phl908jVR6uPXacojQWTg4qRpkxTuGug==}
