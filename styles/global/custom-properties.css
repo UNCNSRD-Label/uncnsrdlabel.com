@@ -1,14 +1,12 @@
 :root {
-  --viewport-margin-block-start: 1rem;
+  --viewport-margin-block-start: 4rem;
   --viewport-margin-inline: 1rem;
 
   @media screen and (min-width: theme(screens.md.min)) {
-    --viewport-margin-block-start: 2rem;
     --viewport-margin-inline: 2rem;
   }
 
   @media screen and (min-width: theme(screens.lg.min)) {
-    --viewport-margin-block-start: 4rem;
     --viewport-margin-inline: 4rem;
   }
 }
