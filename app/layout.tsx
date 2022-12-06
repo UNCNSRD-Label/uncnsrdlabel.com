@@ -1,23 +1,15 @@
 import "#/styles/global/globals.css";
 
-import { clsx } from "clsx";
 import { Montserrat } from "@next/font/google";
+import { clsx } from "clsx";
+import { ReactNode } from "react";
 
 import Providers from "#/providers";
-
-// import {
-//   getShopifyDomain,
-//   getStorefrontApiUrl,
-//   getPublicTokenHeaders,
-//   getPrivateTokenHeaders,
-//   publicStorefrontToken as storefrontToken,
-//   storefrontApiVersion,
-// } from "#/src/shopify-client";
 
 import Header from "#/components/Header";
 import Footer from "#/components/Footer";
 
-import styles from "#/app/layout.module.css";
+import styles from "./layout.module.css";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -30,7 +22,7 @@ export default function RootLayout({
   constrainWidth = false,
   showHeaderAndFooter = false,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   constrainWidth?: boolean;
   showHeaderAndFooter?: boolean;
 }) {

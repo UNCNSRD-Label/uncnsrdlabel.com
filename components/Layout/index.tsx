@@ -1,3 +1,5 @@
+import type { FC, ReactNode } from "react";
+
 import { clsx } from "clsx";
 import Head from "next/head";
 
@@ -7,12 +9,12 @@ import Footer from "#/components/Footer";
 import styles from "./index.module.css";
 
 type Props = {
-  children?: React.ReactNode;
+  children?: ReactNode;
   constrainWidth?: boolean;
   showHeaderAndFooter?: boolean;
 };
 
-export const Layout: React.FC<Props> = ({
+export const Layout: FC<Props> = ({
   children,
   constrainWidth = false,
   showHeaderAndFooter = true,

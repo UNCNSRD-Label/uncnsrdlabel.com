@@ -1,6 +1,7 @@
+import type { FC, ReactNode } from "react";
+
 import { clsx } from "clsx";
 import Link from "next/link";
-import React from "react";
 
 import SignupForm from "#/components/SignupForm";
 import SocialIcon from "#/components/SocialIcon";
@@ -8,12 +9,13 @@ import SocialIcon from "#/components/SocialIcon";
 import styles from "./index.module.css";
 
 type Props = {
-  children?: React.ReactNode;
+  children?: ReactNode;
+  className?: ReactNode;
 };
 
-export const Footer: React.FC<Props> = ({ children }) => {
+export const Footer: FC<Props> = ({ children, className }) => {
   return (
-    <footer className={clsx(styles.footer, "footer")}>
+    <footer className={clsx(styles.footer, className, "footer")}>
       <nav className={clsx(styles.nav, styles.legal)}>
         <h2 className={styles.title}>Legal</h2>
         <Link href="/terms-of-service">Terms of Service</Link>

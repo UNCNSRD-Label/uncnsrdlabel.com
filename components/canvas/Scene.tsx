@@ -1,5 +1,7 @@
 "use client";
 
+import type { FC, ReactNode } from "react";
+
 import { Canvas } from "@react-three/fiber";
 import {
   Backdrop,
@@ -8,13 +10,12 @@ import {
   Preload,
   // Sky,
 } from "@react-three/drei";
-import React, { FC } from "react";
 
 // import Floor from "#/components/canvas/Floor";
 import Logo from "#/components/canvas/Logo";
 // import Ocean from "#/components/canvas/Ocean";
 
-export const Component: FC<{ children: React.ReactNode }> = ({ children }) => {
+export const Component: FC<{ children: ReactNode }> = ({ children }) => {
   // Everything defined in here will persist between route changes, only children are swapped
 
   return (

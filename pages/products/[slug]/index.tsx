@@ -1,14 +1,14 @@
 import type { ProductVariant } from "@shopify/hydrogen-react/storefront-api-types";
 import type { GetServerSideProps } from "next";
-import { RiHeartAddLine } from "react-icons/ri";
 
 import type { ProductQuery } from "#/gql/graphql";
 
+import { RiHeartAddLine } from "react-icons/ri";
+import { Stage } from "@react-three/drei";
 import { clsx } from "clsx";
+import { request } from "graphql-request";
 import {
   AddToCartButton,
-  Image as ShopifyImage,
-  // Money,
   ProductPrice,
   ProductProvider,
   type StorefrontApiResponseOk,
@@ -19,17 +19,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Script from "next/script";
-import { request } from "graphql-request";
 import { Suspense } from "react";
-import {
-  Link as ReactScrollLink,
-  Button,
-  Element,
-  Events,
-  animateScroll as scroll,
-  scrollSpy,
-  scroller,
-} from "react-scroll";
 
 import { graphql } from "#/gql";
 
@@ -39,11 +29,10 @@ import {
 } from "#/lib/constants/messages";
 import { theme } from "#/lib/constants/style";
 
-import { Stage } from "@react-three/drei";
-
+import Breadcrumbs from "#/components/Breadcrumbs";
 import FemaleSportswear2 from "#/components/canvas/FemaleSportswear2";
 import Scene from "#/components/canvas/Scene";
-import { Layout } from "#/components/Layout";
+import Layout from "#/components/Layout";
 
 import {
   getStorefrontApiUrl,
@@ -154,18 +143,6 @@ export default function Page({
               url,
               offers: {
                 "@type": "AggregateOffer",
-                // lowPrice: new Intl.NumberFormat(locale, {
-                //   style: "currency",
-                //   currency: product.priceRange.minVariantPrice.currencyCode,
-                // }).format(
-                //   Number.parseInt(product.priceRange.minVariantPrice.amount, 10)
-                // ),
-                // highPrice: new Intl.NumberFormat(locale, {
-                //   style: "currency",
-                //   currency: product.priceRange.maxVariantPrice.currencyCode,
-                // }).format(
-                //   Number.parseInt(product.priceRange.maxVariantPrice.amount, 10)
-                // ),
                 offerCount: 1,
                 offers: [
                   product.variants.nodes.map((variant, index) => ({
@@ -222,6 +199,20 @@ export default function Page({
         <meta name="twitter:title" content={product.seo.title!} />
         <meta name="twitter:description" content={product.seo.description!} />
 
+        <Breadcrumbs>
+          <li>
+            <Link href="/" title="Return to the home page">
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link href="/products" title="Return to the products page">
+              Products
+            </Link>
+          </li>
+          <li>{product.title}</li>
+        </Breadcrumbs>
+
         <article className={clsx(styles.article)}>
           <section
             className={clsx(styles.gallery, styles.galleryFeatured)}
@@ -230,85 +221,78 @@ export default function Page({
             {/* @TODO: Add WAI-ARI */}
             <menu className={clsx(styles.steps, "steps", "steps-vertical")}>
               {product.images.nodes.slice(0, 2).map((image, index) => (
-                <ReactScrollLink
+                <Link
                   key={index}
-                  to={`galleryFeatured-${index}`}
-                  containerId="galleryFeatured"
+                  href={`#galleryFeatured-${index}`}
                   className="step"
-                  spy={true}
-                  smooth={false}
                 >
-                  <span className={clsx("sr-only")}>
-                    Scroll to item {index}
-                  </span>
-                </ReactScrollLink>
+                  <span className={clsx("sr-only")}>Go to item {index}</span>
+                </Link>
               ))}
-              <ReactScrollLink
-                to={`galleryFeatured-3`}
-                containerId="galleryFeatured"
-                className="step"
-                spy={true}
-                smooth={false}
-              >
-                <span className={clsx("sr-only")}>Scroll to item 3</span>
-              </ReactScrollLink>
+              <Link href={`#galleryFeatured-3`} className="step">
+                <span className={clsx("sr-only")}>Go to item 3</span>
+              </Link>
             </menu>
             {product.images.nodes.slice(0, 2).map((image, index) => (
-              <Element key={index} name={`galleryFeatured-${index}`}>
-                <figure className={clsx(styles.figure)}>
-                  <Image
-                    alt={image.altText ?? IMAGE_ALT_TEXT_FALLBACK}
-                    className={clsx(styles.image)}
-                    fill
-                    priority
-                    sizes={`(max-inline-size: ${theme.screens.xs.max}) 100vw,
+              <figure
+                className={clsx(styles.figure)}
+                id={`galleryFeatured-${index}`}
+                key={index}
+              >
+                <Image
+                  alt={image.altText ?? IMAGE_ALT_TEXT_FALLBACK}
+                  className={clsx(styles.image)}
+                  fill
+                  priority
+                  sizes={`(max-width: ${theme.screens.xs.max}) 100vw,
                         25vw`}
-                    src={image.url}
-                    title={product.title ?? IMAGE_TITLE_FALLBACK}
-                  />
-                  <figcaption className={clsx(styles.figcaption)}>
-                    Featured image for {product.title}
-                  </figcaption>
-                </figure>
-              </Element>
-            ))}
-            <Element name={`galleryFeatured-3`}>
-              <figure className={clsx(styles.figure, styles.model)}>
-                <Suspense>
-                  <Scene>
-                    <Stage
-                      adjustCamera={0.5}
-                      // environment="dawn"
-                      environment="warehouse"
-                      intensity={0.5}
-                      preset="portrait"
-                      shadows="contact"
-                    >
-                      <FemaleSportswear2
-                        castShadow
-                        receiveShadow
-                        position={[0, 0, 0]}
-                        rotation={[0, Math.PI / 4, 0]}
-                      />
-                    </Stage>
-                  </Scene>
-                </Suspense>
+                  src={image.url}
+                  title={product.title ?? IMAGE_TITLE_FALLBACK}
+                />
                 <figcaption className={clsx(styles.figcaption)}>
-                  3D model view for {product.title}
+                  Featured image for {product.title}
                 </figcaption>
               </figure>
-            </Element>
+            ))}
+            <figure
+              className={clsx(styles.figure, styles.model, "fitViewportHeight")}
+              id={`galleryFeatured-3`}
+            >
+              <Suspense>
+                <Scene>
+                  <Stage
+                    adjustCamera={0.5}
+                    // environment="dawn"
+                    environment="warehouse"
+                    intensity={0.5}
+                    preset="portrait"
+                    shadows="contact"
+                  >
+                    <FemaleSportswear2
+                      castShadow
+                      receiveShadow
+                      position={[0, 0, 0]}
+                      rotation={[0, Math.PI / 4, 0]}
+                    />
+                  </Stage>
+                </Scene>
+              </Suspense>
+              <figcaption className={clsx(styles.figcaption)}>
+                3D model view for {product.title}
+              </figcaption>
+            </figure>
           </section>
           <div className={clsx(styles.stickyContainer)}>
             <section className={clsx(styles.details)}>
-              {/* <Link
-              href="/experience"
-              className={styles.backLink}
-              title="Return to the experience page"
-            >
-              Return to the experience page
-            </Link> */}
-              <header className={clsx(styles.header, "prose", "prose-xs")}>
+              <header
+                className={clsx(
+                  styles.header,
+                  "prose",
+                  "prose-xs",
+                  "prose-h1:mb-0",
+                  "max-w-none"
+                )}
+              >
                 <Link
                   href="/bikinis/tops"
                   className={styles.categoryLink}
@@ -360,7 +344,7 @@ export default function Page({
                 className={clsx(styles.section, styles.sectionDescription)}
               >
                 <div
-                  className={clsx("prose", "prose-xs")}
+                  className={clsx("prose", "prose-xs", "max-w-none")}
                   dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
                 />
               </section>
@@ -505,7 +489,7 @@ export default function Page({
                   className={clsx(styles.image)}
                   fill
                   priority
-                  sizes={`(max-inline-size: ${theme.screens.xs.max}) 100vw,
+                  sizes={`(max-width: ${theme.screens.xs.max}) 100vw,
                       25vw`}
                   src={image.url}
                   title={product.title ?? IMAGE_TITLE_FALLBACK}

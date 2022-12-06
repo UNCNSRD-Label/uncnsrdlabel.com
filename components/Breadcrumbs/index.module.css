@@ -1,0 +1,5 @@
+.root {
+  @apply breadcrumbs fixed text-sm top-24 z-20;
+  inset-inline-end: var(--viewport-margin-inline);
+  display: none;
+}

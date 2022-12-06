@@ -9,7 +9,8 @@ import { request } from "graphql-request";
 
 import { graphql } from "#/gql";
 
-import { Layout } from "#/components/Layout";
+import Breadcrumbs from "#/components/Breadcrumbs";
+import Layout from "#/components/Layout";
 import ProductCard from "#/components/ProductCard";
 
 import {
@@ -41,7 +42,7 @@ export default function Page({
   data,
   errors,
 }: StorefrontApiResponseOk<ProductsQuery>) {
-  const { storeDomain } = useShop();
+  // const { storeDomain } = useShop();
 
   if (!data || errors) {
     console.error(errors);
@@ -51,25 +52,22 @@ export default function Page({
   return (
     <Layout showHeaderAndFooter={true}>
       <title>UNCNSRD - Home</title>
-      <header>
-        <Link
-          href="/experience"
-          className={styles.backLink}
-          title="Return to the experience page"
-        >
-          Title - {storeDomain}
-        </Link>
-        <h1 className={styles.title}>UNCNSRD</h1>
-      </header>
-      <section className={styles.copy}></section>
+      <Breadcrumbs>
+        <li>
+          <Link href="/" title="Return to the home page">
+            Home
+          </Link>
+        </li>
+        <li>Products</li>
+      </Breadcrumbs>
       <main className={clsx(styles.main)}>
         {data.products.nodes.map((node, index) => (
           <ProductCard key={index} data={node} />
         ))}
       </main>
-      <aside>
+      {/* <aside>
         <h2>Related Products</h2>
-      </aside>
+      </aside> */}
     </Layout>
   );
 }
@@ -81,12 +79,25 @@ const query = graphql(`
     }
     products(first: 8) {
       nodes {
-        # if you uncomment 'blah', it should have a GraphQL validation error in your IDE if you have a GraphQL plugin. It should also give an error during 'npm run dev'
-        # blah
+        availableForSale
+        description
         id
         title
         publishedAt
         handle
+        productType
+        publishedAt
+        vendor
+        priceRange {
+          maxVariantPrice {
+            amount
+            currencyCode
+          }
+          minVariantPrice {
+            amount
+            currencyCode
+          }
+        }
         variants(first: 1) {
           nodes {
             id

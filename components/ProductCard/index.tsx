@@ -1,13 +1,13 @@
 "use client";
 
 import type { Product } from "@shopify/hydrogen-react/storefront-api-types";
+import type { FC, HTMLAttributes } from "react";
 import type { PartialDeep } from "type-fest";
 
 import { ProductPrice } from "@shopify/hydrogen-react";
 import { clsx } from "clsx";
 import Image from "next/image";
 import Link from "next/link";
-import { FC } from "react";
 
 import {
   IMAGE_ALT_TEXT_FALLBACK,
@@ -19,7 +19,7 @@ import styles from "./index.module.css";
 
 type Props = {
   data: PartialDeep<Product, { recurseIntoArrays: true }>;
-} & React.HTMLAttributes<HTMLElement>;
+} & HTMLAttributes<HTMLElement>;
 
 export const Component: FC<Props> = ({ className, data }) => {
   const { handle, id, publishedAt, title, variants } = data;

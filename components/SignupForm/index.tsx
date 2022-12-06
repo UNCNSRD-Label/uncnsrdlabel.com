@@ -1,7 +1,9 @@
 "use client";
 
 import { clsx } from "clsx";
-import React, { useRef, FC, FormEvent, ReactNode } from "react";
+import type { FC, FormEvent, ReactNode } from "react";
+
+import { useRef } from "react";
 
 import styles from "./index.module.css";
 

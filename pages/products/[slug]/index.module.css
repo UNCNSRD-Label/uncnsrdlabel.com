@@ -1,28 +1,37 @@
 .article {
-  @apply grid;
+  grid-template-columns: var(--grid-template-columns, unset);
 
   @media screen and (min-width: theme(screens.md.min)) {
-    grid-template-columns: 2fr 2fr;
+    --grid-template-columns: 2fr 2fr;
   }
 
   @media screen and (min-width: theme(screens.lg.min)) {
-    grid-template-columns: 3fr 2fr;
+    --grid-template-columns: 3fr 2fr;
   }
+
+  @apply grid;
 
   .gallery {
     .steps {
       @apply sticky z-10;
+      height: 0;
+      overflow: visible;
       padding-inline-start: var(--viewport-margin-inline);
+      block-size: fit-content;
+      inline-size: fit-content;
       top: 50%;
       transform: translateY(-50%);
-      overflow: visible;
+
+      a {
+        cursor: pointer;
+      }
     }
 
     .figure {
       @apply snap-start;
       aspect-ratio: 3/4;
       position: relative;
-      width: 100%;
+      inline-size: 100%;
 
       &:global(.fitViewport) {
         background-color: red;
@@ -31,7 +40,6 @@
       &.model {
         background-color: hsl(var(--b2));
         contain: strict;
-        min-block-size: min(50vh, 40rem);
       }
 
       .image {
@@ -49,8 +57,6 @@
       scroll-behavior: smooth;
 
       @media screen and (max-width: theme(screens.sm.max)) {
-        @apply overflow-y-auto;
-        /* max-block-size: 75vh; */
         /* @NOTE: 133.33vw is equivalent to the 3/4 aspect ratio of the images in the gallery */
         /* @NOTE: 4rem is equivalent to the pt-16 and scroll-pt-16 values to offset the image below the header */
         max-block-size: calc(133.33vw + 4rem);
@@ -81,7 +87,7 @@
       }
 
       .header {
-        @apply pt-4 grid grid-flow-col gap-4 items-center;
+        @apply grid grid-flow-col gap-4 items-center justify-between pt-4 px-4;
 
         @media screen and (min-width: theme(screens.md.min)) {
           @apply py-6;
@@ -102,12 +108,18 @@
       }
 
       .section {
+        @apply prose prose-xs max-w-none;
+
         &.sectionActions {
-          @apply grid align-middle grid-flow-col justify-between gap-8 px-4 py-6;
+          @apply grid align-middle grid-flow-col justify-between gap-8 py-6;
         }
 
         &.sectionDescription {
-          @apply py-6;
+          @apply py-6 text-justify;
+        }
+
+        &:is(.sectionActions, .sectionDescription) {
+          @apply px-4;
         }
       }
 

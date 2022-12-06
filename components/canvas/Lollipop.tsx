@@ -6,8 +6,10 @@ source: https://sketchfab.com/3d-models/lollipop-1231d4a31e6c4e64845ca1fae0cf045
 title: Lollipop
 */
 
+import type { Ref } from "react";
+
+import { forwardRef } from "react";
 import * as THREE from "three";
-import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 
@@ -23,8 +25,8 @@ type GLTFResult = GLTF & {
 };
 
 // eslint-disable-next-line react/display-name
-export const Model = React.forwardRef(
-  (props: JSX.IntrinsicElements["group"], ref: React.Ref<THREE.Group>) => {
+export const Model = forwardRef(
+  (props: JSX.IntrinsicElements["group"], ref: Ref<THREE.Group>) => {
     const { nodes, materials } = useGLTF(
       "/models/lollipop/scene.gltf"
     ) as any as GLTFResult;

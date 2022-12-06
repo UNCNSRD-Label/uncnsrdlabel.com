@@ -1,6 +1,6 @@
 .container {
   display: grid;
-  min-height: 100vh;
+  min-block-size: 100vh;
 
   &.show_header_and_footer {
     grid-template-rows: auto 1fr auto;

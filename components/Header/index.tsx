@@ -1,18 +1,19 @@
+import type { FC, ReactNode } from "react";
+
 import { clsx } from "clsx";
 import Image from "next/image";
 import Link from "next/link";
-import React, { ReactNode } from "react";
 import { RiSearchLine, RiShoppingBag2Line, RiWomenLine } from "react-icons/ri";
 
 import styles from "./index.module.css";
 
 type Props = {
-  children?: React.ReactNode;
+  children?: ReactNode;
   className?: ReactNode;
   position?: "fixed" | "sticky";
 };
 
-export const Component: React.FC<Props> = ({
+export const Component: FC<Props> = ({
   children,
   className,
   position = "fixed",
@@ -45,6 +46,17 @@ export const Component: React.FC<Props> = ({
           </svg>
         </label>
       </div>
+      <nav className={styles.nav}>
+        <Link className={styles.link} href="/shop">
+          Shop
+        </Link>
+        <Link className={styles.link} href="/collection">
+          Collection
+        </Link>
+        <Link className={styles.link} href="/culture">
+          Culture
+        </Link>
+      </nav>
       <Link href="/" className={clsx(styles.logoContainer)}>
         <Image
           alt="UNCNSRD logo"
@@ -54,71 +66,55 @@ export const Component: React.FC<Props> = ({
           src="/images/logos/logotype.svg"
         />
       </Link>
-      <nav className={styles.nav}>
-        <Link href="/shop" className={styles.navLink}>
-          Shop
-        </Link>
-        <Link href="/collection" className={styles.navLink}>
-          Collection
-        </Link>
-        <Link href="/culture" className={styles.navLink}>
-          Culture
-        </Link>
-      </nav>
-      <menu className={clsx(styles.menu, "menu", "menu-horizontal")}>
-        <button
-          className={clsx(
-            "btn",
-            "btn-ghost",
-            "btn-circle",
-            "btn-xs",
-            "md:btn-sm",
-            "hidden",
-            "tablet:block"
-          )}
-        >
-          <RiSearchLine
-            aria-hidden="true"
-            className={clsx("icon")}
-            title="Search this site"
-          />
-          <span className={clsx("sr-only")}>Search this site</span>
-        </button>
-        <button
-          className={clsx(
-            "btn",
-            "btn-ghost",
-            "btn-circle",
-            "btn-xs",
-            "md:btn-sm"
-          )}
-        >
-          <RiWomenLine
-            aria-hidden="true"
-            className={clsx("icon")}
-            title="View my account"
-          />
-          <span className={clsx("sr-only")}>View my account</span>
-        </button>
-        <div className="indicator">
-          <span className="indicator-item badge badge-secondary">99+</span>
-          <button
-            className={clsx(
-              "btn",
-              "btn-ghost",
-              "btn-circle",
-              "btn-xs",
-              "md:btn-sm"
-            )}
-          >
+      <menu className={clsx(styles.actionsMenu)}>
+        <li>
+          <button className={clsx(styles.action, "hidden", "tablet:block")}>
+            <RiSearchLine
+              aria-hidden="true"
+              className={clsx("icon")}
+              title="Search this site"
+            />
+            <span className={clsx("sr-only")}>Search this site</span>
+          </button>
+        </li>
+        <li tabIndex={0}>
+          <Link href="/account" className={clsx(styles.action)}>
+            <RiWomenLine
+              aria-hidden="true"
+              className={clsx("icon")}
+              title="View my account"
+            />
+            <span className={clsx("sr-only")}>View my account</span>
+          </Link>
+          <ul className={clsx(styles.actionsSubMenu)}>
+            <li>
+              <Link href="/account" className={clsx(styles.link)}>
+                My account
+              </Link>
+            </li>
+            <li>
+              <Link href="/account/order" className={clsx(styles.link)}>
+                My orders
+              </Link>
+            </li>
+            <li>
+              <Link href="/account/wishlist" className={clsx(styles.link)}>
+                My wishlist
+              </Link>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <Link className={clsx(styles.action)} href="/account/bag">
             <RiShoppingBag2Line
               aria-hidden="true"
               className={clsx("icon")}
               title="View my shopping bag"
             />
             <span className={clsx("sr-only")}>View my shopping bag</span>
-          </button>
-        </div>
+            <span className={clsx(styles.indicator)}>3</span>
+          </Link>
+        </li>
       </menu>
     </header>
   );

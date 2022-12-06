@@ -1,21 +1,24 @@
 @keyframes filter-animation {
   0% {
-    filter: invert(50%) sepia(75%) saturate(2500%) brightness(120%) contrast(120%) hue-rotate(0deg);
+    filter: invert(50%) sepia(75%) saturate(2500%) brightness(120%)
+      contrast(120%) hue-rotate(0deg);
   }
-  
+
   50% {
-    filter: invert(50%) sepia(75%) saturate(2500%) brightness(120%) contrast(120%) hue-rotate(180deg);
+    filter: invert(50%) sepia(75%) saturate(2500%) brightness(120%)
+      contrast(120%) hue-rotate(180deg);
   }
-  
+
   100% {
-    filter: invert(50%) sepia(75%) saturate(2500%) brightness(120%) contrast(120%) hue-rotate(360deg);
+    filter: invert(50%) sepia(75%) saturate(2500%) brightness(120%)
+      contrast(120%) hue-rotate(360deg);
   }
 }
 
 .header {
   @apply z-30;
   display: grid;
-  grid-auto-flow: column;
+  grid-template-columns: 1fr auto 1fr; 
   padding-inline: var(--viewport-margin-inline);
 
   &.fixed {
@@ -36,29 +39,39 @@
 
   .logoImage {
     animation: filter-animation 10s infinite;
-    filter: invert(50%) sepia(75%) saturate(2500%) brightness(120%) contrast(120%) hue-rotate(360deg);
+    filter: invert(50%) sepia(75%) saturate(2500%) brightness(120%)
+      contrast(120%) hue-rotate(360deg);
   }
 }
 
-.menu {
-  @apply gap-2;
+.actionsMenu {
+  @apply gap-2 menu menu-horizontal justify-self-end;
 
   @media screen and (min-width: theme(screens.lg.min)) {
     @apply gap-4;
   }
+
+  .action {
+    @apply btn grid gap-2 grid-flow-col btn-circle btn-outline relative;
+
+    .indicator {
+      @apply absolute place-self-center indicator-item badge px-1;
+    }
+
+    .actionsSubMenu {
+      @apply glass;
+    }
+  }
 }
 
 .nav {
-  display: none;
-  gap: 3rem;
-  grid-auto-flow: column;
-  justify-content: center;
+  @apply btn-group;
 
-  @media screen and (min-width: theme(screens.lg.min)) {
-    display: grid;
+  @media screen and (max-width: theme(screens.lg.max)) {
+    display: none;
   }
 
-  @media screen and (max-width: theme(screens.sm.max)) {
-    order: -1;
+  .link {
+    @apply btn btn-ghost dark:bg-black;
   }
 }

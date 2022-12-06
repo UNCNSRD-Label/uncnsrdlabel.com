@@ -1,14 +1,16 @@
 "use client";
 
+import type { FC, RefAttributes } from "react";
+
 import { extend, useThree, useLoader, useFrame } from "@react-three/fiber";
-import React, { FC, useRef, useMemo } from "react";
+import { useRef, useMemo } from "react";
 import * as THREE from "three";
 import { Water } from "three-stdlib";
 
 extend({ Water });
 
 export const Component: FC<{
-  props: Omit<React.RefAttributes<typeof Water>, "src">;
+  props: Omit<RefAttributes<typeof Water>, "src">;
 }> = (props) => {
   const ref = useRef(null);
   const gl = useThree((state) => state.gl);
