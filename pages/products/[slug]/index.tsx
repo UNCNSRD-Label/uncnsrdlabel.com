@@ -219,20 +219,22 @@ export default function Page({
             id="galleryFeatured"
           >
             {/* @TODO: Add WAI-ARI */}
-            <menu className={clsx(styles.steps, "steps", "steps-vertical")}>
-              {product.images.nodes.slice(0, 2).map((image, index) => (
-                <Link
-                  key={index}
-                  href={`#galleryFeatured-${index}`}
-                  className="step"
-                >
-                  <span className={clsx("sr-only")}>Go to item {index}</span>
+            <div className={clsx(styles.stepsContainer)}>
+              <menu className={clsx(styles.steps, "steps", "steps-vertical")}>
+                {product.images.nodes.slice(0, 2).map((image, index) => (
+                  <Link
+                    key={index}
+                    href={`#galleryFeatured-${index}`}
+                    className="step"
+                  >
+                    <span className={clsx("sr-only")}>Go to item {index}</span>
+                  </Link>
+                ))}
+                <Link href={`#galleryFeatured-3`} className="step">
+                  <span className={clsx("sr-only")}>Go to item 3</span>
                 </Link>
-              ))}
-              <Link href={`#galleryFeatured-3`} className="step">
-                <span className={clsx("sr-only")}>Go to item 3</span>
-              </Link>
-            </menu>
+              </menu>
+            </div>
             {product.images.nodes.slice(0, 2).map((image, index) => (
               <figure
                 className={clsx(styles.figure)}
@@ -255,7 +257,7 @@ export default function Page({
               </figure>
             ))}
             <figure
-              className={clsx(styles.figure, styles.model, "fitViewportHeight")}
+              className={clsx(styles.figure, styles.model)}
               id={`galleryFeatured-3`}
             >
               <Suspense>

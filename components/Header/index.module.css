@@ -18,7 +18,7 @@
 .header {
   @apply z-30;
   display: grid;
-  grid-template-columns: 1fr auto 1fr; 
+  grid-template-columns: 1fr auto 1fr;
   padding-inline: var(--viewport-margin-inline);
 
   &.fixed {
@@ -32,10 +32,11 @@
 
 .logoContainer {
   aspect-ratio: 5/1;
+  block-size: 100%;
   display: grid;
   gap: 1rem;
+  max-inline-size: 50vw;
   position: relative;
-  block-size: 100%;
 
   .logoImage {
     animation: filter-animation 10s infinite;
@@ -47,15 +48,27 @@
 .actionsMenu {
   @apply gap-2 menu menu-horizontal justify-self-end;
 
+  @media screen and (max-width: theme(screens.md.max)) {
+    @apply hidden;
+  }
+
   @media screen and (min-width: theme(screens.lg.min)) {
     @apply gap-4;
   }
 
   .action {
-    @apply btn grid gap-2 grid-flow-col btn-circle btn-outline relative;
+    @apply btn btn-ghost grid gap-2 grid-flow-col relative place-items-center;
+
+    @media screen and (max-width: theme(screens.md.max)) {
+      @apply btn-xs;
+    }
+
+    @media screen and (min-width: theme(screens.lg.min)) {
+      /* @apply btn-lg btn-outline; */
+    }
 
     .indicator {
-      @apply absolute place-self-center indicator-item badge px-1;
+      @apply absolute place-self-center indicator-item pt-2;
     }
 
     .actionsSubMenu {
@@ -72,6 +85,6 @@
   }
 
   .link {
-    @apply btn btn-ghost dark:bg-black;
+    @apply btn btn-ghost;
   }
 }

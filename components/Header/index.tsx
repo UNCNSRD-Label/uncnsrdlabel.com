@@ -3,7 +3,7 @@ import type { FC, ReactNode } from "react";
 import { clsx } from "clsx";
 import Image from "next/image";
 import Link from "next/link";
-import { RiSearchLine, RiShoppingBag2Line, RiWomenLine } from "react-icons/ri";
+import { SlMagnifier, SlBag, SlUser } from "react-icons/sl";
 
 import styles from "./index.module.css";
 
@@ -68,8 +68,8 @@ export const Component: FC<Props> = ({
       </Link>
       <menu className={clsx(styles.actionsMenu)}>
         <li>
-          <button className={clsx(styles.action, "hidden", "tablet:block")}>
-            <RiSearchLine
+          <button className={clsx(styles.action)}>
+            <SlMagnifier
               aria-hidden="true"
               className={clsx("icon")}
               title="Search this site"
@@ -79,7 +79,7 @@ export const Component: FC<Props> = ({
         </li>
         <li tabIndex={0}>
           <Link href="/account" className={clsx(styles.action)}>
-            <RiWomenLine
+            <SlUser
               aria-hidden="true"
               className={clsx("icon")}
               title="View my account"
@@ -106,7 +106,7 @@ export const Component: FC<Props> = ({
         </li>
         <li>
           <Link className={clsx(styles.action)} href="/account/bag">
-            <RiShoppingBag2Line
+            <SlBag
               aria-hidden="true"
               className={clsx("icon")}
               title="View my shopping bag"
