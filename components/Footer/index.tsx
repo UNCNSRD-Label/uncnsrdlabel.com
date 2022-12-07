@@ -13,7 +13,7 @@ type Props = {
   className?: ReactNode;
 };
 
-export const Footer: FC<Props> = ({ children, className }) => {
+export const Component: FC<Props> = ({ children, className }) => {
   return (
     <footer className={clsx(styles.footer, className, "footer")}>
       <nav className={clsx(styles.nav, styles.legal)}>
@@ -58,4 +58,4 @@ export const Footer: FC<Props> = ({ children, className }) => {
   );
 };
 
-export default Footer;
+export default Component;

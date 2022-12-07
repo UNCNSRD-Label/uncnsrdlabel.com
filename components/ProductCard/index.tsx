@@ -18,11 +18,11 @@ import { theme } from "#/lib/constants/style";
 import styles from "./index.module.css";
 
 type Props = {
-  data: PartialDeep<Product, { recurseIntoArrays: true }>;
+  product: PartialDeep<Product, { recurseIntoArrays: true }>;
 } & HTMLAttributes<HTMLElement>;
 
-export const Component: FC<Props> = ({ className, data }) => {
-  const { handle, id, publishedAt, title, variants } = data;
+export const Component: FC<Props> = ({ className, product }) => {
+  const { handle, id, publishedAt, title, variants } = product;
 
   const image = variants?.nodes?.[0]?.image;
 
@@ -60,7 +60,7 @@ export const Component: FC<Props> = ({ className, data }) => {
           <h2 className={clsx(styles.heading, "card-title")} itemProp="name">
             {title}
           </h2>
-          <ProductPrice className={clsx(styles.price)} data={data} />
+          <ProductPrice className={clsx(styles.price)} data={product} />
         </header>
         <menu className={clsx(styles.menu, "card-actions", "justify-end")}>
           <Link

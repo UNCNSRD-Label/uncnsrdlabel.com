@@ -14,7 +14,7 @@ type Props = {
   showHeaderAndFooter?: boolean;
 };
 
-export const Layout: FC<Props> = ({
+export const Component: FC<Props> = ({
   children,
   constrainWidth = false,
   showHeaderAndFooter = true,
@@ -78,4 +78,4 @@ export const Layout: FC<Props> = ({
   );
 };
 
-export default Layout;
+export default Component;

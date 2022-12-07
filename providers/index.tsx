@@ -1,11 +1,14 @@
-import { useRouter } from "next/router";
 import { ReactNode } from "react";
 
 import ShopifyProvider from "./shopify";
 
-export default function Providers({ children }: { children: ReactNode }) {
-  const { locale } = useRouter();
-
+export default function Providers({
+  children,
+  locale,
+}: {
+  children: ReactNode;
+  locale?: string;
+}) {
   const storefrontToken =
     process.env.NEXT_PUBLIC_SHOPIFY_PUBLIC_STOREFRONT_TOKEN!;
   const storeDomain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!;

@@ -11,7 +11,7 @@ type Props = {
   url: string;
 };
 
-export const SocialIcon: FC<Props> = ({
+export const Component: FC<Props> = ({
   bgColor = `hsl(var(--p))`,
   fgColor = `hsl(var(--pc))`,
   size = 40,
@@ -27,4 +27,4 @@ export const SocialIcon: FC<Props> = ({
   );
 };
 
-export default SocialIcon;
+export default Component;

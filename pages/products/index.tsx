@@ -1,9 +1,9 @@
+import type { StorefrontApiResponseOk } from "@shopify/hydrogen-react";
 import type { GetServerSideProps } from "next";
 
 import type { ProductsQuery } from "#/gql/graphql";
 
 import { clsx } from "clsx";
-import { type StorefrontApiResponseOk, useShop } from "@shopify/hydrogen-react";
 import Link from "next/link";
 import { request } from "graphql-request";
 
@@ -23,17 +23,20 @@ import styles from "./index.module.css";
 
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
-    const response = await request({
-      url: getStorefrontApiUrl(),
-      document: query,
-      // @TODO: convert to 'getPrivateTokenHeaders({buyerIp})'
-      requestHeaders: getPublicTokenHeaders(),
+    const requestHeaders = getPublicTokenHeaders();
+    const url = getStorefrontApiUrl();
+
+    const data = await request({
+      url,
+      document,
+      // requestHeaders: getPrivateTokenHeaders({buyerIp}),
+      requestHeaders,
     });
 
     // @TODO I don't love how we do this with 'errors' and 'data'
-    return { props: { data: response, errors: null } };
+    return { props: { data, errors: null } };
   } catch (err) {
-    console.error(err);
+    console.error({ err });
     return { props: { data: null, errors: [(err as Error).toString()] } };
   }
 };
@@ -45,13 +48,13 @@ export default function Page({
   // const { storeDomain } = useShop();
 
   if (!data || errors) {
-    console.error(errors);
+    console.error({ errors });
     return <div>Whoops there was an error! Please refresh and try again.</div>;
   }
 
   return (
     <Layout showHeaderAndFooter={true}>
-      <title>UNCNSRD - Home</title>
+      <title>Collagerie - Home</title>
       <Breadcrumbs>
         <li>
           <Link href="/" title="Return to the home page">
@@ -62,7 +65,7 @@ export default function Page({
       </Breadcrumbs>
       <main className={clsx(styles.main)}>
         {data.products.nodes.map((node, index) => (
-          <ProductCard key={index} data={node} />
+          <ProductCard key={index} product={node} />
         ))}
       </main>
       {/* <aside>
@@ -72,7 +75,7 @@ export default function Page({
   );
 }
 
-const query = graphql(`
+const document = graphql(`
   query Products {
     shop {
       name

@@ -42,7 +42,7 @@ export const Component: FC<Props> = ({
 
     const result = await response.json();
 
-    console.log(result);
+    console.log({ result });
 
     if (signupFormRef.current) {
       if (result.status === 200) {

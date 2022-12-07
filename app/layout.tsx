@@ -17,17 +17,22 @@ const montserrat = Montserrat({
   weight: ["300", "400", "500", "600", "800"],
 });
 
-export default function RootLayout({
-  children,
-  constrainWidth = false,
-  showHeaderAndFooter = false,
-}: {
-  children: ReactNode;
-  constrainWidth?: boolean;
-  showHeaderAndFooter?: boolean;
-}) {
+export default function RootLayout(context) {
+  const {
+    children,
+    params,
+    constrainWidth = false,
+    showHeaderAndFooter = false,
+  }: {
+    children: ReactNode;
+    params: any;
+    constrainWidth?: boolean;
+    showHeaderAndFooter?: boolean;
+  } = context;
+  const locale = "en-GB";
+
   return (
-    <html lang="en" className={clsx(montserrat.variable, "fitViewport")}>
+    <html lang={locale} className={clsx(montserrat.variable, "fitViewport")}>
       <head />
       <body
         className={clsx(
@@ -36,13 +41,19 @@ export default function RootLayout({
           "fitViewport"
         )}
       >
-        {/* <Providers> */}
-        {showHeaderAndFooter && <Header data-constrainWidth={constrainWidth} />}
-        <main className={clsx(styles.main, constrainWidth && "constrainWidth")}>
-          {children}
-        </main>
-        {showHeaderAndFooter && <Footer data-constrainWidth={constrainWidth} />}
-        {/* </Providers> */}
+        <Providers locale={locale}>
+          {showHeaderAndFooter && (
+            <Header data-constrainWidth={constrainWidth} />
+          )}
+          <main
+            className={clsx(styles.main, constrainWidth && "constrainWidth")}
+          >
+            {children}
+          </main>
+          {showHeaderAndFooter && (
+            <Footer data-constrainWidth={constrainWidth} />
+          )}
+        </Providers>
       </body>
     </html>
   );
