@@ -18,7 +18,7 @@
 .header {
   @apply z-30;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 1fr 1fr 1fr;
   padding-inline: var(--viewport-margin-inline);
 
   &.fixed {
