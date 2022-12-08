@@ -17,7 +17,7 @@ const montserrat = Montserrat({
   weight: ["300", "400", "500", "600", "800"],
 });
 
-export default function RootLayout(context) {
+export default function RootLayout(context: any) {
   const {
     children,
     params,
