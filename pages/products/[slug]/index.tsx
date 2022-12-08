@@ -10,13 +10,12 @@ import { useRouter } from "next/router";
 import Layout from "#/components/Layout";
 import ProductDetails from "#/components/ProductDetails";
 
-import { graphql } from "#/gql";
-
 import {
   getStorefrontApiUrl,
   getPublicTokenHeaders,
-  getPrivateTokenHeaders,
 } from "#/src/shopify-client";
+
+import document from "./index.graphql";
 
 import styles from "./index.module.css";
 
@@ -86,109 +85,3 @@ export default function Page({
     </Layout>
   );
 }
-
-const document = graphql(`
-  query Product($slug: String!) {
-    product(handle: $slug) {
-      id
-      handle
-      availableForSale
-      title
-      productType
-      publishedAt
-      vendor
-      description
-      descriptionHtml
-      # hasOnlyDefaultVariant
-      # productCategory {
-      #   fullName
-      #   isLeaf
-      #   isRoot
-      #   name
-      # }
-      # productType
-      # status
-      # templateSuffix
-      seo {
-        title
-        description
-      }
-      options {
-        id
-        name
-        values
-      }
-      priceRange {
-        maxVariantPrice {
-          amount
-          currencyCode
-        }
-        minVariantPrice {
-          amount
-          currencyCode
-        }
-      }
-      variants(first: 32) {
-        pageInfo {
-          hasNextPage
-          hasPreviousPage
-        }
-        nodes {
-          barcode
-          id
-          title
-          sku
-          availableForSale
-          currentlyNotInStock
-          quantityAvailable
-          requiresShipping
-          selectedOptions {
-            name
-            value
-          }
-          price {
-            amount
-            currencyCode
-          }
-          title
-        }
-      }
-      images(first: 32) {
-        nodes {
-          altText
-          height
-          url
-          width
-        }
-      }
-      # media {
-      #   nodes {
-      #     alt
-      #     mediaContentType
-      #     preview {
-      #       status
-      #       image {
-      #         altText
-      #         height
-      #         url
-      #         width
-      #       }
-      #     }
-      #     status
-      #   }
-      # }
-      # externalUrl: metafield(namespace: "custom_fields", key: "url") {
-      #   value
-      # }
-      # styleTrick: metafield(namespace: "custom_fields", key: "style_trick") {
-      #   value
-      # }
-      # styleTrickAuthor: metafield(
-      #   namespace: "custom_fields"
-      #   key: "style_trick_author"
-      # ) {
-      #   value
-      # }
-    }
-  }
-`);

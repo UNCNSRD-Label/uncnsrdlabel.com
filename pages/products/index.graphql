@@ -1,0 +1,39 @@
+query Products {
+  shop {
+    name
+  }
+  products(first: 8) {
+    nodes {
+      availableForSale
+      description
+      handle
+      id
+      priceRange {
+        maxVariantPrice {
+          amount
+          currencyCode
+        }
+        minVariantPrice {
+          amount
+          currencyCode
+        }
+      }
+      productType
+      publishedAt
+      publishedAt
+      title
+      variants(first: 1) {
+        nodes {
+          id
+          image {
+            altText
+            height
+            url
+            width
+          }
+        }
+      }
+      vendor
+    }
+  }
+}

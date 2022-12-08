@@ -7,8 +7,6 @@ import { clsx } from "clsx";
 import Link from "next/link";
 import { request } from "graphql-request";
 
-import { graphql } from "#/gql";
-
 import Breadcrumbs from "#/components/Breadcrumbs";
 import Layout from "#/components/Layout";
 import ProductCard from "#/components/ProductCard";
@@ -16,8 +14,9 @@ import ProductCard from "#/components/ProductCard";
 import {
   getStorefrontApiUrl,
   getPublicTokenHeaders,
-  // getPrivateTokenHeaders,
 } from "#/src/shopify-client";
+
+import document from './index.graphql';
 
 import styles from "./index.module.css";
 
@@ -74,45 +73,3 @@ export default function Page({
     </Layout>
   );
 }
-
-const document = graphql(`
-  query Products {
-    shop {
-      name
-    }
-    products(first: 8) {
-      nodes {
-        availableForSale
-        description
-        id
-        title
-        publishedAt
-        handle
-        productType
-        publishedAt
-        vendor
-        priceRange {
-          maxVariantPrice {
-            amount
-            currencyCode
-          }
-          minVariantPrice {
-            amount
-            currencyCode
-          }
-        }
-        variants(first: 1) {
-          nodes {
-            id
-            image {
-              url
-              altText
-              width
-              height
-            }
-          }
-        }
-      }
-    }
-  }
-`);
