@@ -5,20 +5,14 @@ import type {
   ProductVariant,
 } from "@shopify/hydrogen-react/storefront-api-types";
 import type { FC, ReactNode } from "react";
+import type { PartialDeep } from "type-fest";
 
 import { Stage } from "@react-three/drei";
-import {
-  AddToCartButton,
-  ProductPrice,
-  ProductProvider,
-} from "@shopify/hydrogen-react";
+import { ProductPrice, ProductProvider } from "@shopify/hydrogen-react";
 import { clsx } from "clsx";
 import Image from "next/image";
 import Link from "next/link";
-import Script from "next/script";
 import { Suspense } from "react";
-import { RiHeartAddLine } from "react-icons/ri";
-import type { PartialDeep } from "type-fest";
 
 import {
   IMAGE_ALT_TEXT_FALLBACK,
@@ -26,7 +20,8 @@ import {
 } from "#/lib/constants/messages";
 import { theme } from "#/lib/constants/style";
 
-import Breadcrumbs from "#/components/Breadcrumbs";
+import ProductForm from "#/components/ProductForm";
+
 import FemaleSportswear2 from "#/components/canvas/FemaleSportswear2";
 import Scene from "#/components/canvas/Scene";
 
@@ -39,132 +34,13 @@ type Props = {
   url: string;
 };
 
-export const Layout: FC<Props> = ({ children, className, product, url }) => {
+export const Component: FC<Props> = ({ children, className, product, url }) => {
   if (!product) {
     return <div>Whoops there was an error! Please refresh and try again.</div>;
   }
 
-  // @TODO: Use useEffect to set the current variant dynamically via UI input
-  // const images = variants.nodes?.[0].image;
-
-  const getAvailability = (
-    variant?: PartialDeep<
-      Pick<
-        ProductVariant,
-        "availableForSale" | "currentlyNotInStock" | "quantityAvailable"
-      >,
-      { recurseIntoArrays: true }
-    >
-  ) => {
-    if (!variant?.availableForSale) {
-      return false;
-    }
-
-    let availability = "PreOrder";
-
-    if (variant?.currentlyNotInStock) {
-      availability = "OutOfStock";
-    }
-
-    if (variant?.quantityAvailable) {
-      availability = "LimitedAvailability";
-    }
-
-    if (variant?.availableForSale) {
-      availability = "InStock";
-    }
-
-    return `https://schema.org/${availability}`;
-  };
-
   return (
     <ProductProvider data={product}>
-      <Script
-        type="application/ld+json"
-        id={product.handle}
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Product",
-            identifier: product.id,
-            datePublished: product.publishedAt,
-            name: product.title,
-            description: product.description,
-            image: product.images?.nodes?.[0]?.url,
-            brand: product.vendor,
-            url,
-            offers: {
-              "@type": "AggregateOffer",
-              offerCount: 1,
-              offers: [
-                product.variants?.nodes?.map((variant, index) => ({
-                  "@type": "Offer",
-                  url,
-                  title: variant?.title,
-                  priceCurrency: variant?.price?.currencyCode,
-                  price: variant?.price?.amount,
-                  availability: getAvailability(variant),
-                  itemCondition: "https://schema.org/NewCondition",
-                })),
-              ],
-            },
-          }),
-        }}
-      />
-      <title>{product.seo?.title || "Collagerie"}</title>
-      <meta name="description" content={product.seo?.description!} />
-
-      {/* <link rel="canonical" href={url} /> */}
-      {/* <link rel="alternate" hrefLang="x-default" href={`${process.env.NEXT_PUBLIC_VERCEL_URL}${defaultLocale}${pathname}`} /> */}
-      {/* {locales?.map((locale) => (
-    <link
-      key={`hrefLang=${locale}`}
-      rel="alternate"
-      hrefLang={locale}
-      href={`${process.env.NEXT_PUBLIC_VERCEL_URL}${locale}${pathname}`}
-    />
-  ))} */}
-      {/* <link rel="alternate" type="application/json+oembed" href={`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/oembed${pathname}`} /> */}
-
-      <meta property="og:url" content={url} />
-      <meta property="og:title" content={product.seo?.title!} />
-      <meta property="og:type" content="product" />
-      <meta property="og:description" content={product.seo?.description!} />
-      <meta property="og:image" content={product.images?.nodes?.[0]?.url} />
-      <meta
-        property="og:image:secure_url"
-        content={product.images?.nodes?.[0]?.url}
-      />
-      <meta property="og:image:width" content="1400" />
-      <meta property="og:image:height" content="2625" />
-      <meta
-        property="og:price:amount"
-        content={product.priceRange?.minVariantPrice?.amount}
-      />
-      <meta
-        property="og:price:currency"
-        content={product.priceRange?.minVariantPrice?.currencyCode}
-      />
-
-      <meta name="twitter:site" content="@Collagerie" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={product.seo?.title!} />
-      <meta name="twitter:description" content={product.seo?.description!} />
-
-      <Breadcrumbs>
-        <li>
-          <Link href="/" title="Return to the home page">
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link href="/products" title="Return to the products page">
-            Products
-          </Link>
-        </li>
-        <li>{product.title}</li>
-      </Breadcrumbs>
-
       <article className={clsx(styles.article)}>
         <section
           className={clsx(styles.gallery, styles.galleryFeatured)}
@@ -248,6 +124,7 @@ export const Layout: FC<Props> = ({ children, className, product, url }) => {
         </section>
         <div className={clsx(styles.stickyContainer)}>
           <section className={clsx(styles.details)}>
+            {/* <form onSubmit={handleSubmit(onSubmit)}> */}
             <header
               className={clsx(
                 styles.header,
@@ -267,52 +144,18 @@ export const Layout: FC<Props> = ({ children, className, product, url }) => {
               <h1 className={clsx(styles.heading)}>{product.title}</h1>
               <ProductPrice className={clsx(styles.price)} data={product} />
             </header>
-            <section
-              className={clsx(
-                styles.section,
-                "not-prose",
-                "dropdown",
-                "dropdown-top",
-                "dropdown-hover"
-              )}
-            >
-              <select className="select select-ghost w-full">
-                <option disabled defaultValue="S">
-                  Select size
-                </option>
-                <option>XS</option>
-                <option>S</option>
-                <option>M</option>
-                <option>L</option>
-                <option>XL</option>
-              </select>
-            </section>
-            <section className={clsx(styles.section, styles.sectionActions)}>
-              <AddToCartButton
-                className={clsx("btn", "btn-primary", "lg:btn-wide")}
-              >
-                Add to bag
-              </AddToCartButton>
-              <button
-                className={clsx("btn", "btn-circle", "btn-outline", "gap-2")}
-              >
-                <RiHeartAddLine
-                  aria-hidden="true"
-                  className={clsx("icon")}
-                  title="Add to wishlist"
-                />
-                <span className={clsx("sr-only")}>Add to wishlist</span>
-              </button>
-            </section>
+            <ProductForm product={product} url={url} />
             {product.descriptionHtml && (
               <section
-                className={clsx(styles.section, styles.sectionDescription)}
-              >
-                <div
-                  className={clsx("prose", "prose-xs", "max-w-none")}
-                  dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
-                />
-              </section>
+                className={clsx(
+                  styles.section,
+                  styles.sectionDescription,
+                  "prose",
+                  "prose-xs",
+                  "max-w-none"
+                )}
+                dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
+              />
             )}
             <section
               className={clsx(
@@ -475,4 +318,4 @@ export const Layout: FC<Props> = ({ children, className, product, url }) => {
   );
 };
 
-export default Layout;
+export default Component;

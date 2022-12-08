@@ -114,37 +114,18 @@
         .categoryLink {
           display: none;
         }
-
-        .heading {
-        }
-
-        .price {
-        }
-
-        .description {
-        }
       }
 
       .section {
         @apply prose prose-xs max-w-none;
 
         &.sectionActions {
-          @apply grid align-middle grid-flow-col justify-between gap-8 py-6;
+          @apply grid align-middle grid-flow-col justify-between gap-8 px-4 py-6;
         }
 
         &.sectionDescription {
-          @apply py-6 text-justify;
+          @apply px-4 py-6 text-justify;
         }
-
-        &:is(.sectionActions, .sectionDescription) {
-          @apply px-4;
-        }
-      }
-
-      .title {
-      }
-
-      .copy {
       }
     }
   }
