@@ -1,11 +1,17 @@
 .section {
-  @apply prose prose-xs max-w-none px-4 py-6 grid;
+  @apply prose prose-xs max-w-none py-6 grid;
 
   &.sectionOptions {
     @apply gap-8;
+
+    .label {
+      .text {
+        @apply px-4;
+      }
+    }
   }
 
   &.sectionActions {
-    @apply grid-flow-col justify-between gap-8;
+    @apply grid-flow-col justify-between gap-8 px-4;
   }
 }

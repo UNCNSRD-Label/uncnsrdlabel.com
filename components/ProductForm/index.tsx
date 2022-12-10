@@ -4,7 +4,8 @@ import type {
   Product,
   ProductVariant,
 } from "@shopify/hydrogen-react/storefront-api-types";
-import type { FC, ReactNode } from "react";
+import type { ChangeEventHandler, FC, ReactNode } from "react";
+import type { PartialDeep } from "type-fest";
 
 import {
   useProduct,
@@ -13,26 +14,68 @@ import {
   ShopPayButton,
 } from "@shopify/hydrogen-react";
 import { clsx } from "clsx";
+import Router from "next/router";
 import Script from "next/script";
+import { useEffect, useCallback, useState } from "react";
 import { RiHeartAddLine } from "react-icons/ri";
-import type { PartialDeep } from "type-fest";
+import { useQueryParam, StringParam, withDefault } from "use-query-params";
 
 import styles from "./index.module.css";
 
 type Props = {
   children?: ReactNode;
   className?: ReactNode;
+  path: string;
   product: PartialDeep<Product, { recurseIntoArrays: true }>;
-  url: string;
 };
 
-export const Component: FC<Props> = ({ children, className, product, url }) => {
+export const Component: FC<Props> = ({
+  children,
+  className,
+  path,
+  product,
+}) => {
+  // const { pathname, search } = useUrl();
+  // const [params, setParams] = useState(new URLSearchParams(search));
+
   const { options, setSelectedOption, selectedOptions, selectedVariant } =
     useProduct();
 
-  console.log({ options, selectedVariant });
+  const [color, setColor] = useQueryParam(
+    "color",
+    withDefault(StringParam, "")
+  );
+  const [size, setSize] = useQueryParam("size", withDefault(StringParam, ""));
+
+  // useEffect(() => {
+  //   options?.map(({ name, values }) => {
+  //     if (!params) return;
+  //     const currentValue = params.get(name.toLowerCase()) || null;
+  //     if (currentValue) {
+  //       const matchedValue = values.filter(
+  //         (value) => encodeURIComponent(value.toLowerCase()) === currentValue
+  //       );
+  //       setSelectedOption(name, matchedValue[0]);
+  //     } else {
+  //       params.set(
+  //         encodeURIComponent(name.toLowerCase()),
+  //         encodeURIComponent(selectedOptions![name]!.toLowerCase())
+  //       ),
+  //       window.history.replaceState(
+  //         null,
+  //         "",
+  //         `${pathname}?${params.toString()}`
+  //       );
+  //     }
+  //   });
+  // }, [options, params, pathname, selectedOptions, setSelectedOption]);
+
+  // console.log({ options, selectedVariant });
+
+  const url = `${process.env.NEXT_PUBLIC_VERCEL_URL}${path}`;
 
   const isOutOfStock = !selectedVariant?.availableForSale || false;
+
   let isOnSale = false;
 
   if (
@@ -74,8 +117,24 @@ export const Component: FC<Props> = ({ children, className, product, url }) => {
     return `https://schema.org/${availability}`;
   };
 
+  const handleOptionChange = useCallback<ChangeEventHandler<HTMLSelectElement>>(
+    (event) => {
+      if (event.target.name === "Color") {
+        setColor(event.target.value);
+      }
+
+      if (event.target.name === "Size") {
+        setSize(event.target.value);
+      }
+
+      setSelectedOption(event.target.name, event.target.value);
+    },
+    [setColor, setSelectedOption, setSize]
+  );
+
   return (
     <>
+      {/* TODO: Update schema.org data when selecting variant via */}
       {/* <Script
         type="application/ld+json"
         id={product.handle}
@@ -118,27 +177,49 @@ export const Component: FC<Props> = ({ children, className, product, url }) => {
           "dropdown-hover"
         )}
       >
-        {options?.map((option, optionIndex) => (
-          <label key={`${option?.name}-${optionIndex}`}>
-            <span>{option?.name}</span>
-            <select className="select select-ghost w-full" defaultValue="S">
-              <option disabled>Select {option?.name}</option>
-              {option?.values?.map((value, valueIndex) => (
-                <option key={`${option.name}-${optionIndex}-${valueIndex}`}>
-                  {value}
-                </option>
-              ))}
-            </select>
-          </label>
-        ))}
+        {options?.map((option, optionIndex) => {
+          if (option?.values?.length === 1) {
+            return null;
+          }
+
+          return (
+            <label
+              key={`${option?.name}-${optionIndex}`}
+              className={clsx(styles.label)}
+            >
+              <span className={clsx(styles.text, "text-base")}>
+                {option?.name}
+              </span>
+              <select
+                className="select select-ghost w-full mt-1"
+                name={option?.name}
+                onChange={handleOptionChange}
+              >
+                <option disabled>Select {option?.name}</option>
+                {option?.values?.map((value, valueIndex) => (
+                  <option key={`${option.name}-${optionIndex}-${valueIndex}`}>
+                    {value}
+                  </option>
+                ))}
+              </select>
+            </label>
+          );
+        })}
+
+        <pre>{JSON.stringify(selectedOptions)}</pre>
       </section>
       <section className={clsx(styles.section, styles.sectionActions)}>
         <AddToCartButton
+          accessibleAddingToCartLabel="Adding item to your cart"
           className={clsx(
             "btn",
             `btn-${isOutOfStock ? "secondary" : "primary"}`,
             "lg:btn-wide"
           )}
+          disabled={isOutOfStock}
+          quantity={1}
+          type="button"
+          variantId={selectedVariant?.id}
         >
           {isOutOfStock ? (
             <span>Sold out</span>
@@ -163,6 +244,12 @@ export const Component: FC<Props> = ({ children, className, product, url }) => {
             </span>
           )}
         </AddToCartButton>
+        {!isOutOfStock && (
+          <ShopPayButton
+            className="flex items-center"
+            variantIds={[selectedVariant.id!]}
+          />
+        )}
         <button className={clsx("btn", "btn-circle", "btn-outline", "gap-2")}>
           <RiHeartAddLine
             aria-hidden="true"

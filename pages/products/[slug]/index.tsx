@@ -6,6 +6,7 @@ import type { ProductQuery } from "#/gql/graphql";
 import { clsx } from "clsx";
 import { request } from "graphql-request";
 import { useRouter } from "next/router";
+import { createRef } from "react";
 
 import Layout from "#/components/Layout";
 import ProductDetails from "#/components/ProductDetails";
@@ -48,7 +49,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       variables,
     });
 
-    // @TODO I don't love how we do this with 'errors' and 'data'
+    // TODO I don't love how we do this with 'errors' and 'data'
     return { props: { data, errors: null } };
   } catch (err) {
     console.error({ err });
@@ -60,7 +61,9 @@ export default function Page({
   data,
   errors,
 }: StorefrontApiResponseOk<ProductQuery>) {
-  const { pathname } = useRouter();
+  const { asPath, pathname } = useRouter();
+
+  const scrollingElement = createRef<HTMLDivElement>();
 
   if (!data || errors) {
     console.error({ errors });
@@ -74,10 +77,11 @@ export default function Page({
   }
 
   return (
-    <Layout showHeaderAndFooter={true}>
+    <Layout ref={scrollingElement} showHeaderAndFooter={true}>
       <ProductDetails
+        path={asPath}
         product={product}
-        url={`${process.env.NEXT_PUBLIC_VERCEL_URL}${pathname}`}
+        scrollingElement={scrollingElement}
       />
       <aside className={clsx(styles.aside)}>
         <h2>Related Products</h2>

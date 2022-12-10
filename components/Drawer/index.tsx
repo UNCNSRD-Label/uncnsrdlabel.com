@@ -1,67 +1,35 @@
-import type { FC, ReactNode } from "react";
+"use client";
 
+// import type { Product } from "@shopify/hydrogen-react/storefront-api-types";
+import type { FC, HTMLAttributes } from "react";
+// import type { PartialDeep } from "type-fest";
+
+// import { ProductPrice } from "@shopify/hydrogen-react";
 import { clsx } from "clsx";
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 import { SlMagnifier, SlBag, SlUser } from "react-icons/sl";
 
 import styles from "./index.module.css";
 
 type Props = {
-  className?: ReactNode;
-  position?: "fixed" | "sticky";
-};
+  // product: PartialDeep<Product, { recurseIntoArrays: true }>;
+} & HTMLAttributes<HTMLElement>;
 
-export const Component: FC<Props> = ({ className, position = "fixed" }) => {
+export const Component: FC<Props> = ({ className }) => {
   return (
-    <header
-      className={clsx(
-        styles.header,
-        position,
-        "w-full",
-        "justify-between",
-        "navbar",
-        className
-      )}
-    >
-      <div className="flex-none desktop:hidden">
-        <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            className="inline-block w-6 h-6 stroke-current"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            ></path>
-          </svg>
-        </label>
-      </div>
-      <nav className={styles.nav}>
-        <Link className={styles.link} href="/shop">
-          Shop
-        </Link>
-        <Link className={styles.link} href="/collection">
-          Collection
-        </Link>
-        <Link className={styles.link} href="/culture">
-          Culture
-        </Link>
-      </nav>
-      <Link href="/" className={clsx(styles.logoContainer)}>
-        <Image
-          alt="UNCNSRD logo"
-          className={styles.logoImage}
-          fill
-          sizes="(max-width: 320px) 100vw, (max-width: 768px) 50vw, (max-width: 1200px) 30vw, 20vw"
-          src="/images/logos/logotype.svg"
-        />
-      </Link>
-      <menu className={clsx(styles.actionsMenu)}>
+    <div className={clsx(styles.root, className, "drawer-side")}>
+      <label htmlFor="drawerContents" className="drawer-overlay"></label>
+      <menu
+        className={clsx(
+          styles.actionsMenu,
+          "menu",
+          "p-4",
+          "w-80",
+          "bg-base-100"
+        )}
+        id="drawerContents"
+      >
         <li>
           <button className={clsx(styles.action)}>
             <SlMagnifier
@@ -111,7 +79,7 @@ export const Component: FC<Props> = ({ className, position = "fixed" }) => {
           </Link>
         </li>
       </menu>
-    </header>
+    </div>
   );
 };
 

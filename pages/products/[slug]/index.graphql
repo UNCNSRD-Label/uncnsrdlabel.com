@@ -1,24 +1,37 @@
 query Product($slug: String!) {
   product(handle: $slug) {
-    id
-    handle
     availableForSale
-    title
+    descriptionHtml
+    handle
+    id
     productType
     publishedAt
+    title
     vendor
-    description
-    descriptionHtml
-    # hasOnlyDefaultVariant
-    # productCategory {
-    #   fullName
-    #   isLeaf
-    #   isRoot
-    #   name
+    images(first: 16) {
+      nodes {
+        altText
+        height
+        url
+        width
+      }
+    }
+    # media {
+    #   nodes {
+    #     alt
+    #     mediaContentType
+    #     preview {
+    #       status
+    #       image {
+    #         altText
+    #         height
+    #         url
+    #         width
+    #       }
+    #     }
+    #     status
+    #   }
     # }
-    # productType
-    # status
-    # templateSuffix
     options {
       id
       name
@@ -34,11 +47,12 @@ query Product($slug: String!) {
         currencyCode
       }
     }
+    productType
     seo {
       description
       title
     }
-    variants(first: 32) {
+    variants(first: 16) {
       pageInfo {
         hasNextPage
         hasPreviousPage
@@ -63,41 +77,18 @@ query Product($slug: String!) {
         title
       }
     }
-    images(first: 32) {
-      nodes {
-        altText
-        height
-        url
-        width
-      }
-    }
-    # media {
-    #   nodes {
-    #     alt
-    #     mediaContentType
-    #     preview {
-    #       status
-    #       image {
-    #         altText
-    #         height
-    #         url
-    #         width
-    #       }
-    #     }
-    #     status
-    #   }
-    # }
-    # externalUrl: metafield(namespace: "custom_fields", key: "url") {
-    #   value
-    # }
     # styleTrick: metafield(namespace: "custom_fields", key: "style_trick") {
     #   value
     # }
-    # styleTrickAuthor: metafield(
-    #   namespace: "custom_fields"
-    #   key: "style_trick_author"
-    # ) {
-    #   value
-    # }
+    metafields(
+      identifiers: [
+        { namespace: "your-namespace", key: "your-key" }
+        { namespace: "your-namespace", key: "your-key" }
+      ]
+    ) {
+      key
+      namespace
+      type
+    }
   }
 }

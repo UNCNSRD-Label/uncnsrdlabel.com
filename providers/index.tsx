@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 
+import NextQueryParamsProvider from "./next-query-params";
 import ShopifyProvider from "./shopify";
 
 export default function Providers({
@@ -23,6 +24,8 @@ export default function Providers({
   };
 
   return (
-    <ShopifyProvider shopifyConfig={shopifyConfig}>{children}</ShopifyProvider>
+    <ShopifyProvider shopifyConfig={shopifyConfig}>
+      <NextQueryParamsProvider>{children}</NextQueryParamsProvider>
+    </ShopifyProvider>
   );
 }

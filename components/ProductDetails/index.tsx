@@ -1,18 +1,13 @@
 "use client";
 
-import type {
-  Product,
-  ProductVariant,
-} from "@shopify/hydrogen-react/storefront-api-types";
-import type { FC, ReactNode } from "react";
+import type { Product } from "@shopify/hydrogen-react/storefront-api-types";
+import type { FC, ReactNode, Ref } from "react";
 import type { PartialDeep } from "type-fest";
 
-import { Stage } from "@react-three/drei";
 import { ProductPrice, ProductProvider } from "@shopify/hydrogen-react";
 import { clsx } from "clsx";
 import Image from "next/image";
 import Link from "next/link";
-import { Suspense } from "react";
 
 import {
   IMAGE_ALT_TEXT_FALLBACK,
@@ -20,111 +15,38 @@ import {
 } from "#/lib/constants/messages";
 import { theme } from "#/lib/constants/style";
 
+import FeaturedMediaGallery from "#/components/FeaturedMediaGallery";
 import ProductForm from "#/components/ProductForm";
-
-import FemaleSportswear2 from "#/components/canvas/FemaleSportswear2";
-import Scene from "#/components/canvas/Scene";
 
 import styles from "./index.module.css";
 
 type Props = {
-  children?: ReactNode;
   className?: ReactNode;
+  path: string;
   product: PartialDeep<Product, { recurseIntoArrays: true }>;
-  url: string;
+  scrollingElement: Ref<HTMLDivElement>;
 };
 
-export const Component: FC<Props> = ({ children, className, product, url }) => {
+export const Component: FC<Props> = ({
+  className,
+  path,
+  product,
+  scrollingElement,
+}) => {
   if (!product) {
     return <div>Whoops there was an error! Please refresh and try again.</div>;
   }
 
   return (
     <ProductProvider data={product}>
-      <article className={clsx(styles.article)}>
-        <section
-          className={clsx(styles.gallery, styles.galleryFeatured)}
-          id="galleryFeatured"
-        >
-          {/* @TODO: Add WAI-ARI */}
-          <div className={clsx(styles.stepsContainer)}>
-            <menu className={clsx(styles.steps, "steps", "steps-vertical")}>
-              {product.images?.nodes?.slice(0, 2)?.map((image, index) => (
-                <Link
-                  key={index}
-                  href={`#galleryFeatured-${index}`}
-                  className="step"
-                >
-                  <span className={clsx("sr-only")}>Go to image {index}</span>
-                </Link>
-              ))}
-              <Link href={`#galleryFeatured-model`} className="step">
-                <span className={clsx("sr-only")}>Go to model</span>
-              </Link>
-            </menu>
-          </div>
-          {product.images?.nodes
-            ?.slice(0, 2)
-            ?.filter(Boolean)
-            .map((image, index) => {
-              if (!image?.url) {
-                return;
-              }
-
-              return (
-                <figure
-                  className={clsx(styles.figure)}
-                  id={`galleryFeatured-${index}`}
-                  key={index}
-                >
-                  <Image
-                    alt={image?.altText ?? IMAGE_ALT_TEXT_FALLBACK}
-                    className={clsx(styles.image)}
-                    fill
-                    priority
-                    sizes={`(max-width: ${theme.screens.xs.max}) 100vw,
-                    25vw`}
-                    src={image?.url}
-                    title={product.title ?? IMAGE_TITLE_FALLBACK}
-                  />
-                  <figcaption className={clsx(styles.figcaption)}>
-                    Featured image for {product.title}
-                  </figcaption>
-                </figure>
-              );
-            })}
-
-          <figure
-            className={clsx(styles.figure, styles.model)}
-            id={`galleryFeatured-model`}
-          >
-            <Suspense>
-              <Scene>
-                <Stage
-                  adjustCamera={0.5}
-                  // environment="dawn"
-                  environment="warehouse"
-                  intensity={0.5}
-                  preset="portrait"
-                  shadows="contact"
-                >
-                  <FemaleSportswear2
-                    castShadow
-                    receiveShadow
-                    position={[0, 0, 0]}
-                    rotation={[0, Math.PI / 4, 0]}
-                  />
-                </Stage>
-              </Scene>
-            </Suspense>
-            <figcaption className={clsx(styles.figcaption)}>
-              3D model view for {product.title}
-            </figcaption>
-          </figure>
-        </section>
+      <article className={clsx(styles.article, className)}>
+        <FeaturedMediaGallery
+          className={clsx(styles.featuredMediaGallery)}
+          product={product}
+          scrollingElement={scrollingElement}
+        />
         <div className={clsx(styles.stickyContainer)}>
           <section className={clsx(styles.details)}>
-            {/* <form onSubmit={handleSubmit(onSubmit)}> */}
             <header
               className={clsx(
                 styles.header,
@@ -135,16 +57,16 @@ export const Component: FC<Props> = ({ children, className, product, url }) => {
               )}
             >
               <Link
-                href="/bikinis/tops"
+                href={`/categories/${product.productType}`}
                 className={styles.categoryLink}
                 title="Go to category page"
               >
-                Bikini Tops
+                {product.productType}
               </Link>
-              <h1 className={clsx(styles.heading)}>{product.title}</h1>
+              <h1 className={clsx(styles.title)}>{product.title}</h1>
               <ProductPrice className={clsx(styles.price)} data={product} />
             </header>
-            <ProductForm product={product} url={url} />
+            <ProductForm path={path} product={product} />
             {product.descriptionHtml && (
               <section
                 className={clsx(

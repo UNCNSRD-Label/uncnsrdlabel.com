@@ -6,6 +6,7 @@ import type { ProductsQuery } from "#/gql/graphql";
 import { clsx } from "clsx";
 import Link from "next/link";
 import { request } from "graphql-request";
+import { createRef } from "react";
 
 import Breadcrumbs from "#/components/Breadcrumbs";
 import Layout from "#/components/Layout";
@@ -16,7 +17,7 @@ import {
   getPublicTokenHeaders,
 } from "#/src/shopify-client";
 
-import document from './index.graphql';
+import document from "./index.graphql";
 
 import styles from "./index.module.css";
 
@@ -32,7 +33,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       requestHeaders,
     });
 
-    // @TODO I don't love how we do this with 'errors' and 'data'
+    // TODO I don't love how we do this with 'errors' and 'data'
     return { props: { data, errors: null } };
   } catch (err) {
     console.error({ err });
@@ -46,13 +47,15 @@ export default function Page({
 }: StorefrontApiResponseOk<ProductsQuery>) {
   // const { storeDomain } = useShop();
 
+  const scrollingElement = createRef<HTMLDivElement>();
+
   if (!data || errors) {
     console.error({ errors });
     return <div>Whoops there was an error! Please refresh and try again.</div>;
   }
 
   return (
-    <Layout showHeaderAndFooter={true}>
+    <Layout ref={scrollingElement} showHeaderAndFooter={true}>
       <title>Collagerie - Home</title>
       <Breadcrumbs>
         <li>

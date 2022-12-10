@@ -6772,15 +6772,24 @@ export type ProductQuery = {
   __typename?: "QueryRoot";
   product?: {
     __typename?: "Product";
-    id: string;
-    handle: string;
     availableForSale: boolean;
-    title: string;
+    descriptionHtml: string;
+    handle: string;
+    id: string;
     productType: string;
     publishedAt: string;
+    title: string;
     vendor: string;
-    description: string;
-    descriptionHtml: string;
+    images: {
+      __typename?: "ImageConnection";
+      nodes: Array<{
+        __typename?: "Image";
+        altText?: string | null;
+        height?: number | null;
+        url: string;
+        width?: number | null;
+      }>;
+    };
     options: Array<{
       __typename?: "ProductOption";
       id: string;
@@ -6834,16 +6843,12 @@ export type ProductQuery = {
         };
       }>;
     };
-    images: {
-      __typename?: "ImageConnection";
-      nodes: Array<{
-        __typename?: "Image";
-        altText?: string | null;
-        height?: number | null;
-        url: string;
-        width?: number | null;
-      }>;
-    };
+    metafields: Array<{
+      __typename?: "Metafield";
+      key: string;
+      namespace: string;
+      type: string;
+    } | null>;
   } | null;
 };
 
@@ -6864,6 +6869,13 @@ export type ProductsQuery = {
       publishedAt: string;
       title: string;
       vendor: string;
+      featuredImage?: {
+        __typename?: "Image";
+        altText?: string | null;
+        height?: number | null;
+        url: string;
+        width?: number | null;
+      } | null;
       priceRange: {
         __typename?: "ProductPriceRange";
         maxVariantPrice: {
@@ -6876,20 +6888,6 @@ export type ProductsQuery = {
           amount: string;
           currencyCode: CurrencyCode;
         };
-      };
-      variants: {
-        __typename?: "ProductVariantConnection";
-        nodes: Array<{
-          __typename?: "ProductVariant";
-          id: string;
-          image?: {
-            __typename?: "Image";
-            altText?: string | null;
-            height?: number | null;
-            url: string;
-            width?: number | null;
-          } | null;
-        }>;
       };
     }>;
   };
@@ -6934,20 +6932,60 @@ export const ProductDocument = {
             selectionSet: {
               kind: "SelectionSet",
               selections: [
-                { kind: "Field", name: { kind: "Name", value: "id" } },
-                { kind: "Field", name: { kind: "Name", value: "handle" } },
                 {
                   kind: "Field",
                   name: { kind: "Name", value: "availableForSale" },
                 },
-                { kind: "Field", name: { kind: "Name", value: "title" } },
-                { kind: "Field", name: { kind: "Name", value: "productType" } },
-                { kind: "Field", name: { kind: "Name", value: "publishedAt" } },
-                { kind: "Field", name: { kind: "Name", value: "vendor" } },
-                { kind: "Field", name: { kind: "Name", value: "description" } },
                 {
                   kind: "Field",
                   name: { kind: "Name", value: "descriptionHtml" },
+                },
+                { kind: "Field", name: { kind: "Name", value: "handle" } },
+                { kind: "Field", name: { kind: "Name", value: "id" } },
+                { kind: "Field", name: { kind: "Name", value: "productType" } },
+                { kind: "Field", name: { kind: "Name", value: "publishedAt" } },
+                { kind: "Field", name: { kind: "Name", value: "title" } },
+                { kind: "Field", name: { kind: "Name", value: "vendor" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "images" },
+                  arguments: [
+                    {
+                      kind: "Argument",
+                      name: { kind: "Name", value: "first" },
+                      value: { kind: "IntValue", value: "16" },
+                    },
+                  ],
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "nodes" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "altText" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "height" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "url" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "width" },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
                 },
                 {
                   kind: "Field",
@@ -7007,6 +7045,7 @@ export const ProductDocument = {
                     ],
                   },
                 },
+                { kind: "Field", name: { kind: "Name", value: "productType" } },
                 {
                   kind: "Field",
                   name: { kind: "Name", value: "seo" },
@@ -7028,7 +7067,7 @@ export const ProductDocument = {
                     {
                       kind: "Argument",
                       name: { kind: "Name", value: "first" },
-                      value: { kind: "IntValue", value: "32" },
+                      value: { kind: "IntValue", value: "16" },
                     },
                   ],
                   selectionSet: {
@@ -7144,42 +7183,73 @@ export const ProductDocument = {
                 },
                 {
                   kind: "Field",
-                  name: { kind: "Name", value: "images" },
+                  name: { kind: "Name", value: "metafields" },
                   arguments: [
                     {
                       kind: "Argument",
-                      name: { kind: "Name", value: "first" },
-                      value: { kind: "IntValue", value: "32" },
+                      name: { kind: "Name", value: "identifiers" },
+                      value: {
+                        kind: "ListValue",
+                        values: [
+                          {
+                            kind: "ObjectValue",
+                            fields: [
+                              {
+                                kind: "ObjectField",
+                                name: { kind: "Name", value: "namespace" },
+                                value: {
+                                  kind: "StringValue",
+                                  value: "your-namespace",
+                                  block: false,
+                                },
+                              },
+                              {
+                                kind: "ObjectField",
+                                name: { kind: "Name", value: "key" },
+                                value: {
+                                  kind: "StringValue",
+                                  value: "your-key",
+                                  block: false,
+                                },
+                              },
+                            ],
+                          },
+                          {
+                            kind: "ObjectValue",
+                            fields: [
+                              {
+                                kind: "ObjectField",
+                                name: { kind: "Name", value: "namespace" },
+                                value: {
+                                  kind: "StringValue",
+                                  value: "your-namespace",
+                                  block: false,
+                                },
+                              },
+                              {
+                                kind: "ObjectField",
+                                name: { kind: "Name", value: "key" },
+                                value: {
+                                  kind: "StringValue",
+                                  value: "your-key",
+                                  block: false,
+                                },
+                              },
+                            ],
+                          },
+                        ],
+                      },
                     },
                   ],
                   selectionSet: {
                     kind: "SelectionSet",
                     selections: [
+                      { kind: "Field", name: { kind: "Name", value: "key" } },
                       {
                         kind: "Field",
-                        name: { kind: "Name", value: "nodes" },
-                        selectionSet: {
-                          kind: "SelectionSet",
-                          selections: [
-                            {
-                              kind: "Field",
-                              name: { kind: "Name", value: "altText" },
-                            },
-                            {
-                              kind: "Field",
-                              name: { kind: "Name", value: "height" },
-                            },
-                            {
-                              kind: "Field",
-                              name: { kind: "Name", value: "url" },
-                            },
-                            {
-                              kind: "Field",
-                              name: { kind: "Name", value: "width" },
-                            },
-                          ],
-                        },
+                        name: { kind: "Name", value: "namespace" },
                       },
+                      { kind: "Field", name: { kind: "Name", value: "type" } },
                     ],
                   },
                 },
@@ -7237,6 +7307,31 @@ export const ProductsDocument = {
                       {
                         kind: "Field",
                         name: { kind: "Name", value: "description" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "featuredImage" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "altText" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "height" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "url" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "width" },
+                            },
+                          ],
+                        },
                       },
                       {
                         kind: "Field",
@@ -7300,74 +7395,7 @@ export const ProductsDocument = {
                         kind: "Field",
                         name: { kind: "Name", value: "publishedAt" },
                       },
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "publishedAt" },
-                      },
                       { kind: "Field", name: { kind: "Name", value: "title" } },
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "variants" },
-                        arguments: [
-                          {
-                            kind: "Argument",
-                            name: { kind: "Name", value: "first" },
-                            value: { kind: "IntValue", value: "1" },
-                          },
-                        ],
-                        selectionSet: {
-                          kind: "SelectionSet",
-                          selections: [
-                            {
-                              kind: "Field",
-                              name: { kind: "Name", value: "nodes" },
-                              selectionSet: {
-                                kind: "SelectionSet",
-                                selections: [
-                                  {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "id" },
-                                  },
-                                  {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "image" },
-                                    selectionSet: {
-                                      kind: "SelectionSet",
-                                      selections: [
-                                        {
-                                          kind: "Field",
-                                          name: {
-                                            kind: "Name",
-                                            value: "altText",
-                                          },
-                                        },
-                                        {
-                                          kind: "Field",
-                                          name: {
-                                            kind: "Name",
-                                            value: "height",
-                                          },
-                                        },
-                                        {
-                                          kind: "Field",
-                                          name: { kind: "Name", value: "url" },
-                                        },
-                                        {
-                                          kind: "Field",
-                                          name: {
-                                            kind: "Name",
-                                            value: "width",
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
-                            },
-                          ],
-                        },
-                      },
                       {
                         kind: "Field",
                         name: { kind: "Name", value: "vendor" },

@@ -1,8 +1,8 @@
 import Script from "next/script";
 
 export default function Head() {
-  // @TODO: Fix `You have a Server Component that imports next/router. Use next/navigation instead.`
-  // @TODO: Fix `Maybe one of these should be marked as a client entry "use client": app/head.tsx`
+  // TODO: Fix `You have a Server Component that imports next/router. Use next/navigation instead.`
+  // TODO: Fix `Maybe one of these should be marked as a client entry "use client": app/head.tsx`
   // const { defaultLocale, locale, locales, pathname } = useRouter();
   const { defaultLocale, locale, locales, pathname } = {
     defaultLocale: "en-AU",

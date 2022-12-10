@@ -1,8 +1,10 @@
-import type { FC, ReactNode } from "react";
+import type { FC, HTMLAttributes, ReactNode, Ref } from "react";
 
 import { clsx } from "clsx";
 import Head from "next/head";
+import { forwardRef } from "react";
 
+import Drawer from "#/components/Drawer";
 import Header from "#/components/Header";
 import Footer from "#/components/Footer";
 
@@ -10,72 +12,70 @@ import styles from "./index.module.css";
 
 type Props = {
   children?: ReactNode;
-  constrainWidth?: boolean;
   showHeaderAndFooter?: boolean;
 };
 
-export const Component: FC<Props> = ({
-  children,
-  constrainWidth = false,
-  showHeaderAndFooter = true,
-}) => {
-  return (
-    <>
-      <Head>
-        <title>UNCNSRD</title>
-        <meta
-          name="description"
-          content="UNCNSRD is multifunctional swimwear for female figures who aren’t afraid to show off their assets and want to feel unapologetically sexy."
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
-        <link rel="manifest" href="/site.webmanifest" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
-        <meta name="msapplication-TileColor" content="#da532c" />
-        <meta name="theme-color" content="#ffffff" />
-      </Head>
+export const Component = forwardRef<HTMLDivElement, Props>(
+  ({ children, showHeaderAndFooter = true }, ref) => {
+    return (
+      <>
+        <Head>
+          <title>UNCNSRD</title>
+          <meta
+            name="description"
+            content="UNCNSRD is multifunctional swimwear for female figures who aren’t afraid to show off their assets and want to feel unapologetically sexy."
+          />
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/apple-touch-icon.png"
+          />
+          <link rel="icon" href="/favicon.ico" />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicon-32x32.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicon-16x16.png"
+          />
+          <link rel="manifest" href="/site.webmanifest" />
+          <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+          <meta name="msapplication-TileColor" content="#da532c" />
+          <meta name="theme-color" content="#ffffff" />
+        </Head>
 
-      <div className="drawer">
-        <input
-          id="my-drawer-3"
-          type="checkbox"
-          className={clsx(styles.drawerToggle, "drawer-toggle")}
-        />
-        <div className="drawer-content flex flex-col">
-          <Header />
-          <main className={clsx(styles.main, "flex-1")}>{children}</main>
-          <Footer />
+        <div className="drawer">
+          <input
+            id="my-drawer-3"
+            type="checkbox"
+            className={clsx(styles.drawerToggle, "drawer-toggle")}
+          />
+          <div
+            className={clsx(
+              styles.drawerContent,
+              "drawer-content",
+              "flex",
+              "flex-col",
+              "fitViewport"
+            )}
+            ref={ref}
+          >
+            {showHeaderAndFooter && <Header />}
+            <main className={clsx(styles.main, "flex-1")}>{children}</main>
+            {showHeaderAndFooter && <Footer />}
+          </div>
+          <Drawer />
         </div>
-        <div className="drawer-side">
-          <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
-          <ul className="menu p-4 w-80 bg-base-100">
-            <li>
-              <a>Sidebar Item 1</a>
-            </li>
-            <li>
-              <a>Sidebar Item 2</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </>
-  );
-};
+      </>
+    );
+  }
+);
+
+Component.displayName = "Layout";
 
 export default Component;

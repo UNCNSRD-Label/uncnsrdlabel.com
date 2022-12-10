@@ -1,5 +1,7 @@
 import "#/styles/global/globals.css";
 
+import type { HTMLAttributes } from "react";
+
 import { Montserrat } from "@next/font/google";
 import { clsx } from "clsx";
 import { ReactNode } from "react";
@@ -17,22 +19,23 @@ const montserrat = Montserrat({
   weight: ["300", "400", "500", "600", "800"],
 });
 
-export default function RootLayout(context: any) {
-  const {
-    children,
-    params,
-    constrainWidth = false,
-    showHeaderAndFooter = false,
-  }: {
-    children: ReactNode;
-    params: any;
-    constrainWidth?: boolean;
-    showHeaderAndFooter?: boolean;
-  } = context;
+type Props = {
+  children: ReactNode;
+  showHeaderAndFooter?: boolean;
+} & HTMLAttributes<HTMLElement>;
+
+export default function RootLayout({
+  className,
+  children,
+  showHeaderAndFooter = false,
+}: Props) {
   const locale = "en-GB";
 
   return (
-    <html lang={locale} className={clsx(montserrat.variable, "fitViewport")}>
+    <html
+      lang={locale}
+      className={clsx(montserrat.variable, className, "fitViewport")}
+    >
       <head />
       <body
         className={clsx(
@@ -42,17 +45,9 @@ export default function RootLayout(context: any) {
         )}
       >
         <Providers locale={locale}>
-          {showHeaderAndFooter && (
-            <Header data-constrainWidth={constrainWidth} />
-          )}
-          <main
-            className={clsx(styles.main, constrainWidth && "constrainWidth")}
-          >
-            {children}
-          </main>
-          {showHeaderAndFooter && (
-            <Footer data-constrainWidth={constrainWidth} />
-          )}
+          {showHeaderAndFooter && <Header />}
+          <main className={clsx(styles.main)}>{children}</main>
+          {showHeaderAndFooter && <Footer />}
         </Providers>
       </body>
     </html>

@@ -6,12 +6,28 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   daisyui: {
-    themes: true,
     base: true,
-    utils: true,
-    logs: true,
-    themes: ["lofi", "black"],
     darkTheme: "black",
+    logs: true,
+    styled: true,
+    themes: [
+      {
+        lofi: {
+          // primary: "#ed53a7",
+          // secondary: "#f41886",
+          // accent: "#7f5bd3",
+          // neutral: "#1E2024",
+          // "base-100": "#243747",
+          // info: "#A0CBF8",
+          // success: "#176944",
+          // warning: "#DD7703",
+          // error: "#F04333",
+        },
+      },
+      "black",
+    ],
+    themes: true,
+    utils: true,
   },
   future: {
     hoverOnlyWhenSupported: true,

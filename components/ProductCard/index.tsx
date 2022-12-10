@@ -22,9 +22,9 @@ type Props = {
 } & HTMLAttributes<HTMLElement>;
 
 export const Component: FC<Props> = ({ className, product }) => {
-  const { handle, id, publishedAt, title, variants } = product;
+  const { featuredImage, handle, id, publishedAt, title, variants } = product;
 
-  const image = variants?.nodes?.[0]?.image;
+  const image = featuredImage;
 
   return (
     <article

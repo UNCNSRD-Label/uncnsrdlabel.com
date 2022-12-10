@@ -6,6 +6,12 @@ query Products {
     nodes {
       availableForSale
       description
+      featuredImage {
+        altText
+        height
+        url
+        width
+      }
       handle
       id
       priceRange {
@@ -20,19 +26,7 @@ query Products {
       }
       productType
       publishedAt
-      publishedAt
       title
-      variants(first: 1) {
-        nodes {
-          id
-          image {
-            altText
-            height
-            url
-            width
-          }
-        }
-      }
       vendor
     }
   }

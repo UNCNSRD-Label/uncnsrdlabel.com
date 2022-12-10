@@ -1,4 +1,11 @@
+.featuredMediaGallery {
+  @apply bg-white;
+  padding-block-start: var(--viewport-margin-block-start);
+  scroll-padding-block-start: var(--viewport-margin-block-start);
+}
+
 .article {
+  @apply grid;
   grid-template-columns: var(--grid-template-columns, unset);
 
   @media screen and (min-width: theme(screens.md.min)) {
@@ -9,23 +16,11 @@
     --grid-template-columns: 3fr 2fr;
   }
 
-  @apply grid;
+  .galleryAdditional {
+    @apply col-span-full grid gap-1 mt-1 relative;
 
-  .gallery {
-    .stepsContainer {
-      @apply sticky z-10;
-      height: 0;
-      overflow: visible;
-      padding-inline-start: var(--viewport-margin-inline);
-      top: 50%;
-      
-      .steps {
-        transform: translateY(-50%);
-
-        a {
-          cursor: pointer;
-        }
-      }
+    @media screen and (min-width: theme(screens.md.min)) {
+      @apply grid-cols-2;
     }
 
     .figure {
@@ -33,61 +28,23 @@
       aspect-ratio: 3/4;
       max-inline-size: 100%;
       position: relative;
-
+    
       @media screen and (max-width: theme(screens.sm.max)) {
-      @supports (inline-size: 100dvw) {
-        inline-size: 100dvw;
+        @supports (inline-size: 100dvw) {
+          inline-size: 100dvw;
+        }
+    
+        @supports not (inline-size: 100dvw) {
+          inline-size: calc(
+            100vw - (env(safe-area-inset-left) + env(safe-area-inset-right))
+          );
+        }
       }
     
-      @supports not (inline-size: 100dvw) {
-        inline-size: calc(
-            100vw - (env(safe-area-inset-left) + env(safe-area-inset-right))
-        );
-      }
-    }
-
-      &:global(.fullscreen) {
-        background-color: red;
-      }
-
-      &.model {
-        background-color: hsl(var(--b2));
-        contain: strict;
-      }
-
-      .image {
-      }
-
       .figcaption {
         display: none;
       }
-    }
-
-    &.galleryFeatured {
-      @apply bg-white snap-y;
-      padding-block-start: var(--viewport-margin-block-start);
-      scroll-padding-block-start: var(--viewport-margin-block-start);
-      scroll-behavior: smooth;
-
-      @media screen and (max-width: theme(screens.sm.max)) {
-        /* @NOTE: 133.33vw is equivalent to the 3/4 aspect ratio of the images in the gallery */
-        /* @NOTE: 4rem is equivalent to the pt-16 and scroll-pt-16 values to offset the image below the header */
-        max-block-size: max(calc(133.33vw + var(--viewport-margin-block-start)), 75vh);
-        overflow-y: scroll;
-      }
-
-      @media screen and (min-width: theme(screens.md.min)) {
-        @apply grid;
-      }
-    }
-
-    &.galleryAdditional {
-      @apply col-span-full grid gap-1 mt-1;
-
-      @media screen and (min-width: theme(screens.md.min)) {
-        @apply grid-cols-2;
-      }
-    }
+    }    
   }
 
   .stickyContainer {
@@ -106,13 +63,24 @@
 
       .header {
         @apply grid grid-flow-col gap-4 items-center justify-between pt-4 px-4;
+        grid-template-areas:
+          "categoryLink categoryLink"
+          "title price";
 
         @media screen and (min-width: theme(screens.md.min)) {
           @apply py-6;
         }
 
         .categoryLink {
-          display: none;
+          grid-area: categoryLink;
+        }
+
+        .title {
+          grid-area: title;
+        }
+
+        .price {
+          grid-area: price;
         }
       }
 

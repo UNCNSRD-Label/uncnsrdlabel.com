@@ -1,5 +1,5 @@
 .container {
-  display: grid;
+  @apply grid;
   min-block-size: 100vh;
 
   &.show_header_and_footer {
@@ -13,4 +13,12 @@
       min-inline-size: 60rem;
     }
   }
+}
+
+.drawerContent {
+  @apply snap-y scroll-smooth;
+}
+
+.drawerToggle {
+
 }
