@@ -25,7 +25,7 @@ export const Component: FC<Props> = ({ className, position = "fixed" }) => {
       )}
     >
       <div className="flex-none desktop:hidden">
-        <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost">
+        <label htmlFor="drawerNavigation" className="btn btn-square btn-ghost">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -62,7 +62,7 @@ export const Component: FC<Props> = ({ className, position = "fixed" }) => {
         />
       </Link>
       <menu className={clsx(styles.actionsMenu)}>
-        <li>
+        <li className={clsx(styles.actionsMenuListItem, "hidden", "md:flex")}>
           <button className={clsx(styles.action)}>
             <SlMagnifier
               aria-hidden="true"
@@ -72,7 +72,10 @@ export const Component: FC<Props> = ({ className, position = "fixed" }) => {
             <span className={clsx("sr-only")}>Search this site</span>
           </button>
         </li>
-        <li tabIndex={0}>
+        <li
+          className={clsx(styles.actionsMenuListItem, "hidden", "md:flex")}
+          tabIndex={0}
+        >
           <Link href="/account" className={clsx(styles.action)}>
             <SlUser
               aria-hidden="true"
@@ -99,8 +102,11 @@ export const Component: FC<Props> = ({ className, position = "fixed" }) => {
             </li>
           </ul>
         </li>
-        <li>
-          <Link className={clsx(styles.action)} href="/account/bag">
+        <li className={clsx(styles.actionsMenuListItem)}>
+          <label
+            htmlFor="drawerCart"
+            className={clsx(styles.action, "btn", "btn-square", "btn-ghost")}
+          >
             <SlBag
               aria-hidden="true"
               className={clsx("icon")}
@@ -108,7 +114,7 @@ export const Component: FC<Props> = ({ className, position = "fixed" }) => {
             />
             <span className={clsx("sr-only")}>View my shopping bag</span>
             <span className={clsx(styles.indicator)}>3</span>
-          </Link>
+          </label>
         </li>
       </menu>
     </header>

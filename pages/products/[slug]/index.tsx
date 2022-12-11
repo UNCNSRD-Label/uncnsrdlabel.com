@@ -8,6 +8,8 @@ import { request } from "graphql-request";
 import { useRouter } from "next/router";
 import { createRef } from "react";
 
+import NextQueryParamsProvider from "#/providers/next-query-params";
+
 import Layout from "#/components/Layout";
 import ProductDetails from "#/components/ProductDetails";
 
@@ -77,15 +79,17 @@ export default function Page({
   }
 
   return (
-    <Layout ref={scrollingElement} showHeaderAndFooter={true}>
-      <ProductDetails
-        path={asPath}
-        product={product}
-        scrollingElement={scrollingElement}
-      />
-      <aside className={clsx(styles.aside)}>
-        <h2>Related Products</h2>
-      </aside>
-    </Layout>
+    <NextQueryParamsProvider>
+      <Layout ref={scrollingElement} showHeaderAndFooter={true}>
+        <ProductDetails
+          path={asPath}
+          product={product}
+          scrollingElement={scrollingElement}
+        />
+        <aside className={clsx(styles.aside)}>
+          <h2>Related Products</h2>
+        </aside>
+      </Layout>
+    </NextQueryParamsProvider>
   );
 }

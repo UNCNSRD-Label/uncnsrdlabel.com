@@ -1,10 +1,11 @@
-import type { FC, HTMLAttributes, ReactNode, Ref } from "react";
+import type { ReactNode } from "react";
 
 import { clsx } from "clsx";
 import Head from "next/head";
 import { forwardRef } from "react";
+import { SlMagnifier, SlBag, SlUser } from "react-icons/sl";
 
-import Drawer from "#/components/Drawer";
+import DrawerNavigation from "#/components/DrawerNavigation";
 import Header from "#/components/Header";
 import Footer from "#/components/Footer";
 
@@ -49,9 +50,9 @@ export const Component = forwardRef<HTMLDivElement, Props>(
           <meta name="theme-color" content="#ffffff" />
         </Head>
 
-        <div className="drawer">
+        <div className={clsx(styles.drawer, "drawer")}>
           <input
-            id="my-drawer-3"
+            id="drawerNavigation"
             type="checkbox"
             className={clsx(styles.drawerToggle, "drawer-toggle")}
           />
@@ -69,7 +70,35 @@ export const Component = forwardRef<HTMLDivElement, Props>(
             <main className={clsx(styles.main, "flex-1")}>{children}</main>
             {showHeaderAndFooter && <Footer />}
           </div>
-          <Drawer />
+          <DrawerNavigation />
+          <div className="btm-nav">
+            <button className={clsx(styles.action)}>
+              <SlMagnifier
+                aria-hidden="true"
+                className={clsx("icon")}
+                title="Search this site"
+              />
+              <span className={clsx("btm-nav-label")}>Search</span>
+            </button>
+
+            <button className={clsx(styles.action)}>
+              <SlUser
+                aria-hidden="true"
+                className={clsx("icon")}
+                title="View my account"
+              />
+              <span className="btm-nav-label">Account</span>
+            </button>
+
+            <button className={clsx(styles.action)}>
+              <SlBag
+                aria-hidden="true"
+                className={clsx("icon")}
+                title="View my shopping bag"
+              />
+              <span className={clsx("btm-nav-label")}>Bag (3)</span>
+            </button>
+          </div>
         </div>
       </>
     );

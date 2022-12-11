@@ -1,7 +1,7 @@
 "use client";
 
 import type { Product } from "@shopify/hydrogen-react/storefront-api-types";
-import type { FC, HTMLAttributes, Ref } from "react";
+import type { FC, HTMLAttributes, RefObject } from "react";
 import type { PartialDeep } from "type-fest";
 
 import { Stage } from "@react-three/drei";
@@ -26,19 +26,20 @@ import styles from "./index.module.css";
 type Props = {
   // TODO: Pass images and titles properties only so component can be used for other content types
   product: PartialDeep<Product, { recurseIntoArrays: true }>;
-  scrollingElement: Ref<HTMLElement>;
+  scrollingElement: RefObject<HTMLElement>;
 } & HTMLAttributes<HTMLElement>;
 
 export const Component: FC<Props> = ({
   className,
   product,
-  scrollingElement: parentScrollingElement,
+  scrollingElement,
+  // scrollingElement: parentScrollingElement,
 }) => {
   const localScrollingElement = useRef(null);
-  const scrollingElement = mergeRefs([
-    localScrollingElement,
-    parentScrollingElement,
-  ]);
+  // const scrollingElement = mergeRefs([
+  //   localScrollingElement,
+  //   parentScrollingElement,
+  // ]) as RefObject<HTMLElement>;
 
   const imagesToShow = 2;
 
@@ -51,13 +52,12 @@ export const Component: FC<Props> = ({
 
   const sectionElementRefs = [useRef(null), useRef(null), useRef(null)];
 
-  const activeSection = useScrollSpy({
-    offsetPx: -64,
-    scrollingElement,
-    sectionElementRefs,
-  });
-
-  console.log({ scrollingElement, sectionElementRefs, activeSection });
+  const activeSection =
+    useScrollSpy({
+      offsetPx: -64,
+      scrollingElement,
+      sectionElementRefs,
+    }) ?? 0;
 
   return (
     <section

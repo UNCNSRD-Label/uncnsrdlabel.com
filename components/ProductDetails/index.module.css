@@ -62,14 +62,10 @@
       }
 
       .header {
-        @apply grid grid-flow-col gap-4 items-center justify-between pt-4 px-4;
+        @apply grid grid-flow-col gap-4 items-center justify-between py-4 px-4;
         grid-template-areas:
           "categoryLink categoryLink"
           "title price";
-
-        @media screen and (min-width: theme(screens.md.min)) {
-          @apply py-6;
-        }
 
         .categoryLink {
           grid-area: categoryLink;

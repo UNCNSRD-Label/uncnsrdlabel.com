@@ -45,33 +45,45 @@
 }
 
 .actionsMenu {
-  @apply gap-2 menu menu-horizontal justify-self-end;
-
-  @media screen and (max-width: theme(screens.md.max)) {
-    @apply hidden;
-  }
+  @apply gap-2 menu menu-horizontal justify-self-end h-full;
 
   @media screen and (min-width: theme(screens.lg.min)) {
     @apply gap-4;
   }
+  
+  .actionsMenuListItem {
+    @apply h-full;
 
-  .action {
-    @apply btn btn-ghost grid gap-2 grid-flow-col relative place-items-center;
-
-    @media screen and (max-width: theme(screens.md.max)) {
-      @apply btn-xs;
+    &:global(.hidden) {
+      display: none !important;
     }
 
-    @media screen and (min-width: theme(screens.lg.min)) {
-      /* @apply btn-lg btn-outline; */
+    &:global(.md\:flex) {
+      @media screen and (min-width: theme(screens.md.min)) {
+        display: flex !important;
+      }
     }
 
-    .indicator {
-      @apply absolute place-self-center indicator-item pt-2;
-    }
-
-    .actionsSubMenu {
-      @apply glass;
+    .action {
+      @apply btn btn-ghost grid gap-2 grid-flow-col relative place-items-center;
+      /* padding-inline: 0.75rem;
+      padding-block: unset; */
+      
+      @media screen and (max-width: theme(screens.md.max)) {
+        /* @apply btn-xs; */
+      }
+  
+      @media screen and (min-width: theme(screens.lg.min)) {
+        /* @apply btn-lg btn-outline; */
+      }
+  
+      .indicator {
+        @apply absolute place-self-center indicator-item pt-2;
+      }
+  
+      .actionsSubMenu {
+        @apply glass;
+      }
     }
   }
 }

@@ -15,6 +15,10 @@
   }
 }
 
+.drawer {
+  
+}
+
 .drawerContent {
   @apply snap-y scroll-smooth;
 }

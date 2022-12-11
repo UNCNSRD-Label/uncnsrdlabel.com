@@ -1,7 +1,7 @@
 "use client";
 
 import type { Product } from "@shopify/hydrogen-react/storefront-api-types";
-import type { FC, ReactNode, Ref } from "react";
+import type { FC, ReactNode, RefObject } from "react";
 import type { PartialDeep } from "type-fest";
 
 import { ProductPrice, ProductProvider } from "@shopify/hydrogen-react";
@@ -24,7 +24,7 @@ type Props = {
   className?: ReactNode;
   path: string;
   product: PartialDeep<Product, { recurseIntoArrays: true }>;
-  scrollingElement: Ref<HTMLDivElement>;
+  scrollingElement: RefObject<HTMLDivElement>;
 };
 
 export const Component: FC<Props> = ({
