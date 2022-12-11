@@ -1,5 +1,6 @@
 "use client";
 
+import type { CartLine } from "@shopify/hydrogen-react/storefront-api-types";
 import type { FC, HTMLAttributes } from "react";
 
 import { useCart } from "@shopify/hydrogen-react";
@@ -23,9 +24,9 @@ export const Component: FC<Props> = ({ className }) => {
     <section className={clsx(styles.root, className, "grid")}>
       <h2 className={clsx("pb-4")}>Bag</h2>
       <menu className={clsx("menu", "items-start", "pb-4")}>
-        {lines?.map((line, index) => (
+        {lines?.filter(Boolean)?.map((line, index) => (
           <li key={line?.id ?? index}>
-            <CartLineCard line={line} />
+            <CartLineCard line={line as CartLine} />
           </li>
         ))}
       </menu>
