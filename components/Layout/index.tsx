@@ -3,11 +3,11 @@ import type { ReactNode } from "react";
 import { clsx } from "clsx";
 import Head from "next/head";
 import { forwardRef } from "react";
-import { SlMagnifier, SlBag, SlUser } from "react-icons/sl";
 
 import DrawerNavigation from "#/components/DrawerNavigation";
 import Header from "#/components/Header";
 import Footer from "#/components/Footer";
+import FooterNavigation from "#/components/FooterNavigation";
 
 import styles from "./index.module.css";
 
@@ -71,34 +71,7 @@ export const Component = forwardRef<HTMLDivElement, Props>(
             {showHeaderAndFooter && <Footer />}
           </div>
           <DrawerNavigation />
-          <div className="btm-nav">
-            <button className={clsx(styles.action)}>
-              <SlMagnifier
-                aria-hidden="true"
-                className={clsx("icon")}
-                title="Search this site"
-              />
-              <span className={clsx("btm-nav-label")}>Search</span>
-            </button>
-
-            <button className={clsx(styles.action)}>
-              <SlUser
-                aria-hidden="true"
-                className={clsx("icon")}
-                title="View my account"
-              />
-              <span className="btm-nav-label">Account</span>
-            </button>
-
-            <button className={clsx(styles.action)}>
-              <SlBag
-                aria-hidden="true"
-                className={clsx("icon")}
-                title="View my shopping bag"
-              />
-              <span className={clsx("btm-nav-label")}>Bag (3)</span>
-            </button>
-          </div>
+          <FooterNavigation />
         </div>
       </>
     );

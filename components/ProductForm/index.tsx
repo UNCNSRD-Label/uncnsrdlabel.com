@@ -205,8 +205,6 @@ export const Component: FC<Props> = ({
             </label>
           );
         })}
-
-        <pre>{JSON.stringify(selectedOptions)}</pre>
       </section>
       <section className={clsx(styles.section, styles.sectionActions)}>
         <AddToCartButton

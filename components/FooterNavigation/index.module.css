@@ -1,0 +1,5 @@
+.root {
+  @media screen and (min-width: theme(screens.sm.min)) {
+    display: none;
+  }
+}
