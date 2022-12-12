@@ -1,6 +1,9 @@
 "use client";
 
-import type { Product } from "@shopify/hydrogen-react/storefront-api-types";
+import type {
+  Model3d,
+  Product,
+} from "@shopify/hydrogen-react/storefront-api-types";
 import type { FC, HTMLAttributes, RefObject } from "react";
 import type { PartialDeep } from "type-fest";
 
@@ -9,10 +12,10 @@ import { clsx } from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense, useRef } from "react";
-import { mergeRefs } from "react-merge-refs";
+// import { mergeRefs } from "react-merge-refs";
 import useScrollSpy from "react-use-scrollspy";
 
-import FemaleSportswear2 from "#/components/canvas/FemaleSportswear2";
+import Model from "#/components/canvas/Model";
 import Scene from "#/components/canvas/Scene";
 
 import {
@@ -140,12 +143,15 @@ export const Component: FC<Props> = ({
               preset="portrait"
               shadows="contact"
             >
-              <FemaleSportswear2
-                castShadow
-                receiveShadow
-                position={[0, 0, 0]}
-                rotation={[0, Math.PI / 4, 0]}
-              />
+              {product.media?.nodes
+                ?.filter((node) => node?.mediaContentType === "MODEL_3D")
+                .map((node, nodeIndex) =>
+                  (node as Model3d)?.sources
+                    ?.filter((source) => source?.format === "glb")
+                    .map((source, sourceIndex) => (
+                      <Model key={sourceIndex} url={source.url} />
+                    ))
+                )}
             </Stage>
           </Scene>
         </Suspense>

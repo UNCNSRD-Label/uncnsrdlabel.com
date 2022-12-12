@@ -1,0 +1,28 @@
+.root {
+  @apply col-span-full grid gap-1 mt-1 relative;
+
+  @media screen and (min-width: theme(screens.md.min)) {
+    @apply grid-cols-2;
+  }
+
+  .figure {
+    @apply aspect-3/4 relative snap-start;
+    max-inline-size: 100%;
+  
+    @media screen and (max-width: theme(screens.sm.max)) {
+      @supports (inline-size: 100dvw) {
+        inline-size: 100dvw;
+      }
+  
+      @supports not (inline-size: 100dvw) {
+        inline-size: calc(
+          100vw - (env(safe-area-inset-left) + env(safe-area-inset-right))
+        );
+      }
+    }
+  
+    .figcaption {
+      display: none;
+    }
+  }    
+}

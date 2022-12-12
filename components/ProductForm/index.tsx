@@ -14,9 +14,7 @@ import {
   ShopPayButton,
 } from "@shopify/hydrogen-react";
 import { clsx } from "clsx";
-import Router from "next/router";
-import Script from "next/script";
-import { useEffect, useCallback, useState } from "react";
+import { useCallback } from "react";
 import { RiHeartAddLine } from "react-icons/ri";
 import { useQueryParam, StringParam, withDefault } from "use-query-params";
 
@@ -29,15 +27,7 @@ type Props = {
   product: PartialDeep<Product, { recurseIntoArrays: true }>;
 };
 
-export const Component: FC<Props> = ({
-  children,
-  className,
-  path,
-  product,
-}) => {
-  // const { pathname, search } = useUrl();
-  // const [params, setParams] = useState(new URLSearchParams(search));
-
+export const Component: FC<Props> = ({ children, className, path }) => {
   const { options, setSelectedOption, selectedOptions, selectedVariant } =
     useProduct();
 

@@ -18,10 +18,8 @@ export const Component: FC<Props> = ({ className }) => {
   const { locale } = useRouter();
   const { checkoutUrl, cost, id, lines } = useCart();
 
-  console.log({ checkoutUrl, cost, id, lines });
-
   return (
-    <section className={clsx(styles.root, className, "grid")}>
+    <section className={clsx(styles.root, className, "grid", "divide-y")}>
       <h2 className={clsx("pb-4")}>Bag</h2>
       <menu className={clsx("menu", "items-start", "pb-4")}>
         {lines?.filter(Boolean)?.map((line, index) => (

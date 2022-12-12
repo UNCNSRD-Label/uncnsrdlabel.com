@@ -4,6 +4,7 @@ import { clsx } from "clsx";
 import Head from "next/head";
 import { forwardRef } from "react";
 
+import DrawerCart from "#/components/DrawerCart";
 import DrawerNavigation from "#/components/DrawerNavigation";
 import Header from "#/components/Header";
 import Footer from "#/components/Footer";
@@ -52,9 +53,22 @@ export const Component = forwardRef<HTMLDivElement, Props>(
 
         <div className={clsx(styles.drawer, "drawer")}>
           <input
+            type="checkbox"
+            id="drawerCart"
+            className={clsx(
+              styles.drawerToggle,
+              "drawer-toggle",
+              "drawer-toggle--cart"
+            )}
+          />
+          <input
             id="drawerNavigation"
             type="checkbox"
-            className={clsx(styles.drawerToggle, "drawer-toggle")}
+            className={clsx(
+              styles.drawerToggle,
+              "drawer-toggle",
+              "drawer-toggle--navigation"
+            )}
           />
           <div
             className={clsx(
@@ -70,7 +84,10 @@ export const Component = forwardRef<HTMLDivElement, Props>(
             <main className={clsx(styles.main, "flex-1")}>{children}</main>
             {showHeaderAndFooter && <Footer />}
           </div>
-          <DrawerNavigation />
+          <div className={clsx(styles.root, "drawer-side", "drawer-end")}>
+            <DrawerCart />
+            <DrawerNavigation />
+          </div>
           <FooterNavigation />
         </div>
       </>

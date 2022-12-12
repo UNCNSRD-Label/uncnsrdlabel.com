@@ -29,8 +29,8 @@
     .step {
       &::after,
       &::before {
+        @apply duration-300;
         transition-property: background-color, color;
-        transition-duration: 500ms;
       }
     }
 
@@ -41,8 +41,7 @@
 }
 
 .figure {
-  @apply snap-start;
-  aspect-ratio: 3/4;
+  @apply snap-start aspect-3/4;
   max-inline-size: 100%;
   position: relative;
 

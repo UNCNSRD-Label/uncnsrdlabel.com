@@ -16,22 +16,27 @@ query Product($slug: String!) {
         width
       }
     }
-    # media {
-    #   nodes {
-    #     alt
-    #     mediaContentType
-    #     preview {
-    #       status
-    #       image {
-    #         altText
-    #         height
-    #         url
-    #         width
-    #       }
-    #     }
-    #     status
-    #   }
-    # }
+    media(first: 16) {
+      nodes {
+        ... on Model3d {
+          alt
+          mediaContentType
+          previewImage {
+            altText
+            height
+            url
+            width
+            id
+          }
+          sources {
+            filesize
+            format
+            mimeType
+            url
+          }
+        }
+      }
+    }
     options {
       id
       name
@@ -77,18 +82,31 @@ query Product($slug: String!) {
         title
       }
     }
-    # styleTrick: metafield(namespace: "custom_fields", key: "style_trick") {
-    #   value
-    # }
     metafields(
       identifiers: [
-        { namespace: "your-namespace", key: "your-key" }
-        { namespace: "your-namespace", key: "your-key" }
+        { namespace: "custom", key: "composition" }
+        { namespace: "custom", key: "returns" }
+        { namespace: "custom", key: "shipping" }
+        { namespace: "custom", key: "sizing" }
+        { namespace: "descriptors", key: "care_guide" }
       ]
     ) {
-      key
       namespace
+      key
       type
+      value
+      description
+      id
+      reference {
+        ... on MetafieldReference {
+          ... on Page {
+            body
+            handle
+            onlineStoreUrl
+            title
+          }
+        }
+      }
     }
   }
 }

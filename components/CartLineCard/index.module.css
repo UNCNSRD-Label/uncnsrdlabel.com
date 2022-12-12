@@ -1,3 +1,7 @@
 .root {
   
 }
+
+.figure {
+    @apply aspect-3/4 relative;
+}

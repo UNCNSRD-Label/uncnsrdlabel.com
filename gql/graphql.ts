@@ -6790,6 +6790,34 @@ export type ProductQuery = {
         width?: number | null;
       }>;
     };
+    media: {
+      __typename?: "MediaConnection";
+      nodes: Array<
+        | { __typename?: "ExternalVideo" }
+        | { __typename?: "MediaImage" }
+        | {
+            __typename?: "Model3d";
+            alt?: string | null;
+            mediaContentType: MediaContentType;
+            previewImage?: {
+              __typename?: "Image";
+              altText?: string | null;
+              height?: number | null;
+              url: string;
+              width?: number | null;
+              id?: string | null;
+            } | null;
+            sources: Array<{
+              __typename?: "Model3dSource";
+              filesize: number;
+              format: string;
+              mimeType: string;
+              url: string;
+            }>;
+          }
+        | { __typename?: "Video" }
+      >;
+    };
     options: Array<{
       __typename?: "ProductOption";
       id: string;
@@ -6845,9 +6873,21 @@ export type ProductQuery = {
     };
     metafields: Array<{
       __typename?: "Metafield";
-      key: string;
       namespace: string;
+      key: string;
       type: string;
+      value: string;
+      description?: string | null;
+      id: string;
+      reference?:
+        | { __typename?: "Collection" }
+        | { __typename?: "GenericFile" }
+        | { __typename?: "MediaImage" }
+        | { __typename?: "Page" }
+        | { __typename?: "Product" }
+        | { __typename?: "ProductVariant" }
+        | { __typename?: "Video" }
+        | null;
     } | null>;
   } | null;
 };
@@ -6980,6 +7020,129 @@ export const ProductDocument = {
                             {
                               kind: "Field",
                               name: { kind: "Name", value: "width" },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "media" },
+                  arguments: [
+                    {
+                      kind: "Argument",
+                      name: { kind: "Name", value: "first" },
+                      value: { kind: "IntValue", value: "16" },
+                    },
+                  ],
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "nodes" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "InlineFragment",
+                              typeCondition: {
+                                kind: "NamedType",
+                                name: { kind: "Name", value: "Model3d" },
+                              },
+                              selectionSet: {
+                                kind: "SelectionSet",
+                                selections: [
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "alt" },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: {
+                                      kind: "Name",
+                                      value: "mediaContentType",
+                                    },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: {
+                                      kind: "Name",
+                                      value: "previewImage",
+                                    },
+                                    selectionSet: {
+                                      kind: "SelectionSet",
+                                      selections: [
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "altText",
+                                          },
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "height",
+                                          },
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: { kind: "Name", value: "url" },
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "width",
+                                          },
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: { kind: "Name", value: "id" },
+                                        },
+                                      ],
+                                    },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "sources" },
+                                    selectionSet: {
+                                      kind: "SelectionSet",
+                                      selections: [
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "filesize",
+                                          },
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "format",
+                                          },
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "mimeType",
+                                          },
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: { kind: "Name", value: "url" },
+                                        },
+                                      ],
+                                    },
+                                  },
+                                ],
+                              },
                             },
                           ],
                         },
@@ -7199,7 +7362,7 @@ export const ProductDocument = {
                                 name: { kind: "Name", value: "namespace" },
                                 value: {
                                   kind: "StringValue",
-                                  value: "your-namespace",
+                                  value: "custom",
                                   block: false,
                                 },
                               },
@@ -7208,7 +7371,7 @@ export const ProductDocument = {
                                 name: { kind: "Name", value: "key" },
                                 value: {
                                   kind: "StringValue",
-                                  value: "your-key",
+                                  value: "composition",
                                   block: false,
                                 },
                               },
@@ -7222,7 +7385,7 @@ export const ProductDocument = {
                                 name: { kind: "Name", value: "namespace" },
                                 value: {
                                   kind: "StringValue",
-                                  value: "your-namespace",
+                                  value: "custom",
                                   block: false,
                                 },
                               },
@@ -7231,7 +7394,76 @@ export const ProductDocument = {
                                 name: { kind: "Name", value: "key" },
                                 value: {
                                   kind: "StringValue",
-                                  value: "your-key",
+                                  value: "returns",
+                                  block: false,
+                                },
+                              },
+                            ],
+                          },
+                          {
+                            kind: "ObjectValue",
+                            fields: [
+                              {
+                                kind: "ObjectField",
+                                name: { kind: "Name", value: "namespace" },
+                                value: {
+                                  kind: "StringValue",
+                                  value: "custom",
+                                  block: false,
+                                },
+                              },
+                              {
+                                kind: "ObjectField",
+                                name: { kind: "Name", value: "key" },
+                                value: {
+                                  kind: "StringValue",
+                                  value: "shipping",
+                                  block: false,
+                                },
+                              },
+                            ],
+                          },
+                          {
+                            kind: "ObjectValue",
+                            fields: [
+                              {
+                                kind: "ObjectField",
+                                name: { kind: "Name", value: "namespace" },
+                                value: {
+                                  kind: "StringValue",
+                                  value: "custom",
+                                  block: false,
+                                },
+                              },
+                              {
+                                kind: "ObjectField",
+                                name: { kind: "Name", value: "key" },
+                                value: {
+                                  kind: "StringValue",
+                                  value: "sizing",
+                                  block: false,
+                                },
+                              },
+                            ],
+                          },
+                          {
+                            kind: "ObjectValue",
+                            fields: [
+                              {
+                                kind: "ObjectField",
+                                name: { kind: "Name", value: "namespace" },
+                                value: {
+                                  kind: "StringValue",
+                                  value: "descriptors",
+                                  block: false,
+                                },
+                              },
+                              {
+                                kind: "ObjectField",
+                                name: { kind: "Name", value: "key" },
+                                value: {
+                                  kind: "StringValue",
+                                  value: "care_guide",
                                   block: false,
                                 },
                               },
@@ -7244,12 +7476,79 @@ export const ProductDocument = {
                   selectionSet: {
                     kind: "SelectionSet",
                     selections: [
-                      { kind: "Field", name: { kind: "Name", value: "key" } },
                       {
                         kind: "Field",
                         name: { kind: "Name", value: "namespace" },
                       },
+                      { kind: "Field", name: { kind: "Name", value: "key" } },
                       { kind: "Field", name: { kind: "Name", value: "type" } },
+                      { kind: "Field", name: { kind: "Name", value: "value" } },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "description" },
+                      },
+                      { kind: "Field", name: { kind: "Name", value: "id" } },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "reference" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "InlineFragment",
+                              typeCondition: {
+                                kind: "NamedType",
+                                name: {
+                                  kind: "Name",
+                                  value: "MetafieldReference",
+                                },
+                              },
+                              selectionSet: {
+                                kind: "SelectionSet",
+                                selections: [
+                                  {
+                                    kind: "InlineFragment",
+                                    typeCondition: {
+                                      kind: "NamedType",
+                                      name: { kind: "Name", value: "Page" },
+                                    },
+                                    selectionSet: {
+                                      kind: "SelectionSet",
+                                      selections: [
+                                        {
+                                          kind: "Field",
+                                          name: { kind: "Name", value: "body" },
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "handle",
+                                          },
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "onlineStoreUrl",
+                                          },
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "title",
+                                          },
+                                        },
+                                      ],
+                                    },
+                                  },
+                                ],
+                              },
+                            },
+                          ],
+                        },
+                      },
                     ],
                   },
                 },

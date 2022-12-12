@@ -1,0 +1,46 @@
+.root {
+  .details {
+    @apply grid sticky divide-y;
+    padding-inline: var(--viewport-margin-inline);
+    top: 0;
+
+    @media screen and (min-width: theme(screens.md.min)) {
+      @apply pb-16 pt-24;
+    }
+
+    @media screen and (min-width: theme(screens.lg.min)) {
+      @apply pb-24 pt-44;
+    }
+
+    .header {
+      @apply grid grid-flow-col gap-4 items-center justify-between py-4 px-4;
+      grid-template-areas:
+        "categoryLink categoryLink"
+        "title price";
+
+      .categoryLink {
+        grid-area: categoryLink;
+      }
+
+      .title {
+        grid-area: title;
+      }
+
+      .price {
+        grid-area: price;
+      }
+    }
+
+    .section {
+      @apply prose prose-xs max-w-none;
+
+      &.sectionActions {
+        @apply grid align-middle grid-flow-col justify-between gap-8 px-4 py-6;
+      }
+
+      &.sectionDescription {
+        @apply px-4 py-6 text-justify;
+      }
+    }
+  }
+}

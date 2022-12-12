@@ -78,6 +78,8 @@ export default function Page({
     return <div>Whoops there was an error! Please refresh and try again.</div>;
   }
 
+  console.log(product.media);
+
   return (
     <NextQueryParamsProvider>
       <Layout ref={scrollingElement} showHeaderAndFooter={true}>

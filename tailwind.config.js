@@ -34,6 +34,12 @@ module.exports = {
   },
   theme: {
     extend: {
+      aspectRatio: {
+        "4/3": "4 / 3",
+        "3/4": "3 / 4",
+        "16/9": "16 / 9",
+        "9/16": "9 / 16",
+      },
       maxWidth: {
         "8xl": "1920px",
       },

@@ -6,17 +6,26 @@ import { clsx } from "clsx";
 import Link from "next/link";
 import { SlMagnifier, SlBag, SlUser } from "react-icons/sl";
 
-import Cart from "#/components/Cart";
-
 import styles from "./index.module.css";
 
 type Props = {} & HTMLAttributes<HTMLElement>;
 
 export const Component: FC<Props> = ({ className }) => {
   return (
-    <div className={clsx(styles.root, "drawer-side")}>
-      <label htmlFor="drawerNavigation" className="drawer-overlay"></label>
-      <div className={clsx("p-4", "w-80", "bg-base-100", "divide-y")}>
+    <>
+      <label
+        htmlFor="drawerNavigation"
+        className={clsx("drawer-overlay--custom", "drawer-overlay--navigation")}
+      />
+      <div
+        className={clsx(
+          "p-4",
+          "w-80",
+          "bg-base-100",
+          "divide-y",
+          "drawer-content--navigation"
+        )}
+      >
         <section className={clsx("form-control", "pb-4")}>
           <div className="input-group">
             <input
@@ -50,9 +59,8 @@ export const Component: FC<Props> = ({ className }) => {
             </Link>
           </li>
         </nav>
-        <Cart className={clsx("pt-4")} />
       </div>
-    </div>
+    </>
   );
 };
 
