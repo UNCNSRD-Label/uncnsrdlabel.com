@@ -5,3 +5,13 @@
 .figure {
     @apply aspect-3/4 relative;
 }
+
+.cardTitle {
+    @apply my-0;
+}
+
+.cardBody {
+    span {
+        display: block;
+    }
+}

@@ -29,8 +29,6 @@ const imageColorLoader = ({ src }: { src: string }) => {
 export const Component: FC<Props> = ({ className, path, product }) => {
   const { selectedOptions, selectedVariant } = useProduct();
 
-  console.log({ selectedVariant });
-
   if (!product) {
     return <div>Whoops there was an error! Please refresh and try again.</div>;
   }

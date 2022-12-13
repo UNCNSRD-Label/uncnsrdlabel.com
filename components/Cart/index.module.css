@@ -6,3 +6,9 @@
     /* padding-block-start: var(--viewport-margin-block-start); */
     /* scroll-padding-block-start: var(--viewport-margin-block-start); */
 }
+
+.cost {
+    dd {
+        @apply justify-self-end;
+    }
+}

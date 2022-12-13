@@ -20,7 +20,7 @@ export const Component: FC<Props> = ({ className }) => {
       <div
         className={clsx("p-4", "w-80", "bg-base-100", "drawer-content--cart")}
       >
-        <Cart className={clsx("pt-4")} />
+        <Cart />
       </div>
     </>
   );

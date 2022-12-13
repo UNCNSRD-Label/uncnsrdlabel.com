@@ -2,6 +2,7 @@
   ~ .drawer-side {
     > .drawer-overlay--custom {
       --tw-bg-opacity: 1;
+      background-color: hsl(var(--nf, var(--n)) / var(--tw-bg-opacity));
       cursor: pointer;
       grid-column-start: 1;
       grid-row-start: 1;

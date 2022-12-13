@@ -44,7 +44,7 @@ export const Component: FC<Props> = ({ className, product }) => {
                 title={product.title ?? IMAGE_TITLE_FALLBACK}
               />
               <figcaption className={clsx(styles.figcaption)}>
-                Featured image for {product.title}
+                Additional image for {product.title}
               </figcaption>
             </figure>
           );

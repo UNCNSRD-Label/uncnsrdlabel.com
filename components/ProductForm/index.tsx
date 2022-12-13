@@ -60,8 +60,6 @@ export const Component: FC<Props> = ({ children, className, path }) => {
   //   });
   // }, [options, params, pathname, selectedOptions, setSelectedOption]);
 
-  // console.log({ options, selectedVariant });
-
   const url = `${process.env.NEXT_PUBLIC_VERCEL_URL}${path}`;
 
   const isOutOfStock = !selectedVariant?.availableForSale || false;

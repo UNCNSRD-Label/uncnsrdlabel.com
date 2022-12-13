@@ -4,7 +4,7 @@ import type { CartLine } from "@shopify/hydrogen-react/storefront-api-types";
 import type { FC, HTMLAttributes } from "react";
 import type { PartialDeep } from "type-fest";
 
-import { ProductPrice } from "@shopify/hydrogen-react";
+import { Money } from "@shopify/hydrogen-react";
 import { clsx } from "clsx";
 import Image from "next/image";
 import Link from "next/link";
@@ -24,21 +24,32 @@ type Props = {
 export const Component: FC<Props> = ({ className, line }) => {
   const { id, cost, merchandise, quantity } = line;
 
+  console.log({ merchandise, quantity });
+
+  const href = `/products/${merchandise?.product?.handle}`;
+
   return (
     <article
-      className={clsx(styles.root, className, "card")}
+      className={clsx(
+        styles.root,
+        className,
+        "card",
+        "card-compact",
+        "card-side",
+        "p-0"
+      )}
       id={id}
       itemScope
       itemType="https://schema.org/Product"
     >
       <meta itemProp="identifier" content={id} />
-      <Link
-        href={`products/${merchandise?.product?.handle}`}
-        className={styles.link}
-        title={merchandise?.product?.title}
-      >
-        {merchandise?.image?.url && (
-          <figure className={clsx(styles.figure)}>
+      {merchandise?.image?.url && (
+        <Link
+          href={href}
+          className={clsx(styles.link, "w-2/5")}
+          title={merchandise?.product?.title}
+        >
+          <figure className={clsx(styles.figure, "my-0")}>
             <Image
               alt={merchandise?.image?.altText ?? IMAGE_ALT_TEXT_FALLBACK}
               className={clsx(styles.image)}
@@ -55,27 +66,45 @@ export const Component: FC<Props> = ({ className, line }) => {
               Featured image for {merchandise?.product?.title}
             </figcaption>
           </figure>
+        </Link>
+      )}
+      <div
+        className={clsx(
+          styles.cardBody,
+          "grid",
+          "gap-2",
+          "py-0",
+          "content-start"
         )}
-      </Link>
-      <div className="card-body">
-        <header className={clsx(styles.header)}>
-          <h2 className={clsx(styles.heading, "card-title")} itemProp="name">
+      >
+        <Link
+          href={href}
+          className={(styles.link, "link", "link-hover")}
+          title={merchandise?.product?.title}
+        >
+          <h2
+            className={clsx(styles.cardTitle, "card-title", "text-xs")}
+            itemProp="name"
+          >
             {merchandise?.product?.title}
           </h2>
-          {/* <ProductPrice className={clsx(styles.price)} data={line} /> */}
-        </header>
-        <menu className={clsx(styles.menu, "card-actions", "justify-end")}>
-          <span>{quantity}</span>
-          {merchandise?.product?.handle && (
-            <Link
-              href={`products/${merchandise?.product?.handle}`}
-              className={(styles.link, "link", "link-hover")}
-              title={merchandise?.product?.title}
-            >
-              View
-            </Link>
-          )}
-        </menu>
+        </Link>
+        {merchandise?.title && (
+          <span className={clsx(styles.title, "text-xs")}>
+            {merchandise.title}
+          </span>
+        )}
+        {quantity && (
+          <span className={clsx(styles.quantity, "text-xs")}>
+            Quantity: {quantity}
+          </span>
+        )}
+        {cost?.totalAmount && (
+          <Money
+            className={clsx(styles.price, "text-base")}
+            data={cost.totalAmount}
+          />
+        )}
       </div>
     </article>
   );
