@@ -114,6 +114,7 @@ export const Component: FC<Props> = ({ className, position = "fixed" }) => {
             />
             <span className={clsx("sr-only")}>View my shopping bag</span>
             <span className={clsx(styles.indicator)}>3</span>
+            {/* TODO: Use dynamic cart count */}
           </label>
         </li>
       </menu>

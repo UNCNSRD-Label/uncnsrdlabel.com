@@ -32,6 +32,10 @@ type Props = {
   scrollingElement: RefObject<HTMLElement>;
 } & HTMLAttributes<HTMLElement>;
 
+// TODO: Implement https://github.com/Shopify/hydrogen-ui/blob/2022-10/packages/react/src/MediaFile.tsx
+// TODO: Implement https://github.com/Shopify/hydrogen-ui/blob/2022-10/packages/react/src/ModelViewer.tsx
+// TODO: Implement https://shopify.dev/api/storefront/2022-07/objects/Model3d#implements
+
 export const Component: FC<Props> = ({
   className,
   product,

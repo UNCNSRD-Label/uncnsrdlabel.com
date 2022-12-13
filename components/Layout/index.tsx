@@ -51,6 +51,7 @@ export const Component = forwardRef<HTMLDivElement, Props>(
           <meta name="theme-color" content="#ffffff" />
         </Head>
 
+        {/* TODO: Set drawer-end to load from right */}
         <div className={clsx(styles.drawer, "drawer")}>
           <input
             type="checkbox"

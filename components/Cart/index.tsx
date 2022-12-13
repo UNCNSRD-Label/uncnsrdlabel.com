@@ -14,6 +14,12 @@ import styles from "./index.module.css";
 
 type Props = {} & HTMLAttributes<HTMLElement>;
 
+// TODO: Implement https://github.com/Shopify/hydrogen-ui/tree/2022-10/packages/react/src
+// TODO: Implement https://github.com/Shopify/hydrogen-ui/blob/2022-10/packages/react/src/CartCost.tsx
+// TODO: Implement https://github.com/Shopify/hydrogen-ui/blob/2022-10/packages/react/src/CartCheckoutButton.tsx
+// TODO: Implement https://github.com/Shopify/hydrogen-ui/blob/2022-10/packages/react/src/CartLinePrice.tsx
+// TODO: Implement https://github.com/Shopify/hydrogen-ui/blob/2022-10/packages/react/src/CartLineProvider.tsx
+
 export const Component: FC<Props> = ({ className }) => {
   const { locale } = useRouter();
   const { checkoutUrl, cost, id, lines, totalQuantity } = useCart();
