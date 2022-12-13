@@ -4,16 +4,17 @@
 }
 
 .main {
-  @apply grid gap-4 grid-cols-4;
+  @apply grid gap-4 gap-y-16 grid-cols-2;
   padding-block-start: calc(var(--viewport-margin-block-start) * 3);
   padding-inline: var(--viewport-margin-inline);
+
+  @media screen and (min-width: theme(screens.md.min)) {
+    @apply grid-cols-4;
+  }
 }
 
 .productCard {
 
-  @media screen and (min-width: theme(screens.md.min)) {
-
-  }
 }
 
 .title {

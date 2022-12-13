@@ -28,7 +28,7 @@ export const Component: FC<Props> = ({ className, product }) => {
 
   return (
     <article
-      className={clsx(styles.root, className, "card")}
+      className={clsx(styles.root, className, "card", "card-compact")}
       itemScope
       itemType="https://schema.org/Product"
     >
@@ -68,7 +68,7 @@ export const Component: FC<Props> = ({ className, product }) => {
             className={(styles.link, "link", "link-hover")}
             title={title}
           >
-            View
+            Shop Now
           </Link>
         </menu>
       </div>
