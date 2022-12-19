@@ -1,0 +1,20 @@
+.main {
+  @apply grid items-center justify-items-center py-10 gap-10;
+  grid-template-rows: min(17.5vh, 3rem) 1fr min(17.5vh, 3rem);
+}
+ 
+.logotype {
+  @apply relative h-full w-full max-w-[50%];
+}
+
+.figure {
+  @apply relative h-full w-full;
+
+  .image {
+    @apply object-contain;
+  }
+}
+
+.cta {
+  @apply uppercase;
+}

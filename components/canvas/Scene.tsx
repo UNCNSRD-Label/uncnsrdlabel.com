@@ -11,9 +11,9 @@ import {
   // Sky,
 } from "@react-three/drei";
 
-// import Floor from "#/components/canvas/Floor";
-import Logo from "#/components/canvas/Logo";
-// import Ocean from "#/components/canvas/Ocean";
+// import Floor from "#/components/canvas/props/Floor";
+import Logo from "#/components/canvas/props/Logo";
+// import Ocean from "#/components/canvas/props/Ocean";
 
 export const Component: FC<{ children: ReactNode }> = ({ children }) => {
   // Everything defined in here will persist between route changes, only children are swapped

@@ -7,21 +7,11 @@ import * as THREE from "three";
 
 import { Suspense } from "react";
 
-import Logo from "#/components/canvas/Logo";
+import Logo from "#/components/canvas/props/Logo";
 
 export default function Demo() {
   return (
-    <Canvas
-      eventPrefix="client"
-      shadows
-      dpr={[1, 2]}
-      camera={{
-        position: [0, 0, -2_000],
-        fov: 35,
-        near: 0.01,
-        far: 100_000,
-      }}
-    >
+    <>
       <Suspense>
         <Stage
           shadows="accumulative"
@@ -50,6 +40,6 @@ export default function Demo() {
         // ratio={1}
         />
       </EffectComposer>
-    </Canvas>
+    </>
   );
 }

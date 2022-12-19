@@ -1,7 +1,7 @@
 import { createStorefrontClient } from "@shopify/hydrogen-react";
 
 export const publicStorefrontToken =
-  process.env.NEXT_PUBLIC_SHOPIFY_PUBLIC_STOREFRONT_TOKEN!;
+  process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN!;
 export const privateStorefrontToken =
   process.env.SHOPIFY_PRIVATE_STOREFRONT_TOKEN!;
 export const storeDomain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!;

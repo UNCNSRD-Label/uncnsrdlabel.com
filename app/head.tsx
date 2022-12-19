@@ -1,15 +1,18 @@
+import { useRouter } from "next/router";
 import Script from "next/script";
+
+// TODO: Research https://www.dublincore.org/specifications/dublin-core/dcmi-terms/
 
 export default function Head() {
   // TODO: Fix `You have a Server Component that imports next/router. Use next/navigation instead.`
   // TODO: Fix `Maybe one of these should be marked as a client entry "use client": app/head.tsx`
-  // const { defaultLocale, locale, locales, pathname } = useRouter();
-  const { defaultLocale, locale, locales, pathname } = {
-    defaultLocale: "en-AU",
-    locale: "en-AU",
-    locales: ["en-AU", "en-GB", "en-US"],
-    pathname: "/",
-  };
+  const { defaultLocale, locale, locales, pathname } = useRouter();
+  // const { defaultLocale, locale, locales, pathname } = {
+  //   defaultLocale: process.env.NEXT_PUBLIC_DEFAULT_LOCALE,
+  //   locale: process.env.NEXT_PUBLIC_DEFAULT_LOCALE,
+  //   locales: process.env.NEXT_PUBLIC_SUPPORTED_LOCALES?.split(','),
+  //   pathname: "/",
+  // };
 
   const title = "UNCNSRD";
   const description =
@@ -19,9 +22,9 @@ export default function Head() {
 
   return (
     <>
-      <title>{title}</title>
+      {/* <title>{title}</title> */}
 
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="viewport" content="viewport-fit=cover" />
 
       <meta charSet="utf-8" />
       <meta httpEquiv="content-type" content="text/html" />
@@ -76,34 +79,39 @@ export default function Head() {
       <link
         rel="apple-touch-icon"
         sizes="16x16"
-        href="/icons/favicon-16x16.png"
+        href="/chrome/favicon-16x16.png"
       />
       <link
         rel="apple-touch-icon"
         sizes="32x32"
-        href="/icons/favicon-32x32.png"
+        href="/chrome/favicon-32x32.png"
       />
       <link
         rel="apple-touch-icon"
         sizes="180x180"
-        href="/icons/apple-touch-icon.png"
+        href="/chrome/apple-touch-icon.png"
       />
 
-      <link rel="shortcut icon" href="/favicon.ico" />
+      <link rel="shortcut icon" href="/chrome/favicon.ico" />
+      <link rel="shortcut icon" href="/chrome/favicon.svg" />
       <link
         rel="icon"
         type="image/png"
         sizes="32x32"
-        href="/favicon-32x32.png"
+        href="/chrome/favicon-32x32.png"
       />
       <link
         rel="icon"
         type="image/png"
         sizes="16x16"
-        href="/favicon-16x16.png"
+        href="/chrome/favicon-16x16.png"
       />
 
-      <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+      <link
+        rel="mask-icon"
+        href="/chrome/safari-pinned-tab.svg"
+        color="#5bbad5"
+      />
 
       <meta name="msapplication-TileColor" content="#da532c" />
       <meta name="theme-color" content="#000000" />

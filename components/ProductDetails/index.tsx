@@ -6,10 +6,18 @@ import type { PartialDeep } from "type-fest";
 
 import { ProductProvider } from "@shopify/hydrogen-react";
 import { clsx } from "clsx";
+import Script from "next/script";
+import { Product as ProductSchema } from "schema-dts";
+import { jsonLdScriptProps } from "react-schemaorg";
 
 import AdditionalMediaGallery from "#/components/AdditionalMediaGallery";
 import FeaturedMediaGallery from "#/components/FeaturedMediaGallery";
 import ProductSidebar from "#/components/ProductSidebar";
+
+import {
+  mapProductGraphQLtoSchemaOrg,
+  mapProductVariantGraphQLtoSchemaOrg,
+} from "#/lib/util/schema.org";
 
 import styles from "./index.module.css";
 
@@ -32,6 +40,21 @@ export const Component: FC<Props> = ({
 
   return (
     <ProductProvider data={product}>
+      {product.variantBySelectedOptions && (
+        <Script
+          {...jsonLdScriptProps<ProductSchema>(
+            mapProductVariantGraphQLtoSchemaOrg(
+              product,
+              product.variantBySelectedOptions
+            )
+          )}
+        />
+      )}
+      <Script
+        {...jsonLdScriptProps<ProductSchema>(
+          mapProductGraphQLtoSchemaOrg(product)
+        )}
+      />
       <article className={clsx(styles.article, className)}>
         <FeaturedMediaGallery
           className={clsx(styles.featuredMediaGallery)}

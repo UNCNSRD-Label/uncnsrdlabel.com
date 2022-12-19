@@ -22,7 +22,7 @@ import { Suspense, useRef, useState, Ref } from "react";
 import * as THREE from "three";
 import { Lifetime } from "timeline-composer";
 
-import { Model as Lollipop } from "./Lollipop";
+import { Model as Lollipop } from "#/components/canvas/props/Lollipop";
 
 function Light() {
   return (
@@ -67,7 +67,7 @@ function Rig() {
   );
 }
 
-export default function Lollipops(props: JSX.IntrinsicElements["mesh"]) {
+export default function Scene(props: JSX.IntrinsicElements["mesh"]) {
   // const router = useRouter()
   const [hovered, hover] = useState(false);
   useCursor(hovered);

@@ -1,5 +1,6 @@
 import type { FC, ReactNode } from "react";
 
+import { useCart } from "@shopify/hydrogen-react";
 import { clsx } from "clsx";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,6 +14,8 @@ type Props = {
 };
 
 export const Component: FC<Props> = ({ className, position = "fixed" }) => {
+  const { totalQuantity } = useCart();
+
   return (
     <header
       className={clsx(
@@ -113,8 +116,7 @@ export const Component: FC<Props> = ({ className, position = "fixed" }) => {
               title="View my shopping bag"
             />
             <span className={clsx("sr-only")}>View my shopping bag</span>
-            <span className={clsx(styles.indicator)}>3</span>
-            {/* TODO: Use dynamic cart count */}
+            <span className={clsx(styles.indicator)}>{totalQuantity}</span>
           </label>
         </li>
       </menu>

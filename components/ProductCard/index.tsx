@@ -8,12 +8,15 @@ import { ProductPrice } from "@shopify/hydrogen-react";
 import { clsx } from "clsx";
 import Image from "next/image";
 import Link from "next/link";
+import { JsonLd } from "react-schemaorg";
 
 import {
   IMAGE_ALT_TEXT_FALLBACK,
   IMAGE_TITLE_FALLBACK,
 } from "#/lib/constants/messages";
 import { theme } from "#/lib/constants/style";
+
+import { mapProductGraphQLtoSchemaOrg } from "#/lib/util/schema.org";
 
 import styles from "./index.module.css";
 
@@ -26,14 +29,17 @@ export const Component: FC<Props> = ({ className, product }) => {
 
   const image = featuredImage;
 
+  const productModel = mapProductGraphQLtoSchemaOrg(product);
+
   return (
     <article
       className={clsx(styles.root, className, "card", "card-compact")}
       itemScope
       itemType="https://schema.org/Product"
     >
-      <meta itemProp="datePublished" content={publishedAt} />
-      <meta itemProp="identifier" content={id} />
+      {/* <JsonLd<typeof productModel>
+        item={mapProductGraphQLtoSchemaOrg(product)}
+      /> */}
       <Link href={`products/${handle}`} className={styles.link} title={title}>
         {image?.url && (
           <figure className={clsx(styles.figure)}>
@@ -41,7 +47,6 @@ export const Component: FC<Props> = ({ className, product }) => {
               alt={image?.altText ?? IMAGE_ALT_TEXT_FALLBACK}
               className={clsx(styles.image)}
               fill
-              itemProp="image"
               priority
               sizes={`(max-width: ${theme.screens.xs.max}) 100vw,
                       (max-width: ${theme.screens.md.max}) 50vw,
@@ -57,12 +62,10 @@ export const Component: FC<Props> = ({ className, product }) => {
       </Link>
       <div className="card-body">
         <header className={clsx(styles.header)}>
-          <h2 className={clsx(styles.heading, "card-title")} itemProp="name">
-            {title}
-          </h2>
+          <h2 className={clsx(styles.heading, "card-title")}>{title}</h2>
           <ProductPrice className={clsx(styles.price)} data={product} />
         </header>
-        <menu className={clsx(styles.menu, "card-actions", "justify-end")}>
+        {/* <menu className={clsx(styles.menu, "card-actions", "justify-end")}>
           <Link
             href={`products/${handle}`}
             className={(styles.link, "link", "link-hover")}
@@ -70,7 +73,7 @@ export const Component: FC<Props> = ({ className, product }) => {
           >
             Shop Now
           </Link>
-        </menu>
+        </menu> */}
       </div>
     </article>
   );

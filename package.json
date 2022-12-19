@@ -7,12 +7,14 @@
     "codegen": "graphql-codegen --config codegen.ts --watch",
     "dev": "run-p dev:next codegen",
     "dev:next": "next dev",
+    "dev:next:inspect": "NODE_OPTIONS='--inspect' next dev",
     "find:unused": "npx next-unused",
     "lint": "next lint",
     "lint-staged": "lint-staged",
     "postbuild": "next-sitemap",
     "prettier:check": "prettier --check --ignore-unknown .",
     "prettier:fix": "prettier --write --ignore-unknown .",
+    "prettier:list-different": "npx prettier . --list-different",
     "start": "next start",
     "test": "npm prettier:check && npm lint",
     "typecheck": "tsc --noEmit"
@@ -48,14 +50,17 @@
     "react-hook-form": "^7.40.0",
     "react-icons": "^4.7.1",
     "react-merge-refs": "^2.0.1",
+    "react-schemaorg": "^2.0.0",
     "react-social-icons": "^5.15.0",
     "react-use-scrollspy": "^3.1.1",
     "react-use-wizard": "^2.2.1",
+    "schema-dts": "^1.1.0",
     "tailwindcss-colors-css-variables": "^1.1.2-rc.2",
     "three": "^0.147.0",
     "three-stdlib": "^2.20.4",
     "timeline-composer": "^0.1.7",
-    "use-query-params": "^2.1.2"
+    "use-query-params": "^2.1.2",
+    "valtio": "^1.7.6"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "2.16.1",
@@ -78,6 +83,7 @@
     "graphql": "^16.6.0",
     "graphql-config": "^4.3.6",
     "lint-staged": "^13.1.0",
+    "mini-css-extract-plugin": "^2.7.2",
     "next-compose-plugins": "^2.2.1",
     "next-pwa": "^5.6.0",
     "npm-run-all": "^4.1.5",
@@ -103,6 +109,9 @@
       "prettier --write --ignore-unknown"
     ]
   },
+  "browserslist": [
+    "defaults"
+  ],
   "next-unused": {
     "alias": {
       "@lib/*": [
@@ -132,5 +141,5 @@
       "pages"
     ]
   },
-  "packageManager": "pnpm@7.17.1"
+  "packageManager": "pnpm@7.18.2"
 }

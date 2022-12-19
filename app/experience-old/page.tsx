@@ -6,7 +6,7 @@ import Link from "next/link";
 // import { useRef } from "react";
 // import * as THREE from "three";
 
-import Lollipops from "#/components/canvas/Lollipops";
+import Lollipops from "#/components/canvas/scenes/Lollipops";
 import Scene from "#/components/canvas/Scene";
 import SignupForm from "#/components/SignupForm";
 
@@ -19,7 +19,7 @@ export default function Page() {
 
   return (
     <>
-      <title>UNCNSRD - Experience</title>
+      {/* <title>UNCNSRD - Experience</title> */}
       <Scene>
         <Lollipops />
       </Scene>

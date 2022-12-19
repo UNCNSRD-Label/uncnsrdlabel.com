@@ -1,22 +1,17 @@
 "use client";
 
-import type {
-  Model3d,
-  Product,
-} from "@shopify/hydrogen-react/storefront-api-types";
+import type { Product } from "@shopify/hydrogen-react/storefront-api-types";
 import type { FC, HTMLAttributes, RefObject } from "react";
 import type { PartialDeep } from "type-fest";
 
-import { Stage } from "@react-three/drei";
 import { clsx } from "clsx";
 import Image from "next/image";
 import Link from "next/link";
-import { Suspense, useRef } from "react";
+import { useRef } from "react";
 // import { mergeRefs } from "react-merge-refs";
 import useScrollSpy from "react-use-scrollspy";
 
-import Model from "#/components/canvas/Model";
-import Scene from "#/components/canvas/Scene";
+import ProductModel from "#/components/ProductModel";
 
 import {
   IMAGE_ALT_TEXT_FALLBACK,
@@ -137,28 +132,7 @@ export const Component: FC<Props> = ({
         id={`featuredMediaGallery-${modelIndex}`}
         ref={sectionElementRefs[modelIndex]}
       >
-        <Suspense>
-          <Scene>
-            <Stage
-              adjustCamera={0.5}
-              // environment="dawn"
-              environment="warehouse"
-              intensity={0.5}
-              preset="portrait"
-              shadows="contact"
-            >
-              {product.media?.nodes
-                ?.filter((node) => node?.mediaContentType === "MODEL_3D")
-                .map((node, nodeIndex) =>
-                  (node as Model3d)?.sources
-                    ?.filter((source) => source?.format === "glb")
-                    .map((source, sourceIndex) => (
-                      <Model key={sourceIndex} url={source.url} />
-                    ))
-                )}
-            </Stage>
-          </Scene>
-        </Suspense>
+        <ProductModel product={product} />
         <figcaption className={clsx(styles.figcaption)}>
           3D model view for {product.title}
         </figcaption>

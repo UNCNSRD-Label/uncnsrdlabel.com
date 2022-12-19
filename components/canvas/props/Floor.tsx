@@ -7,7 +7,7 @@ import type { MeshBasicMaterial } from "three";
 
 // import floorImage from "#/public/images/textures/concrete-1024.jpg";
 
-export default function Floot(
+export default function Floor(
   props: Omit<RefAttributes<MeshBasicMaterial>, "key">
 ) {
   // const floorTexture = useTexture(floorImage as any) as THREE.Texture;

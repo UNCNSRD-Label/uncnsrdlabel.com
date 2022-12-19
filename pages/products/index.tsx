@@ -55,8 +55,12 @@ export default function Page({
   }
 
   return (
-    <Layout ref={scrollingElement} showHeaderAndFooter={true}>
-      <title>Collagerie - Home</title>
+    <Layout
+      classNameMain={clsx(styles.main)}
+      ref={scrollingElement}
+      showHeaderAndFooter={true}
+    >
+      {/* <title>Home</title> */}
       <Breadcrumbs>
         <li>
           <Link href="/" title="Return to the home page">
@@ -65,11 +69,9 @@ export default function Page({
         </li>
         <li>Products</li>
       </Breadcrumbs>
-      <main className={clsx(styles.main)}>
-        {data.products.nodes.map((node, index) => (
-          <ProductCard key={index} product={node} />
-        ))}
-      </main>
+      {data.products.nodes.map((node, index) => (
+        <ProductCard key={index} product={node} />
+      ))}
       {/* <aside>
         <h2>Related Products</h2>
       </aside> */}

@@ -5,14 +5,14 @@ import { useGLTF } from "@react-three/drei";
 export default function Model({ url }: { url: string }) {
   const { nodes, materials } = useGLTF(url);
 
-  // return (
-  //   <mesh
-  //     castShadow
-  //     receiveShadow
-  //     geometry={nodes["1_Head_Mannequin_0"].geometry}
-  //     material={materials.Mannequin}
-  //   />
-  // );
+  return (
+    <mesh
+      castShadow
+      receiveShadow
+      // geometry={nodes["1_Head_Mannequin_0"].geometry}
+      material={materials.Mannequin}
+    />
+  );
 
   return <></>;
 }

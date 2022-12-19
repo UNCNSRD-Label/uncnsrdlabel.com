@@ -9,7 +9,7 @@ import styles from "#/app/page.module.css";
 export default function Page() {
   return (
     <>
-      <title>UNCNSRD - Home</title>
+      {/* <title>UNCNSRD - Home</title> */}
       <div className={clsx(styles.container, "fitViewport", "fixed")}>
         <Link href="/" className={styles.logotype} title="uncnsrdlabel.com">
           <Image

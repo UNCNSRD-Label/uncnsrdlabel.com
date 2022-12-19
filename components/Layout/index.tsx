@@ -14,15 +14,16 @@ import styles from "./index.module.css";
 
 type Props = {
   children?: ReactNode;
+  classNameMain?: string;
   showHeaderAndFooter?: boolean;
 };
 
 export const Component = forwardRef<HTMLDivElement, Props>(
-  ({ children, showHeaderAndFooter = true }, ref) => {
+  ({ children, classNameMain, showHeaderAndFooter = true }, ref) => {
     return (
       <>
         <Head>
-          <title>UNCNSRD</title>
+          {/* <title>UNCNSRD</title> */}
           <meta
             name="description"
             content="UNCNSRD is multifunctional swimwear for female figures who aren’t afraid to show off their assets and want to feel unapologetically sexy."
@@ -77,19 +78,21 @@ export const Component = forwardRef<HTMLDivElement, Props>(
               "drawer-content",
               "flex",
               "flex-col",
-              "fitViewport"
+              "fitViewportMinimum"
             )}
             ref={ref}
           >
             {showHeaderAndFooter && <Header />}
-            <main className={clsx(styles.main, "flex-1")}>{children}</main>
+            <main className={clsx(styles.main, classNameMain, "flex-1")}>
+              {children}
+            </main>
             {showHeaderAndFooter && <Footer />}
           </div>
           <div className={clsx(styles.root, "drawer-side", "drawer-end")}>
             <DrawerCart />
             <DrawerNavigation />
           </div>
-          <FooterNavigation />
+          {/* <FooterNavigation /> */}
         </div>
       </>
     );
