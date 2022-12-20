@@ -72,10 +72,18 @@ module.exports = {
       },
       typography: (theme) => ({
         xs: {
-          DEFAULT: {
-            css: {
-              fontSize: "0.75rem",
-            },
+          css: {
+            fontSize: "0.75rem",
+          },
+        },
+        "3xl": {
+          css: {
+            fontSize: "2rem",
+          },
+        },
+        "4xl": {
+          css: {
+            fontSize: "2.5rem",
           },
         },
       }),

@@ -116,7 +116,7 @@
   }
 
   .article {
-    @apply justify-self-end prose prose-2xl;
+    @apply justify-self-end prose prose-3xl max-w-prose;
   }
 }
 
