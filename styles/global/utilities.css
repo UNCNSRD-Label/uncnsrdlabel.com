@@ -15,7 +15,7 @@
 
   @supports not (block-size: 100dvh) {
     block-size: calc(
-        100vh - (env(safe-area-inset-top) + env(safe-area-inset-bottom))
+      100vh - (env(safe-area-inset-top) + env(safe-area-inset-bottom))
     );
   }
 
@@ -25,43 +25,43 @@
 
   @supports not (inline-size: 100dvw) {
     inline-size: calc(
-        100vw - (env(safe-area-inset-left) + env(safe-area-inset-right))
+      100vw - (env(safe-area-inset-left) + env(safe-area-inset-right))
     );
   }
 }
 
-.fitViewportHeight {  
+.fitViewportHeight {
   @supports (block-size: 100dvh) {
     block-size: 100dvh;
   }
 
   @supports not (block-size: 100dvh) {
     block-size: calc(
-        100vh - (env(safe-area-inset-top) + env(safe-area-inset-bottom))
+      100vh - (env(safe-area-inset-top) + env(safe-area-inset-bottom))
     );
   }
 }
 
-.fitViewportWidth {  
+.fitViewportWidth {
   @supports (inline-size: 100dvw) {
     inline-size: 100dvw;
   }
 
   @supports not (inline-size: 100dvw) {
     inline-size: calc(
-        100vw - (env(safe-area-inset-left) + env(safe-area-inset-right))
+      100vw - (env(safe-area-inset-left) + env(safe-area-inset-right))
     );
   }
 }
 
-.fitViewportMinimumHeight {  
+.fitViewportMinimumHeight {
   @supports (min-block-size: 100dvh) {
     min-block-size: 100dvh;
   }
 
   @supports not (min-block-size: 100dvh) {
     min-block-size: calc(
-        100vh - (env(safe-area-inset-top) + env(safe-area-inset-bottom))
+      100vh - (env(safe-area-inset-top) + env(safe-area-inset-bottom))
     );
   }
 }
@@ -75,7 +75,7 @@
 
   @supports not (min-block-size: 100dvh) {
     min-block-size: calc(
-        100vh - (env(safe-area-inset-top) + env(safe-area-inset-bottom))
+      100vh - (env(safe-area-inset-top) + env(safe-area-inset-bottom))
     );
   }
 
@@ -85,19 +85,53 @@
 
   @supports not (min-inline-size: 100dvw) {
     min-inline-size: calc(
-        100vw - (env(safe-area-inset-left) + env(safe-area-inset-right))
+      100vw - (env(safe-area-inset-left) + env(safe-area-inset-right))
     );
   }
 }
 
-.fitViewporMinimumtWidth {  
+.fitViewporMinimumtWidth {
   @supports (min-inline-size: 100dvw) {
     min-inline-size: 100dvw;
   }
 
   @supports not (min-inline-size: 100dvw) {
     min-inline-size: calc(
-        100vw - (env(safe-area-inset-left) + env(safe-area-inset-right))
+      100vw - (env(safe-area-inset-left) + env(safe-area-inset-right))
     );
+  }
+}
+
+.logotype {
+  @media (prefers-color-scheme: dark) {
+    filter: invert(1);
+  }
+}
+
+.logotypeMask {
+  background-attachment: fixed;
+  background-clip: text;
+  background-image: url("/images/art/desktop.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: transparent;
+  display: grid;
+  font-family: "Bomber Escort Outline", cursive;
+  font-style: italic;
+  place-content: center;
+  text-align: center;
+  text-fill-color: transparent;
+}
+
+.onLoadingComplete {
+  opacity: 0;
+
+  @media screen and (prefers-reduced-motion: no-preference) {
+    transition: opacity 0.25s linear 0s;
+  }
+
+  &[data-loaded="true"] {
+    opacity: 1;
   }
 }
