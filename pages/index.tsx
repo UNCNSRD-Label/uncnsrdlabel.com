@@ -103,7 +103,7 @@ export default function Page({
               priority
               src="/images/art/desktop.jpg"
             />
-            {/* <figcaption className={clsx(styles.figcaption, "logotypeMask")}>UNCNSRD</figcaption> */}
+            {/* <figcaption className={clsx(styles.figcaption, "logotype", "mask")}>UNCNSRD</figcaption> */}
           </Link>
         </figure>
         <Link

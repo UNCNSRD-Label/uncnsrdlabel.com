@@ -103,12 +103,16 @@
 }
 
 .logotype {
+  font-family: "Bomber Escort Outline", cursive;
+  font-style: italic;
+  padding-inline-end: 2rem;
+
   @media (prefers-color-scheme: dark) {
     filter: invert(1);
   }
 }
 
-.logotypeMask {
+.mask {
   background-attachment: fixed;
   background-clip: text;
   background-image: url("/images/art/desktop.jpg");
@@ -117,9 +121,6 @@
   background-size: cover;
   color: transparent;
   display: grid;
-  font-family: "Bomber Escort Outline", cursive;
-  font-style: italic;
-  padding-inline-end: 2rem;
   place-content: center;
   text-align: center;
   text-fill-color: transparent;

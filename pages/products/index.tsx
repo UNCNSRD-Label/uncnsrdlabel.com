@@ -79,7 +79,7 @@ export default function Page({
           src="/images/art/desktop.jpg"
         />
         <div className={clsx(styles.foreground)} />
-        <h2 className={clsx(styles.title, "logotypeMask")}>UNCNSRD</h2>
+        <h2 className={clsx(styles.title, "logotype", "mask")}>UNCNSRD</h2>
       </header>
       <section className={clsx(styles.productsList)}>
         {data.products.nodes.map((node, index) => (

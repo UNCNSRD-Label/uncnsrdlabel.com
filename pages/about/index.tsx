@@ -19,7 +19,7 @@ export default function Page() {
       showHeaderAndFooter={true}
     >
       <article className={clsx(styles.article)}>
-        <h2 className={clsx(styles.title, "logotypeMask")}>UNCNSRD</h2>
+        <h2 className={clsx(styles.title, "logotype")}>UNCNSRD</h2>
         <div className={clsx(styles.text)}>
           <p>
             <span className={clsx("fontBomberEscort_")}>UNCNSRD</span> is
