@@ -6,9 +6,9 @@ import type { PartialDeep } from "type-fest";
 
 export const getProductURL = (
   product: PartialDeep<Product, { recurseIntoArrays: true }>
-) => `/product/${product.handle}`;
+) => `/products/${product.handle}`;
 
 export const getProductVariantURL = (
   product: PartialDeep<Product, { recurseIntoArrays: true }>,
   productVariant: PartialDeep<ProductVariant, { recurseIntoArrays: true }>
-) => `/product/${product.handle}`;
+) => `/products/${product.handle}`;

@@ -80,7 +80,11 @@ export default function Page({
 
   return (
     <NextQueryParamsProvider>
-      <Layout ref={scrollingElement} showHeaderAndFooter={true}>
+      <Layout
+        ref={scrollingElement}
+        showHeaderAndFooter={true}
+        classNameDrawerContent={clsx(styles.drawerContent)}
+      >
         <ProductDetails
           path={asPath}
           product={product}

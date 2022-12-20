@@ -1,3 +1,7 @@
+.drawerContent {
+  overflow-y: auto !important;
+}
+
 .aside {
   display: none;
 }
