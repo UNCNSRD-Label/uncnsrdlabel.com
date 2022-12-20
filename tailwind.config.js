@@ -42,7 +42,9 @@ module.exports = {
     extend: {
       aspectRatio: {
         "2/1": "2 / 1",
+        "2/3": "2 / 3",
         "4/3": "4 / 3",
+        "3/2": "3 / 2",
         "3/4": "3 / 4",
         "16/9": "16 / 9",
         "9/16": "9 / 16",
@@ -70,8 +72,10 @@ module.exports = {
       },
       typography: (theme) => ({
         xs: {
-          css: {
-            fontSize: "0.75rem",
+          DEFAULT: {
+            css: {
+              fontSize: "0.75rem",
+            },
           },
         },
       }),
