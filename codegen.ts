@@ -7,7 +7,7 @@ const config: CodegenConfig = {
   schema: "node_modules/@shopify/hydrogen-react/storefront.schema.json",
   documents: ["app/**/*.{graphql,tsx}", "pages/**/*.{graphql,tsx}"],
   generates: {
-    "./gql/": {
+    "./generated/gql/": {
       preset: "client",
       plugins: [],
       config: {

@@ -1,14 +1,14 @@
 import type { StorefrontApiResponseOk } from "@shopify/hydrogen-react";
 import type { GetServerSideProps } from "next";
 
-import type { ProductQuery } from "#/gql/graphql";
+import type { ProductQuery } from "#/generated/gql/graphql";
 
 import { clsx } from "clsx";
 import { request } from "graphql-request";
 import { useRouter } from "next/router";
 import { createRef } from "react";
 
-import NextQueryParamsProvider from "#/providers/next-query-params";
+import NextQueryParamsProvider from "#/lib/providers/next-query-params";
 
 import Layout from "#/components/Layout";
 import ProductDetails from "#/components/ProductDetails";
@@ -16,7 +16,7 @@ import ProductDetails from "#/components/ProductDetails";
 import {
   getStorefrontApiUrl,
   getPublicTokenHeaders,
-} from "#/src/shopify-client";
+} from "#/lib/clients/shopify";
 
 import document from "./index.graphql";
 

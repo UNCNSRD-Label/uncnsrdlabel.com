@@ -1,7 +1,7 @@
 import type { StorefrontApiResponseOk } from "@shopify/hydrogen-react";
 import type { GetServerSideProps } from "next";
 
-import type { HomeProductsQuery } from "#/gql/graphql";
+import type { HomeProductsQuery } from "#/generated/gql/graphql";
 
 import { clsx } from "clsx";
 import { request } from "graphql-request";
@@ -16,7 +16,7 @@ import { onLoadingComplete } from "#/lib/util/image";
 import {
   getStorefrontApiUrl,
   getPublicTokenHeaders,
-} from "#/src/shopify-client";
+} from "#/lib/clients/shopify";
 
 import document from "./index.graphql";
 

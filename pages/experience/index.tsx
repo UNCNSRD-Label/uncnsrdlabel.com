@@ -3,7 +3,7 @@
 import type { StorefrontApiResponseOk } from "@shopify/hydrogen-react";
 import type { GetServerSideProps } from "next";
 
-import type { ProductsQuery } from "#/gql/graphql";
+import type { ProductsQuery } from "#/generated/gql/graphql";
 
 import { Canvas } from "@react-three/fiber";
 // import { clsx } from "clsx";
@@ -29,7 +29,7 @@ import {
 import {
   getStorefrontApiUrl,
   getPublicTokenHeaders,
-} from "#/src/shopify-client";
+} from "#/lib/clients/shopify";
 
 import document from "../products/index.graphql";
 

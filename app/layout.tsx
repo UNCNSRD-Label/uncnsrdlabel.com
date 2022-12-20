@@ -6,7 +6,7 @@ import { Montserrat } from "@next/font/google";
 import { clsx } from "clsx";
 import { ReactNode } from "react";
 
-import Providers from "#/providers";
+import Providers from "#/lib/providers";
 
 import Header from "#/components/Header";
 import Footer from "#/components/Footer";
