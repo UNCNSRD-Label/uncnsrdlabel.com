@@ -9,7 +9,9 @@
 
 .headerLanding {
   @apply grid items-center justify-items-center py-8 gap-8;
-  grid-template-rows: max(7.5vh, 2rem) 1fr max(7.5vh, 2rem);
+  grid-template-rows: max(5vh, 2vw) auto max(5vh, 2vw);
+  gap: 2vw;
+  padding-block: 2vw;
 
   .logotypeLink {
     @apply relative h-full w-full max-w-[50%];
@@ -17,6 +19,7 @@
 
   .figure {
     @apply aspect-2/1 relative h-full overflow-hidden;
+    min-width: 60vw;
 
     .link {
       @apply block relative h-full w-full;
@@ -108,7 +111,7 @@
 }
 
 .article {
-  @apply content-center grid grid-cols-12 justify-items-end p-24;
+  @apply items-center grid grid-cols-12 justify-items-end p-24;
   /* max-inline-size: 36ch; */
   min-height: 100vh;
 

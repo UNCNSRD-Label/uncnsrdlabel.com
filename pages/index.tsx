@@ -3,6 +3,7 @@ import type { GetServerSideProps } from "next";
 
 import type { HomeProductsQuery } from "#/gql/graphql";
 
+import { Preload } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { clsx } from "clsx";
 import { request } from "graphql-request";
@@ -392,6 +393,7 @@ export default function Page({
           }}
         >
           <LogoGlitching />
+          <Preload all />
         </Canvas>
       </section>
     </Layout>

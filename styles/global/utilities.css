@@ -66,7 +66,7 @@
   }
 }
 
-.fitViewporMinimumt {
+.fitViewporMinimum {
   inset: 0;
 
   @supports (min-block-size: 100dvh) {
@@ -90,7 +90,7 @@
   }
 }
 
-.fitViewporMinimumtWidth {
+.fitViewporMinimumWidth {
   @supports (min-inline-size: 100dvw) {
     min-inline-size: 100dvw;
   }
