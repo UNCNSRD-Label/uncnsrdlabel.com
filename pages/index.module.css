@@ -1,13 +1,18 @@
-.main {
-  @apply grid overflow-auto scroll-smooth snap-y;
+.drawerContent {
   perspective: 30vh;
+}
+
+.main {
+  @apply grid scroll-smooth snap-y;
+  transform-style: preserve-3d;
+  z-index: -1;
 
   > * {
     @apply snap-start;
   }
 }
 
-.headerLanding {
+.header {
   @apply grid items-center justify-items-center py-8 gap-8;
   grid-template-rows: max(5vh, 2vw) auto max(5vh, 2vw);
   gap: 2vw;
@@ -35,20 +40,11 @@
       } */
     }
   }
-
-  .cta {
-    @apply uppercase;
-  }
 }
 
-.sectionModel {
-  @apply grid grid-cols-3 items-center justify-between justify-items-stretch py-24 gap-16;
-  /* @apply aspect-9/16; */
-  height: 100vh;
-  /* min-height: 100vh; */
-  overflow-y: auto;
-  overflow-x: hidden;
-  perspective: inherit;
+.sectionGallery {
+  @apply grid grid-cols-3 items-center justify-between justify-items-center py-24 gap-16;
+  transform-style: preserve-3d;
 
   .figure {
     @apply relative w-full;
@@ -110,112 +106,6 @@
   }
 }
 
-.article {
-  @apply items-center grid grid-cols-12 justify-items-end p-24;
-  /* max-inline-size: 36ch; */
-  min-height: 100vh;
-
-  .title {
-    @apply col-span-5 w-full;
-    font-size: clamp(1.5rem, 5vw, 5rem);
-  }
-
-  .text {
-    @apply col-span-7 prose prose-3xl;
-  }
-}
-
-.section {
-  @apply grid items-center justify-items-center p-24;
-  min-height: 100vh;
-
-  .title {
-    font-size: clamp(1.5rem, 12.5vw, 12.5rem);
-  }
-}
-
-.parallax {
-  height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-  perspective: 10px;
-
-  .header {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* height: 100%; */
-    min-height: 100vh;
-    transform-style: preserve-3d;
-    z-index: -1;
-
-    .background {
-      transform: translateZ(-10px) scale(2);
-    }
-
-    .foreground {
-      background: rgb(100,100,100);
-      background: linear-gradient(0deg, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 50%);
-      transform: translateY(50%) translateZ(-5px) scale(1.5);
-    }
-
-    .background,
-    .foreground {
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-      z-index: -1;
-    }
-
-    .title {
-      @apply p-24;
-      font-size: clamp(1.5rem, 15vw, 15rem);
-      inset: 0;
-      position: absolute;
-    }
-  }
-
-  .sectionText {
-    /* display: none; */
-    font-size: 2rem;
-    padding: 2rem;
-    background-color: #333;
-    color: white;
-  }
-}
-
-.sectionWall {
-  @apply grid grid-cols-4 items-center justify-items-center p-24 gap-24;
-  /* height: 100vh; */
-  min-height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-
-  .productCard {
-    overflow: hidden;
-    /* position: relative; */
-
-    :global(.imageLink) {
-      :global(figure) {
-        /* transform-style: preserve-3d; */
-        /* z-index: -1; */
-
-        :global(img) {
-          /* transform: translateZ(-10px) scale(2); */
-          /* object-fit: cover; */
-        }
-      }
-    }
-
-    /* :global(.card-body) {
-      transform: translateZ(-5px) scale(1.5);
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-      z-index: -1;
-    } */
-  }
+.footer {
+  @apply grid items-center justify-items-center p-16 gap-16;
 }

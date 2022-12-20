@@ -45,14 +45,14 @@ export const Component: FC<Props> = ({ className, position = "fixed" }) => {
         </label>
       </div>
       <nav className={styles.nav}>
-        <Link className={styles.link} href="/shop">
+        <Link className={styles.link} href="/products">
           Shop
         </Link>
         <Link className={styles.link} href="/collection">
           Collection
         </Link>
-        <Link className={styles.link} href="/culture">
-          Culture
+        <Link className={styles.link} href="/about">
+          About
         </Link>
       </nav>
       <Link href="/" className={clsx(styles.logoContainer)}>

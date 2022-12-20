@@ -81,9 +81,12 @@ export default function Page({
   return (
     <NextQueryParamsProvider>
       <Layout
+        classNameDrawerContent={clsx(
+          styles.drawerContent,
+          "drawerContentOverflowY"
+        )}
         ref={scrollingElement}
         showHeaderAndFooter={true}
-        classNameDrawerContent={clsx(styles.drawerContent)}
       >
         <ProductDetails
           path={asPath}

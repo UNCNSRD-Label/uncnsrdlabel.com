@@ -1,0 +1,20 @@
+.main {
+  @apply grid scroll-smooth snap-y;
+
+  > * {
+    @apply snap-start;
+  }
+}
+
+.article {
+  @apply gap-8 items-center grid grid-cols-12 justify-items-end p-24;
+
+  .title {
+    @apply col-span-5 w-full;
+    font-size: clamp(1.5rem, 5vw, 5rem);
+  }
+
+  .text {
+    @apply col-span-7 prose prose-3xl;
+  }
+}

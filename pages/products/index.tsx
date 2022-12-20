@@ -5,6 +5,7 @@ import type { ProductsQuery } from "#/gql/graphql";
 
 import { clsx } from "clsx";
 import { request } from "graphql-request";
+import Image from "next/image";
 import Link from "next/link";
 import { createRef } from "react";
 
@@ -45,8 +46,6 @@ export default function Page({
   data,
   errors,
 }: StorefrontApiResponseOk<ProductsQuery>) {
-  // const { storeDomain } = useShop();
-
   const scrollingElement = createRef<HTMLDivElement>();
 
   if (!data || errors) {
@@ -56,11 +55,14 @@ export default function Page({
 
   return (
     <Layout
+      classNameDrawerContent={clsx(
+        styles.drawerContent,
+        "drawerContentOverflowY"
+      )}
       classNameMain={clsx(styles.main)}
       ref={scrollingElement}
       showHeaderAndFooter={true}
     >
-      {/* <title>Home</title> */}
       <Breadcrumbs>
         <li>
           <Link href="/" title="Return to the home page">
@@ -69,9 +71,21 @@ export default function Page({
         </li>
         <li>Products</li>
       </Breadcrumbs>
-      {data.products.nodes.map((node, index) => (
-        <ProductCard key={index} product={node} />
-      ))}
+      <header className={clsx(styles.header)}>
+        <Image
+          alt="background"
+          className={clsx(styles.background)}
+          fill
+          src="/images/art/desktop.jpg"
+        />
+        <div className={clsx(styles.foreground)} />
+        <h2 className={clsx(styles.title, "logotypeMask")}>UNCNSRD</h2>
+      </header>
+      <section className={clsx(styles.productsList)}>
+        {data.products.nodes.map((node, index) => (
+          <ProductCard key={index} product={node} />
+        ))}
+      </section>
       {/* <aside>
         <h2>Related Products</h2>
       </aside> */}

@@ -3,8 +3,6 @@ import type { GetServerSideProps } from "next";
 
 import type { HomeProductsQuery } from "#/gql/graphql";
 
-import { Preload } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
 import { clsx } from "clsx";
 import { request } from "graphql-request";
 import Image from "next/image";
@@ -12,11 +10,7 @@ import Link from "next/link";
 import { createRef } from "react";
 
 import Layout from "#/components/Layout";
-import ProductCard from "#/components/ProductCard";
 
-import LogoGlitching from "#/components/canvas/scenes/LogoGlitching";
-
-// import { useImageLoadCallback } from "#/lib/hooks/useImageLoadCallback";
 import { onLoadingComplete } from "#/lib/util/image";
 
 import {
@@ -24,9 +18,9 @@ import {
   getPublicTokenHeaders,
 } from "#/src/shopify-client";
 
-import styles from "./index.module.css";
-
 import document from "./index.graphql";
+
+import styles from "./index.module.css";
 
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
@@ -61,11 +55,15 @@ export default function Page({
 
   return (
     <Layout
-      classNameMain={clsx(styles.main, "fitViewport")}
+      classNameDrawerContent={clsx(
+        styles.drawerContent,
+        "drawerContentOverflowY"
+      )}
+      classNameMain={clsx(styles.main)}
       ref={scrollingElement}
       showHeaderAndFooter={false}
     >
-      <header className={clsx(styles.headerLanding, "fitViewport")}>
+      <header className={clsx(styles.header, "fitViewport")}>
         <Link
           href="/"
           className={clsx(styles.logotypeLink)}
@@ -80,7 +78,7 @@ export default function Page({
           />
         </Link>
         <figure className={clsx(styles.figure)}>
-          <Link href="#wall" className={clsx(styles.link)} title="Shop now">
+          <Link href="/products" className={clsx(styles.link)} title="Shop now">
             <Image
               alt="Sexy young woman posing in bikini on hotel bathroom counter"
               className={clsx(
@@ -91,7 +89,6 @@ export default function Page({
               fill
               priority
               src="/images/art/lp1.jpg"
-              // src="/tmp/10.jpg"
             />
             <Image
               alt="Sexy young woman posing in bikini on hotel bathroom counter"
@@ -105,35 +102,20 @@ export default function Page({
               onLoadingComplete={onLoadingComplete}
               priority
               src="/images/art/desktop.jpg"
-              // src="/tmp/10.jpg"
-              // {...useImageLoadCallback()}
             />
             {/* <figcaption className={clsx(styles.figcaption, "logotypeMask")}>UNCNSRD</figcaption> */}
           </Link>
         </figure>
-        <Link href="#wall" className={clsx(styles.cta)} title="Shop now">
+        <Link
+          href="/products"
+          className={clsx(styles.cta, "cta")}
+          title="Shop now"
+        >
           Shop now
         </Link>
       </header>
 
-      <article className={clsx(styles.article)}>
-        <h2 className={clsx(styles.title, "logotypeMask")}>UNCNSRD</h2>
-        <div className={clsx(styles.text)}>
-          <p>
-            <span className={clsx("fontBomberEscort")}>UNCNSRD</span> is
-            multifunctional swimwear for female figures who aren&apos;t afraid
-            to show off their assets and want to feel unapologetically sexy.
-          </p>
-          <p>
-            Inspired by rebellious women and street fashion,{" "}
-            <span className={clsx("fontBomberEscort")}>UNCNSRD</span> strives to
-            create innovative designs that can be multifunctional, yet still
-            remain practical at its core.
-          </p>
-        </div>
-      </article>
-
-      <section className={clsx(styles.sectionModel)}>
+      <section className={clsx(styles.sectionGallery)}>
         <figure className={clsx(styles.figure, "aspect-3/2", "object-bottom")}>
           <Image
             alt="Sexy young woman posing in bikini on a white couch"
@@ -345,58 +327,15 @@ export default function Page({
           />
         </figure>
       </section>
-
-      {/* <Image
-        alt="Sexy young woman posing in bikini on hotel bathroom counter"
-        className={clsx(styles.logotypeMask, "onLoadingComplete")}
-        height="200"
-        onLoadingComplete={onLoadingComplete}
-        src="/images/art/desktop.jpg"
-        width="900"
-      /> */}
-
-      <section className={clsx(styles.parallax)}>
-        <header className={clsx(styles.header)}>
-          <Image
-            alt="background"
-            className={clsx(styles.background)}
-            fill
-            src="/images/art/desktop.jpg"
-          />
-          <div className={clsx(styles.foreground)} />
-          <h2 className={clsx(styles.title, "logotypeMask")}>UNCNSRD</h2>
-        </header>
-
-        <section className={clsx(styles.sectionWall)} id="wall">
-          {data.products.nodes.map((node, index) => (
-            <ProductCard
-              className={clsx("image-full", styles.productCard)}
-              key={index}
-              product={node}
-            />
-          ))}
-        </section>
-      </section>
-
-      <section className={clsx(styles.section)}>
-        <Canvas
-          className={styles.canvas}
-          // frameloop="demand"
-          resize={{ scroll: false }}
-          eventPrefix="client"
-          shadows
-          dpr={[1, 2]}
-          camera={{
-            position: [0, 0, 1],
-            // fov: 35,
-            near: 0.01,
-            far: 100_000,
-          }}
+      <footer className={clsx(styles.footer)}>
+        <Link
+          href="/products"
+          className={clsx(styles.cta, "cta")}
+          title="Shop now"
         >
-          <LogoGlitching />
-          <Preload all />
-        </Canvas>
-      </section>
+          Shop now
+        </Link>
+      </footer>
     </Layout>
   );
 }
