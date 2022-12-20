@@ -136,3 +136,9 @@
     opacity: 1;
   }
 }
+
+.fontBomberEscort {
+  font-family: "Bomber Escort Outline", cursive;
+  font-style: italic;
+  padding-inline-end: 0.5rem;
+}

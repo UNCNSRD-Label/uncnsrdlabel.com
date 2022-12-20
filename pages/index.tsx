@@ -120,12 +120,13 @@ export default function Page({
         <h2 className={clsx(styles.title, "logotypeMask")}>UNCNSRD</h2>
         <div className={clsx(styles.text)}>
           <p>
-            UNCNSRD is multifunctional swimwear for female figures who
-            aren&apos;t afraid to show off their assets and want to feel
-            unapologetically sexy.
+            <span className={clsx("fontBomberEscort")}>UNCNSRD</span> is
+            multifunctional swimwear for female figures who aren&apos;t afraid
+            to show off their assets and want to feel unapologetically sexy.
           </p>
           <p>
-            Inspired by rebellious women and street fashion, UNCNSRD strives to
+            Inspired by rebellious women and street fashion,{" "}
+            <span className={clsx("fontBomberEscort")}>UNCNSRD</span> strives to
             create innovative designs that can be multifunctional, yet still
             remain practical at its core.
           </p>
