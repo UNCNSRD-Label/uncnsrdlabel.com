@@ -3,6 +3,7 @@ import type { GetServerSideProps } from "next";
 
 import type { HomeProductsQuery } from "#/gql/graphql";
 
+import { Canvas } from "@react-three/fiber";
 import { clsx } from "clsx";
 import { request } from "graphql-request";
 import Image from "next/image";
@@ -11,6 +12,8 @@ import { createRef } from "react";
 
 import Layout from "#/components/Layout";
 import ProductCard from "#/components/ProductCard";
+
+import LogoGlitching from "#/components/canvas/scenes/LogoGlitching";
 
 // import { useImageLoadCallback } from "#/lib/hooks/useImageLoadCallback";
 import { onLoadingComplete } from "#/lib/util/image";
@@ -112,20 +115,233 @@ export default function Page({
         </Link>
       </header>
 
+      <section className={clsx(styles.sectionTitle)}>
+        <h2 className={clsx(styles.title, "logotypeMask")}>UNCNSRD</h2>
+        <article className={clsx(styles.article)}>
+          <p>
+            UNCNSRD is multifunctional swimwear for female figures who
+            aren&apos;t afraid to show off their assets and want to feel
+            unapologetically sexy.
+          </p>
+          <p>
+            Inspired by rebellious women and street fashion, UNCNSRD strives to
+            create innovative designs that can be multifunctional, yet still
+            remain practical at its core.
+          </p>
+        </article>
+      </section>
+
       <section className={clsx(styles.sectionModel)}>
-        <Image
-          alt="Sexy young woman posing in bikini on hotel bathroom counter"
-          className={clsx(
-            styles.image,
-            "onLoadingComplete",
-            "hidden",
-            "tablet:block"
-          )}
-          fill
-          onLoadingComplete={onLoadingComplete}
-          priority
-          src="/images/model/IMG_0891.JPG"
-        />
+        <figure className={clsx(styles.figure, "aspect-3/2", "object-bottom")}>
+          <Image
+            alt="Sexy young woman posing in bikini on a white couch"
+            className={clsx(styles.image, "onLoadingComplete")}
+            fill
+            onLoadingComplete={onLoadingComplete}
+            priority
+            src="/images/model/IMG_0891.jpg"
+          />
+        </figure>
+        <figure className={clsx(styles.figure, "aspect-square")}>
+          <Image
+            alt="Sexy young woman posing in bikini on a white couch"
+            className={clsx(styles.image, "onLoadingComplete")}
+            fill
+            onLoadingComplete={onLoadingComplete}
+            priority
+            src="/images/model/IMG_0892.jpg"
+          />
+        </figure>
+        <figure className={clsx(styles.figure, "aspect-2/3")}>
+          <Image
+            alt="Sexy young woman posing in bikini on a white couch"
+            className={clsx(styles.image, "onLoadingComplete")}
+            fill
+            onLoadingComplete={onLoadingComplete}
+            priority
+            src="/images/model/IMG_0893.jpg"
+          />
+        </figure>
+        <figure className={clsx(styles.figure, "aspect-2/3")}>
+          <Image
+            alt="Sexy young woman posing in bikini on a white couch"
+            className={clsx(styles.image, "onLoadingComplete")}
+            fill
+            onLoadingComplete={onLoadingComplete}
+            priority
+            src="/images/model/IMG_0894.jpg"
+          />
+        </figure>
+        <figure className={clsx(styles.figure, "aspect-2/3")}>
+          <Image
+            alt="Sexy young woman posing in bikini on a white couch"
+            className={clsx(styles.image, "onLoadingComplete")}
+            fill
+            onLoadingComplete={onLoadingComplete}
+            priority
+            src="/images/model/IMG_0895.jpg"
+          />
+        </figure>
+        <figure className={clsx(styles.figure, "aspect-3/2", "object-bottom")}>
+          <Image
+            alt="Sexy young woman posing in bikini on a white couch"
+            className={clsx(styles.image, "onLoadingComplete")}
+            fill
+            onLoadingComplete={onLoadingComplete}
+            priority
+            src="/images/model/IMG_0891.jpg"
+          />
+        </figure>
+        <figure className={clsx(styles.figure, "aspect-square")}>
+          <Image
+            alt="Sexy young woman posing in bikini on a white couch"
+            className={clsx(styles.image, "onLoadingComplete")}
+            fill
+            onLoadingComplete={onLoadingComplete}
+            priority
+            src="/images/model/IMG_0892.jpg"
+          />
+        </figure>
+        <figure className={clsx(styles.figure, "aspect-2/3")}>
+          <Image
+            alt="Sexy young woman posing in bikini on a white couch"
+            className={clsx(styles.image, "onLoadingComplete")}
+            fill
+            onLoadingComplete={onLoadingComplete}
+            priority
+            src="/images/model/IMG_0893.jpg"
+          />
+        </figure>
+        <figure className={clsx(styles.figure, "aspect-2/3")}>
+          <Image
+            alt="Sexy young woman posing in bikini on a white couch"
+            className={clsx(styles.image, "onLoadingComplete")}
+            fill
+            onLoadingComplete={onLoadingComplete}
+            priority
+            src="/images/model/IMG_0894.jpg"
+          />
+        </figure>
+        <figure className={clsx(styles.figure, "aspect-2/3")}>
+          <Image
+            alt="Sexy young woman posing in bikini on a white couch"
+            className={clsx(styles.image, "onLoadingComplete")}
+            fill
+            onLoadingComplete={onLoadingComplete}
+            priority
+            src="/images/model/IMG_0895.jpg"
+          />
+        </figure>
+        <figure className={clsx(styles.figure, "aspect-3/2", "object-bottom")}>
+          <Image
+            alt="Sexy young woman posing in bikini on a white couch"
+            className={clsx(styles.image, "onLoadingComplete")}
+            fill
+            onLoadingComplete={onLoadingComplete}
+            priority
+            src="/images/model/IMG_0891.jpg"
+          />
+        </figure>
+        <figure className={clsx(styles.figure, "aspect-square")}>
+          <Image
+            alt="Sexy young woman posing in bikini on a white couch"
+            className={clsx(styles.image, "onLoadingComplete")}
+            fill
+            onLoadingComplete={onLoadingComplete}
+            priority
+            src="/images/model/IMG_0892.jpg"
+          />
+        </figure>
+        <figure className={clsx(styles.figure, "aspect-2/3")}>
+          <Image
+            alt="Sexy young woman posing in bikini on a white couch"
+            className={clsx(styles.image, "onLoadingComplete")}
+            fill
+            onLoadingComplete={onLoadingComplete}
+            priority
+            src="/images/model/IMG_0893.jpg"
+          />
+        </figure>
+        <figure className={clsx(styles.figure, "aspect-2/3")}>
+          <Image
+            alt="Sexy young woman posing in bikini on a white couch"
+            className={clsx(styles.image, "onLoadingComplete")}
+            fill
+            onLoadingComplete={onLoadingComplete}
+            priority
+            src="/images/model/IMG_0894.jpg"
+          />
+        </figure>
+        <figure className={clsx(styles.figure, "aspect-2/3")}>
+          <Image
+            alt="Sexy young woman posing in bikini on a white couch"
+            className={clsx(styles.image, "onLoadingComplete")}
+            fill
+            onLoadingComplete={onLoadingComplete}
+            priority
+            src="/images/model/IMG_0895.jpg"
+          />
+        </figure>
+        <figure className={clsx(styles.figure, "aspect-3/2", "object-bottom")}>
+          <Image
+            alt="Sexy young woman posing in bikini on a white couch"
+            className={clsx(styles.image, "onLoadingComplete")}
+            fill
+            onLoadingComplete={onLoadingComplete}
+            priority
+            src="/images/model/IMG_0891.jpg"
+          />
+        </figure>
+        <figure className={clsx(styles.figure, "aspect-square")}>
+          <Image
+            alt="Sexy young woman posing in bikini on a white couch"
+            className={clsx(styles.image, "onLoadingComplete")}
+            fill
+            onLoadingComplete={onLoadingComplete}
+            priority
+            src="/images/model/IMG_0892.jpg"
+          />
+        </figure>
+        <figure className={clsx(styles.figure, "aspect-2/3")}>
+          <Image
+            alt="Sexy young woman posing in bikini on a white couch"
+            className={clsx(styles.image, "onLoadingComplete")}
+            fill
+            onLoadingComplete={onLoadingComplete}
+            priority
+            src="/images/model/IMG_0893.jpg"
+          />
+        </figure>
+        <figure className={clsx(styles.figure, "aspect-2/3")}>
+          <Image
+            alt="Sexy young woman posing in bikini on a white couch"
+            className={clsx(styles.image, "onLoadingComplete")}
+            fill
+            onLoadingComplete={onLoadingComplete}
+            priority
+            src="/images/model/IMG_0894.jpg"
+          />
+        </figure>
+        <figure className={clsx(styles.figure, "aspect-2/3")}>
+          <Image
+            alt="Sexy young woman posing in bikini on a white couch"
+            className={clsx(styles.image, "onLoadingComplete")}
+            fill
+            onLoadingComplete={onLoadingComplete}
+            priority
+            src="/images/model/IMG_0895.jpg"
+          />
+        </figure>
+        <figure className={clsx(styles.figure, "aspect-3/2", "object-bottom")}>
+          <Image
+            alt="Sexy young woman posing in bikini on a white couch"
+            className={clsx(styles.image, "onLoadingComplete")}
+            fill
+            onLoadingComplete={onLoadingComplete}
+            priority
+            src="/images/model/IMG_0891.jpg"
+          />
+        </figure>
       </section>
 
       {/* <Image
@@ -137,38 +353,16 @@ export default function Page({
         width="900"
       /> */}
 
-      <section className={clsx(styles.sectionTitle)}>
-        <h2 className={clsx(styles.title, "logotypeMask")}>UNCNSRD</h2>
-      </section>
-
-      <section className={clsx(styles.sectionWall)} id="wall">
-        {data.products.nodes.map((node, index) => (
-          <ProductCard
-            className={clsx("image-full", styles.productCard)}
-            key={index}
-            product={node}
-          />
-        ))}
-      </section>
-
       <section className={clsx(styles.parallax)}>
         <header className={clsx(styles.header)}>
           <Image
             alt="background"
-            fill
-            // src="https://cdn.imgpaste.net/2022/10/10/Kem93m.png"
-            src="/images/art/desktop.jpg"
             className={clsx(styles.background)}
-          />
-          <Image
-            alt="foreground"
             fill
-            src="https://cdn.imgpaste.net/2022/10/10/KemO9N.png"
-            className={clsx(styles.foreground)}
+            src="/images/art/desktop.jpg"
           />
-          {/* <div className={clsx(styles.title)}> */}
+          <div className={clsx(styles.foreground)} />
           <h2 className={clsx(styles.title, "logotypeMask")}>UNCNSRD</h2>
-          {/* </div> */}
         </header>
 
         <section className={clsx(styles.sectionWall)} id="wall">
@@ -180,44 +374,25 @@ export default function Page({
             />
           ))}
         </section>
+      </section>
 
-        {/* <section className={clsx(styles.sectionText)}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse facilis
-          unde illo neque at hic quisquam, nulla consectetur, itaque maxime sit
-          iusto aliquam culpa reiciendis eaque recusandae vitae modi, animi
-          expedita perferendis inventore. Culpa incidunt odit dicta quibusdam
-          ullam facilis eum magnam, consectetur voluptates praesentium, pariatur
-          eos nihil! Natus in, autem aut facere repellat eveniet commodi illo
-          ullam hic fugit deserunt explicabo esse atque reprehenderit optio,
-          dicta suscipit sed! Porro fugiat numquam vel magni, iure provident
-          consequuntur velit ut quia itaque repudiandae molestiae, nobis sequi
-          incidunt autem! Cum impedit accusamus laboriosam eaque necessitatibus
-          consectetur incidunt a exercitationem molestias doloribus tenetur
-          amet, ullam at repudiandae, quos reprehenderit adipisci assumenda
-          dolor enim voluptas natus! Assumenda praesentium voluptate culpa
-          quidem quasi impedit unde incidunt odit velit, dolore officiis
-          distinctio, fugit, optio sed. Quos nesciunt eius reprehenderit ipsa
-          consectetur tempora, fugiat provident corporis perspiciatis veritatis
-          totam temporibus voluptates soluta vitae mollitia molestias reiciendis
-          expedita doloribus est. Maxime et fugit expedita id sed cumque harum
-          dignissimos aperiam voluptatum quos obcaecati illo tempore
-          consectetur, sunt perferendis eius aliquid soluta praesentium
-          voluptatem assumenda ex fuga. Iusto, possimus? Dolores deleniti eaque,
-          aperiam consequuntur odit culpa, architecto, quas veniam provident
-          inventore eius. Laboriosam in reprehenderit quidem? Officiis illum
-          molestiae, praesentium velit, illo debitis quasi fuga laborum
-          veritatis necessitatibus fugiat cupiditate! Quia animi provident
-          maxime numquam porro itaque! Provident, rerum. Aliquid cum quo ducimus
-          ad? Repellat nihil, saepe beatae rerum sint eveniet voluptate officiis
-          velit autem officia tempore deserunt sequi quod quae culpa sed.
-          Reprehenderit eveniet ipsum nihil ipsam quam facilis, possimus modi
-          placeat ratione soluta voluptate obcaecati error minima enim, fugiat
-          quaerat architecto, iure dignissimos a eum quidem eos at fuga.
-          Consectetur, quisquam at reprehenderit in exercitationem inventore
-          incidunt dolorum quos adipisci labore? Fugiat facilis ipsum minus,
-          officiis eos modi sequi distinctio pariatur reprehenderit accusantium
-          labore obcaecati, recusandae saepe?
-        </section> */}
+      <section className={clsx(styles.sectionTitle)}>
+        <Canvas
+          className={styles.canvas}
+          // frameloop="demand"
+          resize={{ scroll: false }}
+          eventPrefix="client"
+          shadows
+          dpr={[1, 2]}
+          camera={{
+            position: [0, 0, 1],
+            // fov: 35,
+            near: 0.01,
+            far: 100_000,
+          }}
+        >
+          <LogoGlitching />
+        </Canvas>
       </section>
     </Layout>
   );

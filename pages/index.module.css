@@ -1,5 +1,6 @@
 .main {
   @apply overflow-auto scroll-smooth snap-y;
+  perspective: 30vh;
 
   > * {
     @apply snap-start;
@@ -38,15 +39,84 @@
 }
 
 .sectionModel {
-  @apply aspect-9/16;
+  @apply grid grid-cols-3 items-center justify-between justify-items-stretch py-24 gap-16;
+  /* @apply aspect-9/16; */
+  height: 100vh;
+  /* min-height: 100vh; */
+  overflow-y: auto;
+  overflow-x: hidden;
+  perspective: inherit;
+
+  .figure {
+    @apply relative w-full;
+    transform: scale(0.85);
+    transform-style: preserve-3d;
+    z-index: 100;
+
+    .image {
+      @apply object-cover;
+    }
+
+    &:nth-child(1n) {
+      z-index: 90;
+
+      .image {
+        transform: translateZ(-20px);
+      }
+    }
+
+    &:nth-child(2n) {
+      z-index: 80;
+
+      .image {
+        transform: translateZ(-40px);
+      }
+    }
+
+    &:nth-child(3n) {
+      z-index: 70;
+
+      .image {
+        transform: translateZ(-60px);
+      }
+    }
+
+    &:nth-child(4n) {
+      z-index: 60;
+
+      .image {
+        transform: translateZ(-80px);
+      }
+    }
+
+    &:nth-child(5n) {
+      z-index: 50;
+
+      .image {
+        transform: translateZ(-100px);
+      }
+    }
+
+    &:nth-child(6n) {
+      z-index: 40;
+
+      .image {
+        transform: translateZ(-120px);
+      }
+    }
+  }
 }
 
 .sectionTitle {
-  @apply grid items-center justify-items-center p-24 gap-24;
+  @apply grid items-center justify-items-center p-24;
   min-height: 100vh;
 
   .title {
-    font-size: clamp(1.5rem, 15vw, 15rem);
+    font-size: clamp(1.5rem, 12.5vw, 12.5rem);
+  }
+
+  .article {
+    @apply justify-self-end prose prose-2xl;
   }
 }
 
@@ -71,7 +141,9 @@
     }
 
     .foreground {
-      transform: translateZ(-5px) scale(1.5);
+      background: rgb(100,100,100);
+      background: linear-gradient(0deg, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 50%);
+      transform: translateY(50%) translateZ(-5px) scale(1.5);
     }
 
     .background,
