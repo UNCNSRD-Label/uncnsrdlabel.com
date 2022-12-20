@@ -13,13 +13,7 @@ import {
 
 import { getMetafieldForSchemaOrg } from "#/lib/util/GraphQL";
 
-const getProductURL = (
-  product: PartialDeep<Product, { recurseIntoArrays: true }>
-) => `${process.env.NEXT_PUBLIC_VERCEL_URL}/product/${product.handle}`;
-const getProductVariantURL = (
-  product: PartialDeep<Product, { recurseIntoArrays: true }>,
-  productVariant: PartialDeep<ProductVariant, { recurseIntoArrays: true }>
-) => `${process.env.NEXT_PUBLIC_VERCEL_URL}/product/${product.handle}`;
+import { getProductURL } from "#/lib/util/url";
 
 export const getAvailability = (
   productVariant: PartialDeep<ProductVariant, { recurseIntoArrays: true }>

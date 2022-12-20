@@ -15,6 +15,8 @@ import {
 } from "#/lib/constants/messages";
 import { theme } from "#/lib/constants/style";
 
+import { getProductURL } from "#/lib/util/url";
+
 import styles from "./index.module.css";
 
 type Props = {
@@ -24,9 +26,13 @@ type Props = {
 export const Component: FC<Props> = ({ className, line }) => {
   const { id, cost, merchandise, quantity } = line;
 
+  if (!merchandise?.product) {
+    return null
+  }
+
   console.log({ merchandise, quantity });
 
-  const href = `/products/${merchandise?.product?.handle}`;
+  const href = getProductURL(merchandise.product);
 
   return (
     <article

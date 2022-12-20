@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import Script from "next/script";
 
 // TODO: Research https://www.dublincore.org/specifications/dublin-core/dcmi-terms/
@@ -6,13 +6,13 @@ import Script from "next/script";
 export default function Head() {
   // TODO: Fix `You have a Server Component that imports next/router. Use next/navigation instead.`
   // TODO: Fix `Maybe one of these should be marked as a client entry "use client": app/head.tsx`
-  const { defaultLocale, locale, locales, pathname } = useRouter();
-  // const { defaultLocale, locale, locales, pathname } = {
-  //   defaultLocale: process.env.NEXT_PUBLIC_DEFAULT_LOCALE,
-  //   locale: process.env.NEXT_PUBLIC_DEFAULT_LOCALE,
-  //   locales: process.env.NEXT_PUBLIC_SUPPORTED_LOCALES?.split(','),
-  //   pathname: "/",
-  // };
+  // const { defaultLocale, locale, locales, pathname } = useRouter();
+  const { defaultLocale, locale, locales, pathname } = {
+    defaultLocale: process.env.NEXT_PUBLIC_DEFAULT_LOCALE,
+    locale: process.env.NEXT_PUBLIC_DEFAULT_LOCALE,
+    locales: process.env.NEXT_PUBLIC_SUPPORTED_LOCALES?.split(','),
+    pathname: "/",
+  };
 
   const title = "UNCNSRD";
   const description =

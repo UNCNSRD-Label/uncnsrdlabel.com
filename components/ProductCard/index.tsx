@@ -17,52 +17,56 @@ import {
 import { theme } from "#/lib/constants/style";
 
 import { mapProductGraphQLtoSchemaOrg } from "#/lib/util/schema.org";
+import { getProductURL } from "#/lib/util/url";
 
 import styles from "./index.module.css";
 
 type Props = {
+  className?: string;
   product: PartialDeep<Product, { recurseIntoArrays: true }>;
 } & HTMLAttributes<HTMLElement>;
 
 export const Component: FC<Props> = ({ className, product }) => {
-  const { featuredImage, handle, id, publishedAt, title, variants } = product;
-
-  const image = featuredImage;
-
   const productModel = mapProductGraphQLtoSchemaOrg(product);
 
   return (
     <article
-      className={clsx(styles.root, className, "card", "card-compact")}
+      className={clsx(styles.article, className, "card", "card-compact")}
       itemScope
       itemType="https://schema.org/Product"
     >
       {/* <JsonLd<typeof productModel>
         item={mapProductGraphQLtoSchemaOrg(product)}
       /> */}
-      <Link href={`products/${handle}`} className={styles.link} title={title}>
-        {image?.url && (
+      <Link
+        href={getProductURL(product)}
+        className={clsx(styles.link, "imageLink")}
+        title={product.title}
+      >
+        {product.featuredImage?.url && (
           <figure className={clsx(styles.figure)}>
             <Image
-              alt={image?.altText ?? IMAGE_ALT_TEXT_FALLBACK}
+              alt={product.featuredImage?.altText ?? IMAGE_ALT_TEXT_FALLBACK}
               className={clsx(styles.image)}
               fill
               priority
               sizes={`(max-width: ${theme.screens.xs.max}) 100vw,
                       (max-width: ${theme.screens.md.max}) 50vw,
                       25vw`}
-              src={image?.url}
-              title={title ?? IMAGE_TITLE_FALLBACK}
+              src={product.featuredImage?.url}
+              title={product.title ?? IMAGE_TITLE_FALLBACK}
             />
             <figcaption className={clsx(styles.figcaption)}>
-              Featured image for {title}
+              Featured image for {product.title}
             </figcaption>
           </figure>
         )}
       </Link>
       <div className="card-body">
         <header className={clsx(styles.header)}>
-          <h2 className={clsx(styles.heading, "card-title")}>{title}</h2>
+          <h2 className={clsx(styles.heading, "card-title")}>
+            {product.title}
+          </h2>
           <ProductPrice className={clsx(styles.price)} data={product} />
         </header>
         {/* <menu className={clsx(styles.menu, "card-actions", "justify-end")}>

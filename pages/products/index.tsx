@@ -4,8 +4,8 @@ import type { GetServerSideProps } from "next";
 import type { ProductsQuery } from "#/gql/graphql";
 
 import { clsx } from "clsx";
-import Link from "next/link";
 import { request } from "graphql-request";
+import Link from "next/link";
 import { createRef } from "react";
 
 import Breadcrumbs from "#/components/Breadcrumbs";

@@ -1,4 +1,4 @@
-query Products {
+query HomeProducts {
   shop {
     name
   }

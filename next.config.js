@@ -33,6 +33,12 @@ const nextConfig = {
         port: "",
         pathname: "/s/files/**",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.imgpaste.net",
+        port: "",
+        pathname: "**",
+      },
     ],
   },
   poweredByHeader: false,

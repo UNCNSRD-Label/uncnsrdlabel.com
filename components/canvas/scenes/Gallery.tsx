@@ -38,26 +38,26 @@ const Item = ({
   const ref = useIntersect<Mesh>((isVisible) => (visible.current = isVisible));
   const { height } = useThree((state) => state.viewport);
 
-  useFrame((state, delta) => {
-    ref.current.position.y = MathUtils.damp(
-      ref.current.position.y,
-      visible.current ? 0 : -height / 2 + 1,
-      4,
-      delta
-    );
-    ref.current.material.zoom = MathUtils.damp(
-      ref.current.material.zoom,
-      visible.current ? 1 : 1.5,
-      4,
-      delta
-    );
-    ref.current.material.grayscale = MathUtils.damp(
-      ref.current.material.grayscale,
-      hovered ? 0 : 1,
-      4,
-      delta
-    );
-  });
+  // useFrame((state, delta) => {
+  //   ref.current.position.y = MathUtils.damp(
+  //     ref.current.position.y,
+  //     visible.current ? 0 : -height / 2 + 1,
+  //     4,
+  //     delta
+  //   );
+  //   ref.current.material.zoom = MathUtils.damp(
+  //     ref.current.material.zoom,
+  //     visible.current ? 1 : 1.5,
+  //     4,
+  //     delta
+  //   );
+  //   ref.current.material.grayscale = MathUtils.damp(
+  //     ref.current.material.grayscale,
+  //     hovered ? 0 : 1,
+  //     4,
+  //     delta
+  //   );
+  // });
 
   console.log(props.position);
 
@@ -149,7 +149,7 @@ const ProductsWall = (
             key={index}
             url={product.featuredImage.url}
             position={new Vector3(...position)}
-            rotation={[0, 0, 0]}
+            // rotation={[0, 0, 0]}
             scale={scale}
           />
         );

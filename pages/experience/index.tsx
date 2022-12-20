@@ -31,7 +31,7 @@ import {
   getPublicTokenHeaders,
 } from "#/src/shopify-client";
 
-import document from "./index.graphql";
+import document from "../products/index.graphql";
 
 import styles from "./index.module.css";
 

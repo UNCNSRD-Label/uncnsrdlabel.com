@@ -14,12 +14,13 @@ import styles from "./index.module.css";
 
 type Props = {
   children?: ReactNode;
+  classNameDrawerContent?: string;
   classNameMain?: string;
   showHeaderAndFooter?: boolean;
 };
 
 export const Component = forwardRef<HTMLDivElement, Props>(
-  ({ children, classNameMain, showHeaderAndFooter = true }, ref) => {
+  ({ children, classNameDrawerContent, classNameMain, showHeaderAndFooter = true }, ref) => {
     return (
       <>
         <Head>
@@ -75,10 +76,12 @@ export const Component = forwardRef<HTMLDivElement, Props>(
           <div
             className={clsx(
               styles.drawerContent,
+              classNameDrawerContent,
               "drawer-content",
               "flex",
               "flex-col",
-              "fitViewportMinimum"
+              // "fitViewportMinimum",
+              "fitViewport"
             )}
             ref={ref}
           >

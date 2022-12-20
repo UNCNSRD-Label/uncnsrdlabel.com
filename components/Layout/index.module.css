@@ -16,13 +16,11 @@
 }
 
 .drawer {
-  
-}
+  .drawerContent {
+    /* @apply snap-y scroll-smooth; */
+    overflow-y: unset;
+  }
 
-.drawerContent {
-  @apply snap-y scroll-smooth;
-}
-
-.drawerToggle {
-
+  .drawerToggle {
+  }
 }
