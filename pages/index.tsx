@@ -115,9 +115,9 @@ export default function Page({
         </Link>
       </header>
 
-      <section className={clsx(styles.sectionTitle)}>
+      <article className={clsx(styles.article)}>
         <h2 className={clsx(styles.title, "logotypeMask")}>UNCNSRD</h2>
-        <article className={clsx(styles.article)}>
+        <div className={clsx(styles.text)}>
           <p>
             UNCNSRD is multifunctional swimwear for female figures who
             aren&apos;t afraid to show off their assets and want to feel
@@ -128,8 +128,8 @@ export default function Page({
             create innovative designs that can be multifunctional, yet still
             remain practical at its core.
           </p>
-        </article>
-      </section>
+        </div>
+      </article>
 
       <section className={clsx(styles.sectionModel)}>
         <figure className={clsx(styles.figure, "aspect-3/2", "object-bottom")}>
@@ -376,7 +376,7 @@ export default function Page({
         </section>
       </section>
 
-      <section className={clsx(styles.sectionTitle)}>
+      <section className={clsx(styles.section)}>
         <Canvas
           className={styles.canvas}
           // frameloop="demand"
