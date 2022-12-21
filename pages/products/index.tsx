@@ -76,19 +76,27 @@ export default function Page({
           alt="background"
           className={clsx(styles.background)}
           fill
-          src="/images/art/desktop.jpg"
+          src="/images/sample/758E1A06-1C5E-4DE7-B39B-8A126CE56787_2000x.webp"
         />
         <div className={clsx(styles.foreground)} />
-        <h2 className={clsx(styles.title, "logotype", "mask")}>UNCNSRD</h2>
+        <h2
+          className={clsx(styles.title, "logotype", "mask")}
+          style={{
+            backgroundImage: `url("/images/sample/758E1A06-1C5E-4DE7-B39B-8A126CE56787_2000x.webp")`,
+          }}
+        >
+          UNCNSRD
+        </h2>
       </header>
       <section className={clsx(styles.productsList)}>
         {data.products.nodes.map((node, index) => (
-          <ProductCard key={index} product={node} />
+          <ProductCard
+            className={clsx(styles.productCard)}
+            key={index}
+            product={node}
+          />
         ))}
       </section>
-      {/* <aside>
-        <h2>Related Products</h2>
-      </aside> */}
     </Layout>
   );
 }
