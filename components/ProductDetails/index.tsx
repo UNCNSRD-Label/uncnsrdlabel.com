@@ -10,8 +10,8 @@ import Script from "next/script";
 import { Product as ProductSchema } from "schema-dts";
 import { jsonLdScriptProps } from "react-schemaorg";
 
-import AdditionalMediaGallery from "#/components/AdditionalMediaGallery";
-import FeaturedMediaGallery from "#/components/FeaturedMediaGallery";
+import ProductMediaGallery from "#/components/ProductMediaGallery";
+import ProductVariantMediaGallery from "#/components/ProductVariantMediaGallery";
 import ProductSidebar from "#/components/ProductSidebar";
 
 import {
@@ -56,14 +56,14 @@ export const Component: FC<Props> = ({
         )}
       />
       <article className={clsx(styles.article, className)}>
-        <FeaturedMediaGallery
-          className={clsx(styles.featuredMediaGallery)}
+        <ProductVariantMediaGallery
+          className={clsx(styles.productVariantMediaGallery)}
           product={product}
           scrollingElement={scrollingElement}
         />
         <ProductSidebar path={path} product={product} />
-        <AdditionalMediaGallery
-          className={clsx(styles.featuredMediaGallery)}
+        <ProductMediaGallery
+          className={clsx(styles.productVariantMediaGallery)}
           product={product}
           scrollingElement={scrollingElement}
         />

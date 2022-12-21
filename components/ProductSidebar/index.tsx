@@ -14,6 +14,8 @@ import Link from "next/link";
 
 import ProductForm from "#/components/ProductForm";
 
+import { getColorHexCodeByName } from "#/lib/util/GraphQL";
+
 import styles from "./index.module.css";
 
 type Props = {
@@ -27,7 +29,7 @@ const imageColorLoader = ({ src }: { src: string }) => {
 };
 
 export const Component: FC<Props> = ({ className, path, product }) => {
-  const { selectedOptions, selectedVariant } = useProduct();
+  const { selectedOptions, selectedVariant, variants } = useProduct();
 
   if (!product) {
     return <div>Whoops there was an error! Please refresh and try again.</div>;
@@ -81,11 +83,20 @@ export const Component: FC<Props> = ({ className, path, product }) => {
             <div className="collapse-title text-base">Color</div>
             <div className="collapse-content">
               <Image
+                alt="Color swatch as used for the product"
+                height={500}
                 loader={imageColorLoader}
                 src={selectedOptions?.Color?.replaceAll(" ", "_")}
-                alt="Color swatch as used for the product"
+                style={{
+                  ...(selectedOptions?.Color &&
+                    variants && {
+                      backgroundColor: getColorHexCodeByName(
+                        selectedOptions?.Color,
+                        variants
+                      ),
+                    }),
+                }}
                 width={500}
-                height={500}
               />
             </div>
           </section>

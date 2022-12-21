@@ -18,6 +18,8 @@ import { useCallback } from "react";
 import { RiHeartAddLine } from "react-icons/ri";
 import { useQueryParam, StringParam, withDefault } from "use-query-params";
 
+import { getColorHexCodeByName } from "#/lib/util/GraphQL";
+
 import styles from "./index.module.css";
 
 type Props = {
@@ -28,39 +30,19 @@ type Props = {
 };
 
 export const Component: FC<Props> = ({ children, className, path }) => {
-  const { options, setSelectedOption, selectedOptions, selectedVariant } =
-    useProduct();
+  const {
+    options,
+    setSelectedOption,
+    selectedOptions,
+    selectedVariant,
+    variants,
+  } = useProduct();
 
   const [color, setColor] = useQueryParam(
     "color",
     withDefault(StringParam, "")
   );
   const [size, setSize] = useQueryParam("size", withDefault(StringParam, ""));
-
-  // useEffect(() => {
-  //   options?.map(({ name, values }) => {
-  //     if (!params) return;
-  //     const currentValue = params.get(name.toLowerCase()) || null;
-  //     if (currentValue) {
-  //       const matchedValue = values.filter(
-  //         (value) => encodeURIComponent(value.toLowerCase()) === currentValue
-  //       );
-  //       setSelectedOption(name, matchedValue[0]);
-  //     } else {
-  //       params.set(
-  //         encodeURIComponent(name.toLowerCase()),
-  //         encodeURIComponent(selectedOptions![name]!.toLowerCase())
-  //       ),
-  //       window.history.replaceState(
-  //         null,
-  //         "",
-  //         `${pathname}?${params.toString()}`
-  //       );
-  //     }
-  //   });
-  // }, [options, params, pathname, selectedOptions, setSelectedOption]);
-
-  const url = `${process.env.NEXT_PUBLIC_VERCEL_URL}${path}`;
 
   const isOutOfStock = !selectedVariant?.availableForSale || false;
 
@@ -75,6 +57,7 @@ export const Component: FC<Props> = ({ children, className, path }) => {
       selectedVariant?.compareAtPriceV2?.amount;
   }
 
+  // TODO: Merge with version of this code in schema.org lib
   const getAvailability = (
     variant?: PartialDeep<
       Pick<
@@ -105,7 +88,9 @@ export const Component: FC<Props> = ({ children, className, path }) => {
     return `https://schema.org/${availability}`;
   };
 
-  const handleOptionChange = useCallback<ChangeEventHandler<HTMLSelectElement>>(
+  const handleOptionChange = useCallback<
+    ChangeEventHandler<HTMLSelectElement | HTMLInputElement>
+  >(
     (event) => {
       if (event.target.name === "Color") {
         setColor(event.target.value);
@@ -168,6 +153,66 @@ export const Component: FC<Props> = ({ children, className, path }) => {
         {options?.map((option, optionIndex) => {
           if (option?.values?.length === 1) {
             return null;
+          }
+
+          if (option?.name && ["Color", "Size"].includes(option?.name)) {
+            return (
+              <div
+                key={`${option?.name}-${optionIndex}`}
+                className={clsx(styles.label)}
+              >
+                <span className={clsx(styles.text, "text-base")}>
+                  {option?.name}
+                </span>
+                <div className="form-control-group input-group w-full mt-1">
+                  {option?.values?.map((value, valueIndex) => (
+                    <div
+                      className="form-control"
+                      key={`${option.name}-${optionIndex}-${valueIndex}`}
+                    >
+                      <label className="label cursor-pointer">
+                        <span className={clsx("label-text", styles.labelText)}>
+                          {value}
+                        </span>
+                        <span
+                          className={clsx(
+                            "radioContainer",
+                            styles.radioContainer
+                          )}
+                        >
+                          <input
+                            className={clsx(
+                              "radio",
+                              "radio-lg",
+                              value &&
+                                variants &&
+                                `checked:bg-[${getColorHexCodeByName(
+                                  value,
+                                  variants
+                                )}]`
+                            )}
+                            name={option?.name}
+                            onChange={handleOptionChange}
+                            type="radio"
+                            style={{
+                              ...(option?.name === "Color" &&
+                                value &&
+                                variants && {
+                                  backgroundColor: getColorHexCodeByName(
+                                    value,
+                                    variants
+                                  ),
+                                }),
+                            }}
+                            value={value}
+                          />
+                        </span>
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
           }
 
           return (

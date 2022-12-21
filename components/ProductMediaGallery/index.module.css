@@ -20,7 +20,11 @@
         );
       }
     }
-  
+
+    .image {
+      @apply object-cover;
+    }
+
     .figcaption {
       display: none;
     }

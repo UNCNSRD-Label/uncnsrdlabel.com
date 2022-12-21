@@ -17,19 +17,20 @@
   z-index: -1;
 
   .background {
+    height: 100%;
     transform: translateZ(-10px) scale(2);
   }
 
   .foreground {
     @apply bg-primary;
-    background: linear-gradient(0deg, hsl(var(--pc)) 25%, rgba(0,0,0,0) 50%);
-    transform: translateY(50%) translateZ(-5px) scale(1.5);
+    background: linear-gradient(0deg, hsl(var(--pc)) 25%, rgba(0,0,0,0) 60%);
+    height: 50%;
+    transform: translateY(175%) translateZ(-5px) scale(1.5);
   }
 
   .background,
   .foreground {
     position: absolute;
-    height: 100%;
     width: 100%;
     object-fit: cover;
     z-index: -1;
@@ -44,10 +45,14 @@
 }
 
 .productsList {
-  @apply grid gap-24 gap-y-16 grid-cols-2 items-center justify-items-center p-24;
+  @apply grid gap-24 gap-y-16 grid-cols-2 items-center p-24;
 
   @media screen and (min-width: theme(screens.md.min)) {
     @apply grid-cols-4;
+  }
+
+  .productCard {
+    @apply border-8 border-primary-content bg-primary-content;
   }
 }
 

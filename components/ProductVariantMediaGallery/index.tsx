@@ -1,9 +1,15 @@
 "use client";
 
-import type { Product } from "@shopify/hydrogen-react/storefront-api-types";
+import type { ParsedMetafields } from "@shopify/hydrogen-react";
+import type {
+  MediaImage,
+  Product,
+  ProductVariant,
+} from "@shopify/hydrogen-react/storefront-api-types";
 import type { FC, HTMLAttributes, RefObject } from "react";
 import type { PartialDeep } from "type-fest";
 
+import { useProduct } from "@shopify/hydrogen-react";
 import { clsx } from "clsx";
 import Image from "next/image";
 import Link from "next/link";
@@ -19,6 +25,8 @@ import {
 } from "#/lib/constants/messages";
 import { theme } from "#/lib/constants/style";
 
+import { getMetafield } from "#/lib/util/GraphQL";
+
 import styles from "./index.module.css";
 
 type Props = {
@@ -31,21 +39,38 @@ type Props = {
 // TODO: Implement https://github.com/Shopify/hydrogen-ui/blob/2022-10/packages/react/src/ModelViewer.tsx
 // TODO: Implement https://shopify.dev/api/storefront/2022-07/objects/Model3d#implements
 
+const getAdditionalImages = (
+  selectedVariant: PartialDeep<ProductVariant, { recurseIntoArrays: true }>
+) => {
+  const additional_media = getMetafield<
+    ParsedMetafields["list.file_reference"]
+  >(selectedVariant, {
+    namespace: "custom",
+    key: "additional_media",
+  });
+
+  // TODO: Check use of ts-ignore
+  const additional_images = additional_media?.parsedValue
+    // @ts-ignore
+    ?.filter((medium) => medium?.mediaContentType === "IMAGE") as MediaImage[];
+
+  const imageNodes = additional_images?.map(({ image }) => image);
+
+  return imageNodes;
+};
+
 export const Component: FC<Props> = ({
   className,
   product,
   scrollingElement,
-  // scrollingElement: parentScrollingElement,
 }) => {
+  const { selectedVariant } = useProduct();
+
   const localScrollingElement = useRef(null);
-  // const scrollingElement = mergeRefs([
-  //   localScrollingElement,
-  //   parentScrollingElement,
-  // ]) as RefObject<HTMLElement>;
 
-  const imagesToShow = 2;
+  // const imagesToShow = 2;
 
-  const modelIndex = imagesToShow; // Do not increment as the image map operation's index starts from 0
+  // const modelIndex = imagesToShow; // Do not increment as the image map operation's index starts from 0
 
   // const mediaToShow = imagesToShow + 1; // +1 for the 3D model
 
@@ -61,30 +86,41 @@ export const Component: FC<Props> = ({
       sectionElementRefs,
     }) ?? 0;
 
+  if (selectedVariant == null) {
+    return null;
+  }
+
+  const productImages = product.images?.nodes;
+  const variantAdditionalImages = getAdditionalImages(selectedVariant);
+
+  let images = variantAdditionalImages ?? productImages;
+
   return (
     <section
       className={clsx(styles.root, className)}
-      id="featuredMediaGallery"
+      id="productVariantMediaGallery"
       ref={localScrollingElement}
     >
       {/* TODO: Add WAI-ARI */}
       <div className={clsx(styles.stepsContainer)}>
         <menu className={clsx(styles.steps, "steps", "steps-vertical")}>
-          {product.images?.nodes?.slice(0, 2)?.map((image, index) => (
-            <Link
-              key={index}
-              href={`#featuredMediaGallery-${index}`}
-              className={clsx(
-                "step",
-                styles.step,
-                activeSection >= index && "step-primary"
-              )}
-            >
-              <span className={clsx("sr-only")}>Go to image {index}</span>
-            </Link>
-          ))}
-          <Link
-            href={`#featuredMediaGallery-${modelIndex}`}
+          {images
+            // ?.slice(0, imagesToShow)
+            ?.map((_, index) => (
+              <Link
+                key={index}
+                href={`#productVariantMediaGallery-${index}`}
+                className={clsx(
+                  "step",
+                  styles.step,
+                  activeSection >= index && "step-primary"
+                )}
+              >
+                <span className={clsx("sr-only")}>Go to image {index}</span>
+              </Link>
+            ))}
+          {/* <Link
+            href={`#productVariantMediaGallery-${modelIndex}`}
             className={clsx(
               "step",
               styles.step,
@@ -92,12 +128,11 @@ export const Component: FC<Props> = ({
             )}
           >
             <span className={clsx("sr-only")}>Go to model</span>
-          </Link>
+          </Link> */}
         </menu>
       </div>
-      {product.images?.nodes
-        ?.slice(0, imagesToShow)
-        ?.filter(Boolean)
+      {images
+        // ?.slice(0, imagesToShow)
         .map((image, index) => {
           if (!image?.url) {
             return;
@@ -106,7 +141,7 @@ export const Component: FC<Props> = ({
           return (
             <figure
               className={clsx(styles.figure)}
-              id={`featuredMediaGallery-${index}`}
+              id={`productVariantMediaGallery-${index}`}
               key={index}
               ref={sectionElementRefs[index]}
             >
@@ -127,16 +162,16 @@ export const Component: FC<Props> = ({
           );
         })}
 
-      <figure
+      {/* <figure
         className={clsx(styles.figure, styles.model)}
-        id={`featuredMediaGallery-${modelIndex}`}
+        id={`productVariantMediaGallery-${modelIndex}`}
         ref={sectionElementRefs[modelIndex]}
       >
         <ProductModel product={product} />
         <figcaption className={clsx(styles.figcaption)}>
           3D model view for {product.title}
         </figcaption>
-      </figure>
+      </figure> */}
     </section>
   );
 };

@@ -8,25 +8,28 @@ query Product($slug: String!) {
     publishedAt
     title
     vendor
-    images(first: 16) {
+    images(first: 32) {
       nodes {
-        altText
-        height
-        url
-        width
+        ... on Image {
+          altText
+          height
+          url
+          width
+        }
       }
     }
-    media(first: 16) {
+    media(first: 32) {
       nodes {
         ... on Model3d {
           alt
           mediaContentType
           previewImage {
-            altText
-            height
-            url
-            width
-            id
+            ... on Image {
+              altText
+              height
+              url
+              width
+            }
           }
           sources {
             filesize
@@ -57,7 +60,7 @@ query Product($slug: String!) {
       description
       title
     }
-    variants(first: 16) {
+    variants(first: 32) {
       pageInfo {
         hasNextPage
         hasPreviousPage
@@ -69,6 +72,49 @@ query Product($slug: String!) {
         sku
         availableForSale
         currentlyNotInStock
+        metafields(
+          identifiers: [
+            { namespace: "custom", key: "additional_media" }
+            { namespace: "custom", key: "color" }
+            { namespace: "custom", key: "complementary_products" }
+            { namespace: "custom", key: "composition" }
+            { namespace: "custom", key: "related_products" }
+          ]
+        ) {
+          namespace
+          key
+          type
+          value
+          description
+          id
+          reference {
+            ... on MetafieldReference {
+              ... on Page {
+                body
+                handle
+                onlineStoreUrl
+                title
+              }
+            }
+          }
+          references(first: 32) {
+            nodes {
+              ... on MetafieldReference {
+                ... on MediaImage {
+                  mediaContentType
+                  image {
+                    ... on Image {
+                      altText
+                      height
+                      url
+                      width
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
         quantityAvailable
         requiresShipping
         selectedOptions {
@@ -84,6 +130,14 @@ query Product($slug: String!) {
     }
     metafields(
       identifiers: [
+        {
+          namespace: "shopify--discovery--product_recommendation"
+          key: "complementary_products"
+        }
+        {
+          namespace: "shopify--discovery--product_recommendation"
+          key: "related_products"
+        }
         { namespace: "custom", key: "composition" }
         { namespace: "custom", key: "returns" }
         { namespace: "custom", key: "shipping" }

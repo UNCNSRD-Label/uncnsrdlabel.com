@@ -24,31 +24,28 @@ type Props = {
 export const Component: FC<Props> = ({ className, product }) => {
   return (
     <section className={clsx(styles.root)}>
-      {product.images?.nodes
-        ?.slice(2)
-        ?.filter(Boolean)
-        .map((image, index) => {
-          if (!image?.url) {
-            return;
-          }
-          return (
-            <figure key={index} className={clsx(styles.figure)}>
-              <Image
-                alt={image?.altText ?? IMAGE_ALT_TEXT_FALLBACK}
-                className={clsx(styles.image)}
-                fill
-                priority
-                sizes={`(max-width: ${theme.screens.xs.max}) 100vw,
+      {product.images?.nodes?.filter(Boolean).map((image, index) => {
+        if (!image?.url) {
+          return;
+        }
+        return (
+          <figure key={index} className={clsx(styles.figure)}>
+            <Image
+              alt={image?.altText ?? IMAGE_ALT_TEXT_FALLBACK}
+              className={clsx(styles.image)}
+              fill
+              priority
+              sizes={`(max-width: ${theme.screens.xs.max}) 100vw,
                   25vw`}
-                src={image.url}
-                title={product.title ?? IMAGE_TITLE_FALLBACK}
-              />
-              <figcaption className={clsx(styles.figcaption)}>
-                Additional image for {product.title}
-              </figcaption>
-            </figure>
-          );
-        })}
+              src={image.url}
+              title={product.title ?? IMAGE_TITLE_FALLBACK}
+            />
+            <figcaption className={clsx(styles.figcaption)}>
+              Additional image for {product.title}
+            </figcaption>
+          </figure>
+        );
+      })}
     </section>
   );
 };

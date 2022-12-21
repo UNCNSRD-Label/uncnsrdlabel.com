@@ -1,7 +1,7 @@
-.featuredMediaGallery {
-  @apply bg-white;
-  padding-block-start: var(--viewport-margin-block-start);
-  scroll-padding-block-start: var(--viewport-margin-block-start);
+.productVariantMediaGallery {
+  /* @apply bg-white; */
+  /* padding-block-start: var(--viewport-margin-block-start); */
+  /* scroll-padding-block-start: var(--viewport-margin-block-start); */
 }
 
 .article {
