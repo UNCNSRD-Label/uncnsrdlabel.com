@@ -66,12 +66,10 @@ query Product($slug: String!) {
         hasPreviousPage
       }
       nodes {
-        barcode
-        id
-        title
-        sku
         availableForSale
+        barcode
         currentlyNotInStock
+        id
         metafields(
           identifiers: [
             { namespace: "custom", key: "additional_media" }
@@ -81,22 +79,9 @@ query Product($slug: String!) {
             { namespace: "custom", key: "related_products" }
           ]
         ) {
-          namespace
-          key
-          type
-          value
           description
-          id
-          reference {
-            ... on MetafieldReference {
-              ... on Page {
-                body
-                handle
-                onlineStoreUrl
-                title
-              }
-            }
-          }
+          key
+          namespace
           references(first: 32) {
             nodes {
               ... on MetafieldReference {
@@ -114,6 +99,12 @@ query Product($slug: String!) {
               }
             }
           }
+          type
+          value
+        }
+        price {
+          amount
+          currencyCode
         }
         quantityAvailable
         requiresShipping
@@ -121,10 +112,7 @@ query Product($slug: String!) {
           name
           value
         }
-        price {
-          amount
-          currencyCode
-        }
+        sku
         title
       }
     }

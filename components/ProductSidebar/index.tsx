@@ -13,6 +13,7 @@ import Image from "next/image";
 import Link from "next/link";
 import getDataURL from "placeholder-image-data-url";
 import { useEffect, useState } from "react";
+import slugify from "slugify";
 
 import ProductForm from "#/components/ProductForm";
 
@@ -87,13 +88,17 @@ export const Component: FC<Props> = ({ className, path, product }) => {
             "max-w-none"
           )}
         >
-          <Link
-            href={`/categories/${product.productType}`}
-            className={styles.categoryLink}
-            title="Go to category page"
-          >
-            {product.productType}
-          </Link>
+          {product.productType && (
+            <Link
+              href={`/categories/${slugify(product.productType, {
+                lower: true,
+              })}`}
+              className={styles.categoryLink}
+              title="Go to category page"
+            >
+              {product.productType}
+            </Link>
+          )}
           <h1 className={clsx(styles.title)}>{product.title}</h1>
           <ProductPrice className={clsx(styles.price)} data={product} />
         </header>

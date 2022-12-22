@@ -23,6 +23,7 @@
       }
 
       .title {
+        font-weight: 400;
         grid-area: title;
       }
 

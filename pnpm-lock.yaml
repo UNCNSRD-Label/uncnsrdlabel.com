@@ -66,6 +66,7 @@ specifiers:
   react-use-scrollspy: ^3.1.1
   react-use-wizard: ^2.2.1
   schema-dts: ^1.1.0
+  slugify: ^1.6.5
   tailwindcss: ^3.2.4
   tailwindcss-colors-css-variables: ^1.1.2-rc.2
   three: ^0.147.0
@@ -113,6 +114,7 @@ dependencies:
   react-use-scrollspy: 3.1.1_react@18.2.0
   react-use-wizard: 2.2.1_biqbaboplfbrettd7655fr4n2y
   schema-dts: 1.1.0_typescript@4.9.4
+  slugify: 1.6.5
   tailwindcss-colors-css-variables: 1.1.2-rc.2
   three: 0.147.0
   three-stdlib: 2.20.4_three@0.147.0
@@ -8361,6 +8363,11 @@ packages:
       ansi-styles: 6.2.1
       is-fullwidth-code-point: 4.0.0
     dev: true
+
+  /slugify/1.6.5:
+    resolution: {integrity: sha512-8mo9bslnBO3tr5PEVFzMPIWwWnipGS0xVbYf65zxDqfNwmzYn1LpiKNrR6DlClusuvo+hDHd1zKpmfAe83NQSQ==}
+    engines: {node: '>=8.0.0'}
+    dev: false
 
   /snake-case/3.0.4:
     resolution: {integrity: sha512-LAOh4z89bGQvl9pFfNF8V146i7o7/CqFPbqzYgP+yYzDIDeS9HaNFtXABamRW+AQzEVODcvE79ljJ+8a9YSdMg==}
