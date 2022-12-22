@@ -24,7 +24,13 @@ export const getColorHexCodeByName = (
       )[]
     | undefined
 ) => {
-  const variant = variants?.find((variant) => variant?.title === colorName);
+  const variant = variants?.find((variant) =>
+    variant?.selectedOptions?.find(
+      (selectedOption) => selectedOption?.value === colorName
+    )
+  );
+  // .title?.includes(colorName)
+  // .selectedOptions?.find((selectedOption) => selectedOption?.value === colorName)
 
   if (!variant) {
     return undefined;

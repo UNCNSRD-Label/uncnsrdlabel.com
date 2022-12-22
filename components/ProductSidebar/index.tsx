@@ -11,6 +11,8 @@ import { useProduct, ProductPrice, Metafield } from "@shopify/hydrogen-react";
 import { clsx } from "clsx";
 import Image from "next/image";
 import Link from "next/link";
+import getDataURL from "placeholder-image-data-url";
+import { useEffect, useState } from "react";
 
 import ProductForm from "#/components/ProductForm";
 
@@ -24,12 +26,50 @@ type Props = {
   product: PartialDeep<Product, { recurseIntoArrays: true }>;
 };
 
-const imageColorLoader = ({ src }: { src: string }) => {
-  return `https://cdn.shopify.com/s/files/1/0691/0305/9266/files/${src}.png?v=1670885992`;
-};
-
 export const Component: FC<Props> = ({ className, path, product }) => {
-  const { selectedOptions, selectedVariant, variants } = useProduct();
+  const { selectedOptions, variants } = useProduct();
+
+  const [blurDataURL, setBlurDataURL] = useState<string>();
+  const [colorImageUrl, setColorImageUrl] = useState<string>();
+  const [showFallbackTexture, setShowFallbackTexture] =
+    useState<boolean>(false);
+
+  useEffect(() => {
+    (async () => {
+      const hexCode =
+        selectedOptions?.Color &&
+        variants &&
+        getColorHexCodeByName(selectedOptions?.Color, variants);
+
+      if (hexCode == null) {
+        return null;
+      }
+
+      const colorDataURL = await getDataURL(500, 500, "", hexCode);
+
+      setBlurDataURL(colorDataURL);
+      setColorImageUrl(colorDataURL);
+      setShowFallbackTexture(true);
+    })();
+
+    (async () => {
+      if (selectedOptions?.Color) {
+        const imageTextureURL = `https://cdn.shopify.com/s/files/1/0691/0305/9266/files/${selectedOptions?.Color?.replaceAll(
+          " ",
+          "_"
+        )}.png?v=1670885992`;
+
+        const request = new Request(imageTextureURL);
+
+        const response = await fetch(request);
+
+        if (response.status === 200) {
+          setColorImageUrl(imageTextureURL);
+          setShowFallbackTexture(false);
+        }
+      }
+    })();
+  }, [selectedOptions?.Color, variants]);
 
   if (!product) {
     return <div>Whoops there was an error! Please refresh and try again.</div>;
@@ -70,37 +110,39 @@ export const Component: FC<Props> = ({ className, path, product }) => {
             dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
           />
         )}
-        {selectedOptions?.Color && (
-          <section
-            className={clsx(
-              styles.section,
-              styles.sectionColor,
-              "collapse",
-              "collapse-plus"
-            )}
-            tabIndex={0}
-          >
-            <div className="collapse-title text-base">Color</div>
-            <div className="collapse-content">
-              <Image
-                alt="Color swatch as used for the product"
-                height={500}
-                loader={imageColorLoader}
-                src={selectedOptions?.Color?.replaceAll(" ", "_")}
-                style={{
-                  ...(selectedOptions?.Color &&
-                    variants && {
-                      backgroundColor: getColorHexCodeByName(
-                        selectedOptions?.Color,
-                        variants
-                      ),
-                    }),
-                }}
-                width={500}
-              />
+
+        <section
+          className={clsx(
+            styles.section,
+            styles.sectionColor,
+            "collapse",
+            "collapse-plus"
+          )}
+          tabIndex={0}
+        >
+          <div className="collapse-title text-base">Color</div>
+          <div className={clsx("collapse-content")}>
+            <div
+              className={clsx(
+                styles.effectFabricSample,
+                "effectFabricSample",
+                showFallbackTexture && "effectFabricTexture"
+              )}
+            >
+              {colorImageUrl && (
+                <Image
+                  alt="Color swatch as used for the product"
+                  blurDataURL={blurDataURL}
+                  className={clsx()}
+                  height={500}
+                  src={colorImageUrl}
+                  // unoptimized={showFallbackTexture}
+                  width={500}
+                />
+              )}
             </div>
-          </section>
-        )}
+          </div>
+        </section>
         {product.metafields
           ?.filter(Boolean)
           ?.filter((metafield) => typeof metafield?.key === "string")

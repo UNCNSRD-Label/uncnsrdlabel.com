@@ -151,3 +151,36 @@
 .cta {
   @apply uppercase;
 }
+
+.effectFabricSample {
+  /* box-shadow: 2.5px 5px 10px 0px rgba(0,0,0,0.15); */
+  clip-path: none;
+  --mask: linear-gradient(#000 0 0) center/calc(100% - 0.5em) calc(100% - 0.5em)
+      no-repeat,
+    conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) 0 0 /0.5em
+      0.25em space no-repeat,
+    conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 0
+      100%/0.5em 0.25em space no-repeat,
+    conic-gradient(from 45deg at left, #0000, #000 1deg 89deg, #0000 90deg) 0 0 /0.25em
+      0.5em no-repeat space,
+    conic-gradient(from -135deg at right, #0000, #000 1deg 89deg, #0000 90deg)
+      100% 0/0.25em 0.5em no-repeat space;
+  margin: unset;
+  mask: var(--mask);
+  position: relative;  
+
+  img, video {
+    margin-inline: auto;
+    width: 100%;
+    z-index: 5;
+  }
+}
+
+.effectFabricTexture {
+  background-image: url('/images/textures/light-gray-fabric-texture.jpg');
+  background-size: cover;
+
+  img {
+    mix-blend-mode: multiply;
+  }
+}
