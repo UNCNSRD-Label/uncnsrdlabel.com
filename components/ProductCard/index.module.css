@@ -7,7 +7,7 @@
 }
 
 .figure {
-    @apply aspect-3/4 relative;
+    @apply aspect-2/3 relative;
 }
 
 .image {
