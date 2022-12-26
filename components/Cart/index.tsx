@@ -3,7 +3,7 @@
 import type { CartLine } from "@shopify/hydrogen-react/storefront-api-types";
 import type { FC, HTMLAttributes } from "react";
 
-import { useCart } from "@shopify/hydrogen-react";
+import { useCart, CartCheckoutButton } from "@shopify/hydrogen-react";
 import { clsx } from "clsx";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -86,31 +86,34 @@ export const Component: FC<Props> = ({ className }) => {
             </>
           )}
         </dl>
-        {checkoutUrl && (
-          <Link
-            className={clsx(
-              styles.action,
-              "btn",
-              "btn-primary",
-              "btn-block",
-              "mt-12",
-              "mb-8"
-            )}
-            href={checkoutUrl}
-          >
-            Checkout
-          </Link>
-        )}
+        <CartCheckoutButton
+          className={clsx(
+            styles.action,
+            "btn",
+            "btn-primary",
+            "btn-block",
+            "mt-12",
+            "mb-8"
+          )}
+        >
+          Checkout
+        </CartCheckoutButton>
       </section>
-      <section className={clsx("divide-y")}>
-        <h3>Products</h3>
-        <menu className={clsx("menu", "items-start", "py-4")}>
-          {lines?.filter(Boolean)?.map((line, index) => (
-            <li key={line?.id ?? index}>
-              <CartLineCard line={line as CartLine} />
-            </li>
-          ))}
-        </menu>
+      <section className={clsx(styles.products, "divide-y")}>
+        <h3 className={clsx(styles.title)}>Products</h3>
+        {lines?.length ? (
+          <menu className={clsx("menu", "items-start", "py-4")}>
+            {lines?.filter(Boolean)?.map((line, index) => (
+              <li key={line?.id ?? index}>
+                <CartLineCard line={line as CartLine} />
+              </li>
+            ))}
+          </menu>
+        ) : (
+          <span className={clsx("py-4")}>
+            You do not have any products in your bag yet
+          </span>
+        )}
       </section>
     </section>
   );

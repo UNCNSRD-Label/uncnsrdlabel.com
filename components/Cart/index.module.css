@@ -7,6 +7,12 @@
     /* scroll-padding-block-start: var(--viewport-margin-block-start); */
 }
 
+.products {
+    .title {
+        @apply pb-4;
+    }
+}
+
 .cost {
     dd {
         @apply justify-self-end;
