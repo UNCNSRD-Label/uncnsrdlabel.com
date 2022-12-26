@@ -42,11 +42,28 @@
       &.sectionDescription {
         @apply px-4 py-6 text-justify;
       }
+
+      &.sectionColorAndComposition {
+        :global(.collapse-content) {
+          @apply gap-4 grid grid-cols-2;
+
+          .effectFabricSample {
+            > img {
+              margin-block: unset !important;
+            }
+          }
+        }
+      }
+
+      &.sectionComplementaryProducts {
+        :global(.collapse-content) {
+          @apply gap-4 grid grid-cols-2;
+        }
+      }
+
+      > input[type="checkbox"] {
+        width: 100%;
+      }
     }
   }
-}
-
-.effectFabricSample {
-  margin-inline: auto;
-  width: 50%;
 }

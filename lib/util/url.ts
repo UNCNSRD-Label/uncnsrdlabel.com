@@ -4,6 +4,10 @@ import type {
 } from "@shopify/hydrogen-react/storefront-api-types";
 import type { PartialDeep } from "type-fest";
 
+export const getProductCategoryURL = (
+  product: PartialDeep<Product, { recurseIntoArrays: true }>
+) => `/categories/${product.handle}`;
+
 export const getProductURL = (
   product: PartialDeep<Product, { recurseIntoArrays: true }>
 ) => `/products/${product.handle}`;

@@ -1,0 +1,26 @@
+fragment ProductBasicInformation on Product {
+  availableForSale
+  description
+  featuredImage {
+    altText
+    height
+    url
+    width
+  }
+  handle
+  id
+  priceRange {
+    maxVariantPrice {
+      amount
+      currencyCode
+    }
+    minVariantPrice {
+      amount
+      currencyCode
+    }
+  }
+  productType
+  publishedAt
+  title
+  vendor
+}

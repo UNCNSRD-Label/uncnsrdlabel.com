@@ -25,7 +25,7 @@ import {
 } from "#/lib/constants/messages";
 import { theme } from "#/lib/constants/style";
 
-import { getMetafield } from "#/lib/util/GraphQL";
+import { getAdditionalImages } from "#/lib/util/GraphQL";
 
 import styles from "./index.module.css";
 
@@ -38,26 +38,6 @@ type Props = {
 // TODO: Implement https://github.com/Shopify/hydrogen-ui/blob/2022-10/packages/react/src/MediaFile.tsx
 // TODO: Implement https://github.com/Shopify/hydrogen-ui/blob/2022-10/packages/react/src/ModelViewer.tsx
 // TODO: Implement https://shopify.dev/api/storefront/2022-07/objects/Model3d#implements
-
-const getAdditionalImages = (
-  selectedVariant: PartialDeep<ProductVariant, { recurseIntoArrays: true }>
-) => {
-  const additional_media = getMetafield<
-    ParsedMetafields["list.file_reference"]
-  >(selectedVariant, {
-    namespace: "custom",
-    key: "additional_media",
-  });
-
-  // TODO: Check use of ts-ignore
-  const additional_images = additional_media?.parsedValue
-    // @ts-ignore
-    ?.filter((medium) => medium?.mediaContentType === "IMAGE") as MediaImage[];
-
-  const imageNodes = additional_images?.map(({ image }) => image);
-
-  return imageNodes;
-};
 
 export const Component: FC<Props> = ({
   className,
@@ -133,7 +113,7 @@ export const Component: FC<Props> = ({
       </div>
       {images
         // ?.slice(0, imagesToShow)
-        .map((image, index) => {
+        ?.map((image, index) => {
           if (!image?.url) {
             return;
           }

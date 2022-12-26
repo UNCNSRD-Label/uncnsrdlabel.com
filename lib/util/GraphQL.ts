@@ -10,6 +10,33 @@ import type { PartialDeep } from "type-fest";
 
 import { metafieldParser } from "@shopify/hydrogen-react";
 
+export const getAdditionalImages = (
+  selectedVariant?: PartialDeep<
+    ProductVariant,
+    { recurseIntoArrays: true }
+  > | null
+) => {
+  if (!selectedVariant) {
+    return;
+  }
+
+  const additional_media = getMetafield<
+    ParsedMetafields["list.file_reference"]
+  >(selectedVariant, {
+    namespace: "custom",
+    key: "additional_media",
+  });
+
+  // TODO: Check use of ts-ignore
+  const additional_images = additional_media?.parsedValue
+    // @ts-ignore
+    ?.filter((medium) => medium?.mediaContentType === "IMAGE");
+
+  const imageNodes = additional_images?.map(({ previewImage }) => previewImage);
+
+  return imageNodes;
+};
+
 export const getColorHexCodeByName = (
   colorName: string,
   variants:
@@ -29,8 +56,6 @@ export const getColorHexCodeByName = (
       (selectedOption) => selectedOption?.value === colorName
     )
   );
-  // .title?.includes(colorName)
-  // .selectedOptions?.find((selectedOption) => selectedOption?.value === colorName)
 
   if (!variant) {
     return undefined;
@@ -45,8 +70,52 @@ export const getColorHexCodeByName = (
     return undefined;
   }
 
-  // TODO: Implement better solution than this coercion
   return metafield?.value;
+};
+
+export const getComplementaryProducts = (
+  selectedVariant?: PartialDeep<
+    ProductVariant,
+    { recurseIntoArrays: true }
+  > | null
+) => {
+  if (!selectedVariant) {
+    return;
+  }
+
+  const complementary_products = getMetafield<
+    ParsedMetafields["list.product_reference"]
+  >(selectedVariant, {
+    namespace: "custom",
+    key: "complementary_products",
+  });
+
+  const complementaryProducts = complementary_products?.parsedValue;
+
+  return complementaryProducts;
+};
+
+export const getMaterialImage = (
+  selectedVariant?: PartialDeep<
+    ProductVariant,
+    { recurseIntoArrays: true }
+  > | null
+) => {
+  if (!selectedVariant) {
+    return;
+  }
+
+  const material_image = getMetafield<ParsedMetafields["file_reference"]>(
+    selectedVariant,
+    {
+      namespace: "custom",
+      key: "material_image",
+    }
+  );
+
+  const materialImage = material_image?.parsedValue?.previewImage;
+
+  return materialImage;
 };
 
 export const getMetafield = <T>(

@@ -1,0 +1,30 @@
+fragment ProductVariantBasicInformation on ProductVariant {
+  availableForSale
+  currentlyNotInStock
+  id
+  metafields(
+    identifiers: [
+      { namespace: "custom", key: "color" }
+      { namespace: "custom", key: "complementary_products" }
+      { namespace: "custom", key: "composition" }
+      { namespace: "custom", key: "related_products" }
+    ]
+  ) {
+    key
+    namespace
+    type
+    value
+  }
+  price {
+    amount
+    currencyCode
+  }
+  quantityAvailable
+  requiresShipping
+  selectedOptions {
+    name
+    value
+  }
+  sku
+  title
+}
