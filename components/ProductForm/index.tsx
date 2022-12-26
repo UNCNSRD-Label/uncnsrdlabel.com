@@ -14,6 +14,7 @@ import {
   ShopPayButton,
 } from "@shopify/hydrogen-react";
 import { clsx } from "clsx";
+import Script from "next/script";
 import { useCallback } from "react";
 import { RiHeartAddLine } from "react-icons/ri";
 import { useQueryParam, StringParam, withDefault } from "use-query-params";
@@ -30,13 +31,8 @@ type Props = {
 };
 
 export const Component: FC<Props> = ({ children, className, path }) => {
-  const {
-    options,
-    setSelectedOption,
-    selectedOptions,
-    selectedVariant,
-    variants,
-  } = useProduct();
+  const { options, setSelectedOption, selectedVariant, variants } =
+    useProduct();
 
   const [color, setColor] = useQueryParam(
     "color",
@@ -45,17 +41,6 @@ export const Component: FC<Props> = ({ children, className, path }) => {
   const [size, setSize] = useQueryParam("size", withDefault(StringParam, ""));
 
   const isOutOfStock = !selectedVariant?.availableForSale || false;
-
-  let isOnSale = false;
-
-  if (
-    selectedVariant?.priceV2?.amount &&
-    selectedVariant?.compareAtPriceV2?.amount
-  ) {
-    isOnSale =
-      selectedVariant?.priceV2?.amount <
-      selectedVariant?.compareAtPriceV2?.amount;
-  }
 
   // TODO: Merge with version of this code in schema.org lib
   const getAvailability = (
@@ -107,39 +92,6 @@ export const Component: FC<Props> = ({ children, className, path }) => {
 
   return (
     <>
-      {/* TODO: Update schema.org data when selecting variant via */}
-      {/* <Script
-        type="application/ld+json"
-        id={product.handle}
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Product",
-            identifier: product.id,
-            datePublished: product.publishedAt,
-            name: product.title,
-            description: product.description,
-            image: product.images?.nodes?.[0]?.url,
-            brand: product.vendor,
-            url,
-            offers: {
-              "@type": "AggregateOffer",
-              offerCount: 1,
-              offers: [
-                product.variants?.nodes?.map((variant, index) => ({
-                  "@type": "Offer",
-                  url,
-                  title: variant?.title,
-                  priceCurrency: variant?.price?.currencyCode,
-                  price: variant?.price?.amount,
-                  availability: getAvailability(variant),
-                  itemCondition: "https://schema.org/NewCondition",
-                })),
-              ],
-            },
-          }),
-        }}
-      /> */}
       <section
         className={clsx(
           styles.section,
@@ -159,18 +111,34 @@ export const Component: FC<Props> = ({ children, className, path }) => {
             return (
               <div
                 key={`${option?.name}-${optionIndex}`}
-                className={clsx(styles.label)}
+                className={clsx(styles.inputGroupContainer)}
               >
-                <span className={clsx(styles.text, "text-base")}>
+                <span className={clsx(styles.title, "text-base")}>
                   {option?.name}
                 </span>
-                <div className="form-control-group input-group w-full mt-1">
+                <div
+                  className={clsx(
+                    "form-control-group",
+                    "input-group",
+                    "justify-end",
+                    "mt-1",
+                    "w-full",
+                    `form-control-group--${option?.name}`
+                  )}
+                >
                   {option?.values?.map((value, valueIndex) => (
                     <div
-                      className="form-control"
+                      className={clsx("form-control")}
                       key={`${option.name}-${optionIndex}-${valueIndex}`}
                     >
-                      <label className="label cursor-pointer">
+                      <label
+                        className={clsx(
+                          "cursor-pointer",
+                          "label",
+                          styles.label,
+                          option?.name === "Size" && "pl-0"
+                        )}
+                      >
                         <span className={clsx("label-text", styles.labelText)}>
                           {value}
                         </span>
@@ -183,7 +151,8 @@ export const Component: FC<Props> = ({ children, className, path }) => {
                           <input
                             className={clsx(
                               "radio",
-                              "radio-lg",
+                              option?.name === "Color" && "radio-lg",
+                              option?.name === "Size" && "hidden",
                               value &&
                                 variants &&
                                 `checked:bg-[${getColorHexCodeByName(
@@ -256,22 +225,7 @@ export const Component: FC<Props> = ({ children, className, path }) => {
             <span>Sold out</span>
           ) : (
             <span className="flex items-center justify-center gap-2">
-              <span>Add to bag</span> <span>·</span>{" "}
-              {selectedVariant.priceV2 && (
-                <Money
-                  withoutTrailingZeros
-                  data={selectedVariant.priceV2}
-                  as="span"
-                />
-              )}
-              {selectedVariant.compareAtPriceV2 && isOnSale && (
-                <Money
-                  withoutTrailingZeros
-                  data={selectedVariant.compareAtPriceV2}
-                  as="span"
-                  className="opacity-50 strike"
-                />
-              )}
+              Add to bag
             </span>
           )}
         </AddToCartButton>

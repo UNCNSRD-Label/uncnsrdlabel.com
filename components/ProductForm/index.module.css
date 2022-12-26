@@ -4,9 +4,31 @@
   &.sectionOptions {
     @apply gap-8;
 
-    .label {
-      .text {
+    .inputGroupContainer {
+      .title {
         @apply px-4;
+      }
+
+      .label {
+        .labelText,
+        .radioContainer {
+          --tw-bg-opacity: 0;
+        }
+
+        .labelText {
+          @apply pl-0;
+        }
+
+        .radioContainer {
+          @apply block;
+          order: -1;
+        }
+
+        &:has(input:checked) {
+          .labelText {
+            @apply underline underline-offset-4;
+          }
+        }
       }
     }
   }
@@ -14,18 +36,4 @@
   &.sectionActions {
     @apply grid-flow-col justify-between gap-8 px-4;
   }
-}
-
-.labelText,
-.radioContainer {
-  --tw-bg-opacity: 0;
-}
-
-.labelText {
-  @apply pl-0;
-}
-
-.radioContainer {
-  @apply block;
-  order: -1;
 }

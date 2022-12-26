@@ -7,7 +7,7 @@ import type {
 import type { FC, ReactNode } from "react";
 import type { PartialDeep } from "type-fest";
 
-import { useProduct, ProductPrice, Metafield } from "@shopify/hydrogen-react";
+import { useProduct, Metafield, Money } from "@shopify/hydrogen-react";
 import { clsx } from "clsx";
 import Error from "next/error";
 import Image from "next/image";
@@ -16,9 +16,14 @@ import getDataURL from "placeholder-image-data-url";
 import { useEffect, useState } from "react";
 import slugify from "slugify";
 
+import ProductCard from "#/components/ProductCard";
 import ProductForm from "#/components/ProductForm";
 
-import { getColorHexCodeByName } from "#/lib/util/GraphQL";
+import {
+  getColorHexCodeByName,
+  getComplementaryProducts,
+  getMaterialImage,
+} from "#/lib/util/GraphQL";
 
 import styles from "./index.module.css";
 
@@ -29,53 +34,43 @@ type Props = {
 };
 
 export const Component: FC<Props> = ({ className, path, product }) => {
-  const { selectedOptions, variants } = useProduct();
+  const { selectedOptions, selectedVariant, variants } = useProduct();
 
-  const [blurDataURL, setBlurDataURL] = useState<string>();
-  const [colorImageUrl, setColorImageUrl] = useState<string>();
+  const [materialImageUrl, setMaterialImageUrl] = useState<string>();
   const [showFallbackTexture, setShowFallbackTexture] =
     useState<boolean>(false);
 
   useEffect(() => {
     (async () => {
-      const hexCode =
-        selectedOptions?.Color &&
-        variants &&
-        getColorHexCodeByName(selectedOptions?.Color, variants);
+      const materialImage = getMaterialImage(selectedVariant);
 
-      if (hexCode == null) {
-        return null;
-      }
+      if (materialImage?.url) {
+        setMaterialImageUrl(materialImage?.url);
+      } else {
+        const hexCode =
+          selectedOptions?.Color &&
+          variants &&
+          getColorHexCodeByName(selectedOptions?.Color, variants);
 
-      const colorDataURL = await getDataURL(500, 500, "", hexCode);
+        if (hexCode) {
+          const colorDataURL = await getDataURL(500, 500, "", hexCode);
 
-      setBlurDataURL(colorDataURL);
-      setColorImageUrl(colorDataURL);
-      setShowFallbackTexture(true);
-    })();
-
-    (async () => {
-      if (selectedOptions?.Color) {
-        const imageTextureURL = `https://cdn.shopify.com/s/files/1/0691/0305/9266/files/${selectedOptions?.Color?.replaceAll(
-          " ",
-          "_"
-        )}.png?v=1670885992`;
-
-        const request = new Request(imageTextureURL);
-
-        const response = await fetch(request);
-
-        if (response.status === 200) {
-          setColorImageUrl(imageTextureURL);
-          setShowFallbackTexture(false);
+          setMaterialImageUrl(colorDataURL);
+          setShowFallbackTexture(true);
         }
       }
     })();
-  }, [selectedOptions?.Color, variants]);
+  }, [product.metafields, selectedOptions?.Color, selectedVariant, variants]);
 
   if (!product) {
     return <Error statusCode={404} />;
   }
+
+  const isOnSale =
+    Number.parseFloat(selectedVariant?.price?.amount ?? "0") <
+    Number.parseFloat(selectedVariant?.compareAtPrice?.amount ?? "0");
+
+  const complementaryProducts = getComplementaryProducts(selectedVariant);
 
   return (
     <div className={clsx(styles.root)}>
@@ -101,7 +96,24 @@ export const Component: FC<Props> = ({ className, path, product }) => {
             </Link>
           )}
           <h1 className={clsx(styles.title)}>{product.title}</h1>
-          <ProductPrice className={clsx(styles.price)} data={product} />
+          <span className="flex items-center justify-center gap-2">
+            {selectedVariant?.price && (
+              <Money
+                as="span"
+                className={clsx("text-lg")}
+                data={selectedVariant.price}
+                withoutTrailingZeros
+              />
+            )}
+            {selectedVariant?.compareAtPrice && isOnSale && (
+              <Money
+                as="span"
+                className={clsx("bg-base-300", "line-through")}
+                data={selectedVariant.compareAtPrice}
+                withoutTrailingZeros
+              />
+            )}
+          </span>
         </header>
         <ProductForm path={path} product={product} />
         {product.descriptionHtml && (
@@ -120,13 +132,15 @@ export const Component: FC<Props> = ({ className, path, product }) => {
         <section
           className={clsx(
             styles.section,
-            styles.sectionColor,
+            styles.sectionColorAndComposition,
             "collapse",
             "collapse-plus"
           )}
-          tabIndex={0}
         >
-          <div className="collapse-title text-base">Color</div>
+          <input type="checkbox" defaultChecked />
+          <div className={clsx("collapse-title", "text-base")}>
+            Material, Color & Composition
+          </div>
           <div className={clsx("collapse-content")}>
             <div
               className={clsx(
@@ -134,24 +148,40 @@ export const Component: FC<Props> = ({ className, path, product }) => {
                 "effectFabricSample",
                 showFallbackTexture && "effectFabricTexture"
               )}
+              id="effectFabricSample"
             >
-              {colorImageUrl && (
+              {materialImageUrl && (
                 <Image
                   alt="Color swatch as used for the product"
-                  blurDataURL={blurDataURL}
                   className={clsx()}
                   height={500}
-                  src={colorImageUrl}
-                  // unoptimized={showFallbackTexture}
+                  src={materialImageUrl}
                   width={500}
                 />
               )}
+            </div>
+            <div className={clsx(styles.composition)}>
+              <Metafield
+                data={
+                  product.metafields?.find(
+                    (metafield) => metafield?.key === "composition"
+                  )!
+                }
+              />
             </div>
           </div>
         </section>
         {product.metafields
           ?.filter(Boolean)
           ?.filter((metafield) => typeof metafield?.key === "string")
+          ?.filter(
+            (metafield) =>
+              ![
+                "composition",
+                "complementary_products",
+                "material_image",
+              ].includes(metafield?.key!)
+          )
           ?.sort((a, b) => a!.key!.localeCompare(b!.key!))
           .map((metafield, index) => (
             <section
@@ -162,8 +192,8 @@ export const Component: FC<Props> = ({ className, path, product }) => {
                 "collapse-plus"
               )}
               key={index}
-              tabIndex={0}
             >
+              <input type="checkbox" />
               <div className="collapse-title text-base">
                 {metafield?.key
                   ?.split("_")
@@ -194,6 +224,28 @@ export const Component: FC<Props> = ({ className, path, product }) => {
               </div>
             </section>
           ))}
+        <section
+          className={clsx(
+            styles.section,
+            styles.sectionComplementaryProducts,
+            "collapse",
+            "collapse-plus"
+          )}
+        >
+          <input type="checkbox" defaultChecked />
+          <div className={clsx("collapse-title", "text-base")}>
+            Complementary Products
+          </div>
+          <div className={clsx("collapse-content", "not-prose")}>
+            {complementaryProducts?.map((node, index) => (
+              <ProductCard
+                className={clsx(styles.productCard)}
+                key={index}
+                product={node}
+              />
+            ))}
+          </div>
+        </section>
         <footer></footer>
       </section>
     </div>

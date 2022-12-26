@@ -69,6 +69,10 @@ query Product($slug: String!) {
       nodes {
         availableForSale
         barcode
+        compareAtPrice {
+          amount
+          currencyCode
+        }
         currentlyNotInStock
         id
         metafields(
