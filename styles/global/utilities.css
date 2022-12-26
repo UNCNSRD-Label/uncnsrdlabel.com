@@ -1,3 +1,26 @@
+@keyframes filter-animation {
+  0% {
+    filter: invert(50%) sepia(75%) saturate(2500%) brightness(120%)
+      contrast(120%) hue-rotate(0deg);
+  }
+
+  50% {
+    filter: invert(50%) sepia(75%) saturate(2500%) brightness(120%)
+      contrast(120%) hue-rotate(180deg);
+  }
+
+  100% {
+    filter: invert(50%) sepia(75%) saturate(2500%) brightness(120%)
+      contrast(120%) hue-rotate(360deg);
+  }
+}
+
+.filterAnimation {
+  animation: filter-animation 10s infinite;
+  filter: invert(50%) sepia(75%) saturate(2500%) brightness(120%)
+    contrast(120%) hue-rotate(360deg);
+}
+
 .constrainWidth {
   main {
     justify-self: center;
@@ -106,7 +129,9 @@
   font-family: "Bomber Escort Outline", cursive;
   font-style: italic;
   padding-inline-end: 2rem;
+}
 
+.dark:invert {
   @media (prefers-color-scheme: dark) {
     filter: invert(1);
   }
