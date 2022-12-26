@@ -5,6 +5,7 @@ import type { ProductQuery } from "#/generated/gql/graphql";
 
 import { clsx } from "clsx";
 import { request } from "graphql-request";
+import Error from "next/error";
 import { useRouter } from "next/router";
 import { createRef } from "react";
 
@@ -67,16 +68,17 @@ export default function Page({
 
   const scrollingElement = createRef<HTMLDivElement>();
 
-  if (!data || errors) {
+  if (!data?.product) {
     console.error({ errors });
-    return <div>Whoops there was an error! Please refresh and try again.</div>;
+    return <Error statusCode={404} />
+  }
+
+  if (errors) {
+    console.error({ errors });
+    return <Error statusCode={500} />
   }
 
   const { product } = data;
-
-  if (!product) {
-    return <div>Whoops there was an error! Please refresh and try again.</div>;
-  }
 
   return (
     <NextQueryParamsProvider>

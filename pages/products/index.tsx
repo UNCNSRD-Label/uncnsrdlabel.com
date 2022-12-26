@@ -5,6 +5,7 @@ import type { ProductsQuery } from "#/generated/gql/graphql";
 
 import { clsx } from "clsx";
 import { request } from "graphql-request";
+import Error from "next/error";
 import Image from "next/image";
 import Link from "next/link";
 import { createRef } from "react";
@@ -48,9 +49,14 @@ export default function Page({
 }: StorefrontApiResponseOk<ProductsQuery>) {
   const scrollingElement = createRef<HTMLDivElement>();
 
-  if (!data || errors) {
+  if (!data) {
     console.error({ errors });
-    return <div>Whoops there was an error! Please refresh and try again.</div>;
+    return <Error statusCode={404} />
+  }
+
+  if (errors) {
+    console.error({ errors });
+    return <Error statusCode={500} />
   }
 
   return (

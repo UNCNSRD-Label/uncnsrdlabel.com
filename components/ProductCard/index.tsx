@@ -32,8 +32,6 @@ export const Component: FC<Props> = ({ className, product }) => {
   return (
     <article
       className={clsx(styles.article, className, "card", "card-compact")}
-      itemScope
-      itemType="https://schema.org/Product"
     >
       {/* <JsonLd<typeof productModel>
         item={mapProductGraphQLtoSchemaOrg(product)}

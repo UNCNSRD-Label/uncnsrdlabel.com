@@ -6,6 +6,7 @@ import type { PartialDeep } from "type-fest";
 
 import { ProductProvider } from "@shopify/hydrogen-react";
 import { clsx } from "clsx";
+import Error from "next/error";
 import Script from "next/script";
 import { Product as ProductSchema } from "schema-dts";
 import { jsonLdScriptProps } from "react-schemaorg";
@@ -35,7 +36,7 @@ export const Component: FC<Props> = ({
   scrollingElement,
 }) => {
   if (!product) {
-    return <div>Whoops there was an error! Please refresh and try again.</div>;
+    return <Error statusCode={404} />
   }
 
   return (

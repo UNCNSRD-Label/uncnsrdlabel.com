@@ -9,6 +9,7 @@ import { Canvas } from "@react-three/fiber";
 // import { clsx } from "clsx";
 // import Link from "next/link";
 import { request } from "graphql-request";
+import Error from "next/error";
 import { createRef, Suspense } from "react";
 import { Vector3 } from "three";
 
@@ -69,9 +70,14 @@ export default function Page({
 
   // const camera = useCamera()
 
-  if (!data || errors) {
+  if (!data) {
     console.error({ errors });
-    return <div>Whoops there was an error! Please refresh and try again.</div>;
+    return <Error statusCode={404} />
+  }
+
+  if (errors) {
+    console.error({ errors });
+    return <Error statusCode={500} />
   }
 
   return (

@@ -9,6 +9,7 @@ import type { PartialDeep } from "type-fest";
 
 import { useProduct, ProductPrice, Metafield } from "@shopify/hydrogen-react";
 import { clsx } from "clsx";
+import Error from "next/error";
 import Image from "next/image";
 import Link from "next/link";
 import getDataURL from "placeholder-image-data-url";
@@ -73,7 +74,7 @@ export const Component: FC<Props> = ({ className, path, product }) => {
   }, [selectedOptions?.Color, variants]);
 
   if (!product) {
-    return <div>Whoops there was an error! Please refresh and try again.</div>;
+    return <Error statusCode={404} />;
   }
 
   return (
