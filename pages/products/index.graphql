@@ -1,33 +1,16 @@
-query Products {
-  shop {
-    name
-  }
-  products(first: 8) {
+query Products($query: String!) {
+  products(first: 64, query: $query) {
     nodes {
-      availableForSale
-      description
-      featuredImage {
-        altText
-        height
-        url
-        width
-      }
-      handle
-      id
-      priceRange {
-        maxVariantPrice {
-          amount
-          currencyCode
+      ...ProductBasicInformation
+      variants(first: 32) {
+        pageInfo {
+          hasNextPage
+          hasPreviousPage
         }
-        minVariantPrice {
-          amount
-          currencyCode
+        nodes {
+          ...ProductVariantBasicInformation
         }
       }
-      productType
-      publishedAt
-      title
-      vendor
     }
   }
 }

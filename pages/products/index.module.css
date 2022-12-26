@@ -22,10 +22,45 @@
   }
 
   .foreground {
+    /*
     @apply bg-primary;
-    background: linear-gradient(0deg, hsl(var(--pc)) 25%, rgba(0,0,0,0) 60%);
+    background: linear-gradient(0deg, hsl(var(--n)) 25%, rgba(0,0,0,0) 60%);
     height: 50%;
-    transform: translateY(175%) translateZ(-5px) scale(1.5);
+    */
+
+    @apply p-20;
+    display: grid;
+    grid-template-columns: max-content auto;
+    grid-template-rows: auto max-content;
+    background-size: cover;
+    color: white;
+    height: 100%;
+    transform: translateZ(-5px) scale(1.5);
+    /* width: 400px; */
+    
+    &:before,
+    &:after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 1px solid white;
+    }
+    &:before {
+      grid-row: 1 / 2;
+      border-right: none;
+      border-bottom: none;
+    }
+    &:after {
+      grid-row: 1 / span 2;
+      border-left: none;
+    }
+    h2 {
+      margin: 1rem 1rem -0.5rem 0;
+      font-family: "Pragati Narrow", sans-serif;
+      font-size: 2rem;
+      max-width: 100%;
+    }
   }
 
   .background,
@@ -45,14 +80,15 @@
 }
 
 .productsList {
-  @apply grid gap-24 gap-y-16 grid-cols-2 items-center p-24;
+  @apply grid gap-24 gap-y-16 grid-cols-2 items-center p-24 pt-0 relative;
+  top: -20vh;
 
   @media screen and (min-width: theme(screens.md.min)) {
     @apply grid-cols-4;
   }
 
   .productCard {
-    @apply border-8 border-primary-content bg-primary-content;
+    @apply border-8 border-primary bg-primary;
   }
 }
 
