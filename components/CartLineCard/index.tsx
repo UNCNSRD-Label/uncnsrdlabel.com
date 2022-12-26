@@ -27,7 +27,7 @@ export const Component: FC<Props> = ({ className, line }) => {
   const { id, cost, merchandise, quantity } = line;
 
   if (!merchandise?.product) {
-    return null
+    return null;
   }
 
   console.log({ merchandise, quantity });
@@ -45,8 +45,6 @@ export const Component: FC<Props> = ({ className, line }) => {
         "p-0"
       )}
       id={id}
-      itemScope
-      itemType="https://schema.org/Product"
     >
       <meta itemProp="identifier" content={id} />
       {merchandise?.image?.url && (
