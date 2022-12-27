@@ -33,7 +33,11 @@ export default function Page() {
           />
         </Link>
         <figure className={clsx(styles.figure)}>
-          <Link href="/products" className={clsx(styles.link)} title="Shop now">
+          <Link
+            href="/collection"
+            className={clsx(styles.link)}
+            title="Shop now"
+          >
             <Image
               alt="Sexy young woman posing in bikini on hotel bathroom counter"
               className={clsx(
