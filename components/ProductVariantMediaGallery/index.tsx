@@ -1,11 +1,6 @@
 "use client";
 
-import type { ParsedMetafields } from "@shopify/hydrogen-react";
-import type {
-  MediaImage,
-  Product,
-  ProductVariant,
-} from "@shopify/hydrogen-react/storefront-api-types";
+import type { Product } from "@shopify/hydrogen-react/storefront-api-types";
 import type { FC, HTMLAttributes, RefObject } from "react";
 import type { PartialDeep } from "type-fest";
 
