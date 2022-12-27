@@ -1,0 +1,58 @@
+.drawerContent {
+  perspective: 10px;
+}
+
+.main {
+  transform-style: preserve-3d;
+  z-index: -1;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+  transform-style: preserve-3d;
+  z-index: -1;
+
+  .background {
+    height: 100%;
+    transform: translateZ(-10px) scale(2);
+  }
+
+  .foreground {
+    @apply bg-primary;
+    background: linear-gradient(0deg, hsl(var(--pc)) 25%, rgba(0,0,0,0) 60%);
+    height: 50%;
+    transform: translateY(175%) translateZ(-5px) scale(1.5);
+  }
+
+  .background,
+  .foreground {
+    position: absolute;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+  .title {
+    @apply p-24;
+    font-size: clamp(1.5rem, 15vw, 15rem);
+    inset: 0;
+    position: absolute;
+  }
+}
+
+.categoriesList {
+  @apply grid gap-24 gap-y-16 grid-cols-2 items-center p-24;
+
+  @media screen and (min-width: theme(screens.md.min)) {
+    @apply grid-cols-4;
+  }
+
+  .categoryCard {
+    @apply border-8 border-primary-content bg-primary-content;
+  }
+}
+

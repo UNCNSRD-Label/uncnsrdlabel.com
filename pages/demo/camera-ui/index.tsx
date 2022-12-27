@@ -7,10 +7,8 @@ import { clsx } from "clsx";
 import { request } from "graphql-request";
 import Error from "next/error";
 import Image from "next/image";
-import Link from "next/link";
 import { createRef } from "react";
 
-import Breadcrumbs from "#/components/Breadcrumbs";
 import Layout from "#/components/Layout";
 import ProductCard from "#/components/ProductCard";
 
@@ -19,7 +17,7 @@ import {
   getPublicTokenHeaders,
 } from "#/lib/clients/shopify";
 
-import document from "./index.graphql";
+import document from "#/pages/products/index.graphql";
 
 import styles from "./index.module.css";
 
@@ -69,14 +67,23 @@ export default function Page({
       ref={scrollingElement}
       showHeaderAndFooter={true}
     >
-      <Breadcrumbs>
-        <li>
-          <Link href="/" title="Return to the home page">
-            Home
-          </Link>
-        </li>
-        <li>Products</li>
-      </Breadcrumbs>
+      <header className={clsx(styles.header)}>
+        <Image
+          alt="background"
+          className={clsx(styles.background)}
+          fill
+          src="/images/sample/758E1A06-1C5E-4DE7-B39B-8A126CE56787_2000x.webp"
+        />
+        <div className={clsx(styles.foreground)} />
+        <h2
+          className={clsx(styles.title, "logotype", "mask")}
+          style={{
+            backgroundImage: `url("/images/sample/758E1A06-1C5E-4DE7-B39B-8A126CE56787_2000x.webp")`,
+          }}
+        >
+          UNCNSRD
+        </h2>
+      </header>
       <section className={clsx(styles.productsList)}>
         {data.products.nodes.map((node, index) => (
           <ProductCard

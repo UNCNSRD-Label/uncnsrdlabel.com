@@ -1,7 +1,7 @@
 import type { StorefrontApiResponseOk } from "@shopify/hydrogen-react";
 import type { GetServerSideProps } from "next";
 
-import type { ProductsQuery } from "#/generated/gql/graphql";
+import type { QueryRoot } from "#/generated/gql/graphql";
 
 import { clsx } from "clsx";
 import { request } from "graphql-request";
@@ -9,10 +9,10 @@ import Error from "next/error";
 import Image from "next/image";
 import Link from "next/link";
 import { createRef } from "react";
+import slugify from "slugify";
 
 import Breadcrumbs from "#/components/Breadcrumbs";
 import Layout from "#/components/Layout";
-import ProductCard from "#/components/ProductCard";
 
 import {
   getStorefrontApiUrl,
@@ -46,7 +46,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 export default function Page({
   data,
   errors,
-}: StorefrontApiResponseOk<ProductsQuery>) {
+}: StorefrontApiResponseOk<QueryRoot>) {
   const scrollingElement = createRef<HTMLDivElement>();
 
   if (!data) {
@@ -75,15 +75,36 @@ export default function Page({
             Home
           </Link>
         </li>
-        <li>Products</li>
+        <li>Types</li>
       </Breadcrumbs>
-      <section className={clsx(styles.productsList)}>
-        {data.products.nodes.map((node, index) => (
-          <ProductCard
-            className={clsx(styles.productCard)}
+      <header className={clsx(styles.header)}>
+        <Image
+          alt="background"
+          className={clsx(styles.background)}
+          fill
+          src="/images/sample/758E1A06-1C5E-4DE7-B39B-8A126CE56787_2000x.webp"
+        />
+        <div className={clsx(styles.foreground)} />
+        <h2
+          className={clsx(styles.title, "logotype", "mask")}
+          style={{
+            backgroundImage: `url("/images/sample/758E1A06-1C5E-4DE7-B39B-8A126CE56787_2000x.webp")`,
+          }}
+        >
+          UNCNSRD
+        </h2>
+      </header>
+      <section className={clsx(styles.categoriesList)}>
+        {data.productTypes.edges.map(({ node }, index) => (
+          <Link
+            className={clsx(styles.categoryCard)}
+            href={`/categories/${slugify(node, {
+              lower: true,
+            })}`}
             key={index}
-            product={node}
-          />
+          >
+            {node}
+          </Link>
         ))}
       </section>
     </Layout>

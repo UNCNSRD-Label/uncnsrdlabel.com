@@ -1,0 +1,6 @@
+fragment ImageBasicInformation on Image {
+  altText
+  height
+  url
+  width
+}

@@ -1,0 +1,32 @@
+#import "../../../lib/gql/fragments/ImageBasicInformation.graphql"
+#import "../../../lib/gql/fragments/ProductBasicInformation.graphql"
+#import "../../../lib/gql/fragments/ProductVariantBasicInformation.graphql"
+query Collection($slug: String!) {
+  collection(handle: $slug) {
+    descriptionHtml
+    id
+    image {
+      ... ImageBasicInformation
+    }
+    products(first: 64) {
+      nodes {
+        ... ProductBasicInformation
+        variants(first: 32) {
+          pageInfo {
+            hasNextPage
+            hasPreviousPage
+          }
+          nodes {
+            ... ProductVariantBasicInformation
+          }
+        }
+      }
+    }
+    seo {
+      description
+      title
+    }
+    title
+    updatedAt
+  }
+}

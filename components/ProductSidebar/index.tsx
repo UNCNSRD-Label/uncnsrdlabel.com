@@ -72,6 +72,10 @@ export const Component: FC<Props> = ({ className, path, product }) => {
 
   const complementaryProducts = getComplementaryProducts(selectedVariant);
 
+  const composition = product.metafields?.find(
+    (metafield) => metafield?.key === "composition"
+  );
+
   return (
     <div className={clsx(styles.root)}>
       <section className={clsx(styles.details)}>
@@ -160,15 +164,11 @@ export const Component: FC<Props> = ({ className, path, product }) => {
                 />
               )}
             </div>
-            <div className={clsx(styles.composition)}>
-              <Metafield
-                data={
-                  product.metafields?.find(
-                    (metafield) => metafield?.key === "composition"
-                  )!
-                }
-              />
-            </div>
+            {composition && (
+              <div className={clsx(styles.composition)}>
+                <Metafield data={composition} />
+              </div>
+            )}
           </div>
         </section>
         {product.metafields

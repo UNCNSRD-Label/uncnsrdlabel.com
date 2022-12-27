@@ -1,6 +1,4 @@
-#import "../../../lib/gql/fragments/ImageBasicInformation.graphql"
-#import "../../../lib/gql/fragments/ProductBasicInformation.graphql"
-query Product($slug: String!) {
+query ProductCategory($slug: String!) {
   product(handle: $slug) {
     availableForSale
     descriptionHtml
@@ -13,7 +11,10 @@ query Product($slug: String!) {
     images(first: 32) {
       nodes {
         ... on Image {
-          ... ImageBasicInformation
+          altText
+          height
+          url
+          width
         }
       }
     }
@@ -24,7 +25,10 @@ query Product($slug: String!) {
           mediaContentType
           previewImage {
             ... on Image {
-              ... ImageBasicInformation
+              altText
+              height
+              url
+              width
             }
           }
           sources {
@@ -64,10 +68,6 @@ query Product($slug: String!) {
       nodes {
         availableForSale
         barcode
-        compareAtPrice {
-          amount
-          currencyCode
-        }
         currentlyNotInStock
         id
         metafields(
@@ -76,53 +76,23 @@ query Product($slug: String!) {
             { namespace: "custom", key: "color" }
             { namespace: "custom", key: "complementary_products" }
             { namespace: "custom", key: "composition" }
-            { namespace: "custom", key: "material_image" }
             { namespace: "custom", key: "related_products" }
           ]
         ) {
           description
           key
           namespace
-          reference {
-            ... on MetafieldReference {
-              ... on Page {
-                body
-                handle
-                onlineStoreUrl
-                title
-              }
-              ... on MediaImage {
-                mediaContentType
-                previewImage {
-                  ... on Image {
-                    ... ImageBasicInformation
-                  }
-                }
-              }
-            }
-          }
           references(first: 32) {
             nodes {
               ... on MetafieldReference {
                 ... on MediaImage {
                   mediaContentType
-                  previewImage {
+                  image {
                     ... on Image {
-                      ... ImageBasicInformation
-                    }
-                  }
-                }
-                ... on Product {
-                  ...ProductBasicInformation
-                }
-                # ... on ProductVariant {
-                #   ...ProductVariantBasicInformation
-                # }
-                ... on Collection {
-                  title
-                  products {
-                    nodes {
-                      ...ProductBasicInformation
+                      altText
+                      height
+                      url
+                      width
                     }
                   }
                 }
@@ -176,18 +146,6 @@ query Product($slug: String!) {
             handle
             onlineStoreUrl
             title
-          }
-        }
-      }
-      references(first: 32) {
-        nodes {
-          ... on MetafieldReference {
-            ... on Page {
-              body
-              handle
-              onlineStoreUrl
-              title
-            }
           }
         }
       }

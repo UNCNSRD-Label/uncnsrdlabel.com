@@ -10,8 +10,7 @@
 }
 
 .productsList {
-  @apply grid gap-1 gap-y-4 grid-cols-2 pb-8 pt-8;
-  margin-block-start: var(--viewport-margin-block-start);
+  @apply grid gap-1 gap-y-4 grid-cols-2;
   padding-inline: var(--viewport-margin-inline);
 
   @media screen and (min-width: theme(screens.md.min)) {

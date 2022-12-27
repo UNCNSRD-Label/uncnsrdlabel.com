@@ -1,18 +1,18 @@
 import type { StorefrontApiResponseOk } from "@shopify/hydrogen-react";
 import type { GetServerSideProps } from "next";
 
-import type { ProductsQuery } from "#/generated/gql/graphql";
+import type { ProductQuery } from "#/generated/gql/graphql";
 
 import { clsx } from "clsx";
 import { request } from "graphql-request";
 import Error from "next/error";
-import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import { createRef } from "react";
 
-import Breadcrumbs from "#/components/Breadcrumbs";
+import NextQueryParamsProvider from "#/lib/providers/next-query-params";
+
 import Layout from "#/components/Layout";
-import ProductCard from "#/components/ProductCard";
+import ProductDetails from "#/components/ProductDetails";
 
 import {
   getStorefrontApiUrl,
@@ -23,16 +23,33 @@ import document from "./index.graphql";
 
 import styles from "./index.module.css";
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const {
+    params,
+    // preview = false,
+  } = context;
+
+  const slug = Array.isArray(params?.slug) ? params?.slug?.[0] : params?.slug;
+
+  if (!slug) {
+    return {
+      notFound: true,
+    };
+  }
+
   try {
     const requestHeaders = getPublicTokenHeaders();
     const url = getStorefrontApiUrl();
+    const variables = {
+      slug,
+    };
 
     const data = await request({
       url,
       document,
       // requestHeaders: getPrivateTokenHeaders({buyerIp}),
       requestHeaders,
+      variables,
     });
 
     // TODO I don't love how we do this with 'errors' and 'data'
@@ -46,10 +63,12 @@ export const getServerSideProps: GetServerSideProps = async () => {
 export default function Page({
   data,
   errors,
-}: StorefrontApiResponseOk<ProductsQuery>) {
+}: StorefrontApiResponseOk<ProductQuery>) {
+  const { asPath, pathname } = useRouter();
+
   const scrollingElement = createRef<HTMLDivElement>();
 
-  if (!data) {
+  if (!data?.product) {
     console.error({ errors });
     return <Error statusCode={404} />;
   }
@@ -59,33 +78,27 @@ export default function Page({
     return <Error statusCode={500} />;
   }
 
+  const { product } = data;
+
   return (
-    <Layout
-      classNameDrawerContent={clsx(
-        styles.drawerContent,
-        "drawerContentOverflowY"
-      )}
-      classNameMain={clsx(styles.main)}
-      ref={scrollingElement}
-      showHeaderAndFooter={true}
-    >
-      <Breadcrumbs>
-        <li>
-          <Link href="/" title="Return to the home page">
-            Home
-          </Link>
-        </li>
-        <li>Products</li>
-      </Breadcrumbs>
-      <section className={clsx(styles.productsList)}>
-        {data.products.nodes.map((node, index) => (
-          <ProductCard
-            className={clsx(styles.productCard)}
-            key={index}
-            product={node}
-          />
-        ))}
-      </section>
-    </Layout>
+    <NextQueryParamsProvider>
+      <Layout
+        classNameDrawerContent={clsx(
+          styles.drawerContent,
+          "drawerContentOverflowY"
+        )}
+        ref={scrollingElement}
+        showHeaderAndFooter={true}
+      >
+        <ProductDetails
+          path={asPath}
+          product={product}
+          scrollingElement={scrollingElement}
+        />
+        <aside className={clsx(styles.aside)}>
+          <h2>Related Products</h2>
+        </aside>
+      </Layout>
+    </NextQueryParamsProvider>
   );
 }

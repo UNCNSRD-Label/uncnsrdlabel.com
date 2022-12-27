@@ -1,0 +1,15 @@
+.root {
+  
+}
+
+.link {
+
+}
+
+.figure {
+    @apply aspect-4/3 relative;
+}
+
+.image {
+    
+}

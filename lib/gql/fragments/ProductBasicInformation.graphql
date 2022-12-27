@@ -1,11 +1,9 @@
+#import "./ImageBasicInformation.graphql"
 fragment ProductBasicInformation on Product {
   availableForSale
   description
   featuredImage {
-    altText
-    height
-    url
-    width
+    ...ImageBasicInformation
   }
   handle
   id

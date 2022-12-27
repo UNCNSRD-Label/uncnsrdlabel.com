@@ -1,7 +1,7 @@
 import type { StorefrontApiResponseOk } from "@shopify/hydrogen-react";
 import type { GetServerSideProps } from "next";
 
-import type { ProductsQuery } from "#/generated/gql/graphql";
+import type { CollectionQuery } from "#/generated/gql/graphql";
 
 import { clsx } from "clsx";
 import { request } from "graphql-request";
@@ -23,16 +23,28 @@ import document from "./index.graphql";
 
 import styles from "./index.module.css";
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const {
+    params,
+    // preview = false,
+  } = context;
+
+  const slug = Array.isArray(params?.slug) ? params?.slug?.[0] : params?.slug;
+
   try {
     const requestHeaders = getPublicTokenHeaders();
     const url = getStorefrontApiUrl();
+
+    const variables = {
+      slug,
+    };
 
     const data = await request({
       url,
       document,
       // requestHeaders: getPrivateTokenHeaders({buyerIp}),
       requestHeaders,
+      variables,
     });
 
     // TODO I don't love how we do this with 'errors' and 'data'
@@ -46,17 +58,17 @@ export const getServerSideProps: GetServerSideProps = async () => {
 export default function Page({
   data,
   errors,
-}: StorefrontApiResponseOk<ProductsQuery>) {
+}: StorefrontApiResponseOk<CollectionQuery>) {
   const scrollingElement = createRef<HTMLDivElement>();
 
   if (!data) {
     console.error({ errors });
-    return <Error statusCode={404} />;
+    return <Error statusCode={404} />
   }
 
   if (errors) {
     console.error({ errors });
-    return <Error statusCode={500} />;
+    return <Error statusCode={500} />
   }
 
   return (
@@ -77,8 +89,16 @@ export default function Page({
         </li>
         <li>Products</li>
       </Breadcrumbs>
+      <header className={clsx(styles.header)}>
+        <h2
+          className={clsx(styles.title, "title")}
+        >
+          {data.collection.title}
+        </h2>
+        <div dangerouslySetInnerHTML={{ __html: data.collection.descriptionHtml }} />
+      </header>
       <section className={clsx(styles.productsList)}>
-        {data.products.nodes.map((node, index) => (
+        {data.collection.products.nodes.map((node, index) => (
           <ProductCard
             className={clsx(styles.productCard)}
             key={index}

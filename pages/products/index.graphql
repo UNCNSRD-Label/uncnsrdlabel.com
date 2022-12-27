@@ -1,4 +1,6 @@
-query Products($query: String!) {
+#import "../../lib/gql/fragments/ProductBasicInformation.graphql"
+#import "../../lib/gql/fragments/ProductVariantBasicInformation.graphql"
+query Products($query: String) {
   products(first: 64, query: $query) {
     nodes {
       ...ProductBasicInformation

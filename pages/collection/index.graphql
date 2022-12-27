@@ -1,7 +1,4 @@
-query HomeProducts {
-  shop {
-    name
-  }
+query CollectionProducts {
   products(first: 16) {
     nodes {
       availableForSale

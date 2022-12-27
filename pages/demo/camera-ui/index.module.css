@@ -1,0 +1,93 @@
+.drawerContent {
+  perspective: 10px;
+}
+
+.main {
+  transform-style: preserve-3d;
+  z-index: -1;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+  transform-style: preserve-3d;
+  z-index: -1;
+
+  .background {
+    height: 100%;
+    transform: translateZ(-10px) scale(2);
+  }
+
+  .foreground {
+    /*
+    @apply bg-primary;
+    background: linear-gradient(0deg, hsl(var(--n)) 25%, rgba(0,0,0,0) 60%);
+    height: 50%;
+    */
+
+    @apply p-20;
+    display: grid;
+    grid-template-columns: max-content auto;
+    grid-template-rows: auto max-content;
+    background-size: cover;
+    color: white;
+    height: 100%;
+    transform: translateZ(-5px) scale(1.5);
+    /* width: 400px; */
+    
+    &:before,
+    &:after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 1px solid white;
+    }
+    &:before {
+      grid-row: 1 / 2;
+      border-right: none;
+      border-bottom: none;
+    }
+    &:after {
+      grid-row: 1 / span 2;
+      border-left: none;
+    }
+    h2 {
+      margin: 1rem 1rem -0.5rem 0;
+      font-family: "Pragati Narrow", sans-serif;
+      font-size: 2rem;
+      max-width: 100%;
+    }
+  }
+
+  .background,
+  .foreground {
+    position: absolute;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+  .title {
+    @apply p-24;
+    font-size: clamp(1.5rem, 15vw, 15rem);
+    inset: 0;
+    position: absolute;
+  }
+}
+
+.productsList {
+  @apply grid gap-24 gap-y-16 grid-cols-2 items-center p-24 pt-0 relative;
+  top: -20vh;
+
+  @media screen and (min-width: theme(screens.md.min)) {
+    @apply grid-cols-4;
+  }
+
+  .productCard {
+    @apply border-8 border-primary bg-primary;
+  }
+}

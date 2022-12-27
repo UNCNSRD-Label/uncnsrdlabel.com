@@ -1,18 +1,4 @@
-.drawerContent {
-  perspective: 30vh;
-}
-
-.main {
-  @apply grid scroll-smooth snap-y;
-  transform-style: preserve-3d;
-  z-index: -1;
-
-  > * {
-    @apply snap-start;
-  }
-}
-
-.header {
+.root {
   @apply grid items-center justify-items-center py-8 gap-8;
   grid-template-rows: max(5vh, 2vw) auto max(5vh, 2vw);
   gap: 2vw;
@@ -40,72 +26,4 @@
       } */
     }
   }
-}
-
-.sectionGallery {
-  @apply grid grid-cols-3 items-center justify-between justify-items-center py-24 gap-16;
-  transform-style: preserve-3d;
-
-  .figure {
-    @apply relative w-full;
-    transform: scale(0.85);
-    transform-style: preserve-3d;
-    z-index: 100;
-
-    .image {
-      @apply object-cover;
-    }
-
-    &:nth-child(1n) {
-      z-index: 90;
-
-      .image {
-        transform: translateZ(-25px);
-      }
-    }
-
-    &:nth-child(2n) {
-      z-index: 80;
-
-      .image {
-        transform: translateZ(-50px);
-      }
-    }
-
-    &:nth-child(3n) {
-      z-index: 70;
-
-      .image {
-        transform: translateZ(-75px);
-      }
-    }
-
-    &:nth-child(4n) {
-      z-index: 60;
-
-      .image {
-        transform: translateZ(-100px);
-      }
-    }
-
-    &:nth-child(5n) {
-      z-index: 50;
-
-      .image {
-        transform: translateZ(-125px);
-      }
-    }
-
-    &:nth-child(6n) {
-      z-index: 40;
-
-      .image {
-        transform: translateZ(-150px);
-      }
-    }
-  }
-}
-
-.footer {
-  @apply grid items-center justify-items-center p-16 gap-16;
 }

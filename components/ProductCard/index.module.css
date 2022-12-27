@@ -1,5 +1,5 @@
-.root {
-  
+.article {
+    --padding-card: 0.5rem;
 }
 
 .body {
@@ -16,4 +16,18 @@
 
 .image {
     
+}
+
+.cardBody {
+    padding-inline: unset;
+
+    .header {
+        .heading {
+        @apply font-normal text-base;
+        }
+
+        .price {
+            @apply text-sm;
+        }
+    }
 }

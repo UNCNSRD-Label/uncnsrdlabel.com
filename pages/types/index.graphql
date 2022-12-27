@@ -1,0 +1,7 @@
+query Types {
+  productTypes(first: 192) {
+    edges {
+      node
+    }
+  }
+}
