@@ -46,19 +46,22 @@ export const Component: FC<Props> = ({ className, path, product }) => {
 
       if (materialImage?.url) {
         setMaterialImageUrl(materialImage?.url);
-      } else {
-        const hexCode =
-          selectedOptions?.Color &&
-          variants &&
-          getColorHexCodeByName(selectedOptions?.Color, variants);
-
-        if (hexCode) {
-          const colorDataURL = await getDataURL(500, 500, "", hexCode);
-
-          setMaterialImageUrl(colorDataURL);
-          setShowFallbackTexture(true);
-        }
       }
+      //  else {
+      //   const hexCode =
+      //     selectedOptions?.Color &&
+      //     variants &&
+      //     getColorHexCodeByName(selectedOptions?.Color, variants);
+
+      //   if (hexCode) {
+      //     // TODO: Fix dependency of placeholder-image-data-url on canvas@2.10.2 which is huge
+      //     // TODO: See https://github.com/zhongdeliu/placeholder-image/blob/master/js/main.js
+      //     const colorDataURL = await getDataURL(500, 500, "", hexCode);
+
+      //     setMaterialImageUrl(colorDataURL);
+      //     setShowFallbackTexture(true);
+      //   }
+      // }
     })();
   }, [product.metafields, selectedOptions?.Color, selectedVariant, variants]);
 
