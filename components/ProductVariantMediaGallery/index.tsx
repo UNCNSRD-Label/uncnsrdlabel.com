@@ -17,7 +17,7 @@ import { useRef } from "react";
 // import { mergeRefs } from "react-merge-refs";
 import useScrollSpy from "react-use-scrollspy";
 
-import ProductModel from "#/components/ProductModel";
+// import ProductModel from "#/components/ProductModel";
 
 import {
   IMAGE_ALT_TEXT_FALLBACK,
