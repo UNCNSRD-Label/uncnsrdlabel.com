@@ -41,7 +41,7 @@
 }
 
 .figure {
-  @apply snap-start aspect-3/4;
+  @apply aspect-3/4 snap-start;
   max-inline-size: 100%;
   position: relative;
 
