@@ -3,7 +3,7 @@
 import type { StorefrontApiResponseOk } from "@shopify/hydrogen-react";
 import type { GetServerSideProps } from "next";
 
-import type { ProductsQuery } from "#/generated/gql/graphql";
+import type { ProductsQuery } from "#/generated/graphql/graphql";
 
 import { Canvas } from "@react-three/fiber";
 // import { clsx } from "clsx";
@@ -72,12 +72,12 @@ export default function Page({
 
   if (!data) {
     console.error({ errors });
-    return <Error statusCode={404} />
+    return <Error statusCode={404} />;
   }
 
   if (errors) {
     console.error({ errors });
-    return <Error statusCode={500} />
+    return <Error statusCode={500} />;
   }
 
   return (

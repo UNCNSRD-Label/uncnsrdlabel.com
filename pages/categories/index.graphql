@@ -1,4 +1,4 @@
-#import "../../lib/gql/fragments/ImageBasicInformation.graphql"
+#import "#/lib/graphql/fragments/ImageBasicInformation.graphql"
 
 query Collections {
   collections(first: 192) {

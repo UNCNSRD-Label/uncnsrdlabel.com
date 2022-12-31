@@ -5,9 +5,13 @@ import { storefrontApiCustomScalars } from "@shopify/hydrogen-react";
 const config: CodegenConfig = {
   overwrite: true,
   schema: "node_modules/@shopify/hydrogen-react/storefront.schema.json",
-  documents: ["app/**/*.{graphql,tsx}", "pages/**/*.{graphql,tsx}"],
+  documents: [
+    "app/**/*.{graphql,tsx}",
+    "lib/graphql/**/*.{graphql,tsx}",
+    "pages/**/*.{graphql,tsx}",
+  ],
   generates: {
-    "./generated/gql/": {
+    "generated/graphql/": {
       preset: "client",
       plugins: [],
       config: {

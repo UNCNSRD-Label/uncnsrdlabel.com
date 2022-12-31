@@ -1,7 +1,7 @@
 import type { StorefrontApiResponseOk } from "@shopify/hydrogen-react";
 import type { GetServerSideProps } from "next";
 
-import type { ProductQuery } from "#/generated/gql/graphql";
+import type { ProductQuery } from "#/generated/graphql/graphql";
 
 import { clsx } from "clsx";
 import { request } from "graphql-request";
@@ -70,12 +70,12 @@ export default function Page({
 
   if (!data?.product) {
     console.error({ errors });
-    return <Error statusCode={404} />
+    return <Error statusCode={404} />;
   }
 
   if (errors) {
     console.error({ errors });
-    return <Error statusCode={500} />
+    return <Error statusCode={500} />;
   }
 
   const { product } = data;
