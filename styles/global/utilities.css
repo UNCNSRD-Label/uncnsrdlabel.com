@@ -128,7 +128,6 @@
 .logotype {
   font-family: "Bomber Escort Outline", cursive;
   font-style: italic;
-  padding-inline-end: 2rem;
 }
 
 .dark:invert {
