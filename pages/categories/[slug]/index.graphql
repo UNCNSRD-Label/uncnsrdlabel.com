@@ -1,6 +1,6 @@
-#import "../../../lib/gql/fragments/ImageBasicInformation.graphql"
-#import "../../../lib/gql/fragments/ProductBasicInformation.graphql"
-#import "../../../lib/gql/fragments/ProductVariantBasicInformation.graphql"
+#import "#/lib/graphql/fragments/ImageBasicInformation.graphql"
+#import "#/lib/graphql/fragments/ProductBasicInformation.graphql"
+#import "#/lib/graphql/fragments/ProductVariantBasicInformation.graphql"
 query Collection($slug: String!) {
   collection(handle: $slug) {
     descriptionHtml

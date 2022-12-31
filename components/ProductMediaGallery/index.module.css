@@ -1,5 +1,5 @@
 .root {
-  @apply col-span-full grid gap-1 mt-1 relative;
+  @apply col-span-full grid gap-1 justify-items-stretch mt-1 relative;
 
   @media screen and (min-width: theme(screens.md.min)) {
     @apply grid-cols-2;
@@ -17,6 +17,18 @@
       @supports not (inline-size: 100dvw) {
         inline-size: calc(
           100vw - (env(safe-area-inset-left) + env(safe-area-inset-right))
+        );
+      }
+    }
+
+    @media screen and (min-width: theme(screens.md.min)) {
+      @supports (max-block-size: 100dvh) {
+        max-block-size: max(100dvh, 75dvw);
+      }
+  
+      @supports not (max-block-size: 100dvh) {
+        max-block-size: calc(
+          max(100vh, 75vw); - (env(safe-area-inset-top) + env(safe-area-inset-bottom))
         );
       }
     }

@@ -16,10 +16,10 @@ export default function Page() {
         "drawerContentOverflowY"
       )}
       classNameMain={clsx(styles.main)}
-      showHeaderAndFooter={false}
+      showHeaderAndFooter={true}
     >
       <div className={clsx(styles.root, "fitViewport")}>
-        <Link
+        {/* <Link
           href="/"
           className={clsx(styles.logotypeLink)}
           title="uncnsrdlabel.com"
@@ -31,13 +31,9 @@ export default function Page() {
             priority
             src="/images/logos/logotype.svg"
           />
-        </Link>
+        </Link> */}
         <figure className={clsx(styles.figure)}>
-          <Link
-            href="/collection"
-            className={clsx(styles.link)}
-            title="Shop now"
-          >
+          <Link href="/campaign" className={clsx(styles.link)} title="Shop now">
             <Image
               alt="Sexy young woman posing in bikini on hotel bathroom counter"
               className={clsx(
@@ -46,6 +42,7 @@ export default function Page() {
                 "tablet:hidden"
               )}
               fill
+              onLoadingComplete={onLoadingComplete}
               priority
               src="/images/art/lp1.jpg"
             />
@@ -65,11 +62,11 @@ export default function Page() {
           </Link>
         </figure>
         <Link
-          href="/collection"
-          className={clsx(styles.cta, "cta")}
-          title="View the collection"
+          href="/campaign"
+          className={clsx(styles.cta, "cta", "text-sm")}
+          title="View the campaign"
         >
-          View the collection
+          View the campaign
         </Link>
       </div>
     </Layout>

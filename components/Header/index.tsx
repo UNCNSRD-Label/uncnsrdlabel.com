@@ -48,8 +48,8 @@ export const Component: FC<Props> = ({ className, position = "fixed" }) => {
         <Link className={styles.link} href="/products">
           Shop
         </Link>
-        <Link className={styles.link} href="/collection">
-          Collection
+        <Link className={styles.link} href="/campaign">
+          Campaign
         </Link>
         <Link className={styles.link} href="/about">
           About

@@ -1,12 +1,11 @@
 import type { StorefrontApiResponseOk } from "@shopify/hydrogen-react";
 import type { GetServerSideProps } from "next";
 
-import type { CollectionQuery } from "#/generated/gql/graphql";
+import type { CollectionQuery } from "#/generated/graphql/graphql";
 
 import { clsx } from "clsx";
 import { request } from "graphql-request";
 import Error from "next/error";
-import Image from "next/image";
 import Link from "next/link";
 import { createRef } from "react";
 
@@ -63,12 +62,12 @@ export default function Page({
 
   if (!data) {
     console.error({ errors });
-    return <Error statusCode={404} />
+    return <Error statusCode={404} />;
   }
 
   if (errors) {
     console.error({ errors });
-    return <Error statusCode={500} />
+    return <Error statusCode={500} />;
   }
 
   return (
@@ -90,15 +89,21 @@ export default function Page({
         <li>Products</li>
       </Breadcrumbs>
       <header className={clsx(styles.header)}>
-        <h2
-          className={clsx(styles.title, "title")}
-        >
-          {data.collection.title}
-        </h2>
-        <div dangerouslySetInnerHTML={{ __html: data.collection.descriptionHtml }} />
+        {data.collection?.title && (
+          <h2 className={clsx(styles.title, "title")}>
+            {data.collection.title}
+          </h2>
+        )}
+        {data.collection?.descriptionHtml && (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: data.collection.descriptionHtml,
+            }}
+          />
+        )}
       </header>
       <section className={clsx(styles.productsList)}>
-        {data.collection.products.nodes.map((node, index) => (
+        {data.collection?.products.nodes.map((node, index) => (
           <ProductCard
             className={clsx(styles.productCard)}
             key={index}

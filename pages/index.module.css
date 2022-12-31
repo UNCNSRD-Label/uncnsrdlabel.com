@@ -1,29 +1,28 @@
 .root {
-  @apply grid items-center justify-items-center py-8 gap-8;
-  grid-template-rows: max(5vh, 2vw) auto max(5vh, 2vw);
+  @apply grid items-center justify-items-center gap-8;
+  grid-template-areas: "logotypeLink" "figure" "cta";
+  grid-template-rows: var(--viewport-margin-block-start) auto var(--viewport-margin-block-start);
   gap: 2vw;
-  padding-block: 2vw;
 
   .logotypeLink {
-    @apply relative h-full w-full max-w-[50%];
+    @apply relative h-full w-full max-w-[40vw];
+    grid-area: logotypeLink;
   }
 
   .figure {
-    @apply aspect-2/1 relative h-full overflow-hidden;
-    min-width: 60vw;
+    @apply aspect-2/1 relative h-full sm:min-w-[80vw] max-w-full overflow-hidden;
+    grid-area: figure;
 
     .link {
       @apply block relative h-full w-full;
 
       .image {
-        @apply object-contain;
+        @apply object-cover sm:object-contain object-top;
       }
-
-      /* .figcaption {
-        @apply absolute bg-contain p-24;
-        font-size: clamp(1.5rem, 20vh, 15rem);
-        inset: 0;
-      } */
     }
+  }
+
+  .cta {
+    grid-area: cta;
   }
 }

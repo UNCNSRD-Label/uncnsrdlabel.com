@@ -1,7 +1,7 @@
 import type { StorefrontApiResponseOk } from "@shopify/hydrogen-react";
 import type { GetServerSideProps } from "next";
 
-import type { HomeProductsQuery } from "#/generated/gql/graphql";
+import type { CampaignProductsQuery } from "#/generated/graphql/graphql";
 
 import { clsx } from "clsx";
 import { request } from "graphql-request";
@@ -46,7 +46,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 export default function Page({
   data,
   errors,
-}: StorefrontApiResponseOk<HomeProductsQuery>) {
+}: StorefrontApiResponseOk<CampaignProductsQuery>) {
   const scrollingElement = createRef<HTMLDivElement>();
 
   if (!data) {
@@ -69,7 +69,7 @@ export default function Page({
       ref={scrollingElement}
       showHeaderAndFooter={true}
     >
-      <section className={clsx(styles.sectionGallery)}>
+      <section className={clsx(styles.sectionGallery, styles.wall)}>
         <figure className={clsx(styles.figure, "aspect-3/2", "object-bottom")}>
           <Link href="/products" className={clsx(styles.link)} title="Shop now">
             <Image

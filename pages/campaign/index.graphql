@@ -1,4 +1,4 @@
-query CollectionProducts {
+query CampaignProducts {
   products(first: 16) {
     nodes {
       availableForSale
