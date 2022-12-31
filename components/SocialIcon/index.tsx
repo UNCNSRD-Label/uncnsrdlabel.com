@@ -22,6 +22,7 @@ export const Component: FC<Props> = ({
       bgColor={bgColor}
       fgColor={fgColor}
       style={{ blockSize: size, inlineSize: size }}
+      target="_blank"
       url={url}
     />
   );
