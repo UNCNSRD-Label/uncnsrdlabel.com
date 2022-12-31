@@ -33,7 +33,6 @@ module.exports = {
   future: {
     hoverOnlyWhenSupported: true,
   },
-  mode: "jit",
   plugins: [
     require("@tailwindcss/forms"),
     require("@tailwindcss/typography"),
