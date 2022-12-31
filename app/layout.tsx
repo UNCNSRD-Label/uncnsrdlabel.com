@@ -21,33 +21,38 @@ const montserrat = Montserrat({
 
 type Props = {
   children: ReactNode;
+  className?: string;
   showHeaderAndFooter?: boolean;
 } & HTMLAttributes<HTMLElement>;
 
 export default function RootLayout({
-  className,
+  // className,
   children,
-  showHeaderAndFooter = false,
-}: Props) {
+}: // showHeaderAndFooter = false,
+Props) {
   const locale = "en-GB";
 
   return (
     <html
       lang={locale}
-      className={clsx(montserrat.variable, className, "fitViewport")}
+      className={clsx(
+        montserrat.variable,
+        // className,
+        "fitViewport"
+      )}
     >
       <head />
       <body
         className={clsx(
           styles.container,
-          showHeaderAndFooter && styles.showHeaderAndFooter,
+          // showHeaderAndFooter && styles.showHeaderAndFooter,
           "fitViewport"
         )}
       >
         <Providers locale={locale}>
-          {showHeaderAndFooter && <Header />}
+          {/* {showHeaderAndFooter && <Header />} */}
           <main className={clsx(styles.main)}>{children}</main>
-          {showHeaderAndFooter && <Footer />}
+          {/* {showHeaderAndFooter && <Footer />} */}
         </Providers>
       </body>
     </html>
