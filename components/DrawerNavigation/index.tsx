@@ -31,7 +31,7 @@ export const Component: FC<Props> = ({ className }) => {
             <input
               type="text"
               placeholder="Search…"
-              className="input input-bordered"
+              className="input input-bordered flex-auto"
             />
             <button className="btn btn-square">
               <SlMagnifier
