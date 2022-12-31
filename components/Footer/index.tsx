@@ -18,31 +18,29 @@ export const Component: FC<Props> = ({ children, className }) => {
     <footer className={clsx(styles.footer, className, "footer")}>
       <nav className={clsx(styles.nav, styles.legal)}>
         <h2 className={styles.title}>Legal</h2>
-        <Link href="/terms-of-service">Terms of Service</Link>
-        <Link href="/privacy-policy">Privacy Policy</Link>
-        <Link href="/cookie-policy">Cookie Policy</Link>
-        <Link href="/disclaimer">Disclaimer</Link>
-        <Link href="/warranty-and-returns-agreement">
-          Warranty and Returns Agreement
-        </Link>
+        <Link href="/policies/privacy">Privacy Policy</Link>
+        <Link href="/policies/refund">Refund Policy</Link>
+        <Link href="/policies/shipping">Shipping Policy</Link>
+        <Link href="/policies/terms-of-service">Terms of Service</Link>
+        <Link href="/pages/cookie-policy">Cookie Policy</Link>
       </nav>
       <nav className={clsx(styles.nav, styles.clientService)}>
         <h2 className={styles.title}>Client Service</h2>
-        <a href="/faq" title="Go to FAQs">
+        <Link href="/pages/faq" title="Go to FAQs">
           FAQs
-        </a>
-        <a href="/orders/track" title="Go to Track your Order">
+        </Link>
+        <Link href="/orders/track" title="Go to Order Tracking">
           Track your order
-        </a>
-        <a href="/orders/shipping" title="Go to Shipping">
+        </Link>
+        <Link href="/orders/shipping" title="Go to Shipping">
           Track your order
-        </a>
-        <a href="/orders/returns" title="Go to Returns">
+        </Link>
+        <Link href="/orders/returns" title="Go to Returns">
           Returns
-        </a>
-        <a href="/orders/payment" title="Go to Payment">
+        </Link>
+        <Link href="/orders/payment" title="Go to Payment">
           Payment
-        </a>
+        </Link>
       </nav>
       <SignupForm className={clsx(styles.signupForm)} />
       <menu className={styles.social}>

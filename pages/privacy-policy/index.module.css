@@ -1,4 +1,0 @@
-.article {
-  @apply mb-8 mx-auto prose pt-12;
-  margin-block-start: var(--viewport-margin-block-start);
-}

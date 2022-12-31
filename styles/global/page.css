@@ -1,0 +1,19 @@
+.page {
+  padding-inline: var(--viewport-margin-inline);
+
+  article {
+    @apply prose;
+    margin-block-start: var(--viewport-margin-block-start);
+    padding-block: var(--viewport-margin-block-start);
+    margin-inline: auto;
+
+    dl {
+      dt {
+      }
+
+      dd {
+        margin-inline-start: 2ch;
+      }
+    }
+  }
+}

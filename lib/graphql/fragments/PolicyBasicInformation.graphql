@@ -1,0 +1,6 @@
+fragment PolicyBasicInformation on ShopPolicy {
+  body
+  id
+  title
+  url
+}

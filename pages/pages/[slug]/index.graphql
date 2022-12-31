@@ -1,0 +1,14 @@
+query Page($slug: String!) {
+  page(handle: $slug) {
+    body
+    bodySummary
+    handle
+    id
+    seo {
+      description
+      title
+    }
+    title
+    updatedAt
+  }
+}

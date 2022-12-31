@@ -1,0 +1,17 @@
+#import "#/lib/graphql/fragments/PolicyBasicInformation.graphql"
+query PrivacyPolicy {
+  shop {
+    privacyPolicy {
+      ...PolicyBasicInformation
+    }
+    refundPolicy {
+      ...PolicyBasicInformation
+    }
+    shippingPolicy {
+      ...PolicyBasicInformation
+    }
+    termsOfService {
+      ...PolicyBasicInformation
+    }
+  }
+}
