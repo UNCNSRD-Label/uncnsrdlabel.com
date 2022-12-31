@@ -17,7 +17,7 @@
 .logoContainer {
   aspect-ratio: 5/1;
   block-size: 100%;
-  max-inline-size: 50vw;
+  max-inline-size: 40vw;
   place-self: center;
   position: relative;
 }
