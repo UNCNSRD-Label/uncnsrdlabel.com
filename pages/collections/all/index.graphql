@@ -1,15 +1,21 @@
 #import "#/lib/graphql/fragments/ImageBasicInformation.graphql"
-#import "#/lib/graphql/fragments/Global.graphql"
+#import "#/lib/graphql/fragments/QueryRootInformation.graphql"
 
 query Collections {
-  ...Global
+  ...QueryRootInformation
   collections(first: 192) {
     nodes {
       description
       handle
       id
       image {
-        ...ImageBasicInformation
+        ... on Image {
+          altText
+          height
+          url
+          width
+          # ...ImageBasicInformation
+        }
       }
       title
       updatedAt

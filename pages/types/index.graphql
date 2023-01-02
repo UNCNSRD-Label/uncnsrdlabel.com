@@ -1,6 +1,6 @@
-#import "#/lib/graphql/fragments/Global.graphql"
+#import "#/lib/graphql/fragments/QueryRootInformation.graphql"
 query Types {
-  ...Global
+  ...QueryRootInformation
   productTypes(first: 192) {
     edges {
       node

@@ -1,5 +1,5 @@
 #import "#/lib/graphql/fragments/MenuInformation.graphql"
-fragment Menus on QueryRoot {
+fragment MenusInformation on QueryRoot {
   clientServiceMenu: menu(handle: "client-service") {
     ...MenuInformation
   }

@@ -1,4 +1,4 @@
-#import "#/lib/graphql/fragments/Global.graphql"
+#import "#/lib/graphql/fragments/QueryRootInformation.graphql"
 query Home {
-  ...Global
+  ...QueryRootInformation
 }

@@ -1,19 +1,19 @@
-#import "#/lib/graphql/fragments/Global.graphql"
-#import "#/lib/graphql/fragments/PolicyBasicInformation.graphql"
+#import "#/lib/graphql/fragments/QueryRootInformation.graphql"
+#import "#/lib/graphql/fragments/ShopPolicyInformation.graphql"
 query PrivacyPolicy {
-  ...Global
+  ...QueryRootInformation
   shop {
     privacyPolicy {
-      ...PolicyBasicInformation
+      ...ShopPolicyInformation
     }
     refundPolicy {
-      ...PolicyBasicInformation
+      ...ShopPolicyInformation
     }
     shippingPolicy {
-      ...PolicyBasicInformation
+      ...ShopPolicyInformation
     }
     termsOfService {
-      ...PolicyBasicInformation
+      ...ShopPolicyInformation
     }
   }
 }

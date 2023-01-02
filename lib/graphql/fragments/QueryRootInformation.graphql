@@ -1,6 +1,6 @@
-#import "#/lib/graphql/fragments/Menus.graphql"
-fragment Global on QueryRoot {
-  ...Menus
+#import "#/lib/graphql/fragments/MenusInformation.graphql"
+fragment QueryRootInformation on QueryRoot {
+  ...MenusInformation
   shop {
     name
     paymentSettings {

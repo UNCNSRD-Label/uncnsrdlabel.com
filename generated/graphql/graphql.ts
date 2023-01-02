@@ -6764,24 +6764,6 @@ export enum WeightUnit {
   Pounds = "POUNDS",
 }
 
-export type GlobalFragment = ({
-  __typename?: "QueryRoot";
-  shop: {
-    __typename?: "Shop";
-    name: string;
-    shipsToCountries: Array<CountryCode>;
-    paymentSettings: {
-      __typename?: "PaymentSettings";
-      acceptedCardBrands: Array<CardBrand>;
-      countryCode: CountryCode;
-      currencyCode: CurrencyCode;
-      enabledPresentmentCurrencies: Array<CurrencyCode>;
-    };
-  };
-} & { " $fragmentRefs"?: { MenusFragment: MenusFragment } }) & {
-  " $fragmentName"?: "GlobalFragment";
-};
-
 export type ImageBasicInformationFragment = {
   __typename?: "Image";
   altText?: string | null;
@@ -6833,7 +6815,7 @@ export type MenuItemInformationFragment = {
   }>;
 } & { " $fragmentName"?: "MenuItemInformationFragment" };
 
-export type MenusFragment = {
+export type MenusInformationFragment = {
   __typename?: "QueryRoot";
   clientServiceMenu?:
     | ({ __typename?: "Menu" } & {
@@ -6850,15 +6832,7 @@ export type MenusFragment = {
         " $fragmentRefs"?: { MenuInformationFragment: MenuInformationFragment };
       })
     | null;
-} & { " $fragmentName"?: "MenusFragment" };
-
-export type PolicyBasicInformationFragment = {
-  __typename?: "ShopPolicy";
-  body: string;
-  id: string;
-  title: string;
-  url: string;
-} & { " $fragmentName"?: "PolicyBasicInformationFragment" };
+} & { " $fragmentName"?: "MenusInformationFragment" };
 
 export type ProductBasicInformationFragment = {
   __typename?: "Product";
@@ -6916,6 +6890,33 @@ export type ProductVariantBasicInformationFragment = {
   }>;
 } & { " $fragmentName"?: "ProductVariantBasicInformationFragment" };
 
+export type QueryRootInformationFragment = ({
+  __typename?: "QueryRoot";
+  shop: {
+    __typename?: "Shop";
+    name: string;
+    shipsToCountries: Array<CountryCode>;
+    paymentSettings: {
+      __typename?: "PaymentSettings";
+      acceptedCardBrands: Array<CardBrand>;
+      countryCode: CountryCode;
+      currencyCode: CurrencyCode;
+      enabledPresentmentCurrencies: Array<CurrencyCode>;
+    };
+  };
+} & {
+  " $fragmentRefs"?: { MenusInformationFragment: MenusInformationFragment };
+}) & { " $fragmentName"?: "QueryRootInformationFragment" };
+
+export type ShopPolicyInformationFragment = {
+  __typename?: "ShopPolicy";
+  body: string;
+  handle: string;
+  id: string;
+  title: string;
+  url: string;
+} & { " $fragmentName"?: "ShopPolicyInformationFragment" };
+
 export type ShopQueryVariables = Exact<{ [key: string]: never }>;
 
 export type ShopQuery = {
@@ -6932,7 +6933,7 @@ export type ShopQuery = {
       enabledPresentmentCurrencies: Array<CurrencyCode>;
     };
   };
-} & { " $fragmentRefs"?: { GlobalFragment: GlobalFragment } };
+};
 
 export type CampaignProductsQueryVariables = Exact<{ [key: string]: never }>;
 
@@ -6972,7 +6973,11 @@ export type CampaignProductsQuery = {
       };
     }>;
   };
-} & { " $fragmentRefs"?: { GlobalFragment: GlobalFragment } };
+} & {
+  " $fragmentRefs"?: {
+    QueryRootInformationFragment: QueryRootInformationFragment;
+  };
+};
 
 export type CollectionQueryVariables = Exact<{
   slug: Scalars["String"];
@@ -7026,7 +7031,11 @@ export type CollectionQuery = {
       title?: string | null;
     };
   } | null;
-} & { " $fragmentRefs"?: { GlobalFragment: GlobalFragment } };
+} & {
+  " $fragmentRefs"?: {
+    QueryRootInformationFragment: QueryRootInformationFragment;
+  };
+};
 
 export type CollectionsQueryVariables = Exact<{ [key: string]: never }>;
 
@@ -7041,21 +7050,27 @@ export type CollectionsQuery = {
       id: string;
       title: string;
       updatedAt: string;
-      image?:
-        | ({ __typename?: "Image" } & {
-            " $fragmentRefs"?: {
-              ImageBasicInformationFragment: ImageBasicInformationFragment;
-            };
-          })
-        | null;
+      image?: {
+        __typename?: "Image";
+        altText?: string | null;
+        height?: number | null;
+        url: string;
+        width?: number | null;
+      } | null;
     }>;
   };
-} & { " $fragmentRefs"?: { GlobalFragment: GlobalFragment } };
+} & {
+  " $fragmentRefs"?: {
+    QueryRootInformationFragment: QueryRootInformationFragment;
+  };
+};
 
 export type HomeQueryVariables = Exact<{ [key: string]: never }>;
 
 export type HomeQuery = { __typename?: "QueryRoot" } & {
-  " $fragmentRefs"?: { GlobalFragment: GlobalFragment };
+  " $fragmentRefs"?: {
+    QueryRootInformationFragment: QueryRootInformationFragment;
+  };
 };
 
 export type PageQueryVariables = Exact<{
@@ -7098,7 +7113,11 @@ export type PageQuery = {
       title?: string | null;
     } | null;
   } | null;
-} & { " $fragmentRefs"?: { GlobalFragment: GlobalFragment } };
+} & {
+  " $fragmentRefs"?: {
+    QueryRootInformationFragment: QueryRootInformationFragment;
+  };
+};
 
 export type PrivacyPolicyQueryVariables = Exact<{ [key: string]: never }>;
 
@@ -7109,33 +7128,37 @@ export type PrivacyPolicyQuery = {
     privacyPolicy?:
       | ({ __typename?: "ShopPolicy" } & {
           " $fragmentRefs"?: {
-            PolicyBasicInformationFragment: PolicyBasicInformationFragment;
+            ShopPolicyInformationFragment: ShopPolicyInformationFragment;
           };
         })
       | null;
     refundPolicy?:
       | ({ __typename?: "ShopPolicy" } & {
           " $fragmentRefs"?: {
-            PolicyBasicInformationFragment: PolicyBasicInformationFragment;
+            ShopPolicyInformationFragment: ShopPolicyInformationFragment;
           };
         })
       | null;
     shippingPolicy?:
       | ({ __typename?: "ShopPolicy" } & {
           " $fragmentRefs"?: {
-            PolicyBasicInformationFragment: PolicyBasicInformationFragment;
+            ShopPolicyInformationFragment: ShopPolicyInformationFragment;
           };
         })
       | null;
     termsOfService?:
       | ({ __typename?: "ShopPolicy" } & {
           " $fragmentRefs"?: {
-            PolicyBasicInformationFragment: PolicyBasicInformationFragment;
+            ShopPolicyInformationFragment: ShopPolicyInformationFragment;
           };
         })
       | null;
   };
-} & { " $fragmentRefs"?: { GlobalFragment: GlobalFragment } };
+} & {
+  " $fragmentRefs"?: {
+    QueryRootInformationFragment: QueryRootInformationFragment;
+  };
+};
 
 export type ProductQueryVariables = Exact<{
   slug: Scalars["String"];
@@ -7308,7 +7331,11 @@ export type ProductQuery = {
       } | null;
     } | null>;
   } | null;
-} & { " $fragmentRefs"?: { GlobalFragment: GlobalFragment } };
+} & {
+  " $fragmentRefs"?: {
+    QueryRootInformationFragment: QueryRootInformationFragment;
+  };
+};
 
 export type ProductsQueryVariables = Exact<{
   query?: InputMaybe<Scalars["String"]>;
@@ -7343,7 +7370,11 @@ export type ProductsQuery = {
       }
     >;
   };
-} & { " $fragmentRefs"?: { GlobalFragment: GlobalFragment } };
+} & {
+  " $fragmentRefs"?: {
+    QueryRootInformationFragment: QueryRootInformationFragment;
+  };
+};
 
 export type TypesQueryVariables = Exact<{ [key: string]: never }>;
 
@@ -7353,275 +7384,12 @@ export type TypesQuery = {
     __typename?: "StringConnection";
     edges: Array<{ __typename?: "StringEdge"; node: string }>;
   };
-} & { " $fragmentRefs"?: { GlobalFragment: GlobalFragment } };
+} & {
+  " $fragmentRefs"?: {
+    QueryRootInformationFragment: QueryRootInformationFragment;
+  };
+};
 
-export const MenuItemInformationFragmentDoc = {
-  kind: "Document",
-  definitions: [
-    {
-      kind: "FragmentDefinition",
-      name: { kind: "Name", value: "MenuItemInformation" },
-      typeCondition: {
-        kind: "NamedType",
-        name: { kind: "Name", value: "MenuItem" },
-      },
-      selectionSet: {
-        kind: "SelectionSet",
-        selections: [
-          { kind: "Field", name: { kind: "Name", value: "id" } },
-          {
-            kind: "Field",
-            name: { kind: "Name", value: "items" },
-            selectionSet: {
-              kind: "SelectionSet",
-              selections: [
-                { kind: "Field", name: { kind: "Name", value: "id" } },
-                {
-                  kind: "Field",
-                  name: { kind: "Name", value: "items" },
-                  selectionSet: {
-                    kind: "SelectionSet",
-                    selections: [
-                      { kind: "Field", name: { kind: "Name", value: "id" } },
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "resourceId" },
-                      },
-                      { kind: "Field", name: { kind: "Name", value: "tags" } },
-                      { kind: "Field", name: { kind: "Name", value: "title" } },
-                      { kind: "Field", name: { kind: "Name", value: "type" } },
-                      { kind: "Field", name: { kind: "Name", value: "url" } },
-                    ],
-                  },
-                },
-                { kind: "Field", name: { kind: "Name", value: "resourceId" } },
-                { kind: "Field", name: { kind: "Name", value: "tags" } },
-                { kind: "Field", name: { kind: "Name", value: "title" } },
-                { kind: "Field", name: { kind: "Name", value: "type" } },
-                { kind: "Field", name: { kind: "Name", value: "url" } },
-              ],
-            },
-          },
-          { kind: "Field", name: { kind: "Name", value: "resourceId" } },
-          { kind: "Field", name: { kind: "Name", value: "tags" } },
-          { kind: "Field", name: { kind: "Name", value: "title" } },
-          { kind: "Field", name: { kind: "Name", value: "type" } },
-          { kind: "Field", name: { kind: "Name", value: "url" } },
-        ],
-      },
-    },
-  ],
-} as unknown as DocumentNode<MenuItemInformationFragment, unknown>;
-export const MenuInformationFragmentDoc = {
-  kind: "Document",
-  definitions: [
-    {
-      kind: "FragmentDefinition",
-      name: { kind: "Name", value: "MenuInformation" },
-      typeCondition: {
-        kind: "NamedType",
-        name: { kind: "Name", value: "Menu" },
-      },
-      selectionSet: {
-        kind: "SelectionSet",
-        selections: [
-          { kind: "Field", name: { kind: "Name", value: "handle" } },
-          { kind: "Field", name: { kind: "Name", value: "id" } },
-          {
-            kind: "Field",
-            name: { kind: "Name", value: "items" },
-            selectionSet: {
-              kind: "SelectionSet",
-              selections: [
-                {
-                  kind: "FragmentSpread",
-                  name: { kind: "Name", value: "MenuItemInformation" },
-                },
-              ],
-            },
-          },
-          { kind: "Field", name: { kind: "Name", value: "itemsCount" } },
-          { kind: "Field", name: { kind: "Name", value: "title" } },
-        ],
-      },
-    },
-    ...MenuItemInformationFragmentDoc.definitions,
-  ],
-} as unknown as DocumentNode<MenuInformationFragment, unknown>;
-export const MenusFragmentDoc = {
-  kind: "Document",
-  definitions: [
-    {
-      kind: "FragmentDefinition",
-      name: { kind: "Name", value: "Menus" },
-      typeCondition: {
-        kind: "NamedType",
-        name: { kind: "Name", value: "QueryRoot" },
-      },
-      selectionSet: {
-        kind: "SelectionSet",
-        selections: [
-          {
-            kind: "Field",
-            alias: { kind: "Name", value: "clientServiceMenu" },
-            name: { kind: "Name", value: "menu" },
-            arguments: [
-              {
-                kind: "Argument",
-                name: { kind: "Name", value: "handle" },
-                value: {
-                  kind: "StringValue",
-                  value: "client-service",
-                  block: false,
-                },
-              },
-            ],
-            selectionSet: {
-              kind: "SelectionSet",
-              selections: [
-                {
-                  kind: "FragmentSpread",
-                  name: { kind: "Name", value: "MenuInformation" },
-                },
-              ],
-            },
-          },
-          {
-            kind: "Field",
-            alias: { kind: "Name", value: "legalMenu" },
-            name: { kind: "Name", value: "menu" },
-            arguments: [
-              {
-                kind: "Argument",
-                name: { kind: "Name", value: "handle" },
-                value: { kind: "StringValue", value: "legal", block: false },
-              },
-            ],
-            selectionSet: {
-              kind: "SelectionSet",
-              selections: [
-                {
-                  kind: "FragmentSpread",
-                  name: { kind: "Name", value: "MenuInformation" },
-                },
-              ],
-            },
-          },
-          {
-            kind: "Field",
-            alias: { kind: "Name", value: "mainMenu" },
-            name: { kind: "Name", value: "menu" },
-            arguments: [
-              {
-                kind: "Argument",
-                name: { kind: "Name", value: "handle" },
-                value: {
-                  kind: "StringValue",
-                  value: "main-menu",
-                  block: false,
-                },
-              },
-            ],
-            selectionSet: {
-              kind: "SelectionSet",
-              selections: [
-                {
-                  kind: "FragmentSpread",
-                  name: { kind: "Name", value: "MenuInformation" },
-                },
-              ],
-            },
-          },
-        ],
-      },
-    },
-    ...MenuInformationFragmentDoc.definitions,
-  ],
-} as unknown as DocumentNode<MenusFragment, unknown>;
-export const GlobalFragmentDoc = {
-  kind: "Document",
-  definitions: [
-    {
-      kind: "FragmentDefinition",
-      name: { kind: "Name", value: "Global" },
-      typeCondition: {
-        kind: "NamedType",
-        name: { kind: "Name", value: "QueryRoot" },
-      },
-      selectionSet: {
-        kind: "SelectionSet",
-        selections: [
-          { kind: "FragmentSpread", name: { kind: "Name", value: "Menus" } },
-          {
-            kind: "Field",
-            name: { kind: "Name", value: "shop" },
-            selectionSet: {
-              kind: "SelectionSet",
-              selections: [
-                { kind: "Field", name: { kind: "Name", value: "name" } },
-                {
-                  kind: "Field",
-                  name: { kind: "Name", value: "paymentSettings" },
-                  selectionSet: {
-                    kind: "SelectionSet",
-                    selections: [
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "acceptedCardBrands" },
-                      },
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "countryCode" },
-                      },
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "currencyCode" },
-                      },
-                      {
-                        kind: "Field",
-                        name: {
-                          kind: "Name",
-                          value: "enabledPresentmentCurrencies",
-                        },
-                      },
-                    ],
-                  },
-                },
-                {
-                  kind: "Field",
-                  name: { kind: "Name", value: "shipsToCountries" },
-                },
-              ],
-            },
-          },
-        ],
-      },
-    },
-    ...MenusFragmentDoc.definitions,
-  ],
-} as unknown as DocumentNode<GlobalFragment, unknown>;
-export const PolicyBasicInformationFragmentDoc = {
-  kind: "Document",
-  definitions: [
-    {
-      kind: "FragmentDefinition",
-      name: { kind: "Name", value: "PolicyBasicInformation" },
-      typeCondition: {
-        kind: "NamedType",
-        name: { kind: "Name", value: "ShopPolicy" },
-      },
-      selectionSet: {
-        kind: "SelectionSet",
-        selections: [
-          { kind: "Field", name: { kind: "Name", value: "body" } },
-          { kind: "Field", name: { kind: "Name", value: "id" } },
-          { kind: "Field", name: { kind: "Name", value: "title" } },
-          { kind: "Field", name: { kind: "Name", value: "url" } },
-        ],
-      },
-    },
-  ],
-} as unknown as DocumentNode<PolicyBasicInformationFragment, unknown>;
 export const ImageBasicInformationFragmentDoc = {
   kind: "Document",
   definitions: [
@@ -7896,17 +7664,206 @@ export const ProductVariantBasicInformationFragmentDoc = {
     },
   ],
 } as unknown as DocumentNode<ProductVariantBasicInformationFragment, unknown>;
-export const ShopDocument = {
+export const MenuItemInformationFragmentDoc = {
   kind: "Document",
   definitions: [
     {
-      kind: "OperationDefinition",
-      operation: "query",
-      name: { kind: "Name", value: "Shop" },
+      kind: "FragmentDefinition",
+      name: { kind: "Name", value: "MenuItemInformation" },
+      typeCondition: {
+        kind: "NamedType",
+        name: { kind: "Name", value: "MenuItem" },
+      },
       selectionSet: {
         kind: "SelectionSet",
         selections: [
-          { kind: "FragmentSpread", name: { kind: "Name", value: "Global" } },
+          { kind: "Field", name: { kind: "Name", value: "id" } },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "items" },
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "id" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "items" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      { kind: "Field", name: { kind: "Name", value: "id" } },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "resourceId" },
+                      },
+                      { kind: "Field", name: { kind: "Name", value: "tags" } },
+                      { kind: "Field", name: { kind: "Name", value: "title" } },
+                      { kind: "Field", name: { kind: "Name", value: "type" } },
+                      { kind: "Field", name: { kind: "Name", value: "url" } },
+                    ],
+                  },
+                },
+                { kind: "Field", name: { kind: "Name", value: "resourceId" } },
+                { kind: "Field", name: { kind: "Name", value: "tags" } },
+                { kind: "Field", name: { kind: "Name", value: "title" } },
+                { kind: "Field", name: { kind: "Name", value: "type" } },
+                { kind: "Field", name: { kind: "Name", value: "url" } },
+              ],
+            },
+          },
+          { kind: "Field", name: { kind: "Name", value: "resourceId" } },
+          { kind: "Field", name: { kind: "Name", value: "tags" } },
+          { kind: "Field", name: { kind: "Name", value: "title" } },
+          { kind: "Field", name: { kind: "Name", value: "type" } },
+          { kind: "Field", name: { kind: "Name", value: "url" } },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<MenuItemInformationFragment, unknown>;
+export const MenuInformationFragmentDoc = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "FragmentDefinition",
+      name: { kind: "Name", value: "MenuInformation" },
+      typeCondition: {
+        kind: "NamedType",
+        name: { kind: "Name", value: "Menu" },
+      },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          { kind: "Field", name: { kind: "Name", value: "handle" } },
+          { kind: "Field", name: { kind: "Name", value: "id" } },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "items" },
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {
+                  kind: "FragmentSpread",
+                  name: { kind: "Name", value: "MenuItemInformation" },
+                },
+              ],
+            },
+          },
+          { kind: "Field", name: { kind: "Name", value: "itemsCount" } },
+          { kind: "Field", name: { kind: "Name", value: "title" } },
+        ],
+      },
+    },
+    ...MenuItemInformationFragmentDoc.definitions,
+  ],
+} as unknown as DocumentNode<MenuInformationFragment, unknown>;
+export const MenusInformationFragmentDoc = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "FragmentDefinition",
+      name: { kind: "Name", value: "MenusInformation" },
+      typeCondition: {
+        kind: "NamedType",
+        name: { kind: "Name", value: "QueryRoot" },
+      },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {
+            kind: "Field",
+            alias: { kind: "Name", value: "clientServiceMenu" },
+            name: { kind: "Name", value: "menu" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "handle" },
+                value: {
+                  kind: "StringValue",
+                  value: "client-service",
+                  block: false,
+                },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {
+                  kind: "FragmentSpread",
+                  name: { kind: "Name", value: "MenuInformation" },
+                },
+              ],
+            },
+          },
+          {
+            kind: "Field",
+            alias: { kind: "Name", value: "legalMenu" },
+            name: { kind: "Name", value: "menu" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "handle" },
+                value: { kind: "StringValue", value: "legal", block: false },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {
+                  kind: "FragmentSpread",
+                  name: { kind: "Name", value: "MenuInformation" },
+                },
+              ],
+            },
+          },
+          {
+            kind: "Field",
+            alias: { kind: "Name", value: "mainMenu" },
+            name: { kind: "Name", value: "menu" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "handle" },
+                value: {
+                  kind: "StringValue",
+                  value: "main-menu",
+                  block: false,
+                },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {
+                  kind: "FragmentSpread",
+                  name: { kind: "Name", value: "MenuInformation" },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+    ...MenuInformationFragmentDoc.definitions,
+  ],
+} as unknown as DocumentNode<MenusInformationFragment, unknown>;
+export const QueryRootInformationFragmentDoc = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "FragmentDefinition",
+      name: { kind: "Name", value: "QueryRootInformation" },
+      typeCondition: {
+        kind: "NamedType",
+        name: { kind: "Name", value: "QueryRoot" },
+      },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {
+            kind: "FragmentSpread",
+            name: { kind: "Name", value: "MenusInformation" },
+          },
           {
             kind: "Field",
             name: { kind: "Name", value: "shop" },
@@ -7952,7 +7909,87 @@ export const ShopDocument = {
         ],
       },
     },
-    ...GlobalFragmentDoc.definitions,
+    ...MenusInformationFragmentDoc.definitions,
+  ],
+} as unknown as DocumentNode<QueryRootInformationFragment, unknown>;
+export const ShopPolicyInformationFragmentDoc = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "FragmentDefinition",
+      name: { kind: "Name", value: "ShopPolicyInformation" },
+      typeCondition: {
+        kind: "NamedType",
+        name: { kind: "Name", value: "ShopPolicy" },
+      },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          { kind: "Field", name: { kind: "Name", value: "body" } },
+          { kind: "Field", name: { kind: "Name", value: "handle" } },
+          { kind: "Field", name: { kind: "Name", value: "id" } },
+          { kind: "Field", name: { kind: "Name", value: "title" } },
+          { kind: "Field", name: { kind: "Name", value: "url" } },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<ShopPolicyInformationFragment, unknown>;
+export const ShopDocument = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "query",
+      name: { kind: "Name", value: "Shop" },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "shop" },
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "name" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "paymentSettings" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "acceptedCardBrands" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "countryCode" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "currencyCode" },
+                      },
+                      {
+                        kind: "Field",
+                        name: {
+                          kind: "Name",
+                          value: "enabledPresentmentCurrencies",
+                        },
+                      },
+                    ],
+                  },
+                },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "shipsToCountries" },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
   ],
 } as unknown as DocumentNode<ShopQuery, ShopQueryVariables>;
 export const CampaignProductsDocument = {
@@ -7965,7 +8002,10 @@ export const CampaignProductsDocument = {
       selectionSet: {
         kind: "SelectionSet",
         selections: [
-          { kind: "FragmentSpread", name: { kind: "Name", value: "Global" } },
+          {
+            kind: "FragmentSpread",
+            name: { kind: "Name", value: "QueryRootInformation" },
+          },
           {
             kind: "Field",
             name: { kind: "Name", value: "products" },
@@ -8094,7 +8134,7 @@ export const CampaignProductsDocument = {
         ],
       },
     },
-    ...GlobalFragmentDoc.definitions,
+    ...QueryRootInformationFragmentDoc.definitions,
   ],
 } as unknown as DocumentNode<
   CampaignProductsQuery,
@@ -8123,7 +8163,10 @@ export const CollectionDocument = {
       selectionSet: {
         kind: "SelectionSet",
         selections: [
-          { kind: "FragmentSpread", name: { kind: "Name", value: "Global" } },
+          {
+            kind: "FragmentSpread",
+            name: { kind: "Name", value: "QueryRootInformation" },
+          },
           {
             kind: "Field",
             name: { kind: "Name", value: "collection" },
@@ -8268,7 +8311,7 @@ export const CollectionDocument = {
         ],
       },
     },
-    ...GlobalFragmentDoc.definitions,
+    ...QueryRootInformationFragmentDoc.definitions,
     ...ImageBasicInformationFragmentDoc.definitions,
     ...ProductBasicInformationFragmentDoc.definitions,
     ...ProductVariantBasicInformationFragmentDoc.definitions,
@@ -8284,7 +8327,10 @@ export const CollectionsDocument = {
       selectionSet: {
         kind: "SelectionSet",
         selections: [
-          { kind: "FragmentSpread", name: { kind: "Name", value: "Global" } },
+          {
+            kind: "FragmentSpread",
+            name: { kind: "Name", value: "QueryRootInformation" },
+          },
           {
             kind: "Field",
             name: { kind: "Name", value: "collections" },
@@ -8320,10 +8366,31 @@ export const CollectionsDocument = {
                           kind: "SelectionSet",
                           selections: [
                             {
-                              kind: "FragmentSpread",
-                              name: {
-                                kind: "Name",
-                                value: "ImageBasicInformation",
+                              kind: "InlineFragment",
+                              typeCondition: {
+                                kind: "NamedType",
+                                name: { kind: "Name", value: "Image" },
+                              },
+                              selectionSet: {
+                                kind: "SelectionSet",
+                                selections: [
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "altText" },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "height" },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "url" },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "width" },
+                                  },
+                                ],
                               },
                             },
                           ],
@@ -8343,8 +8410,7 @@ export const CollectionsDocument = {
         ],
       },
     },
-    ...GlobalFragmentDoc.definitions,
-    ...ImageBasicInformationFragmentDoc.definitions,
+    ...QueryRootInformationFragmentDoc.definitions,
   ],
 } as unknown as DocumentNode<CollectionsQuery, CollectionsQueryVariables>;
 export const HomeDocument = {
@@ -8357,11 +8423,14 @@ export const HomeDocument = {
       selectionSet: {
         kind: "SelectionSet",
         selections: [
-          { kind: "FragmentSpread", name: { kind: "Name", value: "Global" } },
+          {
+            kind: "FragmentSpread",
+            name: { kind: "Name", value: "QueryRootInformation" },
+          },
         ],
       },
     },
-    ...GlobalFragmentDoc.definitions,
+    ...QueryRootInformationFragmentDoc.definitions,
   ],
 } as unknown as DocumentNode<HomeQuery, HomeQueryVariables>;
 export const PageDocument = {
@@ -8387,7 +8456,10 @@ export const PageDocument = {
       selectionSet: {
         kind: "SelectionSet",
         selections: [
-          { kind: "FragmentSpread", name: { kind: "Name", value: "Global" } },
+          {
+            kind: "FragmentSpread",
+            name: { kind: "Name", value: "QueryRootInformation" },
+          },
           {
             kind: "Field",
             name: { kind: "Name", value: "page" },
@@ -8601,7 +8673,7 @@ export const PageDocument = {
         ],
       },
     },
-    ...GlobalFragmentDoc.definitions,
+    ...QueryRootInformationFragmentDoc.definitions,
   ],
 } as unknown as DocumentNode<PageQuery, PageQueryVariables>;
 export const PrivacyPolicyDocument = {
@@ -8614,7 +8686,10 @@ export const PrivacyPolicyDocument = {
       selectionSet: {
         kind: "SelectionSet",
         selections: [
-          { kind: "FragmentSpread", name: { kind: "Name", value: "Global" } },
+          {
+            kind: "FragmentSpread",
+            name: { kind: "Name", value: "QueryRootInformation" },
+          },
           {
             kind: "Field",
             name: { kind: "Name", value: "shop" },
@@ -8629,7 +8704,7 @@ export const PrivacyPolicyDocument = {
                     selections: [
                       {
                         kind: "FragmentSpread",
-                        name: { kind: "Name", value: "PolicyBasicInformation" },
+                        name: { kind: "Name", value: "ShopPolicyInformation" },
                       },
                     ],
                   },
@@ -8642,7 +8717,7 @@ export const PrivacyPolicyDocument = {
                     selections: [
                       {
                         kind: "FragmentSpread",
-                        name: { kind: "Name", value: "PolicyBasicInformation" },
+                        name: { kind: "Name", value: "ShopPolicyInformation" },
                       },
                     ],
                   },
@@ -8655,7 +8730,7 @@ export const PrivacyPolicyDocument = {
                     selections: [
                       {
                         kind: "FragmentSpread",
-                        name: { kind: "Name", value: "PolicyBasicInformation" },
+                        name: { kind: "Name", value: "ShopPolicyInformation" },
                       },
                     ],
                   },
@@ -8668,7 +8743,7 @@ export const PrivacyPolicyDocument = {
                     selections: [
                       {
                         kind: "FragmentSpread",
-                        name: { kind: "Name", value: "PolicyBasicInformation" },
+                        name: { kind: "Name", value: "ShopPolicyInformation" },
                       },
                     ],
                   },
@@ -8679,8 +8754,8 @@ export const PrivacyPolicyDocument = {
         ],
       },
     },
-    ...GlobalFragmentDoc.definitions,
-    ...PolicyBasicInformationFragmentDoc.definitions,
+    ...QueryRootInformationFragmentDoc.definitions,
+    ...ShopPolicyInformationFragmentDoc.definitions,
   ],
 } as unknown as DocumentNode<PrivacyPolicyQuery, PrivacyPolicyQueryVariables>;
 export const ProductDocument = {
@@ -8706,7 +8781,10 @@ export const ProductDocument = {
       selectionSet: {
         kind: "SelectionSet",
         selections: [
-          { kind: "FragmentSpread", name: { kind: "Name", value: "Global" } },
+          {
+            kind: "FragmentSpread",
+            name: { kind: "Name", value: "QueryRootInformation" },
+          },
           {
             kind: "Field",
             name: { kind: "Name", value: "product" },
@@ -9984,7 +10062,7 @@ export const ProductDocument = {
         ],
       },
     },
-    ...GlobalFragmentDoc.definitions,
+    ...QueryRootInformationFragmentDoc.definitions,
     ...ImageBasicInformationFragmentDoc.definitions,
     ...ProductBasicInformationFragmentDoc.definitions,
   ],
@@ -10009,7 +10087,10 @@ export const ProductsDocument = {
       selectionSet: {
         kind: "SelectionSet",
         selections: [
-          { kind: "FragmentSpread", name: { kind: "Name", value: "Global" } },
+          {
+            kind: "FragmentSpread",
+            name: { kind: "Name", value: "QueryRootInformation" },
+          },
           {
             kind: "Field",
             name: { kind: "Name", value: "products" },
@@ -10108,7 +10189,7 @@ export const ProductsDocument = {
         ],
       },
     },
-    ...GlobalFragmentDoc.definitions,
+    ...QueryRootInformationFragmentDoc.definitions,
     ...ProductBasicInformationFragmentDoc.definitions,
     ...ProductVariantBasicInformationFragmentDoc.definitions,
   ],
@@ -10123,7 +10204,10 @@ export const TypesDocument = {
       selectionSet: {
         kind: "SelectionSet",
         selections: [
-          { kind: "FragmentSpread", name: { kind: "Name", value: "Global" } },
+          {
+            kind: "FragmentSpread",
+            name: { kind: "Name", value: "QueryRootInformation" },
+          },
           {
             kind: "Field",
             name: { kind: "Name", value: "productTypes" },
@@ -10153,6 +10237,6 @@ export const TypesDocument = {
         ],
       },
     },
-    ...GlobalFragmentDoc.definitions,
+    ...QueryRootInformationFragmentDoc.definitions,
   ],
 } as unknown as DocumentNode<TypesQuery, TypesQueryVariables>;

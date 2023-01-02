@@ -21,11 +21,13 @@ type Props = {
   children?: ReactNode;
   classNameDrawerContent?: string;
   classNameMain?: string;
-  data: {
-    clientServiceMenu?: Menu | null;
-    mainMenu?: Menu | null;
-    legalMenu?: Menu | null;
-  } & PartialDeep<QueryRoot, { recurseIntoArrays: true }>;
+  data?:
+    | ({
+        clientServiceMenu?: Menu | null;
+        mainMenu?: Menu | null;
+        legalMenu?: Menu | null;
+      } & PartialDeep<QueryRoot, { recurseIntoArrays: true }>)
+    | null;
   showHeaderAndFooter?: boolean;
 };
 

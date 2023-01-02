@@ -1,9 +1,9 @@
 #import "#/lib/graphql/fragments/ImageBasicInformation.graphql"
-#import "#/lib/graphql/fragments/Global.graphql"
+#import "#/lib/graphql/fragments/QueryRootInformation.graphql"
 #import "#/lib/graphql/fragments/ProductBasicInformation.graphql"
 #import "#/lib/graphql/fragments/ProductVariantBasicInformation.graphql"
 query Collection($slug: String!) {
-  ...Global
+  ...QueryRootInformation
   collection(handle: $slug) {
     descriptionHtml
     id

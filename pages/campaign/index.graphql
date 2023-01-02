@@ -1,6 +1,6 @@
-#import "#/lib/graphql/fragments/Global.graphql"
+#import "#/lib/graphql/fragments/QueryRootInformation.graphql"
 query CampaignProducts {
-  ...Global
+  ...QueryRootInformation
   products(first: 16) {
     nodes {
       availableForSale

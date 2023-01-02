@@ -81,15 +81,19 @@ export default function Page({
 
   switch (query.slug) {
     case "privacy-policy":
+      // @ts-expect-error
       innerHTML = shop.privacyPolicy?.body;
       break;
     case "refund-policy":
+      // @ts-expect-error
       innerHTML = shop.refundPolicy?.body;
       break;
     case "shipping-policy":
+      // @ts-expect-error
       innerHTML = shop.shippingPolicy?.body;
       break;
     case "terms-of-service":
+      // @ts-expect-error
       innerHTML = shop.termsOfService?.body;
       break;
     default:

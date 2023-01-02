@@ -1,6 +1,6 @@
-#import "#/lib/graphql/fragments/Global.graphql"
+#import "#/lib/graphql/fragments/QueryRootInformation.graphql"
 query Page($slug: String!) {
-  ...Global
+  ...QueryRootInformation
   page(handle: $slug) {
     body
     bodySummary

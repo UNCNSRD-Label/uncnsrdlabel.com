@@ -1,8 +1,8 @@
-#import "#/lib/graphql/fragments/Global.graphql"
+#import "#/lib/graphql/fragments/QueryRootInformation.graphql"
 #import "#/lib/graphql/fragments/ProductBasicInformation.graphql"
 #import "#/lib/graphql/fragments/ProductVariantBasicInformation.graphql"
 query Products($query: String) {
-  ...Global
+  ...QueryRootInformation
   products(first: 64, query: $query) {
     nodes {
       ...ProductBasicInformation

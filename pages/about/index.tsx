@@ -8,9 +8,9 @@ import { request } from "graphql-request";
 import Error from "next/error";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { createRef } from "react";
-import Flag from "react-world-flags";
+// import { useRouter } from "next/router";
+// import { createRef } from "react";
+// import Flag from "react-world-flags";
 
 import Layout from "#/components/Layout";
 
@@ -54,10 +54,10 @@ export default function Page({
   data,
   errors,
 }: StorefrontApiResponseOk<ShopQuery>) {
-  const { asPath, pathname } = useRouter();
+  // const { asPath, pathname } = useRouter();
 
-  const scrollingElement = createRef<HTMLDivElement>();
-  console.log({ data });
+  // const scrollingElement = createRef<HTMLDivElement>();
+  // console.log({ data });
 
   if (!data?.shop) {
     console.error({ errors });
@@ -80,6 +80,7 @@ export default function Page({
         "drawerContentOverflowY"
       )}
       classNameMain={clsx(styles.main)}
+      data={data}
       showHeaderAndFooter={true}
     >
       <figure className={clsx(styles.figure)}>

@@ -16,9 +16,11 @@ import styles from "./index.module.css";
 
 type Props = {
   className?: ReactNode;
-  data: {
-    mainMenu?: Menu | null;
-  } & PartialDeep<QueryRoot, { recurseIntoArrays: true }>;
+  data?:
+    | ({
+        mainMenu?: Menu | null;
+      } & PartialDeep<QueryRoot, { recurseIntoArrays: true }>)
+    | null;
   position?: "fixed" | "sticky";
 };
 
@@ -64,7 +66,7 @@ export const Component: FC<Props> = ({
         </label>
       </div>
       <nav className={styles.nav}>
-        {data.mainMenu?.items?.map((item) => {
+        {data?.mainMenu?.items?.map((item) => {
           const href = new URL(item.url ?? "/");
 
           return (
@@ -76,7 +78,7 @@ export const Component: FC<Props> = ({
       </nav>
       <Link href="/" className={clsx(styles.logoContainer)}>
         <Image
-          alt={`${data.shop?.name} logo`}
+          alt={`${data?.shop?.name} logo`}
           className={clsx(styles.logoImage, "dark:invert")}
           fill
           sizes="(max-width: 320px) 100vw, (max-width: 768px) 50vw, (max-width: 1200px) 30vw, 20vw"

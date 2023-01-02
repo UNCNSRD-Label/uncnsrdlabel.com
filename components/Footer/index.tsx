@@ -16,20 +16,22 @@ import styles from "./index.module.css";
 type Props = {
   children?: ReactNode;
   className?: ReactNode;
-  data: {
-    clientServiceMenu?: Menu | null;
-    legalMenu?: Menu | null;
-  } & PartialDeep<QueryRoot, { recurseIntoArrays: true }>;
+  data?:
+    | ({
+        clientServiceMenu?: Menu | null;
+        legalMenu?: Menu | null;
+      } & PartialDeep<QueryRoot, { recurseIntoArrays: true }>)
+    | null;
 };
 
 export const Component: FC<Props> = ({ children, className, data }) => {
   return (
     <footer className={clsx(styles.footer, className, "footer")}>
       <nav className={clsx(styles.nav, styles.legal)}>
-        {data.legalMenu?.title && (
-          <h2 className={styles.title}>{data.legalMenu.title}</h2>
+        {data?.legalMenu?.title && (
+          <h2 className={styles.title}>{data?.legalMenu.title}</h2>
         )}
-        {data.legalMenu?.items?.map((item) => {
+        {data?.legalMenu?.items?.map((item) => {
           const href = new URL(item.url ?? "/");
 
           return (
@@ -40,10 +42,10 @@ export const Component: FC<Props> = ({ children, className, data }) => {
         })}
       </nav>
       <nav className={clsx(styles.nav, styles.clientService)}>
-        {data.clientServiceMenu?.title && (
-          <h2 className={styles.title}>{data.clientServiceMenu.title}</h2>
+        {data?.clientServiceMenu?.title && (
+          <h2 className={styles.title}>{data?.clientServiceMenu.title}</h2>
         )}
-        {data.clientServiceMenu?.items?.map((item) => {
+        {data?.clientServiceMenu?.items?.map((item) => {
           const href = new URL(item.url ?? "/");
 
           return (
@@ -72,7 +74,7 @@ export const Component: FC<Props> = ({ children, className, data }) => {
         <SocialIcon url="https://www.facebook.com/uncnsrdlabel" />
       </menu>
       <span className={styles.copyright}>
-        &copy; {new Date().getFullYear()} {data.shop?.name}
+        &copy; {new Date().getFullYear()} {data?.shop?.name}
       </span>
       {children}
     </footer>
