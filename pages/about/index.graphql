@@ -1,0 +1,12 @@
+query Shop {
+  shop {
+    name
+    paymentSettings {
+      acceptedCardBrands
+      countryCode
+      currencyCode
+      enabledPresentmentCurrencies
+    }
+    shipsToCountries
+  }
+}
