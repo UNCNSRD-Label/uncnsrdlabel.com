@@ -106,31 +106,31 @@ export default function Page({
         />
         <section className={clsx(styles.section)}>
           {images?.map((image, index) => {
-          if (!image?.url) {
-            return;
-          }
+            if (!image?.url) {
+              return;
+            }
 
-          return (
-            <figure
-              className={clsx(styles.figure)}
-              id={`productVariantMediaGallery-${index}`}
-              key={index}
-            >
-              <Image
-                alt={image?.altText ?? IMAGE_ALT_TEXT_FALLBACK}
-                className={clsx(styles.image)}
-                height={image?.height ?? 0}
-                sizes={`(max-width: ${theme.screens.xs.max}) 100vw,
+            return (
+              <figure
+                className={clsx(styles.figure)}
+                id={`productVariantMediaGallery-${index}`}
+                key={index}
+              >
+                <Image
+                  alt={image?.altText ?? IMAGE_ALT_TEXT_FALLBACK}
+                  className={clsx(styles.image)}
+                  height={image?.height ?? 0}
+                  sizes={`(max-width: ${theme.screens.xs.max}) 100vw,
               25vw`}
-                src={image?.url}
-                width={image?.width ?? 0}
-              />
-              <figcaption className={clsx(styles.figcaption)}>
-                Featured image
-              </figcaption>
-            </figure>
-          );
-        })}
+                  src={image?.url}
+                  width={image?.width ?? 0}
+                />
+                <figcaption className={clsx(styles.figcaption)}>
+                  Featured image
+                </figcaption>
+              </figure>
+            );
+          })}
         </section>
       </Layout>
     </NextQueryParamsProvider>

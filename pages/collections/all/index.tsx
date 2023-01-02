@@ -115,16 +115,20 @@ export default function Page({
               id={`productVariantMediaGallery-${index}`}
               key={index}
             >
-              {collection.image?.url && <div className={clsx(styles.imageContainer)}><Image
-                alt={collection.image?.altText ?? IMAGE_ALT_TEXT_FALLBACK}
-                className={clsx(styles.image)}
-                fill
-                // height={collection.image?.height ?? 0}
-                sizes={`(max-width: ${theme.screens.xs.max}) 100vw,
+              {collection.image?.url && (
+                <div className={clsx(styles.imageContainer)}>
+                  <Image
+                    alt={collection.image?.altText ?? IMAGE_ALT_TEXT_FALLBACK}
+                    className={clsx(styles.image)}
+                    fill
+                    // height={collection.image?.height ?? 0}
+                    sizes={`(max-width: ${theme.screens.xs.max}) 100vw,
               25vw`}
-                src={collection.image.url}
-                // width={collection.image?.width ?? 0}
-              /></div>}
+                    src={collection.image.url}
+                    // width={collection.image?.width ?? 0}
+                  />
+                </div>
+              )}
               <figcaption className={clsx(styles.figcaption)}>
                 {collection.title}
               </figcaption>

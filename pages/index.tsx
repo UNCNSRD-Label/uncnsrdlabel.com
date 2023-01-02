@@ -31,9 +31,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     const requestHeaders = getPublicTokenHeaders();
     const url = getStorefrontApiUrl();
-    const variables = {
-
-    };
+    const variables = {};
 
     const data = await request({
       url,

@@ -1,4 +1,7 @@
-import type { Menu, QueryRoot } from "@shopify/hydrogen-react/storefront-api-types";
+import type {
+  Menu,
+  QueryRoot,
+} from "@shopify/hydrogen-react/storefront-api-types";
 import type { FC, ReactNode } from "react";
 import type { PartialDeep } from "type-fest";
 
@@ -16,14 +19,10 @@ type Props = {
   data: {
     clientServiceMenu?: Menu | null;
     legalMenu?: Menu | null;
-  } & PartialDeep<QueryRoot, { recurseIntoArrays: true }>
+  } & PartialDeep<QueryRoot, { recurseIntoArrays: true }>;
 };
 
-export const Component: FC<Props> = ({
-  children,
-  className,
-  data,
-}) => {
+export const Component: FC<Props> = ({ children, className, data }) => {
   return (
     <footer className={clsx(styles.footer, className, "footer")}>
       <nav className={clsx(styles.nav, styles.legal)}>

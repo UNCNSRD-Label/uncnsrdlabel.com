@@ -1,4 +1,7 @@
-import type { Menu, QueryRoot } from "@shopify/hydrogen-react/storefront-api-types";
+import type {
+  Menu,
+  QueryRoot,
+} from "@shopify/hydrogen-react/storefront-api-types";
 import type { ReactNode } from "react";
 import type { PartialDeep } from "type-fest";
 
@@ -22,14 +25,22 @@ type Props = {
     clientServiceMenu?: Menu | null;
     mainMenu?: Menu | null;
     legalMenu?: Menu | null;
-  } & PartialDeep<QueryRoot, { recurseIntoArrays: true }>
+  } & PartialDeep<QueryRoot, { recurseIntoArrays: true }>;
   showHeaderAndFooter?: boolean;
 };
 
 export const Component = forwardRef<HTMLDivElement, Props>(
   // ({ children, classNameDrawerContent, classNameMain, data: { clientServiceMenu, mainMenu, legalMenu }, showHeaderAndFooter = true }, ref) => {
-  ({ children, classNameDrawerContent, classNameMain, data, showHeaderAndFooter = true }, ref) => {
-    
+  (
+    {
+      children,
+      classNameDrawerContent,
+      classNameMain,
+      data,
+      showHeaderAndFooter = true,
+    },
+    ref
+  ) => {
     return (
       <>
         <Head>

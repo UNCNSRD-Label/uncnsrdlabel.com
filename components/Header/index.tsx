@@ -1,4 +1,7 @@
-import type { Menu, QueryRoot } from "@shopify/hydrogen-react/storefront-api-types";
+import type {
+  Menu,
+  QueryRoot,
+} from "@shopify/hydrogen-react/storefront-api-types";
 import type { FC, ReactNode } from "react";
 import type { PartialDeep } from "type-fest";
 
@@ -15,7 +18,7 @@ type Props = {
   className?: ReactNode;
   data: {
     mainMenu?: Menu | null;
-  } & PartialDeep<QueryRoot, { recurseIntoArrays: true }>
+  } & PartialDeep<QueryRoot, { recurseIntoArrays: true }>;
   position?: "fixed" | "sticky";
 };
 
@@ -62,7 +65,7 @@ export const Component: FC<Props> = ({
       </div>
       <nav className={styles.nav}>
         {data.mainMenu?.items?.map((item) => {
-          const href = new URL(item.url ?? '/')
+          const href = new URL(item.url ?? "/");
 
           return (
             <Link className={styles.link} href={href.pathname} key={item.id}>

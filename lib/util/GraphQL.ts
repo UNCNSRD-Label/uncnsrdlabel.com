@@ -120,18 +120,13 @@ export const getMaterialImage = (
 };
 
 export const getMedia = (
-  page?: PartialDeep<
-  Page,
-    { recurseIntoArrays: true }
-  > | null
+  page?: PartialDeep<Page, { recurseIntoArrays: true }> | null
 ) => {
   if (!page) {
     return;
   }
 
-  const media = getMetafield<
-    ParsedMetafields["list.file_reference"]
-  >(page, {
+  const media = getMetafield<ParsedMetafields["list.file_reference"]>(page, {
     namespace: "custom",
     key: "media",
   });
@@ -142,7 +137,7 @@ export const getMedia = (
     ?.filter((medium) => medium?.mediaContentType === "IMAGE");
 
   const imageNodes = images?.map(({ previewImage }) => previewImage);
-  
+
   return imageNodes;
 };
 
