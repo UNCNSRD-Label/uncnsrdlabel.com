@@ -1,20 +1,36 @@
+import type { Menu, QueryRoot } from "@shopify/hydrogen-react/storefront-api-types";
 import type { FC, ReactNode } from "react";
+import type { PartialDeep } from "type-fest";
 
 import { useCart } from "@shopify/hydrogen-react";
 import { clsx } from "clsx";
 import Image from "next/image";
 import Link from "next/link";
+// import { useRouter } from "next/router"
 import { SlMagnifier, SlBag, SlUser } from "react-icons/sl";
 
 import styles from "./index.module.css";
 
 type Props = {
   className?: ReactNode;
+  data: {
+    mainMenu?: Menu | null;
+  } & PartialDeep<QueryRoot, { recurseIntoArrays: true }>
   position?: "fixed" | "sticky";
 };
 
-export const Component: FC<Props> = ({ className, position = "fixed" }) => {
+export const Component: FC<Props> = ({
+  className,
+  data,
+  // data: {
+  //   mainMenu,
+  // },
+  // mainMenu,
+  position = "fixed",
+}) => {
   const { totalQuantity } = useCart();
+  // const router = useRouter();
+  // console.log({router})
 
   return (
     <header
@@ -45,19 +61,19 @@ export const Component: FC<Props> = ({ className, position = "fixed" }) => {
         </label>
       </div>
       <nav className={styles.nav}>
-        <Link className={styles.link} href="/products">
-          Shop
-        </Link>
-        <Link className={styles.link} href="/campaign">
-          Campaign
-        </Link>
-        <Link className={styles.link} href="/about">
-          About
-        </Link>
+        {data.mainMenu?.items?.map((item) => {
+          const href = new URL(item.url ?? '/')
+
+          return (
+            <Link className={styles.link} href={href.pathname} key={item.id}>
+              {item.title}
+            </Link>
+          );
+        })}
       </nav>
       <Link href="/" className={clsx(styles.logoContainer)}>
         <Image
-          alt="UNCNSRD logo"
+          alt={`${data.shop?.name} logo`}
           className={clsx(styles.logoImage, "dark:invert")}
           fill
           sizes="(max-width: 320px) 100vw, (max-width: 768px) 50vw, (max-width: 1200px) 30vw, 20vw"

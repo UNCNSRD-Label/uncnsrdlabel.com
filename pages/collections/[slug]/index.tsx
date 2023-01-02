@@ -1,18 +1,17 @@
 import type { StorefrontApiResponseOk } from "@shopify/hydrogen-react";
 import type { GetServerSideProps } from "next";
 
-import type { QueryRoot } from "#/generated/graphql/graphql";
+import type { CollectionQuery } from "#/generated/graphql/graphql";
 
 import { clsx } from "clsx";
 import { request } from "graphql-request";
 import Error from "next/error";
-import Image from "next/image";
 import Link from "next/link";
 import { createRef } from "react";
-import slugify from "slugify";
 
 import Breadcrumbs from "#/components/Breadcrumbs";
 import Layout from "#/components/Layout";
+import ProductCard from "#/components/ProductCard";
 
 import {
   getStorefrontApiUrl,
@@ -23,16 +22,28 @@ import document from "./index.graphql";
 
 import styles from "./index.module.css";
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const {
+    params,
+    // preview = false,
+  } = context;
+
+  const slug = Array.isArray(params?.slug) ? params?.slug?.[0] : params?.slug;
+
   try {
     const requestHeaders = getPublicTokenHeaders();
     const url = getStorefrontApiUrl();
+
+    const variables = {
+      slug,
+    };
 
     const data = await request({
       url,
       document,
       // requestHeaders: getPrivateTokenHeaders({buyerIp}),
       requestHeaders,
+      variables,
     });
 
     // TODO I don't love how we do this with 'errors' and 'data'
@@ -46,7 +57,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 export default function Page({
   data,
   errors,
-}: StorefrontApiResponseOk<QueryRoot>) {
+}: StorefrontApiResponseOk<CollectionQuery>) {
   const scrollingElement = createRef<HTMLDivElement>();
 
   if (!data) {
@@ -66,6 +77,7 @@ export default function Page({
         "drawerContentOverflowY"
       )}
       classNameMain={clsx(styles.main)}
+      data={data}
       ref={scrollingElement}
       showHeaderAndFooter={true}
     >
@@ -75,36 +87,29 @@ export default function Page({
             Home
           </Link>
         </li>
-        <li>Types</li>
+        <li>Products</li>
       </Breadcrumbs>
       <header className={clsx(styles.header)}>
-        <Image
-          alt="background"
-          className={clsx(styles.background)}
-          fill
-          src="/images/sample/758E1A06-1C5E-4DE7-B39B-8A126CE56787_2000x.webp"
-        />
-        <div className={clsx(styles.foreground)} />
-        <h2
-          className={clsx(styles.title, "logotype", "mask")}
-          style={{
-            backgroundImage: `url("/images/sample/758E1A06-1C5E-4DE7-B39B-8A126CE56787_2000x.webp")`,
-          }}
-        >
-          UNCNSRD
-        </h2>
+        {data.collection?.title && (
+          <h2 className={clsx(styles.title, "title")}>
+            {data.collection.title}
+          </h2>
+        )}
+        {data.collection?.descriptionHtml && (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: data.collection.descriptionHtml,
+            }}
+          />
+        )}
       </header>
-      <section className={clsx(styles.categoriesList)}>
-        {data.productTypes.edges.map(({ node }, index) => (
-          <Link
-            className={clsx(styles.categoryCard)}
-            href={`/categories/${slugify(node, {
-              lower: true,
-            })}`}
+      <section className={clsx(styles.productsList)}>
+        {data.collection?.products.nodes.map((node, index) => (
+          <ProductCard
+            className={clsx(styles.productCard)}
             key={index}
-          >
-            {node}
-          </Link>
+            product={node}
+          />
         ))}
       </section>
     </Layout>

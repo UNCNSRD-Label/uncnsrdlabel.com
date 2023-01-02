@@ -1,0 +1,16 @@
+.section {
+  @apply grid;
+
+  .figure {
+    @apply relative;
+
+    .figcaption {
+      display: none;
+    }
+
+    .image {
+  
+    }
+  }
+  
+}

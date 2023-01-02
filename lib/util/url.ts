@@ -6,7 +6,7 @@ import type { PartialDeep } from "type-fest";
 
 export const getProductCategoryURL = (
   product: PartialDeep<Product, { recurseIntoArrays: true }>
-) => `/categories/${product.handle}`;
+) => `/collections/${product.handle}`;
 
 export const getProductURL = (
   product: PartialDeep<Product, { recurseIntoArrays: true }>

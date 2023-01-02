@@ -1,0 +1,24 @@
+fragment MenuItemInformation on MenuItem {
+  id
+  items {
+    id
+    items {
+      id
+      resourceId
+      tags
+      title
+      type
+      url
+    }
+    resourceId
+    tags
+    title
+    type
+    url
+  }
+  resourceId
+  tags
+  title
+  type
+  url
+}

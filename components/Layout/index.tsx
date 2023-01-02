@@ -1,4 +1,6 @@
+import type { Menu, QueryRoot } from "@shopify/hydrogen-react/storefront-api-types";
 import type { ReactNode } from "react";
+import type { PartialDeep } from "type-fest";
 
 import { clsx } from "clsx";
 import Head from "next/head";
@@ -8,7 +10,7 @@ import DrawerCart from "#/components/DrawerCart";
 import DrawerNavigation from "#/components/DrawerNavigation";
 import Header from "#/components/Header";
 import Footer from "#/components/Footer";
-import FooterNavigation from "#/components/FooterNavigation";
+// import FooterNavigation from "#/components/FooterNavigation";
 
 import styles from "./index.module.css";
 
@@ -16,11 +18,18 @@ type Props = {
   children?: ReactNode;
   classNameDrawerContent?: string;
   classNameMain?: string;
+  data: {
+    clientServiceMenu?: Menu | null;
+    mainMenu?: Menu | null;
+    legalMenu?: Menu | null;
+  } & PartialDeep<QueryRoot, { recurseIntoArrays: true }>
   showHeaderAndFooter?: boolean;
 };
 
 export const Component = forwardRef<HTMLDivElement, Props>(
-  ({ children, classNameDrawerContent, classNameMain, showHeaderAndFooter = true }, ref) => {
+  // ({ children, classNameDrawerContent, classNameMain, data: { clientServiceMenu, mainMenu, legalMenu }, showHeaderAndFooter = true }, ref) => {
+  ({ children, classNameDrawerContent, classNameMain, data, showHeaderAndFooter = true }, ref) => {
+    
     return (
       <>
         <Head>
@@ -80,16 +89,17 @@ export const Component = forwardRef<HTMLDivElement, Props>(
               "drawer-content",
               "flex",
               "flex-col",
-              // "fitViewportMinimum",
               "fitViewport"
             )}
             ref={ref}
           >
-            {showHeaderAndFooter && <Header />}
+            {/* {showHeaderAndFooter && <Header mainMenu={mainMenu} />} */}
+            {showHeaderAndFooter && <Header data={data} />}
             <main className={clsx(styles.main, classNameMain, "flex-1")}>
               {children}
             </main>
-            {showHeaderAndFooter && <Footer />}
+            {/* {showHeaderAndFooter && <Footer clientServiceMenu={clientServiceMenu} legalMenu={legalMenu} />} */}
+            {showHeaderAndFooter && <Footer data={data} />}
           </div>
           <div className={clsx(styles.root, "drawer-side", "drawer-end")}>
             <DrawerCart />

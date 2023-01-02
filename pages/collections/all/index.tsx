@@ -1,17 +1,24 @@
 import type { StorefrontApiResponseOk } from "@shopify/hydrogen-react";
 import type { GetServerSideProps } from "next";
 
-import type { TypesQuery } from "#/generated/graphql/graphql";
+import type { CollectionsQuery } from "#/generated/graphql/graphql";
 
 import { clsx } from "clsx";
 import { request } from "graphql-request";
 import Error from "next/error";
+import Image from "next/image";
 import Link from "next/link";
 import { createRef } from "react";
 import slugify from "slugify";
 
 import Breadcrumbs from "#/components/Breadcrumbs";
 import Layout from "#/components/Layout";
+
+import {
+  IMAGE_ALT_TEXT_FALLBACK,
+  IMAGE_TITLE_FALLBACK,
+} from "#/lib/constants/messages";
+import { theme } from "#/lib/constants/style";
 
 import {
   getStorefrontApiUrl,
@@ -45,7 +52,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 export default function Page({
   data,
   errors,
-}: StorefrontApiResponseOk<TypesQuery>) {
+}: StorefrontApiResponseOk<CollectionsQuery>) {
   const scrollingElement = createRef<HTMLDivElement>();
 
   if (!data) {
@@ -77,33 +84,51 @@ export default function Page({
         </li>
         <li>Types</li>
       </Breadcrumbs>
-      {/* <header className={clsx(styles.header)}>
+      <header className={clsx(styles.header)}>
         <Image
           alt="background"
           className={clsx(styles.background)}
           fill
-          src="/images/sample/758E1A06-1C5E-4DE7-B39B-8A126CE56787_2000x.webp"
+          src="/images/campaign/stock-photo-fancy-young-girl-on-the-beach-in-bikini-swimming-in-the-sea-dubai-surfing-surfboard-bronze-tan-1180841200.jpg"
         />
         <div className={clsx(styles.foreground)} />
         <h2
           className={clsx(styles.title, "logotype", "mask")}
           style={{
-            backgroundImage: `url("/images/sample/758E1A06-1C5E-4DE7-B39B-8A126CE56787_2000x.webp")`,
+            backgroundImage: `url("/images/campaign/stock-photo-fancy-young-girl-on-the-beach-in-bikini-swimming-in-the-sea-dubai-surfing-surfboard-bronze-tan-1180841200.jpg")`,
           }}
         >
           UNCNSRD
         </h2>
-      </header> */}
-      <section className={clsx(styles.typesList)}>
-        {data.productTypes.edges.map(({ node }, index) => (
+      </header>
+      <section className={clsx(styles.collectionsList)}>
+        {data.collections.nodes?.map((collection, index) => (
           <Link
-            className={clsx(styles.typeCard)}
-            href={`/types/${slugify(node, {
+            className={clsx(styles.collectionCard)}
+            href={`/collections/${slugify(collection.handle, {
               lower: true,
             })}`}
             key={index}
           >
-            {node}
+            <figure
+              className={clsx(styles.figure)}
+              id={`productVariantMediaGallery-${index}`}
+              key={index}
+            >
+              {collection.image?.url && <div className={clsx(styles.imageContainer)}><Image
+                alt={collection.image?.altText ?? IMAGE_ALT_TEXT_FALLBACK}
+                className={clsx(styles.image)}
+                fill
+                // height={collection.image?.height ?? 0}
+                sizes={`(max-width: ${theme.screens.xs.max}) 100vw,
+              25vw`}
+                src={collection.image.url}
+                // width={collection.image?.width ?? 0}
+              /></div>}
+              <figcaption className={clsx(styles.figcaption)}>
+                {collection.title}
+              </figcaption>
+            </figure>
           </Link>
         ))}
       </section>

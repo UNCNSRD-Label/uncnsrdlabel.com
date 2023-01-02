@@ -93,11 +93,11 @@ export const Component: FC<Props> = ({ className, path, product }) => {
         >
           {product.productType && (
             <Link
-              href={`/categories/${slugify(product.productType, {
+              href={`/collections/${slugify(product.productType, {
                 lower: true,
               })}`}
-              className={styles.categoryLink}
-              title="Go to category page"
+              className={styles.collectionLink}
+              title="Go to collection page"
             >
               {product.productType}
             </Link>

@@ -80,17 +80,17 @@ export default function Page({
   let innerHTML = null;
 
   switch (query.slug) {
-    case "privacy":
-      innerHTML = shop.privacyPolicy.body;
+    case "privacy-policy":
+      innerHTML = shop.privacyPolicy?.body;
       break;
-    case "refund":
-      innerHTML = shop.refundPolicy.body;
+    case "refund-policy":
+      innerHTML = shop.refundPolicy?.body;
       break;
-    case "shipping":
-      innerHTML = shop.shippingPolicy.body;
+    case "shipping-policy":
+      innerHTML = shop.shippingPolicy?.body;
       break;
     case "terms-of-service":
-      innerHTML = shop.termsOfService.body;
+      innerHTML = shop.termsOfService?.body;
       break;
     default:
       return <Error statusCode={404} />;
@@ -101,6 +101,7 @@ export default function Page({
       <Layout
         classNameDrawerContent={clsx("drawerContentOverflowY")}
         classNameMain={clsx("page")}
+        data={data}
         ref={scrollingElement}
         showHeaderAndFooter={true}
       >

@@ -52,7 +52,7 @@
   }
 
   .typeCard {
-    @apply border-8 border-primary-content bg-primary-content;
+    @apply  bg-primary border-8 border-primary;
   }
 }
 

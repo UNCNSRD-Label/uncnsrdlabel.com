@@ -87,6 +87,7 @@ export default function Page({
           styles.drawerContent,
           "drawerContentOverflowY"
         )}
+        data={data}
         ref={scrollingElement}
         showHeaderAndFooter={true}
       >

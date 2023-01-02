@@ -1,5 +1,7 @@
+#import "#/lib/graphql/fragments/Global.graphql"
 #import "#/lib/graphql/fragments/PolicyBasicInformation.graphql"
 query PrivacyPolicy {
+  ...Global
   shop {
     privacyPolicy {
       ...PolicyBasicInformation

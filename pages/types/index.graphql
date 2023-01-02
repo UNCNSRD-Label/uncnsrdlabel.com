@@ -1,4 +1,6 @@
+#import "#/lib/graphql/fragments/Global.graphql"
 query Types {
+  ...Global
   productTypes(first: 192) {
     edges {
       node

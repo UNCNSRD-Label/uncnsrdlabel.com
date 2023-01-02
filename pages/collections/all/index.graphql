@@ -1,9 +1,12 @@
 #import "#/lib/graphql/fragments/ImageBasicInformation.graphql"
+#import "#/lib/graphql/fragments/Global.graphql"
 
 query Collections {
+  ...Global
   collections(first: 192) {
     nodes {
       description
+      handle
       id
       image {
         ...ImageBasicInformation

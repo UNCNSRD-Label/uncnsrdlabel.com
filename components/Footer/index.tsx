@@ -1,4 +1,6 @@
+import type { Menu, QueryRoot } from "@shopify/hydrogen-react/storefront-api-types";
 import type { FC, ReactNode } from "react";
+import type { PartialDeep } from "type-fest";
 
 import { clsx } from "clsx";
 import Link from "next/link";
@@ -11,24 +13,46 @@ import styles from "./index.module.css";
 type Props = {
   children?: ReactNode;
   className?: ReactNode;
+  data: {
+    clientServiceMenu?: Menu | null;
+    legalMenu?: Menu | null;
+  } & PartialDeep<QueryRoot, { recurseIntoArrays: true }>
 };
 
-export const Component: FC<Props> = ({ children, className }) => {
+export const Component: FC<Props> = ({
+  children,
+  className,
+  data,
+}) => {
   return (
     <footer className={clsx(styles.footer, className, "footer")}>
       <nav className={clsx(styles.nav, styles.legal)}>
-        <h2 className={styles.title}>Legal</h2>
-        <Link href="/policies/privacy">Privacy Policy</Link>
-        <Link href="/policies/refund">Refund Policy</Link>
-        <Link href="/policies/shipping">Shipping Policy</Link>
-        <Link href="/policies/terms-of-service">Terms of Service</Link>
-        <Link href="/pages/cookie-policy">Cookie Policy</Link>
+        {data.legalMenu?.title && (
+          <h2 className={styles.title}>{data.legalMenu.title}</h2>
+        )}
+        {data.legalMenu?.items?.map((item) => {
+          const href = new URL(item.url ?? "/");
+
+          return (
+            <Link className={styles.link} href={href.pathname} key={item.id}>
+              {item.title}
+            </Link>
+          );
+        })}
       </nav>
       <nav className={clsx(styles.nav, styles.clientService)}>
-        <h2 className={styles.title}>Client Service</h2>
-        <Link href="/pages/faq" title="Go to FAQs">
-          FAQs
-        </Link>
+        {data.clientServiceMenu?.title && (
+          <h2 className={styles.title}>{data.clientServiceMenu.title}</h2>
+        )}
+        {data.clientServiceMenu?.items?.map((item) => {
+          const href = new URL(item.url ?? "/");
+
+          return (
+            <Link className={styles.link} href={href.pathname} key={item.id}>
+              {item.title}
+            </Link>
+          );
+        })}
         <Link href="/orders/track" title="Go to Order Tracking">
           Track your order
         </Link>
@@ -49,7 +73,7 @@ export const Component: FC<Props> = ({ children, className }) => {
         <SocialIcon url="https://www.facebook.com/uncnsrdlabel" />
       </menu>
       <span className={styles.copyright}>
-        &copy; {new Date().getFullYear()} UNCNSRD
+        &copy; {new Date().getFullYear()} {data.shop?.name}
       </span>
       {children}
     </footer>

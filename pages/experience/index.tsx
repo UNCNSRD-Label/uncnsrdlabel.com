@@ -81,7 +81,7 @@ export default function Page({
   }
 
   return (
-    <Layout ref={scrollingElement} showHeaderAndFooter={true}>
+    <Layout data={data} ref={scrollingElement} showHeaderAndFooter={true}>
       <Suspense>
         <Canvas
           className={styles.canvas}

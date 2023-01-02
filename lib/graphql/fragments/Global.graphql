@@ -1,0 +1,14 @@
+#import "#/lib/graphql/fragments/Menus.graphql"
+fragment Global on QueryRoot {
+  ...Menus
+  shop {
+    name
+    paymentSettings {
+      acceptedCardBrands
+      countryCode
+      currencyCode
+      enabledPresentmentCurrencies
+    }
+    shipsToCountries
+  }
+}

@@ -1,14 +1,60 @@
+import type { StorefrontApiResponseOk } from "@shopify/hydrogen-react";
+import type { GetServerSideProps } from "next";
+
+import type { HomeQuery } from "#/generated/graphql/graphql";
+
 import { clsx } from "clsx";
+import { request } from "graphql-request";
+import Error from "next/error";
 import Image from "next/image";
 import Link from "next/link";
 
 import Layout from "#/components/Layout";
 
+import {
+  getStorefrontApiUrl,
+  getPublicTokenHeaders,
+} from "#/lib/clients/shopify";
+
 import { onLoadingComplete } from "#/lib/util/image";
+
+import document from "./index.graphql";
 
 import styles from "./index.module.css";
 
-export default function Page() {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const {
+    params,
+    // preview = false,
+  } = context;
+
+  try {
+    const requestHeaders = getPublicTokenHeaders();
+    const url = getStorefrontApiUrl();
+    const variables = {
+
+    };
+
+    const data = await request({
+      url,
+      document,
+      // requestHeaders: getPrivateTokenHeaders({buyerIp}),
+      requestHeaders,
+      variables,
+    });
+
+    // TODO I don't love how we do this with 'errors' and 'data'
+    return { props: { data, errors: null } };
+  } catch (err) {
+    console.error({ err });
+    return { props: { data: null, errors: [(err as Error).toString()] } };
+  }
+};
+
+export default function Page({
+  data,
+  errors,
+}: StorefrontApiResponseOk<HomeQuery>) {
   return (
     <Layout
       classNameDrawerContent={clsx(
@@ -16,22 +62,10 @@ export default function Page() {
         "drawerContentOverflowY"
       )}
       classNameMain={clsx(styles.main)}
+      data={data}
       showHeaderAndFooter={true}
     >
       <div className={clsx(styles.root, "fitViewport")}>
-        {/* <Link
-          href="/"
-          className={clsx(styles.logotypeLink)}
-          title="uncnsrdlabel.com"
-        >
-          <Image
-            alt="UNCNSRD logo"
-            className={clsx(styles.logotype, "logotype")}
-            fill
-            priority
-            src="/images/logos/logotype.svg"
-          />
-        </Link> */}
         <figure className={clsx(styles.figure)}>
           <Link href="/campaign" className={clsx(styles.link)} title="Shop now">
             <Image

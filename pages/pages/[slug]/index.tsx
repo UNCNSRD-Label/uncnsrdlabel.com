@@ -6,10 +6,19 @@ import type { PageQuery } from "#/generated/graphql/graphql";
 import { clsx } from "clsx";
 import { request } from "graphql-request";
 import Error from "next/error";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { createRef } from "react";
 
+import {
+  IMAGE_ALT_TEXT_FALLBACK,
+  IMAGE_TITLE_FALLBACK,
+} from "#/lib/constants/messages";
+import { theme } from "#/lib/constants/style";
+
 import NextQueryParamsProvider from "#/lib/providers/next-query-params";
+
+import { getMedia } from "#/lib/util/GraphQL";
 
 import Layout from "#/components/Layout";
 
@@ -19,6 +28,8 @@ import {
 } from "#/lib/clients/shopify";
 
 import document from "./index.graphql";
+
+import styles from "./index.module.css";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const {
@@ -77,11 +88,14 @@ export default function Page({
 
   const { page } = data;
 
+  const images = getMedia(page);
+
   return (
     <NextQueryParamsProvider>
       <Layout
         classNameDrawerContent={clsx("drawerContentOverflowY")}
         classNameMain={clsx("page")}
+        data={data}
         ref={scrollingElement}
         showHeaderAndFooter={true}
       >
@@ -90,6 +104,34 @@ export default function Page({
             __html: page?.body,
           }}
         />
+        <section className={clsx(styles.section)}>
+          {images?.map((image, index) => {
+          if (!image?.url) {
+            return;
+          }
+
+          return (
+            <figure
+              className={clsx(styles.figure)}
+              id={`productVariantMediaGallery-${index}`}
+              key={index}
+            >
+              <Image
+                alt={image?.altText ?? IMAGE_ALT_TEXT_FALLBACK}
+                className={clsx(styles.image)}
+                height={image?.height ?? 0}
+                sizes={`(max-width: ${theme.screens.xs.max}) 100vw,
+              25vw`}
+                src={image?.url}
+                width={image?.width ?? 0}
+              />
+              <figcaption className={clsx(styles.figcaption)}>
+                Featured image
+              </figcaption>
+            </figure>
+          );
+        })}
+        </section>
       </Layout>
     </NextQueryParamsProvider>
   );

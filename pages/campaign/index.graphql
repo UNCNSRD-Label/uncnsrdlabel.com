@@ -1,4 +1,6 @@
+#import "#/lib/graphql/fragments/Global.graphql"
 query CampaignProducts {
+  ...Global
   products(first: 16) {
     nodes {
       availableForSale

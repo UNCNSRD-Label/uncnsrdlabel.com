@@ -1,0 +1,4 @@
+#import "#/lib/graphql/fragments/Global.graphql"
+query Home {
+  ...Global
+}

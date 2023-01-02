@@ -1,6 +1,7 @@
 import type { ParsedMetafields } from "@shopify/hydrogen-react";
 
 import type {
+  Page,
   Product,
   ProductMetafieldArgs,
   ProductVariant,
@@ -118,9 +119,36 @@ export const getMaterialImage = (
   return materialImage;
 };
 
+export const getMedia = (
+  page?: PartialDeep<
+  Page,
+    { recurseIntoArrays: true }
+  > | null
+) => {
+  if (!page) {
+    return;
+  }
+
+  const media = getMetafield<
+    ParsedMetafields["list.file_reference"]
+  >(page, {
+    namespace: "custom",
+    key: "media",
+  });
+
+  // TODO: Check use of ts-ignore
+  const images = media?.parsedValue
+    // @ts-ignore
+    ?.filter((medium) => medium?.mediaContentType === "IMAGE");
+
+  const imageNodes = images?.map(({ previewImage }) => previewImage);
+  
+  return imageNodes;
+};
+
 export const getMetafield = <T>(
   productOrProductVariant: PartialDeep<
-    Product | ProductVariant,
+    Page | Product | ProductVariant,
     { recurseIntoArrays: true }
   >,
   { key, namespace }: ProductMetafieldArgs | ProductVariantMetafieldArgs

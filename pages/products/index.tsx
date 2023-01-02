@@ -6,7 +6,6 @@ import type { ProductsQuery } from "#/generated/graphql/graphql";
 import { clsx } from "clsx";
 import { request } from "graphql-request";
 import Error from "next/error";
-import Image from "next/image";
 import Link from "next/link";
 import { createRef } from "react";
 
@@ -66,6 +65,7 @@ export default function Page({
         "drawerContentOverflowY"
       )}
       classNameMain={clsx(styles.main)}
+      data={data}
       ref={scrollingElement}
       showHeaderAndFooter={true}
     >

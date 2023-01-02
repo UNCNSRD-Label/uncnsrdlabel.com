@@ -1,6 +1,8 @@
 #import "#/lib/graphql/fragments/ImageBasicInformation.graphql"
+#import "#/lib/graphql/fragments/Global.graphql"
 #import "#/lib/graphql/fragments/ProductBasicInformation.graphql"
 query Product($slug: String!) {
+  ...Global
   product(handle: $slug) {
     availableForSale
     descriptionHtml

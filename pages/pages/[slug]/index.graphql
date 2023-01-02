@@ -1,9 +1,35 @@
+#import "#/lib/graphql/fragments/Global.graphql"
 query Page($slug: String!) {
+  ...Global
   page(handle: $slug) {
     body
     bodySummary
     handle
     id
+    metafields(identifiers: [{ namespace: "custom", key: "media" }]) {
+      description
+      key
+      namespace
+      references(first: 32) {
+        nodes {
+          ... on MetafieldReference {
+            ... on MediaImage {
+              mediaContentType
+              previewImage {
+                ... on Image {
+                  altText
+                  height
+                  url
+                  width
+                }
+              }
+            }
+          }
+        }
+      }
+      type
+      value
+    }
     seo {
       description
       title

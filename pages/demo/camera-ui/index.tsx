@@ -64,6 +64,7 @@ export default function Page({
         "drawerContentOverflowY"
       )}
       classNameMain={clsx(styles.main)}
+      data={data}
       ref={scrollingElement}
       showHeaderAndFooter={true}
     >

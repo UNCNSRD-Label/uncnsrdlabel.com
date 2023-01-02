@@ -15,11 +15,11 @@
     .header {
       @apply grid grid-flow-col gap-4 items-center justify-between py-4 px-4;
       grid-template-areas:
-        "categoryLink categoryLink"
+        "collectionLink collectionLink"
         "title price";
 
-      .categoryLink {
-        grid-area: categoryLink;
+      .collectionLink {
+        grid-area: collectionLink;
       }
 
       .title {
