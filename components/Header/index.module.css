@@ -58,10 +58,10 @@
       .indicator {
         @apply absolute place-self-center indicator-item pt-2;
       }
-  
-      .actionsSubMenu {
-        @apply glass;
-      }
+    }
+
+    .actionsSubMenu {
+      @apply bg-base-100;
     }
   }
 }

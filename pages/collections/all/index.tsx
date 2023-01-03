@@ -104,7 +104,7 @@ export default function Page({
       <section className={clsx(styles.collectionsList)}>
         {data.collections.nodes?.map((collection, index) => (
           <Link
-            className={clsx(styles.collectionCard)}
+            className={clsx(styles.card)}
             href={`/collections/${slugify(collection.handle, {
               lower: true,
             })}`}

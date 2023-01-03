@@ -52,17 +52,18 @@
     @apply grid-cols-4;
   }
 
-  .collectionCard {
-    @apply  bg-primary border-8 border-primary;
+  .card {
+    /* @apply bg-primary border-8 border-primary text-primary-content; */
+    @apply border-8 glass;
 
     .figure {
 
+      .figcaption {
+        @apply p-4 text-center;
+      }
+
       .imageContainer {
         @apply aspect-3/4 relative;
-
-        .figcaption {
-
-        }
 
         .image {
           @apply aspect-3/4  object-cover;
