@@ -5,7 +5,6 @@ import type { FC, HTMLAttributes } from "react";
 
 import { useCart, CartCheckoutButton } from "@shopify/hydrogen-react";
 import { clsx } from "clsx";
-import Link from "next/link";
 import { useRouter } from "next/router";
 
 import CartLineCard from "#/components/CartLineCard";
@@ -16,13 +15,12 @@ type Props = {} & HTMLAttributes<HTMLElement>;
 
 // TODO: Implement https://github.com/Shopify/hydrogen-ui/tree/2022-10/packages/react/src
 // TODO: Implement https://github.com/Shopify/hydrogen-ui/blob/2022-10/packages/react/src/CartCost.tsx
-// TODO: Implement https://github.com/Shopify/hydrogen-ui/blob/2022-10/packages/react/src/CartCheckoutButton.tsx
 // TODO: Implement https://github.com/Shopify/hydrogen-ui/blob/2022-10/packages/react/src/CartLinePrice.tsx
 // TODO: Implement https://github.com/Shopify/hydrogen-ui/blob/2022-10/packages/react/src/CartLineProvider.tsx
 
 export const Component: FC<Props> = ({ className }) => {
   const { locale } = useRouter();
-  const { checkoutUrl, cost, id, lines, totalQuantity } = useCart();
+  const { cost, id, lines, totalQuantity } = useCart();
 
   return (
     <section
