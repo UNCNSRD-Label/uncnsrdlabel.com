@@ -65,7 +65,7 @@
         }
 
         .image {
-          @apply aspect-3/4;
+          @apply aspect-3/4  object-cover;
         }
       }
     }
