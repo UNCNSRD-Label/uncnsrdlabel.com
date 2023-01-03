@@ -14,9 +14,9 @@
   @apply grid gap-2;
 }
 
-.valid {
+/* .valid {
   & :is(button, input, select, textarea, div) {
     opacity: 0;
     pointer-events: none;
   }
-}
+} */
