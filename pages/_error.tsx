@@ -29,6 +29,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     // preview = false,
   } = context;
 
+  const statusCode = res?.statusCode || 500;
+
   try {
     const requestHeaders = getPublicTokenHeaders();
     const url = getStorefrontApiUrl();
@@ -46,7 +48,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     return { props: { data, errors: null } };
   } catch (err) {
     console.error({ err });
-    return { props: { data: null, errors: [(err as Error).toString()] } };
+    return {
+      props: { data: null, errors: [(err as Error).toString()], statusCode },
+    };
   }
 };
 
@@ -74,12 +78,3 @@ export default function Page({
     </Layout>
   );
 }
-
-Page.getInitialProps = async ({
-  res,
-  err,
-}: NextPageContext): Promise<ErrorProps> => {
-  const statusCode = res?.statusCode || err?.statusCode || 500;
-
-  return { statusCode };
-};
