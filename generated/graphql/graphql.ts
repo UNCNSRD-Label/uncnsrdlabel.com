@@ -6935,6 +6935,14 @@ export type ShopQuery = {
   };
 };
 
+export type AccountQueryVariables = Exact<{ [key: string]: never }>;
+
+export type AccountQuery = { __typename?: "QueryRoot" } & {
+  " $fragmentRefs"?: {
+    QueryRootInformationFragment: QueryRootInformationFragment;
+  };
+};
+
 export type CampaignProductsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type CampaignProductsQuery = {
@@ -7050,13 +7058,13 @@ export type CollectionsQuery = {
       id: string;
       title: string;
       updatedAt: string;
-      image?: {
-        __typename?: "Image";
-        altText?: string | null;
-        height?: number | null;
-        url: string;
-        width?: number | null;
-      } | null;
+      image?:
+        | ({ __typename?: "Image" } & {
+            " $fragmentRefs"?: {
+              ImageBasicInformationFragment: ImageBasicInformationFragment;
+            };
+          })
+        | null;
     }>;
   };
 } & {
@@ -7992,6 +8000,26 @@ export const ShopDocument = {
     },
   ],
 } as unknown as DocumentNode<ShopQuery, ShopQueryVariables>;
+export const AccountDocument = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "query",
+      name: { kind: "Name", value: "Account" },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {
+            kind: "FragmentSpread",
+            name: { kind: "Name", value: "QueryRootInformation" },
+          },
+        ],
+      },
+    },
+    ...QueryRootInformationFragmentDoc.definitions,
+  ],
+} as unknown as DocumentNode<AccountQuery, AccountQueryVariables>;
 export const CampaignProductsDocument = {
   kind: "Document",
   definitions: [
@@ -8375,20 +8403,11 @@ export const CollectionsDocument = {
                                 kind: "SelectionSet",
                                 selections: [
                                   {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "altText" },
-                                  },
-                                  {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "height" },
-                                  },
-                                  {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "url" },
-                                  },
-                                  {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "width" },
+                                    kind: "FragmentSpread",
+                                    name: {
+                                      kind: "Name",
+                                      value: "ImageBasicInformation",
+                                    },
                                   },
                                 ],
                               },
@@ -8411,6 +8430,7 @@ export const CollectionsDocument = {
       },
     },
     ...QueryRootInformationFragmentDoc.definitions,
+    ...ImageBasicInformationFragmentDoc.definitions,
   ],
 } as unknown as DocumentNode<CollectionsQuery, CollectionsQueryVariables>;
 export const HomeDocument = {

@@ -11,6 +11,7 @@ import { forwardRef } from "react";
 
 import DrawerCart from "#/components/DrawerCart";
 import DrawerNavigation from "#/components/DrawerNavigation";
+import Consent from "#/components/Consent";
 import Header from "#/components/Header";
 import Footer from "#/components/Footer";
 // import FooterNavigation from "#/components/FooterNavigation";
@@ -32,7 +33,6 @@ type Props = {
 };
 
 export const Component = forwardRef<HTMLDivElement, Props>(
-  // ({ children, classNameDrawerContent, classNameMain, data: { clientServiceMenu, mainMenu, legalMenu }, showHeaderAndFooter = true }, ref) => {
   (
     {
       children,
@@ -46,7 +46,6 @@ export const Component = forwardRef<HTMLDivElement, Props>(
     return (
       <>
         <Head>
-          {/* <title>UNCNSRD</title> */}
           <meta
             name="description"
             content="UNCNSRD is multifunctional swimwear for female figures who aren’t afraid to show off their assets and want to feel unapologetically sexy."
@@ -119,6 +118,7 @@ export const Component = forwardRef<HTMLDivElement, Props>(
             <DrawerNavigation />
           </div>
           {/* <FooterNavigation /> */}
+          <Consent />
         </div>
       </>
     );

@@ -1,0 +1,41 @@
+.root {
+  @apply bg-accent fixed bottom-3 left-3 right-3 grid items-center justify-between px-4 py-4;
+  grid-template-areas:
+    "about closeButton" "information information"
+    ". buttonGroup";
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto auto;
+}
+
+.closeButton {
+  align-self: start;
+  grid-area: closeButton;
+  justify-self: end;
+}
+
+.buttonGroup {
+  grid-area: buttonGroup;
+}
+
+.about {
+  @apply grid gap-6 py-3 pl-3;
+  grid-area: about;
+}
+
+.information {
+  grid-area: information;
+
+  .toggle {
+    @apply w-full;
+  }
+
+  :global(table) {
+    :global(thead) {
+      :global(tr) {
+        :global(th) {
+          @apply text-left;
+        }
+      }
+    }
+  }
+}
