@@ -7,9 +7,7 @@ import { clsx } from "clsx";
 import { request } from "graphql-request";
 import Error from "next/error";
 import Image from "next/image";
-import Link from "next/link";
 
-// import Consent from "#/components/Consent";
 import ConsentTable from "#/components/ConsentTable";
 import Layout from "#/components/Layout";
 
