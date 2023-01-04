@@ -1,5 +1,5 @@
 .root {
-  @apply bg-base-100 text-base-content border-base-content border-solid border-2 fixed bottom-3 left-3 right-3 p-4 grid gap-4 items-start justify-between;
+  @apply bg-base-100 text-base-content border-base-content border-solid border-2 fixed bottom-3 left-3 right-3 p-4 grid gap-x-4 items-center justify-between;
     grid-template-columns: auto auto;
 }
 
@@ -8,6 +8,7 @@
 } */
 
 .closeButton {
+  @apply relative -right-4;
   justify-self: end;
 }
 
@@ -16,6 +17,8 @@
 }
 
 .information {
+  @apply col-span-full;
+
   .toggle {
     @apply w-full min-h-fit;
   }
@@ -25,7 +28,13 @@
   }
 
   :global(.collapse-content) {
-    @apply p-0 pt-4;
+    @apply p-0;
+  }
+}
+
+.tableContainer {
+  .table {
+    @apply mb-4;
   }
 }
 
