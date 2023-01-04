@@ -18,10 +18,6 @@ import document from "./index.graphql";
 
 import styles from "./_error.module.css";
 
-interface ErrorProps {
-  statusCode: number;
-}
-
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const {
     params,
@@ -53,8 +49,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 export default function Page({
   data,
   errors,
-  statusCode,
-}: ErrorProps & StorefrontApiResponseOk<HomeQuery>) {
+}: StorefrontApiResponseOk<HomeQuery>) {
   if (errors) {
     console.error({ errors });
     return <Error statusCode={500} />;
@@ -70,16 +65,7 @@ export default function Page({
       data={data}
       showHeaderAndFooter={true}
     >
-      <Error statusCode={statusCode} />
+      <Error statusCode={404} />
     </Layout>
   );
 }
-
-Page.getInitialProps = async ({
-  res,
-  err,
-}: NextPageContext): Promise<ErrorProps> => {
-  const statusCode = res?.statusCode || err?.statusCode || 500;
-
-  return { statusCode };
-};
