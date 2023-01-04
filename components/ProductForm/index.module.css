@@ -9,24 +9,36 @@
         @apply px-4;
       }
 
-      .label {
-        .labelText,
-        .radioContainer {
-          --tw-bg-opacity: 0;
+      .inputGroup {
+        @apply flex-wrap input-group mt-1 w-full;
+        
+        &Grid {
+          @apply grid grid-cols-2 justify-items-start input-group mt-1 w-full;
+
+          @media screen and (min-width: theme(screens.md.min)) {
+            @apply grid-cols-3 justify-end;
+          }  
         }
 
-        .labelText {
-          @apply pl-0;
-        }
-
-        .radioContainer {
-          @apply block;
-          order: -1;
-        }
-
-        &:has(input:checked) {
+        .label {
+          .labelText,
+          .radioContainer {
+            --tw-bg-opacity: 0;
+          }
+  
           .labelText {
-            @apply underline underline-offset-4;
+            @apply pl-0;
+          }
+  
+          .radioContainer {
+            @apply block;
+            order: -1;
+          }
+  
+          &:has(input:checked) {
+            .labelText {
+              @apply underline underline-offset-4;
+            }
           }
         }
       }

@@ -92,122 +92,124 @@ export const Component: FC<Props> = ({ children, className, path }) => {
 
   return (
     <>
-      <section
-        className={clsx(
-          styles.section,
-          styles.sectionOptions,
-          "not-prose",
-          "dropdown",
-          "dropdown-top",
-          "dropdown-hover"
-        )}
-      >
-        {options?.map((option, optionIndex) => {
-          if (option?.values?.length === 1) {
-            return null;
-          }
+      {options?.some((option) => (option?.values?.length || 0) > 1) && (
+        <section
+          className={clsx(
+            styles.section,
+            styles.sectionOptions,
+            "not-prose",
+            "dropdown",
+            "dropdown-top",
+            "dropdown-hover"
+          )}
+        >
+          {options?.map((option, optionIndex) => {
+            if (option?.values?.length === 1) {
+              return null;
+            }
 
-          if (option?.name && ["Color", "Size"].includes(option?.name)) {
-            return (
-              <div
-                key={`${option?.name}-${optionIndex}`}
-                className={clsx(styles.inputGroupContainer)}
-              >
-                <span className={clsx(styles.title, "text-base")}>
-                  {option?.name}
-                </span>
+            if (option?.name && ["Color", "Size"].includes(option?.name)) {
+              return (
                 <div
-                  className={clsx(
-                    "form-control-group",
-                    "input-group",
-                    "justify-end",
-                    "mt-1",
-                    "w-full",
-                    `form-control-group--${option?.name}`
-                  )}
+                  key={`${option?.name}-${optionIndex}`}
+                  className={clsx(styles.inputGroupContainer)}
                 >
-                  {option?.values?.map((value, valueIndex) => (
-                    <div
-                      className={clsx("form-control")}
-                      key={`${option.name}-${optionIndex}-${valueIndex}`}
-                    >
-                      <label
-                        className={clsx(
-                          "cursor-pointer",
-                          "label",
-                          styles.label,
-                          option?.name === "Size" && "pl-0"
-                        )}
+                  <span className={clsx(styles.title, "text-base")}>
+                    {option?.name}
+                  </span>
+                  <div
+                    className={clsx(
+                      "form-control-group",
+                      `form-control-group--${option?.name}`,
+                      styles.inputGroup,
+                      option?.name === "Color" && styles.inputGroupGrid
+                    )}
+                  >
+                    {option?.values?.map((value, valueIndex) => (
+                      <div
+                        className={clsx("form-control")}
+                        key={`${option.name}-${optionIndex}-${valueIndex}`}
                       >
-                        <span className={clsx("label-text", styles.labelText)}>
-                          {value}
-                        </span>
-                        <span
+                        <label
                           className={clsx(
-                            "radioContainer",
-                            styles.radioContainer
+                            "cursor-pointer",
+                            "label",
+                            styles.label,
+                            option?.name === "Size" && "pl-0"
                           )}
                         >
-                          <input
+                          <span
+                            className={clsx("label-text", styles.labelText)}
+                          >
+                            {value}
+                          </span>
+                          <span
                             className={clsx(
-                              "radio",
-                              option?.name === "Color" && "radio-lg",
-                              option?.name === "Size" && "hidden",
-                              value &&
-                                variants &&
-                                `checked:bg-[${getColorHexCodeByName(
-                                  value,
-                                  variants
-                                )}]`
+                              "radioContainer",
+                              styles.radioContainer
                             )}
-                            name={option?.name}
-                            onChange={handleOptionChange}
-                            type="radio"
-                            style={{
-                              ...(option?.name === "Color" &&
+                          >
+                            <input
+                              className={clsx(
+                                "radio",
+                                option?.name === "Color" && "radio-lg",
+                                option?.name === "Size" && "hidden",
                                 value &&
-                                variants && {
-                                  backgroundColor: getColorHexCodeByName(
+                                  variants &&
+                                  `checked:bg-[${getColorHexCodeByName(
                                     value,
                                     variants
-                                  ),
-                                }),
-                            }}
-                            value={value}
-                          />
-                        </span>
-                      </label>
-                    </div>
-                  ))}
+                                  )}]`
+                              )}
+                              name={option?.name}
+                              onChange={handleOptionChange}
+                              type="radio"
+                              style={{
+                                ...(option?.name === "Color" &&
+                                  value &&
+                                  variants && {
+                                    backgroundColor: getColorHexCodeByName(
+                                      value,
+                                      variants
+                                    ),
+                                  }),
+                              }}
+                              value={value}
+                            />
+                          </span>
+                        </label>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            );
-          }
+              );
+            }
 
-          return (
-            <label
-              key={`${option?.name}-${optionIndex}`}
-              className={clsx(styles.label)}
-            >
-              <span className={clsx(styles.text, "text-base")}>
-                {option?.name}
-              </span>
-              <select
-                className="select select-ghost w-full mt-1"
-                name={option?.name}
-                onChange={handleOptionChange}
+            return (
+              <label
+                key={`${option?.name}-${optionIndex}`}
+                className={clsx(styles.label)}
               >
-                <option disabled>Select {option?.name}</option>
-                {option?.values?.map((value, valueIndex) => (
-                  <option key={`${option.name}-${optionIndex}-${valueIndex}`}>
-                    {value}
-                  </option>
-                ))}
-              </select>
-            </label>
-          );
-        })}
-      </section>
+                <span className={clsx(styles.text, "text-base")}>
+                  {option?.name}
+                </span>
+                <select
+                  className="select select-ghost w-full mt-1"
+                  name={option?.name}
+                  onChange={handleOptionChange}
+                >
+                  <option disabled>Select {option?.name}</option>
+                  {option?.values?.map((value, valueIndex) => (
+                    <option key={`${option.name}-${optionIndex}-${valueIndex}`}>
+                      {value}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            );
+          })}
+        </section>
+      )}
       <section className={clsx(styles.section, styles.sectionActions)}>
         <AddToCartButton
           accessibleAddingToCartLabel="Adding item to your cart"

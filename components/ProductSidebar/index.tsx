@@ -214,12 +214,6 @@ export const Component: FC<Props> = ({ className, path, product }) => {
                         __html: (metafield?.reference as Page)?.body,
                       }}
                     />
-                    {/* <br />
-                        <Link
-                          href={`/${(metafield?.reference as Page)?.handle}`}
-                        >
-                          View page
-                        </Link> */}
                   </>
                 ) : (
                   <Metafield data={metafield!} />
@@ -227,28 +221,30 @@ export const Component: FC<Props> = ({ className, path, product }) => {
               </div>
             </section>
           ))}
-        <section
-          className={clsx(
-            styles.section,
-            styles.sectionComplementaryProducts,
-            "collapse",
-            "collapse-plus"
-          )}
-        >
-          <input type="checkbox" defaultChecked />
-          <div className={clsx("collapse-title", "text-base")}>
-            Complementary Products
-          </div>
-          <div className={clsx("collapse-content", "not-prose")}>
-            {complementaryProducts?.map((node, index) => (
-              <ProductCard
-                className={clsx(styles.productCard)}
-                key={index}
-                product={node}
-              />
-            ))}
-          </div>
-        </section>
+        {complementaryProducts && (
+          <section
+            className={clsx(
+              styles.section,
+              styles.sectionComplementaryProducts,
+              "collapse",
+              "collapse-plus"
+            )}
+          >
+            <input type="checkbox" defaultChecked />
+            <div className={clsx("collapse-title", "text-base")}>
+              Complementary Products
+            </div>
+            <div className={clsx("collapse-content", "not-prose")}>
+              {complementaryProducts?.map((node, index) => (
+                <ProductCard
+                  className={clsx(styles.productCard)}
+                  key={index}
+                  product={node}
+                />
+              ))}
+            </div>
+          </section>
+        )}
         <footer></footer>
       </section>
     </div>
