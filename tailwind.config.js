@@ -34,7 +34,7 @@ module.exports = {
     hoverOnlyWhenSupported: true,
   },
   plugins: [
-    require("@tailwindcss/forms"),
+    // require("@tailwindcss/forms"),
     require("@tailwindcss/typography"),
     require("daisyui"),
   ],
