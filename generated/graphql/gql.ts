@@ -36,7 +36,7 @@ const documents = {
     types.CampaignProductsDocument,
   "query Collection($slug: String!) {\n  ...QueryRootInformation\n  collection(handle: $slug) {\n    descriptionHtml\n    id\n    image {\n      ...ImageBasicInformation\n    }\n    products(first: 64) {\n      nodes {\n        ...ProductBasicInformation\n        variants(first: 32) {\n          pageInfo {\n            hasNextPage\n            hasPreviousPage\n          }\n          nodes {\n            ...ProductVariantBasicInformation\n          }\n        }\n      }\n    }\n    seo {\n      description\n      title\n    }\n    title\n    updatedAt\n  }\n}":
     types.CollectionDocument,
-  "query Collections {\n  ...QueryRootInformation\n  collections(first: 192) {\n    nodes {\n      description\n      handle\n      id\n      image {\n        ... on Image {\n          ...ImageBasicInformation\n        }\n      }\n      title\n      updatedAt\n    }\n  }\n}":
+  "query Collections {\n  ...QueryRootInformation\n  collections(first: 192) {\n    nodes {\n      description\n      handle\n      id\n      image {\n        ... on Image {\n          altText\n          height\n          url\n          width\n        }\n      }\n      title\n      updatedAt\n    }\n  }\n}":
     types.CollectionsDocument,
   "query Home {\n  ...QueryRootInformation\n}": types.HomeDocument,
   'query Page($slug: String!) {\n  ...QueryRootInformation\n  page(handle: $slug) {\n    body\n    bodySummary\n    handle\n    id\n    metafields(identifiers: [{namespace: "custom", key: "media"}]) {\n      description\n      key\n      namespace\n      references(first: 32) {\n        nodes {\n          ... on MetafieldReference {\n            ... on MediaImage {\n              mediaContentType\n              previewImage {\n                ... on Image {\n                  altText\n                  height\n                  url\n                  width\n                }\n              }\n            }\n          }\n        }\n      }\n      type\n      value\n    }\n    seo {\n      description\n      title\n    }\n    title\n    updatedAt\n  }\n}':
@@ -127,8 +127,8 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "query Collections {\n  ...QueryRootInformation\n  collections(first: 192) {\n    nodes {\n      description\n      handle\n      id\n      image {\n        ... on Image {\n          ...ImageBasicInformation\n        }\n      }\n      title\n      updatedAt\n    }\n  }\n}"
-): typeof documents["query Collections {\n  ...QueryRootInformation\n  collections(first: 192) {\n    nodes {\n      description\n      handle\n      id\n      image {\n        ... on Image {\n          ...ImageBasicInformation\n        }\n      }\n      title\n      updatedAt\n    }\n  }\n}"];
+  source: "query Collections {\n  ...QueryRootInformation\n  collections(first: 192) {\n    nodes {\n      description\n      handle\n      id\n      image {\n        ... on Image {\n          altText\n          height\n          url\n          width\n        }\n      }\n      title\n      updatedAt\n    }\n  }\n}"
+): typeof documents["query Collections {\n  ...QueryRootInformation\n  collections(first: 192) {\n    nodes {\n      description\n      handle\n      id\n      image {\n        ... on Image {\n          altText\n          height\n          url\n          width\n        }\n      }\n      title\n      updatedAt\n    }\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

@@ -10,7 +10,10 @@ query Collections {
       id
       image {
         ... on Image {
-          ...ImageBasicInformation
+          altText
+          height
+          url
+          width
         }
       }
       title

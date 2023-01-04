@@ -7058,13 +7058,13 @@ export type CollectionsQuery = {
       id: string;
       title: string;
       updatedAt: string;
-      image?:
-        | ({ __typename?: "Image" } & {
-            " $fragmentRefs"?: {
-              ImageBasicInformationFragment: ImageBasicInformationFragment;
-            };
-          })
-        | null;
+      image?: {
+        __typename?: "Image";
+        altText?: string | null;
+        height?: number | null;
+        url: string;
+        width?: number | null;
+      } | null;
     }>;
   };
 } & {
@@ -8403,11 +8403,20 @@ export const CollectionsDocument = {
                                 kind: "SelectionSet",
                                 selections: [
                                   {
-                                    kind: "FragmentSpread",
-                                    name: {
-                                      kind: "Name",
-                                      value: "ImageBasicInformation",
-                                    },
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "altText" },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "height" },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "url" },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "width" },
                                   },
                                 ],
                               },
@@ -8430,7 +8439,6 @@ export const CollectionsDocument = {
       },
     },
     ...QueryRootInformationFragmentDoc.definitions,
-    ...ImageBasicInformationFragmentDoc.definitions,
   ],
 } as unknown as DocumentNode<CollectionsQuery, CollectionsQueryVariables>;
 export const HomeDocument = {
