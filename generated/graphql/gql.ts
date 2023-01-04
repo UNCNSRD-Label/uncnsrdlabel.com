@@ -38,6 +38,7 @@ const documents = {
     types.CollectionDocument,
   "query Collections {\n  ...QueryRootInformation\n  collections(first: 192) {\n    nodes {\n      description\n      handle\n      id\n      image {\n        ... on Image {\n          altText\n          height\n          url\n          width\n        }\n      }\n      title\n      updatedAt\n    }\n  }\n}":
     types.CollectionsDocument,
+  "query Consent {\n  ...QueryRootInformation\n}": types.ConsentDocument,
   "query Home {\n  ...QueryRootInformation\n}": types.HomeDocument,
   'query Page($slug: String!) {\n  ...QueryRootInformation\n  page(handle: $slug) {\n    body\n    bodySummary\n    handle\n    id\n    metafields(identifiers: [{namespace: "custom", key: "media"}]) {\n      description\n      key\n      namespace\n      references(first: 32) {\n        nodes {\n          ... on MetafieldReference {\n            ... on MediaImage {\n              mediaContentType\n              previewImage {\n                ... on Image {\n                  altText\n                  height\n                  url\n                  width\n                }\n              }\n            }\n          }\n        }\n      }\n      type\n      value\n    }\n    seo {\n      description\n      title\n    }\n    title\n    updatedAt\n  }\n}':
     types.PageDocument,
@@ -129,6 +130,12 @@ export function graphql(
 export function graphql(
   source: "query Collections {\n  ...QueryRootInformation\n  collections(first: 192) {\n    nodes {\n      description\n      handle\n      id\n      image {\n        ... on Image {\n          altText\n          height\n          url\n          width\n        }\n      }\n      title\n      updatedAt\n    }\n  }\n}"
 ): typeof documents["query Collections {\n  ...QueryRootInformation\n  collections(first: 192) {\n    nodes {\n      description\n      handle\n      id\n      image {\n        ... on Image {\n          altText\n          height\n          url\n          width\n        }\n      }\n      title\n      updatedAt\n    }\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: "query Consent {\n  ...QueryRootInformation\n}"
+): typeof documents["query Consent {\n  ...QueryRootInformation\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

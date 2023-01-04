@@ -1,6 +1,14 @@
 #import "#/lib/graphql/fragments/MenusInformation.graphql"
 fragment QueryRootInformation on QueryRoot {
   ...MenusInformation
+  collections(first: 192) {
+    nodes {
+      handle
+      id
+      title
+      updatedAt
+    }
+  }
   shop {
     name
     paymentSettings {

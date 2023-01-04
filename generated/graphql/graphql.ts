@@ -7073,6 +7073,14 @@ export type CollectionsQuery = {
   };
 };
 
+export type ConsentQueryVariables = Exact<{ [key: string]: never }>;
+
+export type ConsentQuery = { __typename?: "QueryRoot" } & {
+  " $fragmentRefs"?: {
+    QueryRootInformationFragment: QueryRootInformationFragment;
+  };
+};
+
 export type HomeQueryVariables = Exact<{ [key: string]: never }>;
 
 export type HomeQuery = { __typename?: "QueryRoot" } & {
@@ -8441,6 +8449,26 @@ export const CollectionsDocument = {
     ...QueryRootInformationFragmentDoc.definitions,
   ],
 } as unknown as DocumentNode<CollectionsQuery, CollectionsQueryVariables>;
+export const ConsentDocument = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "query",
+      name: { kind: "Name", value: "Consent" },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {
+            kind: "FragmentSpread",
+            name: { kind: "Name", value: "QueryRootInformation" },
+          },
+        ],
+      },
+    },
+    ...QueryRootInformationFragmentDoc.definitions,
+  ],
+} as unknown as DocumentNode<ConsentQuery, ConsentQueryVariables>;
 export const HomeDocument = {
   kind: "Document",
   definitions: [

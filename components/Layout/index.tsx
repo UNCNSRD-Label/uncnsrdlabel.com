@@ -108,17 +108,15 @@ export const Component = forwardRef<HTMLDivElement, Props>(
             )}
             ref={ref}
           >
-            {/* {showHeaderAndFooter && <Header mainMenu={mainMenu} />} */}
             {showHeaderAndFooter && <Header data={data} />}
             <main className={clsx(styles.main, classNameMain, "flex-1")}>
               {children}
             </main>
-            {/* {showHeaderAndFooter && <Footer clientServiceMenu={clientServiceMenu} legalMenu={legalMenu} />} */}
             {showHeaderAndFooter && <Footer data={data} />}
           </div>
           <div className={clsx(styles.root, "drawer-side", "drawer-end")}>
             <DrawerCart />
-            <DrawerNavigation />
+            <DrawerNavigation data={data} />
           </div>
           {/* <FooterNavigation /> */}
           <Consent route={asPath} view="banner" />
