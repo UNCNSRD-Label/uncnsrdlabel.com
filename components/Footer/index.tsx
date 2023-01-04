@@ -54,11 +54,11 @@ export const Component: FC<Props> = ({ children, className, data }) => {
             </Link>
           );
         })}
-        <Link href="/orders/track" title="Go to Order Tracking">
-          Track your order
+        <Link href="/consent" title="Go to Consent Settings">
+          Consent settings
         </Link>
         <Link href="/orders/shipping" title="Go to Shipping">
-          Track your order
+          Order tracking
         </Link>
         <Link href="/orders/returns" title="Go to Returns">
           Returns

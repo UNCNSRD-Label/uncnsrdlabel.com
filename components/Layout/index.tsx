@@ -7,6 +7,7 @@ import type { PartialDeep } from "type-fest";
 
 import { clsx } from "clsx";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { forwardRef } from "react";
 
 import DrawerCart from "#/components/DrawerCart";
@@ -43,6 +44,8 @@ export const Component = forwardRef<HTMLDivElement, Props>(
     },
     ref
   ) => {
+    const { asPath } = useRouter();
+
     return (
       <>
         <Head>
@@ -118,7 +121,7 @@ export const Component = forwardRef<HTMLDivElement, Props>(
             <DrawerNavigation />
           </div>
           {/* <FooterNavigation /> */}
-          <Consent />
+          <Consent route={asPath} view="banner" />
         </div>
       </>
     );

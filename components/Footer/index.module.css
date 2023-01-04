@@ -81,9 +81,11 @@
   gap: 1rem;
   grid-auto-flow: column;
   justify-content: center;
+  justify-self: center;
 
   @media screen and (min-width: theme(screens.md.min)) {
     grid-area: socialLinks;
     justify-content: start;
+    justify-self: start;
   }
 }

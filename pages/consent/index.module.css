@@ -1,0 +1,14 @@
+.main {
+  @apply gap-8 grid;
+  margin-block: var(--viewport-margin-block-start);
+  padding-block-start: var(--viewport-margin-block-start);
+  padding-inline: var(--viewport-margin-inline);
+
+  @media screen and (min-width: theme(screens.md.min)) {
+    @apply gap-16 grid-cols-2;
+  }
+}
+
+.figure {
+  @apply relative;
+}

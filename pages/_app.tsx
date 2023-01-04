@@ -13,11 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   const hasSavedConsentSettings = hasCookie("consentSettings");
   const consentSettings = getCookie("consentSettings");
-  console.log({ consentSettings });
-  console.assert(
-    hasSavedConsentSettings === true,
-    "hasSavedConsentSettings not saved"
-  );
+
   return (
     <Providers locale={locale}>
       <Script

@@ -1,0 +1,11 @@
+.root {
+  :global(table) {
+    :global(thead) {
+      :global(tr) {
+        :global(th) {
+          /* @apply text-left; */
+        }
+      }
+    }
+  }
+}
