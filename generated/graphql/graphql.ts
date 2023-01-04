@@ -6892,6 +6892,16 @@ export type ProductVariantBasicInformationFragment = {
 
 export type QueryRootInformationFragment = ({
   __typename?: "QueryRoot";
+  collections: {
+    __typename?: "CollectionConnection";
+    nodes: Array<{
+      __typename?: "Collection";
+      handle: string;
+      id: string;
+      title: string;
+      updatedAt: string;
+    }>;
+  };
   shop: {
     __typename?: "Shop";
     name: string;
@@ -7075,7 +7085,10 @@ export type CollectionsQuery = {
 
 export type ConsentQueryVariables = Exact<{ [key: string]: never }>;
 
-export type ConsentQuery = { __typename?: "QueryRoot" } & {
+export type ConsentQuery = {
+  __typename?: "QueryRoot";
+  shop: { __typename?: "Shop"; name: string };
+} & {
   " $fragmentRefs"?: {
     QueryRootInformationFragment: QueryRootInformationFragment;
   };
@@ -7882,6 +7895,41 @@ export const QueryRootInformationFragmentDoc = {
           },
           {
             kind: "Field",
+            name: { kind: "Name", value: "collections" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "first" },
+                value: { kind: "IntValue", value: "192" },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "nodes" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "handle" },
+                      },
+                      { kind: "Field", name: { kind: "Name", value: "id" } },
+                      { kind: "Field", name: { kind: "Name", value: "title" } },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "updatedAt" },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          {
+            kind: "Field",
             name: { kind: "Name", value: "shop" },
             selectionSet: {
               kind: "SelectionSet",
@@ -8462,6 +8510,16 @@ export const ConsentDocument = {
           {
             kind: "FragmentSpread",
             name: { kind: "Name", value: "QueryRootInformation" },
+          },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "shop" },
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "name" } },
+              ],
+            },
           },
         ],
       },
