@@ -9,7 +9,6 @@ import { useCart } from "@shopify/hydrogen-react";
 import { clsx } from "clsx";
 import Image from "next/image";
 import Link from "next/link";
-// import { useRouter } from "next/router"
 import { SlMagnifier, SlBag, SlUser } from "react-icons/sl";
 
 import styles from "./index.module.css";
@@ -27,15 +26,9 @@ type Props = {
 export const Component: FC<Props> = ({
   className,
   data,
-  // data: {
-  //   mainMenu,
-  // },
-  // mainMenu,
   position = "fixed",
 }) => {
   const { totalQuantity } = useCart();
-  // const router = useRouter();
-  // console.log({router})
 
   return (
     <header

@@ -8,7 +8,7 @@ import type { PartialDeep } from "type-fest";
 import { clsx } from "clsx";
 import Link from "next/link";
 
-import SignupForm from "#/components/SignupForm";
+import NewsletterSignupForm from "#/components/NewsletterSignupForm";
 import SocialIcon from "#/components/SocialIcon";
 
 import styles from "./index.module.css";
@@ -67,7 +67,7 @@ export const Component: FC<Props> = ({ children, className, data }) => {
           Payment
         </Link>
       </nav>
-      <SignupForm className={clsx(styles.signupForm)} />
+      <NewsletterSignupForm className={clsx(styles.signupForm)} />
       <menu className={styles.social}>
         <SocialIcon url="https://www.instagram.com/uncnsrdlabel" />
         <SocialIcon url="https://twitter.com/uncnsrdlabel" />

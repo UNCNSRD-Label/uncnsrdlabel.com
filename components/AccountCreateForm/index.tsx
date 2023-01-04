@@ -1,7 +1,7 @@
 "use client";
 
 import { clsx } from "clsx";
-import type { FC, FormEvent, ReactNode } from "react";
+import type { FC, ReactNode } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 import { useRef } from "react";
@@ -15,14 +15,9 @@ type Inputs = {
 type Props = {
   children?: ReactNode;
   className?: ReactNode;
-  theme?: "dark" | "light";
 };
 
-export const Component: FC<Props> = ({
-  children,
-  className,
-  theme = "light",
-}) => {
+export const Component: FC<Props> = ({ children, className }) => {
   const signupFormRef = useRef<HTMLFormElement>(null);
   const signupFormFeedbackRef = useRef<HTMLOutputElement>(null);
 
@@ -67,18 +62,11 @@ export const Component: FC<Props> = ({
     }
   };
 
-  console.log(watch("email")); // watch input value by passing the name of it
+  // console.log(watch("email")); // watch input value by passing the name of it
 
   return (
     <form
-      className={clsx(
-        className,
-        theme,
-        styles.form,
-        "grid",
-        "grid-cols-1",
-        "gap-6"
-      )}
+      className={clsx(className, styles.form, "grid", "grid-cols-1", "gap-6")}
       onSubmit={handleSubmit(onSubmit)}
       ref={signupFormRef}
     >
