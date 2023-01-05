@@ -1,5 +1,5 @@
 .footer {
-  @apply grid-cols-2 mt-1 pb-4 pt-8 gap-x-12 gap-y-6 content-center grid;
+  @apply grid-cols-2 mt-1 pb-4 pt-8 gap-x-12 gap-y-12 content-center grid;
   background-color: hsl(var(--b2));
   column-gap: 1rem;
   grid-template-areas:
