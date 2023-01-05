@@ -11,6 +11,7 @@ fragment QueryRootInformation on QueryRoot {
   }
   shop {
     name
+    description
     paymentSettings {
       acceptedCardBrands
       countryCode
