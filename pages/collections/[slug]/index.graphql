@@ -5,6 +5,7 @@
 query Collection($slug: String!) {
   ...QueryRootInformation
   collection(handle: $slug) {
+    description
     descriptionHtml
     id
     image {

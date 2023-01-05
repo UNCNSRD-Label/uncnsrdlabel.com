@@ -8,6 +8,7 @@ import type { PartialDeep } from "type-fest";
 import { clsx } from "clsx";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { NextSeo } from "next-seo";
 import { forwardRef } from "react";
 
 import DrawerCart from "#/components/DrawerCart";
@@ -49,10 +50,16 @@ export const Component = forwardRef<HTMLDivElement, Props>(
     return (
       <>
         <Head>
-          <meta
-            name="description"
-            content="UNCNSRD is multifunctional swimwear for female figures who aren’t afraid to show off their assets and want to feel unapologetically sexy."
-          />
+          {data?.shop && (
+            <NextSeo
+              {...(data.shop.name && {
+                title: data.shop.name,
+              })}
+              {...(data.shop.description && {
+                description: data.shop.description,
+              })}
+            />
+          )}
           <link
             rel="apple-touch-icon"
             sizes="180x180"

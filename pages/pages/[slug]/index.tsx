@@ -8,6 +8,7 @@ import { request } from "graphql-request";
 import Error from "next/error";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { NextSeo } from "next-seo";
 import { createRef } from "react";
 
 import {
@@ -91,48 +92,66 @@ export default function Page({
   const images = getMedia(page);
 
   return (
-    <NextQueryParamsProvider>
-      <Layout
-        classNameDrawerContent={clsx("drawerContentOverflowY")}
-        classNameMain={clsx("page")}
-        data={data}
-        ref={scrollingElement}
-        showHeaderAndFooter={true}
-      >
-        <article
-          dangerouslySetInnerHTML={{
-            __html: page?.body,
-          }}
-        />
-        <section className={clsx(styles.section)}>
-          {images?.map((image, index) => {
-            if (!image?.url) {
-              return;
-            }
-
-            return (
-              <figure
-                className={clsx(styles.figure)}
-                id={`productVariantMediaGallery-${index}`}
-                key={index}
-              >
-                <Image
-                  alt={image?.altText ?? IMAGE_ALT_TEXT_FALLBACK}
-                  className={clsx(styles.image)}
-                  height={image?.height ?? 0}
-                  sizes={`(max-width: ${theme.screens.xs.max}) 100vw,
-              25vw`}
-                  src={image?.url}
-                  width={image?.width ?? 0}
-                />
-                <figcaption className={clsx(styles.figcaption)}>
-                  Featured image
-                </figcaption>
-              </figure>
-            );
+    <>
+      {data.page && data.shop && (
+        <NextSeo
+          {...(data.page.title && {
+            title: `${data.page.title} - ${data.shop?.name}`,
           })}
-        </section>
-      </Layout>
-    </NextQueryParamsProvider>
+          {...(data.page.seo?.title && {
+            title: `${data.page.seo?.title} - ${data.shop?.name}`,
+          })}
+          {...(data.page.bodySummary && {
+            description: data.page.bodySummary,
+          })}
+          {...(data.page.seo?.description && {
+            description: data.page.seo?.description,
+          })}
+        />
+      )}
+      <NextQueryParamsProvider>
+        <Layout
+          classNameDrawerContent={clsx("drawerContentOverflowY")}
+          classNameMain={clsx("page")}
+          data={data}
+          ref={scrollingElement}
+          showHeaderAndFooter={true}
+        >
+          <article
+            dangerouslySetInnerHTML={{
+              __html: page?.body,
+            }}
+          />
+          <section className={clsx(styles.section)}>
+            {images?.map((image, index) => {
+              if (!image?.url) {
+                return;
+              }
+
+              return (
+                <figure
+                  className={clsx(styles.figure)}
+                  id={`productVariantMediaGallery-${index}`}
+                  key={index}
+                >
+                  <Image
+                    alt={image?.altText ?? IMAGE_ALT_TEXT_FALLBACK}
+                    className={clsx(styles.image)}
+                    height={image?.height ?? 0}
+                    sizes={`(max-width: ${theme.screens.xs.max}) 100vw,
+              25vw`}
+                    src={image?.url}
+                    width={image?.width ?? 0}
+                  />
+                  <figcaption className={clsx(styles.figcaption)}>
+                    Featured image
+                  </figcaption>
+                </figure>
+              );
+            })}
+          </section>
+        </Layout>
+      </NextQueryParamsProvider>
+    </>
   );
 }

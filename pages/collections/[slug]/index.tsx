@@ -7,6 +7,7 @@ import { clsx } from "clsx";
 import { request } from "graphql-request";
 import Error from "next/error";
 import Link from "next/link";
+import { NextSeo } from "next-seo";
 import { createRef } from "react";
 
 import Breadcrumbs from "#/components/Breadcrumbs";
@@ -81,6 +82,22 @@ export default function Page({
       ref={scrollingElement}
       showHeaderAndFooter={true}
     >
+      {data.collection && data.shop && (
+        <NextSeo
+          {...(data.collection.title && {
+            title: `${data.collection.title} - ${data.shop?.name}`,
+          })}
+          {...(data.collection.seo?.title && {
+            title: `${data.collection.seo?.title} - ${data.shop?.name}`,
+          })}
+          {...(data.collection.bodySummary && {
+            description: data.collection.description,
+          })}
+          {...(data.collection.seo?.description && {
+            description: data.collection.seo?.description,
+          })}
+        />
+      )}
       <Breadcrumbs>
         <li>
           <Link href="/" title="Return to the home page">

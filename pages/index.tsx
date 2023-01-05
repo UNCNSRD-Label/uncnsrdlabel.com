@@ -56,10 +56,6 @@ export default function Page({
 }: StorefrontApiResponseOk<HomeQuery>) {
   return (
     <>
-      {" "}
-      {data && (
-        <NextSeo title={data.shop?.name} description={data.shop?.description} />
-      )}
       <Layout
         classNameDrawerContent={clsx(
           styles.drawerContent,
