@@ -11,7 +11,7 @@
       @apply block relative h-full w-full;
 
       .image {
-        @apply object-cover sm:object-contain object-top;
+        @apply object-contain sm:object-contain object-top;
       }
     }
   }
