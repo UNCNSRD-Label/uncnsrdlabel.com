@@ -8,7 +8,7 @@ import styles from "./index.module.css";
 
 type Props = {
   children?: ReactNode;
-  className?: ReactNode;
+  className?: string;
 };
 
 export const Component: FC<Props> = ({ children, className }) => {

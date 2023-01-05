@@ -15,7 +15,7 @@ import slugify from "slugify";
 import styles from "./index.module.css";
 
 type Props = {
-  className?: ReactNode;
+  className?: string;
   data?:
     | ({
         mainMenu?: Menu | null;

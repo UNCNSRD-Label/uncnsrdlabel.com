@@ -15,7 +15,7 @@ import styles from "./index.module.css";
 
 type Props = {
   children?: ReactNode;
-  className?: ReactNode;
+  className?: string;
   data?:
     | ({
         clientServiceMenu?: Menu | null;

@@ -25,7 +25,7 @@ import styles from "./index.module.css";
 
 type Props = {
   children?: ReactNode;
-  className?: ReactNode;
+  className?: string;
   path: string;
   product: PartialDeep<Product, { recurseIntoArrays: true }>;
 };

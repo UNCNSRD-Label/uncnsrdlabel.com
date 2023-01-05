@@ -1,7 +1,8 @@
 "use client";
 
-import { clsx } from "clsx";
 import type { FC, ReactNode } from "react";
+
+import { clsx } from "clsx";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 import { useRef } from "react";
@@ -14,7 +15,7 @@ type Inputs = {
 
 type Props = {
   children?: ReactNode;
-  className?: ReactNode;
+  className?: string;
 };
 
 export const Component: FC<Props> = ({ children, className }) => {

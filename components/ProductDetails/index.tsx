@@ -23,7 +23,7 @@ import {
 import styles from "./index.module.css";
 
 type Props = {
-  className?: ReactNode;
+  className?: string;
   path: string;
   product: PartialDeep<Product, { recurseIntoArrays: true }>;
   scrollingElement: RefObject<HTMLDivElement>;
@@ -36,7 +36,7 @@ export const Component: FC<Props> = ({
   scrollingElement,
 }) => {
   if (!product) {
-    return <Error statusCode={404} />
+    return <Error statusCode={404} />;
   }
 
   return (

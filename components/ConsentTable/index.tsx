@@ -6,7 +6,7 @@ import { getCookie, setCookie } from "cookies-next";
 import { cookieOptions, defaultConsentSettings } from "#/lib/constants/consent";
 
 type Props = {
-  className?: ReactNode;
+  className?: string;
 };
 
 export const Component: FC<Props> = ({ className }) => {

@@ -8,7 +8,7 @@
 } */
 
 .closeButton {
-  @apply relative -right-4;
+  /* @apply relative -right-4; */
   justify-self: end;
 }
 

@@ -14,7 +14,7 @@ import Mannequin from "#/components/canvas/props/Mannequin";
 import Scene from "#/components/canvas/Scene";
 
 type Props = {
-  className?: ReactNode;
+  className?: string;
   product: PartialDeep<Product, { recurseIntoArrays: true }>;
 };
 

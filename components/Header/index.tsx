@@ -14,7 +14,7 @@ import { SlMagnifier, SlBag, SlUser } from "react-icons/sl";
 import styles from "./index.module.css";
 
 type Props = {
-  className?: ReactNode;
+  className?: string;
   data?:
     | ({
         mainMenu?: Menu | null;
