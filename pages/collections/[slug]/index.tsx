@@ -90,7 +90,7 @@ export default function Page({
           {...(data.collection.seo?.title && {
             title: `${data.collection.seo?.title} - ${data.shop?.name}`,
           })}
-          {...(data.collection.bodySummary && {
+          {...(data.collection.description && {
             description: data.collection.description,
           })}
           {...(data.collection.seo?.description && {
