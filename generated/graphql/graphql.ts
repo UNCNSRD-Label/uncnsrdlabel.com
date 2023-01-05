@@ -6905,6 +6905,7 @@ export type QueryRootInformationFragment = ({
   shop: {
     __typename?: "Shop";
     name: string;
+    description?: string | null;
     shipsToCountries: Array<CountryCode>;
     paymentSettings: {
       __typename?: "PaymentSettings";
@@ -7005,6 +7006,7 @@ export type CollectionQuery = {
   __typename?: "QueryRoot";
   collection?: {
     __typename?: "Collection";
+    description: string;
     descriptionHtml: string;
     id: string;
     title: string;
@@ -7935,6 +7937,7 @@ export const QueryRootInformationFragmentDoc = {
               kind: "SelectionSet",
               selections: [
                 { kind: "Field", name: { kind: "Name", value: "name" } },
+                { kind: "Field", name: { kind: "Name", value: "description" } },
                 {
                   kind: "Field",
                   name: { kind: "Name", value: "paymentSettings" },
@@ -8267,6 +8270,7 @@ export const CollectionDocument = {
             selectionSet: {
               kind: "SelectionSet",
               selections: [
+                { kind: "Field", name: { kind: "Name", value: "description" } },
                 {
                   kind: "Field",
                   name: { kind: "Name", value: "descriptionHtml" },

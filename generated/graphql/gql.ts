@@ -25,7 +25,7 @@ const documents = {
     types.ProductBasicInformationFragmentDoc,
   'fragment ProductVariantBasicInformation on ProductVariant {\n  availableForSale\n  currentlyNotInStock\n  id\n  metafields(\n    identifiers: [{namespace: "custom", key: "color"}, {namespace: "custom", key: "complementary_products"}, {namespace: "custom", key: "composition"}, {namespace: "custom", key: "related_products"}]\n  ) {\n    key\n    namespace\n    type\n    value\n  }\n  price {\n    amount\n    currencyCode\n  }\n  quantityAvailable\n  requiresShipping\n  selectedOptions {\n    name\n    value\n  }\n  sku\n  title\n}':
     types.ProductVariantBasicInformationFragmentDoc,
-  "fragment QueryRootInformation on QueryRoot {\n  ...MenusInformation\n  collections(first: 192) {\n    nodes {\n      handle\n      id\n      title\n      updatedAt\n    }\n  }\n  shop {\n    name\n    paymentSettings {\n      acceptedCardBrands\n      countryCode\n      currencyCode\n      enabledPresentmentCurrencies\n    }\n    shipsToCountries\n  }\n}":
+  "fragment QueryRootInformation on QueryRoot {\n  ...MenusInformation\n  collections(first: 192) {\n    nodes {\n      handle\n      id\n      title\n      updatedAt\n    }\n  }\n  shop {\n    name\n    description\n    paymentSettings {\n      acceptedCardBrands\n      countryCode\n      currencyCode\n      enabledPresentmentCurrencies\n    }\n    shipsToCountries\n  }\n}":
     types.QueryRootInformationFragmentDoc,
   "fragment ShopPolicyInformation on ShopPolicy {\n  body\n  handle\n  id\n  title\n  url\n}":
     types.ShopPolicyInformationFragmentDoc,
@@ -34,7 +34,7 @@ const documents = {
   "query Account {\n  ...QueryRootInformation\n}": types.AccountDocument,
   "query CampaignProducts {\n  ...QueryRootInformation\n  products(first: 16) {\n    nodes {\n      availableForSale\n      description\n      featuredImage {\n        altText\n        height\n        url\n        width\n      }\n      handle\n      id\n      priceRange {\n        maxVariantPrice {\n          amount\n          currencyCode\n        }\n        minVariantPrice {\n          amount\n          currencyCode\n        }\n      }\n      productType\n      publishedAt\n      title\n      vendor\n    }\n  }\n}":
     types.CampaignProductsDocument,
-  "query Collection($slug: String!) {\n  ...QueryRootInformation\n  collection(handle: $slug) {\n    descriptionHtml\n    id\n    image {\n      ...ImageBasicInformation\n    }\n    products(first: 64) {\n      nodes {\n        ...ProductBasicInformation\n        variants(first: 32) {\n          pageInfo {\n            hasNextPage\n            hasPreviousPage\n          }\n          nodes {\n            ...ProductVariantBasicInformation\n          }\n        }\n      }\n    }\n    seo {\n      description\n      title\n    }\n    title\n    updatedAt\n  }\n}":
+  "query Collection($slug: String!) {\n  ...QueryRootInformation\n  collection(handle: $slug) {\n    description\n    descriptionHtml\n    id\n    image {\n      ...ImageBasicInformation\n    }\n    products(first: 64) {\n      nodes {\n        ...ProductBasicInformation\n        variants(first: 32) {\n          pageInfo {\n            hasNextPage\n            hasPreviousPage\n          }\n          nodes {\n            ...ProductVariantBasicInformation\n          }\n        }\n      }\n    }\n    seo {\n      description\n      title\n    }\n    title\n    updatedAt\n  }\n}":
     types.CollectionDocument,
   "query Collections {\n  ...QueryRootInformation\n  collections(first: 192) {\n    nodes {\n      description\n      handle\n      id\n      image {\n        ... on Image {\n          altText\n          height\n          url\n          width\n        }\n      }\n      title\n      updatedAt\n    }\n  }\n}":
     types.CollectionsDocument,
@@ -52,6 +52,20 @@ const documents = {
   "query Types {\n  ...QueryRootInformation\n  productTypes(first: 192) {\n    edges {\n      node\n    }\n  }\n}":
     types.TypesDocument,
 };
+
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ *
+ *
+ * @example
+ * ```ts
+ * const query = gql(`query GetUser($id: ID!) { user(id: $id) { name } }`);
+ * ```
+ *
+ * The query argument is unknown!
+ * Please regenerate the types.
+ **/
+export function graphql(source: string): unknown;
 
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
@@ -93,8 +107,8 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "fragment QueryRootInformation on QueryRoot {\n  ...MenusInformation\n  collections(first: 192) {\n    nodes {\n      handle\n      id\n      title\n      updatedAt\n    }\n  }\n  shop {\n    name\n    paymentSettings {\n      acceptedCardBrands\n      countryCode\n      currencyCode\n      enabledPresentmentCurrencies\n    }\n    shipsToCountries\n  }\n}"
-): typeof documents["fragment QueryRootInformation on QueryRoot {\n  ...MenusInformation\n  collections(first: 192) {\n    nodes {\n      handle\n      id\n      title\n      updatedAt\n    }\n  }\n  shop {\n    name\n    paymentSettings {\n      acceptedCardBrands\n      countryCode\n      currencyCode\n      enabledPresentmentCurrencies\n    }\n    shipsToCountries\n  }\n}"];
+  source: "fragment QueryRootInformation on QueryRoot {\n  ...MenusInformation\n  collections(first: 192) {\n    nodes {\n      handle\n      id\n      title\n      updatedAt\n    }\n  }\n  shop {\n    name\n    description\n    paymentSettings {\n      acceptedCardBrands\n      countryCode\n      currencyCode\n      enabledPresentmentCurrencies\n    }\n    shipsToCountries\n  }\n}"
+): typeof documents["fragment QueryRootInformation on QueryRoot {\n  ...MenusInformation\n  collections(first: 192) {\n    nodes {\n      handle\n      id\n      title\n      updatedAt\n    }\n  }\n  shop {\n    name\n    description\n    paymentSettings {\n      acceptedCardBrands\n      countryCode\n      currencyCode\n      enabledPresentmentCurrencies\n    }\n    shipsToCountries\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -123,8 +137,8 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "query Collection($slug: String!) {\n  ...QueryRootInformation\n  collection(handle: $slug) {\n    descriptionHtml\n    id\n    image {\n      ...ImageBasicInformation\n    }\n    products(first: 64) {\n      nodes {\n        ...ProductBasicInformation\n        variants(first: 32) {\n          pageInfo {\n            hasNextPage\n            hasPreviousPage\n          }\n          nodes {\n            ...ProductVariantBasicInformation\n          }\n        }\n      }\n    }\n    seo {\n      description\n      title\n    }\n    title\n    updatedAt\n  }\n}"
-): typeof documents["query Collection($slug: String!) {\n  ...QueryRootInformation\n  collection(handle: $slug) {\n    descriptionHtml\n    id\n    image {\n      ...ImageBasicInformation\n    }\n    products(first: 64) {\n      nodes {\n        ...ProductBasicInformation\n        variants(first: 32) {\n          pageInfo {\n            hasNextPage\n            hasPreviousPage\n          }\n          nodes {\n            ...ProductVariantBasicInformation\n          }\n        }\n      }\n    }\n    seo {\n      description\n      title\n    }\n    title\n    updatedAt\n  }\n}"];
+  source: "query Collection($slug: String!) {\n  ...QueryRootInformation\n  collection(handle: $slug) {\n    description\n    descriptionHtml\n    id\n    image {\n      ...ImageBasicInformation\n    }\n    products(first: 64) {\n      nodes {\n        ...ProductBasicInformation\n        variants(first: 32) {\n          pageInfo {\n            hasNextPage\n            hasPreviousPage\n          }\n          nodes {\n            ...ProductVariantBasicInformation\n          }\n        }\n      }\n    }\n    seo {\n      description\n      title\n    }\n    title\n    updatedAt\n  }\n}"
+): typeof documents["query Collection($slug: String!) {\n  ...QueryRootInformation\n  collection(handle: $slug) {\n    description\n    descriptionHtml\n    id\n    image {\n      ...ImageBasicInformation\n    }\n    products(first: 64) {\n      nodes {\n        ...ProductBasicInformation\n        variants(first: 32) {\n          pageInfo {\n            hasNextPage\n            hasPreviousPage\n          }\n          nodes {\n            ...ProductVariantBasicInformation\n          }\n        }\n      }\n    }\n    seo {\n      description\n      title\n    }\n    title\n    updatedAt\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -173,20 +187,6 @@ export function graphql(
 export function graphql(
   source: "query Types {\n  ...QueryRootInformation\n  productTypes(first: 192) {\n    edges {\n      node\n    }\n  }\n}"
 ): typeof documents["query Types {\n  ...QueryRootInformation\n  productTypes(first: 192) {\n    edges {\n      node\n    }\n  }\n}"];
-
-/**
- * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
- *
- *
- * @example
- * ```ts
- * const query = gql(`query GetUser($id: ID!) { user(id: $id) { name } }`);
- * ```
- *
- * The query argument is unknown!
- * Please regenerate the types.
- **/
-export function graphql(source: string): unknown;
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};
