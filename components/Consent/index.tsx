@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { RiCloseLine } from "react-icons/ri";
 
 import ConsentTable from "#/components/ConsentTable";
+import Modal from "#/components/Modal";
 
 import { cookieOptions, defaultConsentSettings } from "#/lib/constants/consent";
 
@@ -19,17 +20,22 @@ type ConsentSettings = {
 };
 
 type Props = {
-  className?: ReactNode;
+  className?: string;
   data?: PartialDeep<QueryRoot, { recurseIntoArrays: true }> | null;
   route?: string;
   view: "banner" | "page";
 };
 
 export const Component: FC<Props> = ({ className, data, route, view }) => {
-  const [dismiss, setDismiss] = useState(true);
+  // const [dismiss, setDismiss] = useState(true);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const toggleDialog = () => setDialogOpen((bool) => !bool);
+  const closeDialog = () => setDialogOpen(false);
 
   useEffect(() => {
-    setDismiss(hasCookie("consentSettings"));
+    if (hasCookie("consentSettings") !== true) {
+      setDialogOpen(true);
+    }
   }, []);
 
   const acceptAllConsents = () => {
@@ -41,7 +47,7 @@ export const Component: FC<Props> = ({ className, data, route, view }) => {
       security_storage: "granted",
     };
 
-    setDismiss(true);
+    setDialogOpen(false);
 
     setCookie("consentSettings", newConsentSettings, cookieOptions);
 
@@ -51,14 +57,15 @@ export const Component: FC<Props> = ({ className, data, route, view }) => {
   };
 
   const closeP = () => {
-    setDismiss(true);
+    setDialogOpen(false);
+
     console.log("closing");
   };
 
   const denyAllConsents = () => {
     const newConsentSettings = defaultConsentSettings;
 
-    setDismiss(true);
+    setDialogOpen(false);
 
     setCookie("consentSettings", newConsentSettings, cookieOptions);
 
@@ -69,12 +76,17 @@ export const Component: FC<Props> = ({ className, data, route, view }) => {
     return null;
   }
 
-  if (dismiss === true) {
-    return null;
-  }
+  // if (dialogOpen === false) {
+  //   return null;
+  // }
 
   return (
-    <div className={clsx(className, styles.root, dismiss && "hidden")}>
+    <Modal
+      className={clsx(className, styles.root)}
+      closeOnOutsideClick
+      onRequestClose={closeDialog}
+      open={dialogOpen}
+    >
       <Image
         alt={`${data?.shop?.name} logo`}
         className={clsx(styles.logo, "dark:invert")}
@@ -138,7 +150,7 @@ export const Component: FC<Props> = ({ className, data, route, view }) => {
           Deny all
         </button>
       </div>
-    </div>
+    </Modal>
   );
 };
 
