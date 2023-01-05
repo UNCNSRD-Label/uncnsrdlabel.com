@@ -1,0 +1,8 @@
+fragment CollectionsBasicInformation on CollectionConnection {
+  nodes {
+    handle
+    id
+    title
+    updatedAt
+  }
+}

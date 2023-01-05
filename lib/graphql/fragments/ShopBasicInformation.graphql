@@ -1,0 +1,11 @@
+fragment ShopBasicInformation on Shop {
+  name
+  description
+  # paymentSettings {
+  #   acceptedCardBrands
+  #   countryCode
+  #   currencyCode
+  #   enabledPresentmentCurrencies
+  # }
+  # shipsToCountries
+}

@@ -1,23 +1,12 @@
+#import "#/lib/graphql/fragments/CollectionsBasicInformation.graphql"
 #import "#/lib/graphql/fragments/MenusInformation.graphql"
+#import "#/lib/graphql/fragments/ShopBasicInformation.graphql"
 fragment QueryRootInformation on QueryRoot {
   ...MenusInformation
   collections(first: 192) {
-    nodes {
-      handle
-      id
-      title
-      updatedAt
-    }
+    ...CollectionsBasicInformation
   }
   shop {
-    name
-    description
-    paymentSettings {
-      acceptedCardBrands
-      countryCode
-      currencyCode
-      enabledPresentmentCurrencies
-    }
-    shipsToCountries
+    ...ShopBasicInformation
   }
 }
