@@ -1,0 +1,39 @@
+#import "#/lib/graphql/fragments/ImageBasicInformation.graphql"
+#import "#/lib/graphql/fragments/QueryRootInformation.graphql"
+query Help {
+  ...QueryRootInformation
+  blog(handle: "help-center") {
+    articles(first: 64) {
+      nodes {
+        # content
+        # contentHtml
+        excerpt
+        excerptHtml
+        handle
+        id
+        image {
+          ...ImageBasicInformation
+        }
+        metafields(
+          identifiers: [
+            { namespace: "custom", key: "category" }
+            { namespace: "custom", key: "featured" }
+          ]
+        ) {
+          description
+          key
+          namespace
+          type
+          value
+        }
+        publishedAt
+        seo {
+          description
+          title
+        }
+        tags
+        title
+      }
+    }
+  }
+}

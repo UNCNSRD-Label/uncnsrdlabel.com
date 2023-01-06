@@ -1,0 +1,32 @@
+.main {
+  @apply gap-8 grid;
+  margin-block-start: var(--viewport-margin-block-start);
+}
+
+.figure {
+  @apply aspect-square relative h-full sm:min-w-[80vw] max-w-full overflow-hidden;
+  
+  .link {
+    @apply block relative h-full w-full;
+
+    .image {
+      @apply object-cover sm:object-contain object-bottom;
+    }
+  }
+}
+
+.article {
+  @apply prose prose-xl;
+  max-inline-size: 36ch;
+  margin-inline: auto;
+
+  .title {
+    font-size: clamp(1.5rem, 3vw, 3rem);
+  }
+
+  .section {
+    .countries {
+      @apply gap-4 grid grid-cols-8;
+    }
+  }
+}
