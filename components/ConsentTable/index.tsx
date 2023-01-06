@@ -85,7 +85,7 @@ export const Component: FC<Props> = ({ className }) => {
           {fields.map((field) => (
             <tr key={field.name}>
               <td>
-                <code className="label-text capitalize">
+                <code className="capitalize">
                   {field.name.replaceAll("_", " ")}
                 </code>
               </td>
