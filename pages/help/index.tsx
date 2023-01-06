@@ -97,7 +97,7 @@ export default function Page({
             <h2>{node.title}</h2>
             {node.image && (
               <figure className={clsx(styles.figure)}>
-                <Image
+                {/* <Image
                   alt="Sexy young woman eating a cookie"
                   className={clsx(styles.image, "onLoadingComplete")}
                   height={node.image.height}
@@ -105,7 +105,7 @@ export default function Page({
                   priority
                   src={node.image.url}
                   width={node.image.width}
-                />
+                /> */}
               </figure>
             )}
           </article>

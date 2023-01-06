@@ -54,24 +54,10 @@ export default function Page({
   data,
   errors,
 }: StorefrontApiResponseOk<AboutQuery>) {
-  // const { asPath, pathname } = useRouter();
-
-  // const scrollingElement = createRef<HTMLDivElement>();
-  // console.log({ data });
-
-  if (!data?.shop) {
-    console.error({ errors });
-    return <Error statusCode={404} />;
-  }
-
   if (errors) {
     console.error({ errors });
     return <Error statusCode={500} />;
   }
-
-  const { shop } = data;
-
-  console.log({ shop });
 
   return (
     <Layout
