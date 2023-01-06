@@ -15,10 +15,6 @@ import { cookieOptions, defaultConsentSettings } from "#/lib/constants/consent";
 
 import styles from "./index.module.css";
 
-type ConsentSettings = {
-  [index: string]: "denied" | "granted";
-};
-
 type Props = {
   className?: string;
   data?: PartialDeep<QueryRoot, { recurseIntoArrays: true }> | null;
@@ -26,8 +22,7 @@ type Props = {
   view: "banner" | "page";
 };
 
-export const Component: FC<Props> = ({ className, data, route, view }) => {
-  // const [dismiss, setDismiss] = useState(true);
+export const Component: FC<Props> = ({ className, data, route }) => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const toggleDialog = () => setDialogOpen((bool) => !bool);
   const closeDialog = () => setDialogOpen(false);
@@ -75,10 +70,6 @@ export const Component: FC<Props> = ({ className, data, route, view }) => {
   if (route && ["/", "/consent"].includes(route)) {
     return null;
   }
-
-  // if (dialogOpen === false) {
-  //   return null;
-  // }
 
   return (
     <Modal
