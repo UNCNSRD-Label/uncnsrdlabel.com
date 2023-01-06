@@ -13,6 +13,8 @@ import { TypedDocumentNode as DocumentNode } from "@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel-plugin for production.
  */
 const documents = {
+  "fragment CollectionsBasicInformation on CollectionConnection {\n  nodes {\n    handle\n    id\n    title\n    updatedAt\n  }\n}":
+    types.CollectionsBasicInformationFragmentDoc,
   "fragment ImageBasicInformation on Image {\n  altText\n  height\n  url\n  width\n}":
     types.ImageBasicInformationFragmentDoc,
   "fragment MenuInformation on Menu {\n  handle\n  id\n  items {\n    ...MenuItemInformation\n  }\n  itemsCount\n  title\n}":
@@ -25,8 +27,10 @@ const documents = {
     types.ProductBasicInformationFragmentDoc,
   'fragment ProductVariantBasicInformation on ProductVariant {\n  availableForSale\n  currentlyNotInStock\n  id\n  metafields(\n    identifiers: [{namespace: "custom", key: "color"}, {namespace: "custom", key: "complementary_products"}, {namespace: "custom", key: "composition"}, {namespace: "custom", key: "related_products"}]\n  ) {\n    key\n    namespace\n    type\n    value\n  }\n  price {\n    amount\n    currencyCode\n  }\n  quantityAvailable\n  requiresShipping\n  selectedOptions {\n    name\n    value\n  }\n  sku\n  title\n}':
     types.ProductVariantBasicInformationFragmentDoc,
-  "fragment QueryRootInformation on QueryRoot {\n  ...MenusInformation\n  collections(first: 192) {\n    nodes {\n      handle\n      id\n      title\n      updatedAt\n    }\n  }\n  shop {\n    name\n    description\n    paymentSettings {\n      acceptedCardBrands\n      countryCode\n      currencyCode\n      enabledPresentmentCurrencies\n    }\n    shipsToCountries\n  }\n}":
+  "fragment QueryRootInformation on QueryRoot {\n  ...MenusInformation\n  collections(first: 192) {\n    ...CollectionsBasicInformation\n  }\n  shop {\n    ...ShopBasicInformation\n  }\n}":
     types.QueryRootInformationFragmentDoc,
+  "fragment ShopBasicInformation on Shop {\n  name\n  description\n}":
+    types.ShopBasicInformationFragmentDoc,
   "fragment ShopPolicyInformation on ShopPolicy {\n  body\n  handle\n  id\n  title\n  url\n}":
     types.ShopPolicyInformationFragmentDoc,
   "query Shop {\n  shop {\n    name\n    paymentSettings {\n      acceptedCardBrands\n      countryCode\n      currencyCode\n      enabledPresentmentCurrencies\n    }\n    shipsToCountries\n  }\n}":
@@ -71,6 +75,12 @@ export function graphql(source: string): unknown;
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
+  source: "fragment CollectionsBasicInformation on CollectionConnection {\n  nodes {\n    handle\n    id\n    title\n    updatedAt\n  }\n}"
+): typeof documents["fragment CollectionsBasicInformation on CollectionConnection {\n  nodes {\n    handle\n    id\n    title\n    updatedAt\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
   source: "fragment ImageBasicInformation on Image {\n  altText\n  height\n  url\n  width\n}"
 ): typeof documents["fragment ImageBasicInformation on Image {\n  altText\n  height\n  url\n  width\n}"];
 /**
@@ -107,8 +117,14 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "fragment QueryRootInformation on QueryRoot {\n  ...MenusInformation\n  collections(first: 192) {\n    nodes {\n      handle\n      id\n      title\n      updatedAt\n    }\n  }\n  shop {\n    name\n    description\n    paymentSettings {\n      acceptedCardBrands\n      countryCode\n      currencyCode\n      enabledPresentmentCurrencies\n    }\n    shipsToCountries\n  }\n}"
-): typeof documents["fragment QueryRootInformation on QueryRoot {\n  ...MenusInformation\n  collections(first: 192) {\n    nodes {\n      handle\n      id\n      title\n      updatedAt\n    }\n  }\n  shop {\n    name\n    description\n    paymentSettings {\n      acceptedCardBrands\n      countryCode\n      currencyCode\n      enabledPresentmentCurrencies\n    }\n    shipsToCountries\n  }\n}"];
+  source: "fragment QueryRootInformation on QueryRoot {\n  ...MenusInformation\n  collections(first: 192) {\n    ...CollectionsBasicInformation\n  }\n  shop {\n    ...ShopBasicInformation\n  }\n}"
+): typeof documents["fragment QueryRootInformation on QueryRoot {\n  ...MenusInformation\n  collections(first: 192) {\n    ...CollectionsBasicInformation\n  }\n  shop {\n    ...ShopBasicInformation\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: "fragment ShopBasicInformation on Shop {\n  name\n  description\n}"
+): typeof documents["fragment ShopBasicInformation on Shop {\n  name\n  description\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

@@ -6764,6 +6764,17 @@ export enum WeightUnit {
   Pounds = "POUNDS",
 }
 
+export type CollectionsBasicInformationFragment = {
+  __typename?: "CollectionConnection";
+  nodes: Array<{
+    __typename?: "Collection";
+    handle: string;
+    id: string;
+    title: string;
+    updatedAt: string;
+  }>;
+} & { " $fragmentName"?: "CollectionsBasicInformationFragment" };
+
 export type ImageBasicInformationFragment = {
   __typename?: "Image";
   altText?: string | null;
@@ -6892,32 +6903,25 @@ export type ProductVariantBasicInformationFragment = {
 
 export type QueryRootInformationFragment = ({
   __typename?: "QueryRoot";
-  collections: {
-    __typename?: "CollectionConnection";
-    nodes: Array<{
-      __typename?: "Collection";
-      handle: string;
-      id: string;
-      title: string;
-      updatedAt: string;
-    }>;
+  collections: { __typename?: "CollectionConnection" } & {
+    " $fragmentRefs"?: {
+      CollectionsBasicInformationFragment: CollectionsBasicInformationFragment;
+    };
   };
-  shop: {
-    __typename?: "Shop";
-    name: string;
-    description?: string | null;
-    shipsToCountries: Array<CountryCode>;
-    paymentSettings: {
-      __typename?: "PaymentSettings";
-      acceptedCardBrands: Array<CardBrand>;
-      countryCode: CountryCode;
-      currencyCode: CurrencyCode;
-      enabledPresentmentCurrencies: Array<CurrencyCode>;
+  shop: { __typename?: "Shop" } & {
+    " $fragmentRefs"?: {
+      ShopBasicInformationFragment: ShopBasicInformationFragment;
     };
   };
 } & {
   " $fragmentRefs"?: { MenusInformationFragment: MenusInformationFragment };
 }) & { " $fragmentName"?: "QueryRootInformationFragment" };
+
+export type ShopBasicInformationFragment = {
+  __typename?: "Shop";
+  name: string;
+  description?: string | null;
+} & { " $fragmentName"?: "ShopBasicInformationFragment" };
 
 export type ShopPolicyInformationFragment = {
   __typename?: "ShopPolicy";
@@ -7878,6 +7882,57 @@ export const MenusInformationFragmentDoc = {
     ...MenuInformationFragmentDoc.definitions,
   ],
 } as unknown as DocumentNode<MenusInformationFragment, unknown>;
+export const CollectionsBasicInformationFragmentDoc = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "FragmentDefinition",
+      name: { kind: "Name", value: "CollectionsBasicInformation" },
+      typeCondition: {
+        kind: "NamedType",
+        name: { kind: "Name", value: "CollectionConnection" },
+      },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "nodes" },
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "handle" } },
+                { kind: "Field", name: { kind: "Name", value: "id" } },
+                { kind: "Field", name: { kind: "Name", value: "title" } },
+                { kind: "Field", name: { kind: "Name", value: "updatedAt" } },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<CollectionsBasicInformationFragment, unknown>;
+export const ShopBasicInformationFragmentDoc = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "FragmentDefinition",
+      name: { kind: "Name", value: "ShopBasicInformation" },
+      typeCondition: {
+        kind: "NamedType",
+        name: { kind: "Name", value: "Shop" },
+      },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          { kind: "Field", name: { kind: "Name", value: "name" } },
+          { kind: "Field", name: { kind: "Name", value: "description" } },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<ShopBasicInformationFragment, unknown>;
 export const QueryRootInformationFragmentDoc = {
   kind: "Document",
   definitions: [
@@ -7909,23 +7964,8 @@ export const QueryRootInformationFragmentDoc = {
               kind: "SelectionSet",
               selections: [
                 {
-                  kind: "Field",
-                  name: { kind: "Name", value: "nodes" },
-                  selectionSet: {
-                    kind: "SelectionSet",
-                    selections: [
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "handle" },
-                      },
-                      { kind: "Field", name: { kind: "Name", value: "id" } },
-                      { kind: "Field", name: { kind: "Name", value: "title" } },
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "updatedAt" },
-                      },
-                    ],
-                  },
+                  kind: "FragmentSpread",
+                  name: { kind: "Name", value: "CollectionsBasicInformation" },
                 },
               ],
             },
@@ -7936,39 +7976,9 @@ export const QueryRootInformationFragmentDoc = {
             selectionSet: {
               kind: "SelectionSet",
               selections: [
-                { kind: "Field", name: { kind: "Name", value: "name" } },
-                { kind: "Field", name: { kind: "Name", value: "description" } },
                 {
-                  kind: "Field",
-                  name: { kind: "Name", value: "paymentSettings" },
-                  selectionSet: {
-                    kind: "SelectionSet",
-                    selections: [
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "acceptedCardBrands" },
-                      },
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "countryCode" },
-                      },
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "currencyCode" },
-                      },
-                      {
-                        kind: "Field",
-                        name: {
-                          kind: "Name",
-                          value: "enabledPresentmentCurrencies",
-                        },
-                      },
-                    ],
-                  },
-                },
-                {
-                  kind: "Field",
-                  name: { kind: "Name", value: "shipsToCountries" },
+                  kind: "FragmentSpread",
+                  name: { kind: "Name", value: "ShopBasicInformation" },
                 },
               ],
             },
@@ -7977,6 +7987,8 @@ export const QueryRootInformationFragmentDoc = {
       },
     },
     ...MenusInformationFragmentDoc.definitions,
+    ...CollectionsBasicInformationFragmentDoc.definitions,
+    ...ShopBasicInformationFragmentDoc.definitions,
   ],
 } as unknown as DocumentNode<QueryRootInformationFragment, unknown>;
 export const ShopPolicyInformationFragmentDoc = {
