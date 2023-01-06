@@ -1,12 +1,4 @@
-query Shop {
-  shop {
-    name
-    paymentSettings {
-      acceptedCardBrands
-      countryCode
-      currencyCode
-      enabledPresentmentCurrencies
-    }
-    shipsToCountries
-  }
+#import "#/lib/graphql/fragments/QueryRootInformation.graphql"
+query About {
+  ...QueryRootInformation
 }

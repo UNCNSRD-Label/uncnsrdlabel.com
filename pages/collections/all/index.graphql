@@ -9,12 +9,7 @@ query Collections {
       handle
       id
       image {
-        ... on Image {
-          altText
-          height
-          url
-          width
-        }
+        ... ImageBasicInformation
       }
       title
       updatedAt

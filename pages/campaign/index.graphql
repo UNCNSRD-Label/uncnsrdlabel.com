@@ -1,3 +1,4 @@
+#import "#/lib/graphql/fragments/ImageBasicInformation.graphql"
 #import "#/lib/graphql/fragments/QueryRootInformation.graphql"
 query CampaignProducts {
   ...QueryRootInformation
@@ -6,10 +7,7 @@ query CampaignProducts {
       availableForSale
       description
       featuredImage {
-        altText
-        height
-        url
-        width
+        ...ImageBasicInformation
       }
       handle
       id

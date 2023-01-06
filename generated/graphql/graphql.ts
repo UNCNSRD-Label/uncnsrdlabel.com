@@ -6932,21 +6932,11 @@ export type ShopPolicyInformationFragment = {
   url: string;
 } & { " $fragmentName"?: "ShopPolicyInformationFragment" };
 
-export type ShopQueryVariables = Exact<{ [key: string]: never }>;
+export type AboutQueryVariables = Exact<{ [key: string]: never }>;
 
-export type ShopQuery = {
-  __typename?: "QueryRoot";
-  shop: {
-    __typename?: "Shop";
-    name: string;
-    shipsToCountries: Array<CountryCode>;
-    paymentSettings: {
-      __typename?: "PaymentSettings";
-      acceptedCardBrands: Array<CardBrand>;
-      countryCode: CountryCode;
-      currencyCode: CurrencyCode;
-      enabledPresentmentCurrencies: Array<CurrencyCode>;
-    };
+export type AboutQuery = { __typename?: "QueryRoot" } & {
+  " $fragmentRefs"?: {
+    QueryRootInformationFragment: QueryRootInformationFragment;
   };
 };
 
@@ -6974,13 +6964,13 @@ export type CampaignProductsQuery = {
       publishedAt: string;
       title: string;
       vendor: string;
-      featuredImage?: {
-        __typename?: "Image";
-        altText?: string | null;
-        height?: number | null;
-        url: string;
-        width?: number | null;
-      } | null;
+      featuredImage?:
+        | ({ __typename?: "Image" } & {
+            " $fragmentRefs"?: {
+              ImageBasicInformationFragment: ImageBasicInformationFragment;
+            };
+          })
+        | null;
       priceRange: {
         __typename?: "ProductPriceRange";
         maxVariantPrice: {
@@ -7094,6 +7084,52 @@ export type ConsentQueryVariables = Exact<{ [key: string]: never }>;
 export type ConsentQuery = {
   __typename?: "QueryRoot";
   shop: { __typename?: "Shop"; name: string };
+} & {
+  " $fragmentRefs"?: {
+    QueryRootInformationFragment: QueryRootInformationFragment;
+  };
+};
+
+export type HelpQueryVariables = Exact<{ [key: string]: never }>;
+
+export type HelpQuery = {
+  __typename?: "QueryRoot";
+  blog?: {
+    __typename?: "Blog";
+    articles: {
+      __typename?: "ArticleConnection";
+      nodes: Array<{
+        __typename?: "Article";
+        excerpt?: string | null;
+        excerptHtml?: string | null;
+        handle: string;
+        id: string;
+        publishedAt: string;
+        tags: Array<string>;
+        title: string;
+        image?:
+          | ({ __typename?: "Image" } & {
+              " $fragmentRefs"?: {
+                ImageBasicInformationFragment: ImageBasicInformationFragment;
+              };
+            })
+          | null;
+        metafields: Array<{
+          __typename?: "Metafield";
+          description?: string | null;
+          key: string;
+          namespace: string;
+          type: string;
+          value: string;
+        } | null>;
+        seo?: {
+          __typename?: "SEO";
+          description?: string | null;
+          title?: string | null;
+        } | null;
+      }>;
+    };
+  } | null;
 } & {
   " $fragmentRefs"?: {
     QueryRootInformationFragment: QueryRootInformationFragment;
@@ -8014,63 +8050,26 @@ export const ShopPolicyInformationFragmentDoc = {
     },
   ],
 } as unknown as DocumentNode<ShopPolicyInformationFragment, unknown>;
-export const ShopDocument = {
+export const AboutDocument = {
   kind: "Document",
   definitions: [
     {
       kind: "OperationDefinition",
       operation: "query",
-      name: { kind: "Name", value: "Shop" },
+      name: { kind: "Name", value: "About" },
       selectionSet: {
         kind: "SelectionSet",
         selections: [
           {
-            kind: "Field",
-            name: { kind: "Name", value: "shop" },
-            selectionSet: {
-              kind: "SelectionSet",
-              selections: [
-                { kind: "Field", name: { kind: "Name", value: "name" } },
-                {
-                  kind: "Field",
-                  name: { kind: "Name", value: "paymentSettings" },
-                  selectionSet: {
-                    kind: "SelectionSet",
-                    selections: [
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "acceptedCardBrands" },
-                      },
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "countryCode" },
-                      },
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "currencyCode" },
-                      },
-                      {
-                        kind: "Field",
-                        name: {
-                          kind: "Name",
-                          value: "enabledPresentmentCurrencies",
-                        },
-                      },
-                    ],
-                  },
-                },
-                {
-                  kind: "Field",
-                  name: { kind: "Name", value: "shipsToCountries" },
-                },
-              ],
-            },
+            kind: "FragmentSpread",
+            name: { kind: "Name", value: "QueryRootInformation" },
           },
         ],
       },
     },
+    ...QueryRootInformationFragmentDoc.definitions,
   ],
-} as unknown as DocumentNode<ShopQuery, ShopQueryVariables>;
+} as unknown as DocumentNode<AboutQuery, AboutQueryVariables>;
 export const AccountDocument = {
   kind: "Document",
   definitions: [
@@ -8139,20 +8138,11 @@ export const CampaignProductsDocument = {
                           kind: "SelectionSet",
                           selections: [
                             {
-                              kind: "Field",
-                              name: { kind: "Name", value: "altText" },
-                            },
-                            {
-                              kind: "Field",
-                              name: { kind: "Name", value: "height" },
-                            },
-                            {
-                              kind: "Field",
-                              name: { kind: "Name", value: "url" },
-                            },
-                            {
-                              kind: "Field",
-                              name: { kind: "Name", value: "width" },
+                              kind: "FragmentSpread",
+                              name: {
+                                kind: "Name",
+                                value: "ImageBasicInformation",
+                              },
                             },
                           ],
                         },
@@ -8234,6 +8224,7 @@ export const CampaignProductsDocument = {
       },
     },
     ...QueryRootInformationFragmentDoc.definitions,
+    ...ImageBasicInformationFragmentDoc.definitions,
   ],
 } as unknown as DocumentNode<
   CampaignProductsQuery,
@@ -8543,6 +8534,237 @@ export const ConsentDocument = {
     ...QueryRootInformationFragmentDoc.definitions,
   ],
 } as unknown as DocumentNode<ConsentQuery, ConsentQueryVariables>;
+export const HelpDocument = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "query",
+      name: { kind: "Name", value: "Help" },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {
+            kind: "FragmentSpread",
+            name: { kind: "Name", value: "QueryRootInformation" },
+          },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "blog" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "handle" },
+                value: {
+                  kind: "StringValue",
+                  value: "help-center",
+                  block: false,
+                },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "articles" },
+                  arguments: [
+                    {
+                      kind: "Argument",
+                      name: { kind: "Name", value: "first" },
+                      value: { kind: "IntValue", value: "64" },
+                    },
+                  ],
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "nodes" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "excerpt" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "excerptHtml" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "handle" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "id" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "image" },
+                              selectionSet: {
+                                kind: "SelectionSet",
+                                selections: [
+                                  {
+                                    kind: "FragmentSpread",
+                                    name: {
+                                      kind: "Name",
+                                      value: "ImageBasicInformation",
+                                    },
+                                  },
+                                ],
+                              },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "metafields" },
+                              arguments: [
+                                {
+                                  kind: "Argument",
+                                  name: { kind: "Name", value: "identifiers" },
+                                  value: {
+                                    kind: "ListValue",
+                                    values: [
+                                      {
+                                        kind: "ObjectValue",
+                                        fields: [
+                                          {
+                                            kind: "ObjectField",
+                                            name: {
+                                              kind: "Name",
+                                              value: "namespace",
+                                            },
+                                            value: {
+                                              kind: "StringValue",
+                                              value: "custom",
+                                              block: false,
+                                            },
+                                          },
+                                          {
+                                            kind: "ObjectField",
+                                            name: {
+                                              kind: "Name",
+                                              value: "key",
+                                            },
+                                            value: {
+                                              kind: "StringValue",
+                                              value: "category",
+                                              block: false,
+                                            },
+                                          },
+                                        ],
+                                      },
+                                      {
+                                        kind: "ObjectValue",
+                                        fields: [
+                                          {
+                                            kind: "ObjectField",
+                                            name: {
+                                              kind: "Name",
+                                              value: "namespace",
+                                            },
+                                            value: {
+                                              kind: "StringValue",
+                                              value: "custom",
+                                              block: false,
+                                            },
+                                          },
+                                          {
+                                            kind: "ObjectField",
+                                            name: {
+                                              kind: "Name",
+                                              value: "key",
+                                            },
+                                            value: {
+                                              kind: "StringValue",
+                                              value: "featured",
+                                              block: false,
+                                            },
+                                          },
+                                        ],
+                                      },
+                                    ],
+                                  },
+                                },
+                              ],
+                              selectionSet: {
+                                kind: "SelectionSet",
+                                selections: [
+                                  {
+                                    kind: "Field",
+                                    name: {
+                                      kind: "Name",
+                                      value: "description",
+                                    },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "key" },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "namespace" },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "type" },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "value" },
+                                  },
+                                ],
+                              },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "publishedAt" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "seo" },
+                              selectionSet: {
+                                kind: "SelectionSet",
+                                selections: [
+                                  {
+                                    kind: "Field",
+                                    name: {
+                                      kind: "Name",
+                                      value: "description",
+                                    },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "title" },
+                                  },
+                                ],
+                              },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "tags" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "title" },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+    ...QueryRootInformationFragmentDoc.definitions,
+    ...ImageBasicInformationFragmentDoc.definitions,
+  ],
+} as unknown as DocumentNode<HelpQuery, HelpQueryVariables>;
 export const HomeDocument = {
   kind: "Document",
   definitions: [

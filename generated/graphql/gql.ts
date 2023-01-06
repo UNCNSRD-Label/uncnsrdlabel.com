@@ -33,10 +33,9 @@ const documents = {
     types.ShopBasicInformationFragmentDoc,
   "fragment ShopPolicyInformation on ShopPolicy {\n  body\n  handle\n  id\n  title\n  url\n}":
     types.ShopPolicyInformationFragmentDoc,
-  "query Shop {\n  shop {\n    name\n    paymentSettings {\n      acceptedCardBrands\n      countryCode\n      currencyCode\n      enabledPresentmentCurrencies\n    }\n    shipsToCountries\n  }\n}":
-    types.ShopDocument,
+  "query About {\n  ...QueryRootInformation\n}": types.AboutDocument,
   "query Account {\n  ...QueryRootInformation\n}": types.AccountDocument,
-  "query CampaignProducts {\n  ...QueryRootInformation\n  products(first: 16) {\n    nodes {\n      availableForSale\n      description\n      featuredImage {\n        altText\n        height\n        url\n        width\n      }\n      handle\n      id\n      priceRange {\n        maxVariantPrice {\n          amount\n          currencyCode\n        }\n        minVariantPrice {\n          amount\n          currencyCode\n        }\n      }\n      productType\n      publishedAt\n      title\n      vendor\n    }\n  }\n}":
+  "query CampaignProducts {\n  ...QueryRootInformation\n  products(first: 16) {\n    nodes {\n      availableForSale\n      description\n      featuredImage {\n        ...ImageBasicInformation\n      }\n      handle\n      id\n      priceRange {\n        maxVariantPrice {\n          amount\n          currencyCode\n        }\n        minVariantPrice {\n          amount\n          currencyCode\n        }\n      }\n      productType\n      publishedAt\n      title\n      vendor\n    }\n  }\n}":
     types.CampaignProductsDocument,
   "query Collection($slug: String!) {\n  ...QueryRootInformation\n  collection(handle: $slug) {\n    description\n    descriptionHtml\n    id\n    image {\n      ...ImageBasicInformation\n    }\n    products(first: 64) {\n      nodes {\n        ...ProductBasicInformation\n        variants(first: 32) {\n          pageInfo {\n            hasNextPage\n            hasPreviousPage\n          }\n          nodes {\n            ...ProductVariantBasicInformation\n          }\n        }\n      }\n    }\n    seo {\n      description\n      title\n    }\n    title\n    updatedAt\n  }\n}":
     types.CollectionDocument,
@@ -44,6 +43,8 @@ const documents = {
     types.CollectionsDocument,
   "query Consent {\n  ...QueryRootInformation\n  shop {\n    name\n  }\n}":
     types.ConsentDocument,
+  'query Help {\n  ...QueryRootInformation\n  blog(handle: "help-center") {\n    articles(first: 64) {\n      nodes {\n        excerpt\n        excerptHtml\n        handle\n        id\n        image {\n          ...ImageBasicInformation\n        }\n        metafields(\n          identifiers: [{namespace: "custom", key: "category"}, {namespace: "custom", key: "featured"}]\n        ) {\n          description\n          key\n          namespace\n          type\n          value\n        }\n        publishedAt\n        seo {\n          description\n          title\n        }\n        tags\n        title\n      }\n    }\n  }\n}':
+    types.HelpDocument,
   "query Home {\n  ...QueryRootInformation\n}": types.HomeDocument,
   'query Page($slug: String!) {\n  ...QueryRootInformation\n  page(handle: $slug) {\n    body\n    bodySummary\n    handle\n    id\n    metafields(identifiers: [{namespace: "custom", key: "media"}]) {\n      description\n      key\n      namespace\n      references(first: 32) {\n        nodes {\n          ... on MetafieldReference {\n            ... on MediaImage {\n              mediaContentType\n              previewImage {\n                ... on Image {\n                  altText\n                  height\n                  url\n                  width\n                }\n              }\n            }\n          }\n        }\n      }\n      type\n      value\n    }\n    seo {\n      description\n      title\n    }\n    title\n    updatedAt\n  }\n}':
     types.PageDocument,
@@ -135,8 +136,8 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "query Shop {\n  shop {\n    name\n    paymentSettings {\n      acceptedCardBrands\n      countryCode\n      currencyCode\n      enabledPresentmentCurrencies\n    }\n    shipsToCountries\n  }\n}"
-): typeof documents["query Shop {\n  shop {\n    name\n    paymentSettings {\n      acceptedCardBrands\n      countryCode\n      currencyCode\n      enabledPresentmentCurrencies\n    }\n    shipsToCountries\n  }\n}"];
+  source: "query About {\n  ...QueryRootInformation\n}"
+): typeof documents["query About {\n  ...QueryRootInformation\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -147,8 +148,8 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "query CampaignProducts {\n  ...QueryRootInformation\n  products(first: 16) {\n    nodes {\n      availableForSale\n      description\n      featuredImage {\n        altText\n        height\n        url\n        width\n      }\n      handle\n      id\n      priceRange {\n        maxVariantPrice {\n          amount\n          currencyCode\n        }\n        minVariantPrice {\n          amount\n          currencyCode\n        }\n      }\n      productType\n      publishedAt\n      title\n      vendor\n    }\n  }\n}"
-): typeof documents["query CampaignProducts {\n  ...QueryRootInformation\n  products(first: 16) {\n    nodes {\n      availableForSale\n      description\n      featuredImage {\n        altText\n        height\n        url\n        width\n      }\n      handle\n      id\n      priceRange {\n        maxVariantPrice {\n          amount\n          currencyCode\n        }\n        minVariantPrice {\n          amount\n          currencyCode\n        }\n      }\n      productType\n      publishedAt\n      title\n      vendor\n    }\n  }\n}"];
+  source: "query CampaignProducts {\n  ...QueryRootInformation\n  products(first: 16) {\n    nodes {\n      availableForSale\n      description\n      featuredImage {\n        ...ImageBasicInformation\n      }\n      handle\n      id\n      priceRange {\n        maxVariantPrice {\n          amount\n          currencyCode\n        }\n        minVariantPrice {\n          amount\n          currencyCode\n        }\n      }\n      productType\n      publishedAt\n      title\n      vendor\n    }\n  }\n}"
+): typeof documents["query CampaignProducts {\n  ...QueryRootInformation\n  products(first: 16) {\n    nodes {\n      availableForSale\n      description\n      featuredImage {\n        ...ImageBasicInformation\n      }\n      handle\n      id\n      priceRange {\n        maxVariantPrice {\n          amount\n          currencyCode\n        }\n        minVariantPrice {\n          amount\n          currencyCode\n        }\n      }\n      productType\n      publishedAt\n      title\n      vendor\n    }\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -167,6 +168,12 @@ export function graphql(
 export function graphql(
   source: "query Consent {\n  ...QueryRootInformation\n  shop {\n    name\n  }\n}"
 ): typeof documents["query Consent {\n  ...QueryRootInformation\n  shop {\n    name\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: 'query Help {\n  ...QueryRootInformation\n  blog(handle: "help-center") {\n    articles(first: 64) {\n      nodes {\n        excerpt\n        excerptHtml\n        handle\n        id\n        image {\n          ...ImageBasicInformation\n        }\n        metafields(\n          identifiers: [{namespace: "custom", key: "category"}, {namespace: "custom", key: "featured"}]\n        ) {\n          description\n          key\n          namespace\n          type\n          value\n        }\n        publishedAt\n        seo {\n          description\n          title\n        }\n        tags\n        title\n      }\n    }\n  }\n}'
+): typeof documents['query Help {\n  ...QueryRootInformation\n  blog(handle: "help-center") {\n    articles(first: 64) {\n      nodes {\n        excerpt\n        excerptHtml\n        handle\n        id\n        image {\n          ...ImageBasicInformation\n        }\n        metafields(\n          identifiers: [{namespace: "custom", key: "category"}, {namespace: "custom", key: "featured"}]\n        ) {\n          description\n          key\n          namespace\n          type\n          value\n        }\n        publishedAt\n        seo {\n          description\n          title\n        }\n        tags\n        title\n      }\n    }\n  }\n}'];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
