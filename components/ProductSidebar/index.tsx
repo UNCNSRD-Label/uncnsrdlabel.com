@@ -12,8 +12,9 @@ import { clsx } from "clsx";
 import Error from "next/error";
 import Image from "next/image";
 import Link from "next/link";
-import getDataURL from "placeholder-image-data-url";
+// import getDataURL from "placeholder-image-data-url";
 import { useEffect, useState } from "react";
+import Barcode from "react-barcode";
 import slugify from "slugify";
 
 import ProductCard from "#/components/ProductCard";
@@ -174,6 +175,22 @@ export const Component: FC<Props> = ({ className, path, product }) => {
             )}
           </div>
         </section>
+        {selectedVariant?.barcode && (
+          <section
+            className={clsx(
+              styles.section,
+              styles.sectionBarcode,
+              "collapse",
+              "collapse-plus"
+            )}
+          >
+            <input type="checkbox" />
+            <div className={clsx("collapse-title", "text-base")}>Barcode</div>
+            <div className={clsx("collapse-content")}>
+              <Barcode value={selectedVariant.barcode} />
+            </div>
+          </section>
+        )}
         {product.metafields
           ?.filter(Boolean)
           ?.filter((metafield) => typeof metafield?.key === "string")
