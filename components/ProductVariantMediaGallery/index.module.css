@@ -5,7 +5,7 @@
     /* @NOTE: 133.33vw is equivalent to the 3/4 aspect ratio of the images in the gallery */
     /* @NOTE: 4rem is equivalent to the pt-16 and scroll-pt-16 values to offset the image below the header */
     max-block-size: max(
-      calc(133.33vw + var(--viewport-margin-block-start)),
+      calc(133.33vw + var(--viewport-margin-block)),
       75vh
     );
     overflow-y: scroll;

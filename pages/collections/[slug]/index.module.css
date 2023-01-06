@@ -4,7 +4,7 @@
 .header {
   @apply pb-8 pt-8;
   justify-content: start;
-  margin-block-start: var(--viewport-margin-block-start);
+  margin-block-start: var(--viewport-margin-block);
   padding-inline: var(--viewport-margin-inline);
   position: relative;
 }

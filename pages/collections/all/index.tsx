@@ -9,6 +9,7 @@ import Error from "next/error";
 import Image from "next/image";
 import Link from "next/link";
 import { createRef } from "react";
+import { SlMagnifier } from "react-icons/sl";
 import slugify from "slugify";
 
 import Breadcrumbs from "#/components/Breadcrumbs";
@@ -85,6 +86,26 @@ export default function Page({
         <li>Types</li>
       </Breadcrumbs>
       <header className={clsx(styles.header)}>
+        <h2 className={clsx(styles.title, "title")}>How can we help?</h2>
+        <div className={clsx(styles.inputGroup, "input-group")}>
+          <input
+            type="text"
+            placeholder="Search…"
+            className={clsx(
+              styles.input,
+              "input",
+              "input-bordered",
+              "flex-auto"
+            )}
+          />
+          <button className="btn btn-square">
+            <SlMagnifier
+              aria-hidden="true"
+              className={clsx("icon")}
+              title="Search this site"
+            />
+          </button>
+        </div>
         <Image
           alt="background"
           className={clsx(styles.background)}
@@ -92,14 +113,6 @@ export default function Page({
           src="/images/campaign/stock-photo-fancy-young-girl-on-the-beach-in-bikini-swimming-in-the-sea-dubai-surfing-surfboard-bronze-tan-1180841200.jpg"
         />
         <div className={clsx(styles.foreground)} />
-        <h2
-          className={clsx(styles.title, "logotype", "mask")}
-          style={{
-            backgroundImage: `url("/images/campaign/stock-photo-fancy-young-girl-on-the-beach-in-bikini-swimming-in-the-sea-dubai-surfing-surfboard-bronze-tan-1180841200.jpg")`,
-          }}
-        >
-          UNCNSRD
-        </h2>
       </header>
       <section className={clsx(styles.collectionsList)}>
         {data.collections.nodes?.map((collection, index) => (

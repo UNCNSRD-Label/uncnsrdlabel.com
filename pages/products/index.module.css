@@ -4,14 +4,14 @@
 .header {
   @apply pb-8 pt-8;
   justify-content: start;
-  margin-block-start: var(--viewport-margin-block-start);
+  margin-block-start: var(--viewport-margin-block);
   padding-inline: var(--viewport-margin-inline);
   position: relative;
 }
 
 .productsList {
   @apply grid gap-1 gap-y-4 grid-cols-2 pb-8 pt-8;
-  margin-block-start: var(--viewport-margin-block-start);
+  margin-block-start: var(--viewport-margin-block);
   padding-inline: var(--viewport-margin-inline);
 
   @media screen and (min-width: theme(screens.md.min)) {

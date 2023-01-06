@@ -1,7 +1,7 @@
 .root {
   @apply grid items-center justify-items-center;
   grid-template-areas: "logotypeLink" "figure" "cta";
-  grid-template-rows: var(--viewport-margin-block-start) auto var(--viewport-margin-block-start);
+  grid-template-rows: var(--viewport-margin-block) auto var(--viewport-margin-block);
 
   .figure {
     @apply aspect-2/1 relative h-full sm:min-w-[80vw] max-w-full overflow-hidden;

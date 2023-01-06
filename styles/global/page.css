@@ -3,8 +3,8 @@
 
   article {
     @apply prose;
-    margin-block-start: var(--viewport-margin-block-start);
-    padding-block: var(--viewport-margin-block-start);
+    margin-block-start: var(--viewport-margin-block);
+    padding-block: var(--viewport-margin-block);
     margin-inline: auto;
 
     dl {

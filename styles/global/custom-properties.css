@@ -1,5 +1,5 @@
 :root {
-  --viewport-margin-block-start: 4rem;
+  --viewport-margin-block: 4rem;
   --viewport-margin-inline: 1rem;
 
   @media screen and (min-width: theme(screens.md.min)) {

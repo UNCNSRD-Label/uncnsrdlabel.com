@@ -50,7 +50,7 @@
 
   &.wall {
     @apply grid grid-cols-2 gap-1 items-stretch;
-    margin-block-start: var(--viewport-margin-block-start);
+    margin-block-start: var(--viewport-margin-block);
 
     @media screen and (min-width: theme(screens.sm.min)) {
       @apply grid-cols-4;

@@ -1,6 +1,6 @@
 .main {
   @apply gap-8 grid;
-  margin-block-start: var(--viewport-margin-block-start);
+  margin-block-start: var(--viewport-margin-block);
 }
 
 .figure {
