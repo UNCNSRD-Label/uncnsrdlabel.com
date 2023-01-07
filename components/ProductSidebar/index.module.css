@@ -1,6 +1,6 @@
 .root {
   .details {
-    @apply grid sticky divide-y;
+    @apply grid sticky divide-y mb-8;
     padding-inline: var(--viewport-margin-inline);
     top: 0;
 
