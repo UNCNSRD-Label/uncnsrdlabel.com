@@ -86,34 +86,40 @@ export default function Page({
         <li>Types</li>
       </Breadcrumbs>
       <header className={clsx(styles.header)}>
-        <h2 className={clsx(styles.title, "title")}>
-          What are you looking for?
-        </h2>
-        <div className={clsx(styles.inputGroup, "input-group")}>
-          <input
-            type="text"
-            placeholder="Search…"
-            className={clsx(
-              styles.input,
-              "input",
-              "input-bordered",
-              "flex-auto"
-            )}
-          />
-          <button className="btn btn-square">
-            <SlMagnifier
-              aria-hidden="true"
-              className={clsx("icon")}
-              title="Search this site"
-            />
-          </button>
+        <div className={clsx(styles.card, "card", "glass")}>
+          <div className="card-body">
+            <h2 className={clsx(styles.title, "title")}>
+              What are you looking for?
+            </h2>
+            <div className={clsx(styles.inputGroup, "input-group")}>
+              <input
+                type="text"
+                placeholder="Search…"
+                className={clsx(
+                  styles.input,
+                  "input",
+                  "input-bordered",
+                  "flex-auto"
+                )}
+              />
+              <button className="btn btn-square">
+                <SlMagnifier
+                  aria-hidden="true"
+                  className={clsx("icon")}
+                  title="Search this site"
+                />
+              </button>
+            </div>
+          </div>
         </div>
-        <Image
-          alt="background"
-          className={clsx(styles.background)}
-          fill
-          src="/images/campaign/stock-photo-fancy-young-girl-on-the-beach-in-bikini-swimming-in-the-sea-dubai-surfing-surfboard-bronze-tan-1180841200.jpg"
-        />
+        <figure className={clsx(styles.figure)}>
+          <Image
+            alt="background"
+            className={clsx(styles.image)}
+            fill
+            src="/images/campaign/stock-photo-fancy-young-girl-on-the-beach-in-bikini-swimming-in-the-sea-dubai-surfing-surfboard-bronze-tan-1180841200.jpg"
+          />
+        </figure>
         <div className={clsx(styles.foreground)} />
       </header>
       <section className={clsx(styles.collectionsList)}>

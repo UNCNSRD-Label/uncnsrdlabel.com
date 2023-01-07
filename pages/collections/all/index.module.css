@@ -1,7 +1,6 @@
 .drawerContent {
   @apply relative;
   perspective: 10px;
-  top: -10%;
 }
 
 .main {
@@ -10,37 +9,56 @@
 }
 
 .header {
-  @apply gap-8 grid sm:min-w-[100vw] min-h-[75vh] place-content-center justify-items-center p-16 relative;
+  @apply gap-8 grid h-[50vh] w-screen justify-items-center relative content-start;
+  padding-block-start: calc(var(--viewport-margin-block) * 2);
   transform-style: preserve-3d;
 
-  .background {
+  @media screen and (min-width: theme(screens.md.min)) {
+    @apply content-center;
+  }
+
+  .title {
+    @apply text-xl;
+  }
+
+  .figure {
+    @apply z-0;
     height: 100%;
+    inset: 0;
     transform: translateZ(-10px) scale(2);
+    transform-origin: top;
+    top: -100%;
+
+    .image {
+      object-fit: cover;
+    } 
   }
 
-  .foreground {
-    @apply z-50;
-    background: linear-gradient(0deg, hsl(var(--b1)) 25%, rgba(0,0,0,0) 60%);
-    height: 50%;
-    transform: translateY(175%) translateZ(-5px) scale(1.5);
-  }
-
-  .background,
+  .figure,
   .foreground {
     position: absolute;
     width: 100%;
-    object-fit: cover;
-    z-index: -1;
   }
 
-  .inputGroup {
-    @apply max-w-sm;
+  .foreground {
+    @apply z-10;
+    background-image: linear-gradient(0deg, hsl(var(--b1)) 25%, rgba(0,0,0,0) 60%);
+    bottom: -37.5%;
+    height: 50%;
+    transform: translateZ(-5px) scale(1.5);
+  }
+
+  .card {
+    @apply z-20;
+
+    .inputGroup {
+      @apply max-w-sm;
+    }
   }
 }
 
 .collectionsList {
   @apply grid gap-8 sm:gap-16 gap-y-16 grid-cols-2 items-center relative;
-  padding-block: var(--viewport-margin-block);
   padding-inline: var(--viewport-margin-inline);
 
   @media screen and (min-width: theme(screens.md.min)) {
@@ -48,7 +66,6 @@
   }
 
   .card {
-    /* @apply bg-primary border-8 border-primary text-primary-content; */
     @apply border-8 glass;
 
     .figure {
