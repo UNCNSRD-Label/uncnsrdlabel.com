@@ -57,7 +57,11 @@ export const Component: FC<Props> = ({ className, data }) => {
         </section>
 
         <section className={clsx(styles.section)}>
-          {/* <h2 className={clsx(styles.title)}>Main</h2> */}
+          <h2 className={clsx(styles.title, "logotype", "text-2xl")}>
+            <Link href="/" className={clsx(styles.link)}>
+              UNCNSRD
+            </Link>
+          </h2>
           <nav className={clsx("menu", "menu-horizontal")}>
             {data?.mainMenu?.items?.map((item) => {
               const href = new URL(item.url ?? "/");
