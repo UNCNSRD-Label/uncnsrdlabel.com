@@ -86,7 +86,9 @@ export default function Page({
         <li>Types</li>
       </Breadcrumbs>
       <header className={clsx(styles.header)}>
-        <h2 className={clsx(styles.title, "title")}>How can we help?</h2>
+        <h2 className={clsx(styles.title, "title")}>
+          What are you looking for?
+        </h2>
         <div className={clsx(styles.inputGroup, "input-group")}>
           <input
             type="text"
