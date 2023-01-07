@@ -8,9 +8,4 @@
     .title {
         @apply font-bold pl-4;
     }
-    
-    .nav {
-        @apply menu max-h-72 overflow-y-auto;
-        /* flex-nowrap */
-    }
 }

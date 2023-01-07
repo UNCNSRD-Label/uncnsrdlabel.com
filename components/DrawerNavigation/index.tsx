@@ -57,8 +57,8 @@ export const Component: FC<Props> = ({ className, data }) => {
         </section>
 
         <section className={clsx(styles.section)}>
-          <h2 className={clsx(styles.title)}>Main</h2>
-          <nav className={clsx(styles.nav)}>
+          {/* <h2 className={clsx(styles.title)}>Main</h2> */}
+          <nav className={clsx("menu", "menu-horizontal")}>
             {data?.mainMenu?.items?.map((item) => {
               const href = new URL(item.url ?? "/");
 
@@ -74,8 +74,32 @@ export const Component: FC<Props> = ({ className, data }) => {
         </section>
 
         <section className={clsx(styles.section)}>
-          <h2 className={clsx(styles.title)}>Collections</h2>
-          <nav className={clsx(styles.nav)}>
+          <h2 className={clsx(styles.title)}>
+            <Link href="/account/order" className={clsx(styles.link)}>
+              Account
+            </Link>
+          </h2>
+          <nav className={clsx("menu", "menu-horizontal")}>
+            <li>
+              <Link href="/account/order" className={clsx(styles.link)}>
+                Orders
+              </Link>
+            </li>
+            <li>
+              <Link href="/account/wishlist" className={clsx(styles.link)}>
+                Wishlist
+              </Link>
+            </li>
+          </nav>
+        </section>
+
+        <section className={clsx(styles.section)}>
+          <h2 className={clsx(styles.title)}>
+            <Link className={clsx(styles.card)} href="/collections/all">
+              Collections
+            </Link>
+          </h2>
+          <nav className={clsx("menu", "max-h-72")}>
             {data?.collections?.nodes?.map((collection, index) => {
               if (collection?.handle != null) {
                 return (
@@ -92,27 +116,6 @@ export const Component: FC<Props> = ({ className, data }) => {
                 );
               }
             })}
-          </nav>
-        </section>
-
-        <section className={clsx(styles.section)}>
-          <h2 className={clsx(styles.title)}>My account</h2>
-          <nav className={clsx("menu", "items-start")}>
-            <li>
-              <Link href="/account" className={clsx(styles.link)}>
-                My account
-              </Link>
-            </li>
-            <li>
-              <Link href="/account/order" className={clsx(styles.link)}>
-                My orders
-              </Link>
-            </li>
-            <li>
-              <Link href="/account/wishlist" className={clsx(styles.link)}>
-                My wishlist
-              </Link>
-            </li>
           </nav>
         </section>
       </div>
