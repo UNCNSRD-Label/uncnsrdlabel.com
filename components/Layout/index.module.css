@@ -17,8 +17,8 @@
 
 .drawer {
   .drawerContent {
-    /* @apply snap-y scroll-smooth; */
-    overflow-y: unset;
+    overflow-x: hidden;
+    width: 100vw;
   }
 
   .drawerToggle {
