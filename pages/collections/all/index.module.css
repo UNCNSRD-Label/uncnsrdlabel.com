@@ -58,7 +58,7 @@
   }
 }
 
-.collectionsList {
+.collections {
   @apply grid gap-8 grid-cols-2 items-center relative pb-8;
   padding-inline: var(--viewport-margin-inline);
 

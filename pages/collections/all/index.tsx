@@ -122,7 +122,7 @@ export default function Page({
         </figure>
         <div className={clsx(styles.foreground)} />
       </header>
-      <section className={clsx(styles.collectionsList)}>
+      <section className={clsx(styles.collections)}>
         {data.collections.nodes?.map((collection, index) => (
           <Link
             className={clsx(styles.card)}
