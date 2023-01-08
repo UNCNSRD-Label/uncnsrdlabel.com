@@ -23,9 +23,10 @@ import ProductForm from "#/components/ProductForm";
 import { theme } from "#/lib/constants/style";
 
 import {
-  getColorHexCodeByName,
+  // getColorHexCodeByName,
   getComplementaryProducts,
   getMaterialImage,
+  getRelatedProducts,
 } from "#/lib/util/GraphQL";
 
 import styles from "./index.module.css";
@@ -77,6 +78,7 @@ export const Component: FC<Props> = ({ className, path, product }) => {
     Number.parseFloat(selectedVariant?.compareAtPrice?.amount ?? "0");
 
   const complementaryProducts = getComplementaryProducts(selectedVariant);
+  const relatedProducts = getRelatedProducts(selectedVariant);
 
   const composition = product.metafields?.find(
     (metafield) => metafield?.key === "composition"
@@ -202,6 +204,7 @@ export const Component: FC<Props> = ({ className, path, product }) => {
                 "composition",
                 "complementary_products",
                 "material_image",
+                "related_products",
               ].includes(metafield?.key!)
           )
           ?.sort((a, b) => a!.key!.localeCompare(b!.key!))
@@ -255,6 +258,33 @@ export const Component: FC<Props> = ({ className, path, product }) => {
             </div>
             <div className={clsx("collapse-content", "not-prose")}>
               {complementaryProducts?.map((node, index) => (
+                <ProductCard
+                  className={clsx(styles.productCard)}
+                  key={index}
+                  product={node}
+                  sizes={`(max-width: ${theme.screens.xs.max}) 50vw,
+                      (max-width: ${theme.screens.md.max}) 25vw,
+                      20vw`}
+                />
+              ))}
+            </div>
+          </section>
+        )}
+        {relatedProducts && (
+          <section
+            className={clsx(
+              styles.section,
+              styles.sectionRelatedProducts,
+              "collapse",
+              "collapse-plus"
+            )}
+          >
+            <input type="checkbox" defaultChecked />
+            <div className={clsx("collapse-title", "text-base")}>
+              Related Products
+            </div>
+            <div className={clsx("collapse-content", "not-prose")}>
+              {relatedProducts?.map((node, index) => (
                 <ProductCard
                   className={clsx(styles.productCard)}
                   key={index}

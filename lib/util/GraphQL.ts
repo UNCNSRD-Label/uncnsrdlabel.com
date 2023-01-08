@@ -91,9 +91,31 @@ export const getComplementaryProducts = (
     key: "complementary_products",
   });
 
-  const complementaryProducts = complementary_products?.parsedValue;
+  const products = complementary_products?.parsedValue;
 
-  return complementaryProducts;
+  return products;
+};
+
+export const getRelatedProducts = (
+  selectedVariant?: PartialDeep<
+    ProductVariant,
+    { recurseIntoArrays: true }
+  > | null
+) => {
+  if (!selectedVariant) {
+    return;
+  }
+
+  const complementary_products = getMetafield<
+    ParsedMetafields["list.product_reference"]
+  >(selectedVariant, {
+    namespace: "shopify--discovery--product_recommendation",
+    key: "related_products",
+  });
+
+  const products = complementary_products?.parsedValue;
+
+  return products;
 };
 
 export const getMaterialImage = (
