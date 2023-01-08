@@ -184,13 +184,7 @@ export const Component: FC<Props> = ({ children, className, path }) => {
             /> */}
           <span>{isOutOfStock ? "Sold out" : "Add to bag"}</span>
         </AddToCartButton>
-        <button
-          className={clsx(
-            "btn",
-            `btn-${isOutOfStock ? "disabled" : "outline"}`,
-            "gap-2"
-          )}
-        >
+        <button className={clsx("btn", "btn-outline", "gap-2")}>
           {/* <RiHeartAddLine
             aria-hidden="true"
             className={clsx("icon")}
@@ -198,7 +192,9 @@ export const Component: FC<Props> = ({ children, className, path }) => {
           /> */}
           <span>Add to wishlist</span>
         </button>
-        <div className={clsx(styles.divider, "divider")}>OR</div>
+        {!isOutOfStock && (
+          <div className={clsx(styles.divider, "divider")}>OR</div>
+        )}
         {!isOutOfStock && (
           <ShopPayButton
             className="flex items-center col-span-full"
