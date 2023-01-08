@@ -6,6 +6,7 @@ fragment CollectionsBasicInformation on CollectionConnection {
       image {
         ... ImageBasicInformation
       }
+      title
       updatedAt
   }
 }
