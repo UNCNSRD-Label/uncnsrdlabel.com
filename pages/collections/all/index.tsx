@@ -1,7 +1,7 @@
 import type { StorefrontApiResponseOk } from "@shopify/hydrogen-react";
 import type { GetServerSideProps } from "next";
 
-import type { CollectionsQuery } from "#/generated/graphql/graphql";
+import type { QueryRoot } from "#/generated/graphql/graphql";
 
 import { clsx } from "clsx";
 import { request } from "graphql-request";
@@ -53,7 +53,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 export default function Page({
   data,
   errors,
-}: StorefrontApiResponseOk<CollectionsQuery>) {
+}: StorefrontApiResponseOk<QueryRoot>) {
   const scrollingElement = createRef<HTMLDivElement>();
 
   if (!data) {

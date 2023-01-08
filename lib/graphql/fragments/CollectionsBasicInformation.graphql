@@ -1,8 +1,11 @@
+#import "./ImageBasicInformation.graphql"
 fragment CollectionsBasicInformation on CollectionConnection {
   nodes {
-    handle
-    id
-    title
-    updatedAt
+      handle
+      id
+      image {
+        ... ImageBasicInformation
+      }
+      updatedAt
   }
 }

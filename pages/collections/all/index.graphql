@@ -1,18 +1,5 @@
-#import "#/lib/graphql/fragments/ImageBasicInformation.graphql"
 #import "#/lib/graphql/fragments/QueryRootInformation.graphql"
 
 query Collections {
   ...QueryRootInformation
-  collections(first: 192) {
-    nodes {
-      description
-      handle
-      id
-      image {
-        ... ImageBasicInformation
-      }
-      title
-      updatedAt
-    }
-  }
 }

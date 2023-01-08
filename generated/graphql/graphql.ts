@@ -6772,6 +6772,13 @@ export type CollectionsBasicInformationFragment = {
     id: string;
     title: string;
     updatedAt: string;
+    image?:
+      | ({ __typename?: "Image" } & {
+          " $fragmentRefs"?: {
+            ImageBasicInformationFragment: ImageBasicInformationFragment;
+          };
+        })
+      | null;
   }>;
 } & { " $fragmentName"?: "CollectionsBasicInformationFragment" };
 
@@ -7053,27 +7060,7 @@ export type CollectionQuery = {
 
 export type CollectionsQueryVariables = Exact<{ [key: string]: never }>;
 
-export type CollectionsQuery = {
-  __typename?: "QueryRoot";
-  collections: {
-    __typename?: "CollectionConnection";
-    nodes: Array<{
-      __typename?: "Collection";
-      description: string;
-      handle: string;
-      id: string;
-      title: string;
-      updatedAt: string;
-      image?: {
-        __typename?: "Image";
-        altText?: string | null;
-        height?: number | null;
-        url: string;
-        width?: number | null;
-      } | null;
-    }>;
-  };
-} & {
+export type CollectionsQuery = { __typename?: "QueryRoot" } & {
   " $fragmentRefs"?: {
     QueryRootInformationFragment: QueryRootInformationFragment;
   };
@@ -7939,6 +7926,19 @@ export const CollectionsBasicInformationFragmentDoc = {
               selections: [
                 { kind: "Field", name: { kind: "Name", value: "handle" } },
                 { kind: "Field", name: { kind: "Name", value: "id" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "image" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "FragmentSpread",
+                        name: { kind: "Name", value: "ImageBasicInformation" },
+                      },
+                    ],
+                  },
+                },
                 { kind: "Field", name: { kind: "Name", value: "title" } },
                 { kind: "Field", name: { kind: "Name", value: "updatedAt" } },
               ],
@@ -7947,6 +7947,7 @@ export const CollectionsBasicInformationFragmentDoc = {
         ],
       },
     },
+    ...ImageBasicInformationFragmentDoc.definitions,
   ],
 } as unknown as DocumentNode<CollectionsBasicInformationFragment, unknown>;
 export const ShopBasicInformationFragmentDoc = {
@@ -8421,82 +8422,6 @@ export const CollectionsDocument = {
           {
             kind: "FragmentSpread",
             name: { kind: "Name", value: "QueryRootInformation" },
-          },
-          {
-            kind: "Field",
-            name: { kind: "Name", value: "collections" },
-            arguments: [
-              {
-                kind: "Argument",
-                name: { kind: "Name", value: "first" },
-                value: { kind: "IntValue", value: "192" },
-              },
-            ],
-            selectionSet: {
-              kind: "SelectionSet",
-              selections: [
-                {
-                  kind: "Field",
-                  name: { kind: "Name", value: "nodes" },
-                  selectionSet: {
-                    kind: "SelectionSet",
-                    selections: [
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "description" },
-                      },
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "handle" },
-                      },
-                      { kind: "Field", name: { kind: "Name", value: "id" } },
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "image" },
-                        selectionSet: {
-                          kind: "SelectionSet",
-                          selections: [
-                            {
-                              kind: "InlineFragment",
-                              typeCondition: {
-                                kind: "NamedType",
-                                name: { kind: "Name", value: "Image" },
-                              },
-                              selectionSet: {
-                                kind: "SelectionSet",
-                                selections: [
-                                  {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "altText" },
-                                  },
-                                  {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "height" },
-                                  },
-                                  {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "url" },
-                                  },
-                                  {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "width" },
-                                  },
-                                ],
-                              },
-                            },
-                          ],
-                        },
-                      },
-                      { kind: "Field", name: { kind: "Name", value: "title" } },
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "updatedAt" },
-                      },
-                    ],
-                  },
-                },
-              ],
-            },
           },
         ],
       },

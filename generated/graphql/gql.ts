@@ -13,7 +13,7 @@ import { TypedDocumentNode as DocumentNode } from "@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel-plugin for production.
  */
 const documents = {
-  "fragment CollectionsBasicInformation on CollectionConnection {\n  nodes {\n    handle\n    id\n    title\n    updatedAt\n  }\n}":
+  "fragment CollectionsBasicInformation on CollectionConnection {\n  nodes {\n    handle\n    id\n    image {\n      ...ImageBasicInformation\n    }\n    title\n    updatedAt\n  }\n}":
     types.CollectionsBasicInformationFragmentDoc,
   "fragment ImageBasicInformation on Image {\n  altText\n  height\n  url\n  width\n}":
     types.ImageBasicInformationFragmentDoc,
@@ -39,7 +39,7 @@ const documents = {
     types.CampaignProductsDocument,
   "query Collection($slug: String!) {\n  ...QueryRootInformation\n  collection(handle: $slug) {\n    description\n    descriptionHtml\n    id\n    image {\n      ...ImageBasicInformation\n    }\n    products(first: 64) {\n      nodes {\n        ...ProductBasicInformation\n        variants(first: 32) {\n          pageInfo {\n            hasNextPage\n            hasPreviousPage\n          }\n          nodes {\n            ...ProductVariantBasicInformation\n          }\n        }\n      }\n    }\n    seo {\n      description\n      title\n    }\n    title\n    updatedAt\n  }\n}":
     types.CollectionDocument,
-  "query Collections {\n  ...QueryRootInformation\n  collections(first: 192) {\n    nodes {\n      description\n      handle\n      id\n      image {\n        ... on Image {\n          altText\n          height\n          url\n          width\n        }\n      }\n      title\n      updatedAt\n    }\n  }\n}":
+  "query Collections {\n  ...QueryRootInformation\n}":
     types.CollectionsDocument,
   "query Consent {\n  ...QueryRootInformation\n  shop {\n    name\n  }\n}":
     types.ConsentDocument,
@@ -76,8 +76,8 @@ export function graphql(source: string): unknown;
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "fragment CollectionsBasicInformation on CollectionConnection {\n  nodes {\n    handle\n    id\n    title\n    updatedAt\n  }\n}"
-): typeof documents["fragment CollectionsBasicInformation on CollectionConnection {\n  nodes {\n    handle\n    id\n    title\n    updatedAt\n  }\n}"];
+  source: "fragment CollectionsBasicInformation on CollectionConnection {\n  nodes {\n    handle\n    id\n    image {\n      ...ImageBasicInformation\n    }\n    title\n    updatedAt\n  }\n}"
+): typeof documents["fragment CollectionsBasicInformation on CollectionConnection {\n  nodes {\n    handle\n    id\n    image {\n      ...ImageBasicInformation\n    }\n    title\n    updatedAt\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -160,8 +160,8 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "query Collections {\n  ...QueryRootInformation\n  collections(first: 192) {\n    nodes {\n      description\n      handle\n      id\n      image {\n        ... on Image {\n          altText\n          height\n          url\n          width\n        }\n      }\n      title\n      updatedAt\n    }\n  }\n}"
-): typeof documents["query Collections {\n  ...QueryRootInformation\n  collections(first: 192) {\n    nodes {\n      description\n      handle\n      id\n      image {\n        ... on Image {\n          altText\n          height\n          url\n          width\n        }\n      }\n      title\n      updatedAt\n    }\n  }\n}"];
+  source: "query Collections {\n  ...QueryRootInformation\n}"
+): typeof documents["query Collections {\n  ...QueryRootInformation\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
