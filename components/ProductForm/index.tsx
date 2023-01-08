@@ -33,60 +33,15 @@ export const Component: FC<Props> = ({ children, className, path }) => {
   const { options, setSelectedOption, selectedVariant, variants } =
     useProduct();
 
-  const [color, setColor] = useQueryParam(
-    "color",
-    withDefault(StringParam, "")
-  );
-  const [size, setSize] = useQueryParam("size", withDefault(StringParam, ""));
-
   const isOutOfStock = !selectedVariant?.availableForSale || false;
-
-  // TODO: Merge with version of this code in schema.org lib
-  const getAvailability = (
-    variant?: PartialDeep<
-      Pick<
-        ProductVariant,
-        "availableForSale" | "currentlyNotInStock" | "quantityAvailable"
-      >,
-      { recurseIntoArrays: true }
-    >
-  ) => {
-    if (!variant?.availableForSale) {
-      return false;
-    }
-
-    let availability = "PreOrder";
-
-    if (variant?.currentlyNotInStock) {
-      availability = "OutOfStock";
-    }
-
-    if (variant?.quantityAvailable) {
-      availability = "LimitedAvailability";
-    }
-
-    if (variant?.availableForSale) {
-      availability = "InStock";
-    }
-
-    return `https://schema.org/${availability}`;
-  };
 
   const handleOptionChange = useCallback<
     ChangeEventHandler<HTMLSelectElement | HTMLInputElement>
   >(
     (event) => {
-      if (event.target.name === "Color") {
-        setColor(event.target.value);
-      }
-
-      if (event.target.name === "Size") {
-        setSize(event.target.value);
-      }
-
       setSelectedOption(event.target.name, event.target.value);
     },
-    [setColor, setSelectedOption, setSize]
+    [setSelectedOption]
   );
 
   return (

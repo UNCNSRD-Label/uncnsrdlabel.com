@@ -63,15 +63,6 @@ export const Component: FC<Props> = ({ className, product, sizes }) => {
           </h2>
           <ProductPrice className={clsx(styles.price)} data={product} />
         </header>
-        {/* <menu className={clsx(styles.menu, "card-actions", "justify-end")}>
-          <Link
-            href={`products/${handle}`}
-            className={(styles.link, "link", "link-hover")}
-            title={title}
-          >
-            Shop Now
-          </Link>
-        </menu> */}
       </div>
     </article>
   );
