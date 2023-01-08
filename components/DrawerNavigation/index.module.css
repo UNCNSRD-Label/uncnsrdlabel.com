@@ -9,12 +9,7 @@
   }
 
   .collections {
-    @apply grid gap-2 gap-y-4 grid-cols-2 items-center relative pb-8 pt-4;
-    padding-inline: var(--viewport-margin-inline);
-
-    @media screen and (min-width: theme(screens.md.min)) {
-      @apply grid-cols-4;
-    }
+    @apply grid gap-2 gap-y-4 grid-cols-2 items-center relative p-4;
 
     .card {
       /* @apply border-8 glass; */
@@ -28,7 +23,7 @@
           @apply aspect-3/4 relative;
 
           .image {
-            @apply aspect-3/4  object-cover;
+            @apply aspect-3/4 object-cover;
           }
         }
       }
