@@ -143,7 +143,7 @@ export default function Page({
                     className={clsx(styles.image)}
                     fill
                     // height={collection.image?.height ?? 0}
-                    sizes={`(max-width: ${theme.screens.xs.max}) 100vw,
+                    sizes={`(max-width: ${theme.screens.xs.max}) 50vw,
               25vw`}
                     src={collection.image.url}
                     // width={collection.image?.width ?? 0}

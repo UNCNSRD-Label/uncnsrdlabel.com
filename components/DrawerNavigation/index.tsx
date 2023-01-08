@@ -136,8 +136,8 @@ export const Component: FC<Props> = ({ className, data }) => {
                             className={clsx(styles.image)}
                             fill
                             // height={collection.image?.height ?? 0}
-                            sizes={`(max-width: ${theme.screens.xs.max}) 100vw,
-              25vw`}
+                            sizes={`(max-width: ${theme.screens.xs.max}) 25vw,
+              20vw`}
                             src={collection.image.url}
                             // width={collection.image?.width ?? 0}
                           />

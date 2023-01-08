@@ -20,6 +20,8 @@ import slugify from "slugify";
 import ProductCard from "#/components/ProductCard";
 import ProductForm from "#/components/ProductForm";
 
+import { theme } from "#/lib/constants/style";
+
 import {
   getColorHexCodeByName,
   getComplementaryProducts,
@@ -257,6 +259,9 @@ export const Component: FC<Props> = ({ className, path, product }) => {
                   className={clsx(styles.productCard)}
                   key={index}
                   product={node}
+                  sizes={`(max-width: ${theme.screens.xs.max}) 50vw,
+                      (max-width: ${theme.screens.md.max}) 25vw,
+                      20vw`}
                 />
               ))}
             </div>

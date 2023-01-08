@@ -14,7 +14,6 @@ import {
   IMAGE_ALT_TEXT_FALLBACK,
   IMAGE_TITLE_FALLBACK,
 } from "#/lib/constants/messages";
-import { theme } from "#/lib/constants/style";
 
 import { mapProductGraphQLtoSchemaOrg } from "#/lib/util/schema.org";
 import { getProductURL } from "#/lib/util/url";
@@ -24,9 +23,10 @@ import styles from "./index.module.css";
 type Props = {
   className?: string;
   product: PartialDeep<Product, { recurseIntoArrays: true }>;
+  sizes: string;
 } & HTMLAttributes<HTMLElement>;
 
-export const Component: FC<Props> = ({ className, product }) => {
+export const Component: FC<Props> = ({ className, product, sizes }) => {
   const productModel = mapProductGraphQLtoSchemaOrg(product);
 
   return (
@@ -46,9 +46,7 @@ export const Component: FC<Props> = ({ className, product }) => {
               className={clsx(styles.image)}
               fill
               priority
-              sizes={`(max-width: ${theme.screens.xs.max}) 100vw,
-                      (max-width: ${theme.screens.md.max}) 50vw,
-                      25vw`}
+              sizes={sizes}
               src={product.featuredImage?.url}
               title={product.title ?? IMAGE_TITLE_FALLBACK}
             />

@@ -17,6 +17,8 @@ import {
   getPublicTokenHeaders,
 } from "#/lib/clients/shopify";
 
+import { theme } from "#/lib/constants/style";
+
 import document from "#/pages/products/index.graphql";
 
 import styles from "./index.module.css";
@@ -91,6 +93,8 @@ export default function Page({
             className={clsx(styles.productCard)}
             key={index}
             product={node}
+            sizes={`(max-width: ${theme.screens.xs.max}) 50vw,
+            25vw`}
           />
         ))}
       </section>

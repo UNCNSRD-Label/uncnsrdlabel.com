@@ -60,9 +60,8 @@ export const Component: FC<Props> = ({ className, line }) => {
               fill
               itemProp="image"
               priority
-              sizes={`(max-width: ${theme.screens.xs.max}) 100vw,
-                      (max-width: ${theme.screens.md.max}) 50vw,
-                      25vw`}
+              sizes={`(max-width: ${theme.screens.xs.max}) 25vw,
+              20vw`}
               src={merchandise?.image?.url}
               title={merchandise?.product?.title ?? IMAGE_TITLE_FALLBACK}
             />

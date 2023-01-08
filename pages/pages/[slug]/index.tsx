@@ -138,7 +138,7 @@ export default function Page({
                     alt={image?.altText ?? IMAGE_ALT_TEXT_FALLBACK}
                     className={clsx(styles.image)}
                     height={image?.height ?? 0}
-                    sizes={`(max-width: ${theme.screens.xs.max}) 100vw,
+                    sizes={`(max-width: ${theme.screens.xs.max}) 50vw,
               25vw`}
                     src={image?.url}
                     width={image?.width ?? 0}
