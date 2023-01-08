@@ -1,11 +1,37 @@
 .root {
-
 }
 
 .section {
-    @apply pt-4;
+  @apply pt-4;
 
-    .title {
-        @apply font-bold pl-4;
+  .title {
+    @apply font-bold pl-4;
+  }
+
+  .collections {
+    @apply grid gap-8 grid-cols-2 items-center relative pb-8 pt-4;
+    padding-inline: var(--viewport-margin-inline);
+
+    @media screen and (min-width: theme(screens.md.min)) {
+      @apply grid-cols-4;
     }
+
+    .card {
+      /* @apply border-8 glass; */
+
+      .figure {
+        .figcaption {
+          @apply pt-2 text-center text-xs;
+        }
+
+        .imageContainer {
+          @apply aspect-3/4 relative;
+
+          .image {
+            @apply aspect-3/4  object-cover;
+          }
+        }
+      }
+    }
+  }
 }

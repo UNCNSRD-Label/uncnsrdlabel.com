@@ -8,9 +8,16 @@ import type { FC, HTMLAttributes, ReactNode } from "react";
 import type { PartialDeep } from "type-fest";
 
 import { clsx } from "clsx";
+import Image from "next/image";
 import Link from "next/link";
 import { SlMagnifier } from "react-icons/sl";
 import slugify from "slugify";
+
+import {
+  IMAGE_ALT_TEXT_FALLBACK,
+  IMAGE_TITLE_FALLBACK,
+} from "#/lib/constants/messages";
+import { theme } from "#/lib/constants/style";
 
 import styles from "./index.module.css";
 
@@ -57,7 +64,7 @@ export const Component: FC<Props> = ({ className, data }) => {
         </section>
 
         <section className={clsx(styles.section)}>
-          <h2 className={clsx(styles.title, "logotype", "text-2xl")}>
+          <h2 className={clsx(styles.title)}>
             <Link href="/" className={clsx(styles.link)}>
               UNCNSRD
             </Link>
@@ -103,20 +110,44 @@ export const Component: FC<Props> = ({ className, data }) => {
               Collections
             </Link>
           </h2>
-          <nav className={clsx("menu", "max-h-72")}>
+          <nav className={clsx(styles.collections)}>
             {data?.collections?.nodes?.map((collection, index) => {
               if (collection?.handle != null) {
                 return (
-                  <li key={index}>
-                    <Link
-                      className={clsx(styles.card)}
-                      href={`/collections/${slugify(collection.handle, {
-                        lower: true,
-                      })}`}
+                  <Link
+                    className={clsx(styles.card)}
+                    href={`/collections/${slugify(collection.handle, {
+                      lower: true,
+                    })}`}
+                    key={index}
+                  >
+                    <figure
+                      className={clsx(styles.figure)}
+                      id={`productVariantMediaGallery-${index}`}
+                      key={index}
                     >
-                      {collection?.title}
-                    </Link>
-                  </li>
+                      {collection.image?.url && (
+                        <div className={clsx(styles.imageContainer)}>
+                          <Image
+                            alt={
+                              collection.image?.altText ??
+                              IMAGE_ALT_TEXT_FALLBACK
+                            }
+                            className={clsx(styles.image)}
+                            fill
+                            // height={collection.image?.height ?? 0}
+                            sizes={`(max-width: ${theme.screens.xs.max}) 100vw,
+              25vw`}
+                            src={collection.image.url}
+                            // width={collection.image?.width ?? 0}
+                          />
+                        </div>
+                      )}
+                      <figcaption className={clsx(styles.figcaption)}>
+                        {collection.title}
+                      </figcaption>
+                    </figure>
+                  </Link>
                 );
               }
             })}
