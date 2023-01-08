@@ -79,7 +79,7 @@ query Product($slug: String!) {
             { namespace: "custom", key: "complementary_products" }
             { namespace: "custom", key: "composition" }
             { namespace: "custom", key: "material_image" }
-            { namespace: "custom", key: "related_products" }
+            { namespace: "shopify--discovery--product_recommendation", key: "related_products" }
           ]
         ) {
           description
