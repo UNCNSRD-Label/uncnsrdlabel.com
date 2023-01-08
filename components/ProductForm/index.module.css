@@ -46,6 +46,27 @@
   }
 
   &.sectionActions {
-    @apply grid-flow-col justify-between gap-8 px-4;
+    @apply grid gap-4 px-4;
+
+    /* @media screen and (max-width: theme(screens.xs.max)) {
+      @apply btn-sm;
+    } */
+
+    @media screen and (min-width: theme(screens.md.min)) {
+      @apply grid-cols-2;
+
+      .divider {
+        @apply col-span-full;
+      }
+    }
+  }
+
+  &.sectionActions1 {
+    @apply grid grid-cols-2 gap-8 px-4;
+  }
+
+  &.sectionActions2 {
+    @apply grid gap-8 px-4;
+    grid-template-columns: 1fr auto;
   }
 }

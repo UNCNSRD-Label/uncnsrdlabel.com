@@ -10,13 +10,12 @@ import type { PartialDeep } from "type-fest";
 import {
   useProduct,
   AddToCartButton,
-  Money,
   ShopPayButton,
 } from "@shopify/hydrogen-react";
 import { clsx } from "clsx";
-import Script from "next/script";
 import { useCallback } from "react";
-import { RiHeartAddLine } from "react-icons/ri";
+// import { RiHeartAddLine } from "react-icons/ri";
+// import { SlBag } from "react-icons/sl";
 import { useQueryParam, StringParam, withDefault } from "use-query-params";
 
 import { getColorHexCodeByName } from "#/lib/util/GraphQL";
@@ -215,36 +214,43 @@ export const Component: FC<Props> = ({ children, className, path }) => {
           accessibleAddingToCartLabel="Adding item to your cart"
           className={clsx(
             "btn",
-            `btn-${isOutOfStock ? "secondary" : "primary"}`,
-            "lg:btn-wide"
+            `btn-${isOutOfStock ? "disabled" : "primary"}`,
+            "gap-2"
           )}
           disabled={isOutOfStock}
           quantity={1}
           type="button"
           variantId={selectedVariant?.id}
         >
-          {isOutOfStock ? (
-            <span>Sold out</span>
-          ) : (
-            <span className="flex items-center justify-center gap-2">
-              Add to bag
-            </span>
-          )}
+          {/* <SlBag
+              aria-hidden="true"
+              className={clsx("icon")}
+              title="View my shopping bag"
+            /> */}
+          <span>{isOutOfStock ? "Sold out" : "Add to bag"}</span>
         </AddToCartButton>
-        {!isOutOfStock && (
-          <ShopPayButton
-            className="flex items-center"
-            variantIds={[selectedVariant.id!]}
-          />
-        )}
-        <button className={clsx("btn", "btn-circle", "btn-outline", "gap-2")}>
-          <RiHeartAddLine
+        <button
+          className={clsx(
+            "btn",
+            `btn-${isOutOfStock ? "disabled" : "outline"}`,
+            "gap-2"
+          )}
+        >
+          {/* <RiHeartAddLine
             aria-hidden="true"
             className={clsx("icon")}
             title="Add to wishlist"
-          />
-          <span className={clsx("sr-only")}>Add to wishlist</span>
+          /> */}
+          <span>Add to wishlist</span>
         </button>
+        <div className={clsx(styles.divider, "divider")}>OR</div>
+        {!isOutOfStock && (
+          <ShopPayButton
+            className="flex items-center col-span-full"
+            variantIds={[selectedVariant.id!]}
+            width="100vw"
+          />
+        )}
       </section>
     </>
   );
