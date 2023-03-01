@@ -16,12 +16,8 @@ const montserratFont = Montserrat({
 
 export default function RootLayout({
   children,
-  constrainWidth = false,
-  showHeaderAndFooter = false,
 }: {
   children: React.ReactNode;
-  constrainWidth?: boolean;
-  showHeaderAndFooter?: boolean;
 }) {
   return (
     <html
@@ -32,17 +28,10 @@ export default function RootLayout({
       )}
     >
       <head />
-      <body
-        className={clsx(
-          styles.container,
-          showHeaderAndFooter && styles.showHeaderAndFooter
-        )}
-      >
-        {showHeaderAndFooter && <Header constrainWidth={constrainWidth} />}
-        <main className={clsx(styles.main, constrainWidth && "constrainWidth")}>
-          {children}
-        </main>
-        {showHeaderAndFooter && <Footer constrainWidth={constrainWidth} />}
+      <body className={clsx(styles.container)}>
+        {/* <Header /> */}
+        <main className={clsx(styles.main)}>{children}</main>
+        {/* <Footer /> */}
       </body>
     </html>
   );
