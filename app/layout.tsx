@@ -10,6 +10,7 @@ import styles from "./layout.module.css";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
+  subsets: ['latin'],
   weight: "300",
 });
 
