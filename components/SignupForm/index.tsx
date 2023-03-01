@@ -49,7 +49,7 @@ export const Component: React.FC<Props> = ({ children }) => {
     if (signupFormFeedbackRef.current) {
       if (result.status === 200) {
         signupFormFeedbackRef.current.classList.add("valid");
-        signupFormFeedbackRef.current.innerHTML = `<p>Sexy not sorry</p>
+        signupFormFeedbackRef.current.innerHTML = `<p>Sexy not sorry&hellip;</p>
           <p>Watch this space!</p>`;
       } else {
         signupFormFeedbackRef.current.classList.add("invalid");
