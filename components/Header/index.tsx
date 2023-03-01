@@ -7,7 +7,6 @@ import styles from "./index.module.css";
 
 type Props = {
   children?: React.ReactNode;
-  constrainWidth?: boolean;
 };
 
 export const Component: React.FC<Props> = ({ children }) => {
