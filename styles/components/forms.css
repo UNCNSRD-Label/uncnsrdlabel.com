@@ -1,98 +1,10 @@
 @layer components {
   .form {
-    display: grid;
-    gap: 1rem;
-    padding: 2.5rem;
-
-    @screen md {
-      padding: 3.5rem;
-    }
-
-    & :is(button, input, select, textarea, fieldset, optgroup, output) {
-      padding-block: 1rem;
-      padding-inline: 1rem;
-      text-transform: lowercase;
-      transition-duration: 250ms;
-      transition-property: background-color, border-color, box-shadow, color,
-        filter, opacity;
-    }
-
-    & :is(input, select, textarea, optgroup) {
-      inline-size: 100%;
-    }
-
-    & label {
-      font-size: 1rem;
-      font-weight: 300;
-      margin-block-end: 0.5rem;
-    }
-
-    & button {
-      font-size: 0.875rem;
-      line-height: 1.5rem;
-    }
-
-    & fieldset {
-      display: grid;
-      gap: 1rem;
-      padding: initial;
-    }
-
-    &.transparent {
-      & :is(button, input, select, textarea, fieldset, optgroup, output) {
-        border-color: transparent;
-        border-style: solid;
-        border-width: 0.1rem;
-      }
-
-      & :is(input, select, textarea, optgroup) {
-        background-color: rgb(var(--color-input-background) / 0.5);
-        border-color: rgb(var(--color-input-background) / 0.75);
-        color: rgb(var(--color-input) / 0.9);
-
-        &::placeholder {
-          color: rgb(var(--color-input) / 0.9);
-        }
-
-        &:focus,
-        &:hover {
-          background-color: rgb(var(--color-input-background) / 0.8);
-        }
-      }
-
-      button {
-        .button__filled {
-          background-color: rgb(var(--color-button-background) / 0.5);
-          border-color: rgb(var(--color-button-background) / 0.25);
-          color: rgb(var(--color-button) / 0.9);
-          filter: drop-shadow(0rem 0.4rem 0.5rem var(--tw-color-black));
-          /* box-shadow: 0rem 0.5rem 0.25rem 0.25rem rgba(0,0,0,1); */
-
-          &:focus,
-          &:hover {
-            background-color: rgb(var(--color-button-background) / 0.85);
-          }
-
-          &.disabled {
-            background-color: rgb(var(--color-button-background) / 0.5);
-          }
-        }
-      }
-
-      label {
-        color: var(--tw-color-white);
-      }
-
-      fieldset {
-        border: none;
-      }
-    }
-
-    .output {
+    & .output {
       align-content: center;
       /* align-items: center; */
       background-color: transparent;
-      color: var(--tw-color-white);
+      color: theme(colors.white);
       display: grid;
       gap: 1rem;
       grid-column: -1/1;
@@ -109,12 +21,12 @@
       }
 
       &.invalid {
-        background-color: rgb(var(--color-feedback-invalid-background) / 0.9);
+        /* background-color: rgb(var(--color-feedback-invalid-background) / 0.9); */
         /* border-color: rgb(var(--color-feedback-invalid-border) / 0.5); */
       }
 
       &.valid {
-        background-color: rgb(var(--color-feedback-valid-background) / 0.9);
+        /* background-color: rgb(var(--color-feedback-valid-background) / 0.9); */
         /* border-color: rgb(var(--color-feedback-valid-border) / 0.5); */
         font-size: 1.5rem;
 

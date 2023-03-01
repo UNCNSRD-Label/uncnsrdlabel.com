@@ -5,6 +5,7 @@ import styles from "./index.module.css";
 
 type Props = {
   children?: React.ReactNode;
+  constrainWidth?: boolean;
   url?: string;
 };
 

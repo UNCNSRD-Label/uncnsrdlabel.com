@@ -50,7 +50,7 @@ export const Component: React.FC<Props> = ({ children, className }) => {
     if (signupFormFeedbackRef.current) {
       if (result.status === 200) {
         signupFormFeedbackRef.current.classList.add("valid");
-        signupFormFeedbackRef.current.innerHTML = `<p>Sexy not sorry</p>
+        signupFormFeedbackRef.current.innerHTML = `<p>Sexy not sorry&hellip;</p>
           <p>Watch this space!</p>`;
       } else {
         signupFormFeedbackRef.current.classList.add("invalid");
@@ -65,28 +65,22 @@ export const Component: React.FC<Props> = ({ children, className }) => {
       onSubmit={handleSubmit}
       ref={signupFormRef}
     >
-      <div className={clsx("field", styles.field)}>
-        <label className={clsx("label", styles.label)} htmlFor="email">
-          get first hand access here
-        </label>
-        <input
-          className={clsx("input", styles.input)}
-          type="email"
-          id="email"
-          name="email"
-          placeholder="get first hand access here"
-          required
-        />
-      </div>
-      <button className={clsx("button", styles.button)}>Notify Me</button>
-
-      {/* <div className={clsx("form-control", styles.formControl)}>
+      <div className={clsx("form-control", styles.formControl)}>
         <div className={clsx("input-group", styles.inputGroup)}>
-          <label className={clsx("label", styles.label)} htmlFor="email">get first hand access here</label>
-          <input className={clsx("input", styles.input)} type="email" id="email" name="email" placeholder="get first hand access here" required />
+          <label className={clsx("label", styles.label)} htmlFor="email">
+            get first hand access here
+          </label>
+          <input
+            className={clsx("input", "w-full", styles.input)}
+            type="email"
+            id="email"
+            name="email"
+            placeholder="get first hand access here"
+            required
+          />
           <button className={clsx("btn", styles.btn)}>Notify Me</button>
         </div>
-      </div> */}
+      </div>
 
       <output className={clsx("output")} ref={signupFormFeedbackRef} />
     </form>

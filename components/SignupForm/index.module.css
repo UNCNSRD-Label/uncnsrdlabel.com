@@ -14,18 +14,41 @@
   gap: 1rem;
 } */
 
-.label {
-  @apply sr-only;
-}
+.form {
+  & .formControl {
+    filter: opacity(0.85);
+  
+    & .label {
+      @apply sr-only;
+    }
+  
+    & .inputGroup {
+      .input {}
+    }
+  }
 
-.valid {
-  & :is(button, input, select, textarea, div) {
-    display: none;
-    opacity: 0;
-    pointer-events: none;
+  &.valid {
+    & .formControl {
+      @apply hidden;
+    }
+  }
+
+  
+  & .output {
+    &.valid {
+      @apply text-white bg-transparent;
+      filter: opacity(0.5);
+    
+      & :is(button, input, select, textarea, div) {
+        display: none;
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+    
+    &.invalid {
+    
+    }
   }
 }
 
-.invalid {
-
-}

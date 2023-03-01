@@ -8,9 +8,9 @@ import Footer from "#/components/Footer";
 
 import styles from "./layout.module.css";
 
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
+const montserratFont = Montserrat({
   subsets: ["latin"],
+  variable: "--font-sans",
   weight: "300",
 });
 
@@ -26,7 +26,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={clsx(montserrat.variable, "[color-scheme:dark]")}
+      className={clsx(
+        `${montserratFont.variable} font-sans`,
+        "[color-scheme:dark]"
+      )}
     >
       <head />
       <body
