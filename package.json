@@ -29,14 +29,10 @@
     "@react-three/postprocessing": "^2.7.0",
     "@shopify/hydrogen": "^1.6.5",
     "@shopify/hydrogen-react": "2022.10.6",
-    "@tailwindcss/forms": "^0.5.3",
-    "@tailwindcss/typography": "^0.5.8",
     "clsx": "^1.2.1",
     "cookies-next": "^2.1.1",
     "cross-fetch": "^3.1.5",
-    "daisyui": "^2.46.1",
     "dinero.js": "^2.0.0-alpha.8",
-    "email-validator": "^2.0.4",
     "encoding": "^0.1.13",
     "glsl-random": "^0.0.5",
     "graphql-request": "^5.1.0",
@@ -56,7 +52,6 @@
     "react-schemaorg": "^2.0.0",
     "react-social-icons": "^5.15.0",
     "react-use-scrollspy": "^3.1.1",
-    "react-use-wizard": "^2.2.1",
     "react-world-flags": "^1.5.1",
     "schema-dts": "^1.1.0",
     "sharp": "^0.31.3",
@@ -73,6 +68,8 @@
     "@graphql-codegen/client-preset": "1.2.5",
     "@graphql-eslint/eslint-plugin": "^3.14.3",
     "@next/bundle-analyzer": "^13.1.1",
+    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/typography": "^0.5.8",
     "@types/body-scroll-lock": "^3.1.0",
     "@types/gtag.js": "^0.0.12",
     "@types/js-cookie": "^3.0.2",
@@ -83,6 +80,7 @@
     "@types/three": "^0.148.0",
     "@vercel/git-hooks": "^1.0.0",
     "autoprefixer": "^10.4.13",
+    "daisyui": "^2.46.1",
     "eslint": "^8.31.0",
     "eslint-config-next": "^13.1.1",
     "eslint-config-prettier": "^8.6.0",
@@ -121,20 +119,8 @@
   ],
   "next-unused": {
     "alias": {
-      "@lib/*": [
+      "#/lib/*": [
         "lib/*"
-      ],
-      "@assets/*": [
-        "assets/*"
-      ],
-      "@config/*": [
-        "config/*"
-      ],
-      "@components/*": [
-        "components/*"
-      ],
-      "@utils/*": [
-        "utils/*"
       ]
     },
     "debug": true,
@@ -148,5 +134,5 @@
       "pages"
     ]
   },
-  "packageManager": "pnpm@7.18.2"
+  "packageManager": "pnpm@7.25.0"
 }
