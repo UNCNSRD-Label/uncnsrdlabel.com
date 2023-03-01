@@ -41,6 +41,37 @@ export const getAvailability = (
   return `https://schema.org/${availability}`;
 };
 
+// TODO: Merge with version above
+// const getAvailability = (
+//   variant?: PartialDeep<
+//     Pick<
+//       ProductVariant,
+//       "availableForSale" | "currentlyNotInStock" | "quantityAvailable"
+//     >,
+//     { recurseIntoArrays: true }
+//   >
+// ) => {
+//   if (!variant?.availableForSale) {
+//     return false;
+//   }
+
+//   let availability = "PreOrder";
+
+//   if (variant?.currentlyNotInStock) {
+//     availability = "OutOfStock";
+//   }
+
+//   if (variant?.quantityAvailable) {
+//     availability = "LimitedAvailability";
+//   }
+
+//   if (variant?.availableForSale) {
+//     availability = "InStock";
+//   }
+
+//   return `https://schema.org/${availability}`;
+// };
+
 export const mapProductGraphQLtoSchemaOrg = (
   product: PartialDeep<Product, { recurseIntoArrays: true }>
 ): WithContext<ProductSchema> => ({
