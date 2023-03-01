@@ -1,6 +1,6 @@
 #import "#/lib/graphql/fragments/QueryRootInformation.graphql"
 #import "#/lib/graphql/fragments/ShopPolicyInformation.graphql"
-query PrivacyPolicy {
+query Policies {
   ...QueryRootInformation
   shop {
     privacyPolicy {

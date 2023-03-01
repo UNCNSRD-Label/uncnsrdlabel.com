@@ -1,7 +1,7 @@
 import type { StorefrontApiResponseOk } from "@shopify/hydrogen-react";
 import type { GetServerSideProps } from "next";
 
-import type { PrivacyPolicyQuery } from "#/generated/graphql/graphql";
+import type { PoliciesQuery } from "#/generated/graphql/graphql";
 
 import { clsx } from "clsx";
 import { request } from "graphql-request";
@@ -60,7 +60,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 export default function Page({
   data,
   errors,
-}: StorefrontApiResponseOk<PrivacyPolicyQuery>) {
+}: StorefrontApiResponseOk<PoliciesQuery>) {
   const { query } = useRouter();
 
   const scrollingElement = createRef<HTMLDivElement>();
