@@ -9,9 +9,10 @@ import styles from "./index.module.css";
 
 type Props = {
   children?: React.ReactNode;
+  className?: string;
 };
 
-export const Component: React.FC<Props> = ({ children }) => {
+export const Component: React.FC<Props> = ({ children, className }) => {
   const signupFormRef = useRef<HTMLFormElement>(null);
   const signupFormFeedbackRef = useRef<HTMLOutputElement>(null);
 
@@ -60,32 +61,34 @@ export const Component: React.FC<Props> = ({ children }) => {
 
   return (
     <form
-      className={clsx(
-        styles.uniformHeight,
-        styles.form,
-        "grid",
-        "md:grid-cols-3",
-        "gap-4",
-        "md:gap-2",
-        "w-3/4",
-        "max-w-md",
-        "justify-items-center",
-        "items-end",
-        "md:justify-items-stretch",
-        "transparent"
-      )}
+      className={clsx(className, "form", styles.form)}
       onSubmit={handleSubmit}
       ref={signupFormRef}
     >
-      <div className={clsx("field", "md:col-span-2")}>
-        <label htmlFor="email">get first hand access here</label>
-        <input type="email" id="email" name="email" required />
+      <div className={clsx("field", styles.field)}>
+        <label className={clsx("label", styles.label)} htmlFor="email">
+          get first hand access here
+        </label>
+        <input
+          className={clsx("input", styles.input)}
+          type="email"
+          id="email"
+          name="email"
+          placeholder="get first hand access here"
+          required
+        />
       </div>
-      <button className={clsx("button", "button__filled")}>Notify Me</button>
-      <output
-        className={clsx("output", styles.uniformHeight)}
-        ref={signupFormFeedbackRef}
-      />
+      <button className={clsx("button", styles.button)}>Notify Me</button>
+
+      {/* <div className={clsx("form-control", styles.formControl)}>
+        <div className={clsx("input-group", styles.inputGroup)}>
+          <label className={clsx("label", styles.label)} htmlFor="email">get first hand access here</label>
+          <input className={clsx("input", styles.input)} type="email" id="email" name="email" placeholder="get first hand access here" required />
+          <button className={clsx("btn", styles.btn)}>Notify Me</button>
+        </div>
+      </div> */}
+
+      <output className={clsx("output")} ref={signupFormFeedbackRef} />
     </form>
   );
 };

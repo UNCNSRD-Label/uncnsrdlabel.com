@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import SignupForm from "#/components/SignupForm";
+import Video from "#/components/Video";
 
 import styles from "./page.module.css";
 
@@ -10,11 +11,11 @@ export default function Page() {
   return (
     <>
       <title>UNCNSRD - Home</title>
-      <div className={clsx(styles.container, "viewportHeight")}>
+      <div className={clsx(styles.container, "fitViewportMinimumHeight")}>
         <Link
+          className={styles.logotype}
           href="/"
           passHref
-          className={styles.logotype}
           title="uncnsrdlabel.com"
         >
           <Image
@@ -27,7 +28,15 @@ export default function Page() {
 
         {/* <h1 className={styles.title}>UNCNSRD</h1> */}
 
-        <SignupForm />
+        <Video
+          autoplay
+          className={clsx(styles.video)}
+          loop
+          url={"/videos/south-beach-ride.mp4"}
+          // url={'https://www.youtube.com/watch?v=zohpogt56Bg'}
+        />
+
+        <SignupForm className={clsx(styles.form)} />
 
         <section className={styles.copy}>
           <h1 className={styles.title}>UNCNSRD</h1>

@@ -3,8 +3,8 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
+  poweredByHeader: false,
   reactStrictMode: true,
-  swcMinify: true,
 };
 
 module.exports = nextConfig;

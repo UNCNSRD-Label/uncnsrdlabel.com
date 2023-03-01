@@ -1,0 +1,9 @@
+@layer base {
+  html {
+    --tw-bg-opacity: 1;
+  }
+
+  dialog {
+    @apply text-neutral-900;
+  }
+}

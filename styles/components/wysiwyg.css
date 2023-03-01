@@ -1,0 +1,162 @@
+@layer components {
+  .wysiwyg-module {
+    @apply text-center wysiwyg;
+    padding-inline: var(--viewport-margin-inline);
+
+    & h1 {
+      /* @apply font-sans; */
+      font-size: 18px;
+      letter-spacing: 0.25px;
+      line-height: 20px;
+      margin-bottom: 1rem;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 768px;
+    }
+  }
+
+  .prose,
+  .wysiwyg {
+    & .heading {
+      @apply border-b-2 border-black pb-20;
+    }
+
+    & h1,
+    & h2,
+    & h3,
+    & h4,
+    & h5,
+    & h6 {
+      @apply font-serif uppercase;
+    }
+
+    & p {
+      font-family: var(--font-text);
+    }
+
+    & dl {
+      & dt {
+      }
+
+      & dd {
+        margin-inline-start: 2ch;
+      }
+    }
+  }
+
+  .wysiwyg {
+    @apply prose;
+    margin-inline: auto;
+  }
+
+  .wysiwyg-legacy {
+    font-family: var(--font-text);
+    font-size: 16px;
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: normal;
+    line-height: 24px;
+
+    & a {
+      color: inherit;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 1.75px;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    & ul + ul,
+    & ul + ol,
+    & ul + p,
+    & ol + ul,
+    & ol + ol,
+    & ol + p,
+    & p + ul,
+    & p + ol,
+    & p + p {
+      margin-block-start: 24px;
+    }
+
+    & * {
+      & + h1,
+      & + h2,
+      & + h3 {
+        margin-block-start: 56px;
+      }
+    }
+
+    & h1,
+    & h2,
+    & h3 {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 1.75px;
+      text-transform: uppercase;
+
+      & + p,
+      & + ul,
+      & + ol {
+        margin-block-start: 6px;
+      }
+    }
+
+    & ul,
+    & ol {
+      margin-inline-start: 1.5em;
+    }
+
+    & ol {
+      list-style: decimal;
+    }
+
+    & ul {
+      & li {
+        position: relative;
+
+        &::before {
+          content: '—';
+          margin-inline-end: 0.4em;
+          position: absolute;
+          inset-inline-start: -1.5em;
+        }
+      }
+    }
+
+    & td {
+      color: inherit;
+      font-family: var(--font-text);
+      font-size: 16px;
+      block-size: 36px;
+      line-height: 36px;
+      min-inline-size: 180px;
+    }
+
+    @media screen and (max-width: theme(screens.md.max)) {
+      line-height: 22px;
+      padding: 0 var(--spacing-gutterGridMobile);
+      width: 100%;
+
+      & table,
+      & td,
+      & tr {
+        display: block;
+      }
+
+      & tr {
+        & + tr {
+          margin-block-start: 41px;
+        }
+      }
+
+      & td {
+        block-size: 24px;
+        line-height: 24px;
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,6 +1,21 @@
-
-.form {
+/* .form {
+  @apply gap-4;
   align-content: end;
+  display: grid;
+  min-block-size: max(20vh, 16rem);
+  padding-inline: 2rem;
+  width: 100%;
+}
+
+.field {
+  @apply gap-4;
+  display: grid;
+  grid-auto-flow: row;
+  gap: 1rem;
+} */
+
+.label {
+  @apply sr-only;
 }
 
 .valid {
@@ -11,6 +26,6 @@
   }
 }
 
-.uniformHeight {
-  min-block-size: max(20vh, 16rem);
+.invalid {
+
 }

@@ -1,0 +1,44 @@
+@layer components {
+  .btn {
+    /* border: 1px solid rgb(45, 45, 45); */
+    /* border-color: rgb(45, 45, 45); */
+    font-family: var(--font-sans);
+  }
+
+  /* .btn-ghost {
+    &:disabled {
+      --tw-bg-opacity: 0;
+    }
+  } */
+
+  .btn-transparent {
+    /* @apply btn-ghost; */
+
+    &[disabled] {
+      --tw-bg-opacity: 0;
+      background-color: transparent !important;
+    }
+  }
+
+  .btn-primary {
+    @apply border-neutral;
+  }
+
+  .input-transparent {
+    /* @apply input-ghost; */
+
+    &:focus {
+      --tw-bg-opacity: 0;
+      @apply outline-transparent;
+    }
+  }
+}
+
+.select-transparent {
+  /* @apply select-ghost; */
+
+  &:focus {
+    --tw-bg-opacity: 0;
+    @apply outline-transparent;
+  }
+}

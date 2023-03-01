@@ -1,0 +1,40 @@
+@layer utilities {
+  .animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+  }
+
+  .fadeIn {
+    animation-name: fadeIn;
+    -webkit-animation-name: fadeIn;
+  }
+
+  @-keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes filter-animation {
+    0% {
+      filter: invert(50%) sepia(75%) saturate(2500%) brightness(120%)
+        contrast(120%) hue-rotate(0deg);
+    }
+  
+    50% {
+      filter: invert(50%) sepia(75%) saturate(2500%) brightness(120%)
+        contrast(120%) hue-rotate(180deg);
+    }
+  
+    100% {
+      filter: invert(50%) sepia(75%) saturate(2500%) brightness(120%)
+        contrast(120%) hue-rotate(360deg);
+    }
+  }  
+}

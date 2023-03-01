@@ -1,11 +1,12 @@
 .container {
-  align-content: center;
-  background-image: url(/images/art/lp1.jpg);
-  background-image: image-set(
+  /* align-content: center; */
+  background-color: var(--tw-color-black);
+  /* background-image: url(/images/art/lp1.jpg); */
+  /* background-image: image-set(
     url("/images/art/lp1.avif") type("image/avif"),
     url("/images/art/lp1.webp") type("image/webp"),
     url("/images/art/lp1.jpg") type("image/jpeg")
-  );
+  ); */
   background-position: center;
   background-size: cover;
   display: grid;
@@ -15,12 +16,12 @@
 
 @screen md {
   .container {
-    background-image: url(/images/art/desktop.jpg);
-    background-image: image-set(
+    /* background-image: url(/images/art/desktop.jpg); */
+    /* background-image: image-set(
       url("/images/art/desktop.avif") type("image/avif"),
       url("/images/art/desktop.webp") type("image/webp"),
       url("/images/art/desktop.jpg") type("image/jpeg")
-    );
+    ); */
   }
 }
 
@@ -31,11 +32,14 @@
   margin-block-end: 1rem;
   min-inline-size: 50vw;
   position: relative;
+
+  @media screen and (min-width: theme(screens.md.min)) {
+    display: none;
+  }
 }
 
 .title {
   background-clip: text;
-  background-color: #ffffff;
   color: transparent;
   filter: drop-shadow(0rem 0rem 0.1rem var(--tw-color-black));
   font-family: 'Bomber Escort Outline', cursive;
@@ -49,7 +53,24 @@
   display: none;
 }
 
-.artGallery {
-  display: grid;
-  grid-auto-flow: column;
+.form {
+  @media screen and (min-width: theme(screens.md.min)) {
+    align-items: start;
+    display: grid;
+    inset: 0;
+    justify-content: center;
+    position: absolute;
+    
+    > * {
+      max-inline-size: 32rem;
+    }
+  }
+}
+
+.video {
+  width: 100%;
+
+  @screen md {
+    width: 50%;
+  }
 }

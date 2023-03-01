@@ -1,4 +1,4 @@
-import "#/styles/global/globals.css";
+import "#/styles/main.css";
 
 import { clsx } from "clsx";
 import { Montserrat } from "next/font/google";

@@ -1,0 +1,100 @@
+:root {
+  --rgb-primary: 255, 250, 240;
+
+  --primary: rgba(var(--rgb-primary), 1);
+  --primary-2: #f1f3f5;
+  --secondary: #000000;
+  --secondary-2: #111111;
+  --selection: var(--color-cyan);
+  --text-base: #2d2d2d;
+  --text-primary: #000000;
+  --text-secondary: #ffffff;
+  --hover: rgba(0, 0, 0, 0.075);
+  --hover-1: rgba(0, 0, 0, 0.15);
+  --hover-2: rgba(0, 0, 0, 0.25);
+  --cyan: #22b8cf;
+  --green: #37b679;
+  --red: #da3c3c;
+  --purple: #f81ce5;
+  --blue: #0070f3;
+  --pink: #ff0080;
+  --pink-light: #ff379c;
+  --magenta: #eb367f;
+  --violet: #7928ca;
+  --violet-dark: #4c2889;
+  --accent-0: #fff;
+  --accent-1: #fafafa;
+  --accent-2: #eaeaea;
+  --accent-3: #999999;
+  --accent-4: #888888;
+  --accent-5: #666666;
+  --accent-6: #444444;
+  --accent-7: #333333;
+  --accent-8: #111111;
+  --accent-9: #000;
+
+  --color-bg: var(--color-softWhite);
+  --color-textBlack: var(--color-black);
+  --color-textWhite: var(--color-softWhite);
+
+  --color-overlay-background: rgba(var(--rgb-primary), 0.975);
+
+  --easings-easeInQuart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+  --easings-easeOutQuad: cubic-bezier(0.39, 0.575, 0.565, 1);
+  --easings-easeOutQuart: cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  --height-subNav: 3.25rem;
+
+  --height-topBar: 5rem;
+  --height-topBarMobile: 4.25rem;
+
+  /* NOTE: side gutters exclude the grid gutter */
+  --spacing-gutterGrid: 0.375rem;
+  --spacing-gutterSideLarge: 0.875rem;
+
+  /* TODO: Remove */
+  --spacing-gutterGridMobile: theme(margin[1.5]);
+  /* TODO: Remove */
+  --spacing-gutterSideLargeMobile: theme(margin[3.5]);
+  --spacing-gutterSideSmall: theme(margin.5);
+
+  --spacing-gutterHeaderNav: max(var(--spacing-gutterGrid), 2vw);
+
+  --width-constrained-container: 100rem;
+
+  --slider-height-mobile: 432px;
+  --slider-height-desktop: 894px;
+
+  --looktile-timeout: 300ms;
+
+  --viewport-margin-block: var(--height-topBarMobile);
+  --viewport-margin-inline: 1rem;
+  --viewport-padding-block: 0;
+
+  @media screen and (min-width: theme(screens.md.min)) {
+    --spacing-gutterGrid: theme(margin[2.5]);
+    --spacing-gutterSideLarge: theme(margin.20);
+    --spacing-gutterSideSmall: theme(margin.8);
+
+    --viewport-margin-block: var(--height-topBar);
+    --viewport-margin-inline: 2rem;
+    --viewport-padding-block: var(--height-topBar);
+  }
+
+  @media screen and (min-width: theme(screens.lg.min)) {
+    --viewport-margin-inline: 4rem;
+  }
+
+  --color-button: 255 255 255;
+  --color-button-background: 100 100 100;
+  --color-secondary: 255 115 179;
+  --color-tertiary: 111 114 185;
+  --color-input: 0 0 0;
+  --color-input-background: 255 255 255;
+  /* --color-feedback-valid-background: 0 75 0; */
+  /* --color-feedback-valid-border: 0 255 0; */
+  --color-feedback-invalid-background: 50 50 50;
+  --color-feedback-invalid-border: 50 50 50;
+  --color-feedback-valid-background: 50 50 50;
+  --color-feedback-valid-border: 50 50 50;
+}
