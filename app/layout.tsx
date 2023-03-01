@@ -1,7 +1,7 @@
 import "#/styles/global/globals.css";
 
 import { clsx } from "clsx";
-import { Montserrat } from "@next/font/google";
+import { Montserrat } from "next/font/google";
 
 import Header from "#/components/Header";
 import Footer from "#/components/Footer";
@@ -10,7 +10,7 @@ import styles from "./layout.module.css";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
-  subsets: ['latin'],
+  subsets: ["latin"],
   weight: "300",
 });
 
