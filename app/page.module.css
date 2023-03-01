@@ -33,7 +33,7 @@
   min-inline-size: 50vw;
   position: relative;
 
-  @media screen and (min-width: theme(screens.md.min)) {
+  @media (orientation: landscape) {
     display: none;
   }
 }
@@ -58,12 +58,13 @@
     @apply w-10/12;
   }
 
-  @media screen and (min-width: theme(screens.md.min)) {
+  @media (orientation: landscape) {
     align-items: start;
     display: grid;
     inset: 0;
     justify-content: center;
-    padding: 2rem;
+    padding-block-start: 10vh;
+    padding-inline: 2rem;
     position: absolute;
     
     > * {
@@ -75,15 +76,9 @@
   & :global(.input) {
     --b1: 0 100% 100%;
     color: theme(colors.primary-content);
-    /* background-color: red; */
-    /* hsl(var(--b1) / var(--tw-bg-opacity)) */
   }
 }
 
 .video {
   width: 100%;
-
-  /* @media (orientation: portrait) {
-    width: 50%;
-  } */
 }
