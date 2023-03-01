@@ -61,6 +61,7 @@ export const Component: React.FC<Props> = ({ children }) => {
   return (
     <form
       className={clsx(
+        styles.uniformHeight,
         styles.form,
         "grid",
         "md:grid-cols-3",
@@ -81,7 +82,10 @@ export const Component: React.FC<Props> = ({ children }) => {
         <input type="email" id="email" name="email" required />
       </div>
       <button className={clsx("button", "button__filled")}>Notify Me</button>
-      <output className={clsx("output")} ref={signupFormFeedbackRef} />
+      <output
+        className={clsx("output", styles.uniformHeight)}
+        ref={signupFormFeedbackRef}
+      />
     </form>
   );
 };

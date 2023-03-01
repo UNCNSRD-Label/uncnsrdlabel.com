@@ -1,6 +1,12 @@
 form {
   display: grid;
   gap: 1rem;
+  padding: 2.5rem;
+
+  @screen md {
+    font-size: 2.75rem;
+    padding: 3.5rem;
+  }
 
   & :is(button, input, select, textarea, fieldset, optgroup, output) {
     padding-block: 1rem;
@@ -83,8 +89,12 @@ form {
   }
 
   output {
+    align-content: center;
+    /* align-items: center; */
     background-color: transparent;
     color: var(--tw-color-white);
+    display: grid;
+    gap: 1rem;
     grid-column: -1/1;
     padding: 1rem;
     text-align: center;
@@ -95,14 +105,18 @@ form {
     }
 
     &.invalid {
-      background-color: rgb(var(--color-feedback-invalid-background) / 0.5);
+      background-color: rgb(var(--color-feedback-invalid-background) / 0.9);
       /* border-color: rgb(var(--color-feedback-invalid-border) / 0.5); */
     }
 
     &.valid {
-      background-color: rgb(var(--color-feedback-valid-background) / 0.5);
+      background-color: rgb(var(--color-feedback-valid-background) / 0.9);
       /* border-color: rgb(var(--color-feedback-valid-border) / 0.5); */
-      font-size: 2.75rem;
+      font-size: 1.5rem;
+
+      @screen md {
+        font-size: 2.75rem;
+      }
     }
   }
 }

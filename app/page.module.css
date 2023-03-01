@@ -9,6 +9,7 @@
   background-position: center;
   background-size: cover;
   display: grid;
+  gap: 10vh;
   place-items: center;
 }
 
