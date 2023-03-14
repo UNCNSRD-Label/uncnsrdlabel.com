@@ -7177,9 +7177,9 @@ export type PageQuery = {
   };
 };
 
-export type PrivacyPolicyQueryVariables = Exact<{ [key: string]: never }>;
+export type PoliciesQueryVariables = Exact<{ [key: string]: never }>;
 
-export type PrivacyPolicyQuery = {
+export type PoliciesQuery = {
   __typename?: "QueryRoot";
   shop: {
     __typename?: "Shop";
@@ -8953,13 +8953,13 @@ export const PageDocument = {
     ...QueryRootInformationFragmentDoc.definitions,
   ],
 } as unknown as DocumentNode<PageQuery, PageQueryVariables>;
-export const PrivacyPolicyDocument = {
+export const PoliciesDocument = {
   kind: "Document",
   definitions: [
     {
       kind: "OperationDefinition",
       operation: "query",
-      name: { kind: "Name", value: "PrivacyPolicy" },
+      name: { kind: "Name", value: "Policies" },
       selectionSet: {
         kind: "SelectionSet",
         selections: [
@@ -9034,7 +9034,7 @@ export const PrivacyPolicyDocument = {
     ...QueryRootInformationFragmentDoc.definitions,
     ...ShopPolicyInformationFragmentDoc.definitions,
   ],
-} as unknown as DocumentNode<PrivacyPolicyQuery, PrivacyPolicyQueryVariables>;
+} as unknown as DocumentNode<PoliciesQuery, PoliciesQueryVariables>;
 export const ProductDocument = {
   kind: "Document",
   definitions: [
@@ -9567,7 +9567,8 @@ export const ProductDocument = {
                                             },
                                             value: {
                                               kind: "StringValue",
-                                              value: "custom",
+                                              value:
+                                                "shopify--discovery--product_recommendation",
                                               block: false,
                                             },
                                           },
