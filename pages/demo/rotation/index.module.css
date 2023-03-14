@@ -1,0 +1,58 @@
+.root {
+  @apply grid items-center justify-items-center;
+  grid-template-areas: "logotypeLink" "figure" "cta";
+  grid-template-rows: var(--viewport-margin-block) auto var(
+      --viewport-margin-block
+    );
+
+  .figure {
+    @apply aspect-2/1 relative h-full sm:min-w-[80vw] max-w-full overflow-hidden;
+    grid-area: figure;
+
+    .link {
+      @apply grid h-full w-full relative;
+      place-items: center;
+
+      .image {
+        @apply object-cover sm:object-contain object-top;
+      }
+
+      .logoImage {
+        @apply absolute z-30;
+        animation: rotation 10s infinite linear,
+          filter-animation 20s infinite linear;
+        width: 80%;
+      }
+    }
+  }
+
+  .cta {
+    grid-area: cta;
+  }
+}
+
+@keyframes filter-animation {
+  0% {
+    filter: invert(50%) sepia(75%) saturate(2500%) brightness(120%)
+      contrast(120%) hue-rotate(0deg);
+  }
+
+  50% {
+    filter: invert(50%) sepia(75%) saturate(2500%) brightness(120%)
+      contrast(120%) hue-rotate(180deg);
+  }
+
+  100% {
+    filter: invert(50%) sepia(75%) saturate(2500%) brightness(120%)
+      contrast(120%) hue-rotate(360deg);
+  }
+}
+
+@keyframes rotation {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
