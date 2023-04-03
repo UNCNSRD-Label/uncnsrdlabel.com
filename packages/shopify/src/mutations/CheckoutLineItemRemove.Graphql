@@ -1,0 +1,12 @@
+mutation CheckoutLineItemRemove($checkoutId: ID!, $lineItemIds: [ID!]!) {
+  checkoutLineItemsRemove(checkoutId: $checkoutId, lineItemIds: $lineItemIds) {
+    checkoutUserErrors {
+      code
+      field
+      message
+    }
+    checkout {
+      ...checkoutDetails
+    }
+  }
+}

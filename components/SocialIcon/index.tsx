@@ -1,15 +1,13 @@
-import type { FC } from "react";
+import type { FC } from 'react'
 
-import { SocialIcon as ReactSocialIcon } from "react-social-icons";
-
-import { theme } from "#/lib/constants/style";
+import { SocialIcon as ReactSocialIcon } from 'react-social-icons'
 
 type Props = {
-  bgColor?: string;
-  fgColor?: string;
-  size?: number;
-  url: string;
-};
+  bgColor?: string
+  fgColor?: string
+  size?: number
+  url: string
+}
 
 export const Component: FC<Props> = ({
   bgColor = `hsl(var(--p))`,
@@ -25,7 +23,7 @@ export const Component: FC<Props> = ({
       target="_blank"
       url={url}
     />
-  );
-};
+  )
+}
 
-export default Component;
+export default Component

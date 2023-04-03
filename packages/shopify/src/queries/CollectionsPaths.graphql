@@ -1,0 +1,8 @@
+query CollectionsPaths($country: CountryCode!, $first: Int = 250)
+@inContext(country: $country) {
+  collections(first: $first) {
+    nodes {
+      handle
+    }
+  }
+}

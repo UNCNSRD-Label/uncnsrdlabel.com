@@ -1,0 +1,8 @@
+#import "./StoryBasicInformation.graphql"
+
+fragment StoryCollectionBasicInformation on StoryCollection {
+  items {
+    ...StoryBasicInformation
+  }
+  total
+}

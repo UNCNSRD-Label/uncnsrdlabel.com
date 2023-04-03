@@ -1,0 +1,8 @@
+#import "./EditBasicInformation.graphql"
+
+fragment EditCollectionBasicInformation on EditCollection {
+  items {
+    ...EditBasicInformation
+  }
+  total
+}

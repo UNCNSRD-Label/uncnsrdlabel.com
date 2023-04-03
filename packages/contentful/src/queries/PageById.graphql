@@ -1,0 +1,7 @@
+#import "../fragments/PageBasicInformation.graphql"
+
+query PageById($id: String!, $locale: String, $preview: Boolean) {
+  page(id: $id, locale: $locale, preview: $preview) {
+    ...PageBasicInformation
+  }
+}

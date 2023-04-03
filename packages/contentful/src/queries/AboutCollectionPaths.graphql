@@ -1,0 +1,13 @@
+query AboutCollectionPaths(
+  $limit: Int = 250
+  $locale: String
+  $preview: Boolean
+) {
+  aboutCollection(limit: $limit, locale: $locale, preview: $preview) {
+    items {
+      ... on About {
+        slug
+      }
+    }
+  }
+}

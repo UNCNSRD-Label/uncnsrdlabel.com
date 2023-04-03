@@ -1,0 +1,21 @@
+query PageCollectionByType(
+  $limit: Int = 250
+  $locale: String
+  $preview: Boolean
+  $type: String = "homepage"
+) {
+  pageCollection(
+    limit: $limit
+    locale: $locale
+    preview: $preview
+    where: { type: $type }
+  ) {
+    items {
+      ... on Page {
+        slug
+        title
+        type
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+.main {
+  @apply grid;
+  background-color: black;
+  min-block-size: 100vh;
+}

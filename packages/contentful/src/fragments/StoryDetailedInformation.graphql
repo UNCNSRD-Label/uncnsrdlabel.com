@@ -1,0 +1,33 @@
+#import "./ImageBasicInformation.graphql"
+#import "./StoryModulesCollectionBasicInformation.graphql"
+#import "./SysBasicInformation.graphql"
+
+fragment StoryDetailedInformation on Story {
+  category {
+    metaDescription
+    metaTitle
+    name
+    slug
+  }
+  deck
+  # eyebrow
+  imageLandscape {
+    ...ImageBasicInformation
+  }
+  imagePortrait {
+    ...ImageBasicInformation
+  }
+  metaDescription
+  metaImage {
+    ...ImageBasicInformation
+  }
+  metaTitle
+  modulesCollection {
+    ...StoryModulesCollectionBasicInformation
+  }
+  slug
+  sys {
+    ...SysBasicInformation
+  }
+  title
+}

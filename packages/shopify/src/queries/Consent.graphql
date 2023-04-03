@@ -1,0 +1,8 @@
+#import "../fragments/QueryRootInformation.graphql"
+
+query Consent($country: CountryCode!) @inContext(country: $country) {
+  ...QueryRootInformation
+  shop {
+    name
+  }
+}

@@ -1,0 +1,26 @@
+#import "../fragments/ImageBasicInformation.graphql"
+
+query AboutCollection($limit: Int = 250, $locale: String, $preview: Boolean) {
+  aboutCollection(limit: $limit, locale: $locale, preview: $preview) {
+    items {
+      ... on About {
+        contentfulMetadata {
+          tags {
+            name
+          }
+        }
+        metaDescription
+        metaTitle
+        metaImage {
+          ...ImageBasicInformation
+        }
+        slug
+        sys {
+          publishedAt
+          id
+        }
+        title
+      }
+    }
+  }
+}

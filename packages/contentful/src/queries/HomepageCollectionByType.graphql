@@ -1,0 +1,28 @@
+#import "../fragments/HpModuleBasicInformation.graphql"
+#import "../fragments/PageBasicInformation.graphql"
+
+query HomepageCollectionByType(
+  $limit: Int = 1
+  $locale: String
+  $preview: Boolean
+  $type: String = "homepage"
+) {
+  pageCollection(
+    limit: $limit
+    locale: $locale
+    preview: $preview
+    where: { type: $type }
+  ) {
+    items {
+      ...PageBasicInformation
+      ... on Page {
+        modulesCollection {
+          items {
+            ...HpModuleBasicInformation
+          }
+          total
+        }
+      }
+    }
+  }
+}

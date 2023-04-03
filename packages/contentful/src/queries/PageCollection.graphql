@@ -1,0 +1,27 @@
+#import "../fragments/ImageBasicInformation.graphql"
+
+query PageCollection($limit: Int = 250, $locale: String, $preview: Boolean) {
+  pageCollection(limit: $limit, locale: $locale, preview: $preview) {
+    items {
+      ... on Page {
+        contentfulMetadata {
+          tags {
+            name
+          }
+        }
+        metaDescription
+        metaTitle
+        metaImage {
+          ...ImageBasicInformation
+        }
+        slug
+        sys {
+          publishedAt
+          id
+        }
+        title
+        type
+      }
+    }
+  }
+}

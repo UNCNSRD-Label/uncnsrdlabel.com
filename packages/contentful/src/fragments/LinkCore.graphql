@@ -1,0 +1,11 @@
+#import "./SysBasicInformation.graphql"
+
+fragment LinkCore on Link {
+    sys {
+        ...SysBasicInformation
+    }
+    __typename
+    label
+    href
+    shouldOpenInNewTab
+}

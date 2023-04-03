@@ -1,0 +1,21 @@
+query EditCategoryCollectionByType(
+  $locale: String
+  $preview: Boolean
+  $type: String!
+) {
+  categoryCollection(
+    locale: $locale
+    preview: $preview
+    where: { type: $type }
+  ) {
+    items {
+      linkedFrom {
+        editCollection {
+          total
+        }
+      }
+      name
+      slug
+    }
+  }
+}

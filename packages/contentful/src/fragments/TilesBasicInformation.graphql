@@ -1,0 +1,33 @@
+#import "./AssociationBasicInformation.graphql"
+#import "./ImageBasicInformation.graphql"
+#import "./SysBasicInformation.graphql"
+
+fragment TilesBasicInformation on Tiles {
+  colorAccent
+  colorBackground
+  colorHeading
+  colorShadow
+  colorText
+  deck
+  heading
+  layout
+  leftTileCaption
+  leftTileImage {
+    ...ImageBasicInformation
+  }
+  leftTileObject {
+    ...AssociationBasicInformation
+  }
+  leftTileShopifyProduct
+  rightTileCaption
+  rightTileImage {
+    ...ImageBasicInformation
+  }
+  rightTileObject {
+    ...AssociationBasicInformation
+  }
+  rightTileShopifyProduct
+  sys {
+    ...SysBasicInformation
+  }
+}

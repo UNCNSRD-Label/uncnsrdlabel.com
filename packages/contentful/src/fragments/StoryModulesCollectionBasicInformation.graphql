@@ -1,0 +1,15 @@
+#import "./AssociationBasicInformation.graphql"
+#import "./ImageVideoBasicInformation.graphql"
+#import "./StoryContentBasicInformation.graphql"
+#import "./TilesBasicInformation.graphql"
+
+fragment StoryModulesCollectionBasicInformation on StoryModulesCollection {
+  items {
+    __typename
+    ...AssociationBasicInformation
+    ...ImageVideoBasicInformation
+    ...StoryContentBasicInformation
+    ...TilesBasicInformation
+  }
+  total
+}

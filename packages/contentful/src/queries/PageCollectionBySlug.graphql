@@ -1,0 +1,19 @@
+#import "../fragments/PageBasicInformation.graphql"
+
+query PageCollectionBySlug(
+  $limit: Int = 1
+  $locale: String
+  $preview: Boolean
+  $slug: String
+) {
+  pageCollection(
+    limit: $limit
+    locale: $locale
+    preview: $preview
+    where: { slug: $slug }
+  ) {
+    items {
+      ...PageBasicInformation
+    }
+  }
+}

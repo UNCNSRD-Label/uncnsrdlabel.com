@@ -1,0 +1,14 @@
+.section {
+  @apply grid justify-center mb-8;
+
+  .figure {
+    @apply relative;
+
+    .figcaption {
+      display: none;
+    }
+
+    .image {
+    }
+  }
+}

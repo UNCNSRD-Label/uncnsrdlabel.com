@@ -1,0 +1,79 @@
+.main {
+  margin-block-start: var(--header-height-offset-level-2);
+  margin-block-end: var(--viewport-margin-block);
+}
+
+.header {
+  @apply font-serif grid gap-4 p-4 py-8 justify-center;
+
+  &:has(.description, .imageWrapper) {
+    @apply justify-center;
+    background-color: var(--color-softOrange);
+
+    @media screen and (min-width: theme(screens.md.min)) {
+      grid-template-columns: 25rem 20rem;
+    }
+  }
+
+  @media screen and (min-width: theme(screens.md.min)) {
+    @apply gap-8 py-14;
+  }
+
+  & .copy {
+    & .title {
+      @apply pb-4 text-3xl;
+
+      @media screen and (min-width: theme(screens.md.min)) {
+        @apply text-5xl;
+      }
+    }
+
+    & .description {
+      @apply prose;
+    }
+  }
+
+  .imageWrapper {
+    position: relative;
+
+    @media screen and (max-width: theme(screens.sm.max)) {
+      margin-block-start: 1rem;
+      margin-inline-start: 1.5rem;
+    }
+
+    @media screen and (min-width: theme(screens.md.min)) {
+      inset-block-start: 1.5rem;
+    }
+
+    .figure {
+      box-shadow: -1.5rem -1.5rem;
+      position: relative;
+    }
+
+    .tab {
+      @apply z-auto;
+      background: red;
+      height: 2rem;
+      position: absolute;
+      inset-inline-end: 1rem;
+      inset-block-start: -1rem;
+      width: 0.5rem;
+
+      @media screen and (min-width: theme(screens.md.min)) {
+        height: 6rem;
+        inset-inline-end: 3rem;
+        inset-block-start: -3rem;
+        width: 1.5rem;
+      }
+    }
+  }
+}
+
+.algoliaSearch {
+  padding-block-start: 1rem;
+}
+
+.header,
+.algoliaSearch {
+  padding-inline: var(--viewport-margin-inline-small);
+}

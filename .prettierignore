@@ -1,0 +1,11 @@
+node_modules
+.next
+public
+*pnpm-lock.yaml
+.eslintignore
+.eslintrc
+.env
+storybook-static
+.madgerc
+.nvmrc
+next-env.d.ts

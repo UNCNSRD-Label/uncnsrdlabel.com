@@ -1,0 +1,19 @@
+#import "../fragments/ImageBasicInformation.graphql"
+
+query CollectionByHandle($country: CountryCode!, $handle: String!)
+@inContext(country: $country) {
+  collection(handle: $handle) {
+    description
+    descriptionHtml
+    id
+    image {
+      ...ImageBasicInformation
+    }
+    seo {
+      description
+      title
+    }
+    title
+    updatedAt
+  }
+}

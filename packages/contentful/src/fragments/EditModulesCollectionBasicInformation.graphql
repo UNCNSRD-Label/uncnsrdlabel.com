@@ -1,0 +1,15 @@
+#import "./AssociationBasicInformation.graphql"
+#import "./EditContentBasicInformation.graphql"
+#import "./ImageVideoBasicInformation.graphql"
+#import "./TilesBasicInformation.graphql"
+
+fragment EditModulesCollectionBasicInformation on EditModulesCollection {
+  items {
+    __typename
+    ...AssociationBasicInformation
+    ...EditContentBasicInformation
+    ...ImageVideoBasicInformation
+    ...TilesBasicInformation
+  }
+  total
+}

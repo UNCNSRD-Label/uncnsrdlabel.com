@@ -1,0 +1,25 @@
+#import "./ImageBasicInformation.graphql"
+
+fragment CollectionBasicInformation on Collection {
+  description
+  handle
+  id
+  image {
+    ...ImageBasicInformation
+  }
+  metafields(
+    identifiers: [
+      { namespace: "custom", key: "is_brand" }
+      { namespace: "my_fields", key: "collection_box_shadow_colour" }
+      { namespace: "my_fields", key: "collection_tab_colour" }
+    ]
+  ) {
+    description
+    id
+    key
+    namespace
+    type
+    value
+  }
+  title
+}

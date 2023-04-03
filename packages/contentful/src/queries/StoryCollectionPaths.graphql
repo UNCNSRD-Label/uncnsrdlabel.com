@@ -1,0 +1,16 @@
+query StoryCollectionPaths(
+  $limit: Int = 250
+  $locale: String
+  $preview: Boolean
+) {
+  storyCollection(limit: $limit, locale: $locale, preview: $preview) {
+    items {
+      ... on Story {
+        category {
+          slug
+        }
+        slug
+      }
+    }
+  }
+}

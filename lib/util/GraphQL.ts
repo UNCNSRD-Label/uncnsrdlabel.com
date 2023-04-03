@@ -1,4 +1,4 @@
-import type { ParsedMetafields } from "@shopify/hydrogen-react";
+import type { ParsedMetafields } from '@shopify/hydrogen-react'
 
 import type {
   Page,
@@ -6,10 +6,10 @@ import type {
   ProductMetafieldArgs,
   ProductVariant,
   ProductVariantMetafieldArgs,
-} from "@shopify/hydrogen-react/storefront-api-types";
-import type { PartialDeep } from "type-fest";
+} from '@shopify/hydrogen-react/storefront-api-types'
+import type { PartialDeep } from 'type-fest'
 
-import { metafieldParser } from "@shopify/hydrogen-react";
+import { parseMetafield } from '@shopify/hydrogen-react'
 
 export const getAdditionalImages = (
   selectedVariant?: PartialDeep<
@@ -18,25 +18,25 @@ export const getAdditionalImages = (
   > | null
 ) => {
   if (!selectedVariant) {
-    return;
+    return
   }
 
   const additional_media = getMetafield<
-    ParsedMetafields["list.file_reference"]
+    ParsedMetafields['list.file_reference']
   >(selectedVariant, {
-    namespace: "custom",
-    key: "additional_media",
-  });
+    namespace: 'custom',
+    key: 'additional_media',
+  })
 
   // TODO: Check use of ts-ignore
   const additional_images = additional_media?.parsedValue
     // @ts-ignore
-    ?.filter((medium) => medium?.mediaContentType === "IMAGE");
+    ?.filter((medium) => medium?.mediaContentType === 'IMAGE')
 
-  const imageNodes = additional_images?.map(({ previewImage }) => previewImage);
+  const imageNodes = additional_images?.map(({ previewImage }) => previewImage)
 
-  return imageNodes;
-};
+  return imageNodes
+}
 
 export const getColorHexCodeByName = (
   colorName: string,
@@ -45,34 +45,34 @@ export const getColorHexCodeByName = (
         | PartialDeep<
             ProductVariant,
             {
-              recurseIntoArrays: true;
+              recurseIntoArrays: true
             }
           >
         | undefined
       )[]
     | undefined
 ) => {
-  const variant = variants?.find((variant) =>
-    variant?.selectedOptions?.find(
+  const variant = variants?.find((v) =>
+    v?.selectedOptions?.find(
       (selectedOption) => selectedOption?.value === colorName
     )
-  );
+  )
 
   if (!variant) {
-    return undefined;
+    return undefined
   }
 
-  const metafield = getMetafield<ParsedMetafields["color"]>(variant, {
-    namespace: "custom",
-    key: "color",
-  });
+  const metafield = getMetafield<ParsedMetafields['color']>(variant, {
+    namespace: 'custom',
+    key: 'color',
+  })
 
   if (metafield == null) {
-    return undefined;
+    return undefined
   }
 
-  return metafield?.value;
-};
+  return metafield?.value
+}
 
 export const getComplementaryProducts = (
   selectedVariant?: PartialDeep<
@@ -81,20 +81,20 @@ export const getComplementaryProducts = (
   > | null
 ) => {
   if (!selectedVariant) {
-    return;
+    return
   }
 
   const complementary_products = getMetafield<
-    ParsedMetafields["list.product_reference"]
+    ParsedMetafields['list.product_reference']
   >(selectedVariant, {
-    namespace: "custom",
-    key: "complementary_products",
-  });
+    namespace: 'custom',
+    key: 'complementary_products',
+  })
 
-  const products = complementary_products?.parsedValue;
+  const products = complementary_products?.parsedValue
 
-  return products;
-};
+  return products
+}
 
 export const getRelatedProducts = (
   selectedVariant?: PartialDeep<
@@ -103,20 +103,20 @@ export const getRelatedProducts = (
   > | null
 ) => {
   if (!selectedVariant) {
-    return;
+    return
   }
 
   const complementary_products = getMetafield<
-    ParsedMetafields["list.product_reference"]
+    ParsedMetafields['list.product_reference']
   >(selectedVariant, {
-    namespace: "shopify--discovery--product_recommendation",
-    key: "related_products",
-  });
+    namespace: 'shopify--discovery--product_recommendation',
+    key: 'related_products',
+  })
 
-  const products = complementary_products?.parsedValue;
+  const products = complementary_products?.parsedValue
 
-  return products;
-};
+  return products
+}
 
 export const getMaterialImage = (
   selectedVariant?: PartialDeep<
@@ -125,43 +125,43 @@ export const getMaterialImage = (
   > | null
 ) => {
   if (!selectedVariant) {
-    return;
+    return
   }
 
-  const material_image = getMetafield<ParsedMetafields["file_reference"]>(
+  const material_image = getMetafield<ParsedMetafields['file_reference']>(
     selectedVariant,
     {
-      namespace: "custom",
-      key: "material_image",
+      namespace: 'custom',
+      key: 'material_image',
     }
-  );
+  )
 
-  const materialImage = material_image?.parsedValue?.previewImage;
+  const materialImage = material_image?.parsedValue?.previewImage
 
-  return materialImage;
-};
+  return materialImage
+}
 
 export const getMedia = (
   page?: PartialDeep<Page, { recurseIntoArrays: true }> | null
 ) => {
   if (!page) {
-    return;
+    return
   }
 
-  const media = getMetafield<ParsedMetafields["list.file_reference"]>(page, {
-    namespace: "custom",
-    key: "media",
-  });
+  const media = getMetafield<ParsedMetafields['list.file_reference']>(page, {
+    namespace: 'custom',
+    key: 'media',
+  })
 
   // TODO: Check use of ts-ignore
   const images = media?.parsedValue
     // @ts-ignore
-    ?.filter((medium) => medium?.mediaContentType === "IMAGE");
+    ?.filter((medium) => medium?.mediaContentType === 'IMAGE')
 
-  const imageNodes = images?.map(({ previewImage }) => previewImage);
+  const imageNodes = images?.map(({ previewImage }) => previewImage)
 
-  return imageNodes;
-};
+  return imageNodes
+}
 
 export const getMetafield = <T>(
   productOrProductVariant: PartialDeep<
@@ -171,21 +171,21 @@ export const getMetafield = <T>(
   { key, namespace }: ProductMetafieldArgs | ProductVariantMetafieldArgs
 ) => {
   const metafield = productOrProductVariant.metafields?.find(
-    (metafield) => metafield?.namespace === namespace && metafield?.key === key
-  );
+    (meta) => meta?.namespace === namespace && meta?.key === key
+  )
 
   if (metafield == null) {
-    return undefined;
+    return undefined
   }
 
   try {
-    const parsedMetafield = metafieldParser<T>(metafield);
+    const parsedMetafield = parseMetafield<T>(metafield)
 
-    return parsedMetafield;
+    return parsedMetafield
   } catch (error) {
-    console.error(error);
+    console.error(error)
   }
-};
+}
 
 export const getMetafieldForSchemaOrg = <T>(
   productOrProductVariant: PartialDeep<
@@ -194,12 +194,14 @@ export const getMetafieldForSchemaOrg = <T>(
   >,
   { key, namespace }: ProductMetafieldArgs | ProductVariantMetafieldArgs
 ) => {
+  // @ts-ignore
+  // eslint-disable-next-line no-unused-vars,unused-imports/no-unused-vars
   const parsedMetafield = getMetafield<T>(productOrProductVariant, {
     key,
     namespace,
-  });
+  })
 
-  let value;
+  let value
 
   // if (parsedMetafield?.boolean) {
   //   value = Boolean(parsedMetafield.boolean);
@@ -211,5 +213,5 @@ export const getMetafieldForSchemaOrg = <T>(
   // }
 
   // TODO: Investigate use of coercion to any
-  return value as any as string;
-};
+  return value as unknown as string
+}

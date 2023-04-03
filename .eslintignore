@@ -1,0 +1,10 @@
+# eslint ignores its own config file by default
+!.eslintrc
+# ignore nested node_modules
+**/node_modules/**
+public/fallback-*.js
+public/sw.js
+public/workbox-*.js
+tailwind.config.js
+next.config.js
+next-env.d.ts

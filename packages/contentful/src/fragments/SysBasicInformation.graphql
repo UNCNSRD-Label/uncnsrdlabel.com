@@ -1,0 +1,5 @@
+fragment SysBasicInformation on Sys {
+  firstPublishedAt
+  id
+  publishedAt
+}

@@ -1,0 +1,19 @@
+#import "./ImageBasicInformation.graphql"
+#import "./SysBasicInformation.graphql"
+
+fragment PageBasicInformation on Page {
+  __typename
+  content
+  metaDescription
+  metaImage {
+    ...ImageBasicInformation
+  }
+  metaTitle
+  shopifyProducts
+  slug
+  sys {
+    ...SysBasicInformation
+  }
+  title
+  type
+}

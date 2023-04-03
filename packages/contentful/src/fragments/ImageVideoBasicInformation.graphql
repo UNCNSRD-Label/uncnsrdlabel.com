@@ -1,0 +1,24 @@
+#import "./ImageBasicInformation.graphql"
+#import "./SysBasicInformation.graphql"
+
+fragment ImageVideoBasicInformation on ImageVideo {
+  autoplay
+  colorAccent
+  colorBackground
+  colorHeading
+  colorShadow
+  colorText
+  controls
+  cover {
+    ...ImageBasicInformation
+  }
+  deck
+  heading
+  media {
+    ...ImageBasicInformation
+  }
+  sys {
+    ...SysBasicInformation
+  }
+  url
+}

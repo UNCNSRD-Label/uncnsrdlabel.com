@@ -1,0 +1,11 @@
+#import "../fragments/StoryCollectionBasicInformation.graphql"
+
+query StoryCollectionCountByCategory(
+  $categorySlug: String!
+  $locale: String
+  $preview: Boolean
+) {
+  storyCollection(where: { category: { slug: $categorySlug } }) {
+    total
+  }
+}

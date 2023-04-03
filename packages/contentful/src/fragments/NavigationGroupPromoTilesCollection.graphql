@@ -1,0 +1,24 @@
+#import "./SysBasicInformation.graphql"
+
+fragment NavigationGroupPromoTiles on NavigationGroupPromoTilesCollection {
+  items {
+    sys {
+      ...SysBasicInformation
+    }
+    __typename
+    linkedEntry {
+      __typename
+      ... on Story {
+        title
+        slug
+        category {
+          slug
+        }
+        imagePortrait {
+          url
+        }
+      }
+    }
+  }
+  total
+}

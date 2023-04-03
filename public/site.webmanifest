@@ -1,19 +1,47 @@
 {
-    "name": "UNCNSRD",
-    "short_name": "UNCNSRD",
-    "icons": [
-        {
-            "src": "/chrome/android-chrome-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "/chrome/android-chrome-256x256.png",
-            "sizes": "256x256",
-            "type": "image/png"
-        }
+    "name": "Collagerie",
+    "short_name": "Collagerie",
+    "description": "Expertly curating the best of fashion, interiors, beauty and lifestyle. We celebrate shopping at every price point, bringing you an innovative way to discover things you’ll love.",
+    "categories": ["fashion", "clothing", "homeware", "accessories"],
+    "screenshots" : [
+      {
+        "src": "screenshots/3a186099-213b-4abb-8829-6b6734dc0a4e.png",
+        "sizes": "1280x800",
+        "type": "image/png"
+      },
+      {
+        "src": "screenshots/9857fc89-1e4d-4a81-a0f3-c88d89b69e48.png",
+        "sizes": "1280x800",
+        "type": "image/png"
+      },
+      {
+        "src": "screenshots/dd286970-3c2e-4dfa-b1a0-4359b566c82d.png",
+        "sizes": "1280x800",
+        "type": "image/png"
+      }
     ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
-    "display": "standalone"
-}
+    "icons": [
+      {
+        "src": "/chrome/android-chrome-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/chrome/android-chrome-384x384.png",
+        "sizes": "384x384",
+        "type": "image/png"
+      },
+      {
+        "src": "/chrome/android-chrome-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "id": "/",
+    "lang": "en-GB",
+    "theme_color": "#fffaf0",
+    "background_color": "#fffaf0",
+    "start_url": "/",
+    "display": "standalone",
+    "orientation": "portrait"
+  }

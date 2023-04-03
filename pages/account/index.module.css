@@ -1,5 +1,5 @@
 .main {
   @apply gap-8 grid grid-cols-2;
-  margin-block-start: var(--viewport-margin-block);
-  padding-inline: var(--viewport-margin-inline);
+  margin-block-start: var(--header-height-offset-level-0);
+  padding-inline: var(--viewport-margin-inline-small);
 }

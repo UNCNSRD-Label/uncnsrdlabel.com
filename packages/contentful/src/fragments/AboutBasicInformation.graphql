@@ -1,0 +1,32 @@
+#import "./ImageBasicInformation.graphql"
+#import "./SysBasicInformation.graphql"
+
+fragment AboutBasicInformation on About {
+  __typename
+  colorShadow
+  contentBottom
+  contentTop
+  heading
+  image {
+    ...ImageBasicInformation
+  }
+  metaDescription
+  metaImage {
+    ...ImageBasicInformation
+  }
+  metaTitle
+  pressCollection {
+    items {
+      logo {
+        ...ImageBasicInformation
+      }
+      quote
+    }
+    total
+  }
+  slug
+  sys {
+    ...SysBasicInformation
+  }
+  title
+}

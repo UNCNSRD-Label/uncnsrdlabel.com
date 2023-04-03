@@ -1,0 +1,13 @@
+#import "../fragments/MenuInformation.graphql"
+
+fragment MenusInformation on QueryRoot {
+  clientServiceMenu: menu(handle: "client-service") {
+    ...MenuInformation
+  }
+  legalMenu: menu(handle: "legal") {
+    ...MenuInformation
+  }
+  mainMenu: menu(handle: "main-menu") {
+    ...MenuInformation
+  }
+}

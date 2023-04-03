@@ -1,0 +1,8 @@
+#import "./LinkCore.graphql"
+
+fragment NavigationSectionItems on NavigationSectionItemsCollection {
+  items {
+    ...LinkCore
+  }
+  total
+}

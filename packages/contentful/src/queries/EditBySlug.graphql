@@ -1,0 +1,64 @@
+#import "../fragments/EditCollectionBasicInformation.graphql"
+#import "../fragments/EditRelatedFeaturesCollectionBasicInformation.graphql"
+#import "../fragments/EditModulesCollectionBasicInformation.graphql"
+
+query EditBySlug(
+  $categorySlug: String!
+  $editSlug: String!
+  $limit: Int = 1
+  $locale: String
+  $preview: Boolean
+) {
+  current: editCollection(
+    limit: $limit
+    locale: $locale
+    preview: $preview
+    where: { slug: $editSlug }
+  ) {
+    items {
+      category
+      # TODO: Repalce old category field
+      categorisation {
+        name
+        slug
+      }
+      colorAccent
+      colorBackground
+      credits
+      date
+      deck
+      eyebrow
+      imageLandscape {
+        ...ImageBasicInformation
+      }
+      imagePortrait {
+        ...ImageBasicInformation
+      }
+      metaDescription
+      metaImage {
+        ...ImageBasicInformation
+      }
+      metaTitle
+      modulesCollection {
+        ...EditModulesCollectionBasicInformation
+      }
+      # relatedFeaturesCollection {
+      #   ...EditRelatedFeaturesCollectionBasicInformation
+      # }
+      slug
+      sys {
+        ...SysBasicInformation
+      }
+      title
+      videoLandscape {
+        ...ImageBasicInformation
+      }
+      videoPortrait {
+        ...ImageBasicInformation
+      }
+    }
+  }
+  related: editCollection(limit: 3, where: { category: $categorySlug }) {
+    ...EditCollectionBasicInformation
+  }
+}

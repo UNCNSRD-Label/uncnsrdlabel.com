@@ -1,0 +1,9 @@
+#import "../fragments/NavigationDesktopMenu.graphql"
+
+query Navigation($id: String!, $locale: String, $preview: Boolean) {
+  navigation(id: $id, locale: $locale, preview: $preview) {
+    desktopMenu: desktopMenuCollection(limit: 10) {
+      ...NavigationDesktopMenu
+    }
+  }
+}

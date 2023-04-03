@@ -1,0 +1,45 @@
+#import "../fragments/EditCollectionBasicInformation.graphql"
+#import "../fragments/EditCollectionDetailedInformation.graphql"
+
+query EditCollectionByCategory(
+  $categoryCollectionWhere: CategoryFilter
+  $categoryLimit: Int = 1
+  $categoryEditCollectionWhere: EditFilter
+  $categoryEditLimit: Int = 3
+  $currentEditCollectionWhere: EditFilter
+  $currentEditCollectionLimit: Int = 1
+  $locale: String
+  $preview: Boolean
+  $categoryEditSkip: Int = 0
+) {
+  categoryCollection(limit: $categoryLimit, locale: $locale, preview: $preview,  where: $categoryCollectionWhere) {
+    items {
+      metaDescription
+      metaTitle
+      name
+      sys {
+        firstPublishedAt
+        id
+        publishedAt
+      }
+    }
+  }
+  categoryEditCollection: editCollection(
+    limit: $categoryEditLimit
+    locale: $locale
+    order: [date_DESC, sys_publishedAt_DESC]
+    preview: $preview
+    skip: $categoryEditSkip
+    where: $categoryEditCollectionWhere
+  ) {
+    ...EditCollectionBasicInformation
+  }
+  currentEditCollection: editCollection(
+    limit: $currentEditCollectionLimit
+    locale: $locale
+    preview: $preview
+    where: $currentEditCollectionWhere
+  ) {
+    ...EditCollectionDetailedInformation
+  }
+}

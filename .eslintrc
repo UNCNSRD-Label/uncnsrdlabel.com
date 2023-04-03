@@ -1,0 +1,129 @@
+{
+  "extends": [
+    "next",
+    "prettier",
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@tanstack/eslint-plugin-query/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "import",
+    "react-hooks",
+    "jsx-a11y",
+    "react",
+    "formatjs",
+    "@tanstack/query",
+    // Prepping for i18n work
+    "unused-imports"
+  ],
+  "rules": {
+    "formatjs/no-offset": "error",
+    "formatjs/enforce-id": [
+      "error",
+      {
+        "idInterpolationPattern": "[sha512:contenthash:base64:6]"
+      }
+    ],
+    "jsx-a11y/alt-text": [
+      2,
+      {
+        "img": []
+      }
+    ],
+    "react/no-unescaped-entities": "off",
+    "unused-imports/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "ignoreRestSiblings": true
+      }
+    ],
+    "eqeqeq": [
+      "error",
+      "always",
+      {
+        "null": "ignore"
+      }
+    ],
+    "no-console": [
+      "error",
+      {
+        "allow": [
+          "warn",
+          "error",
+          "info"
+        ]
+      }
+    ],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".tsx",
+          ".jsx"
+        ]
+      }
+    ],
+    "react/sort-comp": [
+      0
+    ],
+    "react/jsx-props-no-spreading": [
+      0
+    ],
+    "react/jsx-one-expression-per-line": [
+      0
+    ],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-wrap-multilines": [
+      0
+    ],
+    "jsx-a11y/anchor-is-valid": [
+      0
+    ],
+    "no-var": "error",
+    "no-debugger": 1,
+    "no-duplicate-imports": "warn",
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": [
+      "error"
+    ],
+    "@typescript-eslint/ban-types": 0,
+    "@typescript-eslint/ban-ts-comment": 1,
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "@typescript-eslint/no-unused-vars": 0,
+    "unused-imports/no-unused-imports": "error",
+    "@typescript-eslint/no-implicit-dependencies": 0,
+    // Warn for now and figure out why Prettier is doing this
+    "@typescript-eslint/no-extra-semi": 1
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.stories.*"
+      ],
+      "rules": {
+        "@typescript-eslint/no-non-null-assertion": 0
+      }
+    },
+    {
+      "files": [
+        "*.graphql"
+      ],
+      "plugins": [
+        "@graphql-eslint"
+      ],
+      "parser": "@graphql-eslint/eslint-plugin",
+      "parserOptions": {
+        "schema": "./**/*.graphql"
+      },
+      "rules": {
+        "@graphql-eslint/known-type-names": "error"
+      }
+    }
+  ]
+}

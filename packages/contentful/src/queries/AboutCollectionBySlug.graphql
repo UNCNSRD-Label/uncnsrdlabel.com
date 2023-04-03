@@ -1,0 +1,19 @@
+#import "../fragments/AboutBasicInformation.graphql"
+
+query AboutCollectionBySlug(
+  $limit: Int = 1
+  $locale: String
+  $preview: Boolean
+  $slug: String
+) {
+  aboutCollection(
+    limit: $limit
+    locale: $locale
+    preview: $preview
+    where: { slug: $slug }
+  ) {
+    items {
+      ...AboutBasicInformation
+    }
+  }
+}

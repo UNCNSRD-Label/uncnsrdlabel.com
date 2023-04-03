@@ -1,0 +1,14 @@
+#import "../fragments/PageBasicInformation.graphql"
+#import "../fragments/PageModulesCollection.graphql"
+
+query HomepageById($id: String!, $locale: String, $preview: Boolean) {
+  page(id: $id, locale: $locale, preview: $preview) {
+    ...PageBasicInformation
+    ... on Page {
+      modulesCollection(limit: 12) {
+        ...PageModulesCollection
+        total
+      }
+    }
+  }
+}

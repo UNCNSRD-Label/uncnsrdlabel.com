@@ -1,120 +1,220 @@
-import type { StorefrontApiResponseOk } from "@shopify/hydrogen-react";
-import type { GetServerSideProps } from "next";
+import type {
+  GetStaticPathsContext,
+  GetStaticPropsContext,
+  InferGetStaticPropsType,
+  NextPage,
+} from 'next'
 
-import type { PoliciesQuery } from "#/generated/graphql/graphql";
+import { dehydrate, QueryClient } from '@tanstack/react-query'
+import { clsx } from 'clsx'
+import NextError from 'next/error'
+import { useRouter } from 'next/router'
 
-import { clsx } from "clsx";
-import { request } from "graphql-request";
-import Error from "next/error";
-import { useRouter } from "next/router";
-import { createRef } from "react";
+import NextQueryParamsProvider from '#/lib/providers/next-query-params'
 
-import NextQueryParamsProvider from "#/lib/providers/next-query-params";
-
-import Layout from "#/components/Layout";
+import { Layout } from '#/components/common'
+import { LoadingNotification } from '#/components/ui'
 
 import {
-  getStorefrontApiUrl,
-  getPublicTokenHeaders,
-} from "#/lib/clients/shopify";
+  prefetchShopifyQuery,
+  requestShopifyData,
+  useShopifyQuery,
+} from '#/lib/clients/shopify/graphql'
 
-import document from "./index.graphql";
+import { getLocaleProperties } from '#/lib/i18n/utils'
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const {
-    params,
-    // preview = false,
-  } = context;
+import { getFragmentData } from '#/packages/shopify/generated/fragment-masking'
 
-  const slug = Array.isArray(params?.slug) ? params?.slug?.[0] : params?.slug;
+import {
+  PoliciesDocument,
+  ShopPolicyInformationFragmentDoc,
+} from '#/packages/shopify/generated/graphql'
 
-  if (!slug) {
+import styles from './index.module.css'
+
+export async function getStaticPaths(context: GetStaticPathsContext) {
+  const { locales } = context
+
+  const responses = await Promise.all(
+    locales?.map(async (locale) => {
+      const { country } = getLocaleProperties(locale)
+
+      const variables = {
+        country,
+      }
+
+      const data = await requestShopifyData(PoliciesDocument, variables)
+
+      const localePaths = []
+
+      for (const property in data.shop) {
+        if (
+          [
+            'privacyPolicy',
+            'refundPolicy',
+            'shippingPolicy',
+            'termsOfService',
+          ].includes(property)
+        ) {
+          const policy = getFragmentData(
+            ShopPolicyInformationFragmentDoc,
+            data.shop[
+              property as
+                | 'privacyPolicy'
+                | 'refundPolicy'
+                | 'shippingPolicy'
+                | 'termsOfService'
+            ]
+          )
+
+          if (policy) {
+            localePaths.push({
+              params: {
+                slug: `/policies/${policy?.handle}`,
+              },
+            })
+          }
+        }
+      }
+
+      return localePaths
+    }) ?? []
+  )
+
+  const paths = responses?.flat()
+
+  return {
+    fallback: true,
+    paths,
+  }
+}
+
+export async function getStaticProps(context: GetStaticPropsContext) {
+  const { locale = process.env.NEXT_PUBLIC_DEFAULT_LOCALE, params } = context
+
+  const handle = Array.isArray(params?.slug) ? params?.slug?.[0] : params?.slug
+
+  if (!handle) {
     return {
       notFound: true,
-    };
+    }
   }
 
-  try {
-    const requestHeaders = getPublicTokenHeaders();
-    const url = getStorefrontApiUrl();
-    const variables = {
-      slug,
-    };
+  const { country } = getLocaleProperties(locale)
 
-    const data = await request({
-      url,
-      document,
-      // requestHeaders: getPrivateTokenHeaders({buyerIp}),
-      requestHeaders,
+  const variables = {
+    country,
+    handle,
+  }
+
+  const queryClient = new QueryClient()
+
+  await prefetchShopifyQuery(queryClient, PoliciesDocument, variables)
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
       variables,
-    });
-
-    // TODO I don't love how we do this with 'errors' and 'data'
-    return { props: { data, errors: null } };
-  } catch (err) {
-    console.error({ err });
-    return { props: { data: null, errors: [(err as Error).toString()] } };
+    },
+    revalidate: 60,
   }
-};
+}
 
-export default function Page({
-  data,
-  errors,
-}: StorefrontApiResponseOk<PoliciesQuery>) {
-  const { query } = useRouter();
+export const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
+  context
+) => {
+  const { asPath, query } = useRouter()
 
-  const scrollingElement = createRef<HTMLDivElement>();
+  const { variables } = context
 
-  if (!data?.shop) {
-    console.error({ errors });
-    return <Error statusCode={404} />;
+  const { data, error, isFetching } = useShopifyQuery(
+    PoliciesDocument,
+    variables
+  )
+
+  if (isFetching) {
+    return <LoadingNotification />
   }
 
-  if (errors) {
-    console.error({ errors });
-    return <Error statusCode={500} />;
+  if (error) {
+    console.error({ error })
+    return <NextError statusCode={500} message={error} />
   }
 
-  const { shop } = data;
-
-  let innerHTML = null;
+  let innerHTML
+  let title
 
   switch (query.slug) {
-    case "privacy-policy":
-      // @ts-expect-error
-      innerHTML = shop.privacyPolicy?.body;
-      break;
-    case "refund-policy":
-      // @ts-expect-error
-      innerHTML = shop.refundPolicy?.body;
-      break;
-    case "shipping-policy":
-      // @ts-expect-error
-      innerHTML = shop.shippingPolicy?.body;
-      break;
-    case "terms-of-service":
-      // @ts-expect-error
-      innerHTML = shop.termsOfService?.body;
-      break;
+    case 'privacy-policy':
+      {
+        const policy = getFragmentData(
+          ShopPolicyInformationFragmentDoc,
+          data?.shop?.privacyPolicy
+        )
+
+        innerHTML = policy?.body
+        title = policy?.title
+      }
+      break
+    case 'refund-policy':
+      {
+        const policy = getFragmentData(
+          ShopPolicyInformationFragmentDoc,
+          data?.shop?.refundPolicy
+        )
+
+        innerHTML = policy?.body
+        title = policy?.title
+      }
+      break
+    case 'shipping-policy':
+      {
+        const policy = getFragmentData(
+          ShopPolicyInformationFragmentDoc,
+          data?.shop?.shippingPolicy
+        )
+
+        innerHTML = policy?.body
+        title = policy?.title
+      }
+      break
+    case 'terms-of-service':
+      {
+        const policy = getFragmentData(
+          ShopPolicyInformationFragmentDoc,
+          data?.shop?.termsOfService
+        )
+
+        innerHTML = policy?.body
+        title = policy?.title
+      }
+      break
     default:
-      return <Error statusCode={404} />;
+      return <NextError statusCode={404} />
   }
 
   return (
     <NextQueryParamsProvider>
       <Layout
-        classNameDrawerContent={clsx("drawerContentOverflowY")}
-        classNameMain={clsx("page")}
-        data={data}
-        ref={scrollingElement}
+        classNameDrawerContent={clsx('drawerContentOverflowY')}
+        classNameMain={clsx('page', styles.main)}
+        shopifyData={data}
+        route={asPath}
         showHeaderAndFooter={true}
       >
-        <article
-          dangerouslySetInnerHTML={{
-            __html: innerHTML,
-          }}
-        />
+        {innerHTML && (
+          <article className={clsx('wysiwyg')}>
+            <h1 className={clsx('heading')}>{title}</h1>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: innerHTML,
+              }}
+            />
+          </article>
+        )}
       </Layout>
     </NextQueryParamsProvider>
-  );
+  )
 }
+
+export default Page

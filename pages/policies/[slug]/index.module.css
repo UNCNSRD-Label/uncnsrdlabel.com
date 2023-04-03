@@ -1,0 +1,4 @@
+.main {
+  margin-block-start: var(--header-height-offset-level-0);
+  padding-block: var(--header-height-offset-level-0);
+}

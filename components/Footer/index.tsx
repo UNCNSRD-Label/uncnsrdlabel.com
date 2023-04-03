@@ -1,44 +1,44 @@
 import type {
   Menu,
   QueryRoot,
-} from "@shopify/hydrogen-react/storefront-api-types";
-import type { FC, ReactNode } from "react";
-import type { PartialDeep } from "type-fest";
+} from '@shopify/hydrogen-react/storefront-api-types'
+import type { FC, ReactNode } from 'react'
+import type { PartialDeep } from 'type-fest'
 
-import { clsx } from "clsx";
-import Link from "next/link";
+import { clsx } from 'clsx'
+import Link from 'next/link'
 
-import NewsletterSignupForm from "#/components/NewsletterSignupForm";
-import SocialIcon from "#/components/SocialIcon";
+import NewsletterSignupForm from '#/components/NewsletterSignupForm'
+import SocialIcon from '#/components/SocialIcon'
 
-import styles from "./index.module.css";
+import styles from './index.module.css'
 
 type Props = {
-  children?: ReactNode;
-  className?: string;
+  children?: ReactNode
+  className?: string
   data?:
     | ({
-        clientServiceMenu?: Menu | null;
-        legalMenu?: Menu | null;
+        clientServiceMenu?: Menu | null
+        legalMenu?: Menu | null
       } & PartialDeep<QueryRoot, { recurseIntoArrays: true }>)
-    | null;
-};
+    | null
+}
 
 export const Component: FC<Props> = ({ children, className, data }) => {
   return (
-    <footer className={clsx(styles.footer, className, "footer")}>
+    <footer className={clsx(styles.footer, className, 'footer')}>
       <nav className={clsx(styles.nav, styles.legal)}>
         {data?.legalMenu?.title && (
           <h2 className={styles.title}>{data?.legalMenu.title}</h2>
         )}
         {data?.legalMenu?.items?.map((item) => {
-          const href = new URL(item.url ?? "/");
+          const href = new URL(item.url ?? '/')
 
           return (
             <Link className={styles.link} href={href.pathname} key={item.id}>
               {item.title}
             </Link>
-          );
+          )
         })}
       </nav>
       <nav className={clsx(styles.nav, styles.clientService)}>
@@ -46,13 +46,13 @@ export const Component: FC<Props> = ({ children, className, data }) => {
           <h2 className={styles.title}>{data?.clientServiceMenu.title}</h2>
         )}
         {data?.clientServiceMenu?.items?.map((item) => {
-          const href = new URL(item.url ?? "/");
+          const href = new URL(item.url ?? '/')
 
           return (
             <Link className={styles.link} href={href.pathname} key={item.id}>
               {item.title}
             </Link>
-          );
+          )
         })}
         <Link href="/consent" title="Go to Consent Settings">
           Consent settings
@@ -69,6 +69,7 @@ export const Component: FC<Props> = ({ children, className, data }) => {
       </nav>
       <NewsletterSignupForm className={clsx(styles.signupForm)} />
       <menu className={styles.social}>
+        <SocialIcon url="https://www.tiktok.com/@2uncnsrd" />
         <SocialIcon url="https://www.instagram.com/uncnsrdlabel" />
         <SocialIcon url="https://twitter.com/uncnsrdlabel" />
         <SocialIcon url="https://www.facebook.com/uncnsrdlabel" />
@@ -78,7 +79,7 @@ export const Component: FC<Props> = ({ children, className, data }) => {
       </span>
       {children}
     </footer>
-  );
-};
+  )
+}
 
-export default Component;
+export default Component

@@ -1,0 +1,25 @@
+#import "./LinkCore.graphql"
+#import "./NavigationGroupSubNav.graphql"
+#import "./NavigationGroupPromoTiles.graphql"
+#import "./SysBasicInformation.graphql"
+
+fragment NavigationDesktopMenu on NavigationDesktopMenuCollection {
+  items {
+    sys {
+      ...SysBasicInformation
+    }
+    __typename
+    heading
+    headingLink {
+      ...LinkCore
+    }
+    subNavTemplate
+    subNav: subNavCollection(limit: 7) {
+      ...NavigationGroupSubNav
+    }
+    promoTiles: promoTilesCollection(limit: 3) {
+      ...NavigationGroupPromoTiles
+    }
+  }
+  total
+}

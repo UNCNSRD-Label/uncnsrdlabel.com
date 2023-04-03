@@ -1,0 +1,21 @@
+query StoryCategoryCollectionByType(
+  $locale: String
+  $preview: Boolean
+  $type: String!
+) {
+  categoryCollection(
+    locale: $locale
+    preview: $preview
+    where: { type: $type }
+  ) {
+    items {
+      linkedFrom {
+        storyCollection {
+          total
+        }
+      }
+      name
+      slug
+    }
+  }
+}

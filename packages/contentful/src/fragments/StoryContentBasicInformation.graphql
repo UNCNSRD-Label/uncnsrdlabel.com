@@ -1,0 +1,9 @@
+#import "./SysBasicInformation.graphql"
+
+fragment StoryContentBasicInformation on StoryContent {
+  __typename
+  content
+  sys {
+    ...SysBasicInformation
+  }
+}

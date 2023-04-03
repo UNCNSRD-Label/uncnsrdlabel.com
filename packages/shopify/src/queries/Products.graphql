@@ -1,0 +1,12 @@
+#import "../fragments/ProductBasicInformation.graphql"
+
+query Products($country: CountryCode!) @inContext(country: $country) {
+  shop {
+    name
+  }
+  products(first: 8) {
+    nodes {
+      ...ProductBasicInformation
+    }
+  }
+}

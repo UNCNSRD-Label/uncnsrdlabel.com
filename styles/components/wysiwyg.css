@@ -1,0 +1,50 @@
+@layer components {
+  .wysiwyg-module {
+    @apply text-center wysiwyg;
+    padding-inline: var(--viewport-margin-inline-small);
+
+    & h1 {
+      font-size: 18px;
+      letter-spacing: 0.25px;
+      line-height: 20px;
+      margin-bottom: 1rem;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 768px;
+    }
+  }
+
+  .prose,
+  .wysiwyg {
+    & .heading {
+      @apply border-b-2 border-black pb-20;
+    }
+
+    & h1,
+    & h2,
+    & h3,
+    & h4,
+    & h5,
+    & h6 {
+      @apply font-serif uppercase;
+    }
+
+    & p {
+      font-family: var(--font-text);
+    }
+
+    & dl {
+      & dt {
+      }
+
+      & dd {
+        margin-inline-start: 2ch;
+      }
+    }
+  }
+
+  .wysiwyg {
+    @apply prose;
+    margin-inline: auto;
+  }
+}

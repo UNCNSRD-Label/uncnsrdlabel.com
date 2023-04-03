@@ -1,0 +1,76 @@
+#import "../fragments/ImageBasicInformation.graphql"
+
+query ProductsByNodeId($country: CountryCode!, $ids: [ID!]!)
+@inContext(country: $country) {
+  nodes(ids: $ids) {
+    ... on ProductVariant {
+      product {
+        availableForSale
+        description
+        handle
+        id
+        featuredImage {
+          ...ImageBasicInformation
+        }
+        # images(first: 1) {
+        #   edges {
+        #     node {
+        #       altText
+        #       height
+        #       url
+        #       width
+        #     }
+        #   }
+        # }
+        metafields(
+          identifiers: [
+            { namespace: "custom", key: "composition" }
+            { namespace: "custom", key: "returns" }
+            { namespace: "custom", key: "shipping" }
+            { namespace: "custom", key: "sizing" }
+            { namespace: "descriptors", key: "care_guide" }
+            { namespace: "my_fields", key: "collection_url" }
+            { namespace: "my_fields", key: "filter_category" }
+            { namespace: "my_fields", key: "merchant" }
+            { namespace: "my_fields", key: "primary_category" }
+            { namespace: "my_fields", key: "product_details" }
+            { namespace: "my_fields", key: "product_sizing" }
+          ]
+        ) {
+          namespace
+          key
+          type
+          value
+          description
+          id
+          reference {
+            ... on MetafieldReference {
+              ... on Page {
+                body
+                handle
+                onlineStoreUrl
+                title
+              }
+            }
+          }
+        }
+        onlineStoreUrl
+        priceRange {
+          maxVariantPrice {
+            amount
+            currencyCode
+          }
+          minVariantPrice {
+            amount
+            currencyCode
+          }
+        }
+        productType
+        publishedAt
+        tags
+        title
+        vendor
+      }
+    }
+  }
+}

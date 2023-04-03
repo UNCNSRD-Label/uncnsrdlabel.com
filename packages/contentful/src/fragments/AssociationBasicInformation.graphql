@@ -1,0 +1,22 @@
+#import "./SysBasicInformation.graphql"
+
+fragment AssociationBasicInformation on Association {
+  colorText
+  colorAccent
+  colorShadow
+  colorBackground
+  deck
+  heading
+  layout
+  lookImage {
+    description
+    height
+    title
+    url
+    width
+  }
+  shopifyProducts
+  sys {
+    ...SysBasicInformation
+  }
+}

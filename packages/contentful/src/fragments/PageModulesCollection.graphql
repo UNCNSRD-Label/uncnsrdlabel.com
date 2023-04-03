@@ -1,0 +1,13 @@
+#import "./HpModuleBasicInformation.graphql"
+
+fragment PageModulesCollection on PageModulesCollection {
+  items {
+    ...HpModuleBasicInformation
+    ... on HpModule {
+      secondTile {
+        ...HpModuleBasicInformation
+      }
+    }
+  }
+  total
+}

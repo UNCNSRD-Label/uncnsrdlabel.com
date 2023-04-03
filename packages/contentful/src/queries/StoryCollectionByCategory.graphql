@@ -1,0 +1,45 @@
+#import "../fragments/StoryCollectionBasicInformation.graphql"
+#import "../fragments/StoryCollectionDetailedInformation.graphql"
+
+query StoryCollectionByCategory(
+  $categoryCollectionWhere: CategoryFilter
+  $categoryLimit: Int = 1
+  $categoryStoryCollectionWhere: StoryFilter
+  $categoryStoryLimit: Int = 3
+  $currentStoryCollectionWhere: StoryFilter
+  $currentStoryCollectionLimit: Int = 1
+  $locale: String
+  $preview: Boolean
+  $categoryStorySkip: Int = 0
+) {
+  categoryCollection(limit: $categoryLimit, where: $categoryCollectionWhere) {
+    items {
+      metaDescription
+      metaTitle
+      name
+      sys {
+        firstPublishedAt
+        id
+        publishedAt
+      }
+    }
+  }
+  categoryStoryCollection: storyCollection(
+    limit: $categoryStoryLimit
+    locale: $locale
+    order: [date_DESC, sys_publishedAt_DESC]
+    preview: $preview
+    skip: $categoryStorySkip
+    where: $categoryStoryCollectionWhere
+  ) {
+    ...StoryCollectionBasicInformation
+  }
+  currentStoryCollection: storyCollection(
+    limit: $currentStoryCollectionLimit
+    locale: $locale
+    preview: $preview
+    where: $currentStoryCollectionWhere
+  ) {
+    ...StoryCollectionDetailedInformation
+  }
+}

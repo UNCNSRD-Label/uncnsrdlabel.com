@@ -1,0 +1,36 @@
+#import "./ImageBasicInformation.graphql"
+#import "./EditModulesCollectionBasicInformation.graphql"
+#import "./SysBasicInformation.graphql"
+
+fragment EditDetailedInformation on Edit {
+  category: categorisation {
+    metaDescription
+    metaTitle
+    name
+    slug
+  }
+  colorBackground
+  colorText
+  deck
+  eyebrow
+  imageLandscape {
+    ...ImageBasicInformation
+  }
+  imagePortrait {
+    ...ImageBasicInformation
+  }
+  metaDescription
+  metaImage {
+    ...ImageBasicInformation
+  }
+  metaTitle
+  modulesCollection {
+    ...EditModulesCollectionBasicInformation
+  }
+  #   signature
+  slug
+  sys {
+    ...SysBasicInformation
+  }
+  title
+}

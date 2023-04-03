@@ -1,0 +1,15 @@
+#import "../fragments/CollectionBasicInformation.graphql"
+
+query Collections($country: CountryCode!, $first: Int!)
+@inContext(country: $country) {
+  collections(first: $first) {
+    edges {
+      node {
+        ...CollectionBasicInformation
+      }
+    }
+    pageInfo {
+      endCursor
+    }
+  }
+}

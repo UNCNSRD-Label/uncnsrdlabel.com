@@ -1,157 +1,145 @@
-import type { StorefrontApiResponseOk } from "@shopify/hydrogen-react";
-import type { GetServerSideProps } from "next";
+import type {
+  GetStaticPathsContext,
+  GetStaticPropsContext,
+  InferGetStaticPropsType,
+  NextPage,
+} from 'next'
 
-import type { QueryRoot } from "#/generated/graphql/graphql";
+import { dehydrate, QueryClient } from '@tanstack/react-query'
+import { clsx } from 'clsx'
+import NextError from 'next/error'
+import { useRouter } from 'next/router'
+import { NextSeo } from 'next-seo'
 
-import { clsx } from "clsx";
-import { request } from "graphql-request";
-import Error from "next/error";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import { NextSeo } from "next-seo";
-import { createRef } from "react";
+import { Layout, Markdown } from '#/components/common'
 
-import {
-  IMAGE_ALT_TEXT_FALLBACK,
-  IMAGE_TITLE_FALLBACK,
-} from "#/lib/constants/messages";
-import { theme } from "#/lib/constants/style";
-
-import NextQueryParamsProvider from "#/lib/providers/next-query-params";
-
-import { getMedia } from "#/lib/util/GraphQL";
-
-import Layout from "#/components/Layout";
+import { LoadingNotification } from '#/components/ui'
 
 import {
-  getStorefrontApiUrl,
-  getPublicTokenHeaders,
-} from "#/lib/clients/shopify";
+  prefetchContentfulQuery,
+  requestContentfulData,
+  useContentfulQuery,
+} from '#/lib/clients/contentful/graphql'
 
-import document from "./index.graphql";
+import { mapLocaleToLocaleUpper } from '#/lib/hooks/i18n'
+import { Locale } from '#/lib/i18n/types'
 
-import styles from "./index.module.css";
+import { getFragmentData } from '#/packages/contentful/generated/fragment-masking'
+import {
+  PageBasicInformationFragmentDoc,
+  PageCollectionBySlugDocument,
+  PageCollectionPathsDocument,
+} from '#/packages/contentful/generated/graphql'
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const {
-    params,
-    // preview = false,
-  } = context;
+import styles from './index.module.css'
 
-  const slug = Array.isArray(params?.slug) ? params?.slug?.[0] : params?.slug;
+export async function getStaticPaths(context: GetStaticPathsContext) {
+  const { locales } = context
 
-  if (!slug) {
-    return {
-      notFound: true,
-    };
+  const responses = await Promise.all(
+    locales?.map(async (locale) => {
+      const variables = {
+        locale: mapLocaleToLocaleUpper[locale as Locale],
+      }
+
+      const { pageCollection } = await requestContentfulData(
+        PageCollectionPathsDocument,
+        variables
+      )
+
+      const localePaths = pageCollection?.items.map((item) => ({
+        params: { slug: item?.slug },
+      }))
+
+      return localePaths
+    }) ?? []
+  )
+
+  const paths = responses?.flat()
+
+  return { fallback: true, paths }
+}
+
+export async function getStaticProps(context: GetStaticPropsContext) {
+  const { locale, params, preview = false } = context
+
+  const queryClient = new QueryClient()
+
+  const slug = `/pages/${params?.slug}`
+
+  const variables = {
+    locale: mapLocaleToLocaleUpper[locale as Locale],
+    preview,
+    slug,
   }
 
-  try {
-    const requestHeaders = getPublicTokenHeaders();
-    const url = getStorefrontApiUrl();
-    const variables = {
+  await prefetchContentfulQuery(
+    queryClient,
+    PageCollectionBySlugDocument,
+    variables
+  )
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
       slug,
-    };
-
-    const data = await request({
-      url,
-      document,
-      // requestHeaders: getPrivateTokenHeaders({buyerIp}),
-      requestHeaders,
       variables,
-    });
-
-    // TODO I don't love how we do this with 'errors' and 'data'
-    return { props: { data, errors: null } };
-  } catch (err) {
-    console.error({ err });
-    return { props: { data: null, errors: [(err as Error).toString()] } };
+    },
+    revalidate: 60,
   }
-};
+}
 
-export default function Page({
-  data,
-  errors,
-}: StorefrontApiResponseOk<QueryRoot>) {
-  const { asPath, pathname } = useRouter();
+export const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
+  context
+) => {
+  const { variables } = context
 
-  const scrollingElement = createRef<HTMLDivElement>();
+  const { asPath } = useRouter()
 
-  if (!data?.page) {
-    console.error({ errors });
-    return <Error statusCode={404} />;
+  const { data, error, isFetching } = useContentfulQuery(
+    PageCollectionBySlugDocument,
+    variables
+  )
+
+  if (isFetching) {
+    return <LoadingNotification />
   }
 
-  if (errors) {
-    console.error({ errors });
-    return <Error statusCode={500} />;
+  if (error) {
+    console.error({ error })
+    return <NextError statusCode={500} message={error} />
   }
 
-  const { page } = data;
-
-  const images = getMedia(page);
+  const page = getFragmentData(
+    PageBasicInformationFragmentDoc,
+    data?.pageCollection?.items?.[0]
+  )
 
   return (
     <>
-      {data.page && data.shop && (
+      {page && (
         <NextSeo
-          {...(data.page.title && {
-            title: `${data.page.title} - ${data.shop?.name}`,
+          {...(page.metaTitle && {
+            title: page.metaTitle,
           })}
-          {...(data.page.seo?.title && {
-            title: `${data.page.seo?.title} - ${data.shop?.name}`,
-          })}
-          {...(data.page.bodySummary && {
-            description: data.page.bodySummary,
-          })}
-          {...(data.page.seo?.description && {
-            description: data.page.seo?.description,
+          {...(page.metaDescription && {
+            description: page.metaDescription,
           })}
         />
       )}
-      <NextQueryParamsProvider>
-        <Layout
-          classNameDrawerContent={clsx("drawerContentOverflowY")}
-          classNameMain={clsx("page")}
-          data={data}
-          ref={scrollingElement}
-          showHeaderAndFooter={true}
-        >
-          <article
-            dangerouslySetInnerHTML={{
-              __html: page?.body,
-            }}
-          />
-          <section className={clsx(styles.section)}>
-            {images?.map((image, index) => {
-              if (!image?.url) {
-                return;
-              }
-
-              return (
-                <figure
-                  className={clsx(styles.figure)}
-                  id={`productVariantMediaGallery-${index}`}
-                  key={index}
-                >
-                  <Image
-                    alt={image?.altText ?? IMAGE_ALT_TEXT_FALLBACK}
-                    className={clsx(styles.image)}
-                    height={image?.height ?? 0}
-                    sizes={`(max-width: ${theme.screens.xs.max}) 50vw,
-              25vw`}
-                    src={image?.url}
-                    width={image?.width ?? 0}
-                  />
-                  <figcaption className={clsx(styles.figcaption)}>
-                    Featured image
-                  </figcaption>
-                </figure>
-              );
-            })}
-          </section>
-        </Layout>
-      </NextQueryParamsProvider>
+      <Layout
+        classNameDrawerContent={clsx('drawerContentOverflowY')}
+        classNameMain={clsx(styles.main)}
+        route={asPath}
+        showHeaderAndFooter={true}
+      >
+        <article className={clsx('wysiwyg', styles.article)}>
+          {page?.title && <h1 className={clsx('heading')}>{page?.title}</h1>}
+          {page?.content && <Markdown>{page?.content}</Markdown>}
+        </article>
+      </Layout>
     </>
-  );
+  )
 }
+
+export default Page

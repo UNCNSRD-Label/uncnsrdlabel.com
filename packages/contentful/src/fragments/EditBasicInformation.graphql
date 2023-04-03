@@ -1,0 +1,32 @@
+#import "./ImageBasicInformation.graphql"
+#import "./SysBasicInformation.graphql"
+
+fragment EditBasicInformation on Edit {
+  # TODO: Repalce old category field
+  category
+  categorisation {
+    metaDescription
+    metaTitle
+    name
+    slug
+  }
+  deck
+  eyebrow
+  imageLandscape {
+    ...ImageBasicInformation
+  }
+  imagePortrait {
+    ...ImageBasicInformation
+  }
+  slug
+  sys {
+    ...SysBasicInformation
+  }
+  title
+  videoLandscape {
+    ...ImageBasicInformation
+  }
+  videoPortrait {
+    ...ImageBasicInformation
+  }
+}

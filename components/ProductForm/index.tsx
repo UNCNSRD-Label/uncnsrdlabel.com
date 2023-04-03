@@ -1,48 +1,47 @@
-"use client";
+'use client'
 
 import type {
   Product,
   ProductVariant,
-} from "@shopify/hydrogen-react/storefront-api-types";
-import type { ChangeEventHandler, FC, ReactNode } from "react";
-import type { PartialDeep } from "type-fest";
+} from '@shopify/hydrogen-react/storefront-api-types'
+import type { ChangeEventHandler, FC, ReactNode } from 'react'
+import type { PartialDeep } from 'type-fest'
 
 import {
   useProduct,
   AddToCartButton,
   ShopPayButton,
-} from "@shopify/hydrogen-react";
-import { clsx } from "clsx";
-import { useCallback } from "react";
+} from '@shopify/hydrogen-react'
+import { clsx } from 'clsx'
+import { useCallback } from 'react'
 // import { RiHeartAddLine } from "react-icons/ri";
 // import { SlBag } from "react-icons/sl";
-import { useQueryParam, StringParam, withDefault } from "use-query-params";
+import { useQueryParam, StringParam, withDefault } from 'use-query-params'
 
-import { getColorHexCodeByName } from "#/lib/util/GraphQL";
+import { getColorHexCodeByName } from '#/lib/util/GraphQL'
 
-import styles from "./index.module.css";
+import styles from './index.module.css'
 
 type Props = {
-  children?: ReactNode;
-  className?: string;
-  path: string;
-  product: PartialDeep<Product, { recurseIntoArrays: true }>;
-};
+  children?: ReactNode
+  className?: string
+  path: string
+  product: PartialDeep<Product, { recurseIntoArrays: true }>
+}
 
 export const Component: FC<Props> = ({ children, className, path }) => {
-  const { options, setSelectedOption, selectedVariant, variants } =
-    useProduct();
+  const { options, setSelectedOption, selectedVariant, variants } = useProduct()
 
-  const isOutOfStock = !selectedVariant?.availableForSale || false;
+  const isOutOfStock = !selectedVariant?.availableForSale || false
 
   const handleOptionChange = useCallback<
     ChangeEventHandler<HTMLSelectElement | HTMLInputElement>
   >(
     (event) => {
-      setSelectedOption(event.target.name, event.target.value);
+      setSelectedOption(event.target.name, event.target.value)
     },
     [setSelectedOption]
-  );
+  )
 
   return (
     <>
@@ -51,63 +50,63 @@ export const Component: FC<Props> = ({ children, className, path }) => {
           className={clsx(
             styles.section,
             styles.sectionOptions,
-            "not-prose",
-            "dropdown",
-            "dropdown-top",
-            "dropdown-hover"
+            'not-prose',
+            'dropdown',
+            'dropdown-top',
+            'dropdown-hover'
           )}
         >
           {options?.map((option, optionIndex) => {
             if (option?.values?.length === 1) {
-              return null;
+              return null
             }
 
-            if (option?.name && ["Color", "Size"].includes(option?.name)) {
+            if (option?.name && ['Color', 'Size'].includes(option?.name)) {
               return (
                 <div
                   key={`${option?.name}-${optionIndex}`}
                   className={clsx(styles.inputGroupContainer)}
                 >
-                  <span className={clsx(styles.title, "text-base")}>
+                  <span className={clsx(styles.title, 'text-base')}>
                     {option?.name}
                   </span>
                   <div
                     className={clsx(
-                      "form-control-group",
+                      'form-control-group',
                       `form-control-group--${option?.name}`,
                       styles.inputGroup,
-                      option?.name === "Color" && styles.inputGroupGrid
+                      option?.name === 'Color' && styles.inputGroupGrid
                     )}
                   >
                     {option?.values?.map((value, valueIndex) => (
                       <div
-                        className={clsx("form-control")}
+                        className={clsx('form-control')}
                         key={`${option.name}-${optionIndex}-${valueIndex}`}
                       >
                         <label
                           className={clsx(
-                            "cursor-pointer",
-                            "label",
+                            'cursor-pointer',
+                            'label',
                             styles.label,
-                            option?.name === "Size" && "pl-0"
+                            option?.name === 'Size' && 'pl-0'
                           )}
                         >
                           <span
-                            className={clsx("label-text", styles.labelText)}
+                            className={clsx('label-text', styles.labelText)}
                           >
                             {value}
                           </span>
                           <span
                             className={clsx(
-                              "radioContainer",
+                              'radioContainer',
                               styles.radioContainer
                             )}
                           >
                             <input
                               className={clsx(
-                                "radio",
-                                option?.name === "Color" && "radio-lg",
-                                option?.name === "Size" && "hidden",
+                                'radio',
+                                option?.name === 'Color' && 'radio-lg',
+                                option?.name === 'Size' && 'hidden',
                                 value &&
                                   variants &&
                                   `checked:bg-[${getColorHexCodeByName(
@@ -119,7 +118,7 @@ export const Component: FC<Props> = ({ children, className, path }) => {
                               onChange={handleOptionChange}
                               type="radio"
                               style={{
-                                ...(option?.name === "Color" &&
+                                ...(option?.name === 'Color' &&
                                   value &&
                                   variants && {
                                     backgroundColor: getColorHexCodeByName(
@@ -136,7 +135,7 @@ export const Component: FC<Props> = ({ children, className, path }) => {
                     ))}
                   </div>
                 </div>
-              );
+              )
             }
 
             return (
@@ -144,7 +143,7 @@ export const Component: FC<Props> = ({ children, className, path }) => {
                 key={`${option?.name}-${optionIndex}`}
                 className={clsx(styles.label)}
               >
-                <span className={clsx(styles.text, "text-base")}>
+                <span className={clsx(styles.text, 'text-base')}>
                   {option?.name}
                 </span>
                 <select
@@ -160,7 +159,7 @@ export const Component: FC<Props> = ({ children, className, path }) => {
                   ))}
                 </select>
               </label>
-            );
+            )
           })}
         </section>
       )}
@@ -168,9 +167,9 @@ export const Component: FC<Props> = ({ children, className, path }) => {
         <AddToCartButton
           accessibleAddingToCartLabel="Adding item to your cart"
           className={clsx(
-            "btn",
-            `btn-${isOutOfStock ? "disabled" : "primary"}`,
-            "gap-2"
+            'btn',
+            `btn-${isOutOfStock ? 'disabled' : 'primary'}`,
+            'gap-2'
           )}
           disabled={isOutOfStock}
           quantity={1}
@@ -182,9 +181,9 @@ export const Component: FC<Props> = ({ children, className, path }) => {
               className={clsx("icon")}
               title="View my shopping bag"
             /> */}
-          <span>{isOutOfStock ? "Sold out" : "Add to bag"}</span>
+          <span>{isOutOfStock ? 'Sold out' : 'Add to bag'}</span>
         </AddToCartButton>
-        <button className={clsx("btn", "btn-outline", "gap-2")}>
+        <button className={clsx('btn', 'btn-outline', 'gap-2')}>
           {/* <RiHeartAddLine
             aria-hidden="true"
             className={clsx("icon")}
@@ -193,18 +192,17 @@ export const Component: FC<Props> = ({ children, className, path }) => {
           <span>Add to wishlist</span>
         </button>
         {!isOutOfStock && (
-          <div className={clsx(styles.divider, "divider")}>OR</div>
+          <div className={clsx(styles.divider, 'divider')}>OR</div>
         )}
         {!isOutOfStock && (
           <ShopPayButton
             className="flex items-center col-span-full"
             variantIds={[selectedVariant.id!]}
-            width="100vw"
           />
         )}
       </section>
     </>
-  );
-};
+  )
+}
 
-export default Component;
+export default Component

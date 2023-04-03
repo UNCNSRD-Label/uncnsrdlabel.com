@@ -1,80 +1,47 @@
-import type { StorefrontApiResponseOk } from "@shopify/hydrogen-react";
-import type { GetServerSideProps, NextPageContext } from "next";
+import type { NextPage } from 'next'
 
-import type { HomeQuery } from "#/generated/graphql/graphql";
+import { clsx } from 'clsx'
+import { useRouter } from 'next/router'
 
-import { clsx } from "clsx";
-import { request } from "graphql-request";
+import { Layout } from '#/components/common'
 
-import { Error } from "#/components/Error";
-import Layout from "#/components/Layout";
-
-import {
-  getStorefrontApiUrl,
-  getPublicTokenHeaders,
-} from "#/lib/clients/shopify";
-
-import document from "./index.graphql";
-
-import styles from "./_error.module.css";
+import styles from './error.module.css'
 
 interface ErrorProps {
-  statusCode: number;
+  statusCode?: number
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const {
-    params,
-    res,
-    // preview = false,
-  } = context;
-
-  const statusCode = res?.statusCode || 500;
-
-  try {
-    const requestHeaders = getPublicTokenHeaders();
-    const url = getStorefrontApiUrl();
-    const variables = {};
-
-    const data = await request({
-      url,
-      document,
-      // requestHeaders: getPrivateTokenHeaders({buyerIp}),
-      requestHeaders,
-      variables,
-    });
-
-    // TODO I don't love how we do this with 'errors' and 'data'
-    return { props: { data, errors: null } };
-  } catch (err) {
-    console.error({ err });
-    return {
-      props: { data: null, errors: [(err as Error).toString()], statusCode },
-    };
-  }
-};
-
-export default function Page({
-  data,
-  errors,
-  statusCode,
-}: ErrorProps & StorefrontApiResponseOk<HomeQuery>) {
-  if (errors) {
-    console.error({ errors });
-    return <Error statusCode={500} />;
-  }
+export const Page: NextPage<ErrorProps> = ({ statusCode }) => {
+  const { asPath } = useRouter()
 
   return (
     <Layout
-      classNameDrawerContent={clsx(
-        styles.drawerContent,
-        "drawerContentOverflowY"
-      )}
+      classNameDrawerContent={clsx('drawerContentOverflowY')}
       classNameMain={clsx(styles.main)}
-      data={data}
+      route={asPath}
       showHeaderAndFooter={true}
     >
-      <Error statusCode={statusCode} />
+      <section className={clsx(styles.error)}>
+        <h1 className={clsx(styles.heading)}>
+          {statusCode
+            ? `An error ${statusCode} occurred on server`
+            : 'An error occurred on client'}
+        </h1>
+      </section>
     </Layout>
-  );
+  )
 }
+
+Page.getInitialProps = ({ res, err }) => {
+  let statusCode = 404
+
+  if (res) {
+    statusCode = res.statusCode
+  } else if (err?.statusCode) {
+    statusCode = err.statusCode
+  }
+
+  return { statusCode }
+}
+
+export default Page

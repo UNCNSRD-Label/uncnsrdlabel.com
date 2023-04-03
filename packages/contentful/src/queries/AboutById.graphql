@@ -1,0 +1,7 @@
+#import "../fragments/AboutBasicInformation.graphql"
+
+query AboutById($id: String!, $locale: String, $preview: Boolean) {
+  about(id: $id, locale: $locale, preview: $preview) {
+    ...AboutBasicInformation
+  }
+}

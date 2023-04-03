@@ -1,0 +1,13 @@
+#import "./SysBasicInformation.graphql"
+
+fragment EditContentBasicInformation on EditContent {
+  __typename
+  colorBackground
+  colorText
+  content
+  eyebrow
+  signature
+  sys {
+    ...SysBasicInformation
+  }
+}

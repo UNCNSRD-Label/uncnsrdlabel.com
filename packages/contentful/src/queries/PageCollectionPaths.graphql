@@ -1,0 +1,13 @@
+query PageCollectionPaths(
+  $limit: Int = 250
+  $locale: String
+  $preview: Boolean
+) {
+  pageCollection(limit: $limit, locale: $locale, preview: $preview) {
+    items {
+      ... on Page {
+        slug
+      }
+    }
+  }
+}

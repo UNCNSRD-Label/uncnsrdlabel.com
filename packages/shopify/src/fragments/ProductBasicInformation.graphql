@@ -1,0 +1,51 @@
+#import "./ImageBasicInformation.graphql"
+
+fragment ProductBasicInformation on Product {
+  availableForSale
+  description
+  featuredImage {
+    ...ImageBasicInformation
+  }
+  handle
+  id
+  metafields(
+    identifiers: [
+      { namespace: "custom_fields", key: "style_trick_author" }
+      { namespace: "custom_fields", key: "style_trick" }
+      { namespace: "custom_fields", key: "url" }
+    ]
+  ) {
+    namespace
+    key
+    type
+    value
+    description
+    id
+    reference {
+      ... on MetafieldReference {
+        ... on Page {
+          body
+          handle
+          onlineStoreUrl
+          title
+        }
+      }
+    }
+  }
+  onlineStoreUrl
+  priceRange {
+    maxVariantPrice {
+      amount
+      currencyCode
+    }
+    minVariantPrice {
+      amount
+      currencyCode
+    }
+  }
+  productType
+  publishedAt
+  tags
+  title
+  vendor
+}

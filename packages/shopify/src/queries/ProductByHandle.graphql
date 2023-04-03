@@ -1,0 +1,161 @@
+#import "../fragments/ImageBasicInformation.graphql"
+
+query ProductByHandle($country: CountryCode!, $handle: String!)
+@inContext(country: $country) {
+  product(handle: $handle) {
+    collections(first: 10) {
+      nodes {
+        handle
+        title
+        metafields(
+          identifiers: [
+            { namespace: "custom", key: "is_brand" }
+            { namespace: "my_fields", key: "collection_box_shadow_colour" }
+            { namespace: "my_fields", key: "collection_tab_colour" }
+          ]
+        ) {
+          description
+          id
+          key
+          namespace
+          type
+          value
+        }
+      }
+    }
+    description
+    descriptionHtml
+    handle
+    id
+    productType
+    publishedAt
+    title
+    vendor
+    images(first: 16) {
+      nodes {
+        ...ImageBasicInformation
+      }
+    }
+    media(first: 16) {
+      nodes {
+        ... on Model3d {
+          alt
+          mediaContentType
+          previewImage {
+            ...ImageBasicInformation
+          }
+          sources {
+            filesize
+            format
+            mimeType
+            url
+          }
+        }
+      }
+    }
+    metafields(
+      identifiers: [
+        { namespace: "custom_fields", key: "style_trick_author" }
+        { namespace: "custom_fields", key: "style_trick" }
+        { namespace: "custom_fields", key: "url" }
+      ]
+    ) {
+      namespace
+      key
+      type
+      value
+      description
+      id
+      reference {
+        ... on MetafieldReference {
+          ... on Page {
+            body
+            handle
+            onlineStoreUrl
+            title
+          }
+        }
+      }
+    }
+    options {
+      id
+      name
+      values
+    }
+    priceRange {
+      maxVariantPrice {
+        amount
+        currencyCode
+      }
+      minVariantPrice {
+        amount
+        currencyCode
+      }
+    }
+    productType
+    seo {
+      description
+      title
+    }
+    variants(first: 16) {
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+      }
+      nodes {
+        barcode
+        id
+        title
+        sku
+        availableForSale
+        currentlyNotInStock
+        quantityAvailable
+        requiresShipping
+        selectedOptions {
+          name
+          value
+        }
+        price {
+          amount
+          currencyCode
+        }
+        title
+      }
+    }
+    metafields(
+      identifiers: [
+        { namespace: "custom_fields", key: "style_trick_author" }
+        { namespace: "custom_fields", key: "style_trick" }
+        { namespace: "custom_fields", key: "url" }
+        { namespace: "custom", key: "composition" }
+        { namespace: "custom", key: "returns" }
+        { namespace: "custom", key: "shipping" }
+        { namespace: "custom", key: "sizing" }
+        { namespace: "descriptors", key: "care_guide" }
+        { namespace: "my_fields", key: "collection_url" }
+        { namespace: "my_fields", key: "filter_category" }
+        { namespace: "my_fields", key: "merchant" }
+        { namespace: "my_fields", key: "primary_category" }
+        { namespace: "my_fields", key: "product_details" }
+        { namespace: "my_fields", key: "product_sizing" }
+      ]
+    ) {
+      namespace
+      key
+      type
+      value
+      description
+      id
+      reference {
+        ... on MetafieldReference {
+          ... on Page {
+            body
+            handle
+            onlineStoreUrl
+            title
+          }
+        }
+      }
+    }
+  }
+}

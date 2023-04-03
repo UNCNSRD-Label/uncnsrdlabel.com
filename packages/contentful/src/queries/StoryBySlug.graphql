@@ -1,0 +1,64 @@
+#import "../fragments/StoryCollectionBasicInformation.graphql"
+#import "../fragments/StoryRelatedFeaturesCollectionBasicInformation.graphql"
+#import "../fragments/StoryModulesCollectionBasicInformation.graphql"
+
+query StoryBySlug(
+  $categorySlug: String!
+  $storySlug: String!
+  $limit: Int = 1
+  $locale: String
+  $preview: Boolean
+) {
+  current: storyCollection(
+    limit: $limit
+    locale: $locale
+    preview: $preview
+    where: { slug: $storySlug }
+  ) {
+    items {
+      category {
+        name
+        slug
+      }
+      colorAccent
+      colorBackground
+      credits
+      date
+      deck
+      imageLandscape {
+        ...ImageBasicInformation
+      }
+      imagePortrait {
+        ...ImageBasicInformation
+      }
+      metaDescription
+      metaImage {
+        ...ImageBasicInformation
+      }
+      metaTitle
+      modulesCollection {
+        ...StoryModulesCollectionBasicInformation
+      }
+      # relatedFeaturesCollection {
+      #   ...StoryRelatedFeaturesCollectionBasicInformation
+      # }
+      slug
+      sys {
+        ...SysBasicInformation
+      }
+      title
+      # videoLandscape {
+      #   ...ImageBasicInformation
+      # }
+      # videoPortrait {
+      #   ...ImageBasicInformation
+      # }
+    }
+  }
+  related: storyCollection(
+    limit: 3
+    where: { category: { slug: $categorySlug } }
+  ) {
+    ...StoryCollectionBasicInformation
+  }
+}

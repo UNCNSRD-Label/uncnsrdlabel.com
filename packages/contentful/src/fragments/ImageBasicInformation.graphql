@@ -1,0 +1,8 @@
+fragment ImageBasicInformation on Asset {
+  contentType
+  description
+  height
+  title
+  url
+  width
+}

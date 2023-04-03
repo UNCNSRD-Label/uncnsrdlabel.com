@@ -1,0 +1,61 @@
+@layer components {
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-block-start: 4rem;
+
+    & .pagination-list {
+      @apply flex gap-2;
+      margin-inline: auto;
+
+      @media screen and (min-width: theme(screens.md.min)) {
+        @apply gap-4;
+      }
+
+      & .pagination-item {
+        align-content: center;
+        align-items: center;
+        display: flex;
+        font-family: var(--font-sans);
+        vertical-align: middle;
+
+        &[role='presentation'] {
+          cursor: default;
+        }
+
+        & .pagination-link {
+          color: var(--color-textBlack);
+          padding: 0.5rem;
+          text-decoration: none;
+
+          &:focus,
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      & .pagination-item--firstPage,
+      & .pagination-item--previousPage,
+      & .pagination-item--nextPage,
+      & .pagination-item--lastPage {
+        font-size: 1.25rem;
+        inset-block-end: 0.15rem;
+        position: relative;
+      }
+
+      & .pagination-item--selected {
+        & .pagination-link {
+          text-decoration: underline;
+        }
+      }
+
+      & .pagination-item--disabled {
+        & .pagination-link {
+          @apply text-gray-300;
+          pointer-events: none;
+        }
+      }
+    }
+  }
+}

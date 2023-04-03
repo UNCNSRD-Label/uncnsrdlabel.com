@@ -1,0 +1,5 @@
+#import "../fragments/QueryRootInformation.graphql"
+
+query Account($country: CountryCode!) @inContext(country: $country) {
+  ...QueryRootInformation
+}

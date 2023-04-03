@@ -1,2 +1,11 @@
+# *
 User-agent: *
 Allow: /
+Disallow: /search
+
+# Host
+Host: https://
+
+# Sitemaps
+Sitemap: https://sitemap.xml
+Sitemap: https://shop.collagerie.com/sitemap.xml

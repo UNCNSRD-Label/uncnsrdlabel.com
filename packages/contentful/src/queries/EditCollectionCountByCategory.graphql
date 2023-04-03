@@ -1,0 +1,16 @@
+#import "../fragments/EditCollectionBasicInformation.graphql"
+
+query EditCollectionCountByCategory(
+    $categorySlug: String!
+    $locale: String
+    $preview: Boolean
+) {
+    editCollection(locale: $locale, preview: $preview, where: {
+        OR: [
+            { category: $categorySlug }
+            { categorisation: { slug: $categorySlug } }
+        ]
+    }) {
+        total
+    }
+}

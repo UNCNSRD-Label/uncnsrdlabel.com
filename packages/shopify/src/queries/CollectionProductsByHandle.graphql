@@ -1,0 +1,21 @@
+#import "../fragments/ProductBasicInformation.graphql"
+
+query CollectionProductsByHandle($country: CountryCode!, $handle: String!)
+@inContext(country: $country) {
+  collection(handle: $handle) {
+    description
+    descriptionHtml
+    id
+    products(first: 192) {
+      nodes {
+        ...ProductBasicInformation
+      }
+    }
+    seo {
+      description
+      title
+    }
+    title
+    updatedAt
+  }
+}

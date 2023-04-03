@@ -1,0 +1,13 @@
+#import "../fragments/CollectionsBasicInformation.graphql"
+#import "../fragments/MenusInformation.graphql"
+#import "../fragments/ShopBasicInformation.graphql"
+
+fragment QueryRootInformation on QueryRoot {
+  ...MenusInformation
+  collections(first: 192) {
+    ...CollectionsBasicInformation
+  }
+  shop {
+    ...ShopBasicInformation
+  }
+}

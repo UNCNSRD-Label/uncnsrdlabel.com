@@ -1,0 +1,20 @@
+#import "../fragments/QueryRootInformation.graphql"
+#import "../fragments/ShopPolicyInformation.graphql"
+
+query Policies($country: CountryCode!) @inContext(country: $country) {
+  ...QueryRootInformation
+  shop {
+    privacyPolicy {
+      ...ShopPolicyInformation
+    }
+    refundPolicy {
+      ...ShopPolicyInformation
+    }
+    shippingPolicy {
+      ...ShopPolicyInformation
+    }
+    termsOfService {
+      ...ShopPolicyInformation
+    }
+  }
+}

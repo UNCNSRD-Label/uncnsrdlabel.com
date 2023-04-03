@@ -1,0 +1,18 @@
+query EditCollectionPaths(
+  $limit: Int = 250
+  $locale: String
+  $preview: Boolean
+) {
+  editCollection(limit: $limit, locale: $locale, preview: $preview) {
+    items {
+      ... on Edit {
+        category
+        # TODO: Repalce old category field
+        categorisation {
+          slug
+        }
+        slug
+      }
+    }
+  }
+}

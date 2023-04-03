@@ -1,0 +1,11 @@
+#import "../fragments/MenuItemInformation.graphql"
+
+fragment MenuInformation on Menu {
+  handle
+  id
+  items {
+    ...MenuItemInformation
+  }
+  itemsCount
+  title
+}

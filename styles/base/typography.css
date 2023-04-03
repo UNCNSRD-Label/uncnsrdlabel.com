@@ -1,0 +1,79 @@
+@layer base {
+  html {
+    @apply underline-offset-4;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: normal;
+    text-rendering: optimizeLegibility;
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-serif);
+  }
+
+  .body {
+    font-family: var(--font-text);
+  }
+
+  .caption {
+    @apply text-xs;
+    font-family: var(--font-text);
+  }
+
+  .category {
+    @apply text-sm tracking-widest;
+    font-family: var(--font-sans);
+    font-weight: bold;
+
+    @media screen and (max-width: theme(screens.md.max)) {
+      @apply text-xs;
+    }
+  }
+
+  .cta {
+    @apply text-xs tracking-widest;
+    border-block-end-color: inherit;
+    border-block-end-style: solid;
+    border-block-end-width: 1px;
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-weight: bold;
+    padding-block-end: 0.1875rem;
+    text-transform: uppercase;
+  }
+
+  .heading1 {
+    @apply font-medium leading-tighter text-6xl;
+    font-family: var(--font-serif);
+
+    @media screen and (max-width: theme(screens.md.max)) {
+      @apply text-3xl;
+    }
+  }
+
+  .heading2 {
+    @apply font-medium leading-tighter text-4xl;
+    font-family: var(--font-serif);
+
+    @media screen and (max-width: theme(screens.md.max)) {
+      @apply text-3xl;
+    }
+  }
+
+  .link {
+    @apply leading-tight text-xs tracking-widest;
+    text-transform: uppercase;
+  }
+
+  .paragraph {
+    @apply leading-normal text-xl;
+    font-family: var(--font-text);
+
+    @media screen and (max-width: theme(screens.md.max)) {
+      @apply text-2xl text-base;
+    }
+  }
+}

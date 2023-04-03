@@ -1,0 +1,42 @@
+#import "../fragments/QueryRootInformation.graphql"
+
+query PageByHandle($country: CountryCode!, $handle: String!)
+@inContext(country: $country) {
+  ...QueryRootInformation
+  page(handle: $handle) {
+    body
+    bodySummary
+    handle
+    id
+    metafields(identifiers: [{ namespace: "custom", key: "media" }]) {
+      description
+      key
+      namespace
+      references(first: 32) {
+        nodes {
+          ... on MetafieldReference {
+            ... on MediaImage {
+              mediaContentType
+              previewImage {
+                ... on Image {
+                  altText
+                  height
+                  url
+                  width
+                }
+              }
+            }
+          }
+        }
+      }
+      type
+      value
+    }
+    seo {
+      description
+      title
+    }
+    title
+    updatedAt
+  }
+}

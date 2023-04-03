@@ -1,4 +1,0 @@
-#import "#/lib/graphql/fragments/QueryRootInformation.graphql"
-query Account {
-  ...QueryRootInformation
-}

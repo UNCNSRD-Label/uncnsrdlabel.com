@@ -1,0 +1,22 @@
+#import "./ImageBasicInformation.graphql"
+
+fragment EditRelatedFeaturesCollectionBasicInformation on EditRelatedFeaturesCollection {
+  items {
+    # TODO: Repalce old category field
+    category: categorisation {
+      name
+      slug
+    }
+    contentfulMetadata {
+      tags {
+        name
+      }
+    }
+    imageLandscape {
+      ...ImageBasicInformation
+    }
+    slug
+    title
+  }
+  total
+}

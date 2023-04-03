@@ -1,0 +1,7 @@
+query ProductsPaths($country: CountryCode!) @inContext(country: $country) {
+  products(first: 250) {
+    nodes {
+      handle
+    }
+  }
+}

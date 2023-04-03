@@ -1,96 +1,87 @@
-import type { StorefrontApiResponseOk } from "@shopify/hydrogen-react";
-import type { GetServerSideProps } from "next";
+import type {
+  GetStaticPropsContext,
+  InferGetStaticPropsType,
+  NextPage,
+} from 'next'
 
-import type { ConsentQuery } from "#/generated/graphql/graphql";
+import { dehydrate, QueryClient } from '@tanstack/react-query'
+import { clsx } from 'clsx'
+import NextError from 'next/error'
+import { useRouter } from 'next/router'
 
-import { clsx } from "clsx";
-import { request } from "graphql-request";
-import Error from "next/error";
-import Image from "next/image";
+import { Layout } from '#/components/common'
+import ConsentTable from '#/components/consent/ConsentTable'
+import { LoadingNotification } from '#/components/ui'
 
-import ConsentTable from "#/components/ConsentTable";
-import Layout from "#/components/Layout";
+import { getLocaleProperties } from '#/lib/i18n/utils'
 
 import {
-  getStorefrontApiUrl,
-  getPublicTokenHeaders,
-} from "#/lib/clients/shopify";
+  prefetchShopifyQuery,
+  useShopifyQuery,
+} from '#/lib/clients/shopify/graphql'
 
-import { onLoadingComplete } from "#/lib/util/image";
+import { ConsentDocument } from '#/packages/shopify/generated/graphql'
 
-import document from "./index.graphql";
+import styles from './index.module.css'
 
-import styles from "./index.module.css";
+export async function getStaticProps(context: GetStaticPropsContext) {
+  const { locale = process.env.NEXT_PUBLIC_DEFAULT_LOCALE } = context
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const {
-    params,
-    // preview = false,
-  } = context;
+  const { country } = getLocaleProperties(locale)
 
-  try {
-    const requestHeaders = getPublicTokenHeaders();
-    const url = getStorefrontApiUrl();
+  const queryClient = new QueryClient()
 
-    const data = await request({
-      url,
-      document,
-      // requestHeaders: getPrivateTokenHeaders({buyerIp}),
-      requestHeaders,
-    });
-
-    // TODO I don't love how we do this with 'errors' and 'data'
-    return { props: { data, errors: null } };
-  } catch (err) {
-    console.error({ err });
-    return { props: { data: null, errors: [(err as Error).toString()] } };
-  }
-};
-
-export default function Page({
-  data,
-  errors,
-}: StorefrontApiResponseOk<ConsentQuery>) {
-  if (!data?.shop) {
-    console.error({ errors });
-    return <Error statusCode={404} />;
+  const variables = {
+    country,
   }
 
-  if (errors) {
-    console.error({ errors });
-    return <Error statusCode={500} />;
+  await prefetchShopifyQuery(queryClient, ConsentDocument, variables)
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+      variables,
+    },
+    revalidate: 60,
+  }
+}
+
+export const Page: NextPage<
+  InferGetStaticPropsType<typeof getStaticProps>
+> = () => {
+  const { asPath } = useRouter()
+
+  const { data, error, isFetching } = useShopifyQuery(ConsentDocument)
+
+  if (isFetching) {
+    return <LoadingNotification />
+  }
+
+  if (error) {
+    console.error({ error })
+    return <NextError statusCode={500} message={error} />
   }
 
   return (
     <Layout
-      classNameDrawerContent={clsx(
-        styles.drawerContent,
-        "drawerContentOverflowY"
-      )}
+      classNameDrawerContent={clsx('drawerContentOverflowY')}
       classNameMain={clsx(styles.main)}
-      data={data}
+      shopifyData={data}
+      route={asPath}
       showHeaderAndFooter={true}
     >
-      <div className={clsx(styles.about, "prose")}>
+      <div className={clsx(styles.about, 'prose')}>
         <h2>Consent settings</h2>
-        <p>We use some essential cookies to make this service work.</p>
         <p>
-          We’d also like to use analytics cookies so we can understand how you
-          use the service and make improvements.
+          Collagerie uses some essential cookies to make this service work, by
+          using this website you agree to our cookie policy. We would also like
+          to use analytics cookies so we can understand how you use the service
+          and make improvements.
         </p>
       </div>
-      <figure className={clsx(styles.figure)}>
-        <Image
-          alt="Sexy young woman eating a cookie"
-          className={clsx(styles.image, "onLoadingComplete")}
-          height={660}
-          onLoadingComplete={onLoadingComplete}
-          priority
-          src="/images/campaign/stock-photo-heart-shaped-cookie-hold-in-front-of-sexy-female-mouth-234809632.jpg"
-          width={900}
-        />
-      </figure>
-      <ConsentTable className={clsx("col-span-full")} />
+      <ConsentTable className={clsx('col-span-full')} />
     </Layout>
-  );
+  )
 }
+
+export default Page

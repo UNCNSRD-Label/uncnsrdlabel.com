@@ -1,0 +1,39 @@
+#import "./AssociationBasicInformation.graphql"
+#import "./ImageBasicInformation.graphql"
+#import "./SysBasicInformation.graphql"
+
+fragment HpModuleBasicInformation on HpModule {
+  __typename
+  association {
+    ...AssociationBasicInformation
+  }
+  backgroundDesktop {
+    ...ImageBasicInformation
+  }
+  backgroundMobile {
+    ...ImageBasicInformation
+  }
+  categoryName
+  colorAccent
+  colorBackground
+  colorShadow
+  colorSticker
+  colorText
+  cta
+  deck
+  heading
+  image {
+    ...ImageBasicInformation
+  }
+  imagesSupportingCollection {
+    items {
+      ...ImageBasicInformation
+    }
+    total
+  }
+  layout
+  sys {
+    ...SysBasicInformation
+  }
+  url
+}

@@ -1,15 +1,28 @@
 /** @type {import('next-sitemap').IConfig} */
+
+export const BASE_URL =
+  process.env.NEXT_PUBLIC_BASE_URL ?? process.env.NEXT_PUBLIC_VERCEL_URL
+
 module.exports = {
-  alternateRefs: [
-    {
-      href: `${process.env.VERCEL_URL}/es`,
-      hreflang: "es",
-    },
-    {
-      href: `${process.env.VERCEL_URL}/fr`,
-      hreflang: "fr",
-    },
+  additionalSitemaps: [
+    `${process.env.NEXT_PUBLIC_PROTOCOL}://${process.env.NEXT_PUBLIC_SHOP_URL}/sitemap.xml`,
   ],
+  alternateRefs: process.env.NEXT_PUBLIC_LOCALES_WITH_STORE?.split(',').map(
+    (locale) => ({
+      href: `${process.env.VERCEL_URL}/${locale}`,
+      hreflang: locale,
+    })
+  ),
+  exclude: ['/500'],
   generateRobotsTxt: true,
-  siteUrl: process.env.VERCEL_URL || "https://www.uncnsrdlabel.com",
-};
+  robotsTxtOptions: {
+    policies: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/search'],
+      },
+    ],
+  },
+  siteUrl: `${process.env.NEXT_PUBLIC_PROTOCOL}://${BASE_URL}`,
+}

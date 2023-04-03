@@ -1,0 +1,17 @@
+#import "../fragments/ImageBasicInformation.graphql"
+
+query BrandCollection($limit: Int = 250, $locale: String, $preview: Boolean) {
+  brandCollection(limit: $limit, locale: $locale, preview: $preview) {
+    items {
+      ... on Brand {
+        accentColour
+        borderColour
+        description
+        image {
+          ...ImageBasicInformation
+        }
+        name
+      }
+    }
+  }
+}
