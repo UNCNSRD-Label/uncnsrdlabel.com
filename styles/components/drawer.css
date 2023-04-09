@@ -33,17 +33,6 @@
       }
     }
 
-    /* &:checked {
-      & ~ .drawer-side {
-        & > .drawer-overlay.custom {
-          & + * {
-            --tw-bg-opacity: 1;
-            --tw-translate-x: 0;
-          }
-        }
-      }
-    } */
-
     &.cart {
       &:checked {
         & ~ .drawer-side {

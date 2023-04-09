@@ -42,8 +42,6 @@
 }
 
 .title {
-  /* text-orientation: mixed; */
-  /* writing-mode: vertical-lr; */
   animation-direction: alternate;
   animation-duration: 120s;
   animation-iteration-count: infinite;
@@ -55,15 +53,6 @@
   font-family: "Bomber Escort";
   font-size: 17.5vw;
   text-align: center;
-}
-
-@keyframes my-animation {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(-100%);
-  }
 }
 
 @keyframes move-bg {

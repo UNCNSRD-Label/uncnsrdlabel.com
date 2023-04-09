@@ -29,6 +29,7 @@
   }
 
   & .signupForm {
+    filter: invert(1);
     inline-size: max(30%, 20rem);
     z-index: theme(zIndex.10);
   }

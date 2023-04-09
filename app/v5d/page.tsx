@@ -12,15 +12,6 @@ export default function Page() {
       <title>UNCNSRD - Home</title>
       <div className={clsx(styles.container)}>
         <div className={clsx(styles.information)}>
-          {/* <Image
-            alt="UNCNSRD logo"
-            className={clsx(styles.logotype)}
-            height={140}
-            priority
-            src="/images/logos/logotype.svg"
-            width={640}
-          /> */}
-
           <SignupForm className={clsx(styles.signupForm)} />
 
           <section className={styles.copy}>

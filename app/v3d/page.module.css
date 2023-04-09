@@ -42,8 +42,6 @@
 }
 
 .title {
-  /* text-orientation: mixed; */
-  /* writing-mode: vertical-lr; */
   animation-duration: 120s;
   animation-iteration-count: infinite;
   animation-name: move-bg;

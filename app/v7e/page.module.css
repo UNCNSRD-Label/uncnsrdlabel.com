@@ -2,7 +2,7 @@
   align-items: end;
   background-color: theme(backgroundColor.white);
   background-image: var(--gradient-1);
-  /background-size: 400% 400%;
+  background-size: 400% 400%;
   display: grid;
   min-block-size: 100%;
   padding: theme(padding.8);
@@ -48,7 +48,7 @@
 }
 
 .title {
-  background-color: theme(backgroundColor.black);
+  background-color: theme(backgroundColor.white);
   font-family: "Bomber Escort";
   font-size: 17.5vw;
   text-align: center;

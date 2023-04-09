@@ -33,6 +33,7 @@
   }
 
   & .signupForm {
+    filter: invert(1);
     inline-size: max(30%, 20rem);
     z-index: theme(zIndex.10);
   }
@@ -48,8 +49,6 @@
   background-size: 50%;
   font-family: "Bomber Escort";
   font-size: 17.5vw;
-  /* text-orientation: mixed; */
-  /* writing-mode: vertical-lr; */
   animation-name: move-bg;
   animation-duration: 120s;
   animation-iteration-count: infinite;

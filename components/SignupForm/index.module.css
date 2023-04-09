@@ -2,7 +2,6 @@
   align-content: end;
   display: grid;
   gap: theme(gap[0.5]);
-  /* gap: theme(gap.8); */
 
   &.valid {
     & :is(button, input, select, textarea) {
@@ -19,15 +18,17 @@
 
 .label {
   display: none;
-  /* text-shadow: 2px 0px 2px rgba(0, 0, 0, 0.6); */
 }
 
 .input {
   text-align: center;
+
+  &::placeholder {
+    color: theme(colors.white);
+  }
 }
 
 .button {
-  /* @apply outline outline-offset-2 outline-1 outline-white; */
   color: theme(colors.white);
   padding: theme(padding.2);
 }
@@ -66,10 +67,8 @@
   }
 
   &:global(.invalid) {
-    /* background-color: rgb(var(--color-feedback-invalid-background) / 0.9); */
   }
 
   &:global(.valid) {
-    /* background-color: rgb(var(--color-feedback-valid-background) / 0.9); */
   }
 }

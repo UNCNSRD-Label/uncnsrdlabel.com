@@ -1,6 +1,5 @@
 .container {
   align-items: end;
-  /* animation-direction: alternate; */
   animation-duration: 120s;
   animation-iteration-count: infinite;
   animation-name: move-bg;
@@ -57,25 +56,11 @@
   text-align: center;
 }
 
-@keyframes my-animation {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(-100%);
-  }
-}
-
 @keyframes move-bg {
   0% {
     background-position: 0% 0%;
-    /* background-size: 100%; */
   }
-  /* 50% {
-    background-size: 125%;
-  } */
   100% {
     background-position: 100% 0%;
-    /* background-size: 100%; */
   }
 }

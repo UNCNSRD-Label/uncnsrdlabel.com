@@ -17,18 +17,5 @@
       select
     ) {
     @apply mt-0 block w-full px-0.5 border-0 border-b border-gray-200 focus:ring-0 focus:border-gray-500 bg-transparent;
-    /* --tw-ring-color: transparent; */
-    /* border-color: theme(borderColor.transparent); */
-    /* border-width: theme(borderWidth.DEFAULT); */
-    /* border-block-end-color: theme(borderColor.white); */
-    /* border-block-end-width: theme(borderWidth.DEFAULT); */
-
-    /* &::placeholder {
-      font-size: theme(fontSize.xs);
-    } */
-
-    &:focus-visible {
-      /* outline-color: transparent; */
-    }
   }
 }
