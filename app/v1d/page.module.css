@@ -1,0 +1,59 @@
+.container {
+  align-content: space-around;
+  block-size: 100%;
+  display: grid;
+  gap: theme(gap.8);
+  justify-items: center;
+}
+
+.logotype {
+  filter: contrast(0.6) brightness(1.25) drop-shadow(-0.4vw -0.2vw 0.3vw black);
+  inline-size: 40%;
+  position: relative;
+  z-index: theme(zIndex.40);
+}
+
+.signupForm {
+  inline-size: min(30%, 25rem);
+  z-index: theme(zIndex.10);
+}
+
+.background {
+  display: grid;
+  grid-auto-flow: column;
+  block-size: 100%;
+  inset: 0;
+  position: absolute;
+
+  & .figure {
+    &:nth-of-type(1) {
+      & .image {
+        object-position: left center;
+      }
+    }
+
+    &:nth-of-type(2) {
+      display: none;
+
+      @screen lg {
+        display: unset;
+      }
+    }
+
+    &:nth-of-type(3) {
+      display: none;
+
+      @screen xl {
+        display: unset;
+      }
+    }
+
+    & .image {
+      block-size: 100%;
+      filter: blur(4px);
+      max-block-size: 100dvh;
+      object-fit: cover;
+      object-position: bottom;
+    }
+  }
+}

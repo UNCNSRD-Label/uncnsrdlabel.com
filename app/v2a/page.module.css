@@ -1,0 +1,69 @@
+.container {
+  background-color: theme(backgroundColor.black);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.information {
+  align-content: center;
+  display: grid;
+  justify-items: center;
+
+  & .logotype {
+    filter: contrast(0.6) brightness(1.25)
+      drop-shadow(-0.4vw -0.2vw 0.3vw black);
+    margin-block-end: 1rem;
+    inline-size: 80%;
+    position: relative;
+  }
+
+  & .title {
+    background-clip: text;
+    background-color: #ffffff;
+    color: transparent;
+    filter: drop-shadow(0rem 0rem 0.1rem theme(colors.black));
+    font-family: "Bomber Escort Outline", cursive;
+    font-size: clamp(1.5rem, 10vw, 10rem);
+    font-style: italic;
+    padding: 2rem;
+    text-shadow: -0.2rem 0.2rem 0.2rem rgb(0 0 0 / 20%);
+  }
+
+  & .signupForm {
+    inline-size: max(30%, 20rem);
+    z-index: theme(zIndex.10);
+  }
+
+  & .copy {
+    display: none;
+  }
+}
+
+.background {
+  display: grid;
+  grid-auto-flow: column;
+  block-size: 100%;
+
+  & .figure {
+    &:nth-of-type(1) {
+      display: none;
+    }
+
+    &:nth-of-type(2) {
+      display: none;
+    }
+
+    &:nth-of-type(3) {
+      & .image {
+        object-position: left bottom;
+      }
+    }
+
+    & .image {
+      block-size: 100%;
+      max-block-size: 100dvh;
+      object-fit: cover;
+      object-position: bottom;
+    }
+  }
+}

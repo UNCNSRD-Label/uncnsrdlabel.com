@@ -1,16 +1,75 @@
-
 .form {
   align-content: end;
-}
+  display: grid;
+  gap: theme(gap[0.5]);
+  /* gap: theme(gap.8); */
 
-.valid {
-  & :is(button, input, select, textarea, div) {
-    display: none;
-    opacity: 0;
-    pointer-events: none;
+  &.valid {
+    & :is(button, input, select, textarea) {
+      opacity: 0;
+      pointer-events: none;
+    }
   }
 }
 
-.uniformHeight {
-  min-block-size: max(20vh, 16rem);
+.field {
+  display: grid;
+  gap: theme(gap[0.5]);
+}
+
+.label {
+  display: none;
+  /* text-shadow: 2px 0px 2px rgba(0, 0, 0, 0.6); */
+}
+
+.input {
+  text-align: center;
+}
+
+.button {
+  /* @apply outline outline-offset-2 outline-1 outline-white; */
+  color: theme(colors.white);
+  padding: theme(padding.2);
+}
+
+.output {
+  @apply bg-black bg-blend-screen bg-opacity-80;
+  align-content: center;
+  color: theme(colors.white);
+  display: grid;
+  font-size: theme(fontSize.base);
+  gap: 1rem;
+  grid-column: -1/1;
+  inset: 0;
+  justify-items: center;
+  padding: 2rem;
+  position: fixed;
+  text-align: center;
+  text-transform: lowercase;
+  transition-duration: theme(transitionDuration.150);
+  transition-property: background-color, opacity;
+  transition-timing-function: theme(transitionTimingFunction.in-out);
+  z-index: theme(zIndex.30);
+
+  @screen md {
+    font-size: theme(fontSize.4xl);
+  }
+
+  & :global(.container) {
+    display: grid;
+    inline-size: min(30rem, 50%);
+  }
+
+  &:not(:global(.invalid), :global(.valid)) {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &:global(.invalid) {
+    /* background-color: rgb(var(--color-feedback-invalid-background) / 0.9); */
+  }
+
+  &:global(.valid) {
+    /* background-color: rgb(var(--color-feedback-valid-background) / 0.9); */
+  }
 }

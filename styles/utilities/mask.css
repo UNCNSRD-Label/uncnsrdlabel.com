@@ -1,0 +1,14 @@
+@layer utilities {
+  .mask {
+    background-attachment: fixed;
+    background-clip: text;
+    /* background-position: center; */
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+    color: transparent;
+    /* display: grid; */
+    /* place-content: center; */
+    /* text-align: center; */
+    text-fill-color: transparent;
+  }
+}

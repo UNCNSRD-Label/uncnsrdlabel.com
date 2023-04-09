@@ -1,0 +1,18 @@
+@layer components {
+  .header {
+    @apply grid gap-4 px-8 py-4 justify-center justify-items-center font-serif;
+
+    @media screen and (min-width: theme(screens.md)) {
+      @apply gap-8 p-14;
+    }
+
+    & .title {
+      @apply heading1;
+    }
+
+    & .title,
+    & .description {
+      max-width: 65ch;
+    }
+  }
+}

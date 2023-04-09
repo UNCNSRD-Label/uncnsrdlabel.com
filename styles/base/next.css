@@ -1,0 +1,6 @@
+@layer base {
+  [data-nextjs-scroll-focus-boundary],
+  #__next {
+    display: contents;
+  }
+}

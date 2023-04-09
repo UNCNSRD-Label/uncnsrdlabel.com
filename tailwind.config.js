@@ -5,8 +5,8 @@ const { fontFamily } = require("tailwindcss/defaultTheme");
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
-    "./page/**/*.{js,ts,jsx,tsx}",
-    "./ui/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./pages/**/*.{js,ts,jsx,tsx}",
   ],
   future: {
     hoverOnlyWhenSupported: true,
@@ -28,55 +28,38 @@ module.exports = {
       },
       extend: {
         fontFamily: {
-          sans: ["var(--font-montserrat)", ...fontFamily.sans],
+          sans: ["var(--font-sans)", ...fontFamily.sans],
+          serif: ["var(--font-serif)", ...fontFamily.serif],
+          text: ["var(--font-text)", "serif"],
         },
+        fontSize: {
+          "1xs": "0.5rem",
+          "2xs": "0.375rem",
+        },
+        lineHeight: {
+          tighter: "1.15",
+        },
+        maxWidth: {
+          "8xl": "100rem",
+          "9xl": "120rem",
+        },
+        // screens: {
+        //   landscape: { raw: "(orientation: landscape)" }, // => @media (orientation: landscape) { ... }
+        //   portrait: { raw: "(orientation: portrait)" }, // => @media (orientation: portrait) { ... }
+        //   tablet: "640px", // => @media (min-width: 640px) { ... }
+        //   laptop: "1024px", // => @media (min-width: 1024px) { ... }
+        //   desktop: "1280px", // => @media (min-width: 1280px) { ... }
+        //   xs: { max: "639px" },
+        //   sm: { min: "640px", max: "767px" },
+        //   md: { min: "768px", max: "1023px" },
+        //   lg: { min: "1024px", max: "1279px" },
+        //   xl: { min: "1280px", max: "1535px" },
+        //   "2xl": { min: "1536px" },
+        // },
       },
-      backgroundImage: ({ theme }) => ({
-        "vc-border-gradient": `radial-gradient(at left top, ${theme(
-          "colors.gray.500"
-        )}, 50px, ${theme("colors.gray.800")} 50%)`,
-      }),
-      keyframes: ({ theme }) => ({
-        rerender: {
-          "0%": {
-            ["border-color"]: theme("colors.vercel.pink"),
-          },
-          "40%": {
-            ["border-color"]: theme("colors.vercel.pink"),
-          },
-        },
-        highlight: {
-          "0%": {
-            background: theme("colors.vercel.pink"),
-            color: theme("colors.white"),
-          },
-          "40%": {
-            background: theme("colors.vercel.pink"),
-            color: theme("colors.white"),
-          },
-        },
-        shimmer: {
-          "100%": {
-            transform: "translateX(100%)",
-          },
-        },
-        translateXReset: {
-          "100%": {
-            transform: "translateX(0)",
-          },
-        },
-        fadeToTransparent: {
-          "0%": {
-            opacity: 1,
-          },
-          "40%": {
-            opacity: 1,
-          },
-          "100%": {
-            opacity: 0,
-          },
-        },
-      }),
+      future: {
+        hoverOnlyWhenSupported: true,
+      },
     },
   },
   plugins: [require("@tailwindcss/forms")],

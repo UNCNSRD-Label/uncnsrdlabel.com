@@ -1,0 +1,81 @@
+.container {
+  align-items: end;
+  /* animation-direction: alternate; */
+  animation-duration: 60s;
+  animation-iteration-count: infinite;
+  animation-name: move-bg;
+  animation-timing-function: linear;
+  background-color: theme(backgroundColor.black);
+  background-image: url("/images/textures/green-zebra-print.png");
+  background-size: 110%;
+  display: grid;
+  min-block-size: 100%;
+  padding: theme(padding.8);
+}
+
+.information {
+  display: grid;
+  justify-items: center;
+  position: relative;
+  z-index: theme(zIndex.10);
+
+  & .logotype {
+    margin-block-end: 1rem;
+    inline-size: 80%;
+    position: relative;
+    display: none;
+  }
+
+  & .title {
+    background-clip: text;
+    background-color: #ffffff;
+    color: transparent;
+    filter: drop-shadow(0rem 0rem 0.1rem theme(colors.black));
+    font-family: "Bomber Escort Outline", cursive;
+    font-size: clamp(1.5rem, 10vw, 10rem);
+    font-style: italic;
+    padding: 2rem;
+    text-shadow: -0.2rem 0.2rem 0.2rem rgb(0 0 0 / 20%);
+  }
+
+  & .signupForm {
+    inline-size: max(30%, 20rem);
+    z-index: theme(zIndex.10);
+  }
+
+  & .copy {
+    display: none;
+  }
+}
+
+.title {
+  background-color: theme(backgroundColor.white);
+  background-repeat: repeat;
+  background-size: 100%;
+  font-family: "Bomber Escort";
+  font-size: 17.5vw;
+  text-align: center;
+}
+
+@keyframes my-animation {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes move-bg {
+  0% {
+    background-position: 0% 0%;
+    /* background-size: 100%; */
+  }
+  /* 50% {
+    background-size: 125%;
+  } */
+  100% {
+    background-position: 100% 0%;
+    /* background-size: 100%; */
+  }
+}

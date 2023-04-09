@@ -1,0 +1,37 @@
+@layer utilities {
+  /* [constrained-width] {
+    margin-inline: auto;
+  } */
+
+  /* [constrained-width="small"] {
+    inline-size: min(100%, theme(maxWidth.screen-sm);
+  } */
+
+  /* [constrained-width="medium"] {
+    inline-size: min(100%, theme(maxWidth.screen-xl));
+  } */
+
+  /* [constrained-width="large"] {
+    inline-size: min(100%, theme(maxWidth.screen-2xl));
+  } */
+
+  /* .constrainWidth {
+    main {
+      justify-self: center;
+      max-inline-size: 60rem;
+      min-inline-size: 60rem;
+    }
+  } */
+
+  /* .viewportHeight {
+    @supports (height: 100dvh) {
+      height: 100dvh;
+    }
+
+    @supports not (height: 100dvh) {
+      height: calc(
+        100vh - (env(safe-area-inset-top) + env(safe-area-inset-bottom))
+      );
+    }
+  } */
+}
