@@ -198,7 +198,7 @@ export default function Page() {
             </Link>
             ){" "}
           </span>
-          {/* <span>
+          <span>
             Concept 8 (
             <Link className={clsx(styles.link)} href="/v8a" title="Concept 8A">
               A
@@ -208,7 +208,7 @@ export default function Page() {
               B
             </Link>
             )
-          </span> */}
+          </span>
           {/* <span>
             Concept 9 (
             <Link className={clsx(styles.link)} href="/v9a" title="Concept 9A">

@@ -10,7 +10,7 @@ export default function Page() {
     <>
       <title>UNCNSRD - Home</title>
       <div className={clsx(styles.container)}>
-        <h1 className={clsx(styles.title, styles.title1, "mask")}>UNCNSRD</h1>
+        <h1 className={clsx(styles.title, "mask")}>UNCNSRD</h1>
 
         <div className={clsx(styles.information)}>
           <Image

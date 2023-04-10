@@ -1,7 +1,7 @@
 .container {
   align-items: end;
   background-color: theme(backgroundColor.black);
-  background-image: url("/images/textures/pink.png");
+  /* background-image: url("/images/textures/pink.png"); */
   display: grid;
   min-block-size: 100%;
   padding: theme(padding.8);
@@ -33,7 +33,7 @@
   }
 
   & .signupForm {
-    filter: invert(1);
+    /* filter: invert(1); */
     inline-size: max(30%, 20rem);
     z-index: theme(zIndex.10);
   }
@@ -54,8 +54,9 @@
 } */
 
 .title {
-  background-color: theme(backgroundColor.black);
+  background-color: theme(backgroundColor.white);
   font-family: "Bomber Escort";
+  /* filter: opacity(0.5); */
   font-size: 17.5vw;
   line-height: 1;
   position: relative;
@@ -66,11 +67,11 @@
 
 .background {
   display: grid;
-  /* filter: opacity(0.5); */
+  /* filter: opacity(0.25); */
   grid-auto-flow: column;
   gap: theme(gap.16);
   inset: theme(inset.16);
-  mix-blend-mode: plus-lighter;
+  mix-blend-mode: multiply;
   position: absolute;
   z-index: theme(zIndex.10);
 

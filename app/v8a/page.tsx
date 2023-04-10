@@ -10,17 +10,7 @@ export default function Page() {
     <>
       <title>UNCNSRD - Home</title>
       <div className={clsx(styles.container)}>
-        <span className={styles.titleContainer}>
-          <h1 className={clsx(styles.title, "mask")}>UNCNSRD</h1>
-          {/* <h1 className={clsx(styles.title, "mask")}>UNCNSRD</h1>
-          <h1 className={clsx(styles.title, "mask")}>UNCNSRD</h1>
-          <h1 className={clsx(styles.title, "mask")}>UNCNSRD</h1>
-          <h1 className={clsx(styles.title, "mask")}>UNCNSRD</h1>
-          <h1 className={clsx(styles.title, "mask")}>UNCNSRD</h1>
-          <h1 className={clsx(styles.title, "mask")}>UNCNSRD</h1>
-          <h1 className={clsx(styles.title, "mask")}>UNCNSRD</h1>
-          <h1 className={clsx(styles.title, "mask")}>UNCNSRD</h1> */}
-        </span>
+        <h1 className={clsx(styles.title, "mask")}>UNCNSRD</h1>
 
         <div className={clsx(styles.information)}>
           <Image
