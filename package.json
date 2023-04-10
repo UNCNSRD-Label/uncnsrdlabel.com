@@ -23,6 +23,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-player": "^2.12.0",
+    "react-use": "^17.4.0",
     "react-use-wizard": "^2.2.1"
   },
   "devDependencies": {

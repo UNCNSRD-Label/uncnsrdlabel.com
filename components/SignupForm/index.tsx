@@ -10,7 +10,7 @@ type Props = {
   className?: string;
 };
 
-export const Component: FC<Props> = ({ className }) => {
+export const SignupForm: FC<Props> = ({ className }) => {
   const signupFormRef = useRef<HTMLFormElement>(null);
   const signupFormFeedbackRef = useRef<HTMLOutputElement>(null);
 
@@ -85,4 +85,4 @@ export const Component: FC<Props> = ({ className }) => {
   );
 };
 
-export default Component;
+export default SignupForm;

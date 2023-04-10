@@ -1,0 +1,56 @@
+.container {
+  align-items: end;
+  background-color: theme(backgroundColor.black);
+  /* background-image: url("/images/textures/pink.png"); */
+  display: grid;
+  min-block-size: 100%;
+  padding: theme(padding.8);
+}
+
+.information {
+  display: grid;
+  justify-items: center;
+  position: relative;
+  z-index: theme(zIndex.20);
+
+  & .logotype {
+    margin-block-end: 1rem;
+    inline-size: 80%;
+    position: relative;
+    display: none;
+  }
+
+  & .title {
+    background-clip: text;
+    background-color: #ffffff;
+    color: transparent;
+    filter: drop-shadow(0rem 0rem 0.1rem theme(colors.black));
+    font-family: "Bomber Escort Outline", cursive;
+    font-size: clamp(1.5rem, 10vw, 10rem);
+    font-style: italic;
+    padding: 2rem;
+    text-shadow: -0.2rem 0.2rem 0.2rem rgb(0 0 0 / 20%);
+  }
+
+  & .signupForm {
+    inline-size: max(30%, 20rem);
+    z-index: theme(zIndex.10);
+  }
+
+  & .copy {
+    display: none;
+  }
+}
+
+.title {
+  background-image: url("/images/v1/IMG_0893.jpg");
+  background-repeat: repeat;
+  background-size: cover;
+  background-position: left 75%;
+  font-family: "Bomber Escort";
+  font-size: 180dvh;
+  inset: 0;
+  position: fixed;
+  text-align: center;
+  line-height: 87.5dvh;
+}
