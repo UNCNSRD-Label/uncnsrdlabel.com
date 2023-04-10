@@ -8,6 +8,7 @@
   align-content: center;
   background-image: var(--gradient-11);
   display: grid;
+  gap: theme(gap.16);
   justify-items: center;
 
   & .logotype {

@@ -8,6 +8,7 @@
 .information {
   align-content: center;
   display: grid;
+  gap: theme(gap.16);
   justify-items: center;
 
   & .logotype {

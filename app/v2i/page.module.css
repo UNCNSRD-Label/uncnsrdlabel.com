@@ -8,6 +8,7 @@
   align-content: center;
   background-image: url("/images/textures/pink.png");
   display: grid;
+  gap: theme(gap.16);
   justify-items: center;
 
   & .logotype {

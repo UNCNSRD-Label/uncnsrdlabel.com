@@ -10,6 +10,7 @@
   align-content: center;
   background-repeat: round;
   display: grid;
+  gap: theme(gap.16);
   justify-items: center;
 
   & .logotype {
