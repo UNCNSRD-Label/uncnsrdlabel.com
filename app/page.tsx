@@ -207,23 +207,43 @@ export default function Page() {
             <Link className={clsx(styles.link)} href="/v8b" title="Concept 8B">
               B
             </Link>
+            )
+          </span>
+          <span>
+            Experiments (
+            <Link
+              className={clsx(styles.link)}
+              href="/v0.1a"
+              title="Concept 0.1a"
+            >
+              0.1A
+            </Link>
             ) (
-            <Link className={clsx(styles.link)} href="/v8c" title="Concept 8C">
-              C
+            <Link
+              className={clsx(styles.link)}
+              href="/v0.1b"
+              title="Concept 0.1B"
+            >
+              0.1B
+            </Link>
+            ) (
+            <Link
+              className={clsx(styles.link)}
+              href="/v0.2a"
+              title="Concept 0.2a"
+            >
+              0.2A
+            </Link>
+            ) (
+            <Link
+              className={clsx(styles.link)}
+              href="/v0.2b"
+              title="Concept 0.2B"
+            >
+              0.2B
             </Link>
             )
           </span>
-          {/* <span>
-            Concept 9 (
-            <Link className={clsx(styles.link)} href="/v9a" title="Concept 9A">
-              A
-            </Link>
-            ) (
-            <Link className={clsx(styles.link)} href="/v9b" title="Concept 9B">
-              B
-            </Link>
-            )
-          </span> */}
         </nav>
       </div>
     </>

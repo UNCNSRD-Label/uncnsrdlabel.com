@@ -1,7 +1,8 @@
 .container {
   align-items: end;
   background-color: theme(backgroundColor.black);
-  /* background-image: url("/images/textures/pink.png"); */
+  /* background-image: url("/images/textures/abstract009.jpg"); */
+  background-size: 50%;
   display: grid;
   min-block-size: 100%;
   padding: theme(padding.8);
@@ -11,7 +12,7 @@
   display: grid;
   justify-items: center;
   position: relative;
-  z-index: theme(zIndex.20);
+  z-index: theme(zIndex.30);
 
   & .logotype {
     margin-block-end: 1rem;
@@ -33,7 +34,6 @@
   }
 
   & .signupForm {
-    /* filter: invert(1); */
     inline-size: max(30%, 20rem);
     z-index: theme(zIndex.10);
   }
@@ -43,70 +43,51 @@
   }
 }
 
-/* .titleContainer {
-  column-gap: 8rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  height: 100dvh;
-  overflow: visible;
-  transform: rotateZ(15deg);
-  width: 100dvw;
-} */
-
 .title {
   background-color: theme(backgroundColor.white);
+  background-repeat: repeat;
+  background-size: 100%;
   font-family: "Bomber Escort";
-  /* filter: opacity(0.5); */
   font-size: 17.5vw;
-  line-height: 1;
-  position: relative;
   text-align: center;
-  /* transform: translate(-20rem, -20rem); */
-  z-index: theme(zIndex.0);
+  z-index: theme(zIndex.20);
 }
 
 .background {
+  animation-duration: 90s;
+  animation-iteration-count: infinite;
+  animation-name: move-bg;
+  animation-timing-function: linear;
   display: grid;
-  /* filter: opacity(0.25); */
   grid-auto-flow: column;
   gap: theme(gap.16);
-  inset: theme(inset.16);
-  mix-blend-mode: multiply;
-  position: absolute;
+  inline-size: 200dvw;
+  inset-block: theme(inset.0);
+  inset-inline-start: theme(inset.0);
+  padding: theme(padding.16);
+  padding-block-end: theme(padding.40);
+  position: fixed;
   z-index: theme(zIndex.10);
 
   & .figure {
+    position: relative;
+
     &:nth-of-type(1) {
-      & .image {
-        object-position: left center;
-      }
-    }
-
-    &:nth-of-type(2) {
-      display: none;
-
-      @screen lg {
-        display: unset;
-      }
-    }
-
-    &:nth-of-type(3) {
-      display: none;
-
-      & .image {
-        object-position: left center;
-      }
-
-      @screen xl {
-        display: unset;
-      }
+      transform: translateZ(200px);
     }
 
     & .image {
-      block-size: 100%;
-      max-block-size: 100dvh;
       object-fit: cover;
       object-position: bottom;
     }
+  }
+}
+
+@keyframes move-bg {
+  0% {
+    inset-inline-start: theme(inset.0);
+  }
+  100% {
+    inset-inline-start: calc(theme(inset.8) - 100dvw);
   }
 }

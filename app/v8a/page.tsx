@@ -44,30 +44,54 @@ export default function Page() {
             <Image
               alt="Model shot"
               className={clsx(styles.image)}
-              height={2048}
+              fill
               priority
               src="/images/v1/IMG_0894.jpg"
-              width={1364}
             />
           </figure>
           <figure className={clsx(styles.figure)}>
             <Image
               alt="Model shot"
               className={clsx(styles.image)}
-              height={2048}
+              fill
               priority
               src="/images/v1/IMG_0893.jpg"
-              width={1364}
             />
           </figure>
           <figure className={clsx(styles.figure)}>
             <Image
               alt="Model shot"
               className={clsx(styles.image)}
-              height={2048}
+              fill
               priority
               src="/images/v1/IMG_0895.jpg"
-              width={1364}
+            />
+          </figure>
+          <figure className={clsx(styles.figure)}>
+            <Image
+              alt="Model shot"
+              className={clsx(styles.image)}
+              fill
+              priority
+              src="/images/v1/IMG_0894.jpg"
+            />
+          </figure>
+          <figure className={clsx(styles.figure)}>
+            <Image
+              alt="Model shot"
+              className={clsx(styles.image)}
+              fill
+              priority
+              src="/images/v1/IMG_0893.jpg"
+            />
+          </figure>
+          <figure className={clsx(styles.figure)}>
+            <Image
+              alt="Model shot"
+              className={clsx(styles.image)}
+              fill
+              priority
+              src="/images/v1/IMG_0895.jpg"
             />
           </figure>
         </div>
