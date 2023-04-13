@@ -1,11 +1,14 @@
 .container {
-  align-items: end;
   background-color: theme(backgroundColor.black);
   /* background-image: url("/images/textures/abstract009.jpg"); */
   background-size: 50%;
   display: grid;
   min-block-size: 100%;
   padding: theme(padding.8);
+
+  @media landscape {
+    align-items: end;
+  }
 }
 
 .information {
@@ -56,12 +59,10 @@
 .background {
   animation-duration: 90s;
   animation-iteration-count: infinite;
-  animation-name: move-bg;
   animation-timing-function: linear;
   display: grid;
   grid-auto-flow: column;
   gap: theme(gap.16);
-  inline-size: 200dvw;
   inset-block: theme(inset.0);
   inset-inline-start: theme(inset.0);
   padding: theme(padding.16);
@@ -69,12 +70,23 @@
   position: fixed;
   z-index: theme(zIndex.10);
 
+  @screen landscape {
+    animation-name: move-bg-landscape;
+    inline-size: 200dvw;
+  }
+
+  @screen portrait {
+    animation-name: move-bg-portrait;
+    inline-size: 600dvw;
+  }
+
   & .figure {
     position: relative;
-
+    /* 
     &:nth-of-type(1) {
       transform: translateZ(200px);
     }
+    */
 
     & .image {
       object-fit: contain;
@@ -83,11 +95,20 @@
   }
 }
 
-@keyframes move-bg {
+@keyframes move-bg-landscape {
   0% {
     inset-inline-start: theme(inset.0);
   }
   100% {
     inset-inline-start: calc(theme(inset.8) - 100dvw);
+  }
+}
+
+@keyframes move-bg-portrait {
+  0% {
+    inset-inline-start: theme(inset.0);
+  }
+  100% {
+    inset-inline-start: calc(theme(inset.8) - 300dvw);
   }
 }
