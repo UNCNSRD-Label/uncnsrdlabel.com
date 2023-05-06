@@ -10,6 +10,7 @@ export default function Page() {
     <>
       <title>UNCNSRD - Home</title>
       <div className={clsx(styles.container)}>
+        <SignupForm className={clsx(styles.signupForm)} />
         <div className={clsx(styles.content)}>
           <h1 className={clsx(styles.title)}>UNCNSRD</h1>
           <div className={clsx(styles.background)}>
@@ -69,7 +70,6 @@ export default function Page() {
             </figure>
           </div>
         </div>
-        <SignupForm className={clsx(styles.signupForm)} />
       </div>
     </>
   );
