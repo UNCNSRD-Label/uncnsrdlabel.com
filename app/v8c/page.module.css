@@ -1,0 +1,93 @@
+.container {
+  --background-image-gap: theme(gap.16);
+
+  background-color: theme(backgroundColor.black);
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-block-size: 100%;
+
+  @media landscape {
+    align-items: end;
+  }
+
+  & .content {
+    display: grid;
+    overflow: hidden;
+    position: relative;
+    z-index: theme(zIndex.30);
+
+    & .title {
+      font-family: "Bomber Escort Outline";
+      font-size: 17.5vw;
+      place-self: center;
+      position: absolute;
+      text-align: center;
+      z-index: theme(zIndex.20);
+
+      @screen landscape {
+        font-size: 17.5vw;
+      }
+
+      @screen portrait {
+        font-size: 15vw;
+      }
+    }
+
+    & .background {
+      animation-duration: 90s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      display: grid;
+      grid-auto-flow: column;
+      gap: var(--background-image-gap);
+      inset-block: theme(inset.0);
+      inset-inline-start: theme(inset.0);
+      position: absolute;
+      z-index: theme(zIndex.10);
+
+      @screen landscape {
+        animation-name: move-bg-landscape;
+        inline-size: 200dvw;
+      }
+
+      @screen portrait {
+        animation-name: move-bg-portrait;
+        inline-size: 600dvw;
+      }
+
+      & .figure {
+        position: relative;
+
+        & .image {
+          object-fit: contain;
+          object-position: bottom;
+        }
+      }
+    }
+  }
+
+  & .signupForm {
+    inline-size: max(30%, 20rem);
+    justify-self: center;
+    padding: theme(padding.4);
+    z-index: theme(zIndex.10);
+  }
+}
+
+@keyframes move-bg-landscape {
+  0% {
+    inset-inline-start: theme(inset.0);
+  }
+  100% {
+    inset-inline-start: calc(((var(--background-image-gap) / 2) * -1) - 100dvw);
+  }
+}
+
+@keyframes move-bg-portrait {
+  0% {
+    inset-inline-start: theme(inset.0);
+  }
+  100% {
+    inset-inline-start: calc(((var(--background-image-gap) / 2) * -1) - 300dvw);
+  }
+}

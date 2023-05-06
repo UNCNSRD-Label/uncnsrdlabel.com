@@ -207,6 +207,10 @@ export default function Page() {
             <Link className={clsx(styles.link)} href="/v8b" title="Concept 8B">
               B
             </Link>
+            ) (
+            <Link className={clsx(styles.link)} href="/v8c" title="Concept 8C">
+              C
+            </Link>
             )
           </span>
           <span>
