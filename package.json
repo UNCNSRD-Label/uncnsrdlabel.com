@@ -17,8 +17,8 @@
     "@tailwindcss/forms": "^0.5.3",
     "clsx": "^1.2.1",
     "cross-fetch": "^3.1.5",
-    "next": "^13.3.0",
-    "open-props": "^1.5.7",
+    "next": "^13.4.1",
+    "open-props": "^1.5.8",
     "postcss-jit-props": "^1.0.13",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -27,26 +27,26 @@
     "react-use-wizard": "^2.2.1"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^13.3.0",
+    "@next/bundle-analyzer": "^13.4.1",
     "@types/js-cookie": "^3.0.3",
-    "@types/node": "^18.15.11",
-    "@types/react": "^18.0.33",
+    "@types/node": "^20.1.0",
+    "@types/react": "^18.2.5",
     "@vercel/git-hooks": "^1.0.0",
     "autoprefixer": "^10.4.14",
-    "eslint": "^8.38.0",
-    "eslint-config-next": "^13.3.0",
+    "eslint": "^8.40.0",
+    "eslint-config-next": "^13.4.1",
     "eslint-config-prettier": "^8.8.0",
-    "lint-staged": "^13.2.1",
+    "lint-staged": "^13.2.2",
     "next-compose-plugins": "^2.2.1",
     "next-pwa": "^5.6.0",
-    "postcss": "^8.4.21",
+    "postcss": "^8.4.23",
     "postcss-easings": "^3.0.1",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-nesting": "^11.2.2",
-    "postcss-preset-env": "^8.3.0",
-    "prettier": "^2.8.7",
-    "prettier-plugin-tailwindcss": "^0.2.7",
-    "tailwindcss": "^3.3.1",
+    "postcss-preset-env": "^8.3.2",
+    "prettier": "^2.8.8",
+    "prettier-plugin-tailwindcss": "^0.2.8",
+    "tailwindcss": "^3.3.2",
     "typescript": "^5.0.4"
   },
   "git": {
@@ -90,5 +90,5 @@
       "pages"
     ]
   },
-  "packageManager": "pnpm@7.16.0"
+  "packageManager": "pnpm@8.4.0"
 }
