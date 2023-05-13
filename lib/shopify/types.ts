@@ -61,6 +61,30 @@ export type Page = {
   updatedAt: string;
 };
 
+export type Policy = {
+  __typename?: 'ShopPolicy';
+  body: string;
+  handle: string;
+  id: string;
+  title: string;
+  url: string;
+};
+
+export type PolicyHandle =
+  | 'privacy-policy'
+  | 'refund-policy'
+  | 'shipping-policy'
+  | 'terms-of-service';
+
+export type PolicyName = 'privacyPolicy' | 'refundPolicy' | 'shippingPolicy' | 'termsOfService';
+
+export type Policies = {
+  privacyPolicy: Policy;
+  refundPolicy: Policy;
+  shippingPolicy: Policy;
+  termsOfService: Policy;
+};
+
 export type Product = Omit<ShopifyProduct, 'variants' | 'images'> & {
   variants: ProductVariant[];
   images: Image[];
@@ -234,6 +258,12 @@ export type ShopifyPageOperation = {
 export type ShopifyPagesOperation = {
   data: {
     pages: Connection<Page>;
+  };
+};
+
+export type ShopifyPoliciesOperation = {
+  data: {
+    shop: Policies;
   };
 };
 

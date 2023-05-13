@@ -1,5 +1,6 @@
 import { HIDDEN_PRODUCT_TAG, SHOPIFY_GRAPHQL_API_ENDPOINT } from 'lib/constants';
 import { isShopifyError } from 'lib/type-guards';
+import { camelCase } from 'lodash';
 import {
   addToCartMutation,
   createCartMutation,
@@ -14,6 +15,7 @@ import {
 } from './queries/collection';
 import { getMenuQuery } from './queries/menu';
 import { getPageQuery, getPagesQuery } from './queries/page';
+import { getPoliciesQuery } from './queries/policy';
 import {
   getProductQuery,
   getProductRecommendationsQuery,
@@ -25,6 +27,10 @@ import {
   Connection,
   Menu,
   Page,
+  Policies,
+  Policy,
+  PolicyHandle,
+  PolicyName,
   Product,
   ShopifyAddToCartOperation,
   ShopifyCart,
@@ -37,6 +43,7 @@ import {
   ShopifyMenuOperation,
   ShopifyPageOperation,
   ShopifyPagesOperation,
+  ShopifyPoliciesOperation,
   ShopifyProduct,
   ShopifyProductOperation,
   ShopifyProductRecommendationsOperation,
@@ -339,6 +346,24 @@ export async function getPages(): Promise<Page[]> {
   });
 
   return removeEdgesAndNodes(res.body.data.pages);
+}
+
+export async function getPolicy(handle: PolicyHandle): Promise<Policy> {
+  const policies = await getPolicies();
+
+  const policyName = camelCase(handle) as PolicyName;
+
+  const policy = policies[policyName];
+
+  return policy;
+}
+
+export async function getPolicies(): Promise<Policies> {
+  const res = await shopifyFetch<ShopifyPoliciesOperation>({
+    query: getPoliciesQuery
+  });
+
+  return res.body.data.shop;
 }
 
 export async function getProduct(handle: string): Promise<Product | undefined> {
