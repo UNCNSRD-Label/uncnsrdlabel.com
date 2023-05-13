@@ -29,7 +29,7 @@ export default async function Navbar() {
               <li key={item.title}>
                 <Link
                   href={item.path}
-                  className="rounded-lg px-2 py-1 text-gray-800 hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-400"
+                  className="rounded-lg px-2 py-1 font-brand text-gray-800 hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-400"
                 >
                   {item.title}
                 </Link>

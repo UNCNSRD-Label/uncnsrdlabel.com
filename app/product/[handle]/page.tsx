@@ -58,6 +58,14 @@ export default async function ProductPage({ params }: { params: { handle: string
 
   if (!product) return notFound();
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.title,
+    image: product.featuredImage,
+    description: product.description
+  };
+
   return (
     <div>
       <div className="lg:grid lg:grid-cols-6">
@@ -92,6 +100,10 @@ export default async function ProductPage({ params }: { params: { handle: string
           <Footer />
         </Suspense>
       </Suspense>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     </div>
   );
 }

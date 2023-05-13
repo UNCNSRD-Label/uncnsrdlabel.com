@@ -12,7 +12,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-inter)']
+        brand: ['var(--font-bomber-escort)'],
+        sans: ['var(--font-montserrat)']
       },
       colors: {
         gray: colors.neutral,
