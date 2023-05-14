@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
+import { Product, WithContext } from 'schema-dts';
 
 import Grid from 'components/grid';
 import Footer from 'components/layout/footer';
@@ -58,7 +59,7 @@ export default async function ProductPage({ params }: { params: { handle: string
 
   if (!product) return notFound();
 
-  const jsonLd = {
+  const jsonLd: WithContext<Product> = {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: product.title,
