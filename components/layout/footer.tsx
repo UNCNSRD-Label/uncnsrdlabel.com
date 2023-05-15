@@ -1,8 +1,6 @@
 import Link from 'next/link';
 
-import GitHubIcon from 'components/icons/github';
 import LogoIcon from 'components/icons/logo';
-import VercelIcon from 'components/icons/vercel';
 import { getMenu } from 'lib/shopify';
 import { Menu } from 'lib/shopify/types';
 
@@ -41,17 +39,17 @@ export default async function Footer() {
               </ul>
             </nav>
           ) : null}
-          <div className="col-span-1 text-black dark:text-white lg:col-span-2">
+          {/* <div className="col-span-1 text-black dark:text-white lg:col-span-2">
             <a aria-label="Github Repository" href="https://github.com/vercel/commerce">
               <GitHubIcon className="h-6" />
             </a>
-          </div>
+          </div> */}
         </div>
         <div className="flex flex-col items-center justify-between space-y-4 pb-10 pt-6 text-sm md:flex-row">
           <p>
             &copy; {copyrightDate} {SITE_NAME}. All rights reserved.
           </p>
-          <div className="flex items-center text-sm text-white dark:text-black">
+          {/* <div className="flex items-center text-sm text-white dark:text-black">
             <span className="text-black dark:text-white">Created by</span>
             <a
               rel="noopener noreferrer"
@@ -62,7 +60,7 @@ export default async function Footer() {
             >
               <VercelIcon className="ml-3 inline-block h-6" />
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>
