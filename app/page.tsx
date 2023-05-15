@@ -1,4 +1,3 @@
-import { Carousel } from 'components/carousel';
 import { ThreeItemGrid } from 'components/grid/three-items';
 import Footer from 'components/layout/footer';
 import { Video, type VideoProps } from 'components/video';
@@ -22,8 +21,8 @@ export const metadata = {
 };
 
 const video: VideoProps = {
-  alt: 'aaa',
-  title: 'bbb',
+  alt: 'Campaign video',
+  title: 'Video fallback content',
   url: 'https://test-videos.co.uk/vids/jellyfish/mp4/h264/1080/Jellyfish_1080_10s_30MB.mp4'
 };
 
@@ -52,7 +51,7 @@ export default async function HomePage() {
       <ThreeItemGrid />
       <Suspense>
         {/* @ts-expect-error Server Component */}
-        <Carousel />
+        {/* <Carousel /> */}
         <Suspense>
           {/* @ts-expect-error Server Component */}
           <Footer />
