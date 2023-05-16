@@ -63,7 +63,13 @@ export default async function ProductPage({ params }: { params: { handle: string
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: product.title,
-    image: product.featuredImage,
+    image: {
+      '@type': 'ImageObject',
+      about: product.featuredImage?.altText,
+      height: product.featuredImage?.height.toString(),
+      url: product.featuredImage?.url,
+      width: product.featuredImage?.width.toString()
+    },
     description: product.description
   };
 
