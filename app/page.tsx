@@ -23,7 +23,7 @@ export const metadata = {
 const video: VideoProps = {
   alt: 'Campaign video',
   title: 'Video fallback content',
-  url: 'https://test-videos.co.uk/vids/jellyfish/mp4/h264/1080/Jellyfish_1080_10s_30MB.mp4'
+  url: '/videos/uncnsrd_horiz_placeholder.mp4'
 };
 
 export default async function HomePage() {
@@ -50,8 +50,6 @@ export default async function HomePage() {
       {/* @ts-expect-error Server Component */}
       <ThreeItemGrid />
       <Suspense>
-        {/* @ts-expect-error Server Component */}
-        {/* <Carousel /> */}
         <Suspense>
           {/* @ts-expect-error Server Component */}
           <Footer />
