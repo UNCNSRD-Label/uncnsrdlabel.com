@@ -65,13 +65,13 @@ export const SignupForm: FC<Props> = ({ className }) => {
     >
       <div className={clsx(styles.field, "field")}>
         <label className={clsx(styles.label, "label")} htmlFor="email">
-          get first hand access here
+          enter your email here
         </label>
         <input
           className={clsx(styles.input, "input")}
           id="email"
           name="email"
-          placeholder="get first hand access here"
+          placeholder="enter your email here"
           type="email"
           required
         />

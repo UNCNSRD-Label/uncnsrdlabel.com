@@ -1,76 +1,102 @@
 .container {
-  --background-image-gap: theme(gap.16);
-
   background-color: theme(backgroundColor.black);
+  /* background-image: url("/images/textures/abstract009.jpg"); */
+  background-size: 50%;
   display: grid;
-  grid-template-rows: 1fr auto;
   min-block-size: 100%;
+  padding: theme(padding.8);
 
   @media landscape {
     align-items: end;
   }
+}
 
-  & .content {
-    display: grid;
-    overflow: hidden;
+.information {
+  display: grid;
+  justify-items: center;
+  position: relative;
+  z-index: theme(zIndex.30);
+
+  & .logotype {
+    margin-block-end: 1rem;
+    inline-size: 80%;
     position: relative;
-    z-index: theme(zIndex.30);
+    display: none;
+  }
 
-    & .title {
-      font-family: "Bomber Escort Outline";
+  & .title {
+    font-family: "Bomber Escort Outline";
+    font-size: 17.5vw;
+    place-self: center;
+    position: absolute;
+    text-align: center;
+    z-index: theme(zIndex.20);
+
+    @screen landscape {
       font-size: 17.5vw;
-      place-self: center;
-      position: absolute;
-      text-align: center;
-      z-index: theme(zIndex.20);
-
-      @screen landscape {
-        font-size: 17.5vw;
-      }
-
-      @screen portrait {
-        font-size: 15vw;
-      }
     }
 
-    & .background {
-      animation-duration: 90s;
-      animation-iteration-count: infinite;
-      animation-timing-function: linear;
-      display: grid;
-      grid-auto-flow: column;
-      gap: var(--background-image-gap);
-      inset-block: theme(inset.0);
-      inset-inline-start: theme(inset.0);
-      position: absolute;
-      z-index: theme(zIndex.10);
-
-      @screen landscape {
-        animation-name: move-bg-landscape;
-        inline-size: 200dvw;
-      }
-
-      @screen portrait {
-        animation-name: move-bg-portrait;
-        inline-size: 600dvw;
-      }
-
-      & .figure {
-        position: relative;
-
-        & .image {
-          object-fit: contain;
-          object-position: bottom;
-        }
-      }
+    @screen portrait {
+      font-size: 15vw;
     }
   }
 
   & .signupForm {
     inline-size: max(30%, 20rem);
-    justify-self: center;
-    padding: theme(padding.4);
     z-index: theme(zIndex.10);
+  }
+
+  & .copy {
+    display: none;
+  }
+}
+
+.title {
+  background-color: theme(backgroundColor.white);
+  background-repeat: repeat;
+  background-size: 100%;
+  font-family: "Bomber Escort Outline";
+  font-size: 17.5vw;
+  text-align: center;
+  z-index: theme(zIndex.20);
+}
+
+.background {
+  animation-duration: 90s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  display: grid;
+  grid-auto-flow: column;
+  gap: theme(gap.16);
+  inset-block: theme(inset.0);
+  inset-inline-start: theme(inset.0);
+  padding: theme(padding.16);
+  padding-block-end: theme(padding.40);
+  position: fixed;
+  z-index: theme(zIndex.10);
+
+  @screen landscape {
+    animation-name: move-bg-landscape;
+    inline-size: 200dvw;
+  }
+
+  @screen portrait {
+    animation-name: move-bg-portrait;
+    inline-size: 600dvw;
+  }
+
+  & .figure {
+    position: relative;
+    /* 
+    &:nth-of-type(1) {
+      transform: translateZ(200px);
+    }
+    */
+
+    & .image {
+      object-fit: contain;
+      object-position: bottom;
+    }
   }
 }
 
@@ -79,7 +105,7 @@
     inset-inline-start: theme(inset.0);
   }
   100% {
-    inset-inline-start: calc(((var(--background-image-gap) / 2) * -1) - 100dvw);
+    inset-inline-start: calc(theme(inset.8) - 100dvw);
   }
 }
 
@@ -88,6 +114,6 @@
     inset-inline-start: theme(inset.0);
   }
   100% {
-    inset-inline-start: calc(((var(--background-image-gap) / 2) * -1) - 300dvw);
+    inset-inline-start: calc(theme(inset.8) - 300dvw);
   }
 }
