@@ -4,6 +4,9 @@ dependencies:
   '@headlessui/react':
     specifier: ^1.7.14
     version: 1.7.14(react-dom@18.2.0)(react@18.2.0)
+  '@react-hooks-library/core':
+    specifier: ^0.5.1
+    version: 0.5.1(react@18.2.0)
   '@vercel/og':
     specifier: ^0.5.4
     version: 0.5.4
@@ -379,6 +382,19 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
+
+  /@react-hooks-library/core@0.5.1(react@18.2.0):
+    resolution: {integrity: sha512-YVXPeopEuXb9UR/YCaRfRgsDi/2K7OahdI+XHqT7WX8l706f73egbsOpicNEYAI+pfvOjr5XblPGJV/LJMrL7Q==}
+    peerDependencies:
+      react: '>=16.9.0'
+    dependencies:
+      '@react-hooks-library/shared': 0.5.1
+      react: 18.2.0
+    dev: false
+
+  /@react-hooks-library/shared@0.5.1:
+    resolution: {integrity: sha512-pBX36Yh7dwIMQWx3m4zUCM7ytdTb+X+KAWE00ZOgBWSr7JRiRhRntFXIfdj0R/osQo4PdbDS4bf6SeodkUE/5Q==}
+    dev: false
 
   /@resvg/resvg-wasm@2.4.1:
     resolution: {integrity: sha512-yi6R0HyHtsoWTRA06Col4WoDs7SvlXU3DLMNP2bdAgs7HK18dTEVl1weXgxRzi8gwLteGUbIg29zulxIB3GSdg==}
