@@ -13,17 +13,15 @@ export const Video: FC<VideoProps> = ({
   contentType,
   fallback,
   loop = false,
-  //   poster,
+  // poster,
   ...props
 }) => (
   <figure className={'relative aspect-video'}>
     <ReactPlayer
       {...props}
-      aspectRatio="16:9"
       autoPlay={autoPlay}
-      className={'absolute inset-0 w-full object-cover'}
+      className={'absolute inset-0 w-full [&>video]:object-cover'}
       fallback={fallback}
-      // fluid
       height="100%"
       light={!autoPlay && props.poster}
       loop={loop}
@@ -31,11 +29,8 @@ export const Video: FC<VideoProps> = ({
       playing={autoPlay}
       playsinline
       pip
-      //   poster={poster}
+      // poster={poster}
       stopOnUnmount={false}
-      // style={{
-      //   aspectRatio: props.width && props.height ? `${props.width} / ${props.height}` : undefined
-      // }}
       width="100%"
     />
     {props.title && <figcaption>{props.title}</figcaption>}
