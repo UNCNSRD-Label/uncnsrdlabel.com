@@ -1,5 +1,4 @@
-import { getCollections, getPages, getPolicies, getProducts } from 'lib/shopify';
-import { kebabCase } from 'lodash';
+import { getCollections, getPages, getProducts } from 'lib/shopify';
 import { MetadataRoute } from 'next';
 
 const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
@@ -33,18 +32,8 @@ export default async function sitemap(): Promise<Promise<Promise<MetadataRoute.S
     }))
   );
 
-  const policiesPromise = getPolicies().then((policies) =>
-    Object.entries(policies).map(([key]) => {
-      const handle = kebabCase(key);
-
-      return {
-        url: `${baseUrl}/${handle}`
-      };
-    })
-  );
-
   const fetchedRoutes = (
-    await Promise.all([collectionsPromise, productsPromise, pagesPromise, policiesPromise])
+    await Promise.all([collectionsPromise, productsPromise, pagesPromise])
   ).flat();
 
   return [...routesMap, ...fetchedRoutes];
