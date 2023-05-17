@@ -10,7 +10,7 @@ export default function Navbar({ children }: { children: React.ReactNode }) {
     <nav
       className={clsx(
         !segment ? 'fixed bg-opacity-0' : 'sticky bg-opacity-60',
-        'left-0 top-0 z-50 flex w-full items-center justify-between bg-black lg:px-6 lg:py-6'
+        'left-0 top-0 z-50 flex w-full items-center justify-between bg-black lg:px-6 lg:py-4'
       )}
     >
       {children}

@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import ShoppingBagIcon from './shopping-bag';
+import { SlBag } from 'react-icons/sl';
 
 export default function CartIcon({
   className,
@@ -10,9 +10,10 @@ export default function CartIcon({
 }) {
   return (
     <div className="relative">
-      <ShoppingBagIcon
+      <SlBag
         className={clsx(
           'h-6 transition-all ease-in-out hover:scale-110 hover:text-gray-500 dark:hover:text-gray-300',
+          'h-6 w-8',
           className
         )}
       />

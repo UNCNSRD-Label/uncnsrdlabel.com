@@ -3,47 +3,41 @@ import { Suspense } from 'react';
 
 import Cart from 'components/cart';
 import CartIcon from 'components/icons/cart';
-import LogoIcon from 'components/icons/logo';
+import LogotypeIcon from 'components/icons/logotype';
 import { getMenu } from 'lib/shopify';
-import { Menu } from 'lib/shopify/types';
-import MobileMenu from './mobile-menu';
-import Search from './search';
+import { SlHeart, SlMagnifier, SlUser } from 'react-icons/sl';
+import SidebarMenu from './sidebar-menu';
 
 export default async function Navbar() {
   const menu = await getMenu('next-js-frontend-header-menu');
 
   return (
     <>
-      <div className="block w-1/3 md:hidden">
-        <MobileMenu menu={menu} />
-      </div>
-      <div className="flex justify-self-center md:w-1/3 md:justify-self-start">
+      <div className="flex w-1/3 justify-self-center md:justify-self-start">
         <div className="md:mr-4">
-          <Link href="/" aria-label="Go back home">
-            <LogoIcon className="h-8 transition-transform hover:scale-110" />
-          </Link>
+          <Suspense fallback={<CartIcon className="h-6" />}>
+            {/* @ts-expect-error Server Component */}
+            <SidebarMenu menu={menu} />
+          </Suspense>
         </div>
-        {menu.length ? (
-          <ul className="hidden md:flex">
-            {menu.map((item: Menu) => (
-              <li key={item.title}>
-                <Link
-                  href={item.path}
-                  className="rounded-lg px-2 py-1 font-brand text-gray-800 hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-400"
-                >
-                  {item.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        ) : null}
       </div>
       <div className="hidden w-1/3 md:block">
-        <Search />
+        <Link href="/" aria-label="Go back home" className="justify-center md:flex">
+          <LogotypeIcon className="h-12 transition-transform hover:scale-110" />
+        </Link>
       </div>
 
-      <div className="flex w-1/3 justify-end">
+      <div className="flex w-1/3 justify-end gap-4">
         <Suspense fallback={<CartIcon className="h-6" />}>
+          <Link href="/search" aria-label="Search">
+            <SlMagnifier className="h-6 w-8" />
+          </Link>
+          <Link href="/account" aria-label="Account">
+            <SlUser className="h-6 w-8" />
+          </Link>
+          <Link href="/account/wishlist" aria-label="Wishlist">
+            <SlHeart className="h-6 w-8" />
+          </Link>
           {/* @ts-expect-error Server Component */}
           <Cart />
         </Suspense>
