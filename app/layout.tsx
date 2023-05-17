@@ -1,5 +1,6 @@
 import { clsx } from 'clsx';
 import Navbar from 'components/layout/navbar';
+import NavbarContent from 'components/layout/navbar/content';
 import { Inter, Montserrat } from 'next/font/google';
 import localFont from 'next/font/local';
 import Script from 'next/script';
@@ -67,8 +68,10 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       )}
     >
       <body className="grid min-h-[100dvh] grid-rows-[auto_1fr] bg-white text-black selection:bg-teal-300 dark:bg-black dark:text-white dark:selection:bg-fuchsia-600 dark:selection:text-white">
-        {/* @ts-expect-error Server Component */}
-        <Navbar />
+        <Navbar>
+          {/* @ts-expect-error Server Component */}
+          <NavbarContent />
+        </Navbar>
         <Suspense>
           <main className="grid grid-rows-[1fr_auto]">{children}</main>
           <Script
