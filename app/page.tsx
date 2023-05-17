@@ -21,32 +21,19 @@ export const metadata = {
 };
 
 const video: VideoProps = {
+  autoPlay: true,
   alt: 'Campaign video',
-  title: 'Video fallback content',
-  url: '/videos/uncnsrd_horiz_placeholder.mp4'
+  loop: true,
+  playsinline: true,
+  poster: '/videos/placeholder.jpeg',
+  // title: 'Video title',
+  url: '/videos/placeholder.mp4'
 };
 
 export default async function HomePage() {
   return (
     <>
-      <Video
-        {...video}
-        autoPlay
-        // fallback={
-        //   <Image
-        //     alt={video.alt}
-        //     className="h-full object-contain"
-        //     fill
-        //     sizes="33vw"
-        //     src="https://i.ytimg.com/vi/M4V_61_kUbs/maxresdefault.jpg"
-        //     title={video.title}
-        //   />
-        // }
-        // fallback={<span>Cannot play video</span>}
-        loop
-        playsinline
-        // poster="https://i.ytimg.com/vi/M4V_61_kUbs/maxresdefault.jpg"
-      />
+      <Video {...video} />
       {/* @ts-expect-error Server Component */}
       <ThreeItemGrid />
       <Suspense>
