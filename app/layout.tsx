@@ -10,10 +10,10 @@ import './globals.css';
 const { TWITTER_CREATOR, TWITTER_SITE, SITE_NAME } = process.env;
 
 export const metadata = {
-  icons: {
-    icon: ['/images/icon.png', '/images/icon.svg'],
-    apple: '/images/icon.svg'
-  },
+  // icons: {
+  //   icon: ['/images/icon.svg', '/images/icon.png', '/images/favicon.ico'],
+  //   apple: '/images/icon.svg'
+  // },
   title: {
     default: SITE_NAME,
     template: `%s | ${SITE_NAME}`
