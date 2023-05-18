@@ -1,4 +1,5 @@
 import { ThreeItemGrid } from 'components/grid/three-items';
+import { HorizontalScroll } from 'components/horizontal-scroll';
 import Footer from 'components/layout/footer';
 import { Video, type VideoProps } from 'components/video';
 import { Suspense } from 'react';
@@ -35,6 +36,7 @@ export default async function HomePage() {
     <>
       <Video {...video} />
       {/* @ts-expect-error Server Component */}
+      <HorizontalScroll />
       <ThreeItemGrid />
       <Suspense>
         <Suspense>
