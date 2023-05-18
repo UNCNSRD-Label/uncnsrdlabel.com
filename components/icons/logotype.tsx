@@ -1,6 +1,12 @@
 import { clsx } from 'clsx';
 
-export default function LogoIcon({ className }: { className?: string }) {
+export default function LogoIcon({
+  className,
+  style
+}: {
+  className?: string;
+  style?: React.CSSProperties;
+}) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11,6 +17,7 @@ export default function LogoIcon({ className }: { className?: string }) {
       strokeLinejoin="round"
       shapeRendering="geometricPrecision"
       className={clsx(className, 'icon fill')}
+      style={style}
     >
       <g transform="matrix(1.04504,0,0,1.18316,-128.718,-123.655)">
         <g transform="matrix(222,0,0,222,104,233.431)">
