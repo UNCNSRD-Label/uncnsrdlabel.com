@@ -43,7 +43,8 @@
     gap: theme(gap.32);
     grid-auto-flow: column;
     height: 100dvh;
-    padding: 10dvh 10dvw;
+    padding-block: max(7.5dvh, theme(padding.20));
+    padding-inline: max(7.5dvw, theme(padding.20));
 
     & h2 {
       font-size: 2rem;

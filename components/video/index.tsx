@@ -1,5 +1,6 @@
 'use client';
 
+import clsx from 'clsx';
 import Image from 'next/image';
 import { type ReactPlayerProps } from 'react-player';
 import ReactPlayer from 'react-player/lazy';
@@ -19,7 +20,7 @@ export const Video: FC<VideoProps> = ({
   title,
   ...props
 }) => (
-  <figure className={'relative aspect-video'}>
+  <figure className={clsx(className, 'relative aspect-video')}>
     <Image
       alt={alt}
       className="h-full object-cover"

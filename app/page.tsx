@@ -24,6 +24,7 @@ export const metadata = {
 const video: VideoProps = {
   autoPlay: true,
   alt: 'Campaign video',
+  className: 'snap-start',
   loop: true,
   playsinline: true,
   poster: '/videos/placeholder.jpeg',
@@ -36,9 +37,9 @@ export default async function HomePage() {
     <>
       <Video {...video} />
       {/* @ts-expect-error Server Component */}
-      <HorizontalScroll />
+      <HorizontalScroll className="snap-start" />
       {/* @ts-expect-error Server Component */}
-      <ThreeItemGrid />
+      <ThreeItemGrid className="snap-start" />
       <Suspense>
         <Suspense>
           {/* @ts-expect-error Server Component */}

@@ -64,7 +64,8 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         bomberEscortOutline.variable,
         inter.variable,
         montserrat.variable,
-        '[color-scheme:dark]'
+        '[color-scheme:dark]',
+        'snap-y'
       )}
     >
       <body className="grid min-h-[100dvh] grid-rows-[auto_1fr] bg-white text-black selection:bg-teal-300 dark:bg-black dark:text-white dark:selection:bg-fuchsia-600 dark:selection:text-white">
