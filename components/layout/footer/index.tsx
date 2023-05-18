@@ -15,7 +15,7 @@ export default async function Footer() {
   const followUsMenu = await getMenu('follow-us');
 
   return (
-    <footer className="border-t border-gray-700 bg-white text-black dark:bg-black dark:text-white">
+    <footer className="border-t border-gray-700 bg-white text-black">
       <div className="mx-auto w-full max-w-7xl px-6">
         <div className="grid grid-cols-1 gap-8 border-b border-gray-700 py-12 transition-colors duration-150 lg:grid-cols-12">
           <nav className="col-span-1 grid gap-8 lg:col-span-9 lg:grid-cols-9">
@@ -25,7 +25,7 @@ export default async function Footer() {
                   <li key={item.title} className="py-3 md:py-0 md:pb-4">
                     <Link
                       href={item.path}
-                      className="text-gray-800 transition duration-150 ease-in-out hover:text-gray-300 dark:text-gray-100"
+                      className="text-gray-800 transition duration-150 ease-in-out hover:text-gray-500"
                     >
                       {item.title}
                     </Link>
@@ -39,7 +39,7 @@ export default async function Footer() {
                   <li key={item.title} className="py-3 md:py-0 md:pb-4">
                     <Link
                       href={item.path}
-                      className="text-gray-800 transition duration-150 ease-in-out hover:text-gray-300 dark:text-gray-100"
+                      className="text-gray-800 transition duration-150 ease-in-out hover:text-gray-500"
                     >
                       {item.title}
                     </Link>
@@ -53,7 +53,7 @@ export default async function Footer() {
                   <li key={item.title} className="py-3 md:py-0 md:pb-4">
                     <a
                       href={item.path}
-                      className="text-gray-800 transition duration-150 ease-in-out hover:text-gray-300 dark:text-gray-100"
+                      className="text-gray-800 transition duration-150 ease-in-out hover:text-gray-500"
                       target="_blank"
                       rel="noopener noreferrer"
                     >

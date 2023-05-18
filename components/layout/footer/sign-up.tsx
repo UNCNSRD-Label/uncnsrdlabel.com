@@ -33,7 +33,7 @@ export default function Search({ className }: { className?: string }) {
         name="sign-up"
         placeholder="Sign up to our newsletter"
         defaultValue={searchParams?.get('q') || ''}
-        className="w-full !bg-opacity-60 px-4 py-2 text-black dark:bg-black dark:text-gray-100"
+        className="w-full px-4 py-2"
       />
       <button className="absolute right-0 top-0 mr-3 flex h-full items-center">
         <SlEnvolope className="h-5" />

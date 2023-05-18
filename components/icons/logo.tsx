@@ -10,10 +10,9 @@ export default function LogoIcon({ className }: { className?: string }) {
       shapeRendering="geometricPrecision"
       className={className}
     >
-      <rect width="100%" height="100%" rx="16" className="fill-white dark:fill-black" />
       <g transform="translate(0,320) scale(0.1,-0.1)">
         <path
-          className=" fill-black dark:fill-white"
+          className=" fill-black"
           d="M370 2663 c1 -41 30 -153 52 -199 13 -27 44 -83 68 -124 24 -41 43
 -82 43 -90 -1 -8 -60 -253 -132 -544 -97 -390 -131 -545 -131 -591 0 -71 22
 -152 57 -212 24 -41 137 -149 180 -172 16 -8 263 -11 920 -11 l898 0 64 37

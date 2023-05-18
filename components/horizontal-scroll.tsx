@@ -9,7 +9,7 @@ export async function HorizontalScroll() {
   if (!products?.length) return null;
 
   return (
-    <div className="pin relative min-h-[100dvh] w-full max-w-[100dvw] overflow-x-hidden bg-black dark:bg-white">
+    <div className="pin relative min-h-[100dvh] w-full max-w-[100dvw] overflow-x-hidden bg-black">
       <div className="pin-wrap-sticky">
         <div
           className="pin-wrap"
@@ -18,7 +18,7 @@ export async function HorizontalScroll() {
             width: `${(products.length + 1) * 60}dvw`
           }}
         >
-          <h2 className="text-white dark:text-black">
+          <h2 className="text-white">
             UNCNSRD is multifunctional swimwear for female figures who aren’t afraid to show off
             their assets and want to feel unapologetically sexy.
           </h2>
