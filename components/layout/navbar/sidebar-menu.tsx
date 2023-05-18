@@ -39,7 +39,7 @@ export default function SidebarMenu({ menu }: { menu: Menu[] }) {
         aria-label="Open sidebar menu"
         data-testid="open-sidebar-menu"
       >
-        <MenuIcon className="h-6" />
+        <MenuIcon className="h-5" />
       </button>
       <AnimatePresence initial={false}>
         {sidebarMenuIsOpen && (
@@ -83,7 +83,7 @@ export default function SidebarMenu({ menu }: { menu: Menu[] }) {
                     aria-label="Close sidebar menu"
                     data-testid="close-sidebar-menu"
                   >
-                    <CloseIcon className="h-6" />
+                    <CloseIcon className="icon h-6" />
                   </button>
 
                   <div className="mb-4 w-full">

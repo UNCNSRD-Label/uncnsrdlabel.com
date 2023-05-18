@@ -1,6 +1,5 @@
 import Link from 'next/link';
 
-import LogoIcon from 'components/icons/logo';
 import { getMenu } from 'lib/shopify';
 import { Menu } from 'lib/shopify/types';
 import SignUp from './sign-up';
@@ -17,62 +16,57 @@ export default async function Footer() {
   return (
     <footer className="border-t border-gray-700 bg-white text-black">
       <div className="mx-auto w-full max-w-7xl px-6">
-        <div className="grid grid-cols-1 gap-8 border-b border-gray-700 py-12 transition-colors duration-150 lg:grid-cols-12">
-          <nav className="col-span-1 grid gap-8 lg:col-span-9 lg:grid-cols-9">
+        <div className="grid grid-cols-1 items-start gap-8 border-b border-gray-700 py-12 transition-colors duration-150 lg:grid-cols-12">
+          <nav className="col-span-1 grid gap-8 lg:col-span-8 lg:grid-cols-9">
             {customerCareMenu.length ? (
-              <ul className="grid content-start md:col-span-3 md:grid-flow-row">
+              <dl className="grid content-start gap-2 md:col-span-3 md:grid-flow-row">
+                <dt className="text-sm uppercase">Customer Care</dt>
                 {customerCareMenu.map((item: Menu) => (
-                  <li key={item.title} className="py-3 md:py-0 md:pb-4">
+                  <dd key={item.title}>
                     <Link
                       href={item.path}
-                      className="text-gray-800 transition duration-150 ease-in-out hover:text-gray-500"
+                      className="text-xs text-gray-800 transition duration-150 ease-in-out hover:text-gray-500"
                     >
                       {item.title}
                     </Link>
-                  </li>
+                  </dd>
                 ))}
-              </ul>
+              </dl>
             ) : null}
             {informationMenu.length ? (
-              <ul className="grid content-start md:col-span-3 md:grid-flow-row">
+              <dl className="grid content-start gap-2 md:col-span-3 md:grid-flow-row">
+                <dt className="text-sm uppercase">Information</dt>
                 {informationMenu.map((item: Menu) => (
-                  <li key={item.title} className="py-3 md:py-0 md:pb-4">
+                  <dd key={item.title}>
                     <Link
                       href={item.path}
-                      className="text-gray-800 transition duration-150 ease-in-out hover:text-gray-500"
+                      className="text-xs text-gray-800 transition duration-150 ease-in-out hover:text-gray-500"
                     >
                       {item.title}
                     </Link>
-                  </li>
+                  </dd>
                 ))}
-              </ul>
+              </dl>
             ) : null}
             {followUsMenu.length ? (
-              <ul className="grid content-start md:col-span-3 md:grid-flow-row">
+              <dl className="grid content-start gap-2 md:col-span-3 md:grid-flow-row">
+                <dt className="text-sm uppercase">Follow Us</dt>
                 {followUsMenu.map((item: Menu) => (
-                  <li key={item.title} className="py-3 md:py-0 md:pb-4">
+                  <dd key={item.title}>
                     <a
                       href={item.path}
-                      className="text-gray-800 transition duration-150 ease-in-out hover:text-gray-500"
+                      className="text-xs text-gray-800 transition duration-150 ease-in-out hover:text-gray-500"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       {item.title}
                     </a>
-                  </li>
+                  </dd>
                 ))}
-              </ul>
+              </dl>
             ) : null}
           </nav>
-          <div className="col-span-1 flex flex-wrap content-between justify-end gap-8 lg:col-span-3">
-            <SignUp />
-            <a className="flex flex-initial items-center justify-end font-bold" href="/">
-              <span className="mr-2">
-                <LogoIcon className="h-8" />
-              </span>
-              <span>{SITE_NAME}</span>
-            </a>
-          </div>
+          <SignUp className="relative col-span-1 flex items-center lg:col-span-4" />
         </div>
         <div className="flex flex-col items-center justify-between space-y-4 pb-10 pt-6 text-sm md:flex-row">
           <p>
