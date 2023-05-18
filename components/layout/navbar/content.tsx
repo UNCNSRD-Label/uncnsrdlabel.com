@@ -16,7 +16,6 @@ export default async function Navbar() {
       <div className="flex w-1/3 justify-self-center md:justify-self-start">
         <div className="md:mr-4">
           <Suspense fallback={<CartIcon className="h-6" />}>
-            {/* @ts-expect-error Server Component */}
             <SidebarMenu menu={menu} />
           </Suspense>
         </div>
