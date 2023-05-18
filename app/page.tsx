@@ -37,6 +37,7 @@ export default async function HomePage() {
       <Video {...video} />
       {/* @ts-expect-error Server Component */}
       <HorizontalScroll />
+      {/* @ts-expect-error Server Component */}
       <ThreeItemGrid />
       <Suspense>
         <Suspense>
