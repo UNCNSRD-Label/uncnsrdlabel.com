@@ -27,16 +27,16 @@ export default async function Navbar() {
         </Link>
       </div>
 
-      <div className="flex w-1/3 justify-end gap-4">
+      <div className="flex w-1/3 justify-end gap-5">
         <Suspense fallback={<CartIcon className="h-6" />}>
           <Link href="/search" aria-label="Search">
-            <SlMagnifier className="h-6 w-8" />
+            <SlMagnifier className="h-5 w-5" />
           </Link>
           <Link href="/account" aria-label="Account">
-            <SlUser className="h-6 w-8" />
+            <SlUser className="h-5 w-5" />
           </Link>
           <Link href="/account/wishlist" aria-label="Wishlist">
-            <SlHeart className="h-6 w-8" />
+            <SlHeart className="h-5 w-5" />
           </Link>
           {/* @ts-expect-error Server Component */}
           <Cart />
