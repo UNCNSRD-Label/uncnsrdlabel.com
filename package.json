@@ -24,6 +24,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.14",
     "@react-hooks-library/core": "^0.5.1",
+    "@tailwindcss/forms": "^0.5.3",
     "@vercel/og": "^0.5.4",
     "clsx": "^1.2.1",
     "framer-motion": "^10.12.12",
