@@ -3,7 +3,7 @@ import { getCollectionProducts } from 'lib/shopify';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export async function HorizontalScroll({ className }: { className: string }) {
+export async function HorizontalScroll({ className }: { className?: string }) {
   // Collections that start with `hidden-*` are hidden from the search page.
   const products = await getCollectionProducts({ collection: 'hidden-homepage-carousel' });
 

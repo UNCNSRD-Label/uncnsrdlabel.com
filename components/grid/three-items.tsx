@@ -10,7 +10,7 @@ function ThreeItemGridItem({
   size,
   background
 }: {
-  className: string;
+  className?: string;
   item: Product;
   size: 'full' | 'half';
   background: 'white' | 'pink' | 'purple' | 'black';
@@ -41,7 +41,7 @@ function ThreeItemGridItem({
   );
 }
 
-export async function ThreeItemGrid({ className }: { className: string }) {
+export async function ThreeItemGrid({ className }: { className?: string }) {
   // Collections that start with `hidden-*` are hidden from the search page.
   const homepageItems = await getCollectionProducts({
     collection: 'hidden-homepage-featured-items'
