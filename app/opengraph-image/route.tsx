@@ -1,9 +1,7 @@
 import { ImageResponse } from '@vercel/og';
 import LogotypeIcon from 'components/icons/logotype';
 
-export const config = {
-  runtime: 'edge'
-};
+export const runtime = 'edge';
 
 export async function GET() {
   return new ImageResponse(
