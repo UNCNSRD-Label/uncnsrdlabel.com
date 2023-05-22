@@ -10,11 +10,11 @@ export async function Carousel() {
   if (!products?.length) return null;
 
   const page = await getPage('home');
-  console.log({page})
+  console.log({ page });
   if (!page) return notFound();
 
   return (
-    <div className="relative w-full overflow-hidden bg-black dark:bg-white">
+    <div className="relative w-full overflow-hidden">
       <div className="flex animate-carousel">
         {[...products, ...products].map((product, i) => (
           <Link
@@ -32,7 +32,7 @@ export async function Carousel() {
               />
             ) : null}
             <div className="absolute inset-y-0 right-0 flex items-center justify-center">
-              <div className="inline-flex bg-white p-4 text-xl font-semibold text-black dark:bg-black dark:text-white uppercase">
+              <div className="inline-flex bg-white p-4 text-xl font-semibold uppercase text-black dark:bg-black dark:text-white">
                 {product.title}
               </div>
             </div>

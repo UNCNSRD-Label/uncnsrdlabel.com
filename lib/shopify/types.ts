@@ -34,15 +34,17 @@ export type Collection = ShopifyCollection & {
 };
 
 export type Image = {
+  id: string;
   url: string;
   altText: string;
   width: number;
   height: number;
 };
 
-// export type Media = {
-//   references: Connection<Media>;
-// }
+export type MediaImage = {
+  id: string;
+  image: Image;
+};
 
 export type Menu = {
   title: string;
@@ -54,16 +56,8 @@ export type Money = {
   currencyCode: string;
 };
 
-export type Page = {
-  id: string;
-  title: string;
-  handle: string;
-  body: string;
-  bodySummary: string;
-  seo?: SEO;
-  createdAt: string;
-  updatedAt: string;
-  media: Image[]
+export type Page = Omit<ShopifyPage, 'mediaImages'> & {
+  images: Image[];
 };
 
 export type Policy = {
@@ -135,6 +129,20 @@ export type ShopifyCollection = {
   description: string;
   seo: SEO;
   updatedAt: string;
+};
+
+export type ShopifyPage = {
+  id: string;
+  title: string;
+  handle: string;
+  body: string;
+  bodySummary: string;
+  seo?: SEO;
+  createdAt: string;
+  updatedAt: string;
+  mediaImages: {
+    references: Connection<MediaImage>;
+  };
 };
 
 export type ShopifyProduct = {
@@ -256,7 +264,7 @@ export type ShopifyMenuOperation = {
 };
 
 export type ShopifyPageOperation = {
-  data: { pageByHandle: Page };
+  data: { pageByHandle: ShopifyPage };
   variables: { handle: string };
 };
 

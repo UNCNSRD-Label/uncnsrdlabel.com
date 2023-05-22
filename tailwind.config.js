@@ -11,6 +11,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      aspectRatio: {
+        '3/4': '3 / 4',
+        '4/3': '4 / 3'
+      },
       fontFamily: {
         brand: ['var(--font-bomber-escort)'],
         sans: ['var(--font-montserrat)']

@@ -1,3 +1,4 @@
+import imageFragment from '../fragments/image';
 import seoFragment from '../fragments/seo';
 
 const pageFragment = /* GraphQL */ `
@@ -13,30 +14,18 @@ const pageFragment = /* GraphQL */ `
       }
       createdAt
       updatedAt
-      media: metafield(namespace: "custom", key: "media") {
+      mediaImages: metafield(namespace: "custom", key: "images") {
         value
         references(first: 10) {
           edges {
             node {
               ... on MediaImage {
                 __typename
-                alt
                 id
                 image {
-                  altText
-                  height
-                  id
-                  url
-                  width
+                  ...image
                 }
                 mediaContentType
-                # previewImage {
-                #   altText
-                #   height
-                #   id
-                #   url
-                #   width
-                # }
               }
             }
           }
@@ -44,6 +33,7 @@ const pageFragment = /* GraphQL */ `
       }
     }
   }
+  ${imageFragment}
   ${seoFragment}
 `;
 

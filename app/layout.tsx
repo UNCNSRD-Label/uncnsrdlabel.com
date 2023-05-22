@@ -72,9 +72,12 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         'snap-y'
       )}
     >
-      <body className="grid min-h-[100dvh] grid-rows-[auto_1fr] bg-white text-black selection:bg-teal-300 dark:bg-black dark:text-white dark:selection:bg-fuchsia-600 dark:selection:text-white" style={{
-        textRendering: 'optimizeLegibility'
-      }}>
+      <body
+        className="grid min-h-[100dvh] grid-rows-[auto_1fr] bg-white text-black selection:bg-teal-300"
+        style={{
+          textRendering: 'optimizeLegibility'
+        }}
+      >
         <Navbar>
           {/* @ts-expect-error Server Component */}
           <NavbarContent />

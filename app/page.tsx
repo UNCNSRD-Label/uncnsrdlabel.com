@@ -34,7 +34,7 @@ const video: VideoProps = {
 export default async function HomePage() {
   return (
     <>
-      <div className="w-full bg-white dark:bg-black overflow-hidden">
+      <div className="w-full overflow-hidden bg-black">
         <Video {...video} />
         {/* @ts-expect-error Server Component */}
         <HorizontalScroll className="snap-start" />

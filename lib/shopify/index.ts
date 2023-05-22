@@ -41,6 +41,7 @@ import {
   ShopifyCollectionsOperation,
   ShopifyCreateCartOperation,
   ShopifyMenuOperation,
+  ShopifyPage,
   ShopifyPageOperation,
   ShopifyPagesOperation,
   ShopifyPoliciesOperation,
@@ -156,16 +157,16 @@ const reshapeCollections = (collections: ShopifyCollection[]) => {
   return reshapedCollections;
 };
 
-const reshapePage = (page: Page) => {
-  if (!page) {
-    return undefined;
-  }
+const reshapePage = (page: ShopifyPage) => {
+  const { mediaImages, ...rest } = page;
 
-  const { media, ...rest } = page;
+  const images = mediaImages?.references
+    ? removeEdgesAndNodes(mediaImages.references)?.map(({ image }) => image)
+    : [];
 
   return {
     ...rest,
-    media: removeEdgesAndNodes(media.references)
+    images
   };
 };
 
@@ -350,7 +351,7 @@ export async function getPage(handle: string): Promise<Page> {
     variables: { handle }
   });
 
-  return reshapePage(res.body.data.pageByHandle)
+  return reshapePage(res.body.data.pageByHandle);
 }
 
 export async function getPages(): Promise<Page[]> {
