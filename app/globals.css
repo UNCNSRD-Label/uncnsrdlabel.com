@@ -42,13 +42,31 @@
     align-items: center;
     block-size: 100dvh;
     display: grid;
-    gap: theme(gap.32);
+    gap: theme(gap.16);
     grid-auto-flow: column;
-    padding-block: max(7.5dvh, theme(padding.20));
-    padding-inline: max(7.5dvw, theme(padding.20));
+    padding-inline: theme(padding.4);
 
-    & h2 {
-      font-size: 2rem;
+    @screen sm {
+      gap: theme(gap.32);
+      padding-block: max(7.5dvh, theme(padding.20));
+      padding-inline: max(7.5dvw, theme(padding.20));
+    }
+
+    & > * {
+      min-width: calc(100dvw - theme(padding.8));
+
+      @screen sm {
+        min-width: calc(50dvw - theme(padding.8));
+      }
+    }
+
+    & .about {
+      max-inline-size: min(50vw, 32rem);
+
+      & h2 {
+        font-size: 2rem;
+        line-height: theme(lineHeight.relaxed);
+      }
     }
 
     & a {

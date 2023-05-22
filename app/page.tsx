@@ -35,11 +35,13 @@ const video: VideoProps = {
 export default async function HomePage() {
   return (
     <>
-      <Video {...video} />
-      {/* @ts-expect-error Server Component */}
-      <HorizontalScroll className="snap-start" />
-      {/* @ts-expect-error Server Component */}
-      <ThreeItemGrid className="snap-start" />
+      <div className="w-full bg-white dark:bg-black">
+        <Video {...video} />
+        {/* @ts-expect-error Server Component */}
+        <HorizontalScroll className="snap-start" />
+        {/* @ts-expect-error Server Component */}
+        <ThreeItemGrid className="snap-start" />
+      </div>
       <Suspense>
         <Suspense>
           {/* @ts-expect-error Server Component */}

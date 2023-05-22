@@ -20,10 +20,10 @@ export const Video: FC<VideoProps> = ({
   title,
   ...props
 }) => (
-  <figure className={clsx(className, 'relative aspect-video')}>
+  <figure className={clsx(className, 'relative min-h-[100dvh] w-full sm:aspect-video')}>
     <Image
       alt={alt}
-      className="h-full object-cover"
+      className="absolute h-full object-cover"
       fill
       sizes="100vw"
       src={poster}
@@ -32,7 +32,7 @@ export const Video: FC<VideoProps> = ({
     <ReactPlayer
       {...props}
       autoPlay={autoPlay}
-      className={'absolute inset-0 w-full [&>video]:object-cover'}
+      className="absolute inset-0 w-full [&>video]:object-cover"
       fallback={fallback}
       height="100%"
       light={!autoPlay && poster}

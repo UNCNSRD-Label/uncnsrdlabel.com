@@ -13,26 +13,31 @@ export async function HorizontalScroll({ className }: { className?: string }) {
     <div
       className={clsx(
         className,
-        'pin relative min-h-[100dvh] w-full max-w-[100dvw] snap-x overflow-x-hidden bg-black'
+        'pin relative h-[100dvh] w-full max-w-[100dvw] snap-x overflow-x-hidden bg-black'
       )}
     >
       <div className="pin-wrap-sticky">
         <div
           className="pin-wrap"
           style={{
-            gridTemplateColumns: `repeat(${products.length + 1}, 1fr)`,
-            width: `${(products.length + 1) * 60}dvw`
+            gridTemplateColumns: `repeat(${products.length + 1}, 1fr)`
+            // width: `${(products.length + 1) * 60}dvw`
           }}
         >
-          <h2 className="snap-center text-4xl text-white">
-            UNCNSRD is multifunctional swimwear for female figures who aren’t afraid to show off
-            their assets and want to feel unapologetically sexy.
-          </h2>
+          <div className="about">
+            <h2 className="snap-center text-4xl text-white">
+              UNCNSRD is multifunctional swimwear for female figures who aren’t afraid to show off
+              their assets and want to feel unapologetically sexy.
+            </h2>
+          </div>
           {[...products].map((product, i) => (
             <Link
               key={`${product.handle}${i}`}
               href={`/product/${product.handle}`}
               className="relative snap-center"
+              // style={{
+              //   minWidth: 'calc(100dvw - 2rem)'
+              // }}
             >
               {product.featuredImage ? (
                 <Image
