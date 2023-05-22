@@ -1,7 +1,8 @@
 import clsx from 'clsx';
-import { getCollectionProducts } from 'lib/shopify';
+import { getCollectionProducts, getPage } from 'lib/shopify';
 import Image from 'next/image';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
 export async function HorizontalScroll({ className }: { className?: string }) {
   // Collections that start with `hidden-*` are hidden from the search page.
@@ -9,47 +10,43 @@ export async function HorizontalScroll({ className }: { className?: string }) {
 
   if (!products?.length) return null;
 
+  const page = await getPage('home');
+  console.log({page})
+  if (!page) return notFound();
+
+  const images = page.media?.references.edges.map({node} => node)
+
   return (
     <div
       className={clsx(
         className,
-        'pin relative h-[100dvh] w-full max-w-[100dvw] snap-x overflow-x-hidden bg-black'
+        'pin relative w-full max-w-[100dvw] snap-x overflow-x-hidden bg-black'
       )}
     >
       <div className="pin-wrap-sticky">
         <div
           className="pin-wrap"
-          style={{
-            gridTemplateColumns: `repeat(${products.length + 1}, 1fr)`
-            // width: `${(products.length + 1) * 60}dvw`
-          }}
+          // style={{
+          //   gridTemplateColumns: `repeat(${products.length}, 1fr)`
+          // }}
         >
-          <div className="about">
-            <h2 className="snap-center text-4xl text-white">
-              UNCNSRD is multifunctional swimwear for female figures who aren’t afraid to show off
-              their assets and want to feel unapologetically sexy.
-            </h2>
-          </div>
           {[...products].map((product, i) => (
             <Link
               key={`${product.handle}${i}`}
               href={`/product/${product.handle}`}
               className="relative snap-center"
-              // style={{
-              //   minWidth: 'calc(100dvw - 2rem)'
-              // }}
             >
               {product.featuredImage ? (
                 <Image
                   alt={product.title}
-                  className="h-full object-contain"
+                  className="h-full object-cover"
                   fill
                   sizes="33vw"
                   src={product.featuredImage.url}
                 />
               ) : null}
-              <div className="absolute inset-y-0 right-0 flex items-center justify-center">
-                <div className="inline-flex bg-white p-4 text-xl font-semibold text-black dark:bg-black dark:text-white">
+              <div className="absolute inset-y-0 right-0 items-end justify-center hidden">
+                <div className="inline-flex bg-white p-4 text-xl font-semibold text-black dark:bg-black dark:text-white uppercase">
                   {product.title}
                 </div>
               </div>

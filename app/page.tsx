@@ -1,4 +1,3 @@
-import { ThreeItemGrid } from 'components/grid/three-items';
 import { HorizontalScroll } from 'components/horizontal-scroll';
 import Footer from 'components/layout/footer';
 import { Video, type VideoProps } from 'components/video';
@@ -35,12 +34,10 @@ const video: VideoProps = {
 export default async function HomePage() {
   return (
     <>
-      <div className="w-full bg-white dark:bg-black">
+      <div className="w-full bg-white dark:bg-black overflow-hidden">
         <Video {...video} />
         {/* @ts-expect-error Server Component */}
         <HorizontalScroll className="snap-start" />
-        {/* @ts-expect-error Server Component */}
-        <ThreeItemGrid className="snap-start" />
       </div>
       <Suspense>
         <Suspense>

@@ -15,7 +15,6 @@
 
   .pin {
     display: flex;
-    height: 100dvh;
     overflow: scroll;
   }
 
@@ -40,38 +39,46 @@
 
   .pin-wrap {
     align-items: center;
-    block-size: 100dvh;
+    aspect-ratio: 16/9;
     display: grid;
+    /*
     gap: theme(gap.16);
+    */
+    gap: theme(gap[0.5]);
     grid-auto-flow: column;
+    min-inline-size: 100dvw;
+    padding-inline: unset;
     padding-inline: theme(padding.4);
 
     @screen sm {
-      gap: theme(gap.32);
-      padding-block: max(7.5dvh, theme(padding.20));
-      padding-inline: max(7.5dvw, theme(padding.20));
+    /*
+      gap: theme(gap[0.5]);
+    */
+      padding-inline: theme(padding[0.5]);
     }
 
-    & > * {
-      min-width: calc(100dvw - theme(padding.8));
-
-      @screen sm {
-        min-width: calc(50dvw - theme(padding.8));
-      }
-    }
-
-    & .about {
-      max-inline-size: min(50vw, 32rem);
-
-      & h2 {
-        font-size: 2rem;
-        line-height: theme(lineHeight.relaxed);
-      }
+    @screen md {
+      
     }
 
     & a {
+      display: none;
       height: 100%;
+      min-width: calc(100dvw - theme(padding.8));
       object-fit: cover;
+
+      @screen sm {
+        min-inline-size: calc(50dvw - theme(padding.1) - theme(gap[0.5]));
+      }
+
+      @screen md {
+        min-width: unset;
+      }
+
+      &:nth-child(1),
+      &:nth-child(2) {
+        display: grid;
+      }
     }
   }
 

@@ -156,6 +156,19 @@ const reshapeCollections = (collections: ShopifyCollection[]) => {
   return reshapedCollections;
 };
 
+const reshapePage = (page: Page) => {
+  if (!page) {
+    return undefined;
+  }
+
+  const { media, ...rest } = page;
+
+  return {
+    ...rest,
+    media: removeEdgesAndNodes(media.references)
+  };
+};
+
 const reshapeProduct = (product: ShopifyProduct, filterHiddenProducts: boolean = true) => {
   if (!product || (filterHiddenProducts && product.tags.includes(HIDDEN_PRODUCT_TAG))) {
     return undefined;
@@ -337,7 +350,7 @@ export async function getPage(handle: string): Promise<Page> {
     variables: { handle }
   });
 
-  return res.body.data.pageByHandle;
+  return reshapePage(res.body.data.pageByHandle)
 }
 
 export async function getPages(): Promise<Page[]> {

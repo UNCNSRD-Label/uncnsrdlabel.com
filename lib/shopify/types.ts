@@ -40,6 +40,10 @@ export type Image = {
   height: number;
 };
 
+// export type Media = {
+//   references: Connection<Media>;
+// }
+
 export type Menu = {
   title: string;
   path: string;
@@ -59,6 +63,7 @@ export type Page = {
   seo?: SEO;
   createdAt: string;
   updatedAt: string;
+  media: Image[]
 };
 
 export type Policy = {

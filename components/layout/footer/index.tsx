@@ -19,8 +19,8 @@ export default async function Footer() {
         <div className="grid grid-cols-1 items-start gap-8 border-b border-gray-700 py-12 transition-colors duration-150 lg:grid-cols-12">
           <nav className="col-span-1 grid gap-8 lg:col-span-8 lg:grid-cols-9">
             {customerCareMenu.length ? (
-              <dl className="grid content-start gap-2 md:col-span-3 md:grid-flow-row">
-                <dt className="text-sm uppercase">Customer Care</dt>
+              <dl className="grid content-start gap-2 md:col-span-3 md:grid-flow-row uppercase">
+                <dt className="text-sm">Customer Care</dt>
                 {customerCareMenu.map((item: Menu) => (
                   <dd key={item.title}>
                     <Link
@@ -34,8 +34,8 @@ export default async function Footer() {
               </dl>
             ) : null}
             {informationMenu.length ? (
-              <dl className="grid content-start gap-2 md:col-span-3 md:grid-flow-row">
-                <dt className="text-sm uppercase">Information</dt>
+              <dl className="grid content-start gap-2 md:col-span-3 md:grid-flow-row uppercase">
+                <dt className="text-sm">Information</dt>
                 {informationMenu.map((item: Menu) => (
                   <dd key={item.title}>
                     <Link
@@ -49,8 +49,8 @@ export default async function Footer() {
               </dl>
             ) : null}
             {followUsMenu.length ? (
-              <dl className="grid content-start gap-2 md:col-span-3 md:grid-flow-row">
-                <dt className="text-sm uppercase">Follow Us</dt>
+              <dl className="grid content-start gap-2 md:col-span-3 md:grid-flow-row uppercase">
+                <dt className="text-sm">Follow Us</dt>
                 {followUsMenu.map((item: Menu) => (
                   <dd key={item.title}>
                     <a
@@ -68,7 +68,7 @@ export default async function Footer() {
           </nav>
           <SignUp className="relative col-span-1 flex items-center lg:col-span-4" />
         </div>
-        <div className="flex flex-col items-center justify-between space-y-4 pb-10 pt-6 text-sm md:flex-row">
+        <div className="flex flex-col items-center justify-between space-y-4 pb-10 pt-6 text-sm md:flex-row uppercase">
           <p>
             &copy; {copyrightDate} {SITE_NAME}. All rights reserved.
           </p>

@@ -13,6 +13,35 @@ const pageFragment = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      media: metafield(namespace: "custom", key: "media") {
+        value
+        references(first: 10) {
+          edges {
+            node {
+              ... on MediaImage {
+                __typename
+                alt
+                id
+                image {
+                  altText
+                  height
+                  id
+                  url
+                  width
+                }
+                mediaContentType
+                # previewImage {
+                #   altText
+                #   height
+                #   id
+                #   url
+                #   width
+                # }
+              }
+            }
+          }
+        }
+      }
     }
   }
   ${seoFragment}

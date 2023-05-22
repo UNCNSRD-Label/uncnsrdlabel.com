@@ -1,12 +1,17 @@
-import { getCollectionProducts } from 'lib/shopify';
+import { getCollectionProducts, getPage } from 'lib/shopify';
 import Image from 'next/image';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
 export async function Carousel() {
   // Collections that start with `hidden-*` are hidden from the search page.
   const products = await getCollectionProducts({ collection: 'hidden-homepage-carousel' });
 
   if (!products?.length) return null;
+
+  const page = await getPage('home');
+  console.log({page})
+  if (!page) return notFound();
 
   return (
     <div className="relative w-full overflow-hidden bg-black dark:bg-white">
@@ -27,7 +32,7 @@ export async function Carousel() {
               />
             ) : null}
             <div className="absolute inset-y-0 right-0 flex items-center justify-center">
-              <div className="inline-flex bg-white p-4 text-xl font-semibold text-black dark:bg-black dark:text-white">
+              <div className="inline-flex bg-white p-4 text-xl font-semibold text-black dark:bg-black dark:text-white uppercase">
                 {product.title}
               </div>
             </div>

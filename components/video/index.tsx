@@ -20,7 +20,7 @@ export const Video: FC<VideoProps> = ({
   title,
   ...props
 }) => (
-  <figure className={clsx(className, 'relative min-h-[100dvh] w-full sm:aspect-video')}>
+  <figure className={clsx(className, 'relative min-h-[100dvh] h-[100dvh] sm:h-auto w-full sm:aspect-video overflow-hidden')}>
     <Image
       alt={alt}
       className="absolute h-full object-cover"
