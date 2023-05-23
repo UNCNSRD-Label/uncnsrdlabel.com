@@ -20,7 +20,7 @@ export async function HorizontalScroll({ className }: { className?: string }) {
     >
       <div className="pin-wrap-sticky w-full snap-x overflow-x-auto">
         <div
-          className="pin-wrap grid w-[600dvw] gap-0.5 sm:w-[300dvw] lg:w-[200dvw]"
+          className="pin-wrap grid w-[calc(600dvw_+_theme(gap[0.5]))] gap-0.5 sm:w-[calc(300dvw_+_theme(gap[0.5]))] lg:w-[calc(200dvw_+_theme(gap[0.5]))]"
           style={{
             gridTemplateColumns: `repeat(${images.length}, 1fr)`
           }}
