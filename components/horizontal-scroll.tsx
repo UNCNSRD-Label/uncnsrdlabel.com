@@ -11,7 +11,7 @@ export async function HorizontalScroll({ className }: { className?: string }) {
   const images = page.images;
 
   return (
-    <div
+    <section
       className={clsx(
         className,
         'pin relative w-full max-w-[100dvw] snap-x overflow-x-auto py-0.5'
@@ -25,7 +25,7 @@ export async function HorizontalScroll({ className }: { className?: string }) {
           }}
         >
           {[...images].map((image) => (
-            <div className="item relative aspect-3/4 w-full snap-start" key={image.id}>
+            <figure className="item relative aspect-3/4 w-full snap-start" key={image.id}>
               <Image
                 alt={image.altText}
                 className="h-full object-cover"
@@ -33,10 +33,10 @@ export async function HorizontalScroll({ className }: { className?: string }) {
                 sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
                 src={image.url}
               />
-            </div>
+            </figure>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
