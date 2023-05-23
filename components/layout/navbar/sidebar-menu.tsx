@@ -95,7 +95,7 @@ export default function SidebarMenu({ menu }: { menu: Menu[] }) {
                         <li key={item.title}>
                           <Link
                             href={item.path}
-                            className="rounded-lg py-1 text-sm uppercase tracking-wider text-black transition-colors hover:text-gray-500 dark:text-white"
+                            className="rounded-lg py-1 text-sm uppercase text-black transition-colors hover:text-gray-500 dark:text-white"
                             onClick={() => {
                               setSidebarMenuIsOpen(false);
                             }}

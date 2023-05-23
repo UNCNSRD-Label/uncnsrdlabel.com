@@ -73,7 +73,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       )}
     >
       <body
-        className="grid min-h-[100dvh] grid-rows-[auto_1fr] bg-white text-black selection:bg-teal-300"
+        className="grid min-h-[100dvh] grid-rows-[auto_1fr] bg-white tracking-widest text-black selection:bg-teal-300"
         style={{
           textRendering: 'optimizeLegibility'
         }}
