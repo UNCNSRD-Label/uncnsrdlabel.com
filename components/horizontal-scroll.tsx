@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { getPage } from 'lib/shopify';
 import Image from 'next/image';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 export async function HorizontalScroll({ className }: { className?: string }) {
@@ -14,12 +15,12 @@ export async function HorizontalScroll({ className }: { className?: string }) {
     <section
       className={clsx(
         className,
-        'pin relative w-full max-w-[100dvw] snap-x overflow-x-auto py-0.5'
+        'pin relative grid w-full max-w-[100dvw] justify-items-center py-0.5'
       )}
     >
-      <div className="pin-wrap-sticky">
+      <div className="pin-wrap-sticky w-full snap-x overflow-x-auto">
         <div
-          className="pin-wrap grid gap-0.5 sm:w-[300dvw] lg:w-[200dvw]"
+          className="pin-wrap grid w-[600dvw] gap-0.5 sm:w-[300dvw] lg:w-[200dvw]"
           style={{
             gridTemplateColumns: `repeat(${images.length}, 1fr)`
           }}
@@ -37,6 +38,13 @@ export async function HorizontalScroll({ className }: { className?: string }) {
           ))}
         </div>
       </div>
+      <Link
+        href="/search"
+        aria-label="Go to the shop"
+        className="absolute inset-x-auto bottom-8 border px-12 py-4 uppercase text-white"
+      >
+        Shop
+      </Link>
     </section>
   );
 }
