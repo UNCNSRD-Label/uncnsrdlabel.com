@@ -10,77 +10,7 @@
 
 @layer utilities {
   .icon {
-    @apply transition-all duration-300 ease-in-out  hover:scale-110;
-  }
-
-  .pin {
-    display: flex;
-    overflow: scroll;
-  }
-
-  @supports (animation-timeline: view()) {
-    .pin {
-      block-size: 500vh;
-      overflow: visible;
-      view-timeline-name: --section-pin-tl;
-      view-timeline-axis: block;
-    }
-  }
-
-  @supports (animation-timeline: view()) {
-    .pin-wrap-sticky {
-      block-size: 100dvh;
-      inline-size: 100dvw;
-      inset-block-start: 0;
-      overflow-x: hidden;
-      position: sticky;
-    }
-  }
-
-  .pin-wrap {
-    align-items: center;
-    display: grid;
-    /*
-    gap: theme(gap.16);
-    */
-    gap: theme(gap[0.5]);
-    grid-auto-flow: column;
-    min-inline-size: 100dvw;
-    padding-block: theme(padding[0.5]);
-
-    @screen sm {
-      /*
-      gap: theme(gap[0.5]);
-      padding-inline: theme(padding[0.5]);
-    */
-    }
-
-    @screen md {
-    }
-
-    & .item {
-      height: 100%;
-      min-width: calc(100dvw - theme(gap[0.5]));
-      object-fit: cover;
-
-      @screen sm {
-        min-inline-size: calc(50dvw - theme(gap[0.5]));
-      }
-
-      @screen lg {
-        min-inline-size: calc(33.3333dvw - (theme(gap[0.5]) * 2));
-      }
-    }
-  }
-
-  @supports (animation-timeline: view()) {
-    .pin-wrap {
-      animation: linear move forwards;
-      animation-timeline: --section-pin-tl;
-      animation-range: contain 0% contain 100%;
-      block-size: 100dvh;
-      will-change: transform;
-    }
+    @apply transition-all duration-300 ease-in-out hover:scale-110;
   }
 
   @keyframes move {
