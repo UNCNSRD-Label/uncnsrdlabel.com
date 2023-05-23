@@ -39,7 +39,7 @@ export default function SidebarMenu({ menu }: { menu: Menu[] }) {
         aria-label="Open sidebar menu"
         data-testid="open-sidebar-menu"
       >
-        <MenuIcon className="h-5" />
+        <MenuIcon className="h-5 drop-shadow" />
       </button>
       <AnimatePresence initial={false}>
         {sidebarMenuIsOpen && (
@@ -83,7 +83,7 @@ export default function SidebarMenu({ menu }: { menu: Menu[] }) {
                     aria-label="Close sidebar menu"
                     data-testid="close-sidebar-menu"
                   >
-                    <CloseIcon className="icon h-6" />
+                    <CloseIcon className="icon h-6 drop-shadow" />
                   </button>
 
                   <div className="mb-4 w-full">
@@ -95,7 +95,7 @@ export default function SidebarMenu({ menu }: { menu: Menu[] }) {
                         <li key={item.title}>
                           <Link
                             href={item.path}
-                            className="rounded-lg py-1 text-sm text-black transition-colors hover:text-gray-500 dark:text-white uppercase tracking-wider"
+                            className="rounded-lg py-1 text-sm uppercase tracking-wider text-black transition-colors hover:text-gray-500 dark:text-white"
                             onClick={() => {
                               setSidebarMenuIsOpen(false);
                             }}
