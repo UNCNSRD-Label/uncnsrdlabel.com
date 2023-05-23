@@ -34,7 +34,13 @@ const video: VideoProps = {
 export default async function HomePage() {
   return (
     <>
-      <Video {...video} className="snap-start" />
+      <Video
+        {...video}
+        className="snap-start"
+        style={{
+          filter: 'saturate(1.5)'
+        }}
+      />
       {/* @ts-expect-error Server Component */}
       <HorizontalScroll className="snap-start bg-black" />
       <Suspense>
