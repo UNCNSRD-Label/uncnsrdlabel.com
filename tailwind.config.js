@@ -19,6 +19,14 @@ module.exports = {
         brand: ['var(--font-bomber-escort)'],
         sans: ['var(--font-montserrat)']
       },
+      fontSize: {
+        xxs: [
+          '0.625rem',
+          {
+            lineHeight: '0.675rem'
+          }
+        ]
+      },
       colors: {
         gray: colors.neutral,
         hotPink: '#FF1966',

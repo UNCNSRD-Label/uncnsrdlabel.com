@@ -25,7 +25,7 @@ export default async function Footer() {
                   <dd key={item.title}>
                     <Link
                       href={item.path}
-                      className="text-xs text-gray-800 transition duration-150 ease-in-out hover:text-gray-500"
+                      className="text-xxs text-gray-800 transition duration-150 ease-in-out hover:text-gray-500"
                     >
                       {item.title}
                     </Link>
@@ -40,7 +40,7 @@ export default async function Footer() {
                   <dd key={item.title}>
                     <Link
                       href={item.path}
-                      className="text-xs text-gray-800 transition duration-150 ease-in-out hover:text-gray-500"
+                      className="text-xxs text-gray-800 transition duration-150 ease-in-out hover:text-gray-500"
                     >
                       {item.title}
                     </Link>
@@ -55,7 +55,7 @@ export default async function Footer() {
                   <dd key={item.title}>
                     <a
                       href={item.path}
-                      className="text-xs text-gray-800 transition duration-150 ease-in-out hover:text-gray-500"
+                      className="text-xxs text-gray-800 transition duration-150 ease-in-out hover:text-gray-500"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -66,12 +66,12 @@ export default async function Footer() {
               </dl>
             ) : null}
           </nav>
-          <SignUp className="relative col-span-1 flex items-center lg:col-span-4" />
+          <SignUp className="col-span-1 lg:col-span-4" />
         </div>
-        <div className="flex flex-col items-center justify-between space-y-4 pb-10 pt-6 text-sm uppercase md:flex-row">
-          <p>
+        <div className="flex flex-col items-center justify-between space-y-4 pb-10 pt-6 text-xs uppercase md:flex-row">
+          <span>
             &copy; {copyrightDate} {SITE_NAME}. All rights reserved.
-          </p>
+          </span>
         </div>
       </div>
     </footer>

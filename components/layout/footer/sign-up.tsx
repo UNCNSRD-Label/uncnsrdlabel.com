@@ -68,21 +68,30 @@ async function signUp(formData: FormData) {
 
 export default function SignUp({ className }: { className?: string }) {
   return (
-    <form action={signUp} className={clsx(className, 'relative w-full items-center')}>
-      <input
-        type="email"
-        name="email"
-        placeholder="Sign up to our newsletter"
-        className="w-full px-4 py-2"
-      />
+    <form
+      action={signUp}
+      className={clsx(className, 'grid gap-4  [&:has(input:valid)>button]:opacity-100')}
+    >
+      <div className="field">
+        <input
+          className="w-full px-4 py-2"
+          name="email"
+          placeholder="Sign up to our newsletter"
+          required
+          type="email"
+        />
+        <button className="absolute right-0 mr-3">
+          <SlEnvolope />
+        </button>
+      </div>
       {/* <input
         type="tel"
         name="phone_number"
         placeholder="Sign up to our newsletter"
         className="w-full px-4 py-2"
       /> */}
-      <button className="absolute right-0 top-0 mr-3 flex h-full items-center">
-        <SlEnvolope className="h-5" />
+      <button className="btn btn-primary btn-solid btn-sm justify-self-end opacity-0">
+        Sign up
       </button>
     </form>
   );

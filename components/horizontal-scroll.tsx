@@ -41,7 +41,7 @@ export async function HorizontalScroll({ className }: { className?: string }) {
       <Link
         href="/search"
         aria-label="Go to the shop"
-        className="absolute inset-x-auto bottom-8 border px-12 py-4 uppercase text-white"
+        className="btn btn-primary btn-solid btn-base absolute inset-x-auto bottom-8"
       >
         Shop
       </Link>
