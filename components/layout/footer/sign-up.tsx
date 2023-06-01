@@ -74,6 +74,7 @@ export default function SignUp({ className }: { className?: string }) {
     >
       <div className="field">
         <input
+          autoComplete="true"
           className="w-full px-4 py-2"
           name="email"
           placeholder="Sign up to our newsletter"

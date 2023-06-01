@@ -5,6 +5,7 @@ import { Inter, Montserrat } from 'next/font/google';
 import localFont from 'next/font/local';
 import Script from 'next/script';
 import { ReactNode, Suspense } from 'react';
+
 import './globals.css';
 
 const { TWITTER_CREATOR, TWITTER_SITE, SITE_NAME } = process.env;
@@ -60,6 +61,22 @@ const montserrat = Montserrat({
 });
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
+  // const navRef = useRef(null);
+  // const mainRef = useRef(null);
+
+  // const { inView, entry, stop } = useIntersectionObserver(
+  //   navRef,
+  //   {
+  //     root: mainRef,
+  //     threshold: 0.5
+  //   },
+  //   (entries) => {
+  //     console.log({entries})
+  //   }
+  // )
+
+  // console.log({inView, entry, stop})
+
   return (
     <html
       lang="en"

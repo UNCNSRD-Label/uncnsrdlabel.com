@@ -385,7 +385,8 @@ export async function getProduct(handle: string): Promise<Product | undefined> {
     query: getProductQuery,
     variables: {
       handle
-    }
+    },
+    cache: 'default'
   });
 
   return reshapeProduct(res.body.data.product, false);

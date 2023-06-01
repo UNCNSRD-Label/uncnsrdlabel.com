@@ -5,7 +5,7 @@ import Price from 'components/price';
 
 export function GridTileImage({
   isInteractive = true,
-  background,
+  background = 'white',
   active,
   labels,
   ...props
@@ -22,7 +22,7 @@ export function GridTileImage({
 } & React.ComponentProps<typeof Image>) {
   return (
     <div
-      className={clsx('relative flex h-full w-full items-center justify-center overflow-hidden', {
+      className={clsx('relative grid h-full w-full items-center justify-center overflow-hidden', {
         'bg-white dark:bg-white': background === 'white',
         'bg-[#ff0080] dark:bg-[#ff0080]': background === 'pink',
         'bg-[#7928ca] dark:bg-[#7928ca]': background === 'purple',
@@ -48,18 +48,18 @@ export function GridTileImage({
         />
       ) : null}
       {labels ? (
-        <div className="absolute left-0 top-0 w-3/4 text-black dark:text-white">
+        <div className="text-black dark:text-white">
           <h3
             data-testid="product-name"
             className={clsx(
-              'inline bg-white box-decoration-clone py-3 pl-5 font-semibold leading-loose shadow-[1.25rem_0_0] shadow-white dark:bg-black dark:shadow-black',
+              'box-decoration-clone font-semibold',
               !labels.isSmall ? 'text-3xl' : 'text-lg'
             )}
           >
             {labels.title}
           </h3>
           <Price
-            className="w-fit bg-white px-5 py-3 text-sm font-semibold dark:bg-black dark:text-white"
+            className="text-sm font-semibold dark:bg-black dark:text-white"
             amount={labels.amount}
             currencyCode={labels.currencyCode}
           />
