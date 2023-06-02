@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 import Navbar from 'components/layout/navbar';
 import NavbarContent from 'components/layout/navbar/content';
+import Progress from 'components/layout/progress';
 import { Inter, Montserrat } from 'next/font/google';
 import localFont from 'next/font/local';
 import Script from 'next/script';
@@ -95,6 +96,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           textRendering: 'optimizeLegibility'
         }}
       >
+        <Progress />
         <Navbar>
           {/* @ts-expect-error Server Component */}
           <NavbarContent />
