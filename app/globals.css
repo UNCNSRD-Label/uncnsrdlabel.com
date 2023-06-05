@@ -31,7 +31,7 @@
   }
 
   .btn-primary {
-    @apply border border-black text-black hover:bg-white;
+    @apply border border-black text-black hover:bg-gray-200;
 
     &.btn-solid {
       @apply bg-black text-white hover:bg-black;
@@ -39,7 +39,7 @@
   }
 
   .btn-secondary {
-    @apply border border-white text-white hover:bg-black;
+    @apply border border-white text-white hover:bg-gray-800;
 
     &.btn-solid {
       @apply bg-white text-black hover:bg-white;
@@ -72,28 +72,14 @@
   }
 
   .pin-wrap-sticky {
-    height: 100dvh;
-    width: 100dvw;
-    position: sticky;
-    top: 0px;
-    overflow-x: hidden;
   }
 
   .pin-wrap {
     height: 100dvh;
     display: grid;
     align-items: stretch;
-    grid-template-columns: repeat(4, auto);
-    gap: theme(gap.16);
+    /* grid-template-columns: repeat(4, auto); */
     justify-items: center;
-    padding-block: 80px;
-    padding-inline-end: theme(margin.6);
-    padding-inline-start: calc(((100dvw / 6) * 2) + theme(margin.6));
-
-    height: 100dvh;
-    /*
-    width: 250vmax;
-    */
   }
 
   @supports (animation-timeline: view()) {

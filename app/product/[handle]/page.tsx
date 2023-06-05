@@ -75,10 +75,11 @@ export default async function ProductPage({ params }: { params: { handle: string
     description: product.description
   };
 
+  const images = product.images;
+
   return (
     <>
-      <article>
-        {/* <Details product={product} /> */}
+      <article className="relative">
         {product.featuredImage ? (
           <figure className="relative h-[100dvh] w-full">
             <NextImage
@@ -90,41 +91,27 @@ export default async function ProductPage({ params }: { params: { handle: string
             />
           </figure>
         ) : null}
+        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         <section className="pin">
           <div className="pin-wrap-sticky">
-            <div className="pin-wrap">
-              <figure className="relative h-full w-full">
-                <NextImage
-                  src="https://scroll-driven-animations.style/demos/horizontal-section/shared/pexels-photo-3618545.jpeg"
-                  alt=""
-                  fill
-                  className="h-full object-cover"
-                />
-              </figure>
-              <figure className="relative h-full w-full">
-                <NextImage
-                  src="https://scroll-driven-animations.style/demos/horizontal-section/shared/pexels-photo-5207262.jpeg"
-                  alt=""
-                  fill
-                  className="h-full object-cover"
-                />
-              </figure>
-              <figure className="relative h-full w-full">
-                <NextImage
-                  src="https://scroll-driven-animations.style/demos/horizontal-section/shared/pexels-photo-3371358.jpeg"
-                  alt=""
-                  fill
-                  className="h-full object-cover"
-                />
-              </figure>
-              <figure className="relative h-full w-full">
-                <NextImage
-                  src="https://scroll-driven-animations.style/demos/horizontal-section/shared/pexels-photo-3618545.jpeg"
-                  alt=""
-                  fill
-                  className="h-full object-cover"
-                />
-              </figure>
+            <div
+              className="pin-wrap grid w-[calc(600dvw_+_theme(gap[0.5]))] gap-0.5 py-24 sm:w-[calc(300dvw_+_theme(gap[0.5]))] xl:w-[calc(200dvw_+_theme(gap[0.5]))]"
+              style={{
+                gridTemplateColumns: `repeat(${images.length + 1}, 1fr)`
+              }}
+            >
+              <div className="opacity-0">Space deliberately left blank</div>
+              {[...product.images].map((image) => (
+                <figure className="item relative aspect-3/4 w-full snap-start" key={image.id}>
+                  <NextImage
+                    alt={image.altText}
+                    className="h-full object-cover"
+                    fill
+                    sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                    src={image.url}
+                  />
+                </figure>
+              ))}
             </div>
           </div>
         </section>
