@@ -1,55 +1,103 @@
 .container {
-  align-content: center;
-  background-image: url(/images/art/lp1.jpg);
-  background-image: image-set(
-    url("/images/art/lp1.avif") type("image/avif"),
-    url("/images/art/lp1.webp") type("image/webp"),
-    url("/images/art/lp1.jpg") type("image/jpeg")
-  );
-  background-position: center;
-  background-size: cover;
+  background-color: theme(backgroundColor.black);
+  /* background-image: url("/images/textures/abstract009.jpg"); */
+  background-size: 50%;
   display: grid;
-  gap: 10vh;
-  place-items: center;
-}
+  min-block-size: 100%;
+  padding: theme(padding.8);
 
-@screen md {
-  .container {
-    background-image: url(/images/art/desktop.jpg);
-    background-image: image-set(
-      url("/images/art/desktop.avif") type("image/avif"),
-      url("/images/art/desktop.webp") type("image/webp"),
-      url("/images/art/desktop.jpg") type("image/jpeg")
-    );
+  @media landscape {
+    align-items: end;
   }
 }
 
-.logotype {
-  block-size: 10rem;
-  filter: contrast(0.6) brightness(1.25) drop-shadow(-0.4vw -0.2vw 0.3vw black);
-  inline-size: 75vw;
-  margin-block-end: 1rem;
-  min-inline-size: 50vw;
+.information {
+  align-items: end;
+  display: grid;
+  justify-items: center;
   position: relative;
+  z-index: theme(zIndex.30);
+
+  & .copy {
+    filter: drop-shadow(2px 4px 6px black);
+    text-align: center;
+    z-index: theme(zIndex.20);
+
+    @screen landscape {
+      font-size: theme(fontSize.6xl);
+    }
+
+    @screen portrait {
+      font-size: theme(fontSize.4xl);
+    }
+  }
+
+  & .signupForm {
+    align-content: start;
+    display: grid;
+    inline-size: max(30%, 20rem);
+    position: relative;
+    z-index: theme(zIndex.10);
+  }
 }
 
 .title {
-  background-clip: text;
-  background-color: #ffffff;
-  color: transparent;
-  filter: drop-shadow(0rem 0rem 0.1rem var(--tw-color-black));
-  font-family: 'Bomber Escort Outline', cursive;
-  font-size: clamp(1.5rem, 10vw, 10rem); 
-  font-style: italic;
-  padding: 2rem;
-  text-shadow: -0.2rem 0.2rem 0.2rem rgb(0 0 0 / 20%);
+  filter: drop-shadow(2px 4px 6px black);
+  font-family: "Bomber Escort Outline";
+  font-size: 17.5vw;
+  line-height: theme(lineHeight.none);
+  text-align: center;
+  z-index: theme(zIndex.20);
 }
 
-.copy {
-  display: none;
-}
-
-.artGallery {
+.background {
+  animation-duration: 90s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
   display: grid;
   grid-auto-flow: column;
+  gap: theme(gap.16);
+  inset-block: theme(inset.0);
+  inset-inline-start: theme(inset.0);
+  padding: theme(padding.16);
+  padding-block-end: theme(padding.40);
+  position: fixed;
+  z-index: theme(zIndex.10);
+
+  @screen landscape {
+    animation-name: move-bg-landscape;
+    inline-size: 200dvw;
+  }
+
+  @screen portrait {
+    animation-name: move-bg-portrait;
+    inline-size: 600dvw;
+  }
+
+  & .figure {
+    position: relative;
+
+    & .image {
+      object-fit: contain;
+      object-position: bottom;
+    }
+  }
+}
+
+@keyframes move-bg-landscape {
+  0% {
+    inset-inline-start: theme(inset.0);
+  }
+  100% {
+    inset-inline-start: calc(theme(inset.8) - 100dvw);
+  }
+}
+
+@keyframes move-bg-portrait {
+  0% {
+    inset-inline-start: theme(inset.0);
+  }
+  100% {
+    inset-inline-start: calc(theme(inset.8) - 300dvw);
+  }
 }

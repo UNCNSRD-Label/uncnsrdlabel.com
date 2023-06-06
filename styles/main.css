@@ -1,0 +1,26 @@
+@import "tailwindcss/base";
+
+@import "./base/props/gradients.css";
+
+@import "./base/colors.css";
+@import "./base/misc.css";
+@import "./base/next.css";
+@import "./base/typography.css";
+
+@import "tailwindcss/components";
+@import "./components/button.css";
+@import "./components/dialog.css";
+@import "./components/form.css";
+@import "./components/header.css";
+@import "./components/icon.css";
+@import "./components/pagination.css";
+@import "./components/slideshow.css";
+@import "./components/wysiwyg.css";
+
+@import "tailwindcss/utilities";
+@import "./utilities/chrome-bug.css";
+@import "./utilities/color-scheme.css";
+@import "./utilities/containers.css";
+@import "./utilities/loading.css";
+@import "./utilities/mask.css";
+@import "./utilities/size.css";

@@ -1,0 +1,8 @@
+@layer utilities {
+  .mask {
+    background-attachment: fixed;
+    background-clip: text;
+    color: transparent;
+    text-fill-color: transparent;
+  }
+}

@@ -1,0 +1,26 @@
+@layer components {
+  :is(
+      [type="text"],
+      [type="email"],
+      [type="url"],
+      [type="password"],
+      [type="number"],
+      [type="date"],
+      [type="datetime-local"],
+      [type="month"],
+      [type="search"],
+      [type="tel"],
+      [type="time"],
+      [type="week"],
+      [multiple],
+      textarea,
+      select
+    ) {
+    @apply mt-0 block w-full px-0.5 border-0 border-b border-gray-200 focus:ring-0 focus:border-gray-500 bg-transparent;
+  }
+
+  .field {
+    align-items: center;
+    display: grid;
+  }
+}
