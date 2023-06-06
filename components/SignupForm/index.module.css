@@ -33,9 +33,13 @@
   padding: theme(padding.2);
 }
 
+
+
 .output {
-  @apply bg-black bg-blend-screen bg-opacity-80;
-  align-content: center;
+  align-items: end;
+  background-color: theme(backgroundColor.black);
+  background-image: url("/images/MAV07179.jpeg");
+  background-size: cover;
   color: theme(colors.white);
   display: grid;
   font-size: theme(fontSize.base);
@@ -55,20 +59,19 @@
   @screen md {
     font-size: theme(fontSize.4xl);
   }
+}
 
-  & :global(.container) {
-    display: grid;
-    inline-size: min(30rem, 50%);
-  }
+.container {
+  display: grid;
+  filter: drop-shadow(2px 4px 6px black);
+  inline-size: min(30rem, 50%);
+}
 
-  &:not(:global(.invalid), :global(.valid)) {
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  &:global(.invalid) {
-  }
-
-  &:global(.valid) {
-  }
+.title {
+  filter: drop-shadow(2px 4px 6px black);
+  font-family: "Bomber Escort Outline Italic";
+  font-size: 10vw;
+  line-height: theme(lineHeight.none);
+  text-align: center;
+  z-index: theme(zIndex.20);
 }

@@ -16,12 +16,11 @@
   display: grid;
   justify-items: center;
   position: relative;
-  z-index: theme(zIndex.30);
+  z-index: theme(zIndex.20);
 
   & .copy {
     filter: drop-shadow(2px 4px 6px black);
     text-align: center;
-    z-index: theme(zIndex.20);
 
     @screen landscape {
       font-size: theme(fontSize.6xl);
@@ -37,14 +36,14 @@
     display: grid;
     inline-size: max(30%, 20rem);
     position: relative;
-    z-index: theme(zIndex.10);
+    z-index: theme(zIndex.20);
   }
 }
 
 .title {
   filter: drop-shadow(2px 4px 6px black);
-  font-family: "Bomber Escort Outline";
-  font-size: 17.5vw;
+  font-family: "Bomber Escort Outline Italic";
+  font-size: 16.5vw;
   line-height: theme(lineHeight.none);
   text-align: center;
   z-index: theme(zIndex.20);

@@ -13,8 +13,6 @@ export default function SignUp({ className }: { className?: string }) {
   const { pending, action, data } = useFormStatus();
   const [input, setInput] = useState();
 
-  console.log({ pending, action, data });
-
   return (
     <form
       action={signUp}
@@ -54,11 +52,12 @@ export default function SignUp({ className }: { className?: string }) {
         Sign up
       </button>
       {input && (
-        <output className={clsx("output", "valid", styles.output)}>
-          <div className="container">
+        <output className={clsx(styles.output)}>
+          <div className={clsx(styles.container)}>
             <p style={{ justifySelf: "start" }}>Sexy not sorry&hellip;</p>
             <p style={{ justifySelf: "end" }}>Watch this space!</p>
           </div>
+          <h1 className={clsx(styles.title)}>UNCNSRD</h1>
         </output>
       )}
     </form>
