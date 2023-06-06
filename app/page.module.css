@@ -19,7 +19,7 @@
   z-index: theme(zIndex.20);
 
   & .copy {
-    filter: drop-shadow(2px 4px 6px black);
+    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2));
     text-align: center;
 
     @screen landscape {
@@ -41,7 +41,7 @@
 }
 
 .title {
-  filter: drop-shadow(2px 4px 6px black);
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2));
   font-family: "Bomber Escort Outline Italic";
   font-size: 16.5vw;
   line-height: theme(lineHeight.none);
