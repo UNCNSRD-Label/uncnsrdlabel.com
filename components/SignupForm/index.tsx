@@ -11,7 +11,7 @@ import styles from "./index.module.css";
 
 export default function SignUp({ className }: { className?: string }) {
   const { pending, action, data } = useFormStatus();
-  const [input, setInput] = useState();
+  const [input, setInput] = useState<string>();
 
   return (
     <form
@@ -21,7 +21,7 @@ export default function SignUp({ className }: { className?: string }) {
         "grid gap-4  [&:has(input:valid)>button]:opacity-100"
       )}
       // onSubmit={(e) => console.log(event?.target?.email.value)}
-      onSubmit={(e) => setInput(event?.target?.email.value)}
+      onSubmit={(e) => setInput("submitted")}
     >
       <div className="field">
         <input
