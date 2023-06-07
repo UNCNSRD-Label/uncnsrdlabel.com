@@ -43,7 +43,7 @@
 .title {
   filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2));
   font-family: var(--font-bomber-escort-outline-italic);
-  font-size: 16.5vw;
+  font-size: 15.5vw;
   font-style: italic;
   inset-inline-start: -2.5vw;
   line-height: theme(lineHeight.none);
@@ -66,14 +66,24 @@
   position: fixed;
   z-index: theme(zIndex.10);
 
-  @screen landscape {
-    animation-name: move-bg-landscape;
-    inline-size: 200dvw;
-  }
-
   @screen portrait {
     animation-name: move-bg-portrait;
     inline-size: 600dvw;
+  }
+
+  @screen sm {
+    animation-name: move-bg-landscape-sm;
+    inline-size: 600dvw;
+  }
+
+  @screen md {
+    animation-name: move-bg-landscape-md;
+    inline-size: 400dvw;
+  }
+
+  @screen lg {
+    animation-name: move-bg-landscape-lg;
+    inline-size: 200dvw;
   }
 
   & .figure {
@@ -86,20 +96,38 @@
   }
 }
 
-@keyframes move-bg-landscape {
-  0% {
-    inset-inline-start: theme(inset.0);
-  }
-  100% {
-    inset-inline-start: calc(theme(inset.8) - 100dvw);
-  }
-}
-
 @keyframes move-bg-portrait {
   0% {
     inset-inline-start: theme(inset.0);
   }
   100% {
     inset-inline-start: calc(theme(inset.8) - 300dvw);
+  }
+}
+
+@keyframes move-bg-landscape-sm {
+  0% {
+    inset-inline-start: theme(inset.0);
+  }
+  100% {
+    inset-inline-start: calc(theme(inset.8) - 300dvw);
+  }
+}
+
+@keyframes move-bg-landscape-md {
+  0% {
+    inset-inline-start: theme(inset.0);
+  }
+  100% {
+    inset-inline-start: calc(theme(inset.8) - 200dvw);
+  }
+}
+
+@keyframes move-bg-landscape-lg {
+  0% {
+    inset-inline-start: theme(inset.0);
+  }
+  100% {
+    inset-inline-start: calc(theme(inset.8) - 100dvw);
   }
 }
