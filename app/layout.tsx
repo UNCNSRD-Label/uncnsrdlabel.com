@@ -1,5 +1,5 @@
 import { clsx } from "clsx";
-import { Inter, Montserrat } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import localFont from "next/font/local";
 import Script from "next/script";
 import { ReactNode, Suspense } from "react";
@@ -31,17 +31,10 @@ export const metadata = {
     }),
 };
 
-const bomberEscort = localFont({
-  src: "./fonts/bomber-escort/bomberescort.ttf",
+const bomberEscortItalic = localFont({
+  src: "./fonts/bomber-escort/bomberescortital.ttf",
   display: "swap",
   variable: "--font-bomber-escort",
-  weight: "400",
-});
-
-const bomberEscortOutline = localFont({
-  src: "./fonts/bomber-escort/bomberescortout.ttf",
-  display: "swap",
-  variable: "--font-bomber-escort-outline",
   weight: "400",
 });
 
@@ -50,12 +43,6 @@ const bomberEscortOutlineItalic = localFont({
   display: "swap",
   variable: "--font-bomber-escort-outline-italic",
   weight: "400",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter ",
 });
 
 const montserrat = Montserrat({
@@ -74,10 +61,8 @@ export default async function RootLayout({
     <html
       lang="en"
       className={clsx(
-        bomberEscort.variable,
-        bomberEscortOutline.variable,
+        bomberEscortItalic.variable,
         bomberEscortOutlineItalic.variable,
-        inter.variable,
         montserrat.variable,
         "[color-scheme:dark]",
         "snap-y"
