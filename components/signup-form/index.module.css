@@ -37,9 +37,6 @@
 
 .output {
   align-items: end;
-  background-color: theme(backgroundColor.black);
-  background-image: url("/images/MAV07179.jpeg");
-  background-size: cover;
   display: grid;
   font-size: theme(fontSize.base);
   gap: 1rem;
@@ -57,6 +54,17 @@
 
   @screen md {
     font-size: theme(fontSize.4xl);
+  }
+
+  & .container {
+    position: relative;
+    z-index: theme(zIndex.20);
+  }
+
+  & .image {
+    inset: 0;
+    position: absolute;
+    z-index: theme(zIndex.10);
   }
 }
 

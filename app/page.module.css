@@ -45,7 +45,9 @@
   font-family: var(--font-bomber-escort-outline-italic);
   font-size: 16.5vw;
   font-style: italic;
+  inset-inline-start: -2.5vw;
   line-height: theme(lineHeight.none);
+  position: relative;
   text-align: center;
   z-index: theme(zIndex.20);
 }

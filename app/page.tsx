@@ -1,7 +1,6 @@
 import { clsx } from "clsx";
-import Image from "next/image";
-
-import SignupForm from "#/components/SignupForm";
+import Image from "#/components/image";
+import SignupForm from "#/components/signup-form";
 
 import styles from "./page.module.css";
 
@@ -13,7 +12,11 @@ export default function Page() {
         <h1 className={clsx(styles.title)}>UNCNSRD</h1>
 
         <div className={clsx(styles.information)}>
-          <h2 className={styles.copy}>LAUNCHING SOON</h2>
+          <h2 className={styles.copy}>
+            LAUNCHING
+            <br />
+            SOON
+          </h2>
 
           <SignupForm className={clsx(styles.signupForm)} />
         </div>

@@ -1,7 +1,0 @@
-@layer utilities {
-  .dark:invert {
-    @media (prefers-color-scheme: dark) {
-      filter: invert(1);
-    }
-  }
-}

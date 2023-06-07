@@ -4,6 +4,7 @@ import clsx from "clsx";
 import { useState } from "react";
 import { experimental_useFormStatus as useFormStatus } from "react-dom";
 import { SlEnvolope } from "react-icons/sl";
+import Image from "#/components/image";
 
 import { signUp } from "./actions";
 
@@ -26,7 +27,7 @@ export default function SignUp({ className }: { className?: string }) {
       <div className="field">
         <input
           autoComplete="true"
-          className="w-full px-4 py-2"
+          className="w-full px-4 py-2 bg-transparent border-transparent border-white border-b-white"
           name="email"
           placeholder="Sign up to our newsletter"
           required
@@ -53,6 +54,14 @@ export default function SignUp({ className }: { className?: string }) {
       </button>
       {input && (
         <output className={clsx(styles.output)}>
+          <Image
+            alt="Models on deckchairs"
+            className={styles.image}
+            fill
+            priority
+            src="/images/MAV07179.jpeg"
+          />
+
           <div className={clsx(styles.container)}>
             <p style={{ justifySelf: "start" }}>Sexy not sorry&hellip;</p>
             <p style={{ justifySelf: "end" }}>Watch this space!</p>
