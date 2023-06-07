@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@supports (font: -apple-system-body) and (-webkit-appearance: none) {
+  img[loading='lazy'] {
+    clip-path: inset(0.6px);
+  }
+}
+
+@layer base {
+  * {
+    &:focus-visible {
+      @apply outline-offset-4;
+    }
+  }
+
+  /* Create scroll-timeline on the root */
+  html {
+    scroll-timeline: --page-scroll block;
+  }
+}
+
+@layer components {
+  .field {
+    @apply relative grid items-center;
+  }
+
+  .btn {
+    @apply uppercase tracking-widest transition-colors hover:bg-opacity-50;
+  }
+
+  .btn-primary {
+    @apply border border-black text-black hover:bg-gray-200;
+
+    &.btn-solid {
+      @apply bg-black text-white hover:bg-black;
+    }
+  }
+
+  .btn-secondary {
+    @apply border border-white text-white hover:bg-gray-800;
+
+    &.btn-solid {
+      @apply bg-white text-black hover:bg-white;
+    }
+  }
+
+  .btn-sm {
+    @apply px-3 py-1 text-sm;
+  }
+
+  .btn-base {
+    @apply px-6 py-2 text-base;
+  }
+
+  .btn-lg {
+    @apply px-12 py-4 text-lg;
+  }
+
+  .pdp-test {
+    position: sticky;
+    top: 10rem;
+  }
+
+  .pin {
+    min-height: 100dvh;
+    width: 100%;
+    max-width: 100dvw;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  .pin-wrap-sticky {
+  }
+
+  .pin-wrap {
+    height: 100dvh;
+    display: grid;
+    align-items: stretch;
+    /* grid-template-columns: repeat(4, auto); */
+    justify-items: center;
+  }
+
+  @supports (animation-timeline: view()) {
+    @keyframes move {
+      to {
+        /* Move horizontally so that right edge is aligned against the viewport */
+        transform: translateX(calc(-100% + 100dvw));
+        left: 0px;
+      }
+    }
+
+    .pin {
+      /* Stretch it out, so that we create room for the horizontal scroll animation */
+      height: 400dvh;
+      overflow: visible; /* To make position sticky work … */
+
+      view-timeline-name: --section-pin-tl;
+      view-timeline-axis: block;
+    }
+
+    .pin-wrap-sticky {
+      /* Stick to Top */
+      height: 100dvh;
+      width: 100dvw;
+      position: sticky;
+      top: 0;
+
+      width: 100dvw;
+      overflow-x: hidden;
+    }
+
+    .pin-wrap {
+      height: 100dvh;
+      width: 250vmax;
+
+      /* Hook animation */
+      will-change: transform;
+      animation: linear move forwards;
+
+      /* Link animation to view-timeline */
+      animation-timeline: --section-pin-tl;
+      animation-range: contain 0% contain 100%;
+    }
+  }
+}
+
+@layer utilities {
+  .icon {
+    @apply transition-all duration-300 ease-in-out hover:scale-110;
+    gap: theme(gap[0.5]);
+  }
+
+  @keyframes move {
+    100% {
+      transform: translateX(calc(-100% + 100dvw));
+      left: 0px;
+    }
+  }
+}

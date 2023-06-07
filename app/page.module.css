@@ -42,8 +42,9 @@
 
 .title {
   filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2));
-  font-family: "Bomber Escort Outline Italic";
+  font-family: var(--font-bomber-escort-outline-italic);
   font-size: 16.5vw;
+  font-style: italic;
   line-height: theme(lineHeight.none);
   text-align: center;
   z-index: theme(zIndex.20);

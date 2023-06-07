@@ -11,36 +11,4 @@
     font-weight: theme(fontWeight.medium);
     line-height: theme(lineHeight.tight);
   }
-
-  @font-face {
-    font-family: "Bomber Escort";
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(/fonts/bomber-escort/bomberescort.ttf) format("ttf");
-  }
-
-  @font-face {
-    font-family: "Bomber Escort";
-    font-style: italic;
-    font-weight: 400;
-    font-display: swap;
-    src: url(/fonts/bomber-escort/bomberescortital.ttf) format("ttf");
-  }
-
-  @font-face {
-    font-family: "Bomber Escort Outline Italic";
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(/fonts/bomber-escort/bomberescortout.ttf) format("ttf");
-  }
-
-  @font-face {
-    font-family: "Bomber Escort Outline Italic";
-    font-style: italic;
-    font-weight: 400;
-    font-display: swap;
-    src: url(/fonts/bomber-escort/bomberescortoutital.ttf) format("ttf");
-  }
 }
