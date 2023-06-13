@@ -31,10 +31,24 @@ export const metadata = {
     }),
 };
 
+const bomberEscort = localFont({
+  src: "./fonts/bomber-escort/bomberescort.ttf",
+  display: "swap",
+  variable: "--font-bomber-escort",
+  weight: "400",
+});
+
 const bomberEscortItalic = localFont({
   src: "./fonts/bomber-escort/bomberescortital.ttf",
   display: "swap",
-  variable: "--font-bomber-escort",
+  variable: "--font-bomber-escort-italic",
+  weight: "400",
+});
+
+const bomberEscortOutline = localFont({
+  src: "./fonts/bomber-escort/bomberescortout.ttf",
+  display: "swap",
+  variable: "--font-bomber-escort-outline",
   weight: "400",
 });
 
@@ -61,7 +75,9 @@ export default async function RootLayout({
     <html
       lang="en"
       className={clsx(
+        bomberEscort.variable,
         bomberEscortItalic.variable,
+        bomberEscortOutline.variable,
         bomberEscortOutlineItalic.variable,
         montserrat.variable,
         "[color-scheme:dark]",

@@ -19,21 +19,24 @@ export default function SignUp({ className }: { className?: string }) {
       action={signUp}
       className={clsx(
         className,
-        "grid gap-4  [&:has(input:valid)>button]:opacity-100"
+        "grid gap-2 grid-flow-col [&:has(input:valid)>button]:opacity-100",
+        styles.form
       )}
-      // onSubmit={(e) => console.log(event?.target?.email.value)}
       onSubmit={(e) => setInput("submitted")}
     >
-      <div className="field">
+      <div className="field col-start-2">
         <input
           autoComplete="true"
-          className="w-full px-4 py-2 bg-transparent border-transparent border-white border-b-white"
+          className="w-full px-4 py-2 bg-transparent border-transparent border-b-white"
           name="email"
           placeholder="Sign up to our newsletter"
           required
           type="email"
         />
-        <button className="absolute right-0 mr-3" disabled={pending}>
+        <button
+          className="absolute right-0 mr-3 hidden md:block"
+          disabled={pending}
+        >
           <SlEnvolope />
         </button>
       </div>
@@ -45,7 +48,7 @@ export default function SignUp({ className }: { className?: string }) {
       /> */}
       <button
         className={clsx(
-          "btn btn-primary btn-solid btn-sm justify-self-end opacity-0",
+          "btn btn-primary btn-solid btn-sm justify-self-end opacity-0 col-start-3",
           pending ? "btn-pending" : "btn-normal"
         )}
         disabled={pending}
@@ -54,19 +57,23 @@ export default function SignUp({ className }: { className?: string }) {
       </button>
       {input && (
         <output className={clsx(styles.output)}>
-          <Image
-            alt="Models on deckchairs"
-            className={styles.image}
-            fill
-            priority
-            src="/images/MAV07179.jpeg"
-          />
+          <figure className={clsx(styles.figure)}>
+            <Image
+              alt="Models on deckchairs"
+              className={styles.image}
+              fill
+              priority
+              quality={100}
+              src="/images/MAV07179.jpeg"
+            />
+          </figure>
+
+          <h1 className={clsx(styles.title)}>UNCNSRD</h1>
 
           <div className={clsx(styles.container)}>
             <p style={{ justifySelf: "start" }}>Sexy not sorry&hellip;</p>
             <p style={{ justifySelf: "end" }}>Watch this space!</p>
           </div>
-          <h1 className={clsx(styles.title)}>UNCNSRD</h1>
         </output>
       )}
     </form>

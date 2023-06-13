@@ -1,40 +1,42 @@
 .container {
-  background-color: theme(backgroundColor.black);
-  /* background-image: url("/images/textures/abstract009.jpg"); */
-  background-size: 50%;
+  align-items: center;
   display: grid;
-  min-block-size: 100%;
-  padding: theme(padding.8);
+  grid-template-rows: 1fr auto;
+  padding: theme(padding.4);
 
   @media landscape {
     align-items: end;
   }
 }
 
+.copy {
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2));
+  font-family: var(--font-bomber-escort);
+  text-align: center;
+  text-transform: lowercase;
+
+  @screen landscape {
+    font-size: theme(fontSize.3xl);
+  }
+
+  @screen portrait {
+    font-size: theme(fontSize.2xl);
+  }
+}
+
 .information {
   align-items: end;
+  align-self: end;
   display: grid;
   justify-items: center;
+  block-size: theme(height.32);
   position: relative;
   z-index: theme(zIndex.20);
-
-  & .copy {
-    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2));
-    text-align: center;
-
-    @screen landscape {
-      font-size: theme(fontSize.6xl);
-    }
-
-    @screen portrait {
-      font-size: theme(fontSize.4xl);
-    }
-  }
 
   & .signupForm {
     align-content: start;
     display: grid;
-    inline-size: max(30%, 20rem);
+    /* inline-size: max(30%, 20rem); */
     position: relative;
     z-index: theme(zIndex.20);
   }
@@ -58,10 +60,10 @@
   animation-timing-function: linear;
   display: grid;
   grid-auto-flow: column;
-  gap: theme(gap.16);
+  gap: theme(gap[0.5]);
   inset-block: theme(inset.0);
   inset-inline-start: theme(inset.0);
-  padding: theme(padding.16);
+  padding: theme(padding.4);
   padding-block-end: theme(padding.40);
   position: fixed;
   z-index: theme(zIndex.10);
@@ -81,8 +83,8 @@
     inline-size: 400dvw;
   }
 
-  @screen lg {
-    animation-name: move-bg-landscape-lg;
+  @screen xl {
+    animation-name: move-bg-landscape-xl;
     inline-size: 200dvw;
   }
 
@@ -123,7 +125,7 @@
   }
 }
 
-@keyframes move-bg-landscape-lg {
+@keyframes move-bg-landscape-xl {
   0% {
     inset-inline-start: theme(inset.0);
   }
