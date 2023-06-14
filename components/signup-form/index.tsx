@@ -48,7 +48,7 @@ export default function SignUp({ className }: { className?: string }) {
       /> */}
       <button
         className={clsx(
-          "btn btn-primary btn-solid btn-sm justify-self-end opacity-0 col-start-3",
+          "btn btn-solid btn-sm justify-self-end opacity-0 col-start-3",
           pending ? "btn-pending" : "btn-normal"
         )}
         disabled={pending}
