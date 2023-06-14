@@ -28,7 +28,12 @@ export default function Page() {
         </div>
       </div>
       <div className={clsx(styles.background)}>
-        <figure className={clsx(styles.figure)}>
+        <figure
+          className={clsx(
+            styles.figure
+            // "bg-sky-200"
+          )}
+        >
           <Image
             alt="Model shot"
             className={clsx(styles.image)}
@@ -39,7 +44,12 @@ export default function Page() {
             src="/images/MAV8225.jpg"
           />
         </figure>
-        <figure className={clsx(styles.figure)}>
+        <figure
+          className={clsx(
+            styles.figure
+            // "bg-red-300"
+          )}
+        >
           <Image
             alt="Model shot"
             className={clsx(styles.image)}
@@ -50,7 +60,12 @@ export default function Page() {
             src="/images/MAV07147.jpg"
           />
         </figure>
-        <figure className={clsx(styles.figure)}>
+        <figure
+          className={clsx(
+            styles.figure
+            // "bg-stone-50"
+          )}
+        >
           <Image
             alt="Model shot"
             className={clsx(styles.image)}
@@ -60,7 +75,12 @@ export default function Page() {
             src="/images/MAV7862.jpg"
           />
         </figure>
-        <figure className={clsx(styles.figure)}>
+        <figure
+          className={clsx(
+            styles.figure
+            // "bg-amber-300"
+          )}
+        >
           <Image
             alt="Model shot"
             className={clsx(styles.image)}
@@ -70,7 +90,12 @@ export default function Page() {
             src="/images/MAV8628.jpg"
           />
         </figure>
-        <figure className={clsx(styles.figure)}>
+        <figure
+          className={clsx(
+            styles.figure
+            // "bg-red-300"
+          )}
+        >
           <Image
             alt="Model shot"
             className={clsx(styles.image)}
@@ -80,7 +105,12 @@ export default function Page() {
             src="/images/MAV07551.jpg"
           />
         </figure>
-        <figure className={clsx(styles.figure)}>
+        <figure
+          className={clsx(
+            styles.figure
+            // "bg-orange-600"
+          )}
+        >
           <Image
             alt="Model shot"
             className={clsx(styles.image)}
@@ -91,27 +121,44 @@ export default function Page() {
           />
         </figure>
         {/* copy */}
-        <figure className={clsx(styles.figure)}>
+        <figure
+          className={clsx(
+            styles.figure
+            // "bg-sky-200"
+          )}
+        >
           <Image
             alt="Model shot"
             className={clsx(styles.image)}
             fill
+            priority
             quality={90}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             src="/images/MAV8225.jpg"
           />
         </figure>
-        <figure className={clsx(styles.figure)}>
+        <figure
+          className={clsx(
+            styles.figure
+            // "bg-red-300"
+          )}
+        >
           <Image
             alt="Model shot"
             className={clsx(styles.image)}
             fill
+            priority
             quality={90}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             src="/images/MAV07147.jpg"
           />
         </figure>
-        <figure className={clsx(styles.figure)}>
+        <figure
+          className={clsx(
+            styles.figure
+            // "bg-stone-50"
+          )}
+        >
           <Image
             alt="Model shot"
             className={clsx(styles.image)}
@@ -121,7 +168,12 @@ export default function Page() {
             src="/images/MAV7862.jpg"
           />
         </figure>
-        <figure className={clsx(styles.figure)}>
+        <figure
+          className={clsx(
+            styles.figure
+            // "bg-amber-300"
+          )}
+        >
           <Image
             alt="Model shot"
             className={clsx(styles.image)}
@@ -131,7 +183,12 @@ export default function Page() {
             src="/images/MAV8628.jpg"
           />
         </figure>
-        <figure className={clsx(styles.figure)}>
+        <figure
+          className={clsx(
+            styles.figure
+            // "bg-red-300"
+          )}
+        >
           <Image
             alt="Model shot"
             className={clsx(styles.image)}
@@ -141,7 +198,12 @@ export default function Page() {
             src="/images/MAV07551.jpg"
           />
         </figure>
-        <figure className={clsx(styles.figure)}>
+        <figure
+          className={clsx(
+            styles.figure
+            // "bg-orange-600"
+          )}
+        >
           <Image
             alt="Model shot"
             className={clsx(styles.image)}
