@@ -15,7 +15,9 @@ export default function Page() {
             "landscape:bg-gradient-to-r landscape:from-black to-85%"
           )}
         >
-          <h1 className={clsx(styles.heading)}>UNCNSRD</h1>
+          <h1 className={clsx(styles.heading, "filter drop-shadow-md")}>
+            UNCNSRD
+          </h1>
         </span>
 
         <div className={clsx(styles.information)}>
