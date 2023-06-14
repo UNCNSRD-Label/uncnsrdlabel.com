@@ -34,7 +34,9 @@ export default function Page() {
             className={clsx(styles.image)}
             fill
             priority
-            src="/images/MAV8225.jpeg"
+            quality={90}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            src="/images/MAV8225.jpg"
           />
         </figure>
         <figure className={clsx(styles.figure)}>
@@ -42,7 +44,10 @@ export default function Page() {
             alt="Model shot"
             className={clsx(styles.image)}
             fill
-            src="/images/MAV07147.jpeg"
+            priority
+            quality={90}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            src="/images/MAV07147.jpg"
           />
         </figure>
         <figure className={clsx(styles.figure)}>
@@ -50,7 +55,9 @@ export default function Page() {
             alt="Model shot"
             className={clsx(styles.image)}
             fill
-            src="/images/MAV7862.jpeg"
+            quality={90}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            src="/images/MAV7862.jpg"
           />
         </figure>
         <figure className={clsx(styles.figure)}>
@@ -58,7 +65,9 @@ export default function Page() {
             alt="Model shot"
             className={clsx(styles.image)}
             fill
-            src="/images/MAV8628.jpeg"
+            quality={90}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            src="/images/MAV8628.jpg"
           />
         </figure>
         <figure className={clsx(styles.figure)}>
@@ -66,7 +75,9 @@ export default function Page() {
             alt="Model shot"
             className={clsx(styles.image)}
             fill
-            src="/images/MAV07551.jpeg"
+            quality={90}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            src="/images/MAV07551.jpg"
           />
         </figure>
         <figure className={clsx(styles.figure)}>
@@ -74,7 +85,9 @@ export default function Page() {
             alt="Model shot"
             className={clsx(styles.image)}
             fill
-            src="/images/MAV7949.jpeg"
+            quality={90}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            src="/images/MAV7949.jpg"
           />
         </figure>
         {/* copy */}
@@ -83,7 +96,9 @@ export default function Page() {
             alt="Model shot"
             className={clsx(styles.image)}
             fill
-            src="/images/MAV8225.jpeg"
+            quality={90}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            src="/images/MAV8225.jpg"
           />
         </figure>
         <figure className={clsx(styles.figure)}>
@@ -91,7 +106,9 @@ export default function Page() {
             alt="Model shot"
             className={clsx(styles.image)}
             fill
-            src="/images/MAV07147.jpeg"
+            quality={90}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            src="/images/MAV07147.jpg"
           />
         </figure>
         <figure className={clsx(styles.figure)}>
@@ -99,7 +116,9 @@ export default function Page() {
             alt="Model shot"
             className={clsx(styles.image)}
             fill
-            src="/images/MAV7862.jpeg"
+            quality={90}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            src="/images/MAV7862.jpg"
           />
         </figure>
         <figure className={clsx(styles.figure)}>
@@ -107,7 +126,9 @@ export default function Page() {
             alt="Model shot"
             className={clsx(styles.image)}
             fill
-            src="/images/MAV8628.jpeg"
+            quality={90}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            src="/images/MAV8628.jpg"
           />
         </figure>
         <figure className={clsx(styles.figure)}>
@@ -115,7 +136,9 @@ export default function Page() {
             alt="Model shot"
             className={clsx(styles.image)}
             fill
-            src="/images/MAV07551.jpeg"
+            quality={90}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            src="/images/MAV07551.jpg"
           />
         </figure>
         <figure className={clsx(styles.figure)}>
@@ -123,7 +146,9 @@ export default function Page() {
             alt="Model shot"
             className={clsx(styles.image)}
             fill
-            src="/images/MAV7949.jpeg"
+            quality={90}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            src="/images/MAV7949.jpg"
           />
         </figure>
       </div>
