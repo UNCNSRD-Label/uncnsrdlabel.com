@@ -9,7 +9,9 @@ export default function Page() {
     <>
       <title>UNCNSRD - LAUNCHING SOON</title>
       <div className={clsx(styles.container)}>
-        <h1 className={clsx(styles.title)}>UNCNSRD</h1>
+        <span className={clsx(styles.title, "bg-gradient-to-r from-black")}>
+          <h1 className={clsx(styles.heading)}>UNCNSRD</h1>
+        </span>
 
         <div className={clsx(styles.information)}>
           <h2 className={clsx(styles.copy, "filter drop-shadow-md")}>

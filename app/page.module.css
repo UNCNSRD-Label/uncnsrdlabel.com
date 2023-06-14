@@ -9,7 +9,7 @@
 }
 
 .copy {
-  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2));
+  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
   font-family: var(--font-bomber-escort);
   text-align: center;
   text-transform: lowercase;
@@ -19,20 +19,25 @@
   }
 
   @screen portrait {
-    font-size: theme(fontSize.2xl);
+    font-size: theme(fontSize.xl);
   }
 }
 
 .information {
   align-items: end;
   align-self: end;
-  block-size: theme(height.32);
   display: grid;
   justify-items: center;
   padding: theme(padding.4);
-  padding-block-end: theme(padding.40);
   position: relative;
   z-index: theme(zIndex.20);
+
+  @screen landscape {
+    padding-block-end: theme(padding.8);
+  }
+
+  @screen portrait {
+  }
 
   & .signupForm {
     align-content: start;
@@ -44,23 +49,37 @@
 
 .title {
   align-items: center;
-  background-color: theme(backgroundColor.black);
-  background-repeat: repeat;
-  background-size: 100%;
   display: grid;
-  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2));
-  font-family: Bomber Escort;
-  font-family: var(--font-bomber-escort-outline-italic);
-  font-size: 17vh;
-  font-style: italic;
   height: 100%;
-  line-height: theme(lineHeight.none);
-  min-width: 20%;
+  justify-content: center;
   position: absolute;
-  rotate: 180deg;
-  text-orientation: mixed;
-  writing-mode: vertical-lr;
   z-index: theme(zIndex.20);
+
+  & .heading {
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
+    font-family: Bomber Escort;
+    font-family: var(--font-bomber-escort-outline-italic);
+    font-style: italic;
+    height: 100%;
+    line-height: theme(lineHeight.none);
+    padding-block: 0.5ch;
+    rotate: 180deg;
+    text-align: center;
+    text-orientation: mixed;
+    writing-mode: vertical-lr;
+
+    @screen landscape {
+      font-size: 17vh;
+      padding-block-start: unset;
+      padding-block-end: 0.325ch;
+      text-align: center;
+    }
+
+    @screen portrait {
+      font-size: 14vh;
+      text-align: end;
+    }
+  }
 }
 
 .background {
@@ -79,17 +98,26 @@
     aspect-ratio: theme(aspectRatio[3/4]);
     /* filter: brightness(0.9); */
     filter: contrast(1) saturate(1);
+    overflow: hidden;
     position: relative;
-    transition: filter 0.4s ease-in-out;
+    /* transition: all 1s theme(transitionTimingFunction.in);
 
     &:focus,
     &:hover {
       filter: contrast(0.95) saturate(1.2);
-    }
+      scale: 1.01;
+    } */
 
     & .image {
       object-fit: cover;
       object-position: bottom;
+      transition: all 1s theme(transitionTimingFunction.in-out);
+
+      &:focus,
+      &:hover {
+        filter: contrast(0.95) saturate(1.2);
+        scale: 1.05;
+      }
     }
   }
 }
