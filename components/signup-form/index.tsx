@@ -28,6 +28,7 @@ export default function SignUp({ className }: { className?: string }) {
         <input
           autoComplete="true"
           className="w-full px-4 py-2 bg-transparent border-transparent border-b-white placeholder:text-white filter drop-shadow-md text-sm sm:text-base"
+          enterKeyHint="send"
           name="email"
           placeholder="Sign up to our newsletter"
           required
