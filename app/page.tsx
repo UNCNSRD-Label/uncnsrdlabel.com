@@ -37,7 +37,6 @@ export default function Page() {
             alt="Model shot"
             className={clsx(styles.image)}
             fill
-            priority
             src="/images/MAV07147.jpeg"
           />
         </figure>
@@ -46,7 +45,6 @@ export default function Page() {
             alt="Model shot"
             className={clsx(styles.image)}
             fill
-            priority
             src="/images/MAV7862.jpeg"
           />
         </figure>
@@ -55,7 +53,6 @@ export default function Page() {
             alt="Model shot"
             className={clsx(styles.image)}
             fill
-            priority
             src="/images/MAV8628.jpeg"
           />
         </figure>
@@ -64,7 +61,6 @@ export default function Page() {
             alt="Model shot"
             className={clsx(styles.image)}
             fill
-            priority
             src="/images/MAV07551.jpeg"
           />
         </figure>
@@ -73,7 +69,6 @@ export default function Page() {
             alt="Model shot"
             className={clsx(styles.image)}
             fill
-            priority
             src="/images/MAV7949.jpeg"
           />
         </figure>
@@ -83,7 +78,6 @@ export default function Page() {
             alt="Model shot"
             className={clsx(styles.image)}
             fill
-            priority
             src="/images/MAV8225.jpeg"
           />
         </figure>
@@ -92,7 +86,6 @@ export default function Page() {
             alt="Model shot"
             className={clsx(styles.image)}
             fill
-            priority
             src="/images/MAV07147.jpeg"
           />
         </figure>
@@ -101,7 +94,6 @@ export default function Page() {
             alt="Model shot"
             className={clsx(styles.image)}
             fill
-            priority
             src="/images/MAV7862.jpeg"
           />
         </figure>
@@ -110,7 +102,6 @@ export default function Page() {
             alt="Model shot"
             className={clsx(styles.image)}
             fill
-            priority
             src="/images/MAV8628.jpeg"
           />
         </figure>
@@ -119,7 +110,6 @@ export default function Page() {
             alt="Model shot"
             className={clsx(styles.image)}
             fill
-            priority
             src="/images/MAV07551.jpeg"
           />
         </figure>
@@ -128,7 +118,6 @@ export default function Page() {
             alt="Model shot"
             className={clsx(styles.image)}
             fill
-            priority
             src="/images/MAV7949.jpeg"
           />
         </figure>
