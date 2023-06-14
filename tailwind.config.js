@@ -14,6 +14,8 @@ module.exports = {
   theme: {
     extend: {
       aspectRatio: {
+        "16/9": "16 / 9",
+        "21/9": "21 / 9",
         "3/4": "3 / 4",
         "4/3": "4 / 3",
       },
@@ -49,15 +51,6 @@ module.exports = {
       screens: {
         landscape: { raw: "(orientation: landscape)" }, // => @media (orientation: landscape) { ... }
         portrait: { raw: "(orientation: portrait)" }, // => @media (orientation: portrait) { ... }
-        //   tablet: "640px", // => @media (min-width: 640px) { ... }
-        //   laptop: "1024px", // => @media (min-width: 1024px) { ... }
-        //   desktop: "1280px", // => @media (min-width: 1280px) { ... }
-        //   xs: { max: "639px" },
-        //   sm: { min: "640px", max: "767px" },
-        //   md: { min: "768px", max: "1023px" },
-        //   lg: { min: "1024px", max: "1279px" },
-        //   xl: { min: "1280px", max: "1535px" },
-        //   "2xl": { min: "1536px" },
       },
     },
     future: {

@@ -10,7 +10,10 @@ export default function Page() {
       <title>UNCNSRD - LAUNCHING SOON</title>
       <div className={clsx(styles.container)}>
         <span
-          className={clsx(styles.title, "bg-gradient-to-r from-black to-85%")}
+          className={clsx(
+            styles.title,
+            "landscape:bg-gradient-to-r landscape:from-black to-85%"
+          )}
         >
           <h1 className={clsx(styles.heading)}>UNCNSRD</h1>
         </span>

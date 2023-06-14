@@ -50,10 +50,20 @@
 .title {
   align-items: center;
   display: grid;
-  height: 100%;
   justify-content: center;
+  pointer-events: none;
   position: absolute;
   z-index: theme(zIndex.20);
+
+  @screen landscape {
+    block-size: 100%;
+    /* padding-block-start: unset; */
+    /* padding-block-end: 0.325ch; */
+  }
+
+  @screen portrait {
+    inline-size: 100%;
+  }
 
   & .heading {
     filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
@@ -62,21 +72,19 @@
     font-style: italic;
     height: 100%;
     line-height: theme(lineHeight.none);
-    padding-block: 0.5ch;
-    rotate: 180deg;
     text-align: center;
-    text-orientation: mixed;
-    writing-mode: vertical-lr;
 
     @screen landscape {
-      font-size: 16vh;
-      padding-block-start: unset;
+      font-size: 12vi;
       padding-block-end: 0.325ch;
+      rotate: 180deg;
       text-align: center;
+      text-orientation: mixed;
+      writing-mode: vertical-lr;
     }
 
     @screen portrait {
-      font-size: 14vh;
+      font-size: 5ch;
       text-align: end;
     }
   }
