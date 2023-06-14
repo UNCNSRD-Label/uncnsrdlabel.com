@@ -69,7 +69,7 @@
     writing-mode: vertical-lr;
 
     @screen landscape {
-      font-size: 17vh;
+      font-size: 16vh;
       padding-block-start: unset;
       padding-block-end: 0.325ch;
       text-align: center;
