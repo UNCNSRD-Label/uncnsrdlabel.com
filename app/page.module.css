@@ -2,7 +2,6 @@
   align-items: center;
   display: grid;
   grid-template-rows: 1fr auto;
-  padding: theme(padding.4);
 
   @media landscape {
     align-items: end;
@@ -27,109 +26,79 @@
 .information {
   align-items: end;
   align-self: end;
+  block-size: theme(height.32);
   display: grid;
   justify-items: center;
-  block-size: theme(height.32);
+  padding: theme(padding.4);
+  padding-block-end: theme(padding.40);
   position: relative;
   z-index: theme(zIndex.20);
 
   & .signupForm {
     align-content: start;
     display: grid;
-    /* inline-size: max(30%, 20rem); */
     position: relative;
     z-index: theme(zIndex.20);
   }
 }
 
 .title {
+  align-items: center;
+  background-color: theme(backgroundColor.black);
+  background-repeat: repeat;
+  background-size: 100%;
+  display: grid;
   filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2));
+  font-family: Bomber Escort;
   font-family: var(--font-bomber-escort-outline-italic);
-  font-size: 15.5vw;
+  font-size: 17vh;
   font-style: italic;
-  inset-inline-start: -2.5vw;
+  height: 100%;
   line-height: theme(lineHeight.none);
-  position: relative;
-  text-align: center;
+  min-width: 20%;
+  position: absolute;
+  rotate: 180deg;
+  text-orientation: mixed;
+  writing-mode: vertical-lr;
   z-index: theme(zIndex.20);
 }
 
 .background {
-  animation-duration: 90s;
+  animation-duration: 240s;
   animation-iteration-count: infinite;
+  animation-name: move-bg;
   animation-timing-function: linear;
   display: grid;
   grid-auto-flow: column;
-  gap: theme(gap[0.5]);
-  inset-block: theme(inset.0);
-  inset-inline-start: theme(inset.0);
-  padding: theme(padding.4);
-  padding-block-end: theme(padding.40);
+  inline-size: calc(((100dvh / 4) * 3) * 6 * 2);
+  inset: theme(inset.0);
   position: fixed;
   z-index: theme(zIndex.10);
 
-  @screen portrait {
-    animation-name: move-bg-portrait;
-    inline-size: 600dvw;
-  }
-
-  @screen sm {
-    animation-name: move-bg-landscape-sm;
-    inline-size: 600dvw;
-  }
-
-  @screen md {
-    animation-name: move-bg-landscape-md;
-    inline-size: 400dvw;
-  }
-
-  @screen xl {
-    animation-name: move-bg-landscape-xl;
-    inline-size: 200dvw;
-  }
-
   & .figure {
+    aspect-ratio: theme(aspectRatio[3/4]);
+    /* filter: brightness(0.9); */
+    filter: contrast(1) saturate(1);
     position: relative;
+    transition: filter 0.4s ease-in-out;
+
+    &:focus,
+    &:hover {
+      filter: contrast(0.95) saturate(1.2);
+    }
 
     & .image {
-      object-fit: contain;
+      object-fit: cover;
       object-position: bottom;
     }
   }
 }
 
-@keyframes move-bg-portrait {
+@keyframes move-bg {
   0% {
-    inset-inline-start: theme(inset.0);
+    translate: 0;
   }
   100% {
-    inset-inline-start: calc(theme(inset.8) - 300dvw);
-  }
-}
-
-@keyframes move-bg-landscape-sm {
-  0% {
-    inset-inline-start: theme(inset.0);
-  }
-  100% {
-    inset-inline-start: calc(theme(inset.8) - 300dvw);
-  }
-}
-
-@keyframes move-bg-landscape-md {
-  0% {
-    inset-inline-start: theme(inset.0);
-  }
-  100% {
-    inset-inline-start: calc(theme(inset.8) - 200dvw);
-  }
-}
-
-@keyframes move-bg-landscape-xl {
-  0% {
-    inset-inline-start: theme(inset.0);
-  }
-  100% {
-    inset-inline-start: calc(theme(inset.8) - 100dvw);
+    translate: calc(100dvh * -6);
   }
 }

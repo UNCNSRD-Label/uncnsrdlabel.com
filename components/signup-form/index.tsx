@@ -27,7 +27,7 @@ export default function SignUp({ className }: { className?: string }) {
       <div className="field col-start-2">
         <input
           autoComplete="true"
-          className="w-full px-4 py-2 bg-transparent border-transparent border-b-white"
+          className="w-full px-4 py-2 bg-transparent border-transparent border-b-white placeholder:text-white filter drop-shadow-md"
           name="email"
           placeholder="Sign up to our newsletter"
           required
