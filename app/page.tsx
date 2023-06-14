@@ -12,7 +12,7 @@ export default function Page() {
         <span
           className={clsx(
             styles.title,
-            "landscape:bg-gradient-to-r landscape:from-black to-85%"
+            "landscape:bg-gradient-to-r landscape:from-black/50 to-85%"
           )}
         >
           <h1 className={clsx(styles.heading, "filter drop-shadow-md")}>
