@@ -82,6 +82,12 @@
     justify-items: center;
   }
 
+  @supports not (animation-timeline: view()) {
+    .pin-wrap-sticky {
+      overflow-x: auto;
+    }
+  }
+  
   @supports (animation-timeline: view()) {
     @keyframes move {
       to {
@@ -104,6 +110,7 @@
       /* Stick to Top */
       height: 100dvh;
       width: 100dvw;
+      overflow-x: hidden;
       position: sticky;
       top: 0;
 

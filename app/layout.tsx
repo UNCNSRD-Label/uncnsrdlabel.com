@@ -1,4 +1,6 @@
 import { clsx } from 'clsx';
+import Footer from 'components/layout/footer';
+import Logos from 'components/layout/logos';
 import Navbar from 'components/layout/navbar';
 import NavbarContent from 'components/layout/navbar/content';
 import Progress from 'components/layout/progress';
@@ -6,7 +8,6 @@ import { Inter, Montserrat } from 'next/font/google';
 import localFont from 'next/font/local';
 import Script from 'next/script';
 import { ReactNode, Suspense } from 'react';
-
 import './globals.css';
 
 const { TWITTER_CREATOR, TWITTER_SITE, SITE_NAME } = process.env;
@@ -62,22 +63,6 @@ const montserrat = Montserrat({
 });
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
-  // const navRef = useRef(null);
-  // const mainRef = useRef(null);
-
-  // const { inView, entry, stop } = useIntersectionObserver(
-  //   navRef,
-  //   {
-  //     root: mainRef,
-  //     threshold: 0.5
-  //   },
-  //   (entries) => {
-  //     console.log({entries})
-  //   }
-  // )
-
-  // console.log({inView, entry, stop})
-
   return (
     <html
       lang="en"
@@ -102,7 +87,16 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           <NavbarContent />
         </Navbar>
         <Suspense>
-          <main className="grid grid-rows-[1fr_auto]">{children}</main>
+          <main className="grid grid-rows-[1fr_auto] relative">
+            {children}
+            <Logos theme="dark" />
+          </main>
+          <Suspense>
+          <Suspense>
+            {/* @ts-expect-error Server Component */}
+            <Footer />
+          </Suspense>
+          </Suspense>
           <Script
             id="google-tag-manager"
             dangerouslySetInnerHTML={{

@@ -2,17 +2,14 @@
 
 import { clsx } from 'clsx';
 import { useSelectedLayoutSegment } from 'next/navigation';
-import { forwardRef } from 'react';
 
 type Props = { children: React.ReactNode };
 
-export type Ref = HTMLElement | null;
-
-export const Navbar = forwardRef<Ref, Props>(function Navbar(props, ref = null) {
+export default function Navbar(props: Props) {
   const segment = useSelectedLayoutSegment();
 
   const isFixedSegment = () => [null, 'product'].includes(segment);
-  console.log({ segment });
+
   return (
     <nav
       className={clsx(
@@ -21,11 +18,8 @@ export const Navbar = forwardRef<Ref, Props>(function Navbar(props, ref = null) 
           ? 'fixed [&_.icon.fill]:fill-white [&_.icon.stroke]:stroke-white'
           : 'sticky [&_.icon.fill]:fill-black [&_.icon.stroke]:stroke-black'
       )}
-      ref={ref}
     >
       {props.children}
     </nav>
   );
-});
-
-export default Navbar;
+}

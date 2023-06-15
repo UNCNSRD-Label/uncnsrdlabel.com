@@ -3,7 +3,6 @@ import { Suspense } from 'react';
 
 import Cart from 'components/cart';
 import CartIcon from 'components/icons/cart';
-import LogotypeIcon from 'components/icons/logotype';
 import Search from 'components/search';
 import { getMenu } from 'lib/shopify';
 import { SlHeart, SlUser } from 'react-icons/sl';
@@ -22,9 +21,9 @@ export default async function Navbar() {
         </div>
       </div>
       <div className="hidden w-1/3 md:block">
-        <Link href="/" aria-label="Go back home" className="justify-center md:flex">
+        {/* <Link href="/" aria-label="Go back home" className="justify-center md:flex">
           <LogotypeIcon className="h-12 drop-shadow transition duration-300 ease-in-out hover:scale-110" />
-        </Link>
+        </Link> */}
       </div>
 
       <div className="flex w-1/3 items-center justify-end gap-5">

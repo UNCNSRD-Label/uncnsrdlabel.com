@@ -1,23 +1,25 @@
 import { clsx } from 'clsx';
+import { forwardRef } from 'react';
 
-export default function LogoIcon({
-  className,
-  style
-}: {
-  className?: string;
+type Props = { className?: string;
   style?: React.CSSProperties;
-}) {
+};
+
+export type Ref = SVGSVGElement | null;
+
+export const Logotype = forwardRef<Ref, Props>(function Logotype(props, ref = null) {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       aria-label={`${process.env.SITE_NAME} logotype`}
-      viewBox="0 0 1280 200"
-      strokeWidth="1.5"
+      className={clsx(props.className, 'icon fill')}
+      ref={ref}
+      shapeRendering="geometricPrecision"
       strokeLinecap="round"
       strokeLinejoin="round"
-      shapeRendering="geometricPrecision"
-      className={clsx(className, 'icon fill')}
-      style={style}
+      strokeWidth="1.5"
+      style={props.style}
+      viewBox="0 0 1280 200"
+      xmlns="http://www.w3.org/2000/svg"
     >
       <g transform="matrix(1.04504,0,0,1.18316,-128.718,-123.655)">
         <g transform="matrix(222,0,0,222,104,233.431)">
@@ -44,4 +46,6 @@ export default function LogoIcon({
       </g>
     </svg>
   );
-}
+});
+
+export default Logotype;

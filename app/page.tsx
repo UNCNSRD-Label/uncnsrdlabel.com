@@ -1,8 +1,6 @@
 import { HorizontalScroll } from 'components/horizontal-scroll';
-import Footer from 'components/layout/footer';
 import { Video, type VideoProps } from 'components/video';
 import Link from 'next/link';
-import { Suspense } from 'react';
 
 export const runtime = 'edge';
 
@@ -35,30 +33,26 @@ const video: VideoProps = {
 export default async function HomePage() {
   return (
     <>
-      <Video
-        {...video}
-        className="snap-start"
-        style={{
-          filter: 'saturate(1.5)'
-        }}
-      />
-      {/* @ts-expect-error Server Component */}
-      <HorizontalScroll className="snap-start bg-black" />
-      <section className="grid min-w-fit place-content-center bg-black p-24">
+      <section className="relative grid">
+        <Video
+          {...video}
+          className="snap-start"
+          style={{
+            filter: 'saturate(1.5)'
+          }}
+        />
+      </section>
+      <section className="relative grid">
+        {/* @ts-expect-error Server Component */}
+        <HorizontalScroll className="snap-start bg-black" />
         <Link
           href="/search"
           aria-label="Go to the shop"
-          className="btn btn-secondary btn-base btn-outline btn-lg"
+          className="btn btn-secondary btn-base btn-outline btn-lg absolute z-20 self-center justify-self-center"
         >
           Shop
         </Link>
       </section>
-      <Suspense>
-        <Suspense>
-          {/* @ts-expect-error Server Component */}
-          <Footer />
-        </Suspense>
-      </Suspense>
     </>
   );
 }

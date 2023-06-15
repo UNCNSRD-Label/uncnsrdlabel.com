@@ -1,18 +1,28 @@
-export default function LogoIcon({ className }: { className?: string }) {
+import { clsx } from 'clsx';
+import { forwardRef } from 'react';
+
+type Props = { className?: string;
+  style?: React.CSSProperties;
+};
+
+export type Ref = SVGSVGElement | null;
+
+export const Logomark = forwardRef<Ref, Props>(function Logomark(props, ref = null) {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      aria-label={`${process.env.SITE_NAME} logo`}
-      viewBox="0 0 320 320"
-      strokeWidth="1.5"
+      aria-label={`${process.env.SITE_NAME} logotype`}
+      className={clsx(props.className, 'icon fill')}
+      ref={ref}
+      shapeRendering="geometricPrecision"
       strokeLinecap="round"
       strokeLinejoin="round"
-      shapeRendering="geometricPrecision"
-      className={className}
+      strokeWidth="1.5"
+      style={props.style}
+      viewBox="0 0 320 320"
+      xmlns="http://www.w3.org/2000/svg"
     >
       <g transform="translate(0,320) scale(0.1,-0.1)">
         <path
-          className=" fill-black"
           d="M370 2663 c1 -41 30 -153 52 -199 13 -27 44 -83 68 -124 24 -41 43
 -82 43 -90 -1 -8 -60 -253 -132 -544 -97 -390 -131 -545 -131 -591 0 -71 22
 -152 57 -212 24 -41 137 -149 180 -172 16 -8 263 -11 920 -11 l898 0 64 37
@@ -30,4 +40,6 @@ c69 41 214 187 243 244 10 19 106 387 213 818 l196 785 -31 24 c-16 13 -30 30
       </g>
     </svg>
   );
-}
+});
+
+export default Logomark;

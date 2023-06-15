@@ -5,7 +5,6 @@ import { Suspense } from 'react';
 import { Product, WithContext } from 'schema-dts';
 
 import Grid from 'components/grid';
-import Footer from 'components/layout/footer';
 import ProductGridItems from 'components/layout/product-grid-items';
 import { AddToCart } from 'components/product/add-to-cart';
 // import { Details } from 'components/product/details';
@@ -150,10 +149,6 @@ export default async function ProductPage({ params }: { params: { handle: string
       <Suspense>
         {/* @ts-expect-error Server Component */}
         <RelatedProducts id={product.id} />
-        <Suspense>
-          {/* @ts-expect-error Server Component */}
-          <Footer />
-        </Suspense>
       </Suspense>
       <script
         type="application/ld+json"

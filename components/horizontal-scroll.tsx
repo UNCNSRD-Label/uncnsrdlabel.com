@@ -11,15 +11,15 @@ export async function HorizontalScroll({ className }: { className?: string }) {
   const images = page.images;
 
   return (
-    <section
+    <div
       className={clsx(
         className,
         'pin relative grid w-full max-w-[100dvw] justify-items-center py-0.5'
       )}
     >
-      <div className="pin-wrap-sticky w-full snap-x overflow-x-auto">
+      <div className="pin-wrap-sticky w-full snap-x">
         <div
-          className="pin-wrap grid w-[calc(600dvw_+_theme(gap[0.5]))] gap-0.5 py-24 sm:w-[calc(300dvw_+_theme(gap[0.5]))] xl:w-[calc(200dvw_+_theme(gap[0.5]))]"
+          className="pin-wrap grid w-[calc((((100dvh_/_4)_*_3)_+_theme(gap[0.5]))_*_6)] gap-0.5"
           style={{
             gridTemplateColumns: `repeat(${images.length}, 1fr)`
           }}
@@ -37,6 +37,6 @@ export async function HorizontalScroll({ className }: { className?: string }) {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }
