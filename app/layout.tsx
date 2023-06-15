@@ -89,7 +89,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         <Suspense>
           <main className="grid grid-rows-[1fr_auto] relative">
             {children}
-            <Logos theme="dark" />
+            <Logos theme="light" />
           </main>
           <Suspense>
           <Suspense>

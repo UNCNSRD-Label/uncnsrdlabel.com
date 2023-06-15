@@ -1,6 +1,7 @@
 'use client';
 
 import { useIntersectionObserver } from '@react-hookz/web';
+import { clsx } from 'clsx';
 import LogomarkIcon from 'components/icons/logomark';
 import LogotypeIcon from 'components/icons/logotype';
 import { useRef } from 'react';
@@ -22,45 +23,19 @@ export default function Logos({theme = 'light'}: Props) {
       ref={rootRef}
     >
       <LogomarkIcon
-        className="bottom-[calc(100dvh_-_theme('spacing.32'))] fill-white h-16"
+        className={clsx("bottom-[calc(100dvh_-_theme('spacing.32'))] h-16", theme === 'light' ? 'fill-white' : 'fill-black')}
         ref={logomarkRef}
         style={{
           position: (rootIntersection?.intersectionRatio ?? 0) > 0 ? 'absolute' : 'fixed',
         }}
       />
       <LogotypeIcon
-        className="bottom-20 fill-white w-56"
+        className={clsx("bottom-20 fill-white w-56", theme === 'light' ? 'fill-white' : 'fill-black')}
         ref={logotypeRef}
         style={{
           position: (rootIntersection?.intersectionRatio ?? 0) > 0 ? 'absolute' : 'fixed',
         }}
       />
-      {/* <Image
-        alt="UNCNSRD logomark"
-        className="bottom-[calc(100dvh_-_theme('spacing.32'))]"
-        height={60}
-        ref={logomarkRef}
-        sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
-        src={`/images/logos/logomark-${theme}.svg`}
-        style={{
-          filter: 'invert(1)',
-          position: (rootIntersection?.intersectionRatio ?? 0) > 0 ? 'absolute' : 'fixed'
-        }}
-        width={60}
-      /> */}
-      {/* <Image
-        alt="UNCNSRD logotype"
-        className="bottom-20"
-        height={60}
-        ref={logotypeRef}
-        sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
-        src={`/images/logos/logotype-${theme}.svg`}
-        style={{
-          filter: 'invert(1)',
-          position: (rootIntersection?.intersectionRatio ?? 0) > 0 ? 'absolute' : 'fixed'
-        }}
-        width={270}
-      /> */}
     </div>
   );
 }
