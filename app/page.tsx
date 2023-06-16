@@ -58,7 +58,10 @@ export default async function HomePage() {
         <Link
           href="/search"
           aria-label="Go to the shop"
-          className="btn btn-secondary btn-base btn-outline btn-lg absolute z-20 self-center justify-self-center"
+          className="bg-white grid place-content-center uppercase text-xl p-6 fixed z-20 bottom-6 right-6 aspect-square"
+          style={{
+            'mix-blend-mode': 'screen'
+          }}
         >
           Shop
         </Link>
