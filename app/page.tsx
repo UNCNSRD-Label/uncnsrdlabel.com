@@ -58,9 +58,10 @@ export default async function HomePage() {
         <Link
           href="/search"
           aria-label="Go to the shop"
-          className="bg-white grid place-content-center uppercase text-xl p-6 fixed z-20 bottom-6 right-6 aspect-square"
+          className="fixed bottom-6 right-6 z-20 grid aspect-square place-content-center bg-white p-6 text-xl uppercase"
           style={{
-            'mix-blend-mode': 'screen'
+            // @ts-expect-error Object literal may only specify known properties, and ''mix-blend-mode'' does not exist in type 'Properties<string | number, string & {}>'
+            "mix-blend-mode": "screen",
           }}
         >
           Shop
