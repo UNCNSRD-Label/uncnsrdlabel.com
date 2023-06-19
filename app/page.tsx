@@ -26,22 +26,16 @@ const video: VideoProps = {
   className: "snap-start",
   loop: true,
   playsinline: true,
-  poster: "/videos/placeholder.jpeg",
+  poster: "/videos/_2XUijBuSZw-1080pp-1687201373.png",
   // title: 'Video title',
-  url: "/videos/placeholder.mp4",
+  url: "/videos/_2XUijBuSZw-1080pp-1687201373.mp4",
 };
 
 export default async function HomePage() {
   return (
     <>
       <section className="relative grid">
-        <Video
-          {...video}
-          className="snap-start"
-          style={{
-            filter: "saturate(1.5)",
-          }}
-        />
+        <Video {...video} className="snap-start" />
       </section>
       <section className="relative grid snap-start bg-black">
         {/* @ts-expect-error Server Component */}
