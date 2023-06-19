@@ -27,7 +27,7 @@
   }
 
   .btn {
-    @apply uppercase tracking-widest transition-colors hover:bg-opacity-50;
+    @apply uppercase tracking-widest transition-colors ease-in-out hover:bg-opacity-50;
   }
 
   .btn-primary {
@@ -44,6 +44,22 @@
     &.btn-solid {
       @apply bg-white text-black hover:bg-white;
     }
+  }
+
+  .btn-tertiary {
+    @apply border border-white text-white hover:bg-hotPink;
+
+    &.btn-solid {
+      @apply bg-hotPink text-white hover:bg-white hover:text-black;
+    }
+  }
+
+  .btn-borderless {
+    @apply !border-none;
+  }
+
+  .btn-rounded {
+    @apply p-3 rounded-full;
   }
 
   .btn-sm {
