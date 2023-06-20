@@ -10,7 +10,7 @@ export default function SearchLayout({
 }) {
   return (
     <Suspense>
-      <div className="mx-auto flex w-full flex-col bg-white py-6 text-black dark:bg-black dark:text-white md:flex-row">
+      <div className="mx-auto flex w-full flex-col bg-white py-6 pb-28 text-black dark:bg-black dark:text-white md:flex-row">
         <div className="order-first flex-none md:w-1/6">
           <Collections />
         </div>

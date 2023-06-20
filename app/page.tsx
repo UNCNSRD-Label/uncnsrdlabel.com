@@ -34,25 +34,21 @@ const video: VideoProps = {
 export default async function HomePage() {
   return (
     <>
-      <section className="relative grid max-h-[100dvh] snap-start items-center overflow-hidden">
+      <section className="relative grid h-[100dvh] snap-start items-center overflow-hidden">
         <Video {...video} className="" />
         <Link
           href="/search"
           aria-label="Go to the shop"
-          className="absolute left-6 z-20 grid justify-items-center gap-4 p-6 uppercase text-white"
+          className="btn btn-border btn-secondary btn-base absolute z-20 justify-self-center whitespace-nowrap uppercase text-white"
         >
-          <h2 className="font-brand text-4xl">Pre-Launch Collection</h2>
-          <span>Now live</span>
-          <span className="btn btn-solid btn-secondary btn-base max-w-min whitespace-nowrap">
-            Shop now
-          </span>
+          Shop now
         </Link>
       </section>
       <section className="relative grid snap-start bg-black">
         {/* @ts-expect-error Server Component */}
         <HorizontalScroll className="" />
       </section>
-      <figure className="relative grid h-[100dvh] snap-start bg-black">
+      <figure className="relative hidden h-[100dvh] snap-start bg-black sm:grid">
         <Image
           alt="Model wearing UNCNSRD swimwear"
           className="h-full object-cover"

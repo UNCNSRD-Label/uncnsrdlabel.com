@@ -23,7 +23,7 @@ export const Video: FC<VideoProps> = ({
   <figure
     className={clsx(
       className,
-      "relative w-full overflow-hidden sm:aspect-video sm:h-auto"
+      "relative h-full w-full overflow-hidden sm:aspect-video"
     )}
   >
     <Image
