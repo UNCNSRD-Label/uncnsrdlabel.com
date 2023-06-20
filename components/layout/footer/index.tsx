@@ -1,20 +1,20 @@
-import Link from 'next/link';
+import Link from "next/link";
 
-import { getMenu } from 'lib/shopify';
-import { Menu } from 'lib/shopify/types';
-import SignUp from './sign-up';
+import { getMenu } from "lib/shopify";
+import { Menu } from "lib/shopify/types";
+import SignUp from "./sign-up";
 
 const { SITE_NAME } = process.env;
 
 export default async function Footer() {
   const currentYear = new Date().getFullYear();
-  const copyrightDate = 2023 + (currentYear > 2023 ? `-${currentYear}` : '');
-  const customerCareMenu = await getMenu('customer-care');
-  const informationMenu = await getMenu('information');
-  const followUsMenu = await getMenu('follow-us');
+  const copyrightDate = 2023 + (currentYear > 2023 ? `-${currentYear}` : "");
+  const customerCareMenu = await getMenu("customer-care");
+  const informationMenu = await getMenu("information");
+  const followUsMenu = await getMenu("follow-us");
 
   return (
-    <footer className="snap-start border-t border-gray-700 bg-white text-black">
+    <footer className="relative z-40 border-t border-gray-700 bg-white text-black">
       <div className="mx-auto w-full max-w-7xl px-6">
         <div className="grid grid-cols-1 items-start gap-8 border-b border-gray-700 py-12 transition-colors duration-150 lg:grid-cols-12">
           <nav className="col-span-1 grid gap-8 lg:col-span-8 lg:grid-cols-9">

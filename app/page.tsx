@@ -23,7 +23,6 @@ export const metadata = {
 const video: VideoProps = {
   autoPlay: true,
   alt: "Campaign video",
-  className: "snap-start",
   loop: true,
   playsinline: true,
   poster: "/videos/_2XUijBuSZw-1080pp-1687201373.png",
@@ -34,7 +33,7 @@ const video: VideoProps = {
 export default async function HomePage() {
   return (
     <>
-      <section className="relative grid h-[100dvh] snap-start items-center overflow-hidden">
+      <section className="relative grid h-[100dvh] items-center overflow-hidden sm:snap-start">
         <Video {...video} className="" />
         <Link
           href="/search"
@@ -44,11 +43,11 @@ export default async function HomePage() {
           Shop now
         </Link>
       </section>
-      <section className="relative grid snap-start bg-black">
+      <section className="relative grid bg-black sm:snap-start">
         {/* @ts-expect-error Server Component */}
         <HorizontalScroll className="" />
       </section>
-      <figure className="relative hidden h-[100dvh] snap-start bg-black sm:grid">
+      <figure className="relative hidden h-[100dvh] bg-black sm:grid sm:snap-start">
         <Image
           alt="Model wearing UNCNSRD swimwear"
           className="h-full object-cover"

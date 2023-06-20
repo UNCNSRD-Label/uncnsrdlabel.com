@@ -25,10 +25,7 @@ export async function HorizontalScroll({ className }: { className?: string }) {
           }}
         >
           {[...images].map((image) => (
-            <figure
-              className="item relative aspect-3/4 w-full snap-start"
-              key={image.id}
-            >
+            <figure className="item relative aspect-3/4 w-full" key={image.id}>
               <Image
                 alt={image.altText}
                 className="h-full object-cover"
