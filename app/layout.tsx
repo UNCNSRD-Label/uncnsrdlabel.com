@@ -1,9 +1,9 @@
 import { clsx } from "clsx";
+import Banner from "components/banner";
 import Footer from "components/layout/footer";
 import Logos from "components/layout/logos";
 import Navbar from "components/layout/navbar";
 import NavbarContent from "components/layout/navbar/content";
-import Banner from "components/banner";
 import Progress from "components/layout/progress";
 import { Inter, Montserrat } from "next/font/google";
 import localFont from "next/font/local";
@@ -97,10 +97,8 @@ export default async function RootLayout({
           <NavbarContent />
         </Navbar>
         <Suspense>
-          <main className="relative grid grid-rows-[1fr_auto]">
-            {children}
-            <Logos theme="light" />
-          </main>
+          <main className="relative grid grid-rows-[1fr_auto]">{children}</main>
+          <Logos theme="light" />
           <Suspense>
             <Suspense>
               {/* @ts-expect-error Server Component */}
