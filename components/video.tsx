@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import clsx from 'clsx';
-import Image from 'next/image';
-import { type ReactPlayerProps } from 'react-player';
-import ReactPlayer from 'react-player/lazy';
+import clsx from "clsx";
+import Image from "next/image";
+import { type ReactPlayerProps } from "react-player";
+import ReactPlayer from "react-player/lazy";
 
-import { FC } from 'react';
+import { FC } from "react";
 
 export type VideoProps = ReactPlayerProps;
 
@@ -20,7 +20,12 @@ export const Video: FC<VideoProps> = ({
   title,
   ...props
 }) => (
-  <figure className={clsx(className, 'relative min-h-[100dvh] h-[100dvh] sm:h-auto w-full sm:aspect-video overflow-hidden')}>
+  <figure
+    className={clsx(
+      className,
+      "relative w-full overflow-hidden sm:aspect-video sm:h-auto"
+    )}
+  >
     <Image
       alt={alt}
       className="absolute h-full object-cover"

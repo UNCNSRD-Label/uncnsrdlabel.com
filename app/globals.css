@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @supports (font: -apple-system-body) and (-webkit-appearance: none) {
-  img[loading='lazy'] {
+  img[loading="lazy"] {
     clip-path: inset(0.6px);
   }
 }
@@ -27,11 +27,15 @@
   }
 
   .btn {
-    @apply uppercase tracking-widest transition-colors ease-in-out hover:bg-opacity-50;
+    @apply text-center uppercase tracking-widest transition-colors ease-in-out hover:bg-opacity-50;
   }
 
   .btn-primary {
-    @apply border border-black text-black hover:bg-gray-200;
+    @apply border border-transparent text-black hover:bg-gray-200;
+
+    &.btn-border {
+      @apply border-black;
+    }
 
     &.btn-solid {
       @apply bg-black text-white hover:bg-black;
@@ -39,7 +43,11 @@
   }
 
   .btn-secondary {
-    @apply border border-white text-white hover:bg-gray-800;
+    @apply border border-transparent text-white hover:bg-gray-800;
+
+    &.btn-border {
+      @apply border-white;
+    }
 
     &.btn-solid {
       @apply bg-white text-black hover:bg-white;
@@ -47,7 +55,11 @@
   }
 
   .btn-tertiary {
-    @apply border border-white text-white hover:bg-hotPink;
+    @apply border border-transparent text-white hover:bg-hotPink;
+
+    &.btn-border {
+      @apply border-white;
+    }
 
     &.btn-solid {
       @apply bg-hotPink text-white hover:bg-white hover:text-black;
@@ -59,7 +71,7 @@
   }
 
   .btn-rounded {
-    @apply p-3 rounded-full;
+    @apply rounded-full p-3;
   }
 
   .btn-sm {
@@ -103,7 +115,7 @@
       overflow-x: auto;
     }
   }
-  
+
   @supports (animation-timeline: view()) {
     @keyframes move {
       to {

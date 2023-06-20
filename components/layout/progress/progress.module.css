@@ -1,6 +1,5 @@
 /* Attach the animation using an anonymous Scroll Progress Timeline */
 .root {
-  /* animation: grow-progress auto linear; */
   animation: linear grow-progress forwards;
   animation-timeline: --page-scroll;
   background: theme(colors.hotPink);
@@ -11,6 +10,10 @@
   transform-origin: 0 50%;
   width: 100%;
   z-index: theme(zIndex.50);
+
+  @supports not (animation-timeline: view()) {
+    display: none;
+  }
 }
 
 @supports (animation-timeline: view()) {

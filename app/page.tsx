@@ -34,8 +34,19 @@ const video: VideoProps = {
 export default async function HomePage() {
   return (
     <>
-      <section className="relative grid">
-        <Video {...video} className="snap-start" />
+      <section className="relative grid max-h-[100dvh] snap-start items-center overflow-hidden">
+        <Video {...video} className="" />
+        <Link
+          href="/search"
+          aria-label="Go to the shop"
+          className="absolute left-6 z-20 grid justify-items-center gap-4 p-6 uppercase text-white"
+        >
+          <h2 className="font-brand text-4xl">Pre-Launch Collection</h2>
+          <span>Now live</span>
+          <span className="btn btn-solid btn-secondary btn-base max-w-min whitespace-nowrap">
+            Shop now
+          </span>
+        </Link>
       </section>
       <section className="relative grid snap-start bg-black">
         {/* @ts-expect-error Server Component */}
@@ -49,13 +60,6 @@ export default async function HomePage() {
           sizes="100vw"
           src="/images/MAV8814-cropped.png"
         />
-        <Link
-          href="/search"
-          aria-label="Go to the shop"
-          className="fixed bottom-6 right-6 z-20 grid aspect-square place-content-center bg-white p-6 text-xl uppercase"
-        >
-          Shop
-        </Link>
       </figure>
     </>
   );
