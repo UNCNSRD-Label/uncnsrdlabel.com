@@ -7,8 +7,9 @@ import Grid from "components/grid";
 import Navbar from "components/layout/navbar";
 import NavbarContent from "components/layout/navbar/content";
 import ProductGridItems from "components/layout/product-grid-items";
+import Price from "components/price";
 import { AddToCart } from "components/product/add-to-cart";
-import { Gallery } from "components/product/gallery";
+import { Images } from "components/product/images";
 import { VariantSelector } from "components/product/variant-selector";
 import Prose from "components/prose";
 import { HIDDEN_PRODUCT_TAG } from "lib/constants";
@@ -80,25 +81,37 @@ export default async function ProductPage({
 
   return (
     <>
-      <Navbar blend sticky>
+      <Navbar blend>
         {/* @ts-expect-error Server Component */}
         <NavbarContent showLogo />
       </Navbar>
       <div>
         <div className="lg:grid lg:grid-cols-6">
-          <div className="lg:col-span-4">
-            <Gallery
-              title={product.title}
-              amount={product.priceRange.maxVariantPrice.amount}
-              currencyCode={product.priceRange.maxVariantPrice.currencyCode}
+          <div className="grid max-h-[100dvh] overflow-y-auto lg:col-span-4">
+            <Images
               images={product.images.map((image: Image) => ({
                 src: image.url,
                 altText: image.altText,
               }))}
+              sizes="(max-width: 639px) 100vw, 66vw"
             />
           </div>
 
           <div className="p-6 lg:col-span-2">
+            <div className="mb-16 mt-24 text-black dark:text-white">
+              <h3
+                data-testid="product-name"
+                className="box-decoration-clone text-lg uppercase"
+              >
+                {product.title}
+              </h3>
+              <Price
+                className="text-sm font-semibold dark:bg-black dark:text-white"
+                amount={product.priceRange.maxVariantPrice.amount}
+                currencyCode={product.priceRange.maxVariantPrice.currencyCode}
+              />
+            </div>
+
             {/* @ts-expect-error Server Component */}
             <VariantSelector
               options={product.options}
