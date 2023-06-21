@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import Navbar from "components/layout/navbar";
 import NavbarContent from "components/layout/navbar/content";
 import Collections from "components/layout/search/collections";
@@ -17,14 +18,24 @@ export default function SearchLayout({
         <NavbarContent showLogo />
       </Navbar>
       <Suspense>
-        <div className="mx-auto flex w-full flex-col bg-white py-6 pb-28 text-black dark:bg-black dark:text-white md:flex-row">
-          <div className="order-first flex-none md:w-1/6">
+        <div className="mx-auto flex w-full flex-col justify-center bg-white py-6 pb-28 text-black dark:bg-black dark:text-white md:flex-row">
+          <div
+            className={clsx(
+              "order-first flex-none md:w-1/6",
+              !process.env.FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE && "hidden"
+            )}
+          >
             <Collections />
           </div>
           <div className="order-last min-h-screen w-full max-w-7xl md:order-none">
             {children}
           </div>
-          <div className="order-none md:order-last md:w-1/6 md:flex-none">
+          <div
+            className={clsx(
+              "order-none md:order-last md:w-1/6 md:flex-none",
+              !process.env.FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE && "hidden"
+            )}
+          >
             <FilterList list={sorting} title="Sort by" />
           </div>
         </div>
