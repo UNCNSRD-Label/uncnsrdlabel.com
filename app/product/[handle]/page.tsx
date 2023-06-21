@@ -84,7 +84,7 @@ export default async function ProductPage({
       <Navbar blend>
         <NavbarContent showLogo />
       </Navbar>
-      <div>
+      <div className="dark:bg-black dark:text-white">
         <div className="lg:grid lg:grid-cols-6">
           <div className="grid max-h-[100dvh] overflow-y-auto lg:col-span-4">
             <Images
@@ -97,7 +97,7 @@ export default async function ProductPage({
           </div>
 
           <div className="p-6 lg:col-span-2">
-            <div className="mb-16 mt-24 text-black dark:text-white">
+            <div className="mb-16 mt-24">
               <h3
                 data-testid="product-name"
                 className="box-decoration-clone text-lg uppercase"
@@ -105,7 +105,7 @@ export default async function ProductPage({
                 {product.title}
               </h3>
               <Price
-                className="text-sm font-semibold dark:bg-black dark:text-white"
+                className="text-sm font-semibold"
                 amount={product.priceRange.maxVariantPrice.amount}
                 currencyCode={product.priceRange.maxVariantPrice.currencyCode}
               />
