@@ -37,7 +37,6 @@ export default async function HomePage() {
   return (
     <>
       <Navbar>
-        {/* @ts-expect-error Server Component */}
         <NavbarContent />
       </Navbar>
       <main className="relative grid grid-rows-[1fr_auto]">
@@ -52,7 +51,6 @@ export default async function HomePage() {
           </Link>
         </section>
         <section className="relative grid bg-black sm:snap-start">
-          {/* @ts-expect-error Server Component */}
           <HorizontalScroll className="" />
         </section>
         <figure className="relative hidden h-[100dvh] bg-black sm:grid sm:snap-start">

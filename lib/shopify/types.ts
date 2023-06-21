@@ -8,7 +8,7 @@ export type Edge<T> = {
   node: T;
 };
 
-export type Cart = Omit<ShopifyCart, 'lines'> & {
+export type Cart = Omit<ShopifyCart, "lines"> & {
   lines: CartItem[];
 };
 
@@ -56,12 +56,12 @@ export type Money = {
   currencyCode: string;
 };
 
-export type Page = Omit<ShopifyPage, 'mediaImages'> & {
+export type Page = Omit<ShopifyPage, "mediaImages"> & {
   images: Image[];
 };
 
 export type Policy = {
-  __typename?: 'ShopPolicy';
+  __typename?: "ShopPolicy";
   body: string;
   handle: string;
   id: string;
@@ -70,12 +70,16 @@ export type Policy = {
 };
 
 export type PolicyHandle =
-  | 'privacy-policy'
-  | 'refund-policy'
-  | 'shipping-policy'
-  | 'terms-of-service';
+  | "privacy-policy"
+  | "refund-policy"
+  | "shipping-policy"
+  | "terms-of-service";
 
-export type PolicyName = 'privacyPolicy' | 'refundPolicy' | 'shippingPolicy' | 'termsOfService';
+export type PolicyName =
+  | "privacyPolicy"
+  | "refundPolicy"
+  | "shippingPolicy"
+  | "termsOfService";
 
 export type Policies = {
   privacyPolicy: Policy;
@@ -84,7 +88,7 @@ export type Policies = {
   termsOfService: Policy;
 };
 
-export type Product = Omit<ShopifyProduct, 'variants' | 'images'> & {
+export type Product = Omit<ShopifyProduct, "variants" | "images"> & {
   variants: ProductVariant[];
   images: Image[];
 };

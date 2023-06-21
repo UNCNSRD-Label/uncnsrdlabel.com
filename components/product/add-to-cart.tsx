@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import clsx from 'clsx';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState, useTransition } from 'react';
+import clsx from "clsx";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState, useTransition } from "react";
 
-import LoadingDots from 'components/loading-dots';
-import { ProductVariant } from 'lib/shopify/types';
+import LoadingDots from "components/loading-dots";
+import { ProductVariant } from "lib/shopify/types";
 
 export function AddToCart({
   variants,
-  availableForSale
+  availableForSale,
 }: {
   variants: ProductVariant[];
   availableForSale: boolean;
@@ -40,10 +40,10 @@ export function AddToCart({
     setAdding(true);
 
     const response = await fetch(`/api/cart`, {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify({
-        merchandiseId: selectedVariantId
-      })
+        merchandiseId: selectedVariantId,
+      }),
     });
 
     const data = await response.json();
@@ -66,14 +66,14 @@ export function AddToCart({
       disabled={isMutating}
       onClick={handleAdd}
       className={clsx(
-        'flex w-full items-center justify-center bg-black p-4 text-sm uppercase tracking-wide text-white opacity-90 hover:opacity-100 dark:bg-white dark:text-black',
+        "flex w-full items-center justify-center bg-black p-4 text-sm uppercase tracking-wide text-white opacity-90 hover:opacity-100 dark:bg-white dark:text-black",
         {
-          'cursor-not-allowed opacity-60': !availableForSale,
-          'cursor-not-allowed': isMutating
+          "cursor-not-allowed opacity-60": !availableForSale,
+          "cursor-not-allowed": isMutating,
         }
       )}
     >
-      <span>{availableForSale ? 'Add To Cart' : 'Out Of Stock'}</span>
+      <span>{availableForSale ? "Add To Cart" : "Out Of Stock"}</span>
       {isMutating ? <LoadingDots className="bg-white dark:bg-black" /> : null}
     </button>
   );

@@ -3,8 +3,12 @@ export interface ShopifyErrorLike {
   message: Error;
 }
 
-export const isObject = (object: unknown): object is Record<string, unknown> => {
-  return typeof object === 'object' && object !== null && !Array.isArray(object);
+export const isObject = (
+  object: unknown
+): object is Record<string, unknown> => {
+  return (
+    typeof object === "object" && object !== null && !Array.isArray(object)
+  );
 };
 
 export const isShopifyError = (error: unknown): error is ShopifyErrorLike => {
@@ -16,7 +20,7 @@ export const isShopifyError = (error: unknown): error is ShopifyErrorLike => {
 };
 
 function findError<T extends object>(error: T): boolean {
-  if (Object.prototype.toString.call(error) === '[object Error]') {
+  if (Object.prototype.toString.call(error) === "[object Error]") {
     return true;
   }
 

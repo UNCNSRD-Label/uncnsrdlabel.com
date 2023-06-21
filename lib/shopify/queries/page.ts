@@ -1,5 +1,5 @@
-import imageFragment from '../fragments/image';
-import seoFragment from '../fragments/seo';
+import imageFragment from "../fragments/image";
+import seoFragment from "../fragments/seo";
 
 const pageFragment = /* GraphQL */ `
   fragment page on Page {

@@ -10,7 +10,7 @@ import { getMenu } from "lib/shopify";
 import { SlHeart, SlUser } from "react-icons/sl";
 import SidebarMenu from "./sidebar-menu";
 
-type Props = { children: React.ReactNode; showLogo?: boolean };
+type Props = { showLogo?: boolean };
 
 export default async function Navbar(props: Props) {
   const menu = await getMenu("next-js-frontend-header-menu");
@@ -36,7 +36,6 @@ export default async function Navbar(props: Props) {
 
       <div className="pointer-events-auto flex w-1/3 items-center justify-end gap-5 fill-white text-white">
         <Suspense fallback={<CartIcon className="icon fill h-6" />}>
-          {/* @ts-expect-error Server Component */}
           <Search />
           <Link href="/account" aria-label="Account">
             <SlUser className="icon fill h-5 w-5 drop-shadow" />
@@ -44,7 +43,6 @@ export default async function Navbar(props: Props) {
           <Link href="/account/wishlist" aria-label="Wishlist">
             <SlHeart className="icon fill h-5 w-5 drop-shadow" />
           </Link>
-          {/* @ts-expect-error Server Component */}
           <Cart />
         </Suspense>
       </div>

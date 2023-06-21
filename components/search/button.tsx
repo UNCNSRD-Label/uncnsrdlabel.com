@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { SlMagnifier } from 'react-icons/sl';
+import { useState } from "react";
+import { SlMagnifier } from "react-icons/sl";
 
-import Form from './form';
+import Form from "./form";
 
 export default function SearchButton() {
   const [searchIsOpen, setSearchIsOpen] = useState(false);

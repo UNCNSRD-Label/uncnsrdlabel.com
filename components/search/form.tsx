@@ -1,11 +1,17 @@
-'use client';
+"use client";
 
-import { clsx } from 'clsx';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { clsx } from "clsx";
+import { useRouter, useSearchParams } from "next/navigation";
 
-import { createUrl } from 'lib/utils';
+import { createUrl } from "lib/utils";
 
-export default function Search({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+export default function Search({
+  isOpen,
+  onClose,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+}) {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -17,12 +23,12 @@ export default function Search({ isOpen, onClose }: { isOpen: boolean; onClose: 
     const newParams = new URLSearchParams(searchParams.toString());
 
     if (search.value) {
-      newParams.set('q', search.value);
+      newParams.set("q", search.value);
     } else {
-      newParams.delete('q');
+      newParams.delete("q");
     }
 
-    router.push(createUrl('/search', newParams));
+    router.push(createUrl("/search", newParams));
 
     setTimeout(() => onClose(), 1_000);
   }
@@ -31,8 +37,8 @@ export default function Search({ isOpen, onClose }: { isOpen: boolean; onClose: 
     <form
       onSubmit={onSubmit}
       className={clsx(
-        'relative m-0 flex items-center border-b border-white bg-transparent p-0 transition-all',
-        isOpen ? 'w-full opacity-100' : 'w-0 opacity-0'
+        "relative m-0 flex items-center border-b border-white bg-transparent p-0 transition-all",
+        isOpen ? "w-full opacity-100" : "w-0 opacity-0"
       )}
     >
       <input
@@ -40,7 +46,7 @@ export default function Search({ isOpen, onClose }: { isOpen: boolean; onClose: 
         name="search"
         placeholder="Search for products..."
         autoComplete="off"
-        defaultValue={searchParams?.get('q') || ''}
+        defaultValue={searchParams?.get("q") || ""}
         className="w-full border-none bg-transparent px-4 py-2 pr-8 text-white placeholder:text-white"
       />
     </form>

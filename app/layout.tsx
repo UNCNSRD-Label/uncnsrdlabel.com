@@ -8,7 +8,7 @@ import Script from "next/script";
 import { ReactNode, Suspense } from "react";
 import "./globals.css";
 
-const { TWITTER_CREATOR, TWITTER_SITE, SITE_NAME } = process.env;
+const { TWITTER_CREATOR, TWITTER_SITE, SITE_NAME = "UNCNSRD" } = process.env;
 
 export const metadata = {
   // icons: {
@@ -93,7 +93,6 @@ export default async function RootLayout({
           {children}
           <Suspense>
             <Suspense>
-              {/* @ts-expect-error Server Component */}
               <Footer />
             </Suspense>
           </Suspense>

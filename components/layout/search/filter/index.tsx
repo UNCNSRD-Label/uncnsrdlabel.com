@@ -1,6 +1,6 @@
-import { SortFilterItem } from 'lib/constants';
-import FilterItemDropdown from './dropdown';
-import { FilterItem } from './item';
+import { SortFilterItem } from "lib/constants";
+import FilterItemDropdown from "./dropdown";
+import { FilterItem } from "./item";
 
 export type ListItem = SortFilterItem | PathFilterItem;
 export type PathFilterItem = { title: string; path: string };
@@ -15,12 +15,20 @@ function FilterItemList({ list }: { list: ListItem[] }) {
   );
 }
 
-export default function FilterList({ list, title }: { list: ListItem[]; title?: string }) {
+export default function FilterList({
+  list,
+  title,
+}: {
+  list: ListItem[];
+  title?: string;
+}) {
   return (
     <>
-      <nav className="col-span-2 w-full flex-none px-6 py-2 md:py-4 md:pl-10 uppercase">
+      <nav className="col-span-2 w-full flex-none px-6 py-2 uppercase md:py-4 md:pl-10">
         {title ? (
-          <h3 className="hidden font-semibold text-black dark:text-white md:block">{title}</h3>
+          <h3 className="hidden font-semibold text-black dark:text-white md:block">
+            {title}
+          </h3>
         ) : null}
         <ul className="hidden md:block">
           <FilterItemList list={list} />

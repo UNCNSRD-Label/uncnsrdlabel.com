@@ -82,7 +82,6 @@ export default async function ProductPage({
   return (
     <>
       <Navbar blend>
-        {/* @ts-expect-error Server Component */}
         <NavbarContent showLogo />
       </Navbar>
       <div>
@@ -112,7 +111,6 @@ export default async function ProductPage({
               />
             </div>
 
-            {/* @ts-expect-error Server Component */}
             <VariantSelector
               options={product.options}
               variants={product.variants}
@@ -132,7 +130,6 @@ export default async function ProductPage({
           </div>
         </div>
         <Suspense>
-          {/* @ts-expect-error Server Component */}
           <RelatedProducts id={product.id} />
         </Suspense>
         <script

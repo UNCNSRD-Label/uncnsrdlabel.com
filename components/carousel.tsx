@@ -1,15 +1,17 @@
-import { getCollectionProducts, getPage } from 'lib/shopify';
-import Image from 'next/image';
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { getCollectionProducts, getPage } from "lib/shopify";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
 export async function Carousel() {
   // Collections that start with `hidden-*` are hidden from the search page.
-  const products = await getCollectionProducts({ collection: 'hidden-homepage-carousel' });
+  const products = await getCollectionProducts({
+    collection: "hidden-homepage-carousel",
+  });
 
   if (!products?.length) return null;
 
-  const page = await getPage('home');
+  const page = await getPage("home");
   console.log({ page });
   if (!page) return notFound();
 

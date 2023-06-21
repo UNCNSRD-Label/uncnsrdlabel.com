@@ -14,7 +14,6 @@ export default function SearchLayout({
   return (
     <>
       <Navbar blend sticky>
-        {/* @ts-expect-error Server Component */}
         <NavbarContent showLogo />
       </Navbar>
       <Suspense>

@@ -1,39 +1,41 @@
-import clsx from 'clsx';
-import { GridTileImage } from 'components/grid/tile';
-import { getCollectionProducts } from 'lib/shopify';
-import type { Product } from 'lib/shopify/types';
-import Link from 'next/link';
+import clsx from "clsx";
+import { GridTileImage } from "components/grid/tile";
+import { getCollectionProducts } from "lib/shopify";
+import type { Product } from "lib/shopify/types";
+import Link from "next/link";
 
 function ThreeItemGridItem({
   className,
   item,
   size,
-  background
+  background,
 }: {
   className?: string;
   item: Product;
-  size: 'full' | 'half';
-  background: 'white' | 'pink' | 'purple' | 'black';
+  size: "full" | "half";
+  background: "white" | "pink" | "purple" | "black";
 }) {
   return (
     <div
       className={clsx(
         className,
-        size === 'full' ? 'lg:col-span-4 lg:row-span-2' : 'lg:col-span-2 lg:row-span-1'
+        size === "full"
+          ? "lg:col-span-4 lg:row-span-2"
+          : "lg:col-span-2 lg:row-span-1"
       )}
     >
       <Link className="block h-full" href={`/product/${item.handle}`}>
         <GridTileImage
           src={item.featuredImage.url}
-          width={size === 'full' ? 1080 : 540}
-          height={size === 'full' ? 1080 : 540}
+          width={size === "full" ? 1080 : 540}
+          height={size === "full" ? 1080 : 540}
           priority={true}
           background={background}
           alt={item.title}
           labels={{
             title: item.title as string,
             amount: item.priceRange.maxVariantPrice.amount,
-            currencyCode: item.priceRange.maxVariantPrice.currencyCode
+            currencyCode: item.priceRange.maxVariantPrice.currencyCode,
           }}
         />
       </Link>
@@ -44,7 +46,7 @@ function ThreeItemGridItem({
 export async function ThreeItemGrid({ className }: { className?: string }) {
   // Collections that start with `hidden-*` are hidden from the search page.
   const homepageItems = await getCollectionProducts({
-    collection: 'hidden-homepage-featured-items'
+    collection: "hidden-homepage-featured-items",
   });
 
   if (!homepageItems[0] || !homepageItems[1] || !homepageItems[2]) return null;
@@ -53,7 +55,7 @@ export async function ThreeItemGrid({ className }: { className?: string }) {
 
   return (
     <section
-      className={clsx(className, 'lg:grid lg:grid-cols-6 lg:grid-rows-2')}
+      className={clsx(className, "lg:grid lg:grid-cols-6 lg:grid-rows-2")}
       data-testid="homepage-products"
     >
       <ThreeItemGridItem size="full" item={firstProduct} background="purple" />
