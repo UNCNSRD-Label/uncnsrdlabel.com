@@ -10,7 +10,7 @@ type Props = { theme: "dark" | "light" };
 
 const { SITE_NAME } = process.env;
 
-export default function Logos({ theme = "light" }: Props) {
+export default function Logo({ theme = "light" }: Props) {
   const rootRef = useRef<HTMLDivElement>(null);
   const logotypeRef = useRef<SVGSVGElement>(null);
 

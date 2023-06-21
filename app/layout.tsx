@@ -1,9 +1,6 @@
 import { clsx } from "clsx";
 import Banner from "components/banner";
 import Footer from "components/layout/footer";
-import Logos from "components/layout/logos";
-import Navbar from "components/layout/navbar";
-import NavbarContent from "components/layout/navbar/content";
 import Progress from "components/layout/progress";
 import { Inter, Montserrat } from "next/font/google";
 import localFont from "next/font/local";
@@ -92,13 +89,8 @@ export default async function RootLayout({
         <Banner
           className={clsx("sticky top-0 w-full", hideBanner && "hidden")}
         />
-        <Navbar>
-          {/* @ts-expect-error Server Component */}
-          <NavbarContent />
-        </Navbar>
         <Suspense>
-          <main className="relative grid grid-rows-[1fr_auto]">{children}</main>
-          <Logos theme="light" />
+          {children}
           <Suspense>
             <Suspense>
               {/* @ts-expect-error Server Component */}
