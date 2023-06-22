@@ -10,6 +10,7 @@ import ProductGridItems from "components/layout/product-grid-items";
 import Price from "components/price";
 import { AddToCart } from "components/product/add-to-cart";
 import { Images } from "components/product/images";
+import { MetaFields } from "components/product/metafields";
 import { VariantSelector } from "components/product/variant-selector";
 import Prose from "components/prose";
 import { HIDDEN_PRODUCT_TAG } from "lib/constants";
@@ -127,6 +128,8 @@ export default async function ProductPage({
               variants={product.variants}
               availableForSale={product.availableForSale}
             />
+
+            <MetaFields metafields={product.metafields} />
           </div>
         </div>
         <Suspense>

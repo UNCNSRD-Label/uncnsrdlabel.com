@@ -1,3 +1,5 @@
+import { Metafield as ShopifyMetafield } from "@shopify/hydrogen-react/storefront-api-types";
+
 export type Maybe<T> = T | null;
 
 export type Connection<T> = {
@@ -149,6 +151,8 @@ export type ShopifyPage = {
   };
 };
 
+export type Metafield = ShopifyMetafield;
+
 export type ShopifyProduct = {
   id: string;
   handle: string;
@@ -167,6 +171,7 @@ export type ShopifyProduct = {
   seo: SEO;
   tags: string[];
   updatedAt: string;
+  metafields: Metafield[];
 };
 
 export type ShopifyCartOperation = {
