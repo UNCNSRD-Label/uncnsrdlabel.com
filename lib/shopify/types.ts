@@ -1,4 +1,7 @@
-import { Metafield as ShopifyMetafield } from "@shopify/hydrogen-react/storefront-api-types";
+import { type ParsedMetafields } from "@shopify/hydrogen-react";
+import { type Metafield } from "@shopify/hydrogen-react/storefront-api-types";
+
+export { Metafield, ParsedMetafields };
 
 export type Maybe<T> = T | null;
 
@@ -150,8 +153,6 @@ export type ShopifyPage = {
     references: Connection<MediaImage>;
   };
 };
-
-export type Metafield = ShopifyMetafield;
 
 export type ShopifyProduct = {
   id: string;
