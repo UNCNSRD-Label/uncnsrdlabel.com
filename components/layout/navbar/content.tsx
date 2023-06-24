@@ -17,14 +17,17 @@ export default async function Navbar(props: Props) {
 
   return (
     <>
-      <div className="flex w-1/3 justify-self-center md:justify-self-start">
+      <div className="flex justify-self-center md:justify-self-start">
         <div className="pointer-events-auto stroke-white md:mr-4">
           <Suspense fallback={<CartIcon className="h-6" />}>
             <SidebarMenu menu={menu} />
           </Suspense>
         </div>
       </div>
-      <div className={clsx("hidden w-1/3", props.showLogo && "md:block")}>
+      <div
+        className={clsx("hidden", props.showLogo && "md:block")}
+        tabIndex={-1}
+      >
         <Link
           href="/"
           aria-label="Go back home"
@@ -34,7 +37,7 @@ export default async function Navbar(props: Props) {
         </Link>
       </div>
 
-      <div className="pointer-events-auto flex w-1/3 items-center justify-end gap-5 fill-white text-white">
+      <div className="pointer-events-auto flex items-center justify-end gap-5 fill-white text-white">
         <Suspense fallback={<CartIcon className="icon fill h-6" />}>
           <Search />
           <Link href="/account" aria-label="Account">
