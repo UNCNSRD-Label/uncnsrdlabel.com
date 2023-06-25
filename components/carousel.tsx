@@ -12,7 +12,7 @@ export async function Carousel() {
   if (!products?.length) return null;
 
   const page = await getPage("home");
-  console.log({ page });
+
   if (!page) return notFound();
 
   return (

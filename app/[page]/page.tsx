@@ -42,7 +42,7 @@ export default async function Page({ params }: { params: { page: string } }) {
   if (!page) return notFound();
 
   const images = page.images;
-  console.log(page.body);
+
   return (
     <>
       <section className="grid gap-0.5">
