@@ -10,6 +10,8 @@
 
 @layer base {
   * {
+    text-underline-offset: theme(textUnderlineOffset.4);
+
     &:focus-visible {
       @apply outline-offset-4;
     }
@@ -17,6 +19,7 @@
 
   /* Create scroll-timeline on the root */
   html {
+    scroll-behavior: smooth;
     scroll-timeline: --page-scroll block;
   }
 }
