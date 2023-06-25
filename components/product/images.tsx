@@ -66,6 +66,9 @@ export function Images({
                     <button
                       className="fixed right-8 top-8 inline-flex h-10 w-10 appearance-none items-center justify-center rounded-full p-2 focus:shadow-[0_0_0_1px] focus:shadow-white focus:outline-none"
                       aria-label="Close"
+                      onClick={() => {
+                        setScale(1);
+                      }}
                     >
                       <Cross2Icon className="h-full w-full text-white" />
                     </button>
