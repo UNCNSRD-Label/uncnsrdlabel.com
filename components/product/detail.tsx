@@ -11,13 +11,7 @@ import { VariantSelector } from "components/product/variant-selector";
 import Prose from "components/prose";
 import { Image, Product } from "lib/shopify/types";
 
-export function ProductDetail({
-  className,
-  product,
-}: {
-  className?: string;
-  product: Product;
-}) {
+export function ProductDetail({ product }: { product: Product }) {
   // const sectionElements = ["Images", "Purchase Options", "Details"];
   const sectionElementRefs = [useRef(null), useRef(null), useRef(null)];
 

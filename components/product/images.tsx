@@ -55,7 +55,7 @@ export function Images({
                     min={1}
                     step={0.05}
                     onValueChange={(value) => {
-                      setScale(value[0]);
+                      setScale(value[0] ?? 1);
                     }}
                   >
                     <Slider.Track className="relative h-[3px] grow rounded-full bg-white/50 drop-shadow">
