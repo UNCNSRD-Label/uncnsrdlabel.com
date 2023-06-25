@@ -1,9 +1,10 @@
 "use client";
 
 import * as Dialog from "@radix-ui/react-dialog";
-import { Cross2Icon, ZoomInIcon } from "@radix-ui/react-icons";
+import { Cross2Icon } from "@radix-ui/react-icons";
 import * as Slider from "@radix-ui/react-slider";
 import { useState } from "react";
+import { SlMagnifierAdd } from "react-icons/sl";
 
 import { ProductImage } from "components/product/image";
 
@@ -33,12 +34,12 @@ export function Images({
                   sizes={sizes}
                   src={image.src}
                 />
-                <ZoomInIcon className="absolute bottom-6 right-6 h-8 w-8 text-white drop-shadow" />
+                <SlMagnifierAdd className="icon absolute bottom-4 right-4 h-5 w-5 text-white drop-shadow" />
               </button>
             </Dialog.Trigger>
             <Dialog.Portal>
               <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0 z-50 bg-white">
-                <Dialog.Content className="data-[state=open]:animate-contentShow fixed inset-0 overflow-auto focus:outline-none">
+                <Dialog.Content className="data-[state=open]:animate-contentShow fixed inset-0 grid place-items-center overflow-auto focus:outline-none">
                   <ProductImage
                     alt={image?.altText}
                     className="aspect-3/4 w-full"

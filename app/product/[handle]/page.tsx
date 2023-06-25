@@ -8,7 +8,7 @@ import Grid from "components/grid";
 import Navbar from "components/layout/navbar";
 import NavbarContent from "components/layout/navbar/content";
 import ProductGridItems from "components/layout/product-grid-items";
-import { ProductDetail } from "components/product/detail";
+import { ProductDetails } from "components/product/details";
 import { HIDDEN_PRODUCT_TAG } from "lib/constants";
 import { getProduct, getProductRecommendations } from "lib/shopify";
 
@@ -80,7 +80,7 @@ export default async function ProductPage({
       <Navbar blend>
         <NavbarContent showLogo />
       </Navbar>
-      <ProductDetail product={product} />
+      <ProductDetails product={product} />
       <Suspense>
         <RelatedProducts className="relative z-50 bg-white" id={product.id} />
       </Suspense>

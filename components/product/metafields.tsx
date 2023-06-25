@@ -36,11 +36,10 @@ export const MetaFields = forwardRef<MetaFieldsRef, MetaFieldsProps>(
     // .map((metafield) => parseMetafield<ParsedMetafields[metafield.type]>(metafield));
 
     console.log(metafields);
-    //   console.log(metafields.map((metafield) => metafield?.key));
 
     return (
       <Accordion
-        className={clsx("mt-8", className)}
+        className={clsx("mt-8 max-w-[100dvw]", className)}
         type="single"
         collapsible
         id={id}
@@ -60,12 +59,11 @@ export const MetaFields = forwardRef<MetaFieldsRef, MetaFieldsProps>(
                   .join(" ")}
               </AccordionHeader>
             </AccordionTrigger>
-            <AccordionContent
-              className={clsx("collapsible-content", "prose", "prose-xs")}
-            >
-              <code>
-                <pre>{JSON.stringify(metafield, null, 2)}</pre>
-              </code>
+            <AccordionContent className="collapsible-content prose-xs prose overflow-x-auto">
+              <pre className="collapsible-content prose-xs w-max-[calc(100%_-_4rem)] prose overflow-x-auto">
+                <code>{JSON.stringify(metafield, null, 2)}</code>
+              </pre>
+
               {/* {metafield?.type === "page_reference" ? (
               <>
                 <div

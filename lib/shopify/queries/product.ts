@@ -6,16 +6,13 @@ export const getProductQuery = /* GraphQL */ `
       ...product
       metafields(
         identifiers: [
-          { namespace: "custom", key: "bra_shape" }
-          { namespace: "custom", key: "composition" }
           { namespace: "custom", key: "line" }
-          { namespace: "custom", key: "lining" }
-          { namespace: "custom", key: "material" }
-          { namespace: "custom", key: "model" }
-          { namespace: "custom", key: "panties_shape" }
+          { namespace: "custom", key: "shape" }
+          { namespace: "custom", key: "component" }
           { namespace: "custom", key: "returns" }
           { namespace: "custom", key: "shipping" }
           { namespace: "custom", key: "sizing" }
+          { namespace: "custom", key: "model" }
           { namespace: "descriptors", key: "care_guide" }
           {
             namespace: "shopify--discovery--product_recommendation"
@@ -41,9 +38,18 @@ export const getProductQuery = /* GraphQL */ `
               onlineStoreUrl
               title
             }
+            ... on Metaobject {
+              id
+              type
+              fields {
+                key
+                type
+                value
+              }
+            }
           }
         }
-        references(first: 32) {
+        references(first: 16) {
           nodes {
             ... on MetafieldReference {
               ... on Page {
@@ -54,6 +60,51 @@ export const getProductQuery = /* GraphQL */ `
               }
               ... on Metaobject {
                 id
+                type
+                fields {
+                  key
+                  type
+                  value
+                  references(first: 8) {
+                    # edges {
+                    nodes {
+                      ... on Metaobject {
+                        fields {
+                          key
+                          type
+                          value
+                          references(first: 8) {
+                            # edges {
+                            nodes {
+                              ... on Metaobject {
+                                fields {
+                                  key
+                                  type
+                                  value
+                                  references(first: 8) {
+                                    # edges {
+                                    nodes {
+                                      ... on Metaobject {
+                                        fields {
+                                          key
+                                          type
+                                          value
+                                        }
+                                      }
+                                    }
+                                    # }
+                                  }
+                                }
+                              }
+                            }
+                            # }
+                          }
+                        }
+                      }
+                    }
+                    # }
+                  }
+                }
               }
             }
           }

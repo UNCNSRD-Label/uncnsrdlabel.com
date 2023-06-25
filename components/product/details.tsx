@@ -1,53 +1,57 @@
 "use client";
 
-import { useIntersectionObserver } from "@react-hooks-library/core";
-import { AddToCart } from "components/product/add-to-cart";
-import { VariantSelector } from "components/product/variant-selector";
-import Prose from "components/prose";
-import { Product } from "lib/shopify/types";
 import { useRef } from "react";
 
-export function Details({ product }: { product: Product }) {
-  const informationRef = useRef(null);
-  // const mainRef = useRef(null);
+import { Images } from "components/product/images";
+import { MetaFields } from "components/product/metafields";
+import { NavigationMenu } from "components/product/navigation-menu";
+import { PurchaseOptions } from "components/product/purchase-options";
 
-  const { inView, entry, stop } = useIntersectionObserver(
-    informationRef,
-    {
-      // root: mainRef,
-      threshold: 0.5,
-    },
-    (entries) => {
-      console.log({ entries });
-    }
-  );
+import { Image, Product } from "lib/shopify/types";
 
-  console.log({ inView, entry, stop });
+export function ProductDetails({ product }: { product: Product }) {
+  const sectionElementRefs = [useRef(null), useRef(null), useRef(null)];
 
   return (
-    <div className="lg:grid lg:grid-cols-6">
-      <div className="bg-red-500 lg:col-span-4"></div>
-
-      <div className="lg:col-span-2">
-        <div className="h-fit p-6" ref={informationRef}>
-          <VariantSelector
-            options={product.options}
-            variants={product.variants}
-          />
-
-          {product.descriptionHtml ? (
-            <Prose
-              className="mb-6 text-sm leading-tight"
-              html={product.descriptionHtml}
+    <>
+      <NavigationMenu
+        className="fixed inset-x-0 bottom-0 z-10 w-full sm:hidden"
+        sectionElementRefs={sectionElementRefs}
+      />
+      <div className="dark:bg-black dark:text-white">
+        <div className="lg:grid lg:grid-cols-6">
+          <div
+            className="grid lg:col-span-4"
+            id="images"
+            ref={sectionElementRefs[0]}
+          >
+            <Images
+              images={product.images.map((image: Image) => ({
+                src: image.url,
+                altText: image.altText,
+              }))}
+              sizes="(max-width: 639px) 100vw, 66vw"
             />
-          ) : null}
+          </div>
 
-          <AddToCart
-            variants={product.variants}
-            availableForSale={product.availableForSale}
-          />
+          <div className="p-6 lg:col-span-2">
+            <div className="sticky sm:top-24">
+              <PurchaseOptions
+                id="purchase-options"
+                ref={sectionElementRefs[1]}
+                product={product}
+              />
+
+              <MetaFields
+                metafields={product.metafields}
+                className="min-h-[100dvh] pt-24 sm:pt-0"
+                id="details"
+                ref={sectionElementRefs[2]}
+              />
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

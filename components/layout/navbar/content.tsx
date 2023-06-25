@@ -17,7 +17,7 @@ export default async function Navbar(props: Props) {
 
   return (
     <>
-      <div className="flex justify-self-center md:justify-self-start">
+      <div className="flex md:justify-self-start">
         <div className="pointer-events-auto stroke-white md:mr-4">
           <Suspense fallback={<CartIcon className="h-6" />}>
             <SidebarMenu menu={menu} />
