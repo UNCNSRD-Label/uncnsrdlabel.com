@@ -19,6 +19,7 @@ export function NavigationMenu({
 
   const activeSection =
     useScrollSpy({
+      offsetPx: -100,
       sectionElementRefs,
     }) ?? 0;
 
