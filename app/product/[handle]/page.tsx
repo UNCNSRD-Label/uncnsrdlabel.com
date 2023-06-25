@@ -1,3 +1,4 @@
+import { NavigationMenu } from 'components/product/navigation-menu';
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
@@ -85,6 +86,7 @@ export default async function ProductPage({
       <Navbar blend>
         <NavbarContent showLogo />
       </Navbar>
+      <NavigationMenu className="fixed top-24 left-12 z-10" product={product} />
       <div className="dark:bg-black dark:text-white">
         <div className="lg:grid lg:grid-cols-6">
           <div className="grid max-h-[100dvh] overflow-y-auto lg:col-span-4">
