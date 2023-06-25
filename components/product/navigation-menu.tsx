@@ -2,46 +2,45 @@
 
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 import { clsx } from "clsx";
-
-import { Product } from "lib/shopify/types";
+import type { MutableRefObject } from "react";
+import useScrollSpy from "react-use-scrollspy";
+import slugify from "slugify";
 
 const LinkClassName =
-  "block select-none rounded-[4px] px-3 py-2 text-base no-underline outline-none focus:shadow-[0_0_0_2px]";
+  "block select-none rounded-[4px] px-3 py-2 text-xs no-underline outline-none focus:underline hover:underline";
 export function NavigationMenu({
   className,
-  product,
+  sectionElementRefs,
 }: {
   className: string;
-  product: Product;
+  sectionElementRefs: MutableRefObject<null>[];
 }) {
-  console.log({ product });
+  const sectionElements = ["Images", "Purchase Options", "Details"];
+
+  const activeSection =
+    useScrollSpy({
+      sectionElementRefs,
+    }) ?? 0;
+
   return (
-    <NavigationMenuPrimitive.Root className={clsx("flex", className)}>
-      <NavigationMenuPrimitive.List className="center shadow-blackA7 m-0 flex list-none rounded-[6px] bg-white p-1 shadow-[0_2px_10px]">
-        <NavigationMenuPrimitive.Item>
-          <NavigationMenuPrimitive.Link
-            className={LinkClassName}
-            href="#summary"
-          >
-            Summary
-          </NavigationMenuPrimitive.Link>
-        </NavigationMenuPrimitive.Item>
-        <NavigationMenuPrimitive.Item>
-          <NavigationMenuPrimitive.Link
-            className={LinkClassName}
-            href="#purchase-options"
-          >
-            Purchase Options
-          </NavigationMenuPrimitive.Link>
-        </NavigationMenuPrimitive.Item>
-        <NavigationMenuPrimitive.Item>
-          <NavigationMenuPrimitive.Link
-            className={LinkClassName}
-            href="#details"
-          >
-            Details
-          </NavigationMenuPrimitive.Link>
-        </NavigationMenuPrimitive.Item>
+    <NavigationMenuPrimitive.Root
+      className={clsx("flex justify-center bg-white", className)}
+    >
+      <NavigationMenuPrimitive.List className="center m-0 flex list-none p-1 uppercase">
+        {sectionElements.map((sectionElement, index) => (
+          <NavigationMenuPrimitive.Item key={sectionElement}>
+            <NavigationMenuPrimitive.Link
+              className={clsx(
+                LinkClassName,
+                activeSection === index && "!underline"
+              )}
+              href={`#${slugify(sectionElement, { lower: true })}`}
+              // onClick={() => setActiveLink(index)}
+            >
+              {sectionElement}
+            </NavigationMenuPrimitive.Link>
+          </NavigationMenuPrimitive.Item>
+        ))}
       </NavigationMenuPrimitive.List>
     </NavigationMenuPrimitive.Root>
   );

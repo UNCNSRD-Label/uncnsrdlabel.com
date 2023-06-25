@@ -1,4 +1,4 @@
-import { NavigationMenu } from "components/product/navigation-menu";
+import { clsx } from "clsx";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
@@ -8,15 +8,9 @@ import Grid from "components/grid";
 import Navbar from "components/layout/navbar";
 import NavbarContent from "components/layout/navbar/content";
 import ProductGridItems from "components/layout/product-grid-items";
-import Price from "components/price";
-import { AddToCart } from "components/product/add-to-cart";
-import { Images } from "components/product/images";
-import { MetaFields } from "components/product/metafields";
-import { VariantSelector } from "components/product/variant-selector";
-import Prose from "components/prose";
+import { ProductDetail } from "components/product/detail";
 import { HIDDEN_PRODUCT_TAG } from "lib/constants";
 import { getProduct, getProductRecommendations } from "lib/shopify";
-import { Image } from "lib/shopify/types";
 
 export const runtime = "edge";
 
@@ -86,75 +80,31 @@ export default async function ProductPage({
       <Navbar blend>
         <NavbarContent showLogo />
       </Navbar>
-      <NavigationMenu className="fixed left-12 top-24 z-10" product={product} />
-      <div className="dark:bg-black dark:text-white">
-        <div className="lg:grid lg:grid-cols-6">
-          <div className="grid lg:col-span-4">
-            <Images
-              images={product.images.map((image: Image) => ({
-                src: image.url,
-                altText: image.altText,
-              }))}
-              sizes="(max-width: 639px) 100vw, 66vw"
-            />
-          </div>
-
-          <div className="p-6 lg:col-span-2">
-            <div className="sticky top-24">
-              <div className="mb-16">
-                <h3
-                  data-testid="product-name"
-                  className="box-decoration-clone text-lg uppercase"
-                >
-                  {product.title}
-                </h3>
-                <Price
-                  className="text-sm font-semibold"
-                  amount={product.priceRange.maxVariantPrice.amount}
-                  currencyCode={product.priceRange.maxVariantPrice.currencyCode}
-                />
-              </div>
-
-              <VariantSelector
-                options={product.options}
-                variants={product.variants}
-              />
-
-              {product.descriptionHtml ? (
-                <Prose
-                  className="mb-6 text-sm leading-tight"
-                  html={product.descriptionHtml}
-                />
-              ) : null}
-
-              <AddToCart
-                variants={product.variants}
-                availableForSale={product.availableForSale}
-              />
-
-              <MetaFields metafields={product.metafields} />
-            </div>
-          </div>
-        </div>
-        <Suspense>
-          <RelatedProducts id={product.id} />
-        </Suspense>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </div>
+      <ProductDetail product={product} />
+      <Suspense>
+        <RelatedProducts className="relative z-50 bg-white" id={product.id} />
+      </Suspense>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     </>
   );
 }
 
-async function RelatedProducts({ id }: { id: string }) {
+async function RelatedProducts({
+  className,
+  id,
+}: {
+  className?: string;
+  id: string;
+}) {
   const relatedProducts = await getProductRecommendations(id);
 
   if (!relatedProducts.length) return null;
 
   return (
-    <div className="px-4 py-8">
+    <div className={clsx("px-4 py-8", className)}>
       <div className="mb-4 text-3xl font-bold">Related Products</div>
       <Grid className="grid-cols-2 lg:grid-cols-5">
         <ProductGridItems products={relatedProducts} />
