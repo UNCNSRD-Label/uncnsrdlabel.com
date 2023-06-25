@@ -1,4 +1,4 @@
-import { NavigationMenu } from 'components/product/navigation-menu';
+import { NavigationMenu } from "components/product/navigation-menu";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
@@ -86,10 +86,10 @@ export default async function ProductPage({
       <Navbar blend>
         <NavbarContent showLogo />
       </Navbar>
-      <NavigationMenu className="fixed top-24 left-12 z-10" product={product} />
+      <NavigationMenu className="fixed left-12 top-24 z-10" product={product} />
       <div className="dark:bg-black dark:text-white">
         <div className="lg:grid lg:grid-cols-6">
-          <div className="grid max-h-[100dvh] overflow-y-auto lg:col-span-4">
+          <div className="grid lg:col-span-4">
             <Images
               images={product.images.map((image: Image) => ({
                 src: image.url,
@@ -100,38 +100,40 @@ export default async function ProductPage({
           </div>
 
           <div className="p-6 lg:col-span-2">
-            <div className="mb-16 mt-24">
-              <h3
-                data-testid="product-name"
-                className="box-decoration-clone text-lg uppercase"
-              >
-                {product.title}
-              </h3>
-              <Price
-                className="text-sm font-semibold"
-                amount={product.priceRange.maxVariantPrice.amount}
-                currencyCode={product.priceRange.maxVariantPrice.currencyCode}
+            <div className="sticky top-24">
+              <div className="mb-16">
+                <h3
+                  data-testid="product-name"
+                  className="box-decoration-clone text-lg uppercase"
+                >
+                  {product.title}
+                </h3>
+                <Price
+                  className="text-sm font-semibold"
+                  amount={product.priceRange.maxVariantPrice.amount}
+                  currencyCode={product.priceRange.maxVariantPrice.currencyCode}
+                />
+              </div>
+
+              <VariantSelector
+                options={product.options}
+                variants={product.variants}
               />
+
+              {product.descriptionHtml ? (
+                <Prose
+                  className="mb-6 text-sm leading-tight"
+                  html={product.descriptionHtml}
+                />
+              ) : null}
+
+              <AddToCart
+                variants={product.variants}
+                availableForSale={product.availableForSale}
+              />
+
+              <MetaFields metafields={product.metafields} />
             </div>
-
-            <VariantSelector
-              options={product.options}
-              variants={product.variants}
-            />
-
-            {product.descriptionHtml ? (
-              <Prose
-                className="mb-6 text-sm leading-tight"
-                html={product.descriptionHtml}
-              />
-            ) : null}
-
-            <AddToCart
-              variants={product.variants}
-              availableForSale={product.availableForSale}
-            />
-
-            <MetaFields metafields={product.metafields} />
           </div>
         </div>
         <Suspense>
