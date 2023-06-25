@@ -50,7 +50,7 @@ export function Images({
                     src={image.src}
                   />
                   <Slider.Root
-                    className="fixed bottom-8 right-8 flex h-5 w-64 touch-none select-none items-center"
+                    className="fixed inset-x-8 bottom-8 flex h-5 touch-none select-none items-center sm:start-auto sm:w-48"
                     defaultValue={[1]}
                     max={5}
                     min={1}
@@ -69,7 +69,7 @@ export function Images({
                   </Slider.Root>
                   <Dialog.Close asChild>
                     <button
-                      className="fixed right-8 top-8 inline-flex h-10 w-10 appearance-none items-center justify-center rounded-full p-2 drop-shadow focus:shadow-[0_0_0_1px] focus:shadow-white focus:outline-none"
+                      className="fixed right-4 top-4 inline-flex h-10 w-10 appearance-none items-center justify-center rounded-full p-2 drop-shadow focus:shadow-[0_0_0_1px] focus:shadow-white focus:outline-none"
                       aria-label="Close"
                       onClick={() => {
                         setScale(1);
