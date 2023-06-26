@@ -5,8 +5,6 @@ import { Suspense } from "react";
 import { Product, WithContext } from "schema-dts";
 
 import Grid from "components/grid";
-import Navbar from "components/layout/navbar";
-import NavbarContent from "components/layout/navbar/content";
 import ProductGridItems from "components/layout/product-grid-items";
 import { ProductDetails } from "components/product/details";
 import { HIDDEN_PRODUCT_TAG } from "lib/constants";
@@ -77,12 +75,9 @@ export default async function ProductPage({
 
   return (
     <>
-      <Navbar blend>
-        <NavbarContent showLogo />
-      </Navbar>
       <ProductDetails product={product} />
       <Suspense>
-        <RelatedProducts className="relative z-50 bg-white" id={product.id} />
+        <RelatedProducts className="relative pb-48" id={product.id} />
       </Suspense>
       <script
         type="application/ld+json"
