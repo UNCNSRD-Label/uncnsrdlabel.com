@@ -9,7 +9,10 @@ export default function Image(props: ImageProps) {
   return (
     <NextImage
       {...props}
-      className={clsx("opacity-0 transition-opacity", props.className)}
+      className={clsx(
+        "opacity-0 transition-opacity data-[loaded=true]:opacity-100",
+        props.className
+      )}
       onLoadingComplete={(img: HTMLImageElement) => {
         onLoadingComplete(img);
 
