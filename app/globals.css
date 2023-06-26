@@ -10,11 +10,8 @@
 
 @layer base {
   * {
+    @apply focus-visible:outline-none focus-visible:ring focus-visible:ring-hotPink focus-visible:ring-offset-0;
     text-underline-offset: theme(textUnderlineOffset.4);
-
-    &:focus-visible {
-      @apply outline-offset-4;
-    }
   }
 
   /* Create scroll-timeline on the root */
