@@ -1,7 +1,10 @@
 import { type ParsedMetafields } from "@shopify/hydrogen-react";
-import { type Metafield } from "@shopify/hydrogen-react/storefront-api-types";
+import {
+  type Metafield,
+  type Metaobject,
+} from "@shopify/hydrogen-react/storefront-api-types";
 
-export { Metafield, ParsedMetafields };
+export { Metafield, Metaobject, ParsedMetafields };
 
 export type Maybe<T> = T | null;
 

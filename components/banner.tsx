@@ -1,6 +1,6 @@
 import clsx from "clsx";
 
-const Banner = ({ className }: { className?: string }) => {
+export const Banner = ({ className }: { className?: string }) => {
   return (
     <div
       className={clsx(

@@ -1,6 +1,8 @@
 import { clsx } from "clsx";
 import { forwardRef } from "react";
 
+import { MetafieldMapper } from "components/product/metafield-mapper";
+
 import {
   Accordion,
   AccordionContent,
@@ -21,22 +23,6 @@ interface MetaFieldsProps {
 
 export const MetaFields = forwardRef<MetaFieldsRef, MetaFieldsProps>(
   ({ className, id, metafields, ...props }, forwardedRef) => {
-    //   const parsedMetafield = metafields
-    // .filter(Boolean)
-    // ?.filter(
-    //   (metafield) =>
-    //     ![
-    //       "composition",
-    //       "complementary_products",
-    //       "material_image",
-    //       "related_products",
-    //     ].includes(metafield?.key!)
-    // )
-    // ?.sort((a, b) => a!.key!.localeCompare(b!.key!))
-    // .map((metafield) => parseMetafield<ParsedMetafields[metafield.type]>(metafield));
-
-    console.log(metafields);
-
     return (
       <Accordion
         className={clsx("mt-8 max-w-[100dvw]", className)}
@@ -60,21 +46,10 @@ export const MetaFields = forwardRef<MetaFieldsRef, MetaFieldsProps>(
               </AccordionHeader>
             </AccordionTrigger>
             <AccordionContent className="collapsible-content prose-xs prose overflow-x-auto">
-              <pre className="collapsible-content prose-xs w-max-[calc(100%_-_4rem)] prose overflow-x-auto">
+              <MetafieldMapper metafield={metafield} />
+              {/* <pre className="collapsible-content prose-xs w-max-[calc(100%_-_4rem)] prose overflow-x-auto">
                 <code>{JSON.stringify(metafield, null, 2)}</code>
-              </pre>
-
-              {/* {metafield?.type === "page_reference" ? (
-              <>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: metafield?.reference?.body,
-                  }}
-                />
-              </>
-            ) : (
-              metafield?.value
-            )} */}
+              </pre> */}
             </AccordionContent>
           </AccordionItem>
         ))}
