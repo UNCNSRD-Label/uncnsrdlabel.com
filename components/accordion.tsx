@@ -42,13 +42,16 @@ export const AccordionTrigger = forwardRef<
   <AccordionPrimitive.Header className="AccordionHeader dark:text-white">
     <AccordionPrimitive.Trigger
       className={clsx(
-        "AccordionTrigger flex w-full items-center justify-between gap-4"
+        "AccordionTrigger group flex w-full items-center justify-between gap-4"
       )}
       {...props}
       ref={forwardedRef}
     >
       {children}
-      <ChevronDownIcon className="AccordionChevron h-6 w-6" aria-hidden />
+      <ChevronDownIcon
+        className="AccordionChevron h-6 w-6 group-data-[state=open]:rotate-180"
+        aria-hidden
+      />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ));
@@ -62,7 +65,7 @@ export const AccordionContent = forwardRef<
     {...props}
     ref={forwardedRef}
   >
-    <div className={clsx("AccordionContentText")}>{children}</div>
+    <div className={clsx("AccordionContentText mt-4")}>{children}</div>
   </AccordionPrimitive.Content>
 ));
 

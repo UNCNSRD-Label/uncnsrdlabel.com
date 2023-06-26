@@ -46,11 +46,7 @@ export const MetafieldMapper = ({ metafield }: { metafield: Metafield }) => {
       break;
   }
 
-  return (
-    <div className="prose-xs prose dark:prose-invert">
-      <span>{value}</span>
-    </div>
-  );
+  return <span>{value}</span>;
 };
 
 export default MetafieldMapper;

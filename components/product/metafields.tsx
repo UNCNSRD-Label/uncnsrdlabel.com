@@ -23,13 +23,27 @@ interface MetaFieldsProps {
 
 export const MetaFields = forwardRef<MetaFieldsRef, MetaFieldsProps>(
   ({ className, id, metafields, ...props }, forwardedRef) => {
+    const defaultValue = metafields
+      .map((metafield) => metafield.key ?? "")
+      .filter(
+        (key) =>
+          ![
+            "component",
+            "returns",
+            "shipping",
+            "model",
+            "complementary_products",
+            "related_products",
+          ].includes(key)
+      );
+
     return (
       <Accordion
         className={clsx("mt-8 max-w-[100dvw]", className)}
-        type="single"
-        collapsible
+        defaultValue={defaultValue}
         id={id}
         ref={forwardedRef}
+        type="multiple"
         {...props}
       >
         {metafields.filter(Boolean).map((metafield, index) => (
@@ -45,9 +59,9 @@ export const MetaFields = forwardRef<MetaFieldsRef, MetaFieldsProps>(
                   .join(" ")}
               </AccordionHeader>
             </AccordionTrigger>
-            <AccordionContent className="collapsible-content prose-xs prose overflow-x-auto">
+            <AccordionContent className="collapsible-content prose prose-sm overflow-x-auto dark:prose-invert">
               <MetafieldMapper metafield={metafield} />
-              {/* <pre className="collapsible-content prose-xs w-max-[calc(100%_-_4rem)] prose overflow-x-auto">
+              {/* <pre className="w-max-[calc(100%_-_4rem)]">
                 <code>{JSON.stringify(metafield, null, 2)}</code>
               </pre> */}
             </AccordionContent>
