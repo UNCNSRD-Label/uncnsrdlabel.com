@@ -29,10 +29,10 @@ export const MetafieldMapper = ({ metafield }: { metafield: Metafield }) => {
       break;
     case "list.metaobject_reference":
       {
-        value = metafield.references?.map(
-          (reference: Metaobject) =>
-            reference?.fields?.find((field) => field.key === "name")?.value
-        );
+        // value = metafield.references?.map(
+        //   (reference: Metaobject) =>
+        //     reference?.fields?.find((field) => field.key === "name")?.value
+        // );
       }
       break;
     case "multi_line_text_field":
