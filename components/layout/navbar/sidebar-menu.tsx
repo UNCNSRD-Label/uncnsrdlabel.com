@@ -61,11 +61,11 @@ export default function SidebarMenu({ menu }: { menu: Menu[] }) {
                 open: { opacity: 1, backdropFilter: "blur(0.5px)" },
                 closed: { opacity: 0, backdropFilter: "blur(0px)" },
               }}
-              className="bg-inherit/30 fixed inset-0"
+              className="fixed inset-0 bg-black/30"
               aria-hidden="true"
             />
             <div
-              className="fixed inset-0 flex max-w-sm justify-end"
+              className="fixed inset-0 flex max-w-sm justify-end bg-black"
               data-testid="sidebar-menu"
             >
               <Dialog.Panel
@@ -77,7 +77,7 @@ export default function SidebarMenu({ menu }: { menu: Menu[] }) {
                 transition={{ type: "spring", bounce: 0, duration: 0.3 }}
                 className="flex w-full flex-col bg-inherit pb-6"
               >
-                <div className="p-4">
+                <div className="p-6">
                   <button
                     className="mb-4"
                     onClick={() => {
@@ -86,7 +86,7 @@ export default function SidebarMenu({ menu }: { menu: Menu[] }) {
                     aria-label="Close sidebar menu"
                     data-testid="close-sidebar-menu"
                   >
-                    <CloseIcon className="icon h-6 stroke-inherit drop-shadow" />
+                    <CloseIcon className="icon h-5 stroke-white drop-shadow" />
                   </button>
 
                   <div className="mb-4 w-full">

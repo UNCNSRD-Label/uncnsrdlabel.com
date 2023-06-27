@@ -56,17 +56,17 @@ export default function CartModal({
                 closed: { translateX: "100%" },
               }}
               transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-              className="flex w-full flex-col bg-black p-8 text-white md:w-3/5 lg:w-2/5"
+              className="flex w-full flex-col bg-black p-6 md:w-2/5 lg:w-1/3"
             >
               <div className="flex items-center justify-between">
                 <p className="text-lg font-bold">My Cart</p>
                 <button
                   aria-label="Close cart"
                   onClick={onClose}
-                  className="text-black transition-colors hover:text-gray-500 dark:text-gray-100"
+                  className="transition-colors"
                   data-testid="close-cart"
                 >
-                  <CloseIcon className="h-7" />
+                  <CloseIcon className="h-5" />
                 </button>
               </div>
 
@@ -150,7 +150,7 @@ export default function CartModal({
                       );
                     })}
                   </ul>
-                  <div className="border-t border-gray-200 pt-2 text-sm text-black dark:text-white">
+                  <div className="border-t pt-2 text-sm">
                     <div className="mb-2 flex items-center justify-between">
                       <p>Subtotal</p>
                       <Price
