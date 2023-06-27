@@ -104,6 +104,9 @@ dependencies:
   react-qr-code:
     specifier: ^2.0.11
     version: 2.0.11(react@18.2.0)
+  react-quick-pinch-zoom:
+    specifier: ^4.9.0
+    version: 4.9.0(react-dom@18.2.0)(react@18.2.0)
   react-use-scrollspy:
     specifier: ^3.1.1
     version: 3.1.1(react@18.2.0)
@@ -5563,6 +5566,22 @@ packages:
       prop-types: 15.8.1
       qr.js: 0.0.0
       react: 18.2.0
+    dev: false
+
+  /react-quick-pinch-zoom@4.9.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-gCPnZu5+rkYDNvewi/d7A2wgLs7izQNMuC6kjt+KLC1qqHnRU27Ed8AgcEcnWAZKdMr3ZKoKhSvjlZSVZI0fuw==}
+    peerDependencies:
+      react: '>=16.4.0'
+      react-dom: '>=16.4.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      tslib: 2.5.0
     dev: false
 
   /react-remove-scroll-bar@2.3.4(@types/react@18.2.14)(react@18.2.0):

@@ -19,7 +19,7 @@ export function ProductImage({
 
   return (
     <figure
-      className={clsx("relative overflow-hidden", className)}
+      className={clsx("relative", className)}
       style={{
         // scale
         width: `calc(100% * ${scale})`,
@@ -27,7 +27,7 @@ export function ProductImage({
     >
       <Image
         className={clsx("relative block h-full w-full object-cover", {
-          "transition duration-300 ease-in-out hover:scale-105": isInteractive,
+          "transition duration-300 ease-in-out": isInteractive,
         })}
         {...props}
         alt={props.title || ""}
