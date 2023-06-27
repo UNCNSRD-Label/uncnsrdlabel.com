@@ -37,7 +37,7 @@ export function Images({
             </Dialog.Trigger>
             <Dialog.Portal>
               <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0 z-40 bg-white">
-                <Dialog.Content className="data-[state=open]:animate-contentShow fixed inset-0 grid place-items-center focus:outline-none">
+                <Dialog.Content className="data-[state=open]:animate-contentShow focus:outline-none">
                   <Suspense>
                     <ProductImageZoom
                       alt={image?.altText}
