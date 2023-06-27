@@ -39,7 +39,7 @@ export const AccordionTrigger = forwardRef<
   AccordionTriggerRef,
   AccordionTriggerProps
 >(({ children, className, ...props }, forwardedRef) => (
-  <AccordionPrimitive.Header className="AccordionHeader dark:text-white">
+  <AccordionPrimitive.Header className="AccordionHeader">
     <AccordionPrimitive.Trigger
       className={clsx(
         "AccordionTrigger group flex w-full items-center justify-between gap-4"

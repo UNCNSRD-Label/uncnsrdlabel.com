@@ -13,8 +13,10 @@ export default async function Footer() {
   const informationMenu = await getMenu("information");
   const followUsMenu = await getMenu("follow-us");
 
+  const linkClassName = "text-xxs transition duration-150 ease-in-out";
+
   return (
-    <footer className="relative z-40 border-t border-gray-700 bg-white text-black">
+    <footer className="relative z-40 border-t border-inherit">
       <div className="mx-auto w-full max-w-7xl px-6">
         <div className="grid grid-cols-1 items-start gap-8 border-b border-gray-700 py-12 transition-colors duration-150 lg:grid-cols-12">
           <nav className="col-span-1 grid gap-8 lg:col-span-8 lg:grid-cols-9">
@@ -23,10 +25,7 @@ export default async function Footer() {
                 <dt className="text-sm">Customer Care</dt>
                 {customerCareMenu.map((item: Menu) => (
                   <dd key={item.title}>
-                    <Link
-                      href={item.path}
-                      className="text-xxs text-gray-800 transition duration-150 ease-in-out hover:text-gray-500"
-                    >
+                    <Link href={item.path} className={linkClassName}>
                       {item.title}
                     </Link>
                   </dd>
@@ -38,10 +37,7 @@ export default async function Footer() {
                 <dt className="text-sm">Information</dt>
                 {informationMenu.map((item: Menu) => (
                   <dd key={item.title}>
-                    <Link
-                      href={item.path}
-                      className="text-xxs text-gray-800 transition duration-150 ease-in-out hover:text-gray-500"
-                    >
+                    <Link href={item.path} className={linkClassName}>
                       {item.title}
                     </Link>
                   </dd>
@@ -55,7 +51,7 @@ export default async function Footer() {
                   <dd key={item.title}>
                     <a
                       href={item.path}
-                      className="text-xxs text-gray-800 transition duration-150 ease-in-out hover:text-gray-500"
+                      className={linkClassName}
                       target="_blank"
                       rel="noopener noreferrer"
                     >

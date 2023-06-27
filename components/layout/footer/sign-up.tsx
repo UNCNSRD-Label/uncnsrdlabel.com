@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import { SlEnvolope } from "react-icons/sl";
 
 async function signUp(formData: FormData) {
@@ -77,7 +76,7 @@ export default function SignUp({ className }: { className?: string }) {
         <div className="field">
           <input
             autoComplete="true"
-            className="w-full px-4 py-2"
+            className="w-full border-gray-700 bg-gray-800 px-4 py-2"
             name="email"
             placeholder="Sign up to our newsletter"
             required

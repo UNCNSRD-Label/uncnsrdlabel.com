@@ -29,7 +29,7 @@ export const PurchaseOptions = forwardRef<
       >
         <h3
           data-testid="product-name"
-          className="box-decoration-clone text-lg uppercase"
+          className="box-decoration-clone text-2xl"
         >
           {product.title}
         </h3>

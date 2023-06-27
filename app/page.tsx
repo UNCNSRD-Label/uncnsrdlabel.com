@@ -2,6 +2,7 @@ import { HorizontalScroll } from "components/horizontal-scroll";
 import Logo from "components/layout/logo";
 import Navbar from "components/layout/navbar";
 import NavbarContent from "components/layout/navbar/content";
+import RadixHero from "components/radix-hero";
 import { Video, type VideoProps } from "components/video";
 import Image from "next/image";
 import Link from "next/link";
@@ -45,10 +46,13 @@ export default async function HomePage() {
           <Link
             href="/search"
             aria-label="Go to the shop"
-            className="btn btn-border btn-secondary btn-base absolute z-20 justify-self-center whitespace-nowrap uppercase text-white"
+            className="btn btn-border btn-secondary btn-base absolute z-20 justify-self-center whitespace-nowrap uppercase"
           >
             Shop now
           </Link>
+        </section>
+        <section className="relative grid h-64 w-full bg-black sm:snap-start">
+          <RadixHero />
         </section>
         <section className="relative grid bg-black sm:snap-start">
           <HorizontalScroll className="" />

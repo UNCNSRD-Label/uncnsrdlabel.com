@@ -34,7 +34,7 @@ export async function Carousel() {
               />
             ) : null}
             <div className="absolute inset-y-0 right-0 flex items-center justify-center">
-              <div className="inline-flex bg-white p-4 text-xl font-semibold uppercase text-black dark:bg-black dark:text-white">
+              <div className="inline-flex p-4 text-xl font-semibold uppercase">
                 {product.title}
               </div>
             </div>

@@ -61,7 +61,7 @@ export default function SidebarMenu({ menu }: { menu: Menu[] }) {
                 open: { opacity: 1, backdropFilter: "blur(0.5px)" },
                 closed: { opacity: 0, backdropFilter: "blur(0px)" },
               }}
-              className="fixed inset-0 bg-black/30"
+              className="bg-inherit/30 fixed inset-0"
               aria-hidden="true"
             />
             <div
@@ -75,7 +75,7 @@ export default function SidebarMenu({ menu }: { menu: Menu[] }) {
                   closed: { translateX: "-100%" },
                 }}
                 transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-                className="flex w-full flex-col bg-white pb-6 dark:bg-black"
+                className="flex w-full flex-col bg-inherit pb-6"
               >
                 <div className="p-4">
                   <button

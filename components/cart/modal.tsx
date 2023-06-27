@@ -56,7 +56,7 @@ export default function CartModal({
                 closed: { translateX: "100%" },
               }}
               transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-              className="flex w-full flex-col bg-white p-8 text-black dark:bg-black dark:text-white md:w-3/5 lg:w-2/5"
+              className="flex w-full flex-col bg-black p-8 text-white md:w-3/5 lg:w-2/5"
             >
               <div className="flex items-center justify-between">
                 <p className="text-lg font-bold">My Cart</p>

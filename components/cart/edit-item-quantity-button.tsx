@@ -58,7 +58,7 @@ export default function EditItemQuantityButton({
       )}
     >
       {editing ? (
-        <LoadingDots className="bg-black dark:bg-white" />
+        <LoadingDots className="bg-white" />
       ) : type === "plus" ? (
         <PlusIcon className="h-4 w-4" />
       ) : (
