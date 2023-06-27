@@ -66,7 +66,7 @@ export function GridTileImage({
           <h3
             data-testid="product-name"
             className={clsx(
-              "box-decoration-clone font-semibold uppercase",
+              "box-decoration-clone font-semibold",
               !labels.isSmall ? "text-3xl" : "text-lg"
             )}
           >
