@@ -31,11 +31,12 @@ module.exports = {
         ],
       },
       colors: {
+        error: colors.red["500"],
         gray: colors.neutral,
         hotPink: "#ff4dd8",
         dark: "#111111",
         light: "#FAFAFA",
-        violetDark: "#4c2889",
+        disabled: colors.gray["300"],
       },
       keyframes: {
         fadeIn: {
