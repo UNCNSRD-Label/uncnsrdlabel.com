@@ -32,7 +32,7 @@ module.exports = {
       },
       colors: {
         gray: colors.neutral,
-        hotPink: "#FF1966",
+        hotPink: "#ff4dd8",
         dark: "#111111",
         light: "#FAFAFA",
         violetDark: "#4c2889",
