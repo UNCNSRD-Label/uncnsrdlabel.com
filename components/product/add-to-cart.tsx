@@ -4,7 +4,6 @@ import clsx from "clsx";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState, useTransition } from "react";
 
-import LoadingDots from "components/loading-dots";
 import { ProductVariant } from "lib/shopify/types";
 
 export function AddToCart({
@@ -63,18 +62,21 @@ export function AddToCart({
   return (
     <button
       aria-label="Add item to cart"
-      disabled={isMutating}
+      disabled={isMutating || !availableForSale}
       onClick={handleAdd}
-      className={clsx(
-        "flex w-full items-center justify-center bg-black p-4 text-sm uppercase tracking-wide text-white opacity-90 hover:opacity-100 dark:bg-white dark:text-black",
-        {
-          "cursor-not-allowed opacity-60": !availableForSale,
-          "cursor-not-allowed": isMutating,
-        }
-      )}
+      className={clsx("btn btn-base btn-primary btn-outline relative w-full", {
+        "cursor-not-allowed": isMutating,
+        mutating: isMutating,
+      })}
     >
-      <span>{availableForSale ? "Add To Cart" : "Out Of Stock"}</span>
-      {isMutating ? <LoadingDots className="bg-white dark:bg-black" /> : null}
+      <span
+        className={clsx({
+          mutating: isMutating,
+        })}
+      >
+        {availableForSale ? "Add To Cart" : "Out Of Stock"}
+      </span>
+      {/* {!isMutating ? <span className="absolute grid grid-flow-col inset-0"><LoadingDots amount={100} className="bg-hotPink/50 h-full w-auto" /></span> : null} */}
     </button>
   );
 }

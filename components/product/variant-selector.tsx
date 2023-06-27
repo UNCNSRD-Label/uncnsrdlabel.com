@@ -125,10 +125,10 @@ export function VariantSelector({
                 !isAvailableForSale ? " (Out of Stock)" : ""
               }`}
               className={clsx(
-                "flex h-12 min-w-[48px] items-center justify-center px-2 text-sm",
+                "flex h-12 min-w-[48px] items-center justify-center px-2 text-sm focus-visible:bg-hotPink/20 focus-visible:ring-hotPink",
                 {
-                  "cursor-default ring-1 ring-inherit": isActive,
-                  "ring-1 ring-gray-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-gray-100 hover:ring-black dark:text-light dark:ring-gray-700 dark:hover:bg-transparent":
+                  "cursor-default text-hotPink ring-1 ring-hotPink": isActive,
+                  "ring-1 ring-gray-500 transition duration-300 ease-in-out hover:bg-hotPink/20 hover:ring-hotPink":
                     !isActive && isAvailableForSale,
                   "relative z-10 cursor-not-allowed overflow-hidden ring-1 ring-gray-500 before:absolute before:inset-x-0 before:-z-10 before:h-px before:-rotate-45 before:bg-gray-500 before:transition-transform":
                     !isAvailableForSale,
