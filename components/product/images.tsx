@@ -25,7 +25,7 @@ export function Images({
             <Dialog.Trigger asChild>
               <button
                 aria-label="Enlarge product image"
-                className="relative w-full"
+                className="relative w-4/6"
               >
                 <ProductImage
                   alt={image?.altText}
