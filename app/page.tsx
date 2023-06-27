@@ -1,10 +1,8 @@
-import { HorizontalScroll } from "components/horizontal-scroll";
+import { HomepageCarousel } from "components/homepage-carousel";
 import Logo from "components/layout/logo";
 import Navbar from "components/layout/navbar";
 import NavbarContent from "components/layout/navbar/content";
-import RadixHero from "components/radix-hero";
 import { Video, type VideoProps } from "components/video";
-import Image from "next/image";
 import Link from "next/link";
 
 export const runtime = "edge";
@@ -42,30 +40,18 @@ export default async function HomePage() {
       </Navbar>
       <main className="relative grid grid-rows-[1fr_auto]">
         <section className="relative grid h-[100dvh] items-center overflow-hidden sm:snap-start">
-          <Video {...video} className="" />
+          <Video {...video} />
           <Link
             href="/search"
             aria-label="Go to the shop"
-            className="btn btn-border btn-secondary btn-base absolute z-20 justify-self-center whitespace-nowrap uppercase"
+            className="btn btn-outline btn-secondary btn-base absolute z-20 justify-self-center whitespace-nowrap uppercase"
           >
             Shop now
           </Link>
         </section>
-        <section className="relative grid h-64 w-full bg-black sm:snap-start">
-          <RadixHero />
+        <section className="bg-black sm:snap-start">
+          <HomepageCarousel />
         </section>
-        <section className="relative grid bg-black sm:snap-start">
-          <HorizontalScroll className="" />
-        </section>
-        <figure className="relative hidden h-[100dvh] bg-black sm:grid sm:snap-start">
-          <Image
-            alt="Model wearing UNCNSRD swimwear"
-            className="h-full object-cover"
-            fill
-            sizes="100vw"
-            src="/images/MAV8814-cropped.png"
-          />
-        </figure>
       </main>
       <Logo theme="light" />
     </>
