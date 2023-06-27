@@ -21,7 +21,7 @@ export default function Logo({ blend, className, theme = "light" }: Props) {
   return (
     <div
       className={clsx(
-        "pointer-events-none relative inset-0 z-30",
+        "pointer-events-none relative inset-0 z-50",
         blend && "mix-blend-difference"
       )}
       ref={rootRef}
