@@ -49,7 +49,7 @@ export default async function HomePage() {
             Shop now
           </Link>
         </section>
-        <section className="bg-black sm:snap-start">
+        <section className="my-48 sm:snap-start">
           <HomepageCarousel />
         </section>
       </main>
