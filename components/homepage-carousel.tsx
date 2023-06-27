@@ -14,6 +14,15 @@ export async function HomepageCarousel(props: NukaCarouselProps) {
 
   const slidesToShow = 4;
 
+  const buttonClassName =
+    "!px-6 text-6xl drop-shadow focus-visible:!text-hotPink hover:!text-hotPink";
+  const buttonStyle = {
+    backgroundColor: "unset",
+    color: "unset",
+    opacity: "unset",
+    padding: "unset",
+  };
+
   return (
     <Suspense>
       <NukaCarousel
@@ -21,9 +30,17 @@ export async function HomepageCarousel(props: NukaCarouselProps) {
         autoplay
         autoplayInterval={5000}
         className={clsx(
-          `h-[calc(100dvw_/_${slidesToShow})_*_4)] w-full`,
+          `cursor-grab [&.dragging]:cursor-grabbing h-[calc(100dvw_/_${slidesToShow})_*_4)] w-full`,
           props.className
         )}
+        defaultControlsConfig={{
+          nextButtonClassName: buttonClassName,
+          nextButtonText: "›",
+          nextButtonStyle: buttonStyle,
+          prevButtonClassName: buttonClassName,
+          prevButtonStyle: buttonStyle,
+          prevButtonText: "‹",
+        }}
         enableKeyboardControls
         pauseOnHover
         slidesToShow={slidesToShow}
