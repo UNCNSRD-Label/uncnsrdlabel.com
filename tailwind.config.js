@@ -9,9 +9,9 @@ module.exports = {
     "./icons/**/*.{js,ts,jsx,tsx}",
     "./app/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
-      dark: {},
       aspectRatio: {
         "16/9": "16 / 9",
         "2/3": "2 / 3",
