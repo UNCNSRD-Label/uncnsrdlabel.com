@@ -21,7 +21,7 @@ export function ProductDetails({ product }: { product: Product }) {
       <div>
         <div className="lg:grid lg:grid-cols-6">
           <div
-            className="grid justify-items-center gap-4 lg:col-span-4"
+            className="mb-48 grid justify-items-center gap-4 lg:col-span-4"
             id="images"
             ref={sectionElementRefs[0]}
           >
