@@ -81,7 +81,7 @@ export default async function RootLayout({
       )}
     >
       <body
-        className="grid min-h-[100dvh] grid-rows-[auto_1fr] bg-white fill-black stroke-black tracking-widest text-black dark:bg-black dark:fill-white dark:stroke-white dark:text-white"
+        className="grid min-h-[100dvh] grid-rows-[auto_1fr] bg-white fill-black stroke-black tracking-widest text-black dark:bg-gray-800 dark:fill-white dark:stroke-white dark:text-white"
         style={{
           textRendering: "optimizeLegibility",
         }}
