@@ -64,7 +64,7 @@ export default async function Footer() {
               </dl>
             ) : null}
           </nav>
-          <SignUp className="col-span-1 sm:col-span-6 sm:col-start-7 lg:col-span-4 lg:col-start-1" />
+          <SignUp className="lg:col-start-0 col-span-1 sm:col-span-6 sm:col-start-7 lg:col-span-4" />
         </div>
         <div className="flex flex-col items-center justify-between pb-10 pt-6 text-xs uppercase sm:flex-row">
           <span>
