@@ -26,7 +26,7 @@ export default function SearchLayout({
           >
             <Collections />
           </div>
-          <div className="order-last min-h-screen w-full max-w-7xl md:order-none">
+          <div className="order-last min-h-screen w-full max-w-7xl px-4 md:order-none">
             {children}
           </div>
           <div
