@@ -90,7 +90,7 @@ export default async function RootLayout({
       )}
     >
       <body
-        className={`grid min-h-[100dvh] grid-rows-[auto_1fr] tracking-widest bg-${background} text-${foreground} border-${foreground} ring-${foreground} selection:bg-hotPink`}
+        className={`grid min-h-[100dvh] grid-rows-[auto_1fr] tracking-widest bg-${background} text-${foreground} border-${foreground} fill-${foreground} stroke-${foreground} ring-${foreground} selection:bg-hotPink focus:bg-hotPink focus-visible:bg-hotPink`}
         style={{
           textRendering: "optimizeLegibility",
         }}
