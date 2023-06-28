@@ -31,7 +31,7 @@ export function GridTileImage({
   return (
     <div
       className={clsx(
-        "relative grid h-full w-full items-center justify-center overflow-hidden"
+        "relative grid h-full w-full content-start justify-center overflow-hidden"
         // {
         //   "bg-white dark:bg-white": background === "white",
         //   "bg-[#ff0080] dark:bg-[#ff0080]": background === "pink",
