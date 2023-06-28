@@ -16,6 +16,7 @@ export async function HomepageCarousel(props: NukaCarouselProps) {
 
   const buttonClassName =
     "!px-6 text-6xl drop-shadow focus-visible:!text-hotPink hover:!text-hotPink";
+
   const buttonStyle = {
     backgroundColor: "unset",
     color: "unset",

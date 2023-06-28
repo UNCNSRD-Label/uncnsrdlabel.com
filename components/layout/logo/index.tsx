@@ -41,7 +41,7 @@ export default function Logo({ blend, className, theme = "light" }: Props) {
         <AccessibleIcon.Root label={`${SITE_NAME} logotype`}>
           <LogotypeIcon
             className={clsx(
-              "h-10 drop-shadow transition duration-300 ease-in-out hover:scale-110",
+              "h-8 drop-shadow transition duration-300 ease-in-out hover:scale-110 sm:h-10",
               theme === "light" ? "fill-white" : "fill-black"
             )}
             ref={logotypeRef}
