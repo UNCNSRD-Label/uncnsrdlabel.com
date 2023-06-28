@@ -72,17 +72,25 @@ export default async function Footer() {
           </span>
           <menu className="grid grid-flow-col content-center justify-center gap-4">
             <SocialIcon
-              className="[&_.social-svg-mask]:!fill-black dark:[&_.social-svg-mask]:!fill-white "
-              url="https://www.instagram.com/uncnsrdlabel"
+              className="!h-12 !w-12 [&_.social-svg-mask]:!fill-black dark:[&_.social-svg-mask]:!fill-white"
+              target="_blank"
+              url="https://tiktok.com/@uncnsrdlabel/"
             />
             <SocialIcon
-              className="[&_.social-svg-mask]:!fill-black dark:[&_.social-svg-mask]:!fill-white "
-              url="https://twitter.com/uncnsrdlabel"
+              className="!h-12 !w-12 [&_.social-svg-mask]:!fill-black dark:[&_.social-svg-mask]:!fill-white"
+              target="_blank"
+              url="https://www.instagram.com/uncnsrdlabel/"
             />
-            <SocialIcon
-              className="[&_.social-svg-mask]:!fill-black dark:[&_.social-svg-mask]:!fill-white "
-              url="https://www.facebook.com/uncnsrdlabel"
-            />
+            {/* <SocialIcon
+              className="[&_.social-svg-mask]:!fill-black dark:[&_.social-svg-mask]:!fill-white !h-12 !w-12"
+              target="_blank"
+              url="https://twitter.com/uncnsrdlabel/"
+            /> */}
+            {/* <SocialIcon
+              className="[&_.social-svg-mask]:!fill-black dark:[&_.social-svg-mask]:!fill-white !h-12 !w-12"
+              target="_blank"
+              url="https://www.facebook.com/uncnsrdlabel/"
+            /> */}
           </menu>
         </div>
       </div>
