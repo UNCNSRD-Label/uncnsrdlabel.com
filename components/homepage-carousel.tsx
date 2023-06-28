@@ -24,6 +24,14 @@ export async function HomepageCarousel(props: NukaCarouselProps) {
     padding: "unset",
   };
 
+  const pagingDotsClassName =
+    "[&_.paging-dot]:h-4 [&_.paging-dot]:w-4 !fill-inherit stroke-none mix-blend-difference";
+  const pagingDotsContainerClassName = "gap-8 [&_.active]:!fill-hotPink";
+  const pagingDotsStyle = {
+    display: "none",
+    opacity: "!opacity-100",
+  };
+
   return (
     <Suspense>
       <NukaCarousel
@@ -41,6 +49,9 @@ export async function HomepageCarousel(props: NukaCarouselProps) {
           prevButtonClassName: buttonClassName,
           prevButtonStyle: buttonStyle,
           prevButtonText: "‹",
+          pagingDotsClassName,
+          pagingDotsContainerClassName,
+          pagingDotsStyle,
         }}
         enableKeyboardControls
         pauseOnHover
