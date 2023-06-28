@@ -49,7 +49,7 @@ export default async function HomePage() {
             Shop now
           </Link>
         </section>
-        <section className="my-48 sm:snap-start">
+        <section className="py-48 sm:snap-center">
           <HomepageCarousel />
         </section>
       </main>

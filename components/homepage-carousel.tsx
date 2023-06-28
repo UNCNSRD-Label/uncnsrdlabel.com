@@ -12,7 +12,7 @@ export async function HomepageCarousel(props: NukaCarouselProps) {
 
   const images = page.images;
 
-  const slidesToShow = 4;
+  const slidesToShow = 3;
 
   const buttonClassName =
     "!px-6 text-6xl drop-shadow focus-visible:!text-hotPink hover:!text-hotPink";
