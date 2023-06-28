@@ -11,6 +11,7 @@
 @layer base {
   * {
     @apply focus-visible:outline-none focus-visible:ring focus-visible:ring-hotPink focus-visible:ring-offset-0;
+    @apply border-black dark:border-white;
     text-underline-offset: theme(textUnderlineOffset.4);
   }
 
@@ -18,6 +19,27 @@
   html {
     scroll-behavior: smooth;
     scroll-timeline: --page-scroll block;
+  }
+
+  a,
+  button {
+    &:has(> .icon:only-child),
+    &.icon-container {
+      @apply focus-visible:border-hotPink focus-visible:fill-hotPink focus-visible:stroke-hotPink focus-visible:text-hotPink focus-visible:ring-0;
+    }
+  }
+
+  a {
+    @apply focus-visible:stroke-hotPink focus-visible:text-hotPink focus-visible:ring-0;
+  }
+
+  input {
+    --tw-ring-color: theme(ringColor.hotPink) !important;
+
+    &:focus,
+    &:hover {
+      @apply !border-hotPink;
+    }
   }
 }
 

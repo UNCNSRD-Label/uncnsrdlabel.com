@@ -18,7 +18,7 @@ export default async function Navbar(props: Props) {
   return (
     <>
       <div className="flex md:justify-self-start">
-        <div className="pointer-events-auto stroke-white md:mr-4">
+        <div className="pointer-events-auto md:mr-4">
           <Suspense fallback={<CartIcon className="h-6" />}>
             <SidebarMenu menu={menu} />
           </Suspense>
@@ -33,11 +33,11 @@ export default async function Navbar(props: Props) {
           aria-label="Go back home"
           className="pointer-events-auto justify-center md:flex"
         >
-          <LogotypeIcon className="h-10 fill-white drop-shadow transition duration-300 ease-in-out hover:scale-110" />
+          <LogotypeIcon className="h-10 drop-shadow transition duration-300 ease-in-out hover:scale-110" />
         </Link>
       </div>
 
-      <div className="pointer-events-auto flex items-center justify-end gap-5 fill-white text-white">
+      <div className="pointer-events-auto flex items-center justify-end gap-5">
         <Suspense fallback={<CartIcon className="icon fill h-6" />}>
           <Search />
           <Link href="/account" aria-label="Account">

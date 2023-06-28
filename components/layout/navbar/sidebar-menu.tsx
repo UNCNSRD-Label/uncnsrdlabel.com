@@ -65,7 +65,7 @@ export default function SidebarMenu({ menu }: { menu: Menu[] }) {
               aria-hidden="true"
             />
             <div
-              className="fixed inset-0 flex max-w-sm justify-end bg-black"
+              className="fixed inset-0 flex max-w-sm justify-end bg-black text-white"
               data-testid="sidebar-menu"
             >
               <Dialog.Panel
@@ -86,7 +86,7 @@ export default function SidebarMenu({ menu }: { menu: Menu[] }) {
                     aria-label="Close sidebar menu"
                     data-testid="close-sidebar-menu"
                   >
-                    <CloseIcon className="icon h-5 stroke-white drop-shadow" />
+                    <CloseIcon className="icon h-5 stroke-inherit drop-shadow" />
                   </button>
 
                   <div className="mb-4 w-full">
@@ -98,7 +98,7 @@ export default function SidebarMenu({ menu }: { menu: Menu[] }) {
                         <li key={item.title}>
                           <Link
                             href={item.path}
-                            className="rounded-lg py-1 text-sm uppercase text-inherit transition-colors hover:text-gray-500 dark:text-white"
+                            className="rounded-lg py-1 text-sm uppercase text-inherit transition-colors hover:text-gray-500"
                             onClick={() => {
                               setSidebarMenuIsOpen(false);
                             }}

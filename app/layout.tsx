@@ -67,16 +67,6 @@ export default async function RootLayout({
 }) {
   const hideBanner = true;
 
-  const theme: "dark" | "light" = "dark";
-
-  let background = "black";
-  let foreground = "white";
-
-  if (theme !== "dark") {
-    background = "white";
-    foreground = "black";
-  }
-
   return (
     <html
       lang="en"
@@ -90,7 +80,7 @@ export default async function RootLayout({
       )}
     >
       <body
-        className={`grid min-h-[100dvh] grid-rows-[auto_1fr] tracking-widest bg-${background} text-${foreground} border-${foreground} fill-${foreground} stroke-${foreground} ring-${foreground} selection:bg-hotPink focus:bg-hotPink focus-visible:bg-hotPink`}
+        className="grid min-h-[100dvh] grid-rows-[auto_1fr] bg-white fill-black stroke-black tracking-widest text-black dark:bg-black dark:fill-white dark:stroke-white dark:text-white"
         style={{
           textRendering: "optimizeLegibility",
         }}

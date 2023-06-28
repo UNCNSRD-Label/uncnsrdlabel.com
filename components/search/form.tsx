@@ -43,7 +43,7 @@ export default function SearchForm({
       <input
         autoComplete="off"
         className={clsx(
-          "w-full border-x-0 border-b border-t-0 bg-transparent px-4 py-2 pr-8 transition-all placeholder:text-inherit",
+          "w-full border-b border-inherit border-x-0 border-t-0 bg-transparent px-4 py-2 pr-8 transition-all placeholder:text-inherit",
           isOpen ? "opacity-100" : "opacity-0"
         )}
         defaultValue={searchParams?.get("q") || ""}

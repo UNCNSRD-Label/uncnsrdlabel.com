@@ -15,7 +15,7 @@ export default function SearchLayout({
       </Navbar>
       <Suspense>
         {children}
-        <Logo blend theme="light" className="bottom-20" />
+        <Logo blend className="bottom-20" />
       </Suspense>
     </>
   );

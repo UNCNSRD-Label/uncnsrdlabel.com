@@ -12,7 +12,7 @@ export const Logotype = forwardRef<Ref, Props>(function Logotype(
   return (
     <svg
       aria-label={`${process.env.SITE_NAME} logotype`}
-      className={clsx(props.className, "icon fill")}
+      className={clsx(props.className, "icon fill-inherit")}
       ref={ref}
       shapeRendering="geometricPrecision"
       stroke="none"

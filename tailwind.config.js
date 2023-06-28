@@ -11,6 +11,7 @@ module.exports = {
   ],
   theme: {
     extend: {
+      dark: {},
       aspectRatio: {
         "16/9": "16 / 9",
         "2/3": "2 / 3",
@@ -35,9 +36,20 @@ module.exports = {
         gray: colors.neutral,
         hotPink: "#ff4dd8",
         dark: "#111111",
-        light: "#FAFAFA",
+        light: "#fafafa",
         disabled: colors.gray["300"],
       },
+      backgroundColor: "#111111",
+      borderColor: "#fafafa",
+      boxShadowColor: "#ff4dd8",
+      caretColor: "#ff4dd8",
+      divideColor: "#ff4dd8",
+      outlineColor: "#ff4dd8",
+      placeholderColor: "#ff4dd8",
+      ringColor: "#ff4dd8",
+      ringOffsetColor: "#ff4dd8",
+      textColor: "#fafafa",
+      textDecorationColor: "#ff4dd8",
       keyframes: {
         fadeIn: {
           from: { opacity: 0 },

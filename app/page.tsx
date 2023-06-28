@@ -53,7 +53,7 @@ export default async function HomePage() {
           <HomepageCarousel />
         </section>
       </main>
-      <Logo theme="light" />
+      <Logo />
     </>
   );
 }

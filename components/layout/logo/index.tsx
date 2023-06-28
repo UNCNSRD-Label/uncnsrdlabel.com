@@ -6,11 +6,11 @@ import { clsx } from "clsx";
 import LogotypeIcon from "components/icons/logotype";
 import { useRef } from "react";
 
-type Props = { blend?: boolean; className?: string; theme: "dark" | "light" };
+type Props = { blend?: boolean; className?: string; fill?: "dark" | "light" };
 
 const { SITE_NAME } = process.env;
 
-export default function Logo({ blend, className, theme = "light" }: Props) {
+export default function Logo({ blend, className, fill }: Props) {
   const rootRef = useRef<HTMLDivElement>(null);
   const logotypeRef = useRef<SVGSVGElement>(null);
 
@@ -41,8 +41,11 @@ export default function Logo({ blend, className, theme = "light" }: Props) {
         <AccessibleIcon.Root label={`${SITE_NAME} logotype`}>
           <LogotypeIcon
             className={clsx(
-              "h-8 drop-shadow transition duration-300 ease-in-out hover:scale-110 sm:h-10",
-              theme === "light" ? "fill-white" : "fill-black"
+              "h-8 fill-inherit drop-shadow transition duration-300 ease-in-out hover:scale-110 sm:h-10",
+              {
+                "fill-white": fill === "light" || blend,
+                "fill-black": fill === "dark",
+              }
             )}
             ref={logotypeRef}
           />
