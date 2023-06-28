@@ -10,7 +10,6 @@
 
 @layer base {
   * {
-    @apply focus-visible:outline-none focus-visible:ring focus-visible:ring-hotPink focus-visible:ring-offset-0;
     @apply border-black dark:border-white;
     text-underline-offset: theme(textUnderlineOffset.4);
   }
@@ -23,14 +22,20 @@
 
   a,
   button {
+    @apply border-none outline-none;
+
+    &:has(> img, > figure) {
+      @apply focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-hotPink focus-visible:ring-hotPink;
+    }
+
     &:has(> .icon:only-child),
     &.icon-container {
-      @apply focus-visible:border-hotPink focus-visible:fill-hotPink focus-visible:stroke-hotPink focus-visible:text-hotPink focus-visible:ring-0;
+      @apply focus-visible:fill-hotPink focus-visible:stroke-hotPink focus-visible:text-hotPink;
     }
   }
 
   a {
-    @apply focus-visible:stroke-hotPink focus-visible:text-hotPink focus-visible:ring-0;
+    @apply focus-visible:stroke-hotPink focus-visible:text-hotPink;
   }
 
   input {
@@ -76,7 +81,7 @@
     }
 
     &.btn-outline {
-      @apply hover:!bg-hotPink/20 hover:!outline-hotPink focus-visible:!bg-hotPink/20 focus-visible:!outline-hotPink;
+      @apply hover:!bg-hotPink/20 hover:!outline-dashed hover:!outline-hotPink focus-visible:!bg-hotPink/20 focus-visible:!outline-hotPink;
     }
 
     &:not(.btn-outline) {

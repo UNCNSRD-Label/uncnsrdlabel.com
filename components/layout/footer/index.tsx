@@ -69,22 +69,22 @@ export default async function Footer() {
         <div className="flex flex-col items-center justify-between pb-10 text-xs uppercase sm:flex-row sm:pt-6">
           <menu className="my-8 grid grid-flow-col content-center justify-center gap-4 sm:my-0">
             <SocialIcon
-              className="!h-12 !w-12 [&_.social-svg-mask]:!fill-black dark:[&_.social-svg-mask]:!fill-white"
+              className="group !h-12 !w-12 fill-black hover:!fill-hotPink hover:!stroke-hotPink focus-visible:!fill-hotPink focus-visible:!stroke-hotPink dark:fill-white [&_.social-svg-mask]:!fill-inherit"
               target="_blank"
               url="https://tiktok.com/@uncnsrdlabel/"
             />
             <SocialIcon
-              className="!h-12 !w-12 [&_.social-svg-mask]:!fill-black dark:[&_.social-svg-mask]:!fill-white"
+              className="group !h-12 !w-12 fill-black hover:!fill-hotPink hover:!stroke-hotPink focus-visible:!fill-hotPink focus-visible:!stroke-hotPink dark:fill-white [&_.social-svg-mask]:!fill-inherit"
               target="_blank"
               url="https://www.instagram.com/uncnsrdlabel/"
             />
             {/* <SocialIcon
-              className="[&_.social-svg-mask]:!fill-black dark:[&_.social-svg-mask]:!fill-white !h-12 !w-12"
+              className="group [&_.social-svg-mask]:!fill-black dark:[&_.social-svg-mask]:!fill-white focus-visible:!fill-hotPink hover:!fill-hotPink !h-12 !w-12"
               target="_blank"
               url="https://twitter.com/uncnsrdlabel/"
             /> */}
             {/* <SocialIcon
-              className="[&_.social-svg-mask]:!fill-black dark:[&_.social-svg-mask]:!fill-white !h-12 !w-12"
+              className="group [&_.social-svg-mask]:!fill-black dark:[&_.social-svg-mask]:!fill-white focus-visible:!fill-hotPink hover:!fill-hotPink !h-12 !w-12"
               target="_blank"
               url="https://www.facebook.com/uncnsrdlabel/"
             /> */}
