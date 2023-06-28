@@ -77,7 +77,10 @@ export default async function ProductPage({
     <>
       <ProductDetails product={product} />
       <Suspense>
-        <RelatedProducts className="relative pb-48" id={product.id} />
+        <RelatedProducts
+          className="relative bg-hotPink/20 pb-48 pt-12 text-black dark:bg-hotPink/20 dark:text-white lg:mt-32"
+          id={product.id}
+        />
       </Suspense>
       <script
         type="application/ld+json"
@@ -100,7 +103,7 @@ async function RelatedProducts({
 
   return (
     <div className={clsx("px-4 py-8", className)}>
-      <div className="mb-4 text-3xl font-bold uppercase">Related Products</div>
+      <div className="mb-4 text-xl font-bold uppercase">Related Products</div>
       <Grid className="grid-cols-2 lg:grid-cols-5">
         <ProductGridItems products={relatedProducts} />
       </Grid>
