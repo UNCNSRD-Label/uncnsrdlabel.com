@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
+import Image from "components/image";
 import Prose from "components/prose";
 import { getPage } from "lib/shopify";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 
 export const runtime = "edge";

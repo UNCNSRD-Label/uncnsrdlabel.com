@@ -1,6 +1,6 @@
 import clsx from "clsx";
+import Image from "components/image";
 import { getPage } from "lib/shopify";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 
 export async function HorizontalScroll({ className }: { className?: string }) {

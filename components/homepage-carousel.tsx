@@ -1,7 +1,7 @@
 import clsx from "clsx";
+import Image from "components/image";
 import { NukaCarousel, type NukaCarouselProps } from "components/nuka-carousel";
 import { getPage } from "lib/shopify";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 

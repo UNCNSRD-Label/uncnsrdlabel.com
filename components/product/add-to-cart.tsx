@@ -66,12 +66,12 @@ export function AddToCart({
       onClick={handleAdd}
       className={clsx("btn btn-base btn-primary btn-outline relative w-full", {
         "cursor-not-allowed": isMutating,
-        mutating: isMutating,
+        loading: isMutating,
       })}
     >
       <span
         className={clsx({
-          mutating: isMutating,
+          loading: isMutating,
         })}
       >
         {availableForSale ? "Add To Cart" : "Out Of Stock"}

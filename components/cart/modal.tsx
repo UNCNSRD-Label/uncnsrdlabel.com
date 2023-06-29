@@ -1,6 +1,6 @@
 import { Dialog } from "@headlessui/react";
+import Image from "components/image";
 import { AnimatePresence, motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 
 import CloseIcon from "components/icons/close";

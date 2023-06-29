@@ -60,23 +60,8 @@
     &[disabled] {
       @apply cursor-not-allowed decoration-2;
 
-      &:not(.mutating) {
+      &:not(.loading) {
         @apply line-through decoration-error;
-      }
-
-      &.mutating {
-        @apply relative !outline-hotPink [&_>_*]:text-black;
-
-        span {
-          @apply relative z-10;
-        }
-
-        &::before {
-          @apply absolute inset-0 z-0 bg-gradient-to-r from-hotPink/50 via-hotPink/100 to-hotPink/50;
-          content: "";
-          background-size: 500%;
-          animation: mutating 30s linear infinite;
-        }
       }
     }
 
@@ -182,16 +167,6 @@
     justify-items: center;
   }
 
-  @keyframes mutating {
-    0%,
-    100% {
-      background-position: 0% 0%;
-    }
-    50% {
-      background-position: 500% 0%;
-    }
-  }
-
   @supports not (animation-timeline: view()) {
     .pin-wrap-sticky {
       overflow-x: auto;
@@ -247,6 +222,31 @@
   .icon {
     @apply transition-all duration-300 ease-in-out hover:scale-110;
     gap: theme(gap[0.5]);
+  }
+
+  .loading {
+    @apply relative !outline-hotPink [&_>_*]:text-black;
+
+    span {
+      @apply relative z-10;
+    }
+
+    &::before {
+      @apply absolute inset-0 z-0 bg-gradient-to-r from-hotPink/50 via-hotPink/100 to-hotPink/50;
+      content: "";
+      background-size: 500%;
+      animation: loading 30s linear infinite;
+    }
+  }
+
+  @keyframes loading {
+    0%,
+    100% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 500% 0%;
+    }
   }
 
   @keyframes move {
