@@ -5,13 +5,14 @@ import Price from "components/price";
 
 export function GridTileImage({
   isInteractive = true,
-  background = "white",
+  background = "hotPink",
   active,
   labels,
   ...props
 }: {
   isInteractive?: boolean;
   background?:
+    | "hotPink"
     | "white"
     | "pink"
     | "purple"
@@ -29,35 +30,32 @@ export function GridTileImage({
   };
 } & React.ComponentProps<typeof Image>) {
   return (
-    <div
-      className={clsx(
-        "relative grid h-full w-full content-start justify-center overflow-hidden"
-        // {
-        //   "bg-white dark:bg-white": background === "white",
-        //   "bg-[#ff0080] dark:bg-[#ff0080]": background === "pink",
-        //   "bg-[#7928ca] dark:bg-[#7928ca]": background === "purple",
-        //   "bg-gray-900 dark:bg-gray-900": background === "black",
-        //   "bg-violetDark dark:bg-violetDark": background === "purple-dark",
-        //   "bg-blue-500 dark:bg-blue-500": background === "blue",
-        //   "bg-cyan-500 dark:bg-cyan-500": background === "cyan",
-        //   "bg-gray-100 dark:bg-gray-100": background === "gray",
-        //   "bg-gray-100 dark:bg-gray-900": !background,
-        //   relative: labels,
-        // }
-      )}
-    >
-      {active !== undefined && active ? (
-        <span className="absolute h-full w-full opacity-25"></span>
-      ) : null}
+    <>
       {props.src ? (
-        <figure className="overflow-hidden">
+        <figure
+          className={clsx("relative aspect-3/4 w-full overflow-hidden", {
+            "bg-hotPink dark:bg-hotPink": background === "hotPink",
+            "bg-white dark:bg-white": background === "white",
+            "bg-[#ff0080] dark:bg-[#ff0080]": background === "pink",
+            "bg-[#7928ca] dark:bg-[#7928ca]": background === "purple",
+            "bg-gray-900 dark:bg-gray-900": background === "black",
+            "bg-violetDark dark:bg-violetDark": background === "purple-dark",
+            "bg-blue-500 dark:bg-blue-500": background === "blue",
+            "bg-cyan-500 dark:bg-cyan-500": background === "cyan",
+            "bg-gray-100 dark:bg-gray-100": background === "gray",
+            "bg-gray-100 dark:bg-gray-900": !background,
+          })}
+        >
           <Image
-            className={clsx("relative h-full w-full object-contain", {
+            className={clsx("relative h-full w-full object-cover", {
               "transition duration-300 ease-in-out hover:scale-105":
                 isInteractive,
             })}
             {...props}
             alt={props.title || ""}
+            fill
+            height={undefined}
+            width={undefined}
           />
         </figure>
       ) : null}
@@ -79,6 +77,6 @@ export function GridTileImage({
           />
         </div>
       ) : null}
-    </div>
+    </>
   );
 }
