@@ -24,7 +24,7 @@ export default function SignUp({ className }: { className?: string }) {
             aria-invalid={errors.email ? "true" : "false"}
           />
           {errors.email && <p role="alert">{errors.email?.message}</p>}
-          <button className="absolute right-0 mr-3">
+          <button className="btn absolute right-0 mr-3">
             <SlEnvolope />
           </button>
         </div>
