@@ -35,7 +35,7 @@
   }
 
   a {
-    @apply focus-visible:stroke-hotPink focus-visible:text-hotPink;
+    @apply transition-colors hover:stroke-hotPink hover:text-hotPink focus-visible:stroke-hotPink focus-visible:text-hotPink;
   }
 
   input {

@@ -5,7 +5,7 @@ export default function SearchButton({ isOpen }: { isOpen: boolean }) {
   return (
     <button
       aria-label="Submit search"
-      className={clsx("absolute right-2", isOpen ?? "open")}
+      className={clsx("btn absolute right-2", isOpen ?? "open")}
       data-testid="submit-search"
       form="search-form"
     >

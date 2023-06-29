@@ -98,7 +98,7 @@ export default function SidebarMenu({ menu }: { menu: Menu[] }) {
                         <li key={item.title}>
                           <Link
                             href={item.path}
-                            className="rounded-lg py-1 text-sm uppercase text-inherit transition-colors hover:text-gray-500"
+                            className="rounded-lg py-1 text-sm uppercase text-inherit"
                             onClick={() => {
                               setSidebarMenuIsOpen(false);
                             }}

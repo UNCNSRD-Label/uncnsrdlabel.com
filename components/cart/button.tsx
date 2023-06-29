@@ -58,7 +58,7 @@ export default function CartButton({
         onClick={() => {
           setCartIsOpen(true);
         }}
-        className="icon-container relative right-0 top-0 drop-shadow"
+        className="icon-container btn relative right-0 top-0 drop-shadow"
         data-testid="open-cart"
       >
         <CartIcon quantity={cart.totalQuantity} />
