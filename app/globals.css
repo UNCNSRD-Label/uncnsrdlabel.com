@@ -81,7 +81,7 @@
     }
 
     &.btn-outline {
-      @apply hover:!bg-hotPink/20 hover:!outline-dashed hover:!outline-hotPink focus-visible:!bg-hotPink/20 focus-visible:!outline-hotPink;
+      @apply hover:!bg-hotPink/20 hover:!outline-hotPink focus-visible:!bg-hotPink/20 focus-visible:!outline-hotPink;
     }
 
     &:not(.btn-outline) {
