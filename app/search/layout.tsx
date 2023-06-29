@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import Logo from "components/layout/logo";
 import Navbar from "components/layout/navbar";
 import NavbarContent from "components/layout/navbar/content";
 import Collections from "components/layout/search/collections";
@@ -13,11 +14,11 @@ export default function SearchLayout({
 }) {
   return (
     <>
-      <Navbar blend sticky>
-        <NavbarContent showLogo />
+      <Navbar sticky>
+        <NavbarContent />
       </Navbar>
       <Suspense>
-        <div className="mx-auto flex w-full flex-col justify-center py-6 pb-28 md:flex-row">
+        <div className="mx-auto flex w-full flex-col justify-center py-6 pb-48 md:flex-row">
           <div
             className={clsx(
               "order-first flex-none md:w-1/6",
@@ -26,7 +27,7 @@ export default function SearchLayout({
           >
             <Collections />
           </div>
-          <div className="order-last min-h-screen w-full max-w-7xl px-4 md:order-none">
+          <div className="order-last w-full max-w-7xl px-4 md:order-none">
             {children}
           </div>
           <div
@@ -38,6 +39,7 @@ export default function SearchLayout({
             <FilterList list={sorting} title="Sort by" />
           </div>
         </div>
+        <Logo className="bottom-20" />
       </Suspense>
     </>
   );

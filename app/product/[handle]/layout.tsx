@@ -10,12 +10,12 @@ export default function SearchLayout({
 }) {
   return (
     <>
-      <Navbar blend>
+      <Navbar>
         <NavbarContent />
       </Navbar>
       <Suspense>
         {children}
-        <Logo blend className="bottom-20" />
+        <Logo className="bottom-20" />
       </Suspense>
     </>
   );

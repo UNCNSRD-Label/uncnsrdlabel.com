@@ -15,7 +15,7 @@ export default function SearchLayout({
       </Navbar>
       <Suspense>
         <div className="mx-8 mb-48 max-w-2xl py-16 sm:mx-auto">{children}</div>
-        <Logo blend className="bottom-20" />
+        <Logo className="bottom-20" />
       </Suspense>
     </>
   );
