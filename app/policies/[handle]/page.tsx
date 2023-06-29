@@ -43,5 +43,12 @@ export default async function Policy({
 
   if (!policy) return notFound();
 
-  return <Prose className="mb-8" html={policy.body as string} />;
+  return (
+    <article className="grid gap-0.5">
+      <Prose
+        className="mb-8 [&_.service-main-title]:uppercase"
+        html={policy.body as string}
+      />
+    </article>
+  );
 }

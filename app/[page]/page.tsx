@@ -45,10 +45,10 @@ export default async function Page({ params }: { params: { page: string } }) {
 
   return (
     <>
-      <section className="grid gap-0.5">
-        <h1 className="mb-8 text-5xl font-bold">{page.title}</h1>
+      <article className="grid gap-0.5">
+        <h1 className="mb-8 text-5xl uppercase">{page.title}</h1>
         <Prose className="mb-8" html={page.body as string} />
-        <p className="text-sm italic">
+        <span className="mb-8 hidden text-sm italic">
           {`This document was last updated on ${new Intl.DateTimeFormat(
             undefined,
             {
@@ -57,8 +57,8 @@ export default async function Page({ params }: { params: { page: string } }) {
               day: "numeric",
             }
           ).format(new Date(page.updatedAt))}.`}
-        </p>
-      </section>
+        </span>
+      </article>
       <section className="grid gap-0.5">
         {[...images].map((image) => (
           <figure

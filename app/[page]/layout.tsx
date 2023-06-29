@@ -1,13 +1,22 @@
+import Logo from "components/layout/logo";
+import Navbar from "components/layout/navbar";
+import NavbarContent from "components/layout/navbar/content";
 import { Suspense } from "react";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function SearchLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <Suspense>
-      <div className="w-full pb-28">
-        <div className="mx-8 max-w-2xl py-20 sm:mx-auto">
-          <Suspense>{children}</Suspense>
-        </div>
-      </div>
-    </Suspense>
+    <>
+      <Navbar sticky>
+        <NavbarContent />
+      </Navbar>
+      <Suspense>
+        <div className="mx-8 mb-48 max-w-2xl py-16 sm:mx-auto">{children}</div>
+        <Logo blend className="bottom-20" />
+      </Suspense>
+    </>
   );
 }
