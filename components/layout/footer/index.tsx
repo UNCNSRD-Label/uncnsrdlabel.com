@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import LogotypeIcon from "components/icons/logotype";
 import { getMenu } from "lib/shopify";
 import { Menu } from "lib/shopify/types";
 import SignUp from "./sign-up";
@@ -66,7 +67,7 @@ export default async function Footer() {
           </nav>
           <SignUp className="lg:col-start-0 col-span-1 sm:col-span-6 sm:col-start-7 lg:col-span-4" />
         </div>
-        <div className="flex flex-col items-center justify-between pb-10 text-xs uppercase sm:flex-row sm:pt-6">
+        <div className="flex flex-col items-center justify-between text-xs uppercase sm:flex-row sm:pb-10 sm:pt-6">
           <menu className="my-8 grid grid-flow-col content-center justify-center gap-4 sm:my-0">
             <SocialIcon
               className="group !h-12 !w-12 fill-black hover:!fill-hotPink hover:!stroke-hotPink focus-visible:!fill-hotPink focus-visible:!stroke-hotPink dark:fill-white [&_.social-svg-mask]:!fill-inherit"
@@ -93,6 +94,7 @@ export default async function Footer() {
             &copy; {copyrightDate} {SITE_NAME}. All rights reserved.
           </span>
         </div>
+        <LogotypeIcon className="mx-auto my-16 h-6 fill-inherit drop-shadow transition duration-300 ease-in-out hover:scale-110 sm:hidden sm:h-10 " />
       </div>
     </footer>
   );

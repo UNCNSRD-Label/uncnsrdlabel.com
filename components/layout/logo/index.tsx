@@ -33,7 +33,8 @@ export default function Logo({ blend, className, fill }: Props) {
         )}
         style={{
           position:
-            (rootIntersection?.intersectionRatio ?? 0) > 0
+            (rootIntersection?.intersectionRatio ?? 0) > 0 ||
+            (rootIntersection?.boundingClientRect?.top ?? 0) < 0
               ? "absolute"
               : "fixed",
         }}
@@ -41,7 +42,7 @@ export default function Logo({ blend, className, fill }: Props) {
         <AccessibleIcon.Root label={`${SITE_NAME} logotype`}>
           <LogotypeIcon
             className={clsx(
-              "h-8 fill-inherit drop-shadow transition duration-300 ease-in-out hover:scale-110 sm:h-10",
+              "h-6 fill-inherit drop-shadow transition duration-300 ease-in-out hover:scale-110 sm:h-10",
               {
                 "fill-white": fill === "light" || blend,
                 "fill-black": fill === "dark",
