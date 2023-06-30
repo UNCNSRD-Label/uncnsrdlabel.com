@@ -78,7 +78,7 @@ export default async function ProductPage({
       <ProductDetails product={product} />
       <Suspense>
         <RelatedProducts
-          className="relative bg-hotPink/20 pb-48 pt-12 text-black dark:bg-hotPink/20 dark:text-white lg:mt-32"
+          className="relative bg-hotPink/20 pb-48 pt-12 text-black dark:bg-hotPink/20 dark:text-white"
           id={product.id}
         />
       </Suspense>

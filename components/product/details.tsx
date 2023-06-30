@@ -18,10 +18,10 @@ export function ProductDetails({ product }: { product: Product }) {
         className="fixed inset-x-0 bottom-0 z-10 w-full sm:hidden"
         sectionElementRefs={sectionElementRefs}
       />
-      <div>
+      <div className="mb-24">
         <div className="lg:grid lg:grid-cols-6">
           <div
-            className="mb-48 grid justify-items-center gap-4 lg:col-span-4"
+            className="grid justify-items-center gap-4 lg:col-span-4"
             id="images"
             ref={sectionElementRefs[0]}
           >
