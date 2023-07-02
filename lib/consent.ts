@@ -17,13 +17,13 @@ export const defaultConsentSettings: ConsentSettings = {
   security_storage: "denied",
 };
 
-// export const acceptAllConsentSettings: ConsentSettings = {
-//   ad_storage: "granted",
-//   analytics_storage: "granted",
-//   functionality_storage: "granted",
-//   personalization_storage: "granted",
-//   security_storage: "granted",
-// };
+export const acceptAllConsentSettings: ConsentSettings = {
+  ad_storage: "granted",
+  analytics_storage: "granted",
+  functionality_storage: "granted",
+  personalization_storage: "granted",
+  security_storage: "granted",
+};
 
 export const denyAllAdditionalConsentSettings: ConsentSettings = {
   ad_storage: "denied",

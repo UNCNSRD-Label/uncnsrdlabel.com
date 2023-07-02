@@ -65,6 +65,9 @@ dependencies:
   '@tailwindcss/forms':
     specifier: ^0.5.3
     version: 0.5.3(tailwindcss@3.3.2)
+  '@vercel/analytics':
+    specifier: ^1.0.1
+    version: 1.0.1
   '@vercel/og':
     specifier: ^0.5.8
     version: 0.5.8
@@ -2108,6 +2111,10 @@ packages:
     dependencies:
       '@typescript-eslint/types': 5.59.2
       eslint-visitor-keys: 3.4.1
+
+  /@vercel/analytics@1.0.1:
+    resolution: {integrity: sha512-Ux0c9qUfkcPqng3vrR0GTrlQdqNJ2JREn/2ydrVuKwM3RtMfF2mWX31Ijqo1opSjNAq6rK76PwtANw6kl6TAow==}
+    dev: false
 
   /@vercel/git-hooks@1.0.0:
     resolution: {integrity: sha512-OxDFAAdyiJ/H0b8zR9rFCu3BIb78LekBXOphOYG3snV4ULhKFX387pBPpqZ9HLiRTejBWBxYEahkw79tuIgdAA==}
