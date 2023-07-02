@@ -20,7 +20,13 @@ export default function SignUp({ className }: { className?: string }) {
             className="w-full bg-gray-800/50 px-4 py-2 placeholder:text-inherit"
             placeholder="Sign up to our newsletter"
             type="email"
-            {...register("email", { required: "Email address is required" })}
+            {...register("email", {
+              required: "Email address is required",
+              pattern: {
+                value: /\S+@\S+\.\S+/,
+                message: "Entered value does not match email format",
+              },
+            })}
             aria-invalid={errors.email ? "true" : "false"}
           />
           {errors.email && <p role="alert">{errors.email?.message}</p>}

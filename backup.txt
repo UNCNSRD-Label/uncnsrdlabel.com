@@ -1,0 +1,1 @@
+bg-${background} text-${foreground} border-${foreground} fill-${foreground} stroke-${foreground} ring-${foreground} selection:bg-hotPink focus:bg-hotPink focus-visible:bg-hotPink

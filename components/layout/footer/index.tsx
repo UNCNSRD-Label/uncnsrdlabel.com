@@ -1,8 +1,10 @@
 import Link from "next/link";
 
+import ConsentDialog from "components/consent/dialog";
 import LogotypeIcon from "components/icons/logotype";
 import { getMenu } from "lib/shopify";
 import { Menu } from "lib/shopify/types";
+import { Suspense } from "react";
 import SignUp from "./sign-up";
 
 import { SocialIcon } from "react-social-icons";
@@ -47,23 +49,34 @@ export default async function Footer() {
                 ))}
               </dl>
             ) : null}
-            {followUsMenu.length ? (
-              <dl className="grid content-start gap-2 uppercase sm:col-span-4 sm:grid-flow-row lg:col-span-3">
-                <dt className="text-sm">Follow Us</dt>
-                {followUsMenu.map((item: Menu) => (
-                  <dd key={item.title}>
-                    <a
-                      href={item.path}
-                      className={linkClassName}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {item.title}
-                    </a>
-                  </dd>
-                ))}
+            <div className="grid gap-4 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
+              {followUsMenu.length ? (
+                <dl className="grid content-start gap-2 uppercase">
+                  <dt className="text-sm">Follow Us</dt>
+                  {followUsMenu.map((item: Menu) => (
+                    <dd key={item.title}>
+                      <a
+                        href={item.path}
+                        className={linkClassName}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {item.title}
+                      </a>
+                    </dd>
+                  ))}
+                </dl>
+              ) : null}
+
+              <dl className="grid content-start gap-2 uppercase">
+                <dt className="text-sm">My Settings</dt>
+                <dd>
+                  <Suspense>
+                    <ConsentDialog className="text-xxs uppercase transition duration-150 ease-in-out" />
+                  </Suspense>
+                </dd>
               </dl>
-            ) : null}
+            </div>
           </nav>
           <SignUp className="lg:col-start-0 col-span-1 sm:col-span-6 sm:col-start-7 lg:col-span-4" />
         </div>

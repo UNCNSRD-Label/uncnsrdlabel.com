@@ -44,7 +44,7 @@ export default async function HomePage() {
           <Link
             href="/search"
             aria-label="Go to the shop"
-            className="btn btn-outline btn-secondary btn-base absolute z-20 justify-self-center whitespace-nowrap uppercase"
+            className="btn btn-outline btn-primary btn-base absolute z-20 justify-self-center whitespace-nowrap uppercase"
           >
             Shop now
           </Link>
