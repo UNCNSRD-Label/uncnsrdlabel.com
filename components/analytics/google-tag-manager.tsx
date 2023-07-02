@@ -1,10 +1,10 @@
-import Script from "next/script";
+import Script, { type ScriptProps } from "next/script";
 
 const { NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID } = process.env;
 
-export const GoogleTagManager = () => {
+export const GoogleTagManager = (props: ScriptProps) => {
   return (
-    <Script id="google-tag-manager">
+    <Script id="google-tag-manager" {...props}>
       {`
             gtag('consent', 'default', {
               'ad_storage': 'denied',

@@ -7,7 +7,8 @@
   "scripts": {
     "analyze": "cross-env ANALYZE=true next build",
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run partytown && next build",
+    "partytown": "partytown copylib public/~partytown",
     "start": "next start",
     "lint": "next lint",
     "lint-staged": "lint-staged",
@@ -23,6 +24,7 @@
     "*": "prettier --write --ignore-unknown"
   },
   "dependencies": {
+    "@builder.io/partytown": "^0.8.0",
     "@headlessui/react": "^1.7.15",
     "@next/bundle-analyzer": "^13.4.6",
     "@radix-ui/react-accessible-icon": "^1.0.3",

@@ -3,6 +3,7 @@ import { Analytics } from "components/analytics";
 import Banner from "components/banner";
 import Footer from "components/layout/footer";
 import Progress from "components/layout/progress";
+import { Organization } from "components/schema.org/organization";
 import { Inter, Montserrat } from "next/font/google";
 import localFont from "next/font/local";
 import { ReactNode, Suspense } from "react";
@@ -94,6 +95,7 @@ export default async function RootLayout({
           {children}
           <Footer />
           <Analytics />
+          <Organization />
         </Suspense>
       </body>
     </html>

@@ -1,10 +1,10 @@
-import Script from "next/script";
+import Script, { type ScriptProps } from "next/script";
 
 const { NEXT_PUBLIC_GOOGLE_ANALYTICS_MEASUREMENT_ID } = process.env;
 
-export const GoogleAnalytics = () => {
+export const GoogleAnalytics = (props: ScriptProps) => {
   return (
-    <Script id="google-analytics">
+    <Script id="google-analytics" {...props}>
       {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}

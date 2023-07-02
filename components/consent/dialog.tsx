@@ -37,8 +37,7 @@ export default async function ConsentDialog({
     setOpen(false);
   };
 
-  const denyAllAdditionalConsents = (event) => {
-    event.preventDefault();
+  const denyAllAdditionalConsents = () => {
     setOpen(false);
     setCookie(COOKIE_CONSENT, denyAllAdditionalConsentSettings, cookieOptions);
     gtag("consent", "update", denyAllAdditionalConsentSettings);
@@ -49,13 +48,14 @@ export default async function ConsentDialog({
 
   const { register } = useForm({ defaultValues: defaultConsentSettings });
 
-  const savedConsentSettings = JSON.parse(getCookie(COOKIE_CONSENT) || "");
+  const savedConsentSettings = JSON.parse(
+    (getCookie(COOKIE_CONSENT) as string) || ""
+  );
 
   const consentSettings = {
     ...defaultConsentSettings,
     ...savedConsentSettings,
   };
-  console.log({ consentSettings });
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>

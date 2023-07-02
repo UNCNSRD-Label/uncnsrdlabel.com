@@ -1,5 +1,3 @@
-"use client";
-
 import { clsx } from "clsx";
 import Price from "components/price";
 import { AddToCart } from "components/product/add-to-cart";
