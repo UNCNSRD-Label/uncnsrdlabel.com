@@ -53,6 +53,10 @@
     @apply relative grid items-center;
   }
 
+  button {
+    letter-spacing: inherit;
+  }
+
   .btn {
     @apply grid place-items-center text-center uppercase tracking-widest transition-all ease-in-out;
     @apply focus-visible:outline-offset-0 focus-visible:ring-0;
@@ -109,25 +113,25 @@
   }
 
   .btn-secondary {
-    @apply text-gray-300 outline outline-transparent;
+    @apply text-hotGreen outline outline-transparent;
 
     &[disabled] {
-      @apply text-gray-300/50;
+      @apply text-hotGreen/50;
     }
 
     &.btn-outline {
-      @apply outline-gray-300;
+      @apply outline-hotGreen;
 
       &[disabled] {
-        @apply outline-gray-300/50;
+        @apply outline-hotGreen/50;
       }
     }
 
     &.btn-bg {
-      @apply bg-gray-300 text-black;
+      @apply bg-hotGreen text-black;
 
       &[disabled] {
-        @apply bg-gray-300/50;
+        @apply bg-hotGreen/50;
       }
     }
   }

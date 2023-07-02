@@ -35,6 +35,7 @@ module.exports = {
         error: colors.red["500"],
         gray: colors.neutral,
         hotPink: "#ff4dd8",
+        hotGreen: "#4dff74",
         dark: "#111111",
         light: "#fafafa",
         disabled: colors.gray["300"],
