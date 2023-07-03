@@ -8,7 +8,7 @@ import { useRef } from "react";
 import { onLoadingComplete } from "lib/image";
 
 export default function Image(props: ImageProps) {
-  const rootRef = useRef<HTMLDivElement>(null);
+  const rootRef = useRef<HTMLImageElement>(null);
 
   const rootIntersection = useIntersectionObserver(rootRef, {
     threshold: [0, 0.5],
