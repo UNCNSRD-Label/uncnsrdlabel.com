@@ -103,7 +103,9 @@ async function RelatedProducts({
 
   return (
     <div className={clsx("px-4 py-8", className)}>
-      <div className="mb-4 text-xl font-bold uppercase">Related Products</div>
+      <div className="mb-4 text-center text-xl font-bold uppercase">
+        Related Products
+      </div>
       <Grid className="grid-cols-2 lg:grid-cols-5">
         <ProductGridItems products={relatedProducts} />
       </Grid>
