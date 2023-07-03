@@ -236,7 +236,7 @@
     }
 
     &::before {
-      @apply absolute inset-0 z-0 bg-gradient-to-r from-hotPink/50 via-hotPink/100 to-hotPink/50;
+      @apply absolute inset-0 z-0 bg-gradient-to-r from-hotPink/5 via-hotPink/10 to-hotPink/5;
       content: "";
       background-size: 500%;
       animation: loading 30s linear infinite;
