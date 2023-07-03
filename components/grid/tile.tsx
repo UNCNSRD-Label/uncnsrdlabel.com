@@ -8,6 +8,7 @@ export function GridTileImage({
   background = "hotPink",
   active,
   labels,
+  priority,
   ...props
 }: {
   isInteractive?: boolean;
@@ -28,6 +29,7 @@ export function GridTileImage({
     currencyCode: string;
     isSmall?: boolean;
   };
+  priority?: boolean;
 } & React.ComponentProps<typeof Image>) {
   return (
     <>
@@ -58,6 +60,7 @@ export function GridTileImage({
             alt={props.title || ""}
             fill
             height={undefined}
+            sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
             width={undefined}
           />
         </figure>

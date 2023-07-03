@@ -9,6 +9,7 @@ export default function Image(props: ImageProps) {
   return (
     <NextImage
       {...props}
+      alt={props.alt || ""}
       className={clsx(
         "opacity-0 transition-opacity data-[loaded=true]:opacity-100",
         props.className

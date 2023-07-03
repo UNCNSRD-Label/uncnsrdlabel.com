@@ -10,7 +10,7 @@ export default function ProductGridItems({
 }) {
   return (
     <>
-      {products.map((product) => (
+      {products.map((product, index) => (
         <Grid.Item key={product.handle} className="animate-fadeIn">
           <Link
             className="block h-full w-full"
@@ -24,6 +24,7 @@ export default function ProductGridItems({
                 amount: product.priceRange.maxVariantPrice.amount,
                 currencyCode: product.priceRange.maxVariantPrice.currencyCode,
               }}
+              priority={index < 4}
               src={product.featuredImage?.url}
               width={600}
               height={600}
