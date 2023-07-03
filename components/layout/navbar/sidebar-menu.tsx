@@ -75,7 +75,7 @@ export default function SidebarMenu({ menu }: { menu: Menu[] }) {
                   closed: { translateX: "-100%" },
                 }}
                 transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-                className="flex w-full flex-col bg-inherit pb-6"
+                className="flex w-full flex-col bg-inherit pb-6 outline outline-white"
               >
                 <div className="p-6">
                   <button

@@ -56,7 +56,7 @@ export default function CartModal({
                 closed: { translateX: "100%" },
               }}
               transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-              className="flex w-full flex-col bg-black p-6 md:w-2/5 lg:w-1/3"
+              className="flex w-full flex-col bg-black p-6 outline outline-white md:w-2/5 lg:w-1/3"
             >
               <div className="flex items-center justify-between">
                 <p className="text-lg font-bold">My Bag</p>
@@ -78,7 +78,7 @@ export default function CartModal({
               ) : null}
               {cart.lines.length !== 0 ? (
                 <div className="flex h-full flex-col justify-between overflow-hidden">
-                  <ul className="flex-grow overflow-auto p-6">
+                  <ul className="flex flex-grow flex-col gap-4 overflow-auto p-6">
                     {cart.lines.map((item, i) => {
                       const merchandiseSearchParams =
                         {} as MerchandiseSearchParams;
@@ -103,11 +103,10 @@ export default function CartModal({
                             href={merchandiseUrl}
                             onClick={onClose}
                           >
-                            <div className="relative h-16 w-16 cursor-pointer overflow-hidden bg-white">
+                            <div className="loading relative aspect-3/4 w-16 cursor-pointer overflow-hidden">
                               <Image
                                 className="h-full w-full object-cover"
-                                width={64}
-                                height={64}
+                                fill
                                 alt={
                                   item.merchandise.product.featuredImage
                                     .altText || item.merchandise.product.title
@@ -148,7 +147,7 @@ export default function CartModal({
                       );
                     })}
                   </ul>
-                  <div className="border-t pt-2 text-sm">
+                  <div className="my-4 border-t pt-2 text-sm">
                     <div className="mb-2 flex items-center justify-between">
                       <p>Subtotal</p>
                       <Price
