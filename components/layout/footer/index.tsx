@@ -35,6 +35,11 @@ export default async function Footer() {
                     </Link>
                   </dd>
                 ))}
+                <dd>
+                  <Suspense>
+                    <ConsentDialog className="text-xxs uppercase transition duration-150 ease-in-out" />
+                  </Suspense>
+                </dd>
               </dl>
             ) : null}
             {informationMenu.length ? (
@@ -67,15 +72,6 @@ export default async function Footer() {
                   ))}
                 </dl>
               ) : null}
-
-              <dl className="grid content-start gap-2 uppercase">
-                <dt className="text-sm">My Settings</dt>
-                <dd>
-                  <Suspense>
-                    <ConsentDialog className="text-xxs uppercase transition duration-150 ease-in-out" />
-                  </Suspense>
-                </dd>
-              </dl>
             </div>
           </nav>
           <SignUp className="lg:col-start-0 col-span-1 sm:col-span-6 sm:col-start-7 lg:col-span-4" />
