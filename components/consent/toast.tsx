@@ -38,7 +38,7 @@ export default async function ConsentToast() {
   return (
     <Toast.Provider duration={60_000} swipeDirection="right">
       <button
-        className="text-violet11 shadow-blackA7 hover:bg-mauve3 inline-flex h-[35px] items-center justify-center rounded bg-white px-[15px] text-[15px] font-medium leading-[35px] shadow-[0_2px_10px] outline-none focus:shadow-[0_0_0_2px] focus:shadow-black"
+        className="shadow-blackA7 hover:bg-mauve3 inline-flex h-[35px] items-center justify-center rounded bg-white px-[15px] text-[15px] font-medium leading-[35px] shadow-[0_2px_10px] outline-none focus:shadow-[0_0_0_2px] focus:shadow-black"
         onClick={() => {
           setOpen(false);
         }}

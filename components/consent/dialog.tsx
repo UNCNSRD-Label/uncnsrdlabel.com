@@ -76,15 +76,18 @@ export default async function ConsentDialog({
             className="my-4 flex flex-col gap-4 text-xs"
           >
             {types.map((consent) => (
-              <fieldset className="flex items-center gap-4" key={consent.name}>
+              <fieldset
+                className="grid grid-cols-[auto_1fr] items-center gap-4"
+                key={consent.name}
+              >
                 <Checkbox.Root
-                  className="flex h-4 w-4 items-center justify-center rounded bg-white stroke-black outline-none"
+                  className="h-4 w-4 rounded bg-white stroke-black outline-none"
                   defaultChecked={consentSettings[consent.name] === "granted"}
                   id={consent.name}
                   value="granted"
                   {...register(consent.name)}
                 >
-                  <Checkbox.Indicator className="text-violet11">
+                  <Checkbox.Indicator>
                     <CheckIcon />
                   </Checkbox.Indicator>
                 </Checkbox.Root>
