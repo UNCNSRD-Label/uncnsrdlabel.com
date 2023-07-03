@@ -2,8 +2,10 @@
 
 import clsx from "clsx";
 import Image from "components/image";
+import dynamic from "next/dynamic";
 import { type ReactPlayerProps } from "react-player";
-import ReactPlayer from "react-player/lazy";
+
+const ReactPlayer = dynamic(() => import("react-player/lazy"), { ssr: false });
 
 import { FC } from "react";
 

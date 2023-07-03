@@ -1,9 +1,11 @@
 import { HomepageCarousel } from "components/homepage-carousel";
+import Image from "components/image";
 import Logo from "components/layout/logo";
 import Navbar from "components/layout/navbar";
 import NavbarContent from "components/layout/navbar/content";
 import { Video, type VideoProps } from "components/video";
 import Link from "next/link";
+import { Suspense } from "react";
 
 export const runtime = "edge";
 
@@ -42,7 +44,20 @@ export default async function HomePage() {
       </Navbar>
       <main className="relative grid grid-rows-[1fr_auto]">
         <section className="relative grid h-[100dvh] items-center overflow-hidden sm:snap-start">
-          <Video {...video} />
+          <Suspense
+            fallback={
+              <Image
+                alt={video.alt}
+                className="absolute h-full object-cover"
+                fill
+                sizes="100vw"
+                src={video.poster}
+                title={video.title}
+              />
+            }
+          >
+            <Video {...video} />
+          </Suspense>
           <Link
             href="/search"
             aria-label="Go to the shop"

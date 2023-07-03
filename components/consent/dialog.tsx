@@ -46,16 +46,16 @@ export default async function ConsentDialog({
 
   const onClose = () => setOpen(false);
 
-  const { register } = useForm({ defaultValues: defaultConsentSettings });
+  const consentCookieData = (getCookie(COOKIE_CONSENT) as string) ?? "{}";
 
-  const savedConsentSettings = JSON.parse(
-    (getCookie(COOKIE_CONSENT) as string) || ""
-  );
+  const savedConsentSettings = JSON.parse(consentCookieData);
 
   const consentSettings = {
     ...defaultConsentSettings,
     ...savedConsentSettings,
   };
+
+  const { register } = useForm({ defaultValues: consentSettings });
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
