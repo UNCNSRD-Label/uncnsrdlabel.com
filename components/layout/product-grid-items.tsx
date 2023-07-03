@@ -3,11 +3,14 @@ import { GridTileImage } from "components/grid/tile";
 import { Product } from "lib/shopify/types";
 import Link from "next/link";
 
+import { transitionDelays } from "lib/effects";
+
 export default function ProductGridItems({
   products,
 }: {
   products: Product[];
 }) {
+  console.log(transitionDelays);
   return (
     <>
       {products.map((product, index) => (
@@ -18,6 +21,7 @@ export default function ProductGridItems({
           >
             <GridTileImage
               alt={product.title}
+              className={transitionDelays[index]}
               labels={{
                 isSmall: true,
                 title: product.title,

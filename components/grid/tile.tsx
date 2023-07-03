@@ -4,6 +4,7 @@ import Image from "components/image";
 import Price from "components/price";
 
 export function GridTileImage({
+  className,
   isInteractive = true,
   background = "hotPink",
   active,
@@ -11,6 +12,7 @@ export function GridTileImage({
   priority,
   ...props
 }: {
+  className?: string;
   isInteractive?: boolean;
   background?:
     | "hotPink"
@@ -52,10 +54,13 @@ export function GridTileImage({
           )}
         >
           <Image
-            className={clsx("relative h-full w-full object-cover", {
-              "transition duration-300 ease-in-out hover:scale-105":
-                isInteractive,
-            })}
+            className={clsx(
+              "relative h-full w-full object-cover",
+              {
+                "transition hover:scale-105": isInteractive,
+              },
+              className
+            )}
             {...props}
             alt={props.title || ""}
             fill
