@@ -23,7 +23,7 @@ export default async function ConsentDialog({
 }) {
   useEffect(() => {
     if (!hasCookie(COOKIE_CONSENT)) {
-      setOpen(true);
+      setTimeout(() => setOpen(true), 10_000);
     }
   }, []);
 
