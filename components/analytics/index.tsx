@@ -1,3 +1,5 @@
+"use client";
+
 import { Partytown } from "@builder.io/partytown/react";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 import { GoogleAnalytics } from "components/analytics/google-analytics";
@@ -14,8 +16,8 @@ export const Analytics = () => {
         debug={true}
         forward={["dataLayer.push", "fbq", "klaviyo", "ttq", "va"]}
       />
-      <GoogleAnalytics type="text/partytown" />
       <GoogleTag />
+      <GoogleAnalytics />
       <GoogleTagManager type="text/partytown" />
       <VercelAnalytics />
       <MetaPixel type="text/partytown" />
