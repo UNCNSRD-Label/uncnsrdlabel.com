@@ -8,11 +8,10 @@ import { useRef } from "react";
 
 type Props = { blend?: boolean; className?: string; fill?: "dark" | "light" };
 
-const { SITE_NAME } = process.env;
+const { NEXT_PUBLIC_SITE_NAME } = process.env;
 
 export default function Logo({ blend, className, fill }: Props) {
   const rootRef = useRef<HTMLDivElement>(null);
-  const logotypeRef = useRef<SVGSVGElement>(null);
 
   const rootIntersection = useIntersectionObserver(rootRef, {
     threshold: [0, 0.5],
@@ -39,7 +38,7 @@ export default function Logo({ blend, className, fill }: Props) {
               : "fixed",
         }}
       >
-        <AccessibleIcon.Root label={`${SITE_NAME} logotype`}>
+        <AccessibleIcon.Root label={`${NEXT_PUBLIC_SITE_NAME} logotype`}>
           <LogotypeIcon
             className={clsx(
               "h-8 fill-inherit drop-shadow transition duration-300 ease-in-out hover:scale-110 sm:h-10",
@@ -48,7 +47,6 @@ export default function Logo({ blend, className, fill }: Props) {
                 "fill-black": fill === "dark",
               }
             )}
-            ref={logotypeRef}
           />
         </AccessibleIcon.Root>
       </div>

@@ -1,19 +1,14 @@
 import { clsx } from "clsx";
-import { forwardRef } from "react";
 
 type Props = { className?: string; style?: React.CSSProperties };
 
 export type Ref = SVGSVGElement | null;
 
-export const Logotype = forwardRef<Ref, Props>(function Logotype(
-  props,
-  ref = null
-) {
+export default function Logotype(props: Props) {
   return (
     <svg
-      aria-label={`${process.env.SITE_NAME} logotype`}
+      aria-label={`${process.env.NEXT_PUBLIC_SITE_NAME} logotype`}
       className={clsx(props.className, "icon fill-inherit")}
-      ref={ref}
       shapeRendering="geometricPrecision"
       stroke="none"
       style={props.style}
@@ -45,6 +40,4 @@ export const Logotype = forwardRef<Ref, Props>(function Logotype(
       </g>
     </svg>
   );
-});
-
-export default Logotype;
+}

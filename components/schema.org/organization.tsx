@@ -1,7 +1,7 @@
 import { SITE_DOMAIN } from "lib/constants";
 import Script from "next/script";
 
-const { SITE_NAME = "UNCNSRD" } = process.env;
+const { NEXT_PUBLIC_SITE_NAME = "UNCNSRD" } = process.env;
 
 export const Organization = () => {
   return (
@@ -9,7 +9,7 @@ export const Organization = () => {
       {JSON.stringify({
         "@context": "https://schema.org",
         "@type": "Organization",
-        name: SITE_NAME,
+        name: NEXT_PUBLIC_SITE_NAME,
         url: `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN}`,
         logo: `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN}/opengraph-image`,
         sameAs: [

@@ -13,7 +13,9 @@ export const metadata = {
   openGraph: {
     images: [
       {
-        url: `/api/og?title=${encodeURIComponent(process.env.SITE_NAME || "")}`,
+        url: `/api/og?title=${encodeURIComponent(
+          process.env.NEXT_PUBLIC_SITE_NAME || ""
+        )}`,
         width: 1200,
         height: 630,
       },

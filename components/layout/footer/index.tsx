@@ -9,7 +9,7 @@ import SignUp from "./sign-up";
 
 import { SocialIcon } from "react-social-icons";
 
-const { SITE_NAME } = process.env;
+const { NEXT_PUBLIC_SITE_NAME } = process.env;
 
 export default async function Footer() {
   const currentYear = new Date().getFullYear();
@@ -104,7 +104,7 @@ export default async function Footer() {
             /> */}
           </menu>
           <span className="sm:order-first">
-            &copy; {copyrightDate} {SITE_NAME}. All rights reserved.
+            &copy; {copyrightDate} {NEXT_PUBLIC_SITE_NAME}. All rights reserved.
           </span>
         </div>
         <LogotypeIcon className="mx-auto my-16 h-6 fill-inherit drop-shadow transition duration-300 ease-in-out hover:scale-110 sm:hidden sm:h-10 " />

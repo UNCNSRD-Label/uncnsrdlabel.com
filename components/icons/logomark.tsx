@@ -1,19 +1,14 @@
 import { clsx } from "clsx";
-import { forwardRef } from "react";
 
 type Props = { className?: string; style?: React.CSSProperties };
 
 export type Ref = SVGSVGElement | null;
 
-export const Logomark = forwardRef<Ref, Props>(function Logomark(
-  props,
-  ref = null
-) {
+export default function Logomark(props: Props) {
   return (
     <svg
-      aria-label={`${process.env.SITE_NAME} logotype`}
+      aria-label={`${process.env.NEXT_PUBLIC_SITE_NAME} logotype`}
       className={clsx(props.className, "icon fill")}
-      ref={ref}
       shapeRendering="geometricPrecision"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -41,6 +36,4 @@ c69 41 214 187 243 244 10 19 106 387 213 818 l196 785 -31 24 c-16 13 -30 30
       </g>
     </svg>
   );
-});
-
-export default Logomark;
+}
