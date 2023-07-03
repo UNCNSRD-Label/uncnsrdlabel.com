@@ -1,3 +1,4 @@
+import { revalidate } from "app/[page]/page";
 import {
   HIDDEN_PRODUCT_TAG,
   SHOPIFY_GRAPHQL_API_ENDPOINT,
@@ -87,7 +88,7 @@ export async function shopifyFetch<T>({
         ...(query && { query }),
         ...(variables && { variables }),
       }),
-      cache,
+      cache: revalidate ? undefined : cache,
       next: { revalidate: 900 }, // 15 minutes
     });
 
