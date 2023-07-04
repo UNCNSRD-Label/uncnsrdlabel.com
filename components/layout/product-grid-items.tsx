@@ -10,7 +10,6 @@ export default function ProductGridItems({
 }: {
   products: Product[];
 }) {
-  console.log(transitionDelays);
   return (
     <>
       {products.map((product, index) => (
