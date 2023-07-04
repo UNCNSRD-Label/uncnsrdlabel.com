@@ -19,8 +19,8 @@ export default function Image(props: ImageProps) {
       {...props}
       alt={props.alt || ""}
       className={clsx(
-        "transition duration-700 ease-in-out motion-reduce:transition-none",
-        "translate-y-24 opacity-0",
+        "transition duration-700 ease-out motion-reduce:transition-none",
+        "translate-y-48 opacity-0",
         rootIntersection?.isIntersecting &&
           "data-[loaded=true]:translate-y-0 data-[loaded=true]:opacity-100",
         props.className
