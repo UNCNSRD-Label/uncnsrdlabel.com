@@ -2,13 +2,7 @@
 
 import { Partytown } from "@builder.io/partytown/react";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
-import { ConsentDefault } from "components/analytics/consent-default";
-import { GoogleAnalytics } from "components/analytics/google-analytics";
-import { GoogleTag } from "components/analytics/google-tag";
 import { GoogleTagManager } from "components/analytics/google-tag-manager";
-import { Klaviyo } from "components/analytics/klaviyo";
-import { MetaPixel } from "components/analytics/meta-pixel";
-import { TikTokPixel } from "components/analytics/tiktok-pixel";
 
 export const Analytics = () => {
   return (
@@ -17,14 +11,8 @@ export const Analytics = () => {
         debug={true}
         forward={["dataLayer.push", "fbq", "klaviyo", "ttq", "va"]}
       />
-      <GoogleTag />
       <GoogleTagManager type="text/partytown" />
-      <GoogleAnalytics />
-      <ConsentDefault />
       <VercelAnalytics />
-      <MetaPixel type="text/partytown" />
-      <TikTokPixel type="text/partytown" />
-      <Klaviyo type="text/partytown" />
     </>
   );
 };
