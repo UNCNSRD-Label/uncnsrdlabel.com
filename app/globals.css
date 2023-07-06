@@ -22,7 +22,7 @@
 
   a,
   button {
-    @apply border-none outline-none;
+    @apply cursor-pointer border-none outline-none;
 
     &:has(> img, > figure) {
       @apply focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-aaaFocus focus-visible:ring-aaaFocus;
@@ -83,6 +83,7 @@
     &.btn-bg {
       &.btn-outline {
         @apply hover:!bg-aaaHover/20 focus-visible:!bg-aaaFocus/20;
+        @apply hover:!text-aaaHover focus-visible:!text-aaaFocus;
       }
 
       &:not(.btn-outline) {
@@ -141,6 +142,10 @@
 
   .btn-rounded {
     @apply rounded-full p-3;
+  }
+
+  .btn-xs {
+    @apply px-2 py-1 text-xs;
   }
 
   .btn-sm {
