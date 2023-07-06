@@ -15,7 +15,7 @@ export async function HomepageCarousel(props: NukaCarouselProps) {
   const slidesToShow = 3;
 
   const buttonClassName =
-    "!px-6 text-6xl drop-shadow focus-visible:!text-hotPink hover:!text-hotPink";
+    "!px-6 text-6xl drop-shadow focus-visible:!text-aaaFocus hover:!text-aaaHover";
 
   const buttonStyle = {
     backgroundColor: "unset",
@@ -26,7 +26,7 @@ export async function HomepageCarousel(props: NukaCarouselProps) {
 
   const pagingDotsClassName =
     "[&_.paging-dot]:h-4 [&_.paging-dot]:w-4 !fill-inherit stroke-none mix-blend-difference";
-  const pagingDotsContainerClassName = "gap-8 [&_.active]:!fill-hotPink";
+  const pagingDotsContainerClassName = "gap-8 [&_.active]:!fill-aaaFocus";
   const pagingDotsStyle = {
     display: "none",
     opacity: "!opacity-100",

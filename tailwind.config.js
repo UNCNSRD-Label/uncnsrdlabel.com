@@ -36,6 +36,8 @@ module.exports = {
         gray: colors.neutral,
         hotPink: "#ff4dd8",
         hotGreen: "#4dff74",
+        aaaFocus: "#ccc",
+        aaaHover: "#ccc",
         dark: "#111111",
         light: "#fafafa",
         disabled: colors.gray["300"],

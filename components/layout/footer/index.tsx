@@ -79,22 +79,22 @@ export default async function Footer() {
         <div className="flex flex-col items-center justify-between text-xs uppercase sm:flex-row sm:pb-10 sm:pt-6">
           <menu className="my-8 grid grid-flow-col content-center justify-center gap-4 sm:my-0">
             <SocialIcon
-              className="group !h-12 !w-12 fill-black hover:!fill-hotPink hover:!stroke-hotPink focus-visible:!fill-hotPink focus-visible:!stroke-hotPink dark:fill-white [&_.social-svg-mask]:!fill-inherit"
+              className="group !h-12 !w-12 fill-black hover:!fill-aaaHover hover:!stroke-aaaHover focus-visible:!fill-aaaFocus focus-visible:!stroke-aaaFocus dark:fill-white [&_.social-svg-mask]:!fill-inherit"
               target="_blank"
               url="https://tiktok.com/@uncnsrdlabel/"
             />
             <SocialIcon
-              className="group !h-12 !w-12 fill-black hover:!fill-hotPink hover:!stroke-hotPink focus-visible:!fill-hotPink focus-visible:!stroke-hotPink dark:fill-white [&_.social-svg-mask]:!fill-inherit"
+              className="group !h-12 !w-12 fill-black hover:!fill-aaaHover hover:!stroke-aaaHover focus-visible:!fill-aaaFocus focus-visible:!stroke-aaaFocus dark:fill-white [&_.social-svg-mask]:!fill-inherit"
               target="_blank"
               url="https://www.instagram.com/uncnsrdlabel/"
             />
             {/* <SocialIcon
-              className="group [&_.social-svg-mask]:!fill-black dark:[&_.social-svg-mask]:!fill-white focus-visible:!fill-hotPink hover:!fill-hotPink !h-12 !w-12"
+              className="group [&_.social-svg-mask]:!fill-black dark:[&_.social-svg-mask]:!fill-white focus-visible:!fill-aaaFocus hover:!fill-aaaHover !h-12 !w-12"
               target="_blank"
               url="https://twitter.com/uncnsrdlabel/"
             /> */}
             {/* <SocialIcon
-              className="group [&_.social-svg-mask]:!fill-black dark:[&_.social-svg-mask]:!fill-white focus-visible:!fill-hotPink hover:!fill-hotPink !h-12 !w-12"
+              className="group [&_.social-svg-mask]:!fill-black dark:[&_.social-svg-mask]:!fill-white focus-visible:!fill-aaaFocus hover:!fill-aaaHover !h-12 !w-12"
               target="_blank"
               url="https://www.facebook.com/uncnsrdlabel/"
             /> */}

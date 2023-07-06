@@ -42,7 +42,7 @@ export const AccordionTrigger = forwardRef<
   <AccordionPrimitive.Header className="AccordionHeader">
     <AccordionPrimitive.Trigger
       className={clsx(
-        "AccordionTrigger group flex w-full items-center justify-between gap-4 focus-visible:border-0 focus-visible:outline-dashed focus-visible:outline-hotPink"
+        "AccordionTrigger group flex w-full items-center justify-between gap-4 focus-visible:border-0 focus-visible:outline-dashed focus-visible:outline-aaaFocus"
       )}
       {...props}
       ref={forwardedRef}

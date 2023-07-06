@@ -11,7 +11,7 @@ export default function Image(props: ImageProps) {
   const rootRef = useRef<HTMLImageElement>(null);
 
   const rootIntersection = useIntersectionObserver(rootRef, {
-    rootMargin: "-15dvh",
+    // rootMargin: "-15%",
     threshold: [0, 0.5],
   });
 

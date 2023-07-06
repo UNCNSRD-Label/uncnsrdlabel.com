@@ -179,7 +179,7 @@ export default function CartModal({
                   </div>
                   <a
                     href={cart.checkoutUrl}
-                    className="flex w-full items-center justify-center bg-black p-3 text-sm font-medium uppercase text-white opacity-90 hover:opacity-100 dark:bg-white dark:text-black"
+                    className="flex w-full items-center justify-center bg-black p-3 text-sm font-medium uppercase text-light opacity-90 hover:opacity-100 dark:bg-white dark:text-dark"
                   >
                     <span>Proceed to Checkout</span>
                   </a>

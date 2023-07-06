@@ -32,7 +32,7 @@ export function Images({
                   sizes={sizes}
                   src={image.src}
                 />
-                <SlMagnifierAdd className="icon absolute bottom-4 right-4 h-5 w-5 text-white drop-shadow" />
+                <SlMagnifierAdd className="icon absolute bottom-4 right-4 h-5 w-5 text-light drop-shadow" />
               </button>
             </Dialog.Trigger>
             <Dialog.Portal>
@@ -57,7 +57,7 @@ export function Images({
                       //   setScale(1);
                       // }}
                     >
-                      <Cross2Icon className="h-full w-full text-white" />
+                      <Cross2Icon className="h-full w-full text-light" />
                     </button>
                   </Dialog.Close>
                 </Dialog.Content>

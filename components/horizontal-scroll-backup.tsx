@@ -55,7 +55,7 @@ export async function HorizontalScroll({ className }: { className?: string }) {
       </div>
       <ScrollControls
         classNames={{
-          controls: "absolute w-full z-20 text-white flex justify-between px-8",
+          controls: "absolute w-full z-20 text-light flex justify-between px-8",
           // controls: 'hidden',
           // ScrollAreaRoot: 'contents',
           // ScrollAreaViewport: 'contents [&>*]:!contents'

@@ -6,7 +6,6 @@ import Progress from "components/layout/progress";
 import { Organization } from "components/schema.org/organization";
 import { Inter, Montserrat } from "next/font/google";
 import localFont from "next/font/local";
-import Head from "next/head";
 import { ReactNode, Suspense } from "react";
 import "./globals.css";
 
@@ -37,6 +36,13 @@ export const metadata = {
         site: TWITTER_SITE,
       },
     }),
+  formatDetection: {
+    telephone: false,
+    date: false,
+    address: false,
+    email: false,
+    url: false,
+  },
 };
 
 const bomberEscort = localFont({
@@ -86,14 +92,13 @@ export default async function RootLayout({
         "snap-y"
       )}
     >
-      <Head>
-        <meta
-          name="format-detection"
-          content="telephone=no, date=no, email=no, address=no"
-        />
-      </Head>
       <body
-        className="fill-bg-gray-950 stroke-bg-gray-950 text-bg-gray-950 grid min-h-[100dvh] grid-rows-[auto_1fr] bg-gray-300 tracking-widest selection:bg-hotPink dark:bg-gray-950 dark:fill-gray-300 dark:stroke-gray-300 dark:text-gray-300"
+        className={clsx(
+          "grid min-h-[100dvh] grid-rows-[auto_1fr] tracking-widest",
+          "fill-bg-gray-950 stroke-bg-gray-950 text-bg-gray-950 bg-gray-300",
+          "dark:bg-gray-950 dark:fill-gray-300 dark:stroke-gray-300 dark:text-gray-300",
+          "selection:bg-hotPink"
+        )}
         style={{
           textRendering: "optimizeLegibility",
         }}

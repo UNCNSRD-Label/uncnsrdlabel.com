@@ -26,7 +26,7 @@ export default function FilterList({
     <>
       <nav className="col-span-2 w-full flex-none px-6 py-2 uppercase md:py-4 md:pl-10">
         {title ? (
-          <h3 className="hidden font-semibold text-black dark:text-white md:block">
+          <h3 className="hidden font-semibold text-dark dark:text-light md:block">
             {title}
           </h3>
         ) : null}

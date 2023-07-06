@@ -25,25 +25,28 @@
     @apply border-none outline-none;
 
     &:has(> img, > figure) {
-      @apply focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-hotPink focus-visible:ring-hotPink;
+      @apply focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-aaaFocus focus-visible:ring-aaaFocus;
     }
 
     &:has(> .icon:only-child),
     &.icon-container {
-      @apply focus-visible:fill-hotPink focus-visible:stroke-hotPink focus-visible:text-hotPink;
+      @apply focus-visible:fill-aaaFocus focus-visible:stroke-aaaFocus focus-visible:text-aaaFocus;
     }
   }
 
   a {
-    @apply transition-colors hover:stroke-hotPink hover:text-hotPink focus-visible:stroke-hotPink focus-visible:text-hotPink;
+    @apply transition-colors hover:stroke-aaaHover hover:text-aaaHover focus-visible:stroke-aaaFocus focus-visible:text-aaaFocus;
   }
 
   input {
-    --tw-ring-color: theme(ringColor.hotPink) !important;
+    --tw-ring-color: theme(ringColor.aaaFocus) !important;
 
-    &:focus,
+    &:focus {
+      @apply !border-aaaFocus;
+    }
+
     &:hover {
-      @apply !border-hotPink;
+      @apply !border-aaaHover;
     }
   }
 }
@@ -70,29 +73,29 @@
     }
 
     &.btn-outline {
-      @apply hover:!bg-hotPink/20 hover:!outline-hotPink focus-visible:!bg-hotPink/20 focus-visible:!outline-hotPink;
+      @apply hover:!bg-aaaHover/20 hover:!outline-aaaHover focus-visible:!bg-aaaFocus/20 focus-visible:!outline-aaaFocus;
     }
 
     &:not(.btn-outline) {
-      @apply hover:!text-hotPink focus-visible:!text-hotPink;
+      @apply hover:!text-aaaHover focus-visible:!text-aaaFocus;
     }
 
     &.btn-bg {
       &.btn-outline {
-        @apply hover:!bg-hotPink/20 focus-visible:!bg-hotPink/20;
+        @apply hover:!bg-aaaHover/20 focus-visible:!bg-aaaFocus/20;
       }
 
       &:not(.btn-outline) {
-        @apply hover:!bg-hotPink hover:!text-black focus-visible:!bg-hotPink focus-visible:!text-black;
+        @apply hover:!bg-aaaHover hover:!text-dark focus-visible:!bg-aaaFocus focus-visible:!text-dark;
       }
     }
   }
 
   .btn-primary {
-    @apply text-white outline outline-transparent;
+    @apply text-light outline outline-transparent;
 
     &[disabled] {
-      @apply text-white/50;
+      @apply text-light/50;
     }
 
     &.btn-outline {
@@ -104,7 +107,7 @@
     }
 
     &.btn-bg {
-      @apply bg-white text-black;
+      @apply bg-white text-dark;
 
       &[disabled] {
         @apply bg-white/50;
@@ -128,7 +131,7 @@
     }
 
     &.btn-bg {
-      @apply bg-hotGreen text-black;
+      @apply bg-hotGreen text-dark;
 
       &[disabled] {
         @apply bg-hotGreen/50;
@@ -229,14 +232,14 @@
   }
 
   .loading {
-    @apply relative !outline-hotPink [&_>_*]:text-black;
+    @apply relative !outline-aaaFocus [&_>_*]:text-dark;
 
     span {
       @apply relative z-10;
     }
 
     &::before {
-      @apply absolute inset-0 z-0 bg-gradient-to-r from-hotPink/5 via-hotPink/10 to-hotPink/5;
+      @apply absolute inset-0 z-0 bg-gradient-to-r from-aaaFocus/5 via-aaaFocus/10 to-aaaFocus/5;
       content: "";
       background-size: 500%;
       animation: loading 30s linear infinite;

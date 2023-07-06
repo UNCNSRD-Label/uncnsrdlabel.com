@@ -16,11 +16,7 @@ import {
 
 import { COOKIE_CONSENT } from "lib/constants";
 
-export default async function ConsentDialog({
-  className,
-}: {
-  className?: string;
-}) {
+export default async function ConsentDialog(props: { className?: string }) {
   useEffect(() => {
     if (!hasCookie(COOKIE_CONSENT)) {
       setTimeout(() => setOpen(true), 10_000);
@@ -60,7 +56,7 @@ export default async function ConsentDialog({
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
-        <button className={className}>Edit consent settings</button>
+        <button className={props.className}>Edit consent settings</button>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0 z-40 bg-black/80" />

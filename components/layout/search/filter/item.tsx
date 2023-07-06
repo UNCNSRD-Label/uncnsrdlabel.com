@@ -26,7 +26,7 @@ function PathFilterItem({ item }: { item: PathFilterItem }) {
         href={createUrl(item.path, newParams)}
         className={clsx("w-full hover:text-gray-800 dark:hover:text-gray-100", {
           "text-gray-600 dark:text-gray-400": !active,
-          "font-semibold text-black dark:text-white": active,
+          "font-semibold text-dark dark:text-light": active,
         })}
       >
         {item.title}
@@ -63,7 +63,7 @@ function SortFilterItem({ item }: { item: SortFilterItem }) {
         href={href}
         className={clsx("w-full hover:text-gray-800 dark:hover:text-gray-100", {
           "text-gray-600 dark:text-gray-400": !active,
-          "font-semibold text-black dark:text-white": active,
+          "font-semibold text-dark dark:text-light": active,
         })}
       >
         {item.title}

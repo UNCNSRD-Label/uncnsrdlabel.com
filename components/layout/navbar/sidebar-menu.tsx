@@ -65,7 +65,7 @@ export default function SidebarMenu({ menu }: { menu: Menu[] }) {
               aria-hidden="true"
             />
             <div
-              className="fixed inset-0 flex max-w-sm justify-end bg-black text-white"
+              className="fixed inset-0 flex max-w-sm justify-end bg-black text-light"
               data-testid="sidebar-menu"
             >
               <Dialog.Panel

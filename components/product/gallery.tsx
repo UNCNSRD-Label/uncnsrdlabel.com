@@ -53,7 +53,7 @@ export function Gallery({
         )}
 
         {images.length > 1 ? (
-          <div className="absolute bottom-10 right-10 flex h-12 flex-row border border-white text-white shadow-xl dark:border-black dark:text-black">
+          <div className="absolute bottom-10 right-10 flex h-12 flex-row border border-white text-light shadow-xl dark:border-black dark:text-dark">
             <button
               aria-label="Previous product image"
               className={clsx(

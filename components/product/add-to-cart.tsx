@@ -76,7 +76,6 @@ export function AddToCart({
       >
         {availableForSale ? "Add To Cart" : "Out Of Stock"}
       </span>
-      {/* {!isMutating ? <span className="absolute grid grid-flow-col inset-0"><LoadingDots amount={100} className="bg-hotPink/50 h-full w-auto" /></span> : null} */}
     </button>
   );
 }
