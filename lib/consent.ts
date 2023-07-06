@@ -38,26 +38,25 @@ export const types: Array<{
   description: string;
 }> = [
   {
-    name: "ad_storage",
-    description: "Storage related to advertising",
+    name: "functionality_storage",
+    description: "Storage related to functionality such as language settings",
+  },
+  {
+    name: "personalization_storage",
+    description:
+      "Storage related to personalization such as product recommendations",
+  },
+  {
+    name: "security_storage",
+    description:
+      "Storage related to security such as authentication functionality and user protection",
   },
   {
     name: "analytics_storage",
     description: "Storage related to analytics such as visit duration",
   },
   {
-    name: "functionality_storage",
-    description:
-      "Storage that supports the functionality of the website such as language settings",
-  },
-  {
-    name: "personalization_storage",
-    description:
-      "Storage related to personalization such as video recommendations",
-  },
-  {
-    name: "security_storage",
-    description:
-      "Storage related to security such as authentication functionality, fraud prevention, and other user protection",
+    name: "ad_storage",
+    description: "Storage related to advertising",
   },
 ];

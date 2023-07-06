@@ -3,11 +3,13 @@
 import * as Checkbox from "@radix-ui/react-checkbox";
 import * as Dialog from "@radix-ui/react-dialog";
 import { CheckIcon, Cross2Icon } from "@radix-ui/react-icons";
+import clsx from "clsx";
 import { getCookie, hasCookie, setCookie } from "cookies-next";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import {
+  acceptAllConsentSettings,
   cookieOptions,
   defaultConsentSettings,
   denyAllAdditionalConsentSettings,
@@ -24,6 +26,7 @@ export default async function ConsentDialog(props: { className?: string }) {
   }, []);
 
   const [open, setOpen] = useState(false);
+  const [optionsOpen, setOptionsOpen] = useState(false);
 
   const saveConsentSettings = (formData: FormData) => {
     const consentParams = Object.fromEntries(formData.entries());
@@ -31,6 +34,13 @@ export default async function ConsentDialog(props: { className?: string }) {
     gtag("consent", "update", consentParams);
     console.info("Granting selected consents");
     setOpen(false);
+  };
+
+  const acceptAllConsents = () => {
+    setOpen(false);
+    setCookie(COOKIE_CONSENT, acceptAllConsentSettings, cookieOptions);
+    gtag("consent", "update", acceptAllConsentSettings);
+    console.info("Accepting all consents");
   };
 
   const denyAllAdditionalConsents = () => {
@@ -59,21 +69,24 @@ export default async function ConsentDialog(props: { className?: string }) {
         <button className={props.className}>Edit consent settings</button>
       </Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0 z-40 bg-black/80" />
-        <Dialog.Content className="data-[state=open]:animate-contentShow fixed left-[50%] top-[50%] z-50 grid max-h-[85vh] w-[90vw] max-w-3xl translate-x-[-50%] translate-y-[-50%] gap-4 overflow-auto rounded border bg-inherit p-8">
+        {/* <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0 z-40 bg-black/80" /> */}
+        <Dialog.Content className="data-[state=open]:animate-contentShow fixed bottom-4 right-4 z-50 grid max-h-[85vh] w-[90vw] max-w-3xl gap-4 overflow-auto rounded border bg-inherit px-8 pb-8 pt-6">
           <Dialog.Title className="">Edit consent settings</Dialog.Title>
           <Dialog.Description className="text-sm">
-            UNCNSRD uses some cookies that are essential to making this site
-            work, and would like to use additional cookies so we can understand
-            how you use the site in order to make improvements.
+            UNCNSRD uses cookies that are essential to making this site work and
+            would like to use additional cookies to improve your experience on
+            this site.
           </Dialog.Description>
           <form
             action={saveConsentSettings}
-            className="my-4 flex flex-col gap-4 text-xs"
+            className="flex flex-col gap-4 text-xs"
           >
             {types.map((consent) => (
               <fieldset
-                className="grid grid-cols-[auto_1fr] items-center gap-4"
+                className={clsx("grid-cols-[auto_1fr] items-center gap-4", {
+                  grid: optionsOpen,
+                  hidden: !optionsOpen,
+                })}
                 key={consent.name}
               >
                 <Checkbox.Root
@@ -92,12 +105,34 @@ export default async function ConsentDialog(props: { className?: string }) {
                 </label>
               </fieldset>
             ))}
-            <div className="mt-4 flex justify-end gap-4">
-              <button className="btn btn-sm btn-outline btn-primary btn-bg">
+            <div className="mt-2 grid grid-flow-col gap-4">
+              <button
+                className={clsx("btn btn-xs btn-outline btn-primary btn-bg", {
+                  block: optionsOpen,
+                  hidden: !optionsOpen,
+                })}
+              >
                 Accept selected cookies
               </button>
               <button
-                className="btn btn-sm btn-outline btn-primary"
+                className={clsx("btn btn-xs btn-outline btn-primary btn-bg", {
+                  block: !optionsOpen,
+                  hidden: optionsOpen,
+                })}
+                onClick={() => setOptionsOpen(true)}
+                type="button"
+              >
+                Manage cookies
+              </button>
+              <button
+                className="btn btn-xs btn-outline btn-primary"
+                onClick={acceptAllConsents}
+                type="button"
+              >
+                Accept all cookies
+              </button>
+              <button
+                className="btn btn-xs btn-outline btn-primary"
                 onClick={denyAllAdditionalConsents}
                 type="button"
               >
