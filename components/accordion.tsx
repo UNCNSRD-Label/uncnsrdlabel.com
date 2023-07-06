@@ -42,14 +42,15 @@ export const AccordionTrigger = forwardRef<
   <AccordionPrimitive.Header className="AccordionHeader">
     <AccordionPrimitive.Trigger
       className={clsx(
-        "AccordionTrigger group flex w-full items-center justify-between gap-4 focus-visible:border-0 focus-visible:outline-dashed focus-visible:outline-aaaFocus"
+        "AccordionTrigger group flex w-full items-center justify-between gap-4 focus-visible:border-0 focus-visible:outline-dashed focus-visible:outline-aaaFocus",
+        className
       )}
       {...props}
       ref={forwardedRef}
     >
       {children}
       <ChevronDownIcon
-        className="AccordionChevron h-6 w-6 group-data-[state=open]:rotate-180"
+        className="AccordionChevron h-5 w-5 group-data-[state=open]:rotate-180"
         aria-hidden
       />
     </AccordionPrimitive.Trigger>

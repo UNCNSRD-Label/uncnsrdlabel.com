@@ -49,7 +49,7 @@ export const MetaFields = forwardRef<MetaFieldsRef, MetaFieldsProps>(
         {metafields.filter(Boolean).map((metafield, index) => (
           <AccordionItem key={index} value={metafield.key}>
             <AccordionTrigger>
-              <AccordionHeader>
+              <AccordionHeader className="text-sm">
                 {metafield?.key
                   ?.split("_")
                   .map(
