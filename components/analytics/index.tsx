@@ -2,6 +2,7 @@
 
 import { Partytown } from "@builder.io/partytown/react";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
+import { ConsentDefault } from "components/analytics/consent-default";
 import { GoogleAnalytics } from "components/analytics/google-analytics";
 import { GoogleTag } from "components/analytics/google-tag";
 import { GoogleTagManager } from "components/analytics/google-tag-manager";
@@ -17,8 +18,9 @@ export const Analytics = () => {
         forward={["dataLayer.push", "fbq", "klaviyo", "ttq", "va"]}
       />
       <GoogleTag />
-      <GoogleAnalytics />
       <GoogleTagManager type="text/partytown" />
+      <GoogleAnalytics />
+      <ConsentDefault />
       <VercelAnalytics />
       <MetaPixel type="text/partytown" />
       <TikTokPixel type="text/partytown" />
