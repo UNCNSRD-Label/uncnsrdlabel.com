@@ -8,8 +8,6 @@ import { useRef } from "react";
 
 type Props = { blend?: boolean; className?: string; fill?: "dark" | "light" };
 
-const { NEXT_PUBLIC_SITE_NAME } = process.env;
-
 export default function Logo({ blend, className, fill }: Props) {
   const rootRef = useRef<HTMLDivElement>(null);
 
@@ -38,7 +36,9 @@ export default function Logo({ blend, className, fill }: Props) {
               : "fixed",
         }}
       >
-        <AccessibleIcon.Root label={`${NEXT_PUBLIC_SITE_NAME} logotype`}>
+        <AccessibleIcon.Root
+          label={`${process.env.NEXT_PUBLIC_SITE_NAME} logotype`}
+        >
           <LogotypeIcon
             className={clsx(
               "h-8 fill-inherit drop-shadow transition duration-300 ease-in-out hover:scale-110 sm:h-10",
