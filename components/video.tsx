@@ -19,6 +19,7 @@ export const Video: FC<VideoProps> = ({
   fallback,
   loop = false,
   poster,
+  priority,
   title,
   ...props
 }) => (
@@ -32,6 +33,7 @@ export const Video: FC<VideoProps> = ({
       alt={alt}
       className="absolute h-full object-cover"
       fill
+      priority={priority}
       sizes="100vw"
       src={poster}
       title={title}

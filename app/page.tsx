@@ -50,13 +50,14 @@ export default async function HomePage() {
                 alt={video.alt}
                 className="absolute h-full object-cover"
                 fill
+                priority
                 sizes="100vw"
                 src={video.poster}
                 title={video.title}
               />
             }
           >
-            <Video {...video} />
+            <Video {...video} priority />
           </Suspense>
           <Link
             href="/search"
