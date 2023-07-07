@@ -9,7 +9,7 @@ export default function MenuIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
       shapeRendering="geometricPrecision"
-      className={clsx(className, "icon stroke")}
+      className={clsx(className, "icon")}
     >
       <path d="M4 6h16M4 12h16m-7 6h7" />
     </svg>

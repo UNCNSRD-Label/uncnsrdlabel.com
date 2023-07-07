@@ -4,6 +4,7 @@ import Logo from "components/layout/logo";
 import Navbar from "components/layout/navbar";
 import NavbarContent from "components/layout/navbar/content";
 import { Video, type VideoProps } from "components/video";
+import { themeColors } from "lib/effects";
 import Link from "next/link";
 import { Suspense } from "react";
 
@@ -38,40 +39,42 @@ const video: VideoProps = {
 
 export default async function HomePage() {
   return (
-    <>
-      <Navbar>
-        <NavbarContent />
-      </Navbar>
-      <main className="relative grid grid-rows-[1fr_auto]">
-        <section className="relative grid h-[100dvh] items-center overflow-hidden sm:snap-start">
-          <Suspense
-            fallback={
-              <Image
-                alt={video.alt}
-                className="absolute h-full object-cover"
-                fill
-                priority
-                sizes="100vw"
-                src={video.poster}
-                title={video.title}
-              />
-            }
-          >
-            <Video {...video} priority />
-          </Suspense>
-          <Link
-            href="/search"
-            aria-label="Go to the shop"
-            className="btn btn-outline btn-primary btn-base absolute z-20 justify-self-center whitespace-nowrap uppercase"
-          >
-            Shop now
-          </Link>
-        </section>
-        <section className="py-48 sm:snap-center">
-          <HomepageCarousel />
-        </section>
-      </main>
-      <Logo />
-    </>
+    <div className="dark">
+      <div className={themeColors}>
+        <Navbar>
+          <NavbarContent />
+        </Navbar>
+        <main className="relative grid grid-rows-[1fr_auto]">
+          <section className="relative grid h-[100dvh] items-center overflow-hidden sm:snap-start">
+            <Suspense
+              fallback={
+                <Image
+                  alt={video.alt}
+                  className="absolute h-full object-cover"
+                  fill
+                  priority
+                  sizes="100vw"
+                  src={video.poster}
+                  title={video.title}
+                />
+              }
+            >
+              <Video {...video} priority />
+            </Suspense>
+            <Link
+              href="/search"
+              aria-label="Go to the shop"
+              className="btn btn-outline btn-primary btn-base absolute z-20 justify-self-center whitespace-nowrap uppercase"
+            >
+              Shop now
+            </Link>
+          </section>
+          <section className="py-48 sm:snap-center">
+            <HomepageCarousel />
+          </section>
+        </main>
+        <Logo />
+      </div>
+    </div>
   );
 }

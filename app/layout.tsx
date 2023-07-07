@@ -4,6 +4,7 @@ import Banner from "components/banner";
 import Footer from "components/layout/footer";
 import Progress from "components/layout/progress";
 import { Organization } from "components/schema.org/organization";
+import { themeColors } from "lib/effects";
 import { Inter, Montserrat } from "next/font/google";
 import localFont from "next/font/local";
 import { ReactNode, Suspense } from "react";
@@ -88,16 +89,15 @@ export default async function RootLayout({
         inter.variable,
         montserrat.variable,
         // "[color-scheme:dark]",
-        "dark",
         "snap-y"
+        // "dark"
       )}
     >
       <body
         className={clsx(
           "grid min-h-[100dvh] grid-rows-[auto_1fr] tracking-widest",
-          "fill-bg-gray-950 stroke-bg-gray-950 text-bg-gray-950 bg-gray-300",
-          "dark:bg-gray-950 dark:fill-gray-300 dark:stroke-gray-300 dark:text-gray-300",
-          "selection:bg-hotPink"
+          "selection:bg-hotPink",
+          themeColors
         )}
         style={{
           textRendering: "optimizeLegibility",

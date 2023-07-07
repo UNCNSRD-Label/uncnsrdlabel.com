@@ -10,7 +10,7 @@
 
 @layer base {
   * {
-    @apply border-black dark:border-white;
+    @apply border-dark dark:border-light;
     text-underline-offset: theme(textUnderlineOffset.4);
   }
 
@@ -73,7 +73,8 @@
     }
 
     &.btn-outline {
-      @apply hover:!bg-aaaHover/20 hover:!outline-aaaHover focus-visible:!bg-aaaFocus/20 focus-visible:!outline-aaaFocus;
+      @apply hover:!bg-aaaHover/20 hover:!outline-aaaHover;
+      @apply focus-visible:!bg-aaaFocus/20 focus-visible:!outline-aaaFocus;
     }
 
     &:not(.btn-outline) {
@@ -93,25 +94,25 @@
   }
 
   .btn-primary {
-    @apply text-light outline outline-transparent;
+    @apply text-dark outline outline-transparent dark:text-light;
 
     &[disabled] {
-      @apply text-light/50;
+      @apply text-dark/50 dark:text-light/50;
     }
 
     &.btn-outline {
-      @apply outline-white;
+      @apply outline-dark dark:outline-light;
 
       &[disabled] {
-        @apply outline-white/50;
+        @apply outline-dark/50 dark:outline-light/50;
       }
     }
 
     &.btn-bg {
-      @apply bg-white text-dark;
+      @apply bg-dark text-light dark:bg-light dark:text-dark;
 
       &[disabled] {
-        @apply bg-white/50;
+        @apply bg-dark/50 dark:bg-light/50;
       }
     }
   }

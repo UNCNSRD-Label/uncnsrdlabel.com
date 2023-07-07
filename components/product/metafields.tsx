@@ -59,7 +59,7 @@ export const MetaFields = forwardRef<MetaFieldsRef, MetaFieldsProps>(
                   .join(" ")}
               </AccordionHeader>
             </AccordionTrigger>
-            <AccordionContent className="collapsible-content prose prose-sm prose-invert overflow-x-auto">
+            <AccordionContent className="collapsible-content prose prose-sm overflow-x-auto dark:prose-invert">
               <MetafieldMapper metafield={metafield} />
               {/* <pre className="w-max-[calc(100%_-_4rem)]">
                 <code>{JSON.stringify(metafield, null, 2)}</code>

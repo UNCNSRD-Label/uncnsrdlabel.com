@@ -1,14 +1,15 @@
 import { Dialog } from "@headlessui/react";
-import Image from "components/image";
-import { AnimatePresence, motion } from "framer-motion";
-import Link from "next/link";
-
+import { clsx } from "clsx";
 import CloseIcon from "components/icons/close";
 import ShoppingBagIcon from "components/icons/shopping-bag";
+import Image from "components/image";
 import Price from "components/price";
+import { AnimatePresence, motion } from "framer-motion";
 import { DEFAULT_OPTION } from "lib/constants";
+import { themeColors } from "lib/effects";
 import type { Cart } from "lib/shopify/types";
 import { createUrl } from "lib/utils";
+import Link from "next/link";
 import DeleteItemButton from "./delete-item-button";
 import EditItemQuantityButton from "./edit-item-quantity-button";
 
@@ -37,7 +38,7 @@ export default function CartModal({
           static
           open={isOpen}
           onClose={onClose}
-          className="relative z-50"
+          className="dark relative z-50"
         >
           <motion.div
             variants={{
@@ -56,7 +57,10 @@ export default function CartModal({
                 closed: { translateX: "100%" },
               }}
               transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-              className="flex w-full flex-col bg-black p-6 outline outline-white md:w-2/5 lg:w-1/3"
+              className={clsx(
+                "flex w-full flex-col p-6 outline outline-white md:w-2/5 lg:w-1/3",
+                themeColors
+              )}
             >
               <div className="flex items-center justify-between">
                 <p className="text-lg font-bold">My Bag</p>

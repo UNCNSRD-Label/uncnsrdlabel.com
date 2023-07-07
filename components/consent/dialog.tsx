@@ -3,9 +3,10 @@
 import * as Checkbox from "@radix-ui/react-checkbox";
 import * as Dialog from "@radix-ui/react-dialog";
 import { CheckIcon, Cross2Icon } from "@radix-ui/react-icons";
+import { useTimeoutEffect } from "@react-hookz/web";
 import clsx from "clsx";
 import { getCookie, hasCookie, setCookie } from "cookies-next";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import {
@@ -19,11 +20,12 @@ import {
 import { COOKIE_CONSENT } from "lib/constants";
 
 export default async function ConsentDialog(props: { className?: string }) {
-  useEffect(() => {
-    if (!hasCookie(COOKIE_CONSENT)) {
-      setTimeout(() => setOpen(true), 10_000);
-    }
-  }, []);
+  const [cancel, reset] = useTimeoutEffect(
+    () => {
+      setOpen(true);
+    },
+    hasCookie(COOKIE_CONSENT) ? undefined : 10_000
+  );
 
   const [open, setOpen] = useState(false);
   const [optionsOpen, setOptionsOpen] = useState(false);

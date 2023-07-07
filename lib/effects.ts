@@ -1,3 +1,10 @@
+import { clsx } from "clsx";
+
+export const themeColors = clsx(
+  "bg-gray-50 fill-gray-950 stroke-gray-950 text-gray-950",
+  "dark:bg-gray-950 dark:fill-gray-300 dark:stroke-gray-300 dark:text-gray-300"
+);
+
 export const animationDelays = [
   "animation-delay-[0ms]",
   // "animation-delay-[100ms]",
