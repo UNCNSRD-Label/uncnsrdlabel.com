@@ -1,11 +1,11 @@
 "use client";
 
 import { useIntersectionObserver } from "@react-hookz/web";
-import clsx from "clsx";
+import { clsx } from "clsx";
 import NextImage, { type ImageProps } from "next/image";
 import { useRef } from "react";
 
-import { onLoadingComplete } from "lib/image";
+import { onLoadingComplete } from "@/lib/image";
 
 export default function Image(props: ImageProps) {
   const rootRef = useRef<HTMLImageElement>(null);

@@ -1,10 +1,10 @@
 import { useRouter } from "next/navigation";
 import { startTransition, useState } from "react";
 
-import clsx from "clsx";
-import MinusIcon from "components/icons/minus";
-import PlusIcon from "components/icons/plus";
-import type { CartItem } from "lib/shopify/types";
+import MinusIcon from "@/components/icons/minus";
+import PlusIcon from "@/components/icons/plus";
+import type { CartItem } from "@/lib/shopify/types";
+import { clsx } from "clsx";
 import LoadingDots from "../loading-dots";
 
 export default function EditItemQuantityButton({

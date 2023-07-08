@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { clsx } from "clsx";
 import { SlMagnifier } from "react-icons/sl";
 
 export default function SearchButton({ isOpen }: { isOpen: boolean }) {

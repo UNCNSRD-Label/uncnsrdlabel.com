@@ -1,7 +1,7 @@
-import clsx from "clsx";
-import { GridTileImage } from "components/grid/tile";
-import { getCollectionProducts } from "lib/shopify";
-import type { Product } from "lib/shopify/types";
+import { GridTileImage } from "@/components/grid/tile";
+import { getCollectionProducts } from "@/lib/shopify";
+import type { Product } from "@/lib/shopify/types";
+import { clsx } from "clsx";
 import Link from "next/link";
 
 function ThreeItemGridItem({

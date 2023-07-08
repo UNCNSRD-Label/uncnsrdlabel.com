@@ -1,9 +1,9 @@
 "use client";
 
+import LogotypeIcon from "@/components/icons/logotype";
 import * as AccessibleIcon from "@radix-ui/react-accessible-icon";
 import { useIntersectionObserver } from "@react-hookz/web";
 import { clsx } from "clsx";
-import LogotypeIcon from "components/icons/logotype";
 import { useRef } from "react";
 
 type Props = { blend?: boolean; className?: string; fill?: "dark" | "light" };

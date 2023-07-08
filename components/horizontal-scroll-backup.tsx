@@ -1,7 +1,7 @@
-import clsx from "clsx";
-import Image from "components/image";
-import ScrollControls from "components/scroll-controls";
-import { getPage } from "lib/shopify";
+import Image from "@/components/image";
+import ScrollControls from "@/components/scroll-controls";
+import { getPage } from "@/lib/shopify";
+import { clsx } from "clsx";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 

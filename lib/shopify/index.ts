@@ -1,9 +1,9 @@
-import { revalidate } from "app/[page]/page";
+import { revalidate } from "@/app/[page]/page";
 import {
   HIDDEN_PRODUCT_TAG,
   SHOPIFY_GRAPHQL_API_ENDPOINT,
-} from "lib/constants";
-import { isShopifyError } from "lib/type-guards";
+} from "@/lib/constants";
+import { isShopifyError } from "@/lib/type-guards";
 import { camelCase } from "lodash";
 import {
   addToCartMutation,

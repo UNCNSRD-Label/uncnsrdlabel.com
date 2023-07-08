@@ -1,10 +1,10 @@
+import { Analytics } from "@/components/analytics";
+import Banner from "@/components/banner";
+import Footer from "@/components/layout/footer";
+import Progress from "@/components/layout/progress";
+import { Organization } from "@/components/schema.org/organization";
+import { themeColors } from "@/lib/effects";
 import { clsx } from "clsx";
-import { Analytics } from "components/analytics";
-import Banner from "components/banner";
-import Footer from "components/layout/footer";
-import Progress from "components/layout/progress";
-import { Organization } from "components/schema.org/organization";
-import { themeColors } from "lib/effects";
 import { Inter, Montserrat } from "next/font/google";
 import localFont from "next/font/local";
 import { ReactNode, Suspense } from "react";

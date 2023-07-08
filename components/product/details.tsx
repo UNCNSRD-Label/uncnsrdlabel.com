@@ -2,12 +2,12 @@
 
 import { useRef } from "react";
 
-import { Images } from "components/product/images";
-import { MetaFields } from "components/product/metafields";
-import { NavigationMenu } from "components/product/navigation-menu";
-import { PurchaseOptions } from "components/product/purchase-options";
+import { Images } from "@/components/product/images";
+import { MetaFields } from "@/components/product/metafields";
+import { NavigationMenu } from "@/components/product/navigation-menu";
+import { PurchaseOptions } from "@/components/product/purchase-options";
 
-import { Image, Product } from "lib/shopify/types";
+import { Image, Product } from "@/lib/shopify/types";
 
 export function ProductDetails({ product }: { product: Product }) {
   const sectionElementRefs = [useRef(null), useRef(null), useRef(null)];

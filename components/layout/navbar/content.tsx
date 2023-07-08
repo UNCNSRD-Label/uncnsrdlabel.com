@@ -2,11 +2,11 @@ import { clsx } from "clsx";
 import Link from "next/link";
 import { Suspense } from "react";
 
-import Cart from "components/cart";
-import CartIcon from "components/icons/cart";
-import LogotypeIcon from "components/icons/logotype";
-import Search from "components/search";
-import { getMenu } from "lib/shopify";
+import Cart from "@/components/cart";
+import CartIcon from "@/components/icons/cart";
+import LogotypeIcon from "@/components/icons/logotype";
+import Search from "@/components/search";
+import { getMenu } from "@/lib/shopify";
 import { SlHeart, SlUser } from "react-icons/sl";
 import SidebarMenu from "./sidebar-menu";
 

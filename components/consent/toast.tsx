@@ -1,15 +1,15 @@
 "use client";
 
-import * as Toast from "@radix-ui/react-toast";
-import { hasCookie, setCookie } from "cookies-next";
 import {
   acceptAllConsentSettings,
   cookieOptions,
   defaultConsentSettings,
-} from "lib/consent";
+} from "@/lib/consent";
+import * as Toast from "@radix-ui/react-toast";
+import { hasCookie, setCookie } from "cookies-next";
 import { useEffect, useState } from "react";
 
-import { COOKIE_CONSENT } from "lib/constants";
+import { COOKIE_CONSENT } from "@/lib/constants";
 
 export default async function ConsentToast() {
   const [open, setOpen] = useState(false);

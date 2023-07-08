@@ -1,8 +1,8 @@
 "use client";
 
-import clsx from "clsx";
-import Image from "components/image";
-import LoadingDots from "components/loading-dots";
+import Image from "@/components/image";
+import LoadingDots from "@/components/loading-dots";
+import { clsx } from "clsx";
 import { useRef } from "react";
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 

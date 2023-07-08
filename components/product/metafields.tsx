@@ -1,7 +1,7 @@
 import { clsx } from "clsx";
 import { forwardRef } from "react";
 
-import { MetafieldMapper } from "components/product/metafield-mapper";
+import { MetafieldMapper } from "@/components/product/metafield-mapper";
 
 import {
   Accordion,
@@ -9,9 +9,9 @@ import {
   AccordionHeader,
   AccordionItem,
   AccordionTrigger,
-} from "components/accordion";
+} from "@/components/accordion";
 
-import { Metafield } from "lib/shopify/types";
+import { Metafield } from "@/lib/shopify/types";
 
 export type MetaFieldsRef = HTMLDivElement;
 

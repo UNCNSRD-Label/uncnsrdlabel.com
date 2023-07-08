@@ -3,10 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import { useCookies } from "react-cookie";
 
-import CartIcon from "components/icons/cart";
+import CartIcon from "@/components/icons/cart";
 import CartModal from "./modal";
 
-import type { Cart } from "lib/shopify/types";
+import type { Cart } from "@/lib/shopify/types";
 
 export default function CartButton({
   cart,

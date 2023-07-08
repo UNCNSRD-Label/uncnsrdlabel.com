@@ -1,11 +1,11 @@
-import clsx from "clsx";
-import Logo from "components/layout/logo";
-import Navbar from "components/layout/navbar";
-import NavbarContent from "components/layout/navbar/content";
-import Collections from "components/layout/search/collections";
-import FilterList from "components/layout/search/filter";
-import { PageTransition } from "components/page-transition";
-import { sorting } from "lib/constants";
+import Logo from "@/components/layout/logo";
+import Navbar from "@/components/layout/navbar";
+import NavbarContent from "@/components/layout/navbar/content";
+import Collections from "@/components/layout/search/collections";
+import FilterList from "@/components/layout/search/filter";
+import { PageTransition } from "@/components/page-transition";
+import { sorting } from "@/lib/constants";
+import { clsx } from "clsx";
 import { Suspense } from "react";
 
 export default function SearchLayout({

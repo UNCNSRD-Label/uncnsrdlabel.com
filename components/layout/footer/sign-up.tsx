@@ -3,7 +3,7 @@
 import { useForm } from "react-hook-form";
 import { SlEnvolope } from "react-icons/sl";
 
-import { signUp } from "components/sign-up/actions";
+import { signUp } from "@/components/sign-up/actions";
 
 export default function SignUp({ className }: { className?: string }) {
   const {

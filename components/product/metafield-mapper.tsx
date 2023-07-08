@@ -1,4 +1,4 @@
-import { Metafield, Metaobject } from "lib/shopify/types";
+import { Metafield, Metaobject } from "@/lib/shopify/types";
 
 export const MetafieldMapper = ({ metafield }: { metafield: Metafield }) => {
   let value;

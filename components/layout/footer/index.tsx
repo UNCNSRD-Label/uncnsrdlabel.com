@@ -1,10 +1,10 @@
 import Link from "next/link";
 
-import ConsentDialog from "components/consent/dialog";
-import LogotypeIcon from "components/icons/logotype";
-import { themeColors } from "lib/effects";
-import { getMenu } from "lib/shopify";
-import { Menu } from "lib/shopify/types";
+import ConsentDialog from "@/components/consent/dialog";
+import LogotypeIcon from "@/components/icons/logotype";
+import { themeColors } from "@/lib/effects";
+import { getMenu } from "@/lib/shopify";
+import { Menu } from "@/lib/shopify/types";
 import { Suspense } from "react";
 import SignUp from "./sign-up";
 

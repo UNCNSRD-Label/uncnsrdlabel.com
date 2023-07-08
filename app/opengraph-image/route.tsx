@@ -1,5 +1,5 @@
+import LogotypeIcon from "@/components/icons/logotype";
 import { ImageResponse } from "@vercel/og";
-import LogotypeIcon from "components/icons/logotype";
 
 export const runtime = "edge";
 

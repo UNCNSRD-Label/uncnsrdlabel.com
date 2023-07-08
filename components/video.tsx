@@ -1,7 +1,7 @@
 "use client";
 
-import clsx from "clsx";
-import Image from "components/image";
+import Image from "@/components/image";
+import { clsx } from "clsx";
 import dynamic from "next/dynamic";
 import { type ReactPlayerProps } from "react-player";
 

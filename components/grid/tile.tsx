@@ -1,7 +1,7 @@
-import clsx from "clsx";
-import Image from "components/image";
+import Image from "@/components/image";
+import { clsx } from "clsx";
 
-import Price from "components/price";
+import Price from "@/components/price";
 
 export function GridTileImage({
   className,

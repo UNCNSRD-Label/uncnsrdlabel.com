@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { clsx } from "clsx";
 import { SlBag } from "react-icons/sl";
 
 export default function CartIcon({

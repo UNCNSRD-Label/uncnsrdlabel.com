@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 
-import clsx from "clsx";
-import { GridTileImage } from "components/grid/tile";
-import ArrowLeftIcon from "components/icons/arrow-left";
+import { GridTileImage } from "@/components/grid/tile";
+import ArrowLeftIcon from "@/components/icons/arrow-left";
+import { clsx } from "clsx";
 
 export function Gallery({
   title,

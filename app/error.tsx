@@ -1,6 +1,6 @@
 "use client";
 
-import LogomarkIcon from "components/icons/logotype";
+import LogomarkIcon from "@/components/icons/logotype";
 
 export default function Error({ reset }: { reset: () => void }) {
   return (

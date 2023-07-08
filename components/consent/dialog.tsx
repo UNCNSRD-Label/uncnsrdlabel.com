@@ -4,7 +4,7 @@ import * as Checkbox from "@radix-ui/react-checkbox";
 import * as Dialog from "@radix-ui/react-dialog";
 import { CheckIcon, Cross2Icon } from "@radix-ui/react-icons";
 import { useTimeoutEffect } from "@react-hookz/web";
-import clsx from "clsx";
+import { clsx } from "clsx";
 import { getCookie, hasCookie, setCookie } from "cookies-next";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -15,9 +15,9 @@ import {
   defaultConsentSettings,
   denyAllAdditionalConsentSettings,
   types,
-} from "lib/consent";
+} from "@/lib/consent";
 
-import { COOKIE_CONSENT } from "lib/constants";
+import { COOKIE_CONSENT } from "@/lib/constants";
 
 export default async function ConsentDialog(props: { className?: string }) {
   const [cancel, reset] = useTimeoutEffect(

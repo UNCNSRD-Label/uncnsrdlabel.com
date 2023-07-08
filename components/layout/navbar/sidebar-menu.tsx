@@ -6,9 +6,9 @@ import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import CloseIcon from "components/icons/close";
-import MenuIcon from "components/icons/menu";
-import { Menu } from "lib/shopify/types";
+import CloseIcon from "@/components/icons/close";
+import MenuIcon from "@/components/icons/menu";
+import { Menu } from "@/lib/shopify/types";
 import Search from "./search";
 
 export default function SidebarMenu({ menu }: { menu: Menu[] }) {

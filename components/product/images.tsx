@@ -5,8 +5,8 @@ import { Cross2Icon } from "@radix-ui/react-icons";
 import { Suspense } from "react";
 import { SlMagnifierAdd } from "react-icons/sl";
 
-import { ProductImage } from "components/product/image";
-import { ProductImageZoom } from "components/product/image-zoom";
+import { ProductImage } from "@/components/product/image";
+import { ProductImageZoom } from "@/components/product/image-zoom";
 
 export function Images({
   images,

@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 
-import Prose from "components/prose";
-import { getPolicy } from "lib/shopify";
+import Prose from "@/components/prose";
+import { getPolicy } from "@/lib/shopify";
 import { notFound } from "next/navigation";
 
-import { PolicyHandle } from "lib/shopify/types";
+import { PolicyHandle } from "@/lib/shopify/types";
 
 export const runtime = "edge";
 

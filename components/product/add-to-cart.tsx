@@ -1,10 +1,10 @@
 "use client";
 
-import clsx from "clsx";
+import { clsx } from "clsx";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState, useTransition } from "react";
 
-import { ProductVariant } from "lib/shopify/types";
+import { ProductVariant } from "@/lib/shopify/types";
 
 export function AddToCart({
   variants,
