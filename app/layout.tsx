@@ -82,7 +82,6 @@ export default async function RootLayout({
 
   return (
     <html
-      lang="en"
       className={clsx(
         bomberEscort.variable,
         bomberEscortOutline.variable,
@@ -92,6 +91,7 @@ export default async function RootLayout({
         "snap-y"
         // "dark"
       )}
+      lang="en"
     >
       <body
         className={clsx(
@@ -110,9 +110,9 @@ export default async function RootLayout({
         <Suspense>
           {children}
           <Footer />
-          <Analytics />
-          <Organization />
         </Suspense>
+        <Analytics />
+        <Organization />
       </body>
     </html>
   );
