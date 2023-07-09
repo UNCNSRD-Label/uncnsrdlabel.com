@@ -3,7 +3,7 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 });
 
 /** @type {import('next').NextConfig} */
-module.exports = withBundleAnalyzer({
+const nextConfig = {
   eslint: {
     // Disabling on production builds because we're running checks on PRs via GitHub Actions.
     ignoreDuringBuilds: true,
@@ -19,11 +19,8 @@ module.exports = withBundleAnalyzer({
         hostname: "cdn.shopify.com",
         pathname: "/s/files/**",
       },
-      {
-        protocol: "https",
-        hostname: "scroll-driven-animations.style",
-        pathname: "/demos/horizontal-section/shared/**",
-      },
     ],
   },
-});
+};
+
+module.exports = withBundleAnalyzer(nextConfig);
