@@ -31,7 +31,7 @@ export function ProductImage({
   return (
     <figure
       className={clsx(
-        "loading relative",
+        "relative",
         // {
         //   "bg-hotPink dark:bg-hotPink": background === "hotPink",
         //   "bg-white dark:bg-white": background === "white",

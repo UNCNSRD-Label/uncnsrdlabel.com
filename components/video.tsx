@@ -37,6 +37,7 @@ export const Video: FC<VideoProps> = ({
       sizes="100vw"
       src={poster}
       title={title}
+      transition={false}
     />
     <ReactPlayer
       {...props}

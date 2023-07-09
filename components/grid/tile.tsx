@@ -38,7 +38,7 @@ export function GridTileImage({
       {props.src ? (
         <figure
           className={clsx(
-            "loading relative aspect-3/4 w-full overflow-hidden"
+            "relative aspect-3/4 w-full overflow-hidden"
             // {
             //   "bg-hotPink dark:bg-hotPink": background === "hotPink",
             //   "bg-white dark:bg-white": background === "white",
