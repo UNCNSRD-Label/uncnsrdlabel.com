@@ -245,20 +245,9 @@
     }
 
     &::before {
-      @apply absolute inset-0 z-0 bg-gradient-to-r from-aaaFocus/5 via-aaaFocus/10 to-aaaFocus/5;
+      @apply absolute inset-0 z-0 animate-pulse bg-gradient-to-r from-aaaFocus/5 via-aaaFocus/10 to-aaaFocus/5;
       content: "";
       background-size: 500%;
-      animation: loading 30s linear infinite;
-    }
-  }
-
-  @keyframes loading {
-    0%,
-    100% {
-      background-position: 0% 0%;
-    }
-    50% {
-      background-position: 500% 0%;
     }
   }
 
