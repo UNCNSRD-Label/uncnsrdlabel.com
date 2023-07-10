@@ -1,5 +1,6 @@
 "use client";
 
+import { clsx } from "clsx";
 import { useForm } from "react-hook-form";
 import { SlEnvolope } from "react-icons/sl";
 
@@ -12,8 +13,12 @@ export default function SignUp({ className }: { className?: string }) {
   } = useForm({ defaultValues: { email: "" } });
 
   return (
-    <div className={className}>
-      <form action={signUp} className={"grid gap-4"}>
+    <section className={clsx("grid gap-4", className)}>
+      <h3 className="text-sm uppercase">Sign up to our newsletter</h3>
+      <span className="text-xs">
+        Sign up and receive 10% off your first purchase
+      </span>
+      <form action={signUp} className={"mt-8 grid gap-4"}>
         <div className="field">
           <input
             autoComplete="true"
@@ -46,10 +51,7 @@ export default function SignUp({ className }: { className?: string }) {
         >
           Sign up
         </button>
-        <span className="text-xs">
-          Sign up and receive 10% off your first purchase
-        </span>
       </form>
-    </div>
+    </section>
   );
 }
