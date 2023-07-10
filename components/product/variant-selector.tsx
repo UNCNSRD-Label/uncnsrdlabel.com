@@ -126,6 +126,7 @@ export function VariantSelector({
               }`}
               className={clsx(
                 "flex h-12 min-w-[48px] items-center justify-center px-2 text-sm focus-visible:bg-hotPink/20 focus-visible:ring-hotPink",
+                "hover:text-dark focus-visible:text-dark",
                 {
                   "cursor-default text-hotPink ring-1 ring-hotPink": isActive,
                   "ring-1 ring-gray-500 transition duration-300 ease-in-out hover:bg-hotPink/20 hover:ring-hotPink":
