@@ -1,5 +1,4 @@
 import CloseIcon from "@/components/icons/close";
-import ShoppingBagIcon from "@/components/icons/shopping-bag";
 import Image from "@/components/image";
 import Price from "@/components/price";
 import { DEFAULT_OPTION } from "@/lib/constants";
@@ -10,6 +9,7 @@ import { Dialog } from "@headlessui/react";
 import { clsx } from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
+import { SlBag } from "react-icons/sl";
 import DeleteItemButton from "./delete-item-button";
 import EditItemQuantityButton from "./edit-item-quantity-button";
 
@@ -42,14 +42,17 @@ export default function CartModal({
         >
           <motion.div
             variants={{
-              open: { opacity: 1, backdropFilter: "blur(0.5px)" },
-              closed: { opacity: 0, backdropFilter: "blur(0px)" },
+              open: { opacity: 1 },
+              closed: { opacity: 0 },
             }}
             className="fixed inset-0 bg-black/30"
             aria-hidden="true"
           />
 
-          <div className="fixed inset-0 flex justify-end" data-testid="cart">
+          <div
+            className="fixed inset-y-0 end-0 flex max-w-sm justify-end"
+            data-testid="cart"
+          >
             <Dialog.Panel
               as={motion.div}
               variants={{
@@ -58,7 +61,7 @@ export default function CartModal({
               }}
               transition={{ type: "spring", bounce: 0, duration: 0.3 }}
               className={clsx(
-                "flex w-full flex-col p-6 outline outline-white md:w-2/5 lg:w-1/3",
+                "flex w-full flex-col p-6 outline outline-white",
                 themeColors
               )}
             >
@@ -76,7 +79,7 @@ export default function CartModal({
 
               {cart.lines.length === 0 ? (
                 <div className="mt-20 flex w-full flex-col items-center justify-center overflow-hidden">
-                  <ShoppingBagIcon className="h-8" />
+                  <SlBag className="icon fill h-8 w-8" />
                   <p className="mt-6 text-center text-xl">Your bag is empty.</p>
                 </div>
               ) : null}

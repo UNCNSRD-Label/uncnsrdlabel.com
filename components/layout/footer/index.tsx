@@ -2,13 +2,12 @@ import Link from "next/link";
 
 import ConsentDialog from "@/components/consent/dialog";
 import LogotypeIcon from "@/components/icons/logotype";
+import { SocialMenu } from "@/components/social-menu";
 import { themeColors } from "@/lib/effects";
 import { getMenu } from "@/lib/shopify";
 import { Menu } from "@/lib/shopify/types";
 import { Suspense } from "react";
 import SignUp from "./sign-up";
-
-import { SocialIcon } from "react-social-icons";
 
 const { NEXT_PUBLIC_SITE_NAME } = process.env;
 
@@ -79,28 +78,7 @@ export default async function Footer() {
             <SignUp className="lg:col-start-0 col-span-1 sm:col-span-6 sm:col-start-7 lg:col-span-4" />
           </div>
           <div className="flex flex-col items-center justify-between text-xs uppercase sm:flex-row sm:pb-10 sm:pt-6">
-            <menu className="my-8 grid grid-flow-col content-center justify-center gap-4 sm:my-0">
-              <SocialIcon
-                className="group !h-12 !w-12 fill-black hover:!fill-aaaHover hover:!stroke-aaaHover focus-visible:!fill-aaaFocus focus-visible:!stroke-aaaFocus dark:fill-white [&_.social-svg-mask]:!fill-inherit"
-                target="_blank"
-                url="https://tiktok.com/@uncnsrdlabel/"
-              />
-              <SocialIcon
-                className="group !h-12 !w-12 fill-black hover:!fill-aaaHover hover:!stroke-aaaHover focus-visible:!fill-aaaFocus focus-visible:!stroke-aaaFocus dark:fill-white [&_.social-svg-mask]:!fill-inherit"
-                target="_blank"
-                url="https://www.instagram.com/uncnsrdlabel/"
-              />
-              {/* <SocialIcon
-              className="group [&_.social-svg-mask]:!fill-black dark:[&_.social-svg-mask]:!fill-white focus-visible:!fill-aaaFocus hover:!fill-aaaHover !h-12 !w-12"
-              target="_blank"
-              url="https://twitter.com/uncnsrdlabel/"
-            /> */}
-              {/* <SocialIcon
-              className="group [&_.social-svg-mask]:!fill-black dark:[&_.social-svg-mask]:!fill-white focus-visible:!fill-aaaFocus hover:!fill-aaaHover !h-12 !w-12"
-              target="_blank"
-              url="https://www.facebook.com/uncnsrdlabel/"
-            /> */}
-            </menu>
+            <SocialMenu className="my-8 sm:my-0" />
             <span className="sm:order-first">
               &copy; {copyrightDate} {NEXT_PUBLIC_SITE_NAME}. All rights
               reserved.
