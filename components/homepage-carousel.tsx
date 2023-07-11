@@ -62,8 +62,11 @@ export async function HomepageCarousel(props: NukaCarouselProps) {
         speed={1500}
         wrapAround
       >
-        {[...images].map((image) => (
-          <figure className="item relative aspect-3/4 w-full" key={image.id}>
+        {[...images].map((image, index) => (
+          <figure
+            className="item relative aspect-3/4 w-full"
+            key={image.id || index}
+          >
             <Image
               alt={image.altText}
               className="h-full object-cover"

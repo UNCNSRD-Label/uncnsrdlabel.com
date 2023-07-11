@@ -12,10 +12,10 @@ export async function HorizontalScroll({ className }: { className?: string }) {
 
   const images = page.images;
 
-  const imagesList = [...images].map((image) => (
+  const imagesList = [...images].map((image, index) => (
     <figure
       className="item relative grid aspect-3/4 w-full snap-start justify-items-center p-6 "
-      key={image.id}
+      key={image.id || index}
     >
       <Image
         alt={image.altText}

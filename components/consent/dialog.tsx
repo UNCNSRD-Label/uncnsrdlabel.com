@@ -72,7 +72,7 @@ export default async function ConsentDialog(props: { className?: string }) {
       </Dialog.Trigger>
       <Dialog.Portal>
         {/* <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0 z-40 bg-black/80" /> */}
-        <Dialog.Content className="data-[state=open]:animate-contentShow fixed bottom-4 right-4 z-50 grid max-h-[85vh] w-[90vw] max-w-3xl gap-4 overflow-auto rounded border bg-inherit px-8 pb-8 pt-6">
+        <Dialog.Content className="data-[state=open]:animate-contentShow fixed inset-x-4 bottom-4 z-50 grid gap-4 overflow-auto rounded border bg-inherit px-8 pb-8 pt-6 sm:left-auto sm:max-h-[85dvh] sm:w-[90dvw] sm:max-w-3xl">
           <Dialog.Title className="">Edit consent settings</Dialog.Title>
           <Dialog.Description className="text-sm">
             UNCNSRD uses cookies that are essential to making this site work and
