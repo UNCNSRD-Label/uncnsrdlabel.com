@@ -52,7 +52,7 @@
   "id": "/",
   "lang": "en-GB",
   "theme_color": "#ff4dd8",
-  "background_color": "#000000",
+  "background_color": "#111111",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait"

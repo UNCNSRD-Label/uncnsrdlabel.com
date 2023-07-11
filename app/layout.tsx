@@ -31,6 +31,7 @@ export const metadata = {
     follow: true,
     index: true,
   },
+  manifest: "/site.webmanifest",
   ...(TWITTER_CREATOR &&
     TWITTER_SITE && {
       twitter: {

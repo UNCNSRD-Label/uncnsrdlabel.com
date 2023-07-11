@@ -37,3 +37,12 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .env*.local
+
+# PWA and sitemap
+public/sitemap-*.xml
+public/sitemap.xml
+public/sw.js
+public/sw.js.map
+public/workbox-*.js
+public/workbox-*.js.map
+public/worker-*.js
