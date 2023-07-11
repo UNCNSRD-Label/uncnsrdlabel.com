@@ -23,7 +23,7 @@ export default async function Footer() {
   return (
     <footer className="dark relative z-40 border-t border-inherit sm:snap-start">
       <div className={themeColors}>
-        <div className="mx-auto w-full max-w-7xl px-6">
+        <div className="mx-auto w-full max-w-7xl px-6 pb-12">
           <div className="grid grid-cols-1 items-start gap-8 border-b border-inherit py-6 transition-colors duration-150 sm:grid-cols-12 sm:py-12">
             <nav className="col-span-1 grid gap-8 sm:col-span-12 sm:grid-cols-12 lg:col-span-8 lg:grid-cols-9">
               {customerCareMenu.length ? (
@@ -77,14 +77,14 @@ export default async function Footer() {
             </nav>
             <SignUp className="lg:col-start-0 col-span-1 sm:col-span-6 sm:col-start-7 lg:col-span-4" />
           </div>
-          <div className="flex flex-col items-center justify-between text-xs uppercase sm:flex-row sm:pb-10 sm:pt-6">
+          <div className="flex flex-col items-center justify-between text-xs uppercase sm:flex-row sm:pt-6">
             <SocialMenu className="my-8 sm:my-0" />
             <span className="sm:order-first">
               &copy; {copyrightDate} {NEXT_PUBLIC_SITE_NAME}. All rights
               reserved.
             </span>
           </div>
-          <LogotypeIcon className="mx-auto my-16 h-6 fill-inherit drop-shadow transition duration-300 ease-in-out hover:scale-110 sm:hidden sm:h-10 " />
+          <LogotypeIcon className="mx-auto mt-8 h-6 fill-inherit drop-shadow transition duration-300 ease-in-out hover:scale-110 sm:hidden sm:h-10 " />
         </div>
       </div>
     </footer>
