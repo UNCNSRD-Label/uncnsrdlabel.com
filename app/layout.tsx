@@ -3,6 +3,7 @@ import Banner from "@/components/banner";
 import Footer from "@/components/layout/footer";
 import Progress from "@/components/layout/progress";
 import { Organization } from "@/components/schema.org/organization";
+import { SITE_DOMAIN } from "@/lib/constants";
 import { themeColors } from "@/lib/effects";
 import { clsx } from "clsx";
 import { Inter, Montserrat } from "next/font/google";
@@ -17,6 +18,7 @@ const {
 } = process.env;
 
 export const metadata = {
+  metadataBase: new URL(`${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN}`),
   // icons: {
   //   icon: ['/images/icon.svg', '/images/icon.png', '/images/favicon.ico'],
   //   apple: '/images/icon.svg'
