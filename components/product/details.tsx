@@ -27,8 +27,9 @@ export function ProductDetails({ product }: { product: Product }) {
           >
             <Images
               images={product.images.map((image: Image) => ({
-                src: image.url,
                 altText: image.altText,
+                id: image.id,
+                src: image.url,
               }))}
               sizes="(max-width: 639px) 100vw, 66vw"
             />

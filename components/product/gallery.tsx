@@ -15,7 +15,7 @@ export function Gallery({
   title: string;
   amount: string;
   currencyCode: string;
-  images: { src: string; altText: string }[];
+  images: { altText: string; id: string; src: string }[];
 }) {
   const [currentImage, setCurrentImage] = useState(0);
 

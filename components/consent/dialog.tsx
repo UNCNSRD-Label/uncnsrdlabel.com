@@ -24,7 +24,7 @@ export default async function ConsentDialog(props: { className?: string }) {
     () => {
       setOpen(true);
     },
-    hasCookie(COOKIE_CONSENT) ? undefined : 1_000
+    hasCookie(COOKIE_CONSENT) ? undefined : 10_000
   );
 
   const [open, setOpen] = useState(false);
