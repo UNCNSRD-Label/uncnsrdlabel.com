@@ -1,5 +1,6 @@
 "use client";
 
+import { config } from "@/lib/tailwind";
 import { useMediaQuery } from "@react-hookz/web";
 import Carousel, { type CarouselProps } from "nuka-carousel";
 import { Suspense } from "react";
@@ -7,9 +8,11 @@ import { Suspense } from "react";
 export type { CarouselProps as NukaCarouselProps };
 
 export async function NukaCarousel(props: CarouselProps) {
-  const isMobile = useMediaQuery("(max-width: 639px)");
+  const minWidth = (!Array.isArray(config.theme?.screens) && config.theme?.screens?.md) ?? "0px";
 
-  const slidesToShow = isMobile ? 1 : props.slidesToShow ?? 3;
+  const isMd = useMediaQuery(`(min-width: ${minWidth})`);
+
+  const slidesToShow = isMd ? (props.slidesToShow ?? 3) : 1;
 
   return (
     <Suspense>

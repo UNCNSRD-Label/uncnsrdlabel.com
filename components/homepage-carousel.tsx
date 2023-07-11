@@ -68,6 +68,7 @@ export async function HomepageCarousel(props: NukaCarouselProps) {
               alt={image.altText}
               className="h-full object-cover"
               fill
+              revealEffect={false}
               sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
               src={image.url}
             />
