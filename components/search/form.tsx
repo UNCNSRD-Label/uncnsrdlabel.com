@@ -14,10 +14,10 @@ export default function SearchForm({
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  function onSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
 
-    const val = e.target as HTMLFormElement;
+    const val = event.target as HTMLFormElement;
     const search = val.search as HTMLInputElement;
     const newParams = new URLSearchParams(searchParams.toString());
 
@@ -44,7 +44,7 @@ export default function SearchForm({
         autoComplete="off"
         className={clsx(
           "w-full border-b border-inherit border-x-0 border-t-0 bg-transparent px-4 py-2 pr-8 transition-all placeholder:text-inherit",
-          isOpen ? "opacity-100" : "opacity-0"
+          isOpen ? "opacity-100" : "opacity-0",
         )}
         defaultValue={searchParams?.get("q") || ""}
         name="search"

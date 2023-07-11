@@ -6,7 +6,6 @@ import { SocialMenu } from "@/components/social-menu";
 import { themeColors } from "@/lib/effects";
 import { getMenu } from "@/lib/shopify";
 import { Menu } from "@/lib/shopify/types";
-import { Suspense } from "react";
 import SignUp from "./sign-up";
 
 const { NEXT_PUBLIC_SITE_NAME } = process.env;
@@ -37,9 +36,7 @@ export default async function Footer() {
                     </dd>
                   ))}
                   <dd>
-                    <Suspense>
-                      <ConsentDialog className="text-xxs uppercase transition duration-150 ease-in-out" />
-                    </Suspense>
+                    <ConsentDialog className="text-xxs uppercase" />
                   </dd>
                 </dl>
               ) : null}

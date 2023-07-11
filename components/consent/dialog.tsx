@@ -7,7 +7,6 @@ import { useTimeoutEffect } from "@react-hookz/web";
 import { clsx } from "clsx";
 import { getCookie, hasCookie, setCookie } from "cookies-next";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
 
 import {
   acceptAllConsentSettings,
@@ -19,37 +18,44 @@ import {
 
 import { COOKIE_CONSENT } from "@/lib/constants";
 
-export default async function ConsentDialog(props: { className?: string }) {
+export default function ConsentDialog(props: { className?: string }) {
   const [cancel, reset] = useTimeoutEffect(
     () => {
       setOpen(true);
     },
-    hasCookie(COOKIE_CONSENT) ? undefined : 10_000
+    hasCookie(COOKIE_CONSENT) ? undefined : 10_000,
   );
 
   const [open, setOpen] = useState(false);
   const [optionsOpen, setOptionsOpen] = useState(false);
 
-  const saveConsentSettings = (formData: FormData) => {
+  const acceptSelectedConsents = (event: React.FormEvent<HTMLFormElement>) => {
+    const formData = new FormData(event.target as HTMLFormElement);
     const consentParams = Object.fromEntries(formData.entries());
     setCookie(COOKIE_CONSENT, consentParams, cookieOptions);
     gtag("consent", "update", consentParams);
     console.info("Granting selected consents");
     setOpen(false);
+    event.preventDefault();
   };
 
   const acceptAllConsents = () => {
-    setOpen(false);
     setCookie(COOKIE_CONSENT, acceptAllConsentSettings, cookieOptions);
     gtag("consent", "update", acceptAllConsentSettings);
     console.info("Accepting all consents");
+    setOpen(false);
   };
 
   const denyAllAdditionalConsents = () => {
-    setOpen(false);
     setCookie(COOKIE_CONSENT, denyAllAdditionalConsentSettings, cookieOptions);
     gtag("consent", "update", denyAllAdditionalConsentSettings);
     console.info("Denying all additional consents");
+    setOpen(false);
+  };
+
+  const manageConsents = () => {
+    console.info("Manage consents");
+    setOptionsOpen(true);
   };
 
   const onClose = () => setOpen(false);
@@ -63,24 +69,25 @@ export default async function ConsentDialog(props: { className?: string }) {
     ...savedConsentSettings,
   };
 
-  const { register } = useForm({ defaultValues: consentSettings });
-
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
         <button className={props.className}>Edit consent settings</button>
       </Dialog.Trigger>
       <Dialog.Portal>
-        {/* <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0 z-40 bg-black/80" /> */}
-        <Dialog.Content className="data-[state=open]:animate-contentShow fixed inset-x-4 bottom-4 z-50 grid gap-4 overflow-auto rounded border bg-inherit px-8 pb-8 pt-6 sm:left-auto sm:max-h-[85dvh] sm:w-[90dvw] sm:max-w-3xl">
-          <Dialog.Title className="">Edit consent settings</Dialog.Title>
+        <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0 z-40 bg-black/80" />
+        <Dialog.Content
+          className="data-[state=open]:animate-contentShow fixed inset-x-4 bottom-4 z-50 grid gap-4 overflow-auto rounded border bg-inherit px-8 pb-8 pt-6 sm:left-auto sm:max-h-[85dvh] sm:w-[90dvw] sm:max-w-3xl"
+          forceMount
+        >
+          <Dialog.Title>Edit consent settings</Dialog.Title>
           <Dialog.Description className="text-sm">
             UNCNSRD uses cookies that are essential to making this site work and
             would like to use additional cookies to improve your experience on
             this site.
           </Dialog.Description>
           <form
-            action={saveConsentSettings}
+            onSubmit={acceptSelectedConsents}
             className="flex flex-col gap-4 text-xs"
           >
             {types.map((consent, index) => (
@@ -95,16 +102,14 @@ export default async function ConsentDialog(props: { className?: string }) {
                   className="h-4 w-4 rounded border border-solid border-black/100 bg-white stroke-black"
                   defaultChecked={consentSettings[consent.name] === "granted"}
                   id={consent.name}
+                  name={consent.name}
                   value="granted"
-                  {...register(consent.name)}
                 >
                   <Checkbox.Indicator>
                     <CheckIcon />
                   </Checkbox.Indicator>
                 </Checkbox.Root>
-                <label className="" htmlFor="c1">
-                  {consent.description}
-                </label>
+                <label htmlFor={consent.name}>{consent.description}</label>
               </fieldset>
             ))}
             <div className="mt-2 grid gap-4 sm:grid-flow-col">
@@ -121,7 +126,7 @@ export default async function ConsentDialog(props: { className?: string }) {
                   block: !optionsOpen,
                   hidden: optionsOpen,
                 })}
-                onClick={() => setOptionsOpen(true)}
+                onClick={manageConsents}
                 type="button"
               >
                 Manage cookies
