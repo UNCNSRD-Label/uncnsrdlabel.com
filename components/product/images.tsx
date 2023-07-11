@@ -12,14 +12,14 @@ export function Images({
   images,
   sizes,
 }: {
-  images: { src: string; altText: string }[];
+  images: { id: string; src: string; altText: string }[];
   sizes?: string;
 }) {
   return images.length > 1 ? (
     <>
-      {images.map((image) => {
+      {images.map((image, index) => {
         return (
-          <Dialog.Root key={image.src}>
+          <Dialog.Root key={image.id || index}>
             <Dialog.Trigger asChild>
               <button
                 aria-label="Enlarge product image"

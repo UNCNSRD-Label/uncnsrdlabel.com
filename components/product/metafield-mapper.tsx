@@ -10,7 +10,7 @@ export const MetafieldMapper = ({ metafield }: { metafield: Metafield }) => {
           value = (
             <ul>
               {metafield.value?.map((item, index) => (
-                <li key={index}>{item}</li>
+                <li key={item.id || index}>{item}</li>
               ))}
             </ul>
           );

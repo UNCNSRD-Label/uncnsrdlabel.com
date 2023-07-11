@@ -100,8 +100,8 @@ export default function SidebarMenu({ menu }: { menu: Menu[] }) {
                 </div>
                 {menu.length ? (
                   <ul className="flex flex-1 flex-col gap-2">
-                    {menu.map((item: Menu) => (
-                      <li key={item.title}>
+                    {menu.map((item: Menu, index) => (
+                      <li key={item.title || index}>
                         <Link
                           href={item.path}
                           className="rounded-lg py-1 text-sm uppercase text-inherit"

@@ -24,7 +24,7 @@ export default async function ConsentDialog(props: { className?: string }) {
     () => {
       setOpen(true);
     },
-    hasCookie(COOKIE_CONSENT) ? undefined : 10_000
+    hasCookie(COOKIE_CONSENT) ? undefined : 1_000
   );
 
   const [open, setOpen] = useState(false);
@@ -83,16 +83,16 @@ export default async function ConsentDialog(props: { className?: string }) {
             action={saveConsentSettings}
             className="flex flex-col gap-4 text-xs"
           >
-            {types.map((consent) => (
+            {types.map((consent, index) => (
               <fieldset
                 className={clsx("grid-cols-[auto_1fr] items-center gap-4", {
                   grid: optionsOpen,
                   hidden: !optionsOpen,
                 })}
-                key={consent.name}
+                key={consent.name || index}
               >
                 <Checkbox.Root
-                  className="h-4 w-4 rounded bg-white stroke-black outline-none"
+                  className="h-4 w-4 rounded border border-solid border-black/100 bg-white stroke-black"
                   defaultChecked={consentSettings[consent.name] === "granted"}
                   id={consent.name}
                   value="granted"
@@ -107,7 +107,7 @@ export default async function ConsentDialog(props: { className?: string }) {
                 </label>
               </fieldset>
             ))}
-            <div className="mt-2 grid grid-flow-col gap-4">
+            <div className="mt-2 grid gap-4 sm:grid-flow-col">
               <button
                 className={clsx("btn btn-xs btn-outline btn-primary btn-bg", {
                   block: optionsOpen,

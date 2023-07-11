@@ -30,7 +30,7 @@ export function NavigationMenu({
       <NavigationMenuPrimitive.List className="center m-0 grid w-full list-none grid-flow-col justify-stretch text-center uppercase">
         {sectionElements.map((sectionElement, index) => (
           <NavigationMenuPrimitive.Item
-            key={sectionElement}
+            key={sectionElement || index}
             className={clsx(activeSection === index && "bg-hotPink")}
           >
             <NavigationMenuPrimitive.Link

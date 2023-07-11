@@ -8,8 +8,8 @@ export type PathFilterItem = { title: string; path: string };
 function FilterItemList({ list }: { list: ListItem[] }) {
   return (
     <div className="hidden md:block">
-      {list.map((item: ListItem, i) => (
-        <FilterItem key={i} item={item} />
+      {list.map((item: ListItem, index) => (
+        <FilterItem key={item.title || index} item={item} />
       ))}
     </div>
   );

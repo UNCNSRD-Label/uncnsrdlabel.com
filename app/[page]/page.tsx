@@ -60,10 +60,10 @@ export default async function Page({ params }: { params: { page: string } }) {
         </span>
       </article>
       <section className="grid gap-0.5">
-        {[...images].map((image) => (
+        {[...images].map((image, index) => (
           <figure
             className="item relative aspect-3/4 w-full snap-start"
-            key={image.id}
+            key={image.id || index}
           >
             <Image
               alt={image.altText}

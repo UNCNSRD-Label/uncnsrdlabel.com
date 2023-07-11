@@ -29,8 +29,8 @@ export default async function Footer() {
               {customerCareMenu.length ? (
                 <dl className="grid content-start gap-2 uppercase sm:col-span-4 sm:grid-flow-row lg:col-span-3">
                   <dt className="text-sm">Customer Care</dt>
-                  {customerCareMenu.map((item: Menu) => (
-                    <dd key={item.title}>
+                  {customerCareMenu.map((item: Menu, index) => (
+                    <dd key={item.title || index}>
                       <Link href={item.path} className={linkClassName}>
                         {item.title}
                       </Link>
@@ -46,8 +46,8 @@ export default async function Footer() {
               {informationMenu.length ? (
                 <dl className="grid content-start gap-2 uppercase sm:col-span-4 sm:grid-flow-row lg:col-span-3">
                   <dt className="text-sm">Information</dt>
-                  {informationMenu.map((item: Menu) => (
-                    <dd key={item.title}>
+                  {informationMenu.map((item: Menu, index) => (
+                    <dd key={item.title || index}>
                       <Link href={item.path} className={linkClassName}>
                         {item.title}
                       </Link>
@@ -59,8 +59,8 @@ export default async function Footer() {
                 {followUsMenu.length ? (
                   <dl className="grid content-start gap-2 uppercase">
                     <dt className="text-sm">Follow Us</dt>
-                    {followUsMenu.map((item: Menu) => (
-                      <dd key={item.title}>
+                    {followUsMenu.map((item: Menu, index) => (
+                      <dd key={item.title || index}>
                         <a
                           href={item.path}
                           className={linkClassName}

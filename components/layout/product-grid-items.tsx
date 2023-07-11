@@ -13,7 +13,7 @@ export default function ProductGridItems({
   return (
     <>
       {products.map((product, index) => (
-        <Grid.Item key={product.handle} className="animate-fadeIn">
+        <Grid.Item key={product.id || index} className="animate-fadeIn">
           <Link
             className="block h-full w-full"
             href={`/product/${product.handle}`}

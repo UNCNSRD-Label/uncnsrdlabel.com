@@ -79,8 +79,8 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                 </div>
                 {menu.length ? (
                   <ul className="flex flex-col">
-                    {menu.map((item: Menu) => (
-                      <li key={item.title}>
+                    {menu.map((item: Menu, index) => (
+                      <li key={item.title || index}>
                         <Link
                           href={item.path}
                           className="rounded-lg py-1 text-xl text-dark transition-colors hover:text-gray-500 dark:text-light"

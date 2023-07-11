@@ -82,7 +82,7 @@ export function Gallery({
             return (
               <button
                 aria-label="Enlarge product image"
-                key={image.src}
+                key={image.id || index}
                 className="h-full w-1/4"
                 onClick={() => setCurrentImage(index)}
               >
