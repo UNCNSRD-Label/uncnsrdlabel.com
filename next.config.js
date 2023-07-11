@@ -9,6 +9,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   experimental: {
+    scrollRestoration: true,
     serverActions: true,
   },
   images: {
