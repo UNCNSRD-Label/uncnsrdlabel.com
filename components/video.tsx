@@ -34,10 +34,10 @@ export const Video: FC<VideoProps> = ({
       className="absolute h-full object-cover"
       fill
       priority={priority}
+      revealEffect={false}
       sizes="100vw"
       src={poster}
       title={title}
-      transition={false}
     />
     <ReactPlayer
       {...props}
