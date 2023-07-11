@@ -1,23 +1,36 @@
 "use client";
 
-import { config } from "@/lib/tailwind";
+import { minWidthLg, minWidthSm } from "@/lib/tailwind";
 import { useMediaQuery } from "@react-hookz/web";
+import { clsx } from "clsx";
 import Carousel, { type CarouselProps } from "nuka-carousel";
 import { Suspense } from "react";
 
 export type { CarouselProps as NukaCarouselProps };
 
-export async function NukaCarousel(props: CarouselProps) {
-  const minWidth = (!Array.isArray(config.theme?.screens) && config.theme?.screens?.md) ?? "0px";
+export function NukaCarousel(props: CarouselProps) {
+  const isSm = useMediaQuery(`(min-width: ${minWidthSm})`);
 
-  const isMd = useMediaQuery(`(min-width: ${minWidth})`);
+  const isLg = useMediaQuery(`(min-width: ${minWidthLg})`);
 
-  const slidesToShow = isMd ? (props.slidesToShow ?? 3) : 1;
+  let slidesToShow = 1;
+
+  if (isSm) {
+    slidesToShow = 2;
+  }
+
+  if (isLg) {
+    slidesToShow = 3;
+  }
 
   return (
     <Suspense>
       <Carousel
         {...props}
+        className={clsx(
+          `h-[calc(((100dvw_/_3_)_*_4)_/_${slidesToShow})]`,
+          props.className,
+        )}
         onDragEnd={(e) => {
           (e.target as HTMLElement)
             .closest(".slider-frame")

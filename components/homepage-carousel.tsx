@@ -15,8 +15,6 @@ export async function HomepageCarousel(props: NukaCarouselProps) {
 
   const images = page.images;
 
-  const slidesToShow = 3;
-
   const buttonClassName =
     "!px-6 text-6xl drop-shadow focus-visible:!text-aaaFocus hover:!text-aaaHover";
 
@@ -42,8 +40,8 @@ export async function HomepageCarousel(props: NukaCarouselProps) {
         autoplay
         autoplayInterval={5000}
         className={clsx(
-          `cursor-grab [&.dragging]:cursor-grabbing h-[calc(100dvw_/_${slidesToShow})_*_4)] w-full`,
-          props.className
+          `w-full cursor-grab [&.dragging]:cursor-grabbing`,
+          props.className,
         )}
         defaultControlsConfig={{
           nextButtonClassName: buttonClassName,
@@ -58,7 +56,6 @@ export async function HomepageCarousel(props: NukaCarouselProps) {
         }}
         enableKeyboardControls
         pauseOnHover
-        slidesToShow={slidesToShow}
         speed={1500}
         wrapAround
       >
