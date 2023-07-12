@@ -17,7 +17,8 @@ export default async function Footer() {
   const informationMenu = await getMenu("information");
   const followUsMenu = await getMenu("follow-us");
 
-  const linkClassName = "text-xxs transition duration-150 ease-in-out";
+  const linkClassName =
+    "text-xs sm:text-xxs transition uppercase duration-150 ease-in-out";
 
   return (
     <footer className="dark relative z-40 border-t border-inherit sm:snap-start">
@@ -26,7 +27,7 @@ export default async function Footer() {
           <div className="grid grid-cols-1 items-start gap-8 border-b border-inherit py-6 transition-colors duration-150 sm:grid-cols-12 sm:py-12">
             <nav className="col-span-1 grid gap-8 sm:col-span-12 sm:grid-cols-12 lg:col-span-8 lg:grid-cols-9">
               {customerCareMenu.length ? (
-                <dl className="grid content-start gap-2 uppercase sm:col-span-4 sm:grid-flow-row lg:col-span-3">
+                <dl className="grid content-start gap-2 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
                   <dt className="text-sm">Customer Care</dt>
                   {customerCareMenu.map((item: Menu, index) => (
                     <dd key={item.title || index}>
@@ -36,12 +37,12 @@ export default async function Footer() {
                     </dd>
                   ))}
                   <dd>
-                    <ConsentDialog className="text-xxs uppercase" />
+                    <ConsentDialog className={linkClassName} />
                   </dd>
                 </dl>
               ) : null}
               {informationMenu.length ? (
-                <dl className="grid content-start gap-2 uppercase sm:col-span-4 sm:grid-flow-row lg:col-span-3">
+                <dl className="grid content-start gap-2 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
                   <dt className="text-sm">Information</dt>
                   {informationMenu.map((item: Menu, index) => (
                     <dd key={item.title || index}>
@@ -54,7 +55,7 @@ export default async function Footer() {
               ) : null}
               <div className="grid gap-4 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
                 {followUsMenu.length ? (
-                  <dl className="grid content-start gap-2 uppercase">
+                  <dl className="grid content-start gap-2">
                     <dt className="text-sm">Follow Us</dt>
                     {followUsMenu.map((item: Menu, index) => (
                       <dd key={item.title || index}>
