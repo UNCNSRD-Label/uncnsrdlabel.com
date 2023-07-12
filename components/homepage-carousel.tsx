@@ -4,6 +4,7 @@ import {
   type NukaCarouselProps,
 } from "@/components/nuka-carousel";
 import { getPage } from "@/lib/shopify";
+import { minWidthLg, minWidthSm } from "@/lib/tailwind";
 import { clsx } from "clsx";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
@@ -69,7 +70,7 @@ export async function HomepageCarousel(props: NukaCarouselProps) {
               className="h-full object-cover"
               fill
               revealEffect={false}
-              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+              sizes={`100vw, (min-width: ${minWidthSm}) 50vw, (min-width: ${minWidthLg}) 33vw`}
               src={image.url}
             />
           </figure>
