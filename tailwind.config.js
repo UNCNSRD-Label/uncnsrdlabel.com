@@ -14,8 +14,10 @@ module.exports = {
   theme: {
     extend: {
       aspectRatio: {
+        "13/21": "13 / 21",
         "16/9": "16 / 9",
         "2/3": "2 / 3",
+        "21/13": "21 / 13",
         "3/2": "3 / 2",
         "3/4": "3 / 4",
         "4/3": "4 / 3",
@@ -93,7 +95,7 @@ module.exports = {
         },
         {
           values: theme("transitionDelay"),
-        }
+        },
       );
     }),
   ],
