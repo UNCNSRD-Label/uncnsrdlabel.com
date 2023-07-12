@@ -1,6 +1,5 @@
 "use client";
 
-import * as AccessibleIcon from "@radix-ui/react-accessible-icon";
 import { clsx } from "clsx";
 import { useForm } from "react-hook-form";
 import { SlEnvolope } from "react-icons/sl";
@@ -36,10 +35,11 @@ export default function SignUp({ className }: { className?: string }) {
             aria-invalid={errors.email ? "true" : "false"}
           />
           {errors.email && <p role="alert">{errors.email?.message}</p>}
-          <button className="btn absolute right-0 mr-3">
-            <AccessibleIcon.Root label="Submit email">
-              <SlEnvolope />
-            </AccessibleIcon.Root>
+          <button
+            className="btn absolute right-0 mr-3"
+            aria-label="Submit email"
+          >
+            <SlEnvolope />
           </button>
         </div>
         {/* <input
