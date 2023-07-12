@@ -42,6 +42,9 @@ export function NukaCarousel(props: CarouselProps) {
       >
         {props.children}
       </Carousel>
+      <span className="hidden" aria-label="">
+        Showing {slidesToShow} slides
+      </span>
     </Suspense>
   );
 }

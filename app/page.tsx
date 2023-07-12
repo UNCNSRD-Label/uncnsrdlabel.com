@@ -17,7 +17,7 @@ export const metadata = {
     images: [
       {
         url: `/api/og?title=${encodeURIComponent(
-          process.env.NEXT_PUBLIC_SITE_NAME || ""
+          process.env.NEXT_PUBLIC_SITE_NAME || "",
         )}`,
         width: 1200,
         height: 630,
@@ -69,7 +69,7 @@ export default async function HomePage() {
               Shop now
             </Link>
           </section>
-          <section className="py-48 sm:snap-center">
+          <section className="max-w-[100dvw] py-48 sm:snap-center">
             <HomepageCarousel />
           </section>
         </main>
