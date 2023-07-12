@@ -43,7 +43,7 @@ export default async function Navbar(props: Props) {
           <Link href="/account" aria-label="Account" prefetch={false}>
             <SlUser className="icon fill h-5 w-5 drop-shadow" />
           </Link>
-          <Link href="/account/wishlist" aria-label="Wishlist">
+          <Link href="#" aria-label="Wishlist">
             <SlHeart className="icon fill h-5 w-5 drop-shadow" />
           </Link>
           <Cart />

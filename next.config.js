@@ -20,7 +20,7 @@ const contentSecurityPolicyComponents = [
   `font-src 'self' fonts.googleapis.com fonts.gstatic.com ${domains}`,
   `form-action 'self' www.facebook.com`,
   `frame-ancestors app.contentful.com`,
-  `frame-src vercel.live www.facebook.com`,
+  `frame-src vercel.live www.facebook.com ${domains}`,
   `img-src 'self' data: *.clarity.ms *.facebook.com *.facebook.net *.klaviyo.com *.skimresources.com assets.vercel.com c.bing.com cdn.shopify.com fonts.gstatic.com heapanalytics.com s3-eu-west-1.amazonaws.com/hj-insights script.hotjar.com vercel.com www.google.co.uk www.google.com images.ctfassets.net www.google-analytics.com www.googletagmanager.com`,
   `media-src 'self' videos.ctfassets.net`,
   `object-src 'none'`,
