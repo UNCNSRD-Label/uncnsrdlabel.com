@@ -13,7 +13,7 @@ const httpRequestFromWebWorker = (req) =>
       new Promise(async (resolve) => {
         const clients = await self.clients.matchAll();
         const client = [...clients].sort((a, b) =>
-          a.url > b.url ? -1 : a.url < b.url ? 1 : 0
+          a.url > b.url ? -1 : a.url < b.url ? 1 : 0,
         )[0];
         if (client) {
           const timeout = 12e4;
@@ -62,8 +62,8 @@ self.onfetch = (ev) => {
   if (pathname.endsWith("sw.html")) {
     ev.respondWith(
       response(
-        '<!DOCTYPE html><html><head><meta charset="utf-8"><script src="./partytown-sandbox-sw.js?v=0.8.0"></script></head></html>'
-      )
+        '<!DOCTYPE html><html><head><meta charset="utf-8"><script src="./partytown-sandbox-sw.js?v=0.8.0"></script></head></html>',
+      ),
     );
   } else {
     pathname.endsWith("proxytown") &&

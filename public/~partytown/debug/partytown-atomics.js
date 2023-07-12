@@ -145,11 +145,11 @@
   const defineCustomElement = (winId, worker, ceData) => {
     const Cstr = defineConstructorName(
       class extends winCtxs[winId].$window$.HTMLElement {},
-      ceData[0]
+      ceData[0],
     );
     const ceCallbackMethods =
       "connectedCallback,disconnectedCallback,attributeChangedCallback,adoptedCallback".split(
-        ","
+        ",",
       );
     ceCallbackMethods.map(
       (callbackMethodName) =>
@@ -161,7 +161,7 @@
             callbackMethodName,
             args,
           ]);
-        })
+        }),
     );
     Cstr.observedAttributes = ceData[1];
     return Cstr;
@@ -172,7 +172,7 @@
     added,
     type,
     cstrName,
-    prevInstanceId
+    prevInstanceId,
   ) =>
     void 0 !== value && (type = typeof value)
       ? "string" === type ||
@@ -207,7 +207,7 @@
           ? [
               7,
               Array.from(value).map(
-                (v) => serializeForWorker($winId$, v, added)[1]
+                (v) => serializeForWorker($winId$, v, added)[1],
               ),
             ]
           : cstrName.endsWith("Event")
@@ -241,7 +241,7 @@
     includeEmptyStrings,
     serializedObj,
     propName,
-    propValue
+    propValue,
   ) => {
     serializedObj = {};
     if (!added.has(obj)) {
@@ -257,7 +257,7 @@
             (serializedObj[propName] = serializeForWorker(
               winId,
               propValue,
-              added
+              added,
             ));
         }
       }
@@ -277,7 +277,7 @@
     worker,
     serializedTransfer,
     serializedType,
-    serializedValue
+    serializedValue,
   ) => {
     if (serializedTransfer) {
       serializedType = serializedTransfer[0];
@@ -304,7 +304,7 @@
   const deserializeRefFromWorker = (
     worker,
     { $winId$: $winId$, $instanceId$: $instanceId$, $refId$: $refId$ },
-    ref
+    ref,
   ) => {
     ref = mainRefs.get($refId$);
     if (!ref) {
@@ -327,7 +327,7 @@
   const constructEvent = (eventProps) =>
     new ("detail" in eventProps ? CustomEvent : Event)(
       eventProps.type,
-      eventProps
+      eventProps,
     );
   const deserializeObjectFromWorker = (worker, serializedValue, obj, key) => {
     obj = {};
@@ -338,7 +338,7 @@
   };
   const validCssRuleProps =
     "cssText,selectorText,href,media,namespaceURI,prefix,name,conditionText".split(
-      ","
+      ",",
     );
   const mainAccessHandler = async (worker, accessReq) => {
     let accessRsp = {
@@ -372,9 +372,9 @@
         if (1 === applyPath[0] && applyPath[1] in winCtxs[winId].$window$) {
           setInstanceId(
             new winCtxs[winId].$window$[applyPath[1]](
-              ...deserializeFromWorker(worker, applyPath[2])
+              ...deserializeFromWorker(worker, applyPath[2]),
             ),
-            task.$instanceId$
+            task.$instanceId$,
           );
         } else {
           instance = getInstance(winId, task.$instanceId$);
@@ -385,7 +385,7 @@
               instance,
               applyPath,
               isLast,
-              task.$groupedGetters$
+              task.$groupedGetters$,
             );
             task.$assignInstanceId$ &&
               ("string" == typeof task.$assignInstanceId$
@@ -407,7 +407,7 @@
                 void 0,
                 void 0,
                 void 0,
-                task.$instanceId$
+                task.$instanceId$,
               ));
           } else {
             accessRsp.$error$ = `Error finding instance "${
@@ -428,7 +428,7 @@
     instance,
     applyPath,
     isLast,
-    groupedGetters
+    groupedGetters,
   ) => {
     let i = 0;
     let l = len(applyPath);
@@ -447,7 +447,7 @@
             if (i + 1 === l && groupedGetters) {
               groupedRtnValues = {};
               groupedGetters.map(
-                (propName) => (groupedRtnValues[propName] = instance[propName])
+                (propName) => (groupedRtnValues[propName] = instance[propName]),
               );
               return groupedRtnValues;
             }
@@ -492,13 +492,13 @@
     let scriptData;
     if (doc && doc.body) {
       scriptElm = doc.querySelector(
-        'script[type="text/partytown"]:not([data-ptid]):not([data-pterror]):not([async]):not([defer])'
+        'script[type="text/partytown"]:not([data-ptid]):not([data-pterror]):not([async]):not([defer])',
       );
       scriptElm || (scriptElm = doc.querySelector(scriptSelector));
       if (scriptElm) {
         scriptElm.dataset.ptid = $instanceId$ = getAndSetInstanceId(
           scriptElm,
-          $winId$
+          $winId$,
         );
         scriptData = {
           $winId$: $winId$,
@@ -549,10 +549,10 @@
             const winType = win === win.top ? "top" : "iframe";
             logMain(
               `Executed ${winType} window ${normalizedWinId(
-                $winId$
+                $winId$,
               )} environment scripts in ${(
                 performance.now() - winCtx.$startTime$
-              ).toFixed(1)}ms`
+              ).toFixed(1)}ms`,
             );
           }
         }
@@ -613,8 +613,8 @@
           onLocationChange(
             0,
             state,
-            null == newUrl ? void 0 : newUrl.toString()
-          )
+            null == newUrl ? void 0 : newUrl.toString(),
+          ),
         );
       };
       history.replaceState = (state, _, newUrl) => {
@@ -623,8 +623,8 @@
           onLocationChange(
             1,
             state,
-            null == newUrl ? void 0 : newUrl.toString()
-          )
+            null == newUrl ? void 0 : newUrl.toString(),
+          ),
         );
       };
       $window$.addEventListener("popstate", (event) => {
@@ -637,7 +637,7 @@
         readNextScript(worker, winCtxs[$winId$]);
       });
       doc.addEventListener("visibilitychange", () =>
-        worker.postMessage([14, $winId$, doc.visibilityState])
+        worker.postMessage([14, $winId$, doc.visibilityState]),
       );
       winCtxs[$winId$] = {
         $winId$: $winId$,
@@ -664,7 +664,7 @@
           : 6 === msg[0] &&
             ((worker, winCtx, instanceId, errorMsg, scriptElm) => {
               scriptElm = winCtx.$window$.document.querySelector(
-                `[data-ptid="${instanceId}"]`
+                `[data-ptid="${instanceId}"]`,
               );
               if (scriptElm) {
                 errorMsg
@@ -687,11 +687,11 @@
               ? doc.createElementNS(
                   "http://www.w3.org/2000/svg",
                   svgConstructorTags[tag] ||
-                    tag.slice(0, 2).toLowerCase() + tag.slice(2)
+                    tag.slice(0, 2).toLowerCase() + tag.slice(2),
                 )
               : doc.createElement(htmlConstructorTags[tag] || tag);
           }
-        })(docImpl, interfaceName)
+        })(docImpl, interfaceName),
       )
       .filter((elm) => elm)
       .map((elm) => [elm]);
@@ -715,8 +715,8 @@
         cstrName,
         CstrPrototype,
         impl,
-        intefaceType
-      )
+        intefaceType,
+      ),
     );
     return interfaces;
   };
@@ -734,7 +734,7 @@
     cstrName,
     CstrPrototype,
     impl,
-    interfaceType
+    interfaceType,
   ) => {
     if (!cstrs.has(cstrName)) {
       cstrs.add(cstrName);
@@ -748,7 +748,7 @@
         superCstrName,
         SuperCstr,
         impl,
-        interfaceType
+        interfaceType,
       );
       for (const memberName in propDescriptors) {
         readImplementationMember(interfaceMembers, impl, memberName);
@@ -768,7 +768,7 @@
     memberName,
     value,
     memberType,
-    cstrName
+    cstrName,
   ) => {
     try {
       if (
@@ -814,7 +814,7 @@
   const addGlobalConstructorUsingPrototype = (
     $interfaces$,
     mainWindow,
-    cstrName
+    cstrName,
   ) => {
     void 0 !== mainWindow[cstrName] &&
       $interfaces$.push([
@@ -845,15 +845,15 @@
           });
           const intersectionObserver = getGlobalConstructor(
             mainWindow,
-            "IntersectionObserver"
+            "IntersectionObserver",
           );
           const mutationObserver = getGlobalConstructor(
             mainWindow,
-            "MutationObserver"
+            "MutationObserver",
           );
           const resizeObserver = getGlobalConstructor(
             mainWindow,
-            "ResizeObserver"
+            "ResizeObserver",
           );
           const perf = mainWindow.performance;
           const screen = mainWindow.screen;
@@ -902,7 +902,7 @@
           addGlobalConstructorUsingPrototype(
             initWebWorkerData.$interfaces$,
             mainWindow,
-            "IntersectionObserverEntry"
+            "IntersectionObserverEntry",
           );
           return initWebWorkerData;
         })();
@@ -925,7 +925,7 @@
       }
     };
   })((accessReq, responseCallback) =>
-    mainAccessHandler(worker, accessReq).then(responseCallback)
+    mainAccessHandler(worker, accessReq).then(responseCallback),
   ).then((onMessageHandler) => {
     if (onMessageHandler) {
       worker = new Worker(libPath + "partytown-ww-atomics.js?v=0.8.0", {
@@ -943,8 +943,8 @@
         registerWindow(
           worker,
           getAndSetInstanceId(ev.detail.frameElement),
-          ev.detail
-        )
+          ev.detail,
+        ),
       );
     }
   });

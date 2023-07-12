@@ -46,7 +46,7 @@
         addColorStop(...args) {
           callMethod(this, ["addColorStop"], args, 2);
         }
-      }
+      },
     );
     const WorkerCanvasPattern = defineCstr(
       win,
@@ -55,12 +55,12 @@
         setTransform(...args) {
           callMethod(this, ["setTransform"], args, 2);
         }
-      }
+      },
     );
     const createContext2D = (
       canvasInstance,
       contextType,
-      contextAttributes
+      contextAttributes,
     ) => {
       const winId = canvasInstance[WinIdKey];
       const ctxInstanceId = randomId();
@@ -74,11 +74,11 @@
         ["getContext"],
         [contextType, contextAttributes],
         1,
-        ctxInstanceId
+        ctxInstanceId,
       );
       const ctx2dGetterMethods =
         "getContextAttributes,getImageData,getLineDash,getTransform,isPointInPath,isPointInStroke,measureText".split(
-          ","
+          ",",
         );
       const CanvasRenderingContext2D = {
         get: (target, propName) =>
@@ -108,7 +108,7 @@
                     ctxInstance,
                     [propName],
                     args,
-                    methodCallType
+                    methodCallType,
                   );
                 }
               : ctx[propName]
@@ -130,7 +130,7 @@
     const createContextWebGL = (
       canvasInstance,
       contextType,
-      contextAttributes
+      contextAttributes,
     ) => {
       const winId = canvasInstance[WinIdKey];
       const ctxInstanceId = randomId();
@@ -144,7 +144,7 @@
         ["getContext"],
         [contextType, contextAttributes],
         1,
-        ctxInstanceId
+        ctxInstanceId,
       );
       const WebGLRenderingContextHandler = {
         get: (target, propName) =>
@@ -156,7 +156,7 @@
                     ctxInstance,
                     [propName],
                     args,
-                    getWebGlMethodCallType(propName)
+                    getWebGlMethodCallType(propName),
                   )
             : target[propName],
         set(target, propName, value) {
@@ -186,7 +186,7 @@
     defineCstr(win, "CanvasPattern", WorkerCanvasPattern);
     definePrototypePropertyDescriptor(
       win.HTMLCanvasElement,
-      HTMLCanvasDescriptorMap
+      HTMLCanvasDescriptorMap,
     );
   };
   const initMedia = (WorkerBase, WorkerEventTargetProxy, env, win) => {
@@ -199,7 +199,7 @@
           audio.src = src;
           return audio;
         }
-      }
+      },
     );
     const WorkerAudioTrack = class extends WorkerBase {
       get enabled() {
@@ -242,7 +242,7 @@
               mediaElm,
               ["audioTracks", "removeEventListener"],
               args,
-              3
+              3,
             );
           },
         };
@@ -270,7 +270,7 @@
             this[MediaSourceKey],
             ["sourceBuffers", "addEventListener"],
             args,
-            3
+            3,
           );
         }
         removeEventListener(...args) {
@@ -278,10 +278,10 @@
             this[MediaSourceKey],
             ["sourceBuffers", "removeEventListener"],
             args,
-            3
+            3,
           );
         }
-      }
+      },
     );
     const WorkerSourceBuffer = defineCstr(
       win,
@@ -328,7 +328,7 @@
           const timeRanges = new WorkerTimeRanges(
             mediaSource[WinIdKey],
             mediaSource[InstanceIdKey],
-            ["sourceBuffers", sbIndex, "buffered"]
+            ["sourceBuffers", sbIndex, "buffered"],
           );
           return timeRanges;
         }
@@ -366,7 +366,7 @@
         }
       }),
       (_a = SourceBufferTasksKey),
-      _b)
+      _b),
     );
     const WorkerTimeRanges = defineCstr(
       win,
@@ -381,7 +381,7 @@
         get length() {
           return getter(this, ["length"]);
         }
-      }
+      },
     );
     const getSourceBufferIndex = (sourceBuffer) => {
       if (sourceBuffer) {
@@ -403,7 +403,7 @@
               task[1],
               3,
               void 0,
-              task[2]
+              task[2],
             );
           }
         }
@@ -417,7 +417,7 @@
             this[TimeRangesKey] = new WorkerTimeRanges(
               this[WinIdKey],
               this[InstanceIdKey],
-              ["buffered"]
+              ["buffered"],
             );
             setTimeout(() => {
               this[TimeRangesKey] = void 0;
@@ -492,13 +492,13 @@
             const isSupported = callMethod(
               win,
               ["MediaSource", "isTypeSupported"],
-              [mimeType]
+              [mimeType],
             );
             isStaticTypeSupported.set(mimeType, isSupported);
           }
           return isStaticTypeSupported.get(mimeType);
         }
-      }
+      },
     );
     const winURL = (win.URL = defineCstrName("URL", class extends URL {}));
     const hasAudioTracks = "audioTracks" in win.HTMLMediaElement.prototype;
@@ -513,7 +513,7 @@
     }
     definePrototypePropertyDescriptor(
       win.HTMLMediaElement,
-      HTMLMediaDescriptorMap
+      HTMLMediaDescriptorMap,
     );
     winURL.createObjectURL = (obj) =>
       callMethod(win, ["URL", "createObjectURL"], [obj]);
@@ -526,7 +526,7 @@
     WorkerEventTargetProxy,
     env,
     win,
-    windowMediaConstructors
+    windowMediaConstructors,
   ) => {
     windowMediaConstructors.map((mediaCstrName) => {
       delete win[mediaCstrName];

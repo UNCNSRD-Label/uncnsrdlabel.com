@@ -30,7 +30,7 @@
             addColorStop(...e) {
               n(this, ["addColorStop"], e, 2);
             }
-          }
+          },
         ),
         f = v(
           t,
@@ -39,7 +39,7 @@
             setTransform(...e) {
               n(this, ["setTransform"], e, 2);
             }
-          }
+          },
         ),
         p = (e, t, r) => {
           const i = e[o],
@@ -48,7 +48,7 @@
             p = n(e, ["getContext"], [t, r], 1, c),
             g =
               "getContextAttributes,getImageData,getLineDash,getTransform,isPointInPath,isPointInStroke,measureText".split(
-                ","
+                ",",
               ),
             l = {
               get: (e, t) =>
@@ -125,7 +125,7 @@
             const t = c.k("audio", a());
             return (t.src = e), t;
           }
-        }
+        },
       );
       const w = class extends e {
           get enabled() {
@@ -171,7 +171,7 @@
               {
                 get: (e, t) =>
                   "number" == typeof t ? new w(r, i, [s, t]) : e[t],
-              }
+              },
             );
           }
         },
@@ -188,7 +188,7 @@
             removeEventListener(...e) {
               n(this[h], ["sourceBuffers", "removeEventListener"], e, 3);
             }
-          }
+          },
         ),
         x = v(
           b,
@@ -264,7 +264,7 @@
             }
           }),
           (y = g),
-          T)
+          T),
         ),
         B = v(
           b,
@@ -279,7 +279,7 @@
             get length() {
               return t(this, ["length"]);
             }
-          }
+          },
         ),
         R = (e) => (e ? e[h][p].indexOf(e) : -1),
         M = (e) => {
@@ -367,7 +367,7 @@
             }
             return L.get(e);
           }
-        }
+        },
       );
       const C = (b.URL = S("URL", class extends URL {}));
       "audioTracks" in b.HTMLMediaElement.prototype &&

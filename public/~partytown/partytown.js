@@ -22,7 +22,7 @@
                           "statechange",
                           function (t) {
                             "activated" == t.target.state && h();
-                          }
+                          },
                         );
                   }, console.error)
               : f())));
@@ -32,7 +32,7 @@
       t ||
         (c.setAttribute(
           "style",
-          "display:block;width:0;height:0;border:0;visibility:hidden"
+          "display:block;width:0;height:0;border:0;visibility:hidden",
         ),
         c.setAttribute("aria-hidden", !0)),
       (c.src =

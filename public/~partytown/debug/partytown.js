@@ -11,7 +11,7 @@
   scripts,
   sandbox,
   mainForwardFn,
-  isReady
+  isReady,
 ) {
   function ready() {
     if (!isReady) {
@@ -25,7 +25,7 @@
           top.dispatchEvent(
             new CustomEvent("pt1", {
               detail: win,
-            })
+            }),
           );
         } else {
           timeout = setTimeout(fallback, 1e4);
@@ -45,7 +45,7 @@
                       "statechange",
                       function (ev) {
                         "activated" == ev.target.state && loadSandbox();
-                      }
+                      },
                     );
                   } else {
                     console.warn(swRegistration);
@@ -63,7 +63,7 @@
     if (!isAtomics) {
       sandbox.setAttribute(
         "style",
-        "display:block;width:0;height:0;border:0;visibility:hidden"
+        "display:block;width:0;height:0;border:0;visibility:hidden",
       );
       sandbox.setAttribute("aria-hidden", !0);
     }
