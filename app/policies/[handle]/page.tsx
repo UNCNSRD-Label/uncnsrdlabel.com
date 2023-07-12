@@ -44,11 +44,8 @@ export default async function Policy({
   if (!policy) return notFound();
 
   return (
-    <article className="grid gap-0.5">
-      <Prose
-        className="mb-8 [&_.service-main-title]:uppercase"
-        html={policy.body as string}
-      />
+    <article className="mx-8 mb-48 grid gap-0.5 py-16 sm:mx-auto">
+      <Prose className="mb-8" html={policy.body as string} />
     </article>
   );
 }
