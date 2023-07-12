@@ -8,7 +8,11 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 });
 
-const plugins = [withPWA, withBundleAnalyzer];
+const plugins = [withBundleAnalyzer];
+
+if (process.env.NODE_ENV === "production") {
+  plugins.push([withPWA]);
+}
 
 const domains = `${process.env.NEXT_PUBLIC_SITE_DOMAIN} www.${process.env.NEXT_PUBLIC_SITE_DOMAIN} ${process.env.NEXT_PUBLIC_VERCEL_URL} ${process.env.SHOPIFY_STORE_DOMAIN}`;
 

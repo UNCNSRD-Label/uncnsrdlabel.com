@@ -91,7 +91,7 @@ export default async function RootLayout({
         inter.variable,
         montserrat.variable,
         // "[color-scheme:dark]",
-        "snap-y"
+        "snap-y",
         // "dark"
       )}
       lang="en"
@@ -100,7 +100,7 @@ export default async function RootLayout({
         className={clsx(
           "grid min-h-[100dvh] grid-rows-[auto_1fr] tracking-widest",
           "selection:bg-hotPink",
-          themeColors
+          themeColors,
         )}
         style={{
           textRendering: "optimizeLegibility",
@@ -114,7 +114,7 @@ export default async function RootLayout({
           {children}
           <Footer />
         </Suspense>
-        <Analytics />
+        {process.env.NODE_ENV === "production" && <Analytics />}
         <Organization />
       </body>
     </html>
