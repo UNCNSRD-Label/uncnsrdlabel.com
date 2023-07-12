@@ -25,7 +25,7 @@ const contentSecurityPolicyComponents = [
   `media-src 'self' videos.ctfassets.net`,
   `object-src 'none'`,
   `script-src 'self' 'unsafe-eval' *.clarity.ms *.facebook.net *.klaviyo.com *.skimresources.com heapanalytics.com vitals.vercel-insights.com`,
-  `script-src-elem 'self' 'unsafe-eval' 'unsafe-inline' data: *.clarity.ms *.facebook.com *.facebook.net *.klaviyo.com *.skimresources.com cdn.heapanalytics.com cdn.shopify.com cdn.vercel-insights.com va.vercel-scripts.com vercel.live vitals.vercel-insights.com www.google-analytics.com www.googletagmanager.com script.hotjar.com static.hotjar.com`,
+  `script-src-elem 'self' 'unsafe-eval' 'unsafe-inline' data: *.clarity.ms *.facebook.com *.facebook.net *.klaviyo.com *.skimresources.com cdn.heapanalytics.com cdn.shopify.com cdn.vercel-insights.com code.tidio.co va.vercel-scripts.com vercel.live vitals.vercel-insights.com www.google-analytics.com www.googletagmanager.com script.hotjar.com static.hotjar.com`,
   `style-src 'self' 'unsafe-inline' fonts.googleapis.com static.klaviyo.com`,
   `style-src-elem 'self' 'unsafe-inline' fonts.googleapis.com static.klaviyo.com www.googletagmanager.com`,
 ];
