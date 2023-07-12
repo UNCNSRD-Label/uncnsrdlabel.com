@@ -27,10 +27,7 @@ export function NukaCarousel(props: CarouselProps) {
     <Suspense>
       <Carousel
         {...props}
-        className={clsx(
-          `h-[calc(((100dvw_/_3_)_*_4)_/_${slidesToShow})]`,
-          props.className,
-        )}
+        className={clsx(props.className)}
         onDragEnd={(e) => {
           (e.target as HTMLElement)
             .closest(".slider-frame")

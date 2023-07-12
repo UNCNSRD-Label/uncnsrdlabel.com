@@ -41,7 +41,7 @@ export async function HomepageCarousel(props: NukaCarouselProps) {
         autoplay
         autoplayInterval={5000}
         className={clsx(
-          `w-full cursor-grab [&.dragging]:cursor-grabbing`,
+          `w-[100dvw] cursor-grab [&.dragging]:cursor-grabbing`,
           props.className,
         )}
         defaultControlsConfig={{
@@ -70,6 +70,7 @@ export async function HomepageCarousel(props: NukaCarouselProps) {
               className="h-full object-cover"
               fill
               revealEffect={false}
+              // sizes={`(min-width: ${minWidthLg}) 33vw, (min-width: ${minWidthSm}) 50vw, 100vw`}
               sizes={`100vw, (min-width: ${minWidthSm}) 50vw, (min-width: ${minWidthLg}) 33vw`}
               src={image.url}
             />
