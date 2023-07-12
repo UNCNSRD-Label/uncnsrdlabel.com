@@ -44,7 +44,7 @@ export default async function Policy({
   if (!policy) return notFound();
 
   return (
-    <article className="mx-8 mb-48 grid gap-0.5 py-16 sm:mx-auto">
+    <article className="mx-8 mb-48 grid gap-0.5 sm:mx-auto sm:py-16">
       <Prose className="mb-8" html={policy.body as string} />
     </article>
   );
