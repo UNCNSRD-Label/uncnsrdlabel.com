@@ -1,9 +1,5 @@
 {
   "private": true,
-  "engines": {
-    "node": ">=18",
-    "pnpm": ">=7"
-  },
   "scripts": {
     "analyze": "cross-env ANALYZE=true next build",
     "dev": "next dev",
