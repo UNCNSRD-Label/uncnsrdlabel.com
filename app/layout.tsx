@@ -19,10 +19,6 @@ const {
 
 export const metadata = {
   metadataBase: new URL(`${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN}`),
-  // icons: {
-  //   icon: ['/images/icon.svg', '/images/icon.png', '/images/favicon.ico'],
-  //   apple: '/images/icon.svg'
-  // },
   title: {
     default: NEXT_PUBLIC_SITE_NAME,
     template: `%s | ${NEXT_PUBLIC_SITE_NAME}`,
