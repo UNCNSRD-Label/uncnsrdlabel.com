@@ -57,7 +57,7 @@ export default function Image({
       className={clsx(
         revealEffect &&
           "ease-in-out [transition:filter_500ms,opacity_250ms,transform_1000ms] motion-reduce:transition-none",
-        revealEffect && "opacity-0 blur-sm scale-95",
+        revealEffect && "opacity-0 blur-sm scale-105",
         revealEffect && scrollDirection === "end" && "translate-y-8",
         revealEffect && scrollDirection === "start" && "-translate-y-8",
         revealEffect &&

@@ -31,6 +31,7 @@ export function ProductImage({
   return (
     <figure
       className={clsx(
+        "overflow-hidden",
         "relative",
         // {
         //   "bg-hotPink dark:bg-hotPink": background === "hotPink",
