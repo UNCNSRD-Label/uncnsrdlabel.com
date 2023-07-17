@@ -3,7 +3,7 @@
 import { useIntersectionObserver } from "@react-hookz/web";
 import { clsx } from "clsx";
 import NextImage, { type ImageProps } from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { onLoadingComplete } from "@/lib/image";
 
@@ -13,10 +13,42 @@ export default function Image({
 }: ImageProps & { revealEffect?: boolean }) {
   const rootRef = useRef<HTMLImageElement>(null);
 
+  const [previousY, setPreviousY] = useState(0);
+  // const [previousRatio, setPreviousRatio] = useState(0);
+  const [scrollDirection, setScrollDirection] = useState<"end" | "start">("end");
+
   const rootIntersection = useIntersectionObserver(rootRef, {
     // rootMargin: "-15%",
     threshold: [0, 0.5],
   });
+
+  const currentY = rootIntersection?.boundingClientRect.y || 0
+  // const currentRatio = rootIntersection?.intersectionRatio || 0
+  const isIntersecting = rootIntersection?.isIntersecting || false
+
+  useEffect(() => {
+    // Scrolling down/up
+    if (currentY < previousY) {
+      setScrollDirection("end")
+      // console.log("end")
+      // if (currentRatio > previousRatio && isIntersecting) {
+      //   state.textContent ="Scrolling down enter"
+      // } else {
+      //   state.textContent ="Scrolling down leave"
+      // }
+    } else if (currentY > previousY && isIntersecting) {
+      setScrollDirection("start")
+      // console.log("start")
+      // if (currentRatio < previousRatio) {
+      //   state.textContent ="Scrolling up leave"
+      // } else {
+      //   state.textContent ="Scrolling up enter"
+      // }
+    }
+
+    setPreviousY(currentY)
+    // setPreviousRatio(currentRatio)
+  }, [currentY, isIntersecting, previousY]);
 
   return (
     <NextImage
@@ -24,11 +56,15 @@ export default function Image({
       alt={props.alt || ""}
       className={clsx(
         revealEffect &&
-          "ease-in-out [transition:transform_1000ms,opacity_500ms] motion-reduce:transition-none",
-        revealEffect && "translate-y-8 opacity-0",
+          "ease-in-out [transition:filter_500ms,opacity_250ms,transform_1000ms] motion-reduce:transition-none",
+        revealEffect && "opacity-0 blur-sm scale-95",
+        revealEffect && scrollDirection === "end" && "translate-y-8",
+        revealEffect && scrollDirection === "start" && "-translate-y-8",
+        revealEffect &&
+          "data-[loaded=true]:opacity-100",
         revealEffect &&
           rootIntersection?.isIntersecting &&
-          "data-[loaded=true]:translate-y-0 data-[loaded=true]:opacity-100",
+          "data-[loaded=true]:translate-y-0 data-[loaded=true]:blur-none data-[loaded=true]:scale-100",
         props.className
       )}
       onLoadingComplete={(img: HTMLImageElement) => {
