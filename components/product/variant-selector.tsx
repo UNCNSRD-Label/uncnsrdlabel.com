@@ -131,7 +131,7 @@ export function VariantSelector({
                   "cursor-default text-hotPink ring-1 ring-hotPink": isActive,
                   "ring-1 ring-gray-500 transition duration-300 ease-in-out hover:bg-hotPink/20 hover:ring-hotPink":
                     !isActive && isAvailableForSale,
-                  "relative z-10 cursor-not-allowed overflow-hidden ring-1 ring-gray-500 before:absolute before:inset-x-0 before:-z-10 before:h-px before:-rotate-45 before:bg-gray-500 before:transition-transform":
+                  "relative z-10 cursor-not-allowed overflow-hidden before:absolute before:inset-x-0 before:-z-10 before:h-px before:-rotate-45 before:bg-gray-500 before:transition-transform":
                     !isAvailableForSale,
                 }
               )}
