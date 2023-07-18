@@ -32,9 +32,9 @@ const video: VideoProps = {
   alt: "Campaign video",
   loop: true,
   playsinline: true,
-  poster: "/videos/_2XUijBuSZw-1080pp-1687201373.png",
+  poster: "/videos/ZfGt0lKisCU.png",
   // title: 'Video title',
-  url: "/videos/_2XUijBuSZw-1080pp-1687201373.mp4",
+  url: "/videos/ZfGt0lKisCU.webm",
 };
 
 export default async function HomePage() {
