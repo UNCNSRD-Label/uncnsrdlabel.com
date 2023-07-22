@@ -34,7 +34,7 @@ const video: VideoProps = {
   playsinline: true,
   poster: "/videos/ZfGt0lKisCU.png",
   // title: 'Video title',
-  url: "/videos/ZfGt0lKisCU.webm",
+  url: "/videos/ZfGt0lKisCU.mp4",
 };
 
 export default async function HomePage() {
