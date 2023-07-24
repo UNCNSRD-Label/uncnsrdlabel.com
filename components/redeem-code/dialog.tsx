@@ -6,48 +6,26 @@ import { useTimeoutEffect } from "@react-hookz/web";
 import { hasCookie } from "cookies-next";
 import { useState } from "react";
 
-import ConsentForm from "@/components/consent/form";
+import RedeemCodeForm from "@/components/redeem-code/form";
 
-import { COOKIE_CONSENT } from "@/lib/constants";
+import { COOKIE_REDEEM_CODE } from "@/lib/constants";
 
 export default function ConsentDialog(props: { className?: string }) {
   useTimeoutEffect(
     () => {
       setOpen(true);
     },
-    hasCookie(COOKIE_CONSENT) ? undefined : 10_000,
+    hasCookie(COOKIE_REDEEM_CODE) ? undefined : 10_000,
   );
 
   const [open, setOpen] = useState(false);
-
-  const acceptSelectedConsents = () => {
-    setOpen(false);
-
-    console.info("Granting selected consents");
-  };
-
-  const acceptAllConsents = () => {
-    setOpen(false);
-
-    console.info("Accepting all consents");
-  };
-
-  const denyAllAdditionalConsents = () => {
-    setOpen(false);
-
-    console.info("Denying all additional consents");
-  };
-
-  const manageConsents = () => {
-    console.info("Manage consents");
-  };
 
   const onClose = () => setOpen(false);
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
-        <button className={props.className}>Edit consent settings</button>
+        <button className={props.className}>Redeem code</button>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0 z-40 bg-black/80" />
@@ -55,18 +33,11 @@ export default function ConsentDialog(props: { className?: string }) {
           className="data-[state=open]:animate-contentShow fixed inset-x-4 bottom-4 z-50 grid gap-4 overflow-auto rounded border bg-inherit px-8 pb-8 pt-6 sm:left-auto sm:max-h-[85dvh] sm:w-[90dvw] sm:max-w-3xl"
           forceMount
         >
-          <Dialog.Title>Edit consent settings</Dialog.Title>
+          <Dialog.Title>Redeem code</Dialog.Title>
           <Dialog.Description className="text-sm">
-            UNCNSRD uses cookies that are essential to making this site work and
-            would like to use additional cookies to improve your experience on
-            this site.
+            Redeem code here
           </Dialog.Description>
-          <ConsentForm
-            acceptSelectedConsents={acceptSelectedConsents}
-            acceptAllConsents={acceptAllConsents}
-            denyAllAdditionalConsents={denyAllAdditionalConsents}
-            manageConsents={manageConsents}
-          />
+          <RedeemCodeForm />
           <Dialog.Close asChild>
             <button
               className="absolute right-6 top-6 inline-flex"

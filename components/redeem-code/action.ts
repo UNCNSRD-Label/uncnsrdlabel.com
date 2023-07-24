@@ -2,7 +2,7 @@
 
 import { cookies } from "next/headers";
 
-export async function signUp(formData: FormData) {
+export async function redeemCodeAction(formData: FormData) {
   const email = formData.get("email");
   const phone_number = formData.get("phone_number");
 

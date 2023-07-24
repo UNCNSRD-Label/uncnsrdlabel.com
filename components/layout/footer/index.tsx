@@ -2,11 +2,12 @@ import Link from "next/link";
 
 import ConsentDialog from "@/components/consent/dialog";
 import LogotypeIcon from "@/components/icons/logotype";
+import RedeemCode from "@/components/redeem-code/dialog";
+import SignUp from "@/components/sign-up";
 import { SocialMenu } from "@/components/social-menu";
 import { themeColors } from "@/lib/effects";
 import { getMenu } from "@/lib/shopify";
 import { Menu } from "@/lib/shopify/types";
-import SignUp from "./sign-up";
 
 const { NEXT_PUBLIC_SITE_NAME } = process.env;
 
@@ -28,7 +29,7 @@ export default async function Footer() {
             <nav className="col-span-1 grid gap-8 sm:col-span-12 sm:grid-cols-12 lg:col-span-8 lg:grid-cols-9">
               {customerCareMenu.length ? (
                 <dl className="grid content-start gap-2 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
-                  <dt className="text-sm">Customer Care</dt>
+                  <dt className="text-sm uppercase">Customer Care</dt>
                   {customerCareMenu.map((item: Menu, index) => (
                     <dd key={item.title || index}>
                       <Link href={item.path} className={linkClassName}>
@@ -43,7 +44,7 @@ export default async function Footer() {
               ) : null}
               {informationMenu.length ? (
                 <dl className="grid content-start gap-2 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
-                  <dt className="text-sm">Information</dt>
+                  <dt className="text-sm uppercase">Information</dt>
                   {informationMenu.map((item: Menu, index) => (
                     <dd key={item.title || index}>
                       <Link href={item.path} className={linkClassName}>
@@ -51,12 +52,15 @@ export default async function Footer() {
                       </Link>
                     </dd>
                   ))}
+                  <dd>
+                    <RedeemCode className={linkClassName} />
+                  </dd>
                 </dl>
               ) : null}
               <div className="grid gap-4 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
                 {followUsMenu.length ? (
                   <dl className="grid content-start gap-2">
-                    <dt className="text-sm">Follow Us</dt>
+                    <dt className="text-sm uppercase">Follow Us</dt>
                     {followUsMenu.map((item: Menu, index) => (
                       <dd key={item.title || index}>
                         <a

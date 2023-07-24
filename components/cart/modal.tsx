@@ -8,12 +8,16 @@ import { createUrl } from "@/lib/utils";
 import { Dialog } from "@headlessui/react";
 import { clsx } from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
-import Link from "next/link";
+import Link, { type LinkProps } from "next/link";
 import { SlBag } from "react-icons/sl";
 import DeleteItemButton from "./delete-item-button";
 import EditItemQuantityButton from "./edit-item-quantity-button";
 
 type MerchandiseSearchParams = {
+  [key: string]: string;
+};
+
+type MerchandiseSearchParams1 = LinkProps & {
   [key: string]: string;
 };
 
@@ -62,7 +66,7 @@ export default function CartModal({
               transition={{ type: "spring", bounce: 0, duration: 0.3 }}
               className={clsx(
                 "flex w-full flex-col p-6 outline outline-white",
-                themeColors
+                themeColors,
               )}
             >
               <div className="flex items-center justify-between">
@@ -95,12 +99,12 @@ export default function CartModal({
                           if (value !== DEFAULT_OPTION) {
                             merchandiseSearchParams[name.toLowerCase()] = value;
                           }
-                        }
+                        },
                       );
 
                       const merchandiseUrl = createUrl(
                         `/product/${item.merchandise.product.handle}`,
-                        new URLSearchParams(merchandiseSearchParams)
+                        new URLSearchParams(merchandiseSearchParams),
                       );
 
                       return (
