@@ -1,17 +1,23 @@
 {
+  "name": "uncnsrdlabel.com",
   "private": true,
   "scripts": {
     "analyze": "cross-env ANALYZE=true next build",
-    "dev": "next dev",
+    "dev": "run-p dev:next dev:codegen",
+    "dev:codegen": "graphql-codegen --config codegen.ts --watch",
+    "dev:next": "next dev",
     "build": "npm run partytown && next build",
     "partytown": "partytown copylib public/~partytown",
     "start": "next start",
     "lint": "next lint",
     "lint-staged": "lint-staged",
-    "prettier": "prettier --write --ignore-unknown .",
     "prettier:check": "prettier --check --ignore-unknown .",
+    "prettier:fix": "prettier --write --ignore-unknown .",
+    "prettier:list-different": "npx prettier . --list-different",
     "test": "pnpm lint && pnpm prettier:check",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "typecheck": "tsc --noEmit",
+    "unused": "npx next-unused"
   },
   "git": {
     "pre-commit": "lint-staged"
@@ -20,6 +26,8 @@
     "*": "prettier --write --ignore-unknown"
   },
   "dependencies": {
+    "@analytics/google-analytics": "^1.0.7",
+    "@analytics/google-tag-manager": "^0.5.5",
     "@builder.io/partytown": "^0.8.0",
     "@headlessui/react": "^1.7.15",
     "@imbios/next-pwa": "^1.1.1",
@@ -40,10 +48,17 @@
     "@radix-ui/react-tooltip": "^1.0.6",
     "@react-hooks-library/core": "^0.5.1",
     "@react-hookz/web": "^23.1.0",
+    "@remix-run/react": "^1.19.1",
+    "@remix-run/server-runtime": "^1.19.1",
+    "@shopify/hydrogen": "^2023.4.6",
     "@shopify/hydrogen-react": "^2023.4.5",
     "@tailwindcss/forms": "^0.5.4",
+    "@tanstack/react-query": "^4.32.0",
+    "@tanstack/react-query-devtools": "^4.32.0",
     "@vercel/analytics": "^1.0.1",
     "@vercel/og": "^0.5.8",
+    "analytics": "^0.8.9",
+    "analytics-plugin-event-validation": "^0.1.2",
     "clsx": "^2.0.0",
     "cookies-next": "^2.1.2",
     "cross-env": "^7.0.3",
@@ -54,8 +69,10 @@
     "next": "13.4.10",
     "next-compose-plugins": "^2.2.1",
     "next-query-params": "^4.2.3",
+    "npm-run-all": "^4.1.5",
     "nuka-carousel": "^6.0.3",
     "react": "18.2.0",
+    "react-barcode": "^1.4.6",
     "react-cookie": "^4.1.1",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.45.2",
@@ -67,6 +84,7 @@
     "react-use-scrollspy": "^3.1.1",
     "react-zoom-pan-pinch": "^3.1.0",
     "slugify": "^1.6.6",
+    "use-analytics": "^1.1.0",
     "use-query-params": "^2.2.1",
     "zod": "^3.21.4"
   },
@@ -79,6 +97,7 @@
     "@types/node": "20.4.2",
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",
+    "@types/use-analytics": "^0.0.0",
     "@vercel/git-hooks": "^1.0.0",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.45.0",
@@ -97,5 +116,6 @@
     "tailwindcss": "^3.3.3",
     "type-fest": "^4.0.0",
     "typescript": "5.1.6"
-  }
+  },
+  "packageManager": "pnpm@7.25.0"
 }
