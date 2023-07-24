@@ -1,10 +1,11 @@
-import { Analytics } from "@/components/analytics";
+import HandleRouteChange from "@/components/analytics/handle-route-change";
 import Banner from "@/components/banner";
 import Footer from "@/components/layout/footer";
 import Progress from "@/components/layout/progress";
 import { Organization } from "@/components/schema.org/organization";
 import { SITE_DOMAIN } from "@/lib/constants";
 import { themeColors } from "@/lib/effects";
+import Providers from "@/providers";
 import { clsx } from "clsx";
 import { Inter, Montserrat } from "next/font/google";
 import localFont from "next/font/local";
@@ -18,6 +19,27 @@ const {
 } = process.env;
 
 export const metadata = {
+  applicationName: NEXT_PUBLIC_SITE_NAME,
+  appleWebApp: {
+    capable: true,
+    title: NEXT_PUBLIC_SITE_NAME,
+    statusBarStyle: "default",
+  },
+  formatDetection: {
+    telephone: false,
+    date: false,
+    address: false,
+    email: false,
+    url: false,
+  },
+  keywords: [
+    "bikini",
+    "bikinis",
+    "swimsuit",
+    "swimsuits",
+    "swimwear",
+    "uncnsrd",
+  ],
   metadataBase: new URL(`${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN}`),
   title: {
     default: NEXT_PUBLIC_SITE_NAME,
@@ -27,7 +49,8 @@ export const metadata = {
     follow: true,
     index: true,
   },
-  manifest: "/site.webmanifest",
+  manifest: "/manifest.json",
+  themeColor: "#ff4dd8",
   ...(TWITTER_CREATOR &&
     TWITTER_SITE && {
       twitter: {
@@ -36,13 +59,8 @@ export const metadata = {
         site: TWITTER_SITE,
       },
     }),
-  formatDetection: {
-    telephone: false,
-    date: false,
-    address: false,
-    email: false,
-    url: false,
-  },
+  viewport:
+    "minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover",
 };
 
 const bomberEscort = localFont({
@@ -102,16 +120,18 @@ export default async function RootLayout({
           textRendering: "optimizeLegibility",
         }}
       >
-        <Progress />
-        <Banner
-          className={clsx("sticky top-0 w-full", hideBanner && "hidden")}
-        />
-        <Suspense>
-          {children}
-          <Footer />
-        </Suspense>
-        {process.env.NODE_ENV === "production" && <Analytics />}
-        <Organization />
+        <Providers>
+          <Progress />
+          <Banner
+            className={clsx("sticky top-0 w-full", hideBanner && "hidden")}
+          />
+          <Suspense>
+            {children}
+            <Footer />
+          </Suspense>
+          <Organization />
+        </Providers>
+        <HandleRouteChange />
       </body>
     </html>
   );

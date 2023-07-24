@@ -9,7 +9,14 @@ export const Analytics = () => {
     <>
       <Partytown
         debug={true}
-        forward={["dataLayer.push", "fbq", "klaviyo", "ttq", "va"]}
+        forward={[
+          "analyticsShopData",
+          "dataLayer.push",
+          "fbq",
+          "klaviyo",
+          "ttq",
+          "va",
+        ]}
       />
       <GoogleTagManager type="text/partytown" />
       <VercelAnalytics />
