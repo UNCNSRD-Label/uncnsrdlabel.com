@@ -1,5 +1,3 @@
-import type { PartialDeep, Simplify } from "type-fest";
-import { flattenConnection } from "./flatten-connection.js";
 import type {
   Collection,
   GenericFile,
@@ -8,7 +6,9 @@ import type {
   Page,
   Product,
   ProductVariant,
-} from "./storefront-api-types.js";
+} from "@shopify/hydrogen-react/storefront-api-types";
+import type { PartialDeep, Simplify } from "type-fest";
+import { flattenConnection } from "./flatten-connection.js";
 
 /**
  * A function that uses `metafield.type` to parse the Metafield's `value` or `reference` or `references` (depending on the `metafield.type`) and places the result in `metafield.parsedValue`
@@ -20,7 +20,7 @@ import type {
  * ```
  */
 export function parseMetafield<ReturnGeneric>(
-  metafield: PartialDeep<MetafieldBaseType, { recurseIntoArrays: true }>
+  metafield: PartialDeep<MetafieldBaseType, { recurseIntoArrays: true }>,
 ): ReturnGeneric {
   if (!metafield.type) {
     const noTypeError = `parseMetafield(): The 'type' field is required in order to parse the Metafield.`;
@@ -134,7 +134,7 @@ export function parseMetafield<ReturnGeneric>(
         throw new Error(typeNotFoundError);
       } else {
         console.error(
-          `${typeNotFoundError}  Returning 'parsedValue' of 'null'`
+          `${typeNotFoundError}  Returning 'parsedValue' of 'null'`,
         );
         return {
           ...metafield,
