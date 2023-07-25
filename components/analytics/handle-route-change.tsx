@@ -2,16 +2,18 @@
 
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
-import { useAnalytics } from "use-analytics";
+// import { useAnalytics } from "use-analytics";
+import { analytics } from "@/providers/analytics";
 
 export const HandleRouteChange = () => {
-  const analytics = useAnalytics();
+  // const { page } = useAnalytics();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    analytics?.page();
-  }, [analytics, pathname, searchParams]);
+    console.log({ analytics, pathname, searchParams });
+    analytics.page();
+  }, [pathname, searchParams]);
 
   return null;
 };
