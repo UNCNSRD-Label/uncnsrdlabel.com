@@ -57,6 +57,8 @@ import {
   ShopifyUpdateCartOperation,
 } from "./types";
 
+import { type StorefrontApiResponse } from "@shopify/hydrogen-react";
+
 const domain = `https://${process.env.SHOPIFY_STORE_DOMAIN!}`;
 const endpoint = `${domain}${SHOPIFY_GRAPHQL_API_ENDPOINT}`;
 const key = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN!;
@@ -75,7 +77,9 @@ export async function shopifyFetch<T>({
   variables?: ExtractVariables<T>;
   headers?: HeadersInit;
   cache?: RequestCache;
-}): Promise<{ status: number; body: T } | never> {
+}): Promise<
+  { status: number; body: Exclude<StorefrontApiResponse<T>, "string"> } | never
+> {
   try {
     const result = await fetch(endpoint, {
       method: "POST",
@@ -92,9 +96,12 @@ export async function shopifyFetch<T>({
       next: { revalidate: 900 }, // 15 minutes
     });
 
-    const body = await result.json();
+    const body = (await result.json()) as Exclude<
+      StorefrontApiResponse<T>,
+      "string"
+    >;
 
-    if (body.errors) {
+    if (typeof body !== "string" && Array.isArray(body.errors)) {
       throw body.errors[0];
     }
 
@@ -220,7 +227,14 @@ export async function createCart(): Promise<Cart> {
     cache: "no-store",
   });
 
-  return reshapeCart(res.body.data.cartCreate.cart);
+  return reshapeCart(
+    (
+      res.body as Exclude<
+        StorefrontApiResponse<ShopifyCreateCartOperation>,
+        "string"
+      >
+    ).data.cartCreate.cart,
+  );
 }
 
 export async function addToCart(

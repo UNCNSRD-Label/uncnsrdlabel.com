@@ -86,12 +86,14 @@
     "slugify": "^1.6.6",
     "use-analytics": "^1.1.0",
     "use-query-params": "^2.2.1",
-    "zod": "^3.21.4"
+    "zod": "^3.21.4",
+    "zod-fetch": "^0.1.1"
   },
   "devDependencies": {
     "@playwright/test": "^1.36.1",
     "@tailwindcss/forms": "^0.5.4",
     "@tailwindcss/typography": "^0.5.9",
+    "@total-typescript/ts-reset": "^0.4.2",
     "@types/gtag.js": "^0.0.12",
     "@types/lodash": "^4.14.195",
     "@types/node": "20.4.2",
