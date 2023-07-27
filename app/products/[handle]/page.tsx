@@ -62,6 +62,7 @@ export default async function ProductPage({
   const jsonLd: WithContext<Product> = {
     "@context": "https://schema.org",
     "@type": "Product",
+    identifier: product.id,
     name: product.title,
     image: {
       "@type": "ImageObject",
