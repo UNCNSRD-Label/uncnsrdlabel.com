@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import ConsentDialog from "@/components/consent/dialog";
 import LogotypeIcon from "@/components/icons/logotype";
-import RedeemCode from "@/components/redeem-code/dialog";
+// import RedeemCode from "@/components/redeem-code/dialog";
 import SignUp from "@/components/sign-up";
 import { SocialMenu } from "@/components/social-menu";
 import { themeColors } from "@/lib/effects";
@@ -52,9 +52,9 @@ export default async function Footer() {
                       </Link>
                     </dd>
                   ))}
-                  <dd>
+                  {/* <dd>
                     <RedeemCode className={linkClassName} />
-                  </dd>
+                  </dd> */}
                 </dl>
               ) : null}
               <div className="grid gap-4 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
