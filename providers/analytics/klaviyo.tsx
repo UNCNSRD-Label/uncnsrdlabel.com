@@ -1,13 +1,10 @@
 "use client";
 
-// import { Cookies } from "react-cookie";
-
 import { getClientBrowserParameters } from "@shopify/hydrogen-react";
 import { AnalyticsPlugin } from "analytics";
 import { PluginEventFunctions } from "./types";
 
 export interface KlaviyoConfig {
-  // userToken: string;
   collectionHandle?: string;
   hasUserConsent: boolean;
   locale: Intl.Locale;
@@ -39,7 +36,7 @@ const sendKlaviyoAnalytics = async (
 
 // eslint-disable-next-line no-unused-vars
 export default function klaviyo(config: KlaviyoConfig): KlaviyoAnalyticsPlugin {
-  const {} = config;
+  const { hasUserConsent } = config;
 
   // const cookies = new Cookies();
 
@@ -51,29 +48,34 @@ export default function klaviyo(config: KlaviyoConfig): KlaviyoAnalyticsPlugin {
     /* Name is a required field for plugins */
     name: "klaviyo-plugin",
     identify: async ({ payload, config, instance }) => {
-      console.log("klaviyo:identify", { payload, config, instance });
+      console.log("klaviyo:identify", {
+        payload,
+        config,
+        instance,
+        hasUserConsent,
+      });
 
-      const properties = {
-        $email: customer?.email ?? undefined,
-        $first_name: customer?.firstName ?? undefined,
-        $last_name: customer?.lastName ?? undefined,
-        // @ts-expect-error TODO: Fix this getFragmentData issue
-        $city: customer?.defaultAddress?.city ?? undefined,
-        // @ts-expect-error TODO: Fix this getFragmentData issue
-        $region: customer?.defaultAddress?.province ?? undefined,
-        // @ts-expect-error TODO: Fix this getFragmentData issue
-        $country: customer?.defaultAddress?.country ?? undefined,
-        // @ts-expect-error TODO: Fix this getFragmentData issue
-        $zip: customer?.defaultAddress?.zip ?? undefined,
-        $phone_number: customer?.phone ?? undefined,
-      };
+      // const properties = {
+      //   $email: payload.properties.customer?.email ?? undefined,
+      //   $first_name: payload.properties.customer?.firstName ?? undefined,
+      //   $last_name: payload.properties.customer?.lastName ?? undefined,
+      //   // @ts-expect-error TODO: Fix this getFragmentData issue
+      //   $city: payload.properties.customer?.defaultAddress?.city ?? undefined,
+      //   // @ts-expect-error TODO: Fix this getFragmentData issue
+      //   $region: payload.properties.customer?.defaultAddress?.province ?? undefined,
+      //   // @ts-expect-error TODO: Fix this getFragmentData issue
+      //   $country: payload.properties.customer?.defaultAddress?.country ?? undefined,
+      //   // @ts-expect-error TODO: Fix this getFragmentData issue
+      //   $zip: payload.properties.customer?.defaultAddress?.zip ?? undefined,
+      //   $phone_number: payload.properties.customer?.phone ?? undefined,
+      // };
 
-      const data = {
-        token,
-        properties,
-      };
+      // const data = {
+      //   token,
+      //   properties,
+      // };
 
-      sendKlaviyoAnalytics(data, "identify");
+      // sendKlaviyoAnalytics(data, "identify");
     },
     page: ({ payload, config, instance }) => {
       console.log("klaviyo:page", { payload, config, instance });

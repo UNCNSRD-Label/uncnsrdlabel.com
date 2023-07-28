@@ -35,6 +35,7 @@ export type PluginEventFunctions = {
   // eslint-disable-next-line no-unused-vars
   [key in
     | "bootstrap"
+    | "identify"
     | "page"
     | "pageStart"
     | "pageEnd"

@@ -1,7 +1,8 @@
 import { Metafield, Metaobject } from "@/lib/shopify/types";
+import { ReactNode } from "react";
 
 export const MetafieldMapper = ({ metafield }: { metafield: Metafield }) => {
-  let value;
+  let value: ReactNode = null;
 
   switch (metafield.type) {
     case "list.single_line_text_field":
@@ -15,7 +16,7 @@ export const MetafieldMapper = ({ metafield }: { metafield: Metafield }) => {
             </ul>
           );
         } else {
-          value = JSON.parse(metafield.value);
+          value = JSON.parse(metafield.value) as string;
         }
       }
       break;

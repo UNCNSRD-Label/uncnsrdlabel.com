@@ -19,7 +19,6 @@ import { AnalyticsPlugin } from "analytics";
 import { PluginEventFunctions } from "./types";
 
 export interface ShopifyConfig {
-  // userToken?: string;
   collectionHandle?: string;
   hasUserConsent: boolean;
   locale: Intl.Locale;
@@ -68,7 +67,7 @@ export default function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
   return {
     /* Name is a required field for plugins */
     name: "shopify-plugin",
-    page: ({ payload, config, instance }) => {
+    page: ({ payload }) => {
       // console.log("shopify:page", { payload, config, instance });
 
       const shopifyPageViewPayload: ShopifyPageViewPayload = {
@@ -111,7 +110,7 @@ export default function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
         payload: shopifyPageViewPayload,
       });
     },
-    trackEnd: ({ payload, config, instance }) => {
+    trackEnd: ({ payload, config }) => {
       // Fire custom logic after analytics.track() calls
       // console.log("shopify:trackEnd", { payload, config, instance });
 
