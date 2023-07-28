@@ -50,7 +50,7 @@ export async function redeemCodeAction(formData: FormData) {
     const response = await fetch(url, options);
 
     if (response.status >= 300) {
-      const json = await response.json();
+      const json = (await response.json()) as KlaviyoResponse;
 
       if (json.errors) {
         console.error(`${response.status}, ${response.statusText}`);
