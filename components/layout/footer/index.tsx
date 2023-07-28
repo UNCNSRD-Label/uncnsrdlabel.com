@@ -80,7 +80,7 @@ export default async function Footer() {
             <SignUp className="lg:col-start-0 col-span-1 sm:col-span-6 sm:col-start-7 lg:col-span-4" />
           </div>
           <div className="flex flex-col items-center justify-between text-xs uppercase sm:flex-row sm:pt-6">
-            <SocialMenu className="my-8 sm:my-0" />
+            <SocialMenu className="my-8 h-10 sm:my-0" />
             <span className="sm:order-first">
               &copy; {copyrightDate} {NEXT_PUBLIC_SITE_NAME}. All rights
               reserved.
