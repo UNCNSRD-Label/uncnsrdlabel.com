@@ -57,7 +57,7 @@ import {
   ShopifyUpdateCartOperation,
 } from "./types";
 
-import { getErrorMessage, getErrorsMessage } from "@/lib/errors";
+import { getErrorsMessage } from "@/lib/errors";
 import {
   type StorefrontApiResponse,
   type StorefrontApiResponseError,
@@ -99,10 +99,6 @@ export async function shopifyFetch<T>({
     });
 
     const body = (await result.json()) as T;
-
-    if (getErrorMessage(body)) {
-      throw new Error(getErrorMessage(body));
-    }
 
     return {
       status: result.status,
