@@ -1,8 +1,9 @@
 "use server";
 
-import { cookies } from "next/headers";
-
-export async function signUpAction(formData: FormData) {
+export async function signUpAction(
+  formData: FormData,
+  custom_source: string = "Website",
+) {
   const email = formData.get("email");
   const phone_number = formData.get("phone_number");
 
@@ -29,7 +30,7 @@ export async function signUpAction(formData: FormData) {
         type: "profile-subscription-bulk-create-job",
         attributes: {
           list_id: process.env.KLAVIYO_LIST_ID,
-          custom_source: "Sign Up Form (Footer)",
+          custom_source,
           subscriptions: [
             {
               channels: {
@@ -49,6 +50,8 @@ export async function signUpAction(formData: FormData) {
   try {
     const response = await fetch(url, options);
 
+    console.log(response.status, response.statusText);
+
     if (response.status >= 300) {
       const json = (await response.json()) as KlaviyoResponse;
 
@@ -57,16 +60,14 @@ export async function signUpAction(formData: FormData) {
         console.error(json.errors);
       }
 
-      cookies().set("statusText", response.statusText);
-
+      return response.statusText;
+    } else if (response.status >= 200) {
       return response.statusText;
     } else {
-      cookies().set("statusText", "OK");
-      return "OK";
+      return response.statusText;
     }
   } catch (err) {
     console.error(err);
-    cookies().set("statusText", "Error");
     return "Error";
   }
 }
