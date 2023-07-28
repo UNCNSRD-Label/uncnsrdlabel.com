@@ -1,7 +1,5 @@
 "use client";
 
-// See https://shopify.dev/docs/api/hydrogen-react/2023-04/utilities/sendshopifyanalytics
-// import { useShopifyCookies } from "@shopify/hydrogen";
 import {
   AnalyticsEventName,
   AnalyticsPageType,
@@ -19,7 +17,6 @@ import { PluginEventFunctions } from "./types";
 
 export interface ShopifyConfig {
   collectionHandle?: string;
-  // currency: CurrencyCode;
   hasUserConsent: boolean;
   locale: Intl.Locale;
   shopId: string;
@@ -30,18 +27,10 @@ export type ShopifyAnalyticsPlugin = AnalyticsPlugin & PluginEventFunctions;
 
 // eslint-disable-next-line no-unused-vars
 export default function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
-  const {
-    collectionHandle,
-    // currency,
-    hasUserConsent,
-    locale,
-    shopId,
-    storefrontId,
-  } = config;
+  const { collectionHandle, hasUserConsent, locale, shopId, storefrontId } =
+    config;
 
   const cookies = new Cookies();
-
-  // useShopifyCookies({ hasUserConsent });
 
   const customerId = cookies.get("customerId");
 
@@ -174,11 +163,5 @@ export default function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
         }
       }
     },
-    // addToCart: ({ payload, config, instance }) => {
-    //   console.log("addToCart", { payload, config, instance });
-    // },
-    // product: ({ payload, config, instance }) => {
-    //   console.log("product", { payload, config, instance });
-    // },
   };
 }
