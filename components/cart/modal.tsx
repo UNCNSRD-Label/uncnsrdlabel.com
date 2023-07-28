@@ -50,7 +50,7 @@ export default function CartModal({
           />
 
           <div
-            className="fixed inset-y-0 end-0 flex max-w-sm justify-end"
+            className="fixed inset-y-0 end-0 flex w-full max-w-sm justify-end"
             data-testid="cart"
           >
             <Dialog.Panel
@@ -60,10 +60,7 @@ export default function CartModal({
                 closed: { translateX: "100%" },
               }}
               transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-              className={clsx(
-                "flex w-full flex-col p-6 outline outline-white",
-                themeColors,
-              )}
+              className={clsx("flex w-full flex-col p-6", themeColors)}
             >
               <div className="flex items-center justify-between">
                 <p className="text-lg font-bold">My Bag</p>

@@ -69,7 +69,7 @@ export default function SidebarMenu({ menu }: { menu: Menu[] }) {
               aria-hidden="true"
             />
             <div
-              className="fixed inset-y-0 start-0 flex max-w-sm justify-end"
+              className="fixed inset-y-0 start-0 flex w-full max-w-sm justify-end"
               data-testid="sidebar-menu"
             >
               <Dialog.Panel
@@ -79,10 +79,7 @@ export default function SidebarMenu({ menu }: { menu: Menu[] }) {
                   closed: { translateX: "-100%" },
                 }}
                 transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-                className={clsx(
-                  "flex w-full flex-col p-6 outline outline-white",
-                  themeColors,
-                )}
+                className={clsx("flex w-full flex-col p-6", themeColors)}
               >
                 <button
                   className="mb-4"
@@ -115,8 +112,8 @@ export default function SidebarMenu({ menu }: { menu: Menu[] }) {
                     ))}
                   </ul>
                 ) : null}
+                <SocialMenu className="mb-8 h-8 gap-6" />
                 <LogotypeIcon className="my-8 h-8 fill-inherit" />
-                <SocialMenu />
               </Dialog.Panel>
             </div>
           </Dialog>
