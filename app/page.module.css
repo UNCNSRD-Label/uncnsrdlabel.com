@@ -2,6 +2,8 @@
   align-items: center;
   display: grid;
   grid-template-rows: 1fr auto;
+  inset: 0;
+  position: absolute;
 
   @media landscape {
     align-items: end;
