@@ -11,7 +11,7 @@ export default async function middleware(request: NextRequest) {
   const response = NextResponse.next();
 
   if (suppliedCode === savedCode) {
-    request.cookies.set("preview", "true");
+    response.cookies.set("preview", "true");
   }
 
   if (
