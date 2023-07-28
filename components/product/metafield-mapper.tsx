@@ -9,14 +9,13 @@ export const MetafieldMapper = ({ metafield }: { metafield: Metafield }) => {
         if (Array.isArray(metafield.value)) {
           value = (
             <ul>
-              {metafield.value?.map((item, index) => (
-                <li key={item.id || index}>{item}</li>
-              ))}
+              {(metafield.value as Record<string, string>[])?.map(
+                (item, index) => <li key={item.id || index}>{item.value}</li>,
+              )}
             </ul>
           );
         } else {
-          value =
-            JSON.parse(metafield.value)?.[0] ?? JSON.parse(metafield.value);
+          value = JSON.parse(metafield.value);
         }
       }
       break;
