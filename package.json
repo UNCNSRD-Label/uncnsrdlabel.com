@@ -1,6 +1,6 @@
 {
   "name": "uncnsrdlabel.com",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "analyze": "ANALYZE=true next build",
     "build": "next build",
