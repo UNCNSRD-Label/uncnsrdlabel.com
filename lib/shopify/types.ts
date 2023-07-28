@@ -96,7 +96,11 @@ export type Policies = {
   termsOfService: Policy;
 };
 
-export type Product = Omit<ShopifyProduct, "variants" | "images"> & {
+export type Product = Omit<
+  ShopifyProduct,
+  "variants" | "images" | "collections"
+> & {
+  collections: Collection[];
   variants: ProductVariant[];
   images: Image[];
 };
@@ -169,6 +173,10 @@ export type ShopifyProduct = {
     maxVariantPrice: Money;
     minVariantPrice: Money;
   };
+  compareAtPriceRange: {
+    maxVariantPrice: Money;
+    minVariantPrice: Money;
+  };
   variants: Connection<ProductVariant>;
   featuredImage: Image;
   images: Connection<Image>;
@@ -176,6 +184,8 @@ export type ShopifyProduct = {
   tags: string[];
   updatedAt: string;
   metafields: Metafield[];
+  collections: Connection<Collection>;
+  vendor: string;
 };
 
 export type ShopifyCartOperation = {

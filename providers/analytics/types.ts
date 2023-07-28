@@ -1,4 +1,4 @@
-import { type Product } from "@shopify/hydrogen-react/storefront-api-types";
+import { type Product } from "@/lib/shopify/types";
 
 // eslint-disable-next-line no-unused-vars
 export type PluginEventFunction = (options: {
@@ -15,10 +15,10 @@ export type PluginEventFunction = (options: {
       search: string;
       width: number;
       height: number;
+      product: Product;
     };
     options: {
       cartId: string;
-      product: Product;
       [key: string]: any;
     };
     userId: string;

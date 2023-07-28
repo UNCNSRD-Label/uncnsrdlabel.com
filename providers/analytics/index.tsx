@@ -4,7 +4,7 @@
 import googleTagManager from "@analytics/google-tag-manager";
 import Analytics from "analytics";
 // import eventValidation from "analytics-plugin-event-validation";
-import { useShop } from "@shopify/hydrogen-react";
+import { getShopifyCookies, useShop } from "@shopify/hydrogen-react";
 import { getCookie } from "cookies-next";
 import { PropsWithChildren } from "react";
 import { AnalyticsProvider } from "use-analytics";
@@ -24,6 +24,8 @@ export default function AppAnalyticsProvider({ children }: PropsWithChildren) {
   const { storefrontId, countryIsoCode, languageIsoCode } = useShop();
 
   const locale = new Intl.Locale(`${languageIsoCode}-${countryIsoCode}`);
+
+  const cookies = getShopifyCookies(document.cookie);
 
   /* Initialize analytics & load plugins */
   const analytics = Analytics({
@@ -45,15 +47,18 @@ export default function AppAnalyticsProvider({ children }: PropsWithChildren) {
       //   trackingId: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_MEASUREMENT_ID!,
       // }),
       googleTagManager({
+        // userToken: cookies._shopify_y,
         containerId: process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID!,
       }),
       klaviyo({
+        // userToken: cookies._shopify_y,
         hasUserConsent,
         locale,
         shopId: `gid://shopify/Shop/${process.env.NEXT_PUBLIC_SHOPIFY_SHOP_ID}`,
         storefrontId,
       }),
       shopify({
+        // userToken: cookies._shopify_y,
         hasUserConsent,
         locale,
         shopId: `gid://shopify/Shop/${process.env.NEXT_PUBLIC_SHOPIFY_SHOP_ID}`,
@@ -61,6 +66,10 @@ export default function AppAnalyticsProvider({ children }: PropsWithChildren) {
       }),
     ],
   });
+
+  if (cookies._shopify_y) {
+    analytics.identify(cookies._shopify_y);
+  }
 
   return <AnalyticsProvider instance={analytics}>{children}</AnalyticsProvider>;
 }

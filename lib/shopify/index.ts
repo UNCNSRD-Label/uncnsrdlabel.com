@@ -29,6 +29,7 @@ import {
   Cart,
   Collection,
   Connection,
+  Image,
   Menu,
   Page,
   Policies,
@@ -36,6 +37,7 @@ import {
   PolicyHandle,
   PolicyName,
   Product,
+  ProductVariant,
   ShopifyAddToCartOperation,
   ShopifyCart,
   ShopifyCartOperation,
@@ -120,7 +122,7 @@ export async function shopifyFetch<T>({
   }
 }
 
-const removeEdgesAndNodes = (array: Connection<any>) => {
+const removeEdgesAndNodes = <T>(array: Connection<T>) => {
   return array.edges.map((edge) => edge?.node);
 };
 
@@ -191,12 +193,13 @@ const reshapeProduct = (
     return undefined;
   }
 
-  const { images, variants, ...rest } = product;
+  const { collections, images, variants, ...rest } = product;
 
   return {
     ...rest,
-    images: removeEdgesAndNodes(images),
-    variants: removeEdgesAndNodes(variants),
+    collections: removeEdgesAndNodes<Collection>(collections),
+    images: removeEdgesAndNodes<Image>(images),
+    variants: removeEdgesAndNodes<ProductVariant>(variants),
   };
 };
 

@@ -1,11 +1,13 @@
 "use client";
 
-import { Cookies } from "react-cookie";
+// import { Cookies } from "react-cookie";
 
+import { getClientBrowserParameters } from "@shopify/hydrogen-react";
 import { AnalyticsPlugin } from "analytics";
 import { PluginEventFunctions } from "./types";
 
 export interface KlaviyoConfig {
+  // userToken: string;
   collectionHandle?: string;
   hasUserConsent: boolean;
   locale: Intl.Locale;
@@ -15,95 +17,111 @@ export interface KlaviyoConfig {
 
 export type KlaviyoAnalyticsPlugin = AnalyticsPlugin & PluginEventFunctions;
 
+const sendKlaviyoAnalytics = async (
+  data: unknown,
+  type: "identify" | "track",
+) => {
+  const encodedParams = new URLSearchParams();
+
+  encodedParams.set("data", JSON.stringify(data));
+
+  const options = {
+    method: "POST",
+    headers: {
+      accept: "text/html",
+      "content-type": "application/x-www-form-urlencoded",
+    },
+    body: encodedParams,
+  };
+
+  await fetch(`https://a.klaviyo.com/api/${type}`, options);
+};
+
 // eslint-disable-next-line no-unused-vars
 export default function klaviyo(config: KlaviyoConfig): KlaviyoAnalyticsPlugin {
   const {} = config;
 
-  const cookies = new Cookies();
+  // const cookies = new Cookies();
 
   const token = process.env.NEXT_PUBLIC_KLAVIYO_PUBLIC_KEY;
 
-  const customerId = cookies.get("customerId");
+  // const customerId = cookies.get("customerId");
 
   return {
     /* Name is a required field for plugins */
     name: "klaviyo-plugin",
-    /* Bootstrap runs when analytics starts */
-    bootstrap: ({ payload, config, instance }) => {
-      // Do whatever on `bootstrap` event
-      console.log("bootstrap", { payload, config, instance });
+    identify: async ({ payload, config, instance }) => {
+      console.log("klaviyo:identify", { payload, config, instance });
+
+      const properties = {
+        $email: customer?.email ?? undefined,
+        $first_name: customer?.firstName ?? undefined,
+        $last_name: customer?.lastName ?? undefined,
+        // @ts-expect-error TODO: Fix this getFragmentData issue
+        $city: customer?.defaultAddress?.city ?? undefined,
+        // @ts-expect-error TODO: Fix this getFragmentData issue
+        $region: customer?.defaultAddress?.province ?? undefined,
+        // @ts-expect-error TODO: Fix this getFragmentData issue
+        $country: customer?.defaultAddress?.country ?? undefined,
+        // @ts-expect-error TODO: Fix this getFragmentData issue
+        $zip: customer?.defaultAddress?.zip ?? undefined,
+        $phone_number: customer?.phone ?? undefined,
+      };
+
+      const data = {
+        token,
+        properties,
+      };
+
+      sendKlaviyoAnalytics(data, "identify");
     },
     page: ({ payload, config, instance }) => {
-      console.log("page", { payload, config, instance });
+      console.log("klaviyo:page", { payload, config, instance });
     },
     trackEnd: async ({ payload, config, instance }) => {
       // Fire custom logic after analytics.track() calls
-      console.log("trackEnd", { payload, config, instance });
+      console.log("klaviyo:trackEnd", { payload, config, instance });
+
+      const customer_properties = {
+        $email: "abraham.lincoln@klaviyo.com",
+      };
+
+      if (payload.event === "productVariant") {
+        // Include SKU, colour, size, etc.
+      }
 
       if (payload.event === "product") {
         const properties = {
-          Name: payload.options.product.title ?? null,
-          ProductID: payload.options.product.id ?? null,
+          ProductName: payload.properties.product.title ?? null,
+          ProductID: payload.properties.product.id ?? null,
           Categories:
-            payload.options.product.collections?.nodes?.map(
+            payload.properties.product.collections?.map(
               (node) => node?.title,
             ) ?? null,
-          ImageURL: payload.options.product?.featuredImage?.url ?? null,
-          URL: payload.properties.url ?? null,
-          Brand: payload.options.product.vendor ?? null,
+          ImageURL: payload.properties.product?.featuredImage?.url ?? null,
+          URL: payload.properties.url ?? getClientBrowserParameters().url,
+          Brand: payload.properties.product.vendor ?? null,
           Price:
-            (payload.options.selectedVariant?.price?.amount ||
-              payload.options.product?.priceRange?.minVariantPrice?.amount) ??
-            null,
+            Number.parseInt(
+              payload.options.selectedVariant?.price?.amount ||
+                payload.properties.product?.priceRange?.minVariantPrice?.amount,
+            ) ?? null,
           CompareAtPrice:
-            (payload.options.selectedVariant?.compareAtPrice?.amount ||
-              payload.options.product?.compareAtPriceRange?.minVariantPrice
-                ?.amount) ??
-            null,
+            Number.parseInt(
+              payload.options.selectedVariant?.compareAtPrice?.amount ||
+                payload.properties.product?.compareAtPriceRange?.minVariantPrice
+                  ?.amount,
+            ) ?? null,
         };
-
-        // const properties = {
-        //   $email: customer?.email ?? undefined,
-        //   $first_name: customer?.firstName ?? undefined,
-        //   $last_name: customer?.lastName ?? undefined,
-        //   // @ts-expect-error TODO: Fix this getFragmentData issue
-        //   $city: customer?.defaultAddress?.city ?? undefined,
-        //   // @ts-expect-error TODO: Fix this getFragmentData issue
-        //   $region: customer?.defaultAddress?.province ?? undefined,
-        //   // @ts-expect-error TODO: Fix this getFragmentData issue
-        //   $country: customer?.defaultAddress?.country ?? undefined,
-        //   // @ts-expect-error TODO: Fix this getFragmentData issue
-        //   $zip: customer?.defaultAddress?.zip ?? undefined,
-        //   $phone_number: customer?.phone ?? undefined,
-        // }
 
         const data = {
           token,
+          event: payload.event,
+          customer_properties,
           properties,
         };
 
-        const encodedParams = new URLSearchParams();
-
-        encodedParams.set("data", JSON.stringify(data));
-
-        const options = {
-          method: "POST",
-          headers: {
-            accept: "text/html",
-            "content-type": "application/x-www-form-urlencoded",
-          },
-          body: encodedParams,
-        };
-
-        if (customerId) {
-          const response = await fetch(
-            // 'https://a.klaviyo.com/api/identify',
-            "https://a.klaviyo.com/api/track",
-            options,
-          );
-
-          await response.json();
-        }
+        sendKlaviyoAnalytics(data, "track");
       }
 
       // if (payload.event === "addToCart") {

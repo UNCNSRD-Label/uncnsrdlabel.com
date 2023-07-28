@@ -9,13 +9,17 @@ import {
   type ShopifyAddToCartPayload,
   type ShopifyPageViewPayload,
 } from "@shopify/hydrogen-react";
-import type { LanguageCode } from "@shopify/hydrogen-react/storefront-api-types";
+import type {
+  CurrencyCode,
+  LanguageCode,
+} from "@shopify/hydrogen-react/storefront-api-types";
 import { Cookies } from "react-cookie";
 
 import { AnalyticsPlugin } from "analytics";
 import { PluginEventFunctions } from "./types";
 
 export interface ShopifyConfig {
+  // userToken?: string;
   collectionHandle?: string;
   hasUserConsent: boolean;
   locale: Intl.Locale;
@@ -64,41 +68,37 @@ export default function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
   return {
     /* Name is a required field for plugins */
     name: "shopify-plugin",
-    /* Bootstrap runs when analytics starts */
-    bootstrap: ({ payload, config, instance }) => {
-      // Do whatever on `bootstrap` event
-      console.log("bootstrap", { payload, config, instance });
-    },
     page: ({ payload, config, instance }) => {
-      console.log("page", { payload, config, instance });
+      // console.log("shopify:page", { payload, config, instance });
 
       const shopifyPageViewPayload: ShopifyPageViewPayload = {
         ...getClientBrowserParameters(),
         ...sendShopifyAnalyticsPayloadBase,
         /** Currency code. */
-        currency:
-          payload.options.product?.priceRange.minVariantPrice.currencyCode,
+        currency: payload.properties.product?.priceRange.minVariantPrice
+          .currencyCode as CurrencyCode,
         /** Total value of products. */
         totalValue: Number.parseInt(
-          payload.options.product?.priceRange.minVariantPrice.amount,
+          payload.properties.product?.priceRange.minVariantPrice.amount,
         ),
         /** Product list. */
         products: [
           {
-            ...payload.options.product,
-            productGid: payload.options.product?.id,
-            name: payload.options.product?.title,
-            brand: payload.options.product?.vendor,
-            price: payload.options.product?.priceRange.minVariantPrice.amount,
+            ...payload.properties.product,
+            productGid: payload.properties.product?.id,
+            name: payload.properties.product?.title,
+            brand: payload.properties.product?.vendor,
+            price:
+              payload.properties.product?.priceRange.minVariantPrice.amount,
           },
         ],
         /** Canonical url. */
         canonicalUrl: payload.properties.url,
         /** Shopify page type. */
-        pageType: AnalyticsPageType.product,
+        pageType: AnalyticsPageType.page,
         /** Shopify resource id in the form of `gid://shopify/<type>/<id>`. */
-        ...(payload.options.product && {
-          resourceId: `gid://shopify/${AnalyticsPageType.product}>/${payload.options.product.id}`,
+        ...(payload.properties.product && {
+          resourceId: `gid://shopify/${AnalyticsPageType.product}>/${payload.properties.product.id}`,
         }),
         /** Shopify collection handle. */
         collectionHandle,
@@ -111,21 +111,51 @@ export default function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
         payload: shopifyPageViewPayload,
       });
     },
-    pageStart: ({ payload, config, instance }) => {
-      // Fire custom logic before analytics.page() calls
-      console.log("pageStart", { payload, config, instance });
-    },
-    pageEnd: ({ payload, config, instance }) => {
-      // Fire custom logic after analytics.page() calls
-      console.log("pageEnd", { payload, config, instance });
-    },
-    trackStart: ({ payload, config, instance }) => {
-      // Fire custom logic before analytics.track() calls
-      console.log("trackStart", { payload, config, instance });
-    },
     trackEnd: ({ payload, config, instance }) => {
       // Fire custom logic after analytics.track() calls
-      console.log("trackEnd", { payload, config, instance });
+      // console.log("shopify:trackEnd", { payload, config, instance });
+
+      if (payload.event === "product") {
+        const shopifyPageViewPayload: ShopifyPageViewPayload = {
+          ...getClientBrowserParameters(),
+          ...sendShopifyAnalyticsPayloadBase,
+          /** Currency code. */
+          currency: payload.properties.product?.priceRange.minVariantPrice
+            .currencyCode as CurrencyCode,
+          /** Total value of products. */
+          totalValue: Number.parseInt(
+            payload.properties.product?.priceRange.minVariantPrice.amount,
+          ),
+          /** Product list. */
+          products: [
+            {
+              ...payload.properties.product,
+              productGid: payload.properties.product?.id,
+              name: payload.properties.product?.title,
+              brand: payload.properties.product?.vendor,
+              price:
+                payload.properties.product?.priceRange.minVariantPrice.amount,
+            },
+          ],
+          /** Canonical url. */
+          canonicalUrl: payload.properties.url,
+          /** Shopify page type. */
+          pageType: AnalyticsPageType.product,
+          /** Shopify resource id in the form of `gid://shopify/<type>/<id>`. */
+          ...(payload.properties.product && {
+            resourceId: `gid://shopify/${AnalyticsPageType.product}>/${payload.properties.product.id}`,
+          }),
+          /** Shopify collection handle. */
+          collectionHandle,
+          /** Search term used on a search results page. */
+          searchString: payload.properties.search,
+        };
+
+        sendShopifyAnalytics({
+          eventName: AnalyticsEventName.PAGE_VIEW,
+          payload: shopifyPageViewPayload,
+        });
+      }
 
       if (payload.event === "addToCart") {
         const { cartId } = config.options;
@@ -135,21 +165,21 @@ export default function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
             ...getClientBrowserParameters(),
             ...sendShopifyAnalyticsPayloadBase,
             /** Currency code. */
-            currency:
-              payload.options.product?.priceRange.minVariantPrice.currencyCode,
+            currency: payload.properties.product?.priceRange.minVariantPrice
+              .currencyCode as CurrencyCode,
             /** Total value of products. */
             totalValue: Number.parseInt(
-              payload.options.product?.priceRange.minVariantPrice.amount,
+              payload.properties.product?.priceRange.minVariantPrice.amount,
             ),
             /** Product list. */
             products: [
               {
-                ...payload.options.product,
-                productGid: payload.options.product?.id,
-                name: payload.options.product?.title,
-                brand: payload.options.product?.vendor,
+                ...payload.properties.product,
+                productGid: payload.properties.product?.id,
+                name: payload.properties.product?.title,
+                brand: payload.properties.product?.vendor,
                 price:
-                  payload.options.product?.priceRange.minVariantPrice.amount,
+                  payload.properties.product?.priceRange.minVariantPrice.amount,
               },
             ],
             /** Shopify cart id in the form of `gid://shopify/Cart/<id>`. */
