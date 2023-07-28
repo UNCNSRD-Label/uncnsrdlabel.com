@@ -6,6 +6,8 @@ import { useEffect, useState, useTransition } from "react";
 
 import { ProductVariant } from "@/lib/shopify/types";
 
+import { CartResponse } from "@/app/api/cart/types";
+
 export function AddToCart({
   variants,
   availableForSale,
@@ -46,7 +48,7 @@ export function AddToCart({
       }),
     });
 
-    const data = await response.json();
+    const data = (await response.json()) as CartResponse;
 
     if (data.error) {
       alert(data.error);

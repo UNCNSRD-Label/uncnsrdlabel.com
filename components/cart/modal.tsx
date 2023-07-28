@@ -8,16 +8,12 @@ import { createUrl } from "@/lib/utils";
 import { Dialog } from "@headlessui/react";
 import { clsx } from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
-import Link, { type LinkProps } from "next/link";
+import Link from "next/link";
 import { SlBag } from "react-icons/sl";
 import DeleteItemButton from "./delete-item-button";
 import EditItemQuantityButton from "./edit-item-quantity-button";
 
 type MerchandiseSearchParams = {
-  [key: string]: string;
-};
-
-type MerchandiseSearchParams1 = LinkProps & {
   [key: string]: string;
 };
 

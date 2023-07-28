@@ -7,6 +7,8 @@ import type { CartItem } from "@/lib/shopify/types";
 import { clsx } from "clsx";
 import LoadingDots from "../loading-dots";
 
+import { CartResponse } from "@/app/api/cart/types";
+
 export default function EditItemQuantityButton({
   item,
   type,
@@ -29,7 +31,7 @@ export default function EditItemQuantityButton({
       }),
     });
 
-    const data = await response.json();
+    const data = (await response.json()) as CartResponse;
 
     if (data.error) {
       alert(data.error);

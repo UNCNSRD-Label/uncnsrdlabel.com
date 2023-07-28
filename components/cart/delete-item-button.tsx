@@ -6,7 +6,7 @@ import { startTransition, useState } from "react";
 import type { CartItem } from "@/lib/shopify/types";
 import { clsx } from "clsx";
 
-import { CartResponse } from "@/app/api/cart/route";
+import { CartResponse } from "@/app/api/cart/types";
 
 export default function DeleteItemButton({ item }: { item: CartItem }) {
   const router = useRouter();
@@ -21,6 +21,7 @@ export default function DeleteItemButton({ item }: { item: CartItem }) {
         lineId: item.id,
       }),
     });
+
     const data = (await response.json()) as CartResponse;
 
     if (data.error) {
