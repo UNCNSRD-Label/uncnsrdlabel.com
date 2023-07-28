@@ -152,6 +152,8 @@ export function parseJSON(json: string): unknown {
   if (String(json).includes("__proto__")) {
     return JSON.parse(json, (k, v) => {
       if (k !== "__proto__") return v as unknown;
+
+      return undefined;
     }) as unknown;
   }
   return JSON.parse(json) as unknown;
