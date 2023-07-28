@@ -45,7 +45,7 @@ export function ProductImage({
         //   "bg-gray-100 dark:bg-gray-100": background === "gray",
         //   "bg-gray-100 dark:bg-gray-900": !background,
         // },
-        className
+        className,
       )}
       style={{
         // scale

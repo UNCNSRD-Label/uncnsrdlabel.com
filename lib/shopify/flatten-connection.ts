@@ -11,9 +11,9 @@ export function flattenConnection<
     | PartialDeep<ConnectionEdges, { recurseIntoArrays: true }>
     | PartialDeep<ConnectionNodes, { recurseIntoArrays: true }>
     | ConnectionEdges
-    | ConnectionNodes
+    | ConnectionNodes,
 >(
-  connection?: ConnectionGeneric
+  connection?: ConnectionGeneric,
 ): ConnectionGeneric extends
   | {
       edges: Array<{ node: infer ConnectionBaseType }>;
@@ -60,7 +60,7 @@ export function flattenConnection<
     return connection.edges.map((edge) => {
       if (!edge?.node) {
         throw new Error(
-          "flattenConnection(): Connection edges must contain nodes"
+          "flattenConnection(): Connection edges must contain nodes",
         );
       }
       return edge.node;
@@ -69,7 +69,7 @@ export function flattenConnection<
 
   if (process.env.__HYDROGEN_DEV__) {
     console.warn(
-      `flattenConnection(): The connection did not contain either "nodes" or "edges.node". Returning an empty array.`
+      `flattenConnection(): The connection did not contain either "nodes" or "edges.node". Returning an empty array.`,
     );
   }
 

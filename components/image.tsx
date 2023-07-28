@@ -15,21 +15,23 @@ export default function Image({
 
   const [previousY, setPreviousY] = useState(0);
   // const [previousRatio, setPreviousRatio] = useState(0);
-  const [scrollDirection, setScrollDirection] = useState<"end" | "start">("end");
+  const [scrollDirection, setScrollDirection] = useState<"end" | "start">(
+    "end",
+  );
 
   const rootIntersection = useIntersectionObserver(rootRef, {
     // rootMargin: "-15%",
     threshold: [0, 0.5],
   });
 
-  const currentY = rootIntersection?.boundingClientRect.y || 0
+  const currentY = rootIntersection?.boundingClientRect.y || 0;
   // const currentRatio = rootIntersection?.intersectionRatio || 0
-  const isIntersecting = rootIntersection?.isIntersecting || false
+  const isIntersecting = rootIntersection?.isIntersecting || false;
 
   useEffect(() => {
     // Scrolling down/up
     if (currentY < previousY) {
-      setScrollDirection("end")
+      setScrollDirection("end");
 
       // if (currentRatio > previousRatio && isIntersecting) {
       //   state.textContent ="Scrolling down enter"
@@ -37,7 +39,7 @@ export default function Image({
       //   state.textContent ="Scrolling down leave"
       // }
     } else if (currentY > previousY && isIntersecting) {
-      setScrollDirection("start")
+      setScrollDirection("start");
 
       // if (currentRatio < previousRatio) {
       //   state.textContent ="Scrolling up leave"
@@ -46,7 +48,7 @@ export default function Image({
       // }
     }
 
-    setPreviousY(currentY)
+    setPreviousY(currentY);
     // setPreviousRatio(currentRatio)
   }, [currentY, isIntersecting, previousY]);
 
@@ -57,15 +59,14 @@ export default function Image({
       className={clsx(
         revealEffect &&
           "ease-in-out [transition:filter_500ms,opacity_250ms,transform_1000ms] motion-reduce:transition-none",
-        revealEffect && "opacity-0 blur-sm scale-105",
+        revealEffect && "scale-105 opacity-0 blur-sm",
         revealEffect && scrollDirection === "end" && "translate-y-8",
         revealEffect && scrollDirection === "start" && "-translate-y-8",
-        revealEffect &&
-          "data-[loaded=true]:opacity-100",
+        revealEffect && "data-[loaded=true]:opacity-100",
         revealEffect &&
           rootIntersection?.isIntersecting &&
-          "data-[loaded=true]:translate-y-0 data-[loaded=true]:blur-none data-[loaded=true]:scale-100",
-        props.className
+          "data-[loaded=true]:translate-y-0 data-[loaded=true]:scale-100 data-[loaded=true]:blur-none",
+        props.className,
       )}
       onLoadingComplete={(img: HTMLImageElement) => {
         onLoadingComplete(img);

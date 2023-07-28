@@ -45,7 +45,7 @@ export function ProductImageZoom({
           <figure
             className={clsx(
               "relative grid w-[100dvw] cursor-grab place-items-center bg-black [&.dragging]:cursor-grabbing",
-              className
+              className,
             )}
             ref={figureRef}
           >

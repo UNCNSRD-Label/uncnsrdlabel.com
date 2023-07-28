@@ -86,7 +86,7 @@ export default function ScrollControls({
         <ScrollArea.Scrollbar
           className={clsx(
             "ScrollAreaScrollbar",
-            classNames.ScrollAreaScrollbar
+            classNames.ScrollAreaScrollbar,
           )}
           orientation="vertical"
         >
@@ -97,7 +97,7 @@ export default function ScrollControls({
         <ScrollArea.Scrollbar
           className={clsx(
             "ScrollAreaScrollbar",
-            classNames.ScrollAreaScrollbar
+            classNames.ScrollAreaScrollbar,
           )}
           orientation="horizontal"
         >

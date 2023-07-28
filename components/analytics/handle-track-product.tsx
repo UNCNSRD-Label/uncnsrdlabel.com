@@ -9,22 +9,23 @@ export const HandleTrackProduct = () => {
   const track = useTrack();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const product = useProduct()
+  const product = useProduct();
 
   useEffect(() => {
-    console.log('track product');
-    track('product', {
-      product,
-    }
-    // , {
-    //   plugins: {
-    //     // disable this specific track call all plugins except customerio
-    //     all: false,
-    //     customerio: true
-    //   }
-    // }
+    console.log("track product");
+    track(
+      "product",
+      {
+        product,
+      },
+      // , {
+      //   plugins: {
+      //     // disable this specific track call all plugins except customerio
+      //     all: false,
+      //     customerio: true
+      //   }
+      // }
     );
-
   }, [track, pathname, searchParams, product]);
 
   return null;

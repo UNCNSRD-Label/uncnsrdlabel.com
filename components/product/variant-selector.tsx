@@ -40,9 +40,9 @@ export function VariantSelector({
     Array.from(currentParams.entries()).filter(([key, value]) =>
       options.find(
         (option) =>
-          option.name.toLowerCase() === key && option.values.includes(value)
-      )
-    )
+          option.name.toLowerCase() === key && option.values.includes(value),
+      ),
+    ),
   );
 
   // Optimize variants for easier lookups.
@@ -77,8 +77,8 @@ export function VariantSelector({
       (variant) =>
         variant.availableForSale &&
         Object.entries(paramsMap).every(
-          ([key, value]) => variant[key] === value
-        )
+          ([key, value]) => variant[key] === value,
+        ),
     ) || optimizedVariants.find((variant) => variant.availableForSale);
 
   const selectedVariantParams = new URLSearchParams(selectedVariant?.params);
@@ -111,8 +111,8 @@ export function VariantSelector({
           // disable combinations that are not possible.
           const isAvailableForSale = optimizedVariants.find((a) =>
             Array.from(optionParams.entries()).every(
-              ([key, value]) => a[key] === value
-            )
+              ([key, value]) => a[key] === value,
+            ),
           )?.availableForSale;
 
           const DynamicTag = isAvailableForSale ? Link : "span";
@@ -133,7 +133,7 @@ export function VariantSelector({
                     !isActive && isAvailableForSale,
                   "relative z-10 cursor-not-allowed overflow-hidden before:absolute before:inset-x-0 before:-z-10 before:h-px before:-rotate-45 before:bg-gray-500 before:transition-transform":
                     !isAvailableForSale,
-                }
+                },
               )}
               data-testid={isActive ? "selected-variant" : "variant"}
             >

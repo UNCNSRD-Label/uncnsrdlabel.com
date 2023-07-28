@@ -43,7 +43,7 @@ export const AccordionTrigger = forwardRef<
     <AccordionPrimitive.Trigger
       className={clsx(
         "AccordionTrigger group flex w-full items-center justify-between gap-4 focus-visible:border-0 focus-visible:outline-dashed focus-visible:outline-aaaFocus",
-        className
+        className,
       )}
       {...props}
       ref={forwardedRef}
@@ -92,7 +92,7 @@ export const AccordionItem = forwardRef<AccordionItemRef, AccordionItemProps>(
     >
       {children}
     </AccordionPrimitive.Item>
-  )
+  ),
 );
 
 AccordionContent.displayName = "AccordionContent";

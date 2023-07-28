@@ -54,7 +54,7 @@ export default function EditItemQuantityButton({
         {
           "cursor-not-allowed": editing,
           "ml-auto": type === "minus",
-        }
+        },
       )}
     >
       {editing ? (

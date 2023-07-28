@@ -81,7 +81,7 @@ export default function SidebarMenu({ menu }: { menu: Menu[] }) {
                 transition={{ type: "spring", bounce: 0, duration: 0.3 }}
                 className={clsx(
                   "flex w-full flex-col p-6 outline outline-white",
-                  themeColors
+                  themeColors,
                 )}
               >
                 <button

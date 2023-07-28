@@ -39,7 +39,7 @@ export async function HorizontalScroll({ className }: { className?: string }) {
       <div
         className={clsx(
           className,
-          "pin relative grid w-full max-w-[100dvw] items-center py-0.5"
+          "pin relative grid w-full max-w-[100dvw] items-center py-0.5",
         )}
       >
         <div className="pin-wrap-sticky w-full snap-x">

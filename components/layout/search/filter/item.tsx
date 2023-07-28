@@ -52,7 +52,7 @@ function SortFilterItem({ item }: { item: SortFilterItem }) {
           new URLSearchParams({
             ...(q && { q }),
             sort: item.slug,
-          })
+          }),
         )
       : pathname;
 

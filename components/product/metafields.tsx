@@ -34,7 +34,7 @@ export const MetaFields = forwardRef<MetaFieldsRef, MetaFieldsProps>(
             "model",
             "complementary_products",
             "related_products",
-          ].includes(key)
+          ].includes(key),
       );
 
     return (
@@ -54,7 +54,7 @@ export const MetaFields = forwardRef<MetaFieldsRef, MetaFieldsProps>(
                   ?.split("_")
                   .map(
                     (word: string) =>
-                      word.charAt(0).toUpperCase() + word.slice(1)
+                      word.charAt(0).toUpperCase() + word.slice(1),
                   )
                   .join(" ")}
               </AccordionHeader>
@@ -69,7 +69,7 @@ export const MetaFields = forwardRef<MetaFieldsRef, MetaFieldsProps>(
         ))}
       </Accordion>
     );
-  }
+  },
 );
 
 MetaFields.displayName = "MetaFields";

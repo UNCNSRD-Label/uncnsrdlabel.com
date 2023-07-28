@@ -38,7 +38,7 @@ export function GridTileImage({
       {props.src ? (
         <figure
           className={clsx(
-            "relative aspect-3/4 w-full overflow-hidden"
+            "relative aspect-3/4 w-full overflow-hidden",
             // {
             //   "bg-hotPink dark:bg-hotPink": background === "hotPink",
             //   "bg-white dark:bg-white": background === "white",
@@ -59,7 +59,7 @@ export function GridTileImage({
               {
                 "transition hover:scale-105": isInteractive,
               },
-              className
+              className,
             )}
             {...props}
             alt={props.title || ""}
@@ -76,7 +76,7 @@ export function GridTileImage({
             data-testid="product-name"
             className={clsx(
               "box-decoration-clone font-semibold",
-              !labels.isSmall ? "text-3xl" : "text-lg"
+              !labels.isSmall ? "text-3xl" : "text-lg",
             )}
           >
             {labels.title}

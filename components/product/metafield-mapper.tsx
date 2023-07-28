@@ -23,7 +23,7 @@ export const MetafieldMapper = ({ metafield }: { metafield: Metafield }) => {
     case "metaobject_reference":
       {
         value = (metafield.reference as Metaobject)?.fields?.find(
-          (field) => field.key === "name"
+          (field) => field.key === "name",
         )?.value;
       }
       break;

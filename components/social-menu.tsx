@@ -13,7 +13,7 @@ export const SocialMenu: FunctionComponent<SocialMenuProps> = ({
     <menu
       className={clsx(
         "grid grid-flow-col content-center justify-center gap-4",
-        className
+        className,
       )}
     >
       <SocialIcon

@@ -19,14 +19,14 @@ export default function Logo({ blend, className, fill }: Props) {
     <div
       className={clsx(
         "pointer-events-none relative inset-0 z-50",
-        blend && "mix-blend-difference"
+        blend && "mix-blend-difference",
       )}
       ref={rootRef}
     >
       <div
         className={clsx(
           "bottom-12 grid w-full justify-items-center sm:bottom-20",
-          className
+          className,
         )}
         style={{
           position:
@@ -45,7 +45,7 @@ export default function Logo({ blend, className, fill }: Props) {
               {
                 "fill-white": fill === "light" || blend,
                 "fill-black": fill === "dark",
-              }
+              },
             )}
           />
         </AccessibleIcon.Root>

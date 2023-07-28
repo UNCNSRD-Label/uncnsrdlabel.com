@@ -17,9 +17,16 @@ export function ProductDetails({ product }: { product: Product }) {
   const sectionElementRefs = [useRef(null), useRef(null), useRef(null)];
 
   return (
-    <ProductProvider data={product as PartialDeep<ShopifyProduct, {
-      recurseIntoArrays: true;
-    }>}>
+    <ProductProvider
+      data={
+        product as PartialDeep<
+          ShopifyProduct,
+          {
+            recurseIntoArrays: true;
+          }
+        >
+      }
+    >
       <NavigationMenu
         className="fixed inset-x-0 bottom-0 z-10 w-full sm:hidden"
         sectionElementRefs={sectionElementRefs}

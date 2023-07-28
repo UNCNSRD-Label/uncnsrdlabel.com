@@ -17,7 +17,7 @@ function GridItem(props: React.ComponentProps<"li">) {
       {...props}
       className={clsx(
         "relative h-full w-full transition-opacity",
-        props.className
+        props.className,
       )}
     >
       {props.children}

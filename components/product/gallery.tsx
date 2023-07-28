@@ -24,7 +24,7 @@ export function Gallery({
       setCurrentImage(currentImage + 1 < images.length ? currentImage + 1 : 0);
     } else {
       setCurrentImage(
-        currentImage === 0 ? images.length - 1 : currentImage - 1
+        currentImage === 0 ? images.length - 1 : currentImage - 1,
       );
     }
   }
@@ -58,7 +58,7 @@ export function Gallery({
               aria-label="Previous product image"
               className={clsx(
                 buttonClassName,
-                "border-r border-white dark:border-black"
+                "border-r border-white dark:border-black",
               )}
               onClick={() => handleNavigate("previous")}
             >
