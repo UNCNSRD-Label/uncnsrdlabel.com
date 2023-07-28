@@ -1,5 +1,3 @@
-"use client";
-
 import { clsx } from "clsx";
 
 type Props = {
@@ -19,7 +17,7 @@ export default function Navbar(props: Props) {
             props.blend,
         },
         props.sticky ? "sticky" : "fixed",
-        props.className
+        props.className,
       )}
     >
       {props.children}

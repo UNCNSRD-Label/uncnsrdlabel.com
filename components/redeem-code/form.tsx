@@ -9,7 +9,7 @@ export default function RedeemCodeForm({ className }: { className?: string }) {
   const codeInputs: number[] = [...Array(5)];
 
   const defaultValues = Object.fromEntries(
-    codeInputs.map((codeInput, i) => [[`code-${i}`], undefined]),
+    codeInputs.map((codeInput, i) => [[`code-${codeInput}-${i}`], undefined]),
   );
 
   const {
@@ -22,8 +22,11 @@ export default function RedeemCodeForm({ className }: { className?: string }) {
       action={redeemCodeAction}
       className={clsx("mt-8 grid grid-flow-col gap-4 bg-black p-4", className)}
     >
-      {codeInputs.map((i) => (
-        <div className="field aspect-square bg-white" key={`code-${i}`}>
+      {codeInputs.map((codeInput, i) => (
+        <div
+          className="field aspect-square bg-white"
+          key={`code-${codeInput}-${i}`}
+        >
           <input
             autoComplete="true"
             className="w-full border-none outline-none placeholder:text-inherit"
