@@ -1,4 +1,4 @@
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fcommerce&project-name=commerce&repo-name=commerce&demo-title=Next.js%20Commerce&demo-url=https%3A%2F%2Fdemo.vercel.store&demo-image=https%3A%2F%2Fbigcommerce-demo-asset-ksvtgfvnd.vercel.app%2Fbigcommerce.png&env=SHOPIFY_STOREFRONT_ACCESS_TOKEN,SHOPIFY_STORE_DOMAIN,NEXT_PUBLIC_SITE_NAME,TWITTER_CREATOR,TWITTER_SITE)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fcommerce&project-name=commerce&repo-name=commerce&demo-title=Next.js%20Commerce&demo-url=https%3A%2F%2Fdemo.vercel.store&demo-image=https%3A%2F%2Fbigcommerce-demo-asset-ksvtgfvnd.vercel.app%2Fbigcommerce.png&env=NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN,NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN,NEXT_PUBLIC_SITE_NAME,TWITTER_CREATOR,TWITTER_SITE)
 
 # Next.js Commerce
 
@@ -46,7 +46,7 @@ Next.js Commerce requires a [paid Shopify plan](https://www.shopify.com/pricing)
 
 ### Add Shopify domain to an environment variable
 
-Create a `SHOPIFY_STORE_DOMAIN` environment variable and use your Shopify domain as the the value (ie. `SHOPIFY_STORE_SUBDOMAIN.myshopify.com`).
+Create a `NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN` environment variable and use your Shopify domain as the the value (ie. `SHOPIFY_STORE_SUBDOMAIN.myshopify.com`).
 
 > Note: Do not include the `https://`.
 
@@ -56,7 +56,7 @@ Next.js Commerce utilizes [Shopify's Storefront API](https://shopify.dev/docs/ap
 
 In order to use the Shopify's Storefront API, you need to install the [Headless app](https://apps.shopify.com/headless) in your Shopify store.
 
-Once installed, you'll need to create a `SHOPIFY_STOREFRONT_ACCESS_TOKEN` environment variable and use the public access token as the value
+Once installed, you'll need to create a `NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN` environment variable and use the public access token as the value
 
 > Note: Shopify does offer a Node.js Storefront API SDK. We use the Storefront API via GraphQL directly instead of the Node.js SDK so we have more control over fetching and caching.
 
@@ -74,7 +74,7 @@ Once installed, you'll need to create a `SHOPIFY_STOREFRONT_ACCESS_TOKEN` enviro
    ![Add sales channel](https://user-images.githubusercontent.com/446260/233220553-42d94a74-421d-4f8a-99ab-a95936b707a3.jpg)
 1. Click the green `Create storefront` button.
    ![Create storefront](https://user-images.githubusercontent.com/446260/233220556-1eee15c4-a45d-446e-9f73-2e7c9f56b29c.jpg)
-1. Copy and paste the public access token and assign it to a `SHOPIFY_STOREFRONT_ACCESS_TOKEN` environment variable.
+1. Copy and paste the public access token and assign it to a `NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN` environment variable.
    ![Pubic access token](https://user-images.githubusercontent.com/446260/233220558-5db04ff9-b894-40fe-bfba-0e92f26b8e1f.jpg)
 1. If you ever need to reference the public access token again, you can navigate to `https://SHOPIFY_STORE_SUBDOMAIN.myshopify.com/admin/headless_storefronts`.
 </details>

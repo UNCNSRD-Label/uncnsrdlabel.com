@@ -59,9 +59,9 @@ import {
 
 import { type StorefrontApiResponse } from "@shopify/hydrogen-react";
 
-const domain = `https://${process.env.SHOPIFY_STORE_DOMAIN!}`;
+const domain = `https://${process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!}`;
 const endpoint = `${domain}${SHOPIFY_GRAPHQL_API_ENDPOINT}`;
-const key = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN!;
+const key = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN!;
 
 type ExtractVariables<T> = T extends { variables: object }
   ? T["variables"]
@@ -330,7 +330,7 @@ export async function getCollectionProducts({
   });
 
   if (!res.body.data.collection) {
-    console.log(`No collection found for \`${collection}\``);
+    console.info(`No collection found for \`${collection}\``);
     return [];
   }
 

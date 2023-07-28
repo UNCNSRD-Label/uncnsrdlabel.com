@@ -1,8 +1,8 @@
 import { clsx } from "clsx";
-import type { Metadata } from "next";
+import { type Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import { Product, WithContext } from "schema-dts";
+import { Product as ProductSchema, WithContext } from "schema-dts";
 
 import Grid from "@/components/grid";
 import ProductGridItems from "@/components/layout/product-grid-items";
@@ -59,7 +59,7 @@ export default async function ProductPage({
 
   if (!product) return notFound();
 
-  const jsonLd: WithContext<Product> = {
+  const jsonLd: WithContext<ProductSchema> = {
     "@context": "https://schema.org",
     "@type": "Product",
     identifier: product.id,

@@ -1,8 +1,11 @@
+import { type Product } from "@shopify/hydrogen-react/storefront-api-types";
+
 // eslint-disable-next-line no-unused-vars
 export type PluginEventFunction = (options: {
   config: any;
   instance: any;
   payload: {
+    event?: string;
     type: string;
     properties: {
       title: string;
@@ -14,6 +17,8 @@ export type PluginEventFunction = (options: {
       height: number;
     };
     options: {
+      cartId: string;
+      product: Product;
       [key: string]: any;
     };
     userId: string;
@@ -34,6 +39,5 @@ export type PluginEventFunctions = {
     | "pageStart"
     | "pageEnd"
     | "trackStart"
-    | "trackEnd"
-    | "track:addToCart"]: PluginEventFunction;
+    | "trackEnd"]: PluginEventFunction;
 };

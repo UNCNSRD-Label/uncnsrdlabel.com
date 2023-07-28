@@ -1,4 +1,4 @@
-type ConsentSettings = Record<
+export type ConsentSettings = Record<
   | "ad_storage"
   | "analytics_storage"
   | "functionality_storage"

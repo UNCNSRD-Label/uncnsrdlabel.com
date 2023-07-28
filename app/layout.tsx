@@ -130,8 +130,8 @@ export default async function RootLayout({
             <Footer />
           </Suspense>
           <Organization />
+          <HandleRouteChange />
         </Providers>
-        <HandleRouteChange />
       </body>
     </html>
   );

@@ -12,6 +12,7 @@ import {
   defaultConsentSettings,
   denyAllAdditionalConsentSettings,
   types,
+  type ConsentSettings,
 } from "@/lib/consent";
 
 import { COOKIE_CONSENT } from "@/lib/constants";
@@ -70,7 +71,7 @@ export default function ConsentForm(props: ConsentDialogProps) {
 
   const consentCookieData = (getCookie(COOKIE_CONSENT) as string) ?? "{}";
 
-  const savedConsentSettings = JSON.parse(consentCookieData);
+  const savedConsentSettings = JSON.parse(consentCookieData) as ConsentSettings;
 
   const consentSettings = {
     ...defaultConsentSettings,

@@ -1,7 +1,11 @@
 "use client";
 
+import { ProductProvider } from "@shopify/hydrogen-react";
+import { type Product as ShopifyProduct } from "@shopify/hydrogen-react/storefront-api-types";
 import { useRef } from "react";
+import { type PartialDeep } from "type-fest";
 
+import HandleTrackProduct from "@/components/analytics/handle-track-product";
 import { Images } from "@/components/product/images";
 import { MetaFields } from "@/components/product/metafields";
 import { NavigationMenu } from "@/components/product/navigation-menu";
@@ -13,7 +17,9 @@ export function ProductDetails({ product }: { product: Product }) {
   const sectionElementRefs = [useRef(null), useRef(null), useRef(null)];
 
   return (
-    <>
+    <ProductProvider data={product as PartialDeep<ShopifyProduct, {
+      recurseIntoArrays: true;
+    }>}>
       <NavigationMenu
         className="fixed inset-x-0 bottom-0 z-10 w-full sm:hidden"
         sectionElementRefs={sectionElementRefs}
@@ -53,6 +59,7 @@ export function ProductDetails({ product }: { product: Product }) {
           </div>
         </div>
       </div>
-    </>
+      <HandleTrackProduct />
+    </ProductProvider>
   );
 }

@@ -30,7 +30,7 @@ export default function Image({
     // Scrolling down/up
     if (currentY < previousY) {
       setScrollDirection("end")
-      // console.log("end")
+
       // if (currentRatio > previousRatio && isIntersecting) {
       //   state.textContent ="Scrolling down enter"
       // } else {
@@ -38,7 +38,7 @@ export default function Image({
       // }
     } else if (currentY > previousY && isIntersecting) {
       setScrollDirection("start")
-      // console.log("start")
+
       // if (currentRatio < previousRatio) {
       //   state.textContent ="Scrolling up leave"
       // } else {

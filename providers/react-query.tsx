@@ -12,7 +12,7 @@ const ReactQueryDevtoolsProduction = lazy(() =>
   ),
 );
 
-export default function ReactQueryProvider({ children }: PropsWithChildren) {
+export default function AppReactQueryProvider({ children }: PropsWithChildren) {
   const [queryClient] = useState(() => new QueryClient());
   const [showDevtools, setShowDevtools] = useState(false);
 

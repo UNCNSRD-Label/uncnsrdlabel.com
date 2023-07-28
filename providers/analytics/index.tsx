@@ -4,22 +4,33 @@
 import googleTagManager from "@analytics/google-tag-manager";
 import Analytics from "analytics";
 // import eventValidation from "analytics-plugin-event-validation";
-import { useCart, useProduct, useShop } from "@shopify/hydrogen-react";
-import type { Product } from "@shopify/hydrogen-react/storefront-api-types";
+import { useShop } from "@shopify/hydrogen-react";
+// import { useCart, useProduct, useShop } from "@shopify/hydrogen-react";
+// import type { Product } from "@shopify/hydrogen-react/storefront-api-types";
+import { getCookie } from "cookies-next";
 import { PropsWithChildren } from "react";
-import type { PartialDeep } from "type-fest";
+// import type { PartialDeep } from "type-fest";
 import { AnalyticsProvider } from "use-analytics";
 import shopify from "./shopify";
 
-export default function AppAnalyticsProvider({ children }: PropsWithChildren) {
-  const { id: cartId } = useCart();
+import type { ConsentSettings } from "@/lib/consent";
+import { COOKIE_CONSENT } from "@/lib/constants";
 
-  const product = useProduct() as PartialDeep<
-    Product,
-    {
-      recurseIntoArrays: true;
-    }
-  >;
+export default function AppAnalyticsProvider({ children }: PropsWithChildren) {
+  const consentCookieData = (getCookie(COOKIE_CONSENT) as string) ?? "{}";
+
+  const savedConsentSettings = JSON.parse(consentCookieData) as ConsentSettings;
+
+  const hasUserConsent = savedConsentSettings.analytics_storage === "granted";
+
+  // const { id: cartId } = useCart();
+
+  // const product = useProduct() as PartialDeep<
+  //   Product,
+  //   {
+  //     recurseIntoArrays: true;
+  //   }
+  // >;
 
   const { storefrontId, countryIsoCode, languageIsoCode } = useShop();
 
@@ -48,9 +59,11 @@ export default function AppAnalyticsProvider({ children }: PropsWithChildren) {
         containerId: process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID!,
       }),
       shopify({
-        cartId,
+        // cartId,
+        // currency,
+        hasUserConsent,
         locale,
-        product,
+        // product,
         shopId: `gid://shopify/Shop/${process.env.NEXT_PUBLIC_SHOPIFY_SHOP_ID}`,
         storefrontId,
       }),

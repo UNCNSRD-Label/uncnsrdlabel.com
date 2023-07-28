@@ -29,13 +29,13 @@ export function ProductImageZoom({
         centerZoomedOut={false}
         limitToBounds={false}
         onPanningStop={(ref, event) => {
-          console.log("onPanningStop", ref, event);
+          console.info("onPanningStop", ref, event);
           if (figureRef.current) {
             figureRef.current.classList.remove("dragging");
           }
         }}
         onPanningStart={(ref, event) => {
-          console.log("onPanningStart", ref, event);
+          console.info("onPanningStart", ref, event);
           if (figureRef.current) {
             figureRef.current.classList.add("dragging");
           }
