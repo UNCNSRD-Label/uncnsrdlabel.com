@@ -57,7 +57,11 @@ import {
   ShopifyUpdateCartOperation,
 } from "./types";
 
-import { type StorefrontApiResponse } from "@shopify/hydrogen-react";
+import { getErrorMessage, getErrorsMessage } from "@/lib/errors";
+import {
+  type StorefrontApiResponse,
+  type StorefrontApiResponseError,
+} from "@shopify/hydrogen-react";
 
 const domain = `https://${process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!}`;
 const endpoint = `${domain}${SHOPIFY_GRAPHQL_API_ENDPOINT}`;
@@ -77,9 +81,7 @@ export async function shopifyFetch<T>({
   variables?: ExtractVariables<T>;
   headers?: HeadersInit;
   cache?: RequestCache;
-}): Promise<
-  { status: number; body: Exclude<StorefrontApiResponse<T>, "string"> } | never
-> {
+}): Promise<{ status: number; body: T } | never> {
   try {
     const result = await fetch(endpoint, {
       method: "POST",
@@ -96,13 +98,10 @@ export async function shopifyFetch<T>({
       next: { revalidate: 900 }, // 15 minutes
     });
 
-    const body = (await result.json()) as Exclude<
-      StorefrontApiResponse<T>,
-      "string"
-    >;
+    const body = (await result.json()) as T;
 
-    if (typeof body !== "string" && Array.isArray(body.errors)) {
-      throw body.errors[0];
+    if (getErrorMessage(body)) {
+      throw new Error(getErrorMessage(body));
     }
 
     return {
@@ -221,20 +220,25 @@ const reshapeProducts = (products: ShopifyProduct[]) => {
   return reshapedProducts;
 };
 
+const isStorefrontApiResponseError = <T>(
+  response: StorefrontApiResponse<T>,
+): response is StorefrontApiResponseError => {
+  return typeof response === "object" && response.errors !== undefined;
+};
+
 export async function createCart(): Promise<Cart> {
   const res = await shopifyFetch<ShopifyCreateCartOperation>({
     query: createCartMutation,
     cache: "no-store",
   });
 
-  return reshapeCart(
-    (
-      res.body as Exclude<
-        StorefrontApiResponse<ShopifyCreateCartOperation>,
-        "string"
-      >
-    ).data.cartCreate.cart,
-  );
+  if (isStorefrontApiResponseError(res.body)) {
+    throw new Error(getErrorsMessage(res.body));
+  }
+
+  const cart = res.body.data?.cartCreate.cart;
+
+  return reshapeCart(cart);
 }
 
 export async function addToCart(
