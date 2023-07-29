@@ -39,6 +39,7 @@ export type PluginEventFunctions = {
     | "page"
     | "pageStart"
     | "pageEnd"
+    | "track"
     | "trackStart"
     | "trackEnd"]?: PluginEventFunction;
 };

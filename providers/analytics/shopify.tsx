@@ -110,7 +110,7 @@ export default function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
         payload: shopifyPageViewPayload,
       });
     },
-    trackEnd: ({ payload, config }) => {
+    track: ({ payload, config }) => {
       // Fire custom logic after analytics.track() calls
       // console.log("shopify:trackEnd", { payload, config, instance });
 

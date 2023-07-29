@@ -77,12 +77,12 @@ export default function klaviyo(config: KlaviyoConfig): KlaviyoAnalyticsPlugin {
 
       // sendKlaviyoAnalytics(data, "identify");
     },
-    page: ({ payload, config, instance }) => {
-      console.log("klaviyo:page", { payload, config, instance });
-    },
-    trackEnd: async ({ payload, config, instance }) => {
+    // page: ({ payload, config, instance }) => {
+    //   console.log("klaviyo:page", { payload, config, instance });
+    // },
+    track: async ({ payload }) => {
       // Fire custom logic after analytics.track() calls
-      console.log("klaviyo:trackEnd", { payload, config, instance });
+      // console.log("klaviyo:trackEnd", { payload, config, instance });
 
       const customer_properties = {
         $email: "abraham.lincoln@klaviyo.com",
