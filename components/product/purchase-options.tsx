@@ -1,5 +1,5 @@
+import { AddToCart } from "@/components/cart/add-to-cart";
 import Price from "@/components/price";
-import { AddToCart } from "@/components/product/add-to-cart";
 import { VariantSelector } from "@/components/product/variant-selector";
 import Prose from "@/components/prose";
 import { Product } from "@/lib/shopify/types";
