@@ -25,28 +25,28 @@
     @apply cursor-pointer border-none outline-none;
 
     &:has(> img, > figure) {
-      @apply focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-aaaFocus focus-visible:ring-aaaFocus;
+      @apply focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-stateFocus focus-visible:ring-stateFocus;
     }
 
     &:has(> .icon:only-child),
     &.icon-container {
-      @apply focus-visible:fill-aaaFocus focus-visible:stroke-aaaFocus focus-visible:text-aaaFocus;
+      @apply focus-visible:fill-stateFocus focus-visible:stroke-stateFocus focus-visible:text-stateFocus;
     }
   }
 
   a {
-    @apply transition-colors hover:stroke-aaaHover hover:text-aaaHover focus-visible:stroke-aaaFocus focus-visible:text-aaaFocus;
+    @apply transition-colors hover:stroke-stateHover hover:text-stateHover focus-visible:stroke-stateFocus focus-visible:text-stateFocus;
   }
 
   input {
-    --tw-ring-color: theme(ringColor.aaaFocus) !important;
+    --tw-ring-color: theme(ringColor.stateFocus) !important;
 
     &:focus {
-      @apply !border-aaaFocus;
+      @apply !border-stateFocus;
     }
 
     &:hover {
-      @apply !border-aaaHover;
+      @apply !border-stateHover;
     }
   }
 }
@@ -68,21 +68,21 @@
     }
 
     &.btn-outline {
-      @apply hover:!bg-aaaHover/20 hover:!outline-aaaHover;
-      @apply focus-visible:!bg-aaaFocus/20 focus-visible:!outline-aaaFocus;
+      @apply hover:!bg-stateHover/20 hover:!outline-stateHover;
+      @apply focus-visible:!bg-stateFocus/20 focus-visible:!outline-stateFocus;
     }
 
     &:not(.btn-outline) {
-      @apply hover:!text-aaaHover focus-visible:!text-aaaFocus;
+      @apply hover:!text-stateHover focus-visible:!text-stateFocus;
     }
 
     &.btn-bg {
       &.btn-outline {
-        @apply hover:!bg-aaaHover/80 focus-visible:!bg-aaaFocus/80;
+        @apply hover:!bg-stateHover/80 focus-visible:!bg-stateFocus/80;
       }
 
       &:not(.btn-outline) {
-        @apply hover:!bg-aaaHover hover:!text-dark focus-visible:!bg-aaaFocus focus-visible:!text-dark;
+        @apply hover:!bg-stateHover hover:!text-light focus-visible:!bg-stateFocus focus-visible:!text-light;
       }
     }
   }
@@ -276,14 +276,14 @@
   }
 
   .loading {
-    @apply relative !outline-aaaFocus [&_>_*]:text-dark;
+    @apply relative !outline-stateFocus [&_>_*]:text-dark;
 
     span {
       @apply relative z-10;
     }
 
     &::before {
-      @apply absolute inset-0 z-0 animate-pulse bg-gradient-to-r from-aaaFocus/5 via-aaaFocus/10 to-aaaFocus/5;
+      @apply absolute inset-0 z-0 animate-pulse bg-gradient-to-r from-stateFocus/5 via-stateFocus/10 to-stateFocus/5;
       content: "";
       background-size: 500%;
     }

@@ -20,7 +20,7 @@ export const SocialMenu: FunctionComponent<SocialMenuProps> = ({
     >
       <SocialIcon
         className={clsx(
-          "group aspect-square fill-black hover:!fill-aaaHover hover:!stroke-aaaHover focus-visible:!fill-aaaFocus focus-visible:!stroke-aaaFocus dark:fill-white [&_.social-svg-mask]:!fill-inherit",
+          "group aspect-square fill-black hover:!fill-stateHover hover:!stroke-stateHover focus-visible:!fill-stateFocus focus-visible:!stroke-stateFocus dark:fill-white [&_.social-svg-mask]:!fill-inherit",
           iconClassName,
         )}
         target="_blank"
@@ -29,7 +29,7 @@ export const SocialMenu: FunctionComponent<SocialMenuProps> = ({
       />
       <SocialIcon
         className={clsx(
-          "group aspect-square fill-black hover:!fill-aaaHover hover:!stroke-aaaHover focus-visible:!fill-aaaFocus focus-visible:!stroke-aaaFocus dark:fill-white [&_.social-svg-mask]:!fill-inherit",
+          "group aspect-square fill-black hover:!fill-stateHover hover:!stroke-stateHover focus-visible:!fill-stateFocus focus-visible:!stroke-stateFocus dark:fill-white [&_.social-svg-mask]:!fill-inherit",
           iconClassName,
         )}
         target="_blank"
@@ -37,12 +37,12 @@ export const SocialMenu: FunctionComponent<SocialMenuProps> = ({
         style={{ height: "inherit", width: "auto" }}
       />
       {/* <SocialIcon
-              className="group [&_.social-svg-mask]:!fill-black dark:[&_.social-svg-mask]:!fill-white focus-visible:!fill-aaaFocus hover:!fill-aaaHover !h-12 !w-12"
+              className="group [&_.social-svg-mask]:!fill-black dark:[&_.social-svg-mask]:!fill-white focus-visible:!fill-stateFocus hover:!fill-stateHover !h-12 !w-12"
               target="_blank"
               url="https://twitter.com/uncnsrdlabel/"
             /> */}
       {/* <SocialIcon
-              className="group [&_.social-svg-mask]:!fill-black dark:[&_.social-svg-mask]:!fill-white focus-visible:!fill-aaaFocus hover:!fill-aaaHover !h-12 !w-12"
+              className="group [&_.social-svg-mask]:!fill-black dark:[&_.social-svg-mask]:!fill-white focus-visible:!fill-stateFocus hover:!fill-stateHover !h-12 !w-12"
               target="_blank"
               url="https://www.facebook.com/uncnsrdlabel/"
             /> */}

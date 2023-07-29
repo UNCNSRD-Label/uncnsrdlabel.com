@@ -106,7 +106,7 @@ export default async function CartForm({
           </ul>
           <div className="py-4 text-sm text-neutral-500 dark:text-neutral-400">
             <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 dark:border-neutral-700">
-              <p>Taxes</p>
+              <p className="uppercase">Taxes</p>
               <Price
                 className="text-right text-base text-black dark:text-white"
                 amount={cart.cost.totalTaxAmount.amount}
@@ -114,11 +114,11 @@ export default async function CartForm({
               />
             </div>
             <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1 dark:border-neutral-700">
-              <p>Shipping</p>
+              <p className="uppercase">Shipping</p>
               <p className="text-right">Calculated at checkout</p>
             </div>
             <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1 dark:border-neutral-700">
-              <p>Total</p>
+              <p className="uppercase">Total</p>
               <Price
                 className="text-right text-base text-black dark:text-white"
                 amount={cart.cost.totalAmount.amount}

@@ -71,7 +71,7 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                 className={clsx("flex w-full flex-col p-6", themeColors)}
               >
                 <div className="flex items-center justify-between">
-                  <p className="text-lg font-semibold">My Cart</p>
+                  <p className="text-lg uppercase">My Bag</p>
 
                   <button aria-label="Close cart" onClick={closeCart}>
                     <CloseCart />

@@ -1,7 +1,6 @@
 "use client";
 
 import LogotypeIcon from "@/components/icons/logotype";
-import { SocialMenu } from "@/components/social-menu";
 import { themeColors } from "@/lib/effects";
 import { Dialog } from "@headlessui/react";
 import { clsx } from "clsx";
@@ -89,7 +88,9 @@ export default function SidebarMenu({ menu }: { menu: Menu[] }) {
                   aria-label="Close sidebar menu"
                   data-testid="close-sidebar-menu"
                 >
-                  <CloseIcon className="icon h-5 stroke-inherit drop-shadow" />
+                  <div className="relative flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors dark:border-neutral-700 dark:text-white">
+                    <CloseIcon className="icon h-5 stroke-inherit drop-shadow" />
+                  </div>
                 </button>
 
                 <div className="mb-4 w-full">
@@ -112,8 +113,7 @@ export default function SidebarMenu({ menu }: { menu: Menu[] }) {
                     ))}
                   </ul>
                 ) : null}
-                <SocialMenu className="mb-8 h-8 gap-6" />
-                <LogotypeIcon className="my-8 h-8 fill-inherit" />
+                <LogotypeIcon className="my-6 h-8 fill-inherit" />
               </Dialog.Panel>
             </div>
           </Dialog>

@@ -25,6 +25,7 @@ interface AccordionItemProps {
 interface AccordionTriggerProps {
   children?: ReactNode;
   className?: string;
+  chevronClassName?: string;
 }
 
 export type AccordionContentRef = HTMLDivElement;
@@ -38,11 +39,11 @@ export type AccordionTriggerRef = HTMLButtonElement;
 export const AccordionTrigger = forwardRef<
   AccordionTriggerRef,
   AccordionTriggerProps
->(({ children, className, ...props }, forwardedRef) => (
+>(({ children, className, chevronClassName, ...props }, forwardedRef) => (
   <AccordionPrimitive.Header className="AccordionHeader">
     <AccordionPrimitive.Trigger
       className={clsx(
-        "AccordionTrigger group flex w-full items-center justify-between gap-4 focus-visible:border-0 focus-visible:outline-dashed focus-visible:outline-aaaFocus",
+        "AccordionTrigger focus-visible:outline-aaaFocus group flex w-full items-center justify-between gap-4 focus-visible:border-0 focus-visible:outline-dashed",
         className,
       )}
       {...props}
@@ -50,7 +51,10 @@ export const AccordionTrigger = forwardRef<
     >
       {children}
       <ChevronDownIcon
-        className="AccordionChevron h-5 w-5 group-data-[state=open]:rotate-180"
+        className={clsx(
+          "AccordionChevron h-5 w-5 group-data-[state=open]:rotate-180",
+          chevronClassName,
+        )}
         aria-hidden
       />
     </AccordionPrimitive.Trigger>
@@ -86,7 +90,7 @@ export const AccordionHeader = forwardRef<
 export const AccordionItem = forwardRef<AccordionItemRef, AccordionItemProps>(
   ({ children, className, ...props }, forwardedRef) => (
     <AccordionPrimitive.Item
-      className={clsx("AccordionItem border-t border-gray-700 py-6", className)}
+      className={clsx("AccordionItem border-t py-6", className)}
       {...props}
       ref={forwardedRef}
     >
