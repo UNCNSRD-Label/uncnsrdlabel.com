@@ -65,10 +65,6 @@
 
     &[disabled] {
       @apply cursor-not-allowed decoration-2;
-
-      &:not(.loading) {
-        @apply line-through decoration-error;
-      }
     }
 
     &.btn-outline {
