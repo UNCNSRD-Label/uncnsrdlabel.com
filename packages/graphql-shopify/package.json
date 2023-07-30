@@ -1,8 +1,8 @@
 {
   "name": "@uncnsrdlabel/graphql-shopify",
   "scripts": {
-    "build": "dotenv -e ../../.env.local graphql-codegen && tsc --project ./tsconfig.json",
-    "dev": "dotenv -e ../../.env.local graphql-codegen --watch && tsc --project ./tsconfig.json --watch"
+    "build": "dotenv -e ../../.env.local graphql-codegen",
+    "dev": "dotenv -e ../../.env.local graphql-codegen --watch"
   },
   "dependencies": {
     "@graphql-codegen/cli": "latest",
@@ -21,9 +21,8 @@
     "prettier": "latest",
     "typescript-graphql-request": "latest"
   },
-  "exports": {
-    ".": "./dist/index.js"
-  },
-  "type": "module",
-  "types": "./dist/index.d.ts"
+  "files": [
+    "generated"
+  ],
+  "type": "module"
 }

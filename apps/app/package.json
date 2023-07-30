@@ -3,9 +3,7 @@
   "private": true,
   "scripts": {
     "analyze": "cross-env ANALYZE=true next build",
-    "dev": "run-p dev:next dev:codegen",
-    "dev:codegen": "graphql-codegen --config codegen.ts --watch",
-    "dev:next": "next dev",
+    "dev": "next dev",
     "build": "npm run partytown && next build",
     "partytown": "partytown copylib public/~partytown",
     "start": "next start",
