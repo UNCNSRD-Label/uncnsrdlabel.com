@@ -1,0 +1,29 @@
+{
+  "name": "@uncnsrdlabel/graphql-shopify",
+  "scripts": {
+    "build": "dotenv -e ../../.env.local graphql-codegen && tsc --project ./tsconfig.json",
+    "dev": "dotenv -e ../../.env.local graphql-codegen --watch && tsc --project ./tsconfig.json --watch"
+  },
+  "dependencies": {
+    "@graphql-codegen/cli": "latest",
+    "@graphql-codegen/client-preset": "latest",
+    "@graphql-typed-document-node/core": "latest",
+    "@shopify/hydrogen-react": "^2023.7.0",
+    "@types/node": "latest",
+    "dotenv-cli": "latest",
+    "graphql": "^16.7.1",
+    "graphql-config": "latest",
+    "graphql-request": "latest",
+    "graphql-tag": "latest",
+    "typescript": "latest"
+  },
+  "devDependencies": {
+    "prettier": "latest",
+    "typescript-graphql-request": "latest"
+  },
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "type": "module",
+  "types": "./dist/index.d.ts"
+}

@@ -1,9 +1,18 @@
+import { match } from '@formatjs/intl-localematcher';
+import Negotiator from 'negotiator';
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
+const headers = { 'accept-language': 'en-US,en;q=0.5' }
+const languages = new Negotiator({ headers }).languages()
+const locales = ['en-US', 'nl-NL', 'nl']
+const defaultLocale = 'en-US'
+ 
 const savedCode = "arizona";
 
 const target = "https://holding.uncnsrdlabel.com";
+
+match(languages, locales, defaultLocale) // -> 'en-US'
 
 export default async function middleware(request: NextRequest) {
   const suppliedCode = request.nextUrl.searchParams.get("code");

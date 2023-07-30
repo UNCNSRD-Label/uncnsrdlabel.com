@@ -1,0 +1,43 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDotEnv": [".env", ".env.local"],
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "dotEnv": [
+        ".env.production.local",
+        ".env.local",
+        ".env.production",
+        ".env"
+      ],
+      "env": ["NEXT_PUBLIC_HYGRAPH_API_TOKEN", "NEXT_PUBLIC_HYGRAPH_PROJECT_ID", "NEXT_PUBLIC_HYGRAPH_REGION", "NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID", "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY", "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY_LIVE", "NEXT_PUBLIC_SUPABASE_ANON_KEY", "NEXT_PUBLIC_SUPABASE_URL", "SITE_NAME", "SITE_URL", "STRIPE_SECRET_KEY", "STRIPE_SECRET_KEY_LIVE", "STRIPE_WEBHOOK_SECRET", "SUPABASE_SERVICE_ROLE_KEY"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**"]
+    },
+    "dev": {
+      "dotEnv": [
+        ".env.development.local",
+        ".env.local",
+        ".env.development",
+        ".env"
+      ],
+      "env": ["NEXT_PUBLIC_HYGRAPH_API_TOKEN", "NEXT_PUBLIC_HYGRAPH_PROJECT_ID", "NEXT_PUBLIC_HYGRAPH_REGION", "NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID", "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY", "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY_LIVE", "NEXT_PUBLIC_SUPABASE_ANON_KEY", "NEXT_PUBLIC_SUPABASE_URL", "SITE_NAME", "SITE_URL", "STRIPE_SECRET_KEY", "STRIPE_SECRET_KEY_LIVE", "STRIPE_WEBHOOK_SECRET", "SUPABASE_SERVICE_ROLE_KEY"]
+    },
+    "generate-types": {
+      "outputs": []
+    },
+    "lint": {
+      "outputs": []
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "dotEnv": [".env.test.local", ".env.test", ".env"],
+      "outputs": []
+    },
+    "start": {
+      "cache": false
+    },
+    "clean": {
+      "cache": false
+    }
+  }
+}
