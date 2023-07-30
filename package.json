@@ -1,11 +1,16 @@
 {
+  "devDependencies": {
+    "@graphql-eslint/eslint-plugin": "^3.20.1",
+    "@turbo/gen": "^1.9.7",
+    "@types/node": "^20.4.2",
+    "eslint": "latest",
+    "eslint-config-turbo": "latest",
+    "eslint-config-custom": "workspace:*",
+    "turbo": "^1.10.12"
+  },
   "name": "uncnsrdlabel.com",
-  "repository": "https://github.com/karlito-who-else/uncnsrdlabel.com.git",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
+  "repository": "https://github.com/karlito-who-else/uncnsrdlabel.com.git",
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
@@ -13,11 +18,9 @@
     "lint": "turbo lint",
     "clean": "turbo clean"
   },
-  "devDependencies": {
-    "@graphql-eslint/eslint-plugin": "^3.20.1",
-    "@types/node": "^20.4.2",
-    "eslint": "latest",
-    "eslint-config-turbo": "latest",
-    "turbo": "^1.10.12"
-  }
+  "packageManager": "pnpm@8.6.10",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
 }
