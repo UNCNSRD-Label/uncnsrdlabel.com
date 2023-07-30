@@ -1,69 +1,69 @@
 import { revalidate } from "@/app/[page]/page";
 import {
-  HIDDEN_PRODUCT_TAG,
-  SHOPIFY_GRAPHQL_API_ENDPOINT,
-} from "@/lib/constants";
-import { isShopifyError } from "@/lib/type-guards";
+    HIDDEN_PRODUCT_TAG,
+    SHOPIFY_GRAPHQL_API_ENDPOINT,
+} from "@uncnsrdlabel/lib/constants";
+import { isShopifyError } from "@uncnsrdlabel/lib/type-guards";
 import { camelCase } from "lodash";
 import {
-  addToCartMutation,
-  createCartMutation,
-  editCartItemsMutation,
-  removeFromCartMutation,
+    addToCartMutation,
+    createCartMutation,
+    editCartItemsMutation,
+    removeFromCartMutation,
 } from "./mutations/cart";
 import { getCartQuery } from "./queries/cart";
 import {
-  getCollectionProductsQuery,
-  getCollectionQuery,
-  getCollectionsQuery,
+    getCollectionProductsQuery,
+    getCollectionQuery,
+    getCollectionsQuery,
 } from "./queries/collection";
 import { getMenuQuery } from "./queries/menu";
 import { getPageQuery, getPagesQuery } from "./queries/page";
 import { getPoliciesQuery } from "./queries/policy";
 import {
-  getProductQuery,
-  getProductRecommendationsQuery,
-  getProductsQuery,
+    getProductQuery,
+    getProductRecommendationsQuery,
+    getProductsQuery,
 } from "./queries/product";
 import {
-  Cart,
-  Collection,
-  Connection,
-  Image,
-  Menu,
-  Page,
-  Policies,
-  Policy,
-  PolicyHandle,
-  PolicyName,
-  Product,
-  ProductVariant,
-  ShopifyAddToCartOperation,
-  ShopifyCart,
-  ShopifyCartOperation,
-  ShopifyCollection,
-  ShopifyCollectionOperation,
-  ShopifyCollectionProductsOperation,
-  ShopifyCollectionsOperation,
-  ShopifyCreateCartOperation,
-  ShopifyMenuOperation,
-  ShopifyPage,
-  ShopifyPageOperation,
-  ShopifyPagesOperation,
-  ShopifyPoliciesOperation,
-  ShopifyProduct,
-  ShopifyProductOperation,
-  ShopifyProductRecommendationsOperation,
-  ShopifyProductsOperation,
-  ShopifyRemoveFromCartOperation,
-  ShopifyUpdateCartOperation,
+    Cart,
+    Collection,
+    Connection,
+    Image,
+    Menu,
+    Page,
+    Policies,
+    Policy,
+    PolicyHandle,
+    PolicyName,
+    Product,
+    ProductVariant,
+    ShopifyAddToCartOperation,
+    ShopifyCart,
+    ShopifyCartOperation,
+    ShopifyCollection,
+    ShopifyCollectionOperation,
+    ShopifyCollectionProductsOperation,
+    ShopifyCollectionsOperation,
+    ShopifyCreateCartOperation,
+    ShopifyMenuOperation,
+    ShopifyPage,
+    ShopifyPageOperation,
+    ShopifyPagesOperation,
+    ShopifyPoliciesOperation,
+    ShopifyProduct,
+    ShopifyProductOperation,
+    ShopifyProductRecommendationsOperation,
+    ShopifyProductsOperation,
+    ShopifyRemoveFromCartOperation,
+    ShopifyUpdateCartOperation,
 } from "./types";
 
-import { getErrorsMessage } from "@/lib/errors";
 import {
-  type StorefrontApiResponse,
-  type StorefrontApiResponseError,
+    type StorefrontApiResponse,
+    type StorefrontApiResponseError,
 } from "@shopify/hydrogen-react";
+import { getErrorsMessage } from "@uncnsrdlabel/lib/errors";
 
 const domain = `https://${process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!}`;
 const endpoint = `${domain}${SHOPIFY_GRAPHQL_API_ENDPOINT}`;

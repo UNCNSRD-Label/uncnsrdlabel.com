@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
-import { getPage } from "lib/shopify";
+import { getPage } from "@uncnsrdlabel/lib/shopify";
+import Image from "@uncnsrdlabel/ui/components/image";
+import Prose from "@uncnsrdlabel/ui/components/prose";
 import { notFound } from "next/navigation";
-import Image from "ui/image";
-import Prose from "ui/prose";
 
 export const runtime = "edge";
 
@@ -36,7 +36,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({ params }: { params: { page: string } }) {
+export async function Page({ params }: { params: { page: string } }) {
   const page = await getPage(params.page);
 
   if (!page) return notFound();

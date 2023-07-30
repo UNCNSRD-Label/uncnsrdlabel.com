@@ -1,15 +1,15 @@
+import { SITE_DOMAIN } from "@uncnsrdlabel/lib/constants";
+import { themeColors } from "@uncnsrdlabel/lib/effects";
+import Providers from "@uncnsrdlabel/providers";
+import HandleRouteChange from "@uncnsrdlabel/ui/components/analytics/handle-route-change";
+import Banner from "@uncnsrdlabel/ui/components/banner";
+import Footer from "@uncnsrdlabel/ui/components/layout/footer";
+import Progress from "@uncnsrdlabel/ui/components/layout/progress";
+import { Organization } from "@uncnsrdlabel/ui/components/schema.org/organization";
 import { clsx } from "clsx";
-import { SITE_DOMAIN } from "lib/constants";
-import { themeColors } from "lib/effects";
 import { Inter, Montserrat } from "next/font/google";
 import localFont from "next/font/local";
-import Providers from "providers";
 import { ReactNode, Suspense } from "react";
-import HandleRouteChange from "ui/analytics/handle-route-change";
-import Banner from "ui/banner";
-import Footer from "ui/layout/footer";
-import Progress from "ui/layout/progress";
-import { Organization } from "ui/schema.org/organization";
 import "./globals.css";
 
 const {
@@ -90,7 +90,7 @@ const montserrat = Montserrat({
   weight: "300",
 });
 
-export default async function RootLayout({
+export async function RootLayout({
   children,
 }: {
   children: ReactNode;

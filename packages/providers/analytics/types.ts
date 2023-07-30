@@ -1,4 +1,4 @@
-import { type Product } from "@/lib/shopify/types";
+import { type Product } from "@uncnsrdlabel/lib/shopify/types";
 
 // eslint-disable-next-line no-unused-vars
 export type PluginEventFunction = (options: {

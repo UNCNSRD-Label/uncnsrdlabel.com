@@ -1,17 +1,17 @@
 "use client";
 
 import {
-  AnalyticsEventName,
-  AnalyticsPageType,
-  ShopifySalesChannel,
-  getClientBrowserParameters,
-  sendShopifyAnalytics,
-  type ShopifyAddToCartPayload,
-  type ShopifyPageViewPayload,
+    AnalyticsEventName,
+    AnalyticsPageType,
+    ShopifySalesChannel,
+    getClientBrowserParameters,
+    sendShopifyAnalytics,
+    type ShopifyAddToCartPayload,
+    type ShopifyPageViewPayload,
 } from "@shopify/hydrogen-react";
 import type {
-  CurrencyCode,
-  LanguageCode,
+    CurrencyCode,
+    LanguageCode,
 } from "@shopify/hydrogen-react/storefront-api-types";
 import { Cookies } from "react-cookie";
 
@@ -29,7 +29,7 @@ export interface ShopifyConfig {
 export type ShopifyAnalyticsPlugin = AnalyticsPlugin & PluginEventFunctions;
 
 // eslint-disable-next-line no-unused-vars
-export default function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
+export function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
   const { collectionHandle, hasUserConsent, locale, shopId, storefrontId } =
     config;
 

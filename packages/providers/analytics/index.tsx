@@ -11,10 +11,10 @@ import { AnalyticsProvider } from "use-analytics";
 import klaviyo from "./klaviyo";
 import shopify from "./shopify";
 
-import type { ConsentSettings } from "@/lib/consent";
-import { COOKIE_CONSENT } from "@/lib/constants";
+import type { ConsentSettings } from "@uncnsrdlabel/lib/consent";
+import { COOKIE_CONSENT } from "@uncnsrdlabel/lib/constants";
 
-export default function AppAnalyticsProvider({ children }: PropsWithChildren) {
+export function AppAnalyticsProvider({ children }: PropsWithChildren) {
   const consentCookieData = (getCookie(COOKIE_CONSENT) as string) ?? "{}";
 
   const savedConsentSettings = JSON.parse(consentCookieData) as ConsentSettings;

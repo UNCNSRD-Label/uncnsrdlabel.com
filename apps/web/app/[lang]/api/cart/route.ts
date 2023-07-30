@@ -1,8 +1,8 @@
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
-import { addToCart, removeFromCart, updateCart } from "lib/shopify";
-import { isShopifyError } from "lib/type-guards";
+import { addToCart, removeFromCart, updateCart } from "@uncnsrdlabel/lib/shopify";
+import { isShopifyError } from "@uncnsrdlabel/lib/type-guards";
 
 import { Cart, CartResponse } from "./types";
 

@@ -1,12 +1,12 @@
-import { themeColors } from "lib/effects";
+import { themeColors } from "@uncnsrdlabel/lib/effects";
+import { HomepageCarousel } from "@uncnsrdlabel/ui/components/homepage-carousel";
+import Image from "@uncnsrdlabel/ui/components/image";
+import Logo from "@uncnsrdlabel/ui/components/layout/logo";
+import Navbar from "@uncnsrdlabel/ui/components/layout/navbar";
+import NavbarContent from "@uncnsrdlabel/ui/components/layout/navbar/content";
+import { Video, type VideoProps } from "@uncnsrdlabel/ui/components/video";
 import Link from "next/link";
 import { Suspense } from "react";
-import { HomepageCarousel } from "ui/homepage-carousel";
-import Image from "ui/image";
-import Logo from "ui/layout/logo";
-import Navbar from "ui/layout/navbar";
-import NavbarContent from "ui/layout/navbar/content";
-import { Video, type VideoProps } from "ui/video";
 
 export const runtime = "edge";
 
@@ -37,7 +37,7 @@ const video: VideoProps = {
   url: "/videos/ZfGt0lKisCU.mp4",
 };
 
-export default async function HomePage() {
+export async function HomePage() {
   return (
     <div className="dark">
       <div className={themeColors}>

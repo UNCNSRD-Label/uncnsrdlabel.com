@@ -35,7 +35,7 @@ const sendKlaviyoAnalytics = async (
 };
 
 // eslint-disable-next-line no-unused-vars
-export default function klaviyo(config: KlaviyoConfig): KlaviyoAnalyticsPlugin {
+export function klaviyo(config: KlaviyoConfig): KlaviyoAnalyticsPlugin {
   const { hasUserConsent } = config;
 
   // const cookies = new Cookies();

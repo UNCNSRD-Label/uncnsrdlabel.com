@@ -1,10 +1,10 @@
 import { PropsWithChildren } from "react";
 
-import AnalyticsProvider from "@/providers/analytics";
-import ReactQueryProvider from "@/providers/react-query";
-import ShopifyProvider from "@/providers/shopify";
+import { AnalyticsProvider } from "@/providers/analytics";
+import { ReactQueryProvider } from "@/providers/react-query";
+import { ShopifyProvider } from "@/providers/shopify";
 
-export default function AppProviders({ children }: PropsWithChildren) {
+export function AppProviders({ children }: PropsWithChildren) {
   return (
     <ReactQueryProvider>
       <ShopifyProvider>

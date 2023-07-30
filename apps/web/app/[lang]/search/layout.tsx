@@ -1,14 +1,14 @@
+import { sorting } from "@uncnsrdlabel/lib/constants";
+import Logo from "@uncnsrdlabel/ui/components/layout/logo";
+import Navbar from "@uncnsrdlabel/ui/components/layout/navbar";
+import NavbarContent from "@uncnsrdlabel/ui/components/layout/navbar/content";
+import Collections from "@uncnsrdlabel/ui/components/layout/search/collections";
+import FilterList from "@uncnsrdlabel/ui/components/layout/search/filter";
+import { PageTransition } from "@uncnsrdlabel/ui/components/page-transition";
 import { clsx } from "clsx";
-import { sorting } from "lib/constants";
 import { Suspense } from "react";
-import Logo from "ui/layout/logo";
-import Navbar from "ui/layout/navbar";
-import NavbarContent from "ui/layout/navbar/content";
-import Collections from "ui/layout/search/collections";
-import FilterList from "ui/layout/search/filter";
-import { PageTransition } from "ui/page-transition";
 
-export default function SearchLayout({
+export function SearchLayout({
   children,
 }: {
   children: React.ReactNode;

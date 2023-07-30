@@ -1,6 +1,6 @@
-import Grid from "ui/grid";
+import Grid from "@uncnsrdlabel/ui/components/grid";
 
-export default function Loading() {
+export function Loading() {
   return (
     <Grid className="grid-cols-2 lg:grid-cols-3">
       {Array(12)

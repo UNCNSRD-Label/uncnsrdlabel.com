@@ -1,10 +1,10 @@
-import { getCollection, getCollectionProducts } from "lib/shopify";
+import { getCollection, getCollectionProducts } from "@uncnsrdlabel/lib/shopify";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { defaultSort, sorting } from "lib/constants";
-import Grid from "ui/grid";
-import ProductGridItems from "ui/layout/product-grid-items";
+import { defaultSort, sorting } from "@uncnsrdlabel/lib/constants";
+import Grid from "@uncnsrdlabel/ui/components/grid";
+import ProductGridItems from "@uncnsrdlabel/ui/components/layout/product-grid-items";
 
 export const runtime = "edge";
 
@@ -35,7 +35,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function CategoryPage({
+export async function CategoryPage({
   params,
   searchParams,
 }: {

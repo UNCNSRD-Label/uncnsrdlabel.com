@@ -1,7 +1,7 @@
-import { defaultSort, sorting } from "lib/constants";
-import { getProducts } from "lib/shopify";
-import Grid from "ui/grid";
-import ProductGridItems from "ui/layout/product-grid-items";
+import { defaultSort, sorting } from "@uncnsrdlabel/lib/constants";
+import { getProducts } from "@uncnsrdlabel/lib/shopify";
+import Grid from "@uncnsrdlabel/ui/components/grid";
+import ProductGridItems from "@uncnsrdlabel/ui/components/layout/product-grid-items";
 
 export const runtime = "edge";
 
@@ -10,7 +10,7 @@ export const metadata = {
   description: "Search for products in the store.",
 };
 
-export default async function SearchPage({
+export async function SearchPage({
   searchParams,
 }: {
   searchParams?: { [key: string]: string | string[] | undefined };

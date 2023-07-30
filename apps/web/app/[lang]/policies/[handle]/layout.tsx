@@ -1,9 +1,9 @@
-// import Logo from "ui/layout/logo";
+// import Logo from "@uncnsrdlabel/ui/components/layout/logo";
+import Navbar from "@uncnsrdlabel/ui/components/layout/navbar";
+import NavbarContent from "@uncnsrdlabel/ui/components/layout/navbar/content";
 import { Suspense } from "react";
-import Navbar from "ui/layout/navbar";
-import NavbarContent from "ui/layout/navbar/content";
 
-export default function SearchLayout({
+export function SearchLayout({
   children,
 }: {
   children: React.ReactNode;

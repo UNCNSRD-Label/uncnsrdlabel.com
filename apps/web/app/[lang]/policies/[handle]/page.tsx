@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 
-import { getPolicy } from "lib/shopify";
+import { getPolicy } from "@uncnsrdlabel/lib/shopify";
+import Prose from "@uncnsrdlabel/ui/components/prose";
 import { notFound } from "next/navigation";
-import Prose from "ui/prose";
 
-import { PolicyHandle } from "lib/shopify/types";
+import { PolicyHandle } from "@uncnsrdlabel/lib/shopify/types";
 
 export const runtime = "edge";
 
@@ -34,7 +34,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function Policy({
+export async function Policy({
   params,
 }: {
   params: { handle: PolicyHandle };

@@ -3,9 +3,10 @@
     "@graphql-eslint/eslint-plugin": "^3.20.1",
     "@turbo/gen": "^1.9.7",
     "@types/node": "^20.4.2",
-    "eslint": "latest",
+    "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "eslint-config-turbo": "latest",
-    "eslint-config-custom": "workspace:*",
+    "eslint": "latest",
+    "madge": "6.1.0",
     "turbo": "^1.10.12"
   },
   "name": "uncnsrdlabel.com",
@@ -13,10 +14,18 @@
   "repository": "https://github.com/karlito-who-else/uncnsrdlabel.com.git",
   "scripts": {
     "build": "turbo build",
+    "clean": "turbo clean",
     "dev": "turbo dev",
-    "start": "turbo start",
     "lint": "turbo lint",
-    "clean": "turbo clean"
+    "start": "turbo start",
+    "lint-staged": "lint-staged",
+    "prettier:check": "prettier --check --ignore-unknown .",
+    "prettier:fix": "prettier --write --ignore-unknown .",
+    "prettier:list-different": "npx prettier . --list-different",
+    "test": "pnpm lint && pnpm prettier:check",
+    "test:e2e": "playwright test",
+    "typecheck": "turbo typecheck",
+    "unused": "npx next-unused"
   },
   "packageManager": "pnpm@8.6.10",
   "workspaces": [

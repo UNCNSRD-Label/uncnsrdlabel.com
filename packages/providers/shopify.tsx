@@ -13,7 +13,7 @@ const storeDomain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!;
 const storefrontApiVersion =
   process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_API_VERSION!;
 
-export default function AppShopifyProvider({ children }: PropsWithChildren) {
+export function AppShopifyProvider({ children }: PropsWithChildren) {
   const shopifyConfig = {
     countryIsoCode: "US" as CountryCode,
     languageIsoCode: "en" as LanguageCode,

@@ -1,5 +1,5 @@
 {
-  "name": "@uncnsrdlabel/graphql-shopify",
+  "name": "@uncnsrdlabel/graphql-shopify-storefront",
   "scripts": {
     "build": "dotenv -e ../../.env.local graphql-codegen",
     "dev": "dotenv -e ../../.env.local graphql-codegen --watch"

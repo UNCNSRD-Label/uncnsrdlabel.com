@@ -4,11 +4,11 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { Product as ProductSchema, WithContext } from "schema-dts";
 
-import { HIDDEN_PRODUCT_TAG } from "lib/constants";
-import { getProduct, getProductRecommendations } from "lib/shopify";
-import Grid from "ui/grid";
-import ProductGridItems from "ui/layout/product-grid-items";
-import { ProductDetails } from "ui/product/details";
+import { HIDDEN_PRODUCT_TAG } from "@uncnsrdlabel/lib/constants";
+import { getProduct, getProductRecommendations } from "@uncnsrdlabel/lib/shopify";
+import Grid from "@uncnsrdlabel/ui/components/grid";
+import ProductGridItems from "@uncnsrdlabel/ui/components/layout/product-grid-items";
+import { ProductDetails } from "@uncnsrdlabel/ui/components/product/details";
 
 export const runtime = "edge";
 
@@ -50,7 +50,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function ProductPage({
+export async function ProductPage({
   params,
 }: {
   params: { handle: string };
