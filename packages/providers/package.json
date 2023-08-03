@@ -1,17 +1,35 @@
 {
-  "name": "@uncnsrdlabel/providers",
-  "version": "0.0.0",
-  "private": true,
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
   "dependencies": {
     "@shopify/hydrogen-react": "^2023.7.0",
-    "@tanstack/react-query": "^4.32.0",
-    "react": "18.2.0"
+    "@tanstack/react-query": "^4.32.1",
+    "@tanstack/react-query-devtools": "^4.32.1",
+    "@uncnsrdlabel/lib": "workspace:*",
+    "analytics": "^0.8.9",
+    "cookies-next": "^2.1.2",
+    "react": "18.2.0",
+    "react-cookie": "^4.1.1",
+    "use-analytics": "^1.1.0"
   },
   "devDependencies": {
-    "@types/react": "18.2.17"
-  }
+    "@types/react": "18.2.18",
+    "@types/use-analytics": "^0.0.0",
+    "@uncnsrdlabel/eslint-config-custom": "workspace:*",
+    "@uncnsrdlabel/tailwind-config": "workspace:*",
+    "@uncnsrdlabel/tsconfig": "workspace:*",
+    "tsup": "^7.2.0",
+    "type-fest": "^4.1.0",
+    "typescript": "^5.1.6"
+  },
+  "exports": {
+    ".": "./dist"
+  },
+  "license": "MIT",
+  "name": "@uncnsrdlabel/providers",
+  "scripts": {
+    "build": "tsup",
+    "types:check": "tsc --noEmit",
+    "lint": "eslint \"**/*.ts*\"",
+    "generate:component": "turbo gen react-component"
+  },
+  "types": "./dist/index.d.ts"
 }

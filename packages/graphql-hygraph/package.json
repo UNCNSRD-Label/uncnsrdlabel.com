@@ -20,9 +20,6 @@
     "prettier": "latest",
     "typescript-graphql-request": "latest"
   },
-  "exports": {
-    ".": "./dist/index.js"
-  },
   "type": "module",
   "types": "./dist/index.d.ts"
 }

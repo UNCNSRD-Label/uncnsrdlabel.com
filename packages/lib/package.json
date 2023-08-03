@@ -1,16 +1,29 @@
 {
-  "name": "@uncnsrdlabel/lib",
-  "version": "0.0.0",
-  "private": true,
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
   "dependencies": {
     "@shopify/hydrogen-react": "^2023.7.0",
-    "clsx": "^2.0.0"
+    "clsx": "^2.0.0",
+    "lodash": "^4.17.21",
+    "next": "13.4.12"
   },
   "devDependencies": {
-    "type-fest": "^4.0.0"
-  }
+    "@types/lodash": "^4.14.196",
+    "@types/react": "18.2.18",
+    "@uncnsrdlabel/eslint-config-custom": "workspace:*",
+    "@uncnsrdlabel/tailwind-config": "workspace:*",
+    "@uncnsrdlabel/tsconfig": "workspace:*",
+    "tsup": "^7.2.0",
+    "type-fest": "^4.1.0",
+    "typescript": "^5.1.6"
+  },
+  "exports": {
+    ".": "./dist"
+  },
+  "license": "MIT",
+  "name": "@uncnsrdlabel/lib",
+  "scripts": {
+    "build": "tsup",
+    "types:check": "tsc --noEmit",
+    "lint": "eslint \"**/*.ts*\""
+  },
+  "types": "./dist/index.d.ts"
 }

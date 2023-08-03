@@ -1,19 +1,8 @@
 {
-  "name": "@uncnsrdlabel/ui",
-  "version": "0.0.0",
-  "main": "./index.tsx",
-  "types": "./index.tsx",
-  "license": "MIT",
-  "scripts": {
-    "lint": "eslint \"**/*.ts*\"",
-    "generate:component": "turbo gen react-component",
-    "typecheck": "turbo typecheck"
-  },
   "dependencies": {
-    "@uncnsrdlabel/eslint-config-custom": "workspace:*",
-    "@uncnsrdlabel/graphql-shopify-storefront": "workspace:*",
-    "@uncnsrdlabel/lib": "workspace:*",
-    "@uncnsrdlabel/tsconfig": "workspace:*",
+    "@graphql-typed-document-node/core": "^3.2.0",
+    "@headlessui/react": "^1.7.16",
+    "@heroicons/react": "^2.0.18",
     "@radix-ui/react-accessible-icon": "^1.0.3",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-checkbox": "^1.0.4",
@@ -28,19 +17,18 @@
     "@radix-ui/react-toast": "^1.1.4",
     "@radix-ui/react-toolbar": "^1.0.4",
     "@radix-ui/react-tooltip": "^1.0.6",
-    "@graphql-typed-document-node/core": "^3.2.0",
-    "@headlessui/react": "^1.7.16",
-    "@heroicons/react": "^2.0.18",
     "@react-hooks-library/core": "^0.5.1",
     "@react-hookz/web": "^23.1.0",
-    "@shopify/hydrogen": "^2023.7.0",
+    "@shopify/hydrogen": "^2023.7.1",
     "@shopify/hydrogen-react": "^2023.7.0",
-    "@tanstack/react-query": "^4.32.0",
+    "@tanstack/react-query": "^4.32.1",
+    "@uncnsrdlabel/graphql-shopify-storefront": "workspace:*",
+    "@uncnsrdlabel/lib": "workspace:*",
     "@vercel/analytics": "^1.0.1",
-    "@vercel/og": "^0.5.9",
+    "@vercel/og": "^0.5.10",
     "clsx": "^2.0.0",
     "cookies-next": "^2.1.2",
-    "framer-motion": "^10.14.0",
+    "framer-motion": "^10.15.0",
     "is-empty-iterable": "^3.0.0",
     "lodash": "^4.17.21",
     "next": "13.4.12",
@@ -64,19 +52,38 @@
     "zod-fetch": "^0.1.1"
   },
   "devDependencies": {
-    "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "^0.5.4",
     "@tailwindcss/typography": "^0.5.9",
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.0",
-    "eslint": "^7.32.0",
-    "react": "^17.0.2",
-    "tailwindcss": "^3.3.3",
+    "@types/lodash": "^4.14.196",
+    "@types/react": "^18.2.18",
+    "@types/react-dom": "^18.2.7",
+    "@types/use-analytics": "^0.0.0",
+    "@uncnsrdlabel/eslint-config-custom": "workspace:*",
+    "@uncnsrdlabel/tailwind-config": "workspace:*",
     "@uncnsrdlabel/tsconfig": "workspace:*",
-    "typescript": "^4.5.2"
+    "eslint": "^8.46.0",
+    "postcss": "^8.4.27",
+    "react": "^18.2.0",
+    "tailwindcss": "^3.3.3",
+    "tsup": "^7.2.0",
+    "type-fest": "^4.1.0",
+    "typescript": "^5.1.6"
   },
   "exports": {
-    ".": "./*"
-  }
+    ".": "./dist",
+    "./styles.css": "./dist/index.css"
+  },
+  "license": "MIT",
+  "name": "@uncnsrdlabel/ui",
+  "scripts": {
+    "build": "tsup",
+    "types:check": "tsc --noEmit",
+    "lint": "eslint \"**/*.ts*\"",
+    "generate:component": "turbo gen react-component"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "types": "./dist/index.d.ts"
 }

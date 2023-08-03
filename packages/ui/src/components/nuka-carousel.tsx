@@ -1,0 +1,50 @@
+"use client";
+
+import { useMediaQuery } from "@react-hookz/web";
+import { minWidthLg, minWidthSm } from "@uncnsrdlabel/ui/lib/tailwind";
+import { clsx } from "clsx";
+import Carousel, { type CarouselProps } from "nuka-carousel";
+import { Suspense } from "react";
+
+export type { CarouselProps as NukaCarouselProps };
+
+export function NukaCarousel(props: CarouselProps) {
+  const isSm = useMediaQuery(`(min-width: ${minWidthSm})`);
+
+  const isLg = useMediaQuery(`(min-width: ${minWidthLg})`);
+
+  let slidesToShow = 1;
+
+  if (isSm) {
+    slidesToShow = 2;
+  }
+
+  if (isLg) {
+    slidesToShow = 3;
+  }
+
+  return (
+    <Suspense>
+      <Carousel
+        {...props}
+        className={clsx(props.className)}
+        onDragEnd={(e) => {
+          (e.target as HTMLElement)
+            .closest(".slider-frame")
+            ?.classList.remove("dragging");
+        }}
+        onDragStart={(e) => {
+          (e.target as HTMLElement)
+            .closest(".slider-frame")
+            ?.classList.add("dragging");
+        }}
+        slidesToShow={slidesToShow}
+      >
+        {props.children}
+      </Carousel>
+      <span className="hidden" aria-label="">
+        Showing {slidesToShow} slides
+      </span>
+    </Suspense>
+  );
+}

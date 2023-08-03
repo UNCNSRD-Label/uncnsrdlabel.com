@@ -30,16 +30,17 @@
     },
     "test": {
       "dependsOn": ["^build"],
-      "dotEnv": [".env.test.local", ".env.test", ".env"],
       "outputs": []
     },
     "start": {
-      "cache": false
+      "cache": false,
+      "dependsOn": ["^build"],
+      "outputs": []
     },
     "clean": {
       "cache": false
     },
-    "typecheck": {
+    "types:check": {
       "cache": false
     }
   }

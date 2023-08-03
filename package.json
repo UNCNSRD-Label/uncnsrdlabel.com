@@ -1,8 +1,8 @@
 {
   "devDependencies": {
     "@graphql-eslint/eslint-plugin": "^3.20.1",
-    "@turbo/gen": "^1.9.7",
-    "@types/node": "^20.4.2",
+    "@turbo/gen": "^1.10.12",
+    "@types/node": "^20.4.6",
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "eslint-config-turbo": "latest",
     "eslint": "latest",
@@ -10,24 +10,35 @@
     "turbo": "^1.10.12"
   },
   "name": "uncnsrdlabel.com",
+  "packageManager": "pnpm@8.6.10",
   "private": true,
   "repository": "https://github.com/karlito-who-else/uncnsrdlabel.com.git",
   "scripts": {
     "build": "turbo build",
     "clean": "turbo clean",
+    "dependencies:check": "madge --circular --extensions ts,tsx,js,jsx --ts-config ./tsconfig.json ./packages",
+    "dependencies:fix": "madge --circular --extensions ts,tsx,js,jsx --ts-config ./tsconfig.json ./packages --fix",
+    "dependencies:graph": "madge --circular --extensions ts,tsx,js,jsx --ts-config ./tsconfig.json ./packages --image graph.svg",
+    "dependencies:stats": "madge --circular --extensions ts,tsx,js,jsx --ts-config ./tsconfig.json ./packages --stats",
+    "dependencies:unused:fix": "madge --circular --extensions ts,tsx,js,jsx --ts-config ./tsconfig.json ./packages --warning --fix",
+    "dependencies:unused": "madge --circular --extensions ts,tsx,js,jsx --ts-config ./tsconfig.json ./packages --warning",
     "dev": "turbo dev",
-    "lint": "turbo lint",
-    "start": "turbo start",
     "lint-staged": "lint-staged",
+    "lint": "turbo lint",
+    "packages:versions:check": "npx npm-check-updates -u --deep",
+    "packages:versions:update": "npx npm-check-updates -u --deep",
     "prettier:check": "prettier --check --ignore-unknown .",
     "prettier:fix": "prettier --write --ignore-unknown .",
     "prettier:list-different": "npx prettier . --list-different",
-    "test": "pnpm lint && pnpm prettier:check",
+    "start": "turbo start",
     "test:e2e": "playwright test",
-    "typecheck": "turbo typecheck",
-    "unused": "npx next-unused"
+    "test": "pnpm lint && pnpm prettier:check",
+    "types:check": "turbo types:check",
+    "unused:fix": "npx next-unused --fix",
+    "unused": "npx next-unused",
+    "update": "turbo update",
+    "validate": "pnpm test && pnpm types:check && pnpm build && pnpm unused"
   },
-  "packageManager": "pnpm@8.6.10",
   "workspaces": [
     "apps/*",
     "packages/*"

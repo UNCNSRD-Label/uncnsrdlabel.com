@@ -117,7 +117,7 @@ const nextConfig = {
     ],
   },
   poweredByHeader: false,
-  // reactStrictMode: false, // see https://flaviocopes.com/nextjs-serialize-date-json/
+  reactStrictMode: false,
   async redirects() {
     return [
       {
@@ -127,6 +127,7 @@ const nextConfig = {
       },
     ];
   },
+  transpilePackages: ['@uncnsrdlabel/*'],
 };
 
 module.exports = withPlugins([...plugins], nextConfig);
