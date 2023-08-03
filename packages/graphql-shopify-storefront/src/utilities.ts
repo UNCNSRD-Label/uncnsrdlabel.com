@@ -1,29 +1,23 @@
 import {
-  HIDDEN_PRODUCT_TAG,
-  SHOPIFY_GRAPHQL_API_ENDPOINT, revalidate
-} from "@uncnsrdlabel/lib/tmp/constants";
-import { isShopifyError } from "@uncnsrdlabel/lib/tmp/type-guards";
-import { camelCase } from "lodash";
-import {
   addToCartMutation,
   createCartMutation,
   editCartItemsMutation,
   removeFromCartMutation,
-} from "./mutations/cart";
-import { getCartQuery } from "./queries/cart";
+} from "@uncnsrdlabel/graphql-shopify-storefront/mutations/cart.js";
+import { getCartQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/cart.js";
 import {
   getCollectionProductsQuery,
   getCollectionQuery,
   getCollectionsQuery,
-} from "./queries/collection";
-import { getMenuQuery } from "./queries/menu";
-import { getPageQuery, getPagesQuery } from "./queries/page";
-import { getPoliciesQuery } from "./queries/policy";
+} from "@uncnsrdlabel/graphql-shopify-storefront/queries/collection.js";
+import { getMenuQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/menu.js";
+import { getPageQuery, getPagesQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/page.js";
+import { getPoliciesQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/policy.js";
 import {
   getProductQuery,
   getProductRecommendationsQuery,
   getProductsQuery,
-} from "./queries/product";
+} from "@uncnsrdlabel/graphql-shopify-storefront/queries/product.js";
 import {
   Cart,
   Collection,
@@ -56,13 +50,19 @@ import {
   ShopifyProductsOperation,
   ShopifyRemoveFromCartOperation,
   ShopifyUpdateCartOperation,
-} from "./types";
+} from "@uncnsrdlabel/graphql-shopify-storefront/types.js";
+import {
+  HIDDEN_PRODUCT_TAG,
+  SHOPIFY_GRAPHQL_API_ENDPOINT, revalidate
+} from "@uncnsrdlabel/lib/constants.js";
+import { isShopifyError } from "@uncnsrdlabel/lib/type-guards.js";
+import { camelCase } from "lodash";
 
 import {
   type StorefrontApiResponse,
   type StorefrontApiResponseError,
 } from "@shopify/hydrogen-react";
-import { getErrorsMessage } from "@uncnsrdlabel/lib/tmp/errors";
+import { getErrorsMessage } from "@uncnsrdlabel/lib/errors.js";
 
 const domain = `https://${process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!}`;
 const endpoint = `${domain}${SHOPIFY_GRAPHQL_API_ENDPOINT}`;

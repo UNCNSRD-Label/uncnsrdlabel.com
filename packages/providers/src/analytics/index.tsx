@@ -5,11 +5,11 @@ import { googleTagManager } from "@analytics/google-tag-manager";
 import { Analytics } from "analytics";
 // import { eventValidation } from "analytics-plugin-event-validation";
 import { getShopifyCookies, useShop } from "@shopify/hydrogen-react";
+import { klaviyo } from "@uncnsrdlabel/providers/analytics/klaviyo.js";
+import { shopify } from "@uncnsrdlabel/providers/analytics/shopify.js";
 import { getCookie } from "cookies-next";
 import { PropsWithChildren } from "react";
 import { AnalyticsProvider } from "use-analytics";
-import { klaviyo } from "./klaviyo";
-import { shopify } from "./shopify";
 
 import type { ConsentSettings } from "@uncnsrdlabel/lib/tmp/consent";
 import { COOKIE_CONSENT } from "@uncnsrdlabel/lib/tmp/constants";

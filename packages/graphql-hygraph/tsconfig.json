@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@uncnsrdlabel/graphql-hygraph/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "extends": "@uncnsrdlabel/tsconfig/react-library.json",
+  "include": ["."],
+  "exclude": ["dist", "build", "node_modules"]
+}

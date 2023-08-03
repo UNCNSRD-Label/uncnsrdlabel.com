@@ -316,7 +316,7 @@ importers:
         specifier: latest
         version: 7.2.1
       graphql:
-        specifier: ^16.7.1
+        specifier: latest
         version: 16.7.1
       graphql-config:
         specifier: latest
@@ -327,13 +327,31 @@ importers:
       graphql-tag:
         specifier: latest
         version: 2.12.6(graphql@16.7.1)
-      typescript:
+      lodash:
         specifier: latest
-        version: 5.1.6
+        version: 4.17.21
+      next:
+        specifier: 13.4.12
+        version: 13.4.12(@babel/core@7.22.9)(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
+      '@uncnsrdlabel/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../eslint-config-custom
+      '@uncnsrdlabel/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
       prettier:
         specifier: latest
         version: 3.0.0
+      tsup:
+        specifier: latest
+        version: 7.2.0(postcss@8.4.27)(typescript@5.1.6)
+      type-fest:
+        specifier: latest
+        version: 4.1.0
+      typescript:
+        specifier: latest
+        version: 5.1.6
       typescript-graphql-request:
         specifier: latest
         version: 4.4.6(graphql-request@6.1.0)(graphql-tag@2.12.6)(graphql@16.7.1)
@@ -356,9 +374,18 @@ importers:
       '@types/lodash':
         specifier: ^4.14.196
         version: 4.14.196
+      '@types/negotiator':
+        specifier: ^0.6.1
+        version: 0.6.1
+      '@types/node':
+        specifier: 20.4.6
+        version: 20.4.6
       '@types/react':
         specifier: 18.2.18
         version: 18.2.18
+      '@types/react-dom':
+        specifier: 18.2.7
+        version: 18.2.7
       '@uncnsrdlabel/eslint-config-custom':
         specifier: workspace:*
         version: link:../eslint-config-custom

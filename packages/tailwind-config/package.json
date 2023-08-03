@@ -4,5 +4,6 @@
 	},
 	"main": "index.js",
 	"name": "@uncnsrdlabel/tailwind-config",
-	"private": true
+	"private": true,
+	"type": "module"
 }

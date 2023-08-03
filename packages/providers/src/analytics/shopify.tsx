@@ -1,23 +1,22 @@
 "use client";
 
 import {
-    AnalyticsEventName,
-    AnalyticsPageType,
-    ShopifySalesChannel,
-    getClientBrowserParameters,
-    sendShopifyAnalytics,
-    type ShopifyAddToCartPayload,
-    type ShopifyPageViewPayload,
+  AnalyticsEventName,
+  AnalyticsPageType,
+  ShopifySalesChannel,
+  getClientBrowserParameters,
+  sendShopifyAnalytics,
+  type ShopifyAddToCartPayload,
+  type ShopifyPageViewPayload,
 } from "@shopify/hydrogen-react";
 import type {
-    CurrencyCode,
-    LanguageCode,
+  CurrencyCode,
+  LanguageCode,
 } from "@shopify/hydrogen-react/storefront-api-types";
 import { Cookies } from "react-cookie";
 
+import { PluginEventFunctions } from "@uncnsrdlabel/providers/analytics/types.js";
 import { AnalyticsPlugin } from "analytics";
-import { PluginEventFunctions } from "./types";
-
 export interface ShopifyConfig {
   collectionHandle?: string;
   hasUserConsent: boolean;

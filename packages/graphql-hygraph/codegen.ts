@@ -21,7 +21,7 @@ const config: CodegenConfig = {
   ],
   emitLegacyCommonJSImports: false,
   generates: {
-    "./src/": {
+    "./src/codegen/": {
       preset: "client",
     },
   },

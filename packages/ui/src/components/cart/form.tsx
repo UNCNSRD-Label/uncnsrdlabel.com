@@ -1,12 +1,12 @@
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
-import { DEFAULT_OPTION } from "@uncnsrdlabel/lib/constants";
-import type { Cart } from "@uncnsrdlabel/lib/shopify/types";
-import { createUrl } from "@uncnsrdlabel/lib/utils";
-import Price from "@uncnsrdlabel/ui/components/price";
+import { DEFAULT_OPTION } from "@uncnsrdlabel/lib/constants.js";
+import type { Cart } from "@uncnsrdlabel/lib/shopify/types.js";
+import { createUrl } from "@uncnsrdlabel/lib/utils.js";
+import { DeleteItemButton } from "@uncnsrdlabel/ui/components/cart/delete-item-button.js";
+import { EditItemQuantityButton } from "@uncnsrdlabel/ui/components/cart/edit-item-quantity-button.js";
+import { Price } from "@uncnsrdlabel/ui/components/price.js";
 import Image from "next/image";
 import Link from "next/link";
-import DeleteItemButton from "./delete-item-button";
-import EditItemQuantityButton from "./edit-item-quantity-button";
 
 type MerchandiseSearchParams = {
   [key: string]: string;

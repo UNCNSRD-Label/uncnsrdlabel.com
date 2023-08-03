@@ -1,5 +1,5 @@
-import { imageFragment } from "./image";
-import { seoFragment } from "./seo";
+import { imageFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/image.js";
+import { seoFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/seo.js";
 
 export const productFragment = /* GraphQL */ `
   fragment product on Product {

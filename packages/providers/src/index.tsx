@@ -1,8 +1,8 @@
 import { PropsWithChildren } from "react";
 
-import { AppAnalyticsProvider } from "./providers/analytics";
-import { AppReactQueryProvider } from "./providers/react-query";
-import { AppShopifyProvider } from "./providers/shopify";
+import { AppAnalyticsProvider } from "@uncnsrdlabel/providers/analytics/index.js";
+import { AppReactQueryProvider } from "@uncnsrdlabel/providers/react-query.js";
+import { AppShopifyProvider } from "@uncnsrdlabel/providers/shopify.js";
 
 export function AppProviders({ children }: PropsWithChildren) {
   return (

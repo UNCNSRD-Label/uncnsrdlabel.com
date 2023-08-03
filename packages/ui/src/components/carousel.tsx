@@ -1,5 +1,5 @@
-import { getCollectionProducts, getPage } from "@uncnsrdlabel/lib/shopify";
-import Image from "@uncnsrdlabel/ui/components/image";
+import { getCollectionProducts, getPage } from "@uncnsrdlabel/graphql-shopify-storefront/utilities.js";
+import { Image } from "@uncnsrdlabel/ui/components/image.js";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 

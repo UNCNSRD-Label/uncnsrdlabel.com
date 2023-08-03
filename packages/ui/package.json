@@ -78,12 +78,14 @@
   "name": "@uncnsrdlabel/ui",
   "scripts": {
     "build": "tsup",
-    "types:check": "tsc --noEmit",
+    "dev": "tsup --watch",
+    "generate:component": "turbo gen react-component",
     "lint": "eslint \"**/*.ts*\"",
-    "generate:component": "turbo gen react-component"
+    "types:check": "tsc --noEmit"
   },
   "sideEffects": [
     "**/*.css"
   ],
+  "type": "module",
   "types": "./dist/index.d.ts"
 }

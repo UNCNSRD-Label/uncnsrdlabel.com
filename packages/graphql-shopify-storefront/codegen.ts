@@ -24,7 +24,7 @@ const config: CodegenConfig = {
   ],
   emitLegacyCommonJSImports: false,
   generates: {
-    "./generated/": {
+    "./src/codegen/": {
       config: {
         // defines the custom scalars used in the Storefront API
         scalars: storefrontApiCustomScalars,
