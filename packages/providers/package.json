@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "@analytics/google-analytics": "^1.0.7",
+    "@analytics/google-tag-manager": "^0.5.5",
     "@shopify/hydrogen-react": "^2023.7.0",
     "@tanstack/react-query": "^4.32.1",
     "@tanstack/react-query-devtools": "^4.32.1",
@@ -21,7 +23,7 @@
     "typescript": "^5.1.6"
   },
   "exports": {
-    ".": "./dist"
+    ".": "./src/*"
   },
   "license": "MIT",
   "name": "@uncnsrdlabel/providers",

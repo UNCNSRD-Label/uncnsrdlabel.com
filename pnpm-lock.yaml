@@ -35,12 +35,6 @@ importers:
 
   apps/web:
     dependencies:
-      '@analytics/google-analytics':
-        specifier: ^1.0.7
-        version: 1.0.7
-      '@analytics/google-tag-manager':
-        specifier: ^0.5.5
-        version: 0.5.5
       '@builder.io/partytown':
         specifier: ^0.8.0
         version: 0.8.0
@@ -386,6 +380,12 @@ importers:
 
   packages/providers:
     dependencies:
+      '@analytics/google-analytics':
+        specifier: ^1.0.7
+        version: 1.0.7
+      '@analytics/google-tag-manager':
+        specifier: ^0.5.5
+        version: 0.5.5
       '@shopify/hydrogen-react':
         specifier: ^2023.7.0
         version: 2023.7.0(@types/react@18.2.18)(react-dom@18.2.0)(react@18.2.0)

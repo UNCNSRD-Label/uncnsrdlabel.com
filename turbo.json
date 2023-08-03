@@ -41,7 +41,7 @@
       "cache": false
     },
     "types:check": {
-      "cache": false
+      "outputs": []
     }
   }
 }

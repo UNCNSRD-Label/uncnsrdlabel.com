@@ -16,7 +16,7 @@
     "typescript": "^5.1.6"
   },
   "exports": {
-    ".": "./dist"
+    ".": "./src/*"
   },
   "license": "MIT",
   "name": "@uncnsrdlabel/lib",

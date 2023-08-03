@@ -71,7 +71,7 @@
     "typescript": "^5.1.6"
   },
   "exports": {
-    ".": "./dist",
+    ".": "./src/*",
     "./styles.css": "./dist/index.css"
   },
   "license": "MIT",
