@@ -27,6 +27,7 @@
     "lint": "turbo lint",
     "packages:versions:check": "npx npm-check-updates -u --deep",
     "packages:versions:update": "npx npm-check-updates -u --deep",
+    "preinstall": "npx only-allow pnpm",
     "prettier:check": "prettier --check --ignore-unknown .",
     "prettier:fix": "prettier --write --ignore-unknown .",
     "prettier:list-different": "npx prettier . --list-different",
