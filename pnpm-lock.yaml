@@ -468,6 +468,9 @@ importers:
       '@uncnsrdlabel/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
+      '@uncnsrdlabel/types':
+        specifier: workspace:*
+        version: link:../types
       tsup:
         specifier: ^7.2.0
         version: 7.2.0(postcss@8.4.27)(typescript@5.1.6)

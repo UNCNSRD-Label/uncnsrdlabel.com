@@ -10,17 +10,75 @@
         ".env.production",
         ".env"
       ],
-      "env": ["NEXT_PUBLIC_HYGRAPH_API_TOKEN", "NEXT_PUBLIC_HYGRAPH_PROJECT_ID", "NEXT_PUBLIC_HYGRAPH_REGION", "NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID", "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY", "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY_LIVE", "NEXT_PUBLIC_SUPABASE_ANON_KEY", "NEXT_PUBLIC_SUPABASE_URL", "SITE_NAME", "SITE_URL", "STRIPE_SECRET_KEY", "STRIPE_SECRET_KEY_LIVE", "STRIPE_WEBHOOK_SECRET", "SUPABASE_SERVICE_ROLE_KEY"],
-      "outputs": [".next/**", "!.next/cache/**", "dist/**"]
+      "env": [],
+      "outputs": ["!.next/cache/**", ".next/**", "dist/**"]
+    },
+    "@uncnsrdlabel/app-web#build": {
+      "dependsOn": ["^build"],
+      "outputs": ["!.next/cache/**", ".next/**", "dist/**"],
+      "env": [
+        "NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID",
+        "NEXT_PUBLIC_HYGRAPH_API_TOKEN",
+        "NEXT_PUBLIC_HYGRAPH_PROJECT_ID",
+        "NEXT_PUBLIC_HYGRAPH_REGION",
+        "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY_LIVE",
+        "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY",
+        "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+        "NEXT_PUBLIC_SUPABASE_URL",
+        "SITE_NAME",
+        "SITE_URL",
+        "STRIPE_SECRET_KEY_LIVE",
+        "STRIPE_SECRET_KEY",
+        "STRIPE_WEBHOOK_SECRET",
+        "SUPABASE_SERVICE_ROLE_KEY"
+      ]
+    },
+    "@uncnsrdlabel/graphql-hygraph#build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"],
+      "env": [
+        "NEXT_PUBLIC_HYGRAPH_API_TOKEN",
+        "NEXT_PUBLIC_HYGRAPH_PROJECT_ID",
+        "NEXT_PUBLIC_HYGRAPH_REGION"
+      ]
+    },
+    "@uncnsrdlabel/graphql-shopify-storefront#build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"],
+      "env": [
+        "NEXT_PUBLIC_SHOPIFY_SHOP_ID",
+        "NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN",
+        "NEXT_PUBLIC_SHOPIFY_STOREFRONT_API_VERSION",
+        "NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN",
+        "SHOPIFY_PRIVATE_ACCESS_TOKEN",
+        "SHOPIFY_STORE_SUBDOMAIN"
+      ]
     },
     "dev": {
+      "cache": false,
+      "persistent": true,
       "dotEnv": [
         ".env.development.local",
         ".env.local",
         ".env.development",
         ".env"
       ],
-      "env": ["NEXT_PUBLIC_HYGRAPH_API_TOKEN", "NEXT_PUBLIC_HYGRAPH_PROJECT_ID", "NEXT_PUBLIC_HYGRAPH_REGION", "NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID", "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY", "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY_LIVE", "NEXT_PUBLIC_SUPABASE_ANON_KEY", "NEXT_PUBLIC_SUPABASE_URL", "SITE_NAME", "SITE_URL", "STRIPE_SECRET_KEY", "STRIPE_SECRET_KEY_LIVE", "STRIPE_WEBHOOK_SECRET", "SUPABASE_SERVICE_ROLE_KEY"]
+      "env": [
+        "NEXT_PUBLIC_HYGRAPH_API_TOKEN",
+        "NEXT_PUBLIC_HYGRAPH_PROJECT_ID",
+        "NEXT_PUBLIC_HYGRAPH_REGION",
+        "NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID",
+        "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY",
+        "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY_LIVE",
+        "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+        "NEXT_PUBLIC_SUPABASE_URL",
+        "SITE_NAME",
+        "SITE_URL",
+        "STRIPE_SECRET_KEY",
+        "STRIPE_SECRET_KEY_LIVE",
+        "STRIPE_WEBHOOK_SECRET",
+        "SUPABASE_SERVICE_ROLE_KEY"
+      ]
     },
     "generate-types": {
       "outputs": []
