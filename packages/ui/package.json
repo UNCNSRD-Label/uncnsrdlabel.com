@@ -63,6 +63,7 @@
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "@uncnsrdlabel/tailwind-config": "workspace:*",
     "@uncnsrdlabel/tsconfig": "workspace:*",
+    "@uncnsrdlabel/types": "workspace:*",
     "eslint": "^8.46.0",
     "postcss": "^8.4.27",
     "react": "^18.2.0",

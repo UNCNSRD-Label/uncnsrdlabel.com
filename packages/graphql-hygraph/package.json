@@ -4,6 +4,7 @@
     "@graphql-codegen/client-preset": "latest",
     "@graphql-typed-document-node/core": "latest",
     "@types/node": "latest",
+    "@uncnsrdlabel/tsconfig": "workspace:*",
     "dotenv-cli": "latest",
     "graphql": "^16.7.1",
     "graphql-config": "latest",

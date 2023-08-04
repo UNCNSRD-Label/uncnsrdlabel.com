@@ -65,6 +65,7 @@
     "@types/react-dom": "18.2.7",
     "@types/use-analytics": "^0.0.0",
     "@uncnsrdlabel/tsconfig": "workspace:*",
+    "@uncnsrdlabel/types": "workspace:*",
     "@vercel/git-hooks": "^1.0.0",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.46.0",

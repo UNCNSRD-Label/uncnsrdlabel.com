@@ -1,7 +1,7 @@
-import { defaultSort, sorting } from "@uncnsrdlabel/lib/constants";
-import { getProducts } from "@uncnsrdlabel/lib/shopify";
-import { Grid } from "@uncnsrdlabel/ui/components/grid";
-import { ProductGridItems } from "@uncnsrdlabel/ui/components/layout/product-grid-items";
+import { defaultSort, sorting } from "@uncnsrdlabel/lib/constants.js";
+import { getProducts } from "@uncnsrdlabel/lib/shopify.js";
+import { Grid } from "@uncnsrdlabel/ui/components/grid.js";
+import { ProductGridItems } from "@uncnsrdlabel/ui/components/layout/product-grid-items.js";
 
 export const runtime = "edge";
 

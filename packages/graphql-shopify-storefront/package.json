@@ -5,6 +5,7 @@
     "@graphql-typed-document-node/core": "latest",
     "@shopify/hydrogen-react": "^2023.7.0",
     "@types/node": "latest",
+    "@uncnsrdlabel/lib": "workspace:*",
     "dotenv-cli": "latest",
     "graphql": "latest",
     "graphql-config": "latest",

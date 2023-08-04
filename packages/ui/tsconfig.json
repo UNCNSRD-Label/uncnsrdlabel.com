@@ -4,7 +4,7 @@
       "@uncnsrdlabel/ui/*": [
         "./src/*"
       ]
-    }
+    },
   },
   "extends": "@uncnsrdlabel/tsconfig/react-library.json",
   "include": ["."],
