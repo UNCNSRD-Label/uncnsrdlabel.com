@@ -1,4 +1,4 @@
-import { Product } from "@uncnsrdlabel/lib/shopify/types";
+import { Product } from "@uncnsrdlabel/graphql-shopify-storefront/types";
 import { AddToCart } from "@uncnsrdlabel/ui/components/cart/add-to-cart";
 import { Price } from "@uncnsrdlabel/ui/components/price";
 import { VariantSelector } from "@uncnsrdlabel/ui/components/product/variant-selector";

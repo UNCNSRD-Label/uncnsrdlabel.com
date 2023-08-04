@@ -1,6 +1,6 @@
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { DEFAULT_OPTION } from "@uncnsrdlabel/lib/constants.js";
-import type { Cart } from "@uncnsrdlabel/lib/shopify/types.js";
+import type { Cart } from "@uncnsrdlabel/graphql-shopify-storefront/types.js";
 import { createUrl } from "@uncnsrdlabel/lib/utils.js";
 import { DeleteItemButton } from "@uncnsrdlabel/ui/components/cart/delete-item-button.js";
 import { EditItemQuantityButton } from "@uncnsrdlabel/ui/components/cart/edit-item-quantity-button.js";

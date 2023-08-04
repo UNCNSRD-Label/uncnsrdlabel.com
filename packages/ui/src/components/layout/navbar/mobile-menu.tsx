@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
 
-import { Menu } from "@uncnsrdlabel/lib/shopify/types";
+import { Menu } from "@uncnsrdlabel/graphql-shopify-storefront/types";
 import CloseIcon from "@uncnsrdlabel/ui/components/icons/close";
 import MenuIcon from "@uncnsrdlabel/ui/components/icons/menu";
 import Search from "./search";

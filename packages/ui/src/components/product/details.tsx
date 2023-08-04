@@ -11,7 +11,7 @@ import { MetaFields } from "@uncnsrdlabel/ui/components/product/metafields";
 import { NavigationMenu } from "@uncnsrdlabel/ui/components/product/navigation-menu";
 import { PurchaseOptions } from "@uncnsrdlabel/ui/components/product/purchase-options";
 
-import { Image, Product } from "@uncnsrdlabel/lib/shopify/types";
+import { Image, Product } from "@uncnsrdlabel/graphql-shopify-storefront/types";
 
 export function ProductDetails({ product }: { product: Product }) {
   const sectionElementRefs = [useRef(null), useRef(null), useRef(null)];

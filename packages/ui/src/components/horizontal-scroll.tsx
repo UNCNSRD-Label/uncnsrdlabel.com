@@ -1,4 +1,4 @@
-import { getPage } from "@uncnsrdlabel/lib/shopify";
+import { getPage } from "@uncnsrdlabel/graphql-shopify-storefront";
 import Image from "@uncnsrdlabel/ui/components/image";
 import { clsx } from "clsx";
 import { notFound } from "next/navigation";

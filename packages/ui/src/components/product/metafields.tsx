@@ -4,14 +4,14 @@ import { forwardRef } from "react";
 import { MetafieldMapper } from "@uncnsrdlabel/ui/components/product/metafield-mapper";
 
 import {
-    Accordion,
-    AccordionContent,
-    AccordionHeader,
-    AccordionItem,
-    AccordionTrigger,
+  Accordion,
+  AccordionContent,
+  AccordionHeader,
+  AccordionItem,
+  AccordionTrigger,
 } from "@uncnsrdlabel/ui/components/accordion";
 
-import { Metafield } from "@uncnsrdlabel/lib/shopify/types";
+import { Metafield } from "@uncnsrdlabel/graphql-shopify-storefront/types.js";
 
 export type MetaFieldsRef = HTMLDivElement;
 

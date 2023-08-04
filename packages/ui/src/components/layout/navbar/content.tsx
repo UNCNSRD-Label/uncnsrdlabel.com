@@ -2,7 +2,7 @@ import { clsx } from "clsx";
 import Link from "next/link";
 import { Suspense } from "react";
 
-import { getMenu } from "@uncnsrdlabel/lib/shopify";
+import { getMenu } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Cart } from "@uncnsrdlabel/ui/components/cart";
 import { CartIcon } from "@uncnsrdlabel/ui/components/icons/cart";
 import { LogotypeIcon } from "@uncnsrdlabel/ui/components/icons/logotype";

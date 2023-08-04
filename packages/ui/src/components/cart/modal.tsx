@@ -2,7 +2,7 @@
 
 import { Dialog } from "@headlessui/react";
 import { themeColors } from "@uncnsrdlabel/lib/effects";
-import type { Cart } from "@uncnsrdlabel/lib/shopify/types";
+import type { Cart } from "@uncnsrdlabel/graphql-shopify-storefront/types";
 import { clsx } from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";

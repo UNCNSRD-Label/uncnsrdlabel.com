@@ -1,7 +1,7 @@
 "use client";
 
 import { PlusIcon } from "@heroicons/react/24/outline";
-import { ProductVariant } from "@uncnsrdlabel/lib/shopify/types";
+import { ProductVariant } from "@uncnsrdlabel/graphql-shopify-storefront/types";
 import { addItem } from "@uncnsrdlabel/ui/components/cart/actions";
 import LoadingDots from "@uncnsrdlabel/ui/components/loading-dots";
 import clsx from "clsx";

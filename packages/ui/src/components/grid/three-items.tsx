@@ -1,5 +1,5 @@
-import { getCollectionProducts } from "@uncnsrdlabel/lib/shopify";
-import type { Product } from "@uncnsrdlabel/lib/shopify/types";
+import { getCollectionProducts } from "@uncnsrdlabel/graphql-shopify-storefront";
+import type { Product } from "@uncnsrdlabel/graphql-shopify-storefront/types";
 import { GridTileImage } from "@uncnsrdlabel/ui/components/grid/tile";
 import { clsx } from "clsx";
 import Link from "next/link";

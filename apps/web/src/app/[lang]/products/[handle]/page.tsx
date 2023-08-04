@@ -5,7 +5,7 @@ import { Suspense } from "react";
 import { Product as ProductSchema, WithContext } from "schema-dts";
 
 import { HIDDEN_PRODUCT_TAG } from "@uncnsrdlabel/lib/constants";
-import { getProduct, getProductRecommendations } from "@uncnsrdlabel/lib/shopify";
+import { getProduct, getProductRecommendations } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Grid } from "@uncnsrdlabel/ui/components/grid";
 import { ProductGridItems } from "@uncnsrdlabel/ui/components/layout/product-grid-items";
 import { ProductDetails } from "@uncnsrdlabel/ui/components/product/details";

@@ -1,4 +1,4 @@
-import { Product } from "@uncnsrdlabel/lib/shopify/types";
+import { Product } from "@uncnsrdlabel/graphql-shopify-storefront/types";
 import { Grid } from "@uncnsrdlabel/ui/components/grid";
 import { GridTileImage } from "@uncnsrdlabel/ui/components/grid/tile";
 import Link from "next/link";

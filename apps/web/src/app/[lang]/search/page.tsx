@@ -1,5 +1,5 @@
 import { defaultSort, sorting } from "@uncnsrdlabel/lib/constants.js";
-import { getProducts } from "@uncnsrdlabel/lib/shopify.js";
+import { getProducts } from "@uncnsrdlabel/graphql-shopify-storefront.js";
 import { Grid } from "@uncnsrdlabel/ui/components/grid.js";
 import { ProductGridItems } from "@uncnsrdlabel/ui/components/layout/product-grid-items.js";
 

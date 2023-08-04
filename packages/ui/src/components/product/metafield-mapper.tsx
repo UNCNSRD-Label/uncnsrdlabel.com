@@ -1,4 +1,4 @@
-import { Metafield, Metaobject } from "@uncnsrdlabel/lib/shopify/types";
+import { Metafield, Metaobject } from "@uncnsrdlabel/graphql-shopify-storefront/types";
 import { ReactNode } from "react";
 
 export const MetafieldMapper = ({ metafield }: { metafield: Metafield }) => {

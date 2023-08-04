@@ -1,6 +1,6 @@
 "use client";
 
-import { ProductOption, ProductVariant } from "@uncnsrdlabel/lib/shopify/types";
+import { ProductOption, ProductVariant } from "@uncnsrdlabel/graphql-shopify-storefront/types";
 import { createUrl } from "@uncnsrdlabel/lib/utils";
 import clsx from "clsx";
 import Link from "next/link";
