@@ -1,4 +1,4 @@
-import tailwindConfig from "@uncnsrdlabel/ui/tailwind.config.js";
+import tailwindConfig from "@uncnsrdlabel/tailwind-config/tailwind.config.js";
 import resolveConfig from "tailwindcss/resolveConfig";
 
 /** @type {import('tailwindcss').Config} */

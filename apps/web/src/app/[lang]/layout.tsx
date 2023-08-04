@@ -1,5 +1,5 @@
-import { SITE_DOMAIN } from "@uncnsrdlabel/lib/tmp/constants";
-import { themeColors } from "@uncnsrdlabel/lib/tmp/effects";
+import { SITE_DOMAIN } from "@uncnsrdlabel/lib/constants";
+import { themeColors } from "@uncnsrdlabel/lib/effects";
 import { AppProviders } from "@uncnsrdlabel/providers";
 import { HandleRouteChange } from "@uncnsrdlabel/ui/components/analytics/handle-route-change";
 import { Banner } from "@uncnsrdlabel/ui/components/banner";

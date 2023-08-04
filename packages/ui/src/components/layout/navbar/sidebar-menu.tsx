@@ -7,8 +7,8 @@ import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { themeColors } from "@uncnsrdlabel/lib/effects";
 import { Menu } from "@uncnsrdlabel/lib/shopify/types";
-import { themeColors } from "@uncnsrdlabel/lib/tmp/effects";
 import { CloseIcon } from "@uncnsrdlabel/ui/components/icons/close";
 import { LogotypeIcon } from "@uncnsrdlabel/ui/components/icons/logotype";
 import { MenuIcon } from "@uncnsrdlabel/ui/components/icons/menu";

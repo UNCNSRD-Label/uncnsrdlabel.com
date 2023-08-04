@@ -2,7 +2,7 @@ import { getCollection, getCollectionProducts } from "@uncnsrdlabel/lib/shopify"
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { defaultSort, sorting } from "@uncnsrdlabel/lib/tmp/constants";
+import { defaultSort, sorting } from "@uncnsrdlabel/lib/constants";
 import { Grid } from "@uncnsrdlabel/ui/components/grid";
 import { ProductGridItems } from "@uncnsrdlabel/ui/components/layout/product-grid-items";
 

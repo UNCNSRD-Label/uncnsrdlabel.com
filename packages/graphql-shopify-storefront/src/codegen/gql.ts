@@ -1,6 +1,6 @@
 /* eslint-disable */
-import * as types from './graphql.js';
 import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
+import * as types from '@uncnsrdlabel/graphql-shopify-storefront/codegen/graphql.js';
 
 /**
  * Map of all GraphQL operations in the project.

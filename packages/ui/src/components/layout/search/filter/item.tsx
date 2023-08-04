@@ -1,12 +1,12 @@
 "use client";
 
-import { SortFilterItem } from "@uncnsrdlabel/lib/tmp/constants";
-import { createUrl } from "@uncnsrdlabel/lib/tmp/utils";
+import { SortFilterItem } from "@uncnsrdlabel/lib/constants.js";
+import { createUrl } from "@uncnsrdlabel/lib/utils.js";
+import type { ListItem, PathFilterItem } from "@uncnsrdlabel/ui/index.js";
 import { clsx } from "clsx";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import type { ListItem, PathFilterItem } from ".";
 
 function PathFilterItem({ item }: { item: PathFilterItem }) {
   const pathname = usePathname();

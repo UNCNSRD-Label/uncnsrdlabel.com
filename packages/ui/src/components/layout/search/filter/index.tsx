@@ -1,6 +1,6 @@
-import { SortFilterItem } from "@uncnsrdlabel/lib/tmp/constants";
-import { FilterItemDropdown } from "./dropdown";
-import { FilterItem } from "./item";
+import { SortFilterItem } from "@uncnsrdlabel/lib/constants.js";
+import { FilterItemDropdown } from "@uncnsrdlabel/ui/components/layout/search/filter/dropdown.js";
+import { FilterItem } from "@uncnsrdlabel/ui/components/layout/search/filter/item.js";
 
 export type ListItem = SortFilterItem | PathFilterItem;
 export type PathFilterItem = { title: string; path: string };

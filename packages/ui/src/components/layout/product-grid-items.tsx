@@ -3,7 +3,7 @@ import { Grid } from "@uncnsrdlabel/ui/components/grid";
 import { GridTileImage } from "@uncnsrdlabel/ui/components/grid/tile";
 import Link from "next/link";
 
-import { transitionDelays } from "@uncnsrdlabel/lib/tmp/effects";
+import { transitionDelays } from "@uncnsrdlabel/lib/effects";
 
 export function ProductGridItems({
   products,

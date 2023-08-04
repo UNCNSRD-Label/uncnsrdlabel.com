@@ -1,4 +1,4 @@
-import { sorting } from "@uncnsrdlabel/lib/tmp/constants";
+import { sorting } from "@uncnsrdlabel/lib/constants";
 import { Logo } from "@uncnsrdlabel/ui/components/layout/logo";
 import { Navbar } from "@uncnsrdlabel/ui/components/layout/navbar";
 import { NavbarContent } from "@uncnsrdlabel/ui/components/layout/navbar/content";

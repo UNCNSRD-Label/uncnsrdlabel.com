@@ -5,7 +5,7 @@ import { clsx } from "clsx";
 import NextImage, { type ImageProps } from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-import { onLoadingComplete } from "@uncnsrdlabel/lib/tmp/image";
+import { onLoadingComplete } from "@uncnsrdlabel/lib/image";
 
 export function Image({
   revealEffect = true,

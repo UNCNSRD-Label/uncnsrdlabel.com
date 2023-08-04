@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 
-import { SearchButton } from "./button";
-import { SearchForm } from "./form";
+import { SearchButton } from "@uncnsrdlabel/ui/components/search/button.js";
+import { SearchForm } from "@uncnsrdlabel/ui/components/search/form.js";
 
-export async function Search() {
+export function Search() {
   const [searchIsOpen, setSearchIsOpen] = useState(false);
 
   return (

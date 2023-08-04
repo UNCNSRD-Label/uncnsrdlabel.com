@@ -5,7 +5,7 @@ import { Image } from "@uncnsrdlabel/ui/components/image";
 import { Prose } from "@uncnsrdlabel/ui/components/prose";
 import { notFound } from "next/navigation";
 
-export { revalidate } from "@uncnsrdlabel/lib/tmp/constants";
+export { revalidate } from "@uncnsrdlabel/lib/constants";
 
 export const runtime = "edge";
 

@@ -1,5 +1,5 @@
+import { defaultSort, sorting } from "@uncnsrdlabel/lib/constants";
 import { getProducts } from "@uncnsrdlabel/lib/shopify";
-import { defaultSort, sorting } from "@uncnsrdlabel/lib/tmp/constants";
 import { Grid } from "@uncnsrdlabel/ui/components/grid";
 import { ProductGridItems } from "@uncnsrdlabel/ui/components/layout/product-grid-items";
 

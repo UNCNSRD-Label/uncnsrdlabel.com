@@ -1,4 +1,4 @@
-import { themeColors } from "@uncnsrdlabel/lib/tmp/effects";
+import { themeColors } from "@uncnsrdlabel/lib/effects";
 import { HomepageCarousel } from "@uncnsrdlabel/ui/components/homepage-carousel";
 import { Image } from "@uncnsrdlabel/ui/components/image";
 import { Logo } from "@uncnsrdlabel/ui/components/layout/logo";
