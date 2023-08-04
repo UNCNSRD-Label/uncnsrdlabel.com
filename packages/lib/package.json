@@ -19,12 +19,25 @@
     "typescript": "^5.1.6"
   },
   "exports": {
-    ".": "./src/*"
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./*": {
+      "require": "./dist/*.js",
+      "import": "./dist/*.mjs",
+      "types": "./dist/*.d.ts"
+    }
   },
+  "files": [
+    "dist/**"
+  ],
   "license": "MIT",
   "name": "@uncnsrdlabel/lib",
   "scripts": {
-		"dev": "tsc --watch",
+    "dev": "tsc --watch",
     "build": "tsc",
     "lint": "eslint \"**/*.ts*\"",
     "types:check": "tsc --noEmit"

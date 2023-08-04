@@ -19,17 +19,31 @@
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "@uncnsrdlabel/tailwind-config": "workspace:*",
     "@uncnsrdlabel/tsconfig": "workspace:*",
+    "@uncnsrdlabel/types": "workspace:*",
     "tsup": "^7.2.0",
     "type-fest": "^4.1.0",
     "typescript": "^5.1.6"
   },
   "exports": {
-    ".": "./src/*"
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./*": {
+      "require": "./dist/*.js",
+      "import": "./dist/*.mjs",
+      "types": "./dist/*.d.ts"
+    }
   },
+  "files": [
+    "dist/**"
+  ],
   "license": "MIT",
   "name": "@uncnsrdlabel/providers",
   "scripts": {
-		"dev": "tsc --watch",
+    "dev": "tsc --watch",
     "build": "tsc",
     "generate:component": "turbo gen react-component",
     "lint": "eslint \"**/*.ts*\"",
