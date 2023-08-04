@@ -30,7 +30,7 @@
   "name": "@uncnsrdlabel/providers",
   "scripts": {
 		"dev": "tsup --watch",
-    "build": "tsup",
+    "build": "tsc",
     "generate:component": "turbo gen react-component",
     "lint": "eslint \"**/*.ts*\"",
     "types:check": "tsc --noEmit"

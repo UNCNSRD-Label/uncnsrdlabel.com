@@ -1,12 +1,13 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "React Library",
-  "extends": "./base.json",
   "compilerOptions": {
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
     "lib": ["dom", "dom.iterable", "ESNext"],
     "module": "ESNext",
-    "target": "ESNext",
-    "jsx": "react-jsx",
-    "esModuleInterop": true
-  }
+    "moduleResolution": "node",
+    "target": "ESNext"
+  },
+  "display": "React Library",
+  "extends": "./base.json"
 }

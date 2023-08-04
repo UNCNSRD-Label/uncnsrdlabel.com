@@ -15,6 +15,7 @@
     "next": "13.4.12"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.196",
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "@uncnsrdlabel/tsconfig": "workspace:*",
     "tsup": "latest",
@@ -26,9 +27,10 @@
   "exports": {
     ".": "./dist/*"
   },
+  "license": "MIT",
   "name": "@uncnsrdlabel/graphql-shopify-storefront",
   "scripts": {
-    "build": "tsup",
+    "build": "tsc",
     "dev": "tsup --watch",
     "lint": "eslint \"**/*.ts*\"",
     "types:check": "tsc --noEmit"

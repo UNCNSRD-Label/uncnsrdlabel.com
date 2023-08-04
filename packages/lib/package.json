@@ -25,7 +25,7 @@
   "name": "@uncnsrdlabel/lib",
   "scripts": {
 		"dev": "tsup --watch",
-    "build": "tsup",
+    "build": "tsc",
     "lint": "eslint \"**/*.ts*\"",
     "types:check": "tsc --noEmit"
   },

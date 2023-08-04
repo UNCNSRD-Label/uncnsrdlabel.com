@@ -23,11 +23,12 @@
   "exports": {
     ".": "./dist/*"
   },
+  "license": "MIT",
   "name": "@uncnsrdlabel/graphql-hygraph",
   "scripts": {
-    "build": "tsup",
+    "build": "tsc",
     "dev": "tsup --watch",
-	"lint": "eslint \"**/*.ts*\"",
+    "lint": "eslint \"**/*.ts*\"",
     "types:check": "tsc --noEmit"
   },
   "type": "module",
