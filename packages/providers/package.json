@@ -24,12 +24,12 @@
     "typescript": "^5.1.6"
   },
   "exports": {
-    ".": "./dist/*"
+    ".": "./src/*"
   },
   "license": "MIT",
   "name": "@uncnsrdlabel/providers",
   "scripts": {
-		"dev": "tsup --watch",
+		"dev": "tsc --watch",
     "build": "tsc",
     "generate:component": "turbo gen react-component",
     "lint": "eslint \"**/*.ts*\"",

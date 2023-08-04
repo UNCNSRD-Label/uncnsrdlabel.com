@@ -73,14 +73,14 @@
     "typescript": "^5.1.6"
   },
   "exports": {
-    ".": "./dist/*",
+    ".": "./src/*",
     "./styles.css": "./dist/index.css"
   },
   "license": "MIT",
   "name": "@uncnsrdlabel/ui",
   "scripts": {
     "build": "tsc",
-    "dev": "tsup --watch",
+    "dev": "tsc --watch",
     "generate:component": "turbo gen react-component",
     "lint": "eslint \"**/*.ts*\"",
     "types:check": "tsc --noEmit"

@@ -25,13 +25,13 @@
     "typescript-graphql-request": "latest"
   },
   "exports": {
-    ".": "./dist/*"
+    ".": "./src/*"
   },
   "license": "MIT",
   "name": "@uncnsrdlabel/graphql-shopify-storefront",
   "scripts": {
     "build": "tsc",
-    "dev": "tsup --watch",
+    "dev": "tsc --watch",
     "lint": "eslint \"**/*.ts*\"",
     "types:check": "tsc --noEmit"
   },
