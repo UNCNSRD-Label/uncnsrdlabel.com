@@ -19,7 +19,7 @@
     "typescript": "^5.1.6"
   },
   "exports": {
-    ".": "./src/*"
+    ".": "./dist/*"
   },
   "license": "MIT",
   "name": "@uncnsrdlabel/lib",

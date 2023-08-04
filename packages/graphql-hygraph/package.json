@@ -20,7 +20,7 @@
     "typescript-graphql-request": "latest"
   },
   "exports": {
-    ".": "./src/*"
+    ".": "./dist/*"
   },
   "name": "@uncnsrdlabel/graphql-hygraph",
   "scripts": {

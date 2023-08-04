@@ -24,6 +24,7 @@
     "@tanstack/react-query": "^4.32.1",
     "@uncnsrdlabel/graphql-shopify-storefront": "workspace:*",
     "@uncnsrdlabel/lib": "workspace:*",
+    "@uncnsrdlabel/tailwind-config": "workspace:*",
     "@vercel/analytics": "^1.0.1",
     "@vercel/og": "^0.5.10",
     "clsx": "^2.0.0",
@@ -71,7 +72,7 @@
     "typescript": "^5.1.6"
   },
   "exports": {
-    ".": "./src/*",
+    ".": "./dist/*",
     "./styles.css": "./dist/index.css"
   },
   "license": "MIT",
