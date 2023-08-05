@@ -3,8 +3,8 @@
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { ProductVariant } from "@uncnsrdlabel/graphql-shopify-storefront/types";
 import { addItem } from "@uncnsrdlabel/ui/components/cart/actions";
-import LoadingDots from "@uncnsrdlabel/ui/components/loading-dots";
-import clsx from "clsx";
+import { LoadingDots } from "@uncnsrdlabel/ui/components/loading-dots";
+import { clsx } from "clsx";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState, useTransition } from "react";
 

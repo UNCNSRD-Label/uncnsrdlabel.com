@@ -6,7 +6,7 @@ import { useTimeoutEffect } from "@react-hookz/web";
 import { hasCookie } from "cookies-next";
 import { useState } from "react";
 
-import RedeemCodeForm from "@uncnsrdlabel/ui/components/redeem-code/form";
+import { RedeemCodeForm } from "@uncnsrdlabel/ui/components/redeem-code/form";
 
 import { COOKIE_REDEEM_CODE } from "@uncnsrdlabel/lib/constants";
 

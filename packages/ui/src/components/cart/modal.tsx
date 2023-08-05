@@ -1,14 +1,14 @@
 "use client";
 
 import { Dialog } from "@headlessui/react";
-import { themeColors } from "@uncnsrdlabel/lib/effects";
 import type { Cart } from "@uncnsrdlabel/graphql-shopify-storefront/types";
+import { themeColors } from "@uncnsrdlabel/lib/effects";
+import { CloseCart } from "@uncnsrdlabel/ui/components/cart/close-cart";
+import { CartForm } from "@uncnsrdlabel/ui/components/cart/form";
+import { OpenCart } from "@uncnsrdlabel/ui/components/cart/open-cart";
 import { clsx } from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import CloseCart from "./close-cart";
-import CartForm from "./form";
-import OpenCart from "./open-cart";
 
 export function CartModal({ cart }: { cart: Cart | undefined }) {
   const [isOpen, setIsOpen] = useState(false);

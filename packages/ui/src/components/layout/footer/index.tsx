@@ -3,9 +3,9 @@ import Link from "next/link";
 import { ConsentDialog } from "@uncnsrdlabel/ui/components/consent/dialog";
 import { LogotypeIcon } from "@uncnsrdlabel/ui/components/icons/logotype";
 // import { RedeemCode } from "@uncnsrdlabel/ui/components/redeem-code/dialog";
-import { themeColors } from "@uncnsrdlabel/lib/effects";
-import { getMenu } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Menu } from "@uncnsrdlabel/graphql-shopify-storefront/types";
+import { getMenu } from "@uncnsrdlabel/graphql-shopify-storefront/utilities.js";
+import { themeColors } from "@uncnsrdlabel/lib/effects";
 import { SignUp } from "@uncnsrdlabel/ui/components/sign-up";
 import { SocialMenu } from "@uncnsrdlabel/ui/components/social-menu";
 

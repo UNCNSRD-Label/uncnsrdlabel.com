@@ -7,12 +7,12 @@ import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { themeColors } from "@uncnsrdlabel/lib/effects";
 import { Menu } from "@uncnsrdlabel/graphql-shopify-storefront/types";
+import { themeColors } from "@uncnsrdlabel/lib/effects";
 import { CloseIcon } from "@uncnsrdlabel/ui/components/icons/close";
 import { LogotypeIcon } from "@uncnsrdlabel/ui/components/icons/logotype";
 import { MenuIcon } from "@uncnsrdlabel/ui/components/icons/menu";
-import { Search } from "./search";
+import { NavbarSearch } from "./search";
 
 export function SidebarMenu({ menu }: { menu: Menu[] }) {
   const pathname = usePathname();
@@ -94,7 +94,7 @@ export function SidebarMenu({ menu }: { menu: Menu[] }) {
                 </button>
 
                 <div className="mb-4 w-full">
-                  <Search />
+                  <NavbarSearch />
                 </div>
                 {menu.length ? (
                   <ul className="flex flex-1 flex-col gap-2">

@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 import { GridTileImage } from "@uncnsrdlabel/ui/components/grid/tile";
-import ArrowLeftIcon from "@uncnsrdlabel/ui/components/icons/arrow-left";
+import { ArrowLeftIcon } from "@uncnsrdlabel/ui/components/icons/arrow-left";
 import { clsx } from "clsx";
 
 export function Gallery({

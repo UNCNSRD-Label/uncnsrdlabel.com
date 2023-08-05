@@ -1,19 +1,20 @@
 "use server";
 
+import { Cart } from "@uncnsrdlabel/graphql-shopify-storefront/types.js";
 import {
-    addToCart,
-    createCart,
-    getCart,
-    removeFromCart,
-    updateCart,
-} from "@uncnsrdlabel/graphql-shopify-storefront";
+  addToCart,
+  createCart,
+  getCart,
+  removeFromCart,
+  updateCart,
+} from "@uncnsrdlabel/graphql-shopify-storefront/utilities.js";
 import { cookies } from "next/headers";
 
 export const addItem = async (
   variantId: string | undefined,
 ): Promise<Error | undefined> => {
   let cartId = cookies().get("cartId")?.value;
-  let cart;
+  let cart: Cart | undefined;
 
   if (cartId) {
     cart = await getCart(cartId);
@@ -21,6 +22,11 @@ export const addItem = async (
 
   if (!cartId || !cart) {
     cart = await createCart();
+    
+    if (!cart) {
+      return new Error("Error creating cart");
+    }
+
     cartId = cart.id;
     cookies().set("cartId", cartId);
   }

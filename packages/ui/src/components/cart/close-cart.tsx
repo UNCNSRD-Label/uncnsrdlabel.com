@@ -1,5 +1,5 @@
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import clsx from "clsx";
+import { clsx } from "clsx";
 
 export function CloseCart({ className }: { className?: string }) {
   return (

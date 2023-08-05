@@ -1,5 +1,5 @@
-import { getPage } from "@uncnsrdlabel/graphql-shopify-storefront";
-import Image from "@uncnsrdlabel/ui/components/image";
+import { getPage } from "@uncnsrdlabel/graphql-shopify-storefront/utilities.js";
+import { Image } from "@uncnsrdlabel/ui/components/image.js";
 import { clsx } from "clsx";
 import { notFound } from "next/navigation";
 

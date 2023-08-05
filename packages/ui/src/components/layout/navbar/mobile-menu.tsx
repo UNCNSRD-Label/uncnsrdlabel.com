@@ -6,9 +6,9 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
 
 import { Menu } from "@uncnsrdlabel/graphql-shopify-storefront/types";
-import CloseIcon from "@uncnsrdlabel/ui/components/icons/close";
-import MenuIcon from "@uncnsrdlabel/ui/components/icons/menu";
-import Search from "./search";
+import { CloseIcon } from "@uncnsrdlabel/ui/components/icons/close";
+import { MenuIcon } from "@uncnsrdlabel/ui/components/icons/menu";
+import { NavbarSearch } from "./search";
 
 export function MobileMenu({ menu }: { menu: Menu[] }) {
   const pathname = usePathname();
@@ -75,7 +75,7 @@ export function MobileMenu({ menu }: { menu: Menu[] }) {
                 </button>
 
                 <div className="mb-4 w-full">
-                  <Search />
+                  <NavbarSearch />
                 </div>
                 {menu.length ? (
                   <ul className="flex flex-col">

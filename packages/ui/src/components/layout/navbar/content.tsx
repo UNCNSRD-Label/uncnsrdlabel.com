@@ -2,11 +2,11 @@ import { clsx } from "clsx";
 import Link from "next/link";
 import { Suspense } from "react";
 
-import { getMenu } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { getMenu } from "@uncnsrdlabel/graphql-shopify-storefront/utilities.js";
 import { Cart } from "@uncnsrdlabel/ui/components/cart";
 import { CartIcon } from "@uncnsrdlabel/ui/components/icons/cart";
 import { LogotypeIcon } from "@uncnsrdlabel/ui/components/icons/logotype";
-import { NavbarSearch } from "@uncnsrdlabel/ui/components/search";
+import { Search } from "@uncnsrdlabel/ui/components/search/index.js";
 import { SlHeart, SlUser } from "react-icons/sl";
 import { SidebarMenu } from "./sidebar-menu";
 
@@ -39,7 +39,7 @@ export async function NavbarContent(props: Props) {
 
       <div className="pointer-events-auto flex items-center justify-end gap-5">
         <Suspense fallback={<CartIcon className="icon fill h-6" />}>
-          <NavbarSearch />
+          <Search />
           <Link href="/account" aria-label="Account" prefetch={false}>
             <SlUser className="icon fill h-5 w-5 drop-shadow" />
           </Link>

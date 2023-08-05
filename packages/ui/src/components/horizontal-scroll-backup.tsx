@@ -1,6 +1,6 @@
-import { getPage } from "@uncnsrdlabel/graphql-shopify-storefront";
-import Image from "@uncnsrdlabel/ui/components/image";
-import ScrollControls from "@uncnsrdlabel/ui/components/scroll-controls";
+import { getPage } from "@uncnsrdlabel/graphql-shopify-storefront/utilities.js";
+import { Image } from "@uncnsrdlabel/ui/components/image";
+import { ScrollControls } from "@uncnsrdlabel/ui/components/scroll-controls";
 import { clsx } from "clsx";
 import Link from "next/link";
 import { notFound } from "next/navigation";

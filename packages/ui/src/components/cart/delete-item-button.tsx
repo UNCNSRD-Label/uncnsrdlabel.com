@@ -1,10 +1,10 @@
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import LoadingDots from "@uncnsrdlabel/ui/components/loading-dots";
+import { LoadingDots } from "@uncnsrdlabel/ui/components/loading-dots";
 import { useRouter } from "next/navigation";
 
 import type { CartItem } from "@uncnsrdlabel/graphql-shopify-storefront/types";
 import { removeItem } from "@uncnsrdlabel/ui/components/cart/actions";
-import clsx from "clsx";
+import { clsx } from "clsx";
 import { useTransition } from "react";
 
 export function DeleteItemButton({ item }: { item: CartItem }) {

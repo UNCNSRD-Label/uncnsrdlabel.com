@@ -1,4 +1,4 @@
-import { getCollection, getCollectionProducts } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { getCollection, getCollectionProducts } from "@uncnsrdlabel/graphql-shopify-storefront/utilities.js";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 

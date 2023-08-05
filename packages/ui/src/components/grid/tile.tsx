@@ -1,12 +1,12 @@
-import Image from "@uncnsrdlabel/ui/components/image";
+import { Image } from "@uncnsrdlabel/ui/components/image.js";
 import { clsx } from "clsx";
 
-import Price from "@uncnsrdlabel/ui/components/price";
+import { Price } from "@uncnsrdlabel/ui/components/price.js";
 
 export function GridTileImage({
   className,
   isInteractive = true,
-  background = "hotPink",
+  // background = "hotPink",
   active,
   labels,
   priority,
