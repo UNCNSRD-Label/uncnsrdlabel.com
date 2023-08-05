@@ -5,7 +5,6 @@
     "jsx": "react-jsx",
     "lib": ["dom", "dom.iterable", "ESNext"],
     "module": "ESNext",
-    "moduleResolution": "node",
     "target": "ESNext"
   },
   "display": "React Library",

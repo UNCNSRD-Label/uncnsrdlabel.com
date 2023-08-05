@@ -9,6 +9,9 @@
     "*": "./*"
   },
   "license": "MIT",
+"publishConfig": {
+  "directory": "dist"
+},
   "main": "index.js",
   "name": "@uncnsrdlabel/eslint-config-custom",
   "private": true,

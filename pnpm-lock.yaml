@@ -76,16 +76,16 @@ importers:
         version: link:../../packages/eslint-config-custom
       '@uncnsrdlabel/graphql-shopify-storefront':
         specifier: workspace:*
-        version: link:../../packages/graphql-shopify-storefront
+        version: link:../../packages/graphql-shopify-storefront/dist
       '@uncnsrdlabel/lib':
         specifier: workspace:*
-        version: link:../../packages/lib
+        version: link:../../packages/lib/dist
       '@uncnsrdlabel/providers':
         specifier: workspace:*
-        version: link:../../packages/providers
+        version: link:../../packages/providers/dist
       '@uncnsrdlabel/ui':
         specifier: workspace:*
-        version: link:../../packages/ui
+        version: link:../../packages/ui/dist
       '@vercel/analytics':
         specifier: ^1.0.1
         version: 1.0.1
@@ -317,7 +317,7 @@ importers:
         version: 20.4.7
       '@uncnsrdlabel/lib':
         specifier: workspace:*
-        version: link:../lib
+        version: link:../lib/dist
       dotenv-cli:
         specifier: latest
         version: 7.2.1
@@ -364,6 +364,7 @@ importers:
       typescript-graphql-request:
         specifier: latest
         version: 4.4.6(graphql-request@6.1.0)(graphql-tag@2.12.6)(graphql@16.7.1)
+    publishDirectory: dist
 
   packages/lib:
     dependencies:
@@ -413,6 +414,7 @@ importers:
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
+    publishDirectory: dist
 
   packages/providers:
     dependencies:
@@ -433,10 +435,10 @@ importers:
         version: 4.32.1(@tanstack/react-query@4.32.1)(react-dom@18.2.0)(react@18.2.0)
       '@uncnsrdlabel/graphql-shopify-storefront':
         specifier: workspace:*
-        version: link:../graphql-shopify-storefront
+        version: link:../graphql-shopify-storefront/dist
       '@uncnsrdlabel/lib':
         specifier: workspace:*
-        version: link:../lib
+        version: link:../lib/dist
       analytics:
         specifier: ^0.8.9
         version: 0.8.9(@types/dlv@1.1.2)
@@ -480,6 +482,7 @@ importers:
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
+    publishDirectory: dist
 
   packages/tailwind-config:
     devDependencies:
@@ -493,6 +496,9 @@ importers:
 
   packages/ui:
     dependencies:
+      '@builder.io/partytown':
+        specifier: ^0.8.0
+        version: 0.8.0
       '@graphql-typed-document-node/core':
         specifier: ^3.2.0
         version: 3.2.0(graphql@16.7.1)
@@ -561,10 +567,10 @@ importers:
         version: 4.32.1(react-dom@18.2.0)(react@18.2.0)
       '@uncnsrdlabel/graphql-shopify-storefront':
         specifier: workspace:*
-        version: link:../graphql-shopify-storefront
+        version: link:../graphql-shopify-storefront/dist
       '@uncnsrdlabel/lib':
         specifier: workspace:*
-        version: link:../lib
+        version: link:../lib/dist
       '@uncnsrdlabel/tailwind-config':
         specifier: workspace:*
         version: link:../tailwind-config
@@ -656,6 +662,9 @@ importers:
       '@tailwindcss/typography':
         specifier: ^0.5.9
         version: 0.5.9(tailwindcss@3.3.3)
+      '@types/gtag.js':
+        specifier: ^0.0.12
+        version: 0.0.12
       '@types/lodash':
         specifier: ^4.14.196
         version: 4.14.196
@@ -695,6 +704,7 @@ importers:
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
+    publishDirectory: dist
 
 packages:
 

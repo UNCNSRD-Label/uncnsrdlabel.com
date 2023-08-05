@@ -1,8 +1,9 @@
-const plugin = require("tailwindcss/plugin");
-const colors = require("tailwindcss/colors");
+import type { Config } from "tailwindcss";
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import colors from "tailwindcss/colors";
+import plugin from "tailwindcss/plugin";
+
+const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
@@ -45,30 +46,30 @@ module.exports = {
         light: "#fafafa",
         disabled: colors.gray["300"],
       },
-      backgroundColor: "#111111",
-      borderColor: colors.gray["200"],
-      boxShadowColor: "#ff4dd8",
-      caretColor: "#ff4dd8",
-      divideColor: "#ff4dd8",
-      outlineColor: "#ff4dd8",
-      placeholderColor: "#ff4dd8",
-      ringColor: "#ff4dd8",
-      ringOffsetColor: "#ff4dd8",
-      textColor: "#fafafa",
-      textDecorationColor: "#ff4dd8",
+      // backgroundColor: "#111111",
+      // borderColor: colors.gray["200"],
+      // boxShadowColor: "#ff4dd8",
+      // caretColor: "#ff4dd8",
+      // divideColor: "#ff4dd8",
+      // outlineColor: "#ff4dd8",
+      // placeholderColor: "#ff4dd8",
+      // ringColor: "#ff4dd8",
+      // ringOffsetColor: "#ff4dd8",
+      // textColor: "#fafafa",
+      // textDecorationColor: "#ff4dd8",
       keyframes: {
         fadeIn: {
-          from: { opacity: 0 },
-          to: { opacity: 1 },
+          from: { opacity: "0" },
+          to: { opacity: "1" },
         },
         marquee: {
           "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(-100%)" },
         },
         blink: {
-          "0%": { opacity: 0.2 },
-          "20%": { opacity: 1 },
-          "100% ": { opacity: 0.2 },
+          "0%": { opacity: "0.2" },
+          "20%": { opacity: "1" },
+          "100% ": { opacity: "0.2" },
         },
       },
       animation: {
@@ -100,3 +101,5 @@ module.exports = {
     }),
   ],
 };
+
+export default config;

@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@builder.io/partytown": "^0.8.0",
     "@graphql-typed-document-node/core": "^3.2.0",
     "@headlessui/react": "^1.7.16",
     "@heroicons/react": "^2.0.18",
@@ -56,6 +57,7 @@
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "^0.5.4",
     "@tailwindcss/typography": "^0.5.9",
+    "@types/gtag.js": "^0.0.12",
     "@types/lodash": "^4.14.196",
     "@types/react": "^18.2.18",
     "@types/react-dom": "^18.2.7",
@@ -75,19 +77,22 @@
   "exports": {
     ".": {
     "require": "./dist/index.js",
-    "import": "./dist/index.mjs",
+    "import": "./dist/index.js",
     "default": "./dist/index.js",
     "types": "./dist/index.d.ts"
   },
   "./*": {
     "require": "./dist/*.js",
-    "import": "./dist/*.mjs",
+    "import": "./dist/*.js",
     "types": "./dist/*.d.ts"
   },
     "./styles.css": "./dist/index.css"
   },
   "files": ["dist/**"],
   "license": "MIT",
+"publishConfig": {
+  "directory": "dist"
+},
   "name": "@uncnsrdlabel/ui",
   "scripts": {
     "build": "tsc",

@@ -27,18 +27,21 @@
   "exports": {
     ".": {
     "require": "./dist/index.js",
-    "import": "./dist/index.mjs",
+    "import": "./dist/index.js",
     "default": "./dist/index.js",
     "types": "./dist/index.d.ts"
   },
   "./*": {
     "require": "./dist/*.js",
-    "import": "./dist/*.mjs",
+    "import": "./dist/*.js",
     "types": "./dist/*.d.ts"
   }
   },
   "files": ["dist/**"],
   "license": "MIT",
+"publishConfig": {
+  "directory": "dist"
+},
   "name": "@uncnsrdlabel/graphql-shopify-storefront",
   "scripts": {
     "build": "tsc",

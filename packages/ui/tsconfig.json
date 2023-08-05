@@ -2,10 +2,17 @@
   "compilerOptions": {
     "outDir": "./dist",
     "paths": {
-      "@uncnsrdlabel/ui/*": [
-        "./src/*"
-      ]
+      "@uncnsrdlabel/ui/*": ["./src/*"]
     },
+    "types": [
+      "@types/gtag.js",
+      "@types/lodash",
+      "@types/node",
+      "@types/react-dom",
+      "@types/react",
+      "@types/use-analytics",
+      "@uncnsrdlabel/types"
+    ]
   },
   "extends": "@uncnsrdlabel/tsconfig/react-library.json",
   "include": ["./src"],

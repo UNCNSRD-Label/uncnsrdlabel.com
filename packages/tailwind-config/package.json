@@ -5,5 +5,6 @@
 	"main": "index.js",
 	"name": "@uncnsrdlabel/tailwind-config",
 	"private": true,
-	"type": "module"
+	"type": "module",
+	"types": "./node_modules/tailwindcss/types/index.d.ts"
 }
