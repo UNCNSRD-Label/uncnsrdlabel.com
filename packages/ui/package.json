@@ -75,19 +75,17 @@
     "typescript": "^5.1.6"
   },
   "exports": {
-    "./*": "./dist/*"
+    "./*": "./src/*"
   },
   "files": [
-    "dist/**"
+    "src/**"
   ],
-  "license": "MIT",
-  "publishConfig": {
-    "directory": "dist"
-  },
+  "main": "./src/index.tsx",
   "name": "@uncnsrdlabel/ui",
+  "publishConfig": {
+    "directory": "src"
+  },
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
     "generate:component": "turbo gen react-component",
     "lint": "eslint \"**/*.ts*\"",
     "types:check": "tsc --noEmit"
@@ -96,5 +94,6 @@
     "**/*.css"
   ],
   "type": "module",
-  "types": "./dist/index.d.ts"
+  "types": "./src/index.d.ts",
+  "version": "0.0.0"
 }

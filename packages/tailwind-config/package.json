@@ -12,15 +12,10 @@
     "type-fest": "^4.1.0",
     "typescript": "^5.1.6"
   },
-  "exports": {
-    "./*": "./dist/*"
-  },
-  "files": [
-    "dist/**"
-  ],
-  "license": "MIT",
+  "main": "./src/index.tsx",
+  "private": true,
   "publishConfig": {
-    "directory": "dist"
+    "access": "public"
   },
   "name": "@uncnsrdlabel/tailwind-config",
   "scripts": {
@@ -30,5 +25,6 @@
     "types:check": "tsc --noEmit"
   },
   "type": "module",
-  "types": "./dist/index.d.ts"
+  "types": "./src/index.d.ts",
+  "version": "0.0.0"
 }

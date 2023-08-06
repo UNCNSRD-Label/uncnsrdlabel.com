@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",
+    "lib": ["dom", "ES2015"],
     "paths": {
       "@uncnsrdlabel/ui/*": ["./src/*"]
     },

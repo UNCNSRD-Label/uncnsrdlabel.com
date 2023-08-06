@@ -30,9 +30,8 @@
   "files": [
     "dist/**"
   ],
-  "license": "MIT",
-  "publishConfig": {
-    "directory": "dist"
+    "publishConfig": {
+    "directory": "src"
   },
   "name": "@uncnsrdlabel/graphql-shopify-storefront",
   "scripts": {

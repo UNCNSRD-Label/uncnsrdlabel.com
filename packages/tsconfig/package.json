@@ -1,7 +1,9 @@
 {
-	"license": "MIT",
-	"name": "@uncnsrdlabel/tsconfig",
-	"private": true,
-	"type": "module",
-	"version": "0.0.0"
+  "name": "@uncnsrdlabel/tsconfig",
+  "publishConfig": {
+    "access": "public"
+  },
+  "private": true,
+  "type": "module",
+  "version": "0.0.0"
 }

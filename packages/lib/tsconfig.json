@@ -1,10 +1,8 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",
+    "lib": ["dom", "ES2015"],
     "paths": {
-      "@uncnsrdlabel/lib/*": [
-        "./src/*"
-      ]
+      "@uncnsrdlabel/lib/*": ["./src/*"]
     }
   },
   "extends": "@uncnsrdlabel/tsconfig/react-library.json",

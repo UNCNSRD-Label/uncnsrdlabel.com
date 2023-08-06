@@ -5,19 +5,10 @@
     "eslint-plugin-react": "7.33.1",
     "eslint-config-turbo": "^1.10.12"
   },
-  "exports": {
-    "*": "./*"
-  },
-  "license": "MIT",
-"publishConfig": {
-  "directory": "dist"
-},
   "main": "index.js",
   "name": "@uncnsrdlabel/eslint-config-custom",
-  "private": true,
   "publishConfig": {
     "access": "public"
   },
-  "type": "module",
   "version": "0.0.0"
 }

@@ -117,7 +117,7 @@ const nextConfig = {
     ],
   },
   poweredByHeader: false,
-  reactStrictMode: false,
+  reactStrictMode: true,
   async redirects() {
     return [
       {
@@ -127,7 +127,14 @@ const nextConfig = {
       },
     ];
   },
-  transpilePackages: ['@uncnsrdlabel/*'],
+  transpilePackages: [
+    '@uncnsrdlabel/graphql-hygraph',
+    '@uncnsrdlabel/graphql-shopify-admin',
+    '@uncnsrdlabel/graphql-shopify-storefront',
+    '@uncnsrdlabel/lib',
+    '@uncnsrdlabel/providers',
+    '@uncnsrdlabel/ui'
+  ],
 };
 
 module.exports = withPlugins([...plugins], nextConfig);
