@@ -1,7 +1,7 @@
 "use client";
 
-// import { googleAnalytics } from "@analytics/google-analytics";
-import { googleTagManager } from "@analytics/google-tag-manager";
+// import googleAnalytics from "@analytics/google-analytics";
+import googleTagManager from "@analytics/google-tag-manager";
 import { Analytics } from "analytics";
 // import { eventValidation } from "analytics-plugin-event-validation";
 import { getShopifyCookies, useShop } from "@shopify/hydrogen-react";
