@@ -57,6 +57,22 @@ const config: Config = {
       // ringOffsetColor: "#ff4dd8",
       // textColor: "#fafafa",
       // textDecorationColor: "#ff4dd8",
+      backgroundColor: ({theme}) => ({
+        ...theme("colors"),
+        primary: "#111111",
+        secondary: "#fafafa",
+        disabled: "#f3f3f3",
+        error: "#ff4dd8",
+        success: "#4dff74",
+      }),
+      borderColor: ({theme}) => ({
+        ...theme("colors"),
+        primary: "#111111",
+        secondary: "#fafafa",
+        disabled: "#f3f3f3",
+        error: "#ff4dd8",
+        success: "#4dff74",
+      }),
       keyframes: {
         fadeIn: {
           from: { opacity: "0" },

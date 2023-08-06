@@ -1,10 +1,34 @@
 {
-	"devDependencies": {
-		"tailwindcss": "^3.3.3"
-	},
-	"main": "index.js",
-	"name": "@uncnsrdlabel/tailwind-config",
-	"private": true,
-	"type": "module",
-	"types": "./node_modules/tailwindcss/types/index.d.ts"
+  "dependencies": {
+    "tailwindcss": "^3.3.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.4",
+    "@tailwindcss/typography": "^0.5.9",
+    "@uncnsrdlabel/eslint-config-custom": "workspace:*",
+    "@uncnsrdlabel/tsconfig": "workspace:*",
+    "tsup": "^7.2.0",
+    "type-fest": "^4.1.0",
+    "typescript": "^5.1.6"
+  },
+  "exports": {
+    "./*": "./dist/*"
+  },
+  "files": [
+    "dist/**"
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "directory": "dist"
+  },
+  "name": "@uncnsrdlabel/tailwind-config",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc",
+    "lint": "eslint \"**/*.ts*\"",
+    "types:check": "tsc --noEmit"
+  },
+  "type": "module",
+  "types": "./dist/index.d.ts"
 }
