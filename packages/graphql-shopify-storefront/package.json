@@ -25,23 +25,15 @@
     "typescript-graphql-request": "latest"
   },
   "exports": {
-    ".": {
-    "require": "./dist/index.js",
-    "import": "./dist/index.js",
-    "default": "./dist/index.js",
-    "types": "./dist/index.d.ts"
+    "./*": "./dist/*"
   },
-  "./*": {
-    "require": "./dist/*.js",
-    "import": "./dist/*.js",
-    "types": "./dist/*.d.ts"
-  }
-  },
-  "files": ["dist/**"],
+  "files": [
+    "dist/**"
+  ],
   "license": "MIT",
-"publishConfig": {
-  "directory": "dist"
-},
+  "publishConfig": {
+    "directory": "dist"
+  },
   "name": "@uncnsrdlabel/graphql-shopify-storefront",
   "scripts": {
     "build": "tsc",

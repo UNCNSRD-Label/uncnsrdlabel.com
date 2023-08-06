@@ -19,25 +19,15 @@
     "typescript": "^5.1.6"
   },
   "exports": {
-    ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.js",
-      "default": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    },
-    "./*": {
-      "require": "./dist/*.js",
-      "import": "./dist/*.js",
-      "types": "./dist/*.d.ts"
-    }
+    "./*": "./dist/*"
   },
   "files": [
     "dist/**"
   ],
   "license": "MIT",
-"publishConfig": {
-  "directory": "dist"
-},
+  "publishConfig": {
+    "directory": "dist"
+  },
   "name": "@uncnsrdlabel/lib",
   "scripts": {
     "dev": "tsc --watch",
