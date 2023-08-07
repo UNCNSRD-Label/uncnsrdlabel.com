@@ -95,7 +95,7 @@
   "private": true,
   "scripts": {
     "analyze": "cross-env ANALYZE=true next build",
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "npm run partytown && next build",
     "partytown": "partytown copylib public/~partytown",
     "start": "next start",
