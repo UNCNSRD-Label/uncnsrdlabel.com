@@ -1,14 +1,14 @@
 {
   "devDependencies": {
-    "@graphql-eslint/eslint-plugin": "^3.20.1",
-    "@turbo/gen": "^1.10.12",
-    "@types/node": "^20.4.6",
+    "@graphql-eslint/eslint-plugin": "latest",
+    "@turbo/gen": "latest",
+    "@types/node": "latest",
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "dotenv-cli": "latest",
     "eslint-config-turbo": "latest",
     "eslint": "latest",
-    "madge": "6.1.0",
-    "turbo": "^1.10.12"
+    "madge": "latest",
+    "turbo": "latest"
   },
   "name": "uncnsrdlabel.com",
   "packageManager": "pnpm@8.6.10",
