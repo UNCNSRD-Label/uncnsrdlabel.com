@@ -1,6 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": ["**/.env.*local"],
+  "globalDotEnv": [".env", ".env.local"],
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
@@ -10,53 +10,30 @@
         ".env.production",
         ".env"
       ],
-      "env": [],
-      "outputs": ["!.next/cache/**", ".next/**", "dist/**"]
-    },
-    "@uncnsrdlabel/app-web#build": {
-      "dependsOn": ["^build"],
-      "outputs": ["!.next/cache/**", ".next/**", "dist/**"],
       "env": [
         "NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID",
         "NEXT_PUBLIC_HYGRAPH_API_TOKEN",
         "NEXT_PUBLIC_HYGRAPH_PROJECT_ID",
         "NEXT_PUBLIC_HYGRAPH_REGION",
-        "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY_LIVE",
-        "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY",
+        "NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN",
+        "NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN",
+        "NEXT_PUBLIC_SHOPIFY_STOREFRONT_API_VERSION",
         "NEXT_PUBLIC_SUPABASE_ANON_KEY",
         "NEXT_PUBLIC_SUPABASE_URL",
         "SITE_NAME",
         "SITE_URL",
-        "STRIPE_SECRET_KEY_LIVE",
-        "STRIPE_SECRET_KEY",
-        "STRIPE_WEBHOOK_SECRET",
         "SUPABASE_SERVICE_ROLE_KEY"
       ]
     },
-    "@uncnsrdlabel/graphql-hygraph#build": {
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**"],
-      "env": [
-        "NEXT_PUBLIC_HYGRAPH_API_TOKEN",
-        "NEXT_PUBLIC_HYGRAPH_PROJECT_ID",
-        "NEXT_PUBLIC_HYGRAPH_REGION"
-      ]
+    "@uncnsrdlabel/app-web#build": {
+      "outputs": [".next/**", "!.next/cache/**"]
     },
-    "@uncnsrdlabel/graphql-shopify-storefront#build": {
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**"],
-      "env": [
-        "NEXT_PUBLIC_SHOPIFY_SHOP_ID",
-        "NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN",
-        "NEXT_PUBLIC_SHOPIFY_STOREFRONT_API_VERSION",
-        "NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN",
-        "SHOPIFY_PRIVATE_ACCESS_TOKEN",
-        "SHOPIFY_STORE_SUBDOMAIN"
-      ]
+    "clean": {
+      "cache": false
     },
     "dev": {
       "cache": false,
-      "persistent": true,
+      "dependsOn": ["^build"],
       "dotEnv": [
         ".env.development.local",
         ".env.local",
@@ -64,21 +41,20 @@
         ".env"
       ],
       "env": [
+        "NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID",
         "NEXT_PUBLIC_HYGRAPH_API_TOKEN",
         "NEXT_PUBLIC_HYGRAPH_PROJECT_ID",
         "NEXT_PUBLIC_HYGRAPH_REGION",
-        "NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID",
-        "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY",
-        "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY_LIVE",
+        "NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN",
+        "NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN",
+        "NEXT_PUBLIC_SHOPIFY_STOREFRONT_API_VERSION",
         "NEXT_PUBLIC_SUPABASE_ANON_KEY",
         "NEXT_PUBLIC_SUPABASE_URL",
         "SITE_NAME",
         "SITE_URL",
-        "STRIPE_SECRET_KEY",
-        "STRIPE_SECRET_KEY_LIVE",
-        "STRIPE_WEBHOOK_SECRET",
         "SUPABASE_SERVICE_ROLE_KEY"
-      ]
+      ],
+      "persistent": true
     },
     "generate-types": {
       "outputs": []
@@ -86,17 +62,15 @@
     "lint": {
       "outputs": []
     },
-    "test": {
-      "dependsOn": ["^build"],
-      "outputs": []
-    },
     "start": {
       "cache": false,
       "dependsOn": ["^build"],
       "outputs": []
     },
-    "clean": {
-      "cache": false
+    "test": {
+      "dependsOn": ["^build"],
+      "dotEnv": [".env.test.local", ".env.test", ".env"],
+      "outputs": []
     },
     "types:check": {
       "outputs": []
