@@ -1,6 +1,12 @@
-const sharedConfig = require("@uncnsrdlabel/tailwind-config/tailwind.config.js");
+import sharedConfig from "@uncnsrdlabel/tailwind-config/tailwind.config.js";
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
+  content: [],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
   presets: [sharedConfig],
-};
+}
+
