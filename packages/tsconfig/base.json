@@ -12,10 +12,21 @@
     "moduleResolution": "node",
     "noUnusedLocals": false,
     "noUnusedParameters": false,
+    "paths": {
+      "@uncnsrdlabel/graphql-hygraph/*": ["../graphql-hygraph/src/*"],
+      "@uncnsrdlabel/graphql-shopify-admin/*": ["../graphql-shopify-admin/src/*"],
+      "@uncnsrdlabel/graphql-shopify-storefront/*": ["../graphql-shopify-storefront/src/*"],
+      "@uncnsrdlabel/lib/*": ["../lib/src/*"],
+      "@uncnsrdlabel/providers/*": ["../providers/src/*"],
+      "@uncnsrdlabel/ui/*": ["../ui/src/*"]
+    },
     "preserveWatchOutput": true,
     "skipLibCheck": true,
-    "strict": true
+    "strict": true,
+    "types": [
+      "@uncnsrdlabel/types"
+    ]
   },
   "exclude": ["node_modules"],
-  "include": ["@uncnsrdlabel/tsconfig"]
+  "include": ["@uncnsrdlabel/tsconfig", "@uncnsrdlabel/types"]
 }

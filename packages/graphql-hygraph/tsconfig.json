@@ -1,12 +1,6 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "ES2015"],
-    "outDir": "./dist",
-    "paths": {
-      "@uncnsrdlabel/graphql-hygraph/*": [
-        "./src/*"
-      ]
-    }
+    "outDir": "./dist"
   },
   "extends": "@uncnsrdlabel/tsconfig/react-library.json",
   "include": ["./src"],
