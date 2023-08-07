@@ -12,18 +12,25 @@
     "type-fest": "^4.1.0",
     "typescript": "^5.1.6"
   },
-  "main": "./src/index.tsx",
-  "private": true,
-  "publishConfig": {
-    "access": "public"
+  "exports": {
+    "./*": "./src/*"
   },
+  "files": [
+    "src/**"
+  ],
+  "main": "./src/index.tsx",
   "name": "@uncnsrdlabel/tailwind-config",
+  "publishConfig": {
+    "directory": "src"
+  },
   "scripts": {
-    "dev": "tsc --watch",
-    "build": "tsc",
+    "generate:component": "turbo gen react-component",
     "lint": "eslint \"**/*.ts*\"",
     "types:check": "tsc --noEmit"
   },
+  "sideEffects": [
+    "**/*.css"
+  ],
   "type": "module",
   "types": "./src/index.d.ts",
   "version": "0.0.0"

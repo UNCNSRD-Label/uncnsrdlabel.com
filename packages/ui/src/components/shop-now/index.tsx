@@ -1,6 +1,6 @@
 "use client";
 
-import { LogotypeIcon } from "@uncnsrdlabel/ui/components/icons/logotype.js";
+import { LogotypeIcon } from "@uncnsrdlabel/ui/components/icons/logotype";
 
 export function Logos() {
   return (

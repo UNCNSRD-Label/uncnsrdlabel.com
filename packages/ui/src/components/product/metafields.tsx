@@ -11,7 +11,7 @@ import {
   AccordionTrigger,
 } from "@uncnsrdlabel/ui/components/accordion";
 
-import { Metafield } from "@uncnsrdlabel/graphql-shopify-storefront/types.js";
+import { Metafield } from "@uncnsrdlabel/graphql-shopify-storefront/types";
 
 export type MetaFieldsRef = HTMLDivElement;
 

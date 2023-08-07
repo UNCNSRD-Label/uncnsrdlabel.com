@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { getPage } from "@uncnsrdlabel/graphql-shopify-storefront/utilities.js";
+import { getPage } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
 import { Image } from "@uncnsrdlabel/ui/components/image";
 import { Prose } from "@uncnsrdlabel/ui/components/prose";
 import { notFound } from "next/navigation";

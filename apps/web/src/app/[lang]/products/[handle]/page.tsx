@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { Product as ProductSchema, WithContext } from "schema-dts";
 
-import { getProduct, getProductRecommendations } from "@uncnsrdlabel/graphql-shopify-storefront/utilities.js";
+import { getProduct, getProductRecommendations } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
 import { HIDDEN_PRODUCT_TAG } from "@uncnsrdlabel/lib/constants";
 import { Grid } from "@uncnsrdlabel/ui/components/grid";
 import { ProductGridItems } from "@uncnsrdlabel/ui/components/layout/product-grid-items";

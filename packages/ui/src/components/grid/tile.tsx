@@ -1,7 +1,7 @@
-import { Image } from "@uncnsrdlabel/ui/components/image.js";
+import { Image } from "@uncnsrdlabel/ui/components/image";
 import { clsx } from "clsx";
 
-import { Price } from "@uncnsrdlabel/ui/components/price.js";
+import { Price } from "@uncnsrdlabel/ui/components/price";
 
 export function GridTileImage({
   className,

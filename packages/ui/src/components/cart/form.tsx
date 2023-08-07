@@ -1,10 +1,10 @@
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
-import { DEFAULT_OPTION } from "@uncnsrdlabel/lib/constants.js";
-import type { Cart } from "@uncnsrdlabel/graphql-shopify-storefront/types.js";
-import { createUrl } from "@uncnsrdlabel/lib/utils.js";
-import { DeleteItemButton } from "@uncnsrdlabel/ui/components/cart/delete-item-button.js";
-import { EditItemQuantityButton } from "@uncnsrdlabel/ui/components/cart/edit-item-quantity-button.js";
-import { Price } from "@uncnsrdlabel/ui/components/price.js";
+import { DEFAULT_OPTION } from "@uncnsrdlabel/lib/constants";
+import type { Cart } from "@uncnsrdlabel/graphql-shopify-storefront/types";
+import { createUrl } from "@uncnsrdlabel/lib/utils";
+import { DeleteItemButton } from "@uncnsrdlabel/ui/components/cart/delete-item-button";
+import { EditItemQuantityButton } from "@uncnsrdlabel/ui/components/cart/edit-item-quantity-button";
+import { Price } from "@uncnsrdlabel/ui/components/price";
 import Image from "next/image";
 import Link from "next/link";
 

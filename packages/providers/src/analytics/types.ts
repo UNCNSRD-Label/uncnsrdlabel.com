@@ -1,4 +1,4 @@
-import { type Product } from "@uncnsrdlabel/graphql-shopify-storefront/types.js";
+import { type Product } from "@uncnsrdlabel/graphql-shopify-storefront/types";
 
 // eslint-disable-next-line no-unused-vars
 export type PluginEventFunction = (options: {

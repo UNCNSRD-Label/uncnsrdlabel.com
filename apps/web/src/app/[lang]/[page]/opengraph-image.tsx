@@ -1,4 +1,4 @@
-import { getPage } from "@uncnsrdlabel/graphql-shopify-storefront/utilities.js";
+import { getPage } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
 import { OpengraphImage } from "@uncnsrdlabel/ui/components/opengraph-image";
 
 export const runtime = "edge";

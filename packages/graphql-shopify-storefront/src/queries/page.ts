@@ -1,5 +1,5 @@
-import { imageFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/image.js";
-import { seoFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/seo.js";
+import { imageFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/image";
+import { seoFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/seo";
 
 const pageFragment = /* GraphQL */ `
   fragment page on Page {

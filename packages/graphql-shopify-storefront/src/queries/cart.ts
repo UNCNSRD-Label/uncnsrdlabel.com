@@ -1,4 +1,4 @@
-import { cartFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/cart.js";
+import { cartFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/cart";
 
 export const getCartQuery = /* GraphQL */ `
   query getCart($cartId: ID!) {

@@ -1,8 +1,8 @@
 "use client";
 
-import { SortFilterItem } from "@uncnsrdlabel/lib/constants.js";
-import { createUrl } from "@uncnsrdlabel/lib/utils.js";
-import type { ListItem, PathFilterItem } from "@uncnsrdlabel/ui/index.js";
+import { SortFilterItem } from "@uncnsrdlabel/lib/constants";
+import { createUrl } from "@uncnsrdlabel/lib/utils";
+import type { ListItem, PathFilterItem } from "@uncnsrdlabel/ui/index";
 import { clsx } from "clsx";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";

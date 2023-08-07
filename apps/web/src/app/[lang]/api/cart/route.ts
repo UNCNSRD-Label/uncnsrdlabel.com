@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
-import { addToCart, removeFromCart, updateCart } from "@uncnsrdlabel/graphql-shopify-storefront/utilities.js";
+import { addToCart, removeFromCart, updateCart } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
 import { isShopifyError } from "@uncnsrdlabel/lib/type-guards";
 
 import { Cart, CartResponse } from "./types";

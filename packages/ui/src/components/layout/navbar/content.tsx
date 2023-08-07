@@ -2,11 +2,11 @@ import { clsx } from "clsx";
 import Link from "next/link";
 import { Suspense } from "react";
 
-import { getMenu } from "@uncnsrdlabel/graphql-shopify-storefront/utilities.js";
+import { getMenu } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
 import { Cart } from "@uncnsrdlabel/ui/components/cart";
 import { CartIcon } from "@uncnsrdlabel/ui/components/icons/cart";
 import { LogotypeIcon } from "@uncnsrdlabel/ui/components/icons/logotype";
-import { Search } from "@uncnsrdlabel/ui/components/search/index.js";
+import { Search } from "@uncnsrdlabel/ui/components/search/index";
 import { SlHeart, SlUser } from "react-icons/sl";
 import { SidebarMenu } from "./sidebar-menu";
 

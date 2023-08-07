@@ -1,4 +1,4 @@
-import { cartFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/cart.js";
+import { cartFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/cart";
 
 export const addToCartMutation = /* GraphQL */ `
   mutation addToCart($cartId: ID!, $lines: [CartLineInput!]!) {

@@ -82,7 +82,7 @@ importers:
         version: link:../../packages/lib/src
       '@uncnsrdlabel/providers':
         specifier: workspace:*
-        version: link:../../packages/providers
+        version: link:../../packages/providers/src
       '@uncnsrdlabel/ui':
         specifier: workspace:*
         version: link:../../packages/ui/src
@@ -401,7 +401,7 @@ importers:
         version: link:../eslint-config-custom
       '@uncnsrdlabel/tailwind-config':
         specifier: workspace:*
-        version: link:../tailwind-config
+        version: link:../tailwind-config/src
       '@uncnsrdlabel/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -466,7 +466,7 @@ importers:
         version: link:../eslint-config-custom
       '@uncnsrdlabel/tailwind-config':
         specifier: workspace:*
-        version: link:../tailwind-config
+        version: link:../tailwind-config/src
       '@uncnsrdlabel/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -482,6 +482,7 @@ importers:
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
+    publishDirectory: src
 
   packages/tailwind-config:
     dependencies:
@@ -513,6 +514,7 @@ importers:
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
+    publishDirectory: src
 
   packages/tsconfig: {}
 
@@ -597,7 +599,7 @@ importers:
         version: link:../lib/src
       '@uncnsrdlabel/tailwind-config':
         specifier: workspace:*
-        version: link:../tailwind-config
+        version: link:../tailwind-config/src
       '@vercel/analytics':
         specifier: ^1.0.1
         version: 1.0.1

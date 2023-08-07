@@ -1,6 +1,6 @@
 import { clsx } from "clsx";
 
-import { SignUpForm } from "@uncnsrdlabel/ui/components/sign-up/form.js";
+import { SignUpForm } from "@uncnsrdlabel/ui/components/sign-up/form";
 
 export function SignUp({ className }: { className?: string }) {
   return (

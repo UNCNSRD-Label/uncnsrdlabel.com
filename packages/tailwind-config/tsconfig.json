@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
+    "lib": ["dom", "ES2015"],
     "outDir": "./dist",
     "paths": {
-      "@uncnsrdlabel/lib/*": [
+      "@uncnsrdlabel/tailwind-config/*": [
         "./src/*"
       ]
     }

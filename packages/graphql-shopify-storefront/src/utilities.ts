@@ -7,21 +7,21 @@ import {
   createCartMutation,
   editCartItemsMutation,
   removeFromCartMutation,
-} from "@uncnsrdlabel/graphql-shopify-storefront/mutations/cart.js";
-import { getCartQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/cart.js";
+} from "@uncnsrdlabel/graphql-shopify-storefront/mutations/cart";
+import { getCartQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/cart";
 import {
   getCollectionProductsQuery,
   getCollectionQuery,
   getCollectionsQuery,
-} from "@uncnsrdlabel/graphql-shopify-storefront/queries/collection.js";
-import { getMenuQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/menu.js";
-import { getPageQuery, getPagesQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/page.js";
-import { getPoliciesQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/policy.js";
+} from "@uncnsrdlabel/graphql-shopify-storefront/queries/collection";
+import { getMenuQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/menu";
+import { getPageQuery, getPagesQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/page";
+import { getPoliciesQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/policy";
 import {
   getProductQuery,
   getProductRecommendationsQuery,
   getProductsQuery,
-} from "@uncnsrdlabel/graphql-shopify-storefront/queries/product.js";
+} from "@uncnsrdlabel/graphql-shopify-storefront/queries/product";
 import {
   Cart,
   Collection,
@@ -54,13 +54,13 @@ import {
   ShopifyProductsOperation,
   ShopifyRemoveFromCartOperation,
   ShopifyUpdateCartOperation,
-} from "@uncnsrdlabel/graphql-shopify-storefront/types.js";
+} from "@uncnsrdlabel/graphql-shopify-storefront/types";
 import {
   HIDDEN_PRODUCT_TAG,
   SHOPIFY_GRAPHQL_API_ENDPOINT, revalidate
-} from "@uncnsrdlabel/lib/constants.js";
-import { getErrorsMessage } from "@uncnsrdlabel/lib/errors.js";
-import { isShopifyError } from "@uncnsrdlabel/lib/type-guards.js";
+} from "@uncnsrdlabel/lib/constants";
+import { getErrorsMessage } from "@uncnsrdlabel/lib/errors";
+import { isShopifyError } from "@uncnsrdlabel/lib/type-guards";
 import { camelCase } from "lodash";
 
 const domain = `https://${process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!}`;

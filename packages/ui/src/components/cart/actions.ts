@@ -1,13 +1,13 @@
 "use server";
 
-import { Cart } from "@uncnsrdlabel/graphql-shopify-storefront/types.js";
+import { Cart } from "@uncnsrdlabel/graphql-shopify-storefront/types";
 import {
   addToCart,
   createCart,
   getCart,
   removeFromCart,
   updateCart,
-} from "@uncnsrdlabel/graphql-shopify-storefront/utilities.js";
+} from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
 import { cookies } from "next/headers";
 
 export const addItem = async (

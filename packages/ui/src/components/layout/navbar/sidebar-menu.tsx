@@ -1,17 +1,16 @@
 "use client";
 
 import { Dialog } from "@headlessui/react";
-import { clsx } from "clsx";
-import { AnimatePresence, motion } from "framer-motion";
-import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
-
 import { Menu } from "@uncnsrdlabel/graphql-shopify-storefront/types";
 import { themeColors } from "@uncnsrdlabel/lib/effects";
 import { CloseIcon } from "@uncnsrdlabel/ui/components/icons/close";
 import { LogotypeIcon } from "@uncnsrdlabel/ui/components/icons/logotype";
 import { MenuIcon } from "@uncnsrdlabel/ui/components/icons/menu";
+import { clsx } from "clsx";
+import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import { NavbarSearch } from "./search";
 
 export function SidebarMenu({ menu }: { menu: Menu[] }) {

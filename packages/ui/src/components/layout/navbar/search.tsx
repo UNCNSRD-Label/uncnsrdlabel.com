@@ -2,8 +2,8 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 
-import { createUrl } from "@uncnsrdlabel/lib/utils.js";
-import { SearchIcon } from "@uncnsrdlabel/ui/components/icons/search.js";
+import { createUrl } from "@uncnsrdlabel/lib/utils";
+import { SearchIcon } from "@uncnsrdlabel/ui/components/icons/search";
 
 export function NavbarSearch() {
   const router = useRouter();

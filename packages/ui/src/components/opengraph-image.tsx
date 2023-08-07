@@ -1,4 +1,4 @@
-import { LogotypeIcon } from "@uncnsrdlabel/ui/components/icons/logotype.js";
+import { LogotypeIcon } from "@uncnsrdlabel/ui/components/icons/logotype";
 import { ImageResponse } from "next/server";
 
 export type Props = {

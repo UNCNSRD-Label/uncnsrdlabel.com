@@ -3,14 +3,14 @@ import { themeColors } from "@uncnsrdlabel/lib/effects";
 import { AppProviders } from "@uncnsrdlabel/providers";
 import { HandleRouteChange } from "@uncnsrdlabel/ui/components/analytics/handle-route-change";
 import { Banner } from "@uncnsrdlabel/ui/components/banner";
-import { Footer } from "@uncnsrdlabel/ui/components/layout/footer";
-import { Progress } from "@uncnsrdlabel/ui/components/layout/progress";
+import { Footer } from "@uncnsrdlabel/ui/components/layout/footer/index";
+// import { Progress } from "@uncnsrdlabel/ui/components/layout/progress";
 import { Organization } from "@uncnsrdlabel/ui/components/schema.org/organization";
 import { clsx } from "clsx";
 import { Inter, Montserrat } from "next/font/google";
 import localFont from "next/font/local";
 import { ReactNode, Suspense } from "react";
-import "../globals.css";
+// import "../globals.css";
 
 const {
   TWITTER_CREATOR,
@@ -121,7 +121,7 @@ export default async function RootLayout({
         }}
       >
         <AppProviders>
-          <Progress />
+          {/* <Progress /> */}
           <Banner
             className={clsx("sticky top-0 w-full", hideBanner && "hidden")}
           />
