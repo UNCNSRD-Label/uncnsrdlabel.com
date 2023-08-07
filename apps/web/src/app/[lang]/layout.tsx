@@ -108,7 +108,6 @@ export default async function RootLayout({
         "snap-y",
         // "dark"
       )}
-      lang="en"
     >
       <body
         className={clsx(
