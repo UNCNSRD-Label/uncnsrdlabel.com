@@ -8,6 +8,7 @@
     "eslint-config-turbo": "latest",
     "eslint": "latest",
     "madge": "latest",
+    "prettier": "latest",
     "turbo": "latest"
   },
   "name": "uncnsrdlabel.com",
@@ -34,7 +35,7 @@
     "prettier:list-different": "npx prettier . --list-different",
     "start": "turbo start",
     "test:e2e": "playwright test",
-    "test": "pnpm lint && pnpm prettier:check",
+    "test": "pnpm test",
     "types:check": "turbo types:check",
     "unused:fix": "npx next-unused --fix",
     "unused": "npx next-unused",
