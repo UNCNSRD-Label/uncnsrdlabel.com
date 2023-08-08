@@ -27,6 +27,7 @@
     },
     "@uncnsrdlabel/app-web#build": {
       "env": [
+        "FEATURE_FLAG_HOLDING_REDIRECT_ENABLE",
         "FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE",
         "KLAVIYO_LIST_ID",
         "KLAVIYO_PRIVATE_KEY",

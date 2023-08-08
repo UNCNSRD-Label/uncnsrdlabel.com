@@ -24,7 +24,7 @@ export default function SearchLayout({
             <div
               className={clsx(
                 "order-first flex-none md:w-1/6",
-                !process.env.FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE && "hidden",
+                process.env.FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE !== "true" && "hidden",
               )}
             >
               <Collections />
@@ -35,7 +35,7 @@ export default function SearchLayout({
             <div
               className={clsx(
                 "order-none md:order-last md:w-1/6 md:flex-none",
-                !process.env.FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE && "hidden",
+                process.env.FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE !== "true" && "hidden",
               )}
             >
               <FilterList list={sorting} title="Sort by" />
