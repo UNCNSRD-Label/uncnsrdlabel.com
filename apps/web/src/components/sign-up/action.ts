@@ -60,14 +60,20 @@ export async function signUpAction(
         console.error(json.errors);
       }
 
-      return response.statusText;
-    } else if (response.status >= 200) {
-      return response.statusText;
-    } else {
-      return response.statusText;
+      return {
+        ...response,
+        message: response.statusText ?? json.errors?.[0] ?? "Error"
+      };
     }
-  } catch (err) {
-    console.error(err);
-    return "Error";
+
+    if (response.status === 202) {
+      return {
+        ...response,
+        message: "You have successfully signed up to our mailing list!"
+      };
+    }
+  } catch (error) {
+    console.error(error);
+    return error;
   }
 }

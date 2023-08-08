@@ -18,7 +18,7 @@ export function SignUpForm({ className }: { className?: string }) {
 
   const [open, setOpen] = useState(false);
   const timerRef = useRef(0);
-  const messageRef = useRef<string | null>("");
+  const [toastMessage, setToastMessage] = useState<string | null>("Waiting for signup confirmation");
 
   useEffect(() => {
     return () => clearTimeout(timerRef.current);
@@ -26,16 +26,21 @@ export function SignUpForm({ className }: { className?: string }) {
 
   const action = async (formData: FormData) => {
     setOpen(true);
+
     window.clearTimeout(timerRef.current);
+
     timerRef.current = window.setTimeout(() => {
       setOpen(false);
-    }, 5_000);
+    }, 10_000);
 
     // grab location from context
     // this.name = "Sign Up Form (Footer)";
     const response = await signUpAction(formData, "Sign Up Form (Footer)");
 
-    messageRef.current = response;
+    console.log(response);
+    if (response?.message) {
+      setToastMessage(response.message);
+    }
   };
 
   return (
@@ -93,7 +98,7 @@ export function SignUpForm({ className }: { className?: string }) {
         </Toast.Title>
         <Toast.Description asChild>
           <div className="m-0 text-sm [grid-area:_description]">
-            {messageRef.current}
+            {toastMessage}
           </div>
         </Toast.Description>
         <Toast.Action
