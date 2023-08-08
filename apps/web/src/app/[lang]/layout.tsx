@@ -90,8 +90,14 @@ const montserrat = Montserrat({
   weight: "300",
 });
 
+const defaultLocale = process.env.NEXT_PUBLIC_DEFAULT_LOCALE ?? "en-AU";
+
+const locales = (
+  process.env.NEXT_PUBLIC_SUPPORTED_LOCALES ?? defaultLocale
+).split(",");
+
 export async function generateStaticParams() {
-  return [{ lang: 'en-AU' }, { lang: 'en-GB' }, { lang: 'en-US' }]
+  return locales.map((lang) => ({ lang }));
 }
 
 export default async function RootLayout({

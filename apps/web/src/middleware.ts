@@ -3,8 +3,7 @@ import Negotiator from "negotiator";
 import { NextResponse, type NextRequest } from "next/server";
 
 const defaultLocale = process.env.NEXT_PUBLIC_DEFAULT_LOCALE ?? "en-AU";
-const headers = { "accept-language": `${defaultLocale},en;q=0.5` };
-const languages = new Negotiator({ headers }).languages();
+
 const locales = (
   process.env.NEXT_PUBLIC_SUPPORTED_LOCALES ?? defaultLocale
 ).split(",");
@@ -13,9 +12,23 @@ const savedCode = "arizona";
 
 const target = "https://holding.uncnsrdlabel.com";
 
-const getLocale = () => match(languages, locales, defaultLocale);
+const getLocale = (languages: string[]) =>
+  match(languages, locales, defaultLocale);
 
 export function middleware(request: NextRequest) {
+  const detectedLanguage =
+    request.headers
+      .get("accept-language")
+      ?.split(",")?.[0]
+      .split("-")?.[0]
+      .toLowerCase() || "en";
+
+  const detectedCountry = request.geo?.country ?? defaultLocale.split("-")?.[1] ?? "AU";
+
+  const headers = { "accept-language": `${detectedLanguage}-${detectedCountry},en;q=0.5` };
+
+  const languages = new Negotiator({ headers }).languages();
+
   const suppliedCode = request.nextUrl.searchParams.get("code");
 
   const response = NextResponse.next();
@@ -41,7 +54,7 @@ export function middleware(request: NextRequest) {
 
   // Redirect if there is no locale
   if (pathnameIsMissingLocale) {
-    const locale = getLocale();
+    const locale = getLocale(languages);
 
     // e.g. incoming request is /products
     // The new URL is now /en-US/products
@@ -64,7 +77,7 @@ export const config = {
      * - public folder
      * - public folder
      */
-    "/((?!static|.*\\..*|_next|favicon.ico).*)",
+    "/((?!static|.*\\..*|_next|api|favicon.ico).*)",
     "/",
   ],
 };
