@@ -12,7 +12,7 @@
     "graphql-request": "latest",
     "graphql-tag": "latest",
     "lodash": "latest",
-    "next": "13.4.12"
+    "next": "13.4.13"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.196",
