@@ -32,6 +32,9 @@ importers:
       madge:
         specifier: latest
         version: 6.1.0(typescript@5.1.6)
+      prettier:
+        specifier: latest
+        version: 3.0.1
       turbo:
         specifier: latest
         version: 1.10.12
