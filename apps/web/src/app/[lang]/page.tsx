@@ -1,10 +1,10 @@
+import { HomepageCarousel } from "@/components/homepage-carousel";
+import { Image } from "@/components/image";
+import { Logo } from "@/components/layout/logo";
+import { Navbar } from "@/components/layout/navbar";
+import { NavbarContent } from "@/components/layout/navbar/content";
+import { Video, type VideoProps } from "@/components/video";
 import { themeColors } from "@uncnsrdlabel/lib/effects";
-import { HomepageCarousel } from "@uncnsrdlabel/ui/components/homepage-carousel";
-import { Image } from "@uncnsrdlabel/ui/components/image";
-import { Logo } from "@uncnsrdlabel/ui/components/layout/logo";
-import { Navbar } from "@uncnsrdlabel/ui/components/layout/navbar";
-import { NavbarContent } from "@uncnsrdlabel/ui/components/layout/navbar/content";
-import { Video, type VideoProps } from "@uncnsrdlabel/ui/components/video";
 import Link from "next/link";
 import { Suspense } from "react";
 

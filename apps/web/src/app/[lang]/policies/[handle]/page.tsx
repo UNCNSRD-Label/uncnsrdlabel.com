@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
+import { Prose } from "@/components/prose";
 import { getPolicy } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
-import { Prose } from "@uncnsrdlabel/ui/components/prose";
 import { notFound } from "next/navigation";
 
 import { PolicyHandle } from "@uncnsrdlabel/graphql-shopify-storefront/types";

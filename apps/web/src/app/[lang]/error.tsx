@@ -1,6 +1,6 @@
 "use client";
 
-import { LogotypeIcon } from "@uncnsrdlabel/ui/components/icons/logotype";
+import { LogotypeIcon } from "@/components/icons/logotype";
 
 export default function Error({ reset }: { reset: () => void }) {
   return (

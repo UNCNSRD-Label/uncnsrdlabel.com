@@ -1,16 +1,16 @@
+import { HandleRouteChange } from "@/components/analytics/handle-route-change";
+import { Banner } from "@/components/banner";
+import { Footer } from "@/components/layout/footer/index";
+import { Progress } from "@/components/layout/progress";
+import { Organization } from "@/components/schema.org/organization";
 import { SITE_DOMAIN } from "@uncnsrdlabel/lib/constants";
 import { themeColors } from "@uncnsrdlabel/lib/effects";
 import { AppProviders } from "@uncnsrdlabel/providers";
-import { HandleRouteChange } from "@uncnsrdlabel/ui/components/analytics/handle-route-change";
-import { Banner } from "@uncnsrdlabel/ui/components/banner";
-import { Footer } from "@uncnsrdlabel/ui/components/layout/footer/index";
-// import { Progress } from "@uncnsrdlabel/ui/components/layout/progress";
-import { Organization } from "@uncnsrdlabel/ui/components/schema.org/organization";
 import { clsx } from "clsx";
 import { Inter, Montserrat } from "next/font/google";
 import localFont from "next/font/local";
 import { ReactNode, Suspense } from "react";
-// import "../globals.css";
+import "../globals.css";
 
 const {
   TWITTER_CREATOR,
@@ -90,10 +90,16 @@ const montserrat = Montserrat({
   weight: "300",
 });
 
+export async function generateStaticParams() {
+  return [{ lang: 'en-AU' }, { lang: 'en-GB' }, { lang: 'en-US' }]
+}
+
 export default async function RootLayout({
   children,
+  params,
 }: {
   children: ReactNode;
+  params: { lang: string };
 }) {
   const hideBanner = true;
 
@@ -108,6 +114,7 @@ export default async function RootLayout({
         "snap-y",
         // "dark"
       )}
+      lang={params.lang}
     >
       <body
         className={clsx(
@@ -120,7 +127,7 @@ export default async function RootLayout({
         }}
       >
         <AppProviders>
-          {/* <Progress /> */}
+          <Progress />
           <Banner
             className={clsx("sticky top-0 w-full", hideBanner && "hidden")}
           />

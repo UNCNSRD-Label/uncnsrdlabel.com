@@ -1,10 +1,10 @@
+import { Logo } from "@/components/layout/logo";
+import { Navbar } from "@/components/layout/navbar";
+import { NavbarContent } from "@/components/layout/navbar/content";
+import { Collections } from "@/components/layout/search/collections";
+import { FilterList } from "@/components/layout/search/filter";
+import { PageTransition } from "@/components/page-transition";
 import { sorting } from "@uncnsrdlabel/lib/constants";
-import { Logo } from "@uncnsrdlabel/ui/components/layout/logo";
-import { Navbar } from "@uncnsrdlabel/ui/components/layout/navbar";
-import { NavbarContent } from "@uncnsrdlabel/ui/components/layout/navbar/content";
-import { Collections } from "@uncnsrdlabel/ui/components/layout/search/collections";
-import { FilterList } from "@uncnsrdlabel/ui/components/layout/search/filter";
-import { PageTransition } from "@uncnsrdlabel/ui/components/page-transition";
 import { clsx } from "clsx";
 import { Suspense } from "react";
 

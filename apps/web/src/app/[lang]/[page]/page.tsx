@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
+import { Image } from "@/components/image";
+import { Prose } from "@/components/prose";
 import { getPage } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
-import { Image } from "@uncnsrdlabel/ui/components/image";
-import { Prose } from "@uncnsrdlabel/ui/components/prose";
 import { notFound } from "next/navigation";
 
 export { revalidate } from "@uncnsrdlabel/lib/constants";

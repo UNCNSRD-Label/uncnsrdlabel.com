@@ -4,11 +4,11 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { Product as ProductSchema, WithContext } from "schema-dts";
 
+import { Grid } from "@/components/grid";
+import { ProductGridItems } from "@/components/layout/product-grid-items";
+import { ProductDetails } from "@/components/product/details";
 import { getProduct, getProductRecommendations } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
 import { HIDDEN_PRODUCT_TAG } from "@uncnsrdlabel/lib/constants";
-import { Grid } from "@uncnsrdlabel/ui/components/grid";
-import { ProductGridItems } from "@uncnsrdlabel/ui/components/layout/product-grid-items";
-import { ProductDetails } from "@uncnsrdlabel/ui/components/product/details";
 
 export const runtime = "edge";
 

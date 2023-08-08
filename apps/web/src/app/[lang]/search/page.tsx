@@ -1,7 +1,7 @@
+import { Grid } from "@/components/grid/index";
+import { ProductGridItems } from "@/components/layout/product-grid-items";
 import { getProducts } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
 import { defaultSort, sorting } from "@uncnsrdlabel/lib/constants";
-import { Grid } from "@uncnsrdlabel/ui/components/grid/index";
-import { ProductGridItems } from "@uncnsrdlabel/ui/components/layout/product-grid-items";
 
 export const runtime = "edge";
 

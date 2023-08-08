@@ -2,9 +2,9 @@ import { getCollection, getCollectionProducts } from "@uncnsrdlabel/graphql-shop
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { Grid } from "@/components/grid";
+import { ProductGridItems } from "@/components/layout/product-grid-items";
 import { defaultSort, sorting } from "@uncnsrdlabel/lib/constants";
-import { Grid } from "@uncnsrdlabel/ui/components/grid";
-import { ProductGridItems } from "@uncnsrdlabel/ui/components/layout/product-grid-items";
 
 export const runtime = "edge";
 
