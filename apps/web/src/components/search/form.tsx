@@ -1,7 +1,7 @@
 import { clsx } from "clsx";
 import { useRouter, useSearchParams } from "next/navigation";
 
-import { createUrl } from "@uncnsrdlabel/lib/utils";
+import { createUrl } from "@uncnsrdlabel/lib/utilities";
 
 export function SearchForm({
   isOpen,
