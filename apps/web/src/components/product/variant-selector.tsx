@@ -87,7 +87,7 @@ export function VariantSelector({
           const isActive = searchParams.get(optionNameLowerCase) === value;
 
           // You can't disable a link, so we need to render something that isn't clickable.
-          const DynamicTag = isAvailableForSale ? Link : "p";
+          const DynamicTag = isAvailableForSale ? Link : "span";
           const dynamicProps = {
             ...(isAvailableForSale && { scroll: false }),
           };
