@@ -18,6 +18,7 @@
     "@types/lodash": "^4.14.196",
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "@uncnsrdlabel/tsconfig": "workspace:*",
+    "@uncnsrdlabel/types": "workspace:*",
     "prettier": "latest",
     "tsup": "latest",
     "type-fest": "latest",

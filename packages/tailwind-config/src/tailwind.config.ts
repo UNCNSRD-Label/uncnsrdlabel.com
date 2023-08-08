@@ -1,16 +1,11 @@
+import forms from "@tailwindcss/forms";
+import typography from "@tailwindcss/typography";
 import type { Config } from "tailwindcss";
-
 import colors from "tailwindcss/colors";
 import plugin from "tailwindcss/plugin";
 
 const config: Config = {
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-    "./icons/**/*.{js,ts,jsx,tsx}",
-    "./app/**/*.{js,ts,jsx,tsx}",
-    "./lib/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: [],
   darkMode: "class",
   theme: {
     extend: {
@@ -57,7 +52,7 @@ const config: Config = {
       // ringOffsetColor: "#ff4dd8",
       // textColor: "#fafafa",
       // textDecorationColor: "#ff4dd8",
-      backgroundColor: ({theme}) => ({
+      backgroundColor: ({ theme }) => ({
         ...theme("colors"),
         primary: "#111111",
         secondary: "#fafafa",
@@ -65,7 +60,7 @@ const config: Config = {
         error: "#ff4dd8",
         success: "#4dff74",
       }),
-      borderColor: ({theme}) => ({
+      borderColor: ({ theme }) => ({
         ...theme("colors"),
         primary: "#111111",
         secondary: "#fafafa",
@@ -99,8 +94,8 @@ const config: Config = {
     hoverOnlyWhenSupported: true,
   },
   plugins: [
-    require("@tailwindcss/forms"),
-    require("@tailwindcss/typography"),
+    forms,
+    typography,
     plugin(({ matchUtilities, theme }) => {
       matchUtilities(
         {

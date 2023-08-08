@@ -1,6 +1,5 @@
 import { match } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
-import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
 const headers = { "accept-language": "en-US,en;q=0.5" };
@@ -12,26 +11,28 @@ const savedCode = "arizona";
 
 const target = "https://holding.uncnsrdlabel.com";
 
-match(languages, locales, defaultLocale); // -> 'en-US'
-
-export async function middleware(request: NextRequest) {
-  const suppliedCode = request.nextUrl.searchParams.get("code");
-
-  const response = NextResponse.next();
-
-  if (suppliedCode === savedCode) {
-    response.cookies.set("preview", "true");
+const getLocale = (request) => match(languages, locales, defaultLocale) ?? 'en-US';
+ 
+export function middleware(request) {
+  // Check if there is any supported locale in the pathname
+  const pathname = request.nextUrl.pathname
+  console.log(pathname);
+  const pathnameIsMissingLocale = locales.every(
+    (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
+  )
+ 
+  // Redirect if there is no locale
+  if (pathnameIsMissingLocale) {
+    const locale = getLocale(request)
+ 
+    // e.g. incoming request is /products
+    // The new URL is now /en-US/products
+    return NextResponse.redirect(
+      new URL(`/${locale}/${pathname}`, request.url)
+    )
   }
-
-  if (
-    suppliedCode !== savedCode &&
-    request.cookies.get("preview")?.value !== "true"
-  ) {
-    return NextResponse.redirect(target);
-  }
-
-  return response;
 }
+
 
 // Stop Middleware running on static files and public folder
 export const config = {

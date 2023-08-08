@@ -1,4 +1,4 @@
 module.exports = {
   root: true,
-  extends: ["custom"],
+  extends: ["@uncnsrdlabel/eslint-config-custom"],
 };

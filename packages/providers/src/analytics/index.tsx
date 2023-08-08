@@ -25,7 +25,8 @@ export function AppAnalyticsProvider({ children }: PropsWithChildren) {
 
   const locale = new Intl.Locale(`${languageIsoCode}-${countryIsoCode}`);
 
-  const cookies = getShopifyCookies(document.cookie);
+  // const cookies = getShopifyCookies(document.cookie);
+  const cookies = getShopifyCookies('');
 
   /* Initialize analytics & load plugins */
   const analytics = Analytics({
