@@ -1,0 +1,42 @@
+{
+  "dependencies": {
+    "@graphql-codegen/cli": "latest",
+    "@graphql-codegen/client-preset": "latest",
+    "@graphql-typed-document-node/core": "latest",
+    "@types/node": "latest",
+    "@uncnsrdlabel/tsconfig": "workspace:*",
+    "dotenv-cli": "latest",
+    "graphql": "^16.7.1",
+    "graphql-config": "latest",
+    "graphql-request": "latest",
+    "graphql-tag": "latest"
+  },
+  "devDependencies": {
+    "@uncnsrdlabel/eslint-config-custom": "workspace:*",
+    "@uncnsrdlabel/tsconfig": "workspace:*",
+    "@uncnsrdlabel/types": "workspace:*",
+    "tsup": "latest",
+    "type-fest": "latest",
+    "typescript": "latest",
+    "prettier": "latest",
+    "typescript-graphql-request": "latest"
+  },
+  "exports": {
+    "./*": "./dist/*"
+  },
+  "files": [
+    "dist/**"
+  ],
+  "publishConfig": {
+    "directory": "src"
+  },
+  "name": "@uncnsrdlabel/graphql-hygraph",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "lint": "eslint \"**/*.ts*\"",
+    "types:check": "tsc --noEmit"
+  },
+  "type": "module",
+  "types": "./dist/index.d.ts"
+}

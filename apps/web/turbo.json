@@ -1,0 +1,9 @@
+{
+  "extends": ["//"],
+  "pipeline": {
+    "build": {
+      "env": ["FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE", "NEXT_PUBLIC_VERCEL_URL", "SHOPIFY_REVALIDATION_SECRET", "SHOPIFY_STOREFRONT_TOKEN"],
+      "outputs": [".next/**", "!.next/cache/**"]
+    }
+  }
+}

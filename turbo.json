@@ -1,0 +1,79 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDotEnv": [".env", ".env.local"],
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "dotEnv": [
+        ".env.production.local",
+        ".env.local",
+        ".env.production",
+        ".env"
+      ],
+      "env": [
+        "NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID",
+        "NEXT_PUBLIC_HYGRAPH_API_TOKEN",
+        "NEXT_PUBLIC_HYGRAPH_PROJECT_ID",
+        "NEXT_PUBLIC_HYGRAPH_REGION",
+        "NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN",
+        "NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN",
+        "NEXT_PUBLIC_SHOPIFY_STOREFRONT_API_VERSION",
+        "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+        "NEXT_PUBLIC_SUPABASE_URL",
+        "SITE_NAME",
+        "SITE_URL",
+        "SUPABASE_SERVICE_ROLE_KEY"
+      ]
+    },
+    "@uncnsrdlabel/app-web#build": {
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "clean": {
+      "cache": false
+    },
+    "dev": {
+      "cache": false,
+      "dependsOn": ["^build"],
+      "dotEnv": [
+        ".env.development.local",
+        ".env.local",
+        ".env.development",
+        ".env"
+      ],
+      "env": [
+        "NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID",
+        "NEXT_PUBLIC_HYGRAPH_API_TOKEN",
+        "NEXT_PUBLIC_HYGRAPH_PROJECT_ID",
+        "NEXT_PUBLIC_HYGRAPH_REGION",
+        "NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN",
+        "NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN",
+        "NEXT_PUBLIC_SHOPIFY_STOREFRONT_API_VERSION",
+        "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+        "NEXT_PUBLIC_SUPABASE_URL",
+        "SITE_NAME",
+        "SITE_URL",
+        "SUPABASE_SERVICE_ROLE_KEY"
+      ],
+      "persistent": true
+    },
+    "generate-types": {
+      "outputs": []
+    },
+    "lint": {
+      "outputs": []
+    },
+    "start": {
+      "cache": false,
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "dotEnv": [".env.test.local", ".env.test", ".env"],
+      "outputs": []
+    },
+    "types:check": {
+      "outputs": []
+    }
+  }
+}

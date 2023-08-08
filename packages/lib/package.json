@@ -1,0 +1,35 @@
+{
+  "dependencies": {
+    "@shopify/hydrogen-react": "^2023.7.0",
+    "clsx": "^2.0.0",
+    "lodash": "^4.17.21",
+    "next": "13.4.13"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.196",
+    "@types/negotiator": "^0.6.1",
+    "@types/node": "20.4.8",
+    "@types/react": "18.2.18",
+    "@types/react-dom": "18.2.7",
+    "@uncnsrdlabel/eslint-config-custom": "workspace:*",
+    "@uncnsrdlabel/tailwind-config": "workspace:*",
+    "@uncnsrdlabel/tsconfig": "workspace:*",
+    "@uncnsrdlabel/types": "workspace:*",
+    "tsup": "^7.2.0",
+    "type-fest": "^4.1.0",
+    "typescript": "^5.1.6"
+  },
+  "main": "./src/index.tsx",
+  "name": "@uncnsrdlabel/lib",
+  "publishConfig": {
+    "directory": "src"
+  },
+  "scripts": {
+    "generate:component": "turbo gen react-component",
+    "lint": "eslint \"**/*.ts*\"",
+    "types:check": "tsc --noEmit"
+  },
+  "type": "module",
+  "types": "./src/index.d.ts",
+  "version": "0.0.0"
+}

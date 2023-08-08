@@ -1,0 +1,38 @@
+{
+  "dependencies": {
+    "tailwindcss": "^3.3.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.4",
+    "@tailwindcss/typography": "^0.5.9",
+    "@uncnsrdlabel/eslint-config-custom": "workspace:*",
+    "@uncnsrdlabel/tsconfig": "workspace:*",
+    "@uncnsrdlabel/types": "workspace:*",
+    "tsup": "^7.2.0",
+    "type-fest": "^4.1.0",
+    "typescript": "^5.1.6"
+  },
+  "exports": {
+    "./*": "./src/*"
+  },
+  "files": [
+    "src/**"
+  ],
+  "main": "./src/index.tsx",
+  "name": "@uncnsrdlabel/tailwind-config",
+  "publishConfig": {
+    "directory": "src"
+  },
+  "scripts": {
+    "generate:component": "turbo gen react-component",
+    "lint": "eslint \"**/*.ts*\"",
+    "types:check": "tsc --noEmit"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "type": "module",
+  "types": "./src/index.d.ts",
+  "version": "0.0.0"
+}

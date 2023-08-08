@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "ES2015"],
+    "outDir": "./dist",
+    "types": [
+      "@types/gtag.js",
+      "@types/lodash",
+      "@types/node",
+      "@types/react-dom",
+      "@types/react",
+      "@types/use-analytics",
+      "@uncnsrdlabel/types"
+    ]
+  },
+  "extends": "@uncnsrdlabel/tsconfig/react-library.json",
+  "include": ["./src"],
+  "exclude": ["dist", "build", "node_modules"]
+}

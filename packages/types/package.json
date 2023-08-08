@@ -1,0 +1,24 @@
+{
+  "exports": {
+    "./*": "./src/*"
+  },
+  "files": [
+    "src/**"
+  ],
+  "main": "./src/index.tsx",
+  "name": "@uncnsrdlabel/types",
+  "publishConfig": {
+    "directory": "src"
+  },
+  "scripts": {
+    "generate:component": "turbo gen react-component",
+    "lint": "eslint \"**/*.ts*\"",
+    "types:check": "tsc --noEmit"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "type": "module",
+  "types": "./src/index.d.ts",
+  "version": "0.0.0"
+}

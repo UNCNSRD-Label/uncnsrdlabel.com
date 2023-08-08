@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Default",
+  "compilerOptions": {
+    "composite": false,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "inlineSources": false,
+    "isolatedModules": true,
+    "moduleResolution": "node",
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "paths": {
+      "@/*": ["../../apps/web/src/*"],
+      "@uncnsrdlabel/graphql-hygraph/*": ["../graphql-hygraph/src/*"],
+      "@uncnsrdlabel/graphql-shopify-admin/*": ["../graphql-shopify-admin/src/*"],
+      "@uncnsrdlabel/graphql-shopify-storefront/*": ["../graphql-shopify-storefront/src/*"],
+      "@uncnsrdlabel/lib/*": ["../lib/src/*"],
+      "@uncnsrdlabel/providers/*": ["../providers/src/*"],
+      "@uncnsrdlabel/tailwind-config/*": ["../tailwind-config/src/*"],
+      "@uncnsrdlabel/types/*": ["../types/src/*"],
+      "@uncnsrdlabel/ui/*": ["../ui/src/*"]
+    },
+    "preserveWatchOutput": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "types": [
+      "@uncnsrdlabel/types"
+    ]
+  },
+  "exclude": ["node_modules"],
+  "include": ["@uncnsrdlabel/tsconfig", "@uncnsrdlabel/types"]
+}
