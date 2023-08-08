@@ -59,6 +59,7 @@
     "@tailwindcss/typography": "^0.5.9",
     "@types/gtag.js": "^0.0.12",
     "@types/lodash": "^4.14.196",
+    "@types/node": "latest",
     "@types/react": "^18.2.18",
     "@types/react-dom": "^18.2.7",
     "@types/use-analytics": "^0.0.0",

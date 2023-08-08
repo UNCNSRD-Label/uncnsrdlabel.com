@@ -1,6 +1,5 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Default",
   "compilerOptions": {
     "composite": false,
     "declaration": true,
@@ -27,9 +26,11 @@
     "skipLibCheck": true,
     "strict": true,
     "types": [
-      "@uncnsrdlabel/types"
+      "@uncnsrdlabel/types",
+      "node"
     ]
   },
+  "display": "Default",
   "exclude": ["node_modules"],
   "include": ["@uncnsrdlabel/tsconfig", "@uncnsrdlabel/types"]
 }

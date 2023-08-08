@@ -12,6 +12,7 @@
     "graphql-tag": "latest"
   },
   "devDependencies": {
+    "@types/node": "latest",
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "@uncnsrdlabel/tsconfig": "workspace:*",
     "@uncnsrdlabel/types": "workspace:*",

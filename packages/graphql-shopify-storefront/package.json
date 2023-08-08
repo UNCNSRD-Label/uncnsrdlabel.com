@@ -4,7 +4,6 @@
     "@graphql-codegen/client-preset": "latest",
     "@graphql-typed-document-node/core": "latest",
     "@shopify/hydrogen-react": "^2023.7.0",
-    "@types/node": "latest",
     "@uncnsrdlabel/lib": "workspace:*",
     "dotenv-cli": "latest",
     "graphql": "latest",
@@ -16,6 +15,7 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.14.196",
+    "@types/node": "latest",
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "@uncnsrdlabel/tsconfig": "workspace:*",
     "@uncnsrdlabel/types": "workspace:*",
