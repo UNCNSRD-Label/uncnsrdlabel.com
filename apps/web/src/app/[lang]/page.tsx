@@ -69,7 +69,7 @@ export default async function HomePage() {
               aria-label="Go to the shop"
               className="btn btn-outline btn-primary btn-base absolute z-20 justify-self-center whitespace-nowrap uppercase"
             >
-              {intl.formatMessage({ id: "shop_now" }, { name: "Karl" })}
+              {intl.formatMessage({ id: "shop_now" })}
             </Link>
           </section>
           <section className="max-w-[100dvw] py-48 sm:snap-center">
