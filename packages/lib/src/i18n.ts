@@ -1,3 +1,6 @@
+import { IETFLanguageTag } from "@uncnsrdlabel/types";
+
+export const localeTagToIETFLanguageTag = (localeTag: Intl.Locale) => localeTag.toString() as IETFLanguageTag
 
 export const defaultLocale = new Intl.Locale(process.env.NEXT_PUBLIC_DEFAULT_LOCALE ?? "en-AU");
 

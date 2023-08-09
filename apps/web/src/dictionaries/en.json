@@ -1,46 +1,15 @@
 {
-  "products": {
-    "add_to_cart": "Add to cart",
-    "add_to_wishlist": "Add to wishlist",
-    "all_collections": "All collections",
-    "all": "All products",
-    "back_to_collection": "Back to collection",
-    "best_sellers": "Bestsellers",
-    "browse": "Look at",
-    "buy": "To buy",
-    "collection_empty": "This collection has no products",
-    "collection_image_loading": "Collection image is loading",
-    "compare_exist": "Product has already been added to the comparison",
-    "compare_items": "Compare products",
-    "compare_max_items": "You can compare up to 4 products",
-    "compare_success": "Product added to comparison",
-    "compare": "To compare",
-    "empty": "No products found",
-    "featured": "Featured",
-    "more": "More",
-    "new": "New",
-    "newest": "Newest",
-    "out_of_stock": "Out of stock",
-    "product_image_loading": "Product image is loading",
-    "quick_view": "Quick view",
-    "related": "related products",
-    "sale": "Sale",
-    "see_all": "See all",
-    "see_details": "See details",
-    "select_options": "Select options",
-    "view_all": "View all",
-    "view_details": "View details",
-    "wishlist": "Wishlist"
+  "page": {
+    "home": {
+      "shop_now": "Shop now {name}"
+    }
   },
-  "newsletter": {
-    "description": "Receive updates on new products and offers.",
-    "placeholder": "Enter your e-mail address",
-    "submit": "Submit",
-    "title": "Newsletter"
-  },
-  "menu": {
-    "categories": "Categories",
-    "search": "Search",
-    "toggle": "Open menu"
+  "component": {
+    "Banner": {
+      "link": "Free shipping on order over $100"
+    },
+    "ConsentDialog": {
+      "trigger": "Edit consent settings"
+    }
   }
 }

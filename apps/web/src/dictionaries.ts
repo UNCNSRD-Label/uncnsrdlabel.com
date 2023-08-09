@@ -1,6 +1,12 @@
 import "server-only";
 
-import { locales } from "@uncnsrdlabel/lib/i18n";
+import { createIntl } from '@formatjs/intl';
+import { localeTagToIETFLanguageTag, locales } from "@uncnsrdlabel/lib/i18n";
+import merge from "deepmerge";
+import { getProperty } from 'dot-prop';
+import { headers } from "next/headers";
+import { type ResolvedIntlConfig } from "react-intl";
+import languageFallback from "./dictionaries/en.json";
 
 const dictionariesFiles = [
   ...locales.map((locale) => [
@@ -11,23 +17,35 @@ const dictionariesFiles = [
       ),
   ]),
   ...locales.map((locale) => [
-    locale.toString(),
-    () => import(`./dictionaries/${locale.toString()}.json`).then((module) => module.default),
-  ])
+    localeTagToIETFLanguageTag(locale),
+    () =>
+      import(`./dictionaries/${localeTagToIETFLanguageTag(locale)}.json`).then(
+        (module) => module.default,
+      ),
+  ]),
 ];
 
 const dictionaries = Object.fromEntries(dictionariesFiles);
 
-console.log({ dictionaries });
-
-export const getDictionary = async (locale: Intl.Locale) => {
+export const getDictionary = async (locale: Intl.Locale, namespace: string) => {
   const language = await dictionaries[locale.language]();
-  const languageLocalised = await dictionaries[locale.toString()]()
 
-  console.log({language, languageLocalised})
+  const languageLocalised = await dictionaries[localeTagToIETFLanguageTag(locale)]();
 
-  return {
-    ...language,
-    ...languageLocalised
-  };
+  const merged = merge.all([languageFallback, language, languageLocalised]) as typeof languageFallback;
+
+  return getProperty(merged, namespace) as ResolvedIntlConfig["messages"];
 };
+
+export async function useIntl(namespace) {
+  const headersList = headers();
+
+  const localeHeader = headersList.get("x-locale");
+
+  const locale = new Intl.Locale(localeHeader);
+
+  return createIntl({
+    locale: localeHeader,
+    messages: await getDictionary(locale, namespace)
+  });
+}

@@ -4,7 +4,7 @@ import { Logo } from "@/components/layout/logo";
 import { Navbar } from "@/components/layout/navbar";
 import { NavbarContent } from "@/components/layout/navbar/content";
 import { Video, type VideoProps } from "@/components/video";
-import { getDictionary } from "@/dictionaries";
+import { useIntl } from "@/dictionaries";
 import { themeColors } from "@uncnsrdlabel/lib/effects";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -38,12 +38,8 @@ const video: VideoProps = {
   url: "/videos/ZfGt0lKisCU.mp4",
 };
 
-export default async function HomePage({ params: { lang } }) {
-  console.log({ lang });
-  const locale = new Intl.Locale(lang)
-  console.log({ locale });
-  const dictionary = await getDictionary(locale);
-  console.log({ dictionary });
+export default async function HomePage() {
+  const intl = await useIntl("page.home");
 
   return (
     <div className="dark">
@@ -73,7 +69,7 @@ export default async function HomePage({ params: { lang } }) {
               aria-label="Go to the shop"
               className="btn btn-outline btn-primary btn-base absolute z-20 justify-self-center whitespace-nowrap uppercase"
             >
-              Shop now - {dictionary.products.cart}
+              {intl.formatMessage({ id: "shop_now" }, { name: "Karl" })}
             </Link>
           </section>
           <section className="max-w-[100dvw] py-48 sm:snap-center">

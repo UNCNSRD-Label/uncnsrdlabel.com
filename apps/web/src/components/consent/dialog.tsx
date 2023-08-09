@@ -1,14 +1,12 @@
 "use client";
 
+import { ConsentForm } from "@/components/consent/form";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { useTimeoutEffect } from "@react-hookz/web";
+import { COOKIE_CONSENT } from "@uncnsrdlabel/lib/constants";
 import { hasCookie } from "cookies-next";
 import { useState } from "react";
-
-import { ConsentForm } from "@/components/consent/form";
-
-import { COOKIE_CONSENT } from "@uncnsrdlabel/lib/constants";
 
 export function ConsentDialog(props: { className?: string }) {
   useTimeoutEffect(

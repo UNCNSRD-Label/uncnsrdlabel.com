@@ -1,6 +1,9 @@
+import { useIntl } from "@/dictionaries";
 import { clsx } from "clsx";
 
-export const Banner = ({ className }: { className?: string }) => {
+export const Banner = async ({ className }: { className?: string }) => {
+  const intl = await useIntl("component.Banner");
+
   return (
     <div
       className={clsx(
@@ -8,7 +11,7 @@ export const Banner = ({ className }: { className?: string }) => {
         className,
       )}
     >
-      <a href="/shop">Free shipping on order over $100</a>
+      <a href="/shop">{intl.formatMessage({ id: "link" })}</a>
     </div>
   );
 };

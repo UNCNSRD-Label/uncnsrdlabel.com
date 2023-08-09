@@ -1,5 +1,4 @@
 {
-  "products": {
-    "add_to_cart": "Add to cart"
-  }
+  "shop_now": "Shop now {name} mate",
+  "add_to_cart": "Add to cart (AU)"
 }

@@ -7,9 +7,15 @@ const savedCode = "arizona";
 const target = "https://holding.uncnsrdlabel.com";
 
 const getLocale = (languages: string[]) =>
-  match(languages, locales.map(locale => locale.toString()), defaultLocale.toString());
+  match(
+    languages,
+    locales.map((locale) => locale.toString()),
+    defaultLocale.toString(),
+  );
 
 export function middleware(request: NextRequest) {
+  const requestHeaders = new Headers(request.headers);
+
   const detectedLanguage =
     request.headers
       .get("accept-language")
@@ -19,13 +25,23 @@ export function middleware(request: NextRequest) {
 
   const detectedCountry = request.geo?.country ?? defaultLocale.region ?? "AU";
 
-  const headers = { "accept-language": `${detectedLanguage}-${detectedCountry},en;q=0.5` };
+  const headers = {
+    "accept-language": `${detectedLanguage}-${detectedCountry},en;q=0.5`,
+  };
 
   const languages = new Negotiator({ headers }).languages();
 
-  const suppliedCode = request.nextUrl.searchParams.get("code");
+  const locale = getLocale(languages);
+  
+  requestHeaders.set("x-locale", locale);
 
-  const response = NextResponse.next();
+  const response = NextResponse.next({
+    request: {
+      headers: requestHeaders,
+    },
+  });
+
+  const suppliedCode = request.nextUrl.searchParams.get("code");
 
   if (suppliedCode === savedCode) {
     response.cookies.set("preview", "true");

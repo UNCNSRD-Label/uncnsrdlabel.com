@@ -3,11 +3,13 @@ import { Banner } from "@/components/banner";
 import { Footer } from "@/components/layout/footer/index";
 import { Progress } from "@/components/layout/progress";
 import { Organization } from "@/components/schema.org/organization";
+import { getDictionary } from "@/dictionaries";
 import { SITE_DOMAIN } from "@uncnsrdlabel/lib/constants";
 import { themeColors } from "@uncnsrdlabel/lib/effects";
-import { locales } from "@uncnsrdlabel/lib/i18n";
+import { localeTagToIETFLanguageTag, locales } from "@uncnsrdlabel/lib/i18n";
 import { AppProviders } from "@uncnsrdlabel/providers";
 import { clsx } from "clsx";
+import type { Metadata } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import localFont from "next/font/local";
 import { ReactNode, Suspense } from "react";
@@ -19,7 +21,21 @@ const {
   NEXT_PUBLIC_SITE_NAME = "UNCNSRD",
 } = process.env;
 
-export const metadata = {
+const languagesArray = locales.map((locale) => [
+  locale.toString(),
+  [{
+    title: locale.toString(),
+    url: new URL(
+      `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN}/${locale}`,
+    ),
+  }],
+]);
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: new URL(`${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN}`),
+    languages: Object.fromEntries(languagesArray),
+  },
   applicationName: NEXT_PUBLIC_SITE_NAME,
   appleWebApp: {
     capable: true,
@@ -106,7 +122,15 @@ export default async function RootLayout({
   children: ReactNode;
   params: { lang: string };
 }) {
+  console.log({params})
+  const locale = new Intl.Locale(params.lang)
+
   const hideBanner = true;
+
+  const messages = await getDictionary(
+    locale,
+    "page.home"
+  );
 
   return (
     <html
@@ -131,7 +155,7 @@ export default async function RootLayout({
           textRendering: "optimizeLegibility",
         }}
       >
-        <AppProviders>
+        <AppProviders locale={localeTagToIETFLanguageTag(locale)} messages={messages}>
           <Progress />
           <Banner
             className={clsx("sticky top-0 w-full", hideBanner && "hidden")}
