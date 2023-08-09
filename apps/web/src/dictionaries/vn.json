@@ -1,0 +1,46 @@
+{
+  "products": {
+    "add_to_cart": "Thêm vào giỏ hàng",
+    "add_to_wishlist": "Thêm vào danh sách yêu thích",
+    "all_collections": "Tất cả các bộ sưu tập",
+    "all": "Tất cả sản phẩm",
+    "back_to_collection": "Quay lại bộ sưu tập",
+    "best_sellers": "Bán chạy nhất",
+    "browse": "Nhìn vào",
+    "buy": "Mua",
+    "collection_empty": "Bộ sưu tập này không có sản phẩm",
+    "collection_image_loading": "Đang tải hình ảnh bộ sưu tập",
+    "compare_exist": "Sản phẩm đã được thêm vào so sánh",
+    "compare_items": "So sánh sản phẩm",
+    "compare_max_items": "Bạn có thể so sánh tối đa 4 sản phẩm",
+    "compare_success": "Sản phẩm được thêm vào so sánh",
+    "compare": "Để so sánh",
+    "empty": "Không tìm thấy sản phẩm",
+    "featured": "Đặc sắc",
+    "more": "Hơn",
+    "new": "Mới",
+    "newest": "Mới nhất",
+    "out_of_stock": "Hết hàng",
+    "product_image_loading": "Đang tải hình ảnh sản phẩm",
+    "quick_view": "Xem lướt qua",
+    "related": "Những sảm phẩm tương tự",
+    "sale": "Doanh thu",
+    "see_all": "Nhìn thấy tất cả",
+    "see_details": "Xem chi tiết",
+    "select_options": "lựa chọn các phương án",
+    "view_all": "Xem tất cả",
+    "view_details": "Xem chi tiết",
+    "wishlist": "danh sách yêu thích"
+  },
+  "newsletter": {
+    "description": "Nhận thông tin cập nhật về các sản phẩm và ưu đãi mới.",
+    "placeholder": "Nhập địa chỉ email của bạn",
+    "submit": "Nộp",
+    "title": "bản tin"
+  },
+  "menu": {
+    "categories": "Thể loại",
+    "search": "Tìm kiếm",
+    "toggle": "Mở thực đơn"
+  }
+}

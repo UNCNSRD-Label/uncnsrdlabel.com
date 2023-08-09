@@ -1,0 +1,46 @@
+{
+  "products": {
+    "add_to_cart": "Ajouter au panier",
+    "add_to_wishlist": "Ajouter à la liste de souhaits",
+    "all_collections": "Toutes les collections",
+    "all": "Tous les produits",
+    "back_to_collection": "Retour à la collection",
+    "best_sellers": "Meilleures ventes",
+    "browse": "Regarder",
+    "buy": "Acheter",
+    "collection_empty": "Cette collection n'a pas de produits",
+    "collection_image_loading": "L'image de la collection est en cours de chargement",
+    "compare_exist": "Le produit a déjà été ajouté à la comparaison",
+    "compare_items": "Comparer les produits",
+    "compare_max_items": "Vous pouvez comparer jusqu'à 4 produits",
+    "compare_success": "Produit ajouté à la comparaison",
+    "compare": "Comparer",
+    "empty": "Aucun produit trouvé",
+    "featured": "Mis en exergue",
+    "more": "Plus",
+    "new": "Nouveau",
+    "newest": "Le plus récent",
+    "out_of_stock": "Rupture de stock",
+    "product_image_loading": "L'image du produit est en cours de chargement",
+    "quick_view": "Aperçu rapide",
+    "related": "Produits connexes",
+    "sale": "Vente",
+    "see_all": "Voir tout",
+    "see_details": "Voir les détails",
+    "select_options": "Sélectionnez les options",
+    "view_all": "Voir tout",
+    "view_details": "Voir les détails",
+    "wishlist": "Liste de souhaits"
+  },
+  "newsletter": {
+    "description": "Recevez des mises à jour sur les nouveaux produits et offres.",
+    "placeholder": "Entrez votre adresse email",
+    "submit": "Soumettre",
+    "title": "Bulletin"
+  },
+  "menu": {
+    "categories": "Catégories",
+    "search": "Recherche",
+    "toggle": "Ouvrir le menu"
+  }
+}

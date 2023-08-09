@@ -1,0 +1,46 @@
+{
+  "products": {
+    "add_to_cart": "Aggiungi al carrello",
+    "add_to_wishlist": "Aggiungi alla lista dei desideri",
+    "all_collections": "Tutte le collezioni",
+    "all": "Tutti i prodotti",
+    "back_to_collection": "Torna alla collezione",
+    "best_sellers": "I più venduti",
+    "browse": "Guarda a",
+    "buy": "Comprare",
+    "collection_empty": "Questa collezione non ha prodotti",
+    "collection_image_loading": "L'immagine della raccolta è in fase di caricamento",
+    "compare_exist": "Il prodotto è già stato aggiunto al confronto",
+    "compare_items": "Confronta Prodotti",
+    "compare_max_items": "Puoi confrontare fino a 4 prodotti",
+    "compare_success": "Prodotto aggiunto al confronto",
+    "compare": "Per confrontare",
+    "empty": "Nessun prodotto trovato",
+    "featured": "In primo piano",
+    "more": "Di più",
+    "new": "Nuovo",
+    "newest": "Più nuovo",
+    "out_of_stock": "Esaurito",
+    "product_image_loading": "L'immagine del prodotto è in fase di caricamento",
+    "quick_view": "Occhiata veloce",
+    "related": "prodotti correlati",
+    "sale": "Vendita",
+    "see_all": "Vedi tutto",
+    "see_details": "Guarda i detagli",
+    "select_options": "Seleziona le opzioni",
+    "view_all": "Mostra tutto",
+    "view_details": "Visualizza dettagli",
+    "wishlist": "Lista dei desideri"
+  },
+  "newsletter": {
+    "description": "Ricevi aggiornamenti su nuovi prodotti e offerte.",
+    "placeholder": "Inserisci il tuo indirizzo email",
+    "submit": "Invia",
+    "title": "Notiziario"
+  },
+  "menu": {
+    "categories": "Categorie",
+    "search": "Ricerca",
+    "toggle": "Apri menù"
+  }
+}

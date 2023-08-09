@@ -1,0 +1,46 @@
+{
+  "products": {
+    "add_to_cart": "添加到购物车",
+    "add_to_wishlist": "添加到愿望清单",
+    "all_collections": "所有系列",
+    "all": "所有产品",
+    "back_to_collection": "返回收藏",
+    "best_sellers": "最畅销",
+    "browse": "看着",
+    "buy": "购买",
+    "collection_empty": "该系列没有产品",
+    "collection_image_loading": "收藏图片正在加载中",
+    "compare_exist": "产品已添加到比较中",
+    "compare_items": "比较产品",
+    "compare_max_items": "您最多可以比较 4 个产品",
+    "compare_success": "产品已添加到比较中",
+    "compare": "比较",
+    "empty": "没有找到产品",
+    "featured": "精选",
+    "more": "更多的",
+    "new": "新的",
+    "newest": "最新",
+    "out_of_stock": "缺货",
+    "product_image_loading": "产品图片正在加载中",
+    "quick_view": "快速浏览",
+    "related": "相关产品",
+    "sale": "销售",
+    "see_all": "查看全部",
+    "see_details": "查看具体信息",
+    "select_options": "选择选项",
+    "view_all": "查看全部",
+    "view_details": "查看详情",
+    "wishlist": "愿望清单"
+  },
+  "newsletter": {
+    "description": "接收新产品和优惠的更新。",
+    "placeholder": "输入你的电子邮箱地址",
+    "submit": "提交",
+    "title": "通讯"
+  },
+  "menu": {
+    "categories": "类别",
+    "search": "搜索",
+    "toggle": "打开菜单"
+  }
+}

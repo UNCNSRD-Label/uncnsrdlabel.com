@@ -1,0 +1,46 @@
+{
+  "products": {
+    "add_to_cart": "장바구니에 담기",
+    "add_to_wishlist": "위시리스트에 추가",
+    "all_collections": "모든 컬렉션",
+    "all": "모든 상품",
+    "back_to_collection": "컬렉션으로 돌아가기",
+    "best_sellers": "베스트 셀러",
+    "browse": "보다",
+    "buy": "구매하려면",
+    "collection_empty": "이 컬렉션에는 제품이 없습니다.",
+    "collection_image_loading": "컬렉션 이미지 로드 중",
+    "compare_exist": "제품이 이미 비교에 추가되었습니다.",
+    "compare_items": "제품 비교",
+    "compare_max_items": "최대 4개의 제품을 비교할 수 있습니다.",
+    "compare_success": "비교에 추가된 제품",
+    "compare": "비교하기 위해서",
+    "empty": "제품을 찾을 수 없습니다",
+    "featured": "추천",
+    "more": "더",
+    "new": "새로운",
+    "newest": "최신",
+    "out_of_stock": "품절",
+    "product_image_loading": "제품 이미지 로드 중",
+    "quick_view": "퀵뷰",
+    "related": "관련 상품",
+    "sale": "판매",
+    "see_all": "모두 보기",
+    "see_details": "자세히보다",
+    "select_options": "옵션 선택",
+    "view_all": "모두보기",
+    "view_details": "세부 정보보기",
+    "wishlist": "위시리스트"
+  },
+  "newsletter": {
+    "description": "신제품 및 제안에 대한 업데이트를 받습니다.",
+    "placeholder": "당신의 이메일 주소를 입력 해주세요",
+    "submit": "제출하다",
+    "title": "뉴스 레터"
+  },
+  "menu": {
+    "categories": "카테고리",
+    "search": "찾다",
+    "toggle": "메뉴 열기"
+  }
+}
