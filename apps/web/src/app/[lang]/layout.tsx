@@ -92,7 +92,11 @@ const montserrat = Montserrat({
 });
 
 export async function generateStaticParams() {
-  return locales.map((lang) => ({ lang }));
+  return locales.map((locale) => {
+    const lang = locale.toString();
+
+    return { lang };
+  });
 }
 
 export default async function RootLayout({
