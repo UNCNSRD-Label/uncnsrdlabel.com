@@ -5,6 +5,7 @@ import { Progress } from "@/components/layout/progress";
 import { Organization } from "@/components/schema.org/organization";
 import { SITE_DOMAIN } from "@uncnsrdlabel/lib/constants";
 import { themeColors } from "@uncnsrdlabel/lib/effects";
+import { locales } from "@uncnsrdlabel/lib/i18n";
 import { AppProviders } from "@uncnsrdlabel/providers";
 import { clsx } from "clsx";
 import { Inter, Montserrat } from "next/font/google";
@@ -89,12 +90,6 @@ const montserrat = Montserrat({
   variable: "--font-montserrat",
   weight: "300",
 });
-
-const defaultLocale = process.env.NEXT_PUBLIC_DEFAULT_LOCALE ?? "en-AU";
-
-const locales = (
-  process.env.NEXT_PUBLIC_SUPPORTED_LOCALES ?? defaultLocale
-).split(",");
 
 export async function generateStaticParams() {
   return locales.map((lang) => ({ lang }));

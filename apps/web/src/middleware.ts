@@ -1,19 +1,13 @@
 import { match } from "@formatjs/intl-localematcher";
+import { defaultLocale, locales } from "@uncnsrdlabel/lib/i18n";
 import Negotiator from "negotiator";
 import { NextResponse, type NextRequest } from "next/server";
-
-const defaultLocale = process.env.NEXT_PUBLIC_DEFAULT_LOCALE ?? "en-AU";
-
-const locales = (
-  process.env.NEXT_PUBLIC_SUPPORTED_LOCALES ?? defaultLocale
-).split(",");
-
 const savedCode = "arizona";
 
 const target = "https://holding.uncnsrdlabel.com";
 
 const getLocale = (languages: string[]) =>
-  match(languages, locales, defaultLocale);
+  match(languages, locales.map(locale => locale.toString()), defaultLocale.toString());
 
 export function middleware(request: NextRequest) {
   const detectedLanguage =
@@ -23,7 +17,7 @@ export function middleware(request: NextRequest) {
       .split("-")?.[0]
       .toLowerCase() || "en";
 
-  const detectedCountry = request.geo?.country ?? defaultLocale.split("-")?.[1] ?? "AU";
+  const detectedCountry = request.geo?.country ?? defaultLocale.region ?? "AU";
 
   const headers = { "accept-language": `${detectedLanguage}-${detectedCountry},en;q=0.5` };
 
