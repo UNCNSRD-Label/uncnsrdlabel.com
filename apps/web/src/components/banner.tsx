@@ -1,8 +1,9 @@
-import { useIntl } from "@/dictionaries";
+import { getIntl } from "@/lib/i18n/server";
 import { clsx } from "clsx";
+import { use } from "react";
 
-export const Banner = async ({ className }: { className?: string }) => {
-  const intl = await useIntl("component.Banner");
+export const Banner = ({ className }: { className?: string }) => {
+  const intl = use(getIntl("component.Banner"));
 
   return (
     <div

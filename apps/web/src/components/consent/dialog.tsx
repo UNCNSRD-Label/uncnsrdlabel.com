@@ -1,14 +1,17 @@
 "use client";
 
 import { ConsentForm } from "@/components/consent/form";
+import { getIntl } from "@/lib/i18n/client";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { useTimeoutEffect } from "@react-hookz/web";
 import { COOKIE_CONSENT } from "@uncnsrdlabel/lib/constants";
 import { hasCookie } from "cookies-next";
-import { useState } from "react";
+import { use, useState } from "react";
 
 export function ConsentDialog(props: { className?: string }) {
+  const intl = use(getIntl("component.ConsentDialog"));
+
   useTimeoutEffect(
     () => {
       setOpen(true);
@@ -45,7 +48,9 @@ export function ConsentDialog(props: { className?: string }) {
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
-        <button className={props.className}>Edit consent settings</button>
+        <button className={props.className}>
+          {intl.formatMessage({ id: "trigger" })}
+        </button>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0 z-40 bg-black/80" />
@@ -53,11 +58,9 @@ export function ConsentDialog(props: { className?: string }) {
           className="data-[state=open]:animate-contentShow fixed inset-x-4 bottom-4 z-50 grid gap-4 overflow-auto rounded border bg-inherit px-8 pb-8 pt-6 sm:left-auto sm:max-h-[85dvh] sm:w-[90dvw] sm:max-w-3xl"
           forceMount
         >
-          <Dialog.Title>Edit consent settings</Dialog.Title>
+          <Dialog.Title>{intl.formatMessage({ id: "title" })}</Dialog.Title>
           <Dialog.Description className="text-sm">
-            UNCNSRD uses cookies that are essential to making this site work and
-            would like to use additional cookies to improve your experience on
-            this site.
+            {intl.formatMessage({ id: "description" })}
           </Dialog.Description>
           <ConsentForm
             acceptSelectedConsents={acceptSelectedConsents}

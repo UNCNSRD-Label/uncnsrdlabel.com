@@ -4,10 +4,10 @@ import { Logo } from "@/components/layout/logo";
 import { Navbar } from "@/components/layout/navbar";
 import { NavbarContent } from "@/components/layout/navbar/content";
 import { Video, type VideoProps } from "@/components/video";
-import { useIntl } from "@/dictionaries";
+import { getIntl } from "@/lib/i18n/server";
 import { themeColors } from "@uncnsrdlabel/lib/effects";
 import Link from "next/link";
-import { Suspense } from "react";
+import { Suspense, use } from "react";
 
 export const runtime = "edge";
 
@@ -38,8 +38,8 @@ const video: VideoProps = {
   url: "/videos/ZfGt0lKisCU.mp4",
 };
 
-export default async function HomePage() {
-  const intl = await useIntl("page.home");
+export default function HomePage() {
+  const intl = use(getIntl("page.home"));
 
   return (
     <div className="dark">
@@ -69,7 +69,7 @@ export default async function HomePage() {
               aria-label="Go to the shop"
               className="btn btn-outline btn-primary btn-base absolute z-20 justify-self-center whitespace-nowrap uppercase"
             >
-              {intl.formatMessage({ id: "shop_now" })}
+              {intl.formatMessage({ id: "shop_now" }, { title: "dude" })}
             </Link>
           </section>
           <section className="max-w-[100dvw] py-48 sm:snap-center">

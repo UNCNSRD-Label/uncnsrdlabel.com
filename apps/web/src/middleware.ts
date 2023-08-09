@@ -1,7 +1,8 @@
 import { match } from "@formatjs/intl-localematcher";
-import { defaultLocale, locales } from "@uncnsrdlabel/lib/i18n";
+import { defaultLocale, localeTagToIETFLanguageTag, locales } from "@uncnsrdlabel/lib/i18n";
 import Negotiator from "negotiator";
 import { NextResponse, type NextRequest } from "next/server";
+
 const savedCode = "arizona";
 
 const target = "https://holding.uncnsrdlabel.com";
@@ -15,6 +16,8 @@ const getLocale = (languages: string[]) =>
 
 export function middleware(request: NextRequest) {
   const requestHeaders = new Headers(request.headers);
+
+  const pathname = request.nextUrl.pathname;
 
   const detectedLanguage =
     request.headers
@@ -31,7 +34,21 @@ export function middleware(request: NextRequest) {
 
   const languages = new Negotiator({ headers }).languages();
 
-  const locale = getLocale(languages);
+  const detectedLocale = getLocale(languages);
+
+  // Check if there is any supported locale in the pathname
+  const routeLocale = locales.find(
+    (locale) =>
+      pathname.startsWith(`/${locale}`),
+  );
+
+  const locale = localeTagToIETFLanguageTag(routeLocale) ?? detectedLocale;
+
+  // Check if there is any supported locale in the pathname
+  const pathnameIsMissingLocale = locales.every(
+    (locale) =>
+      !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
+  );
   
   requestHeaders.set("x-locale", locale);
 
@@ -54,14 +71,6 @@ export function middleware(request: NextRequest) {
   ) {
     return NextResponse.redirect(target);
   }
-
-  // Check if there is any supported locale in the pathname
-  const pathname = request.nextUrl.pathname;
-
-  const pathnameIsMissingLocale = locales.every(
-    (locale) =>
-      !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
-  );
 
   // Redirect if there is no locale
   if (pathnameIsMissingLocale) {

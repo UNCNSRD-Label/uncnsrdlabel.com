@@ -22,9 +22,9 @@ const {
 } = process.env;
 
 const languagesArray = locales.map((locale) => [
-  locale.toString(),
+  localeTagToIETFLanguageTag(locale),
   [{
-    title: locale.toString(),
+    title: localeTagToIETFLanguageTag(locale),
     url: new URL(
       `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN}/${locale}`,
     ),
@@ -109,7 +109,7 @@ const montserrat = Montserrat({
 
 export async function generateStaticParams() {
   return locales.map((locale) => {
-    const lang = locale.toString();
+    const lang = localeTagToIETFLanguageTag(locale);
 
     return { lang };
   });
@@ -122,10 +122,9 @@ export default async function RootLayout({
   children: ReactNode;
   params: { lang: string };
 }) {
-  console.log({params})
   const locale = new Intl.Locale(params.lang)
 
-  const hideBanner = true;
+  const hideBanner = false;
 
   const messages = await getDictionary(
     locale,
