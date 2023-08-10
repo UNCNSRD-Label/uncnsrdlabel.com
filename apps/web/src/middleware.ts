@@ -65,7 +65,7 @@ export function middleware(request: NextRequest) {
   }
 
   if (
-    process.env.FEATURE_FLAG_HOLDING_REDIRECT_ENABLE === "true" &&
+    process.env.NEXT_PUBLIC_FEATURE_FLAG_HOLDING_REDIRECT_ENABLE === "true" &&
     suppliedCode !== savedCode &&
     request.cookies.get("preview")?.value !== "true"
   ) {
