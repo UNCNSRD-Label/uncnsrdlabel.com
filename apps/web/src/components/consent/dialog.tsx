@@ -1,16 +1,16 @@
 "use client";
 
 import { ConsentForm } from "@/components/consent/form";
-import { getIntl } from "@/lib/i18n/client";
+import { useIntl } from "@/lib/i18n/client";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { useTimeoutEffect } from "@react-hookz/web";
 import { COOKIE_CONSENT } from "@uncnsrdlabel/lib/constants";
 import { hasCookie } from "cookies-next";
-import { use, useState } from "react";
+import { useState } from "react";
 
 export function ConsentDialog(props: { className?: string }) {
-  const intl = use(getIntl("component.ConsentDialog"));
+  const intl = useIntl("component.ConsentDialog");
 
   useTimeoutEffect(
     () => {
@@ -43,10 +43,13 @@ export function ConsentDialog(props: { className?: string }) {
     console.info("Manage consents");
   };
 
-  const onClose = () => setOpen(false);
+  const onClose = () => {
+    console.info("Closing dialog");
+    setOpen(false);
+  }
 
   return (
-    <Dialog.Root open={open} onOpenChange={setOpen}>
+    <Dialog.Root >
       <Dialog.Trigger asChild>
         <button className={props.className}>
           {intl.formatMessage({ id: "trigger" })}

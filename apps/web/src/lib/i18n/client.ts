@@ -3,8 +3,9 @@
 import { getDictionary } from "@/dictionaries";
 import { createIntl } from '@formatjs/intl';
 import { useParams } from "next/navigation";
+import { use } from "react";
 
-export async function getIntl(namespace) {
+export function useIntl(namespace) {
     const { lang } = useParams();
  
     const tag = Array.isArray(lang) ? lang[0] : lang;
@@ -13,6 +14,6 @@ export async function getIntl(namespace) {
   
     return createIntl({
       locale: tag,
-      messages: await getDictionary(locale, namespace)
+      messages: use(getDictionary(locale, namespace))
     });
   }
