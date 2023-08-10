@@ -42,6 +42,7 @@ export const metadata: Metadata = {
     title: NEXT_PUBLIC_SITE_NAME,
     statusBarStyle: "default",
   },
+  description: "UNCNSRD is multifunctional swimwear for female figures who aren’t afraid to show off their assets and want to feel unapologetically sexy.",
   formatDetection: {
     telephone: false,
     date: false,
