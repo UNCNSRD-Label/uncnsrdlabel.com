@@ -1,5 +1,5 @@
 {
-  "name": "uncnsrdlabel.com",
+  "name": "uncnsrdlabel.com-holding",
   "version": "0.1.1",
   "scripts": {
     "analyze": "ANALYZE=true next build",
