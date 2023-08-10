@@ -1,5 +1,9 @@
 import { match } from "@formatjs/intl-localematcher";
-import { defaultLocale, localeTagToIETFLanguageTag, locales } from "@uncnsrdlabel/lib/i18n";
+import {
+  defaultLocale,
+  localeTagToIETFLanguageTag,
+  locales,
+} from "@uncnsrdlabel/lib/i18n";
 import Negotiator from "negotiator";
 import { NextResponse, type NextRequest } from "next/server";
 
@@ -37,9 +41,8 @@ export function middleware(request: NextRequest) {
   const detectedLocale = getLocale(languages);
 
   // Check if there is any supported locale in the pathname
-  const routeLocale = locales.find(
-    (locale) =>
-      pathname.startsWith(`/${locale}`),
+  const routeLocale = locales.find((locale) =>
+    pathname.startsWith(`/${locale}`),
   );
 
   const locale = localeTagToIETFLanguageTag(routeLocale) ?? detectedLocale;
@@ -49,7 +52,7 @@ export function middleware(request: NextRequest) {
     (locale) =>
       !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
   );
-  
+
   requestHeaders.set("x-locale", locale);
 
   const response = NextResponse.next({
@@ -60,20 +63,15 @@ export function middleware(request: NextRequest) {
 
   const suppliedCode = request.nextUrl.searchParams.get("code");
 
-  if (suppliedCode === savedCode) {
-    response.cookies.set("preview", "true");
-  }
-
   if (
     process.env.NEXT_PUBLIC_FEATURE_FLAG_HOLDING_REDIRECT_ENABLE === "true" &&
     suppliedCode !== savedCode &&
     request.cookies.get("preview")?.value !== "true"
   ) {
+    console.log("Redirecting to holding page")
     return NextResponse.redirect(target);
-  }
-
-  // Redirect if there is no locale
-  if (pathnameIsMissingLocale) {
+  } else if (pathnameIsMissingLocale) {
+    // Redirect if there is no locale
     const locale = getLocale(languages);
 
     // e.g. incoming request is /products
@@ -81,6 +79,10 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(
       new URL(`/${locale}/${pathname}`, request.url),
     );
+  }
+
+  if (suppliedCode === savedCode) {
+    response.cookies.set("preview", "true");
   }
 
   return response;
