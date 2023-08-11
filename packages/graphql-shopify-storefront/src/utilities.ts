@@ -25,7 +25,7 @@ import {
 import {
   Cart,
   Collection,
-  Connection,
+  // Connection,
   Image,
   Menu,
   Page,
@@ -36,6 +36,7 @@ import {
   Product,
   ProductVariant,
   ShopifyAddToCartOperation,
+  ShopifyBaseCartLine,
   ShopifyCart,
   ShopifyCartOperation,
   ShopifyCollection,
@@ -44,7 +45,6 @@ import {
   ShopifyCollectionsOperation,
   ShopifyCreateCartOperation,
   ShopifyMenuOperation,
-  ShopifyPage,
   ShopifyPageOperation,
   ShopifyPagesOperation,
   ShopifyPoliciesOperation,
@@ -53,7 +53,7 @@ import {
   ShopifyProductRecommendationsOperation,
   ShopifyProductsOperation,
   ShopifyRemoveFromCartOperation,
-  ShopifyUpdateCartOperation,
+  ShopifyUpdateCartOperation
 } from "@uncnsrdlabel/graphql-shopify-storefront/types";
 import {
   HIDDEN_PRODUCT_TAG,
@@ -62,6 +62,7 @@ import {
 import { getErrorsMessage } from "@uncnsrdlabel/lib/errors";
 import { isShopifyError } from "@uncnsrdlabel/lib/type-guards";
 import { camelCase } from "lodash";
+import { BaseCartLineConnection, CollectionConnection, PageConnection, ProductConnection } from "./codegen/graphql";
 
 const domain = `https://${process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!}`;
 const endpoint = `${domain}${SHOPIFY_GRAPHQL_API_ENDPOINT}`;
@@ -120,7 +121,8 @@ export async function shopifyFetch<T>({
   }
 }
 
-const removeEdgesAndNodes = <T>(array: Connection<T>) => {
+// const removeEdgesAndNodes = (array: BaseCartLineConnection | CollectionConnection | PageConnection | ProductConnection ) => {
+const removeEdgesAndNodes = <T extends BaseCartLineConnection | CollectionConnection | PageConnection | ProductConnection>(array: T) => {
   return array.edges.map((edge) => edge?.node);
 };
 
@@ -134,7 +136,7 @@ const reshapeCart = (cart: ShopifyCart): Cart => {
 
   return {
     ...cart,
-    lines: removeEdgesAndNodes(cart.lines),
+    linesArray: removeEdgesAndNodes<BaseCartLineConnection>(cart.lines) as ShopifyBaseCartLine[],
   };
 };
 
@@ -167,18 +169,18 @@ const reshapeCollections = (collections: ShopifyCollection[]) => {
   return reshapedCollections;
 };
 
-const reshapePage = (page: ShopifyPage) => {
-  const { mediaImages, ...rest } = page;
+// const reshapePage = (page: ShopifyPage) => {
+//   const { mediaImages, ...rest } = page;
 
-  const images = mediaImages?.references
-    ? removeEdgesAndNodes(mediaImages.references)?.map(({ image }) => image)
-    : [];
+//   const images = mediaImages?.references
+//     ? removeEdgesAndNodes(mediaImages.references)?.map(({ image }) => image)
+//     : [];
 
-  return {
-    ...rest,
-    images,
-  };
-};
+//   return {
+//     ...rest,
+//     images,
+//   };
+// };
 
 const reshapeProduct = (
   product: ShopifyProduct,
@@ -195,9 +197,9 @@ const reshapeProduct = (
 
   return {
     ...rest,
-    collections: removeEdgesAndNodes<Collection>(collections),
-    images: removeEdgesAndNodes<Image>(images),
-    variants: removeEdgesAndNodes<ProductVariant>(variants),
+    collectionsArray: removeEdgesAndNodes<Collection>(collections),
+    imagesArray: removeEdgesAndNodes<Image>(images),
+    variantsArray: removeEdgesAndNodes<ProductVariant>(variants),
   };
 };
 
@@ -336,7 +338,7 @@ export async function getCollectionProducts({
   }
 
   return reshapeProducts(
-    removeEdgesAndNodes(res.body.data.collection.products),
+    removeEdgesAndNodes<ProductConnection>(res.body.data.collection.products),
   );
 }
 
@@ -344,7 +346,7 @@ export async function getCollections(): Promise<Collection[]> {
   const res = await shopifyFetch<ShopifyCollectionsOperation>({
     query: getCollectionsQuery,
   });
-  const shopifyCollections = removeEdgesAndNodes(res.body?.data?.collections);
+  const shopifyCollections = removeEdgesAndNodes<CollectionConnection>(res.body?.data?.collections);
   const collections = [
     {
       handle: "",
@@ -399,7 +401,8 @@ export async function getPage(handle: string): Promise<Page> {
     };
   }
 
-  return reshapePage(res.body.data.pageByHandle);
+  // return reshapePage(res.body.data.pageByHandle);
+  return res.body.data.pageByHandle
 }
 
 export async function getPages(): Promise<Page[]> {
@@ -472,4 +475,25 @@ export async function getProducts({
   });
 
   return reshapeProducts(removeEdgesAndNodes(res.body.data.products));
+}
+
+export async function getProductsWithVariantsQuery({
+  query,
+  reverse,
+  sortKey,
+}: {
+  query?: string;
+  reverse?: boolean;
+  sortKey?: string;
+}): Promise<Product[]> {
+  const res = await shopifyFetch<ShopifyProductsWithVariantsOperation>({
+    query: getProductsWithVariantsQuery,
+    variables: {
+      query,
+      reverse,
+      sortKey,
+    },
+  });
+
+  return reshapeProducts(removeEdgesAndNodes<Product>(res.body.data.products));
 }

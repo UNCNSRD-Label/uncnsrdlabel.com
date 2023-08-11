@@ -10,7 +10,7 @@ export async function HorizontalScrollBackup({ className }: { className?: string
 
   if (!page) return notFound();
 
-  const images = page.images;
+  const images = page.imagesArray;
 
   const imagesList = [...images].map((image, index) => (
     <figure

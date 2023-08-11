@@ -39,7 +39,7 @@ export function ProductDetails({ product }: { product: Product }) {
             ref={sectionElementRefs[0]}
           >
             <Images
-              images={product.images.map((image: Image) => ({
+              images={product.imagesArray.map((image: Image) => ({
                 altText: image.altText,
                 id: image.id,
                 src: image.url,

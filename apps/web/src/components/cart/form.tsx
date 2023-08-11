@@ -21,7 +21,7 @@ export async function CartForm({
 }) {
   return (
     <>
-      {!cart || cart.lines.length === 0 ? (
+      {!cart || cart.linesArray.length === 0 ? (
         <div className="mt-20 flex w-full flex-col items-center justify-center overflow-hidden">
           <ShoppingCartIcon className="h-16" />
           <p className="mt-6 text-center text-2xl font-bold">
@@ -31,7 +31,7 @@ export async function CartForm({
       ) : (
         <div className="flex h-full flex-col justify-between overflow-hidden p-1">
           <ul className="flex-grow overflow-auto py-4">
-            {cart.lines.map((item, i) => {
+            {cart.linesArray.map((item, i) => {
               const merchandiseSearchParams = {} as MerchandiseSearchParams;
 
               item.merchandise.selectedOptions.forEach(({ name, value }) => {

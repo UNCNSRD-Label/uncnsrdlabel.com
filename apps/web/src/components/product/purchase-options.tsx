@@ -38,7 +38,7 @@ export const PurchaseOptions = forwardRef<
         />
       </div>
 
-      <VariantSelector options={product.options} variants={product.variants} />
+      <VariantSelector options={product.options} variants={product.variantsArray} />
 
       {product.descriptionHtml ? (
         <Prose
@@ -48,7 +48,7 @@ export const PurchaseOptions = forwardRef<
       ) : null}
 
       <AddToCart
-        variants={product.variants}
+        variants={product.variantsArray}
         availableForSale={product.availableForSale}
       />
     </>

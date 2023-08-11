@@ -1,5 +1,5 @@
 import { Grid } from "@/components/grid/index";
-import { ProductGridItems } from "@/components/layout/product-grid-items";
+import { ProductVariantGridItems } from "@/components/layout/product-variant-grid-items";
 import { getProducts } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
 import { defaultSort, sorting } from "@uncnsrdlabel/lib/constants";
 
@@ -34,7 +34,7 @@ export default async function SearchPage({
       ) : null}
       {products.length > 0 ? (
         <Grid className="grid-cols-2 lg:grid-cols-3">
-          <ProductGridItems products={products} />
+          <ProductVariantGridItems products={products} />
         </Grid>
       ) : null}
     </>

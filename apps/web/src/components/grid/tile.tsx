@@ -29,7 +29,6 @@ export function GridTileImage({
     title: string;
     amount: string;
     currencyCode: string;
-    isSmall?: boolean;
   };
   priority?: boolean;
 } & React.ComponentProps<typeof Image>) {
@@ -38,7 +37,7 @@ export function GridTileImage({
       {props.src ? (
         <figure
           className={clsx(
-            "relative aspect-3/4 w-full overflow-hidden",
+            "relative aspect-3/4 w-full overflow-hidden mb-4",
             // {
             //   "bg-hotPink dark:bg-hotPink": background === "hotPink",
             //   "bg-white dark:bg-white": background === "white",
@@ -75,14 +74,13 @@ export function GridTileImage({
           <h3
             data-testid="product-name"
             className={clsx(
-              "box-decoration-clone font-semibold",
-              !labels.isSmall ? "text-3xl" : "text-lg",
+              "box-decoration-clone text-xs mb-2",
             )}
           >
             {labels.title}
           </h3>
           <Price
-            className="text-sm font-semibold"
+            className="text-xs"
             amount={labels.amount}
             currencyCode={labels.currencyCode}
           />

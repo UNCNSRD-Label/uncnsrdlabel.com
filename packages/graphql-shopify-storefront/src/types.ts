@@ -1,41 +1,71 @@
 import { type ParsedMetafields } from "@shopify/hydrogen-react";
 import {
+  type CollectionConnection,
   type Metafield,
   type Metaobject,
+  type PageConnection,
+  type ProductConnection,
+  type BaseCartLine as ShopifyBaseCartLine,
+  type Cart as ShopifyCart,
+  type CartLine as ShopifyCartLine,
+  type Collection as ShopifyCollection,
+  type ComponentizableCartLine as ShopifyComponentizableCartLine,
+  type Metafield as ShopifyMetafield,
+  type Metaobject as ShopifyMetaobject,
+  type Page as ShopifyPage,
+  type Product as ShopifyProduct,
+  type ProductOption as ShopifyProductOption,
+  type ProductVariant as ShopifyProductVariant,
+  type ShopPolicy as ShopifyShopPolicy,
 } from "@shopify/hydrogen-react/storefront-api-types";
 
-export { Metafield, Metaobject, ParsedMetafields };
+export type {
+  ShopifyBaseCartLine,
+  ShopifyCart,
+  ShopifyCollection,
+  ShopifyMetafield,
+  ShopifyMetaobject,
+  ShopifyPage,
+  ShopifyProduct,
+  ShopifyProductOption,
+  ShopifyProductVariant,
+  ShopifyShopPolicy
+};
+
+  export { ParsedMetafields, type Metafield, type Metaobject };
 
 export type Maybe<T> = T | null;
-
-export type Connection<T> = {
-  edges: Array<Edge<T>>;
-};
 
 export type Edge<T> = {
   node: T;
 };
 
-export type Cart = Omit<ShopifyCart, "lines"> & {
-  lines: CartItem[];
+export type Cart = ShopifyCart & {
+  linesArray: CartItem[];
 };
 
-export type CartItem = {
-  id: string;
-  quantity: number;
-  cost: {
-    totalAmount: Money;
-  };
-  merchandise: {
-    id: string;
-    title: string;
-    selectedOptions: {
-      name: string;
-      value: string;
-    }[];
-    product: Product;
-  };
-};
+export type CartLine = ShopifyCartLine
+
+export type ComponentizableCartLine = ShopifyComponentizableCartLine
+
+export type CartItem = ShopifyCartLine | ShopifyComponentizableCartLine
+
+// export type CartItem = {
+//   id: string;
+//   quantity: number;
+//   cost: {
+//     totalAmount: Money;
+//   };
+//   merchandise: {
+//     id: string;
+//     title: string;
+//     selectedOptions: {
+//       name: string;
+//       value: string;
+//     }[];
+//     product: Product;
+//   };
+// };
 
 export type Collection = ShopifyCollection & {
   path: string;
@@ -64,8 +94,8 @@ export type Money = {
   currencyCode: string;
 };
 
-export type Page = Omit<ShopifyPage, "mediaImages"> & {
-  images: Image[];
+export type Page = ShopifyPage & {
+  imagesArray: Image[];
 };
 
 export type Policy = {
@@ -96,30 +126,28 @@ export type Policies = {
   termsOfService: Policy;
 };
 
-export type Product = Omit<
-  ShopifyProduct,
-  "variants" | "images" | "collections"
-> & {
-  collections: Collection[];
-  variants: ProductVariant[];
-  images: Image[];
+export type Product = ShopifyProduct & {
+  collectionsArray: Collection[];
+  variantsArray: ProductVariant[];
+  imagesArray: Image[];
 };
 
-export type ProductOption = {
-  id: string;
-  name: string;
-  values: string[];
+export type ProductOption = ShopifyProductOption & {
+  // id: string;
+  // name: string;
+  // values: string[];
 };
 
-export type ProductVariant = {
-  id: string;
-  title: string;
-  availableForSale: boolean;
-  selectedOptions: {
-    name: string;
-    value: string;
-  }[];
-  price: Money;
+export type ProductVariant = ShopifyProductVariant & {
+  // id: string;
+  // image: Image;
+  // title: string;
+  // availableForSale: boolean;
+  // selectedOptions: {
+  //   name: string;
+  //   value: string;
+  // }[];
+  // price: Money;
 };
 
 export type SEO = {
@@ -127,66 +155,66 @@ export type SEO = {
   description: string;
 };
 
-export type ShopifyCart = {
-  id: string;
-  checkoutUrl: string;
-  cost: {
-    subtotalAmount: Money;
-    totalAmount: Money;
-    totalTaxAmount: Money;
-  };
-  lines: Connection<CartItem>;
-  totalQuantity: number;
-};
+// export type ShopifyCart = {
+//   id: string;
+//   checkoutUrl: string;
+//   cost: {
+//     subtotalAmount: Money;
+//     totalAmount: Money;
+//     totalTaxAmount: Money;
+//   };
+//   lines: Connection<CartItem>;
+//   totalQuantity: number;
+// };
 
-export type ShopifyCollection = {
-  handle: string;
-  title: string;
-  description: string;
-  seo: SEO;
-  updatedAt: string;
-};
+// export type ShopifyCollection = {
+//   handle: string;
+//   title: string;
+//   description: string;
+//   seo: SEO;
+//   updatedAt: string;
+// };
 
-export type ShopifyPage = {
-  id: string;
-  title: string;
-  handle: string;
-  body: string;
-  bodySummary: string;
-  seo?: SEO;
-  createdAt: string;
-  updatedAt: string;
-  mediaImages: {
-    references: Connection<MediaImage>;
-  };
-};
+// export type ShopifyPage = {
+//   id: string;
+//   title: string;
+//   handle: string;
+//   body: string;
+//   bodySummary: string;
+//   seo?: SEO;
+//   createdAt: string;
+//   updatedAt: string;
+//   mediaImages: {
+//     references: Connection<MediaImage>;
+//   };
+// };
 
-export type ShopifyProduct = {
-  id: string;
-  handle: string;
-  availableForSale: boolean;
-  title: string;
-  description: string;
-  descriptionHtml: string;
-  options: ProductOption[];
-  priceRange: {
-    maxVariantPrice: Money;
-    minVariantPrice: Money;
-  };
-  compareAtPriceRange: {
-    maxVariantPrice: Money;
-    minVariantPrice: Money;
-  };
-  variants: Connection<ProductVariant>;
-  featuredImage: Image;
-  images: Connection<Image>;
-  seo: SEO;
-  tags: string[];
-  updatedAt: string;
-  metafields: Metafield[];
-  collections: Connection<Collection>;
-  vendor: string;
-};
+// export type ShopifyProduct = {
+//   id: string;
+//   handle: string;
+//   availableForSale: boolean;
+//   title: string;
+//   description: string;
+//   descriptionHtml: string;
+//   options: ProductOption[];
+//   priceRange: {
+//     maxVariantPrice: Money;
+//     minVariantPrice: Money;
+//   };
+//   compareAtPriceRange: {
+//     maxVariantPrice: Money;
+//     minVariantPrice: Money;
+//   };
+//   variants: Connection<ProductVariant>;
+//   featuredImage: Image;
+//   images: Connection<Image>;
+//   seo: SEO;
+//   tags: string[];
+//   updatedAt: string;
+//   metafields: Metafield[];
+//   collections: Connection<Collection>;
+//   vendor: string;
+// };
 
 export type ShopifyCartOperation = {
   data: {
@@ -256,7 +284,7 @@ export type ShopifyCollectionOperation = {
 export type ShopifyCollectionProductsOperation = {
   data: {
     collection: {
-      products: Connection<ShopifyProduct>;
+      products: ProductConnection;
     };
   };
   variables: {
@@ -268,7 +296,7 @@ export type ShopifyCollectionProductsOperation = {
 
 export type ShopifyCollectionsOperation = {
   data: {
-    collections: Connection<ShopifyCollection>;
+    collections: CollectionConnection;
   };
 };
 
@@ -293,7 +321,7 @@ export type ShopifyPageOperation = {
 
 export type ShopifyPagesOperation = {
   data: {
-    pages: Connection<Page>;
+    pages: PageConnection;
   };
 };
 
@@ -321,7 +349,7 @@ export type ShopifyProductRecommendationsOperation = {
 
 export type ShopifyProductsOperation = {
   data: {
-    products: Connection<ShopifyProduct>;
+    products: ProductConnection;
   };
   variables: {
     query?: string;

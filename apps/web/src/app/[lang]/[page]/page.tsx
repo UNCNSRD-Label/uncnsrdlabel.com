@@ -43,7 +43,7 @@ export default async function Page({ params }: { params: { page: string } }) {
 
   if (!page) return notFound();
 
-  const images = page.images;
+  const images = page.imagesArray;
 
   return (
     <>

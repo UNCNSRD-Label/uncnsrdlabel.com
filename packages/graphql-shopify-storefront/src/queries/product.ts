@@ -66,7 +66,6 @@ export const getProductQuery = /* GraphQL */ `
                   type
                   value
                   references(first: 8) {
-                    # edges {
                     nodes {
                       ... on Metaobject {
                         fields {
@@ -74,7 +73,6 @@ export const getProductQuery = /* GraphQL */ `
                           type
                           value
                           references(first: 8) {
-                            # edges {
                             nodes {
                               ... on Metaobject {
                                 fields {
@@ -82,7 +80,6 @@ export const getProductQuery = /* GraphQL */ `
                                   type
                                   value
                                   references(first: 8) {
-                                    # edges {
                                     nodes {
                                       ... on Metaobject {
                                         fields {
@@ -92,17 +89,14 @@ export const getProductQuery = /* GraphQL */ `
                                         }
                                       }
                                     }
-                                    # }
                                   }
                                 }
                               }
                             }
-                            # }
                           }
                         }
                       }
                     }
-                    # }
                   }
                 }
               }

@@ -63,12 +63,20 @@ export function middleware(request: NextRequest) {
 
   const suppliedCode = request.nextUrl.searchParams.get("code");
 
+  const suppliedCodeMatches = suppliedCode === savedCode;
+
+  const holdingRedirectEnabled = process.env.NEXT_PUBLIC_FEATURE_FLAG_HOLDING_REDIRECT_ENABLE === "true";
+
+  const previewCookieSet = request.cookies.get("preview")?.value === "true"
+
+  console.log({ holdingRedirectEnabled, suppliedCodeMatches, previewCookieSet })
+
   if (
-    process.env.NEXT_PUBLIC_FEATURE_FLAG_HOLDING_REDIRECT_ENABLE === "true" &&
-    suppliedCode !== savedCode &&
-    request.cookies.get("preview")?.value !== "true"
+    holdingRedirectEnabled &&
+    !suppliedCodeMatches &&
+    !previewCookieSet
   ) {
-    console.log("Redirecting to holding page")
+    console.info("Redirecting to holding page")
     return NextResponse.redirect(target);
   } else if (pathnameIsMissingLocale) {
     // Redirect if there is no locale
@@ -81,7 +89,7 @@ export function middleware(request: NextRequest) {
     );
   }
 
-  if (suppliedCode === savedCode) {
+  if (suppliedCodeMatches) {
     response.cookies.set("preview", "true");
   }
 

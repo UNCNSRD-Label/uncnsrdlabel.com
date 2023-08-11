@@ -22,7 +22,6 @@ export function ProductGridItems({
               alt={product.title}
               className={transitionDelays[index]}
               labels={{
-                isSmall: true,
                 title: product.title,
                 amount: product.priceRange.maxVariantPrice.amount,
                 currencyCode: product.priceRange.maxVariantPrice.currencyCode,

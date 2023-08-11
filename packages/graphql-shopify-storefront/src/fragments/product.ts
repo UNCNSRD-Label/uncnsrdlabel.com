@@ -47,6 +47,9 @@ export const productFragment = /* GraphQL */ `
       edges {
         node {
           id
+          image {
+            ...image
+          }
           title
           availableForSale
           selectedOptions {

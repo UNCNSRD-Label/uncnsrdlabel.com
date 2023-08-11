@@ -14,7 +14,7 @@ export async function HomepageCarousel(props: NukaCarouselProps) {
 
   if (!page) return notFound();
 
-  const images = page.images;
+  const images = page.imagesArray;
 
   const buttonClassName =
     "!px-6 text-6xl drop-shadow focus-visible:!text-stateFocus hover:!text-stateHover";

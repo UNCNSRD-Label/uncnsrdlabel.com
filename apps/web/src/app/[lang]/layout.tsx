@@ -125,7 +125,7 @@ export default async function RootLayout({
 }) {
   const locale = new Intl.Locale(params.lang)
 
-  const hideBanner = false;
+  const showBanner = false;
 
   const messages = await getDictionary(
     locale,
@@ -158,7 +158,7 @@ export default async function RootLayout({
         <AppProviders locale={localeTagToIETFLanguageTag(locale)} messages={messages}>
           <Progress />
           <Banner
-            className={clsx("sticky top-0 w-full", hideBanner && "hidden")}
+            className={clsx("sticky top-0 w-full", !showBanner && "hidden")}
           />
           <Suspense>
             {children}
