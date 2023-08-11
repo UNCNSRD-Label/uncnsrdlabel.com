@@ -1,6 +1,6 @@
 import { Grid } from "@/components/grid";
 import { GridTileImage } from "@/components/grid/tile";
-import { Product } from "@uncnsrdlabel/graphql-shopify-storefront/types";
+import { Product } from "@shopify/hydrogen-react/storefront-api-types";
 import Link from "next/link";
 
 import { transitionDelays } from "@uncnsrdlabel/lib/effects";

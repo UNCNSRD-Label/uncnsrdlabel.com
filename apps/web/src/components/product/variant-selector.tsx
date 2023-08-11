@@ -1,6 +1,6 @@
 "use client";
 
-import { ProductOption, ProductVariant } from "@uncnsrdlabel/graphql-shopify-storefront/types";
+import { ProductOption, ProductVariant } from "@shopify/hydrogen-react/storefront-api-types";
 import { createUrl } from "@uncnsrdlabel/lib/utilities";
 import { clsx } from "clsx";
 import Link from "next/link";

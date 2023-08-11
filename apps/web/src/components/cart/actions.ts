@@ -1,6 +1,6 @@
 "use server";
 
-import { Cart } from "@uncnsrdlabel/graphql-shopify-storefront/types";
+import { Cart } from "@shopify/hydrogen-react/storefront-api-types";
 import {
   addToCart,
   createCart,

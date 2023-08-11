@@ -7,7 +7,7 @@ import { Fragment, useEffect, useState } from "react";
 
 import { CloseIcon } from "@/components/icons/close";
 import { MenuIcon } from "@/components/icons/menu";
-import { Menu } from "@uncnsrdlabel/graphql-shopify-storefront/types";
+import { Menu } from "@shopify/hydrogen-react/storefront-api-types";
 import { NavbarSearch } from "./search";
 
 export function MobileMenu({ menu }: { menu: Menu[] }) {

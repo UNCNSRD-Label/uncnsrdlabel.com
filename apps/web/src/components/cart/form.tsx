@@ -2,7 +2,7 @@ import { DeleteItemButton } from "@/components/cart/delete-item-button";
 import { EditItemQuantityButton } from "@/components/cart/edit-item-quantity-button";
 import { Price } from "@/components/price";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
-import type { Cart } from "@uncnsrdlabel/graphql-shopify-storefront/types";
+import type { Cart } from "@shopify/hydrogen-react/storefront-api-types";
 import { DEFAULT_OPTION } from "@uncnsrdlabel/lib/constants";
 import { createUrl } from "@uncnsrdlabel/lib/utilities";
 import Image from "next/image";

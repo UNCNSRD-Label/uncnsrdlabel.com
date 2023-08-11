@@ -4,7 +4,7 @@ import { useTransition } from "react";
 import { removeItem, updateItemQuantity } from "@/components/cart/actions";
 import { LoadingDots } from "@/components/loading-dots";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
-import type { CartItem } from "@uncnsrdlabel/graphql-shopify-storefront/types";
+import type { CartItem } from "@shopify/hydrogen-react/storefront-api-types";
 import { clsx } from "clsx";
 
 export function EditItemQuantityButton({

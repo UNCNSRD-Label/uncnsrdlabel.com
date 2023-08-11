@@ -4,7 +4,7 @@ import { CloseCart } from "@/components/cart/close-cart";
 import { CartForm } from "@/components/cart/form";
 import { OpenCart } from "@/components/cart/open-cart";
 import { Dialog } from "@headlessui/react";
-import type { Cart } from "@uncnsrdlabel/graphql-shopify-storefront/types";
+import type { Cart } from "@shopify/hydrogen-react/storefront-api-types";
 import { themeColors } from "@uncnsrdlabel/lib/effects";
 import { clsx } from "clsx";
 import { AnimatePresence, motion } from "framer-motion";

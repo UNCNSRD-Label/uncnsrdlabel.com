@@ -11,7 +11,7 @@ import { MetaFields } from "@/components/product/metafields";
 import { NavigationMenu } from "@/components/product/navigation-menu";
 import { PurchaseOptions } from "@/components/product/purchase-options";
 
-import { Image, Product } from "@uncnsrdlabel/graphql-shopify-storefront/types";
+import { Image, Product } from "@shopify/hydrogen-react/storefront-api-types";
 
 export function ProductDetails({ product }: { product: Product }) {
   const sectionElementRefs = [useRef(null), useRef(null), useRef(null)];
@@ -39,11 +39,15 @@ export function ProductDetails({ product }: { product: Product }) {
             ref={sectionElementRefs[0]}
           >
             <Images
-              images={product.imagesArray.map((image: Image) => ({
-                altText: image.altText,
-                id: image.id,
-                src: image.url,
-              }))}
+              images={product.images.edges.map((edge) => {
+                const image: Image = edge.node;
+
+                return {
+                  altText: image.altText,
+                  id: image.id,
+                  src: image.url,
+                }
+              })}
               sizes="(max-width: 639px) 100vw, 66vw"
             />
           </div>

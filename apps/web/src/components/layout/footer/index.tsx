@@ -5,7 +5,7 @@ import { LogotypeIcon } from "@/components/icons/logotype";
 // import { RedeemCode } from "@/components/redeem-code/dialog";
 import { SignUp } from "@/components/sign-up";
 import { SocialMenu } from "@/components/social-menu";
-import { Menu } from "@uncnsrdlabel/graphql-shopify-storefront/types";
+import { Menu } from "@shopify/hydrogen-react/storefront-api-types";
 import { getMenu } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
 import { themeColors } from "@uncnsrdlabel/lib/effects";
 

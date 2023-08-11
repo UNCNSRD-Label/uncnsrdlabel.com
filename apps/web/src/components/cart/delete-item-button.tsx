@@ -3,7 +3,7 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
 
 import { removeItem } from "@/components/cart/actions";
-import type { CartItem } from "@uncnsrdlabel/graphql-shopify-storefront/types";
+import type { CartItem } from "@shopify/hydrogen-react/storefront-api-types";
 import { clsx } from "clsx";
 import { useTransition } from "react";
 

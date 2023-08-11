@@ -2,7 +2,7 @@ import { AddToCart } from "@/components/cart/add-to-cart";
 import { Price } from "@/components/price";
 import { VariantSelector } from "@/components/product/variant-selector";
 import { Prose } from "@/components/prose";
-import { Product } from "@uncnsrdlabel/graphql-shopify-storefront/types";
+import { Product } from "@shopify/hydrogen-react/storefront-api-types";
 import { clsx } from "clsx";
 import { forwardRef } from "react";
 
@@ -38,7 +38,7 @@ export const PurchaseOptions = forwardRef<
         />
       </div>
 
-      <VariantSelector options={product.options} variants={product.variantsArray} />
+      <VariantSelector options={product.options} variants={product.variants.edges.map((edge) => edge.node)} />
 
       {product.descriptionHtml ? (
         <Prose
@@ -48,7 +48,7 @@ export const PurchaseOptions = forwardRef<
       ) : null}
 
       <AddToCart
-        variants={product.variantsArray}
+        variants={product.variants.edges.map((edge) => edge.node)}
         availableForSale={product.availableForSale}
       />
     </>

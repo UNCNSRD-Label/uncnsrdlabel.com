@@ -4,7 +4,7 @@ import { Prose } from "@/components/prose";
 import { getPolicy } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
 import { notFound } from "next/navigation";
 
-import { PolicyHandle } from "@uncnsrdlabel/graphql-shopify-storefront/types";
+import { PolicyHandle } from "@shopify/hydrogen-react/storefront-api-types";
 
 export const runtime = "edge";
 

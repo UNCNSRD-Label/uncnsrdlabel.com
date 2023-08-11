@@ -4,7 +4,7 @@ import { CloseIcon } from "@/components/icons/close";
 import { LogotypeIcon } from "@/components/icons/logotype";
 import { MenuIcon } from "@/components/icons/menu";
 import { Dialog } from "@headlessui/react";
-import { Menu } from "@uncnsrdlabel/graphql-shopify-storefront/types";
+import { Menu } from "@shopify/hydrogen-react/storefront-api-types";
 import { themeColors } from "@uncnsrdlabel/lib/effects";
 import { clsx } from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
