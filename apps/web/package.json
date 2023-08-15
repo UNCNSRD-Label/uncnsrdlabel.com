@@ -104,12 +104,6 @@
     "type-fest": "^4.1.0",
     "typescript": "5.1.6"
   },
-  "git": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*": "prettier --write --ignore-unknown"
-  },
   "name": "@uncnsrdlabel/app-web",
   "private": true,
   "scripts": {

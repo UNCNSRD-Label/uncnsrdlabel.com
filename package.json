@@ -11,6 +11,12 @@
     "prettier": "latest",
     "turbo": "latest"
   },
+  "git": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*": "prettier --write --ignore-unknown"
+  },
   "name": "uncnsrdlabel.com",
   "packageManager": "pnpm@8.6.10",
   "private": true,
