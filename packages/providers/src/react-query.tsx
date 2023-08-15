@@ -17,7 +17,6 @@ export function AppReactQueryProvider({ children }: PropsWithChildren) {
   const [showDevtools, setShowDevtools] = useState(false);
 
   useEffect(() => {
-    // @ts-ignore
     window.toggleDevtools = () => setShowDevtools((old) => !old);
   }, []);
 

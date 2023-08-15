@@ -1,6 +1,6 @@
 import { Grid } from "@/components/grid/index";
 import { ProductVariantGridItems } from "@/components/layout/product-variant-grid-items";
-import { getProducts } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
+import { useGetPage } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
 import { defaultSort, sorting } from "@uncnsrdlabel/lib/constants";
 
 export const runtime = "edge";
@@ -19,7 +19,7 @@ export default async function SearchPage({
   const { sortKey, reverse } =
     sorting.find((item) => item.slug === sort) || defaultSort;
 
-  const products = await getProducts({ sortKey, reverse, query: searchValue });
+  const products = useGetPage({ sortKey, reverse, query: searchValue });
   const resultsText = products.length > 1 ? "results" : "result";
 
   return (

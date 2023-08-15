@@ -4,13 +4,13 @@ import {
   type NukaCarouselProps,
 } from "@/components/nuka-carousel";
 import { minWidthLg, minWidthSm } from "@/lib/tailwind";
-import { getPage } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
+import { useGetPage } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
 import { clsx } from "clsx";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
 export async function HomepageCarousel(props: NukaCarouselProps) {
-  const page = await getPage("home");
+  const page = useGetPage("home");
 
   if (!page) return notFound();
 

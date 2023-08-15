@@ -1,3 +1,2 @@
-export * from "@uncnsrdlabel/graphql-shopify-storefront/codegen/fragment-masking";
-export * from "@uncnsrdlabel/graphql-shopify-storefront/codegen/gql";
-
+export * from "./fragment-masking.js";
+export * from "./gql.js";

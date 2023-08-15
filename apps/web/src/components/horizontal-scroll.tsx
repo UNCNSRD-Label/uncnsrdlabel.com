@@ -1,10 +1,10 @@
 import { Image } from "@/components/image";
-import { getPage } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
+import { useGetPage } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
 import { clsx } from "clsx";
 import { notFound } from "next/navigation";
 
 export async function HorizontalScroll({ className }: { className?: string }) {
-  const page = await getPage("home");
+  const page = useGetPage("home");
 
   if (!page) return notFound();
 
@@ -26,7 +26,7 @@ export async function HorizontalScroll({ className }: { className?: string }) {
         >
           {[...images].map((image, index) => (
             <figure
-              className="item relative aspect-3/4 w-full"
+              className="item aspect-3/4 relative w-full"
               key={image.id || index}
             >
               <Image

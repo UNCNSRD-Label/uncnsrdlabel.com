@@ -4,6 +4,7 @@
     "@graphql-codegen/client-preset": "latest",
     "@graphql-typed-document-node/core": "latest",
     "@shopify/hydrogen-react": "^2023.7.0",
+    "@tanstack/react-query": "^4.32.6",
     "@uncnsrdlabel/lib": "workspace:*",
     "dotenv-cli": "latest",
     "graphql": "latest",
@@ -22,11 +23,11 @@
     "prettier": "latest",
     "tsup": "latest",
     "type-fest": "latest",
-    "typescript-graphql-request": "latest",
-    "typescript": "latest"
+    "typescript": "latest",
+    "typescript-graphql-request": "latest"
   },
   "exports": {
-    "./*": "./src/*"
+    "./*": "./dist/*"
   },
   "files": [
     "src/**"
@@ -37,7 +38,9 @@
     "directory": "src"
   },
   "scripts": {
-    "generate:component": "turbo gen react-component",
+    "build_old": "graphql-codegen && tsc --project ./tsconfig.json",
+    "dev_old": "graphql-codegen --watch && tsc --project ./tsconfig.json --watch",
+    "build": "graphql-codegen",
     "lint": "eslint \"**/*.ts*\"",
     "types:check": "tsc --noEmit"
   },
@@ -45,6 +48,6 @@
     "**/*.css"
   ],
   "type": "module",
-  "types": "./src/index.d.ts",
+  "types": "./dist/index.d.ts",
   "version": "0.0.0"
 }

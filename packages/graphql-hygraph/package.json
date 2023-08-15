@@ -33,8 +33,8 @@
   },
   "name": "@uncnsrdlabel/graphql-hygraph",
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
+    "build": "graphql-codegen && tsc --project ./tsconfig.json",
+    "dev": "graphql-codegen --watch && tsc --project ./tsconfig.json --watch",
     "lint": "eslint \"**/*.ts*\"",
     "types:check": "tsc --noEmit"
   },

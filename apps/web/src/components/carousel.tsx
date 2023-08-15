@@ -1,5 +1,5 @@
 import { Image } from "@/components/image";
-import { getCollectionProducts, getPage } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
+import { getCollectionProducts } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -11,7 +11,7 @@ export async function Carousel() {
 
   if (!products?.length) return null;
 
-  const page = await getPage("home");
+  const page = useGetPage("home");
 
   if (!page) return notFound();
 

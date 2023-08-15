@@ -1,52 +1,29 @@
-import { imageFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/image";
-import { seoFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/seo";
+import { graphql } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
+import { pageFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/page";
 
-const pageFragment = /* GraphQL */ `
-  fragment page on Page {
-    ... on Page {
+export const getPageQuery2 = graphql(/* GraphQL */ `
+  query getPage2($handle: String!) {
+    pageByHandle(handle: $handle) {
       id
       title
       handle
-      body
-      bodySummary
-      seo {
-        ...seo
-      }
-      createdAt
-      updatedAt
-      mediaImages: metafield(namespace: "custom", key: "images") {
-        value
-        references(first: 10) {
-          edges {
-            node {
-              ... on MediaImage {
-                __typename
-                id
-                image {
-                  ...image
-                }
-                mediaContentType
-              }
-            }
-          }
-        }
-      }
     }
   }
-  ${imageFragment}
-  ${seoFragment}
-`;
+`);
 
-export const getPageQuery = /* GraphQL */ `
+export const getPageQuery = graphql(/* GraphQL */ `
   query getPage($handle: String!) {
     pageByHandle(handle: $handle) {
       ...page
+      id
+      title
+      handle
     }
   }
   ${pageFragment}
-`;
+`);
 
-export const getPagesQuery = /* GraphQL */ `
+export const getPagesQuery = graphql(/* GraphQL */ `
   query getPages {
     pages(first: 100) {
       edges {
@@ -57,4 +34,4 @@ export const getPagesQuery = /* GraphQL */ `
     }
   }
   ${pageFragment}
-`;
+`);

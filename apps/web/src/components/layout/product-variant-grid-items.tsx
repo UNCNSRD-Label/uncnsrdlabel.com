@@ -9,7 +9,9 @@ export function ProductVariantGridItems({ products }: { products: Product[] }) {
     <>
       {products.map((product, productIndex) => {
         const variantsMap = new Map(
-          product.variantsArray.map((variant) => {
+          product.variants.edges.map((edge) => {
+            const variant = edge.node;
+
             const key = variant.selectedOptions?.find(
               (selectedOption) => selectedOption.name === "Color",
             )?.value;
