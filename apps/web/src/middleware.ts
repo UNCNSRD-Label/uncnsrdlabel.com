@@ -1,28 +1,17 @@
 import { match } from "@formatjs/intl-localematcher";
-import {
-  defaultLocale,
-  localeTagToIETFLanguageTag,
-  locales,
-} from "@uncnsrdlabel/lib/i18n";
 import Negotiator from "negotiator";
 import { NextResponse, type NextRequest } from "next/server";
 
-const savedCode = "arizona";
+const defaultLocale = process.env.NEXT_PUBLIC_DEFAULT_LOCALE ?? "en-AU";
 
-const target = "https://holding.uncnsrdlabel.com";
+const locales = (
+  process.env.NEXT_PUBLIC_SUPPORTED_LOCALES ?? defaultLocale
+).split(",");
 
 const getLocale = (languages: string[]) =>
-  match(
-    languages,
-    locales.map((locale) => locale.toString()),
-    defaultLocale.toString(),
-  );
+  match(languages, locales, defaultLocale);
 
 export function middleware(request: NextRequest) {
-  const requestHeaders = new Headers(request.headers);
-
-  const pathname = request.nextUrl.pathname;
-
   const detectedLanguage =
     request.headers
       .get("accept-language")
@@ -30,56 +19,24 @@ export function middleware(request: NextRequest) {
       .split("-")?.[0]
       .toLowerCase() || "en";
 
-  const detectedCountry = request.geo?.country ?? defaultLocale.region ?? "AU";
+  const detectedCountry = request.geo?.country ?? defaultLocale.split("-")?.[1] ?? "AU";
 
-  const headers = {
-    "accept-language": `${detectedLanguage}-${detectedCountry},en;q=0.5`,
-  };
+  const headers = { "accept-language": `${detectedLanguage}-${detectedCountry},en;q=0.5` };
 
   const languages = new Negotiator({ headers }).languages();
 
-  const detectedLocale = getLocale(languages);
+  const response = NextResponse.next();
 
   // Check if there is any supported locale in the pathname
-  const routeLocale = locales.find((locale) =>
-    pathname.startsWith(`/${locale}`),
-  );
+  const pathname = request.nextUrl.pathname;
 
-  const locale = localeTagToIETFLanguageTag(routeLocale) ?? detectedLocale;
-
-  // Check if there is any supported locale in the pathname
   const pathnameIsMissingLocale = locales.every(
     (locale) =>
       !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
   );
 
-  requestHeaders.set("x-locale", locale);
-
-  const response = NextResponse.next({
-    request: {
-      headers: requestHeaders,
-    },
-  });
-
-  const suppliedCode = request.nextUrl.searchParams.get("code");
-
-  const suppliedCodeMatches = suppliedCode === savedCode;
-
-  const holdingRedirectEnabled = process.env.NEXT_PUBLIC_FEATURE_FLAG_HOLDING_REDIRECT_ENABLE === "true";
-
-  const previewCookieSet = request.cookies.get("preview")?.value === "true"
-
-  console.log({ holdingRedirectEnabled, suppliedCodeMatches, previewCookieSet })
-
-  if (
-    holdingRedirectEnabled &&
-    !suppliedCodeMatches &&
-    !previewCookieSet
-  ) {
-    console.info("Redirecting to holding page")
-    return NextResponse.redirect(target);
-  } else if (pathnameIsMissingLocale) {
-    // Redirect if there is no locale
+  // Redirect if there is no locale
+  if (pathnameIsMissingLocale) {
     const locale = getLocale(languages);
 
     // e.g. incoming request is /products
@@ -87,10 +44,6 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(
       new URL(`/${locale}/${pathname}`, request.url),
     );
-  }
-
-  if (suppliedCodeMatches) {
-    response.cookies.set("preview", "true");
   }
 
   return response;
