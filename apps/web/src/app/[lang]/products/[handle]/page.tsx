@@ -6,8 +6,11 @@ import { Product as ProductSchema, WithContext } from "schema-dts";
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
 import { ProductDetails } from "@/components/product/details";
-import { getProduct, getProductRecommendations } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
-import { HIDDEN_PRODUCT_TAG } from "@uncnsrdlabel/lib/constants";
+import {
+  getFragmentData, imageFragment, seoFragment
+} from "@uncnsrdlabel/graphql-shopify-storefront";
+import { useGetProduct, useGetProductRecommendations } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
+import { HIDDEN_PRODUCT_TAG, cn } from "@uncnsrdlabel/lib";
 
 export const runtime = "edge";
 
@@ -16,16 +19,19 @@ export async function generateMetadata({
 }: {
   params: { handle: string };
 }): Promise<Metadata> {
-  const product = await getProduct(params.handle);
+  const product = useGetProduct(params);
+
+  const featuredImage = getFragmentData(imageFragment, product.featuredImage);
+  const seo = getFragmentData(seoFragment, product.seo);
 
   if (!product) return notFound();
 
-  const { url, width, height, altText: alt } = product.featuredImage || {};
+  const { url, width, height, altText: alt } = featuredImage || {};
   const hide = !product.tags.includes(HIDDEN_PRODUCT_TAG);
 
   return {
-    title: product.seo.title || product.title,
-    description: product.seo.description || product.description,
+    title: seo.title || product.title,
+    description: seo.description || product.description,
     robots: {
       index: hide,
       follow: hide,
@@ -54,32 +60,34 @@ export default async function ProductPage({
 }: {
   params: { handle: string };
 }) {
-  const product = await getProduct(params.handle);
+  const productFragmentRef = useGetProduct(params);
 
   if (!product) return notFound();
+
+  const featuredImage = getFragmentData(imageFragment, product.featuredImage);
 
   const jsonLd: WithContext<ProductSchema> = {
     "@context": "https://schema.org",
     "@type": "Product",
-    identifier: product.id,
-    name: product.title,
+    identifier: productFragmentRef.id,
+    name: productFragmentRef.title,
     image: {
       "@type": "ImageObject",
-      about: product.featuredImage?.altText,
-      height: product.featuredImage?.height.toString(),
-      url: product.featuredImage?.url,
-      width: product.featuredImage?.width.toString(),
+      about: featuredImage?.altText,
+      height: featuredImage?.height.toString(),
+      url: featuredImage?.url,
+      width: featuredImage?.width.toString(),
     },
-    description: product.description,
+    description: productFragmentRef.description,
   };
 
   return (
     <>
-      <ProductDetails product={product} />
+      <ProductDetails productFragmentRef={productFragmentRef} />
       <Suspense>
         <RelatedProducts
           className="relative bg-gray-300 pb-48 pt-12 text-dark dark:bg-gray-800 dark:text-light"
-          id={product.id}
+          id={productFragmentRef.id}
         />
       </Suspense>
       <script
@@ -97,7 +105,9 @@ async function RelatedProducts({
   className?: string;
   id: string;
 }) {
-  const relatedProducts = await getProductRecommendations(id);
+  const relatedProducts = useGetProductRecommendations({
+    productId: id
+  });
 
   if (!relatedProducts.length) return null;
 

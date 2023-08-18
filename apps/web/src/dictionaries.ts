@@ -1,4 +1,4 @@
-import { localeTagToIETFLanguageTag, locales } from "@uncnsrdlabel/lib/i18n";
+import { getIETFLanguageTagFromlocaleTag, locales } from "@uncnsrdlabel/lib";
 import merge from "deepmerge";
 import { getProperty } from 'dot-prop';
 import { type ResolvedIntlConfig } from "react-intl";
@@ -13,9 +13,9 @@ const dictionariesFiles = [
       ),
   ]),
   ...locales.map((locale) => [
-    localeTagToIETFLanguageTag(locale),
+    getIETFLanguageTagFromlocaleTag(locale),
     () =>
-      import(`./dictionaries/${localeTagToIETFLanguageTag(locale)}.json`).then(
+      import(`./dictionaries/${getIETFLanguageTagFromlocaleTag(locale)}.json`).then(
         (module) => module.default,
       ),
   ]),
@@ -26,7 +26,7 @@ const dictionaries = Object.fromEntries(dictionariesFiles);
 export const getDictionary = async (locale: Intl.Locale, namespace: string) => {
   const language = await dictionaries[locale.language]();
 
-  const languageLocalised = await dictionaries[localeTagToIETFLanguageTag(locale)]();
+  const languageLocalised = await dictionaries[getIETFLanguageTagFromlocaleTag(locale)]();
 
   const merged = merge.all([languageFallback, language, languageLocalised]) as typeof languageFallback;
 

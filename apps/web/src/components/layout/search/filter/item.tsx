@@ -1,7 +1,7 @@
 "use client";
 
 import { SortFilterItem } from "@uncnsrdlabel/lib/constants";
-import { createUrl } from "@uncnsrdlabel/lib/utilities";
+import { createUrl } from "@uncnsrdlabel/lib/url";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";

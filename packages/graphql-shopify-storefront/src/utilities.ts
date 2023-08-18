@@ -7,26 +7,29 @@
 //   createCartMutation,
 //   editCartItemsMutation,
 //   removeFromCartMutation,
-// } from "@uncnsrdlabel/graphql-shopify-storefront/mutations/cart";
+// } from "./mutations/cart";
 import {
   getCollectionProductsQuery,
   getCollectionQuery,
   getCollectionsQuery,
-} from "@uncnsrdlabel/graphql-shopify-storefront/queries/collection";
+} from "./queries/collection";
 // import { getErrorsMessage } from "@uncnsrdlabel/lib/errors";
 // import { isShopifyError } from "@uncnsrdlabel/lib/type-guards";
 import { type TypedDocumentNode } from "@graphql-typed-document-node/core";
 import { useQuery, type UseQueryResult } from "@tanstack/react-query";
-import { getCartQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/cart";
-import { getMenuQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/menu";
-import { getPageQuery, getPagesQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/page";
-import { getPoliciesQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/policy";
-import { getProductQuery, getProductRecommendationsQuery, getProductsQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/product";
+import { getFragmentData } from "./codegen";
+// import { collectionFragment } from "./fragments/collection";
 import { GraphQLClient } from "graphql-request";
 import { camelCase } from "lodash";
 import { GetCartQueryVariables, GetCollectionProductsQueryVariables, GetCollectionQueryVariables, GetMenuQueryVariables, GetPageQueryVariables, GetPagesQueryVariables, GetProductQueryVariables, GetProductRecommendationsQueryVariables, GetProductsQueryVariables } from "./codegen/graphql";
+import { productFragment } from "./fragments/product";
+import { getCartQuery } from "./queries/cart";
+import { getMenuQuery } from "./queries/menu";
+import { getPageQuery, getPagesQuery } from "./queries/page";
+import { getPoliciesQuery } from "./queries/policy";
+import { getProductQuery, getProductRecommendationsQuery, getProductsQuery } from "./queries/product";
 
-export { graphql } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
+export { graphql } from "./codegen";
 
 type PolicyName = 'privacyPolicy' | 'refundPolicy' | 'shippingPolicy' | 'termsOfService'
 
@@ -195,7 +198,9 @@ export function useGetCollectionProducts(variables: GetCollectionProductsQueryVa
 }
 
 export function useGetCollections() {
-  const { data = {} } = useShopifyGraphQL(
+  const { data = {
+    collections: []
+  } } = useShopifyGraphQL(
     getCollectionsQuery,
   );
 
@@ -209,6 +214,8 @@ export function useGetCollections() {
   }
 
   console.log({shopifyCollections})
+
+  // const shopifyCollections = getFragmentData(collectionFragment, collectionsFragmentRef);
 
   const collections = [
     {
@@ -227,7 +234,7 @@ export function useGetCollections() {
     // ...reshapeCollections(shopifyCollections).filter(
     //   (collection) => !collection.handle.startsWith("hidden"),
     // ),
-    ...shopifyCollections
+    // ...shopifyCollections?.edges.map(({ node }) => getFragmentData(collectionFragment, node))
   ];
 
   return collections;
@@ -284,7 +291,9 @@ export function useGetPage(variables: GetPageQueryVariables) {
 }
 
 export function useGetPages(variables: GetPagesQueryVariables) {
-  const { data = {} } = useShopifyGraphQL(
+  const { data = {
+    pages: []
+  } } = useShopifyGraphQL(
     getPagesQuery,
     variables
   );
@@ -312,24 +321,24 @@ export function useGetPolicy(handle: PolicyName) {
 }
 
 export function useGetPolicies() {
-  const { data = {} } = useShopifyGraphQL(
+  const { data = {
+    shop: {}
+  } } = useShopifyGraphQL(
     getPoliciesQuery,
   );
 
-  const { shop: {
-    policies
-  } } = data;
+  const { shop } = data;
 
-  if (!policies) {
+  if (!shop) {
     throw {
       status: 404,
-      message: `Policies not found`,
+      message: `Shop not found`,
     };
   }
 
-  console.log({policies})
+  console.log({shop})
 
-  return policies;
+  return shop;
 }
 
 export function useGetProduct(variables: GetProductQueryVariables) {
@@ -338,14 +347,18 @@ export function useGetProduct(variables: GetProductQueryVariables) {
     variables,
   );
 
-  const { product } = data;
+  const { product: productFragmentRef } = data;
 
-  if (!product) {
+  if (!productFragmentRef) {
     throw {
       status: 404,
       message: `Product not found for handle \`${variables.handle}\``,
     };
   }
+
+  console.log({productFragmentRef})
+  
+  const product = getFragmentData(productFragment, productFragmentRef);
 
   console.log({product})
 
@@ -358,20 +371,24 @@ export function useGetProductRecommendations(variables: GetProductRecommendation
     variables
   );
 
-  const { products } = data;
+  const { productRecommendations } = data;
 
-  if (!products) {
+  if (!productRecommendations) {
     throw {
       status: 404,
       message: `Products not found`,
     };
   }
 
+  const products = getFragmentData(productFragment, productRecommendations);
+
   return products;
 }
 
 export function useGetProducts(variables: GetProductsQueryVariables) {
-  const { data = {} } = useShopifyGraphQL(
+  const { data = {
+    products: []
+  } } = useShopifyGraphQL(
     getProductsQuery,
     variables
   );

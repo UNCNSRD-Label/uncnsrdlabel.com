@@ -7,7 +7,7 @@ import { getDictionary } from "@/dictionaries";
 import { cn } from "@uncnsrdlabel/lib";
 import { SITE_DOMAIN } from "@uncnsrdlabel/lib/constants";
 import { themeColors } from "@uncnsrdlabel/lib/effects";
-import { localeTagToIETFLanguageTag, locales } from "@uncnsrdlabel/lib/i18n";
+import { getIETFLanguageTagFromlocaleTag, locales } from "@uncnsrdlabel/lib/i18n";
 import { AppProviders } from "@uncnsrdlabel/providers";
 import type { Metadata } from "next";
 import { Inter, Montserrat } from "next/font/google";
@@ -22,9 +22,9 @@ const {
 } = process.env;
 
 const languagesArray = locales.map((locale) => [
-  localeTagToIETFLanguageTag(locale),
+  getIETFLanguageTagFromlocaleTag(locale),
   [{
-    title: localeTagToIETFLanguageTag(locale),
+    title: getIETFLanguageTagFromlocaleTag(locale),
     url: new URL(
       `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN}/${locale}`,
     ),
@@ -110,7 +110,7 @@ const montserrat = Montserrat({
 
 export async function generateStaticParams() {
   return locales.map((locale) => {
-    const lang = localeTagToIETFLanguageTag(locale);
+    const lang = getIETFLanguageTagFromlocaleTag(locale);
 
     return { lang };
   });
@@ -155,7 +155,7 @@ export default async function RootLayout({
           textRendering: "optimizeLegibility",
         }}
       >
-        <AppProviders locale={localeTagToIETFLanguageTag(locale)} messages={messages}>
+        <AppProviders locale={getIETFLanguageTagFromlocaleTag(locale)} messages={messages}>
           <Progress />
           <Banner
             className={cn("sticky top-0 w-full", !showBanner && "hidden")}

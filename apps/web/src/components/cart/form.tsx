@@ -4,7 +4,7 @@ import { Price } from "@/components/price";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import type { Cart } from "@shopify/hydrogen-react/storefront-api-types";
 import { DEFAULT_OPTION } from "@uncnsrdlabel/lib/constants";
-import { createUrl } from "@uncnsrdlabel/lib/utilities";
+import { createUrl } from "@uncnsrdlabel/lib/url";
 import Image from "next/image";
 import Link from "next/link";
 

@@ -79,7 +79,7 @@ export function MobileMenu({ menu }: { menu: Menu[] }) {
                 </div>
                 {menu.length ? (
                   <ul className="flex flex-col">
-                    {menu.map((item: Menu, index) => (
+                    {menu.map((item, index) => (
                       <li key={item.title || index}>
                         <Link
                           href={item.path}

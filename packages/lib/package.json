@@ -20,6 +20,12 @@
     "type-fest": "^4.1.0",
     "typescript": "^5.1.6"
   },
+  "exports": {
+    "./*": "./dist/*"
+  },
+  "files": [
+    "src/**"
+  ],
   "main": "./src/index.tsx",
   "name": "@uncnsrdlabel/lib",
   "publishConfig": {

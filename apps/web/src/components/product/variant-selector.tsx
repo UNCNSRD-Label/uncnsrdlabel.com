@@ -1,7 +1,7 @@
 "use client";
 
 import { ProductOption, ProductVariant } from "@shopify/hydrogen-react/storefront-api-types";
-import { createUrl } from "@uncnsrdlabel/lib/utilities";
+import { createUrl } from "@uncnsrdlabel/lib/url";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 type Combination = {

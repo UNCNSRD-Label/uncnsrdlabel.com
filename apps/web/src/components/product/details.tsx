@@ -1,20 +1,22 @@
 "use client";
 
-import { ProductProvider } from "@shopify/hydrogen-react";
-import { type Product as ShopifyProduct } from "@shopify/hydrogen-react/storefront-api-types";
-import { useRef } from "react";
-import { type PartialDeep } from "type-fest";
-
 import { HandleTrackProduct } from "@/components/analytics/handle-track-product";
 import { Images } from "@/components/product/images";
 import { MetaFields } from "@/components/product/metafields";
 import { NavigationMenu } from "@/components/product/navigation-menu";
 import { PurchaseOptions } from "@/components/product/purchase-options";
+import { ProductProvider } from "@shopify/hydrogen-react";
+import { Image, type Product as ShopifyProduct } from "@shopify/hydrogen-react/storefront-api-types";
+import {
+  FragmentType, getFragmentData,
+  productFragment
+} from "@uncnsrdlabel/graphql-shopify-storefront";
+import { useRef } from "react";
+import { type PartialDeep } from "type-fest";
 
-import { Image, Product } from "@shopify/hydrogen-react/storefront-api-types";
-
-export function ProductDetails({ product }: { product: Product }) {
+export function ProductDetails({ productFragmentRef }: { productFragmentRef: FragmentType<typeof productFragment> }) {
   const sectionElementRefs = [useRef(null), useRef(null), useRef(null)];
+  const product = getFragmentData(productFragment, productFragmentRef);
 
   return (
     <ProductProvider

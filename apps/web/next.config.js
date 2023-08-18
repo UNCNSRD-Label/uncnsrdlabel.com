@@ -80,9 +80,9 @@ const nextConfig = {
     esmExternals: "loose",
     // scrollRestoration: true,
     serverActions: true,
-    swcPlugins: [
-      ['@graphql-codegen/client-preset-swc-plugin', { artifactDirectory: './src/gql', gqlTagName: 'graphql' }]
-    ]
+    // swcPlugins: [
+    //   ['@graphql-codegen/client-preset-swc-plugin', { artifactDirectory: '@uncnsrdlabel/graphql-shopify-storefront/codegen', gqlTagName: 'graphql' }]
+    // ]
   },
   async headers() {
     return [
