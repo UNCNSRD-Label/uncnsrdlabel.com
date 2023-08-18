@@ -23,6 +23,9 @@ const config: CodegenConfig = {
         scalars: storefrontApiCustomScalars,
       },
       preset: "client",
+      presetConfig: {
+        fragmentMasking: { unmaskFunctionName: "getFragmentData" },
+      },
     },
   },
 };
