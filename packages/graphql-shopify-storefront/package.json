@@ -39,9 +39,8 @@
     "directory": "src"
   },
   "scripts": {
-    "build_old": "graphql-codegen && tsc --project ./tsconfig.json",
-    "dev_old": "graphql-codegen --watch && tsc --project ./tsconfig.json --watch",
-    "build": "graphql-codegen",
+    "build": "graphql-codegen && tsc --project ./tsconfig.json",
+    "dev": "graphql-codegen --watch && tsc --project ./tsconfig.json --watch",
     "lint": "eslint \"**/*.ts*\"",
     "types:check": "tsc --noEmit"
   },
