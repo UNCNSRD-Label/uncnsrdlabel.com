@@ -3,8 +3,7 @@
 import { ProductOption, ProductVariant } from "@shopify/hydrogen-react/storefront-api-types";
 import { createUrl } from "@uncnsrdlabel/lib/utilities";
 import { clsx } from "clsx";
-import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 type Combination = {
   id: string;
@@ -19,6 +18,7 @@ export function VariantSelector({
   options: ProductOption[];
   variants: ProductVariant[];
 }) {
+  const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const hasNoOptionsOrJustOneOption =
@@ -86,17 +86,14 @@ export function VariantSelector({
           // The option is active if it's in the url params.
           const isActive = searchParams.get(optionNameLowerCase) === value;
 
-          // You can't disable a link, so we need to render something that isn't clickable.
-          const DynamicTag = isAvailableForSale ? Link : "span";
-          const dynamicProps = {
-            ...(isAvailableForSale && { scroll: false }),
-          };
-
           return (
-            <DynamicTag
+            <button
               key={value}
               aria-disabled={!isAvailableForSale}
-              href={optionUrl}
+              disabled={!isAvailableForSale}
+              onClick={() => {
+                router.replace(optionUrl, { scroll: false });
+              }}
               title={`${option.name} ${value}${
                 !isAvailableForSale ? " (Out of Stock)" : ""
               }`}
@@ -111,10 +108,9 @@ export function VariantSelector({
                     !isAvailableForSale,
                 },
               )}
-              {...dynamicProps}
             >
               {value}
-            </DynamicTag>
+            </button>
           );
         })}
       </dd>
