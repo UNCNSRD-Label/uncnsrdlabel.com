@@ -3,53 +3,35 @@
 //   type StorefrontApiResponseError,
 // } from "@shopify/hydrogen-react";
 // import {
-//   Cart,
-//   Collection,
-//   Menu,
-//   Page,
-//   Product,
-//   ShopPolicy
-// } from "@shopify/hydrogen-react/storefront-api-types";
-// import {
 //   addToCartMutation,
 //   createCartMutation,
 //   editCartItemsMutation,
 //   removeFromCartMutation,
 // } from "@uncnsrdlabel/graphql-shopify-storefront/mutations/cart";
-// import { getCartQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/cart";
-// import {
-//   getCollectionProductsQuery,
-//   getCollectionQuery,
-//   getCollectionsQuery,
-// } from "@uncnsrdlabel/graphql-shopify-storefront/queries/collection";
-// import { getMenuQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/menu";
-// import { getPageQuery, getPagesQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/page";
-import { getPageQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/page";
-// import { GetPageDocument } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
-// import { getPoliciesQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/policy";
-// import {
-//   getProductQuery,
-//   getProductRecommendationsQuery,
-//   getProductsQuery,
-// } from "@uncnsrdlabel/graphql-shopify-storefront/queries/product";
-// import {
-//   SHOPIFY_GRAPHQL_API_ENDPOINT,
-// } from "@uncnsrdlabel/lib/constants";
+import {
+  getCollectionProductsQuery,
+  getCollectionQuery,
+  getCollectionsQuery,
+} from "@uncnsrdlabel/graphql-shopify-storefront/queries/collection";
 // import { getErrorsMessage } from "@uncnsrdlabel/lib/errors";
 // import { isShopifyError } from "@uncnsrdlabel/lib/type-guards";
-// import { camelCase } from "lodash";
+import { type TypedDocumentNode } from "@graphql-typed-document-node/core";
+import { useQuery, type UseQueryResult } from "@tanstack/react-query";
+import { getCartQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/cart";
+import { getMenuQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/menu";
+import { getPageQuery, getPagesQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/page";
+import { getPoliciesQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/policy";
+import { getProductQuery, getProductRecommendationsQuery, getProductsQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/product";
+import { GraphQLClient } from "graphql-request";
+import { camelCase } from "lodash";
+import { GetCartQueryVariables, GetCollectionProductsQueryVariables, GetCollectionQueryVariables, GetMenuQueryVariables, GetPageQueryVariables, GetPagesQueryVariables, GetProductQueryVariables, GetProductRecommendationsQueryVariables, GetProductsQueryVariables } from "./codegen/graphql";
+
 export { graphql } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
 
+type PolicyName = 'privacyPolicy' | 'refundPolicy' | 'shippingPolicy' | 'termsOfService'
+
 const domain = `https://${process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!}`;
-// const endpoint = `${domain}${SHOPIFY_GRAPHQL_API_ENDPOINT}`;
 const endpoint = `${domain}/api/${process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_API_VERSION}/graphql.json`;
-// const key = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN!;
-
-import { GraphQLClient } from "graphql-request";
-
-import { type TypedDocumentNode } from "@graphql-typed-document-node/core";
-
-import { useQuery, type UseQueryResult } from "@tanstack/react-query";
 
 export const graphQLClient = new GraphQLClient(endpoint, {
   headers: {
@@ -149,109 +131,139 @@ export function useShopifyGraphQL<TResult, TVariables>(
 //   return res.body.data.cartLinesUpdate.cart;
 // }
 
-// export function useGetCart(cartId: string): Promise<Cart | null> {
-//   const res = await shopifyFetch<ShopifyCartOperation>({
-//     query: getCartQuery,
-//     variables: { cartId },
-//     cache: "no-store",
-//   });
+export function useGetCart(variables: GetCartQueryVariables) {
+  const { data = {} } = useShopifyGraphQL(
+    getCartQuery,
+    variables,
+    // TODO: figure out how to use this
+    // cache: "no-store",
+  );
 
-//   if (!res.body.data.cart) {
-//     return null;
-//   }
+  const { cart } = data;
 
-//   return res.body.data.cart;
-// }
+  if (!cart) {
+    return null;
+  }
 
-// export function useGetCollection(
-//   handle: string,
-// ): Promise<Collection | undefined> {
-//   const res = await shopifyFetch<CollectionOperation>({
-//     query: getCollectionQuery,
-//     variables: {
-//       handle,
-//     },
-//   });
+  console.log({cart})
 
-//   return res.body.data.collection;
-// }
+  return cart
+}
 
-// export function useGetCollectionProducts({
-//   collection,
-//   reverse,
-//   sortKey,
-// }: {
-//   collection: string;
-//   reverse?: boolean;
-//   sortKey?: string;
-// }): Promise<Product[]> {
-//   const res = await shopifyFetch<CollectionProductsOperation>({
-//     query: getCollectionProductsQuery,
-//     variables: {
-//       handle: collection,
-//       reverse,
-//       sortKey,
-//     },
-//   });
+export function useGetCollection(
+  variables: GetCollectionQueryVariables,
+) {
+  const { data = {} } = useShopifyGraphQL(
+    getCollectionQuery,
+    variables,
+  );
 
-//   if (!res.body.data.collection) {
-//     console.info(`No collection found for \`${collection}\``);
-//     return [];
-//   }
+  const { collection } = data;
 
-//   return res.body.data.collection.products;
-// }
+  if (!collection) {
+    throw {
+      status: 404,
+      message: `Collection not found for handle \`${variables.handle}\``,
+    };
+  }
 
-// export function useGetCollections(): Promise<Collection[]> {
-//   const res = await shopifyFetch<CollectionsOperation>({
-//     query: getCollectionsQuery,
-//   });
-//   const shopifyCollections = res.body?.data?.collections;
-//   const collections = [
-//     {
-//       handle: "",
-//       title: "All",
-//       description: "All products",
-//       seo: {
-//         title: "All",
-//         description: "All products",
-//       },
-//       path: "/search",
-//       updatedAt: new Date().toISOString(),
-//     },
-//     // Filter out the `hidden` collections.
-//     // Collections that start with `hidden-*` need to be hidden on the search page.
-//     // ...reshapeCollections(shopifyCollections).filter(
-//     //   (collection) => !collection.handle.startsWith("hidden"),
-//     // ),
-//     ...shopifyCollections
-//   ];
+  console.log({collection})
 
-//   return collections;
-// }
+  return collection
+}
 
-// export function useGetMenu(handle: string): Promise<Menu[]> {
-//   const res = await shopifyFetch<ShopifyMenuOperation>({
-//     query: getMenuQuery,
-//     variables: {
-//       handle,
-//     },
-//   });
+export function useGetCollectionProducts(variables: GetCollectionProductsQueryVariables) {
+  const { data = {} } = useShopifyGraphQL(
+    getCollectionProductsQuery,
+    variables,
+  );
 
-//   return (
-//     res.body?.data?.menu?.items.map((item: { title: string; url: string }) => ({
-//       title: item.title,
-//       path: item.url
-//         .replace(domain, "")
-//         .replace("/collections", "/search")
-//         .replace("/pages", ""),
-//     })) || []
-//   );
-// }
+  const { collection } = data;
 
-export function useGetPage(handle: string) {
-  const variables = { handle };
+  if (!collection) {
+    throw {
+      status: 404,
+      message: `Collection not found for handle \`${variables.handle}\``,
+    };
+  }
 
+  console.log({collection})
+
+  const { products } = collection;
+
+  return products;
+}
+
+export function useGetCollections() {
+  const { data = {} } = useShopifyGraphQL(
+    getCollectionsQuery,
+  );
+
+  const { collections: shopifyCollections } = data;
+
+  if (!shopifyCollections) {
+    throw {
+      status: 404,
+      message: `Collections not found`,
+    };
+  }
+
+  console.log({shopifyCollections})
+
+  const collections = [
+    {
+      handle: "",
+      title: "All",
+      description: "All products",
+      seo: {
+        title: "All",
+        description: "All products",
+      },
+      path: "/search",
+      updatedAt: new Date().toISOString(),
+    },
+    // Filter out the `hidden` collections.
+    // Collections that start with `hidden-*` need to be hidden on the search page.
+    // ...reshapeCollections(shopifyCollections).filter(
+    //   (collection) => !collection.handle.startsWith("hidden"),
+    // ),
+    ...shopifyCollections
+  ];
+
+  return collections;
+}
+
+export function useGetMenu(variables: GetMenuQueryVariables) {
+  const { data = {} } = useShopifyGraphQL(
+    getMenuQuery,
+    variables,
+  );
+
+  const { menu } = data;
+
+  if (!menu) {
+    throw {
+      status: 404,
+      message: `Menu not found for handle \`${variables.handle}\``,
+    };
+  }
+
+  console.log({menu})
+
+  return menu
+
+  // return (
+  //   menu?.items.map((item: { title: string; url: string }) => ({
+  //     title: item.title,
+  //     path: item.url
+  //       .replace(domain, "")
+  //       .replace("/collections", "/search")
+  //       .replace("/pages", ""),
+  //   })) || []
+  // );
+}
+
+export function useGetPage(variables: GetPageQueryVariables) {
   const { data = {} } = useShopifyGraphQL(
     getPageQuery,
     variables,
@@ -262,7 +274,7 @@ export function useGetPage(handle: string) {
   if (!page) {
     throw {
       status: 404,
-      message: `Page not found for handle \`${handle}\``,
+      message: `Page not found for handle \`${variables.handle}\``,
     };
   }
 
@@ -271,74 +283,107 @@ export function useGetPage(handle: string) {
   return page
 }
 
-// export function useGetPages(): Promise<Page[]> {
-//   const res = await shopifyFetch<ShopifyPagesOperation>({
-//     query: getPagesQuery,
-//   });
+export function useGetPages(variables: GetPagesQueryVariables) {
+  const { data = {} } = useShopifyGraphQL(
+    getPagesQuery,
+    variables
+  );
 
-//   return res.body.data.pages;
-// }
+  const { pages } = data;
 
-// export function useGetShopPolicy(handle: ShopPolicyHandle): Promise<ShopPolicy> {
-//   const policies = await getShopPolicies();
+  if (!pages) {
+    throw {
+      status: 404,
+      message: `Pages not found`,
+    };
+  }
 
-//   const policyName = camelCase(handle) as ShopPolicyName;
+  return pages;
+}
 
-//   const policy = policies[policyName];
+export function useGetPolicy(handle: PolicyName) {
+  const policies = useGetPolicies();
 
-//   return policy;
-// }
+  const policyName = camelCase(handle) as PolicyName;
 
-// export function useGetShopPolicies(): Promise<ShopPolicies> {
-//   const res = await shopifyFetch<ShopifyShopPoliciesOperation>({
-//     query: getPoliciesQuery,
-//   });
+  const policy = policies[policyName];
 
-//   return res.body.data.shop;
-// }
+  return policy;
+}
 
-// export function useGetProduct(handle: string): Promise<Product | undefined> {
-//   const res = await shopifyFetch<ProductOperation>({
-//     query: getProductQuery,
-//     variables: {
-//       handle,
-//     },
-//     cache: "default",
-//   });
+export function useGetPolicies() {
+  const { data = {} } = useShopifyGraphQL(
+    getPoliciesQuery,
+  );
 
-//   return res.body.data.product;
-// }
+  const { shop: {
+    policies
+  } } = data;
 
-// export function useGetProductRecommendations(
-//   productId: string,
-// ): Promise<Product[]> {
-//   const res = await shopifyFetch<ProductRecommendationsOperation>({
-//     query: getProductRecommendationsQuery,
-//     variables: {
-//       productId,
-//     },
-//   });
+  if (!policies) {
+    throw {
+      status: 404,
+      message: `Policies not found`,
+    };
+  }
 
-//   return res.body.data.productRecommendations;
-// }
+  console.log({policies})
 
-// export function useGetProducts({
-//   query,
-//   reverse,
-//   sortKey,
-// }: {
-//   query?: string;
-//   reverse?: boolean;
-//   sortKey?: string;
-// }): Promise<Product[]> {
-//   const res = await shopifyFetch<ProductsOperation>({
-//     query: getProductsQuery,
-//     variables: {
-//       query,
-//       reverse,
-//       sortKey,
-//     },
-//   });
+  return policies;
+}
 
-//   return res.body.data.products;
-// }
+export function useGetProduct(variables: GetProductQueryVariables) {
+  const { data = {} } = useShopifyGraphQL(
+    getProductQuery,
+    variables,
+  );
+
+  const { product } = data;
+
+  if (!product) {
+    throw {
+      status: 404,
+      message: `Product not found for handle \`${variables.handle}\``,
+    };
+  }
+
+  console.log({product})
+
+  return product
+}
+
+export function useGetProductRecommendations(variables: GetProductRecommendationsQueryVariables) {
+  const { data = {} } = useShopifyGraphQL(
+    getProductRecommendationsQuery,
+    variables
+  );
+
+  const { products } = data;
+
+  if (!products) {
+    throw {
+      status: 404,
+      message: `Products not found`,
+    };
+  }
+
+  return products;
+}
+
+export function useGetProducts(variables: GetProductsQueryVariables) {
+  const { data = {} } = useShopifyGraphQL(
+    getProductsQuery,
+    variables
+  );
+
+  const { products } = data;
+
+  if (!products) {
+    throw {
+      status: 404,
+      message: `Products not found`,
+    };
+  }
+
+  return products;
+}

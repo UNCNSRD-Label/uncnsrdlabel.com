@@ -1,5 +1,4 @@
 import { graphql } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
-import { productFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/product";
 
 export const getProductQuery = graphql(/* GraphQL */ `
   query getProduct($handle: String!) {
@@ -108,7 +107,6 @@ export const getProductQuery = graphql(/* GraphQL */ `
       }
     }
   }
-  ${productFragment}
 `);
 
 export const getProductsQuery = graphql(/* GraphQL */ `
@@ -125,7 +123,6 @@ export const getProductsQuery = graphql(/* GraphQL */ `
       }
     }
   }
-  ${productFragment}
 `);
 
 export const getProductRecommendationsQuery = graphql(/* GraphQL */ `
@@ -134,5 +131,4 @@ export const getProductRecommendationsQuery = graphql(/* GraphQL */ `
       ...product
     }
   }
-  ${productFragment}
 `);

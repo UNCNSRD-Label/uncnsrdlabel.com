@@ -1,8 +1,6 @@
 import { graphql } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
-import { productFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/product";
-import { seoFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/seo";
 
-const collectionFragment = graphql(/* GraphQL */ `
+export const collectionFragment = graphql(/* GraphQL */ `
   fragment collection on Collection {
     handle
     title
@@ -12,7 +10,6 @@ const collectionFragment = graphql(/* GraphQL */ `
     }
     updatedAt
   }
-  ${seoFragment}
 `);
 
 export const getCollectionQuery = graphql(/* GraphQL */ `
@@ -21,7 +18,6 @@ export const getCollectionQuery = graphql(/* GraphQL */ `
       ...collection
     }
   }
-  ${collectionFragment}
 `);
 
 export const getCollectionsQuery = graphql(/* GraphQL */ `
@@ -34,7 +30,6 @@ export const getCollectionsQuery = graphql(/* GraphQL */ `
       }
     }
   }
-  ${collectionFragment}
 `);
 
 export const getCollectionProductsQuery = graphql(/* GraphQL */ `
@@ -53,5 +48,4 @@ export const getCollectionProductsQuery = graphql(/* GraphQL */ `
       }
     }
   }
-  ${productFragment}
 `);

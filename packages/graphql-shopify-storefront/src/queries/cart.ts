@@ -1,5 +1,4 @@
 import { graphql } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
-import { cartFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/cart";
 
 export const getCartQuery = graphql(/* GraphQL */ `
   query getCart($cartId: ID!) {
@@ -7,5 +6,4 @@ export const getCartQuery = graphql(/* GraphQL */ `
       ...cart
     }
   }
-  ${cartFragment}
 `);

@@ -1,6 +1,6 @@
 import { graphql } from '@uncnsrdlabel/graphql-shopify-storefront/codegen';
 
-const shopPolicyFragment = graphql(/* GraphQL */ `
+export const shopPolicyFragment = graphql(/* GraphQL */ `
   fragment shopPolicy on ShopPolicy {
     ... on ShopPolicy {
       body
@@ -29,5 +29,4 @@ export const getPoliciesQuery = graphql(/* GraphQL */ `
       }
     }
   }
-  ${shopPolicyFragment}
 `);

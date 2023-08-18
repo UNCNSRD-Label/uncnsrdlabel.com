@@ -1,6 +1,4 @@
 import { graphql } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
-import { imageFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/image";
-import { seoFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/seo";
 
 export const pageFragment = graphql(/* GraphQL */ `
   fragment page on Page {
@@ -32,6 +30,4 @@ export const pageFragment = graphql(/* GraphQL */ `
       }
     }
   }
-  ${imageFragment}
-  ${seoFragment}
 `);

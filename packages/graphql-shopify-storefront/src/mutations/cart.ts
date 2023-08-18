@@ -1,5 +1,4 @@
 import { graphql } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
-import { cartFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/cart";
 
 export const addToCartMutation = graphql(/* GraphQL */ `
   mutation addToCart($cartId: ID!, $lines: [CartLineInput!]!) {
@@ -9,7 +8,6 @@ export const addToCartMutation = graphql(/* GraphQL */ `
       }
     }
   }
-  ${cartFragment}
 `);
 
 export const createCartMutation = graphql(/* GraphQL */ `
@@ -20,7 +18,6 @@ export const createCartMutation = graphql(/* GraphQL */ `
       }
     }
   }
-  ${cartFragment}
 `);
 
 export const editCartItemsMutation = graphql(/* GraphQL */ `
@@ -31,7 +28,6 @@ export const editCartItemsMutation = graphql(/* GraphQL */ `
       }
     }
   }
-  ${cartFragment}
 `);
 
 export const removeFromCartMutation = graphql(/* GraphQL */ `
@@ -42,5 +38,4 @@ export const removeFromCartMutation = graphql(/* GraphQL */ `
       }
     }
   }
-  ${cartFragment}
 `);
