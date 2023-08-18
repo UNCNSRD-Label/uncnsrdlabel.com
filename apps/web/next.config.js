@@ -80,6 +80,9 @@ const nextConfig = {
     esmExternals: "loose",
     // scrollRestoration: true,
     serverActions: true,
+    swcPlugins: [
+      ['@graphql-codegen/client-preset-swc-plugin', { artifactDirectory: './src/gql', gqlTagName: 'graphql' }]
+    ]
   },
   async headers() {
     return [
