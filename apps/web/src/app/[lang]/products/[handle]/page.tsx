@@ -1,4 +1,3 @@
-import { clsx } from "clsx";
 import { type Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
@@ -103,7 +102,7 @@ async function RelatedProducts({
   if (!relatedProducts.length) return null;
 
   return (
-    <aside className={clsx("px-4 pb-48 pt-12", className)}>
+    <aside className={cn("px-4 pb-48 pt-12", className)}>
       <div className="mb-8 text-center text-xl font-bold uppercase">
         Related Products
       </div>

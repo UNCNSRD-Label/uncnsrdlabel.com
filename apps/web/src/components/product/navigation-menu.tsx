@@ -1,7 +1,6 @@
 "use client";
 
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
-import { clsx } from "clsx";
 import type { MutableRefObject } from "react";
 import useScrollSpy from "react-use-scrollspy";
 import slugify from "slugify";
@@ -25,16 +24,16 @@ export function NavigationMenu({
 
   return (
     <NavigationMenuPrimitive.Root
-      className={clsx("bg-black text-light", className)}
+      className={cn("bg-black text-light", className)}
     >
       <NavigationMenuPrimitive.List className="center m-0 grid w-full list-none grid-flow-col justify-stretch text-center uppercase">
         {sectionElements.map((sectionElement, index) => (
           <NavigationMenuPrimitive.Item
             key={sectionElement || index}
-            className={clsx(activeSection === index && "bg-hotPink")}
+            className={cn(activeSection === index && "bg-hotPink")}
           >
             <NavigationMenuPrimitive.Link
-              className={clsx(LinkClassName)}
+              className={cn(LinkClassName)}
               href={`#${slugify(sectionElement, { lower: true })}`}
               // onClick={() => setActiveLink(index)}
             >

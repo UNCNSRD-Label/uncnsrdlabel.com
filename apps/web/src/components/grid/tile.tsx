@@ -1,5 +1,4 @@
 import { Image } from "@/components/image";
-import { clsx } from "clsx";
 
 import { Price } from "@/components/price";
 
@@ -36,7 +35,7 @@ export function GridTileImage({
     <>
       {props.src ? (
         <figure
-          className={clsx(
+          className={cn(
             "relative aspect-3/4 w-full overflow-hidden mb-4",
             // {
             //   "bg-hotPink dark:bg-hotPink": background === "hotPink",
@@ -53,7 +52,7 @@ export function GridTileImage({
           )}
         >
           <Image
-            className={clsx(
+            className={cn(
               "relative h-full w-full object-cover",
               {
                 "transition hover:scale-105": isInteractive,
@@ -73,7 +72,7 @@ export function GridTileImage({
         <div>
           <h3
             data-testid="product-name"
-            className={clsx(
+            className={cn(
               "box-decoration-clone text-xs mb-2",
             )}
           >

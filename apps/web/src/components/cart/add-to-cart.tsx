@@ -4,7 +4,6 @@ import { addItem } from "@/components/cart/actions";
 import { LoadingDots } from "@/components/loading-dots";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { ProductVariant } from "@shopify/hydrogen-react/storefront-api-types";
-import { clsx } from "clsx";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState, useTransition } from "react";
 
@@ -59,7 +58,7 @@ export function AddToCart({
           router.refresh();
         });
       }}
-      className={clsx("btn btn-base btn-primary btn-bg relative w-full", {
+      className={cn("btn btn-base btn-primary btn-bg relative w-full", {
         "cursor-not-allowed opacity-60 hover:opacity-60":
           !availableForSale || !selectedVariantId,
         "cursor-not-allowed": isPending,

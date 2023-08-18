@@ -1,7 +1,6 @@
 "use client";
 
 import { Image } from "@/components/image";
-import { clsx } from "clsx";
 import dynamic from "next/dynamic";
 import { type ReactPlayerProps } from "react-player";
 
@@ -24,7 +23,7 @@ export const Video: FC<VideoProps> = ({
   ...props
 }) => (
   <figure
-    className={clsx(
+    className={cn(
       className,
       "relative h-full w-full overflow-hidden sm:aspect-video",
     )}

@@ -1,4 +1,3 @@
-import { clsx } from "clsx";
 
 type Props = { className?: string; style?: React.CSSProperties };
 
@@ -8,7 +7,7 @@ export function Logomark(props: Props) {
   return (
     <svg
       aria-label={`${process.env.NEXT_PUBLIC_SITE_NAME} logotype`}
-      className={clsx(props.className, "icon fill")}
+      className={cn(props.className, "icon fill")}
       shapeRendering="geometricPrecision"
       strokeLinecap="round"
       strokeLinejoin="round"

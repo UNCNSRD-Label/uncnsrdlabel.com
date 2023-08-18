@@ -1,7 +1,6 @@
 "use client";
 
 import { useIntersectionObserver } from "@react-hookz/web";
-import { clsx } from "clsx";
 import NextImage, { type ImageProps } from "next/image";
 import { useEffect, useRef, useState } from "react";
 
@@ -56,7 +55,7 @@ export function Image({
     <NextImage
       {...props}
       alt={props.alt || ""}
-      className={clsx(
+      className={cn(
         revealEffect &&
           "ease-in-out [transition:filter_500ms,opacity_250ms,transform_1000ms] motion-reduce:transition-none",
         revealEffect && "scale-105 opacity-0 blur-sm",

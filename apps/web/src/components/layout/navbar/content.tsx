@@ -1,4 +1,3 @@
-import { clsx } from "clsx";
 import Link from "next/link";
 import { Suspense } from "react";
 
@@ -25,7 +24,7 @@ export async function NavbarContent(props: Props) {
         </div>
       </div>
       <div
-        className={clsx("hidden", props.showLogo && "md:block")}
+        className={cn("hidden", props.showLogo && "md:block")}
         tabIndex={-1}
       >
         <Link

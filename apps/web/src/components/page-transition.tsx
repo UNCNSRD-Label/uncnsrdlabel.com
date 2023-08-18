@@ -1,6 +1,5 @@
 "use client";
 
-import { clsx } from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 
 type PageTransitionProps = {
@@ -16,7 +15,7 @@ export const PageTransition = ({
   return (
     <AnimatePresence>
       <motion.div
-        className={clsx(className)}
+        className={cn(className)}
         {...props}
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}

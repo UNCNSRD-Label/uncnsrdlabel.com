@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 
 import { removeItem } from "@/components/cart/actions";
 import type { CartItem } from "@shopify/hydrogen-react/storefront-api-types";
-import { clsx } from "clsx";
 import { useTransition } from "react";
 
 export function DeleteItemButton({ item }: { item: CartItem }) {
@@ -27,7 +26,7 @@ export function DeleteItemButton({ item }: { item: CartItem }) {
         });
       }}
       disabled={isPending}
-      className={clsx(
+      className={cn(
         "ease flex h-[17px] w-[17px] items-center justify-center rounded-full bg-neutral-500 transition-all duration-200",
         {
           "cursor-not-allowed px-0": isPending,

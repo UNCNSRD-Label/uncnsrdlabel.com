@@ -1,7 +1,6 @@
 "use client";
 
 import * as ScrollArea from "@radix-ui/react-scroll-area";
-import { clsx } from "clsx";
 import { ReactNode, useRef } from "react";
 
 export function ScrollControls({
@@ -31,9 +30,9 @@ export function ScrollControls({
 
   return (
     <>
-      <div className={clsx("controls", classNames.controls)}>
+      <div className={cn("controls", classNames.controls)}>
         <button
-          className={clsx("button", classNames.button)}
+          className={cn("button", classNames.button)}
           onClick={scrollTowardStart}
           title="Scroll toward start"
         >
@@ -53,7 +52,7 @@ export function ScrollControls({
           </svg>
         </button>
         <button
-          className={clsx("button", classNames.button)}
+          className={cn("button", classNames.button)}
           onClick={scrollTowardEnd}
           title="Scroll toward end"
         >
@@ -75,38 +74,38 @@ export function ScrollControls({
       </div>
 
       <ScrollArea.Root
-        className={clsx("ScrollAreaRoot", classNames.ScrollAreaRoot)}
+        className={cn("ScrollAreaRoot", classNames.ScrollAreaRoot)}
       >
         <ScrollArea.Viewport
-          className={clsx("ScrollAreaViewport", classNames.ScrollAreaViewport)}
+          className={cn("ScrollAreaViewport", classNames.ScrollAreaViewport)}
           ref={scrollAreaViewportRef}
         >
           {children}
         </ScrollArea.Viewport>
         <ScrollArea.Scrollbar
-          className={clsx(
+          className={cn(
             "ScrollAreaScrollbar",
             classNames.ScrollAreaScrollbar,
           )}
           orientation="vertical"
         >
           <ScrollArea.Thumb
-            className={clsx("ScrollAreaThumb", classNames.ScrollAreaThumb)}
+            className={cn("ScrollAreaThumb", classNames.ScrollAreaThumb)}
           />
         </ScrollArea.Scrollbar>
         <ScrollArea.Scrollbar
-          className={clsx(
+          className={cn(
             "ScrollAreaScrollbar",
             classNames.ScrollAreaScrollbar,
           )}
           orientation="horizontal"
         >
           <ScrollArea.Thumb
-            className={clsx("ScrollAreaThumb", classNames.ScrollAreaThumb)}
+            className={cn("ScrollAreaThumb", classNames.ScrollAreaThumb)}
           />
         </ScrollArea.Scrollbar>
         <ScrollArea.Corner
-          className={clsx("ScrollAreaCorner", classNames.ScrollAreaCorner)}
+          className={cn("ScrollAreaCorner", classNames.ScrollAreaCorner)}
         />
       </ScrollArea.Root>
     </>

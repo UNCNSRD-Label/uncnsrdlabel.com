@@ -6,7 +6,6 @@ import { OpenCart } from "@/components/cart/open-cart";
 import { Dialog } from "@headlessui/react";
 import type { Cart } from "@shopify/hydrogen-react/storefront-api-types";
 import { themeColors } from "@uncnsrdlabel/lib/effects";
-import { clsx } from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
@@ -68,7 +67,7 @@ export function CartModal({ cart }: { cart: Cart | undefined }) {
                   closed: { translateX: "100%" },
                 }}
                 transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-                className={clsx("flex w-full flex-col p-6", themeColors)}
+                className={cn("flex w-full flex-col p-6", themeColors)}
               >
                 <div className="flex items-center justify-between">
                   <p className="text-lg uppercase">My Bag</p>

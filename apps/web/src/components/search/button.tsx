@@ -1,11 +1,10 @@
-import { clsx } from "clsx";
 import { SlMagnifier } from "react-icons/sl";
 
 export function SearchButton({ isOpen }: { isOpen: boolean }) {
   return (
     <button
       aria-label="Submit search"
-      className={clsx("btn absolute right-2", isOpen ?? "open")}
+      className={cn("btn absolute right-2", isOpen ?? "open")}
       data-testid="submit-search"
       form="search-form"
     >

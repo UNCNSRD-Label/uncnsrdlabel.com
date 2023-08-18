@@ -1,4 +1,3 @@
-import { clsx } from "clsx";
 
 type Props = { className?: string; style?: React.CSSProperties };
 
@@ -8,7 +7,7 @@ export function LogotypeIcon(props: Props) {
   return (
     <svg
       aria-label={`${process.env.NEXT_PUBLIC_SITE_NAME} logotype`}
-      className={clsx(props.className, "icon fill-inherit")}
+      className={cn(props.className, "icon fill-inherit")}
       shapeRendering="geometricPrecision"
       stroke="none"
       style={props.style}

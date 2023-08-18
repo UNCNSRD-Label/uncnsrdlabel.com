@@ -2,7 +2,6 @@
 
 import { minWidthLg, minWidthSm } from "@/lib/tailwind";
 import { useMediaQuery } from "@react-hookz/web";
-import { clsx } from "clsx";
 import Carousel, { type CarouselProps } from "nuka-carousel";
 import { Suspense } from "react";
 
@@ -27,7 +26,7 @@ export function NukaCarousel(props: CarouselProps) {
     <Suspense>
       <Carousel
         {...props}
-        className={clsx(props.className)}
+        className={cn(props.className)}
         onDragEnd={(e) => {
           (e.target as HTMLElement)
             .closest(".slider-frame")

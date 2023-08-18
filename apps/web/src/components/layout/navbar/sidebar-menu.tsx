@@ -6,7 +6,6 @@ import { MenuIcon } from "@/components/icons/menu";
 import { Dialog } from "@headlessui/react";
 import { Menu } from "@shopify/hydrogen-react/storefront-api-types";
 import { themeColors } from "@uncnsrdlabel/lib/effects";
-import { clsx } from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
@@ -77,7 +76,7 @@ export function SidebarMenu({ menu }: { menu: Menu[] }) {
                   closed: { translateX: "-100%" },
                 }}
                 transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-                className={clsx("flex w-full flex-col p-6", themeColors)}
+                className={cn("flex w-full flex-col p-6", themeColors)}
               >
                 <button
                   className="mb-4"

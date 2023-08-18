@@ -3,7 +3,6 @@
 import { LogotypeIcon } from "@/components/icons/logotype";
 import * as AccessibleIcon from "@radix-ui/react-accessible-icon";
 import { useIntersectionObserver } from "@react-hookz/web";
-import { clsx } from "clsx";
 import { useRef } from "react";
 
 type Props = { blend?: boolean; className?: string; fill?: "dark" | "light" };
@@ -17,14 +16,14 @@ export function Logo({ blend, className, fill }: Props) {
 
   return (
     <div
-      className={clsx(
+      className={cn(
         "pointer-events-none relative inset-0 z-50",
         blend && "mix-blend-difference",
       )}
       ref={rootRef}
     >
       <div
-        className={clsx(
+        className={cn(
           "bottom-12 grid w-full justify-items-center sm:bottom-20",
           className,
         )}
@@ -40,7 +39,7 @@ export function Logo({ blend, className, fill }: Props) {
           label={`${process.env.NEXT_PUBLIC_SITE_NAME} logotype`}
         >
           <LogotypeIcon
-            className={clsx(
+            className={cn(
               "h-8 fill-inherit drop-shadow transition duration-300 ease-in-out hover:scale-110 sm:h-10",
               {
                 "fill-white": fill === "light" || blend,

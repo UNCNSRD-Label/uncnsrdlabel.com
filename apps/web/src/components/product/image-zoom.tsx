@@ -2,7 +2,6 @@
 
 import { Image } from "@/components/image";
 import { LoadingDots } from "@/components/loading-dots";
-import { clsx } from "clsx";
 import { useRef } from "react";
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 
@@ -43,14 +42,14 @@ export function ProductImageZoom({
       >
         <TransformComponent>
           <figure
-            className={clsx(
+            className={cn(
               "relative grid w-[100dvw] cursor-grab place-items-center bg-black [&.dragging]:cursor-grabbing",
               className,
             )}
             ref={figureRef}
           >
             <Image
-              className={clsx("relative block h-full w-full object-cover", {
+              className={cn("relative block h-full w-full object-cover", {
                 "z-10 transition duration-300 ease-in-out": isInteractive,
               })}
               {...props}

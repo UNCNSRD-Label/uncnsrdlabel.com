@@ -2,7 +2,6 @@
 
 import { SortFilterItem } from "@uncnsrdlabel/lib/constants";
 import { createUrl } from "@uncnsrdlabel/lib/utilities";
-import { clsx } from "clsx";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -24,7 +23,7 @@ function PathFilterItem({ item }: { item: PathFilterItem }) {
     <li className="mt-2 flex text-sm text-gray-400" key={item.title}>
       <Link
         href={createUrl(item.path, newParams)}
-        className={clsx("w-full hover:text-gray-800 dark:hover:text-gray-100", {
+        className={cn("w-full hover:text-gray-800 dark:hover:text-gray-100", {
           "text-gray-600 dark:text-gray-400": !active,
           "font-semibold text-dark dark:text-light": active,
         })}
@@ -61,7 +60,7 @@ function SortFilterItem({ item }: { item: SortFilterItem }) {
       <Link
         prefetch={false}
         href={href}
-        className={clsx("w-full hover:text-gray-800 dark:hover:text-gray-100", {
+        className={cn("w-full hover:text-gray-800 dark:hover:text-gray-100", {
           "text-gray-600 dark:text-gray-400": !active,
           "font-semibold text-dark dark:text-light": active,
         })}

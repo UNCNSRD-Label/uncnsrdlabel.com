@@ -2,7 +2,6 @@
 
 import { ProductOption, ProductVariant } from "@shopify/hydrogen-react/storefront-api-types";
 import { createUrl } from "@uncnsrdlabel/lib/utilities";
-import { clsx } from "clsx";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 type Combination = {
@@ -97,7 +96,7 @@ export function VariantSelector({
               title={`${option.name} ${value}${
                 !isAvailableForSale ? " (Out of Stock)" : ""
               }`}
-              className={clsx(
+              className={cn(
                 "focus-visible:bg-hotPink/20 focus-visible:ring-hotPink flex h-12 min-w-[48px] items-center justify-center px-2 text-sm",
                 "hover:text-dark focus-visible:text-dark",
                 {

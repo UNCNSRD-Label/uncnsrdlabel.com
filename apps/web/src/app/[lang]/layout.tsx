@@ -4,11 +4,11 @@ import { Footer } from "@/components/layout/footer/index";
 import { Progress } from "@/components/layout/progress";
 import { Organization } from "@/components/schema.org/organization";
 import { getDictionary } from "@/dictionaries";
+import { cn } from "@uncnsrdlabel/lib";
 import { SITE_DOMAIN } from "@uncnsrdlabel/lib/constants";
 import { themeColors } from "@uncnsrdlabel/lib/effects";
 import { localeTagToIETFLanguageTag, locales } from "@uncnsrdlabel/lib/i18n";
 import { AppProviders } from "@uncnsrdlabel/providers";
-import { clsx } from "clsx";
 import type { Metadata } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import localFont from "next/font/local";
@@ -134,7 +134,7 @@ export default async function RootLayout({
 
   return (
     <html
-      className={clsx(
+      className={cn(
         bomberEscort.variable,
         bomberEscortOutline.variable,
         inter.variable,
@@ -146,7 +146,7 @@ export default async function RootLayout({
       lang={params.lang}
     >
       <body
-        className={clsx(
+        className={cn(
           "grid min-h-[100dvh] grid-rows-[auto_1fr] tracking-widest",
           "selection:bg-hotPink",
           themeColors,
@@ -158,7 +158,7 @@ export default async function RootLayout({
         <AppProviders locale={localeTagToIETFLanguageTag(locale)} messages={messages}>
           <Progress />
           <Banner
-            className={clsx("sticky top-0 w-full", !showBanner && "hidden")}
+            className={cn("sticky top-0 w-full", !showBanner && "hidden")}
           />
           <Suspense>
             {children}

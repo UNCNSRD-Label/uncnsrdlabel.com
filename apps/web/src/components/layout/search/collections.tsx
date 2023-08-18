@@ -1,4 +1,3 @@
-import { clsx } from "clsx";
 import { Suspense } from "react";
 
 import { getCollections } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
@@ -18,16 +17,16 @@ export function Collections() {
     <Suspense
       fallback={
         <div className="col-span-2 hidden h-[400px] w-full flex-none py-4 pl-10 lg:block">
-          <div className={clsx(skeleton, activeAndTitles)} />
-          <div className={clsx(skeleton, activeAndTitles)} />
-          <div className={clsx(skeleton, items)} />
-          <div className={clsx(skeleton, items)} />
-          <div className={clsx(skeleton, items)} />
-          <div className={clsx(skeleton, items)} />
-          <div className={clsx(skeleton, items)} />
-          <div className={clsx(skeleton, items)} />
-          <div className={clsx(skeleton, items)} />
-          <div className={clsx(skeleton, items)} />
+          <div className={cn(skeleton, activeAndTitles)} />
+          <div className={cn(skeleton, activeAndTitles)} />
+          <div className={cn(skeleton, items)} />
+          <div className={cn(skeleton, items)} />
+          <div className={cn(skeleton, items)} />
+          <div className={cn(skeleton, items)} />
+          <div className={cn(skeleton, items)} />
+          <div className={cn(skeleton, items)} />
+          <div className={cn(skeleton, items)} />
+          <div className={cn(skeleton, items)} />
         </div>
       }
     >

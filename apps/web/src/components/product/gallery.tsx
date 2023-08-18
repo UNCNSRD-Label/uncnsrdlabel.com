@@ -4,7 +4,6 @@ import { useState } from "react";
 
 import { GridTileImage } from "@/components/grid/tile";
 import { ArrowLeftIcon } from "@/components/icons/arrow-left";
-import { clsx } from "clsx";
 
 export function Gallery({
   title,
@@ -56,7 +55,7 @@ export function Gallery({
           <div className="absolute bottom-10 right-10 flex h-12 flex-row border border-white text-light shadow-xl dark:border-black dark:text-dark">
             <button
               aria-label="Previous product image"
-              className={clsx(
+              className={cn(
                 buttonClassName,
                 "border-r border-white dark:border-black",
               )}
@@ -66,7 +65,7 @@ export function Gallery({
             </button>
             <button
               aria-label="Next product image"
-              className={clsx(buttonClassName)}
+              className={cn(buttonClassName)}
               onClick={() => handleNavigate("next")}
             >
               <ArrowLeftIcon className="h-6 rotate-180" />

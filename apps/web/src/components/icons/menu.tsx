@@ -1,4 +1,3 @@
-import { clsx } from "clsx";
 
 export function MenuIcon({ className }: { className?: string }) {
   return (
@@ -9,7 +8,7 @@ export function MenuIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
       shapeRendering="geometricPrecision"
-      className={clsx(className, "icon")}
+      className={cn(className, "icon")}
     >
       <path d="M4 6h16M4 12h16m-7 6h7" />
     </svg>

@@ -1,4 +1,3 @@
-import { clsx } from "clsx";
 import { forwardRef } from "react";
 
 import { MetafieldMapper } from "@/components/product/metafield-mapper";
@@ -39,7 +38,7 @@ export const MetaFields = forwardRef<MetaFieldsRef, MetaFieldsProps>(
 
     return (
       <Accordion
-        className={clsx("mt-8 max-w-[100dvw]", className)}
+        className={cn("mt-8 max-w-[100dvw]", className)}
         defaultValue={defaultValue}
         id={id}
         ref={forwardedRef}

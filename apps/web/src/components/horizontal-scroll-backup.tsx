@@ -1,7 +1,6 @@
 import { Image } from "@/components/image";
 import { ScrollControls } from "@/components/scroll-controls";
 import { useGetPage } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
-import { clsx } from "clsx";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -37,7 +36,7 @@ export async function HorizontalScrollBackup({ className }: { className?: string
   return (
     <>
       <div
-        className={clsx(
+        className={cn(
           className,
           "pin relative grid w-full max-w-[100dvw] items-center py-0.5",
         )}

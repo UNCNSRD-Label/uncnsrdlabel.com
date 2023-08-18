@@ -5,7 +5,6 @@ import {
 } from "@/components/nuka-carousel";
 import { minWidthLg, minWidthSm } from "@/lib/tailwind";
 import { useGetPage } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
-import { clsx } from "clsx";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
@@ -40,7 +39,7 @@ export async function HomepageCarousel(props: NukaCarouselProps) {
         adaptiveHeight
         autoplay
         autoplayInterval={5000}
-        className={clsx(
+        className={cn(
           `cursor-grab [&.dragging]:cursor-grabbing`,
           props.className,
         )}

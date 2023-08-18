@@ -1,5 +1,4 @@
 import { getIntl } from "@/lib/i18n/server";
-import { clsx } from "clsx";
 import { use } from "react";
 
 export const Banner = ({ className }: { className?: string }) => {
@@ -7,7 +6,7 @@ export const Banner = ({ className }: { className?: string }) => {
 
   return (
     <div
-      className={clsx(
+      className={cn(
         "grid snap-start place-content-center bg-hotPink p-7 uppercase text-light",
         className,
       )}

@@ -1,5 +1,4 @@
 import { Image } from "@/components/image";
-import { clsx } from "clsx";
 
 export function ProductImage({
   active,
@@ -30,7 +29,7 @@ export function ProductImage({
 
   return (
     <figure
-      className={clsx(
+      className={cn(
         "overflow-hidden",
         "relative",
         // {
@@ -53,7 +52,7 @@ export function ProductImage({
       }}
     >
       <Image
-        className={clsx("relative block h-full w-full object-cover", {
+        className={cn("relative block h-full w-full object-cover", {
           "transition duration-300 ease-in-out": isInteractive,
         })}
         {...props}

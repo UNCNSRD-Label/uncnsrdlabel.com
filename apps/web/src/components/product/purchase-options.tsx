@@ -3,7 +3,6 @@ import { Price } from "@/components/price";
 import { VariantSelector } from "@/components/product/variant-selector";
 import { Prose } from "@/components/prose";
 import { Product } from "@shopify/hydrogen-react/storefront-api-types";
-import { clsx } from "clsx";
 import { forwardRef } from "react";
 
 type PurchaseOptionsRef = HTMLDivElement;
@@ -21,7 +20,7 @@ export const PurchaseOptions = forwardRef<
   return (
     <>
       <div
-        className={clsx("mb-16 pt-24 sm:pt-0", className)}
+        className={cn("mb-16 pt-24 sm:pt-0", className)}
         id={id}
         ref={forwardedRef}
       >

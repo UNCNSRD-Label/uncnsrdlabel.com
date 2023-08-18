@@ -1,7 +1,6 @@
 "use client";
 
 import * as Toast from "@radix-ui/react-toast";
-import { clsx } from "clsx";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { SlEnvolope } from "react-icons/sl";
@@ -45,7 +44,7 @@ export function SignUpForm({ className }: { className?: string }) {
 
   return (
     <Toast.Provider swipeDirection="right">
-      <form action={action} className={clsx("mt-8 grid gap-4", className)}>
+      <form action={action} className={cn("mt-8 grid gap-4", className)}>
         <div className="field">
           <input
             autoComplete="true"
@@ -84,7 +83,7 @@ export function SignUpForm({ className }: { className?: string }) {
       </form>
 
       <Toast.Root
-        className={clsx(
+        className={cn(
           "data-[state=open]:animate-slideIn data-[state=closed]:animate-hide data-[swipe=end]:animate-swipeOut grid grid-cols-[auto_max-content] items-center gap-x-[15px] rounded-md bg-inherit bg-white p-[15px] text-inherit [grid-template-areas:_'title_action'_'description_action'] data-[swipe=cancel]:translate-x-0 data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=cancel]:transition-[transform_200ms_ease-out]",
           themeColors,
           "bg-hotPink text-white",

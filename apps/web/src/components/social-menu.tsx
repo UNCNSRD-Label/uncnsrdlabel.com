@@ -1,4 +1,3 @@
-import { clsx } from "clsx";
 import type { FunctionComponent } from "react";
 import { SocialIcon } from "react-social-icons";
 
@@ -13,13 +12,13 @@ export const SocialMenu: FunctionComponent<SocialMenuProps> = ({
 }) => {
   return (
     <menu
-      className={clsx(
+      className={cn(
         "min-h-8 grid grid-flow-col content-center justify-center gap-4",
         className,
       )}
     >
       <SocialIcon
-        className={clsx(
+        className={cn(
           "group aspect-square fill-black hover:!fill-stateHover hover:!stroke-stateHover focus-visible:!fill-stateFocus focus-visible:!stroke-stateFocus dark:fill-white [&_.social-svg-mask]:!fill-inherit",
           iconClassName,
         )}
@@ -28,7 +27,7 @@ export const SocialMenu: FunctionComponent<SocialMenuProps> = ({
         style={{ height: "inherit", width: "auto" }}
       />
       <SocialIcon
-        className={clsx(
+        className={cn(
           "group aspect-square fill-black hover:!fill-stateHover hover:!stroke-stateHover focus-visible:!fill-stateFocus focus-visible:!stroke-stateFocus dark:fill-white [&_.social-svg-mask]:!fill-inherit",
           iconClassName,
         )}

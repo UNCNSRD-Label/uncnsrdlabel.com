@@ -5,7 +5,6 @@ import { Collections } from "@/components/layout/search/collections";
 import { FilterList } from "@/components/layout/search/filter";
 import { PageTransition } from "@/components/page-transition";
 import { sorting } from "@uncnsrdlabel/lib/constants";
-import { clsx } from "clsx";
 import { Suspense } from "react";
 
 export default function SearchLayout({
@@ -22,7 +21,7 @@ export default function SearchLayout({
         <PageTransition>
           <div className="mx-auto flex w-full flex-col justify-center py-6 pb-48 md:flex-row">
             <div
-              className={clsx(
+              className={cn(
                 "order-first flex-none md:w-1/6",
                 process.env.NEXT_PUBLIC_FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE !== "true" && "hidden",
               )}
@@ -33,7 +32,7 @@ export default function SearchLayout({
               {children}
             </div>
             <div
-              className={clsx(
+              className={cn(
                 "order-none md:order-last md:w-1/6 md:flex-none",
                 process.env.NEXT_PUBLIC_FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE !== "true" && "hidden",
               )}

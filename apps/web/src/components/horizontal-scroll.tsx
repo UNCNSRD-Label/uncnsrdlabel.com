@@ -1,6 +1,5 @@
 import { Image } from "@/components/image";
 import { useGetPage } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
-import { clsx } from "clsx";
 import { notFound } from "next/navigation";
 
 export async function HorizontalScroll({ className }: { className?: string }) {
@@ -12,7 +11,7 @@ export async function HorizontalScroll({ className }: { className?: string }) {
 
   return (
     <div
-      className={clsx(
+      className={cn(
         className,
         "pin relative grid w-full max-w-[100dvw] justify-items-center py-0.5",
       )}

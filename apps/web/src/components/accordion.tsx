@@ -2,7 +2,6 @@
 
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
-import { clsx } from "clsx";
 import { ReactNode, forwardRef } from "react";
 
 interface AccordionContentProps {
@@ -42,7 +41,7 @@ export const AccordionTrigger = forwardRef<
 >(({ children, className, chevronClassName, ...props }, forwardedRef) => (
   <AccordionPrimitive.Header className="AccordionHeader">
     <AccordionPrimitive.Trigger
-      className={clsx(
+      className={cn(
         "AccordionTrigger focus-visible:outline-aaaFocus group flex w-full items-center justify-between gap-4 focus-visible:border-0 focus-visible:outline-dashed",
         className,
       )}
@@ -51,7 +50,7 @@ export const AccordionTrigger = forwardRef<
     >
       {children}
       <ChevronDownIcon
-        className={clsx(
+        className={cn(
           "AccordionChevron h-5 w-5 group-data-[state=open]:rotate-180",
           chevronClassName,
         )}
@@ -66,11 +65,11 @@ export const AccordionContent = forwardRef<
   AccordionContentProps
 >(({ children, className, ...props }, forwardedRef) => (
   <AccordionPrimitive.Content
-    className={clsx("AccordionContent", className)}
+    className={cn("AccordionContent", className)}
     {...props}
     ref={forwardedRef}
   >
-    <div className={clsx("AccordionContentText mt-4")}>{children}</div>
+    <div className={cn("AccordionContentText mt-4")}>{children}</div>
   </AccordionPrimitive.Content>
 ));
 
@@ -79,7 +78,7 @@ export const AccordionHeader = forwardRef<
   AccordionHeaderProps
 >(({ children, className, ...props }, forwardedRef) => (
   <AccordionPrimitive.Header
-    className={clsx("AccordionHeader uppercase", className)}
+    className={cn("AccordionHeader uppercase", className)}
     {...props}
     ref={forwardedRef}
   >
@@ -90,7 +89,7 @@ export const AccordionHeader = forwardRef<
 export const AccordionItem = forwardRef<AccordionItemRef, AccordionItemProps>(
   ({ children, className, ...props }, forwardedRef) => (
     <AccordionPrimitive.Item
-      className={clsx("AccordionItem border-t py-6", className)}
+      className={cn("AccordionItem border-t py-6", className)}
       {...props}
       ref={forwardedRef}
     >

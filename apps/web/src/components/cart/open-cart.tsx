@@ -1,4 +1,3 @@
-import { clsx } from "clsx";
 import { SlBag } from "react-icons/sl";
 
 export function OpenCart({
@@ -11,7 +10,7 @@ export function OpenCart({
   return (
     <div className="relative flex items-center justify-center">
       <SlBag
-        className={clsx(
+        className={cn(
           "icon fill h-5 w-5 transition-all ease-in-out",
           className,
         )}

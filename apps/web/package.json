@@ -35,7 +35,6 @@
     "@vercel/og": "^0.5.10",
     "analytics": "^0.8.9",
     "analytics-plugin-event-validation": "^0.1.2",
-    "clsx": "^2.0.0",
     "cookies-next": "^2.1.2",
     "cross-env": "^7.0.3",
     "deepmerge": "^4.3.1",

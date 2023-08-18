@@ -1,7 +1,6 @@
 import { GridTileImage } from "@/components/grid/tile";
 import type { Product } from "@shopify/hydrogen-react/storefront-api-types";
 import { getCollectionProducts } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
-import { clsx } from "clsx";
 import Link from "next/link";
 
 function ThreeItemGridItem({
@@ -17,7 +16,7 @@ function ThreeItemGridItem({
 }) {
   return (
     <div
-      className={clsx(
+      className={cn(
         className,
         size === "full"
           ? "lg:col-span-4 lg:row-span-2"
@@ -55,7 +54,7 @@ export async function ThreeItemGrid({ className }: { className?: string }) {
 
   return (
     <section
-      className={clsx(className, "lg:grid lg:grid-cols-6 lg:grid-rows-2")}
+      className={cn(className, "lg:grid lg:grid-cols-6 lg:grid-rows-2")}
       data-testid="homepage-products"
     >
       <ThreeItemGridItem size="full" item={firstProduct} background="purple" />

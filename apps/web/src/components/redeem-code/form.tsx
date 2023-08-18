@@ -1,6 +1,5 @@
 "use client";
 
-import { clsx } from "clsx";
 import { useForm } from "react-hook-form";
 
 import { redeemCodeAction } from "@/components/redeem-code/action";
@@ -20,7 +19,7 @@ export function RedeemCodeForm({ className }: { className?: string }) {
   return (
     <form
       action={redeemCodeAction}
-      className={clsx("mt-8 grid grid-flow-col gap-4 bg-black p-4", className)}
+      className={cn("mt-8 grid grid-flow-col gap-4 bg-black p-4", className)}
     >
       {codeInputs.map((codeInput, i) => (
         <div
