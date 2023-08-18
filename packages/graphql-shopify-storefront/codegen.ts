@@ -18,7 +18,6 @@ const config: CodegenConfig = {
   generates: {
     "./src/codegen/": {
       config: {
-        inlineFragmentTypes: 'inline',
         // defines the custom scalars used in the Storefront API
         scalars: storefrontApiCustomScalars,
       },
