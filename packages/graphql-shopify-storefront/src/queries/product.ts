@@ -1,6 +1,7 @@
+import { graphql } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
 import { productFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/product";
 
-export const getProductQuery = /* GraphQL */ `
+export const getProductQuery = graphql(/* GraphQL */ `
   query getProduct($handle: String!) {
     product(handle: $handle) {
       ...product
@@ -108,9 +109,9 @@ export const getProductQuery = /* GraphQL */ `
     }
   }
   ${productFragment}
-`;
+`);
 
-export const getProductsQuery = /* GraphQL */ `
+export const getProductsQuery = graphql(/* GraphQL */ `
   query getProducts(
     $sortKey: ProductSortKeys
     $reverse: Boolean
@@ -125,13 +126,13 @@ export const getProductsQuery = /* GraphQL */ `
     }
   }
   ${productFragment}
-`;
+`);
 
-export const getProductRecommendationsQuery = /* GraphQL */ `
+export const getProductRecommendationsQuery = graphql(/* GraphQL */ `
   query getProductRecommendations($productId: ID!) {
     productRecommendations(productId: $productId) {
       ...product
     }
   }
   ${productFragment}
-`;
+`);

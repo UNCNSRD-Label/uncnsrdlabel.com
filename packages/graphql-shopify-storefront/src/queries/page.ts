@@ -1,8 +1,8 @@
 import { graphql } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
 import { pageFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/page";
 
-export const getPageQuery2 = graphql(/* GraphQL */ `
-  query getPage2($handle: String!) {
+export const getPageQuery = graphql(/* GraphQL */ `
+  query getPage($handle: String!) {
     pageByHandle(handle: $handle) {
       id
       title
@@ -11,17 +11,17 @@ export const getPageQuery2 = graphql(/* GraphQL */ `
   }
 `);
 
-export const getPageQuery = graphql(/* GraphQL */ `
-  query getPage($handle: String!) {
-    pageByHandle(handle: $handle) {
-      ...page
-      id
-      title
-      handle
-    }
-  }
-  ${pageFragment}
-`);
+// export const getPageQuery = graphql(/* GraphQL */ `
+//   query getPage($handle: String!) {
+//     pageByHandle(handle: $handle) {
+//       ...page
+//       id
+//       title
+//       handle
+//     }
+//   }
+//   ${pageFragment}
+// `);
 
 export const getPagesQuery = graphql(/* GraphQL */ `
   query getPages {

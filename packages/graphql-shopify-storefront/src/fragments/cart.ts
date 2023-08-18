@@ -1,6 +1,7 @@
+import { graphql } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
 import { productFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/product";
 
-export const cartFragment = /* GraphQL */ `
+export const cartFragment = graphql(/* GraphQL */ `
   fragment cart on Cart {
     id
     checkoutUrl
@@ -48,4 +49,4 @@ export const cartFragment = /* GraphQL */ `
     totalQuantity
   }
   ${productFragment}
-`;
+`);

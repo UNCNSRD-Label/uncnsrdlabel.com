@@ -25,6 +25,7 @@
 // import { getMenuQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/menu";
 // import { getPageQuery, getPagesQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/page";
 import { getPageQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/page";
+// import { GetPageDocument } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
 // import { getPoliciesQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/policy";
 // import {
 //   getProductQuery,

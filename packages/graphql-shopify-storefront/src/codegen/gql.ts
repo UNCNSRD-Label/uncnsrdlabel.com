@@ -28,8 +28,7 @@ const documents = {
     "\n  query getCollections {\n    collections(first: 100, sortKey: TITLE) {\n      edges {\n        node {\n          ...collection\n        }\n      }\n    }\n  }\n  \n": types.GetCollectionsDocument,
     "\n  query getCollectionProducts(\n    $handle: String!\n    $sortKey: ProductCollectionSortKeys\n    $reverse: Boolean\n  ) {\n    collection(handle: $handle) {\n      products(sortKey: $sortKey, reverse: $reverse, first: 100) {\n        edges {\n          node {\n            ...product\n          }\n        }\n      }\n    }\n  }\n  \n": types.GetCollectionProductsDocument,
     "\n  query getMenu($handle: String!) {\n    menu(handle: $handle) {\n      items {\n        title\n        url\n      }\n    }\n  }\n": types.GetMenuDocument,
-    "\n  query getPage2($handle: String!) {\n    pageByHandle(handle: $handle) {\n      id\n      title\n      handle\n    }\n  }\n": types.GetPage2Document,
-    "\n  query getPage($handle: String!) {\n    pageByHandle(handle: $handle) {\n      ...page\n      id\n      title\n      handle\n    }\n  }\n  \n": types.GetPageDocument,
+    "\n  query getPage($handle: String!) {\n    pageByHandle(handle: $handle) {\n      id\n      title\n      handle\n    }\n  }\n": types.GetPageDocument,
     "\n  query getPages {\n    pages(first: 100) {\n      edges {\n        node {\n          ...page\n        }\n      }\n    }\n  }\n  \n": types.GetPagesDocument,
     "\n  fragment shopPolicy on ShopPolicy {\n    ... on ShopPolicy {\n      body\n      handle\n      id\n      title\n      url\n    }\n  }\n": types.ShopPolicyFragmentDoc,
     "\n  query getPolicies {\n    shop {\n      privacyPolicy {\n        ...shopPolicy\n      }\n      refundPolicy {\n        ...shopPolicy\n      }\n      shippingPolicy {\n        ...shopPolicy\n      }\n      termsOfService {\n        ...shopPolicy\n      }\n    }\n  }\n  \n": types.GetPoliciesDocument,
@@ -115,11 +114,7 @@ export function graphql(source: "\n  query getMenu($handle: String!) {\n    menu
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query getPage2($handle: String!) {\n    pageByHandle(handle: $handle) {\n      id\n      title\n      handle\n    }\n  }\n"): (typeof documents)["\n  query getPage2($handle: String!) {\n    pageByHandle(handle: $handle) {\n      id\n      title\n      handle\n    }\n  }\n"];
-/**
- * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
- */
-export function graphql(source: "\n  query getPage($handle: String!) {\n    pageByHandle(handle: $handle) {\n      ...page\n      id\n      title\n      handle\n    }\n  }\n  \n"): (typeof documents)["\n  query getPage($handle: String!) {\n    pageByHandle(handle: $handle) {\n      ...page\n      id\n      title\n      handle\n    }\n  }\n  \n"];
+export function graphql(source: "\n  query getPage($handle: String!) {\n    pageByHandle(handle: $handle) {\n      id\n      title\n      handle\n    }\n  }\n"): (typeof documents)["\n  query getPage($handle: String!) {\n    pageByHandle(handle: $handle) {\n      id\n      title\n      handle\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
