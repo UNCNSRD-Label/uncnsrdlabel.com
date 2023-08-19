@@ -1,8 +1,8 @@
+import languageFallback from "@/dictionaries/en.json";
 import { getIETFLanguageTagFromlocaleTag, locales } from "@uncnsrdlabel/lib";
 import merge from "deepmerge";
 import { getProperty } from 'dot-prop';
 import { type ResolvedIntlConfig } from "react-intl";
-import languageFallback from "./dictionaries/en.json";
 
 const dictionariesFiles = [
   ...locales.map((locale) => [

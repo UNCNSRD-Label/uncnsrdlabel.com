@@ -7,29 +7,29 @@
 //   createCartMutation,
 //   editCartItemsMutation,
 //   removeFromCartMutation,
-// } from "./mutations/cart";
+// } from "@uncnsrdlabel/graphql-shopify-storefront/mutations/cart";
 import {
   getCollectionProductsQuery,
   getCollectionQuery,
   getCollectionsQuery,
-} from "./queries/collection";
+} from "@uncnsrdlabel/graphql-shopify-storefront/queries/collection";
 // import { getErrorsMessage } from "@uncnsrdlabel/lib/errors";
 // import { isShopifyError } from "@uncnsrdlabel/lib/type-guards";
 import { type TypedDocumentNode } from "@graphql-typed-document-node/core";
 import { useQuery, type UseQueryResult } from "@tanstack/react-query";
-import { getFragmentData } from "./codegen";
-// import { collectionFragment } from "./fragments/collection";
+import { getFragmentData } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
+// import { collectionFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/collection";
+import { GetCartQueryVariables, GetCollectionProductsQueryVariables, GetCollectionQueryVariables, GetMenuQueryVariables, GetPageQueryVariables, GetPagesQueryVariables, GetProductQueryVariables, GetProductRecommendationsQueryVariables, GetProductsQueryVariables } from "@uncnsrdlabel/graphql-shopify-storefront/codegen/graphql";
+import { productFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/product";
+import { getCartQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/cart";
+import { getMenuQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/menu";
+import { getPageQuery, getPagesQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/page";
+import { getPoliciesQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/policy";
+import { getProductQuery, getProductRecommendationsQuery, getProductsQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/product";
 import { GraphQLClient } from "graphql-request";
 import { camelCase } from "lodash";
-import { GetCartQueryVariables, GetCollectionProductsQueryVariables, GetCollectionQueryVariables, GetMenuQueryVariables, GetPageQueryVariables, GetPagesQueryVariables, GetProductQueryVariables, GetProductRecommendationsQueryVariables, GetProductsQueryVariables } from "./codegen/graphql";
-import { productFragment } from "./fragments/product";
-import { getCartQuery } from "./queries/cart";
-import { getMenuQuery } from "./queries/menu";
-import { getPageQuery, getPagesQuery } from "./queries/page";
-import { getPoliciesQuery } from "./queries/policy";
-import { getProductQuery, getProductRecommendationsQuery, getProductsQuery } from "./queries/product";
 
-export { graphql } from "./codegen";
+export { graphql } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
 
 type PolicyName = 'privacyPolicy' | 'refundPolicy' | 'shippingPolicy' | 'termsOfService'
 
