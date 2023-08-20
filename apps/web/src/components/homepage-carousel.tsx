@@ -4,16 +4,17 @@ import {
   type NukaCarouselProps,
 } from "@/components/nuka-carousel";
 import { minWidthLg, minWidthSm } from "@/lib/tailwind";
-import { useGetPage } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
+import { getPage, getPageImages } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
+import { cn } from "@uncnsrdlabel/lib/classname";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
 export async function HomepageCarousel(props: NukaCarouselProps) {
-  const page = useGetPage("home");
+  const page = await getPage({ handle: "home" });
 
   if (!page) return notFound();
 
-  const images = page.imagesArray;
+  const images = getPageImages(page.mediaImages)
 
   const buttonClassName =
     "!px-6 text-6xl drop-shadow focus-visible:!text-stateFocus hover:!text-stateHover";
@@ -59,8 +60,8 @@ export async function HomepageCarousel(props: NukaCarouselProps) {
         speed={1500}
         wrapAround
       >
-        {[...images].map((image, index) => (
-          <figure className="item relative aspect-3/4" key={image.id || index}>
+        {images.map((image, index) => (
+          <figure className="item aspect-3/4 relative" key={image.url || index}>
             <Image
               alt={image.altText}
               className="h-full object-cover"

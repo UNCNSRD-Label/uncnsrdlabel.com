@@ -19,51 +19,91 @@ import { type TypedDocumentNode } from "@graphql-typed-document-node/core";
 import { useQuery, type UseQueryResult } from "@tanstack/react-query";
 import { getFragmentData } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
 // import { collectionFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/collection";
-import { GetCartQueryVariables, GetCollectionProductsQueryVariables, GetCollectionQueryVariables, GetMenuQueryVariables, GetPageQueryVariables, GetPagesQueryVariables, GetProductQueryVariables, GetProductRecommendationsQueryVariables, GetProductsQueryVariables } from "@uncnsrdlabel/graphql-shopify-storefront/codegen/graphql";
-import { productFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/product";
-import { getCartQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/cart";
-import { getMenuQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/menu";
-import { getPageQuery, getPagesQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/page";
-import { getPoliciesQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/policy";
-import { getProductQuery, getProductRecommendationsQuery, getProductsQuery } from "@uncnsrdlabel/graphql-shopify-storefront/queries/product";
+import {
+  GetCartQueryVariables,
+  GetCollectionProductsQueryVariables,
+  GetCollectionQueryVariables,
+  GetMenuQueryVariables,
+  GetPageQueryVariables,
+  GetPagesQueryVariables,
+  GetProductQueryVariables,
+  GetProductRecommendationsQueryVariables,
+  GetProductsQueryVariables,
+  PageFragment,
+  type ImageFragment,
+  type MediaImage,
+} from "@uncnsrdlabel/graphql-shopify-storefront/codegen/graphql";
+import {
+  imageFragment,
+  pageFragment,
+  productFragment,
+} from "@uncnsrdlabel/graphql-shopify-storefront/fragments";
+import {
+  getCartQuery,
+  getMenuQuery,
+  getPageQuery,
+  getPagesQuery,
+  getPoliciesQuery,
+  getProductQuery,
+  getProductRecommendationsQuery,
+  getProductsQuery,
+} from "@uncnsrdlabel/graphql-shopify-storefront/queries";
 import { GraphQLClient } from "graphql-request";
 import { camelCase } from "lodash";
 
 export { graphql } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
 
-type PolicyName = 'privacyPolicy' | 'refundPolicy' | 'shippingPolicy' | 'termsOfService'
+type PolicyName =
+  | "privacyPolicy"
+  | "refundPolicy"
+  | "shippingPolicy"
+  | "termsOfService";
 
-const domain = `https://${process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!}`;
-const endpoint = `${domain}/api/${process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_API_VERSION}/graphql.json`;
+export const authorization = `Bearer ${process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN}`;
+export const domain = `https://${process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!}`;
+export const endpoint = `${domain}/api/${process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_API_VERSION}/graphql.json`;
 
+console.log({ authorization, endpoint });
 export const graphQLClient = new GraphQLClient(endpoint, {
+  fetch,
   headers: {
-    authorization: `Bearer ${process.env.NEXT_PUBLIC_HYGRAPH_API_TOKEN}`,
+    authorization
   },
-})
+});
 
-export function get<TResult, TVariables>(
+export function getShopifyGraphQL<TResult, TVariables>(
   document: TypedDocumentNode<TResult, TVariables>,
   ...[variables]: TVariables extends Record<string, never> ? [] : [TVariables]
 ): Promise<TResult> {
-  return graphQLClient.request(
-    document,
-    variables ?? undefined,
-  );
+  console.log({ variables });
+  return graphQLClient.request(document, variables ?? undefined);
 }
 
-export function useShopifyGraphQL<TResult, TVariables>(
+export function useGetShopifyGraphQL<TResult, TVariables>(
   document: TypedDocumentNode<TResult, TVariables>,
   ...[variables]: TVariables extends Record<string, never> ? [] : [TVariables]
 ): UseQueryResult<TResult> {
   return useQuery(
     [(document.definitions[0] as any).name.value, variables],
     async ({ queryKey }) =>
-      graphQLClient.request(
-        document,
-        queryKey[1] ? queryKey[1] : undefined,
-      ),
+      graphQLClient.request(document, queryKey[1] ? queryKey[1] : undefined),
   );
+}
+
+export function getPageImages(mediaImages: PageFragment["mediaImages"]) {
+  const images = mediaImages?.references?.edges
+    .map(
+      ({ node }) =>
+        node as Omit<MediaImage, "image"> & {
+          image: { __typename?: "Image" } & {
+            " $fragmentRefs"?: { ImageFragment: ImageFragment };
+          };
+        },
+    )
+    .filter((node) => node.__typename === "MediaImage")
+    .map((mediaImage) => getFragmentData(imageFragment, mediaImage.image));
+
+  return images;
 }
 
 // const isStorefrontApiResponseError = <T>(
@@ -134,34 +174,25 @@ export function useShopifyGraphQL<TResult, TVariables>(
 //   return res.body.data.cartLinesUpdate.cart;
 // }
 
-export function useGetCart(variables: GetCartQueryVariables) {
-  const { data = {} } = useShopifyGraphQL(
+export async function getCart(variables: GetCartQueryVariables) {
+  const { cart } = await getShopifyGraphQL(
     getCartQuery,
     variables,
     // TODO: figure out how to use this
     // cache: "no-store",
   );
 
-  const { cart } = data;
-
   if (!cart) {
     return null;
   }
 
-  console.log({cart})
+  console.log({ cart });
 
-  return cart
+  return cart;
 }
 
-export function useGetCollection(
-  variables: GetCollectionQueryVariables,
-) {
-  const { data = {} } = useShopifyGraphQL(
-    getCollectionQuery,
-    variables,
-  );
-
-  const { collection } = data;
+export async function getCollection(variables: GetCollectionQueryVariables) {
+  const { collection } = await getShopifyGraphQL(getCollectionQuery, variables);
 
   if (!collection) {
     throw {
@@ -170,19 +201,19 @@ export function useGetCollection(
     };
   }
 
-  console.log({collection})
+  console.log({ collection });
 
-  return collection
+  return collection;
 }
 
-export function useGetCollectionProducts(variables: GetCollectionProductsQueryVariables) {
-  const { data = {} } = useShopifyGraphQL(
+export async function getCollectionProducts(
+  variables: GetCollectionProductsQueryVariables,
+) {
+  const { collection } = await getShopifyGraphQL(
     getCollectionProductsQuery,
     variables,
   );
 
-  const { collection } = data;
-
   if (!collection) {
     throw {
       status: 404,
@@ -190,21 +221,16 @@ export function useGetCollectionProducts(variables: GetCollectionProductsQueryVa
     };
   }
 
-  console.log({collection})
+  console.log({ collection });
 
   const { products } = collection;
 
   return products;
 }
 
-export function useGetCollections() {
-  const { data = {
-    collections: []
-  } } = useShopifyGraphQL(
-    getCollectionsQuery,
-  );
-
-  const { collections: shopifyCollections } = data;
+export async function getCollections() {
+  const { collections: shopifyCollections } =
+    await getShopifyGraphQL(getCollectionsQuery);
 
   if (!shopifyCollections) {
     throw {
@@ -213,7 +239,7 @@ export function useGetCollections() {
     };
   }
 
-  console.log({shopifyCollections})
+  console.log({ shopifyCollections });
 
   // const shopifyCollections = getFragmentData(collectionFragment, collectionsFragmentRef);
 
@@ -240,13 +266,8 @@ export function useGetCollections() {
   return collections;
 }
 
-export function useGetMenu(variables: GetMenuQueryVariables) {
-  const { data = {} } = useShopifyGraphQL(
-    getMenuQuery,
-    variables,
-  );
-
-  const { menu } = data;
+export async function getMenu(variables: GetMenuQueryVariables) {
+  const { menu } = await getShopifyGraphQL(getMenuQuery, variables);
 
   if (!menu) {
     throw {
@@ -255,9 +276,9 @@ export function useGetMenu(variables: GetMenuQueryVariables) {
     };
   }
 
-  console.log({menu})
+  console.log({ menu });
 
-  return menu
+  return menu;
 
   // return (
   //   menu?.items.map((item: { title: string; url: string }) => ({
@@ -270,35 +291,28 @@ export function useGetMenu(variables: GetMenuQueryVariables) {
   // );
 }
 
-export function useGetPage(variables: GetPageQueryVariables) {
-  const { data = {} } = useShopifyGraphQL(
+export async function getPage(variables: GetPageQueryVariables) {
+  const { pageByHandle: pageFragmentRef } = await getShopifyGraphQL(
     getPageQuery,
     variables,
   );
 
-  const { pageByHandle: page } = data;
-
-  if (!page) {
+  if (!pageFragmentRef) {
     throw {
       status: 404,
       message: `Page not found for handle \`${variables.handle}\``,
     };
   }
 
-  console.log({page})
+  const page = getFragmentData(pageFragment, pageFragmentRef);
 
-  return page
+  console.log({ page });
+
+  return page;
 }
 
-export function useGetPages(variables: GetPagesQueryVariables) {
-  const { data = {
-    pages: []
-  } } = useShopifyGraphQL(
-    getPagesQuery,
-    variables
-  );
-
-  const { pages } = data;
+export async function getPages(variables: GetPagesQueryVariables) {
+  const { pages } = await getShopifyGraphQL(getPagesQuery, variables);
 
   if (!pages) {
     throw {
@@ -310,8 +324,8 @@ export function useGetPages(variables: GetPagesQueryVariables) {
   return pages;
 }
 
-export function useGetPolicy(handle: PolicyName) {
-  const policies = useGetPolicies();
+export async function getPolicy(handle: PolicyName) {
+  const policies = await getPolicies();
 
   const policyName = camelCase(handle) as PolicyName;
 
@@ -320,14 +334,8 @@ export function useGetPolicy(handle: PolicyName) {
   return policy;
 }
 
-export function useGetPolicies() {
-  const { data = {
-    shop: {}
-  } } = useShopifyGraphQL(
-    getPoliciesQuery,
-  );
-
-  const { shop } = data;
+export async function getPolicies() {
+  const { shop } = await getShopifyGraphQL(getPoliciesQuery);
 
   if (!shop) {
     throw {
@@ -336,18 +344,16 @@ export function useGetPolicies() {
     };
   }
 
-  console.log({shop})
+  console.log({ shop });
 
   return shop;
 }
 
-export function useGetProduct(variables: GetProductQueryVariables) {
-  const { data = {} } = useShopifyGraphQL(
+export async function getProduct(variables: GetProductQueryVariables) {
+  const { product: productFragmentRef } = await getShopifyGraphQL(
     getProductQuery,
     variables,
   );
-
-  const { product: productFragmentRef } = data;
 
   if (!productFragmentRef) {
     throw {
@@ -356,22 +362,22 @@ export function useGetProduct(variables: GetProductQueryVariables) {
     };
   }
 
-  console.log({productFragmentRef})
-  
+  console.log({ productFragmentRef });
+
   const product = getFragmentData(productFragment, productFragmentRef);
 
-  console.log({product})
+  console.log({ product });
 
-  return product
+  return product;
 }
 
-export function useGetProductRecommendations(variables: GetProductRecommendationsQueryVariables) {
-  const { data = {} } = useShopifyGraphQL(
+export async function getProductRecommendations(
+  variables: GetProductRecommendationsQueryVariables,
+) {
+  const { productRecommendations } = await getShopifyGraphQL(
     getProductRecommendationsQuery,
-    variables
+    variables,
   );
-
-  const { productRecommendations } = data;
 
   if (!productRecommendations) {
     throw {
@@ -385,15 +391,8 @@ export function useGetProductRecommendations(variables: GetProductRecommendation
   return products;
 }
 
-export function useGetProducts(variables: GetProductsQueryVariables) {
-  const { data = {
-    products: []
-  } } = useShopifyGraphQL(
-    getProductsQuery,
-    variables
-  );
-
-  const { products } = data;
+export async function getProducts(variables: GetProductsQueryVariables) {
+  const { products } = await getShopifyGraphQL(getProductsQuery, variables);
 
   if (!products) {
     throw {

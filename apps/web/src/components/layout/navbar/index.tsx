@@ -1,3 +1,4 @@
+import { cn } from '@uncnsrdlabel/lib';
 
 type Props = {
   children: React.ReactNode;

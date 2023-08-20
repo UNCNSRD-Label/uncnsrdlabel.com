@@ -8,4 +8,3 @@ export * from "@uncnsrdlabel/graphql-shopify-storefront/fragments"
 export * from "@uncnsrdlabel/graphql-shopify-storefront/mutations"
 export * from "@uncnsrdlabel/graphql-shopify-storefront/queries"
 export * from "@uncnsrdlabel/graphql-shopify-storefront/utilities"
-

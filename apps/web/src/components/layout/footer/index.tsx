@@ -5,7 +5,7 @@ import { LogotypeIcon } from "@/components/icons/logotype";
 // import { RedeemCode } from "@/components/redeem-code/dialog";
 import { SignUp } from "@/components/sign-up";
 import { SocialMenu } from "@/components/social-menu";
-import { useGetMenu } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { getMenu } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { themeColors } from "@uncnsrdlabel/lib/effects";
 
 const { NEXT_PUBLIC_SITE_NAME } = process.env;
@@ -13,9 +13,9 @@ const { NEXT_PUBLIC_SITE_NAME } = process.env;
 export async function Footer() {
   const currentYear = new Date().getFullYear();
   const copyrightDate = 2023 + (currentYear > 2023 ? `-${currentYear}` : "");
-  const customerCareMenu = useGetMenu({ handle: "customer-care" });
-  const informationMenu = useGetMenu({ handle: "information" });
-  const followUsMenu = useGetMenu({ handle: "follow-us" });
+  const customerCareMenu = await getMenu({ handle: "customer-care" });
+  const informationMenu = await getMenu({ handle: "information" });
+  const followUsMenu = await getMenu({ handle: "follow-us" });
 
   const linkClassName =
     "text-xs sm:text-xxs transition uppercase duration-150 ease-in-out";

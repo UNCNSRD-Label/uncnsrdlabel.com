@@ -1,7 +1,7 @@
 "use client";
 
 import { Prose } from "@/components/prose";
-import { getPageQuery, useShopifyGraphQL } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { getPageQuery, useGetShopifyGraphQL } from "@uncnsrdlabel/graphql-shopify-storefront";
 
 export type ArticleProps = {
   variables: { handle: string }
@@ -10,7 +10,7 @@ export type ArticleProps = {
 export function Article(props: ArticleProps) {
   const { variables } = props;
 
-  const { data = {} } = useShopifyGraphQL(
+  const { data = {} } = useGetShopifyGraphQL(
     getPageQuery,
     variables,
   );
