@@ -1,5 +1,6 @@
 export * from "@shopify/hydrogen-react/storefront-api-types"
 export * from "@uncnsrdlabel/graphql-shopify-storefront/codegen"
+export * from "@uncnsrdlabel/graphql-shopify-storefront/constants"
 // export * from "@uncnsrdlabel/graphql-shopify-storefront/codegen/fragment-masking"
 // export * from "@uncnsrdlabel/graphql-shopify-storefront/codegen/gql"
 // export * from "@uncnsrdlabel/graphql-shopify-storefront/codegen/graphql"
@@ -7,4 +8,6 @@ export * from "@uncnsrdlabel/graphql-shopify-storefront/flatten-connection"
 export * from "@uncnsrdlabel/graphql-shopify-storefront/fragments"
 export * from "@uncnsrdlabel/graphql-shopify-storefront/mutations"
 export * from "@uncnsrdlabel/graphql-shopify-storefront/queries"
+export * from "@uncnsrdlabel/graphql-shopify-storefront/types"
 export * from "@uncnsrdlabel/graphql-shopify-storefront/utilities"
+

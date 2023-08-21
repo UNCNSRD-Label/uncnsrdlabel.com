@@ -1,7 +1,7 @@
 "use client";
 
 import { Prose } from "@/components/prose";
-import { getPageQuery, useGetShopifyGraphQL } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { getFragmentData, getPageQuery, pageFragment, useGetShopifyGraphQL } from "@uncnsrdlabel/graphql-shopify-storefront";
 
 export type ArticleProps = {
   variables: { handle: string }
@@ -15,7 +15,9 @@ export function Article(props: ArticleProps) {
     variables,
   );
 
-  const { pageByHandle: page } = data;
+  const { pageByHandle: pageFragmentRef } = data;
+
+  const page = getFragmentData(pageFragment, pageFragmentRef);
 
   return (
     <article className="grid gap-0.5">

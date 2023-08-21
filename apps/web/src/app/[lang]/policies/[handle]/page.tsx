@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 
 import { Prose } from "@/components/prose";
+import { getFragmentData } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
+import { shopPolicyFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments";
+import { type PolicyName } from "@uncnsrdlabel/graphql-shopify-storefront/types";
 import { getPolicy } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
 import { notFound } from "next/navigation";
-
-import { PolicyHandle } from "@shopify/hydrogen-react/storefront-api-types";
 
 export const runtime = "edge";
 
@@ -13,11 +14,13 @@ export const revalidate = 43200; // 12 hours in seconds
 export async function generateMetadata({
   params,
 }: {
-  params: { handle: PolicyHandle };
+  params: { handle: PolicyName };
 }): Promise<Metadata> {
-  const policy = await getPolicy(params.handle);
+  const shopPolicyFragmentRef = await getPolicy(params.handle);
 
-  if (!policy) return notFound();
+  if (!shopPolicyFragmentRef) return notFound();
+
+  const policy = getFragmentData(shopPolicyFragment, shopPolicyFragmentRef);
 
   return {
     title: policy.title,
@@ -37,11 +40,13 @@ export async function generateMetadata({
 export default async function Policy({
   params,
 }: {
-  params: { handle: PolicyHandle };
+  params: { handle: PolicyName };
 }) {
-  const policy = await getPolicy(params.handle);
+  const shopPolicyFragmentRef = await getPolicy(params.handle);
 
-  if (!policy) return notFound();
+  if (!shopPolicyFragmentRef) return notFound();
+
+  const policy = getFragmentData(shopPolicyFragment, shopPolicyFragmentRef);
 
   return (
     <article className="mx-8 mb-48 grid gap-0.5 sm:mx-auto sm:py-16">

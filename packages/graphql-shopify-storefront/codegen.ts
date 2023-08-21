@@ -5,14 +5,6 @@ const config: CodegenConfig = {
   ignoreNoDocuments: true, // for better experience with the watcher
   overwrite: true,
   schema: require.resolve('@shopify/hydrogen-react/storefront.schema.json'),
-  // schema: {
-  //   endpoint: {
-  //     headers: {
-  //       'X-Shopify-Storefront-Access-Token': process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN!,
-  //       'content-type': 'application/json',
-  //     },
-  //   },
-  // },
   documents: [
     "./src/fragments/**/*.{graphql,ts,tsx}",
     "./src/mutations/**/*.{graphql,ts,tsx}",

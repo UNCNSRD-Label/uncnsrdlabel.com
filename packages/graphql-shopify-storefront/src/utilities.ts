@@ -48,16 +48,11 @@ import {
   getProductRecommendationsQuery,
   getProductsQuery,
 } from "@uncnsrdlabel/graphql-shopify-storefront/queries";
+import { type PolicyName } from "@uncnsrdlabel/graphql-shopify-storefront/types";
 import { GraphQLClient } from "graphql-request";
 import { camelCase } from "lodash";
 
 export { graphql } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
-
-type PolicyName =
-  | "privacyPolicy"
-  | "refundPolicy"
-  | "shippingPolicy"
-  | "termsOfService";
 
 export const authorization = `Bearer ${process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN}`;
 export const domain = `https://${process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!}`;
