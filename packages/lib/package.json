@@ -9,34 +9,37 @@
   "devDependencies": {
     "@types/lodash": "^4.14.196",
     "@types/negotiator": "^0.6.1",
-    "@types/node": "20.4.8",
-    "@types/react": "18.2.18",
+    "@types/node": "latest",
     "@types/react-dom": "18.2.7",
+    "@types/react": "18.2.18",
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "@uncnsrdlabel/tailwind-config": "workspace:*",
     "@uncnsrdlabel/tsconfig": "workspace:*",
     "@uncnsrdlabel/types": "workspace:*",
-    "tsup": "^7.2.0",
-    "type-fest": "^4.1.0",
-    "typescript": "^5.1.6"
+    "prettier": "latest",
+    "tsup": "latest",
+    "type-fest": "latest",
+    "typescript": "latest"
   },
   "exports": {
     "./*": "./dist/*"
   },
   "files": [
-    "src/**"
+    "dist/**"
   ],
-  "main": "./src/index.tsx",
+  "main": "./dist/index.js",
   "name": "@uncnsrdlabel/lib",
   "publishConfig": {
-    "directory": "src"
+    "directory": "dist"
   },
   "scripts": {
+    "build": "tsc --project ./tsconfig.json",
+    "dev": "tsc --project ./tsconfig.json --watch",
     "generate:component": "turbo gen react-component",
     "lint": "eslint \"**/*.ts*\"",
     "types:check": "tsc --noEmit"
   },
   "type": "module",
-  "types": "./src/index.d.ts",
+  "types": "./dist/index.d.ts",
   "version": "0.0.0"
 }

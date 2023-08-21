@@ -31,15 +31,15 @@
     "./*": "./dist/*"
   },
   "files": [
-    "src/**"
+    "dist/**"
   ],
-  "main": "./src/index.tsx",
+  "main": "./dist/index.js",
   "name": "@uncnsrdlabel/graphql-shopify-storefront",
   "peerDependencies": {
     "@parcel/watcher": "^2.2.0"
   },
   "publishConfig": {
-    "directory": "src"
+    "directory": "dist"
   },
   "scripts": {
     "build": "graphql-codegen && tsc --project ./tsconfig.json",

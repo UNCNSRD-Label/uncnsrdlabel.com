@@ -1,17 +1,28 @@
 {
+  "devDependencies": {
+    "@shopify/hydrogen-react": "^2023.7.0",
+    "@types/node": "latest",
+    "@uncnsrdlabel/eslint-config-custom": "workspace:*",
+    "@uncnsrdlabel/tsconfig": "workspace:*",
+    "prettier": "latest",
+    "tsup": "latest",
+    "type-fest": "latest",
+    "typescript": "latest"
+  },
   "exports": {
-    "./*": "./src/*"
+    "./*": "./dist/*"
   },
   "files": [
-    "src/**"
+    "dist/**"
   ],
-  "main": "./src/index.tsx",
+  "main": "./dist/index.js",
   "name": "@uncnsrdlabel/types",
   "publishConfig": {
-    "directory": "src"
+    "directory": "dist"
   },
   "scripts": {
-    "generate:component": "turbo gen react-component",
+    "build": "tsc --project ./tsconfig.json",
+    "dev": "tsc --project ./tsconfig.json --watch",
     "lint": "eslint \"**/*.ts*\"",
     "types:check": "tsc --noEmit"
   },
@@ -19,6 +30,6 @@
     "**/*.css"
   ],
   "type": "module",
-  "types": "./src/index.d.ts",
+  "types": "./dist/index.d.ts",
   "version": "0.0.0"
 }

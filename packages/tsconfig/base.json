@@ -11,24 +11,12 @@
     "moduleResolution": "node",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "paths": {
-      "@/*": ["../../apps/web/src/*"],
-      "@uncnsrdlabel/app-web": ["../../apps/web/src/*"],
-      "@uncnsrdlabel/graphql-hygraph/*": ["../graphql-hygraph/src/*"],
-      "@uncnsrdlabel/graphql-shopify-admin/*": ["../graphql-shopify-admin/src/*"],
-      "@uncnsrdlabel/graphql-shopify-storefront/*": ["../graphql-shopify-storefront/src/*"],
-      "@uncnsrdlabel/lib/*": ["../lib/src/*"],
-      "@uncnsrdlabel/providers/*": ["../providers/src/*"],
-      "@uncnsrdlabel/tailwind-config/*": ["../tailwind-config/src/*"],
-      "@uncnsrdlabel/types/*": ["../types/src/*"],
-      "@uncnsrdlabel/ui/*": ["../ui/src/*"]
-    },
+
     "preserveWatchOutput": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
     "types": [
-      "@uncnsrdlabel/types",
       "node"
     ]
   },

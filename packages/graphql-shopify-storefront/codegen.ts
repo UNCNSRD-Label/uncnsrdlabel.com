@@ -23,6 +23,7 @@ const config: CodegenConfig = {
       },
       preset: "client",
       presetConfig: {
+        emitLegacyCommonJSImports: true,
         fragmentMasking: { unmaskFunctionName: "getFragmentData" },
       },
     },

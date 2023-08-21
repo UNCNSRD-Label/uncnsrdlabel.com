@@ -130,16 +130,16 @@ const nextConfig = {
       },
     ];
   },
-  transpilePackages: [
-    '@uncnsrdlabel/graphql-hygraph',
-    '@uncnsrdlabel/graphql-shopify-admin',
-    '@uncnsrdlabel/graphql-shopify-storefront',
-    '@uncnsrdlabel/lib',
-    '@uncnsrdlabel/providers',
-    '@uncnsrdlabel/tailwind-config',
-    '@uncnsrdlabel/types',
-    '@uncnsrdlabel/ui'
-  ],
+  // transpilePackages: [
+  //   '@uncnsrdlabel/graphql-hygraph',
+  //   '@uncnsrdlabel/graphql-shopify-admin',
+  //   '@uncnsrdlabel/graphql-shopify-storefront',
+  //   '@uncnsrdlabel/lib',
+  //   '@uncnsrdlabel/providers',
+  //   '@uncnsrdlabel/tailwind-config',
+  //   '@uncnsrdlabel/types',
+  //   '@uncnsrdlabel/ui'
+  // ],
 };
 
 module.exports = withPlugins([...plugins], nextConfig);
