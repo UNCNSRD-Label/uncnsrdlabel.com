@@ -8,10 +8,19 @@
     "noEmit": true,
     "plugins": [{ "name": "next" }],
     "strict": false,
-    "target": "es5"
+    "target": "es5",
+    "types": [
+      "gtag.js",
+      "lodash",
+      "node",
+      "react-dom",
+      "react",
+      "use-analytics",
+      "@uncnsrdlabel/types"
+    ]
   },
   "display": "Next.js",
   "exclude": ["node_modules"],
   "extends": "./base.json",
-  "include": ["@uncnsrdlabel/graphql-shopify-storefront", "@uncnsrdlabel/tsconfig", "@uncnsrdlabel/types", "src", "next-env.d.ts"]
+  "include": ["src", "next-env.d.ts"]
 }

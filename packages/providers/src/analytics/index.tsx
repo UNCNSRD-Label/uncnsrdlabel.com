@@ -11,8 +11,8 @@ import { getCookie } from "cookies-next";
 import { PropsWithChildren } from "react";
 import { AnalyticsProvider } from "use-analytics";
 
-import type { ConsentSettings } from "@uncnsrdlabel/lib/consent";
-import { COOKIE_CONSENT } from "@uncnsrdlabel/lib/constants";
+import type { ConsentSettings } from "@uncnsrdlabel/lib";
+import { COOKIE_CONSENT } from "@uncnsrdlabel/lib";
 
 export function AppAnalyticsProvider({ children }: PropsWithChildren) {
   const consentCookieData = (getCookie(COOKIE_CONSENT) as string) ?? "{}";

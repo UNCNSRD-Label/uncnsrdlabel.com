@@ -5,7 +5,8 @@
     "jsx": "react-jsx",
     "lib": ["dom", "dom.iterable", "ESNext"],
     "module": "ESNext",
-    "target": "ESNext"
+    "target": "ESNext",
+    "types": ["@uncnsrdlabel/types", "node"]
   },
   "display": "React Library",
   "extends": "./base.json"

@@ -2,22 +2,7 @@
   "compilerOptions": {
     "paths": {
       "@/*": ["./src/*"]
-    },
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "types": [
-      "@types/gtag.js",
-      "@types/lodash",
-      "@types/node",
-      "@types/react-dom",
-      "@types/react",
-      "@types/use-analytics",
-      "@uncnsrdlabel/types"
-    ],
-    "allowJs": true
+    }
   },
   "include": [
     "next-env.d.ts",

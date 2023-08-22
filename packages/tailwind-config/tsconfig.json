@@ -3,7 +3,7 @@
     "outDir": "./dist",
     "rootDir": "./src",
   },
-  "extends": "@uncnsrdlabel/tsconfig/react-library.json",
+  "extends": "@uncnsrdlabel/tsconfig/base.json",
   "include": ["./src/**/*"],
   "exclude": ["dist", "build", "node_modules"]
 }
