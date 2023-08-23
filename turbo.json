@@ -57,6 +57,19 @@
       ],
       "outputs": [".next/**", "!.next/cache/**"]
     },
+    "@uncnsrdlabel/graphql-shopify-storefront#build": {
+      "env": [
+        "NEXT_PUBLIC_DEFAULT_LOCALE",
+        "NEXT_PUBLIC_PROTOCOL",
+        "NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN",
+        "NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN",
+        "NEXT_PUBLIC_SHOPIFY_STOREFRONT_API_VERSION",
+        "NEXT_PUBLIC_SUPPORTED_LOCALES",
+        "SHOPIFY_REVALIDATION_SECRET",
+        "SHOPIFY_STOREFRONT_TOKEN"
+      ],
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
     "@uncnsrdlabel/lib#build": {
       "env": [
         "NEXT_PUBLIC_DEFAULT_LOCALE",
