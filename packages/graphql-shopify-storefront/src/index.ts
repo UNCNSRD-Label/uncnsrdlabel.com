@@ -1,4 +1,4 @@
-export * from "@shopify/hydrogen-react/storefront-api-types"
+// export * from "@shopify/hydrogen-react/storefront-api-types"
 export * from "@uncnsrdlabel/graphql-shopify-storefront/codegen"
 export * from "@uncnsrdlabel/graphql-shopify-storefront/constants"
 // export * from "@uncnsrdlabel/graphql-shopify-storefront/codegen/fragment-masking"
