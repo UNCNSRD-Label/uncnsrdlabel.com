@@ -1,13 +1,12 @@
 "use client";
 
+import { signUpAction } from "@/components/sign-up/action";
 import * as Toast from "@radix-ui/react-toast";
+import { cn } from "@uncnsrdlabel/lib";
+import { themeColors } from "@uncnsrdlabel/lib/effects";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { SlEnvolope } from "react-icons/sl";
-
-import { signUpAction } from "@/components/sign-up/action";
-
-import { themeColors } from "@uncnsrdlabel/lib/effects";
 
 export function SignUpForm({ className }: { className?: string }) {
   const {

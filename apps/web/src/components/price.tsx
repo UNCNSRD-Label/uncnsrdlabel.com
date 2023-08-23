@@ -1,3 +1,4 @@
+import { cn } from "@uncnsrdlabel/lib";
 
 export const Price = ({
   amount,

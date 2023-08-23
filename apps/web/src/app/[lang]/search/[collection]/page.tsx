@@ -1,10 +1,10 @@
-import { getCollection, getCollectionProducts } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
+import { getCollection, getCollectionProducts } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
-import { defaultSort, sorting } from "@uncnsrdlabel/lib/constants";
+import { defaultSort, sorting } from "@uncnsrdlabel/graphql-shopify-storefront/constants";
 
 export const runtime = "edge";
 

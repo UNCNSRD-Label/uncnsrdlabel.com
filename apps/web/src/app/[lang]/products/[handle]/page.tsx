@@ -7,9 +7,13 @@ import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
 import { ProductDetails } from "@/components/product/details";
 import {
-  getFragmentData, imageFragment, seoFragment
+  getFragmentData,
+  getProduct,
+  getProductRecommendations,
+  imageFragment,
+  productFragment,
+  seoFragment
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { useGetProduct, useGetProductRecommendations } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
 import { HIDDEN_PRODUCT_TAG, cn } from "@uncnsrdlabel/lib";
 
 export const runtime = "edge";

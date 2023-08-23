@@ -58,7 +58,6 @@ export const authorization = `Bearer ${process.env.NEXT_PUBLIC_SHOPIFY_STOREFRON
 export const domain = `https://${process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!}`;
 export const endpoint = `${domain}/api/${process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_API_VERSION}/graphql.json`;
 
-console.log({ authorization, endpoint });
 export const graphQLClient = new GraphQLClient(endpoint, {
   fetch,
   headers: {

@@ -1,10 +1,10 @@
 "use client";
 
 import { useIntersectionObserver } from "@react-hookz/web";
+import { cn } from "@uncnsrdlabel/lib";
+import { onLoadingComplete } from "@uncnsrdlabel/lib/image";
 import NextImage, { type ImageProps } from "next/image";
 import { useEffect, useRef, useState } from "react";
-
-import { onLoadingComplete } from "@uncnsrdlabel/lib/image";
 
 export function Image({
   revealEffect = true,

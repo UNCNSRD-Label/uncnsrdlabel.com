@@ -1,4 +1,5 @@
 import { Image } from "@/components/image";
+import { cn } from "@uncnsrdlabel/lib";
 
 export function ProductImage({
   active,

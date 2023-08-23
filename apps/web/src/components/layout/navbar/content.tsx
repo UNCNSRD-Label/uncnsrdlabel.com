@@ -5,7 +5,7 @@ import { Cart } from "@/components/cart";
 import { CartIcon } from "@/components/icons/cart";
 import { LogotypeIcon } from "@/components/icons/logotype";
 import { Search } from "@/components/search/index";
-import { getMenu } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
+import { getMenu } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { SlHeart, SlUser } from "react-icons/sl";
 import { SidebarMenu } from "./sidebar-menu";

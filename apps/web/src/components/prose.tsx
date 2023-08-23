@@ -1,3 +1,4 @@
+import { cn } from "@uncnsrdlabel/lib";
 import type { FunctionComponent } from "react";
 
 interface TextProps {

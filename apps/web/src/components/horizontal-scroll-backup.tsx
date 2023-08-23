@@ -1,11 +1,12 @@
 import { Image } from "@/components/image";
 import { ScrollControls } from "@/components/scroll-controls";
-import { useGetPage } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
+import { getPage } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { cn } from "@uncnsrdlabel/lib";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export async function HorizontalScrollBackup({ className }: { className?: string }) {
-  const page = useGetPage("home");
+  const page = await getPage("home");
 
   if (!page) return notFound();
 

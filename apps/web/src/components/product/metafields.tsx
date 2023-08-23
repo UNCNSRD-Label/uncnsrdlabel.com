@@ -1,7 +1,3 @@
-import { forwardRef } from "react";
-
-import { MetafieldMapper } from "@/components/product/metafield-mapper";
-
 import {
   Accordion,
   AccordionContent,
@@ -9,8 +5,10 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/accordion";
-
+import { MetafieldMapper } from "@/components/product/metafield-mapper";
 import { Metafield } from "@shopify/hydrogen-react/storefront-api-types";
+import { cn } from "@uncnsrdlabel/lib";
+import { forwardRef } from "react";
 
 export type MetaFieldsRef = HTMLDivElement;
 

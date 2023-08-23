@@ -1,8 +1,8 @@
 "use client";
 
-import { useForm } from "react-hook-form";
-
 import { redeemCodeAction } from "@/components/redeem-code/action";
+import { cn } from "@uncnsrdlabel/lib";
+import { useForm } from "react-hook-form";
 
 export function RedeemCodeForm({ className }: { className?: string }) {
   const codeInputs: number[] = [...Array(5)];

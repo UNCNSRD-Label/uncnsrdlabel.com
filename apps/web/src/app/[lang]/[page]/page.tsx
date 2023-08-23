@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { Image } from "@/components/image";
-import { useGetPage } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
+import { getPage } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { notFound } from "next/navigation";
 
 export { revalidate } from "@uncnsrdlabel/lib/constants";

@@ -1,5 +1,5 @@
 import { CartModal } from "@/components/cart/modal";
-import { getCart } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
+import { getCart } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cookies } from "next/headers";
 
 export async function Cart() {

@@ -7,7 +7,7 @@ import {
   getCart,
   removeFromCart,
   updateCart,
-} from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cookies } from "next/headers";
 
 export const addItem = async (

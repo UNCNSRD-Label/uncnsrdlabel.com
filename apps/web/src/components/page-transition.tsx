@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@uncnsrdlabel/lib";
 import { AnimatePresence, motion } from "framer-motion";
 
 type PageTransitionProps = {

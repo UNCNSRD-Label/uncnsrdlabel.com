@@ -5,6 +5,7 @@ import { LogotypeIcon } from "@/components/icons/logotype";
 import { MenuIcon } from "@/components/icons/menu";
 import { Dialog } from "@headlessui/react";
 import { Menu } from "@shopify/hydrogen-react/storefront-api-types";
+import { cn } from "@uncnsrdlabel/lib";
 import { themeColors } from "@uncnsrdlabel/lib/effects";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";

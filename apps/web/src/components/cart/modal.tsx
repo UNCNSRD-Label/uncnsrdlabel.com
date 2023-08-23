@@ -5,6 +5,7 @@ import { CartForm } from "@/components/cart/form";
 import { OpenCart } from "@/components/cart/open-cart";
 import { Dialog } from "@headlessui/react";
 import type { Cart } from "@shopify/hydrogen-react/storefront-api-types";
+import { cn } from "@uncnsrdlabel/lib";
 import { themeColors } from "@uncnsrdlabel/lib/effects";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";

@@ -1,3 +1,4 @@
+import { cn } from "@uncnsrdlabel/lib";
 
 export function ShoppingBagIcon({ className }: { className?: string }) {
   return (

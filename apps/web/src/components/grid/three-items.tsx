@@ -1,6 +1,7 @@
 import { GridTileImage } from "@/components/grid/tile";
 import type { Product } from "@shopify/hydrogen-react/storefront-api-types";
-import { getCollectionProducts } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
+import { getCollectionProducts } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { cn } from "@uncnsrdlabel/lib";
 import Link from "next/link";
 
 function ThreeItemGridItem({

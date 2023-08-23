@@ -4,7 +4,8 @@ import { NavbarContent } from "@/components/layout/navbar/content";
 import { Collections } from "@/components/layout/search/collections";
 import { FilterList } from "@/components/layout/search/filter";
 import { PageTransition } from "@/components/page-transition";
-import { sorting } from "@uncnsrdlabel/lib/constants";
+import { sorting } from "@uncnsrdlabel/graphql-shopify-storefront/constants";
+import { cn } from "@uncnsrdlabel/lib";
 import { Suspense } from "react";
 
 export default function SearchLayout({

@@ -1,7 +1,6 @@
+import { cn } from "@uncnsrdlabel/lib";
 
 type Props = { className?: string; style?: React.CSSProperties };
-
-type Ref = SVGSVGElement | null;
 
 export function LogotypeIcon(props: Props) {
   return (

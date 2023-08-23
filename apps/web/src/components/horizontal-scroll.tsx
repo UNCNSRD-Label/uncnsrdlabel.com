@@ -1,9 +1,10 @@
 import { Image } from "@/components/image";
-import { useGetPage } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
+import { getPage } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { cn } from "@uncnsrdlabel/lib";
 import { notFound } from "next/navigation";
 
 export async function HorizontalScroll({ className }: { className?: string }) {
-  const page = useGetPage("home");
+  const page = await getPage("home");
 
   if (!page) return notFound();
 

@@ -3,6 +3,7 @@ import { Price } from "@/components/price";
 import { VariantSelector } from "@/components/product/variant-selector";
 import { Prose } from "@/components/prose";
 import { Product } from "@shopify/hydrogen-react/storefront-api-types";
+import { cn } from "@uncnsrdlabel/lib";
 import { forwardRef } from "react";
 
 type PurchaseOptionsRef = HTMLDivElement;

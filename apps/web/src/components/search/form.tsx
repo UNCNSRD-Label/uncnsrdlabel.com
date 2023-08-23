@@ -1,6 +1,6 @@
-import { useRouter, useSearchParams } from "next/navigation";
-
+import { cn } from "@uncnsrdlabel/lib";
 import { createUrl } from "@uncnsrdlabel/lib/url";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export function SearchForm({
   isOpen,

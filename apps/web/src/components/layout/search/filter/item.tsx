@@ -1,6 +1,6 @@
 "use client";
 
-import { SortFilterItem } from "@uncnsrdlabel/lib/constants";
+import { SortFilterItem, cn } from "@uncnsrdlabel/lib";
 import { createUrl } from "@uncnsrdlabel/lib/url";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
