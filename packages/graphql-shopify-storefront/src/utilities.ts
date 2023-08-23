@@ -70,7 +70,6 @@ export function getShopifyGraphQL<TResult, TVariables>(
   document: TypedDocumentNode<TResult, TVariables>,
   ...[variables]: TVariables extends Record<string, never> ? [] : [TVariables]
 ): Promise<TResult> {
-  console.log({ variables });
   return graphQLClient.request(document, variables ?? undefined);
 }
 

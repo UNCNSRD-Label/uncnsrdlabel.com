@@ -82,6 +82,14 @@ const config: Config = {
           "20%": { opacity: "1" },
           "100% ": { opacity: "0.2" },
         },
+        growProgress: {
+          from: {
+            transform: "scaleX(0)",
+          },
+          to: {
+            transform: "scaleX(1)",
+          },
+        },
       },
       animation: {
         fadeIn: "fadeIn .3s ease-in-out",
