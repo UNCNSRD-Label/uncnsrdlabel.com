@@ -23,7 +23,7 @@ export async function generateMetadata({
 }: {
   params: { handle: string };
 }): Promise<Metadata> {
-  const product = useGetProduct(params);
+  const product = await getProduct(params);
 
   const featuredImage = getFragmentData(imageFragment, product.featuredImage);
   const seo = getFragmentData(seoFragment, product.seo);
@@ -64,7 +64,9 @@ export default async function ProductPage({
 }: {
   params: { handle: string };
 }) {
-  const productFragmentRef = useGetProduct(params);
+  const productFragmentRef = await getProduct(params);
+
+  const product = getFragmentData(productFragment, productFragmentRef);
 
   if (!product) return notFound();
 
@@ -109,7 +111,7 @@ async function RelatedProducts({
   className?: string;
   id: string;
 }) {
-  const relatedProducts = useGetProductRecommendations({
+  const relatedProducts = getProductRecommendations({
     productId: id
   });
 

@@ -1,17 +1,17 @@
 import { Image } from "@/components/image";
-import { getFragmentData, imageFragment, productFragment, useGetCollectionProducts, useGetPage } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { getCollectionProducts, getFragmentData, getPage, imageFragment, productFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export async function Carousel() {
-  const page = useGetPage({
+  const page = await getPage({
     handle: "home"
   });
 
   if (!page) return notFound();
 
   // Collections that start with `hidden-*` are hidden from the search page.
-  const products = useGetCollectionProducts({
+  const products = await getCollectionProducts({
     handle: "hidden-homepage-carousel",
   });
 

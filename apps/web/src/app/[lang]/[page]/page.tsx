@@ -1,9 +1,8 @@
-import type { Metadata } from "next";
-
 import { Image } from "@/components/image";
-import { getPage } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { getPage } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-
+import { use } from "react";
 export { revalidate } from "@uncnsrdlabel/lib/constants";
 
 export const runtime = "edge";
@@ -15,7 +14,7 @@ export async function generateMetadata({
 }: {
   params: { page: string };
 }): Promise<Metadata> {
-  const page = useGetPage(params.page);
+  const page = use(getPage(params.page));
 
   if (!page) return notFound();
 
@@ -38,7 +37,7 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params }: { params: { page: string } }) {
-  const page = useGetPage(params.page);
+  const page = getPage(params.page);
 
   if (!page) return notFound();
 

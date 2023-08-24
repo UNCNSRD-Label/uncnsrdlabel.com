@@ -1,7 +1,10 @@
 "use client";
 
 import { Prose } from "@/components/prose";
-import { getFragmentData, getPageQuery, pageFragment, useGetShopifyGraphQL } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { getFragmentData } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
+import { pageFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/page";
+import { getPage } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
+import { use } from "react";
 
 export type ArticleProps = {
   variables: { handle: string }
@@ -10,12 +13,9 @@ export type ArticleProps = {
 export function Article(props: ArticleProps) {
   const { variables } = props;
 
-  const { data = {} } = useGetShopifyGraphQL(
-    getPageQuery,
+  const { pageByHandle: pageFragmentRef } = use(getPage(
     variables,
-  );
-
-  const { pageByHandle: pageFragmentRef } = data;
+  ));
 
   const page = getFragmentData(pageFragment, pageFragmentRef);
 
