@@ -10,7 +10,7 @@ import { themeColors } from "@uncnsrdlabel/lib/effects";
 import { getIETFLanguageTagFromlocaleTag, locales } from "@uncnsrdlabel/lib/i18n";
 import { AppProviders } from "@uncnsrdlabel/providers";
 import type { Metadata } from "next";
-import { Inter, Montserrat } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import localFont from "next/font/local";
 import { ReactNode, Suspense } from "react";
 import "../globals.css";
@@ -95,12 +95,6 @@ const bomberEscortOutline = localFont({
   weight: "400",
 });
 
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter",
-});
-
 const montserrat = Montserrat({
   subsets: ["latin"],
   display: "swap",
@@ -137,10 +131,9 @@ export default async function RootLayout({
       className={cn(
         bomberEscort.variable,
         bomberEscortOutline.variable,
-        inter.variable,
         montserrat.variable,
         // "[color-scheme:dark]",
-        "snap-y",
+f        // "snap-y",
         // "dark"
       )}
       lang={params.lang}
