@@ -3,6 +3,7 @@
     "outDir": "./dist",
     "rootDir": "./src",
   },
+  "display": "@uncnsrdlabel/tailwind-config",
   "extends": "@uncnsrdlabel/tsconfig/base.json",
   "include": ["./src/**/*"],
   "exclude": ["dist", "build", "node_modules"]

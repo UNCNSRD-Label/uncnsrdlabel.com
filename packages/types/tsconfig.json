@@ -3,6 +3,7 @@
     "outDir": "./dist",
     "rootDir": "./src"
   },
+  "display": "@uncnsrdlabel/types",
   "extends": "@uncnsrdlabel/tsconfig/base.json",
   "include": ["./src/**/*"],
   "exclude": ["dist", "build", "node_modules"]

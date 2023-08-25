@@ -1,7 +1,6 @@
 {
   "dependencies": {
     "@builder.io/partytown": "^0.8.0",
-    "@graphql-typed-document-node/core": "^3.2.0",
     "@headlessui/react": "^1.7.16",
     "@heroicons/react": "^2.0.18",
     "@radix-ui/react-accessible-icon": "^1.0.3",
@@ -74,28 +73,21 @@
     "type-fest": "^4.1.0",
     "typescript": "^5.1.6"
   },
-  "exports": {
-    "./*": "./dist/*"
-  },
   "files": [
     "dist/**"
   ],
   "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "name": "@uncnsrdlabel/ui",
-  "publishConfig": {
-    "directory": "dist"
-  },
   "scripts": {
-    "build": "tsc --project ./tsconfig.json",
-    "dev": "tsc --project ./tsconfig.json --watch",
+    "build": "tsup src/index.tsx --format esm,cjs --dts --external react",
+    "clean": "rm -rf dist",
+    "dev": "tsup src/index.tsx --format esm,cjs --watch --dts --external react",
     "generate:component": "turbo gen react-component",
     "lint": "eslint \"**/*.ts*\"",
     "types:check": "tsc --noEmit"
   },
-  "sideEffects": [
-    "**/*.css"
-  ],
-  "type": "module",
+  "sideEffects": false,
   "types": "./dist/index.d.ts",
   "version": "0.0.0"
 }

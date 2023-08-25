@@ -4,40 +4,46 @@
     "@graphql-codegen/client-preset": "latest",
     "@graphql-typed-document-node/core": "latest",
     "@types/node": "latest",
-    "@uncnsrdlabel/tsconfig": "workspace:*",
+    "@uncnsrdlabel/lib": "workspace:*",
     "dotenv-cli": "latest",
-    "graphql": "^16.7.1",
     "graphql-config": "latest",
     "graphql-request": "latest",
-    "graphql-tag": "latest"
+    "graphql-tag": "latest",
+    "graphql": "^16.7.1",
+    "slugify": "^1.6.6",
+    "zod-fetch": "^0.1.1",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@types/node": "latest",
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "@uncnsrdlabel/tsconfig": "workspace:*",
     "@uncnsrdlabel/types": "workspace:*",
+    "eslint": "^8.46.0",
+    "prettier": "latest",
     "tsup": "latest",
     "type-fest": "latest",
-    "typescript": "latest",
-    "prettier": "latest",
-    "typescript-graphql-request": "latest"
-  },
-  "exports": {
-    "./*": "./dist/*"
+    "typescript-graphql-request": "latest",
+    "typescript": "latest"
   },
   "files": [
     "dist/**"
   ],
-  "publishConfig": {
-    "directory": "dist"
-  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "name": "@uncnsrdlabel/graphql-hygraph",
+  "peerDependencies": {
+    "@parcel/watcher": "^2.2.0"
+  },
   "scripts": {
-    "build": "graphql-codegen && tsc --project ./tsconfig.json",
-    "dev": "graphql-codegen --watch && tsc --project ./tsconfig.json --watch",
+    "build": "graphql-codegen && tsup src/index.tsx --format esm,cjs --dts --external react",
+    "clean": "rm -rf dist",
+    "dev": "graphql-codegen --watch && tsup src/index.tsx --format esm,cjs --watch --dts --external react",
+    "generate:component": "turbo gen react-component",
     "lint": "eslint \"**/*.ts*\"",
     "types:check": "tsc --noEmit"
   },
-  "type": "module",
-  "types": "./dist/index.d.ts"
+  "sideEffects": false,
+  "types": "./dist/index.d.ts",
+  "version": "0.0.0"
 }

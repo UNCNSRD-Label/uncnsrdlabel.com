@@ -3,6 +3,7 @@
     "outDir": "./dist",
     "rootDir": "./src",
   },
+  "display": "@uncnsrdlabel/lib",
   "extends": "@uncnsrdlabel/tsconfig/react-library.json",
   "include": ["./src/**/*"],
   "exclude": ["dist", "build", "node_modules"]
