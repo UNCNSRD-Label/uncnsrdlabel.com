@@ -4,16 +4,16 @@
   },
   "devDependencies": {
     "@tailwindcss/container-queries": "^0.1.1",
-    "@tailwindcss/forms": "^0.5.4",
+    "@tailwindcss/forms": "^0.5.5",
     "@tailwindcss/typography": "^0.5.9",
-    "@types/node": "latest",
+    "@types/node": "^20.5.6",
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "@uncnsrdlabel/tsconfig": "workspace:*",
     "@uncnsrdlabel/types": "workspace:*",
-    "prettier": "latest",
-    "tsup": "latest",
-    "type-fest": "latest",
-    "typescript": "latest"
+    "prettier": "^3.0.2",
+    "tsup": "^7.2.0",
+    "type-fest": "^4.2.0",
+    "typescript": "^5.2.2"
   },
   "exports": {
     "./*": "./dist/*"

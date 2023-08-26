@@ -1,11 +1,11 @@
 {
   "devDependencies": {
-    "@types/node": "latest",
+    "@types/node": "^20.5.6",
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",
-    "prettier": "latest",
-    "tsup": "latest",
-    "type-fest": "latest",
-    "typescript": "latest"
+    "prettier": "^3.0.2",
+    "tsup": "^7.2.0",
+    "type-fest": "^4.2.0",
+    "typescript": "^5.2.2"
   },
   "name": "@uncnsrdlabel/tsconfig",
   "publishConfig": {
