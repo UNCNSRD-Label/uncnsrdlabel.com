@@ -1,13 +1,14 @@
 import { CartModal } from "@/components/cart/modal";
 import { getCart } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cookies } from "next/headers";
+import { use } from "react";
 
-export async function Cart() {
+export function Cart() {
   const cartId = cookies().get("cartId")?.value;
   let cart;
 
   if (cartId) {
-    cart = await getCart(cartId);
+    cart = use(getCart(cartId));
   }
 
   if (cart) {

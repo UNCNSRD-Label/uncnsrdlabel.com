@@ -1,16 +1,16 @@
 import { Image } from "@/components/image";
 import {
-    NukaCarousel,
-    type NukaCarouselProps,
+  NukaCarousel,
+  type NukaCarouselProps,
 } from "@/components/nuka-carousel";
 import { minWidthLg, minWidthSm } from "@/lib/tailwind";
 import { getPage, getPageImages } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib/classname";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
+import { Suspense, use } from "react";
 
-export async function HomepageCarousel(props: NukaCarouselProps) {
-  const page = await getPage({ handle: "home" });
+export function HomepageCarousel(props: NukaCarouselProps) {
+  const page = use(getPage({ handle: "home" }));
 
   if (!page) return notFound();
 

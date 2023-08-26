@@ -1,19 +1,18 @@
-import Link from "next/link";
-import { Suspense } from "react";
-
 import { Cart } from "@/components/cart";
 import { CartIcon } from "@/components/icons/cart";
 import { LogotypeIcon } from "@/components/icons/logotype";
 import { Search } from "@/components/search/index";
 import { getMenu } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
+import Link from "next/link";
+import { Suspense, use } from "react";
 import { SlHeart, SlUser } from "react-icons/sl";
 import { SidebarMenu } from "./sidebar-menu";
 
 type Props = { showLogo?: boolean };
 
-export async function NavbarContent(props: Props) {
-  const menu = await getMenu("next-js-frontend-header-menu");
+export function NavbarContent(props: Props) {
+  const menu = use(getMenu("next-js-frontend-header-menu"));
 
   return (
     <>
