@@ -1,11 +1,13 @@
-const withPlugins = require("next-compose-plugins");
+import withPWAInit from "@ducanh2912/next-pwa";
+import bundleAnalyzer from "@next/bundle-analyzer";
+import withPlugins from "next-compose-plugins";
 
-const withPWA = require("@imbios/next-pwa")({
-  dest: "public",
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
 });
 
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: process.env.ANALYZE === "true",
+const withPWA = withPWAInit({
+  dest: "public",
 });
 
 const plugins = [withBundleAnalyzer];
@@ -130,18 +132,8 @@ const nextConfig = {
       },
     ];
   },
-  // transpilePackages: [
-  //   '@uncnsrdlabel/graphql-hygraph',
-  //   '@uncnsrdlabel/graphql-shopify-admin',
-  //   '@uncnsrdlabel/graphql-shopify-storefront',
-  //   '@uncnsrdlabel/lib',
-  //   '@uncnsrdlabel/providers',
-  //   '@uncnsrdlabel/tailwind-config',
-  //   '@uncnsrdlabel/types',
-  //   '@uncnsrdlabel/ui'
-  // ],
 };
 
-module.exports = withPlugins([...plugins], nextConfig);
+export default withPlugins([...plugins], nextConfig);
 
 console.info("next.config.js", JSON.stringify(nextConfig, null, 2));
