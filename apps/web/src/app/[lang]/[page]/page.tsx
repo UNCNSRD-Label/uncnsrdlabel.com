@@ -13,8 +13,6 @@ export { revalidate } from "@uncnsrdlabel/lib/constants";
 
 export const runtime = "edge";
 
-// export const revalidate = 43200; // 12 hours in seconds
-
 export async function generateMetadata({
   params,
 }: {
@@ -64,7 +62,7 @@ export default async function Page({ params }: { params: { page: string } }) {
           return (
             <figure
               className="item aspect-3/4 relative w-full snap-start"
-              key={mediaImage.id || index}
+              key={`${mediaImage.id}-${index}` || index}
             >
               <Image
                 alt={image.altText}
