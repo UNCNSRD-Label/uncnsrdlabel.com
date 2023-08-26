@@ -52,33 +52,52 @@ import { camelCase } from "lodash";
 
 export { graphql } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
 
-export const authorization = `Bearer ${process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN}`;
 export const domain = `https://${process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!}`;
 export const endpoint = `${domain}/api/${process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_API_VERSION}/graphql.json`;
 
+const headers = new Headers({
+  // "Content-Type": "application/json",
+  "X-Shopify-Storefront-Access-Token": process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN!
+});
+
 export const graphQLClient = new GraphQLClient(endpoint, {
+  // errorPolicy: 'all',
   fetch,
-  headers: {
-    authorization
-  },
+  headers,
 });
 
 export function getShopifyGraphQL<TResult, TVariables>(
   document: TypedDocumentNode<TResult, TVariables>,
   ...[variables]: TVariables extends Record<string, never> ? [] : [TVariables]
 ): Promise<TResult> {
-  return graphQLClient.request(document, variables ?? undefined);
+  try {
+    const request = graphQLClient.request(document, variables ?? undefined);
+
+    return request;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 }
 
 export function useGetShopifyGraphQL<TResult, TVariables>(
   document: TypedDocumentNode<TResult, TVariables>,
   ...[variables]: TVariables extends Record<string, never> ? [] : [TVariables]
 ): UseQueryResult<TResult> {
-  return useQuery(
-    [(document.definitions[0] as any).name.value, variables],
-    async ({ queryKey }) =>
-      graphQLClient.request(document, queryKey[1] ? queryKey[1] : undefined),
-  );
+  try {
+    const name = (document.definitions[0] as any).name.value;
+
+    const query = useQuery(
+      [name, variables],
+      async ({ queryKey }) =>
+        graphQLClient.request(document, queryKey[1] ? queryKey[1] : undefined),
+    );
+
+    return query;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 }
 
 export function getPageImages(mediaImages: PageFragment["mediaImages"]) {
