@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 
 import { Prose } from "@/components/prose";
-import { getPolicy } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { getFragmentData } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
-import { shopPolicyFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments";
-import { type PolicyName } from "@uncnsrdlabel/graphql-shopify-storefront/types";
+import { getFragmentData, getPolicy, shopPolicyFragment, type PolicyName } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { notFound } from "next/navigation";
 
 export const runtime = "edge";

@@ -39,10 +39,13 @@
   "peerDependencies": {
     "@parcel/watcher": "^2.2.0"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "build": "graphql-codegen && tsup src/index.ts --format esm,cjs --dts",
+    "build": "graphql-codegen && tsup",
     "clean": "rm -rf dist",
-    "dev": "graphql-codegen --watch && tsup src/index.ts --format esm,cjs --watch --dts",
+    "dev": "graphql-codegen --watch && tsup --watch",
     "generate:component": "turbo gen react-component",
     "lint": "eslint \"**/*.ts*\"",
     "types:check": "tsc --noEmit"

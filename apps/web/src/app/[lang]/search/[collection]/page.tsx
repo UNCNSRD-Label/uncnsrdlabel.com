@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
-import { defaultSort, sorting } from "@uncnsrdlabel/graphql-shopify-storefront/constants";
+import { defaultSort, sorting } from "@uncnsrdlabel/graphql-shopify-storefront";
 
 export const runtime = "edge";
 

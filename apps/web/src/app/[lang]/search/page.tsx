@@ -1,7 +1,7 @@
 import { Grid } from "@/components/grid/index";
 import { ProductVariantGridItems } from "@/components/layout/product-variant-grid-items";
-import { getProducts } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { defaultSort, sorting } from "@uncnsrdlabel/graphql-shopify-storefront/constants";
+import { flattenConnection } from "@shopify/hydrogen-react";
+import { defaultSort, getProducts, sorting } from "@uncnsrdlabel/graphql-shopify-storefront";
 
 export const runtime = "edge";
 
@@ -19,22 +19,25 @@ export default async function SearchPage({
   const { sortKey, reverse } =
     sorting.find((item) => item.slug === sort) || defaultSort;
 
-  const products = await getProducts({ sortKey, reverse, query: searchValue });
-  const resultsText = products.edges.length > 1 ? "results" : "result";
+  const productConnection = await getProducts({ sortKey, reverse, query: searchValue });
+  
+  const productFragments = flattenConnection(productConnection);
+
+  const resultsText = productFragments.length > 1 ? "results" : "result";
 
   return (
     <>
       {searchValue ? (
         <p>
-          {products.edges.length === 0
+          {productFragments.length === 0
             ? "There are no products that match "
-            : `Showing ${products.edges.length} ${resultsText} for `}
+            : `Showing ${productFragments.length} ${resultsText} for `}
           <span className="font-bold">&quot;{searchValue}&quot;</span>
         </p>
       ) : null}
-      {products.edges.length > 0 ? (
+      {productFragments.length > 0 ? (
         <Grid className="grid-cols-2 lg:grid-cols-3">
-          <ProductVariantGridItems products={products} />
+          <ProductVariantGridItems productFragments={productFragments} />
         </Grid>
       ) : null}
     </>

@@ -36,9 +36,9 @@
     "@parcel/watcher": "^2.2.0"
   },
   "scripts": {
-    "build": "graphql-codegen && tsup src/index.tsx --format esm,cjs --dts --external react",
+    "build": "graphql-codegen && tsup",
     "clean": "rm -rf dist",
-    "dev": "graphql-codegen --watch && tsup src/index.tsx --format esm,cjs --watch --dts --external react",
+    "dev": "graphql-codegen --watch && tsup --watch",
     "generate:component": "turbo gen react-component",
     "lint": "eslint \"**/*.ts*\"",
     "types:check": "tsc --noEmit"

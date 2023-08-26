@@ -8,3 +8,4 @@ export * from "@uncnsrdlabel/graphql-shopify-storefront/queries"
 export * from "@uncnsrdlabel/graphql-shopify-storefront/types"
 export * from "@uncnsrdlabel/graphql-shopify-storefront/utilities"
 
+// export type * from "@uncnsrdlabel/graphql-shopify-storefront/codegen/graphql"

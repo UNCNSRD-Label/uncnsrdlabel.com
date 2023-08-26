@@ -1,21 +1,35 @@
 {
   "compilerOptions": {
+    "allowJs": true,
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
-    },
-    "allowJs": true
+      "@/*": ["./src/*"],
+      // "@uncnsrdlabel/app-web/*": ["./src/*"],
+      // "@uncnsrdlabel/graphql-hygraph/*": [
+      //   "../../packages/graphql-hygraph/src/*"
+      // ],
+      // "@uncnsrdlabel/graphql-shopify-admin/*": [
+      //   "../graphql-shopify-admin/src/*"
+      // ],
+      // "@uncnsrdlabel/graphql-shopify-storefront/*": [
+      //   "../graphql-shopify-storefront/src/*"
+      // ],
+      // "@uncnsrdlabel/lib/*": ["../../packages/lib/src/*"],
+      // "@uncnsrdlabel/providers/*": ["../../packages/providers/src/*"],
+      // "@uncnsrdlabel/tailwind-config/*": [
+      //   "../../packages/tailwind-config/src/*"
+      // ],
+      // "@uncnsrdlabel/types/*": ["../../packages/types/src/*"],
+      // "@uncnsrdlabel/ui/*": ["../../packages/ui/src/*"]
+    }
   },
   "include": [
     "next-env.d.ts",
     "**/*.json",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "@uncnsrdlabel/graphql-shopify-storefront/**/*.ts",
   ],
   "extends": "@uncnsrdlabel/tsconfig/nextjs.json",
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

@@ -1,44 +1,43 @@
 import { Grid } from "@/components/grid";
 import { GridTileImage } from "@/components/grid/tile";
+import { flattenConnection } from "@shopify/hydrogen-react";
 import {
+  FragmentType,
   getFragmentData,
   imageFragment,
   productFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { GetProductsQuery } from "@uncnsrdlabel/graphql-shopify-storefront/codegen/graphql";
 import { transitionDelays } from "@uncnsrdlabel/lib/effects";
 import Link from "next/link";
 
 export function ProductVariantGridItems({
-  products,
+  productFragments,
 }: {
-  products: GetProductsQuery["products"];
+  productFragments: FragmentType<typeof productFragment>[]
 }) {
   return (
     <>
-      {products.edges
-        .map(({ node: productFragmentDef }) =>
-          getFragmentData(productFragment, productFragmentDef),
-        )
-        .map((product, productIndex) => {
-          const variantsMap = new Map(
-            product.variants.edges.map((edge) => {
-              const variant = edge.node;
+      {productFragments
+        .map(({ node: productFragmentRef }, productIndex) => {
+          const product = getFragmentData(productFragment, productFragmentRef);
 
-              const key = variant.selectedOptions?.find(
-                (selectedOption) => selectedOption.name === "Color",
-              )?.value;
+          const variants = flattenConnection(product.variants);
 
-              return [
-                key,
-                { ...variant, fullTitle: `${product.title} in ${key}` },
-              ];
-            }),
-          );
+          const colorVariants = variants.map((variant) => {
+            const key = variant.selectedOptions?.find(
+              (selectedOption) => selectedOption.name === "Color",
+            )?.value;
 
-          const variantsMapArray = Array.from(variantsMap.values());
+            // const image = getFragmentData(imageFragment, variant.image);
 
-          return variantsMapArray.map((variant, variantIndex) => {
+            return { ...variant, fullTitle: `${product.title} in ${key}`, key }
+          });
+
+          const colorVariantsMap = new Map<string, FragmentType<typeof productFragment>>(colorVariants.map((variant) => [variant.key, variant]));
+
+          const colorVariantsMapArray = Array.from(colorVariantsMap.values());
+
+          return colorVariantsMapArray.map((variant, variantIndex) => {
             const image = getFragmentData(imageFragment, variant.image);
 
             return (

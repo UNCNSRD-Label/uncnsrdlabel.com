@@ -1,9 +1,12 @@
 {
   "compilerOptions": {
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "paths": {
+      "@uncnsrdlabel/graphql-hygraph/*": ["./src/*"]
+    },
   },
   "display": "@uncnsrdlabel/graphql-hygraph",
   "extends": "@uncnsrdlabel/tsconfig/react-library.json",
-  "include": ["./src"],
+  "include": ["."],
   "exclude": ["dist", "build", "node_modules"]
 }

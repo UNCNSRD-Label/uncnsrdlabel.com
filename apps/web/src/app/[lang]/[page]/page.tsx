@@ -1,8 +1,14 @@
 import { Image } from "@/components/image";
-import { getPage } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
+import { flattenConnection } from "@shopify/hydrogen-react";
+import {
+  getFragmentData,
+  getPage,
+  imageFragment,
+  seoFragment,
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { use } from "react";
+
 export { revalidate } from "@uncnsrdlabel/lib/constants";
 
 export const runtime = "edge";
@@ -14,13 +20,15 @@ export async function generateMetadata({
 }: {
   params: { page: string };
 }): Promise<Metadata> {
-  const page = use(getPage(params.page));
+  const page = await getPage({ handle: params.page });
 
   if (!page) return notFound();
 
+  const seo = getFragmentData(seoFragment, page.seo);
+
   return {
-    title: page.seo?.title || page.title,
-    description: page.seo?.description || page.bodySummary,
+    title: seo?.title || page.title,
+    description: seo?.description || page.bodySummary,
     openGraph: {
       images: [
         {
@@ -37,29 +45,37 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params }: { params: { page: string } }) {
-  const page = getPage(params.page);
+  const page = await getPage({ handle: params.page });
 
   if (!page) return notFound();
 
-  const images = page.imagesArray;
+  const images = flattenConnection(page.mediaImages.references);
 
   return (
     <>
       <section className="grid gap-0.5">
-        {[...images].map((image, index) => (
-          <figure
-            className="item relative aspect-3/4 w-full snap-start"
-            key={image.id || index}
-          >
-            <Image
-              alt={image.altText}
-              className="h-full object-cover"
-              fill
-              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
-              src={image.url}
-            />
-          </figure>
-        ))}
+        {images?.map((mediaImage, index) => {
+          if (mediaImage.__typename !== "MediaImage") {
+            return null;
+          }
+
+          const image = getFragmentData(imageFragment, mediaImage.image);
+
+          return (
+            <figure
+              className="item aspect-3/4 relative w-full snap-start"
+              key={mediaImage.id || index}
+            >
+              <Image
+                alt={image.altText}
+                className="h-full object-cover"
+                fill
+                sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                src={image.url}
+              />
+            </figure>
+          );
+        })}
       </section>
     </>
   );

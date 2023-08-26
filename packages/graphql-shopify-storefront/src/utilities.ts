@@ -1,25 +1,22 @@
-// import {
-//   type StorefrontApiResponse,
-//   type StorefrontApiResponseError,
-// } from "@shopify/hydrogen-react";
-// import {
-//   addToCartMutation,
-//   createCartMutation,
-//   editCartItemsMutation,
-//   removeFromCartMutation,
-// } from "@uncnsrdlabel/graphql-shopify-storefront/mutations/cart";
+import { type TypedDocumentNode } from "@graphql-typed-document-node/core";
+import { useQuery, type UseQueryResult } from "@tanstack/react-query";
+import { getFragmentData } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
+import {
+  addToCartMutation,
+  createCartMutation,
+  editCartItemsMutation,
+  removeFromCartMutation
+} from "@uncnsrdlabel/graphql-shopify-storefront/mutations/cart";
 import {
   getCollectionProductsQuery,
   getCollectionQuery,
   getCollectionsQuery,
 } from "@uncnsrdlabel/graphql-shopify-storefront/queries/collection";
-// import { getErrorsMessage } from "@uncnsrdlabel/lib/errors";
-// import { isShopifyError } from "@uncnsrdlabel/lib/type-guards";
-import { type TypedDocumentNode } from "@graphql-typed-document-node/core";
-import { useQuery, type UseQueryResult } from "@tanstack/react-query";
-import { getFragmentData } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
 // import { collectionFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/collection";
 import {
+  AddToCartMutationVariables,
+  CreateCartMutationVariables,
+  EditCartItemsMutationVariables,
   GetCartQueryVariables,
   GetCollectionProductsQueryVariables,
   GetCollectionQueryVariables,
@@ -30,6 +27,7 @@ import {
   GetProductRecommendationsQueryVariables,
   GetProductsQueryVariables,
   PageFragment,
+  RemoveFromCartMutationVariables,
   type ImageFragment,
   type MediaImage,
 } from "@uncnsrdlabel/graphql-shopify-storefront/codegen/graphql";
@@ -99,73 +97,73 @@ export function getPageImages(mediaImages: PageFragment["mediaImages"]) {
   return images;
 }
 
-// const isStorefrontApiResponseError = <T>(
-//   response: StorefrontApiResponse<T>,
-// ): response is StorefrontApiResponseError => {
-//   return typeof response === "object" && response.errors !== undefined;
-// };
+export async function createCart(variables: CreateCartMutationVariables) {
+  const { cartCreate } = await getShopifyGraphQL(
+    createCartMutation,
+    variables,
+    // TODO: figure out how to use this
+    // cache: "no-store",
+  );
 
-// export async function createCart(): Promise<Cart> {
-//   const res = await shopifyFetch<ShopifyCreateCartOperation>({
-//     query: createCartMutation,
-//     cache: "no-store",
-//   });
+  if (!cartCreate) {
+    return null;
+  }
 
-//   if (isStorefrontApiResponseError(res.body)) {
-//     throw new Error(getErrorsMessage(res.body));
-//   }
+  console.log({ cartCreate });
 
-//   const cart = res.body.data?.cartCreate.cart;
+  return cartCreate.cart;
+}
 
-//   return cart;
-// }
+export async function addToCart(variables: AddToCartMutationVariables) {
+  const { cartLinesAdd } = await getShopifyGraphQL(
+    addToCartMutation,
+    variables,
+    // TODO: figure out how to use this
+    // cache: "no-store",
+  );
 
-// export async function addToCart(
-//   cartId: string,
-//   lines: { merchandiseId: string; quantity: number }[],
-// ): Promise<Cart> {
-//   const res = await shopifyFetch<ShopifyAddToCartOperation>({
-//     query: addToCartMutation,
-//     variables: {
-//       cartId,
-//       lines,
-//     },
-//     cache: "no-store",
-//   });
-//   return res.body.data.cartLinesAdd.cart;
-// }
+  if (!cartLinesAdd) {
+    return null;
+  }
 
-// export async function removeFromCart(
-//   cartId: string,
-//   lineIds: string[],
-// ): Promise<Cart> {
-//   const res = await shopifyFetch<ShopifyRemoveFromCartOperation>({
-//     query: removeFromCartMutation,
-//     variables: {
-//       cartId,
-//       lineIds,
-//     },
-//     cache: "no-store",
-//   });
+  console.log({ cartLinesAdd });
 
-//   return res.body.data.cartLinesRemove.cart;
-// }
+  return cartLinesAdd.cart;
+}
 
-// export async function updateCart(
-//   cartId: string,
-//   lines: { id: string; merchandiseId: string; quantity: number }[],
-// ): Promise<Cart> {
-//   const res = await shopifyFetch<ShopifyUpdateCartOperation>({
-//     query: editCartItemsMutation,
-//     variables: {
-//       cartId,
-//       lines,
-//     },
-//     cache: "no-store",
-//   });
+export async function removeFromCart(variables: RemoveFromCartMutationVariables) {
+  const { cartLinesRemove } = await getShopifyGraphQL(
+    removeFromCartMutation,
+    variables,
+    // TODO: figure out how to use this
+    // cache: "no-store",
+  );
 
-//   return res.body.data.cartLinesUpdate.cart;
-// }
+  if (!cartLinesRemove) {
+    return null;
+  }
+
+  console.log({ cartLinesRemove });
+
+  return cartLinesRemove.cart;
+}
+
+export async function updateCart(variables: EditCartItemsMutationVariables) {
+  const { cartLinesUpdate } = await getShopifyGraphQL(
+    editCartItemsMutation,
+    variables,
+    // TODO: figure out how to use this
+    // cache: "no-store",
+  );
+
+  if (!cartLinesUpdate) {
+    return null;
+  }
+
+  console.log({ cartLinesUpdate });
+
+  return cartLinesUpdate.cart;
+}
 
 export async function getCart(variables: GetCartQueryVariables) {
   const { cart } = await getShopifyGraphQL(

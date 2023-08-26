@@ -1,6 +1,6 @@
 import getQueryClient from "@/clients/react-query";
 import { dehydrate, Hydrate } from "@tanstack/react-query";
-import { getPage } from "@uncnsrdlabel/graphql-shopify-storefront/utilities";
+import { getPage } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Article, type ArticleProps } from "./article";
 
 export default async function ArticleHydrated({

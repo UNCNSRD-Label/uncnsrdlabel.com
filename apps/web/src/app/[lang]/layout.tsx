@@ -133,7 +133,7 @@ export default async function RootLayout({
         bomberEscortOutline.variable,
         montserrat.variable,
         // "[color-scheme:dark]",
-f        // "snap-y",
+        // "snap-y",
         // "dark"
       )}
       lang={params.lang}
