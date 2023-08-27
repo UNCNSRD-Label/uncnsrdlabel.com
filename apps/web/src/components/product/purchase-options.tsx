@@ -2,7 +2,6 @@ import { AddToCart } from "@/components/cart/add-to-cart";
 import { Price } from "@/components/price";
 import { VariantSelector } from "@/components/product/variant-selector";
 import { Prose } from "@/components/prose";
-import { flattenConnection } from "@shopify/hydrogen-react";
 import { Product } from "@shopify/hydrogen/storefront-api-types";
 import { cn } from "@uncnsrdlabel/lib";
 import { forwardRef } from "react";
@@ -19,7 +18,7 @@ export const PurchaseOptions = forwardRef<
   PurchaseOptionsRef,
   PurchaseOptionsProps
 >(({ className, id, product }, forwardedRef) => {
-  const variants = flattenConnection(product.variants);
+  const variants = product.variants.edges.map((edge) => edge?.node);
 
   return (
     <>

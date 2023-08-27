@@ -2,7 +2,6 @@ import { DeleteItemButton } from "@/components/cart/delete-item-button";
 import { EditItemQuantityButton } from "@/components/cart/edit-item-quantity-button";
 import { Price } from "@/components/price";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
-import { flattenConnection } from "@shopify/hydrogen-react";
 import type { Cart } from "@shopify/hydrogen-react/storefront-api-types";
 import { DEFAULT_OPTION } from "@uncnsrdlabel/lib/constants";
 import { createUrl } from "@uncnsrdlabel/lib/url";
@@ -20,7 +19,7 @@ export async function CartForm({
   cart: Cart | undefined;
   closeCart: () => void;
 }) {
-  const lines = flattenConnection(cart?.lines);
+  const lines = cart?.lines.edges.map((edge) => edge?.node);
 
   return (
     <>

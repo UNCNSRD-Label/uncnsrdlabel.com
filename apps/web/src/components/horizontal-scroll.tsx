@@ -1,5 +1,4 @@
 import { Image } from "@/components/image";
-import { flattenConnection } from "@shopify/hydrogen-react";
 import { getFragmentData, getPage, imageFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { notFound } from "next/navigation";
@@ -9,7 +8,7 @@ export async function HorizontalScroll({ className }: { className?: string }) {
 
   if (!page) return notFound();
 
-  const mediaImages = flattenConnection(page.mediaImages.references);
+  const mediaImages = page.mediaImages.references.edges.map((edge) => edge?.node);
 
   return (
     <div

@@ -5,7 +5,7 @@ import { Images } from "@/components/product/images";
 import { MetaFields } from "@/components/product/metafields";
 import { NavigationMenu } from "@/components/product/navigation-menu";
 import { PurchaseOptions } from "@/components/product/purchase-options";
-import { ProductProvider, flattenConnection } from "@shopify/hydrogen-react";
+import { ProductProvider } from "@shopify/hydrogen-react";
 import { Product } from "@shopify/hydrogen/storefront-api-types";
 import { useRef } from "react";
 
@@ -13,7 +13,7 @@ import { useRef } from "react";
 export function ProductDetails({ product }: { product: Product }) {
   const sectionElementRefs = [useRef(null), useRef(null), useRef(null)];
 
-  const images = flattenConnection(product.images);
+  const images = product.images.edges.map((edge) => edge?.node);
 
   return (
     <ProductProvider data={product}>

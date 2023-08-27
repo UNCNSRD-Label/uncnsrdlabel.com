@@ -1,6 +1,5 @@
 import { Grid } from "@/components/grid/index";
 import { ProductVariantGridItems } from "@/components/layout/product-variant-grid-items";
-import { flattenConnection } from "@shopify/hydrogen-react";
 import {
   getProducts,
   productDefaultSort,
@@ -29,7 +28,7 @@ export default async function SearchPage({
     query: searchValue,
   });
 
-  const productFragments = flattenConnection(productConnection);
+  const productFragments = productConnection.edges.map((edge) => edge?.node);
 
   const resultsText = productFragments.length > 1 ? "results" : "result";
 

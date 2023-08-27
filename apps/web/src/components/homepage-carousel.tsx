@@ -6,7 +6,6 @@ import {
   type NukaCarouselProps,
 } from "@/components/nuka-carousel";
 import { minWidthLg, minWidthSm } from "@/lib/tailwind";
-import { flattenConnection } from "@shopify/hydrogen-react";
 import { getFragmentData, getPage, imageFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib/classname";
 import { notFound } from "next/navigation";
@@ -17,7 +16,7 @@ export function HomepageCarousel(props: NukaCarouselProps) {
 
   if (!page) return notFound();
 
-  const mediaImages = flattenConnection(page.mediaImages.references);
+  const mediaImages = page.mediaImages.references.edges.map((edge) => edge?.node);
 
   const buttonClassName =
     "!px-6 text-6xl drop-shadow focus-visible:!text-stateFocus hover:!text-stateHover";

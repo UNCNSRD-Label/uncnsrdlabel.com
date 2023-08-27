@@ -5,7 +5,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { NavbarContent } from "@/components/layout/navbar/content";
 import { Video, type VideoProps } from "@/components/video";
 import { getIntl } from "@/lib/i18n/server";
-import { themeColors } from "@uncnsrdlabel/lib/effects";
+import { themeColors } from "@uncnsrdlabel/lib";
 import Link from "next/link";
 import { Suspense, use } from "react";
 

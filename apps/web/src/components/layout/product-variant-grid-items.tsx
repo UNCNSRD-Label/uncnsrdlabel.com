@@ -1,6 +1,5 @@
 import { Grid } from "@/components/grid";
 import { GridTileImage } from "@/components/grid/tile";
-import { flattenConnection } from "@shopify/hydrogen-react";
 import {
   FragmentType,
   getFragmentData,
@@ -21,7 +20,7 @@ export function ProductVariantGridItems({
         .map((productFragmentRef, productIndex) => {
           const product = getFragmentData(productFragment, productFragmentRef);
 
-          const variants = flattenConnection(product.variants);
+          const variants = product.variants.edges.map((edge) => edge?.node);
 
           const colorVariants = variants.map((variant) => {
             const key = variant.selectedOptions?.find(

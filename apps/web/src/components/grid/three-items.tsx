@@ -1,8 +1,7 @@
 import { GridTileImage } from "@/components/grid/tile";
 import type { Product } from "@shopify/hydrogen-react/storefront-api-types";
 import {
-  flattenConnection,
-  getCollectionProducts,
+  getCollectionProducts
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import Link from "next/link";
@@ -58,7 +57,7 @@ export async function ThreeItemGrid({ className }: { className?: string }) {
     handle: "hidden-homepage-featured-items",
   });
 
-  const products = flattenConnection(homepageItems);
+  const products = homepageItems.edges.map((edge) => edge?.node);
 
   const [firstProduct, secondProduct, thirdProduct] = products;
 

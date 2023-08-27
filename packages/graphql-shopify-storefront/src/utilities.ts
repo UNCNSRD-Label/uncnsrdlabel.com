@@ -29,37 +29,8 @@ import {
   GetProductsQueryVariables,
   PageFragment,
   RemoveFromCartMutationVariables,
-
-
-  type ArticleConnection,
-  type BaseCartLineConnection,
-  type BlogConnection,
-  type CartDeliveryGroupConnection,
-  type CheckoutLineItemConnection,
-  type CollectionConnection,
-  type CommentConnection,
-  type DiscountApplicationConnection,
-  type FulfillmentLineItemConnection,
-  type ImageConnection,
   type ImageFragment,
-  type LocationConnection,
-  type MailingAddressConnection,
-  type MediaConnection,
-  type MediaImage,
-  type MetafieldReferenceConnection,
-  type MetaobjectConnection,
-  type OrderConnection,
-  type OrderLineItemConnection,
-  type PageConnection,
-  type ProductConnection,
-  type ProductVariantConnection,
-  type SearchResultItemConnection,
-  type SellingPlanAllocationConnection,
-  type SellingPlanConnection,
-  type SellingPlanGroupConnection,
-  type StoreAvailabilityConnection,
-  type StringConnection,
-  type UrlRedirectConnection,
+  type MediaImage
 } from "@uncnsrdlabel/graphql-shopify-storefront/codegen/graphql";
 import {
   collectionFragment,
@@ -80,37 +51,6 @@ import {
 import { type PolicyName } from "@uncnsrdlabel/graphql-shopify-storefront/types";
 import { GraphQLClient } from "graphql-request";
 import { camelCase } from "lodash";
-// import { flattenConnection } from "@uncnsrdlabel/graphql-shopify-storefront/flatten-connection";
-// import { flattenConnection } from "@shopify/hydrogen-react";
-const flattenConnection = (array: ArticleConnection |
-  BaseCartLineConnection |
-  BlogConnection |
-  CartDeliveryGroupConnection |
-  CheckoutLineItemConnection |
-  CollectionConnection |
-  CommentConnection |
-  DiscountApplicationConnection |
-  FulfillmentLineItemConnection |
-  ImageConnection |
-  LocationConnection |
-  MailingAddressConnection |
-  MediaConnection |
-  MetafieldReferenceConnection |
-  MetaobjectConnection |
-  OrderConnection |
-  OrderLineItemConnection |
-  PageConnection |
-  ProductConnection |
-  ProductVariantConnection |
-  SearchResultItemConnection |
-  SellingPlanAllocationConnection |
-  SellingPlanConnection |
-  SellingPlanGroupConnection |
-  StoreAvailabilityConnection |
-  StringConnection |
-  UrlRedirectConnection) => {
-  return array.edges.map((edge) => edge?.node);
-};
 
 export { graphql } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
 
@@ -302,12 +242,7 @@ export async function getCollectionProducts(
 
   console.log({ collection });
 
-  const { products: productConnection } = collection;
-
-  const products = flattenConnection(productConnection).map(
-    (productFragmentRef) =>
-      getFragmentData(productFragment, productFragmentRef),
-  );
+  const { products } = collection;
 
   return products;
 }
@@ -325,7 +260,7 @@ export async function getCollections() {
 
   console.log({ shopifyCollectionConnection });
 
-  const shopifyCollections = flattenConnection(shopifyCollectionConnection);
+  const shopifyCollections = shopifyCollectionConnection.edges.map((edge) => edge?.node);
 
   const collections: CollectionFragment[] = [
     {
