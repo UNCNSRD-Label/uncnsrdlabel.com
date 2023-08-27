@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@shopify/hydrogen": "^2023.7.3",
     "@types/node": "^20.5.6",
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "@uncnsrdlabel/tsconfig": "workspace:*",

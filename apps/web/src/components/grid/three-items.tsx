@@ -1,5 +1,5 @@
 import { GridTileImage } from "@/components/grid/tile";
-import type { Product } from "@shopify/hydrogen-react/storefront-api-types";
+import type { Product } from "@shopify/hydrogen/storefront-api-types";
 import {
   getCollectionProducts
 } from "@uncnsrdlabel/graphql-shopify-storefront";

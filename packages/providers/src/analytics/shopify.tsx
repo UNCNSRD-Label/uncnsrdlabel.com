@@ -12,7 +12,7 @@ import {
 import type {
   CurrencyCode,
   LanguageCode,
-} from "@shopify/hydrogen-react/storefront-api-types";
+} from "@shopify/hydrogen/storefront-api-types";
 import { Cookies } from "react-cookie";
 
 import { PluginEventFunctions } from "@uncnsrdlabel/providers/analytics/types";

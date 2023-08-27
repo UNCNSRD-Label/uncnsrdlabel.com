@@ -1,4 +1,4 @@
-import { type Product } from "@shopify/hydrogen-react/storefront-api-types";
+import { type Product } from "@shopify/hydrogen/storefront-api-types";
 
 // eslint-disable-next-line no-unused-vars
 export type PluginEventFunction = (options: {

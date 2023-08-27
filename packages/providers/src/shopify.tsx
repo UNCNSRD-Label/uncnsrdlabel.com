@@ -4,7 +4,7 @@ import { CartProvider, ShopifyProvider } from "@shopify/hydrogen-react";
 import {
   type CountryCode,
   type LanguageCode,
-} from "@shopify/hydrogen-react/storefront-api-types";
+} from "@shopify/hydrogen/storefront-api-types";
 import { PropsWithChildren } from "react";
 
 const storefrontToken =

@@ -6,7 +6,7 @@ import {
   AccordionTrigger,
 } from "@/components/accordion";
 import { MetafieldMapper } from "@/components/product/metafield-mapper";
-import { Metafield } from "@shopify/hydrogen-react/storefront-api-types";
+import { Metafield } from "@shopify/hydrogen/storefront-api-types";
 import { cn } from "@uncnsrdlabel/lib";
 import { forwardRef } from "react";
 

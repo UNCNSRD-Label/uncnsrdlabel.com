@@ -1,4 +1,4 @@
-import { Metafield, Metaobject } from "@shopify/hydrogen-react/storefront-api-types";
+import { Metafield, Metaobject } from "@shopify/hydrogen/storefront-api-types";
 import { ReactNode } from "react";
 
 export const MetafieldMapper = ({ metafield }: { metafield: Metafield }) => {
