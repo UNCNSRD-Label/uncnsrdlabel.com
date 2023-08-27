@@ -53,11 +53,13 @@ export default async function CategoryPage({
   const { sortKey, reverse } =
     productCollectionSorting.find((item) => item.slug === sort) || defaultSort;
 
-  const products = await getCollectionProducts({
+  const collectionProducts = await getCollectionProducts({
     handle: params.collection,
     sortKey,
     reverse,
   });
+
+  const products = collectionProducts.edges.map((edge) => edge?.node);
 
   return (
     <section>

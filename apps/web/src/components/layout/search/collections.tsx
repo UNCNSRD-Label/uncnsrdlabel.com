@@ -1,13 +1,12 @@
-import { Suspense } from "react";
-
-import { getCollections } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { ProductCollectionSortFilterItem, getCollections } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
+import { Suspense } from "react";
 import { FilterList } from "./filter";
 
 async function CollectionList() {
-  const collections = await getCollections();
-  
-  return <FilterList collections={collections} title="Collections" />;
+  const collections = await getCollections() satisfies ProductCollectionSortFilterItem[];
+
+  return <FilterList list={collections} title="Collections" />;
 }
 
 const skeleton = "mb-3 h-4 w-5/6 animate-pulse rounded";

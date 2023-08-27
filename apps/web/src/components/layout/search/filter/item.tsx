@@ -1,28 +1,29 @@
 "use client";
 
-import { SortFilterItem, cn } from "@uncnsrdlabel/lib";
+import { ProductCollectionSortFilterItem } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { cn } from "@uncnsrdlabel/lib";
 import { createUrl } from "@uncnsrdlabel/lib/url";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import type { ListItem, PathFilterItem } from "./index";
 
-function PathFilterItem({ item }: { item: PathFilterItem }) {
+function PathFilterItem({ item }: { item: ProductCollectionSortFilterItem }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [active, setActive] = useState(pathname === item.path);
+  const path = `/collections/${item.handle}`;
+  const [active, setActive] = useState(pathname === path);
   const newParams = new URLSearchParams(searchParams.toString());
 
   newParams.delete("q");
 
   useEffect(() => {
-    setActive(pathname === item.path);
-  }, [pathname, item.path]);
+    setActive(pathname === path);
+  }, [pathname, path]);
 
   return (
     <li className="mt-2 flex text-sm text-gray-400" key={item.title}>
       <Link
-        href={createUrl(item.path, newParams)}
+        href={createUrl(path, newParams)}
         className={cn("w-full hover:text-gray-800 dark:hover:text-gray-100", {
           "text-gray-600 dark:text-gray-400": !active,
           "font-semibold text-dark dark:text-light": active,
@@ -34,23 +35,24 @@ function PathFilterItem({ item }: { item: PathFilterItem }) {
   );
 }
 
-function SortFilterItem({ item }: { item: SortFilterItem }) {
+function SortFilterItem({ item }: { item: ProductCollectionSortFilterItem }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [active, setActive] = useState(searchParams.get("sort") === item.slug);
+  const path = `/collections/${item.handle}`;
+  const [active, setActive] = useState(searchParams.get("sort") === path);
   const q = searchParams.get("q");
 
   useEffect(() => {
-    setActive(searchParams.get("sort") === item.slug);
-  }, [searchParams, item.slug]);
+    setActive(searchParams.get("sort") === path);
+  }, [searchParams, path]);
 
   const href =
-    item.slug && item.slug.length
+    path && path.length
       ? createUrl(
           pathname,
           new URLSearchParams({
             ...(q && { q }),
-            sort: item.slug,
+            sort: path,
           }),
         )
       : pathname;
@@ -71,7 +73,7 @@ function SortFilterItem({ item }: { item: SortFilterItem }) {
   );
 }
 
-export function FilterItem({ item }: { item: ListItem }) {
+export function FilterItem({ item }: { item: ProductCollectionSortFilterItem }) {
   return "path" in item ? (
     <PathFilterItem item={item} />
   ) : (

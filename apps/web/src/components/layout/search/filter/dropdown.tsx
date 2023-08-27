@@ -1,22 +1,12 @@
 "use client";
 
 import { CaretRightIcon } from "@/components/icons/caret-right";
-import { Collection } from "@shopify/hydrogen-react/storefront-api-types";
+import { ProductCollectionSortFilterItem } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { PartialDeep } from "type-fest";
 import { FilterItem } from "./item";
 
-export function FilterItemDropdown({
-  collections,
-}: {
-  collections: PartialDeep<
-    Collection,
-    {
-      recurseIntoArrays: true;
-    }
-  >[];
-}) {
+export function FilterItemDropdown({ list }: { list: ProductCollectionSortFilterItem[] }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [active, setActive] = useState("");
@@ -34,25 +24,16 @@ export function FilterItemDropdown({
     return () => window.removeEventListener("click", handleClickOutside);
   }, []);
 
-  useEffect(() => {
-    collections.forEach(
-      (
-        collection: PartialDeep<
-          Collection,
-          {
-            recurseIntoArrays: true;
-          }
-        >,
-      ) => {
-        if (
-          ("path" in collection && pathname === collection.path) ||
-          ("slug" in collection && searchParams.get("sort") === collection.slug)
-        ) {
-          setActive(collection.title);
-        }
-      },
-    );
-  }, [pathname, collections, searchParams]);
+  useEffect(() => {  
+    list.forEach((collection) => {
+      if (
+        ("path" in collection && pathname === collection.path) ||
+        ("slug" in collection && searchParams.get("sort") === collection.slug)
+      ) {
+        setActive(collection.title);
+      }
+    });
+  }, [pathname, list, searchParams]);
 
   return (
     <div className="relative" ref={ref}>
@@ -71,23 +52,11 @@ export function FilterItemDropdown({
             setOpenSelect(false);
           }}
           className="absolute z-40 w-full rounded-b-md bg-white p-4 shadow-md dark:bg-black"
-        >
-          {collections.map(
-            (
-              collection: PartialDeep<
-                Collection,
-                {
-                  recurseIntoArrays: true;
-                }
-              >,
-              index,
-            ) => (
-              <FilterItem
-                key={collection.title || index}
-                collection={collection}
-              />
-            ),
-          )}
+        >import { ProductCollectionSortFilterItem } from "@uncnsrdlabel/graphql-shopify-storefront";
+        
+          {list.map((item: ProductCollectionSortFilterItem, index) => (
+            <FilterItem key={item.title || index} item={item} />
+          ))}
         </div>
       )}
     </div>
