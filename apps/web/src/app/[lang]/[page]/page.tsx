@@ -47,12 +47,12 @@ export default async function Page({ params }: { params: { page: string } }) {
 
   if (!page) return notFound();
 
-  const images = flattenConnection(page.mediaImages.references);
+  const mediaImages = flattenConnection(page.mediaImages.references);
 
   return (
     <>
       <section className="grid gap-0.5">
-        {images?.map((mediaImage, index) => {
+        {mediaImages?.map((mediaImage, index) => {
           if (mediaImage.__typename !== "MediaImage") {
             return null;
           }

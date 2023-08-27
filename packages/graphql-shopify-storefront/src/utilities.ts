@@ -1,11 +1,12 @@
 import { type TypedDocumentNode } from "@graphql-typed-document-node/core";
 import { useQuery, type UseQueryResult } from "@tanstack/react-query";
 import { getFragmentData } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
+import { CollectionFragment } from "@uncnsrdlabel/graphql-shopify-storefront/codegen/graphql";
 import {
   addToCartMutation,
   createCartMutation,
   editCartItemsMutation,
-  removeFromCartMutation
+  removeFromCartMutation,
 } from "@uncnsrdlabel/graphql-shopify-storefront/mutations/cart";
 import {
   getCollectionProductsQuery,
@@ -13,6 +14,7 @@ import {
   getCollectionsQuery,
 } from "@uncnsrdlabel/graphql-shopify-storefront/queries/collection";
 // import { collectionFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/collection";
+import { flattenConnection } from "@shopify/hydrogen-react";
 import {
   AddToCartMutationVariables,
   CreateCartMutationVariables,
@@ -32,6 +34,7 @@ import {
   type MediaImage,
 } from "@uncnsrdlabel/graphql-shopify-storefront/codegen/graphql";
 import {
+  collectionFragment,
   imageFragment,
   pageFragment,
   productFragment,
@@ -52,12 +55,14 @@ import { camelCase } from "lodash";
 
 export { graphql } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
 
-export const domain = `https://${process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!}`;
+export const domain = `https://${process.env
+  .NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!}`;
 export const endpoint = `${domain}/api/${process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_API_VERSION}/graphql.json`;
 
 const headers = new Headers({
   // "Content-Type": "application/json",
-  "X-Shopify-Storefront-Access-Token": process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN!
+  "X-Shopify-Storefront-Access-Token":
+    process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN!,
 });
 
 export const graphQLClient = new GraphQLClient(endpoint, {
@@ -87,10 +92,8 @@ export function useGetShopifyGraphQL<TResult, TVariables>(
   try {
     const name = (document.definitions[0] as any).name.value;
 
-    const query = useQuery(
-      [name, variables],
-      async ({ queryKey }) =>
-        graphQLClient.request(document, queryKey[1] ? queryKey[1] : undefined),
+    const query = useQuery([name, variables], async ({ queryKey }) =>
+      graphQLClient.request(document, queryKey[1] ? queryKey[1] : undefined),
     );
 
     return query;
@@ -150,7 +153,9 @@ export async function addToCart(variables: AddToCartMutationVariables) {
   return cartLinesAdd.cart;
 }
 
-export async function removeFromCart(variables: RemoveFromCartMutationVariables) {
+export async function removeFromCart(
+  variables: RemoveFromCartMutationVariables,
+) {
   const { cartLinesRemove } = await getShopifyGraphQL(
     removeFromCartMutation,
     variables,
@@ -202,16 +207,21 @@ export async function getCart(variables: GetCartQueryVariables) {
 }
 
 export async function getCollection(variables: GetCollectionQueryVariables) {
-  const { collection } = await getShopifyGraphQL(getCollectionQuery, variables);
+  const { collection: collectionFragmentRef } = await getShopifyGraphQL(
+    getCollectionQuery,
+    variables,
+  );
 
-  if (!collection) {
+  if (!collectionFragmentRef) {
     throw {
       status: 404,
       message: `Collection not found for handle \`${variables.handle}\``,
     };
   }
 
-  console.log({ collection });
+  console.log({ collectionFragmentRef });
+
+  const collection = getFragmentData(collectionFragment, collectionFragmentRef);
 
   return collection;
 }
@@ -233,44 +243,51 @@ export async function getCollectionProducts(
 
   console.log({ collection });
 
-  const { products } = collection;
+  const { products: productConnection } = collection;
+
+  const products = flattenConnection(productConnection).map(
+    (productFragmentRef) =>
+      getFragmentData(productFragment, productFragmentRef),
+  );
 
   return products;
 }
 
 export async function getCollections() {
-  const { collections: shopifyCollections } =
+  const { collections: shopifyCollectionConnection } =
     await getShopifyGraphQL(getCollectionsQuery);
 
-  if (!shopifyCollections) {
+  if (!shopifyCollectionConnection) {
     throw {
       status: 404,
       message: `Collections not found`,
     };
   }
 
-  console.log({ shopifyCollections });
+  console.log({ shopifyCollectionConnection });
 
-  // const shopifyCollections = getFragmentData(collectionFragment, collectionsFragmentRef);
+  const shopifyCollections = flattenConnection(shopifyCollectionConnection);
 
-  const collections = [
+  const collections: CollectionFragment[] = [
     {
+      __typename: "Collection",
       handle: "",
       title: "All",
       description: "All products",
       seo: {
-        title: "All",
-        description: "All products",
+      //   title: "All",
+      //   description: "All products",
       },
-      path: "/search",
+      // path: "/search",
       updatedAt: new Date().toISOString(),
     },
     // Filter out the `hidden` collections.
     // Collections that start with `hidden-*` need to be hidden on the search page.
-    // ...reshapeCollections(shopifyCollections).filter(
-    //   (collection) => !collection.handle.startsWith("hidden"),
-    // ),
-    // ...shopifyCollections?.edges.map(({ node }) => getFragmentData(collectionFragment, node))
+    ...shopifyCollections
+      .map((collectionFragmentRef) =>
+        getFragmentData(collectionFragment, collectionFragmentRef),
+      )
+      .filter((collection) => !collection.handle.startsWith("hidden")),
   ];
 
   return collections;

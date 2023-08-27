@@ -11,9 +11,19 @@ import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { PartialDeep } from "type-fest";
 import { NavbarSearch } from "./search";
 
-export function SidebarMenu({ menu }: { menu: Menu[] }) {
+export function SidebarMenu({
+  menu,
+}: {
+  menu: PartialDeep<
+    Menu,
+    {
+      recurseIntoArrays: true;
+    }
+  >;
+}) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [sidebarMenuIsOpen, setSidebarMenuIsOpen] = useState(false);
@@ -95,12 +105,12 @@ export function SidebarMenu({ menu }: { menu: Menu[] }) {
                 <div className="mb-4 w-full">
                   <NavbarSearch />
                 </div>
-                {menu.length ? (
+                {menu.itemsCount > 0 ? (
                   <ul className="flex flex-1 flex-col gap-2">
-                    {menu.map((item: Menu, index) => (
+                    {menu.items.map((item, index) => (
                       <li key={item.title || index}>
                         <Link
-                          href={item.path}
+                          href={item.url}
                           className="rounded-lg py-1 text-sm uppercase text-inherit"
                           onClick={() => {
                             setSidebarMenuIsOpen(false);

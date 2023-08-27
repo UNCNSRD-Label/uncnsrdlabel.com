@@ -1,5 +1,7 @@
 "use server";
 
+import { type KlaviyoResponse } from "@uncnsrdlabel/types";
+
 export async function signUpAction(
   formData: FormData,
   custom_source: string = "Website",

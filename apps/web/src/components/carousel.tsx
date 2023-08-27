@@ -1,5 +1,5 @@
 import { Image } from "@/components/image";
-import { getCollectionProducts, getFragmentData, getPage, imageFragment, productFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { getCollectionProducts, getFragmentData, getPage, imageFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -15,15 +15,14 @@ export async function Carousel() {
     handle: "hidden-homepage-carousel",
   });
 
-  if (!products?.edges.length) {
+  if (!products?.length) {
     return null;
   }
 
   return (
     <div className="relative w-full overflow-hidden">
       <div className="flex animate-carousel">
-        {products.edges.map(({ node }, index) => {
-          const product = getFragmentData(productFragment, node);
+        {products.map((product, index) => {
           const featuredImage = getFragmentData(imageFragment, product.featuredImage);
 
           return (

@@ -1,8 +1,12 @@
 import { GridTileImage } from "@/components/grid/tile";
 import type { Product } from "@shopify/hydrogen-react/storefront-api-types";
-import { getCollectionProducts } from "@uncnsrdlabel/graphql-shopify-storefront";
+import {
+  flattenConnection,
+  getCollectionProducts,
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import Link from "next/link";
+import { PartialDeep } from "type-fest";
 
 function ThreeItemGridItem({
   className,
@@ -11,7 +15,12 @@ function ThreeItemGridItem({
   background,
 }: {
   className?: string;
-  item: Product;
+  item: PartialDeep<
+    Product,
+    {
+      recurseIntoArrays: true;
+    }
+  >;
   size: "full" | "half";
   background: "white" | "pink" | "purple" | "black";
 }) {
@@ -46,12 +55,12 @@ function ThreeItemGridItem({
 export async function ThreeItemGrid({ className }: { className?: string }) {
   // Collections that start with `hidden-*` are hidden from the search page.
   const homepageItems = await getCollectionProducts({
-    collection: "hidden-homepage-featured-items",
+    handle: "hidden-homepage-featured-items",
   });
 
-  if (!homepageItems[0] || !homepageItems[1] || !homepageItems[2]) return null;
+  const products = flattenConnection(homepageItems);
 
-  const [firstProduct, secondProduct, thirdProduct] = homepageItems;
+  const [firstProduct, secondProduct, thirdProduct] = products;
 
   return (
     <section

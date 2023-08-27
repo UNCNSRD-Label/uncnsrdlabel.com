@@ -1,7 +1,11 @@
 import { Grid } from "@/components/grid/index";
 import { ProductVariantGridItems } from "@/components/layout/product-variant-grid-items";
 import { flattenConnection } from "@shopify/hydrogen-react";
-import { defaultSort, getProducts, sorting } from "@uncnsrdlabel/graphql-shopify-storefront";
+import {
+  defaultSort,
+  getProducts,
+  productSorting,
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 
 export const runtime = "edge";
 
@@ -17,10 +21,14 @@ export default async function SearchPage({
 }) {
   const { sort, q: searchValue } = searchParams as { [key: string]: string };
   const { sortKey, reverse } =
-    sorting.find((item) => item.slug === sort) || defaultSort;
+    productSorting.find((item) => item.slug === sort) || defaultSort;
 
-  const productConnection = await getProducts({ sortKey, reverse, query: searchValue });
-  
+  const productConnection = await getProducts({
+    sortKey,
+    reverse,
+    query: searchValue,
+  });
+
   const productFragments = flattenConnection(productConnection);
 
   const resultsText = productFragments.length > 1 ? "results" : "result";

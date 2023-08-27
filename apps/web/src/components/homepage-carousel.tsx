@@ -4,7 +4,8 @@ import {
   type NukaCarouselProps,
 } from "@/components/nuka-carousel";
 import { minWidthLg, minWidthSm } from "@/lib/tailwind";
-import { getPage, getPageImages } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { flattenConnection } from "@shopify/hydrogen-react";
+import { getFragmentData, getPage, imageFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib/classname";
 import { notFound } from "next/navigation";
 import { Suspense, use } from "react";
@@ -14,7 +15,7 @@ export function HomepageCarousel(props: NukaCarouselProps) {
 
   if (!page) return notFound();
 
-  const images = getPageImages(page.mediaImages)
+  const mediaImages = flattenConnection(page.mediaImages.references);
 
   const buttonClassName =
     "!px-6 text-6xl drop-shadow focus-visible:!text-stateFocus hover:!text-stateHover";
@@ -60,7 +61,14 @@ export function HomepageCarousel(props: NukaCarouselProps) {
         speed={1500}
         wrapAround
       >
-        {images.map((image, index) => (
+        {mediaImages.map((mediaImage, index) => {
+          if (mediaImage.__typename !== "MediaImage") {
+            return null;
+          }
+
+          const image = getFragmentData(imageFragment, mediaImage.image);
+
+          return (
           <figure className="item aspect-3/4 relative" key={image.url || index}>
             <Image
               alt={image.altText}
@@ -71,7 +79,7 @@ export function HomepageCarousel(props: NukaCarouselProps) {
               src={image.url}
             />
           </figure>
-        ))}
+        )})}
       </NukaCarousel>
     </Suspense>
   );

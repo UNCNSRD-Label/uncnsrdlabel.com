@@ -5,10 +5,11 @@ import { use } from "react";
 
 export function Cart() {
   const cartId = cookies().get("cartId")?.value;
+
   let cart;
 
   if (cartId) {
-    cart = use(getCart(cartId));
+    cart = use(getCart({ cartId }));
   }
 
   if (cart) {

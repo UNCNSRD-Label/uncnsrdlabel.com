@@ -1,10 +1,15 @@
-import { getCollection, getCollectionProducts } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
-
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
-import { defaultSort, sorting } from "@uncnsrdlabel/graphql-shopify-storefront";
+import {
+  defaultSort,
+  getCollection,
+  getCollectionProducts,
+  getFragmentData,
+  productCollectionSorting,
+  seoFragment,
+} from "@uncnsrdlabel/graphql-shopify-storefront";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 export const runtime = "edge";
 
@@ -13,14 +18,16 @@ export async function generateMetadata({
 }: {
   params: { collection: string };
 }): Promise<Metadata> {
-  const collection = await getCollection(params.collection);
+  const collection = await getCollection({ handle: params.collection });
 
   if (!collection) return notFound();
 
+  const seo = getFragmentData(seoFragment, collection.seo);
+
   return {
-    title: collection.seo?.title || collection.title,
+    title: seo?.title || collection.title,
     description:
-      collection.seo?.description ||
+      seo?.description ||
       collection.description ||
       `${collection.title} products`,
     openGraph: {
@@ -44,9 +51,10 @@ export default async function CategoryPage({
 }) {
   const { sort } = searchParams as { [key: string]: string };
   const { sortKey, reverse } =
-    sorting.find((item) => item.slug === sort) || defaultSort;
+    productCollectionSorting.find((item) => item.slug === sort) || defaultSort;
+
   const products = await getCollectionProducts({
-    collection: params.collection,
+    handle: params.collection,
     sortKey,
     reverse,
   });

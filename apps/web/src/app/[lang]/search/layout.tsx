@@ -4,7 +4,7 @@ import { NavbarContent } from "@/components/layout/navbar/content";
 import { Collections } from "@/components/layout/search/collections";
 import { FilterList } from "@/components/layout/search/filter";
 import { PageTransition } from "@/components/page-transition";
-import { sorting } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { productCollectionSorting } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { Suspense } from "react";
 
@@ -38,7 +38,7 @@ export default function SearchLayout({
                 process.env.NEXT_PUBLIC_FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE !== "true" && "hidden",
               )}
             >
-              <FilterList list={sorting} title="Sort by" />
+              <FilterList list={productCollectionSorting} title="Sort by" />
             </div>
           </div>
         </PageTransition>

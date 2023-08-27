@@ -15,7 +15,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
 const documents = {
     "\n  fragment cart on Cart {\n    id\n    checkoutUrl\n    cost {\n      subtotalAmount {\n        amount\n        currencyCode\n      }\n      totalAmount {\n        amount\n        currencyCode\n      }\n      totalTaxAmount {\n        amount\n        currencyCode\n      }\n    }\n    lines(first: 100) {\n      edges {\n        node {\n          id\n          quantity\n          cost {\n            totalAmount {\n              amount\n              currencyCode\n            }\n          }\n          merchandise {\n            ... on ProductVariant {\n              id\n              title\n              selectedOptions {\n                name\n                value\n              }\n              product {\n                ...product\n              }\n            }\n          }\n        }\n      }\n    }\n    totalQuantity\n  }\n": types.CartFragmentDoc,
     "\n  fragment collection on Collection {\n    handle\n    title\n    description\n    seo {\n      ...seo\n    }\n    updatedAt\n  }\n": types.CollectionFragmentDoc,
-    "\n  fragment image on Image {\n    url\n    altText\n    width\n    height\n  }\n": types.ImageFragmentDoc,
+    "\n  fragment image on Image {\n    altText\n    height\n    id\n    url\n    width\n  }\n": types.ImageFragmentDoc,
     "\n  fragment page on Page {\n    id\n    title\n    handle\n    body\n    bodySummary\n    seo {\n      ...seo\n    }\n    createdAt\n    updatedAt\n    mediaImages: metafield(namespace: \"custom\", key: \"images\") {\n      value\n      references(first: 10) {\n        edges {\n          node {\n            ... on MediaImage {\n              __typename\n              id\n              image {\n                ...image\n              }\n              mediaContentType\n            }\n          }\n        }\n      }\n    }\n  }\n": types.PageFragmentDoc,
     "\n  fragment product on Product {\n    id\n    handle\n    availableForSale\n    title\n    collections(first: 250) {\n      edges {\n        node {\n          id\n          handle\n          title\n        }\n      }\n    }\n    description\n    descriptionHtml\n    options {\n      id\n      name\n      values\n    }\n    priceRange {\n      maxVariantPrice {\n        amount\n        currencyCode\n      }\n      minVariantPrice {\n        amount\n        currencyCode\n      }\n    }\n    compareAtPriceRange {\n      maxVariantPrice {\n        amount\n        currencyCode\n      }\n      minVariantPrice {\n        amount\n        currencyCode\n      }\n    }\n    variants(first: 250) {\n      edges {\n        node {\n          id\n          image {\n            ...image\n          }\n          title\n          availableForSale\n          selectedOptions {\n            name\n            value\n          }\n          price {\n            amount\n            currencyCode\n          }\n        }\n      }\n    }\n    featuredImage {\n      ...image\n    }\n    images(first: 20) {\n      edges {\n        node {\n          ...image\n        }\n      }\n    }\n    seo {\n      ...seo\n    }\n    tags\n    updatedAt\n    vendor\n  }\n": types.ProductFragmentDoc,
     "\n  fragment seo on SEO {\n    description\n    title\n  }\n": types.SeoFragmentDoc,
@@ -28,7 +28,7 @@ const documents = {
     "\n  query getCollection($handle: String!) {\n    collection(handle: $handle) {\n      ...collection\n    }\n  }\n": types.GetCollectionDocument,
     "\n  query getCollections {\n    collections(first: 100, sortKey: TITLE) {\n      edges {\n        node {\n          ...collection\n        }\n      }\n    }\n  }\n": types.GetCollectionsDocument,
     "\n  query getCollectionProducts(\n    $handle: String!\n    $sortKey: ProductCollectionSortKeys\n    $reverse: Boolean\n  ) {\n    collection(handle: $handle) {\n      products(sortKey: $sortKey, reverse: $reverse, first: 100) {\n        edges {\n          node {\n            ...product\n          }\n        }\n      }\n    }\n  }\n": types.GetCollectionProductsDocument,
-    "\n  query getMenu($handle: String!) {\n    menu(handle: $handle) {\n      items {\n        title\n        url\n      }\n    }\n  }\n": types.GetMenuDocument,
+    "\n  query getMenu($handle: String!) {\n    menu(handle: $handle) {\n      id\n      items {\n        title\n        url\n      }\n    }\n  }\n": types.GetMenuDocument,
     "\n  query getPage($handle: String!) {\n    pageByHandle(handle: $handle) {\n      ...page\n    }\n  }\n": types.GetPageDocument,
     "\n  query getPages($first: Int! = 250) {\n    pages(first: $first) {\n      edges {\n        node {\n          ...page\n        }\n      }\n    }\n  }\n": types.GetPagesDocument,
     "\n  query getPolicies {\n    shop {\n      privacyPolicy {\n        ...shopPolicy\n      }\n      refundPolicy {\n        ...shopPolicy\n      }\n      shippingPolicy {\n        ...shopPolicy\n      }\n      termsOfService {\n        ...shopPolicy\n      }\n    }\n  }\n": types.GetPoliciesDocument,
@@ -62,7 +62,7 @@ export function graphql(source: "\n  fragment collection on Collection {\n    ha
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  fragment image on Image {\n    url\n    altText\n    width\n    height\n  }\n"): (typeof documents)["\n  fragment image on Image {\n    url\n    altText\n    width\n    height\n  }\n"];
+export function graphql(source: "\n  fragment image on Image {\n    altText\n    height\n    id\n    url\n    width\n  }\n"): (typeof documents)["\n  fragment image on Image {\n    altText\n    height\n    id\n    url\n    width\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -114,7 +114,7 @@ export function graphql(source: "\n  query getCollectionProducts(\n    $handle: 
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query getMenu($handle: String!) {\n    menu(handle: $handle) {\n      items {\n        title\n        url\n      }\n    }\n  }\n"): (typeof documents)["\n  query getMenu($handle: String!) {\n    menu(handle: $handle) {\n      items {\n        title\n        url\n      }\n    }\n  }\n"];
+export function graphql(source: "\n  query getMenu($handle: String!) {\n    menu(handle: $handle) {\n      id\n      items {\n        title\n        url\n      }\n    }\n  }\n"): (typeof documents)["\n  query getMenu($handle: String!) {\n    menu(handle: $handle) {\n      id\n      items {\n        title\n        url\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

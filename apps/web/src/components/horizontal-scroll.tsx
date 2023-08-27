@@ -1,14 +1,15 @@
 import { Image } from "@/components/image";
-import { getPage } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { flattenConnection } from "@shopify/hydrogen-react";
+import { getFragmentData, getPage, imageFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { notFound } from "next/navigation";
 
 export async function HorizontalScroll({ className }: { className?: string }) {
-  const page = await getPage("home");
+  const page = await getPage({ handle: "home" });
 
   if (!page) return notFound();
 
-  const images = page.imagesArray;
+  const mediaImages = flattenConnection(page.mediaImages.references);
 
   return (
     <div
@@ -21,13 +22,20 @@ export async function HorizontalScroll({ className }: { className?: string }) {
         <div
           className="pin-wrap grid w-[calc((((100dvh_/_4)_*_3)_+_theme(gap[0.5]))_*_6)] gap-0.5"
           style={{
-            gridTemplateColumns: `repeat(${images.length}, 1fr)`,
+            gridTemplateColumns: `repeat(${mediaImages.length}, 1fr)`,
           }}
         >
-          {[...images].map((image, index) => (
+          {mediaImages?.map((mediaImage, index) => {
+            if (mediaImage.__typename !== "MediaImage") {
+              return null;
+            }
+  
+            const image = getFragmentData(imageFragment, mediaImage.image);
+
+            return (
             <figure
               className="item aspect-3/4 relative w-full"
-              key={image.id || index}
+              key={mediaImage.id || index}
             >
               <Image
                 alt={image.altText}
@@ -37,7 +45,7 @@ export async function HorizontalScroll({ className }: { className?: string }) {
                 src={image.url}
               />
             </figure>
-          ))}
+          )})}
         </div>
       </div>
     </div>

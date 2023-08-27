@@ -1,9 +1,13 @@
 "use client";
 
-import { ProductOption, ProductVariant } from "@shopify/hydrogen-react/storefront-api-types";
+import {
+  ProductOption,
+  ProductVariant,
+} from "@shopify/hydrogen-react/storefront-api-types";
 import { cn } from "@uncnsrdlabel/lib";
 import { createUrl } from "@uncnsrdlabel/lib/url";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { PartialDeep } from "type-fest";
 
 type Combination = {
   id: string;
@@ -16,7 +20,12 @@ export function VariantSelector({
   variants,
 }: {
   options: ProductOption[];
-  variants: ProductVariant[];
+  variants: PartialDeep<
+    ProductVariant,
+    {
+      recurseIntoArrays: true;
+    }
+  >[];
 }) {
   const router = useRouter();
   const pathname = usePathname();

@@ -5,30 +5,17 @@ import { Images } from "@/components/product/images";
 import { MetaFields } from "@/components/product/metafields";
 import { NavigationMenu } from "@/components/product/navigation-menu";
 import { PurchaseOptions } from "@/components/product/purchase-options";
-import { ProductProvider } from "@shopify/hydrogen-react";
-import { Image, type Product as ShopifyProduct } from "@shopify/hydrogen-react/storefront-api-types";
-import {
-  FragmentType, getFragmentData,
-  productFragment
-} from "@uncnsrdlabel/graphql-shopify-storefront";
+import { ProductProvider, flattenConnection } from "@shopify/hydrogen-react";
+import { Product } from "@shopify/hydrogen/storefront-api-types";
 import { useRef } from "react";
-import { type PartialDeep } from "type-fest";
 
-export function ProductDetails({ productFragmentRef }: { productFragmentRef: FragmentType<typeof productFragment> }) {
+export function ProductDetails({ product }: { product: Product }) {
   const sectionElementRefs = [useRef(null), useRef(null), useRef(null)];
-  const product = getFragmentData(productFragment, productFragmentRef);
+
+  const images = flattenConnection(product.images);
 
   return (
-    <ProductProvider
-      data={
-        product as PartialDeep<
-          ShopifyProduct,
-          {
-            recurseIntoArrays: true;
-          }
-        >
-      }
-    >
+    <ProductProvider data={product}>
       <NavigationMenu
         className="fixed inset-x-0 bottom-0 z-10 w-full sm:hidden"
         sectionElementRefs={sectionElementRefs}
@@ -41,15 +28,11 @@ export function ProductDetails({ productFragmentRef }: { productFragmentRef: Fra
             ref={sectionElementRefs[0]}
           >
             <Images
-              images={product.images.edges.map((edge) => {
-                const image: Image = edge.node;
-
-                return {
-                  altText: image.altText,
-                  id: image.id,
-                  src: image.url,
-                }
-              })}
+              images={images.map((image) => ({
+                altText: image.altText,
+                id: image.id,
+                src: image.url,
+              }))}
               sizes="(max-width: 639px) 100vw, 66vw"
             />
           </div>
