@@ -13,7 +13,9 @@ const config: CodegenConfig = {
       },
   },
   documents: [
-    "./src/**/*.{graphql,ts,tsx}",
+    "./src/fragments/**/*.{graphql,ts,tsx}",
+    "./src/mutations/**/*.{graphql,ts,tsx}",
+    "./src/queries/**/*.{graphql,ts,tsx}",
     "../../apps/app/app/**/*.hygraph.graphql",
     "../../apps/app/components/**/*.hygraph.graphql",
     "../../apps/app/app/**/*.{ts,tsx}",
@@ -23,6 +25,10 @@ const config: CodegenConfig = {
   generates: {
     "./src/codegen/": {
       preset: "client",
+      presetConfig: {
+        emitLegacyCommonJSImports: true,
+        fragmentMasking: { unmaskFunctionName: "getFragmentData" },
+      },
     },
   },
 };

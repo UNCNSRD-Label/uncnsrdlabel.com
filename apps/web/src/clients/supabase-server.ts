@@ -1,5 +1,5 @@
-import { Database } from '@/types_db';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { Database } from '@uncnsrdlabel/graphql-hygraph';
 import { cookies } from 'next/headers';
 import { cache } from 'react';
 

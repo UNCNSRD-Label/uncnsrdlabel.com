@@ -4,6 +4,8 @@
     "paths": {
       "@uncnsrdlabel/graphql-hygraph/*": ["./src/*"]
     },
+    "noUnusedLocals": false,
+    "noImplicitAny": false
   },
   "display": "@uncnsrdlabel/graphql-hygraph",
   "extends": "@uncnsrdlabel/tsconfig/react-library.json",

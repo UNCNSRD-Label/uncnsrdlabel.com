@@ -57,6 +57,17 @@
       ],
       "outputs": [".next/**", "!.next/cache/**"]
     },
+    "@uncnsrdlabel/graphql-hygraph#build": {
+      "env": [
+        "NEXT_PUBLIC_DEFAULT_LOCALE",
+        "NEXT_PUBLIC_PROTOCOL",
+        "NEXT_PUBLIC_HYGRAPH_API_TOKEN",
+        "NEXT_PUBLIC_HYGRAPH_PROJECT_ID",
+        "NEXT_PUBLIC_HYGRAPH_REGION",
+        "NEXT_PUBLIC_SUPPORTED_LOCALES"
+      ],
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
     "@uncnsrdlabel/graphql-shopify-storefront#build": {
       "env": [
         "NEXT_PUBLIC_DEFAULT_LOCALE",

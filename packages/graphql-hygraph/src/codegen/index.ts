@@ -1,3 +1,2 @@
-export * from "@uncnsrdlabel/graphql-hygraph/fragment-masking";
-export * from "@uncnsrdlabel/graphql-hygraph/gql";
-
+export * from "./fragment-masking.js";
+export * from "./gql.js";

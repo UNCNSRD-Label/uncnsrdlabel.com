@@ -1,30 +1,33 @@
 {
   "dependencies": {
-    "@graphql-codegen/cli": "latest",
-    "@graphql-codegen/client-preset": "latest",
-    "@graphql-typed-document-node/core": "latest",
-    "@types/node": "latest",
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/client-preset": "^4.1.0",
+    "@graphql-typed-document-node/core": "^3.2.0",
+    "@tanstack/react-query": "^4.33.0",
+    "@types/node": "^20.5.6",
     "@uncnsrdlabel/lib": "workspace:*",
-    "dotenv-cli": "latest",
-    "graphql-config": "latest",
-    "graphql-request": "latest",
-    "graphql-tag": "latest",
-    "graphql": "^16.7.1",
+    "dotenv-cli": "^7.3.0",
+    "graphql": "^16.8.0",
+    "graphql-config": "^5.0.2",
+    "graphql-request": "^6.1.0",
+    "graphql-tag": "^2.12.6",
+    "lodash": "^4.17.21",
     "slugify": "^1.6.6",
-    "zod-fetch": "^0.1.1",
-    "zod": "^3.21.4"
+    "zod": "^3.22.2",
+    "zod-fetch": "^0.1.1"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.197",
     "@types/node": "latest",
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "@uncnsrdlabel/tsconfig": "workspace:*",
     "@uncnsrdlabel/types": "workspace:*",
-    "eslint": "^8.46.0",
-    "prettier": "latest",
-    "tsup": "latest",
-    "type-fest": "latest",
-    "typescript-graphql-request": "latest",
-    "typescript": "latest"
+    "eslint": "^8.48.0",
+    "prettier": "^3.0.2",
+    "tsup": "^7.2.0",
+    "type-fest": "^4.2.0",
+    "typescript": "^5.2.2",
+    "typescript-graphql-request": "^4.4.6"
   },
   "files": [
     "dist/**"
@@ -35,10 +38,13 @@
   "peerDependencies": {
     "@parcel/watcher": "^2.2.0"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "build": "graphql-codegen && tsup",
+    "build": "DOTENV_CONFIG_PATH=\"../../.env.local\" graphql-codegen --require dotenv/config && tsup",
     "clean": "rm -rf dist",
-    "dev": "graphql-codegen --watch && tsup --watch",
+    "dev": "DOTENV_CONFIG_PATH=\"../../.env.local\" graphql-codegen --require dotenv/config --watch && tsup --watch",
     "generate:component": "turbo gen react-component",
     "lint": "eslint \"**/*.ts*\"",
     "types:check": "tsc --noEmit"
