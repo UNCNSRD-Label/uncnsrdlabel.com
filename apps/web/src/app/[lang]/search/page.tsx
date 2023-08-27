@@ -2,8 +2,8 @@ import { Grid } from "@/components/grid/index";
 import { ProductVariantGridItems } from "@/components/layout/product-variant-grid-items";
 import { flattenConnection } from "@shopify/hydrogen-react";
 import {
-  defaultSort,
   getProducts,
+  productDefaultSort,
   productSorting,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 
@@ -21,7 +21,7 @@ export default async function SearchPage({
 }) {
   const { sort, q: searchValue } = searchParams as { [key: string]: string };
   const { sortKey, reverse } =
-    productSorting.find((item) => item.slug === sort) || defaultSort;
+    productSorting.find((item) => item.slug === sort) || productDefaultSort;
 
   const productConnection = await getProducts({
     sortKey,

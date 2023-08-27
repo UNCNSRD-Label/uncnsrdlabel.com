@@ -3,16 +3,23 @@
 import { addItem } from "@/components/cart/actions";
 import { LoadingDots } from "@/components/loading-dots";
 import { PlusIcon } from "@heroicons/react/24/outline";
+import { AddToCartButton } from "@shopify/hydrogen-react";
 import { ProductVariant } from "@shopify/hydrogen-react/storefront-api-types";
 import { cn } from "@uncnsrdlabel/lib";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState, useTransition } from "react";
+import { type PartialDeep } from "type-fest";
 
 export function AddToCart({
   variants,
   availableForSale,
 }: {
-  variants: ProductVariant[];
+  variants: PartialDeep<
+  ProductVariant,
+  {
+    recurseIntoArrays: true;
+  }
+>[];
   availableForSale: boolean;
 }) {
   const [selectedVariantId, setSelectedVariantId] = useState<
@@ -20,7 +27,9 @@ export function AddToCart({
   >(undefined);
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [isPending, startTransition] = useTransition();
+  const [isPending,
+    startTransition
+  ] = useTransition();
 
   useEffect(() => {
     const variant = variants.find((variant: ProductVariant) =>
@@ -40,7 +49,7 @@ export function AddToCart({
     : undefined;
 
   return (
-    <button
+    <AddToCartButton
       aria-label="Add item to cart"
       disabled={isPending || !availableForSale || !selectedVariantId}
       title={title}
@@ -73,6 +82,6 @@ export function AddToCart({
         )}
       </div>
       <span>{availableForSale ? "Add To Cart" : "Out Of Stock"}</span>
-    </button>
+    </AddToCartButton>
   );
 }

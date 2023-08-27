@@ -9,6 +9,7 @@ import { ProductProvider, flattenConnection } from "@shopify/hydrogen-react";
 import { Product } from "@shopify/hydrogen/storefront-api-types";
 import { useRef } from "react";
 
+
 export function ProductDetails({ product }: { product: Product }) {
   const sectionElementRefs = [useRef(null), useRef(null), useRef(null)];
 

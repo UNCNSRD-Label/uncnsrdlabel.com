@@ -1,12 +1,12 @@
+import { removeItem } from "@/components/cart/actions";
 import { LoadingDots } from "@/components/loading-dots";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import { type CartLine, type ComponentizableCartLine } from "@shopify/hydrogen-react/storefront-api-types";
+import { cn } from "@uncnsrdlabel/lib";
 import { useRouter } from "next/navigation";
-
-import { removeItem } from "@/components/cart/actions";
-import type { CartItem } from "@shopify/hydrogen-react/storefront-api-types";
 import { useTransition } from "react";
 
-export function DeleteItemButton({ item }: { item: CartItem }) {
+export function DeleteItemButton({ item }: { item: ComponentizableCartLine | CartLine }) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 

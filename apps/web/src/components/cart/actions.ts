@@ -1,6 +1,6 @@
 "use server";
 
-import { Cart } from "@shopify/hydrogen-react/storefront-api-types";
+import { type Cart } from "@shopify/hydrogen/storefront-api-types";
 import {
   addToCart,
   createCart,
@@ -17,12 +17,12 @@ export const addItem = async (
   let cart: Cart | undefined;
 
   if (cartId) {
-    cart = await getCart(cartId);
+    cart = await getCart({ cartId });
   }
 
   if (!cartId || !cart) {
-    cart = await createCart();
-    
+    cart = await createCart({});
+
     if (!cart) {
       return new Error("Error creating cart");
     }
@@ -35,7 +35,10 @@ export const addItem = async (
     return new Error("Missing variantId");
   }
   try {
-    await addToCart(cartId, [{ merchandiseId: variantId, quantity: 1 }]);
+    await addToCart({
+      cartId,
+      lines: [{ merchandiseId: variantId, quantity: 1 }],
+    });
 
     return undefined;
   } catch (e) {
@@ -51,8 +54,9 @@ export const removeItem = async (
   if (!cartId) {
     return new Error("Missing cartId");
   }
+
   try {
-    await removeFromCart(cartId, [lineId]);
+    await removeFromCart({ cartId, lineIds: [lineId] });
 
     return undefined;
   } catch (e) {
@@ -75,13 +79,16 @@ export const updateItemQuantity = async ({
     return new Error("Missing cartId");
   }
   try {
-    await updateCart(cartId, [
-      {
-        id: lineId,
-        merchandiseId: variantId,
-        quantity,
-      },
-    ]);
+    await updateCart({
+      cartId,
+      lines: [
+        {
+          id: lineId,
+          merchandiseId: variantId,
+          quantity,
+        },
+      ],
+    });
 
     return undefined;
   } catch (e) {

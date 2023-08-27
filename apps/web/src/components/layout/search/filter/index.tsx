@@ -1,40 +1,52 @@
 import { FilterItemDropdown } from "@/components/layout/search/filter/dropdown";
 import { FilterItem } from "@/components/layout/search/filter/item";
-import { SortFilterItem } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { Collection } from "@shopify/hydrogen/storefront-api-types";
+import { PartialDeep } from "type-fest";
 
-export type ListItem = SortFilterItem | PathFilterItem;
-export type PathFilterItem = { title: string; path: string };
-
-function FilterItemList({ list }: { list: ListItem[] }) {
+function FilterItemList({
+  collections,
+}: {
+  collections: PartialDeep<
+    Collection,
+    {
+      recurseIntoArrays: true;
+    }
+  >[];
+}) {
   return (
     <div className="hidden md:block">
-      {list.map((item: ListItem, index) => (
-        <FilterItem key={item.title || index} item={item} />
+      {collections.map((collection, index) => (
+        <FilterItem key={collection.title || index} collection={collection} />
       ))}
     </div>
   );
 }
 
 export function FilterList({
-  list,
+  collections,
   title,
 }: {
-  list: ListItem[];
+  collections: PartialDeep<
+    Collection,
+    {
+      recurseIntoArrays: true;
+    }
+  >[];
   title?: string;
 }) {
   return (
     <>
       <nav className="col-span-2 w-full flex-none px-6 py-2 uppercase md:py-4 md:pl-10">
         {title ? (
-          <h3 className="hidden font-semibold text-dark dark:text-light md:block">
+          <h3 className="text-dark dark:text-light hidden font-semibold md:block">
             {title}
           </h3>
         ) : null}
         <ul className="hidden md:block">
-          <FilterItemList list={list} />
+          <FilterItemList collections={collections} />
         </ul>
         <ul className="md:hidden">
-          <FilterItemDropdown list={list} />
+          <FilterItemDropdown collections={collections} />
         </ul>
       </nav>
     </>

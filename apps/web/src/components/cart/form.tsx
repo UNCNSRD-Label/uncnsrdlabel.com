@@ -2,6 +2,7 @@ import { DeleteItemButton } from "@/components/cart/delete-item-button";
 import { EditItemQuantityButton } from "@/components/cart/edit-item-quantity-button";
 import { Price } from "@/components/price";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
+import { flattenConnection } from "@shopify/hydrogen-react";
 import type { Cart } from "@shopify/hydrogen-react/storefront-api-types";
 import { DEFAULT_OPTION } from "@uncnsrdlabel/lib/constants";
 import { createUrl } from "@uncnsrdlabel/lib/url";
@@ -19,9 +20,11 @@ export async function CartForm({
   cart: Cart | undefined;
   closeCart: () => void;
 }) {
+  const lines = flattenConnection(cart?.lines);
+
   return (
     <>
-      {!cart || cart.linesArray.length === 0 ? (
+      {!cart || lines.length === 0 ? (
         <div className="mt-20 flex w-full flex-col items-center justify-center overflow-hidden">
           <ShoppingCartIcon className="h-16" />
           <p className="mt-6 text-center text-2xl font-bold">
@@ -31,7 +34,7 @@ export async function CartForm({
       ) : (
         <div className="flex h-full flex-col justify-between overflow-hidden p-1">
           <ul className="flex-grow overflow-auto py-4">
-            {cart.linesArray.map((item, i) => {
+            {lines.map((item, i) => {
               const merchandiseSearchParams = {} as MerchandiseSearchParams;
 
               item.merchandise.selectedOptions.forEach(({ name, value }) => {
@@ -128,7 +131,7 @@ export async function CartForm({
           </div>
           <a
             href={cart.checkoutUrl}
-            className="flex w-full items-center justify-center bg-black p-3 text-sm font-medium uppercase text-light opacity-90 hover:opacity-100 dark:bg-white dark:text-dark"
+            className="text-light dark:text-dark flex w-full items-center justify-center bg-black p-3 text-sm font-medium uppercase opacity-90 hover:opacity-100 dark:bg-white"
           >
             Proceed to Checkout
           </a>

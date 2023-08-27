@@ -1,7 +1,11 @@
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
-import { addToCart, removeFromCart, updateCart } from "@uncnsrdlabel/graphql-shopify-storefront";
+import {
+  addToCart,
+  removeFromCart,
+  updateCart,
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { isShopifyError } from "@uncnsrdlabel/lib/type-guards";
 
 import { Cart, CartResponse } from "./types";
@@ -21,7 +25,7 @@ export async function POST(req: NextRequest): Promise<CartResponse> {
     );
   }
   try {
-    await addToCart(cartId, [{ merchandiseId, quantity: 1 }]);
+    await addToCart({ cartId, lines: [{ merchandiseId, quantity: 1 }] });
     return NextResponse.json({ status: 204 });
   } catch (e) {
     if (isShopifyError(e)) {
@@ -46,13 +50,16 @@ export async function PUT(req: NextRequest): Promise<CartResponse> {
     ) as CartResponse;
   }
   try {
-    await updateCart(cartId, [
-      {
-        id: lineId,
-        merchandiseId: variantId,
-        quantity,
-      },
-    ]);
+    await updateCart({
+      cartId,
+      lines: [
+        {
+          id: lineId,
+          merchandiseId: variantId,
+          quantity,
+        },
+      ],
+    });
     return NextResponse.json({ status: 204 });
   } catch (e) {
     if (isShopifyError(e)) {
@@ -77,7 +84,7 @@ export async function DELETE(req: NextRequest): Promise<CartResponse> {
     ) as CartResponse;
   }
   try {
-    await removeFromCart(cartId, [lineId]);
+    await removeFromCart({ cartId, lineIds: [lineId] });
     return NextResponse.json({ status: 204 });
   } catch (e) {
     if (isShopifyError(e)) {

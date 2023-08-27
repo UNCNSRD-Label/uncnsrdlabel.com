@@ -1,13 +1,22 @@
 "use client";
 
+import { CaretRightIcon } from "@/components/icons/caret-right";
+import { Collection } from "@shopify/hydrogen-react/storefront-api-types";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-
-import { CaretRightIcon } from "@/components/icons/caret-right";
-import type { ListItem } from "./index";
+import { PartialDeep } from "type-fest";
 import { FilterItem } from "./item";
 
-export function FilterItemDropdown({ list }: { list: ListItem[] }) {
+export function FilterItemDropdown({
+  collections,
+}: {
+  collections: PartialDeep<
+    Collection,
+    {
+      recurseIntoArrays: true;
+    }
+  >[];
+}) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [active, setActive] = useState("");
@@ -26,15 +35,24 @@ export function FilterItemDropdown({ list }: { list: ListItem[] }) {
   }, []);
 
   useEffect(() => {
-    list.forEach((listItem: ListItem) => {
-      if (
-        ("path" in listItem && pathname === listItem.path) ||
-        ("slug" in listItem && searchParams.get("sort") === listItem.slug)
-      ) {
-        setActive(listItem.title);
-      }
-    });
-  }, [pathname, list, searchParams]);
+    collections.forEach(
+      (
+        collection: PartialDeep<
+          Collection,
+          {
+            recurseIntoArrays: true;
+          }
+        >,
+      ) => {
+        if (
+          ("path" in collection && pathname === collection.path) ||
+          ("slug" in collection && searchParams.get("sort") === collection.slug)
+        ) {
+          setActive(collection.title);
+        }
+      },
+    );
+  }, [pathname, collections, searchParams]);
 
   return (
     <div className="relative" ref={ref}>
@@ -54,9 +72,22 @@ export function FilterItemDropdown({ list }: { list: ListItem[] }) {
           }}
           className="absolute z-40 w-full rounded-b-md bg-white p-4 shadow-md dark:bg-black"
         >
-          {list.map((item: ListItem, index) => (
-            <FilterItem key={item.title || index} item={item} />
-          ))}
+          {collections.map(
+            (
+              collection: PartialDeep<
+                Collection,
+                {
+                  recurseIntoArrays: true;
+                }
+              >,
+              index,
+            ) => (
+              <FilterItem
+                key={collection.title || index}
+                collection={collection}
+              />
+            ),
+          )}
         </div>
       )}
     </div>

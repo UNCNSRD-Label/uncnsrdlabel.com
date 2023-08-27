@@ -11,7 +11,6 @@ import {
   getProduct,
   getProductRecommendations,
   imageFragment,
-  productFragment,
   seoFragment
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { HIDDEN_PRODUCT_TAG, cn } from "@uncnsrdlabel/lib";
@@ -64,9 +63,7 @@ export default async function ProductPage({
 }: {
   params: { handle: string };
 }) {
-  const productFragmentRef = await getProduct(params);
-
-  const product = getFragmentData(productFragment, productFragmentRef);
+  const product = await getProduct(params);
 
   if (!product) return notFound();
 
@@ -75,8 +72,8 @@ export default async function ProductPage({
   const jsonLd: WithContext<ProductSchema> = {
     "@context": "https://schema.org",
     "@type": "Product",
-    identifier: productFragmentRef.id,
-    name: productFragmentRef.title,
+    identifier: product.id,
+    name: product.title,
     image: {
       "@type": "ImageObject",
       about: featuredImage?.altText,
@@ -84,16 +81,16 @@ export default async function ProductPage({
       url: featuredImage?.url,
       width: featuredImage?.width.toString(),
     },
-    description: productFragmentRef.description,
+    description: product.description,
   };
 
   return (
     <>
-      <ProductDetails productFragmentRef={productFragmentRef} />
+      <ProductDetails product={product} />
       <Suspense>
         <RelatedProducts
           className="relative bg-gray-300 pb-48 pt-12 text-dark dark:bg-gray-800 dark:text-light"
-          id={productFragmentRef.id}
+          id={product.id}
         />
       </Suspense>
       <script
@@ -111,7 +108,7 @@ async function RelatedProducts({
   className?: string;
   id: string;
 }) {
-  const relatedProducts = getProductRecommendations({
+  const relatedProducts = await getProductRecommendations({
     productId: id
   });
 

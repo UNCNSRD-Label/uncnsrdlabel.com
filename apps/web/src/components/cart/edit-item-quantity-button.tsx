@@ -1,16 +1,16 @@
-import { useRouter } from "next/navigation";
-import { useTransition } from "react";
-
 import { removeItem, updateItemQuantity } from "@/components/cart/actions";
 import { LoadingDots } from "@/components/loading-dots";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
-import type { CartLine } from "@shopify/hydrogen-react/storefront-api-types";
+import { type CartLine, type ComponentizableCartLine } from "@shopify/hydrogen-react/storefront-api-types";
+import { cn } from "@uncnsrdlabel/lib";
+import { useRouter } from "next/navigation";
+import { useTransition } from "react";
 
 export function EditItemQuantityButton({
   item,
   type,
 }: {
-  item: CartLine;
+  item: ComponentizableCartLine | CartLine;
   type: "plus" | "minus";
 }) {
   const router = useRouter();

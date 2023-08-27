@@ -12,7 +12,7 @@ import { SidebarMenu } from "./sidebar-menu";
 type Props = { showLogo?: boolean };
 
 export function NavbarContent(props: Props) {
-  const menu = use(getMenu({ handle: "next-js-frontend-header-menu" }));
+  const menu = use(getMenu({ handle: "next-js-frontend-header-menu"}));
 
   return (
     <>
@@ -23,7 +23,10 @@ export function NavbarContent(props: Props) {
           </Suspense>
         </div>
       </div>
-      <div className={cn("hidden", props.showLogo && "md:block")} tabIndex={-1}>
+      <div
+        className={cn("hidden", props.showLogo && "md:block")}
+        tabIndex={-1}
+      >
         <Link
           href="/"
           aria-label="Go back home"

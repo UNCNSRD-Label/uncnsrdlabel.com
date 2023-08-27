@@ -1,22 +1,23 @@
 import { Grid } from "@/components/grid";
 import { GridTileImage } from "@/components/grid/tile";
-import {
-  FragmentType, getFragmentData, imageFragment, productFragment
-} from "@uncnsrdlabel/graphql-shopify-storefront";
+import { Product } from "@shopify/hydrogen/storefront-api-types";
 import { transitionDelays } from "@uncnsrdlabel/lib/effects";
 import Link from "next/link";
+import { PartialDeep } from "type-fest";
 
 export function ProductGridItems({
   products,
 }: {
-  products: FragmentType<typeof productFragment>[];
+  products: PartialDeep<
+    Product,
+    {
+      recurseIntoArrays: true;
+    }
+  >[];
 }) {
   return (
     <>
-      {products.map((productFragmentRef, index) => {
-        const product = getFragmentData(productFragment, productFragmentRef);
-        const featuredImage = getFragmentData(imageFragment, product.featuredImage);
-
+      {products.map((product, index) => {
         return (
           <Grid.Item key={product.id || index} className="animate-fadeIn">
             <Link
@@ -32,7 +33,7 @@ export function ProductGridItems({
                   currencyCode: product.priceRange.maxVariantPrice.currencyCode,
                 }}
                 priority={index < 4}
-                src={featuredImage?.url}
+                src={product.featuredImage?.url}
                 width={600}
                 height={600}
               />

@@ -1,4 +1,4 @@
-import type { PartialDeep } from "type-fest";
+import type { PartialDeep } from 'type-fest';
 
 /**
  * The `flattenConnection` utility transforms a connection object from the Storefront API (for example, [Product-related connections](https://shopify.dev/api/storefront/reference/products/product)) into a flat array of nodes.
@@ -8,15 +8,15 @@ import type { PartialDeep } from "type-fest";
  */
 export function flattenConnection<
   ConnectionGeneric extends
-    | PartialDeep<ConnectionEdges, { recurseIntoArrays: true }>
-    | PartialDeep<ConnectionNodes, { recurseIntoArrays: true }>
+    | PartialDeep<ConnectionEdges, {recurseIntoArrays: true}>
+    | PartialDeep<ConnectionNodes, {recurseIntoArrays: true}>
     | ConnectionEdges
-    | ConnectionNodes,
+    | ConnectionNodes
 >(
-  connection?: ConnectionGeneric,
+  connection?: ConnectionGeneric
 ): ConnectionGeneric extends
   | {
-      edges: Array<{ node: infer ConnectionBaseType }>;
+      edges: {node: Array<infer ConnectionBaseType>};
     }
   | {
       nodes: Array<infer ConnectionBaseType>;
@@ -25,23 +25,23 @@ export function flattenConnection<
     ConnectionBaseType[]
   : ConnectionGeneric extends
       | PartialDeep<
-          { edges: { node: Array<infer ConnectionBaseType> } },
-          { recurseIntoArrays: true }
+          {edges: {node: Array<infer ConnectionBaseType>}},
+          {recurseIntoArrays: true}
         >
       | PartialDeep<
           {
             nodes: Array<infer ConnectionBaseType>;
           },
-          { recurseIntoArrays: true }
+          {recurseIntoArrays: true}
         >
   ? // if it is a PartialDeep, return a PartialDeep inferred type
-    PartialDeep<ConnectionBaseType[], { recurseIntoArrays: true }>
+    PartialDeep<ConnectionBaseType[], {recurseIntoArrays: true}>
   : never {
   if (!connection) {
     const noConnectionErr = `flattenConnection(): needs a 'connection' to flatten, but received '${
-      connection ?? ""
+      connection ?? ''
     }' instead.`;
-    if (process.env.__HYDROGEN_DEV__) {
+    if (process.env) {
       throw new Error(noConnectionErr);
     } else {
       console.error(noConnectionErr + ` Returning an empty array`);
@@ -50,26 +50,28 @@ export function flattenConnection<
     }
   }
 
-  if ("nodes" in connection) {
+  if ('nodes' in connection) {
     // @ts-expect-error return type is failing
     return connection.nodes;
   }
 
-  if ("edges" in connection && Array.isArray(connection.edges)) {
+  if ('edges' in connection && Array.isArray(connection.edges)) {
     // @ts-expect-error return type is failing
     return connection.edges.map((edge) => {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       if (!edge?.node) {
         throw new Error(
-          "flattenConnection(): Connection edges must contain nodes",
+          'flattenConnection(): Connection edges must contain nodes'
         );
       }
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access
       return edge.node;
     }) as Array<unknown>;
   }
 
-  if (process.env.__HYDROGEN_DEV__) {
+  if (process.env.NODE_ENV !== 'production') {
     console.warn(
-      `flattenConnection(): The connection did not contain either "nodes" or "edges.node". Returning an empty array.`,
+      `flattenConnection(): The connection did not contain either "nodes" or "edges.node". Returning an empty array.`
     );
   }
 
@@ -78,11 +80,11 @@ export function flattenConnection<
 }
 
 type ConnectionEdges = {
-  edges: Array<{ node: unknown }>;
+  edges: {node: Array<any>};
 };
 
 type ConnectionNodes = {
-  nodes: Array<unknown>;
+  nodes: Array<any>;
 };
 
 // This is only for documentation purposes, and it is not used in the code.

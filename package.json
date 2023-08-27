@@ -30,7 +30,7 @@
     "dependencies:stats": "madge --circular --extensions ts,tsx,js,jsx --ts-config ./tsconfig.json ./packages --stats",
     "dependencies:unused:fix": "madge --circular --extensions ts,tsx,js,jsx --ts-config ./tsconfig.json ./packages --warning --fix",
     "dependencies:unused": "madge --circular --extensions ts,tsx,js,jsx --ts-config ./tsconfig.json ./packages --warning",
-    "dev": "dotenv -e .env.local -- turbo dev",
+    "dev": "dotenv -e .env.local -- turbo dev --concurrency=12",
     "lint-staged": "lint-staged",
     "lint": "turbo lint",
     "packages:versions:check": "npx npm-check-updates -u --deep",

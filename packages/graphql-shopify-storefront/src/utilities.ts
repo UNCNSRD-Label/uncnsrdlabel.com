@@ -14,7 +14,6 @@ import {
   getCollectionsQuery,
 } from "@uncnsrdlabel/graphql-shopify-storefront/queries/collection";
 // import { collectionFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/collection";
-import { flattenConnection } from "@shopify/hydrogen-react";
 import {
   AddToCartMutationVariables,
   CreateCartMutationVariables,
@@ -30,8 +29,37 @@ import {
   GetProductsQueryVariables,
   PageFragment,
   RemoveFromCartMutationVariables,
+
+
+  type ArticleConnection,
+  type BaseCartLineConnection,
+  type BlogConnection,
+  type CartDeliveryGroupConnection,
+  type CheckoutLineItemConnection,
+  type CollectionConnection,
+  type CommentConnection,
+  type DiscountApplicationConnection,
+  type FulfillmentLineItemConnection,
+  type ImageConnection,
   type ImageFragment,
+  type LocationConnection,
+  type MailingAddressConnection,
+  type MediaConnection,
   type MediaImage,
+  type MetafieldReferenceConnection,
+  type MetaobjectConnection,
+  type OrderConnection,
+  type OrderLineItemConnection,
+  type PageConnection,
+  type ProductConnection,
+  type ProductVariantConnection,
+  type SearchResultItemConnection,
+  type SellingPlanAllocationConnection,
+  type SellingPlanConnection,
+  type SellingPlanGroupConnection,
+  type StoreAvailabilityConnection,
+  type StringConnection,
+  type UrlRedirectConnection,
 } from "@uncnsrdlabel/graphql-shopify-storefront/codegen/graphql";
 import {
   collectionFragment,
@@ -52,6 +80,37 @@ import {
 import { type PolicyName } from "@uncnsrdlabel/graphql-shopify-storefront/types";
 import { GraphQLClient } from "graphql-request";
 import { camelCase } from "lodash";
+// import { flattenConnection } from "@uncnsrdlabel/graphql-shopify-storefront/flatten-connection";
+// import { flattenConnection } from "@shopify/hydrogen-react";
+const flattenConnection = (array: ArticleConnection |
+  BaseCartLineConnection |
+  BlogConnection |
+  CartDeliveryGroupConnection |
+  CheckoutLineItemConnection |
+  CollectionConnection |
+  CommentConnection |
+  DiscountApplicationConnection |
+  FulfillmentLineItemConnection |
+  ImageConnection |
+  LocationConnection |
+  MailingAddressConnection |
+  MediaConnection |
+  MetafieldReferenceConnection |
+  MetaobjectConnection |
+  OrderConnection |
+  OrderLineItemConnection |
+  PageConnection |
+  ProductConnection |
+  ProductVariantConnection |
+  SearchResultItemConnection |
+  SellingPlanAllocationConnection |
+  SellingPlanConnection |
+  SellingPlanGroupConnection |
+  StoreAvailabilityConnection |
+  StringConnection |
+  UrlRedirectConnection) => {
+  return array.edges.map((edge) => edge?.node);
+};
 
 export { graphql } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
 
@@ -401,21 +460,21 @@ export async function getProduct(variables: GetProductQueryVariables) {
 export async function getProductRecommendations(
   variables: GetProductRecommendationsQueryVariables,
 ) {
-  const { productRecommendations } = await getShopifyGraphQL(
+  const { productRecommendations: productRecommendationRefs } = await getShopifyGraphQL(
     getProductRecommendationsQuery,
     variables,
   );
 
-  if (!productRecommendations) {
+  if (!productRecommendationRefs) {
     throw {
       status: 404,
       message: `Products not found`,
     };
   }
 
-  const products = getFragmentData(productFragment, productRecommendations);
-
-  return products;
+  const productRecommendations = productRecommendationRefs.map(productRecommendationRef => getFragmentData(productFragment, productRecommendationRef));
+  
+  return productRecommendations;
 }
 
 export async function getProducts(variables: GetProductsQueryVariables) {

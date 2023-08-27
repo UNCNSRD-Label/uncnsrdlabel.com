@@ -18,7 +18,7 @@ export function ProductVariantGridItems({
   return (
     <>
       {productFragments
-        .map(({ node: productFragmentRef }, productIndex) => {
+        .map((productFragmentRef, productIndex) => {
           const product = getFragmentData(productFragment, productFragmentRef);
 
           const variants = flattenConnection(product.variants);
@@ -28,12 +28,10 @@ export function ProductVariantGridItems({
               (selectedOption) => selectedOption.name === "Color",
             )?.value;
 
-            // const image = getFragmentData(imageFragment, variant.image);
-
             return { ...variant, fullTitle: `${product.title} in ${key}`, key }
           });
 
-          const colorVariantsMap = new Map<string, FragmentType<typeof productFragment>>(colorVariants.map((variant) => [variant.key, variant]));
+          const colorVariantsMap = new Map(colorVariants.map((variant) => [variant.key, variant]));
 
           const colorVariantsMapArray = Array.from(colorVariantsMap.values());
 
