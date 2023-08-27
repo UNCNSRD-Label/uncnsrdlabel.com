@@ -130,7 +130,7 @@ export async function createCart(variables: CreateCartMutationVariables) {
     return null;
   }
 
-  console.log({ cartCreate });
+  // console.log({ cartCreate });
 
   return cartCreate.cart;
 }
@@ -147,7 +147,7 @@ export async function addToCart(variables: AddToCartMutationVariables) {
     return null;
   }
 
-  console.log({ cartLinesAdd });
+  // console.log({ cartLinesAdd });
 
   return cartLinesAdd.cart;
 }
@@ -166,7 +166,7 @@ export async function removeFromCart(
     return null;
   }
 
-  console.log({ cartLinesRemove });
+  // console.log({ cartLinesRemove });
 
   return cartLinesRemove.cart;
 }
@@ -183,7 +183,7 @@ export async function updateCart(variables: EditCartItemsMutationVariables) {
     return null;
   }
 
-  console.log({ cartLinesUpdate });
+  // console.log({ cartLinesUpdate });
 
   return cartLinesUpdate.cart;
 }
@@ -200,7 +200,7 @@ export async function getCart(variables: GetCartQueryVariables) {
     return null;
   }
 
-  console.log({ cart });
+  // console.log({ cart });
 
   return cart;
 }
@@ -218,7 +218,7 @@ export async function getCollection(variables: GetCollectionQueryVariables) {
     };
   }
 
-  console.log({ collectionFragmentRef });
+  // console.log({ collectionFragmentRef });
 
   const collection = getFragmentData(collectionFragment, collectionFragmentRef);
 
@@ -240,7 +240,7 @@ export async function getCollectionProducts(
     };
   }
 
-  console.log({ collection });
+  // console.log({ collection });
 
   const { products } = collection;
 
@@ -258,7 +258,7 @@ export async function getCollections() {
     };
   }
 
-  console.log({ shopifyCollectionConnection });
+  // console.log({ shopifyCollectionConnection });
 
   const shopifyCollections = shopifyCollectionConnection.edges.map((edge) => edge?.node);
 
@@ -297,7 +297,7 @@ export async function getMenu(variables: GetMenuQueryVariables) {
     };
   }
 
-  console.log({ menu });
+  // console.log({ menu });
 
   return menu;
 
@@ -327,7 +327,7 @@ export async function getPage(variables: GetPageQueryVariables) {
 
   const page = getFragmentData(pageFragment, pageFragmentRef);
 
-  console.log({ page });
+  // console.log({ page });
 
   return page;
 }
@@ -365,7 +365,7 @@ export async function getPolicies() {
     };
   }
 
-  console.log({ shop });
+  // console.log({ shop });
 
   return shop;
 }
@@ -383,11 +383,11 @@ export async function getProduct(variables: GetProductQueryVariables) {
     };
   }
 
-  console.log({ productFragmentRef });
+  // console.log({ productFragmentRef });
 
   const product = getFragmentData(productFragment, productFragmentRef);
 
-  console.log({ product });
+  // console.log({ product });
 
   return product;
 }
