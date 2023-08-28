@@ -8,7 +8,6 @@
     "@graphql-typed-document-node/core": "^3.2.0",
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
-    "@imbios/next-pwa": "^1.1.1",
     "@next/bundle-analyzer": "^13.4.19",
     "@radix-ui/react-accessible-icon": "^1.0.3",
     "@radix-ui/react-accordion": "^1.1.2",
