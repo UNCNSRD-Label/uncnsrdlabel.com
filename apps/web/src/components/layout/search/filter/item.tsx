@@ -1,14 +1,14 @@
 "use client";
 
-import { Collection } from "@shopify/hydrogen/storefront-api-types";
-import { ProductCollectionSortFilterItem } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { ResultOf } from '@graphql-typed-document-node/core';
+import { ProductCollectionSortFilterItem, collectionFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { createUrl } from "@uncnsrdlabel/lib/url";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-function PathFilterItem({ item }: { item: Collection }) {
+function PathFilterItem({ item }: { item: ResultOf<typeof collectionFragment> }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const path = `/search/${item.handle}`;
@@ -73,7 +73,7 @@ function SortFilterItem({ item }: { item: ProductCollectionSortFilterItem }) {
   );
 }
 
-export function FilterItem({ item }: { item: Collection | ProductCollectionSortFilterItem }) {
+export function FilterItem({ item }: { item: ResultOf<typeof collectionFragment> | ProductCollectionSortFilterItem }) {
   return 'handle' in item ? (
     <PathFilterItem item={item} />
   ) : (

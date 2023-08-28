@@ -1,12 +1,12 @@
 import { FilterItemDropdown } from "@/components/layout/search/filter/dropdown";
 import { FilterItem } from "@/components/layout/search/filter/item";
-import { Collection } from "@shopify/hydrogen/storefront-api-types";
-import { ProductCollectionSortFilterItem } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { ResultOf } from '@graphql-typed-document-node/core';
+import { ProductCollectionSortFilterItem, collectionFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
 
-function FilterItemList({ list }: { list: (Collection | ProductCollectionSortFilterItem)[] }) {
+function FilterItemList({ list }: { list: (ResultOf<typeof collectionFragment> | ProductCollectionSortFilterItem)[] }) {
   return (
     <div className="hidden md:block">
-      {list.map((item: Collection | ProductCollectionSortFilterItem, index) => (
+      {list.map((item: ResultOf<typeof collectionFragment> | ProductCollectionSortFilterItem, index) => (
         <FilterItem key={item.title || index} item={item} />
       ))}
     </div>
@@ -17,7 +17,7 @@ export function FilterList({
   list,
   title,
 }: {
-  list: (Collection | ProductCollectionSortFilterItem)[];
+  list: (ResultOf<typeof collectionFragment> | ProductCollectionSortFilterItem)[];
   title?: string;
 }) {
   return (

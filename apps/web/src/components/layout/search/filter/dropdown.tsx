@@ -1,12 +1,13 @@
 "use client";
 
 import { CaretRightIcon } from "@/components/icons/caret-right";
-import { ProductCollectionSortFilterItem } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { ResultOf } from '@graphql-typed-document-node/core';
+import { ProductCollectionSortFilterItem, collectionFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { FilterItem } from "./item";
 
-export function FilterItemDropdown({ list }: { list: ProductCollectionSortFilterItem[] }) {
+export function FilterItemDropdown({ list }: { list: (ResultOf<typeof collectionFragment> | ProductCollectionSortFilterItem)[] }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [active, setActive] = useState("");
@@ -25,12 +26,12 @@ export function FilterItemDropdown({ list }: { list: ProductCollectionSortFilter
   }, []);
 
   useEffect(() => {  
-    list.forEach((collection) => {
+    list.forEach((listItem) => {
       if (
-        ("path" in collection && pathname === collection.path) ||
-        ("slug" in collection && searchParams.get("sort") === collection.handle)
+        ("path" in listItem && pathname === listItem.path) ||
+        ("slug" in listItem && searchParams.get("sort") === listItem.slug)
       ) {
-        setActive(collection.title);
+        setActive(listItem.title);
       }
     });
   }, [pathname, list, searchParams]);
