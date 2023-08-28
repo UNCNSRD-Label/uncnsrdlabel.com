@@ -35,7 +35,6 @@ export function SignUpForm({ className }: { className?: string }) {
     // this.name = "Sign Up Form (Footer)";
     const response = await signUpAction(formData, "Sign Up Form (Footer)");
 
-    console.log(response);
     if (response?.message) {
       setToastMessage(response.message);
     }

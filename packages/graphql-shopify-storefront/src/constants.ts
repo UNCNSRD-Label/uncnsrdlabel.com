@@ -2,28 +2,31 @@ import {
   ProductCollectionSortKeys,
   ProductSortKeys,
 } from "@uncnsrdlabel/graphql-shopify-storefront/codegen/graphql";
-import { type CollectionSubset } from "@uncnsrdlabel/types";
 
-export type ProductCollectionSortFilterItem = CollectionSubset & {
-  sortKey: ProductCollectionSortKeys;
+export type SortFilterItem = {
+  title: string;
+  slug: string | null;
   reverse: boolean;
 };
 
-export type ProductSortFilterItem = CollectionSubset & {
+export type ProductCollectionSortFilterItem = SortFilterItem & {
+  sortKey: ProductCollectionSortKeys;
+};
+
+export type ProductSortFilterItem = SortFilterItem & {
   sortKey: ProductSortKeys;
-  reverse: boolean;
 };
 
 export const productCollectionDefaultSort: ProductCollectionSortFilterItem = {
   title: "Relevance",
-  handle: null,
+  slug: null,
   sortKey: ProductCollectionSortKeys.Relevance,
   reverse: false,
 };
 
 export const productDefaultSort: ProductSortFilterItem = {
   title: "Relevance",
-  handle: null,
+  slug: null,
   sortKey: ProductSortKeys.Relevance,
   reverse: false,
 };
@@ -32,25 +35,25 @@ export const productCollectionSorting: ProductCollectionSortFilterItem[] = [
   productCollectionDefaultSort,
   {
     title: "Trending",
-    handle: "trending-desc",
+    slug: "trending-desc",
     sortKey: ProductCollectionSortKeys.BestSelling,
     reverse: false,
   }, // asc
   {
     title: "Latest arrivals",
-    handle: "latest-desc",
+    slug: "latest-desc",
     sortKey: ProductCollectionSortKeys.Created,
     reverse: true,
   },
   {
     title: "Price: Low to high",
-    handle: "price-asc",
+    slug: "price-asc",
     sortKey: ProductCollectionSortKeys.Price,
     reverse: false,
   }, // asc
   {
     title: "Price: High to low",
-    handle: "price-desc",
+    slug: "price-desc",
     sortKey: ProductCollectionSortKeys.Price,
     reverse: true,
   },
@@ -60,25 +63,25 @@ export const productSorting: ProductSortFilterItem[] = [
   productDefaultSort,
   {
     title: "Trending",
-    handle: "trending-desc",
+    slug: "trending-desc",
     sortKey: ProductSortKeys.BestSelling,
     reverse: false,
   }, // asc
   {
     title: "Latest arrivals",
-    handle: "latest-desc",
+    slug: "latest-desc",
     sortKey: ProductSortKeys.CreatedAt,
     reverse: true,
   },
   {
     title: "Price: Low to high",
-    handle: "price-asc",
+    slug: "price-asc",
     sortKey: ProductSortKeys.Price,
     reverse: false,
   }, // asc
   {
     title: "Price: High to low",
-    handle: "price-desc",
+    slug: "price-desc",
     sortKey: ProductSortKeys.Price,
     reverse: true,
   },

@@ -1,5 +1,6 @@
 "use client";
 
+import { Collection } from "@shopify/hydrogen/storefront-api-types";
 import { ProductCollectionSortFilterItem } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { createUrl } from "@uncnsrdlabel/lib/url";
@@ -7,10 +8,10 @@ import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-function PathFilterItem({ item }: { item: ProductCollectionSortFilterItem }) {
+function PathFilterItem({ item }: { item: Collection }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const path = `/collections/${item.handle}`;
+  const path = `/search/${item.handle}`;
   const [active, setActive] = useState(pathname === path);
   const newParams = new URLSearchParams(searchParams.toString());
 
@@ -38,21 +39,20 @@ function PathFilterItem({ item }: { item: ProductCollectionSortFilterItem }) {
 function SortFilterItem({ item }: { item: ProductCollectionSortFilterItem }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const path = `/collections/${item.handle}`;
-  const [active, setActive] = useState(searchParams.get("sort") === path);
+  const [active, setActive] = useState(searchParams.get("sort") === item.slug);
   const q = searchParams.get("q");
 
   useEffect(() => {
-    setActive(searchParams.get("sort") === path);
-  }, [searchParams, path]);
+    setActive(searchParams.get("sort") === item.slug);
+  }, [searchParams, item.slug]);
 
   const href =
-    path && path.length
+    item.slug && item.slug.length
       ? createUrl(
           pathname,
           new URLSearchParams({
             ...(q && { q }),
-            sort: path,
+            sort: item.slug,
           }),
         )
       : pathname;
@@ -73,8 +73,8 @@ function SortFilterItem({ item }: { item: ProductCollectionSortFilterItem }) {
   );
 }
 
-export function FilterItem({ item }: { item: ProductCollectionSortFilterItem }) {
-  return "path" in item ? (
+export function FilterItem({ item }: { item: Collection | ProductCollectionSortFilterItem }) {
+  return 'handle' in item ? (
     <PathFilterItem item={item} />
   ) : (
     <SortFilterItem item={item} />

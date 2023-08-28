@@ -52,7 +52,7 @@ export async function signUpAction(
   try {
     const response = await fetch(url, options);
 
-    console.log(response.status, response.statusText);
+    console.info(response.status, response.statusText);
 
     if (response.status >= 300) {
       const json = (await response.json()) as KlaviyoResponse;
