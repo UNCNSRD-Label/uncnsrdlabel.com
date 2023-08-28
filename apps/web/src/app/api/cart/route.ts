@@ -6,7 +6,7 @@ import {
   removeFromCart,
   updateCart,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { isShopifyError } from "@uncnsrdlabel/lib/type-guards";
+import { isShopifyError } from "@uncnsrdlabel/lib";
 
 import { Cart, CartResponse } from "./types";
 
