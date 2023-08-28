@@ -1,7 +1,9 @@
-import { Metafield, Metaobject } from "@shopify/hydrogen/storefront-api-types";
+import { ResultOf } from '@graphql-typed-document-node/core';
+import { Metaobject } from "@shopify/hydrogen/storefront-api-types";
+import { productMetafieldFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { ReactNode } from "react";
 
-export const MetafieldMapper = ({ metafield }: { metafield: Metafield }) => {
+export const MetafieldMapper = ({ metafield }: { metafield: ResultOf<typeof productMetafieldFragment> }) => {
   let value: ReactNode = null;
 
   switch (metafield.type) {

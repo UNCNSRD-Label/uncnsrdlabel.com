@@ -613,6 +613,9 @@ importers:
       '@analytics/google-tag-manager':
         specifier: ^0.5.5
         version: 0.5.5
+      '@shopify/hydrogen':
+        specifier: ^2023.7.3
+        version: 2023.7.3(@remix-run/react@1.19.1)(@remix-run/server-runtime@1.19.1)(@types/react@18.2.21)(react-dom@18.2.0)
       '@shopify/hydrogen-react':
         specifier: ^2023.7.2
         version: 2023.7.2(@types/react@18.2.21)(react-dom@18.2.0)(react@0.0.0-experimental-ab31a9ed2-20230824)

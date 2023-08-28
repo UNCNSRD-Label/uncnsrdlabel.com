@@ -30,7 +30,7 @@ export const getCollectionProductsQuery = graphql(/* GraphQL */ `
       products(sortKey: $sortKey, reverse: $reverse, first: 100) {
         edges {
           node {
-            ...product
+            ...productBasic
           }
         }
       }

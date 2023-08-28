@@ -2,7 +2,8 @@ import { AddToCart } from "@/components/cart/add-to-cart";
 import { Price } from "@/components/price";
 import { VariantSelector } from "@/components/product/variant-selector";
 import { Prose } from "@/components/prose";
-import { Product } from "@shopify/hydrogen/storefront-api-types";
+import { ResultOf } from '@graphql-typed-document-node/core';
+import { getFragmentData, productDetailsFragment, productVariantConnectionFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { forwardRef } from "react";
 
@@ -11,14 +12,16 @@ type PurchaseOptionsRef = HTMLDivElement;
 interface PurchaseOptionsProps {
   className?: string;
   id?: string;
-  product: Product;
+  product: ResultOf<typeof productDetailsFragment>;
 }
 
 export const PurchaseOptions = forwardRef<
   PurchaseOptionsRef,
   PurchaseOptionsProps
 >(({ className, id, product }, forwardedRef) => {
-  const variants = product.variants.edges.map((edge) => edge?.node);
+  const variantsFragmentRefs = product.variants;
+  const variantFragments = getFragmentData(productVariantConnectionFragment, variantsFragmentRefs)
+  const variants = variantFragments.edges.map((edge) => edge?.node);
 
   return (
     <>

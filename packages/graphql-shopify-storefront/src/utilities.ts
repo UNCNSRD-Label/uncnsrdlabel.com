@@ -24,19 +24,23 @@ import {
   GetMenuQueryVariables,
   GetPageQueryVariables,
   GetPagesQueryVariables,
-  GetProductQueryVariables,
+  GetProductBasicQueryVariables,
+  GetProductDetailsQueryVariables,
   GetProductRecommendationsQueryVariables,
   GetProductsQueryVariables,
+  GetProductsWithVariantsQueryVariables,
   PageFragment,
   RemoveFromCartMutationVariables,
   type ImageFragment,
-  type MediaImage
+  type MediaImage,
 } from "@uncnsrdlabel/graphql-shopify-storefront/codegen/graphql";
 import {
+  cartFragment,
   collectionFragment,
   imageFragment,
   pageFragment,
-  productFragment,
+  productBasicFragment,
+  productDetailsFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront/fragments";
 import {
   getCartQuery,
@@ -44,9 +48,11 @@ import {
   getPageQuery,
   getPagesQuery,
   getPoliciesQuery,
-  getProductQuery,
+  getProductBasicQuery,
+  getProductDetailsQuery,
   getProductRecommendationsQuery,
   getProductsQuery,
+  getProductsWithVariantsQuery,
 } from "@uncnsrdlabel/graphql-shopify-storefront/queries";
 import { type PolicyName } from "@uncnsrdlabel/graphql-shopify-storefront/types";
 import { GraphQLClient } from "graphql-request";
@@ -132,7 +138,17 @@ export async function createCart(variables: CreateCartMutationVariables) {
 
   // console.log({ cartCreate });
 
-  return cartCreate.cart;
+  const { cart: cartFragmentRef } = cartCreate;
+
+  if (!cartFragmentRef) {
+    return null;
+  }
+
+  // console.log({ cartFragmentRef });
+
+  const cart = getFragmentData(cartFragment, cartFragmentRef);
+
+  return cart;
 }
 
 export async function addToCart(variables: AddToCartMutationVariables) {
@@ -149,7 +165,17 @@ export async function addToCart(variables: AddToCartMutationVariables) {
 
   // console.log({ cartLinesAdd });
 
-  return cartLinesAdd.cart;
+  const { cart: cartFragmentRef } = cartLinesAdd;
+
+  if (!cartFragmentRef) {
+    return null;
+  }
+
+  // console.log({ cartFragmentRef });
+
+  const cart = getFragmentData(cartFragment, cartFragmentRef);
+
+  return cart;
 }
 
 export async function removeFromCart(
@@ -168,7 +194,17 @@ export async function removeFromCart(
 
   // console.log({ cartLinesRemove });
 
-  return cartLinesRemove.cart;
+  const { cart: cartFragmentRef } = cartLinesRemove;
+
+  if (!cartFragmentRef) {
+    return null;
+  }
+
+  // console.log({ cartFragmentRef });
+
+  const cart = getFragmentData(cartFragment, cartFragmentRef);
+
+  return cart;
 }
 
 export async function updateCart(variables: EditCartItemsMutationVariables) {
@@ -185,22 +221,34 @@ export async function updateCart(variables: EditCartItemsMutationVariables) {
 
   // console.log({ cartLinesUpdate });
 
-  return cartLinesUpdate.cart;
+  const { cart: cartFragmentRef } = cartLinesUpdate;
+
+  if (!cartFragmentRef) {
+    return null;
+  }
+
+  // console.log({ cartFragmentRef });
+
+  const cart = getFragmentData(cartFragment, cartFragmentRef);
+
+  return cart;
 }
 
 export async function getCart(variables: GetCartQueryVariables) {
-  const { cart } = await getShopifyGraphQL(
+  const { cart: cartFragmentRef } = await getShopifyGraphQL(
     getCartQuery,
     variables,
     // TODO: figure out how to use this
     // cache: "no-store",
   );
 
-  if (!cart) {
+  if (!cartFragmentRef) {
     return null;
   }
 
-  // console.log({ cart });
+  // console.log({ cartFragmentRef });
+
+  const cart = getFragmentData(cartFragment, cartFragmentRef);
 
   return cart;
 }
@@ -260,7 +308,9 @@ export async function getCollections() {
 
   // console.log({ shopifyCollectionConnection });
 
-  const shopifyCollections = shopifyCollectionConnection.edges.map((edge) => edge?.node);
+  const shopifyCollections = shopifyCollectionConnection.edges.map(
+    (edge) => edge?.node,
+  );
 
   const collections: CollectionFragment[] = [
     {
@@ -269,8 +319,8 @@ export async function getCollections() {
       title: "All",
       description: "All products",
       seo: {
-      //   title: "All",
-      //   description: "All products",
+        //   title: "All",
+        //   description: "All products",
       },
       // path: "/search",
       updatedAt: new Date().toISOString(),
@@ -370,22 +420,54 @@ export async function getPolicies() {
   return shop;
 }
 
-export async function getProduct(variables: GetProductQueryVariables) {
-  const { product: productFragmentRef } = await getShopifyGraphQL(
-    getProductQuery,
+export async function getProductBasic(
+  variables: GetProductBasicQueryVariables,
+) {
+  const { product: productBasicFragmentRef } = await getShopifyGraphQL(
+    getProductBasicQuery,
     variables,
   );
 
-  if (!productFragmentRef) {
+  if (!productBasicFragmentRef) {
     throw {
       status: 404,
       message: `Product not found for handle \`${variables.handle}\``,
     };
   }
 
-  // console.log({ productFragmentRef });
+  // console.log({ productBasicFragmentRef });
 
-  const product = getFragmentData(productFragment, productFragmentRef);
+  const product = getFragmentData(
+    productBasicFragment,
+    productBasicFragmentRef,
+  );
+
+  // console.log({ product });
+
+  return product;
+}
+
+export async function getProductDetails(
+  variables: GetProductDetailsQueryVariables,
+) {
+  const { product: productDetailsFragmentRef } = await getShopifyGraphQL(
+    getProductDetailsQuery,
+    variables,
+  );
+
+  if (!productDetailsFragmentRef) {
+    throw {
+      status: 404,
+      message: `Product not found for handle \`${variables.handle}\``,
+    };
+  }
+
+  // console.log({ productDetailsFragmentRef });
+
+  const product = getFragmentData(
+    productDetailsFragment,
+    productDetailsFragmentRef,
+  );
 
   // console.log({ product });
 
@@ -395,10 +477,8 @@ export async function getProduct(variables: GetProductQueryVariables) {
 export async function getProductRecommendations(
   variables: GetProductRecommendationsQueryVariables,
 ) {
-  const { productRecommendations: productRecommendationRefs } = await getShopifyGraphQL(
-    getProductRecommendationsQuery,
-    variables,
-  );
+  const { productRecommendations: productRecommendationRefs } =
+    await getShopifyGraphQL(getProductRecommendationsQuery, variables);
 
   if (!productRecommendationRefs) {
     throw {
@@ -407,13 +487,34 @@ export async function getProductRecommendations(
     };
   }
 
-  const productRecommendations = productRecommendationRefs.map(productRecommendationRef => getFragmentData(productFragment, productRecommendationRef));
-  
+  const productRecommendations = productRecommendationRefs.map(
+    (productRecommendationRef) =>
+      getFragmentData(productBasicFragment, productRecommendationRef),
+  );
+
   return productRecommendations;
 }
 
 export async function getProducts(variables: GetProductsQueryVariables) {
   const { products } = await getShopifyGraphQL(getProductsQuery, variables);
+
+  if (!products) {
+    throw {
+      status: 404,
+      message: `Products not found`,
+    };
+  }
+
+  return products;
+}
+
+export async function getProductsWithVariants(
+  variables: GetProductsWithVariantsQueryVariables,
+) {
+  const { products } = await getShopifyGraphQL(
+    getProductsWithVariantsQuery,
+    variables,
+  );
 
   if (!products) {
     throw {

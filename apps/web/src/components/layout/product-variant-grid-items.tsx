@@ -4,7 +4,8 @@ import {
   FragmentType,
   getFragmentData,
   imageFragment,
-  productFragment,
+  productVariantConnectionFragment,
+  productWithVariantsFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { transitionDelays } from "@uncnsrdlabel/lib/effects";
 import Link from "next/link";
@@ -12,15 +13,18 @@ import Link from "next/link";
 export function ProductVariantGridItems({
   productFragments,
 }: {
-  productFragments: FragmentType<typeof productFragment>[]
+  // productFragments: ResultOf<typeof productFragment>[]
+  productFragments: FragmentType<typeof productWithVariantsFragment>[]
 }) {
   return (
     <>
       {productFragments
         .map((productFragmentRef, productIndex) => {
-          const product = getFragmentData(productFragment, productFragmentRef);
+          const product = getFragmentData(productWithVariantsFragment, productFragmentRef);
 
-          const variants = product.variants.edges.map((edge) => edge?.node);
+          const variantsConnection = getFragmentData(productVariantConnectionFragment, product.variants);
+
+          const variants = variantsConnection.edges.map((edge) => edge?.node);
 
           const colorVariants = variants.map((variant) => {
             const key = variant.selectedOptions?.find(

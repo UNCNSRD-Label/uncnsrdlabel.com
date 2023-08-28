@@ -1,12 +1,13 @@
 "use server";
 
-import { type Cart } from "@shopify/hydrogen/storefront-api-types";
+import { ResultOf } from '@graphql-typed-document-node/core';
 import {
   addToCart,
+  cartFragment,
   createCart,
   getCart,
   removeFromCart,
-  updateCart,
+  updateCart
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cookies } from "next/headers";
 
@@ -14,7 +15,7 @@ export const addItem = async (
   variantId: string | undefined,
 ): Promise<Error | undefined> => {
   let cartId = cookies().get("cartId")?.value;
-  let cart: Cart | undefined;
+  let cart: ResultOf<typeof cartFragment> | undefined;
 
   if (cartId) {
     cart = await getCart({ cartId });

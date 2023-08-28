@@ -1,10 +1,10 @@
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
 import {
-  defaultSort,
   getCollection,
   getCollectionProducts,
   getFragmentData,
+  productCollectionDefaultSort,
   productCollectionSorting,
   seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
@@ -51,7 +51,7 @@ export default async function CategoryPage({
 }) {
   const { sort } = searchParams as { [key: string]: string };
   const { sortKey, reverse } =
-    productCollectionSorting.find((item) => item.slug === sort) || defaultSort;
+    productCollectionSorting.find((item) => item.handle === sort) || productCollectionDefaultSort;
 
   const collectionProducts = await getCollectionProducts({
     handle: params.collection,

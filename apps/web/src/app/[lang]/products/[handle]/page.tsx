@@ -8,7 +8,7 @@ import { ProductGridItems } from "@/components/layout/product-grid-items";
 import { ProductDetails } from "@/components/product/details";
 import {
   getFragmentData,
-  getProduct,
+  getProductDetails,
   getProductRecommendations,
   imageFragment,
   seoFragment
@@ -22,7 +22,7 @@ export async function generateMetadata({
 }: {
   params: { handle: string };
 }): Promise<Metadata> {
-  const product = await getProduct(params);
+  const product = await getProductDetails(params);
 
   const featuredImage = getFragmentData(imageFragment, product.featuredImage);
   const seo = getFragmentData(seoFragment, product.seo);
@@ -63,7 +63,7 @@ export default async function ProductPage({
 }: {
   params: { handle: string };
 }) {
-  const product = await getProduct(params);
+  const product = await getProductDetails(params);
 
   if (!product) return notFound();
 

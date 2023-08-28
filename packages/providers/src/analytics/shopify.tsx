@@ -8,7 +8,7 @@ import {
   sendShopifyAnalytics,
   type ShopifyAddToCartPayload,
   type ShopifyPageViewPayload,
-} from "@shopify/hydrogen-react";
+} from "@shopify/hydrogen";
 import type {
   CurrencyCode,
   LanguageCode,

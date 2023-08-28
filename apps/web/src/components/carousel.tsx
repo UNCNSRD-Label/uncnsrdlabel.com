@@ -1,5 +1,5 @@
 import { Image } from "@/components/image";
-import { getCollectionProducts, getFragmentData, getPage, imageFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { getCollectionProducts, getFragmentData, getPage, imageFragment, productBasicFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -11,9 +11,11 @@ export async function Carousel() {
   if (!page) return notFound();
 
   // Collections that start with `hidden-*` are hidden from the search page.
-  const products = await getCollectionProducts({
+  const collectionProducts = await getCollectionProducts({
     handle: "hidden-homepage-carousel",
   });
+
+  const products = collectionProducts.edges.map((edge) => edge?.node);
 
   if (!products?.length) {
     return null;
@@ -22,7 +24,9 @@ export async function Carousel() {
   return (
     <div className="relative w-full overflow-hidden">
       <div className="flex animate-carousel">
-        {products.map((product, index) => {
+        {products.map((productFragmentRef, index) => {
+          const product = getFragmentData(productBasicFragment, productFragmentRef);
+
           const featuredImage = getFragmentData(imageFragment, product.featuredImage);
 
           return (

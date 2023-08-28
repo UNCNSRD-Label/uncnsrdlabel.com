@@ -32,13 +32,13 @@ export const cartFragment = graphql(/* GraphQL */ `
           merchandise {
             ... on ProductVariant {
               id
+              product {
+                ...productBasic
+              }
               title
               selectedOptions {
                 name
                 value
-              }
-              product {
-                ...product
               }
             }
           }

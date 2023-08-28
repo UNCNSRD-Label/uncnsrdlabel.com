@@ -6,7 +6,8 @@ import {
   AccordionTrigger,
 } from "@/components/accordion";
 import { MetafieldMapper } from "@/components/product/metafield-mapper";
-import { Metafield } from "@shopify/hydrogen/storefront-api-types";
+import { ResultOf } from '@graphql-typed-document-node/core';
+import { productMetafieldFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { forwardRef } from "react";
 
@@ -15,12 +16,12 @@ export type MetaFieldsRef = HTMLDivElement;
 interface MetaFieldsProps {
   className?: string;
   id?: string;
-  metafields: Metafield[];
+  metafieldFragments: readonly ResultOf<typeof productMetafieldFragment>[];
 }
 
 export const MetaFields = forwardRef<MetaFieldsRef, MetaFieldsProps>(
-  ({ className, id, metafields, ...props }, forwardedRef) => {
-    const defaultValue = metafields
+  ({ className, id, metafieldFragments, ...props }, forwardedRef) => {
+    const defaultValue = metafieldFragments
       .map((metafield) => metafield.key ?? "")
       .filter(
         (key) =>
@@ -43,7 +44,7 @@ export const MetaFields = forwardRef<MetaFieldsRef, MetaFieldsProps>(
         type="multiple"
         {...props}
       >
-        {metafields.filter(Boolean).map((metafield, index) => (
+        {metafieldFragments.filter(Boolean).map((metafield, index) => (
           <AccordionItem
             key={index}
             value={metafield.key}

@@ -28,7 +28,7 @@ export function FilterItemDropdown({ list }: { list: ProductCollectionSortFilter
     list.forEach((collection) => {
       if (
         ("path" in collection && pathname === collection.path) ||
-        ("slug" in collection && searchParams.get("sort") === collection.slug)
+        ("slug" in collection && searchParams.get("sort") === collection.handle)
       ) {
         setActive(collection.title);
       }
@@ -52,9 +52,8 @@ export function FilterItemDropdown({ list }: { list: ProductCollectionSortFilter
             setOpenSelect(false);
           }}
           className="absolute z-40 w-full rounded-b-md bg-white p-4 shadow-md dark:bg-black"
-        >import { ProductCollectionSortFilterItem } from "@uncnsrdlabel/graphql-shopify-storefront";
-        
-          {list.map((item: ProductCollectionSortFilterItem, index) => (
+        >        
+          {list.map((item, index) => (
             <FilterItem key={item.title || index} item={item} />
           ))}
         </div>
