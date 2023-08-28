@@ -20,7 +20,7 @@ export default async function SearchPage({
 }) {
   const { sort, q: searchValue } = searchParams as { [key: string]: string };
   const { sortKey, reverse } =
-    productSorting.find((item) => item.handle === sort) || productDefaultSort;
+    productSorting.find((item) => item.slug === sort) || productDefaultSort;
 
   const productConnection = await getProductsWithVariants({
     sortKey,
