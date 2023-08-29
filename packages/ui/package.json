@@ -83,8 +83,8 @@
   "files": [
     "src"
   ],
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "main": "./src/index.js",
+  "module": "./src/index.mjs",
   "name": "@uncnsrdlabel/ui",
   "scripts": {
     "build": "tsup src/index.tsx --format esm,cjs --dts --external react",

@@ -20,18 +20,9 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/index.js",
+  "main": "./src/index.js",
+  "module": "./src/index.mjs",
   "name": "@uncnsrdlabel/types",
-  "publishConfig": {
-    "typesVersions": {
-      "*": {
-        "*": [
-          "dist/*.d.ts",
-          "dist/*/index.d.ts"
-        ]
-      }
-    }
-  },
   "scripts": {
     "build": "tsc --project ./tsconfig.json",
     "dev": "tsc --project ./tsconfig.json --watch",

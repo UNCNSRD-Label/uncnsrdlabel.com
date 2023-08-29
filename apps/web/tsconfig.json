@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
     "allowJs": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    },
   },
   "display": "@uncnsrdlabel/app-web",
   "extends": "@uncnsrdlabel/tsconfig/nextjs.json",
