@@ -1,17 +1,6 @@
 {
   "compilerOptions": {
     "allowJs": true,
-    "paths": {
-      "@/*": ["./src/*"],
-      "@uncnsrdlabel/graphql-hygraph/*": ["../../packages/graphql-hygraph/src/*"],
-      "@uncnsrdlabel/graphql-shopify-admin/*": ["../../packages/graphql-shopify-admin/src/*"],
-      "@uncnsrdlabel/graphql-shopify-storefront/*": ["../../packages/graphql-shopify-storefront/src/*"],
-      "@uncnsrdlabel/lib/*": ["../../packages/lib/src/*"],
-      "@uncnsrdlabel/providers/*": ["../../packages/providers/src/*"],
-      "@uncnsrdlabel/tailwind-config/*": ["../../packages/tailwind-config/src/*"],
-      "@uncnsrdlabel/types/*": ["../../packages/types/src/*"],
-      "@uncnsrdlabel/ui/*": ["../../packages/ui/src/*"]
-    },
   },
   "display": "@uncnsrdlabel/app-web",
   "extends": "@uncnsrdlabel/tsconfig/nextjs.json",
