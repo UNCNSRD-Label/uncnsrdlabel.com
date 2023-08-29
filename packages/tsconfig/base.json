@@ -12,16 +12,6 @@
     "moduleResolution": "node",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "paths": {
-      "@uncnsrdlabel/graphql-hygraph/*": ["./src/*"],
-      "@uncnsrdlabel/graphql-shopify-admin/*": ["./src/*"],
-      "@uncnsrdlabel/graphql-shopify-storefront/*": ["./src/*"],
-      "@uncnsrdlabel/lib/*": ["./src/*"],
-      "@uncnsrdlabel/providers/*": ["./src/*"],
-      "@uncnsrdlabel/tailwind-config/*": ["./src/*"],
-      "@uncnsrdlabel/types/*": ["./src/*"],
-      "@uncnsrdlabel/ui/*": ["./src/*"]
-    },
     "preserveWatchOutput": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
