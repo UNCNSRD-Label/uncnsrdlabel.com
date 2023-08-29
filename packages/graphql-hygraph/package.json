@@ -29,14 +29,6 @@
     "typescript": "^5.2.2",
     "typescript-graphql-request": "^4.4.6"
   },
-  "exports": {
-    ".": "./dist/index.ts",
-    "./*": [
-      "./dist/*.ts",
-      "./dist/*.tsx",
-      "./dist/*/index.ts"
-    ]
-  },
   "files": [
     "dist/**"
   ],

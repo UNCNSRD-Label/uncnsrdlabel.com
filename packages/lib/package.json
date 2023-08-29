@@ -21,14 +21,6 @@
     "type-fest": "^4.2.0",
     "typescript": "^5.2.2"
   },
-  "exports": {
-    ".": "./dist/index.ts",
-    "./*": [
-      "./dist/*.ts",
-      "./dist/*.tsx",
-      "./dist/*/index.ts"
-    ]
-  },
   "files": [
     "dist/**"
   ],
