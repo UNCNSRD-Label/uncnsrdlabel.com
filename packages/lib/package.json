@@ -22,18 +22,18 @@
     "typescript": "^5.2.2"
   },
   "exports": {
-    ".": "./src/index.ts",
+    ".": "./dist/index.ts",
     "./*": [
-      "./src/*.ts",
-      "./src/*.tsx",
-      "./src/*/index.ts"
+      "./dist/*.ts",
+      "./dist/*.tsx",
+      "./dist/*/index.ts"
     ]
   },
   "files": [
-    "src"
+    "dist/**"
   ],
-  "main": "./src/index.js",
-  "module": "./src/index.mjs",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "name": "@uncnsrdlabel/lib",
   "publishConfig": {
     "directory": "dist"
@@ -42,7 +42,7 @@
     "build": "tsc --project ./tsconfig.json",
     "dev": "tsc --project ./tsconfig.json --watch",
     "generate:component": "turbo gen react-component",
-    "lint": "eslint \"**/*.ts*\"",
+    "lint": "eslint \"src/**/*.ts*\"",
     "types:check": "tsc --noEmit"
   },
   "sideEffects": false,
