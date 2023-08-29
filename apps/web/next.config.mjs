@@ -12,9 +12,9 @@ const withPWA = withPWAInit({
 
 const plugins = [withBundleAnalyzer];
 
-if (process.env.NODE_ENV === "production") {
-  plugins.push([withPWA]);
-}
+// if (process.env.NODE_ENV === "production") {
+//   plugins.push([withPWA]);
+// }
 
 const domains = `${process.env.NEXT_PUBLIC_SITE_DOMAIN} www.${process.env.NEXT_PUBLIC_SITE_DOMAIN} ${process.env.NEXT_PUBLIC_VERCEL_URL} ${process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN}`;
 
