@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": "./src"
   },
   "display": "@uncnsrdlabel/lib",
   "extends": "@uncnsrdlabel/tsconfig/react-library.json",

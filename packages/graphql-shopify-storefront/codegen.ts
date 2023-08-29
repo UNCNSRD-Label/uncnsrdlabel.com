@@ -14,7 +14,6 @@ const config: CodegenConfig = {
     "../../apps/app/app/**/*.{ts,tsx}",
     "../../apps/app/components/**/*.{ts,tsx}",
   ],
-  emitLegacyCommonJSImports: false,
   generates: {
     "./src/codegen/": {
       config: {
@@ -23,7 +22,6 @@ const config: CodegenConfig = {
       },
       preset: "client",
       presetConfig: {
-        emitLegacyCommonJSImports: true,
         fragmentMasking: { unmaskFunctionName: "getFragmentData" },
       },
     },

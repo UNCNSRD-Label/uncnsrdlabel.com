@@ -28,10 +28,15 @@
     "typescript": "^5.2.2"
   },
   "exports": {
-    "./*": "./dist/*"
+    ".": "./src/index.ts",
+    "./*": [
+      "./src/*.ts",
+      "./src/*.tsx",
+      "./src/*/index.ts"
+    ]
   },
   "files": [
-    "dist/**"
+    "src"
   ],
   "main": "./dist/index.js",
   "name": "@uncnsrdlabel/providers",
@@ -45,6 +50,13 @@
     "lint": "eslint \"**/*.ts*\"",
     "types:check": "tsc --noEmit"
   },
+  "sideEffects": false,
+  "type": "module",
   "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "index.d.ts": ["dist/index.d.ts"]
+    }
+  },
   "version": "0.0.0"
 }

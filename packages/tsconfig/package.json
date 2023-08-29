@@ -7,10 +7,14 @@
     "type-fest": "^4.2.0",
     "typescript": "^5.2.2"
   },
+  "exports": {
+    "./*": "./*"
+  },
   "name": "@uncnsrdlabel/tsconfig",
   "publishConfig": {
     "access": "public"
   },
   "private": true,
+  "sideEffects": true,
   "version": "0.0.0"
 }

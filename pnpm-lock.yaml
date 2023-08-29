@@ -302,7 +302,7 @@ importers:
         version: link:../../packages/tsconfig
       '@uncnsrdlabel/types':
         specifier: workspace:*
-        version: link:../../packages/types/dist
+        version: link:../../packages/types
       '@vercel/git-hooks':
         specifier: ^1.0.0
         version: 1.0.0
@@ -438,7 +438,7 @@ importers:
         version: link:../tsconfig
       '@uncnsrdlabel/types':
         specifier: workspace:*
-        version: link:../types/dist
+        version: link:../types
       eslint:
         specifier: ^8.48.0
         version: 8.48.0
@@ -523,7 +523,7 @@ importers:
         version: link:../tsconfig
       '@uncnsrdlabel/types':
         specifier: workspace:*
-        version: link:../types/dist
+        version: link:../types
       eslint:
         specifier: ^8.48.0
         version: 8.48.0
@@ -587,7 +587,7 @@ importers:
         version: link:../tsconfig
       '@uncnsrdlabel/types':
         specifier: workspace:*
-        version: link:../types/dist
+        version: link:../types
       prettier:
         specifier: ^3.0.2
         version: 3.0.2
@@ -664,7 +664,7 @@ importers:
         version: link:../tsconfig
       '@uncnsrdlabel/types':
         specifier: workspace:*
-        version: link:../types/dist
+        version: link:../types
       prettier:
         specifier: ^3.0.2
         version: 3.0.2
@@ -705,7 +705,7 @@ importers:
         version: link:../tsconfig
       '@uncnsrdlabel/types':
         specifier: workspace:*
-        version: link:../types/dist
+        version: link:../types
       prettier:
         specifier: ^3.0.2
         version: 3.0.2
@@ -767,7 +767,6 @@ importers:
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
-    publishDirectory: dist
 
   packages/ui:
     dependencies:
@@ -957,7 +956,7 @@ importers:
         version: link:../tsconfig
       '@uncnsrdlabel/types':
         specifier: workspace:*
-        version: link:../types/dist
+        version: link:../types
       eslint:
         specifier: ^8.48.0
         version: 8.48.0
