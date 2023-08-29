@@ -28,10 +28,9 @@
   "module": "./dist/index.mjs",
   "name": "@uncnsrdlabel/lib",
   "scripts": {
-    "build": "tsc --project ./tsconfig.json",
+    "build": "tsup",
     "clean": "rm -rf dist",
-    "dev": "tsc --project ./tsconfig.json --watch",
-    "generate:component": "turbo gen react-component",
+    "dev": "tsup --watch",
     "lint": "eslint \"src/**/*.ts*\"",
     "types:check": "tsc --noEmit"
   },

@@ -4,6 +4,14 @@
     "paths": {
       "@uncnsrdlabel/providers/*": ["./src/*"]
     },
+    "types": [
+      "@uncnsrdlabel/types",
+      "gtag.js",
+      "lodash",
+      "node",
+      "react",
+      "use-analytics"
+    ]
   },
   "display": "@uncnsrdlabel/providers",
   "extends": "@uncnsrdlabel/tsconfig/react-library.json",

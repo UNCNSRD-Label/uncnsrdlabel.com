@@ -1,0 +1,20 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "extends": ["//"],
+  "pipeline": {
+    "build": {
+      "env": [
+        "NEXT_PUBLIC_DEFAULT_LOCALE",
+        "NEXT_PUBLIC_PROTOCOL",
+        "NEXT_PUBLIC_HYGRAPH_API_TOKEN",
+        "NEXT_PUBLIC_HYGRAPH_PROJECT_ID",
+        "NEXT_PUBLIC_HYGRAPH_REGION",
+        "NEXT_PUBLIC_SUPPORTED_LOCALES"
+      ],
+      "outputs": ["dist/**"]
+    },
+    "dev": {
+      "outputs": ["dist/**"]
+    }
+  }
+}

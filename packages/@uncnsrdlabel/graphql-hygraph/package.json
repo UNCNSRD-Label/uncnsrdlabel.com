@@ -39,9 +39,9 @@
     "@parcel/watcher": "^2.2.0"
   },
   "scripts": {
-    "build": "DOTENV_CONFIG_PATH=\"../../.env.local\" graphql-codegen --require dotenv/config && tsup",
+    "build": "DOTENV_CONFIG_PATH=\"../../../.env.local\" graphql-codegen --require dotenv/config && tsup",
     "clean": "rm -rf dist",
-    "dev": "DOTENV_CONFIG_PATH=\"../../.env.local\" graphql-codegen --require dotenv/config --watch && tsup --watch",
+    "dev": "DOTENV_CONFIG_PATH=\"../../../.env.local\" graphql-codegen --require dotenv/config --watch && tsup --watch",
     "generate:component": "turbo gen react-component",
     "lint": "eslint \"src/**/*.ts*\"",
     "types:check": "tsc --noEmit"
