@@ -47,9 +47,5 @@
     "unused": "npx next-unused",
     "update": "turbo run update",
     "validate": "pnpm test && pnpm types:check && pnpm build && pnpm unused"
-  },
-  "workspaces": [
-    "./apps/*",
-    "./packages/*"
-  ]
+  }
 }
