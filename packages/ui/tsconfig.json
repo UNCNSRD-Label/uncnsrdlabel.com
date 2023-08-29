@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "outDir": "./dist",
-    "rootDir": "./src",
+    "paths": {
+      "@uncnsrdlabel/ui/*": ["./src/*"]
+    },
     "types": [
       "@types/gtag.js",
       "@types/lodash",
@@ -14,6 +16,6 @@
   },
   "display": "@uncnsrdlabel/ui",
   "extends": "@uncnsrdlabel/tsconfig/react-library.json",
-  "include": ["./src/**/*"],
+  "include": ["."],
   "exclude": ["dist", "build", "node_modules"]
 }

@@ -1,10 +1,12 @@
 {
   "compilerOptions": {
     "outDir": "./dist",
-    "rootDir": "./src",
+    "paths": {
+      "@uncnsrdlabel/tailwind-config/*": ["./src/*"]
+    },
   },
   "display": "@uncnsrdlabel/tailwind-config",
   "extends": "@uncnsrdlabel/tsconfig/base.json",
-  "include": ["./src/**/*"],
+  "include": ["."],
   "exclude": ["dist", "build", "node_modules"]
 }

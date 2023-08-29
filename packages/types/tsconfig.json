@@ -1,13 +1,12 @@
 {
   "compilerOptions": {
     "outDir": "./dist",
-    "rootDir": "./src",
     "paths": {
       "@uncnsrdlabel/types/*": ["./src/*"]
     },
   },
   "display": "@uncnsrdlabel/types",
   "extends": "@uncnsrdlabel/tsconfig/base.json",
-  "include": ["./src/**/*"],
+  "include": ["."],
   "exclude": ["dist", "build", "node_modules"]
 }
