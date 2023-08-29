@@ -126,7 +126,7 @@
         "SITE_URL",
         "SUPABASE_SERVICE_ROLE_KEY"
       ],
-      "persistent": true
+      "outputs": ["dist/**"]
     },
     "generate-types": {
       "outputs": []
