@@ -49,7 +49,7 @@
     "validate": "pnpm test && pnpm types:check && pnpm build && pnpm unused"
   },
   "workspaces": [
-    "apps/*",
-    "packages/*"
+    "./apps/*",
+    "./packages/*"
   ]
 }
