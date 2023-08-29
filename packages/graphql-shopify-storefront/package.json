@@ -39,9 +39,6 @@
   "peerDependencies": {
     "@parcel/watcher": "^2.2.0"
   },
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "build": "graphql-codegen && tsup",
     "clean": "rm -rf dist",

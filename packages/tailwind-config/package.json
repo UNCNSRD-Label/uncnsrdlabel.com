@@ -22,7 +22,7 @@
   "module": "./dist/index.mjs",
   "name": "@uncnsrdlabel/tailwind-config",
   "publishConfig": {
-    "directory": "dist"
+    "access": "public"
   },
   "scripts": {
     "build": "tsc --project ./tsconfig.json",

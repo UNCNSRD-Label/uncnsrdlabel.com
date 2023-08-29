@@ -27,9 +27,6 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "name": "@uncnsrdlabel/lib",
-  "publishConfig": {
-    "directory": "dist"
-  },
   "scripts": {
     "build": "tsc --project ./tsconfig.json",
     "clean": "rm -rf dist",

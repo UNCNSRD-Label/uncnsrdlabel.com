@@ -38,9 +38,6 @@
   "peerDependencies": {
     "@parcel/watcher": "^2.2.0"
   },
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "build": "DOTENV_CONFIG_PATH=\"../../.env.local\" graphql-codegen --require dotenv/config && tsup",
     "clean": "rm -rf dist",
