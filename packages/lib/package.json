@@ -32,6 +32,7 @@
   },
   "scripts": {
     "build": "tsc --project ./tsconfig.json",
+    "clean": "rm -rf dist",
     "dev": "tsc --project ./tsconfig.json --watch",
     "generate:component": "turbo gen react-component",
     "lint": "eslint \"src/**/*.ts*\"",
