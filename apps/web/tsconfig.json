@@ -5,14 +5,22 @@
       "@/*": ["./src/*"],
     }
   },
+  "display": "@uncnsrdlabel/tailwind-config",
+  "extends": "@uncnsrdlabel/tsconfig/nextjs.json",
+  "exclude": ["node_modules"],
   "include": [
     "next-env.d.ts",
     "**/*.json",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
+    "@uncnsrdlabel/graphql-hygraph/**/*.ts",
+    "@uncnsrdlabel/graphql-shopify-admin/**/*.ts",
     "@uncnsrdlabel/graphql-shopify-storefront/**/*.ts",
-  ],
-  "extends": "@uncnsrdlabel/tsconfig/nextjs.json",
-  "exclude": ["node_modules"]
+    "@uncnsrdlabel/lib/**/*.ts",
+    "@uncnsrdlabel/providers/**/*.ts",
+    "@uncnsrdlabel/tailwind-config/**/*.ts",
+    "@uncnsrdlabel/types/**/*.ts",
+    "@uncnsrdlabel/ui/**/*.ts"
+  ]
 }
