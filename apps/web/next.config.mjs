@@ -16,7 +16,13 @@ const plugins = [withBundleAnalyzer];
 //   plugins.push([withPWA]);
 // }
 
-const domains = `${process.env.NEXT_PUBLIC_SITE_DOMAIN} www.${process.env.NEXT_PUBLIC_SITE_DOMAIN} ${process.env.NEXT_PUBLIC_VERCEL_URL} ${process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN}`;
+const domains = [
+  'access.uncnsrdlabel.com',
+  `www.${process.env.NEXT_PUBLIC_SITE_DOMAIN}`,
+  process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN,
+  process.env.NEXT_PUBLIC_SITE_DOMAIN,
+  process.env.NEXT_PUBLIC_VERCEL_URL,
+].join(" ");
 
 const contentSecurityPolicyComponents = [
   `base-uri 'self'`,
