@@ -9,7 +9,8 @@
   "extends": "@uncnsrdlabel/tsconfig/nextjs.json",
   "exclude": ["node_modules"],
   "include": [
+    ".next/types/**/*.ts",
     "next-env.d.ts",
-    ".next/types/**/*.ts"
+    "src"
   ]
 }
