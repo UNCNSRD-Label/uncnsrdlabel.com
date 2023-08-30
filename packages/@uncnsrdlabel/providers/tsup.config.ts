@@ -10,7 +10,7 @@ export default defineConfig((options: Options) => ({
   external: ["react"],
   format: ["cjs", "esm"],
   minify: false,
-  splitting: true,
-  treeshake: true,
+  splitting: false,
+  treeshake: false,
   ...options,
 }));
