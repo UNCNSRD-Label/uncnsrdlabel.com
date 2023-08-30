@@ -9,6 +9,12 @@ const config: Config = {
   darkMode: "class",
   theme: {
     extend: {
+      animation: {
+        blink: "blink 1.4s both infinite",
+        carousel: "marquee 60s linear infinite",
+        fadein: "fadein .3s ease-in-out",
+        'grow-progress': 'linear growProgress forwards',
+      },
       aspectRatio: {
         "13/21": "13 / 21",
         "16/9": "16 / 9",
@@ -69,18 +75,14 @@ const config: Config = {
         success: "#4dff74",
       }),
       keyframes: {
-        fadeIn: {
-          from: { opacity: "0" },
-          to: { opacity: "1" },
-        },
-        marquee: {
-          "0%": { transform: "translateX(0%)" },
-          "100%": { transform: "translateX(-100%)" },
-        },
         blink: {
           "0%": { opacity: "0.2" },
           "20%": { opacity: "1" },
           "100% ": { opacity: "0.2" },
+        },
+        fadeIn: {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
         },
         growProgress: {
           from: {
@@ -90,11 +92,10 @@ const config: Config = {
             transform: "scaleX(1)",
           },
         },
-      },
-      animation: {
-        fadeIn: "fadeIn .3s ease-in-out",
-        carousel: "marquee 60s linear infinite",
-        blink: "blink 1.4s both infinite",
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
       },
     },
   },
