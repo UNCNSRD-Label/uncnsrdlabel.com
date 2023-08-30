@@ -7,8 +7,17 @@
     "module": "ESNext",
     "noEmit": true,
     "plugins": [{ "name": "next" }],
+    "resolveJsonModule": true,
     "strict": false,
-    "target": "es5"
+    "target": "es5",
+    "types": [
+      "@uncnsrdlabel/types",
+      "gtag.js",
+      "lodash",
+      "node",
+      "react",
+      "use-analytics"
+    ]
   },
   "display": "Next.js",
   "exclude": ["node_modules"],
