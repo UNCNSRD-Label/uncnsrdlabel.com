@@ -7,7 +7,7 @@ import { Video, type VideoProps } from "@/components/video";
 import { getIntl } from "@/lib/i18n/server";
 import { themeColors } from "@uncnsrdlabel/lib";
 import Link from "next/link";
-import { Suspense, use } from "react";
+import { Suspense } from "react";
 
 export const runtime = "edge";
 
@@ -38,8 +38,8 @@ const video: VideoProps = {
   url: "/videos/ZfGt0lKisCU.mp4",
 };
 
-export default function HomePage() {
-  const intl = use(getIntl("page.home"));
+export default async function HomePage() {
+  const intl = await getIntl("page.home");
 
   return (
     <div className="dark">
