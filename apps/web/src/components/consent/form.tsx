@@ -13,9 +13,9 @@ import {
   denyAllAdditionalConsentSettings,
   types,
   type ConsentSettings,
-} from "@uncnsrdlabel/lib/consent";
+} from "@uncnsrdlabel/lib";
 
-import { COOKIE_CONSENT } from "@uncnsrdlabel/lib/constants";
+import { COOKIE_CONSENT } from "@uncnsrdlabel/lib";
 
 type ConsentDialogProps = {
   className?: string;

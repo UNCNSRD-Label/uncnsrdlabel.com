@@ -5,7 +5,7 @@ import { useIntl } from "@/lib/i18n/client";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { useTimeoutEffect } from "@react-hookz/web";
-import { COOKIE_CONSENT } from "@uncnsrdlabel/lib/constants";
+import { COOKIE_CONSENT } from "@uncnsrdlabel/lib";
 import { hasCookie } from "cookies-next";
 import { useState } from "react";
 

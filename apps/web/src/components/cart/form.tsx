@@ -3,8 +3,7 @@ import { EditItemQuantityButton } from "@/components/cart/edit-item-quantity-but
 import { Price } from "@/components/price";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import type { Cart } from "@shopify/hydrogen/storefront-api-types";
-import { DEFAULT_OPTION } from "@uncnsrdlabel/lib/constants";
-import { createUrl } from "@uncnsrdlabel/lib/url";
+import { DEFAULT_OPTION, createUrl } from "@uncnsrdlabel/lib";
 import Image from "next/image";
 import Link from "next/link";
 

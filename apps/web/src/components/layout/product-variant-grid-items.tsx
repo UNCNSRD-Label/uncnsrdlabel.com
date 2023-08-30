@@ -7,7 +7,7 @@ import {
   productVariantConnectionFragment,
   productWithVariantsFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { transitionDelays } from "@uncnsrdlabel/lib/effects";
+import { transitionDelays } from "@uncnsrdlabel/lib";
 import Link from "next/link";
 
 export function ProductVariantGridItems({

@@ -2,8 +2,7 @@
 
 import { ResultOf } from '@graphql-typed-document-node/core';
 import { ProductCollectionSortFilterItem, collectionFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { cn } from "@uncnsrdlabel/lib";
-import { createUrl } from "@uncnsrdlabel/lib/url";
+import { cn, createUrl } from "@uncnsrdlabel/lib";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
