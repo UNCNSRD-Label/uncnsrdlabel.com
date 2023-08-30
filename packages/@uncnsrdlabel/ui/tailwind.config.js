@@ -1,4 +1,4 @@
-import sharedConfig from "@uncnsrdlabel/tailwind-config/tailwind.config";
+import sharedConfig from "@uncnsrdlabel/tailwind-config";
 
 /** @type {import('tailwindcss').Config} */
 export default {
