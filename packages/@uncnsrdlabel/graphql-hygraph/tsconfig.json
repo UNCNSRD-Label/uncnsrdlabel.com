@@ -9,6 +9,6 @@
   },
   "display": "@uncnsrdlabel/graphql-hygraph",
   "extends": "@uncnsrdlabel/tsconfig/react-library.json",
-  "include": ["."],
+  "include": [".", "@uncnsrdlabel/types"],
   "exclude": ["dist", "build", "node_modules"]
 }

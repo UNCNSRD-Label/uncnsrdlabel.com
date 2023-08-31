@@ -7,6 +7,6 @@
   },
   "display": "@uncnsrdlabel/tailwind-config",
   "extends": "@uncnsrdlabel/tsconfig/base.json",
-  "include": ["./src"],
+  "include": ["./src", "@uncnsrdlabel/types"],
   "exclude": ["dist", "build", "node_modules"]
 }

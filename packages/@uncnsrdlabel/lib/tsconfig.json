@@ -3,10 +3,10 @@
     "outDir": "./dist",
     "paths": {
       "@uncnsrdlabel/lib/*": ["./src/*"]
-    },
+    }
   },
   "display": "@uncnsrdlabel/lib",
   "extends": "@uncnsrdlabel/tsconfig/base.json",
-  "include": ["./src"],
+  "include": ["./src", "@uncnsrdlabel/types"],
   "exclude": ["dist", "build", "node_modules"]
 }
