@@ -5,8 +5,8 @@ export default defineConfig((options: Options) => ({
   dts: true,
   entry: ["src/**/*.{ts,tsx}"],
   format: ["cjs", "esm"],
-  minify: false,
-  splitting: false,
-  treeshake: false,
+  minify: true,
+  splitting: true,
+  treeshake: true,
   ...options,
 }));
