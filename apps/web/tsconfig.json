@@ -2,7 +2,16 @@
   "compilerOptions": {
     "allowJs": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@uncnsrdlabel/eslint-config-custom/*": ["../../packages/@uncnsrdlabel/eslint-config-custom/src/*"],
+      "@uncnsrdlabel/graphql-hygraph/*": ["../../packages/@uncnsrdlabel/graphql-hygraph/dist/*"],
+      "@uncnsrdlabel/graphql-shopify-storefront/*": ["../../packages/@uncnsrdlabel/graphql-shopify-storefront/dist/*"],
+      "@uncnsrdlabel/lib/*": ["../../packages/@uncnsrdlabel/lib/dist/*"],
+      "@uncnsrdlabel/providers/*": ["../../packages/@uncnsrdlabel/providers/dist/*"],
+      "@uncnsrdlabel/tailwind-config/*": ["../../packages/@uncnsrdlabel/tailwind-config/dist/*"],
+      "@uncnsrdlabel/tsconfig/*": ["../../packages/@uncnsrdlabel/tsconfig/dist/*"],
+      "@uncnsrdlabel/types/*": ["../../packages/@uncnsrdlabel/types/dist/*"],
+      "@uncnsrdlabel/ui/*": ["../../packages/@uncnsrdlabel/ui/dist/*"],
     },
   },
   "display": "@uncnsrdlabel/app-web",
