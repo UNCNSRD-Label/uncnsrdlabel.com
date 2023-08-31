@@ -28,9 +28,9 @@
   "module": "./dist/index.mjs",
   "name": "@uncnsrdlabel/lib",
   "scripts": {
-    "build": "tsup",
+    "build": "tsc --project ./tsconfig.json",
     "clean": "rm -rf dist",
-    "dev": "tsup --watch",
+    "dev": "tsc --project ./tsconfig.json --watch",
     "lint": "eslint \"src/**/*.ts*\"",
     "types:check": "tsc --noEmit"
   },

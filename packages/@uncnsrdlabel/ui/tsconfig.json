@@ -7,6 +7,6 @@
   },
   "display": "@uncnsrdlabel/ui",
   "extends": "@uncnsrdlabel/tsconfig/react-library.json",
-  "include": ["."],
+  "include": ["./src"],
   "exclude": ["dist", "build", "node_modules"]
 }
