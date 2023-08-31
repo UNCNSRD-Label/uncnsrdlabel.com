@@ -4,7 +4,7 @@ import { AppAnalyticsProvider } from "@uncnsrdlabel/providers/analytics/index";
 import { AppIntlProvider } from "@uncnsrdlabel/providers/react-intl";
 import { AppReactQueryProvider } from "@uncnsrdlabel/providers/react-query";
 import { AppShopifyProvider } from "@uncnsrdlabel/providers/shopify";
-import { IETFLanguageTag } from "@uncnsrdlabel/types";
+import { type IETFLanguageTag } from "@uncnsrdlabel/types";
 import { PropsWithChildren } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
 

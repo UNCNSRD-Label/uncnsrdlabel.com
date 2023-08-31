@@ -1,7 +1,7 @@
 "use client";
 
 import { defaultLocale } from "@uncnsrdlabel/lib";
-import { IETFLanguageTag } from "@uncnsrdlabel/types";
+import { type IETFLanguageTag } from "@uncnsrdlabel/types";
 import { PropsWithChildren } from "react";
 import { IntlProvider, type ResolvedIntlConfig } from "react-intl";
 
