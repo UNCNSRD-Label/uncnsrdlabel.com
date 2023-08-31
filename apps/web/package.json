@@ -110,6 +110,9 @@
     "webpack": "^5.88.2"
   },
   "name": "@uncnsrdlabel/app-web",
+  "peerDependencies": {
+    "encoding": "^0.1.13"
+  },
   "private": true,
   "scripts": {
     "analyze": "cross-env ANALYZE=true next build",
