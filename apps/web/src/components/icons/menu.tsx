@@ -1,4 +1,4 @@
-import { cn } from "@uncnsrdlabel/lib";
+import { cn } from "@uncnsrdlabel/lib/classname";
 
 export function MenuIcon({ className }: { className?: string }) {
   return (

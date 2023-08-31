@@ -2,7 +2,7 @@
 
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
-import { cn } from "@uncnsrdlabel/lib";
+import { cn } from "@uncnsrdlabel/lib/classname";
 import { ReactNode, forwardRef } from "react";
 
 interface AccordionContentProps {

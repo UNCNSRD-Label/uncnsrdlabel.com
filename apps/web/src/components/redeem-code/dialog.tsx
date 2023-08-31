@@ -8,7 +8,7 @@ import { useState } from "react";
 
 import { RedeemCodeForm } from "@/components/redeem-code/form";
 
-import { COOKIE_REDEEM_CODE } from "@uncnsrdlabel/lib";
+import { COOKIE_REDEEM_CODE } from "@uncnsrdlabel/lib/constants";
 
 export function RedeemCode(props: { className?: string }) {
   useTimeoutEffect(

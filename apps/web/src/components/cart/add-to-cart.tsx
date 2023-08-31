@@ -5,7 +5,7 @@ import { LoadingDots } from "@/components/loading-dots";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { AddToCartButton } from "@shopify/hydrogen-react";
 import { ProductVariant } from "@shopify/hydrogen/storefront-api-types";
-import { cn } from "@uncnsrdlabel/lib";
+import { cn } from "@uncnsrdlabel/lib/classname";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState, useTransition } from "react";
 import { type PartialDeep } from "type-fest";

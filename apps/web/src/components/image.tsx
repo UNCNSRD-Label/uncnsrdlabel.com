@@ -1,7 +1,8 @@
 "use client";
 
 import { useIntersectionObserver } from "@react-hookz/web";
-import { cn, onLoadingComplete } from "@uncnsrdlabel/lib";
+import { cn } from "@uncnsrdlabel/lib/classname";
+import { onLoadingComplete } from "@uncnsrdlabel/lib/image";
 import NextImage, { type ImageProps } from "next/image";
 import { useEffect, useRef, useState } from "react";
 

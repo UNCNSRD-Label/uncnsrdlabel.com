@@ -1,4 +1,4 @@
-import { cn } from "@uncnsrdlabel/lib";
+import { cn } from "@uncnsrdlabel/lib/classname";
 
 type Props = { className?: string; style?: React.CSSProperties };
 

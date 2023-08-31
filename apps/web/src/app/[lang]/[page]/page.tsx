@@ -8,7 +8,7 @@ import {
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-export { revalidate } from "@uncnsrdlabel/lib";
+export { revalidate } from "@uncnsrdlabel/lib/constants";
 
 export const runtime = "edge";
 

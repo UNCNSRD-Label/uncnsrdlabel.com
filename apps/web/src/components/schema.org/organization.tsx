@@ -1,4 +1,4 @@
-import { SITE_DOMAIN } from "@uncnsrdlabel/lib";
+import { SITE_DOMAIN } from "@uncnsrdlabel/lib/constants";
 import Script from "next/script";
 
 const { NEXT_PUBLIC_SITE_NAME = "UNCNSRD" } = process.env;

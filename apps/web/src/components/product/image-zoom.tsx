@@ -2,7 +2,7 @@
 
 import { Image } from "@/components/image";
 import { LoadingDots } from "@/components/loading-dots";
-import { cn } from "@uncnsrdlabel/lib";
+import { cn } from "@uncnsrdlabel/lib/classname";
 import { useRef } from "react";
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 
