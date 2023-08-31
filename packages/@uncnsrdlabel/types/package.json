@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "@shopify/hydrogen": "^2023.7.3",
+    "@total-typescript/ts-reset": "^0.4.2",
     "@types/node": "^20.5.6",
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "@uncnsrdlabel/tsconfig": "workspace:*",
@@ -19,8 +20,9 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsc --project ./tsconfig.json",
-    "dev": "tsc --project ./tsconfig.json --watch",
+    "build": "tsup",
+    "clean": "rm -rf dist",
+    "dev": "tsup --watch",
     "lint": "eslint \"src/**/*.ts*\"",
     "types:check": "tsc --noEmit"
   },
