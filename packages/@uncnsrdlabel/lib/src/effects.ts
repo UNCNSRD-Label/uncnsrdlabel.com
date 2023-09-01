@@ -1,4 +1,4 @@
-import { cn } from "./classname";
+import { cn } from "./classname.js";
 
 export const themeColors = cn(
   "bg-gray-50 fill-gray-950 stroke-gray-950 text-gray-950",

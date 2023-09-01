@@ -21,6 +21,7 @@ const config: CodegenConfig = {
     "../../apps/app/app/**/*.{ts,tsx}",
     "../../apps/app/components/**/*.{ts,tsx}",
   ],
+  emitLegacyCommonJSImports: false,
   generates: {
     "./src/codegen/": {
       preset: "client",

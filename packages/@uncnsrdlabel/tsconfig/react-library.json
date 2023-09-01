@@ -4,7 +4,8 @@
     "esModuleInterop": true,
     "jsx": "react-jsx",
     "lib": ["dom", "dom.iterable", "ESNext"],
-    "module": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "target": "ESNext",
     "types": ["@uncnsrdlabel/types", "node"]
   },

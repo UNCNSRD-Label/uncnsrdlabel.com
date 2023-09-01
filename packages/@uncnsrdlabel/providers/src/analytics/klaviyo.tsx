@@ -1,7 +1,7 @@
 "use client";
 
 import { getClientBrowserParameters } from "@shopify/hydrogen";
-import { PluginEventFunctions } from "@uncnsrdlabel/providers/analytics/types";
+import { PluginEventFunctions } from "@uncnsrdlabel/providers/analytics/types.js";
 import { AnalyticsPlugin } from "analytics";
 
 export interface KlaviyoConfig {

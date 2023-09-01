@@ -1,4 +1,4 @@
-import { graphql } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
+import { graphql } from "@uncnsrdlabel/graphql-shopify-storefront/codegen/index.js";
 
 export const productDetailsFragment = graphql(/* GraphQL */ `
   fragment productDetails on Product {

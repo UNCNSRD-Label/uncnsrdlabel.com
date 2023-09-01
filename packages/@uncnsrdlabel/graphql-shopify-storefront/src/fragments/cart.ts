@@ -1,4 +1,4 @@
-import { graphql } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
+import { graphql } from "@uncnsrdlabel/graphql-shopify-storefront/codegen/index.js";
 
 export const cartFragment = graphql(/* GraphQL */ `
   fragment cart on Cart {

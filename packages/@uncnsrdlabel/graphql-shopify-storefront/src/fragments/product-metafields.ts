@@ -1,4 +1,4 @@
-import { graphql } from "@uncnsrdlabel/graphql-shopify-storefront/codegen";
+import { graphql } from "@uncnsrdlabel/graphql-shopify-storefront/codegen/index.js";
 
 export const productMetafieldFragment = graphql(/* GraphQL */ `
   fragment productMetafields on Metafield {

@@ -1,10 +1,10 @@
-export * from "./classname"
-export * from "./consent"
-export * from "./constants"
-export * from "./effects"
-export * from "./errors"
-// export * from "./hooks"
-export * from "./i18n"
-export * from "./image"
-export * from "./type-guards"
-export * from "./url"
+export * from "./classname.js";
+export * from "./consent.js";
+export * from "./constants.js";
+export * from "./effects.js";
+export * from "./errors.js";
+export * from "./i18n.js";
+export * from "./image.js";
+export * from "./type-guards.js";
+export * from "./url.js";
+
