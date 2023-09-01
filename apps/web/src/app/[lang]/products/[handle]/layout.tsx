@@ -1,7 +1,7 @@
-import { Logo } from "@/components/layout/logo";
-import { Navbar } from "@/components/layout/navbar";
-import { NavbarContent } from "@/components/layout/navbar/content";
-import { PageTransition } from "@/components/page-transition";
+import { Logo } from "@/components/layout/logo/index.js";
+import { NavbarContent } from "@/components/layout/navbar/content.js";
+import { Navbar } from "@/components/layout/navbar/index.js";
+import { PageTransition } from "@/components/page-transition.js";
 import { Suspense } from "react";
 
 export default function SearchLayout({

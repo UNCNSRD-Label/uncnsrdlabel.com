@@ -1,4 +1,4 @@
-import { cn } from "@uncnsrdlabel/lib/classname";
+import { cn } from "@uncnsrdlabel/lib/classname.js";
 
 const dots = "mx-[1px] inline-block h-1 w-1 animate-blink rounded-md";
 

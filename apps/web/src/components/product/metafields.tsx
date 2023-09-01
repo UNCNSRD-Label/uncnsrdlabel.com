@@ -1,14 +1,14 @@
 import {
-    Accordion,
-    AccordionContent,
-    AccordionHeader,
-    AccordionItem,
-    AccordionTrigger,
+  Accordion,
+  AccordionContent,
+  AccordionHeader,
+  AccordionItem,
+  AccordionTrigger,
 } from "@/components/accordion";
 import { MetafieldMapper } from "@/components/product/metafield-mapper";
 import { ResultOf } from '@graphql-typed-document-node/core';
 import { productMetafieldFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { cn } from "@uncnsrdlabel/lib/classname";
+import { cn } from "@uncnsrdlabel/lib/classname.js";
 import { forwardRef } from "react";
 
 export type MetaFieldsRef = HTMLDivElement;

@@ -1,7 +1,7 @@
 "use client";
 
-import { Image } from "@/components/image";
-import { cn } from "@uncnsrdlabel/lib/classname";
+import { Image } from "@/components/image.js";
+import { cn } from "@uncnsrdlabel/lib/classname.js";
 import dynamic from "next/dynamic";
 import { type ReactPlayerProps } from "react-player";
 

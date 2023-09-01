@@ -2,7 +2,7 @@
 
 import { minWidthLg, minWidthSm } from "@/lib/tailwind";
 import { useMediaQuery } from "@react-hookz/web";
-import { cn } from "@uncnsrdlabel/lib/classname";
+import { cn } from "@uncnsrdlabel/lib/classname.js";
 import Carousel, { type CarouselProps } from "nuka-carousel";
 import { Suspense } from "react";
 

@@ -2,7 +2,7 @@
 
 import * as Checkbox from "@radix-ui/react-checkbox";
 import { CheckIcon } from "@radix-ui/react-icons";
-import { cn } from "@uncnsrdlabel/lib/classname";
+import { cn } from "@uncnsrdlabel/lib/classname.js";
 import { getCookie, setCookie } from "cookies-next";
 import { useState } from "react";
 

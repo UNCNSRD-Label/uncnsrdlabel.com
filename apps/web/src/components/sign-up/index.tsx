@@ -1,5 +1,5 @@
 import { SignUpForm } from "@/components/sign-up/form";
-import { cn } from "@uncnsrdlabel/lib/classname";
+import { cn } from "@uncnsrdlabel/lib/classname.js";
 
 export function SignUp({ className }: { className?: string }) {
   return (

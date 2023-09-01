@@ -2,8 +2,8 @@
 
 import { signUpAction } from "@/components/sign-up/action";
 import * as Toast from "@radix-ui/react-toast";
-import { cn } from "@uncnsrdlabel/lib/classname";
-import { themeColors } from "@uncnsrdlabel/lib/effects";
+import { cn } from "@uncnsrdlabel/lib/classname.js";
+import { themeColors } from "@uncnsrdlabel/lib/effects.js";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { SlEnvolope } from "react-icons/sl";

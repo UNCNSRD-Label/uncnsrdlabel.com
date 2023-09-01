@@ -1,8 +1,8 @@
 "use client";
 
-import { Image } from "@/components/image";
-import { LoadingDots } from "@/components/loading-dots";
-import { cn } from "@uncnsrdlabel/lib/classname";
+import { Image } from "@/components/image.js";
+import { LoadingDots } from "@/components/loading-dots.js";
+import { cn } from "@uncnsrdlabel/lib/classname.js";
 import { useRef } from "react";
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 

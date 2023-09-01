@@ -1,6 +1,6 @@
-// import {Logo} from "@/components/layout/logo";
-import { Navbar } from "@/components/layout/navbar";
-import { NavbarContent } from "@/components/layout/navbar/content";
+// import {Logo} from "@/components/layout/logo/index.js";
+import { NavbarContent } from "@/components/layout/navbar/content.js";
+import { Navbar } from "@/components/layout/navbar/index.js";
 import { Suspense } from "react";
 
 export default function SearchLayout({

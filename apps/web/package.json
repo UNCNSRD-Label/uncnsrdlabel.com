@@ -122,5 +122,6 @@
     "start": "next start",
     "lint": "next lint",
     "types:check": "tsc --noEmit"
-  }
+  },
+  "type": "module"
 }

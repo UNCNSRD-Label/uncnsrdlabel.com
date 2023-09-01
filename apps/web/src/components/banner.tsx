@@ -1,5 +1,5 @@
 import { getIntl } from "@/lib/i18n/server";
-import { cn } from "@uncnsrdlabel/lib/classname";
+import { cn } from "@uncnsrdlabel/lib/classname.js";
 import { use } from "react";
 
 export const Banner = ({ className }: { className?: string }) => {

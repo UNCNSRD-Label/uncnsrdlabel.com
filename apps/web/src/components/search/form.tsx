@@ -1,4 +1,4 @@
-import { cn } from "@uncnsrdlabel/lib/classname";
+import { cn } from "@uncnsrdlabel/lib/classname.js";
 import { createUrl } from "@uncnsrdlabel/lib/url";
 import { useRouter, useSearchParams } from "next/navigation";
 

@@ -1,11 +1,11 @@
 "use client";
 
-import { addItem } from "@/components/cart/actions";
-import { LoadingDots } from "@/components/loading-dots";
+import { addItem } from "@/components/cart/actions.js";
+import { LoadingDots } from "@/components/loading-dots.js";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { AddToCartButton } from "@shopify/hydrogen-react";
 import { ProductVariant } from "@shopify/hydrogen/storefront-api-types";
-import { cn } from "@uncnsrdlabel/lib/classname";
+import { cn } from "@uncnsrdlabel/lib/classname.js";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState, useTransition } from "react";
 import { type PartialDeep } from "type-fest";

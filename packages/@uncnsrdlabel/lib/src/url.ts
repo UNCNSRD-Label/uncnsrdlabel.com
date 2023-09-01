@@ -1,4 +1,4 @@
-import { type ReadonlyURLSearchParams } from "next/navigation.js";
+import { type ReadonlyURLSearchParams } from "next/navigation";
 
 export const createUrl = (
   pathname: string,

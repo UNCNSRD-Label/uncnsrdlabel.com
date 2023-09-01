@@ -1,7 +1,7 @@
 "use client";
 
 import * as ScrollArea from "@radix-ui/react-scroll-area";
-import { cn } from "@uncnsrdlabel/lib/classname";
+import { cn } from "@uncnsrdlabel/lib/classname.js";
 import { ReactNode, useRef } from "react";
 
 export function ScrollControls({

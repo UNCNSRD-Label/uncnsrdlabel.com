@@ -1,6 +1,6 @@
-import { Image } from "@/components/image";
+import { Image } from "@/components/image.js";
 import { getFragmentData, getPage, imageFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { cn } from "@uncnsrdlabel/lib/classname";
+import { cn } from "@uncnsrdlabel/lib/classname.js";
 import { notFound } from "next/navigation";
 
 export async function HorizontalScroll({ className }: { className?: string }) {
