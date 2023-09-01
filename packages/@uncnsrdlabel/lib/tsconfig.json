@@ -8,6 +8,6 @@
   },
   "display": "@uncnsrdlabel/lib",
   "extends": "@uncnsrdlabel/tsconfig/base.json",
-  "include": ["./src", "@uncnsrdlabel/types"],
+  "include": ["./src"],
   "exclude": ["dist", "build", "node_modules"]
 }
