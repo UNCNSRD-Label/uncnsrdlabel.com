@@ -5,7 +5,7 @@ export default defineConfig((options: Options) => ({
   dts: true,
   entry: ["src/**/*.{ts,tsx}"],
   external: ["react"],
-  format: ["cjs", "esm"],
+  format: ["esm"],
   minify: false,
   splitting: false,
   treeshake: false,
