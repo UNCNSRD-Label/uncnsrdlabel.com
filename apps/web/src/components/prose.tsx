@@ -1,4 +1,4 @@
-import { cn } from "@uncnsrdlabel/lib/classname.js";
+import { cn } from "@uncnsrdlabel/lib/classname";
 import type { FunctionComponent } from "react";
 
 interface TextProps {

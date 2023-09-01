@@ -1,13 +1,13 @@
 'use client';
 
-import { Image } from "@/components/image.js";
+import { Image } from "@/components/image";
 import {
   NukaCarousel,
   type NukaCarouselProps,
 } from "@/components/nuka-carousel";
 import { minWidthLg, minWidthSm } from "@/lib/tailwind";
 import { getFragmentData, getPage, imageFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { cn } from "@uncnsrdlabel/lib/classname.js";
+import { cn } from "@uncnsrdlabel/lib/classname";
 import { notFound } from "next/navigation";
 import { Suspense, use } from "react";
 

@@ -1,4 +1,4 @@
-import { cn } from "@uncnsrdlabel/lib/classname.js";
+import { cn } from "@uncnsrdlabel/lib/classname";
 
 export const Price = ({
   amount,

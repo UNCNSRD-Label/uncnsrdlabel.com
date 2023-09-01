@@ -1,6 +1,6 @@
 'use client'
 
-import { getDictionary } from "@/dictionaries";
+import { getDictionary } from "@/get-dictionary";
 import { createIntl } from '@formatjs/intl';
 import { useParams } from "next/navigation";
 import { use } from "react";

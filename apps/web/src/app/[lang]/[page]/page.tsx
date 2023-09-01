@@ -1,4 +1,4 @@
-import { Image } from "@/components/image.js";
+import { Image } from "@/components/image";
 import {
   getFragmentData,
   getPage,

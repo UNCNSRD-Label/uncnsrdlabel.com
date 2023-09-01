@@ -1,7 +1,7 @@
 "use client";
 
 import { redeemCodeAction } from "@/components/redeem-code/action";
-import { cn } from "@uncnsrdlabel/lib/classname.js";
+import { cn } from "@uncnsrdlabel/lib/classname";
 import { useForm } from "react-hook-form";
 
 export function RedeemCodeForm({ className }: { className?: string }) {

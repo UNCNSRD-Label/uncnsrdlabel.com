@@ -1,5 +1,5 @@
-import { Image } from "@/components/image.js";
-import { cn } from "@uncnsrdlabel/lib/classname.js";
+import { Image } from "@/components/image";
+import { cn } from "@uncnsrdlabel/lib/classname";
 
 export function ProductImage({
   active,

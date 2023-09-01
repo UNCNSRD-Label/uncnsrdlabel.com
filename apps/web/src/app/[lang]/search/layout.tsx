@@ -1,11 +1,11 @@
-import { Logo } from "@/components/layout/logo/index.js";
-import { NavbarContent } from "@/components/layout/navbar/content.js";
-import { Navbar } from "@/components/layout/navbar/index.js";
-import { Collections } from "@/components/layout/search/collections.js";
-import { FilterList } from "@/components/layout/search/filter/index.js";
-import { PageTransition } from "@/components/page-transition.js";
+import { Logo } from "@/components/layout/logo/index";
+import { NavbarContent } from "@/components/layout/navbar/content";
+import { Navbar } from "@/components/layout/navbar/index";
+import { Collections } from "@/components/layout/search/collections";
+import { FilterList } from "@/components/layout/search/filter/index";
+import { PageTransition } from "@/components/page-transition";
 import { productCollectionSorting } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { cn } from "@uncnsrdlabel/lib/classname.js";
+import { cn } from "@uncnsrdlabel/lib/classname";
 import { Suspense } from "react";
 
 export default function SearchLayout({

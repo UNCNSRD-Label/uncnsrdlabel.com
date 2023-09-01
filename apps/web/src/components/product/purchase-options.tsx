@@ -4,7 +4,7 @@ import { VariantSelector } from "@/components/product/variant-selector";
 import { Prose } from "@/components/prose";
 import { ResultOf } from '@graphql-typed-document-node/core';
 import { getFragmentData, productDetailsFragment, productVariantConnectionFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { cn } from "@uncnsrdlabel/lib/classname.js";
+import { cn } from "@uncnsrdlabel/lib/classname";
 import { forwardRef } from "react";
 
 type PurchaseOptionsRef = HTMLDivElement;

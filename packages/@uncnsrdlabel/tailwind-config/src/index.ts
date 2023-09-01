@@ -1,8 +1,8 @@
 import forms from "@tailwindcss/forms";
 import typography from "@tailwindcss/typography";
 import type { Config } from "tailwindcss";
-import colors from "tailwindcss/colors.js";
-import plugin from "tailwindcss/plugin.js";
+import colors from "tailwindcss/colors";
+import plugin from "tailwindcss/plugin";
 
 const config: Config = {
   content: [],

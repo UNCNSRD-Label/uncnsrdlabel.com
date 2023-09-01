@@ -1,4 +1,4 @@
-import { cn } from "@uncnsrdlabel/lib/classname.js";
+import { cn } from "@uncnsrdlabel/lib/classname";
 import { SlMagnifier } from "react-icons/sl";
 
 export function SearchButton({ isOpen }: { isOpen: boolean }) {

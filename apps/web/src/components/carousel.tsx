@@ -1,4 +1,4 @@
-import { Image } from "@/components/image.js";
+import { Image } from "@/components/image";
 import { getCollectionProducts, getFragmentData, getPage, imageFragment, productBasicFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
 import Link from "next/link";
 import { notFound } from "next/navigation";

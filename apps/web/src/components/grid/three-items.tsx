@@ -3,7 +3,7 @@ import type { Product } from "@shopify/hydrogen/storefront-api-types";
 import {
   getCollectionProducts
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { cn } from "@uncnsrdlabel/lib/classname.js";
+import { cn } from "@uncnsrdlabel/lib/classname";
 import Link from "next/link";
 import { PartialDeep } from "type-fest";
 

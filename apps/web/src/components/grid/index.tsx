@@ -1,4 +1,4 @@
-import { cn } from "@uncnsrdlabel/lib/classname.js";
+import { cn } from "@uncnsrdlabel/lib/classname";
 
 export function Grid(props: React.ComponentProps<"ul">) {
   return (
