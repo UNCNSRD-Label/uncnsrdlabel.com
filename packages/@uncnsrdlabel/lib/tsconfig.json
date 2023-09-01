@@ -3,7 +3,7 @@
     "outDir": "./dist",
     "paths": {
       "@uncnsrdlabel/lib/*": ["./src/*"],
-      "@uncnsrdlabel/types": ["../types/src/index.ts"]
+      "@uncnsrdlabel/types/*": ["../types/dist/*"]
     },
   },
   "display": "@uncnsrdlabel/lib",
