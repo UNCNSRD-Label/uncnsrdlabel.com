@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "emitDeclarationOnly": true,
     "outDir": "./dist",
     "paths": {
       "@uncnsrdlabel/types/*": ["./src/*"]
