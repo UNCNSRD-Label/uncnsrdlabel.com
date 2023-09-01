@@ -2,8 +2,9 @@
   "compilerOptions": {
     "outDir": "./dist",
     "paths": {
-      "@uncnsrdlabel/lib/*": ["./src/*"]
-    }
+      "@uncnsrdlabel/lib/*": ["./src/*"],
+      "@uncnsrdlabel/types": ["../types/src/index.ts"]
+    },
   },
   "display": "@uncnsrdlabel/lib",
   "extends": "@uncnsrdlabel/tsconfig/base.json",
