@@ -1,4 +1,4 @@
-import "server-only";
+"server-only";
 
 import { getDictionary } from "@/dictionaries";
 import { createIntl } from '@formatjs/intl';
