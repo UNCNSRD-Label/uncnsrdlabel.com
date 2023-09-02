@@ -3,7 +3,7 @@ import { cn } from "@uncnsrdlabel/lib/classname";
 
 export function ProductImage({
   active,
-  background = "hotPink",
+  // background = "hotPink",
   className,
   isInteractive = true,
   scale = 1,

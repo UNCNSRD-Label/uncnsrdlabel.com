@@ -19,7 +19,7 @@ export function ConsentDialog(props: { className?: string }) {
     hasCookie(COOKIE_CONSENT) ? undefined : 10_000,
   );
 
-  const [_open, setOpen] = useState(false);
+  const [, setOpen] = useState(false);
 
   const acceptSelectedConsents = () => {
     setOpen(false);
