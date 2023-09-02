@@ -1,4 +1,4 @@
-import { cn } from "@uncnsrdlabel/lib/classname";
+import { cn } from "@uncnsrdlabel/lib";
 import type { FunctionComponent } from "react";
 import { SocialIcon } from "react-social-icons";
 

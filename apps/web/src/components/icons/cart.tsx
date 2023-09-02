@@ -1,4 +1,4 @@
-import { cn } from "@uncnsrdlabel/lib/classname";
+import { cn } from "@uncnsrdlabel/lib";
 import { SlBag } from "react-icons/sl";
 
 export function CartIcon({

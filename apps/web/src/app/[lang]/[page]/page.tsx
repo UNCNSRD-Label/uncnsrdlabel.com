@@ -8,7 +8,7 @@ import {
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-export { revalidate } from "@uncnsrdlabel/lib/constants";
+export { revalidate } from "@uncnsrdlabel/lib";
 
 export const runtime = "edge";
 
@@ -46,7 +46,7 @@ export default async function Page({ params }: { params: { page: string } }) {
 
   if (!page) return notFound();
 
-  const mediaImages = page.mediaImages.references.edges.map((edge) => edge?.node);
+  const mediaImages = page.mediaImages?.references?.edges.map((edge) => edge?.node);
 
   return (
     <>

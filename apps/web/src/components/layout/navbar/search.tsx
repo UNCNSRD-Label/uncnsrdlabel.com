@@ -3,7 +3,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 
 import { SearchIcon } from "@/components/icons/search";
-import { createUrl } from "@uncnsrdlabel/lib/url";
+import { createUrl } from "@uncnsrdlabel/lib";
 
 export function NavbarSearch() {
   const router = useRouter();

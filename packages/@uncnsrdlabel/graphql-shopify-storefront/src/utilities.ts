@@ -1,19 +1,21 @@
 import { type TypedDocumentNode } from "@graphql-typed-document-node/core";
 import { useQuery, type UseQueryResult } from "@tanstack/react-query";
-import { CollectionFragment } from "@uncnsrdlabel/graphql-shopify-storefront/codegen/graphql";
-import { getFragmentData } from "@uncnsrdlabel/graphql-shopify-storefront/codegen/index";
+import { CollectionFragment } from "./codegen/graphql";
+import { getFragmentData } from "./codegen/index";
 import {
   addToCartMutation,
   createCartMutation,
   editCartItemsMutation,
   removeFromCartMutation,
-} from "@uncnsrdlabel/graphql-shopify-storefront/mutations/cart";
+} from "./mutations/cart";
 import {
   getCollectionProductsQuery,
   getCollectionQuery,
   getCollectionsQuery,
-} from "@uncnsrdlabel/graphql-shopify-storefront/queries/collection";
-// import { collectionFragment } from "@uncnsrdlabel/graphql-shopify-storefront/fragments/collection";
+} from "./queries/collection";
+// import { collectionFragment } from "./fragments/collection";
+import { GraphQLClient } from "graphql-request";
+import { camelCase } from "lodash";
 import {
   AddToCartMutationVariables,
   CreateCartMutationVariables,
@@ -33,7 +35,7 @@ import {
   RemoveFromCartMutationVariables,
   type ImageFragment,
   type MediaImage,
-} from "@uncnsrdlabel/graphql-shopify-storefront/codegen/graphql";
+} from "./codegen/graphql";
 import {
   cartFragment,
   collectionFragment,
@@ -41,7 +43,7 @@ import {
   pageFragment,
   productBasicFragment,
   productDetailsFragment,
-} from "@uncnsrdlabel/graphql-shopify-storefront/fragments/index";
+} from "./fragments/index";
 import {
   getCartQuery,
   getMenuQuery,
@@ -53,12 +55,10 @@ import {
   getProductRecommendationsQuery,
   getProductsQuery,
   getProductsWithVariantsQuery,
-} from "@uncnsrdlabel/graphql-shopify-storefront/queries/index";
-import { type PolicyName } from "@uncnsrdlabel/graphql-shopify-storefront/types";
-import { GraphQLClient } from "graphql-request";
-import { camelCase } from "lodash";
+} from "./queries/index";
+import { type PolicyName } from "./types";
 
-export { graphql } from "@uncnsrdlabel/graphql-shopify-storefront/codegen/index";
+export { graphql } from "./codegen/index";
 
 export const domain = `https://${process.env
   .NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!}`;

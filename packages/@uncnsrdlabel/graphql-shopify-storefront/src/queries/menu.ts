@@ -1,4 +1,4 @@
-import { graphql } from "@uncnsrdlabel/graphql-shopify-storefront/codegen/index";
+import { graphql } from "../codegen/index";
 
 export const getMenuQuery = graphql(/* GraphQL */ `
   query getMenu($handle: String!) {

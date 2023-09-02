@@ -5,7 +5,7 @@ import { Collections } from "@/components/layout/search/collections";
 import { FilterList } from "@/components/layout/search/filter/index";
 import { PageTransition } from "@/components/page-transition";
 import { productCollectionSorting } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { cn } from "@uncnsrdlabel/lib/classname";
+import { cn } from "@uncnsrdlabel/lib";
 import { Suspense } from "react";
 
 export default function SearchLayout({

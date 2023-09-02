@@ -5,14 +5,13 @@ import googleTagManager from "@analytics/google-tag-manager";
 import { Analytics } from "analytics";
 // import { eventValidation } from "analytics-plugin-event-validation";
 import { getShopifyCookies, useShop } from "@shopify/hydrogen-react";
-import { klaviyo } from "@uncnsrdlabel/providers/analytics/klaviyo";
-import { shopify } from "@uncnsrdlabel/providers/analytics/shopify";
 import { getCookie } from "cookies-next";
 import { PropsWithChildren } from "react";
 import { AnalyticsProvider } from "use-analytics";
+import { klaviyo } from "./klaviyo";
+import { shopify } from "./shopify";
 
-import type { ConsentSettings } from "@uncnsrdlabel/lib";
-import { COOKIE_CONSENT } from "@uncnsrdlabel/lib";
+import { COOKIE_CONSENT, type ConsentSettings } from "@uncnsrdlabel/lib";
 
 export function AppAnalyticsProvider({ children }: PropsWithChildren) {
   const consentCookieData = (getCookie(COOKIE_CONSENT) as string) ?? "{}";

@@ -15,8 +15,8 @@ import type {
 } from "@shopify/hydrogen/storefront-api-types";
 import { Cookies } from "react-cookie";
 
-import { PluginEventFunctions } from "@uncnsrdlabel/providers/analytics/types";
 import { AnalyticsPlugin } from "analytics";
+import { PluginEventFunctions } from "./types";
 export interface ShopifyConfig {
   collectionHandle?: string;
   hasUserConsent: boolean;

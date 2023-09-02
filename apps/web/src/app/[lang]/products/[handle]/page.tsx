@@ -13,8 +13,7 @@ import {
   imageFragment,
   seoFragment
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { cn } from "@uncnsrdlabel/lib/classname";
-import { HIDDEN_PRODUCT_TAG } from "@uncnsrdlabel/lib/constants";
+import { HIDDEN_PRODUCT_TAG, cn } from "@uncnsrdlabel/lib";
 
 export const runtime = "edge";
 

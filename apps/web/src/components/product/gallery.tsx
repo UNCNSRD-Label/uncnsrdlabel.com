@@ -2,7 +2,7 @@
 
 import { GridTileImage } from "@/components/grid/tile";
 import { ArrowLeftIcon } from "@/components/icons/arrow-left";
-import { cn } from "@uncnsrdlabel/lib/classname";
+import { cn } from "@uncnsrdlabel/lib";
 import { useState } from "react";
 
 export function Gallery({

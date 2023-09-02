@@ -1,7 +1,7 @@
 import {
   ProductCollectionSortKeys,
   ProductSortKeys,
-} from "@uncnsrdlabel/graphql-shopify-storefront/codegen/graphql";
+} from "./codegen/graphql";
 
 export type SortFilterItem = {
   title: string;

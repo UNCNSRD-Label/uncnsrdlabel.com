@@ -1,5 +1,5 @@
 import { getCollections } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { cn } from "@uncnsrdlabel/lib/classname";
+import { cn } from "@uncnsrdlabel/lib";
 import { Suspense } from "react";
 import { FilterList } from "./filter";
 

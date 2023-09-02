@@ -1,7 +1,7 @@
 "use client";
 
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
-import { cn } from "@uncnsrdlabel/lib/classname";
+import { cn } from "@uncnsrdlabel/lib";
 import type { MutableRefObject } from "react";
 import useScrollSpy from "react-use-scrollspy";
 import slugify from "slugify";

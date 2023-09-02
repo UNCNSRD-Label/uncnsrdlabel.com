@@ -4,8 +4,7 @@ import {
   ProductOption,
   ProductVariant,
 } from "@shopify/hydrogen/storefront-api-types";
-import { cn } from "@uncnsrdlabel/lib/classname";
-import { createUrl } from "@uncnsrdlabel/lib/url";
+import { cn, createUrl } from "@uncnsrdlabel/lib";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { PartialDeep } from "type-fest";
 
