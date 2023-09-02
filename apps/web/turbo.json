@@ -32,9 +32,6 @@
         "TWITTER_SITE"
       ],
       "outputs": [".next/**", "!.next/cache/**"]
-    },
-    "dev": {
-      "outputs": ["dist/**"]
     }
   }
 }
