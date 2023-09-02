@@ -13,7 +13,14 @@
       "@uncnsrdlabel/types/*": ["../../packages/@uncnsrdlabel/types/dist/*"],
       "@uncnsrdlabel/ui/*": ["../../packages/@uncnsrdlabel/ui/dist/*"],
     },
-    "types": ["@uncnsrdlabel/types", "node"]
+    "types": [
+      "@uncnsrdlabel/types",
+      "gtag.js",
+      "lodash",
+      "node",
+      "react",
+      "use-analytics"
+    ]
   },
   "display": "@uncnsrdlabel/app-web",
   "extends": "@uncnsrdlabel/tsconfig/nextjs.json",
