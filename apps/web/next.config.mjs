@@ -12,9 +12,9 @@ const withPWA = withPWAInit({
 
 const plugins = [withBundleAnalyzer];
 
-// if (process.env.NODE_ENV === "production") {
-//   plugins.push([withPWA]);
-// }
+if (process.env.NODE_ENV === "production") {
+  plugins.push([withPWA]);
+}
 
 const domains = [
   'access.uncnsrdlabel.com',
