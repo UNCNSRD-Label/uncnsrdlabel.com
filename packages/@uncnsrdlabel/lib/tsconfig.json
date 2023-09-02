@@ -5,6 +5,7 @@
       "@uncnsrdlabel/lib/*": ["./src/*"],
       "@uncnsrdlabel/types/*": ["../types/dist/*"]
     },
+    "types": ["@uncnsrdlabel/types", "node"]
   },
   "display": "@uncnsrdlabel/lib",
   "extends": "@uncnsrdlabel/tsconfig/base.json",
