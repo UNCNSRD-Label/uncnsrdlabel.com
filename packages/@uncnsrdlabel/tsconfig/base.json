@@ -17,7 +17,9 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "ESNext",
-    "types": ["@uncnsrdlabel/types", "node"]
+    "types": [
+      "node"
+    ]
   },
   "display": "Base",
   "exclude": ["node_modules"]
