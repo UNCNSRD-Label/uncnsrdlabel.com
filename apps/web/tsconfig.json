@@ -13,6 +13,7 @@
       "@uncnsrdlabel/types/*": ["../../packages/@uncnsrdlabel/types/dist/*"],
       "@uncnsrdlabel/ui/*": ["../../packages/@uncnsrdlabel/ui/dist/*"],
     },
+    "types": ["@uncnsrdlabel/types", "node"]
   },
   "display": "@uncnsrdlabel/app-web",
   "extends": "@uncnsrdlabel/tsconfig/nextjs.json",

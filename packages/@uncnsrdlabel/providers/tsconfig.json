@@ -14,7 +14,7 @@
     ]
   },
   "display": "@uncnsrdlabel/providers",
+  "exclude": ["dist", "build", "node_modules"],
   "extends": "@uncnsrdlabel/tsconfig/react-library.json",
-  "include": ["./src", "@uncnsrdlabel/types"],
-  "exclude": ["dist", "build", "node_modules"]
+  "include": ["@uncnsrdlabel/types", "./src"]
 }

@@ -21,5 +21,5 @@
   "display": "Next.js",
   "exclude": ["node_modules"],
   "extends": "./base.json",
-  "include": ["src", "next-env.d.ts"]
+  "include": ["@uncnsrdlabel/types", "next-env.d.ts", "src"]
 }

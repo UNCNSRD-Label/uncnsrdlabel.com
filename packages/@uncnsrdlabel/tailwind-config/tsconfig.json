@@ -4,9 +4,10 @@
     "paths": {
       "@uncnsrdlabel/tailwind-config/*": ["./src/*"]
     },
+    "types": ["@uncnsrdlabel/types", "node"]
   },
   "display": "@uncnsrdlabel/tailwind-config",
+  "exclude": ["dist", "build", "node_modules"],
   "extends": "@uncnsrdlabel/tsconfig/base.json",
-  "include": ["./src", "@uncnsrdlabel/types"],
-  "exclude": ["dist", "build", "node_modules"]
+  "include": ["@uncnsrdlabel/types", "./src"]
 }

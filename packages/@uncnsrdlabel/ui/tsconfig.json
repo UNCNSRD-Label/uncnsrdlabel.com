@@ -3,10 +3,11 @@
     "outDir": "./dist",
     "paths": {
       "@uncnsrdlabel/ui/*": ["./src/*"]
-    }
+    },
+    "types": ["@uncnsrdlabel/types", "node"]
   },
   "display": "@uncnsrdlabel/ui",
   "extends": "@uncnsrdlabel/tsconfig/react-library.json",
-  "include": ["./src", "@uncnsrdlabel/types"],
+  "include": ["@uncnsrdlabel/types", "./src"],
   "exclude": ["dist", "build", "node_modules"]
 }

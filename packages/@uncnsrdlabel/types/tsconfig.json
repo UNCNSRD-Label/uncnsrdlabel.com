@@ -5,6 +5,7 @@
     "paths": {
       "@uncnsrdlabel/types/*": ["./src/*"]
     },
+    "types": ["node"]
   },
   "display": "@uncnsrdlabel/types",
   "extends": "@uncnsrdlabel/tsconfig/base.json",

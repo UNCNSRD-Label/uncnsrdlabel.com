@@ -3,10 +3,11 @@
     "outDir": "./dist",
     "paths": {
       "@uncnsrdlabel/graphql-shopify-storefront/*": ["./src/*"]
-    }
+    },
+    "types": ["@uncnsrdlabel/types", "node"]
   },
   "display": "@uncnsrdlabel/graphql-shopify-storefront",
+  "exclude": ["dist", "build", "node_modules"],
   "extends": "@uncnsrdlabel/tsconfig/react-library.json",
-  "include": [".", "@uncnsrdlabel/types"],
-  "exclude": ["dist", "build", "node_modules"]
+  "include": ["@uncnsrdlabel/types", "."]
 }
