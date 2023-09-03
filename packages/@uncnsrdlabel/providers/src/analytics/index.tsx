@@ -24,12 +24,6 @@ export function AppAnalyticsProvider({ children }: PropsWithChildren) {
 
   const locale = new Intl.Locale(`${languageIsoCode}-${countryIsoCode}`);
 
-  if (typeof window === "undefined") {
-    return null;
-  }
-
-  const cookies = getShopifyCookies(document.cookie);
-
   /* Initialize analytics & load plugins */
   const analytics = Analytics({
     app: process.env.NEXT_PUBLIC_SITE_NAME,
@@ -70,8 +64,13 @@ export function AppAnalyticsProvider({ children }: PropsWithChildren) {
     ],
   });
 
-  if (cookies._shopify_y) {
-    analytics.identify(cookies._shopify_y);
+
+  if (typeof window !== "undefined") {
+    const cookies = getShopifyCookies(document.cookie);
+
+    if (cookies._shopify_y) {
+      analytics.identify(cookies._shopify_y);
+    }  
   }
 
   return <AnalyticsProvider instance={analytics}>{children}</AnalyticsProvider>;
