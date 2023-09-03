@@ -40,10 +40,10 @@
     "@parcel/watcher": "^2.2.0"
   },
   "scripts": {
-    "build": "DOTENV_CONFIG_PATH=\"../../../.env.local\" graphql-codegen --require dotenv/config && tsup",
+    "build": "DOTENV_CONFIG_PATH=\"../../../.env.local\" graphql-codegen --require dotenv/config && tsc --project ./tsconfig.json",
     "clean": "rm -rf dist",
     "dev:graphql-codegen": "DOTENV_CONFIG_PATH=\"../../../.env.local\" graphql-codegen --require dotenv/config --watch",
-    "dev:ts": "tsup --watch",
+    "dev:ts": "tsc --project ./tsconfig.json --watch",
     "dev": "npm-run-all dev:graphql-codegen dev:ts",
     "generate:component": "turbo gen react-component",
     "lint": "eslint \"src/**/*.ts*\"",

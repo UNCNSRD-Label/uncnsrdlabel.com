@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "rootDir": "./src"
   },
   "display": "@uncnsrdlabel/graphql-shopify-storefront",
   "exclude": ["dist", "build", "node_modules"],
   "extends": "@uncnsrdlabel/tsconfig/react-library.json",
-  "include": ["@uncnsrdlabel/types", "."]
+  "include": ["@uncnsrdlabel/types", "./src"]
 }
