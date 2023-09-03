@@ -18,7 +18,7 @@
   "devDependencies": {
     "@types/gtag.js": "^0.0.13",
     "@types/lodash": "^4.14.197",
-    "@types/node": "^20.5.7",
+    "@types/node": "^20.5.9",
     "@types/react": "18.2.21",
     "@types/use-analytics": "^0.0.1",
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",

@@ -2,7 +2,7 @@
   "devDependencies": {
     "@shopify/hydrogen": "^2023.7.5",
     "@total-typescript/ts-reset": "^0.5.1",
-    "@types/node": "^20.5.7",
+    "@types/node": "^20.5.9",
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "@uncnsrdlabel/tsconfig": "workspace:*",
     "prettier": "^3.0.3",
