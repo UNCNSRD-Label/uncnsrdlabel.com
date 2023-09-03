@@ -76,7 +76,7 @@
     "dist/**"
   ],
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.js",
   "name": "@uncnsrdlabel/ui",
   "scripts": {
     "build": "tsc --project ./tsconfig.json",

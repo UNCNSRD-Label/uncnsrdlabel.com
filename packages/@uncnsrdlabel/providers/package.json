@@ -33,7 +33,7 @@
     "dist/**"
   ],
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.js",
   "name": "@uncnsrdlabel/providers",
   "scripts": {
     "build": "tsc --project ./tsconfig.json",

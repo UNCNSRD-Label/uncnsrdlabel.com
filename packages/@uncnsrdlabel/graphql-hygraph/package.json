@@ -34,7 +34,7 @@
     "dist/**"
   ],
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.js",
   "name": "@uncnsrdlabel/graphql-hygraph",
   "peerDependencies": {
     "@parcel/watcher": "^2.2.0"
