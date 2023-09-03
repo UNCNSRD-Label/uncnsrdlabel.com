@@ -1,7 +1,7 @@
 import { graphql } from "../codegen/index";
 
 export const getCollectionQuery = graphql(/* GraphQL */ `
-  query getCollection($handle: String!) {
+  query getCollection($country: CountryCode!, $handle: String!, $language: LanguageCode!) @inContext(country: $country, language: $language) {
     collection(handle: $handle) {
       ...collection
     }
@@ -9,7 +9,7 @@ export const getCollectionQuery = graphql(/* GraphQL */ `
 `);
 
 export const getCollectionsQuery = graphql(/* GraphQL */ `
-  query getCollections {
+  query getCollections($country: CountryCode!, $language: LanguageCode!) @inContext(country: $country, language: $language) {
     collections(first: 100, sortKey: TITLE) {
       edges {
         node {
@@ -22,10 +22,12 @@ export const getCollectionsQuery = graphql(/* GraphQL */ `
 
 export const getCollectionProductsQuery = graphql(/* GraphQL */ `
   query getCollectionProducts(
+    $country: CountryCode!
     $handle: String!
-    $sortKey: ProductCollectionSortKeys
+    $language: LanguageCode!
     $reverse: Boolean
-  ) {
+    $sortKey: ProductCollectionSortKeys
+  ) @inContext(country: $country, language: $language) {
     collection(handle: $handle) {
       products(sortKey: $sortKey, reverse: $reverse, first: 100) {
         edges {

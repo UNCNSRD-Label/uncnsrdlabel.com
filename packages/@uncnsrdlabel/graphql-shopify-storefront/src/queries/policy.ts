@@ -1,7 +1,7 @@
 import { graphql } from "../codegen/index";
 
 export const getPoliciesQuery = graphql(/* GraphQL */ `
-  query getPolicies {
+  query getPolicies($country: CountryCode!, $language: LanguageCode!) @inContext(country: $country, language: $language) {
     shop {
       privacyPolicy {
         ...shopPolicy
