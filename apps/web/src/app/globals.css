@@ -14,10 +14,8 @@
     text-underline-offset: theme(textUnderlineOffset.4);
   }
 
-  /* Create scroll-timeline on the root */
   html {
     scroll-behavior: smooth;
-    scroll-timeline: --page-scroll block;
   }
 
   a,
