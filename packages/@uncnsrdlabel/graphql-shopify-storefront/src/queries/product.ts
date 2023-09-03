@@ -1,7 +1,7 @@
 import { graphql } from "../codegen/index";
 
 export const getProductBasicQuery = graphql(/* GraphQL */ `
-  query getProductBasic($country: CountryCode!, $handle: String!, $language: LanguageCode!) @inContext(country: $country, language: $language) {
+  query getProductBasic($country: CountryCode, $handle: String!, $language: LanguageCode) @inContext(country: $country, language: $language) {
     product(handle: $handle) {
       ...productBasic
     }
@@ -9,7 +9,7 @@ export const getProductBasicQuery = graphql(/* GraphQL */ `
 `);
 
 export const getProductDetailsQuery = graphql(/* GraphQL */ `
-  query getProductDetails($country: CountryCode!, $handle: String!, $language: LanguageCode!) @inContext(country: $country, language: $language) {
+  query getProductDetails($country: CountryCode, $handle: String!, $language: LanguageCode) @inContext(country: $country, language: $language) {
     product(handle: $handle) {
       ...productDetails
     }
@@ -17,7 +17,7 @@ export const getProductDetailsQuery = graphql(/* GraphQL */ `
 `);
 
 export const getProductRecommendationsQuery = graphql(/* GraphQL */ `
-  query getProductRecommendations($country: CountryCode!, $productId: ID!, $language: LanguageCode!) @inContext(country: $country, language: $language) {
+  query getProductRecommendations($country: CountryCode, $productId: ID!, $language: LanguageCode) @inContext(country: $country, language: $language) {
     productRecommendations(productId: $productId) {
       ...productBasic
     }
