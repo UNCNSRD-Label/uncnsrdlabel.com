@@ -14,7 +14,7 @@ export function useInContextVariables() {
   const locale = new Intl.Locale(tag);
 
   const country = (locale.region ?? "US") as CountryCode;
-  const language = (locale.language ?? "en") as LanguageCode;
+  const language = (locale.language ?? "en").toLocaleUpperCase() as LanguageCode;
 
   return {
     country,
