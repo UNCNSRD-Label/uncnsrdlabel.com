@@ -24,6 +24,10 @@ export function AppAnalyticsProvider({ children }: PropsWithChildren) {
 
   const locale = new Intl.Locale(`${languageIsoCode}-${countryIsoCode}`);
 
+  if (!document) {
+    return null;
+  }
+
   const cookies = getShopifyCookies(document.cookie);
 
   /* Initialize analytics & load plugins */
