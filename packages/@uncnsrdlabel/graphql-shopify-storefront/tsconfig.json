@@ -1,9 +1,6 @@
 {
   "compilerOptions": {
     "outDir": "./dist",
-    "paths": {
-      "@uncnsrdlabel/graphql-shopify-storefront/*": ["./src/*"]
-    },
     "types": ["@uncnsrdlabel/types", "node"]
   },
   "display": "@uncnsrdlabel/graphql-shopify-storefront",

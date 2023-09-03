@@ -1,9 +1,6 @@
 {
   "compilerOptions": {
     "outDir": "./dist",
-    "paths": {
-      "@uncnsrdlabel/ui/*": ["./src/*"]
-    },
     "types": ["@uncnsrdlabel/types", "node"]
   },
   "display": "@uncnsrdlabel/ui",

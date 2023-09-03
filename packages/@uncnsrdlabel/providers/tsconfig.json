@@ -1,9 +1,6 @@
 {
   "compilerOptions": {
     "outDir": "./dist",
-    "paths": {
-      "@uncnsrdlabel/providers/*": ["./src/*"]
-    },
     "types": [
       "@uncnsrdlabel/types",
       "gtag.js",

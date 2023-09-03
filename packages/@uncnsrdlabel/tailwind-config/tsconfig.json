@@ -1,9 +1,6 @@
 {
   "compilerOptions": {
     "outDir": "./dist",
-    "paths": {
-      "@uncnsrdlabel/tailwind-config/*": ["./src/*"]
-    },
     "types": ["@uncnsrdlabel/types", "node"]
   },
   "display": "@uncnsrdlabel/tailwind-config",
