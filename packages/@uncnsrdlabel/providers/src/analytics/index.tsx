@@ -24,7 +24,7 @@ export function AppAnalyticsProvider({ children }: PropsWithChildren) {
 
   const locale = new Intl.Locale(`${languageIsoCode}-${countryIsoCode}`);
 
-  if (!document) {
+  if (typeof window === "undefined") {
     return null;
   }
 
