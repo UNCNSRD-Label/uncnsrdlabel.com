@@ -11,6 +11,7 @@
         ".env"
       ],
       "env": [
+        "ANALYZE",
         "NEXT_PUBLIC_DEFAULT_LOCALE",
         "NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID",
         "NEXT_PUBLIC_HYGRAPH_API_TOKEN",
