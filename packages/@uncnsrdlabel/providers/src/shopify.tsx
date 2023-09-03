@@ -31,8 +31,6 @@ export function AppShopifyProvider({ children, locale }: PropsWithChildren<{
     storefrontToken,
   };
 
-  console.log({ shopifyConfig });
-
   return (
     <ShopifyProvider {...shopifyConfig}>
       <CartProvider>{children}</CartProvider>

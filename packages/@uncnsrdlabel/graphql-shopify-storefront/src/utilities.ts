@@ -14,6 +14,7 @@ import {
   getCollectionsQuery,
 } from "./queries/collection";
 // import { collectionFragment } from "./fragments/collection";
+import { getInContextVariables, useInContextVariables } from "@uncnsrdlabel/lib";
 import { GraphQLClient } from "graphql-request";
 import { camelCase } from "lodash";
 import {
@@ -23,6 +24,7 @@ import {
   GetCartQueryVariables,
   GetCollectionProductsQueryVariables,
   GetCollectionQueryVariables,
+  GetCollectionsQueryVariables,
   GetMenuQueryVariables,
   GetPageQueryVariables,
   GetPagesQueryVariables,
@@ -80,8 +82,12 @@ export function getShopifyGraphQL<TResult, TVariables>(
   document: TypedDocumentNode<TResult, TVariables>,
   ...[variables]: TVariables extends Record<string, never> ? [] : [TVariables]
 ): Promise<TResult> {
+  const inContextVariables = getInContextVariables()
+
+  const variablesWithContext = {...inContextVariables, ...variables}
+
   try {
-    const request = graphQLClient.request(document, variables ?? undefined);
+    const request = graphQLClient.request(document, variablesWithContext);
 
     return request;
   } catch (error) {
@@ -94,10 +100,14 @@ export function useGetShopifyGraphQL<TResult, TVariables>(
   document: TypedDocumentNode<TResult, TVariables>,
   ...[variables]: TVariables extends Record<string, never> ? [] : [TVariables]
 ): UseQueryResult<TResult> {
+  const inContextVariables = useInContextVariables()
+
+  const variablesWithContext = {...inContextVariables, ...variables}
+
   try {
     const name = (document.definitions[0] as any).name.value;
 
-    const query = useQuery([name, variables], async ({ queryKey }) =>
+    const query = useQuery([name, variablesWithContext], async ({ queryKey }) =>
       graphQLClient.request(document, queryKey[1] ? queryKey[1] : undefined),
     );
 
@@ -295,9 +305,9 @@ export async function getCollectionProducts(
   return products;
 }
 
-export async function getCollections() {
+export async function getCollections(variables: GetCollectionsQueryVariables) {
   const { collections: shopifyCollectionConnection } =
-    await getShopifyGraphQL(getCollectionsQuery);
+    await getShopifyGraphQL(getCollectionsQuery, variables);
 
   if (!shopifyCollectionConnection) {
     throw {
@@ -406,7 +416,7 @@ export async function getPolicy(handle: PolicyName) {
 }
 
 export async function getPolicies() {
-  const { shop } = await getShopifyGraphQL(getPoliciesQuery);
+  const { shop } = await getShopifyGraphQL(getPoliciesQuery, {});
 
   if (!shop) {
     throw {
