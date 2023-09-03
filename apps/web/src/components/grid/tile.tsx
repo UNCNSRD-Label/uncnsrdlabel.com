@@ -26,8 +26,8 @@ export function GridTileImage({
   active?: boolean;
   labels?: {
     title: string;
-    amount: string;
-    currencyCode: string;
+    amount?: string;
+    currencyCode?: string;
   };
   priority?: boolean;
 } & React.ComponentProps<typeof Image>) {
@@ -68,7 +68,7 @@ export function GridTileImage({
           />
         </figure>
       ) : null}
-      {labels ? (
+      {labels?.amount && labels?.currencyCode ? (
         <div>
           <h3
             data-testid="product-name"

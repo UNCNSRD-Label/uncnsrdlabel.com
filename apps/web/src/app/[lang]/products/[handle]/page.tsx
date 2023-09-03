@@ -47,10 +47,10 @@ export async function generateMetadata({
       ? {
           images: [
             {
+              alt: alt || product.title,
+              height: height ?? undefined,
               url,
-              width,
-              height,
-              alt,
+              width: width ?? undefined,
             },
           ],
         }
@@ -76,10 +76,10 @@ export default async function ProductPage({
     name: product.title,
     image: {
       "@type": "ImageObject",
-      about: featuredImage?.altText,
-      height: featuredImage?.height.toString(),
+      about: featuredImage?.altText || product.title,
+      height: featuredImage?.height?.toString() ?? undefined,
       url: featuredImage?.url,
-      width: featuredImage?.width.toString(),
+      width: featuredImage?.width?.toString() ?? undefined,
     },
     description: product.description,
   };

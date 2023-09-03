@@ -5,7 +5,7 @@ import { createIntl } from '@formatjs/intl';
 import { useParams } from "next/navigation";
 import { use } from "react";
 
-export function useIntl(namespace) {
+export function useIntl(namespace: string) {
     const { lang } = useParams();
  
     const tag = Array.isArray(lang) ? lang[0] : lang;

@@ -16,7 +16,7 @@ export function HomepageCarousel(props: NukaCarouselProps) {
 
   if (!page) return notFound();
 
-  const mediaImages = page.mediaImages.references.edges.map((edge) => edge?.node);
+  const mediaImages = page.mediaImages?.references?.edges.map((edge) => edge?.node);
 
   const buttonClassName =
     "!px-6 text-6xl drop-shadow focus-visible:!text-stateFocus hover:!text-stateHover";
@@ -62,17 +62,21 @@ export function HomepageCarousel(props: NukaCarouselProps) {
         speed={1500}
         wrapAround
       >
-        {mediaImages.map((mediaImage, index) => {
+        {mediaImages?.map((mediaImage, index) => {
           if (mediaImage.__typename !== "MediaImage") {
             return null;
           }
 
           const image = getFragmentData(imageFragment, mediaImage.image);
 
+          if (!image) {
+            return null;
+          }
+
           return (
           <figure className="item aspect-3/4 relative" key={image.url || index}>
             <Image
-              alt={image.altText}
+              alt={image.altText || page.title}
               className="h-full object-cover"
               fill
               revealEffect={false}

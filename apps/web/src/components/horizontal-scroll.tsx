@@ -8,7 +8,7 @@ export async function HorizontalScroll({ className }: { className?: string }) {
 
   if (!page) return notFound();
 
-  const mediaImages = page.mediaImages.references.edges.map((edge) => edge?.node);
+  const mediaImages = page.mediaImages?.references?.edges.map((edge) => edge?.node);
 
   return (
     <div
@@ -21,7 +21,7 @@ export async function HorizontalScroll({ className }: { className?: string }) {
         <div
           className="pin-wrap grid w-[calc((((100dvh_/_4)_*_3)_+_theme(gap[0.5]))_*_6)] gap-0.5"
           style={{
-            gridTemplateColumns: `repeat(${mediaImages.length}, 1fr)`,
+            gridTemplateColumns: `repeat(${mediaImages?.length}, 1fr)`,
           }}
         >
           {mediaImages?.map((mediaImage, index) => {
@@ -31,13 +31,17 @@ export async function HorizontalScroll({ className }: { className?: string }) {
   
             const image = getFragmentData(imageFragment, mediaImage.image);
 
+            if (!image) {
+              return null;
+            }
+
             return (
             <figure
               className="item aspect-3/4 relative w-full"
               key={mediaImage.id || index}
             >
               <Image
-                alt={image.altText}
+                alt={image.altText || page.title}
                 className="h-full object-cover"
                 fill
                 sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"

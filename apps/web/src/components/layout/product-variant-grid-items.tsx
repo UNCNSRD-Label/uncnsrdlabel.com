@@ -14,44 +14,52 @@ export function ProductVariantGridItems({
   productFragments,
 }: {
   // productFragments: ResultOf<typeof productFragment>[]
-  productFragments: FragmentType<typeof productWithVariantsFragment>[]
+  productFragments: FragmentType<typeof productWithVariantsFragment>[];
 }) {
   return (
     <>
-      {productFragments
-        .map((productFragmentRef, productIndex) => {
-          const product = getFragmentData(productWithVariantsFragment, productFragmentRef);
+      {productFragments.map((productFragmentRef, productIndex) => {
+        const product = getFragmentData(
+          productWithVariantsFragment,
+          productFragmentRef,
+        );
 
-          const variantsConnection = getFragmentData(productVariantConnectionFragment, product.variants);
+        const variantsConnection = getFragmentData(
+          productVariantConnectionFragment,
+          product.variants,
+        );
 
-          const variants = variantsConnection.edges.map((edge) => edge?.node);
+        const variants = variantsConnection.edges.map((edge) => edge?.node);
 
-          const colorVariants = variants.map((variant) => {
-            const key = variant.selectedOptions?.find(
-              (selectedOption) => selectedOption.name === "Color",
-            )?.value;
+        const colorVariants = variants.map((variant) => {
+          const key = variant.selectedOptions?.find(
+            (selectedOption) => selectedOption.name === "Color",
+          )?.value;
 
-            return { ...variant, fullTitle: `${product.title} in ${key}`, key }
-          });
+          return { ...variant, fullTitle: `${product.title} in ${key}`, key };
+        });
 
-          const colorVariantsMap = new Map(colorVariants.map((variant) => [variant.key, variant]));
+        const colorVariantsMap = new Map(
+          colorVariants.map((variant) => [variant.key, variant]),
+        );
 
-          const colorVariantsMapArray = Array.from(colorVariantsMap.values());
+        const colorVariantsMapArray = Array.from(colorVariantsMap.values());
 
-          return colorVariantsMapArray.map((variant, variantIndex) => {
-            const image = getFragmentData(imageFragment, variant.image);
+        return colorVariantsMapArray.map((variant, variantIndex) => {
+          const image = getFragmentData(imageFragment, variant.image);
 
-            return (
-              <Grid.Item
-                key={`${product.id || productIndex}-${
-                  variant.id || variantIndex
-                }`}
-                className="animate-fadeIn"
+          return (
+            <Grid.Item
+              key={`${product.id || productIndex}-${
+                variant.id || variantIndex
+              }`}
+              className="animate-fadeIn"
+            >
+              <Link
+                className="block h-full w-full"
+                href={`/products/${product.handle}?variant=${variant.id}`}
               >
-                <Link
-                  className="block h-full w-full"
-                  href={`/products/${product.handle}?variant=${variant.id}`}
-                >
+                {image?.url && (
                   <GridTileImage
                     alt={variant.fullTitle}
                     className={transitionDelays[productIndex]}
@@ -61,15 +69,16 @@ export function ProductVariantGridItems({
                       currencyCode: variant.price.currencyCode,
                     }}
                     priority={productIndex < 4}
-                    src={image?.url}
+                    src={image.url}
                     width={600}
                     height={600}
                   />
-                </Link>
-              </Grid.Item>
-            );
-          });
-        })}
+                )}
+              </Link>
+            </Grid.Item>
+          );
+        });
+      })}
     </>
   );
 }

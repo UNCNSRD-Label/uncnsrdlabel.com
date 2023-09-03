@@ -15,7 +15,7 @@ export const addItem = async (
   variantId: string | undefined,
 ): Promise<Error | undefined> => {
   let cartId = cookies().get("cartId")?.value;
-  let cart: ResultOf<typeof cartFragment> | undefined;
+  let cart: ResultOf<typeof cartFragment> | null = null;
 
   if (cartId) {
     cart = await getCart({ cartId });

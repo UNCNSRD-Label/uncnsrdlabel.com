@@ -1,21 +1,42 @@
 import { removeItem } from "@/components/cart/actions";
 import { LoadingDots } from "@/components/loading-dots";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { type CartLine, type ComponentizableCartLine } from "@shopify/hydrogen/storefront-api-types";
+import {
+  type CartLine,
+  type CartLineCost,
+  type ComponentizableCartLine,
+  type Merchandise,
+} from "@shopify/hydrogen/storefront-api-types";
 import { cn } from "@uncnsrdlabel/lib";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 
-export function DeleteItemButton({ item }: { item: ComponentizableCartLine | CartLine }) {
+export function DeleteItemButton({
+  item,
+}: {
+  item: Pick<
+    ComponentizableCartLine | CartLine,
+    "id" | "quantity"
+  > & {
+    cost: Pick<CartLineCost, "totalAmount">;
+    merchandise: Pick<Merchandise, "id">;
+  };
+}) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
+
+  const { id } = item;
+
+  if (!id) {
+    return null;
+  }
 
   return (
     <button
       aria-label="Remove cart item"
       onClick={() => {
         startTransition(async () => {
-          const error = await removeItem(item.id);
+          const error = await removeItem(id);
 
           if (error) {
             alert(error);

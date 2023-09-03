@@ -37,14 +37,14 @@ export function VariantSelector({
     return null;
   }
 
-  const combinations: Combination[] = variants.map((variant) => ({
-    id: variant.id,
-    availableForSale: variant.availableForSale,
+  const combinations: Combination[] = variants.map((variant, index) => ({
+    id: variant.id ?? `variant-${index}`,
+    availableForSale: !!variant.availableForSale,
     // Adds key / value pairs for each variant (ie. "color": "Black" and "size": 'M").
-    ...variant.selectedOptions.reduce(
+    ...variant.selectedOptions?.reduce(
       (accumulator, option) => ({
         ...accumulator,
-        [option.name.toLowerCase()]: option.value,
+        [option?.name?.toLowerCase() ?? index]: option?.value,
       }),
       {},
     ),

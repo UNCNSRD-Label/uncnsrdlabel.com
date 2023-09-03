@@ -3,13 +3,16 @@
 import { CloseCart } from "@/components/cart/close-cart";
 import { CartForm } from "@/components/cart/form";
 import { OpenCart } from "@/components/cart/open-cart";
+import { ResultOf } from '@graphql-typed-document-node/core';
 import { Dialog } from "@headlessui/react";
-import type { Cart } from "@shopify/hydrogen/storefront-api-types";
+import {
+  cartFragment
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, themeColors } from "@uncnsrdlabel/lib";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
-export function CartModal({ cart }: { cart: Cart | undefined }) {
+export function CartModal({ cart }: { cart: ResultOf<typeof cartFragment> | null }) {
   const [isOpen, setIsOpen] = useState(false);
   const quantityRef = useRef(cart?.totalQuantity);
   const openCart = () => setIsOpen(true);

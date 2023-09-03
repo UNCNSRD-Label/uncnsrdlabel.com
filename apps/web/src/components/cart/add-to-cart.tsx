@@ -32,10 +32,10 @@ export function AddToCart({
   ] = useTransition();
 
   useEffect(() => {
-    const variant = variants.find((variant: ProductVariant) =>
-      variant.selectedOptions.every(
+    const variant = variants.find((variant) =>
+      variant?.selectedOptions?.every(
         (option) =>
-          option.value === searchParams.get(option.name.toLowerCase()),
+          option?.value === searchParams.get(option?.name ?? ""),
       ),
     );
 

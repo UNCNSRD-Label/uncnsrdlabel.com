@@ -35,7 +35,7 @@ export async function Carousel() {
               href={`/products/${product.handle}`}
               className="relative h-[30vh] w-1/2 flex-none md:w-1/3"
             >
-              {product.featuredImage ? (
+              {featuredImage ? (
                 <Image
                   alt={product.title}
                   className="h-full object-contain"

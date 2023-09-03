@@ -5,7 +5,7 @@ import { type KlaviyoResponse } from "@uncnsrdlabel/types";
 export async function signUpAction(
   formData: FormData,
   custom_source: string = "Website",
-) {
+): Promise<{ message: string }> {
   const email = formData.get("email");
   const phone_number = formData.get("phone_number");
 
@@ -49,33 +49,44 @@ export async function signUpAction(
     }),
   };
 
+  let message = "Something went wrong. Please try again.";
+
   try {
     const response = await fetch(url, options);
 
     console.info(response.status, response.statusText);
 
-    if (response.status >= 300) {
-      const json = (await response.json()) as KlaviyoResponse;
+    if (response?.ok) {
+      message = "Use the response here!";
 
-      if (json.errors) {
-        console.error(`${response.status}, ${response.statusText}`);
-        console.error(json.errors);
+      if (response.status >= 300) {
+        const json = (await response.json()) as KlaviyoResponse;
+
+        if (json.errors) {
+          console.error(`${response.status}, ${response.statusText}`);
+          console.error(json.errors);
+        }
+
+        message = response.statusText ?? json.errors?.[0];
       }
 
-      return {
-        ...response,
-        message: response.statusText ?? json.errors?.[0] ?? "Error"
-      };
-    }
-
-    if (response.status === 202) {
-      return {
-        ...response,
-        message: "You have successfully signed up to our mailing list!"
-      };
+      if (response.status === 202) {
+        message = "You have successfully signed up to our mailing list!";
+      }
+    } else {
+      message = `HTTP Response Code: ${response?.status}`;
     }
   } catch (error) {
     console.error(error);
-    return error;
+
+    if (error instanceof Error) {
+      message = error.message;
+    } else if (typeof error === "string") {
+      message = error;
+    }
+  } finally {
+    return {
+      message,
+    };
   }
 }

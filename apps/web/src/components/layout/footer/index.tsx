@@ -32,7 +32,7 @@ export function Footer() {
                   <dt className="text-sm uppercase">Customer Care</dt>
                   {customerCareMenu.items.map((item, index) => (
                     <dd key={item.title || index}>
-                      <Link href={item.url} className={linkClassName}>
+                      <Link href={item.url ?? "#"} className={linkClassName}>
                         {item.title}
                       </Link>
                     </dd>
@@ -47,7 +47,7 @@ export function Footer() {
                   <dt className="text-sm uppercase">Information</dt>
                   {informationMenu.items.map((item, index) => (
                     <dd key={item.title || index}>
-                      <Link href={item.url} className={linkClassName}>
+                      <Link href={item.url ?? "#"} className={linkClassName}>
                         {item.title}
                       </Link>
                     </dd>
@@ -64,7 +64,7 @@ export function Footer() {
                     {followUsMenu.items.map((item, index) => (
                       <dd key={item.title || index}>
                         <a
-                          href={item.url}
+                          href={item.url ?? "#"}
                           className={linkClassName}
                           target="_blank"
                           rel="noopener noreferrer"

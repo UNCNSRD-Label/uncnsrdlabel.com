@@ -21,14 +21,21 @@ export const cartFragment = graphql(/* GraphQL */ `
     lines(first: 100) {
       edges {
         node {
-          id
-          quantity
           cost {
+            amountPerQuantity {
+              amount
+              currencyCode
+            }
+            subtotalAmount {
+              amount
+              currencyCode
+            }
             totalAmount {
               amount
               currencyCode
             }
           }
+          id
           merchandise {
             ... on ProductVariant {
               id
@@ -42,6 +49,7 @@ export const cartFragment = graphql(/* GraphQL */ `
               }
             }
           }
+          quantity
         }
       }
     }

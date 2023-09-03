@@ -58,13 +58,17 @@ export default async function Page({ params }: { params: { page: string } }) {
 
           const image = getFragmentData(imageFragment, mediaImage.image);
 
+          if (!image) {
+            return null;
+          }
+
           return (
             <figure
               className="item aspect-3/4 relative w-full snap-start"
               key={`${mediaImage.id}-${index}` || index}
             >
               <Image
-                alt={image.altText}
+                alt={image.altText || page.title}
                 className="h-full object-cover"
                 fill
                 sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"

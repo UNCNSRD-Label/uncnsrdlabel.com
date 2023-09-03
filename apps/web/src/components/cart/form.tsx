@@ -1,8 +1,14 @@
 import { DeleteItemButton } from "@/components/cart/delete-item-button";
 import { EditItemQuantityButton } from "@/components/cart/edit-item-quantity-button";
 import { Price } from "@/components/price";
+import { ResultOf } from '@graphql-typed-document-node/core';
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
-import type { Cart } from "@shopify/hydrogen/storefront-api-types";
+import {
+  cartFragment,
+  getFragmentData,
+  imageFragment,
+  productBasicFragment
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { DEFAULT_OPTION, createUrl } from "@uncnsrdlabel/lib";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,14 +21,14 @@ export async function CartForm({
   cart,
   closeCart,
 }: {
-  cart: Cart | undefined;
+  cart: ResultOf<typeof cartFragment> | null;
   closeCart: () => void;
 }) {
   const lines = cart?.lines.edges.map((edge) => edge?.node);
 
   return (
     <>
-      {!cart || lines.length === 0 ? (
+      {!cart || lines?.length === 0 ? (
         <div className="mt-20 flex w-full flex-col items-center justify-center overflow-hidden">
           <ShoppingCartIcon className="h-16" />
           <p className="mt-6 text-center text-2xl font-bold">
@@ -32,7 +38,7 @@ export async function CartForm({
       ) : (
         <div className="flex h-full flex-col justify-between overflow-hidden p-1">
           <ul className="flex-grow overflow-auto py-4">
-            {lines.map((item, i) => {
+            {lines?.map((item, i) => {
               const merchandiseSearchParams = {} as MerchandiseSearchParams;
 
               item.merchandise.selectedOptions.forEach(({ name, value }) => {
@@ -41,8 +47,15 @@ export async function CartForm({
                 }
               });
 
+              const product = getFragmentData(
+                productBasicFragment,
+                item.merchandise.product,
+              );
+
+              const featuredImage = getFragmentData(imageFragment, product.featuredImage);
+
               const merchandiseUrl = createUrl(
-                `/product/${item.merchandise.product.handle}`,
+                `/product/${product.handle}`,
                 new URLSearchParams(merchandiseSearchParams),
               );
 
@@ -61,21 +74,21 @@ export async function CartForm({
                       className="z-30 flex flex-row space-x-4"
                     >
                       <div className="relative h-16 w-16 cursor-pointer overflow-hidden rounded-md border border-neutral-300 bg-neutral-300 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:bg-neutral-800">
-                        <Image
+                        {featuredImage?.url && <Image
                           className="h-full w-full object-cover "
                           width={64}
                           height={64}
                           alt={
-                            item.merchandise.product.featuredImage.altText ||
-                            item.merchandise.product.title
+                            featuredImage?.altText ||
+                            product.title
                           }
-                          src={item.merchandise.product.featuredImage.url}
-                        />
+                          src={featuredImage?.url}
+                        />}
                       </div>
 
                       <div className="flex flex-1 flex-col text-base">
                         <span className="leading-tight">
-                          {item.merchandise.product.title}
+                          {product.title}
                         </span>
                         {item.merchandise.title !== DEFAULT_OPTION ? (
                           <p className="text-sm text-neutral-500 dark:text-neutral-400">
@@ -106,14 +119,14 @@ export async function CartForm({
             })}
           </ul>
           <div className="py-4 text-sm text-neutral-500 dark:text-neutral-400">
-            <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 dark:border-neutral-700">
+            {cart.cost.totalTaxAmount && <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 dark:border-neutral-700">
               <p className="uppercase">Taxes</p>
               <Price
                 className="text-right text-base text-black dark:text-white"
                 amount={cart.cost.totalTaxAmount.amount}
                 currencyCode={cart.cost.totalTaxAmount.currencyCode}
               />
-            </div>
+            </div>}
             <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1 dark:border-neutral-700">
               <p className="uppercase">Shipping</p>
               <p className="text-right">Calculated at checkout</p>

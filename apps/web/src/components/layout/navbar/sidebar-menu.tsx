@@ -104,18 +104,18 @@ export function SidebarMenu({
                 <div className="mb-4 w-full">
                   <NavbarSearch />
                 </div>
-                {menu.itemsCount > 0 ? (
+                {menu?.items?.length && menu?.items?.length > 0 ? (
                   <ul className="flex flex-1 flex-col gap-2">
                     {menu.items.map((item, index) => (
-                      <li key={item.title || index}>
+                      <li key={item?.title || index}>
                         <Link
-                          href={item.url}
+                          href={item?.url ?? "#"}
                           className="rounded-lg py-1 text-sm uppercase text-inherit"
                           onClick={() => {
                             setSidebarMenuIsOpen(false);
                           }}
                         >
-                          {item.title}
+                          {item?.title}
                         </Link>
                       </li>
                     ))}

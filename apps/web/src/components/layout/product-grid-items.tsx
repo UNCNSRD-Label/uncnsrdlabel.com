@@ -24,19 +24,19 @@ export function ProductGridItems({
               className="block h-full w-full"
               href={`/products/${product.handle}`}
             >
-              <GridTileImage
-                alt={product.title}
+              {product.featuredImage?.url && <GridTileImage
+                alt={product.title ?? "Product"}
                 className={transitionDelays[index]}
                 labels={{
-                  title: product.title,
-                  amount: product.priceRange.maxVariantPrice.amount,
-                  currencyCode: product.priceRange.maxVariantPrice.currencyCode,
+                  title: product.title ?? "Product",
+                  amount: product.priceRange?.maxVariantPrice?.amount,
+                  currencyCode: product.priceRange?.maxVariantPrice?.currencyCode,
                 }}
                 priority={index < 4}
-                src={product.featuredImage?.url}
+                src={product.featuredImage.url}
                 width={600}
                 height={600}
-              />
+              />}
             </Link>
           </Grid.Item>
         );

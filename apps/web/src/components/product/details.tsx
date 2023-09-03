@@ -16,7 +16,8 @@ export function ProductDetails({ product }: { product: ResultOf<typeof productDe
   const images = product.images.edges.map((edge) => edge?.node);
 
   const metafieldsFragmentRefs = product.metafields;
-  const metafieldFragments = getFragmentData(productMetafieldFragment, metafieldsFragmentRefs);
+
+  const metafieldFragments = getFragmentData(productMetafieldFragment, metafieldsFragmentRefs.filter(Boolean));
 
   return (
     <ProductProvider data={product}>
@@ -34,9 +35,9 @@ export function ProductDetails({ product }: { product: ResultOf<typeof productDe
             <Images
               images={images
                 .map(imageFragmentRef => getFragmentData(imageFragment, imageFragmentRef))
-                .map((image) => ({
-                altText: image.altText,
-                id: image.id,
+                .map((image, index) => ({
+                altText: image.altText ?? product.title,
+                id: image.id ?? `image-${index}`,
                 src: image.url,
               }))}
               sizes="(max-width: 639px) 100vw, 66vw"

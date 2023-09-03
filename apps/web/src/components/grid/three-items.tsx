@@ -23,6 +23,10 @@ function ThreeItemGridItem({
   size: "full" | "half";
   background: "white" | "pink" | "purple" | "black";
 }) {
+  if (!item.featuredImage?.url) {
+    return null;
+  }
+  
   return (
     <div
       className={cn(
@@ -39,11 +43,11 @@ function ThreeItemGridItem({
           height={size === "full" ? 1080 : 540}
           priority={true}
           background={background}
-          alt={item.title}
+          alt={item.title ?? ""}
           labels={{
             title: item.title as string,
-            amount: item.priceRange.maxVariantPrice.amount,
-            currencyCode: item.priceRange.maxVariantPrice.currencyCode,
+            amount: item.priceRange?.maxVariantPrice?.amount,
+            currencyCode: item.priceRange?.maxVariantPrice?.currencyCode,
           }}
         />
       </Link>
