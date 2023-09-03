@@ -1,5 +1,6 @@
 import { type TypedDocumentNode } from "@graphql-typed-document-node/core";
 import { useQuery, type UseQueryResult } from "@tanstack/react-query";
+import { isShopifyError } from "@uncnsrdlabel/lib";
 import { CollectionFragment } from "./codegen/graphql";
 import { getFragmentData } from "./codegen/index";
 import {
@@ -91,7 +92,12 @@ export function getShopifyGraphQL<TResult, TVariables>(
 
     return request;
   } catch (error) {
-    console.error(error);
+    if (isShopifyError(error)) {
+      console.error(error.message);
+    } else if (typeof error === "string") {
+      console.error(error);
+    }
+
     throw error;
   }
 }
@@ -113,7 +119,12 @@ export function useGetShopifyGraphQL<TResult, TVariables>(
 
     return query;
   } catch (error) {
-    console.error(error);
+    if (isShopifyError(error)) {
+      console.error(error.message);
+    } else if (typeof error === "string") {
+      console.error(error);
+    }
+
     throw error;
   }
 }
