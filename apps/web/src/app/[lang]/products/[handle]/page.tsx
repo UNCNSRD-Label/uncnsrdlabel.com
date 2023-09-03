@@ -7,15 +7,15 @@ import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
 import { ProductDetails } from "@/components/product/details";
 import {
-  getFragmentData,
-  getProductDetails,
-  getProductRecommendations,
-  imageFragment,
-  seoFragment
+    getFragmentData,
+    getProductDetails,
+    getProductRecommendations,
+    imageFragment,
+    seoFragment
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { HIDDEN_PRODUCT_TAG, cn } from "@uncnsrdlabel/lib";
 
-export const runtime = "edge";
+// export const runtime = "edge";
 
 export async function generateMetadata({
   params,

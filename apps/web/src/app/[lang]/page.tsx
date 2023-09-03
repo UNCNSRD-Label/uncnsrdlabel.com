@@ -9,7 +9,7 @@ import { themeColors } from "@uncnsrdlabel/lib";
 import Link from "next/link";
 import { Suspense } from "react";
 
-export const runtime = "edge";
+// export const runtime = "edge";
 
 export const metadata = {
   description:

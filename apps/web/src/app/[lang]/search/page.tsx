@@ -1,12 +1,12 @@
 import { Grid } from "@/components/grid/index";
 import { ProductVariantGridItems } from "@/components/layout/product-variant-grid-items";
 import {
-  getProductsWithVariants,
-  productDefaultSort,
-  productSorting
+    getProductsWithVariants,
+    productDefaultSort,
+    productSorting
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 
-export const runtime = "edge";
+// export const runtime = "edge";
 
 export const metadata = {
   title: "Search",

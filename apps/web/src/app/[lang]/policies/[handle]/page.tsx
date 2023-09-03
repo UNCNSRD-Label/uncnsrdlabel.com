@@ -4,7 +4,7 @@ import { Prose } from "@/components/prose";
 import { getFragmentData, getPolicy, shopPolicyFragment, type PolicyName } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { notFound } from "next/navigation";
 
-export const runtime = "edge";
+// export const runtime = "edge";
 
 export const revalidate = 43200; // 12 hours in seconds
 
