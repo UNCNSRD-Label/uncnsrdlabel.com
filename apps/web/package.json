@@ -36,6 +36,7 @@
     "@uncnsrdlabel/ui": "workspace:*",
     "@vercel/analytics": "^1.0.2",
     "@vercel/og": "^0.5.13",
+    "@victorandree/graphql-codegen-client-preset-swc-plugin": "^0.1.0",
     "add": "^2.0.6",
     "analytics": "^0.8.9",
     "analytics-plugin-event-validation": "^0.1.2",
