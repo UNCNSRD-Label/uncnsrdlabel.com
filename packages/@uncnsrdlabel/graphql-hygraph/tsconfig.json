@@ -2,8 +2,7 @@
   "compilerOptions": {
     "noUnusedLocals": false,
     "noImplicitAny": false,
-    "outDir": "./dist",
-    "types": ["@uncnsrdlabel/types", "node"]
+    "outDir": "./dist"
   },
   "display": "@uncnsrdlabel/graphql-hygraph",
   "exclude": ["dist", "build", "node_modules"],

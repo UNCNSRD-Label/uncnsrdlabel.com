@@ -3,8 +3,7 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "jsx": "react-jsx",
-    "lib": ["dom", "dom.iterable", "ESNext"],
-    "types": ["@uncnsrdlabel/types", "node"]
+    "lib": ["dom", "dom.iterable", "ESNext"]
   },
   "display": "React Library",
   "extends": "./base.json",

@@ -5,15 +5,7 @@
       "@/*": [
         "./src/*"
       ]
-    },
-    "types": [
-      "@uncnsrdlabel/types",
-      "gtag.js",
-      "lodash",
-      "node",
-      "react",
-      "use-analytics"
-    ]
+    }
   },
   "display": "@uncnsrdlabel/app-web",
   "extends": "@uncnsrdlabel/tsconfig/nextjs.json",

@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",
-    "types": ["@uncnsrdlabel/types", "node"]
+    "outDir": "./dist"
   },
   "display": "@uncnsrdlabel/ui",
   "extends": "@uncnsrdlabel/tsconfig/react-library.json",

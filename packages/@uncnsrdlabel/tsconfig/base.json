@@ -16,8 +16,7 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "ESNext",
-    "types": ["@uncnsrdlabel/types", "node"]
+    "target": "ESNext"
   },
   "display": "Base",
   "exclude": ["node_modules"]

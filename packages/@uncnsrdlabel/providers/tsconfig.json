@@ -1,14 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",
-    "types": [
-      "@uncnsrdlabel/types",
-      "gtag.js",
-      "lodash",
-      "node",
-      "react",
-      "use-analytics"
-    ]
+    "outDir": "./dist"
   },
   "display": "@uncnsrdlabel/providers",
   "exclude": ["dist", "build", "node_modules"],

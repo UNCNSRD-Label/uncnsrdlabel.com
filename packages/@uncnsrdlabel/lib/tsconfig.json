@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",
-    "types": ["@uncnsrdlabel/types", "node"]
+    "outDir": "./dist"
   },
   "display": "@uncnsrdlabel/lib",
   "exclude": ["dist", "build", "node_modules"],
