@@ -15,7 +15,7 @@ export function AppProviders({ children, locale, messages }: PropsWithChildren<{
   return (
     <AppReactQueryProvider>
       <AppIntlProvider locale={locale} messages={messages}>
-        <AppShopifyProvider>
+        <AppShopifyProvider locale={locale}>
           <AppAnalyticsProvider>{children}</AppAnalyticsProvider>
         </AppShopifyProvider>
       </AppIntlProvider>
