@@ -3,6 +3,7 @@ import bundleAnalyzer from "@next/bundle-analyzer";
 import withPlugins from "next-compose-plugins";
 
 const withBundleAnalyzer = bundleAnalyzer({
+  disable: process.env.NEXT_PUBLIC_FEATURE_FLAG_PWA === "false",
   enabled: process.env.ANALYZE === "true",
 });
 
