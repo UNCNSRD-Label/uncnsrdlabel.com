@@ -1,7 +1,7 @@
 "use client";
 
 import { ConsentForm } from "@/components/consent/form";
-import { useIntl } from "@/lib/i18n/client";
+import { useGetIntl } from "@/lib/i18n/client";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { useTimeoutEffect } from "@react-hookz/web";
@@ -10,7 +10,7 @@ import { hasCookie } from "cookies-next";
 import { useState } from "react";
 
 export function ConsentDialog(props: { className?: string }) {
-  const intl = useIntl("component.ConsentDialog");
+  const intl = useGetIntl("component.ConsentDialog");
 
   useTimeoutEffect(
     () => {

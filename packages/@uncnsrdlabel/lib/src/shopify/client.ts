@@ -6,7 +6,9 @@ import {
 } from "@shopify/hydrogen-react/storefront-api-types";
 import { useParams } from "next/navigation";
 
-export function useInContextVariables() {
+export function useGetInContextVariables() {
+  "use client";
+
   const { lang } = useParams();
 
   const tag = Array.isArray(lang) ? lang[0] : lang;

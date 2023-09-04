@@ -3,12 +3,12 @@ import bundleAnalyzer from "@next/bundle-analyzer";
 import withPlugins from "next-compose-plugins";
 
 const withBundleAnalyzer = bundleAnalyzer({
-  disable: process.env.NEXT_PUBLIC_FEATURE_FLAG_PWA === "false",
   enabled: process.env.ANALYZE === "true",
 });
 
 const withPWA = withPWAInit({
   dest: "public",
+  disable: process.env.NEXT_PUBLIC_FEATURE_FLAG_PWA !== "true",
 });
 
 const plugins = [withBundleAnalyzer];
@@ -87,7 +87,7 @@ const nextConfig = {
   experimental: {
     // Avoid Module not found: ESM packages (supports-color) need to be imported. Use 'import' to reference the package instead. https://nextjs.org/docs/messages/import-esm-externals
     esmExternals: "loose",
-    // scrollRestoration: true,
+    scrollRestoration: true,
     serverActions: true,
     swcPlugins: [
       // ['@victorandree/graphql-codegen-client-preset-swc-plugin', { artifactDirectory: '@uncnsrdlabel/graphql-shopify-storefront/codegen', gqlTagName: 'graphql' }]

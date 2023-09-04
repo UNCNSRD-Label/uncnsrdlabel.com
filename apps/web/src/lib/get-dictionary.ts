@@ -8,14 +8,14 @@ const dictionariesFiles = [
   ...locales.map((locale) => [
     locale.language,
     () =>
-      import(`./dictionaries/${locale.language}.json`).then(
+      import(`@/dictionaries/${locale.language}.json`).then(
         (module) => module.default,
       ),
   ]),
   ...locales.map((locale) => [
     getIETFLanguageTagFromlocaleTag(locale),
     () =>
-      import(`./dictionaries/${getIETFLanguageTagFromlocaleTag(locale)}.json`).then(
+      import(`@/dictionaries/${getIETFLanguageTagFromlocaleTag(locale)}.json`).then(
         (module) => module.default,
       ),
   ]),

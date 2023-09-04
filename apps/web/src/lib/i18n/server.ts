@@ -1,6 +1,6 @@
-"use server";
+"server-only";
 
-import { getDictionary } from "@/get-dictionary";
+import { getDictionary } from "@/lib/get-dictionary";
 import { createIntl } from '@formatjs/intl';
 import { headers } from "next/headers";
 

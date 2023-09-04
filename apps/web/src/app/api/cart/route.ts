@@ -84,11 +84,11 @@ export async function DELETE(req: NextRequest): Promise<CartResponse> {
   try {
     await removeFromCart({ cartId, lineIds: [lineId] });
     return NextResponse.json({ status: 204 });
-  } catch (e) {
-    if (isShopifyError(e)) {
+  } catch (error) {
+    if (isShopifyError(error)) {
       return NextResponse.json(
-        { message: formatErrorMessage(e.message) },
-        { status: e.status },
+        { message: formatErrorMessage(error.message) },
+        { status: error.status },
       ) as CartResponse;
     }
 

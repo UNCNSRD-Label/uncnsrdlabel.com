@@ -1,4 +1,4 @@
-"use server";
+"server-only";
 
 import {
   type CountryCode,
@@ -6,7 +6,9 @@ import {
 } from "@shopify/hydrogen-react/storefront-api-types";
 import { headers } from "next/headers";
 
-export const getInContextVariables = () => {
+export const getInContextVariables = async () => {
+  "use server";
+
   const headersList = headers();
 
   const localeHeader =

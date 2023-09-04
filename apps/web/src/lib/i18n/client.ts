@@ -1,11 +1,11 @@
 'use client'
 
-import { getDictionary } from "@/get-dictionary";
+import { getDictionary } from "@/lib/get-dictionary";
 import { createIntl } from '@formatjs/intl';
 import { useParams } from "next/navigation";
 import { use } from "react";
 
-export function useIntl(namespace: string) {
+export function useGetIntl(namespace: string) {
     const { lang } = useParams();
  
     const tag = Array.isArray(lang) ? lang[0] : lang;

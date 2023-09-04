@@ -3,7 +3,7 @@ import { Banner } from "@/components/banner";
 import { Footer } from "@/components/layout/footer/index";
 import { Progress } from "@/components/layout/progress/index";
 import { Organization } from "@/components/schema.org/organization";
-import { getDictionary } from "@/get-dictionary";
+import { getDictionary } from "@/lib/get-dictionary";
 import { SITE_DOMAIN, cn, getIETFLanguageTagFromlocaleTag, locales, themeColors } from "@uncnsrdlabel/lib";
 import { AppProviders } from "@uncnsrdlabel/providers";
 import type { Metadata } from "next";

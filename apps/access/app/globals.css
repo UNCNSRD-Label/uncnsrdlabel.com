@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@supports (font: -apple-system-body) and (-webkit-appearance: none) {
+  img[loading='lazy'] {
+    clip-path: inset(0.6px);
+  }
+}
+
+@layer base {
+  * {
+    &:focus-visible {
+      @apply outline-offset-4;
+    }
+  }
+}
+
+@layer components {
+  .field {
+    @apply relative grid items-center;
+  }
+
+  .btn {
+    @apply uppercase tracking-widest transition-colors hover:bg-opacity-50;
+  }
+
+  .btn-primary {
+    @apply border border-black text-black hover:bg-hotPink;
+
+    &.btn-solid {
+      @apply bg-black text-white hover:bg-black;
+    }
+  }
+
+  .btn-secondary {
+    @apply border border-white text-white hover:bg-gray-800;
+
+    &.btn-solid {
+      @apply bg-white text-black hover:bg-white;
+    }
+  }
+
+  .btn-sm {
+    @apply px-3 py-1 text-sm;
+  }
+
+  .btn-base {
+    @apply px-6 py-2 text-base;
+  }
+
+  .btn-lg {
+    @apply px-12 py-4 text-lg;
+  }
+}

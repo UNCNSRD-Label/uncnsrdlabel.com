@@ -4,6 +4,7 @@
     "@turbo/gen": "^1.10.13",
     "@types/node": "^20.5.9",
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",
+    "@vercel/git-hooks": "^1.0.0",
     "dotenv-cli": "^7.3.0",
     "eslint": "^8.48.0",
     "eslint-config-turbo": "^1.10.13",
@@ -15,14 +16,20 @@
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
-    "*": "prettier --write --ignore-unknown"
+    "**/*.{js,jsx,ts,tsx}": [
+      "eslint",
+      "prettier --write --ignore-unknown"
+    ],
+    "**/*.{md,mdx,json}": [
+      "prettier --write --ignore-unknown"
+    ]
   },
   "name": "uncnsrdlabel.com",
   "packageManager": "pnpm@8.6.10",
   "private": true,
   "repository": "https://github.com/karlito-who-else/uncnsrdlabel.com.git",
   "scripts": {
-    "build": "turbo run build",
+    "build": "dotenv -e .env.local -- turbo run build",
     "clean": "turbo run clean",
     "dependencies:check": "madge --circular --extensions ts,tsx,js,jsx --ts-config ./tsconfig.json ./packages",
     "dependencies:fix": "madge --circular --extensions ts,tsx,js,jsx --ts-config ./tsconfig.json ./packages --fix",
@@ -40,9 +47,9 @@
     "prettier:check": "prettier --check --ignore-unknown .",
     "prettier:fix": "prettier --write --ignore-unknown .",
     "prettier:list-different": "npx prettier . --list-different",
-    "start": "turbo run start",
+    "start": "dotenv -e .env.local -- turbo run start",
     "test:e2e": "playwright test",
-    "test": "pnpm test",
+    "test": "dotenv -e .env.local -- pnpm test",
     "types:check": "turbo run types:check",
     "unused:fix": "npx next-unused --fix",
     "unused": "npx next-unused",
