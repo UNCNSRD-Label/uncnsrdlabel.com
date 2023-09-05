@@ -119,7 +119,7 @@ export function getPageImages(mediaImages: PageFragment["mediaImages"]) {
   return images;
 }
 
-export function getMenuItems(menuItems: Pick<MenuItem, "url">[]) {
+export function getMenuItems(menuItems: Partial<MenuItem>[]) {
   const images = menuItems.map((menuItem) => ({
     ...menuItem,
     url: menuItem.url
