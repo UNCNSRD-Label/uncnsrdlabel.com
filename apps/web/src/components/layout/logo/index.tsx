@@ -4,6 +4,7 @@ import { LogotypeIcon } from "@/components/icons/logotype";
 import * as AccessibleIcon from "@radix-ui/react-accessible-icon";
 import { useIntersectionObserver } from "@react-hookz/web";
 import { cn } from "@uncnsrdlabel/lib";
+import Link from "next/link";
 import { useRef } from "react";
 
 type Props = { blend?: boolean; className?: string; fill?: "dark" | "light" };
@@ -23,11 +24,12 @@ export function Logo({ blend, className, fill }: Props) {
       )}
       ref={rootRef}
     >
-      <div
+      <Link
         className={cn(
-          "bottom-12 grid w-full justify-items-center sm:bottom-20",
+          "bottom-12 grid w-full justify-items-center pointer-events-auto sm:bottom-20",
           className,
         )}
+        href="/"
         style={{
           position:
             (rootIntersection?.intersectionRatio ?? 0) > 0 ||
@@ -49,7 +51,7 @@ export function Logo({ blend, className, fill }: Props) {
             )}
           />
         </AccessibleIcon.Root>
-      </div>
+      </Link>
     </div>
   );
 }
