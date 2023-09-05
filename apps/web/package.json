@@ -29,6 +29,7 @@
     "@shopify/hydrogen-react": "^2023.7.3",
     "@supabase/auth-helpers-nextjs": "^0.7.4",
     "@tanstack/react-query": "^4.33.0",
+    "@tanstack/react-query-devtools": "^4.33.0",
     "@uncnsrdlabel/graphql-hygraph": "workspace:*",
     "@uncnsrdlabel/graphql-shopify-storefront": "workspace:*",
     "@uncnsrdlabel/lib": "workspace:*",
@@ -112,8 +113,8 @@
   "private": true,
   "scripts": {
     "analyze": "cross-env ANALYZE=true next build",
-    "build": "npm run partytown && next build",
-    "dev": "next dev -p 3001",
+    "build": "DOTENV_CONFIG_PATH=\"../../../.env.local\" && npm run partytown && next build",
+    "dev": "DOTENV_CONFIG_PATH=\"../../../.env.local\" && next dev -p 3001",
     "find:unused": "npx next-unused",
     "lint": "next lint",
     "partytown": "partytown copylib public/~partytown",
