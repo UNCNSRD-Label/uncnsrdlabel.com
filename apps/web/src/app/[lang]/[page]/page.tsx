@@ -1,9 +1,9 @@
 import { Image } from "@/components/image";
 import {
-    getFragmentData,
-    getPage,
-    imageFragment,
-    seoFragment,
+  getFragmentData,
+  getPage,
+  imageFragment,
+  seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
