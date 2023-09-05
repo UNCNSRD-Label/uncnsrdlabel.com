@@ -11,22 +11,9 @@ import { Suspense } from "react";
 
 // export const runtime = "edge";
 
-export const metadata = {
-  description:
-    "UNCNSRD is multifunctional swimwear for female figures who aren’t afraid to show off their assets and want to feel unapologetically sexy.",
-  openGraph: {
-    images: [
-      {
-        url: `/api/og?title=${encodeURIComponent(
-          process.env.NEXT_PUBLIC_SITE_NAME || "",
-        )}`,
-        width: 1200,
-        height: 630,
-      },
-    ],
-    type: "website",
-  },
-};
+// export const metadata = {
+  
+// };
 
 const video: VideoProps = {
   autoPlay: true,
@@ -69,11 +56,13 @@ export default async function HomePage() {
               aria-label="Go to the shop"
               className="btn btn-outline btn-primary btn-base absolute z-20 justify-self-center whitespace-nowrap uppercase"
             >
-              {intl.formatMessage({ id: "shop_now" }, { title: "dude" })}
+              {intl.formatMessage({ id: "shop_now" })}
             </Link>
           </section>
           <section className="max-w-[100dvw] py-48 sm:snap-center">
-            <HomepageCarousel />
+            <Suspense fallback={<h2>An error occurred</h2>}>
+              <HomepageCarousel />
+            </Suspense>
           </section>
         </main>
         <Logo />

@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/footer/index";
 import { Progress } from "@/components/layout/progress/index";
 import { Organization } from "@/components/schema.org/organization";
 import { getDictionary } from "@/lib/get-dictionary";
+import { getIntl } from "@/lib/i18n/server";
 import { SITE_DOMAIN, cn, getIETFLanguageTagFromlocaleTag, locales, themeColors } from "@uncnsrdlabel/lib";
 import { AppProviders } from "@uncnsrdlabel/providers";
 import type { Metadata } from "next";
@@ -28,55 +29,84 @@ const languagesArray = locales.map((locale) => [
   }],
 ]);
 
-export const metadata: Metadata = {
-  alternates: {
-    canonical: new URL(`${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN}`),
-    languages: Object.fromEntries(languagesArray),
-  },
-  applicationName: NEXT_PUBLIC_SITE_NAME,
-  appleWebApp: {
-    capable: true,
-    title: NEXT_PUBLIC_SITE_NAME,
-    statusBarStyle: "default",
-  },
-  description: "UNCNSRD is multifunctional swimwear for female figures who aren’t afraid to show off their assets and want to feel unapologetically sexy.",
-  formatDetection: {
-    telephone: false,
-    date: false,
-    address: false,
-    email: false,
-    url: false,
-  },
-  keywords: [
-    "bikini",
-    "bikinis",
-    "swimsuit",
-    "swimsuits",
-    "swimwear",
-    "uncnsrd",
-  ],
-  metadataBase: new URL(`${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN}`),
-  title: {
-    default: NEXT_PUBLIC_SITE_NAME,
-    template: `%s | ${NEXT_PUBLIC_SITE_NAME}`,
-  },
-  robots: {
-    follow: true,
-    index: true,
-  },
-  manifest: "/manifest.json",
-  themeColor: "#ff4dd8",
-  ...(TWITTER_CREATOR &&
-    TWITTER_SITE && {
-      twitter: {
-        card: "summary_large_image",
-        creator: TWITTER_CREATOR,
-        site: TWITTER_SITE,
-      },
-    }),
-  viewport:
-    "minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover",
-};
+export async function generateMetadata(
+  
+): Promise<Metadata> {
+  const intlMetadata = await getIntl("global.metadata");
+  const intlKeywords = await getIntl("global.metadata.keywords");
+ 
+  return {
+    alternates: {
+      canonical: new URL(`${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN}`),
+      languages: Object.fromEntries(languagesArray),
+    },
+    applicationName: NEXT_PUBLIC_SITE_NAME,
+    appleWebApp: {
+      capable: true,
+      title: NEXT_PUBLIC_SITE_NAME,
+      // statusBarStyle: "default",
+      statusBarStyle: 'black-translucent',
+      startupImage: [
+        '/assets/startup/apple-touch-startup-image-768x1004.png',
+        {
+          url: '/assets/startup/apple-touch-startup-image-1536x2008.png',
+          media: '(device-width: 768px) and (device-height: 1024px)',
+        },
+      ],
+    },
+    description: intlMetadata.formatMessage({ id: "description" }),
+    formatDetection: {
+      telephone: false,
+      date: false,
+      address: false,
+      email: false,
+      url: false,
+    },
+    keywords: [
+      intlKeywords.formatMessage({ id: "bikini" }),
+      intlKeywords.formatMessage({ id: "swimsuit" }),
+      intlKeywords.formatMessage({ id: "swimwear" }),
+      intlKeywords.formatMessage({ id: "beachwear" }),
+      intlKeywords.formatMessage({ id: "sarong" }),
+      intlKeywords.formatMessage({ id: "scarf" }),
+      intlKeywords.formatMessage({ id: "boots" }),
+    ],
+    metadataBase: new URL(`${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN}`),
+    manifest: "/manifest.json",
+    openGraph: {
+      images: [
+        {
+          url: `/api/og?title=${encodeURIComponent(
+            process.env.NEXT_PUBLIC_SITE_NAME || "",
+          )}`,
+          width: 1200,
+          height: 630,
+        },
+      ],
+      type: "website",
+    },
+    robots: {
+      follow: true,
+      index: true,
+    },
+    // TODO: Retrieve from Tailwind config
+    themeColor: "#ff4dd8",
+    title: {
+      default: NEXT_PUBLIC_SITE_NAME,
+      template: `%s | ${NEXT_PUBLIC_SITE_NAME}`,
+    },
+    ...(TWITTER_CREATOR &&
+      TWITTER_SITE && {
+        twitter: {
+          card: "summary_large_image",
+          creator: TWITTER_CREATOR,
+          site: TWITTER_SITE,
+        },
+      }),
+    viewport:
+      "minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover",
+  }
+}
 
 const bomberEscort = localFont({
   src: "../fonts/bomber-escort/bomberescort.ttf",
@@ -109,12 +139,12 @@ export async function generateStaticParams() {
 
 export default async function RootLayout({
   children,
-  params,
+  params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
 }: {
   children: ReactNode;
   params: { lang: string };
 }) {
-  const locale = new Intl.Locale(params.lang)
+  const locale = new Intl.Locale(lang)
 
   const showBanner = false;
 
@@ -133,7 +163,7 @@ export default async function RootLayout({
         // "snap-y",
         // "dark"
       )}
-      lang={params.lang}
+      lang={lang}
     >
       <body
         className={cn(

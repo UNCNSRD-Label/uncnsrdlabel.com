@@ -1,5 +1,24 @@
 {
+  "global": {
+    "metadata": {
+      "description": "UNCNSRD is multifunctional swimwear for female figures who aren't afraid to show off their assets and want to feel unapologetically sexy.",
+      "keywords": {
+        "bikini": "bikini",
+        "swimsuit": "swimsuit",
+        "swimwear": "swimwear",
+        "beachwear": "beachwear",
+        "sarong": "sarong",
+        "scarf": "scarf",
+        "boots": "boots"
+      }
+    }
+  },
   "page": {
+    "error": {
+      "title": "Something went wrong",
+      "message": "An error occurred while processing your request.",
+      "button": "Try again"
+    },
     "home": {
       "shop_now": "Shop now"
     }
