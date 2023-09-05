@@ -39,8 +39,9 @@ const config: Config = {
       colors: {
         error: colors.red["500"],
         gray: colors.neutral,
-        hotPink: "#ff4dd8",
         hotGreen: "#4dff74",
+        hotOrange: "#ff6f00",
+        hotPink: "#ff4dd8",
         stateFocus: colors.gray["500"],
         stateHover: colors.gray["500"],
         dark: "#111111",
