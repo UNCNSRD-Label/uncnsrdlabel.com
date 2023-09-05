@@ -1,8 +1,9 @@
-import "server-only";
+"use server";
 
 import { getDictionary } from "@/lib/get-dictionary";
 import { createIntl } from "@formatjs/intl";
 import { headers } from "next/headers";
+// import "server-only";
 
 export async function getIntl(namespace: string) {
   const headersList = headers();
