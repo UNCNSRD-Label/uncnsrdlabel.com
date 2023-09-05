@@ -6,7 +6,7 @@ export const getLocaleTagFromIETFLanguageTag = (
 
 export const getIETFLanguageTagFromlocaleTag = (localeTag: Intl.Locale) => localeTag?.baseName as IETFLanguageTag
 
-export const defaultLocale = new Intl.Locale(process.env.NEXT_PUBLIC_DEFAULT_LOCALE ?? "en-AU");
+export const defaultLocale = new Intl.Locale(process.env.NEXT_PUBLIC_DEFAULT_LOCALE!);
 
 export const locales = (
   process.env.NEXT_PUBLIC_SUPPORTED_LOCALES ?? getIETFLanguageTagFromlocaleTag(defaultLocale)

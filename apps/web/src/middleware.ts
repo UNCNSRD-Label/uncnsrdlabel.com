@@ -2,7 +2,7 @@ import { match } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
 import { NextResponse, type NextRequest } from "next/server";
 
-const defaultLocale = process.env.NEXT_PUBLIC_DEFAULT_LOCALE ?? "en-AU";
+const defaultLocale = process.env.NEXT_PUBLIC_DEFAULT_LOCALE!;
 
 const locales = (
   process.env.NEXT_PUBLIC_SUPPORTED_LOCALES ?? defaultLocale
