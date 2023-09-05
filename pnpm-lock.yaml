@@ -288,6 +288,9 @@ importers:
       '@tanstack/react-query':
         specifier: ^4.33.0
         version: 4.33.0(react-dom@18.2.0)(react@0.0.0-experimental-9b4f847d9-20230901)
+      '@tanstack/react-query-devtools':
+        specifier: ^4.33.0
+        version: 4.33.0(@tanstack/react-query@4.33.0)(react-dom@18.2.0)(react@0.0.0-experimental-9b4f847d9-20230901)
       '@uncnsrdlabel/graphql-hygraph':
         specifier: workspace:*
         version: link:../../packages/@uncnsrdlabel/graphql-hygraph
@@ -543,7 +546,7 @@ importers:
         version: 2.2.0
       '@tanstack/react-query':
         specifier: ^4.33.0
-        version: 4.33.0(react-dom@18.2.0)(react@18.2.0)
+        version: 4.33.0(react@18.2.0)
       '@types/node':
         specifier: ^20.5.6
         version: 20.5.6
@@ -628,10 +631,10 @@ importers:
         version: 2.2.0
       '@shopify/hydrogen-react':
         specifier: ^2023.7.3
-        version: 2023.7.3(@types/react@18.2.21)(react-dom@18.2.0)(react@18.2.0)
+        version: 2023.7.3(@types/react@18.2.21)(react-dom@18.2.0)(react@0.0.0-experimental-9b4f847d9-20230901)
       '@tanstack/react-query':
         specifier: ^4.33.0
-        version: 4.33.0(react-dom@18.2.0)(react@18.2.0)
+        version: 4.33.0(react-dom@18.2.0)(react@0.0.0-experimental-9b4f847d9-20230901)
       '@types/node':
         specifier: ^20.5.6
         version: 20.5.6
@@ -659,6 +662,9 @@ importers:
       npm-run-all:
         specifier: ^4.1.5
         version: 4.1.5
+      react:
+        specifier: experimental
+        version: 0.0.0-experimental-9b4f847d9-20230901
       slugify:
         specifier: ^1.6.6
         version: 1.6.6
@@ -672,6 +678,9 @@ importers:
       '@types/lodash':
         specifier: ^4.14.197
         version: 4.14.197
+      '@types/react':
+        specifier: 18.2.21
+        version: 18.2.21
       '@uncnsrdlabel/eslint-config-custom':
         specifier: workspace:*
         version: link:../eslint-config-custom
@@ -5746,7 +5755,7 @@ packages:
       use-sync-external-store: 1.2.0(react@0.0.0-experimental-9b4f847d9-20230901)
     dev: false
 
-  /@tanstack/react-query@4.33.0(react-dom@18.2.0)(react@18.2.0):
+  /@tanstack/react-query@4.33.0(react@18.2.0):
     resolution: {integrity: sha512-97nGbmDK0/m0B86BdiXzx3EW9RcDYKpnyL2+WwyuLHEgpfThYAnXFaMMmnTDuAO4bQJXEhflumIEUfKmP7ESGA==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -5760,7 +5769,6 @@ packages:
     dependencies:
       '@tanstack/query-core': 4.33.0
       react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
