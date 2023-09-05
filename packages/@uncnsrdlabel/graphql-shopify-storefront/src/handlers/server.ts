@@ -1,57 +1,57 @@
 import { CollectionFragment } from "../codegen/graphql";
 import { getFragmentData } from "../codegen/index";
 import {
-    addToCartMutation,
-    createCartMutation,
-    editCartItemsMutation,
-    removeFromCartMutation,
+  addToCartMutation,
+  createCartMutation,
+  editCartItemsMutation,
+  removeFromCartMutation,
 } from "../mutations/cart";
 import {
-    getCollectionProductsQuery,
-    getCollectionQuery,
-    getCollectionsQuery,
+  getCollectionProductsQuery,
+  getCollectionQuery,
+  getCollectionsQuery,
 } from "../queries/collection";
 // import { collectionFragment } from "../fragments/collection";
 import { camelCase } from "lodash";
 import {
-    AddToCartMutationVariables,
-    CreateCartMutationVariables,
-    EditCartItemsMutationVariables,
-    GetCartQueryVariables,
-    GetCollectionProductsQueryVariables,
-    GetCollectionQueryVariables,
-    GetCollectionsQueryVariables,
-    GetMenuQueryVariables,
-    GetPageQueryVariables,
-    GetPagesQueryVariables,
-    GetProductBasicQueryVariables,
-    GetProductDetailsQueryVariables,
-    GetProductRecommendationsQueryVariables,
-    GetProductsQueryVariables,
-    GetProductsWithVariantsQueryVariables,
-    RemoveFromCartMutationVariables
+  AddToCartMutationVariables,
+  CreateCartMutationVariables,
+  EditCartItemsMutationVariables,
+  GetCartQueryVariables,
+  GetCollectionProductsQueryVariables,
+  GetCollectionQueryVariables,
+  GetCollectionsQueryVariables,
+  GetMenuQueryVariables,
+  GetPageQueryVariables,
+  GetPagesQueryVariables,
+  GetProductBasicQueryVariables,
+  GetProductDetailsQueryVariables,
+  GetProductRecommendationsQueryVariables,
+  GetProductsQueryVariables,
+  GetProductsWithVariantsQueryVariables,
+  RemoveFromCartMutationVariables
 } from "../codegen/graphql";
 import {
-    cartFragment,
-    collectionFragment,
-    pageFragment,
-    productBasicFragment,
-    productDetailsFragment
+  cartFragment,
+  collectionFragment,
+  pageFragment,
+  productBasicFragment,
+  productDetailsFragment
 } from "../fragments/index";
 import {
-    getCartQuery,
-    getMenuQuery,
-    getPageQuery,
-    getPagesQuery,
-    getPoliciesQuery,
-    getProductBasicQuery,
-    getProductDetailsQuery,
-    getProductRecommendationsQuery,
-    getProductsQuery,
-    getProductsWithVariantsQuery,
+  getCartQuery,
+  getMenuQuery,
+  getPageQuery,
+  getPagesQuery,
+  getPoliciesQuery,
+  getProductBasicQuery,
+  getProductDetailsQuery,
+  getProductRecommendationsQuery,
+  getProductsQuery,
+  getProductsWithVariantsQuery,
 } from "../queries/index";
 import { type PolicyName } from "../types";
-import { getShopifyGraphQL } from "../utilities";
+import { getMenuItems, getShopifyGraphQL } from "../utilities";
 
 export async function createCart(variables: CreateCartMutationVariables) {
   const { cartCreate } = await getShopifyGraphQL(
@@ -278,17 +278,7 @@ export async function getMenu(variables: GetMenuQueryVariables) {
 
   // console.log({ menu });
 
-  return menu;
-
-  // return (
-  //   menu?.items.map((item: { title: string; url: string }) => ({
-  //     title: item.title,
-  //     path: item.url
-  //       .replace(domain, "")
-  //       .replace("/collections", "/search")
-  //       .replace("/pages", ""),
-  //   })) || []
-  // );
+  return { ...menu, items: getMenuItems(menu.items) };
 }
 
 export async function getPage(variables: GetPageQueryVariables) {

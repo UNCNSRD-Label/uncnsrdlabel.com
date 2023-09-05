@@ -1,16 +1,24 @@
 import { type TypedDocumentNode } from "@graphql-typed-document-node/core";
-import { useQuery, type UseQueryResult } from "@tanstack/react-query";
-import { getInContextVariables, isShopifyError, useGetInContextVariables } from "@uncnsrdlabel/lib";
+import {
+  QueryClient,
+  useQuery,
+  type UseQueryResult,
+} from "@tanstack/react-query";
+import {
+  getInContextVariables,
+  isShopifyError,
+  useGetInContextVariables,
+} from "@uncnsrdlabel/lib";
 import { GraphQLClient } from "graphql-request";
+import { cache } from "react";
 import {
   PageFragment,
   type ImageFragment,
-  type MediaImage
+  type MediaImage,
+  type MenuItem,
 } from "./codegen/graphql";
 import { getFragmentData } from "./codegen/index";
-import {
-  imageFragment
-} from "./fragments/index";
+import { imageFragment } from "./fragments/index";
 
 export { graphql } from "./codegen/index";
 
@@ -29,15 +37,17 @@ export const graphQLClient = new GraphQLClient(endpoint, {
   headers,
 });
 
+export const getShopifyQueryClient = cache(() => new QueryClient());
+
 export async function getShopifyGraphQL<TResult, TVariables>(
   document: TypedDocumentNode<TResult, TVariables>,
   ...[variables]: TVariables extends Record<string, never> ? [] : [TVariables]
 ): Promise<TResult> {
   "use server";
 
-  const inContextVariables = getInContextVariables()
+  const inContextVariables = getInContextVariables();
 
-  const variablesWithContext = {...inContextVariables, ...variables}
+  const variablesWithContext = { ...inContextVariables, ...variables };
 
   try {
     const request = graphQLClient.request(document, variablesWithContext);
@@ -60,9 +70,9 @@ export function useGetShopifyGraphQL<TResult, TVariables>(
 ): UseQueryResult<TResult> {
   "use client";
 
-  const inContextVariables = useGetInContextVariables()
+  const inContextVariables = useGetInContextVariables();
 
-  const variablesWithContext = {...inContextVariables, ...variables}
+  const variablesWithContext = { ...inContextVariables, ...variables };
 
   try {
     const name = (document.definitions[0] as any).name.value;
@@ -95,6 +105,18 @@ export function getPageImages(mediaImages: PageFragment["mediaImages"]) {
     )
     .filter((node) => node.__typename === "MediaImage")
     .map((mediaImage) => getFragmentData(imageFragment, mediaImage.image));
+
+  return images;
+}
+
+export function getMenuItems(menuItems: Pick<MenuItem, "url">[]) {
+  const images = menuItems.map((menuItem) => ({
+    ...menuItem,
+    url: menuItem.url
+      ?.replace(domain, "")
+      .replace("/collections/", "/search/")
+      .replace("/pages/", "/"),
+  }));
 
   return images;
 }

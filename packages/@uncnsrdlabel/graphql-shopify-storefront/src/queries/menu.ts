@@ -5,6 +5,7 @@ export const getMenuQuery = graphql(/* GraphQL */ `
     menu(handle: $handle) {
       id
       items {
+        id
         title
         url
       }
