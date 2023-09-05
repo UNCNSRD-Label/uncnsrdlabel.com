@@ -3,6 +3,7 @@ import { Image } from "@/components/image";
 import { Logo } from "@/components/layout/logo/index";
 import { NavbarContent } from "@/components/layout/navbar/content";
 import { Navbar } from "@/components/layout/navbar/index";
+import { LoadingDots } from "@/components/loading-dots";
 import { Video, type VideoProps } from "@/components/video";
 import { getIntl } from "@/lib/i18n/server";
 import { themeColors } from "@uncnsrdlabel/lib";
@@ -10,10 +11,6 @@ import Link from "next/link";
 import { Suspense } from "react";
 
 // export const runtime = "edge";
-
-// export const metadata = {
-  
-// };
 
 const video: VideoProps = {
   autoPlay: true,
@@ -52,15 +49,15 @@ export default async function HomePage() {
               <Video {...video} priority />
             </Suspense>
             <Link
-              href="/search"
-              aria-label="Go to the shop"
+              aria-label={intl.formatMessage({ id: "shop_now" })}
               className="btn btn-outline btn-primary btn-base absolute z-20 justify-self-center whitespace-nowrap uppercase"
+              href="/search"
             >
               {intl.formatMessage({ id: "shop_now" })}
             </Link>
           </section>
           <section className="max-w-[100dvw] py-48 sm:snap-center">
-            <Suspense fallback={<h2>An error occurred</h2>}>
+            <Suspense fallback={<LoadingDots />}>
               <HomepageCarousel />
             </Suspense>
           </section>
