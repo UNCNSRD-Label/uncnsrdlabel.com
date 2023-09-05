@@ -1,18 +1,32 @@
+"use client";
+
 import { Image } from "@/components/image";
+import { LoadingDots } from "@/components/loading-dots";
 import {
   NukaCarousel,
   type NukaCarouselProps,
 } from "@/components/nuka-carousel";
 import { minWidthLg, minWidthSm } from "@/lib/tailwind";
-import { getFragmentData, getPage, imageFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { getFragmentData, getPageQuery, imageFragment, pageFragment, useGetShopifyGraphQL } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
-import { notFound } from "next/navigation";
-import { Suspense, use } from "react";
+import { Suspense } from "react";
 
+// TODO: Change to Carousel and pass query and variables (handle) in props
 export function HomepageCarousel(props: NukaCarouselProps) {
-  const page = use(getPage({ handle: "home" }));
+  const { data } = useGetShopifyGraphQL(
+    getPageQuery,
+    { handle: "home" },
+  );
 
-  if (!page) return notFound();
+  // if (!data) return notFound();
+  if (!data) return null;
+
+  const { pageByHandle: pageFragmentRef } = data;
+
+  const page = getFragmentData(pageFragment, pageFragmentRef);
+
+  // if (!page) return notFound();
+  if (!page) return null;
 
   const mediaImages = page.mediaImages?.references?.edges.map((edge) => edge?.node);
 
@@ -35,7 +49,7 @@ export function HomepageCarousel(props: NukaCarouselProps) {
   };
 
   return (
-    <Suspense>
+    <Suspense fallback={<LoadingDots />}>
       <NukaCarousel
         adaptiveHeight
         autoplay

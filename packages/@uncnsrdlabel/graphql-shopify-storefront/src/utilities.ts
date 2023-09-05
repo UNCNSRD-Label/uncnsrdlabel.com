@@ -4,11 +4,7 @@ import {
   useQuery,
   type UseQueryResult,
 } from "@tanstack/react-query";
-import {
-  getInContextVariables,
-  isShopifyError,
-  useGetInContextVariables,
-} from "@uncnsrdlabel/lib";
+import { getInContextVariables, isShopifyError, useGetInContextVariables } from "@uncnsrdlabel/lib";
 import { GraphQLClient } from "graphql-request";
 import { cache } from "react";
 import {
@@ -38,6 +34,16 @@ export const graphQLClient = new GraphQLClient(endpoint, {
 });
 
 export const getShopifyQueryClient = cache(() => new QueryClient());
+
+// TODO: Move to @uncnsrdlabel/lib
+export const getDefinitionName = (document: TypedDocumentNode<any, any>) =>
+  (document.definitions[0] as any).name.value;
+
+// TODO: Move to @uncnsrdlabel/lib
+export const getQueryKey = (
+  document: TypedDocumentNode<any, any>,
+  variables: any,
+) => [getDefinitionName(document), variables];
 
 export async function getShopifyGraphQL<TResult, TVariables>(
   document: TypedDocumentNode<TResult, TVariables>,
@@ -71,14 +77,18 @@ export function useGetShopifyGraphQL<TResult, TVariables>(
   "use client";
 
   const inContextVariables = useGetInContextVariables();
+  // const inContextVariables = {
+  //   country: "US",
+  //   language: "EN",
+  // };
 
   const variablesWithContext = { ...inContextVariables, ...variables };
 
   try {
-    const name = (document.definitions[0] as any).name.value;
-
-    const query = useQuery([name, variablesWithContext], async ({ queryKey }) =>
-      graphQLClient.request(document, queryKey[1] ? queryKey[1] : undefined),
+    const query = useQuery(
+      getQueryKey(document, variablesWithContext),
+      async ({ queryKey }) =>
+        graphQLClient.request(document, queryKey[1] ? queryKey[1] : undefined),
     );
 
     return query;
