@@ -1,4 +1,4 @@
-"server-only";
+import "server-only";
 
 import {
   type CountryCode,
@@ -17,7 +17,9 @@ export const getInContextVariables = async () => {
   const locale = new Intl.Locale(localeHeader);
 
   const country = (locale.region ?? "US") as CountryCode;
-  const language = (locale.language ?? "en").toLocaleUpperCase() as LanguageCode;
+  const language = (
+    locale.language ?? "en"
+  ).toLocaleUpperCase() as LanguageCode;
 
   return {
     country,
