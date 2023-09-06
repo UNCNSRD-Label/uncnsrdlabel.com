@@ -14,11 +14,11 @@ import { notFound } from "next/navigation";
 // export const runtime = "edge";
 
 export async function generateMetadata({
-  params,
+  params: { collection: handle },
 }: {
   params: { collection: string };
 }): Promise<Metadata> {
-  const collection = await getCollection({ handle: params.collection });
+  const collection = await getCollection({ handle });
 
   if (!collection) return notFound();
 
@@ -51,7 +51,8 @@ export default async function CategoryPage({
 }) {
   const { sort } = searchParams as { [key: string]: string };
   const { sortKey, reverse } =
-    productCollectionSorting.find((item) => item.slug === sort) || productCollectionDefaultSort;
+    productCollectionSorting.find((item) => item.slug === sort) ||
+    productCollectionDefaultSort;
 
   const collectionProducts = await getCollectionProducts({
     handle: params.collection,

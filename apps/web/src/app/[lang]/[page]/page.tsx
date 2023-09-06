@@ -13,11 +13,11 @@ export { revalidate } from "@uncnsrdlabel/lib";
 // export const runtime = "edge";
 
 export async function generateMetadata({
-  params,
+  params: { page: handle },
 }: {
   params: { page: string };
 }): Promise<Metadata> {
-  const page = await getPage({ handle: params.page });
+  const page = await getPage({ handle });
 
   if (!page) return notFound();
 
@@ -46,7 +46,9 @@ export default async function Page({ params }: { params: { page: string } }) {
 
   if (!page) return notFound();
 
-  const mediaImages = page.mediaImages?.references?.edges.map((edge) => edge?.node);
+  const mediaImages = page.mediaImages?.references?.edges.map(
+    (edge) => edge?.node,
+  );
 
   return (
     <>

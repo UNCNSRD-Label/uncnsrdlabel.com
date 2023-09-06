@@ -1,14 +1,26 @@
 import { Image } from "@/components/image";
-import { getFragmentData, getPage, imageFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
+import {
+  getFragmentData,
+  getPage,
+  imageFragment,
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { notFound } from "next/navigation";
 
-export async function HorizontalScroll({ className }: { className?: string }) {
-  const page = await getPage({ handle: "home" });
+export async function HorizontalScroll({
+  className,
+  handle,
+}: {
+  className?: string;
+  handle: string;
+}) {
+  const page = await getPage({ handle });
 
   if (!page) return notFound();
 
-  const mediaImages = page.mediaImages?.references?.edges.map((edge) => edge?.node);
+  const mediaImages = page.mediaImages?.references?.edges.map(
+    (edge) => edge?.node,
+  );
 
   return (
     <div
@@ -28,7 +40,7 @@ export async function HorizontalScroll({ className }: { className?: string }) {
             if (mediaImage.__typename !== "MediaImage") {
               return null;
             }
-  
+
             const image = getFragmentData(imageFragment, mediaImage.image);
 
             if (!image) {
@@ -36,19 +48,20 @@ export async function HorizontalScroll({ className }: { className?: string }) {
             }
 
             return (
-            <figure
-              className="item aspect-3/4 relative w-full"
-              key={mediaImage.id || index}
-            >
-              <Image
-                alt={image.altText || page.title}
-                className="h-full object-cover"
-                fill
-                sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
-                src={image.url}
-              />
-            </figure>
-          )})}
+              <figure
+                className="item aspect-3/4 relative w-full"
+                key={mediaImage.id || index}
+              >
+                <Image
+                  alt={image.altText || page.title}
+                  className="h-full object-cover"
+                  fill
+                  sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                  src={image.url}
+                />
+              </figure>
+            );
+          })}
         </div>
       </div>
     </div>

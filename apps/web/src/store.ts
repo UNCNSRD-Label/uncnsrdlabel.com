@@ -1,8 +1,5 @@
 import { observable } from "@legendapp/state";
-import { enableReactUse } from "@legendapp/state/config/enableReactUse";
-import { getLocaleObjectFromIETFLanguageTag } from "@uncnsrdlabel/lib/i18n";
-
-enableReactUse();
+import { getLocaleObjectFromIETFLanguageTag } from "@uncnsrdlabel/lib";
 
 const lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE;
 
@@ -12,3 +9,5 @@ export const state$ = observable({
   lang,
   locale,
 });
+
+state$.onChange(({ value }) => console.log('state changed to', value))

@@ -5,7 +5,7 @@ import {
   type CountryCode,
   type LanguageCode,
 } from "@shopify/hydrogen-react/storefront-api-types";
-import { getLocaleObjectFromIETFLanguageTag } from "@uncnsrdlabel/lib/i18n";
+import { getLocaleObjectFromIETFLanguageTag } from "@uncnsrdlabel/lib";
 import { type IETFLanguageTag } from "@uncnsrdlabel/types";
 import { PropsWithChildren } from "react";
 

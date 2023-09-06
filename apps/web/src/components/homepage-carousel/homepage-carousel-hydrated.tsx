@@ -1,4 +1,5 @@
 import { LoadingDots } from "@/components/loading-dots";
+import { state$ } from "@/store";
 import { dehydrate, Hydrate } from "@tanstack/react-query";
 import {
   getPageQuery,
@@ -7,20 +8,22 @@ import {
   getShopifyQueryClient,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getInContextVariables } from "@uncnsrdlabel/lib";
-import { Suspense, type CSSProperties } from "react";
+import { Suspense } from "react";
 import { HomepageCarousel } from "./homepage-carousel";
 
 // TODO: Change to CarouselHydrated and pass query and variables (handle) in props
 export async function HomepageCarouselHydrated({
-  style,
+  handle,
 }: {
-  style?: CSSProperties;
+  handle: string;
 }) {
+  const lang = state$.lang.get();
+
   const shopifyQueryClient = getShopifyQueryClient();
 
-  const variables = { handle: "home" };
+  const variables = { handle };
 
-  const inContextVariables = getInContextVariables();
+  const inContextVariables = getInContextVariables(lang);
 
   const variablesWithContext = { ...inContextVariables, ...variables };
 
@@ -28,7 +31,7 @@ export async function HomepageCarouselHydrated({
     getShopifyGraphQL(
       // TODO: Change to getPageImageQuery to retrieve smaller data response
       getPageQuery,
-      { handle: "home" },
+      variables
     ),
   );
 
@@ -37,7 +40,7 @@ export async function HomepageCarouselHydrated({
   return (
     <Suspense fallback={<LoadingDots />}>
       <Hydrate state={dehydratedState}>
-        <HomepageCarousel style={style} />
+        <HomepageCarousel handle={handle} />
       </Hydrate>
     </Suspense>
   );

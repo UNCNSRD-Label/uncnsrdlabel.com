@@ -3,9 +3,13 @@ import { getCollectionProducts, getFragmentData, getPage, imageFragment, product
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-export async function Carousel() {
+export async function Carousel({
+  handle,
+}: {
+  handle: string;
+}) {
   const page = await getPage({
-    handle: "home"
+    handle
   });
 
   if (!page) return notFound();

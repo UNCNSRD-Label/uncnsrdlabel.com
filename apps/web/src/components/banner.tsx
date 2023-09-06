@@ -1,9 +1,12 @@
 import { getIntl } from "@/lib/i18n/server";
+import { state$ } from "@/store";
 import { cn } from "@uncnsrdlabel/lib";
 import { use } from "react";
 
 export const Banner = ({ className }: { className?: string }) => {
-  const intl = use(getIntl("component.Banner"));
+  const lang = state$.lang.get();
+
+  const intl = use(getIntl(lang, "component.Banner"));
 
   return (
     <div

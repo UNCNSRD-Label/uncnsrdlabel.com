@@ -10,11 +10,18 @@ import { minWidthLg, minWidthSm } from "@/lib/tailwind";
 import { getFragmentData, getPageQuery, imageFragment, pageFragment, useGetShopifyGraphQL } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Suspense } from "react";
 
-// TODO: Change to Carousel and pass query and variables (handle) in props
-export function HomepageCarousel(props: NukaCarouselProps) {
+export function HomepageCarousel({
+  handle,
+  nukaCarouselProps
+}: {
+  handle: string;
+  nukaCarouselProps?: NukaCarouselProps
+}) {
+  const variables = { handle };
+
   const { data } = useGetShopifyGraphQL(
     getPageQuery,
-    { handle: "home" },
+    variables
   );
 
   if (!data) return null;
@@ -68,8 +75,8 @@ export function HomepageCarousel(props: NukaCarouselProps) {
         enableKeyboardControls
         pauseOnHover
         speed={1500}
-        style={style}
         wrapAround
+        {...nukaCarouselProps}
       >
         {mediaImages?.map((mediaImage, index) => {
           if (mediaImage.__typename !== "MediaImage") {

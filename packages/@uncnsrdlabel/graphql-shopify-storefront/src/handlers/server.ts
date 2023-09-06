@@ -57,8 +57,6 @@ export async function createCart(variables: CreateCartMutationVariables) {
   const { cartCreate } = await getShopifyGraphQL(
     createCartMutation,
     variables,
-    // TODO: figure out how to use this
-    // cache: "no-store",
   );
 
   if (!cartCreate) {
@@ -84,8 +82,6 @@ export async function addToCart(variables: AddToCartMutationVariables) {
   const { cartLinesAdd } = await getShopifyGraphQL(
     addToCartMutation,
     variables,
-    // TODO: figure out how to use this
-    // cache: "no-store",
   );
 
   if (!cartLinesAdd) {
@@ -113,8 +109,6 @@ export async function removeFromCart(
   const { cartLinesRemove } = await getShopifyGraphQL(
     removeFromCartMutation,
     variables,
-    // TODO: figure out how to use this
-    // cache: "no-store",
   );
 
   if (!cartLinesRemove) {
@@ -140,8 +134,6 @@ export async function updateCart(variables: EditCartItemsMutationVariables) {
   const { cartLinesUpdate } = await getShopifyGraphQL(
     editCartItemsMutation,
     variables,
-    // TODO: figure out how to use this
-    // cache: "no-store",
   );
 
   if (!cartLinesUpdate) {
@@ -167,8 +159,6 @@ export async function getCart(variables: GetCartQueryVariables) {
   const { cart: cartFragmentRef } = await getShopifyGraphQL(
     getCartQuery,
     variables,
-    // TODO: figure out how to use this
-    // cache: "no-store",
   );
 
   if (!cartFragmentRef) {

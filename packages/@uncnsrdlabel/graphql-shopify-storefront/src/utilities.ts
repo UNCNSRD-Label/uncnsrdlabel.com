@@ -4,7 +4,7 @@ import {
   useQuery,
   type UseQueryResult,
 } from "@tanstack/react-query";
-import { getInContextVariables, isShopifyError, useGetInContextVariables } from "@uncnsrdlabel/lib";
+import { isShopifyError, useGetInContextVariables } from "@uncnsrdlabel/lib";
 import { GraphQLClient } from "graphql-request";
 import { cache } from "react";
 import {
@@ -50,13 +50,9 @@ export async function getShopifyGraphQL<TResult, TVariables>(
   ...[variables]: TVariables extends Record<string, never> ? [] : [TVariables]
 ): Promise<TResult> {
   "use server";
-
-  const inContextVariables = getInContextVariables();
-
-  const variablesWithContext = { ...inContextVariables, ...variables };
-
+  
   try {
-    const request = graphQLClient.request(document, variablesWithContext);
+    const request = graphQLClient.request(document, { ...variables });
 
     return request;
   } catch (error) {

@@ -18,11 +18,11 @@ import { HIDDEN_PRODUCT_TAG, cn } from "@uncnsrdlabel/lib";
 // export const runtime = "edge";
 
 export async function generateMetadata({
-  params,
+  params: { handle },
 }: {
   params: { handle: string };
 }): Promise<Metadata> {
-  const product = await getProductDetails(params);
+  const product = await getProductDetails({ handle });
 
   const featuredImage = getFragmentData(imageFragment, product.featuredImage);
   const seo = getFragmentData(seoFragment, product.seo);
@@ -109,7 +109,7 @@ async function RelatedProducts({
   id: string;
 }) {
   const relatedProducts = await getProductRecommendations({
-    productId: id
+    productId: id,
   });
 
   if (!relatedProducts.length) return null;

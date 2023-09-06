@@ -5,13 +5,21 @@ import { Progress } from "@/components/layout/progress/index";
 import { Organization } from "@/components/schema.org/organization";
 import { getDictionary } from "@/lib/get-dictionary";
 import { getIntl } from "@/lib/i18n/server";
-import { SITE_DOMAIN, cn, getIETFLanguageTagFromlocaleTag, locales, themeColors } from "@uncnsrdlabel/lib";
-import { observable } from "@legendapp/state";
+import { state$ } from "@/store";
+import {
+  SITE_DOMAIN,
+  cn,
+  getIETFLanguageTagFromlocaleTag,
+  getLocaleObjectFromIETFLanguageTag,
+  locales,
+  themeColors,
+} from "@uncnsrdlabel/lib";
 import { AppProviders } from "@uncnsrdlabel/providers";
+import { type LayoutProps } from "@uncnsrdlabel/types";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import localFont from "next/font/local";
-import { ReactNode, Suspense } from "react";
+import { PropsWithChildren, Suspense } from "react";
 import "../globals.css";
 
 const {
@@ -22,23 +30,27 @@ const {
 
 const languagesArray = locales.map((locale) => [
   getIETFLanguageTagFromlocaleTag(locale),
-  [{
-    title: getIETFLanguageTagFromlocaleTag(locale),
-    url: new URL(
-      `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN}/${locale}`,
-    ),
-  }],
+  [
+    {
+      title: getIETFLanguageTagFromlocaleTag(locale),
+      url: new URL(
+        `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN}/${locale}`,
+      ),
+    },
+  ],
 ]);
 
-export async function generateMetadata(
-  
-): Promise<Metadata> {
-  const intlMetadata = await getIntl("global.metadata");
-  const intlKeywords = await getIntl("global.metadata.keywords");
- 
+export async function generateMetadata({
+  params: { lang },
+}: LayoutProps): Promise<Metadata> {
+  const intlMetadata = await getIntl(lang, "global.metadata");
+  const intlKeywords = await getIntl(lang, "global.metadata.keywords");
+
   return {
     alternates: {
-      canonical: new URL(`${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN}`),
+      canonical: new URL(
+        `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN}`,
+      ),
       languages: Object.fromEntries(languagesArray),
     },
     applicationName: NEXT_PUBLIC_SITE_NAME,
@@ -46,12 +58,12 @@ export async function generateMetadata(
       capable: true,
       title: NEXT_PUBLIC_SITE_NAME,
       // statusBarStyle: "default",
-      statusBarStyle: 'black-translucent',
+      statusBarStyle: "black-translucent",
       startupImage: [
-        '/assets/startup/apple-touch-startup-image-768x1004.png',
+        "/assets/startup/apple-touch-startup-image-768x1004.png",
         {
-          url: '/assets/startup/apple-touch-startup-image-1536x2008.png',
-          media: '(device-width: 768px) and (device-height: 1024px)',
+          url: "/assets/startup/apple-touch-startup-image-1536x2008.png",
+          media: "(device-width: 768px) and (device-height: 1024px)",
         },
       ],
     },
@@ -72,7 +84,9 @@ export async function generateMetadata(
       intlKeywords.formatMessage({ id: "scarf" }),
       intlKeywords.formatMessage({ id: "boots" }),
     ],
-    metadataBase: new URL(`${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN}`),
+    metadataBase: new URL(
+      `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN}`,
+    ),
     manifest: "/manifest.json",
     openGraph: {
       images: [
@@ -106,7 +120,7 @@ export async function generateMetadata(
       }),
     viewport:
       "minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover",
-  }
+  };
 }
 
 const bomberEscort = localFont({
@@ -140,15 +154,18 @@ export async function generateStaticParams() {
 
 export default async function Layout({
   children,
-  params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
+  params: {
+    lang
+  },
 }: PropsWithChildren<LayoutProps>) {
+  const locale = getLocaleObjectFromIETFLanguageTag(lang);
+
+  state$.lang.set(lang);
+  state$.locale.set(locale);
 
   const showBanner = false;
 
-  const messages = await getDictionary(
-    locale,
-    "page.home"
-  );
+  const messages = await getDictionary(locale, "page.home");
 
   return (
     <html
@@ -172,7 +189,10 @@ export default async function Layout({
           textRendering: "optimizeLegibility",
         }}
       >
-        <AppProviders locale={getIETFLanguageTagFromlocaleTag(locale)} messages={messages}>
+        <AppProviders
+          locale={getIETFLanguageTagFromlocaleTag(locale)}
+          messages={messages}
+        >
           <Progress />
           <Banner
             className={cn("sticky top-0 w-full", !showBanner && "hidden")}

@@ -7,6 +7,7 @@ import { LoadingDots } from "@/components/loading-dots";
 import { Video, type VideoProps } from "@/components/video";
 import { getIntl } from "@/lib/i18n/server";
 import { themeColors } from "@uncnsrdlabel/lib";
+import { type PageProps } from "@uncnsrdlabel/types";
 import Link from "next/link";
 import { Suspense } from "react";
 
@@ -22,8 +23,14 @@ const video: VideoProps = {
   url: "/videos/ZfGt0lKisCU.mp4",
 };
 
-export default async function HomePage() {
-  const intl = await getIntl("page.home");
+export default async function HomePage({
+  params: {
+    lang
+  }
+}: PageProps) {
+  const handle = "home";
+
+  const intl = await getIntl(lang, `page.${handle}`);
 
   return (
     <div className="dark">
@@ -58,7 +65,7 @@ export default async function HomePage() {
           </section>
           <section className="max-w-[100dvw] py-48 sm:snap-center">
             <Suspense fallback={<LoadingDots />}>
-              <HomepageCarousel />
+              <HomepageCarousel handle={handle} />
             </Suspense>
           </section>
         </main>
