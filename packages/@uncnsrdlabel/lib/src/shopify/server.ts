@@ -12,9 +12,11 @@ export const getInContextVariables = async () => {
 
   const localeHeader =
     headersList.get("x-locale") ?? process.env.NEXT_PUBLIC_DEFAULT_LOCALE!;
-  const country = (locale.region) as CountryCode;
 
   const locale = new Intl.Locale(localeHeader);
+
+  const country = (locale.region) as CountryCode;
+
   const language = (
     locale.language
   ).toLocaleUpperCase() as LanguageCode;
