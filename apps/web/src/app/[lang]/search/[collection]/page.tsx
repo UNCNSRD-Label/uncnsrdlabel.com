@@ -1,12 +1,12 @@
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
 import {
-    getCollection,
-    getCollectionProducts,
-    getFragmentData,
-    productCollectionDefaultSort,
-    productCollectionSorting,
-    seoFragment,
+  getCollection,
+  getCollectionProducts,
+  getFragmentData,
+  productCollectionDefaultSort,
+  productCollectionSorting,
+  seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";

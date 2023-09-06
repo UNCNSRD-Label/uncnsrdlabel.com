@@ -7,11 +7,11 @@ import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
 import { ProductDetails } from "@/components/product/details";
 import {
-    getFragmentData,
-    getProductDetails,
-    getProductRecommendations,
-    imageFragment,
-    seoFragment
+  getFragmentData,
+  getProductDetails,
+  getProductRecommendations,
+  imageFragment,
+  seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { HIDDEN_PRODUCT_TAG, cn } from "@uncnsrdlabel/lib";
 
@@ -89,7 +89,7 @@ export default async function ProductPage({
       <ProductDetails product={product} />
       <Suspense>
         <RelatedProducts
-          className="relative bg-gray-300 pb-48 pt-12 text-dark dark:bg-gray-800 dark:text-light"
+          className="text-dark dark:text-light relative bg-gray-300 pb-48 pt-12 dark:bg-gray-800"
           id={product.id}
         />
       </Suspense>

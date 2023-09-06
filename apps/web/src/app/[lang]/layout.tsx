@@ -6,6 +6,7 @@ import { Organization } from "@/components/schema.org/organization";
 import { getDictionary } from "@/lib/get-dictionary";
 import { getIntl } from "@/lib/i18n/server";
 import { SITE_DOMAIN, cn, getIETFLanguageTagFromlocaleTag, locales, themeColors } from "@uncnsrdlabel/lib";
+import { observable } from "@legendapp/state";
 import { AppProviders } from "@uncnsrdlabel/providers";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
@@ -137,14 +138,10 @@ export async function generateStaticParams() {
   });
 }
 
-export default async function RootLayout({
+export default async function Layout({
   children,
   params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
-}: {
-  children: ReactNode;
-  params: { lang: string };
-}) {
-  const locale = new Intl.Locale(lang)
+}: PropsWithChildren<LayoutProps>) {
 
   const showBanner = false;
 

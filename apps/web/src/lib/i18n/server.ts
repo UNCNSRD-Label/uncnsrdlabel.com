@@ -6,6 +6,7 @@ import { headers } from "next/headers";
 // import "server-only";
 
 export async function getIntl(namespace: string) {
+  // TODO: Replace with state manager
   const headersList = headers();
 
   const localeHeader =

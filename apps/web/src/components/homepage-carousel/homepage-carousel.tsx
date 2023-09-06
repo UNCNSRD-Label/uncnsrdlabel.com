@@ -8,7 +8,6 @@ import {
 } from "@/components/nuka-carousel";
 import { minWidthLg, minWidthSm } from "@/lib/tailwind";
 import { getFragmentData, getPageQuery, imageFragment, pageFragment, useGetShopifyGraphQL } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { cn } from "@uncnsrdlabel/lib";
 import { Suspense } from "react";
 
 // TODO: Change to Carousel and pass query and variables (handle) in props
@@ -18,17 +17,17 @@ export function HomepageCarousel(props: NukaCarouselProps) {
     { handle: "home" },
   );
 
-  // if (!data) return notFound();
   if (!data) return null;
 
   const { pageByHandle: pageFragmentRef } = data;
 
   const page = getFragmentData(pageFragment, pageFragmentRef);
 
-  // if (!page) return notFound();
   if (!page) return null;
 
-  const mediaImages = page.mediaImages?.references?.edges.map((edge) => edge?.node);
+  const mediaImages = page.mediaImages?.references?.edges.map(
+    (edge) => edge?.node,
+  );
 
   const buttonClassName =
     "!px-6 text-6xl drop-shadow focus-visible:!text-stateFocus hover:!text-stateHover";
@@ -54,10 +53,7 @@ export function HomepageCarousel(props: NukaCarouselProps) {
         adaptiveHeight
         autoplay
         autoplayInterval={5000}
-        className={cn(
-          `cursor-grab [&.dragging]:cursor-grabbing`,
-          props.className,
-        )}
+        className="cursor-grab [&.dragging]:cursor-grabbing"
         defaultControlsConfig={{
           nextButtonClassName: buttonClassName,
           nextButtonText: "›",
@@ -72,6 +68,7 @@ export function HomepageCarousel(props: NukaCarouselProps) {
         enableKeyboardControls
         pauseOnHover
         speed={1500}
+        style={style}
         wrapAround
       >
         {mediaImages?.map((mediaImage, index) => {
@@ -86,17 +83,21 @@ export function HomepageCarousel(props: NukaCarouselProps) {
           }
 
           return (
-          <figure className="item aspect-3/4 relative" key={image.url || index}>
-            <Image
-              alt={image.altText || page.title}
-              className="h-full object-cover"
-              fill
-              revealEffect={false}
-              sizes={`100vw, (min-width: ${minWidthSm}) 50vw, (min-width: ${minWidthLg}) 33vw`}
-              src={image.url}
-            />
-          </figure>
-        )})}
+            <figure
+              className="item aspect-3/4 relative"
+              key={image.url || index}
+            >
+              <Image
+                alt={image.altText || page.title}
+                className="h-full object-cover"
+                fill
+                revealEffect={false}
+                sizes={`100vw, (min-width: ${minWidthSm}) 50vw, (min-width: ${minWidthLg}) 33vw`}
+                src={image.url}
+              />
+            </figure>
+          );
+        })}
       </NukaCarousel>
     </Suspense>
   );
