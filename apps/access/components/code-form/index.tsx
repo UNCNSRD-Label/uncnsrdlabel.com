@@ -57,7 +57,7 @@ export const Input = forwardRef<InputRef, Partial<HTMLInputElement>>(
 Input.displayName = "Input";
 
 export default function Code({ className }: { className?: string }) {
-  const defaultMessage = "enter code";
+  const defaultMessage = "Enter code";
 
   const { pending } = useFormStatus();
   const [message, setMessage] = useState<string>(defaultMessage);
@@ -81,12 +81,12 @@ export default function Code({ className }: { className?: string }) {
           "code-2"
         )}${formData.get("code-3")}${formData.get("code-4")}`;
 
-        setMessage("checking code");
+        setMessage("Checking code");
 
         const match = await checkCode(formData);
 
         if (match === true) {
-          setMessage("taking you to the site");
+          setMessage("Taking you to the site");
 
           router.push(
             `https://www.uncnsrdlabel.com?code=${accessCodeReceived}`

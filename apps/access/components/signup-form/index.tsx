@@ -18,7 +18,7 @@ export default function SignUp({ className }: { className?: string }) {
         "grid gap-2 md:grid-flow-col md:grid-cols-3 [&:has(input:valid)>button]:opacity-100 w-full px-8 relative",
         className,
       )}
-      onSubmit={() => setInput("submitted")}
+      onSubmit={() => setInput("Submitted")}
     >
       <div className="field md:col-start-2">
         <input
@@ -26,7 +26,7 @@ export default function SignUp({ className }: { className?: string }) {
           className="w-full px-4 py-2 bg-transparent border-transparent border-b-white placeholder:text-white filter drop-shadow-md text-sm sm:text-base text-center focus:border-hotPink focus:ring-transparent focus:outline-transparent"
           enterKeyHint="send"
           name="email"
-          placeholder="sign up to our newsletter for access code"
+          placeholder="Sign up to our newsletter for access code"
           required
           type="email"
         />
@@ -68,7 +68,7 @@ export default function SignUp({ className }: { className?: string }) {
           <h1 className="">UNCNSRD</h1>
 
           <div className="">
-            <p className="">thank you for signing up!</p>
+            <p className="">Thank you for signing up!</p>
           </div>
         </output>
       )}
