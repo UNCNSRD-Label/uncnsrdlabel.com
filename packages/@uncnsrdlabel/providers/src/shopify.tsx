@@ -5,7 +5,7 @@ import {
   type CountryCode,
   type LanguageCode,
 } from "@shopify/hydrogen-react/storefront-api-types";
-import { getLocaleTagFromIETFLanguageTag } from "@uncnsrdlabel/lib";
+import { getLocaleObjectFromIETFLanguageTag } from "@uncnsrdlabel/lib/i18n";
 import { type IETFLanguageTag } from "@uncnsrdlabel/types";
 import { PropsWithChildren } from "react";
 
@@ -18,7 +18,7 @@ const storefrontApiVersion =
 export function AppShopifyProvider({ children, locale }: PropsWithChildren<{
   locale: IETFLanguageTag;
 }>) {
-  const localeTag = getLocaleTagFromIETFLanguageTag(locale);
+  const localeTag = getLocaleObjectFromIETFLanguageTag(locale);
 
   const countryIsoCode = (localeTag.region ?? "US") as CountryCode;
   const languageIsoCode = (localeTag.language ?? "en") as LanguageCode;

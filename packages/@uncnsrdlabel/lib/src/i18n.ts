@@ -1,6 +1,6 @@
 import { type IETFLanguageTag } from "@uncnsrdlabel/types";
 
-export const getLocaleTagFromIETFLanguageTag = (
+export const getLocaleObjectFromIETFLanguageTag = (
   tag = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! as Intl.BCP47LanguageTag,
 ) => new Intl.Locale(tag);
 
