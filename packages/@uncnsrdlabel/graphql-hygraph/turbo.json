@@ -12,9 +12,6 @@
         "NEXT_PUBLIC_SUPPORTED_LOCALES"
       ],
       "outputs": ["dist/**"]
-    },
-    "dev": {
-      "outputs": ["dist/**"]
     }
   }
 }

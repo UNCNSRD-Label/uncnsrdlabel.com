@@ -16,9 +16,6 @@
         "SHOPIFY_STOREFRONT_TOKEN"
       ],
       "outputs": ["dist/**"]
-    },
-    "dev": {
-      "outputs": ["dist/**"]
     }
   }
 }
