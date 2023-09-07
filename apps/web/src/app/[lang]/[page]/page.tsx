@@ -3,10 +3,11 @@ import { Image } from "@/components/image";
 import {
   getFragmentData,
   imageFragment,
-  seoFragment
+  seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { ArticleHydrated as Article } from "./article-hydrated";
 
 export { revalidate } from "@uncnsrdlabel/lib";
 
@@ -41,8 +42,12 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({ params }: { params: { page: string } }) {
-  const page = await server.getPage({ handle: params.page });
+export default async function Page({
+  params: { page: handle },
+}: {
+  params: { page: string };
+}) {
+  const page = await server.getPage({ handle });
 
   if (!page) return notFound();
 
@@ -80,6 +85,7 @@ export default async function Page({ params }: { params: { page: string } }) {
           );
         })}
       </section>
+      <Article variables={{ handle }} />
     </>
   );
 }
