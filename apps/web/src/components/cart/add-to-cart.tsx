@@ -3,23 +3,16 @@
 import { addItem } from "@/components/cart/actions";
 import { LoadingDots } from "@/components/loading-dots";
 import { PlusIcon } from "@heroicons/react/24/outline";
-import { AddToCartButton } from "@shopify/hydrogen-react";
-import { ProductVariant } from "@shopify/hydrogen/storefront-api-types";
+import { ProductVariant } from "@uncnsrdlabel/graphql-shopify-storefront/types";
 import { cn } from "@uncnsrdlabel/lib";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState, useTransition } from "react";
-import { type PartialDeep } from "type-fest";
 
 export function AddToCart({
   variants,
   availableForSale,
 }: {
-  variants: PartialDeep<
-  ProductVariant,
-  {
-    recurseIntoArrays: true;
-  }
->[];
+  variants: ProductVariant[];
   availableForSale: boolean;
 }) {
   const [selectedVariantId, setSelectedVariantId] = useState<
@@ -27,15 +20,13 @@ export function AddToCart({
   >(undefined);
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [isPending,
-    startTransition
-  ] = useTransition();
+  const [isPending, startTransition] = useTransition();
 
   useEffect(() => {
-    const variant = variants.find((variant) =>
-      variant?.selectedOptions?.every(
+    const variant = variants.find((variant: ProductVariant) =>
+      variant.selectedOptions.every(
         (option) =>
-          option?.value === searchParams.get(option?.name ?? ""),
+          option.value === searchParams.get(option.name.toLowerCase()),
       ),
     );
 
@@ -49,7 +40,7 @@ export function AddToCart({
     : undefined;
 
   return (
-    <AddToCartButton
+    <button
       aria-label="Add item to cart"
       disabled={isPending || !availableForSale || !selectedVariantId}
       title={title}
@@ -82,6 +73,6 @@ export function AddToCart({
         )}
       </div>
       <span>{availableForSale ? "Add To Cart" : "Out Of Stock"}</span>
-    </AddToCartButton>
+    </button>
   );
 }
