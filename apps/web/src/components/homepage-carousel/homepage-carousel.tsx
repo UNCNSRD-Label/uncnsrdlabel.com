@@ -7,22 +7,22 @@ import {
   type NukaCarouselProps,
 } from "@/components/nuka-carousel";
 import { minWidthLg, minWidthSm } from "@/lib/tailwind";
-import { getFragmentData, getPageQuery, imageFragment, pageFragment, useGetShopifyGraphQL } from "@uncnsrdlabel/graphql-shopify-storefront";
+import {
+  getFragmentData,
+  getPageQuery,
+  imageFragment,
+  pageFragment,
+  useGetShopifyGraphQL,
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Suspense } from "react";
 
 export function HomepageCarousel({
   handle,
-  nukaCarouselProps
-}: {
-  handle: string;
-  nukaCarouselProps?: NukaCarouselProps
-}) {
+  ...props
+}: NukaCarouselProps & { handle: string }) {
   const variables = { handle };
 
-  const { data } = useGetShopifyGraphQL(
-    getPageQuery,
-    variables
-  );
+  const { data } = useGetShopifyGraphQL(getPageQuery, variables);
 
   if (!data) return null;
 
@@ -76,7 +76,7 @@ export function HomepageCarousel({
         pauseOnHover
         speed={1500}
         wrapAround
-        {...nukaCarouselProps}
+        {...props}
       >
         {mediaImages?.map((mediaImage, index) => {
           if (mediaImage.__typename !== "MediaImage") {

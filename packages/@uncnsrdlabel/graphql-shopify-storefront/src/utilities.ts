@@ -73,10 +73,6 @@ export function useGetShopifyGraphQL<TResult, TVariables>(
   "use client";
 
   const inContextVariables = useGetInContextVariables();
-  // const inContextVariables = {
-  //   country: "US",
-  //   language: "EN",
-  // };
 
   const variablesWithContext = { ...inContextVariables, ...variables };
 

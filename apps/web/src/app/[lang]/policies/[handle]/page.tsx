@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 
+import { server } from "@/clients/shopify";
 import { Prose } from "@/components/prose";
-import { getFragmentData, getPolicy, shopPolicyFragment, type PolicyName } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { getFragmentData, shopPolicyFragment, type PolicyName } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { type PageProps } from "@uncnsrdlabel/types";
 import { notFound } from "next/navigation";
 
@@ -14,7 +15,7 @@ export async function generateMetadata({
 }: {
   params: PageProps & { handle: PolicyName };
 }): Promise<Metadata> {
-  const shopPolicyFragmentRef = await getPolicy(handle);
+  const shopPolicyFragmentRef = await server.getPolicy(handle);
 
   if (!shopPolicyFragmentRef) return notFound();
 
@@ -40,7 +41,7 @@ export default async function Policy({
 }: {
   params: { handle: PolicyName };
 }) {
-  const shopPolicyFragmentRef = await getPolicy(params.handle);
+  const shopPolicyFragmentRef = await server.getPolicy(params.handle);
 
   if (!shopPolicyFragmentRef) return notFound();
 

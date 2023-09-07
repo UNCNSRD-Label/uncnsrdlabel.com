@@ -3,15 +3,14 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { Product as ProductSchema, WithContext } from "schema-dts";
 
+import { server } from "@/clients/shopify";
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
 import { ProductDetails } from "@/components/product/details";
 import {
   getFragmentData,
-  getProductDetails,
-  getProductRecommendations,
   imageFragment,
-  seoFragment,
+  seoFragment
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { HIDDEN_PRODUCT_TAG, cn } from "@uncnsrdlabel/lib";
 
@@ -22,7 +21,7 @@ export async function generateMetadata({
 }: {
   params: { handle: string };
 }): Promise<Metadata> {
-  const product = await getProductDetails({ handle });
+  const product = await server.getProductDetails({ handle });
 
   const featuredImage = getFragmentData(imageFragment, product.featuredImage);
   const seo = getFragmentData(seoFragment, product.seo);
@@ -63,7 +62,7 @@ export default async function ProductPage({
 }: {
   params: { handle: string };
 }) {
-  const product = await getProductDetails(params);
+  const product = await server.getProductDetails(params);
 
   if (!product) return notFound();
 
@@ -108,7 +107,7 @@ async function RelatedProducts({
   className?: string;
   id: string;
 }) {
-  const relatedProducts = await getProductRecommendations({
+  const relatedProducts = await server.getProductRecommendations({
     productId: id,
   });
 

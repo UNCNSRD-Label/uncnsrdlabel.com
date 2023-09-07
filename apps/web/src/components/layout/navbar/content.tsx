@@ -1,8 +1,8 @@
+import { server } from "@/clients/shopify";
 import { Cart } from "@/components/cart";
 import { CartIcon } from "@/components/icons/cart";
 import { LogotypeIcon } from "@/components/icons/logotype";
 import { Search } from "@/components/search/index";
-import { getMenu } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import Link from "next/link";
 import { Suspense, use } from "react";
@@ -12,7 +12,7 @@ import { SidebarMenu } from "./sidebar-menu";
 type Props = { showLogo?: boolean };
 
 export function NavbarContent(props: Props) {
-  const menu = use(getMenu({ handle: "next-js-frontend-header-menu"}));
+  const menu = use(server.getMenu({ handle: "next-js-frontend-header-menu"}));
 
   return (
     <>

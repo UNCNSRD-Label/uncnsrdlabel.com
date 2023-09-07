@@ -1,8 +1,8 @@
+import { server } from "@/clients/shopify";
 import { Image } from "@/components/image";
 import {
   getFragmentData,
-  getPage,
-  imageFragment,
+  imageFragment
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { notFound } from "next/navigation";
@@ -14,7 +14,7 @@ export async function HorizontalScroll({
   className?: string;
   handle: string;
 }) {
-  const page = await getPage({ handle });
+  const page = await server.getPage({ handle });
 
   if (!page) return notFound();
 

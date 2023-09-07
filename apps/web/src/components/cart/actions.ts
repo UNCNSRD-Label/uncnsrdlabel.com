@@ -1,13 +1,9 @@
 "use server";
 
+import { server } from "@/clients/shopify";
 import { ResultOf } from '@graphql-typed-document-node/core';
 import {
-  addToCart,
-  cartFragment,
-  createCart,
-  getCart,
-  removeFromCart,
-  updateCart
+  cartFragment
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cookies } from "next/headers";
 
@@ -18,11 +14,11 @@ export const addItem = async (
   let cart: ResultOf<typeof cartFragment> | null = null;
 
   if (cartId) {
-    cart = await getCart({ cartId });
+    cart = await server.getCart({ cartId });
   }
 
   if (!cartId || !cart) {
-    cart = await createCart({});
+    cart = await server.createCart({});
 
     if (!cart) {
       return new Error("Error creating cart");
@@ -36,7 +32,7 @@ export const addItem = async (
     return new Error("Missing variantId");
   }
   try {
-    await addToCart({
+    await server.addToCart({
       cartId,
       lines: [{ merchandiseId: variantId, quantity: 1 }],
     });
@@ -57,7 +53,7 @@ export const removeItem = async (
   }
 
   try {
-    await removeFromCart({ cartId, lineIds: [lineId] });
+    await server.removeFromCart({ cartId, lineIds: [lineId] });
 
     return undefined;
   } catch (e) {
@@ -80,7 +76,7 @@ export const updateItemQuantity = async ({
     return new Error("Missing cartId");
   }
   try {
-    await updateCart({
+    await server.updateCart({
       cartId,
       lines: [
         {

@@ -1,12 +1,11 @@
+import { server } from "@/clients/shopify";
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
 import {
-  getCollection,
-  getCollectionProducts,
   getFragmentData,
   productCollectionDefaultSort,
   productCollectionSorting,
-  seoFragment,
+  seoFragment
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -18,7 +17,7 @@ export async function generateMetadata({
 }: {
   params: { collection: string };
 }): Promise<Metadata> {
-  const collection = await getCollection({ handle });
+  const collection = await server.getCollection({ handle });
 
   if (!collection) return notFound();
 
@@ -54,7 +53,7 @@ export default async function CategoryPage({
     productCollectionSorting.find((item) => item.slug === sort) ||
     productCollectionDefaultSort;
 
-  const collectionProducts = await getCollectionProducts({
+  const collectionProducts = await server.getCollectionProducts({
     handle: params.collection,
     sortKey,
     reverse,

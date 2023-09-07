@@ -1,7 +1,7 @@
+import { server } from "@/clients/shopify";
 import { Grid } from "@/components/grid/index";
 import { ProductVariantGridItems } from "@/components/layout/product-variant-grid-items";
 import {
-  getProductsWithVariants,
   productDefaultSort,
   productSorting
 } from "@uncnsrdlabel/graphql-shopify-storefront";
@@ -22,7 +22,7 @@ export default async function SearchPage({
   const { sortKey, reverse } =
     productSorting.find((item) => item.slug === sort) || productDefaultSort;
 
-  const productConnection = await getProductsWithVariants({
+  const productConnection = await server.getProductsWithVariants({
     sortKey,
     reverse,
     query: searchValue,

@@ -1,5 +1,5 @@
+import { server } from "@/clients/shopify";
 import { CartModal } from "@/components/cart/modal";
-import { getCart } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cookies } from "next/headers";
 import { use } from "react";
 
@@ -9,7 +9,7 @@ export function Cart() {
   let cart;
 
   if (cartId) {
-    cart = use(getCart({ cartId }));
+    cart = use(server.getCart({ cartId }));
   }
 
   if (cart) {

@@ -1,9 +1,9 @@
+import { server } from "@/clients/shopify";
 import { Image } from "@/components/image";
 import {
   getFragmentData,
-  getPage,
   imageFragment,
-  seoFragment,
+  seoFragment
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -17,7 +17,7 @@ export async function generateMetadata({
 }: {
   params: { page: string };
 }): Promise<Metadata> {
-  const page = await getPage({ handle });
+  const page = await server.getPage({ handle });
 
   if (!page) return notFound();
 
@@ -42,7 +42,7 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params }: { params: { page: string } }) {
-  const page = await getPage({ handle: params.page });
+  const page = await server.getPage({ handle: params.page });
 
   if (!page) return notFound();
 

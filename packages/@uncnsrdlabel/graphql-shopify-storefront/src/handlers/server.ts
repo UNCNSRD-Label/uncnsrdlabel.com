@@ -1,3 +1,4 @@
+import { getInContextVariables } from "@uncnsrdlabel/lib";
 import { CollectionFragment } from "../codegen/graphql";
 import { getFragmentData } from "../codegen/index";
 import {
@@ -29,14 +30,14 @@ import {
   GetProductRecommendationsQueryVariables,
   GetProductsQueryVariables,
   GetProductsWithVariantsQueryVariables,
-  RemoveFromCartMutationVariables
+  RemoveFromCartMutationVariables,
 } from "../codegen/graphql";
 import {
   cartFragment,
   collectionFragment,
   pageFragment,
   productBasicFragment,
-  productDetailsFragment
+  productDetailsFragment,
 } from "../fragments/index";
 import {
   getCartQuery,
@@ -53,384 +54,411 @@ import {
 import { type PolicyName } from "../types";
 import { getMenuItems, getShopifyGraphQL } from "../utilities";
 
-export async function createCart(variables: CreateCartMutationVariables) {
-  const { cartCreate } = await getShopifyGraphQL(
-    createCartMutation,
-    variables,
-  );
+export class Server {
+  inContextVariables: ReturnType<typeof getInContextVariables>;
+  lang: Intl.BCP47LanguageTag;
 
-  if (!cartCreate) {
-    return null;
+  constructor(lang: Intl.BCP47LanguageTag) {
+    this.inContextVariables = getInContextVariables(lang);
+    this.lang = lang;
   }
 
-  // console.log({ cartCreate });
+  async createCart(variables: CreateCartMutationVariables) {
+    const { cartCreate } = await getShopifyGraphQL(createCartMutation, {
+      ...this.inContextVariables,
+      ...variables,
+    });
 
-  const { cart: cartFragmentRef } = cartCreate;
+    if (!cartCreate) {
+      return null;
+    }
 
-  if (!cartFragmentRef) {
-    return null;
+    // console.log({ cartCreate });
+
+    const { cart: cartFragmentRef } = cartCreate;
+
+    if (!cartFragmentRef) {
+      return null;
+    }
+
+    // console.log({ cartFragmentRef });
+
+    const cart = getFragmentData(cartFragment, cartFragmentRef);
+
+    return cart;
   }
 
-  // console.log({ cartFragmentRef });
+  async addToCart(variables: AddToCartMutationVariables) {
+    const { cartLinesAdd } = await getShopifyGraphQL(addToCartMutation, {
+      ...this.inContextVariables,
+      ...variables,
+    });
 
-  const cart = getFragmentData(cartFragment, cartFragmentRef);
+    if (!cartLinesAdd) {
+      return null;
+    }
 
-  return cart;
-}
+    // console.log({ cartLinesAdd });
 
-export async function addToCart(variables: AddToCartMutationVariables) {
-  const { cartLinesAdd } = await getShopifyGraphQL(
-    addToCartMutation,
-    variables,
-  );
+    const { cart: cartFragmentRef } = cartLinesAdd;
 
-  if (!cartLinesAdd) {
-    return null;
+    if (!cartFragmentRef) {
+      return null;
+    }
+
+    // console.log({ cartFragmentRef });
+
+    const cart = getFragmentData(cartFragment, cartFragmentRef);
+
+    return cart;
   }
 
-  // console.log({ cartLinesAdd });
+  async removeFromCart(variables: RemoveFromCartMutationVariables) {
+    const { cartLinesRemove } = await getShopifyGraphQL(
+      removeFromCartMutation,
+      { ...this.inContextVariables, ...variables },
+    );
 
-  const { cart: cartFragmentRef } = cartLinesAdd;
+    if (!cartLinesRemove) {
+      return null;
+    }
 
-  if (!cartFragmentRef) {
-    return null;
+    // console.log({ cartLinesRemove });
+
+    const { cart: cartFragmentRef } = cartLinesRemove;
+
+    if (!cartFragmentRef) {
+      return null;
+    }
+
+    // console.log({ cartFragmentRef });
+
+    const cart = getFragmentData(cartFragment, cartFragmentRef);
+
+    return cart;
   }
 
-  // console.log({ cartFragmentRef });
+  async updateCart(variables: EditCartItemsMutationVariables) {
+    const { cartLinesUpdate } = await getShopifyGraphQL(editCartItemsMutation, {
+      ...this.inContextVariables,
+      ...variables,
+    });
 
-  const cart = getFragmentData(cartFragment, cartFragmentRef);
+    if (!cartLinesUpdate) {
+      return null;
+    }
 
-  return cart;
-}
+    // console.log({ cartLinesUpdate });
 
-export async function removeFromCart(
-  variables: RemoveFromCartMutationVariables,
-) {
-  const { cartLinesRemove } = await getShopifyGraphQL(
-    removeFromCartMutation,
-    variables,
-  );
+    const { cart: cartFragmentRef } = cartLinesUpdate;
 
-  if (!cartLinesRemove) {
-    return null;
+    if (!cartFragmentRef) {
+      return null;
+    }
+
+    // console.log({ cartFragmentRef });
+
+    const cart = getFragmentData(cartFragment, cartFragmentRef);
+
+    return cart;
   }
 
-  // console.log({ cartLinesRemove });
+  async getCart(variables: GetCartQueryVariables) {
+    // @ts-expect-error Types of property 'country' are incompatible.
+    const { cart: cartFragmentRef } = await getShopifyGraphQL(getCartQuery, {
+      ...this.inContextVariables,
+      ...variables,
+    });
 
-  const { cart: cartFragmentRef } = cartLinesRemove;
+    if (!cartFragmentRef) {
+      return null;
+    }
 
-  if (!cartFragmentRef) {
-    return null;
+    // console.log({ cartFragmentRef });
+
+    const cart = getFragmentData(cartFragment, cartFragmentRef);
+
+    return cart;
   }
 
-  // console.log({ cartFragmentRef });
+  async getCollection(variables: GetCollectionQueryVariables) {
+    const { collection: collectionFragmentRef } = await getShopifyGraphQL(
+      getCollectionQuery,
+      // @ts-expect-error Types of property 'country' are incompatible.
+      { ...this.inContextVariables, ...variables },
+    );
 
-  const cart = getFragmentData(cartFragment, cartFragmentRef);
+    if (!collectionFragmentRef) {
+      throw {
+        status: 404,
+        message: `Collection not found for handle \`${variables.handle}\``,
+      };
+    }
 
-  return cart;
-}
+    // console.log({ collectionFragmentRef });
 
-export async function updateCart(variables: EditCartItemsMutationVariables) {
-  const { cartLinesUpdate } = await getShopifyGraphQL(
-    editCartItemsMutation,
-    variables,
-  );
+    const collection = getFragmentData(
+      collectionFragment,
+      collectionFragmentRef,
+    );
 
-  if (!cartLinesUpdate) {
-    return null;
+    return collection;
   }
 
-  // console.log({ cartLinesUpdate });
+  async getCollectionProducts(variables: GetCollectionProductsQueryVariables) {
+    // @ts-expect-error Types of property 'country' are incompatible.
+    const { collection } = await getShopifyGraphQL(getCollectionProductsQuery, {
+      ...this.inContextVariables,
+      ...variables,
+    });
 
-  const { cart: cartFragmentRef } = cartLinesUpdate;
+    if (!collection) {
+      throw {
+        status: 404,
+        message: `Collection not found for handle \`${variables.handle}\``,
+      };
+    }
 
-  if (!cartFragmentRef) {
-    return null;
+    // console.log({ collection });
+
+    const { products } = collection;
+
+    return products;
   }
 
-  // console.log({ cartFragmentRef });
+  async getCollections(variables: GetCollectionsQueryVariables) {
+    const { collections: shopifyCollectionConnection } =
+      // @ts-expect-error Types of property 'country' are incompatible.
+      await getShopifyGraphQL(getCollectionsQuery, {
+        ...this.inContextVariables,
+        ...variables,
+      });
 
-  const cart = getFragmentData(cartFragment, cartFragmentRef);
+    if (!shopifyCollectionConnection) {
+      throw {
+        status: 404,
+        message: `Collections not found`,
+      };
+    }
 
-  return cart;
-}
+    // console.log({ shopifyCollectionConnection });
 
-export async function getCart(variables: GetCartQueryVariables) {
-  const { cart: cartFragmentRef } = await getShopifyGraphQL(
-    getCartQuery,
-    variables,
-  );
+    const shopifyCollections = shopifyCollectionConnection.edges.map(
+      (edge) => edge?.node,
+    );
 
-  if (!cartFragmentRef) {
-    return null;
-  }
-
-  // console.log({ cartFragmentRef });
-
-  const cart = getFragmentData(cartFragment, cartFragmentRef);
-
-  return cart;
-}
-
-export async function getCollection(variables: GetCollectionQueryVariables) {
-  const { collection: collectionFragmentRef } = await getShopifyGraphQL(
-    getCollectionQuery,
-    variables,
-  );
-
-  if (!collectionFragmentRef) {
-    throw {
-      status: 404,
-      message: `Collection not found for handle \`${variables.handle}\``,
-    };
-  }
-
-  // console.log({ collectionFragmentRef });
-
-  const collection = getFragmentData(collectionFragment, collectionFragmentRef);
-
-  return collection;
-}
-
-export async function getCollectionProducts(
-  variables: GetCollectionProductsQueryVariables,
-) {
-  const { collection } = await getShopifyGraphQL(
-    getCollectionProductsQuery,
-    variables,
-  );
-
-  if (!collection) {
-    throw {
-      status: 404,
-      message: `Collection not found for handle \`${variables.handle}\``,
-    };
-  }
-
-  // console.log({ collection });
-
-  const { products } = collection;
-
-  return products;
-}
-
-export async function getCollections(variables: GetCollectionsQueryVariables) {
-  const { collections: shopifyCollectionConnection } =
-    await getShopifyGraphQL(getCollectionsQuery, variables);
-
-  if (!shopifyCollectionConnection) {
-    throw {
-      status: 404,
-      message: `Collections not found`,
-    };
-  }
-
-  // console.log({ shopifyCollectionConnection });
-
-  const shopifyCollections = shopifyCollectionConnection.edges.map(
-    (edge) => edge?.node,
-  );
-
-  const collections: CollectionFragment[] = [
-    {
-      __typename: "Collection",
-      handle: "",
-      title: "All",
-      description: "All products",
-      seo: {
-        //   title: "All",
-        //   description: "All products",
+    const collections: CollectionFragment[] = [
+      {
+        __typename: "Collection",
+        handle: "",
+        title: "All",
+        description: "All products",
+        seo: {
+          //   title: "All",
+          //   description: "All products",
+        },
+        // path: "/search",
+        updatedAt: new Date().toISOString(),
       },
-      // path: "/search",
-      updatedAt: new Date().toISOString(),
-    },
-    // Filter out the `hidden` collections.
-    // Collections that start with `hidden-*` need to be hidden on the search page.
-    ...shopifyCollections
-      .map((collectionFragmentRef) =>
-        getFragmentData(collectionFragment, collectionFragmentRef),
-      )
-      .filter((collection) => !collection.handle.startsWith("hidden")),
-  ];
+      // Filter out the `hidden` collections.
+      // Collections that start with `hidden-*` need to be hidden on the search page.
+      ...shopifyCollections
+        .map((collectionFragmentRef) =>
+          getFragmentData(collectionFragment, collectionFragmentRef),
+        )
+        .filter((collection) => !collection.handle.startsWith("hidden")),
+    ];
 
-  return collections;
-}
-
-export async function getMenu(variables: GetMenuQueryVariables) {
-  const { menu } = await getShopifyGraphQL(getMenuQuery, variables);
-
-  if (!menu) {
-    throw {
-      status: 404,
-      message: `Menu not found for handle \`${variables.handle}\``,
-    };
+    return collections;
   }
 
-  // console.log({ menu });
+  async getMenu(variables: GetMenuQueryVariables) {
+    // @ts-expect-error Types of property 'country' are incompatible.
+    const { menu } = await getShopifyGraphQL(getMenuQuery, {
+      ...this.inContextVariables,
+      ...variables,
+    });
 
-  return { ...menu, items: getMenuItems(menu.items) };
-}
+    if (!menu) {
+      throw {
+        status: 404,
+        message: `Menu not found for handle \`${variables.handle}\``,
+      };
+    }
 
-export async function getPage(variables: GetPageQueryVariables) {
-  const { pageByHandle: pageFragmentRef } = await getShopifyGraphQL(
-    getPageQuery,
-    variables,
-  );
+    // console.log({ menu });
 
-  if (!pageFragmentRef) {
-    throw {
-      status: 404,
-      message: `Page not found for handle \`${variables.handle}\``,
-    };
+    return { ...menu, items: getMenuItems(menu.items) };
   }
 
-  const page = getFragmentData(pageFragment, pageFragmentRef);
+  async getPage(variables: GetPageQueryVariables) {
+    const { pageByHandle: pageFragmentRef } = await getShopifyGraphQL(
+      getPageQuery,
+      // @ts-expect-error Types of property 'country' are incompatible.
+      { ...this.inContextVariables, ...variables },
+    );
 
-  // console.log({ page });
+    if (!pageFragmentRef) {
+      throw {
+        status: 404,
+        message: `Page not found for handle \`${variables.handle}\``,
+      };
+    }
 
-  return page;
-}
+    const page = getFragmentData(pageFragment, pageFragmentRef);
 
-export async function getPages(variables: GetPagesQueryVariables) {
-  const { pages } = await getShopifyGraphQL(getPagesQuery, variables);
+    // console.log({ page });
 
-  if (!pages) {
-    throw {
-      status: 404,
-      message: `Pages not found`,
-    };
+    return page;
   }
 
-  return pages;
-}
+  async getPages(variables: GetPagesQueryVariables) {
+    // @ts-expect-error Types of property 'country' are incompatible.
+    const { pages } = await getShopifyGraphQL(getPagesQuery, {
+      ...this.inContextVariables,
+      ...variables,
+    });
 
-export async function getPolicy(handle: PolicyName) {
-  const policies = await getPolicies();
+    if (!pages) {
+      throw {
+        status: 404,
+        message: `Pages not found`,
+      };
+    }
 
-  const policyName = camelCase(handle) as PolicyName;
-
-  const policy = policies[policyName];
-
-  return policy;
-}
-
-export async function getPolicies() {
-  const { shop } = await getShopifyGraphQL(getPoliciesQuery, {});
-
-  if (!shop) {
-    throw {
-      status: 404,
-      message: `Shop not found`,
-    };
+    return pages;
   }
 
-  // console.log({ shop });
+  async getPolicy(handle: PolicyName) {
+    const policies = await this.getPolicies();
 
-  return shop;
-}
+    const policyName = camelCase(handle) as PolicyName;
 
-export async function getProductBasic(
-  variables: GetProductBasicQueryVariables,
-) {
-  const { product: productBasicFragmentRef } = await getShopifyGraphQL(
-    getProductBasicQuery,
-    variables,
-  );
+    const policy = policies[policyName];
 
-  if (!productBasicFragmentRef) {
-    throw {
-      status: 404,
-      message: `Product not found for handle \`${variables.handle}\``,
-    };
+    return policy;
   }
 
-  // console.log({ productBasicFragmentRef });
+  async getPolicies() {
+    const { shop } = await getShopifyGraphQL(
+      getPoliciesQuery,
+      // @ts-expect-error Types of property 'country' are incompatible.
+      this.inContextVariables,
+    );
 
-  const product = getFragmentData(
-    productBasicFragment,
-    productBasicFragmentRef,
-  );
+    if (!shop) {
+      throw {
+        status: 404,
+        message: `Shop not found`,
+      };
+    }
 
-  // console.log({ product });
+    // console.log({ shop });
 
-  return product;
-}
-
-export async function getProductDetails(
-  variables: GetProductDetailsQueryVariables,
-) {
-  const { product: productDetailsFragmentRef } = await getShopifyGraphQL(
-    getProductDetailsQuery,
-    variables,
-  );
-
-  if (!productDetailsFragmentRef) {
-    throw {
-      status: 404,
-      message: `Product not found for handle \`${variables.handle}\``,
-    };
+    return shop;
   }
 
-  // console.log({ productDetailsFragmentRef });
+  async getProductBasic(variables: GetProductBasicQueryVariables) {
+    const { product: productBasicFragmentRef } = await getShopifyGraphQL(
+      getProductBasicQuery,
+      // @ts-expect-error Types of property 'country' are incompatible.
+      { ...this.inContextVariables, ...variables },
+    );
 
-  const product = getFragmentData(
-    productDetailsFragment,
-    productDetailsFragmentRef,
-  );
+    if (!productBasicFragmentRef) {
+      throw {
+        status: 404,
+        message: `Product not found for handle \`${variables.handle}\``,
+      };
+    }
 
-  // console.log({ product });
+    // console.log({ productBasicFragmentRef });
 
-  return product;
-}
+    const product = getFragmentData(
+      productBasicFragment,
+      productBasicFragmentRef,
+    );
 
-export async function getProductRecommendations(
-  variables: GetProductRecommendationsQueryVariables,
-) {
-  const { productRecommendations: productRecommendationRefs } =
-    await getShopifyGraphQL(getProductRecommendationsQuery, variables);
+    // console.log({ product });
 
-  if (!productRecommendationRefs) {
-    throw {
-      status: 404,
-      message: `Products not found`,
-    };
+    return product;
   }
 
-  const productRecommendations = productRecommendationRefs.map(
-    (productRecommendationRef) =>
-      getFragmentData(productBasicFragment, productRecommendationRef),
-  );
+  async getProductDetails(variables: GetProductDetailsQueryVariables) {
+    const { product: productDetailsFragmentRef } = await getShopifyGraphQL(
+      getProductDetailsQuery,
+      // @ts-expect-error Types of property 'country' are incompatible.
+      { ...this.inContextVariables, ...variables },
+    );
 
-  return productRecommendations;
-}
+    if (!productDetailsFragmentRef) {
+      throw {
+        status: 404,
+        message: `Product not found for handle \`${variables.handle}\``,
+      };
+    }
 
-export async function getProducts(variables: GetProductsQueryVariables) {
-  const { products } = await getShopifyGraphQL(getProductsQuery, variables);
+    // console.log({ productDetailsFragmentRef });
 
-  if (!products) {
-    throw {
-      status: 404,
-      message: `Products not found`,
-    };
+    const product = getFragmentData(
+      productDetailsFragment,
+      productDetailsFragmentRef,
+    );
+
+    // console.log({ product });
+
+    return product;
   }
 
-  return products;
-}
+  async getProductRecommendations(
+    variables: GetProductRecommendationsQueryVariables,
+  ) {
+    const { productRecommendations: productRecommendationRefs } =
+      await getShopifyGraphQL(getProductRecommendationsQuery, variables);
 
-export async function getProductsWithVariants(
-  variables: GetProductsWithVariantsQueryVariables,
-) {
-  const { products } = await getShopifyGraphQL(
-    getProductsWithVariantsQuery,
-    variables,
-  );
+    if (!productRecommendationRefs) {
+      throw {
+        status: 404,
+        message: `Products not found`,
+      };
+    }
 
-  if (!products) {
-    throw {
-      status: 404,
-      message: `Products not found`,
-    };
+    const productRecommendations = productRecommendationRefs.map(
+      (productRecommendationRef) =>
+        getFragmentData(productBasicFragment, productRecommendationRef),
+    );
+
+    return productRecommendations;
   }
 
-  return products;
+  async getProducts(variables: GetProductsQueryVariables) {
+    const { products } = await getShopifyGraphQL(getProductsQuery, variables);
+
+    if (!products) {
+      throw {
+        status: 404,
+        message: `Products not found`,
+      };
+    }
+
+    return products;
+  }
+
+  async getProductsWithVariants(
+    variables: GetProductsWithVariantsQueryVariables,
+  ) {
+    const { products } = await getShopifyGraphQL(getProductsWithVariantsQuery, {
+      ...this.inContextVariables,
+      ...variables,
+    });
+
+    if (!products) {
+      throw {
+        status: 404,
+        message: `Products not found`,
+      };
+    }
+
+    return products;
+  }
 }
