@@ -3,7 +3,7 @@
 import { addItem } from "@/components/cart/actions";
 import { LoadingDots } from "@/components/loading-dots";
 import { PlusIcon } from "@heroicons/react/24/outline";
-import { ProductVariant } from "@uncnsrdlabel/graphql-shopify-storefront/types";
+import { ProductVariant } from "@shopify/hydrogen/storefront-api-types";
 import { cn } from "@uncnsrdlabel/lib";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState, useTransition } from "react";
@@ -12,7 +12,7 @@ export function AddToCart({
   variants,
   availableForSale,
 }: {
-  variants: ProductVariant[];
+  variants: Pick<ProductVariant, "id" | "selectedOptions">[];
   availableForSale: boolean;
 }) {
   const [selectedVariantId, setSelectedVariantId] = useState<
@@ -23,10 +23,10 @@ export function AddToCart({
   const [isPending, startTransition] = useTransition();
 
   useEffect(() => {
-    const variant = variants.find((variant: ProductVariant) =>
-      variant.selectedOptions.every(
+    const variant = variants.find((variant) =>
+      variant.selectedOptions?.every(
         (option) =>
-          option.value === searchParams.get(option.name.toLowerCase()),
+          option?.value === searchParams.get(option.name.toLowerCase()),
       ),
     );
 

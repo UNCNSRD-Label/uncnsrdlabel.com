@@ -2,8 +2,13 @@ import { AddToCart } from "@/components/cart/add-to-cart";
 import { Price } from "@/components/price";
 import { VariantSelector } from "@/components/product/variant-selector";
 import { Prose } from "@/components/prose";
-import { ResultOf } from '@graphql-typed-document-node/core';
-import { getFragmentData, productDetailsFragment, productVariantConnectionFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { ResultOf } from "@graphql-typed-document-node/core";
+import { ProductVariant } from "@shopify/hydrogen/storefront-api-types";
+import {
+  getFragmentData,
+  productDetailsFragment,
+  productVariantConnectionFragment,
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { forwardRef } from "react";
 
@@ -20,8 +25,14 @@ export const PurchaseOptions = forwardRef<
   PurchaseOptionsProps
 >(({ className, id, product }, forwardedRef) => {
   const variantsFragmentRefs = product.variants;
-  const variantFragments = getFragmentData(productVariantConnectionFragment, variantsFragmentRefs)
-  const variants = variantFragments.edges.map((edge) => edge?.node);
+  const variantFragments = getFragmentData(
+    productVariantConnectionFragment,
+    variantsFragmentRefs,
+  );
+
+  const variants: Pick<ProductVariant, "id" | "selectedOptions">[] = variantFragments.edges.map(
+    (edge) => edge?.node,
+  );
 
   return (
     <>
