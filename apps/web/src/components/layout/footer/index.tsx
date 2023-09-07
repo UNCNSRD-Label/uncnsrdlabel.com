@@ -6,7 +6,7 @@ import { LogotypeIcon } from "@/components/icons/logotype";
 import { server } from "@/clients/shopify";
 import { SignUp } from "@/components/sign-up";
 import { SocialMenu } from "@/components/social-menu";
-import { themeColors } from "@uncnsrdlabel/lib";
+import { themeColors } from "@/lib/tailwind";
 import { use } from "react";
 
 const { NEXT_PUBLIC_SITE_NAME } = process.env;

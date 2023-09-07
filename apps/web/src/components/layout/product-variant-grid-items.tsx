@@ -1,5 +1,6 @@
 import { Grid } from "@/components/grid";
 import { GridTileImage } from "@/components/grid/tile";
+import { transitionDelays } from "@/lib/tailwind";
 import {
   FragmentType,
   getFragmentData,
@@ -7,7 +8,6 @@ import {
   productVariantConnectionFragment,
   productWithVariantsFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { transitionDelays } from "@uncnsrdlabel/lib";
 import Link from "next/link";
 
 export function ProductVariantGridItems({

@@ -1,8 +1,9 @@
 "use client";
 
 import { signUpAction } from "@/components/sign-up/action";
+import { themeColors } from "@/lib/tailwind";
 import * as Toast from "@radix-ui/react-toast";
-import { cn, themeColors } from "@uncnsrdlabel/lib";
+import { cn } from "@uncnsrdlabel/lib";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { SlEnvolope } from "react-icons/sl";

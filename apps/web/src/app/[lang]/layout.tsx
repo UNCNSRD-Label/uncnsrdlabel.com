@@ -5,6 +5,7 @@ import { Progress } from "@/components/layout/progress/index";
 import { Organization } from "@/components/schema.org/organization";
 import { getDictionary } from "@/lib/get-dictionary";
 import { getIntl } from "@/lib/i18n/server";
+import { themeColors } from "@/lib/tailwind";
 import { state$ } from "@/store";
 import {
   SITE_DOMAIN,
@@ -12,7 +13,6 @@ import {
   getIETFLanguageTagFromlocaleTag,
   getLocaleObjectFromIETFLanguageTag,
   locales,
-  themeColors,
 } from "@uncnsrdlabel/lib";
 import { AppProviders } from "@uncnsrdlabel/providers";
 import { type LayoutProps } from "@uncnsrdlabel/types";

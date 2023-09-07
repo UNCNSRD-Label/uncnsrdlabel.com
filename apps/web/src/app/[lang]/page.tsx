@@ -6,7 +6,7 @@ import { Navbar } from "@/components/layout/navbar/index";
 import { LoadingDots } from "@/components/loading-dots";
 import { Video, type VideoProps } from "@/components/video";
 import { getIntl } from "@/lib/i18n/server";
-import { themeColors } from "@uncnsrdlabel/lib";
+import { themeColors } from "@/lib/tailwind";
 import { type PageProps } from "@uncnsrdlabel/types";
 import Link from "next/link";
 import { Suspense } from "react";

@@ -1,7 +1,7 @@
 import { Grid } from "@/components/grid";
 import { GridTileImage } from "@/components/grid/tile";
+import { transitionDelays } from "@/lib/tailwind";
 import { Product } from "@shopify/hydrogen/storefront-api-types";
-import { transitionDelays } from "@uncnsrdlabel/lib";
 import Link from "next/link";
 import { PartialDeep } from "type-fest";
 

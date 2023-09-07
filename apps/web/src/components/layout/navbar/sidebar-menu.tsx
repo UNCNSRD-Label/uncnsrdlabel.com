@@ -3,9 +3,10 @@
 import { CloseIcon } from "@/components/icons/close";
 import { LogotypeIcon } from "@/components/icons/logotype";
 import { MenuIcon } from "@/components/icons/menu";
+import { themeColors } from "@/lib/tailwind";
 import { Dialog } from "@headlessui/react";
 import { Menu } from "@shopify/hydrogen/storefront-api-types";
-import { cn, themeColors } from "@uncnsrdlabel/lib";
+import { cn } from "@uncnsrdlabel/lib";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
