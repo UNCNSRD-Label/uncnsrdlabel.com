@@ -44,12 +44,12 @@ import {
   getMenuQuery,
   getPageQuery,
   getPagesQuery,
-  getPoliciesQuery,
   getProductBasicQuery,
   getProductDetailsQuery,
   getProductRecommendationsQuery,
   getProductsQuery,
   getProductsWithVariantsQuery,
+  getShopPoliciesQuery,
 } from "../queries/index";
 import { type PolicyName } from "../types";
 import { getMenuItems, getShopifyGraphQL } from "../utilities";
@@ -330,7 +330,7 @@ export class Server {
   }
 
   async getPolicy(handle: PolicyName) {
-    const policies = await this.getPolicies();
+    const policies = await this.getShopPolicies();
 
     const policyName = camelCase(handle) as PolicyName;
 
@@ -339,9 +339,9 @@ export class Server {
     return policy;
   }
 
-  async getPolicies() {
+  async getShopPolicies() {
     const { shop } = await getShopifyGraphQL(
-      getPoliciesQuery,
+      getShopPoliciesQuery,
       // @ts-expect-error Types of property 'country' are incompatible.
       this.inContextVariables,
     );

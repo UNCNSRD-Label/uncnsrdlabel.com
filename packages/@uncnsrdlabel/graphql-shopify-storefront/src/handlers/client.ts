@@ -43,12 +43,12 @@ import {
   getMenuQuery,
   getPageQuery,
   getPagesQuery,
-  getPoliciesQuery,
   getProductBasicQuery,
   getProductDetailsQuery,
   getProductRecommendationsQuery,
   getProductsQuery,
   getProductsWithVariantsQuery,
+  getShopPoliciesQuery,
 } from "../queries/index";
 import { type PolicyName } from "../types";
 import { getMenuItems, useGetShopifyGraphQL } from "../utilities";
@@ -385,7 +385,7 @@ export function useGetPages(variables: GetPagesQueryVariables) {
 }
 
 export function useGetPolicy(handle: PolicyName) {
-  const policies = useGetPolicies();
+  const policies = usegetShopPolicies();
 
   if (!policies) {
     return null;
@@ -398,8 +398,8 @@ export function useGetPolicy(handle: PolicyName) {
   return policy;
 }
 
-export function useGetPolicies() {
-  const { data } = useGetShopifyGraphQL(getPoliciesQuery, {});
+export function usegetShopPolicies() {
+  const { data } = useGetShopifyGraphQL(getShopPoliciesQuery, {});
 
   if (!data) {
     return null;

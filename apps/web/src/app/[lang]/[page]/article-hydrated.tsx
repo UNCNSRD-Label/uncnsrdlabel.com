@@ -5,7 +5,7 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Article, type ArticleProps } from "./article";
 
-export default async function ArticleHydrated({
+export async function ArticleHydrated({
   variables
 }: ArticleProps) {
   const shopifyQueryClient = getShopifyQueryClient();
@@ -18,3 +18,5 @@ export default async function ArticleHydrated({
     </Hydrate>
   );
 }
+
+export default ArticleHydrated;

@@ -10,7 +10,7 @@ import { ProductDetails } from "@/components/product/details";
 import {
   getFragmentData,
   imageFragment,
-  seoFragment
+  seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { HIDDEN_PRODUCT_TAG, cn } from "@uncnsrdlabel/lib";
 
