@@ -3,7 +3,8 @@
     "eslint-config-next": "^13.4.19",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-turbo": "^1.10.13",
-    "eslint-plugin-react": "7.33.2"
+    "eslint-plugin-react": "7.33.2",
+    "eslint-plugin-unicorn": "^48.0.1"
   },
   "main": "index.js",
   "name": "@uncnsrdlabel/eslint-config-custom",
