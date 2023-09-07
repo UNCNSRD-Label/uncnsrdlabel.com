@@ -1,8 +1,4 @@
-import {
-  addToCart,
-  removeFromCart,
-  updateCart,
-} from "@uncnsrdlabel/graphql-shopify-storefront";
+import { server } from "@/clients/shopify";
 import { isShopifyError } from "@uncnsrdlabel/lib";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
@@ -23,7 +19,7 @@ export async function POST(req: NextRequest): Promise<CartResponse> {
     );
   }
   try {
-    await addToCart({ cartId, lines: [{ merchandiseId, quantity: 1 }] });
+    await server.addToCart({ cartId, lines: [{ merchandiseId, quantity: 1 }] });
     return NextResponse.json({ status: 204 });
   } catch (e) {
     if (isShopifyError(e)) {
@@ -48,7 +44,7 @@ export async function PUT(req: NextRequest): Promise<CartResponse> {
     ) as CartResponse;
   }
   try {
-    await updateCart({
+    await server.updateCart({
       cartId,
       lines: [
         {
@@ -82,7 +78,7 @@ export async function DELETE(req: NextRequest): Promise<CartResponse> {
     ) as CartResponse;
   }
   try {
-    await removeFromCart({ cartId, lineIds: [lineId] });
+    await server.removeFromCart({ cartId, lineIds: [lineId] });
     return NextResponse.json({ status: 204 });
   } catch (error) {
     if (isShopifyError(error)) {
