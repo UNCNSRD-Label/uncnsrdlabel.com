@@ -8,14 +8,16 @@ import {
   getShopifyQueryClient,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getInContextVariables } from "@uncnsrdlabel/lib";
-import { Suspense } from "react";
+import { Suspense, type CSSProperties } from "react";
 import { HomepageCarousel } from "./homepage-carousel";
 
 // TODO: Change to CarouselHydrated and pass query and variables (handle) in props
 export async function HomepageCarouselHydrated({
   handle,
+  style,
 }: {
   handle: string;
+  style?: CSSProperties;
 }) {
   const lang = state$.lang.get();
 
@@ -40,7 +42,7 @@ export async function HomepageCarouselHydrated({
   return (
     <Suspense fallback={<LoadingDots />}>
       <Hydrate state={dehydratedState}>
-        <HomepageCarousel handle={handle} />
+        <HomepageCarousel handle={handle} style={style} />
       </Hydrate>
     </Suspense>
   );
