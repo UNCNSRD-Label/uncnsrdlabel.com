@@ -15,7 +15,7 @@
       "cache": false
     },
     "dev": {
-      "cache": true,
+      "cache": false,
       "dependsOn": ["^build"],
       "dotEnv": [
         ".env.development.local",
