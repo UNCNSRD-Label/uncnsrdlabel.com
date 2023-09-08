@@ -20,6 +20,7 @@ export const metadata = {
     title: NEXT_PUBLIC_SITE_NAME,
     statusBarStyle: "default",
   },
+  description: "Discover UNCNSRD, a brand for the unapologetic rebellious soul. Explore our latest swimwear collection drawing inspiration from timeless cuts & nostalgic eras.",
   formatDetection: {
     telephone: false,
     date: false,
