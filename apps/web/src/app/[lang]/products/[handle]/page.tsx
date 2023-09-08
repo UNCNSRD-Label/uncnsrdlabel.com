@@ -1,26 +1,25 @@
-import { type Metadata } from "next";
-import { notFound } from "next/navigation";
-import { Suspense } from "react";
-import { Product as ProductSchema, WithContext } from "schema-dts";
-
 import { server } from "@/clients/shopify";
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
 import { ProductDetails } from "@/components/product/details";
+import { getIntl } from "@/lib/i18n/server";
 import {
   getFragmentData,
   imageFragment,
   seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { HIDDEN_PRODUCT_TAG, cn } from "@uncnsrdlabel/lib";
+import { type PageProps } from "@uncnsrdlabel/types";
+import { type Metadata } from "next";
+import { notFound } from "next/navigation";
+import { Suspense } from "react";
+import { Product as ProductSchema, WithContext } from "schema-dts";
 
 // export const runtime = "edge";
 
 export async function generateMetadata({
   params: { handle },
-}: {
-  params: { handle: string };
-}): Promise<Metadata> {
+}: PageProps): Promise<Metadata> {
   const product = await server.getProductDetails({ handle });
 
   const featuredImage = getFragmentData(imageFragment, product.featuredImage);
@@ -58,11 +57,9 @@ export async function generateMetadata({
 }
 
 export default async function ProductPage({
-  params,
-}: {
-  params: { handle: string };
-}) {
-  const product = await server.getProductDetails(params);
+  params: { handle, lang },
+}: PageProps) {
+  const product = await server.getProductDetails({ handle });
 
   if (!product) return notFound();
 
@@ -92,6 +89,7 @@ export default async function ProductPage({
         <RelatedProducts
           className="text-dark dark:text-light relative bg-gray-300 pb-48 pt-12 dark:bg-gray-800"
           id={product.id}
+          lang={lang}
         />
       </Suspense>
       <script
@@ -105,10 +103,14 @@ export default async function ProductPage({
 async function RelatedProducts({
   className,
   id,
+  lang,
 }: {
   className?: string;
   id: string;
+  lang: Intl.BCP47LanguageTag;
 }) {
+  const intl = await getIntl(lang, `component.RelatedProducts`);
+
   const relatedProducts = await server.getProductRecommendations({
     productId: id,
   });
@@ -118,7 +120,7 @@ async function RelatedProducts({
   return (
     <aside className={cn("px-4 pb-48 pt-12", className)}>
       <div className="mb-8 text-center text-xl font-bold uppercase">
-        Related Products
+        {intl.formatMessage({ id: "title" })}
       </div>
       <Grid className="grid-cols-2 lg:grid-cols-5">
         <ProductGridItems products={relatedProducts} />

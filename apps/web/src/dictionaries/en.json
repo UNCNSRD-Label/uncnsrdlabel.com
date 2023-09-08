@@ -21,6 +21,29 @@
     },
     "home": {
       "shop_now": "Shop now"
+    },
+    "products": {
+      "add_to_cart": "Add to cart",
+      "add_to_wishlist": "Add to wishlist",
+      "all_collections": "All collections",
+      "all_products": "All products",
+      "back_to_collection": "Back to the collection",
+      "best_sellers": "Best sellers",
+      "browse": "Browse",
+      "buy": "Purchase",
+      "featured": "Featured",
+      "more": "More",
+      "new": "New",
+      "out_of_stock": "Stock rupture",
+      "product_image_loading": "Product image loading",
+      "quick_view": "Quick view",
+      "sale": "Sale",
+      "see_all": "See all",
+      "see_details": "See details",
+      "select_options": "Select options",
+      "view_all": "View all",
+      "view_details": "View the details",
+      "wishlist": "Wishlist"
     }
   },
   "component": {
@@ -31,6 +54,20 @@
       "description": "UNCNSRD uses cookies that are essential to making this site work and would like to use additional cookies to improve your experience on this site.",
       "trigger": "Edit consent settings",
       "title": "Consent settings"
+    },
+    "Menu": {
+      "categories": "Categories",
+      "search": "Search",
+      "toggle": "View the menu"
+    },
+    "Newsletter": {
+      "description": "Receive updates on new products and offers.",
+      "placeholder": "Enter your email address",
+      "submit": "Submit",
+      "title": "Newsletter"
+    },
+    "RelatedProducts": {
+      "title": "Related products"
     }
   }
 }
