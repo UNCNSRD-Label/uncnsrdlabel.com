@@ -8,7 +8,7 @@ import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";
 import {
-  SITE_DOMAIN,
+  SITE_DOMAIN_WEB,
   cn,
   getIETFLanguageTagFromlocaleTag,
   getLocaleObjectFromIETFLanguageTag,
@@ -34,7 +34,7 @@ const languagesArray = locales.map((locale) => [
     {
       title: getIETFLanguageTagFromlocaleTag(locale),
       url: new URL(
-        `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN}/${locale}`,
+        `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}/${locale}`,
       ),
     },
   ],
@@ -49,7 +49,7 @@ export async function generateMetadata({
   return {
     alternates: {
       canonical: new URL(
-        `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN}`,
+        `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}`,
       ),
       languages: Object.fromEntries(languagesArray),
     },
@@ -85,7 +85,7 @@ export async function generateMetadata({
       intlKeywords.formatMessage({ id: "boots" }),
     ],
     metadataBase: new URL(
-      `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN}`,
+      `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}`,
     ),
     manifest: "/manifest.json",
     openGraph: {
