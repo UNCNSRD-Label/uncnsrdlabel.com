@@ -1,4 +1,4 @@
-import { getDictionary } from "@/lib/get-dictionary";
+import { getDictionary } from "@/lib/dictionary";
 import { createIntl } from "@formatjs/intl";
 
 export async function getIntl(lang: Intl.BCP47LanguageTag, namespace: string) {

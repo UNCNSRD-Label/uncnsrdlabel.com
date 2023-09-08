@@ -1,5 +1,5 @@
 import { getIntl } from "@/lib/i18n/server";
-import { state$ } from "@/store";
+import { state$ } from "@/lib/store";
 import { cn } from "@uncnsrdlabel/lib";
 import { use } from "react";
 

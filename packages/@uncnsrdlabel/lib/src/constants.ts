@@ -10,7 +10,7 @@ export const DEFAULT_OPTION = "Default Title";
 export const SHOPIFY_GRAPHQL_API_ENDPOINT = "/api/2023-01/graphql.json";
 
 export const SITE_DOMAIN =
-  process.env.NEXT_PUBLIC_SITE_DOMAIN ||
+  process.env.NEXT_PUBLIC_SITE_DOMAIN_WEB ||
   process.env.NEXT_PUBLIC_VERCEL_URL ||
   "localhost:3000";
 

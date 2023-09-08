@@ -1,5 +1,5 @@
 import { Organization } from "@/components/schema.org/organization";
-import { SITE_DOMAIN } from "@/lib/constants";
+import { SITE_DOMAIN_WEB } from "@/lib/constants";
 import { themeColors } from "@/lib/effects";
 import { cn } from "@uncnsrdlabel/lib";
 import { Montserrat } from "next/font/google";
@@ -36,7 +36,7 @@ export const metadata = {
     "swimwear",
     "uncnsrd",
   ],
-  metadataBase: new URL(`${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN}`),
+  metadataBase: new URL(`${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}`),
   title: {
     default: NEXT_PUBLIC_SITE_NAME,
     template: `%s | ${NEXT_PUBLIC_SITE_NAME}`,

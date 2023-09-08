@@ -1,5 +1,6 @@
 "use client";
 
+import { SITE_URL_WEB } from "@/lib/constants";
 import { cn } from "@uncnsrdlabel/lib";
 import { useRouter } from "next/navigation";
 import { forwardRef, useEffect, useRef, useState } from "react";
@@ -89,7 +90,7 @@ export default function Code({ className }: { className?: string }) {
           setMessage("Taking you to the site");
 
           router.push(
-            `https://www.uncnsrdlabel.com?code=${accessCodeReceived}`
+            `${SITE_URL_WEB}?code=${accessCodeReceived}`
           );
         } else {
           setMessage("incorrect code");

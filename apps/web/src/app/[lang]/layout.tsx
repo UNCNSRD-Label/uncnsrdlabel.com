@@ -3,10 +3,10 @@ import { Banner } from "@/components/banner";
 import { Footer } from "@/components/layout/footer/index";
 import { Progress } from "@/components/layout/progress/index";
 import { Organization } from "@/components/schema.org/organization";
-import { getDictionary } from "@/lib/get-dictionary";
+import { getDictionary } from "@/lib/dictionary";
 import { getIntl } from "@/lib/i18n/server";
+import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";
-import { state$ } from "@/store";
 import {
   SITE_DOMAIN,
   cn,

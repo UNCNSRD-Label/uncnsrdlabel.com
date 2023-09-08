@@ -1,4 +1,4 @@
-import { state$ } from "@/store";
+import { state$ } from "@/lib/store";
 import { Server } from "@uncnsrdlabel/graphql-shopify-storefront";
 
 const lang = state$.lang.get();

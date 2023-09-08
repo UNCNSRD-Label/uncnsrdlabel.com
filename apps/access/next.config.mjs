@@ -18,10 +18,11 @@ if (process.env.NODE_ENV === "production") {
 }
 
 const domains = [
-  'access.uncnsrdlabel.com',
-  `www.${process.env.NEXT_PUBLIC_SITE_DOMAIN}`,
+  `www.${process.env.NEXT_PUBLIC_SITE_DOMAIN_WEB_PRODUCTION}`,
+  process.env.NEXT_PUBLIC_SITE_DOMAIN_ACCESS_PRODUCTION,
   process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN,
-  process.env.NEXT_PUBLIC_SITE_DOMAIN,
+  process.env.NEXT_PUBLIC_SITE_DOMAIN_WEB, // localhost, production or preview
+  process.env.NEXT_PUBLIC_SITE_DOMAIN_WEB_PRODUCTION, // production for anything directly linked to the web app
   process.env.NEXT_PUBLIC_VERCEL_URL,
 ].join(" ");
 

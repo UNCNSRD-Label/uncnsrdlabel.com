@@ -1,5 +1,5 @@
 import { LoadingDots } from "@/components/loading-dots";
-import { state$ } from "@/store";
+import { state$ } from "@/lib/store";
 import { dehydrate, Hydrate } from "@tanstack/react-query";
 import {
   getPageQuery,
