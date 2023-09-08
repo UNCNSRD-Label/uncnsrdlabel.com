@@ -20,7 +20,7 @@ export default function SearchLayout({
       </Navbar>
       <Suspense>
         <PageTransition>
-          <div className="mx-auto flex w-full flex-col justify-center py-6 pb-48 md:flex-row">
+          <div className="mx-auto flex w-full flex-col justify-center py-6 pb-48 md:flex-row min-h-[100dvh]">
             <div
               className={cn(
                 "order-first flex-none md:w-1/6",

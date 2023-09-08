@@ -15,7 +15,9 @@ export default function SearchLayout({
         <NavbarContent />
       </Navbar>
       <Suspense>
-        <PageTransition>{children}</PageTransition>
+        <PageTransition>
+          {children}
+        </PageTransition>
         <Logo className="bottom-20" />
       </Suspense>
     </>

@@ -85,7 +85,9 @@ export default async function ProductPage({
 
   return (
     <>
-      <ProductDetails product={product} />
+      <main className="min-h-[100dvh]">
+        <ProductDetails product={product} />
+      </main>
       <Suspense>
         <RelatedProducts
           className="text-dark dark:text-light relative bg-gray-300 pb-48 pt-12 dark:bg-gray-800"

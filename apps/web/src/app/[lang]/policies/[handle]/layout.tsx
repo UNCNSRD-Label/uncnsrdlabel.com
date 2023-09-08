@@ -14,7 +14,7 @@ export default function SearchLayout({
         <NavbarContent />
       </Navbar>
       <Suspense>
-        <div className="policy-page">{children}</div>
+        <div className="policy-page min-h-[100dvh]">{children}</div>
       </Suspense>
       <Logo />
     </>
