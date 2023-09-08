@@ -29,9 +29,9 @@ export default function SearchLayout({
             >
               <Collections />
             </div>
-            <div className="order-last w-full max-w-7xl px-4 md:order-none">
+            <main className="order-last w-full max-w-7xl px-4 md:order-none">
               {children}
-            </div>
+            </main>
             <div
               className={cn(
                 "order-none md:order-last md:w-1/6 md:flex-none",
