@@ -8,7 +8,7 @@ If you haven't already done so, clone this Github repository to your local machi
 
 ## Install dependencies
 
-Run the following command to install dependencies:
+Use [pnpm](https://pnpm.io/installation) to install dependencies with the following command:
 
 ```bash
 pnpm install
