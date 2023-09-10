@@ -8,18 +8,18 @@
     "dotenv-cli": "^7.3.0",
     "eslint": "^8.49.0",
     "eslint-config-turbo": "^1.10.13",
-    "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "madge": "^6.1.0",
     "prettier": "^3.0.3",
     "turbo": "^1.10.13"
   },
   "git": {
-    "pre-commit": "lint-staged"
+    "pre-commit": "lint-staged",
+    "pre-push": ["lint", "test"]
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
-      "pnpm run lint -- --fix"
+      "lint"
     ]
   },
   "name": "uncnsrdlabel.com",
@@ -52,7 +52,6 @@
     "unused:fix": "npx next-unused --fix",
     "unused": "npx next-unused",
     "update": "turbo run update",
-    "validate": "pnpm test && pnpm types:check && pnpm build && pnpm unused",
-    "prepare": "husky install"
+    "validate": "pnpm test && pnpm types:check && pnpm build && pnpm unused"
   }
 }
