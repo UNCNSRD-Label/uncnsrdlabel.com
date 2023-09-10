@@ -49,7 +49,7 @@
       "outputs": []
     },
     "lint": {
-      "outputs": []
+      "dependsOn": ["^build"]
     },
     "start": {
       "cache": false,
