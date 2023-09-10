@@ -20,9 +20,6 @@ importers:
       '@uncnsrdlabel/eslint-config-custom':
         specifier: workspace:*
         version: link:packages/@uncnsrdlabel/eslint-config-custom
-      '@vercel/git-hooks':
-        specifier: ^1.0.0
-        version: 1.0.0
       dotenv-cli:
         specifier: ^7.3.0
         version: 7.3.0
@@ -32,6 +29,9 @@ importers:
       eslint-config-turbo:
         specifier: ^1.10.13
         version: 1.10.13(eslint@8.49.0)
+      husky:
+        specifier: ^8.0.3
+        version: 8.0.3
       lint-staged:
         specifier: ^14.0.1
         version: 14.0.1
@@ -6137,11 +6137,6 @@ packages:
     resolution: {integrity: sha512-BZFxVrv24VbNNl5xMxqUojQIegEeXMI6rX3rg1uVLYUEXsuKNBSAEQf4BWEcjQDp/8aYJOj6m8V4PUA3x/cxgg==}
     dev: false
 
-  /@vercel/git-hooks@1.0.0:
-    resolution: {integrity: sha512-OxDFAAdyiJ/H0b8zR9rFCu3BIb78LekBXOphOYG3snV4ULhKFX387pBPpqZ9HLiRTejBWBxYEahkw79tuIgdAA==}
-    requiresBuild: true
-    dev: true
-
   /@vercel/og@0.5.13:
     resolution: {integrity: sha512-okWQ2Jt+155Hn518Y8Tt4Iqb7QdNFoPvH/n4sMpC4K4bcijjo2RAEwXwlhTYHAAkoiJ0AEEeWeknZj1aBgOOqw==}
     engines: {node: '>=16'}
@@ -9023,6 +9018,12 @@ packages:
   /human-signals@4.3.1:
     resolution: {integrity: sha512-nZXjEF2nbo7lIw3mgYjItAfgQXog3OjJogSbKa2CQIIvSGWcKgeJnQlNXip6NglNzYH45nSRiEVimMvYL8DDqQ==}
     engines: {node: '>=14.18.0'}
+    dev: true
+
+  /husky@8.0.3:
+    resolution: {integrity: sha512-+dQSyqPh4x1hlO1swXBiNb2HzTDN1I2IGLQx1GrBuiqFJfoMrnZWwVmatvSiO+Iz8fBUnf+lekwNo4c2LlXItg==}
+    engines: {node: '>=14'}
+    hasBin: true
     dev: true
 
   /iconv-lite@0.4.24:

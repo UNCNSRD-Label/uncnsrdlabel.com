@@ -4,18 +4,14 @@
     "@turbo/gen": "^1.10.13",
     "@types/node": "^20.6.0",
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",
-    "@vercel/git-hooks": "^1.0.0",
     "dotenv-cli": "^7.3.0",
     "eslint": "^8.49.0",
     "eslint-config-turbo": "^1.10.13",
+    "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "madge": "^6.1.0",
     "prettier": "^3.0.3",
     "turbo": "^1.10.13"
-  },
-  "git": {
-    "pre-commit": "lint-staged",
-    "pre-push": ["lint", "test"]
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
@@ -42,6 +38,7 @@
     "packages:versions:check": "npx npm-check-updates -u --deep",
     "packages:versions:update": "npx npm-check-updates -u --deep",
     "preinstall": "npx only-allow pnpm",
+    "prepare": "husky install",
     "prettier:check": "prettier --check --ignore-unknown .",
     "prettier:fix": "prettier --write --ignore-unknown .",
     "prettier:list-different": "npx prettier . --list-different",

@@ -64,7 +64,6 @@
     "prettier:check": "prettier --check --ignore-unknown .",
     "prettier:fix": "prettier --write --ignore-unknown .",
     "start": "next start",
-    "test": "npm prettier:check && npm lint",
     "types:check": "tsc --noEmit"
   },
   "type": "module"
