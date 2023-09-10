@@ -43,7 +43,7 @@ export function SearchForm({
         autoComplete="off"
         className={cn(
           "w-0 border-x-0 border-b-0 border-t-0 border-inherit bg-transparent px-4 py-2 pr-0 transition-all placeholder:text-inherit",
-          "focus:w-full focus:pr-8 focus:border-b focus:bg-white",
+          "focus:w-full focus:pr-8 focus:border-b",
           isOpen ? "opacity-100" : "opacity-0",
         )}
         name="search"
