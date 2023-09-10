@@ -1,5 +1,6 @@
 import { cn, createUrl } from "@uncnsrdlabel/lib";
 import { useRouter, useSearchParams } from "next/navigation";
+import {useGetIntl} from "@/lib/i18n/client";
 
 export function SearchForm({
   isOpen,
@@ -17,6 +18,7 @@ export function SearchForm({
 }) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const intl = useGetIntl("component.Search");
 
   function onSubmit(event?: React.FormEvent<HTMLFormElement>) {
     if(event){
@@ -51,7 +53,7 @@ export function SearchForm({
         defaultValue={searchParams?.get("q") || ""}
         name="search"
         onBlur={()=> setSearchIsOpen(false)}
-        placeholder="Search for products..."
+        placeholder={intl.formatMessage({ id: "placeholder" })}
         tabIndex={0}
         type="text"
         ref={childInputRef}
