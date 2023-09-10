@@ -22,7 +22,17 @@ type ConsentDialogProps = {
 };
 
 export function ConsentForm(props: ConsentDialogProps) {
+
   const [optionsOpen, setOptionsOpen] = useState(false);
+  const [consentSettings, setConsentSettings] = useState( ()=>{
+
+    const consentCookieData = (getCookie(COOKIE_CONSENT) as string) ?? "{}";
+    const savedConsentSettings = JSON.parse(consentCookieData) as ConsentSettings;
+    return {
+    ...defaultConsentSettings,
+    ...savedConsentSettings,
+    }
+  });
 
   const acceptSelectedConsents = (event: React.FormEvent<HTMLFormElement>) => {
     const formData = new FormData(event.target as HTMLFormElement);
@@ -32,7 +42,7 @@ export function ConsentForm(props: ConsentDialogProps) {
     gtag("consent", "update", consentParams);
 
     console.info("Granting selected consents");
-
+    setConsentSettings({...defaultConsentSettings, ...consentParams})
     props.acceptSelectedConsents(event);
 
     event.preventDefault();
@@ -43,7 +53,7 @@ export function ConsentForm(props: ConsentDialogProps) {
     gtag("consent", "update", acceptAllConsentSettings);
 
     console.info("Accepting all consents");
-
+    setConsentSettings(acceptAllConsentSettings)
     props.acceptAllConsents();
   };
 
@@ -52,7 +62,7 @@ export function ConsentForm(props: ConsentDialogProps) {
     gtag("consent", "update", denyAllAdditionalConsentSettings);
 
     console.info("Denying all additional consents");
-
+    setConsentSettings(denyAllAdditionalConsentSettings)
     props.denyAllAdditionalConsents();
   };
 
@@ -62,15 +72,6 @@ export function ConsentForm(props: ConsentDialogProps) {
     console.info("Manage consents");
 
     props.manageConsents();
-  };
-
-  const consentCookieData = (getCookie(COOKIE_CONSENT) as string) ?? "{}";
-
-  const savedConsentSettings = JSON.parse(consentCookieData) as ConsentSettings;
-
-  const consentSettings = {
-    ...defaultConsentSettings,
-    ...savedConsentSettings,
   };
 
   return (
@@ -89,9 +90,13 @@ export function ConsentForm(props: ConsentDialogProps) {
           <Checkbox.Root
             className="h-4 w-4 rounded border border-solid border-black/100 bg-white stroke-black"
             defaultChecked={consentSettings[consent.name] === "granted"}
+            checked={consentSettings[consent.name] === "granted"}
             id={consent.name}
             name={consent.name}
             value="granted"
+            onCheckedChange={(isChecked)=>{
+              setConsentSettings({...consentSettings, [consent.name]: isChecked? 'granted': 'denied'})
+            }}
           >
             <Checkbox.Indicator>
               <CheckIcon />
