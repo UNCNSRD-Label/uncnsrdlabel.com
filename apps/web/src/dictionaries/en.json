@@ -68,6 +68,11 @@
     },
     "RelatedProducts": {
       "title": "Related products"
+    },
+    "Search": {
+      "aria_open": "Open search",
+      "aria_search": "Submit search",
+      "placeholder": "Search for products..."
     }
   }
 }
