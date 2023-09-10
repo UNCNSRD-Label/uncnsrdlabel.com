@@ -1,9 +1,13 @@
 {
+  "dependencies": {
+    "react": "experimental"
+  },
   "devDependencies": {
     "@eslint/eslintrc": "^2.1.2",
     "@shopify/hydrogen": "^2023.7.7",
     "@total-typescript/ts-reset": "^0.5.1",
     "@types/node": "^20.6.0",
+    "@types/react": "18.2.21",
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "@uncnsrdlabel/tsconfig": "workspace:*",
     "prettier": "^3.0.3",
@@ -17,14 +21,11 @@
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "name": "@uncnsrdlabel/types",
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "build": "tsc --project ./tsconfig.json",
     "clean": "rm -rf dist",
     "dev": "tsc --project ./tsconfig.json --watch",
-    "lint": "eslint \"src/**/*.ts*\"",
+    "lint": "eslint .",
     "types:check": "tsc"
   },
   "sideEffects": false,

@@ -32,7 +32,7 @@
     "build": "tsc --project ./tsconfig.json",
     "clean": "rm -rf dist",
     "dev": "tsc --project ./tsconfig.json --watch",
-    "lint": "eslint \"src/**/*.ts*\"",
+    "lint": "eslint .",
     "types:check": "tsc --noEmit"
   },
   "sideEffects": false,

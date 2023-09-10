@@ -14,7 +14,6 @@ const compat = new FlatCompat({
   baseDirectory: __dirname
 });
 
-
 /** @type {import('eslint').Linter.FlatConfig[]} */
 const configuration = [
   // mimic ESLintRC-style extends
@@ -36,15 +35,6 @@ const configuration = [
     // },
     rules: {
       "@next/next/no-html-link-for-pages": "off",
-      "no-unused-vars": [
-        "error",
-        {
-          args: "after-used",
-          caughtErrors: "none",
-          ignoreRestSiblings: true,
-          vars: "all",
-        },
-      ],
       "prefer-const": "error",
       "react-hooks/exhaustive-deps": "error",
       "unicorn/filename-case": [

@@ -1,6 +1,6 @@
 import forms from "@tailwindcss/forms";
 import typography from "@tailwindcss/typography";
-import type { Config } from "tailwindcss";
+import { type Config } from "tailwindcss";
 import colors from "tailwindcss/colors";
 import plugin from "tailwindcss/plugin";
 

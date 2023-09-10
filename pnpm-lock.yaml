@@ -936,19 +936,26 @@ importers:
         version: 5.2.2
 
   packages/@uncnsrdlabel/types:
+    dependencies:
+      react:
+        specifier: experimental
+        version: 0.0.0-experimental-41f0e9dae-20230907
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^2.1.2
         version: 2.1.2
       '@shopify/hydrogen':
         specifier: ^2023.7.7
-        version: 2023.7.7(@remix-run/react@1.19.1)(@remix-run/server-runtime@1.19.1)(react-dom@18.2.0)
+        version: 2023.7.7(@remix-run/react@1.19.1)(@remix-run/server-runtime@1.19.1)(@types/react@18.2.21)(react-dom@18.2.0)
       '@total-typescript/ts-reset':
         specifier: ^0.5.1
         version: 0.5.1
       '@types/node':
         specifier: ^20.6.0
         version: 20.6.0
+      '@types/react':
+        specifier: 18.2.21
+        version: 18.2.21
       '@uncnsrdlabel/eslint-config-custom':
         specifier: workspace:*
         version: link:../eslint-config-custom
@@ -5451,20 +5458,6 @@ packages:
       react: 0.0.0-experimental-41f0e9dae-20230907
       react-dom: 18.2.0(react@0.0.0-experimental-41f0e9dae-20230907)
       react-router-dom: 6.14.2(react-dom@18.2.0)(react@0.0.0-experimental-41f0e9dae-20230907)
-    dev: false
-
-  /@remix-run/react@1.19.1(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-VrNkI4wt8K+7QKVll/lkNzWwmg2v7LHhUjCWpYhYtmYiyDitl0n6t7pWysWbp+EYwlRUHr4JgHtBgEekhkd7/w==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      react: '>=16.8.0'
-      react-dom: '>=16.8.0'
-    dependencies:
-      '@remix-run/router': 1.7.2
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      react-router-dom: 6.14.2(react-dom@18.2.0)(react@18.2.0)
-    dev: true
 
   /@remix-run/router@1.7.2:
     resolution: {integrity: sha512-7Lcn7IqGMV+vizMPoEl5F0XDshcdDYtMI6uJLQdQz5CfZAwy3vvGKYSUk789qndt5dEC4HfSjviSYlSoHGL2+A==}
@@ -5601,24 +5594,6 @@ packages:
       - '@types/react'
       - react-dom
       - xstate
-    dev: false
-
-  /@shopify/hydrogen@2023.7.7(@remix-run/react@1.19.1)(@remix-run/server-runtime@1.19.1)(react-dom@18.2.0):
-    resolution: {integrity: sha512-oiZGifLcrHJT/5SAQfPuEYa9m6WooH6m8283Cc9CUDSAeVdhkkHBY1hBsCwDcNOKoi4W2hZf0x2VsCacE85qyw==}
-    peerDependencies:
-      '@remix-run/react': 1.19.1
-      '@remix-run/server-runtime': 1.19.1
-    dependencies:
-      '@remix-run/react': 1.19.1(react-dom@18.2.0)(react@18.2.0)
-      '@remix-run/server-runtime': 1.19.1
-      '@shopify/hydrogen-react': 2023.7.4(@types/react@18.2.21)(react-dom@18.2.0)(react@18.2.0)
-      content-security-policy-builder: 2.1.1
-      react: 18.2.0
-    transitivePeerDependencies:
-      - '@types/react'
-      - react-dom
-      - xstate
-    dev: true
 
   /@shuding/opentype.js@1.4.0-beta.0:
     resolution: {integrity: sha512-3NgmNyH3l/Hv6EvsWJbsvpcpUba6R8IREQ83nH83cyakCw7uM1arZKNfHwv1Wz6jgqrF/j4x5ELvR6PnK9nTcA==}
@@ -11487,7 +11462,6 @@ packages:
       loose-envify: 1.4.0
       react: 0.0.0-experimental-41f0e9dae-20230907
       scheduler: 0.23.0
-    dev: false
 
   /react-dom@18.2.0(react@18.2.0):
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
@@ -11623,20 +11597,6 @@ packages:
       react: 0.0.0-experimental-41f0e9dae-20230907
       react-dom: 18.2.0(react@0.0.0-experimental-41f0e9dae-20230907)
       react-router: 6.14.2(react@0.0.0-experimental-41f0e9dae-20230907)
-    dev: false
-
-  /react-router-dom@6.14.2(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-5pWX0jdKR48XFZBuJqHosX3AAHjRAzygouMTyimnBPOLdY3WjzUSKhus2FVMihUFWzeLebDgr4r8UeQFAct7Bg==}
-    engines: {node: '>=14'}
-    peerDependencies:
-      react: '>=16.8'
-      react-dom: '>=16.8'
-    dependencies:
-      '@remix-run/router': 1.7.2
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      react-router: 6.14.2(react@18.2.0)
-    dev: true
 
   /react-router@6.14.2(react@0.0.0-experimental-41f0e9dae-20230907):
     resolution: {integrity: sha512-09Zss2dE2z+T1D03IheqAFtK4UzQyX8nFPWx6jkwdYzGLXd5ie06A6ezS2fO6zJfEb/SpG6UocN2O1hfD+2urQ==}
@@ -11646,17 +11606,6 @@ packages:
     dependencies:
       '@remix-run/router': 1.7.2
       react: 0.0.0-experimental-41f0e9dae-20230907
-    dev: false
-
-  /react-router@6.14.2(react@18.2.0):
-    resolution: {integrity: sha512-09Zss2dE2z+T1D03IheqAFtK4UzQyX8nFPWx6jkwdYzGLXd5ie06A6ezS2fO6zJfEb/SpG6UocN2O1hfD+2urQ==}
-    engines: {node: '>=14'}
-    peerDependencies:
-      react: '>=16.8'
-    dependencies:
-      '@remix-run/router': 1.7.2
-      react: 18.2.0
-    dev: true
 
   /react-social-icons@6.3.0(react-dom@18.2.0)(react@0.0.0-experimental-41f0e9dae-20230907):
     resolution: {integrity: sha512-g9+KnKsMYk2tJIyxHcTJ5rIqvNhRMTwM6c5CksLResbD2uZvsBawTnV1YXQ23V4xyZP6HPQCHG6epVlyv2mrgg==}
@@ -11711,7 +11660,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
-    dev: false
 
   /react@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}

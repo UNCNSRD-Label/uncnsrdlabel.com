@@ -47,7 +47,7 @@
     "dev:ts": "tsc --project ./tsconfig.json --watch",
     "dev": "npm-run-all dev:graphql-codegen dev:ts",
     "generate:component": "turbo gen react-component",
-    "lint": "eslint \"src/**/*.ts*\"",
+    "lint": "eslint .",
     "types:check": "tsc --noEmit"
   },
   "sideEffects": false,
