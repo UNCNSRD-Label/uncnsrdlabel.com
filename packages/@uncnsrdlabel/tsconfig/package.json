@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@eslint/eslintrc": "^2.1.2",
     "@types/node": "^20.6.0",
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "prettier": "^3.0.3",
