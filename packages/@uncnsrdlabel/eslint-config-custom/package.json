@@ -6,7 +6,7 @@
     "eslint-plugin-react": "7.33.2",
     "eslint-plugin-unicorn": "^48.0.1"
   },
-  "main": "index.js",
+  "main": "eslint.config.js",
   "name": "@uncnsrdlabel/eslint-config-custom",
   "publishConfig": {
     "access": "public"

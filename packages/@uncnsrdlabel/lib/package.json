@@ -1,15 +1,15 @@
 {
   "dependencies": {
-    "@shopify/hydrogen-react": "^2023.7.3",
+    "@shopify/hydrogen-react": "^2023.7.4",
     "clsx": "^2.0.0",
     "lodash": "^4.17.21",
     "next": "13.4.19",
     "tailwind-merge": "^1.14.0"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.197",
+    "@types/lodash": "^4.14.198",
     "@types/negotiator": "^0.6.1",
-    "@types/node": "^20.5.9",
+    "@types/node": "^20.6.0",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",

@@ -88,18 +88,6 @@ export async function generateMetadata({
       `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}`,
     ),
     manifest: "/manifest.json",
-    openGraph: {
-      images: [
-        {
-          url: `/api/og?title=${encodeURIComponent(
-            process.env.NEXT_PUBLIC_SITE_NAME || "",
-          )}`,
-          width: 1200,
-          height: 630,
-        },
-      ],
-      type: "website",
-    },
     robots: {
       follow: true,
       index: true,
