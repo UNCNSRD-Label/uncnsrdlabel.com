@@ -3,6 +3,7 @@
 // import turbo from "eslint-config-turbo";
 import { FlatCompat } from "@eslint/eslintrc";
 import unicorn from "eslint-plugin-unicorn";
+import babel from "next/babel.js";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -28,11 +29,11 @@ const configuration = [
       unicorn,
       // ...compat.plugins("eslint-plugin-unicorn"),
     },
-    // parserOptions: {
-    //   babelOptions: {
-    //     presets: [require.resolve("next/babel")],
-    //   },
-    // },
+    parserOptions: {
+      babelOptions: {
+        presets: [babel],
+      },
+    },
     rules: {
       "@next/next/no-html-link-for-pages": "off",
       "prefer-const": "error",
