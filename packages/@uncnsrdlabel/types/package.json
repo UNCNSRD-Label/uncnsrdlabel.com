@@ -25,7 +25,7 @@
     "build": "tsc --project ./tsconfig.json",
     "clean": "rm -rf dist",
     "dev": "tsc --project ./tsconfig.json --watch",
-    "lint": "eslint .",
+    "lint": "eslint",
     "types:check": "tsc"
   },
   "sideEffects": false,
