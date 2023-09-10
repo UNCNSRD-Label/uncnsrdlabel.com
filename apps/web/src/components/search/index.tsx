@@ -11,8 +11,16 @@ export function Search() {
   const [searchQuery, setSearchQuery] = useState("");
 
   const focusChild:() => void  = () => {
-      setSearchIsOpen(true)
-      childInputRef?.current && childInputRef?.current?.focus()
+      console.log('*********', searchIsOpen);
+      if(!searchIsOpen) {
+          setSearchIsOpen(true)
+          // console.log('IOPEN', searchIsOpen);
+          childInputRef?.current && childInputRef?.current?.focus()
+      }
+      else {
+          setSearchIsOpen(false)
+          // console.log('CLOSE', searchIsOpen);
+      }
   }
 
   return (

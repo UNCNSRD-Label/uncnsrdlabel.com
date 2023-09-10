@@ -1,7 +1,5 @@
 import { cn, createUrl } from "@uncnsrdlabel/lib";
 import { useRouter, useSearchParams } from "next/navigation";
-import {useGetIntl} from "@/lib/i18n/client";
-
 export function SearchForm({
   isOpen,
   setSearchIsOpen,
@@ -18,8 +16,6 @@ export function SearchForm({
 }) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const intl = useGetIntl("component.Search");
-
   function onSubmit(event?: React.FormEvent<HTMLFormElement>) {
     if(event){
       event.preventDefault();
@@ -30,9 +26,9 @@ export function SearchForm({
     } else {
       newParams.delete("q");
     }
-
-    setSearchQuery("");
     setSearchIsOpen(false);
+    setSearchQuery("");
+
     router.push(createUrl("/search", newParams));
   }
 
@@ -50,10 +46,9 @@ export function SearchForm({
           "focus:w-full focus:pr-8 focus:border-b focus:bg-white",
           isOpen ? "opacity-100" : "opacity-0",
         )}
-        defaultValue={searchParams?.get("q") || ""}
         name="search"
         onBlur={()=> setSearchIsOpen(false)}
-        placeholder={intl.formatMessage({ id: "placeholder" })}
+        placeholder="Search for products..."
         tabIndex={0}
         type="text"
         ref={childInputRef}
@@ -62,7 +57,8 @@ export function SearchForm({
         }}
         onKeyDown={(event)=>{
           if (event.key === "Enter" && searchQuery) {
-            event.target.closest('form').submit()
+            const form = event.target.closest('form');
+            form.nextElementSibling.click()
           }
         }}
         value={searchQuery}
