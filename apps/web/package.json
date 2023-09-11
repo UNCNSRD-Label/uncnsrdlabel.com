@@ -57,7 +57,6 @@
     "nuka-carousel": "^6.0.3",
     "react": "experimental",
     "react-barcode": "^1.4.6",
-    "react-cookie": "^6.1.1",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.46.1",
     "react-icons": "^4.11.0",

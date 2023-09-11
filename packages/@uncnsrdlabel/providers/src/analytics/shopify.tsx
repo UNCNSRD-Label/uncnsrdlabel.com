@@ -13,7 +13,7 @@ import type {
   CurrencyCode,
   LanguageCode,
 } from "@shopify/hydrogen/storefront-api-types";
-import { Cookies } from "react-cookie";
+import { getCookie } from "cookies-next";
 
 import { AnalyticsPlugin } from "analytics";
 import { PluginEventFunctions } from "./types";
@@ -32,9 +32,7 @@ export function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
   const { collectionHandle, hasUserConsent, locale, shopId, storefrontId } =
     config;
 
-  const cookies = new Cookies();
-
-  const customerId = cookies.get("customerId");
+  const customerId = getCookie("customerId");
 
   const analyticsShopData = {
     /** If we have consent from buyer for data collection */
