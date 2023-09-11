@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 
 import { server } from "@/clients/shopify";
 import { Prose } from "@/components/prose";
+import { type PageProps } from "@/types/next";
 import { getFragmentData, shopPolicyFragment, type PolicyName } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { type PageProps } from "@uncnsrdlabel/types";
 import { notFound } from "next/navigation";
 
 // export const runtime = "edge";

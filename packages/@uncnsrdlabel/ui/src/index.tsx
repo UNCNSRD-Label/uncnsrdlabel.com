@@ -1,1 +1,3 @@
-export const test = 1;
+// TODO: Export components from apps/* to here
+
+export const ui = "pending";

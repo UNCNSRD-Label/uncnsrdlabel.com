@@ -7,6 +7,7 @@ import { getDictionary } from "@/lib/dictionary";
 import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";
+import { type LayoutProps } from "@/types/next";
 import {
   SITE_DOMAIN_WEB,
   cn,
@@ -15,7 +16,6 @@ import {
   locales,
 } from "@uncnsrdlabel/lib";
 import { AppProviders } from "@uncnsrdlabel/providers";
-import { type LayoutProps } from "@uncnsrdlabel/types";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import localFont from "next/font/local";
@@ -88,18 +88,6 @@ export async function generateMetadata({
       `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}`,
     ),
     manifest: "/manifest.json",
-    openGraph: {
-      images: [
-        {
-          url: `/api/og?title=${encodeURIComponent(
-            process.env.NEXT_PUBLIC_SITE_NAME || "",
-          )}`,
-          width: 1200,
-          height: 630,
-        },
-      ],
-      type: "website",
-    },
     robots: {
       follow: true,
       index: true,
