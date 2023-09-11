@@ -385,7 +385,7 @@ export function useGetPages(variables: GetPagesQueryVariables) {
 }
 
 export function useGetPolicy(handle: PolicyName) {
-  const policies = usegetShopPolicies();
+  const policies = useGetShopPolicies();
 
   if (!policies) {
     return null;
@@ -398,7 +398,7 @@ export function useGetPolicy(handle: PolicyName) {
   return policy;
 }
 
-export function usegetShopPolicies() {
+export function useGetShopPolicies() {
   const { data } = useGetShopifyGraphQL(getShopPoliciesQuery, {});
 
   if (!data) {

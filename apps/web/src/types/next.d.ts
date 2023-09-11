@@ -1,4 +1,3 @@
-
 export type LayoutProps = {
   params: { handle: string; lang: Intl.BCP47LanguageTag };
 };

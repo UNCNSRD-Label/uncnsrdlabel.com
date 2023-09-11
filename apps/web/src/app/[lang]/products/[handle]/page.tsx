@@ -3,13 +3,13 @@ import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
 import { ProductDetails } from "@/components/product/details";
 import { getIntl } from "@/lib/i18n/server";
+import { type PageProps } from "@/types/next";
 import {
-  getFragmentData,
-  imageFragment,
-  seoFragment,
+    getFragmentData,
+    imageFragment,
+    seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { HIDDEN_PRODUCT_TAG, cn } from "@uncnsrdlabel/lib";
-import { type PageProps } from "@uncnsrdlabel/types";
 import { type Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";

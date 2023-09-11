@@ -1,5 +1,4 @@
-export type * from "./i18n";
-export type * from "./klaviyo";
-export type * from "./next";
-export type * from "./ts-reset";
-
+export * from "./i18n";
+export * from "./klaviyo";
+// export * from "./next";
+export * from "./ts-reset";
