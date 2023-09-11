@@ -7,7 +7,7 @@ import { LoadingDots } from "@/components/loading-dots";
 import { Video, type VideoProps } from "@/components/video";
 import { getIntl } from "@/lib/i18n/server";
 import { themeColors } from "@/lib/tailwind";
-import { type PageProps } from "@uncnsrdlabel/types";
+import { type PageProps } from "@/types/next";
 import Link from "next/link";
 import { Suspense } from "react";
 
