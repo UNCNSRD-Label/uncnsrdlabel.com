@@ -10,19 +10,19 @@
     "fashion",
     "clothing"
   ],
-  "screenshots": [
+  "images/screenshots": [
     {
-      "src": "/screenshots/screenshot-1.png",
+      "src": "/images/screenshots/screenshot-1.png",
       "sizes": "1280x800",
       "type": "image/png"
     },
     {
-      "src": "/screenshots/screenshot-2.png",
+      "src": "/images/screenshots/screenshot-2.png",
       "sizes": "1280x800",
       "type": "image/png"
     },
     {
-      "src": "/screenshots/screenshot-3.png",
+      "src": "/images/screenshots/screenshot-3.png",
       "sizes": "1280x800",
       "type": "image/png"
     }
