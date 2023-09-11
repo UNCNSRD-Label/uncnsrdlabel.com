@@ -10,7 +10,7 @@ export function SearchButton({ isOpen, onClick, type, setSearchIsOpen }: { isOpe
       form="search-form"
       type={type}
       onClick={onClick}
-      tabIndex="1"
+      tabIndex={1}
       onFocus={()=> {
         setSearchIsOpen(true);
       }}

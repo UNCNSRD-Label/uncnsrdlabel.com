@@ -20,13 +20,17 @@ export function SearchForm({
     if(event){
       event.preventDefault();
     }
+
     const newParams = new URLSearchParams(searchParams.toString());
+
     if (searchQuery) {
       newParams.set("q", searchQuery);
     } else {
       newParams.delete("q");
     }
+
     setSearchIsOpen(false);
+
     setSearchQuery("");
 
     router.push(createUrl("/search", newParams));
