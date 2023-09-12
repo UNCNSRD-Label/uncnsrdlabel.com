@@ -1,5 +1,6 @@
 "use client";
 
+import { state$ } from "@/lib/store";
 import * as Checkbox from "@radix-ui/react-checkbox";
 import { CheckIcon } from "@radix-ui/react-icons";
 import {
@@ -14,11 +15,6 @@ import { useState } from "react";
 
 type ConsentDialogProps = {
   className?: string;
-  // eslint-disable-next-line no-unused-vars
-  acceptSelectedConsents: (event: React.FormEvent<HTMLFormElement>) => void;
-  acceptAllConsents: () => void;
-  denyAllAdditionalConsents: () => void;
-  manageConsents: () => void;
 };
 
 export function ConsentForm(props: ConsentDialogProps) {
@@ -29,11 +25,12 @@ export function ConsentForm(props: ConsentDialogProps) {
     const consentParams = Object.fromEntries(formData.entries());
 
     setCookie(COOKIE_CONSENT, consentParams, cookieOptions);
+
     gtag("consent", "update", consentParams);
 
     console.info("Granting selected consents");
 
-    props.acceptSelectedConsents(event);
+    state$.consent.open.set(false);
 
     event.preventDefault();
   };
@@ -44,7 +41,7 @@ export function ConsentForm(props: ConsentDialogProps) {
 
     console.info("Accepting all consents");
 
-    props.acceptAllConsents();
+    state$.consent.open.set(false);
   };
 
   const denyAllAdditionalConsents = () => {
@@ -53,15 +50,13 @@ export function ConsentForm(props: ConsentDialogProps) {
 
     console.info("Denying all additional consents");
 
-    props.denyAllAdditionalConsents();
+    state$.consent.open.set(false);
   };
 
   const manageConsents = () => {
     setOptionsOpen(true);
 
     console.info("Manage consents");
-
-    props.manageConsents();
   };
 
   const consentCookieData = (getCookie(COOKIE_CONSENT) as string) ?? "{}";
