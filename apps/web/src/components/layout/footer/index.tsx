@@ -5,6 +5,7 @@ import { SocialMenu } from "@/components/social-menu";
 import { getDictionary } from "@/lib/dictionary";
 import { themeColors } from "@/lib/tailwind";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
+import { LocationDialog } from "@/components/location/dialog";
 import { getMenuHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { createIntl, type ResolvedIntlConfig } from "react-intl";
 
@@ -58,6 +59,9 @@ export async function Footer({ lang }: { lang: Intl.BCP47LanguageTag; }) {
                   ))}
                   <dd>
                     <ConsentTrigger className={linkClassName} lang={lang} />
+                  </dd>
+                  <dd>
+                    <LocationDialog className={linkClassName} />
                   </dd>
                 </dl>
               ) : null}
