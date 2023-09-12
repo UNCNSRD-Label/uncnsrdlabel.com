@@ -5,6 +5,7 @@ import googleTagManager from "@analytics/google-tag-manager";
 import { Analytics } from "analytics";
 // import { eventValidation } from "analytics-plugin-event-validation";
 import { getShopifyCookies, useShop } from "@shopify/hydrogen-react";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 import { getCookie } from "cookies-next";
 import { PropsWithChildren } from "react";
 import { AnalyticsProvider } from "use-analytics";
@@ -64,14 +65,18 @@ export function AppAnalyticsProvider({ children }: PropsWithChildren) {
     ],
   });
 
-
   if (typeof window !== "undefined") {
     const cookies = getShopifyCookies(document.cookie);
 
     if (cookies._shopify_y) {
       analytics.identify(cookies._shopify_y);
-    }  
+    }
   }
 
-  return <AnalyticsProvider instance={analytics}>{children}</AnalyticsProvider>;
+  return (
+    <AnalyticsProvider instance={analytics}>
+      {children}
+      <VercelAnalytics />
+    </AnalyticsProvider>
+  );
 }

@@ -710,6 +710,9 @@ importers:
       '@uncnsrdlabel/lib':
         specifier: workspace:*
         version: link:../lib
+      '@vercel/analytics':
+        specifier: ^1.0.2
+        version: 1.0.2
       analytics:
         specifier: ^0.8.9
         version: 0.8.9(@types/dlv@1.1.2)
