@@ -1,11 +1,13 @@
-type Local = { lang: string, icon?: string }
+type Local = { basename: string, region: string, icon?: string }
 
 const UK: Local = {
-    lang: 'GB',
+    basename: 'en-GB',
+    region: 'GB',
     icon: ''
 }
 const AU: Local = {
-    lang: 'AU',
+    basename: 'en-AU',
+    region: 'AU',
     icon: ''
 }
 
