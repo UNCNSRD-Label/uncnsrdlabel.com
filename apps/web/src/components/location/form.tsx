@@ -26,7 +26,6 @@ export function Form({className, onClose}: {
     setLocales(LOCALE_LIST)
   }, []);
 
-  console.log('DEFAULT LANG - ', langSettings)
 
   const submit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -72,7 +71,7 @@ export function Form({className, onClose}: {
                               key={`lang-${local.basename}-${i}`}
                               value={local.basename}
                               className={cn(
-                                  "relative flex items-center px-8 py-2 rounded-md text-sm text-gray-700 bg-white font-medium focus:bg-gray-400 focus:bg-gray-800 focus:text-white",
+                                  "relative flex items-center px-8 py-2 rounded-md text-sm text-gray-700 bg-white font-medium focus:bg-gray-400 focus:text-white",
                                   "radix-disabled:opacity-50",
                                   "focus:outline-none select-none"
                               )}
