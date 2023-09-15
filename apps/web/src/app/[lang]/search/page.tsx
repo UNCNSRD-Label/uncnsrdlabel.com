@@ -1,6 +1,6 @@
 import { server } from "@/clients/shopify";
 import { Grid } from "@/components/grid/index";
-import { ProductVariantGridItems } from "@/components/layout/product-variant-grid-items";
+import { ProductGridItems } from "@/components/layout/product-variant-grid-items";
 import {
   productDefaultSort,
   productSorting
@@ -44,7 +44,7 @@ export default async function SearchPage({
       ) : null}
       {productFragments.length > 0 ? (
         <Grid className="grid-cols-2 lg:grid-cols-3">
-          <ProductVariantGridItems productFragments={productFragments} />
+          <ProductGridItems productFragments={productFragments} />
         </Grid>
       ) : null}
     </>
