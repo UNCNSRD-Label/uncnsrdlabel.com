@@ -24,7 +24,7 @@ export function ProductGridItems({
               className="block h-full w-full"
               href={`/products/${product.handle}`}
             >
-              {product.featuredImage?.url && <GridTileImage
+              <GridTileImage
                 alt={product.title ?? "Product"}
                 className={transitionDelays[index]}
                 labels={{
@@ -33,10 +33,10 @@ export function ProductGridItems({
                   currencyCode: product.priceRange?.maxVariantPrice?.currencyCode,
                 }}
                 priority={index < 4}
-                src={product.featuredImage.url}
+                src={product?.featuredImage?.url}
                 width={600}
                 height={600}
-              />}
+              />
             </Link>
           </Grid.Item>
         );

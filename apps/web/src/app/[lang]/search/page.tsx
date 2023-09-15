@@ -44,7 +44,7 @@ export default async function SearchPage({
       ) : null}
       {productFragments.length > 0 ? (
         <Grid className="grid-cols-2 lg:grid-cols-3">
-          <ProductGridItems productFragments={productFragments} />
+          <ProductGridItems products={productFragments} />
         </Grid>
       ) : null}
     </>

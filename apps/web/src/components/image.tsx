@@ -58,8 +58,8 @@ export function Image({
         revealEffect &&
           "ease-in-out [transition:filter_500ms,opacity_250ms,transform_1000ms] motion-reduce:transition-none",
         revealEffect && "scale-105 opacity-0 blur-sm",
-        revealEffect && scrollDirection === "end" && "translate-y-8",
-        revealEffect && scrollDirection === "start" && "-translate-y-8",
+        revealEffect && scrollDirection === "end" && "translate-y-2",
+        revealEffect && scrollDirection === "start" && "-translate-y-2",
         revealEffect && "data-[loaded=true]:opacity-100",
         revealEffect &&
           rootIntersection?.isIntersecting &&

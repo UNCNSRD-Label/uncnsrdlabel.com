@@ -5,6 +5,7 @@ import { Images } from "@/components/product/images";
 import { MetaFields } from "@/components/product/metafields";
 import { NavigationMenu } from "@/components/product/navigation-menu";
 import { PurchaseOptions } from "@/components/product/purchase-options";
+import { Video, type VideoProps } from "@/components/video";
 import { ResultOf } from '@graphql-typed-document-node/core';
 import { ProductProvider } from "@shopify/hydrogen-react";
 import { getFragmentData, imageFragment, productDetailsFragment, productMetafieldFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
@@ -15,9 +16,21 @@ export function ProductDetails({ product }: { product: ResultOf<typeof productDe
 
   const images = product.images.edges.map((edge) => edge?.node);
 
+  // const media = product.media.edges.map((edge) => edge?.node);
+
   const metafieldsFragmentRefs = product.metafields;
 
   const metafieldFragments = getFragmentData(productMetafieldFragment, metafieldsFragmentRefs.filter(Boolean));
+
+  const video: VideoProps = {
+    autoPlay: true,
+    alt: "Campaign video",
+    loop: true,
+    playsinline: true,
+    poster: "/videos/ZfGt0lKisCU.png",
+    // title: 'Video title',
+    url: "/videos/ZfGt0lKisCU.mp4",
+  };
 
   return (
     <ProductProvider data={product}>
@@ -42,6 +55,7 @@ export function ProductDetails({ product }: { product: ResultOf<typeof productDe
               }))}
               sizes="(max-width: 639px) 100vw, 66vw"
             />
+            <Video {...video} priority />
           </div>
 
           <div className="p-6 lg:col-span-2">
