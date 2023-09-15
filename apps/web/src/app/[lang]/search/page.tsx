@@ -1,6 +1,6 @@
 import { server } from "@/clients/shopify";
 import { Grid } from "@/components/grid/index";
-import { ProductGridItems } from "@/components/layout/product-variant-grid-items";
+import { ProductGridItems } from "@/components/layout/product-grid-items";
 import {
   productDefaultSort,
   productSorting
