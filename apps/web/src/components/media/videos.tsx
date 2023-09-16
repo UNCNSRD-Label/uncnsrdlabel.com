@@ -1,6 +1,6 @@
 "use client";
 
-import { Video } from "@/components/video";
+import { Video } from "@/components/media/video";
 import { WithVideo } from "@/types/shopify";
 
 export function Videos({
