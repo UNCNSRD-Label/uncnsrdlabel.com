@@ -1,5 +1,5 @@
 import { server } from "@/clients/shopify";
-import { Image } from "@/components/image";
+import { Image } from "@/components/media/image";
 import { getFragmentData, imageFragment, productBasicFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
 import Link from "next/link";
 import { notFound } from "next/navigation";

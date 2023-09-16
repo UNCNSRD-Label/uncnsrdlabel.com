@@ -1,7 +1,7 @@
 "use client";
 
-import { Image } from "@/components/image";
 import { LoadingDots } from "@/components/loading-dots";
+import { Image } from "@/components/media/image";
 import { cn } from "@uncnsrdlabel/lib";
 import { useRef } from "react";
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";

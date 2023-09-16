@@ -1,7 +1,7 @@
 "use client";
 
-import { Image } from "@/components/image";
 import { LoadingDots } from "@/components/loading-dots";
+import { Image } from "@/components/media/image";
 import {
   NukaCarousel,
   type NukaCarouselProps,
@@ -16,7 +16,7 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Suspense } from "react";
 
-export function HomepageCarousel({
+export function PageCarousel({
   handle,
   ...props
 }: NukaCarouselProps & { handle: string }) {

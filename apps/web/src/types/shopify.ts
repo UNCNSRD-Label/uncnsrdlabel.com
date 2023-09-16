@@ -1,10 +1,10 @@
 import { ResultOf } from "@graphql-typed-document-node/core";
 import {
-    mediaFragment
+  videoFragment
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 
 export type WithVideo = Required<
-  ResultOf<typeof mediaFragment> & {
+  ResultOf<typeof videoFragment> & {
     __typename: "Video";
   }
 >;

@@ -1,4 +1,4 @@
-import { Image } from "@/components/image";
+import { Image } from "@/components/media/image";
 import { Price } from "@/components/price";
 import { cn } from "@uncnsrdlabel/lib";
 import type { SetOptional } from "type-fest";

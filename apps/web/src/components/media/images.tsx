@@ -5,13 +5,15 @@ import { Cross2Icon } from "@radix-ui/react-icons";
 import { Suspense } from "react";
 import { SlMagnifierAdd } from "react-icons/sl";
 
-import { ProductImage } from "@/components/product/image";
-import { ProductImageZoom } from "@/components/product/image-zoom";
+import { Image } from "@/components/media/image";
+import { ProductImageZoom } from "@/components/media/image-zoom";
 
 export function Images({
+  className,
   images,
   sizes,
 }: {
+  className?: string;
   images: { id: string; src: string; altText: string }[];
   sizes?: string;
 }) {
@@ -23,11 +25,10 @@ export function Images({
             <Dialog.Trigger asChild>
               <button
                 aria-label="Enlarge product image"
-                className="relative w-full lg:w-4/6"
+                className={className}
               >
-                <ProductImage
+                <Image
                   alt={image?.altText}
-                  className="aspect-3/4 w-full"
                   fill
                   sizes={sizes}
                   src={image.src}
@@ -44,7 +45,6 @@ export function Images({
                       className="aspect-3/4"
                       fill
                       quality={100}
-                      // scale={scale}
                       sizes="500vw"
                       src={image.src}
                     />

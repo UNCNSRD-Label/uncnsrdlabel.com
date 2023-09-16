@@ -29,5 +29,15 @@ export const pageFragment = graphql(/* GraphQL */ `
         }
       }
     }
+    mediaVideos: metafield(namespace: "custom", key: "videos") {
+      value
+      references(first: 10) {
+        edges {
+          node {
+            ...video
+          }
+        }
+      }
+    }
   }
 `);

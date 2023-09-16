@@ -1,7 +1,7 @@
 import { graphql } from "../codegen/index";
 
-export const mediaFragment = graphql(/* GraphQL */ `
-  fragment media on Media {
+export const videoFragment = graphql(/* GraphQL */ `
+  fragment video on Media {
     __typename
     alt
     id

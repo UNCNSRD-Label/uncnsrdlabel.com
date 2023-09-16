@@ -1,20 +1,20 @@
 "use client";
 
 import { HandleTrackProduct } from "@/components/analytics/handle-track-product";
-import { Images } from "@/components/product/images";
+import { Images } from "@/components/media/images";
+import { Videos } from "@/components/media/videos";
 import { MetaFields } from "@/components/product/metafields";
 import { NavigationMenu } from "@/components/product/navigation-menu";
 import { PurchaseOptions } from "@/components/product/purchase-options";
-import { Videos } from "@/components/product/videos";
 import { WithVideo } from "@/types/shopify";
 import { ResultOf } from "@graphql-typed-document-node/core";
 import { ProductProvider } from "@shopify/hydrogen-react";
 import {
   getFragmentData,
   imageFragment,
-  mediaFragment,
   productDetailsFragment,
   productMetafieldFragment,
+  videoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { useRef } from "react";
 
@@ -30,7 +30,7 @@ export function ProductDetails({
   const media = product.media.edges.map((edge) => edge?.node);
 
   const videos = media
-    .map((mediaFragmentRef) => getFragmentData(mediaFragment, mediaFragmentRef))
+    .map((videoFragmentRef) => getFragmentData(videoFragment, videoFragmentRef))
     .filter((node): node is WithVideo => node?.__typename === "Video");
 
   const metafieldsFragmentRefs = product.metafields;
@@ -54,6 +54,7 @@ export function ProductDetails({
             ref={sectionElementRefs[0]}
           >
             <Images
+              className="aspect-3/4 relative w-full lg:w-4/6"
               images={images
                 .map((imageFragmentRef) =>
                   getFragmentData(imageFragment, imageFragmentRef),
@@ -65,7 +66,7 @@ export function ProductDetails({
                 }))}
               sizes="(max-width: 639px) 100vw, 66vw"
             />
-            <Videos videos={videos} />
+            <Videos className="aspect-3/4 relative w-full lg:w-4/6" videos={videos} />
           </div>
 
           <div className="p-6 lg:col-span-2">
