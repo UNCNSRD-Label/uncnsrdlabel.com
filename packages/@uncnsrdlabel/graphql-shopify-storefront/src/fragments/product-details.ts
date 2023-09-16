@@ -37,6 +37,13 @@ export const productDetailsFragment = graphql(/* GraphQL */ `
     descriptionHtml
     handle
     id
+    media(first: 10) {
+      edges {
+        node {
+          ...media
+        }
+      }
+    }
     metafields(
       identifiers: [
         { namespace: "custom", key: "line" }
