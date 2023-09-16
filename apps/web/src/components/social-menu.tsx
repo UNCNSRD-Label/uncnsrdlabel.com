@@ -20,7 +20,7 @@ export const SocialMenu: FunctionComponent<SocialMenuProps> = ({
     >
       <SocialIcon
         className={cn(
-          "group aspect-square fill-black hover:!fill-stateHover hover:!stroke-stateHover focus-visible:!fill-stateFocus focus-visible:!stroke-stateFocus dark:fill-white [&_.social-svg-mask]:!fill-inherit",
+          "group aspect-square [&_.social-svg-icon]:!fill-black [&_.social-svg-mask]:!fill-white stroke-black",
           iconClassName,
         )}
         target="_blank"
@@ -29,7 +29,7 @@ export const SocialMenu: FunctionComponent<SocialMenuProps> = ({
       />
       <SocialIcon
         className={cn(
-          "group aspect-square fill-black hover:!fill-stateHover hover:!stroke-stateHover focus-visible:!fill-stateFocus focus-visible:!stroke-stateFocus dark:fill-white [&_.social-svg-mask]:!fill-inherit",
+          "group aspect-square [&_.social-svg-icon]:!fill-black [&_.social-svg-mask]:!fill-white stroke-black",
           iconClassName,
         )}
         target="_blank"

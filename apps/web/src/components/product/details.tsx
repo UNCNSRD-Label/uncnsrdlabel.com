@@ -27,8 +27,6 @@ export function ProductDetails({
 
   const images = product.images.edges.map((edge) => edge?.node);
 
-  // const videos = product.media.edges.map((edge) => edge?.node).filter((node): node is WithVideo => node?.__typename === "Video");
-  // const videos = product.media.edges.map((edge) => edge?.node).filter((node) => node?.__typename === "Video");
   const media = product.media.edges.map((edge) => edge?.node);
 
   const videos = media
@@ -41,8 +39,6 @@ export function ProductDetails({
     productMetafieldFragment,
     metafieldsFragmentRefs.filter(Boolean),
   );
-
-  console.log({ videos });
 
   return (
     <ProductProvider data={product}>
