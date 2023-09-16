@@ -12,7 +12,7 @@ import { SidebarMenu } from "./sidebar-menu";
 type Props = { showLogo?: boolean };
 
 export function NavbarContent(props: Props) {
-  const menu = use(server.getMenu({ handle: "next-js-frontend-header-menu"}));
+  const menu = use(server.getMenu({ handle: "next-js-frontend-header-menu" }));
 
   return (
     <>
@@ -23,10 +23,7 @@ export function NavbarContent(props: Props) {
           </Suspense>
         </div>
       </div>
-      <div
-        className={cn("hidden", props.showLogo && "md:block")}
-        tabIndex={-1}
-      >
+      <div className={cn("hidden", props.showLogo && "md:block")} tabIndex={-1}>
         <Link
           href="/"
           aria-label="Go back home"
@@ -42,9 +39,11 @@ export function NavbarContent(props: Props) {
           <Link href="/account" aria-label="Account" prefetch={false}>
             <SlUser className="icon fill h-5 w-5 drop-shadow" />
           </Link>
-          <Link href="#" aria-label="Wishlist">
-            <SlHeart className="icon fill h-5 w-5 drop-shadow" />
-          </Link>
+          {process.env.NEXT_PUBLIC_FEATURE_FLAG_WISHLIST_ENABLE !== "true" && (
+            <Link href="#" aria-label="Wishlist">
+              <SlHeart className="icon fill h-5 w-5 drop-shadow" />
+            </Link>
+          )}
           <Cart />
         </Suspense>
       </div>
