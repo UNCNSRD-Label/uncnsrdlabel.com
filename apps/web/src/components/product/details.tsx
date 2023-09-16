@@ -49,12 +49,12 @@ export function ProductDetails({
       <div className="mb-48 [&:has(+_aside)]:mb-24">
         <div className="lg:grid lg:grid-cols-6">
           <div
-            className="grid justify-items-center lg:col-span-4"
+            className="gap-8 grid justify-items-center lg:col-span-4"
             id="images"
             ref={sectionElementRefs[0]}
           >
             <Images
-              className="aspect-3/4 relative w-full lg:w-4/6"
+              className="aspect-3/4 overflow-hidden relative w-full lg:w-4/6"
               images={images
                 .map((imageFragmentRef) =>
                   getFragmentData(imageFragment, imageFragmentRef),
