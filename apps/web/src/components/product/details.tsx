@@ -77,7 +77,7 @@ export function ProductDetails({
             ref={sectionElementRefs[0]}
           >
             <Images
-              className="aspect-3/4 relative w-full overflow-hidden lg:w-4/6"
+              className="aspect-2/3 relative w-full overflow-hidden lg:w-4/6"
               images={images
                 .map((imageFragmentRef) =>
                   getFragmentData(imageFragment, imageFragmentRef),
@@ -90,7 +90,7 @@ export function ProductDetails({
               sizes="(max-width: 639px) 100vw, 66vw"
             />
             <Videos
-              className="aspect-3/4 relative w-full lg:w-4/6"
+              className="aspect-2/3 relative w-full lg:w-4/6"
               videos={videos}
             />
           </div>
