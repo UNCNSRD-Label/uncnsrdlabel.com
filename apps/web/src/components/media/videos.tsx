@@ -19,7 +19,6 @@ export function Videos({
   return videos && videos.length > 0 ? (
     <>
       {videos
-      // ?.filter((node): node is WithVideo => node.__typename === "Video")
       ?.map((videoFragmentRef, index) => {
         const video = getFragmentData(videoFragment, videoFragmentRef);
 
