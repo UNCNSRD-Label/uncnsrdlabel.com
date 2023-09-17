@@ -6,6 +6,7 @@ import {
   getFragmentData,
   productBasicFragment
 } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { HIDDEN_PRODUCT_TAG } from "@uncnsrdlabel/lib";
 import Link from "next/link";
 
 export function ProductGridItems({
@@ -17,6 +18,12 @@ export function ProductGridItems({
     <>
       {productFragmentRefs.map((productFragmentRef, index) => {
           const product = getFragmentData(productBasicFragment, productFragmentRef);
+
+          if (!product) return null;
+
+          const hide = product.tags.includes(HIDDEN_PRODUCT_TAG);
+
+          if (hide) return null;
 
           const media = product.media.edges.map((edge) => edge?.node);
 
