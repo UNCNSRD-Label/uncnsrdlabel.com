@@ -22,7 +22,7 @@ export default async function HomePage({
   const intl = await getIntl(lang, `page.${handle}`);
 
   return (
-    <div className="dark">
+    <div className="dark min-h-[100dvh]">
       <div className={themeColors}>
         <Navbar>
           <NavbarContent />

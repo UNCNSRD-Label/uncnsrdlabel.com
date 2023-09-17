@@ -30,10 +30,18 @@ export const productBasicFragment = graphql(/* GraphQL */ `
     descriptionHtml
     handle
     id
-    images(first: 20) {
+    images(first: 1) {
       edges {
         node {
           ...image
+        }
+      }
+    }
+    media(first: 10) {
+      edges {
+        node {
+          __typename
+          ...video
         }
       }
     }

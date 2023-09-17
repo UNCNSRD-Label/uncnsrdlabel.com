@@ -1,27 +1,27 @@
 import { server } from "@/clients/shopify";
-import { GridTileImage } from "@/components/grid/tile";
-import type { Product } from "@shopify/hydrogen/storefront-api-types";
+import { Tile } from "@/components/grid/tile";
+import {
+  FragmentType,
+  getFragmentData,
+  productBasicFragment
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import Link from "next/link";
-import { PartialDeep } from "type-fest";
 
 function ThreeItemGridItem({
   className,
-  item,
+  productFragmentRef,
   size,
   background,
 }: {
   className?: string;
-  item: PartialDeep<
-    Product,
-    {
-      recurseIntoArrays: true;
-    }
-  >;
+  productFragmentRef: FragmentType<typeof productBasicFragment>;
   size: "full" | "half";
   background: "white" | "pink" | "purple" | "black";
 }) {
-  if (!item.featuredImage?.url) {
+  const product = getFragmentData(productBasicFragment, productFragmentRef);
+
+  if (!product.featuredImage) {
     return null;
   }
   
@@ -34,19 +34,16 @@ function ThreeItemGridItem({
           : "lg:col-span-2 lg:row-span-1",
       )}
     >
-      <Link className="block h-full" href={`/products/${item.handle}`}>
-        <GridTileImage
-          src={item.featuredImage.url}
-          width={size === "full" ? 1080 : 540}
-          height={size === "full" ? 1080 : 540}
-          priority={true}
+      <Link className="block h-full" href={`/products/${product.handle}`}>
+        <Tile
           background={background}
-          alt={item.title ?? ""}
+          image={product.featuredImage}
           labels={{
-            title: item.title as string,
-            amount: item.priceRange?.maxVariantPrice?.amount,
-            currencyCode: item.priceRange?.maxVariantPrice?.currencyCode,
+            title: product.title as string,
+            amount: product.priceRange?.maxVariantPrice?.amount,
+            currencyCode: product.priceRange?.maxVariantPrice?.currencyCode,
           }}
+          priority={true}
         />
       </Link>
     </div>
@@ -68,9 +65,9 @@ export async function ThreeItemGrid({ className }: { className?: string }) {
       className={cn(className, "lg:grid lg:grid-cols-6 lg:grid-rows-2")}
       data-testid="homepage-products"
     >
-      <ThreeItemGridItem size="full" item={firstProduct} background="purple" />
-      <ThreeItemGridItem size="half" item={secondProduct} background="black" />
-      <ThreeItemGridItem size="half" item={thirdProduct} background="pink" />
+      <ThreeItemGridItem size="full" productFragmentRef={firstProduct} background="purple" />
+      <ThreeItemGridItem size="half" productFragmentRef={secondProduct} background="black" />
+      <ThreeItemGridItem size="half" productFragmentRef={thirdProduct} background="pink" />
     </section>
   );
 }

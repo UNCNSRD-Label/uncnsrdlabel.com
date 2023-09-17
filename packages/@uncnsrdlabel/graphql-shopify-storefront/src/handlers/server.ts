@@ -33,11 +33,7 @@ import {
   RemoveFromCartMutationVariables,
 } from "../codegen/graphql";
 import {
-  cartFragment,
-  collectionFragment,
-  pageFragment,
-  productBasicFragment,
-  productDetailsFragment,
+  collectionFragment
 } from "../fragments/index";
 import {
   getCartQuery,
@@ -83,9 +79,9 @@ export class Server {
 
     // console.log({ cartFragmentRef });
 
-    const cart = getFragmentData(cartFragment, cartFragmentRef);
+    // const cart = getFragmentData(cartFragment, cartFragmentRef);
 
-    return cart;
+    return cartFragmentRef;
   }
 
   async addToCart(variables: AddToCartMutationVariables) {
@@ -108,9 +104,9 @@ export class Server {
 
     // console.log({ cartFragmentRef });
 
-    const cart = getFragmentData(cartFragment, cartFragmentRef);
+    // const cart = getFragmentData(cartFragment, cartFragmentRef);
 
-    return cart;
+    return cartFragmentRef;
   }
 
   async removeFromCart(variables: RemoveFromCartMutationVariables) {
@@ -133,9 +129,9 @@ export class Server {
 
     // console.log({ cartFragmentRef });
 
-    const cart = getFragmentData(cartFragment, cartFragmentRef);
+    // const cart = getFragmentData(cartFragment, cartFragmentRef);
 
-    return cart;
+    return cartFragmentRef;
   }
 
   async updateCart(variables: EditCartItemsMutationVariables) {
@@ -158,9 +154,9 @@ export class Server {
 
     // console.log({ cartFragmentRef });
 
-    const cart = getFragmentData(cartFragment, cartFragmentRef);
+    // const cart = getFragmentData(cartFragment, cartFragmentRef);
 
-    return cart;
+    return cartFragmentRef;
   }
 
   async getCart(variables: GetCartQueryVariables) {
@@ -176,9 +172,9 @@ export class Server {
 
     // console.log({ cartFragmentRef });
 
-    const cart = getFragmentData(cartFragment, cartFragmentRef);
+    // const cart = getFragmentData(cartFragment, cartFragmentRef);
 
-    return cart;
+    return cartFragmentRef;
   }
 
   async getCollection(variables: GetCollectionQueryVariables) {
@@ -197,12 +193,12 @@ export class Server {
 
     // console.log({ collectionFragmentRef });
 
-    const collection = getFragmentData(
-      collectionFragment,
-      collectionFragmentRef,
-    );
+    // const collection = getFragmentData(
+    //   collectionFragment,
+    //   collectionFragmentRef,
+    // );
 
-    return collection;
+    return collectionFragmentRef;
   }
 
   async getCollectionProducts(variables: GetCollectionProductsQueryVariables) {
@@ -226,7 +222,7 @@ export class Server {
     return products;
   }
 
-  async getCollections(variables: GetCollectionsQueryVariables) {
+  async getCollectionRefs(variables: GetCollectionsQueryVariables) {
     const { collections: shopifyCollectionConnection } =
       // @ts-expect-error Types of property 'country' are incompatible.
       await getShopifyGraphQL(getCollectionsQuery, {
@@ -243,7 +239,7 @@ export class Server {
 
     // console.log({ shopifyCollectionConnection });
 
-    const shopifyCollections = shopifyCollectionConnection.edges.map(
+    const collectionsRefs = shopifyCollectionConnection.edges.map(
       (edge) => edge?.node,
     );
 
@@ -262,7 +258,7 @@ export class Server {
       },
       // Filter out the `hidden` collections.
       // Collections that start with `hidden-*` need to be hidden on the search page.
-      ...shopifyCollections
+      ...collectionsRefs
         .map((collectionFragmentRef) =>
           getFragmentData(collectionFragment, collectionFragmentRef),
         )
@@ -305,11 +301,11 @@ export class Server {
       };
     }
 
-    const page = getFragmentData(pageFragment, pageFragmentRef);
+    // const page = getFragmentData(pageFragment, pageFragmentRef);
 
     // console.log({ page });
 
-    return page;
+    return pageFragmentRef;
   }
 
   async getPages(variables: GetPagesQueryVariables) {
@@ -374,14 +370,14 @@ export class Server {
 
     // console.log({ productBasicFragmentRef });
 
-    const product = getFragmentData(
-      productBasicFragment,
-      productBasicFragmentRef,
-    );
+    // const product = getFragmentData(
+    //   productBasicFragment,
+    //   productBasicFragmentRef,
+    // );
 
     // console.log({ product });
 
-    return product;
+    return productBasicFragmentRef;
   }
 
   async getProductDetails(variables: GetProductDetailsQueryVariables) {
@@ -400,14 +396,14 @@ export class Server {
 
     // console.log({ productDetailsFragmentRef });
 
-    const product = getFragmentData(
-      productDetailsFragment,
-      productDetailsFragmentRef,
-    );
+    // const product = getFragmentData(
+    //   productDetailsFragment,
+    //   productDetailsFragmentRef,
+    // );
 
     // console.log({ product });
 
-    return product;
+    return productDetailsFragmentRef;
   }
 
   async getProductRecommendations(
@@ -423,12 +419,12 @@ export class Server {
       };
     }
 
-    const productRecommendations = productRecommendationRefs.map(
-      (productRecommendationRef) =>
-        getFragmentData(productBasicFragment, productRecommendationRef),
-    );
+    // const productRecommendations = productRecommendationRefs.map(
+    //   (productRecommendationRef) =>
+    //     getFragmentData(productBasicFragment, productRecommendationRef),
+    // );
 
-    return productRecommendations;
+    return productRecommendationRefs;
   }
 
   async getProducts(variables: GetProductsQueryVariables) {

@@ -1,19 +1,25 @@
 import { Image } from "@/components/media/image";
+import { Video } from "@/components/media/video";
 import { Price } from "@/components/price";
+import {
+  FragmentType,
+  getFragmentData,
+  imageFragment,
+  videoFragment,
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
-import type { SetOptional } from "type-fest";
 
-export function GridTileImage({
-  className,
-  isInteractive = true,
-  background = "black",
+export function Tile({
   active,
+  background = "black",
+  className,
+  image,
+  isInteractive = true,
   labels,
   priority,
-  ...props
+  video,
 }: {
-  className?: string;
-  isInteractive?: boolean;
+  active?: boolean;
   background?:
     | "hotPink"
     | "white"
@@ -24,54 +30,75 @@ export function GridTileImage({
     | "blue"
     | "cyan"
     | "gray";
-  active?: boolean;
-  labels?: {
+  className?: string;
+  image?: FragmentType<typeof imageFragment> | null;
+  isInteractive?: boolean;
+  labels: {
     title: string;
     amount?: string;
     currencyCode?: string;
   };
   priority?: boolean;
-} & SetOptional<React.ComponentProps<typeof Image>, "src">) {
+  video?: FragmentType<typeof videoFragment>;
+}) {
+  if (!active) {
+    return null;
+  }
+
+  const tileImage = getFragmentData(imageFragment, image);
+  const tileVideo = getFragmentData(videoFragment, video);
+
   return (
     <>
-      <figure
-        className={cn(
-          "aspect-3/4 relative mb-4 w-full overflow-hidden",
-          {
-            "bg-hotPink dark:bg-hotPink": background === "hotPink",
-            "bg-white dark:bg-white": background === "white",
-            "bg-[#ff0080] dark:bg-[#ff0080]": background === "pink",
-            "bg-[#7928ca] dark:bg-[#7928ca]": background === "purple",
-            "bg-gray-900 dark:bg-gray-900": background === "black",
-            "bg-violetDark dark:bg-violetDark": background === "purple-dark",
-            "bg-blue-500 dark:bg-blue-500": background === "blue",
-            "bg-cyan-500 dark:bg-cyan-500": background === "cyan",
-            "bg-gray-100 dark:bg-gray-100": background === "gray",
-            "bg-gray-100 dark:bg-gray-900": !background,
-          }
-        )}
+      <div
+        className={cn("aspect-3/4 relative mb-4 w-full overflow-hidden", "[&:has(.video)_.image]:focus:opacity-0 [&:has(.video)_.image]:hover:opacity-0", {
+          "bg-hotPink dark:bg-hotPink": background === "hotPink",
+          "bg-white dark:bg-white": background === "white",
+          "bg-[#ff0080] dark:bg-[#ff0080]": background === "pink",
+          "bg-[#7928ca] dark:bg-[#7928ca]": background === "purple",
+          "bg-gray-900 dark:bg-gray-900": background === "black",
+          "bg-violetDark dark:bg-violetDark": background === "purple-dark",
+          "bg-blue-500 dark:bg-blue-500": background === "blue",
+          "bg-cyan-500 dark:bg-cyan-500": background === "cyan",
+          "bg-gray-100 dark:bg-gray-100": background === "gray",
+          "bg-gray-100 dark:bg-gray-900": !background,
+        })}
       >
-        {props?.src ? (
-          <Image
-            className={cn(
-              "relative h-full w-full object-cover",
-              {
-                "transition hover:scale-105": isInteractive,
-              },
-              className,
-            )}
-            {...props}
-            alt={props.title || ""}
-            fill
-            height={undefined}
-            sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
-            src={props.src}
-            width={undefined}
-          />
-        ) : null}
-      </figure>
+        {tileVideo?.__typename === "Video" && <Video
+          {...tileVideo}
+          className="video absolute inset-0"
+          autoPlay
+          loop
+          muted
+          playsInline
+          url={tileVideo?.sources?.filter(source => source.format !== 'm3u8').map((source) => ({
+            src: source.url,
+            type: `video/${source.format}`,
+          }))}
+        />}
+        <figure className="image">
+          {tileImage?.url ? (
+            <Image
+              className={cn(
+                "relative h-full w-full object-cover",
+                {
+                  "transition hover:scale-105": isInteractive,
+                },
+                className,
+              )}
+              alt={tileImage.altText ?? labels?.title}
+              fill
+              height={undefined}
+              priority={priority}
+              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+              src={tileImage.url}
+              width={undefined}
+            />
+          ) : null}
+        </figure>
+      </div>
       {labels?.amount && labels?.currencyCode ? (
-        <div>
+        <footer>
           <h3
             data-testid="product-name"
             className={cn("mb-2 box-decoration-clone text-xs")}
@@ -83,7 +110,7 @@ export function GridTileImage({
             amount={labels.amount}
             currencyCode={labels.currencyCode}
           />
-        </div>
+        </footer>
       ) : null}
     </>
   );

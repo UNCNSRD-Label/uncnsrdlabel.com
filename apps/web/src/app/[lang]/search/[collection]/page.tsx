@@ -2,6 +2,7 @@ import { server } from "@/clients/shopify";
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
 import {
+  collectionFragment,
   getFragmentData,
   productCollectionDefaultSort,
   productCollectionSorting,
@@ -17,7 +18,12 @@ export async function generateMetadata({
 }: {
   params: { collection: string };
 }): Promise<Metadata> {
-  const collection = await server.getCollection({ handle });
+  const collectionFragmentRef = await server.getCollection({ handle });
+
+  const collection = getFragmentData(
+      collectionFragment,
+      collectionFragmentRef,
+    );
 
   if (!collection) return notFound();
 
@@ -67,7 +73,7 @@ export default async function CategoryPage({
         <p className="py-3 text-lg">{`No products found in this collection`}</p>
       ) : (
         <Grid className="grid-cols-2 lg:grid-cols-3">
-          <ProductGridItems products={products} />
+          <ProductGridItems productFragmentRefs={products} />
         </Grid>
       )}
     </section>

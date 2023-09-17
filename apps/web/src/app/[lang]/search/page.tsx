@@ -22,7 +22,7 @@ export default async function SearchPage({
   const { sortKey, reverse } =
     productSorting.find((item) => item.slug === sort) || productDefaultSort;
 
-  const productConnection = await server.getProductsWithVariants({
+  const productConnection = await server.getProducts({
     sortKey,
     reverse,
     query: searchValue,
@@ -44,7 +44,7 @@ export default async function SearchPage({
       ) : null}
       {productFragments.length > 0 ? (
         <Grid className="grid-cols-2 lg:grid-cols-3">
-          <ProductGridItems products={productFragments} />
+          <ProductGridItems productFragmentRefs={productFragments} />
         </Grid>
       ) : null}
     </>

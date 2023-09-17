@@ -1,9 +1,10 @@
 "use server";
 
 import { server } from "@/clients/shopify";
-import { ResultOf } from '@graphql-typed-document-node/core';
 import {
-  cartFragment
+  FragmentType,
+  cartFragment,
+  getFragmentData
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cookies } from "next/headers";
 
@@ -11,20 +12,23 @@ export const addItem = async (
   variantId: string | undefined,
 ): Promise<Error | undefined> => {
   let cartId = cookies().get("cartId")?.value;
-  let cart: ResultOf<typeof cartFragment> | null = null;
+  let cartFragmentRef: FragmentType<typeof cartFragment> | null = null;
 
   if (cartId) {
-    cart = await server.getCart({ cartId });
+    cartFragmentRef = await server.getCart({ cartId });
   }
 
-  if (!cartId || !cart) {
-    cart = await server.createCart({});
+  if (!cartId || !cartFragmentRef) {
+    cartFragmentRef = await server.createCart({});
+
+    const cart = getFragmentData(cartFragment, cartFragmentRef);
 
     if (!cart) {
       return new Error("Error creating cart");
     }
 
     cartId = cart.id;
+
     cookies().set("cartId", cartId);
   }
 

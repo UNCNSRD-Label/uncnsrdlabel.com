@@ -1,5 +1,5 @@
 import { Grid } from "@/components/grid";
-import { GridTileImage } from "@/components/grid/tile";
+import { Tile } from "@/components/grid/tile";
 import { transitionDelays } from "@/lib/tailwind";
 import {
   FragmentType,
@@ -23,6 +23,12 @@ export function ProductVariantGridItems({
           productWithVariantsFragment,
           productFragmentRef,
         );
+
+        const media = product.media.edges.map((edge) => edge?.node);
+
+        const videos = media.filter((node) => node.__typename === "Video");
+
+        const video = videos?.[0];
 
         const variantsConnection = getFragmentData(
           productVariantConnectionFragment,
@@ -60,18 +66,16 @@ export function ProductVariantGridItems({
                 href={`/products/${product.handle}?variant=${variant.id}`}
               >
                 {image?.url && (
-                  <GridTileImage
-                    alt={variant.fullTitle}
+                  <Tile
                     className={transitionDelays[productIndex]}
+                    image={product.featuredImage}
                     labels={{
                       title: variant.fullTitle,
                       amount: variant.price.amount,
                       currencyCode: variant.price.currencyCode,
                     }}
                     priority={productIndex < 4}
-                    src={image.url}
-                    width={600}
-                    height={600}
+                    video={video}
                   />
                 )}
               </Link>

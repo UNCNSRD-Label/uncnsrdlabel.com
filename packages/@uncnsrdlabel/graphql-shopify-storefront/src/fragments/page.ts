@@ -23,7 +23,6 @@ export const pageFragment = graphql(/* GraphQL */ `
               image {
                 ...image
               }
-              mediaContentType
             }
           }
         }
@@ -34,6 +33,7 @@ export const pageFragment = graphql(/* GraphQL */ `
       references(first: 10) {
         edges {
           node {
+            __typename
             ...video
           }
         }

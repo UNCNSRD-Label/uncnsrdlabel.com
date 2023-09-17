@@ -1,7 +1,12 @@
 "use client";
 
-import { GridTileImage } from "@/components/grid/tile";
+import { Tile } from "@/components/grid/tile";
 import { ArrowLeftIcon } from "@/components/icons/arrow-left";
+import {
+  FragmentType,
+  getFragmentData,
+  imageFragment
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { useState } from "react";
 
@@ -14,7 +19,7 @@ export function Gallery({
   title: string;
   amount: string;
   currencyCode: string;
-  images: { altText: string; id: string; src: string }[];
+  images: FragmentType<typeof imageFragment>[];
 }) {
   const [currentImage, setCurrentImage] = useState(0);
 
@@ -35,19 +40,16 @@ export function Gallery({
     <div className="h-full">
       <div className="relative h-full max-h-[600px] overflow-hidden">
         {images[currentImage] && (
-          <GridTileImage
-            src={images[currentImage]?.src as string}
-            alt={images[currentImage]?.altText as string}
-            width={600}
-            height={600}
-            isInteractive={false}
-            priority={true}
+          <Tile
             background="purple"
+            image={images[currentImage]}
+            isInteractive={false}
             labels={{
               title,
               amount,
               currencyCode,
             }}
+            priority={true}
           />
         )}
 
@@ -76,8 +78,10 @@ export function Gallery({
 
       {images.length > 1 ? (
         <div className="flex">
-          {images.map((image, index) => {
+          {images.map((imageFragmentRef, index) => {
             const isActive = index === currentImage;
+            const image = getFragmentData(imageFragment, imageFragmentRef);
+
             return (
               <button
                 aria-label="Enlarge product image"
@@ -85,13 +89,15 @@ export function Gallery({
                 className="h-full w-1/4"
                 onClick={() => setCurrentImage(index)}
               >
-                <GridTileImage
-                  alt={image?.altText}
-                  src={image.src}
-                  width={600}
-                  height={600}
-                  background="purple-dark"
+                <Tile
                   active={isActive}
+                  background="purple-dark"
+                  image={imageFragmentRef}
+                  labels={{
+                    amount,
+                    currencyCode,
+                    title,
+                  }}
                 />
               </button>
             );

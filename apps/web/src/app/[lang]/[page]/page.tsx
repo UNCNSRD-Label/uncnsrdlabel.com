@@ -3,6 +3,7 @@ import { Image } from "@/components/media/image";
 import {
   getFragmentData,
   imageFragment,
+  pageFragment,
   seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import type { Metadata } from "next";
@@ -18,7 +19,14 @@ export async function generateMetadata({
 }: {
   params: { page: string };
 }): Promise<Metadata> {
-  const page = await server.getPage({ handle });
+  const pageFragmentRef = await server.getPage(
+    { handle },
+  );
+
+  const page = getFragmentData(
+    pageFragment,
+    pageFragmentRef,
+  );
 
   if (!page) return notFound();
 
@@ -47,7 +55,14 @@ export default async function Page({
 }: {
   params: { page: string };
 }) {
-  const page = await server.getPage({ handle });
+  const pageFragmentRef = await server.getPage(
+    { handle },
+  );
+
+  const page = getFragmentData(
+    pageFragment,
+    pageFragmentRef,
+  );
 
   if (!page) return notFound();
 

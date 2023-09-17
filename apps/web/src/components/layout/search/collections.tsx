@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import { FilterList } from "./filter";
 
 async function CollectionList() {
-  const collections = await server.getCollections({});
+  const collections = await server.getCollectionRefs({});
 
   return <FilterList list={collections} title="Collections" />;
 }

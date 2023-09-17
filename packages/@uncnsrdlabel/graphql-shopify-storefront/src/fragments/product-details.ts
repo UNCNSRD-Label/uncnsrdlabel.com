@@ -40,6 +40,7 @@ export const productDetailsFragment = graphql(/* GraphQL */ `
     media(first: 10) {
       edges {
         node {
+          __typename
           ...video
         }
       }

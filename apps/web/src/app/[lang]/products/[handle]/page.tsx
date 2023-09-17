@@ -5,24 +5,31 @@ import { ProductDetails } from "@/components/product/details";
 import { getIntl } from "@/lib/i18n/server";
 import { type PageProps } from "@/types/next";
 import {
-    getFragmentData,
-    imageFragment,
-    seoFragment,
+  FragmentType,
+  getFragmentData,
+  imageFragment,
+  productDetailsFragment,
+  seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { HIDDEN_PRODUCT_TAG, cn } from "@uncnsrdlabel/lib";
 import { type Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import { Product as ProductSchema, WithContext } from "schema-dts";
 
 // export const runtime = "edge";
 
 export async function generateMetadata({
   params: { handle },
 }: PageProps): Promise<Metadata> {
-  const product = await server.getProductDetails({ handle });
+  const productDetailsFragmentRef = await server.getProductDetails({ handle });
+
+  const product = getFragmentData(
+    productDetailsFragment,
+    productDetailsFragmentRef,
+  );
 
   const featuredImage = getFragmentData(imageFragment, product.featuredImage);
+  
   const seo = getFragmentData(seoFragment, product.seo);
 
   if (!product) return notFound();
@@ -59,63 +66,52 @@ export async function generateMetadata({
 export default async function ProductPage({
   params: { handle, lang },
 }: PageProps) {
-  const product = await server.getProductDetails({ handle });
+  // TODO: Remove getFragmentData from all server.<method> calls
+  const productDetailsFragmentRef = await server.getProductDetails({ handle });
 
-  if (!product) return notFound();
-
-  const featuredImage = getFragmentData(imageFragment, product.featuredImage);
-
-  const jsonLd: WithContext<ProductSchema> = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    identifier: product.id,
-    name: product.title,
-    image: {
-      "@type": "ImageObject",
-      about: featuredImage?.altText || product.title,
-      height: featuredImage?.height?.toString() ?? undefined,
-      url: featuredImage?.url,
-      width: featuredImage?.width?.toString() ?? undefined,
-    },
-    description: product.description,
-  };
+  if (!productDetailsFragmentRef) return notFound();
 
   return (
     <>
       <main className="min-h-[100dvh]">
-        <ProductDetails product={product} />
+        <ProductDetails productDetailsFragmentRef={productDetailsFragmentRef} />
       </main>
       <Suspense>
         <RelatedProducts
           className="text-dark dark:text-light relative bg-gray-300 pb-48 pt-12 dark:bg-gray-800"
-          id={product.id}
+          productDetailsFragmentRef={productDetailsFragmentRef}
           lang={lang}
         />
       </Suspense>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
     </>
   );
 }
 
 async function RelatedProducts({
   className,
-  id,
   lang,
+  productDetailsFragmentRef,
 }: {
   className?: string;
-  id: string;
   lang: Intl.BCP47LanguageTag;
+  productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }) {
   const intl = await getIntl(lang, `component.RelatedProducts`);
 
-  const relatedProducts = await server.getProductRecommendations({
+  const product = getFragmentData(
+    productDetailsFragment,
+    productDetailsFragmentRef,
+  );
+
+  if (!product) return null;
+
+  const { id } = product;
+
+  const productRecommendationRefs = await server.getProductRecommendations({
     productId: id,
   });
 
-  if (!relatedProducts.length) return null;
+  if (!productRecommendationRefs.length) return null;
 
   return (
     <aside className={cn("px-4 pb-48 pt-12", className)}>
@@ -123,7 +119,7 @@ async function RelatedProducts({
         {intl.formatMessage({ id: "title" })}
       </div>
       <Grid className="grid-cols-2 lg:grid-cols-5">
-        <ProductGridItems products={relatedProducts} />
+        <ProductGridItems productFragmentRefs={productRecommendationRefs} />
       </Grid>
     </aside>
   );

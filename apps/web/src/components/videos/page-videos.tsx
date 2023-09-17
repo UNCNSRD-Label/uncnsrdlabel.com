@@ -2,12 +2,13 @@
 
 import { LoadingDots } from "@/components/loading-dots";
 import { Videos } from "@/components/media/videos";
-import { WithVideo } from "@/types/shopify";
 import {
+  FragmentType,
   getFragmentData,
   getPageQuery,
   pageFragment,
-  useGetShopifyGraphQL
+  useGetShopifyGraphQL,
+  videoFragment
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Suspense } from "react";
 
@@ -24,11 +25,10 @@ export function PageVideos({ handle, ...props }: { handle: string }) {
 
   if (!page) return null;
 
-  const mediaVideos = page.mediaVideos?.references?.edges
+  const mediaVideos = page?.mediaVideos?.references?.edges
     .map((edge) => edge?.node);
 
-
-  const videos = mediaVideos?.filter((node): node is WithVideo => node?.__typename === "Video");
+  const videos = mediaVideos?.filter((node) => node.__typename === "Video")  as unknown as FragmentType<typeof videoFragment>[];
 
   return (
     <Suspense fallback={<LoadingDots />}>

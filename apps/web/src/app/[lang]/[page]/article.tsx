@@ -2,6 +2,10 @@
 
 import { server } from "@/clients/shopify";
 import { Prose } from "@/components/prose";
+import {
+  getFragmentData,
+  pageFragment
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 
 export type ArticleProps = {
   variables: { handle: string }
@@ -10,8 +14,13 @@ export type ArticleProps = {
 export async function Article(props: ArticleProps) {
   const { variables } = props;
 
-  const page = await server.getPage(
+  const pageFragmentRef = await server.getPage(
     variables,
+  );
+
+  const page = getFragmentData(
+    pageFragment,
+    pageFragmentRef,
   );
 
   return (

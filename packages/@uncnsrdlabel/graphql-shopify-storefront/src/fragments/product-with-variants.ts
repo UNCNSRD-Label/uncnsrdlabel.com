@@ -36,6 +36,14 @@ export const productWithVariantsFragment = graphql(/* GraphQL */ `
         }
       }
     }
+    media(first: 10) {
+      edges {
+        node {
+          __typename
+          ...video
+        }
+      }
+    }
     options {
       id
       name

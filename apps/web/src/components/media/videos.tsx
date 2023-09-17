@@ -1,19 +1,29 @@
 "use client";
 
 import { Video } from "@/components/media/video";
-import { WithVideo } from "@/types/shopify";
+// import { WithVideo } from "@/types/shopify";
+import {
+  FragmentType,
+  getFragmentData,
+  videoFragment
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 
 export function Videos({
   className,
   videos,
 }: {
   className?: string;
-  videos?: WithVideo[];
+  videos?: FragmentType<typeof videoFragment>[];
+  // videos?: WithVideo[];
 }) {
   return videos && videos.length > 0 ? (
     <>
-      {videos?.map((video, index) => {
-        return (
+      {videos
+      // ?.filter((node): node is WithVideo => node.__typename === "Video")
+      ?.map((videoFragmentRef, index) => {
+        const video = getFragmentData(videoFragment, videoFragmentRef);
+
+        return video.__typename === "Video" ? (
           <Video
             alt={video?.alt}
             autoPlay={index === 0 ? true : false}
@@ -26,7 +36,7 @@ export function Videos({
               type: `video/${source.format}`,
             }))}
           />
-        );
+        ) : null;
       })}
     </>
   ) : null;

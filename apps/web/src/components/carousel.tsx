@@ -1,17 +1,23 @@
 import { server } from "@/clients/shopify";
 import { Image } from "@/components/media/image";
-import { getFragmentData, imageFragment, productBasicFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { getFragmentData, imageFragment, pageFragment, productBasicFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+
 
 export async function Carousel({
   handle,
 }: {
   handle: string;
 }) {
-  const page = await server.getPage({
-    handle
-  });
+  const pageFragmentRef = await server.getPage(
+    { handle },
+  );
+
+  const page = getFragmentData(
+    pageFragment,
+    pageFragmentRef,
+  );
 
   if (!page) return notFound();
 
