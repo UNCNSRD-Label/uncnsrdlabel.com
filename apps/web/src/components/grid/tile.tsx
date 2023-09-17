@@ -10,7 +10,7 @@ import {
 import { cn } from "@uncnsrdlabel/lib";
 
 export function Tile({
-  active,
+  active = true,
   background = "black",
   className,
   image,

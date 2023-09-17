@@ -17,7 +17,7 @@ export function ProductGridItems({
     <>
       {productFragmentRefs.map((productFragmentRef, index) => {
           const product = getFragmentData(productBasicFragment, productFragmentRef);
-          
+
           const media = product.media.edges.map((edge) => edge?.node);
 
           const videos = media.filter((node) => node.__typename === "Video");
