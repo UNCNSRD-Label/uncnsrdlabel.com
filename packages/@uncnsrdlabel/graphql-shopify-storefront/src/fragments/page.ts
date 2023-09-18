@@ -39,5 +39,64 @@ export const pageFragment = graphql(/* GraphQL */ `
         }
       }
     }
+    sections: metafield(namespace: "custom", key: "page_sections") {
+      references(first: 16) {
+        __typename
+        nodes {
+          __typename
+          ... on Metaobject {
+            handle
+            # id
+            type
+            updatedAt
+            fields {
+              __typename
+              id
+              key
+              type
+              value
+              reference {
+                __typename
+                ... on Metaobject {
+                  handle
+                  id
+                  type
+                  updatedAt
+                }
+              }
+              references(first: 16) {
+                __typename
+                nodes {
+                  __typename
+                  ... on Metaobject {
+                    handle
+                    id
+                    type
+                    updatedAt
+                    fields {
+                      __typename
+                      id
+                      key
+                      type
+                      value
+                      reference {
+                        __typename
+                        ... on Metaobject {
+                          handle
+                          id
+                          type
+                          updatedAt
+                          value
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 `);

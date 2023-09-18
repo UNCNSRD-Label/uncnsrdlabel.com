@@ -14,7 +14,7 @@ export default function SearchLayout({
         <NavbarContent />
       </Navbar>
       <Suspense>
-        <div className="mx-8 mb-48 max-w-2xl py-16 sm:mx-auto min-h-[100dvh]">{children}</div>
+        <div className="mx-8 mb-48 py-16 min-h-[100dvh]">{children}</div>
       </Suspense>
       <Logo />
     </>
