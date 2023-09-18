@@ -17,8 +17,8 @@ export const pageFragment = graphql(/* GraphQL */ `
       references(first: 10) {
         edges {
           node {
+            __typename
             ... on MediaImage {
-              __typename
               id
               image {
                 ...image
@@ -46,17 +46,21 @@ export const pageFragment = graphql(/* GraphQL */ `
           __typename
           ... on Metaobject {
             handle
-            # id
             type
             updatedAt
             fields {
               __typename
-              id
               key
               type
               value
               reference {
                 __typename
+                ... on MediaImage {
+                  id
+                  image {
+                    ...image
+                  }
+                }
                 ... on Metaobject {
                   handle
                   id
@@ -75,7 +79,6 @@ export const pageFragment = graphql(/* GraphQL */ `
                     updatedAt
                     fields {
                       __typename
-                      id
                       key
                       type
                       value
@@ -86,7 +89,6 @@ export const pageFragment = graphql(/* GraphQL */ `
                           id
                           type
                           updatedAt
-                          value
                         }
                       }
                     }

@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --Navbar-height: 4.625rem;
+}
+
 @supports (font: -apple-system-body) and (-webkit-appearance: none) {
   img[loading="lazy"] {
     clip-path: inset(0.6px);
@@ -23,7 +27,7 @@
     @apply cursor-pointer border-none outline-none;
 
     &:has(> img, > figure) {
-      @apply focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-stateFocus focus-visible:ring-stateFocus;
+      @apply focus-visible:outline-stateFocus focus-visible:ring-stateFocus focus-visible:outline-dashed focus-visible:outline-2;
     }
 
     &:has(> .icon:only-child),
@@ -33,7 +37,7 @@
   }
 
   a {
-    @apply transition-colors hover:stroke-stateHover hover:text-stateHover focus-visible:stroke-stateFocus focus-visible:text-stateFocus;
+    @apply hover:stroke-stateHover hover:text-stateHover focus-visible:stroke-stateFocus focus-visible:text-stateFocus transition-colors;
   }
 
   input {
@@ -50,6 +54,10 @@
 }
 
 @layer components {
+  .navbar-global {
+    min-height: var(--Navbar-height);
+  }
+
   .field {
     @apply relative grid items-center;
   }
@@ -86,7 +94,7 @@
   }
 
   .btn-primary {
-    @apply text-dark outline outline-transparent dark:text-light;
+    @apply text-dark dark:text-light outline outline-transparent;
 
     &[disabled] {
       @apply text-dark/50 dark:text-light/50;
@@ -153,76 +161,67 @@
     @apply px-12 py-4 text-lg;
   }
 
-  .pin {
-    min-height: 100dvh;
-    width: 100%;
-    max-width: 100dvw;
-    overflow-x: hidden;
-    position: relative;
-  }
-
-  .pin-wrap-sticky {
-  }
-
-  .pin-wrap {
-    height: 100dvh;
-    display: grid;
-    align-items: stretch;
-    /* grid-template-columns: repeat(4, auto); */
-    justify-items: center;
-  }
-
-  @supports not (animation-timeline: view()) {
-    .pin-wrap-sticky {
-      overflow-x: auto;
+  .page {
+    & [data-color="black"] {
+      @apply text-black;
     }
-  }
 
-  @supports (animation-timeline: view()) {
-    @keyframes move {
-      to {
-        /* Move horizontally so that right edge is aligned against the viewport */
-        transform: translateX(calc(-100% + 100dvw));
-        left: 0px;
+    & [data-color="white"] {
+      @apply text-white;
+    }
+
+    & [data-color="hotGreen"] {
+      @apply text-hotGreen;
+    }
+
+    & [data-color="hotOrange"] {
+      @apply text-hotOrange;
+    }
+
+    & [data-color="hotPink"] {
+      @apply text-hotPink;
+    }
+
+    & [data-color="slate-200"] {
+      @apply text-slate-200;
+    }
+
+    & [data-color="slate-400"] {
+      @apply text-slate-400;
+    }
+
+    & [data-color="slate-600"] {
+      @apply text-slate-600;
+    }
+
+    & [data-color="slate-800"] {
+      @apply text-slate-800;
+    }
+
+    & .section {
+      @apply bg-cover grid min-h-[100dvh] pb-16;
+
+      &:first-child {
+        @apply min-h-fullMinusNavbar;
+      }
+
+      &[data-layout="single-module-full-bleed"] {
+        @apply place-content-center;
       }
     }
 
-    .pin {
-      /* Stretch it out, so that we create room for the horizontal scroll animation */
-      height: 400dvh;
-      overflow: visible; /* To make position sticky work … */
+    & .module {
+      &[data-layout="hero-title-sub-title-and-text"] {
+        @apply grid place-content-center gap-8 m-8 max-w-3xl;
 
-      view-timeline-name: --section-pin-tl;
-      view-timeline-axis: block;
-    }
-
-    .pin-wrap-sticky {
-      /* Stick to Top */
-      height: 100dvh;
-      width: 100dvw;
-      overflow-x: hidden;
-      position: sticky;
-      top: 0;
-
-      width: 100dvw;
-      overflow-x: hidden;
-    }
-
-    .pin-wrap {
-      height: 100dvh;
-      width: 250vmax;
-
-      /* Hook animation */
-      will-change: transform;
-      animation: linear move forwards;
-
-      /* Link animation to view-timeline */
-      animation-timeline: --section-pin-tl;
-      animation-range: contain 0% contain 100%;
+        & h2 {
+          @apply text-7xl;
+        }
+      }
     }
   }
 
-  .policy-page {
+  .policy {
     &:has(img) {
       & article {
         @apply relative;
@@ -274,17 +273,21 @@
   }
 
   .loading {
-    @apply relative !outline-stateFocus [&_>_*]:text-dark;
+    @apply !outline-stateFocus [&_>_*]:text-dark relative;
 
     span {
       @apply relative z-10;
     }
 
     &::before {
-      @apply absolute inset-0 z-0 animate-pulse bg-gradient-to-r from-stateFocus/5 via-stateFocus/10 to-stateFocus/5;
+      @apply from-stateFocus/5 via-stateFocus/10 to-stateFocus/5 absolute inset-0 z-0 animate-pulse bg-gradient-to-r;
       content: "";
       background-size: 500%;
     }
+  }
+
+  .min-h-fullMinusNavbar {
+    @apply min-h-[calc(100dvh-var(--Navbar-height))];
   }
 
   @keyframes move {
