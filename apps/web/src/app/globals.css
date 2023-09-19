@@ -203,7 +203,7 @@
     }
 
     & .section {
-      @apply grid min-h-[100dvh] bg-cover pb-16;
+      @apply grid md:min-h-[100dvh] bg-cover bg-center grid-cols-12 md:py-32;
 
       &.has-background {
         @apply bg-black;
@@ -214,14 +214,16 @@
       }
 
       &:first-child {
-        @apply min-h-fullMinusNavbar;
+        @apply md:min-h-fullMinusNavbar;
       }
 
       &[data-layout="single-module-vertically-centred-horizontally-centred-full-bleed"] {
-        @apply place-items-center;
-
         & .module {
-          @apply content-center grid p-8;
+          @apply md:col-span-6 md:col-start-4;
+
+          &[data-layout="single-column-align-center-justify-center-wide"] {
+            @apply md:col-span-8 md:col-start-3;
+          }
 
           & h2 {
             order: 1;
@@ -239,10 +241,10 @@
       }
 
       &[data-layout="single-module-vertically-centred-horizontally-2-12-full-bleed"] {
-        @apply grid-cols-12 place-items-center gap-4 py-32;
+        @apply place-items-center gap-4;
 
         & .module {
-          @apply col-span-6 col-start-2 content-center grid;
+          @apply col-span-12 md:col-span-6 md:col-start-2 content-center grid;
 
           & figure {
             @apply aspect-3/2 justify-self-stretch;
@@ -252,17 +254,17 @@
 
       &[data-layout="two-modules-horizontal-flow-vertically-centred-full-bleed"] {
         /* @apply place-items-center gap-48 mx-8 grid-flow-col grid-cols-2; */
-        @apply grid-cols-12 place-content-center gap-4 py-32;
+        /* @apply place-content-center gap-4 py-32; */
 
         & .module {
           @apply grid;
 
           &:nth-child(1) {
-            @apply col-span-6 col-start-2 content-start;
+            @apply md:col-span-6 md:col-start-2;
           }
 
           &:nth-child(2) {
-            @apply col-span-4 col-start-8;
+            @apply md:col-span-4 md:col-start-8;
 
             & figure {
               @apply aspect-3/4 justify-self-stretch;
@@ -273,36 +275,26 @@
     }
 
     & .module {
-      &[data-layout="single-column-align-center-justify-center-wide"] {
-        @apply gap-8 grid m-8 justify-items-center w-full max-w-7xl text-center;
+      @apply col-span-12 content-center items-center gap-8 grid p-8 md:p-12;
 
-        & h2 {
-          @apply text-7xl;
-        }
+      &[data-layout="single-column-align-center-justify-center-wide"] {
+        @apply justify-items-center text-center;
       }
 
       &[data-layout="single-column-align-start-justify-start"] {
-        @apply gap-8 grid m-8 justify-items-start max-w-3xl text-left;
-
-        & h2 {
-          @apply text-7xl;
-        }
+        @apply justify-items-start text-left;
       }
 
       &[data-layout="single-column-align-start-justify-center"] {
-        @apply gap-8 grid m-8 justify-items-center max-w-3xl text-center;
-
-        & h2 {
-          @apply text-7xl;
-        }
+        @apply justify-items-center text-center;
       }
 
       &[data-layout="single-column-align-start-justify-end"] {
-        @apply gap-8 grid m-8 justify-items-end max-w-3xl text-right;
+        @apply justify-items-end text-right;
+      }
 
-        & h2 {
-          @apply text-7xl;
-        }
+      & h2 {
+        @apply text-4xl md:text-7xl max-w-[20ch];
       }
     }
   }
