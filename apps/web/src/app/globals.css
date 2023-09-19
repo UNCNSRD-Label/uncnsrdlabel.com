@@ -373,6 +373,10 @@
     @apply min-h-[calc(100dvh-var(--Navbar-height))];
   }
 
+  .h-fullMinusNavbar {
+    @apply h-[calc(100dvh-var(--Navbar-height))];
+  }
+
   @keyframes move {
     100% {
       transform: translateX(calc(-100% + 100dvw));
