@@ -299,7 +299,7 @@
       }
 
       & h2 {
-        @apply max-w-[20ch] text-4xl md:text-7xl;
+        @apply max-w-[20ch] text-4xl md:text-6xl;
       }
     }
   }
