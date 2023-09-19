@@ -58,9 +58,9 @@ export default async function Policy({
 
   return (
     <>
-      <nav className="min-h-fullMinusNavbar relative grid content-start justify-center gap-8">
+      <nav className="md:min-h-fullMinusNavbar relative hidden md:grid content-start md:justify-center">
         {customerCareMenu.items.length ? (
-          <dl className="sticky top-64 mb-64 grid content-start gap-4">
+          <dl className="md:sticky md:top-64 md:mb-64 grid content-start gap-4">
             <dt className="text-sm uppercase">Customer Care</dt>
             {customerCareMenu.items.map((item, index) => (
               <dd key={item.title || index}>
