@@ -14,7 +14,7 @@ export default function SearchLayout({
         <NavbarContent />
       </Navbar>
       <Suspense>
-        <div className="page mb-48 min-h-fullMinusNavbar">{children}</div>
+        <main className="page mb-48 min-h-fullMinusNavbar">{children}</main>
       </Suspense>
       <Logo />
     </>
