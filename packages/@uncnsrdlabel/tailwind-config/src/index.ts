@@ -4,6 +4,7 @@ import { type Config } from "tailwindcss";
 import colors from "tailwindcss/colors";
 import plugin from "tailwindcss/plugin";
 
+/** @type {import('tailwindcss').Config} */
 export const config: Config = {
   content: [],
   darkMode: "class",
@@ -98,6 +99,32 @@ export const config: Config = {
           "100%": { transform: "translateX(-100%)" },
         },
       },
+      typography: ({ theme }: { theme: (path: string, defaultValue?: unknown) => any }) => ({
+        hotGreen: {
+          css: {
+            '--tw-prose-body': theme('colors.hotGreen'),
+            '--tw-prose-headings': theme('colors.hotGreen'),
+          },
+        },
+        hotOrange: {
+          css: {
+            '--tw-prose-body': theme('colors.hotOrange'),
+            '--tw-prose-headings': theme('colors.hotOrange'),
+          },
+        },
+        hotPink: {
+          css: {
+            '--tw-prose-body': theme('colors.hotPink'),
+            '--tw-prose-headings': theme('colors.hotPink'),
+          },
+        },
+        white: {
+          css: {
+            '--tw-prose-body': theme('colors.white'),
+            '--tw-prose-headings': theme('colors.white'),
+          },
+        },
+      }),
     },
   },
   future: {

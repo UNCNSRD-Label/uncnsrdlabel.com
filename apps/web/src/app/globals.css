@@ -40,6 +40,10 @@
     @apply hover:stroke-stateHover hover:text-stateHover focus-visible:stroke-stateFocus focus-visible:text-stateFocus transition-colors;
   }
 
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+  }
+
   input {
     --tw-ring-color: theme(ringColor.stateFocus) !important;
 
@@ -199,20 +203,102 @@
     }
 
     & .section {
-      @apply bg-cover grid min-h-[100dvh] pb-16;
+      @apply grid min-h-[100dvh] bg-cover pb-16;
+
+      &.has-background {
+        @apply bg-black;
+
+        & .module {
+          @apply bg-black/50 backdrop-blur;
+        }
+      }
 
       &:first-child {
         @apply min-h-fullMinusNavbar;
       }
 
-      &[data-layout="single-module-full-bleed"] {
-        @apply place-content-center;
+      &[data-layout="single-module-vertically-centred-horizontally-centred-full-bleed"] {
+        @apply place-items-center;
+
+        & .module {
+          @apply content-center grid p-8;
+
+          & h2 {
+            order: 1;
+          }
+
+          & .prose {
+            order: 2;
+          }
+
+          & figure {
+            @apply aspect-3/2 justify-self-stretch;
+            order: 3;
+          }
+        }
+      }
+
+      &[data-layout="single-module-vertically-centred-horizontally-2-12-full-bleed"] {
+        @apply grid-cols-12 place-items-center gap-4 py-32;
+
+        & .module {
+          @apply col-span-6 col-start-2 content-center grid;
+
+          & figure {
+            @apply aspect-3/2 justify-self-stretch;
+          }
+        }
+      }
+
+      &[data-layout="two-modules-horizontal-flow-vertically-centred-full-bleed"] {
+        /* @apply place-items-center gap-48 mx-8 grid-flow-col grid-cols-2; */
+        @apply grid-cols-12 place-content-center gap-4 py-32;
+
+        & .module {
+          @apply grid;
+
+          &:nth-child(1) {
+            @apply col-span-6 col-start-2 content-start;
+          }
+
+          &:nth-child(2) {
+            @apply col-span-4 col-start-8;
+
+            & figure {
+              @apply aspect-3/4 justify-self-stretch;
+            }
+          }
+        }
       }
     }
 
     & .module {
-      &[data-layout="hero-title-sub-title-and-text"] {
-        @apply grid place-content-center gap-8 m-8 max-w-3xl;
+      &[data-layout="single-column-align-center-justify-center-wide"] {
+        @apply gap-8 grid m-8 justify-items-center w-full max-w-7xl text-center;
+
+        & h2 {
+          @apply text-7xl;
+        }
+      }
+
+      &[data-layout="single-column-align-start-justify-start"] {
+        @apply gap-8 grid m-8 justify-items-start max-w-3xl text-left;
+
+        & h2 {
+          @apply text-7xl;
+        }
+      }
+
+      &[data-layout="single-column-align-start-justify-center"] {
+        @apply gap-8 grid m-8 justify-items-center max-w-3xl text-center;
+
+        & h2 {
+          @apply text-7xl;
+        }
+      }
+
+      &[data-layout="single-column-align-start-justify-end"] {
+        @apply gap-8 grid m-8 justify-items-end max-w-3xl text-right;
 
         & h2 {
           @apply text-7xl;

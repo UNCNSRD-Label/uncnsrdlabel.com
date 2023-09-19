@@ -118,6 +118,7 @@ export async function CartForm({
               );
             })}
           </ul>
+          
           <div className="py-4 text-sm text-neutral-500 dark:text-neutral-400">
             {cart.cost.totalTaxAmount && <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 dark:border-neutral-700">
               <p className="uppercase">Taxes</p>

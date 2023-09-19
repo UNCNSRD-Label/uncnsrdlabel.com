@@ -1,10 +1,12 @@
 import { server } from "@/clients/shopify";
+import { Image } from "@/components/media/image";
 import { Prose } from "@/components/prose";
 import {
   getFragmentData,
   imageFragment,
   pageFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { cn } from "@uncnsrdlabel/lib";
 
 export type ArticleProps = {
   variables: { handle: string };
@@ -18,7 +20,7 @@ export async function Article(props: ArticleProps) {
   const page = getFragmentData(pageFragment, pageFragmentRef);
 
   return (
-    <article className="grid gap-0.5 snap-start snap-y">
+    <article className="grid snap-y snap-start gap-0.5">
       {/* <h1 className="mb-8 text-5xl uppercase">{page.title}</h1> */}
       {/* <Prose className="mb-8" html={page.body} /> */}
       {page.sections?.references?.nodes?.map((section) => {
@@ -37,18 +39,25 @@ export async function Article(props: ArticleProps) {
             (field) => field.key === "modules",
           )?.references?.nodes;
 
-          const backgroundMedia = section.fields?.find((field) => field.key === "background_media")?.reference;
+          const backgroundMedia = section.fields?.find(
+            (field) => field.key === "background_media",
+          )?.reference;
 
           let backgroundImage = null;
 
           if (backgroundMedia?.__typename === "MediaImage") {
-            backgroundImage = getFragmentData(imageFragment, backgroundMedia?.image);
-            backgroundImage?.url
+            backgroundImage = getFragmentData(
+              imageFragment,
+              backgroundMedia?.image,
+            );
+            backgroundImage?.url;
           }
 
           return (
             <section
-              className="section"
+              className={cn("section", {
+                "has-background": !!backgroundImage?.url,
+              })}
               data-active={
                 section.fields?.find((field) => field.key === "active")?.value
               }
@@ -70,9 +79,9 @@ export async function Article(props: ArticleProps) {
                   const moduleLayoutReference = module.fields?.find(
                     (field) => field.key === "layout",
                   )?.reference;
-        
+
                   let moduleLayout = "default";
-        
+
                   if (moduleLayoutReference?.__typename === "Metaobject") {
                     moduleLayout = moduleLayoutReference?.handle;
                   }
@@ -80,8 +89,7 @@ export async function Article(props: ArticleProps) {
                   return (
                     <section
                       className="module"
-                      data-handle={module.handle} 
-                      
+                      data-handle={module.handle}
                       data-id={module.id}
                       data-layout={moduleLayout}
                       data-updated-at={module.updatedAt}
@@ -93,29 +101,86 @@ export async function Article(props: ArticleProps) {
                         if (field.value) {
                           switch (field.key) {
                             case "heading_1":
-                              const heading1Color = module.fields?.find(
-                                (field) => field.key === "heading_1_color",
-                              )?.value ?? "default";
+                              const heading1Color =
+                                module.fields?.find(
+                                  (field) => field.key === "heading_1_color",
+                                )?.value ?? "default";
 
-                              element = <h2 data-color={heading1Color}>{field.value}</h2>;
+                              element = (
+                                <h2 data-color={heading1Color}>
+                                  {field.value}
+                                </h2>
+                              );
                               break;
                             case "heading_2":
-                              const heading2Color = module.fields?.find(
-                                (field) => field.key === "heading_2_color",
-                              )?.value ?? "default";
+                              const heading2Color =
+                                module.fields?.find(
+                                  (field) => field.key === "heading_2_color",
+                                )?.value ?? "default";
 
-                              element = <h3 data-color={heading2Color}>{field.value}</h3>;
+                              element = (
+                                <h3 data-color={heading2Color}>
+                                  {field.value}
+                                </h3>
+                              );
                               break;
-                            case "text":                                        
-                              const textColor = module.fields?.find(
-                                (field) => field.key === "text_color",
-                              )?.value ?? "default";
+                            case "media":
+                              const media = field?.references?.edges.map(
+                                (edge) => edge?.node,
+                              );
 
-                              element = <Prose className="prose-pink" html={field.value} />;
+                              element = (
+                                <>
+                                  {media?.map((medium) => {
+                                    let image = null;
+
+                                    if (medium?.__typename === "MediaImage") {
+                                      image = getFragmentData(
+                                        imageFragment,
+                                        medium?.image,
+                                      );
+
+                                      if (image?.url) {
+                                        return (
+                                          <figure className="relative">
+                                            <Image
+                                              alt={image?.altText || page.title}
+                                              className="h-full object-cover"
+                                              fill
+                                              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                                              src={image?.url}
+                                            />
+                                          </figure>
+                                        );
+                                      }
+                                    }
+
+                                    return null;
+                                  })}
+                                </>
+                              );
+                              break;
+                            case "text":
+                              const textColor =
+                                module.fields?.find(
+                                  (field) => field.key === "text_color",
+                                )?.value ?? "default";
+
+                              element = (
+                                <Prose
+                                  className={cn({
+                                    "prose-hotGreen": textColor === "hotGreen",
+                                    "prose-hotOrange":
+                                      textColor === "hotOrange",
+                                    "prose-hotPink": textColor === "hotPink",
+                                    "prose-white": textColor === "white",
+                                  })}
+                                  html={field.value}
+                                />
+                              );
                               break;
                           }
                         }
-
                         return element;
                       })}
                     </section>
