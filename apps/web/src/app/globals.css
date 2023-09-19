@@ -40,7 +40,12 @@
     @apply hover:stroke-stateHover hover:text-stateHover focus-visible:stroke-stateFocus focus-visible:text-stateFocus transition-colors;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     text-wrap: balance;
   }
 
@@ -203,7 +208,7 @@
     }
 
     & .section {
-      @apply grid md:min-h-[100dvh] bg-cover bg-center grid-cols-12 md:py-32;
+      @apply grid grid-cols-12 bg-cover bg-center md:min-h-[100dvh] md:py-32;
 
       &.has-background {
         @apply bg-black;
@@ -244,7 +249,7 @@
         @apply place-items-center gap-4;
 
         & .module {
-          @apply col-span-12 md:col-span-6 md:col-start-2 content-center grid;
+          @apply col-span-12 grid content-center md:col-span-6 md:col-start-2;
 
           & figure {
             @apply aspect-3/2 justify-self-stretch;
@@ -275,7 +280,7 @@
     }
 
     & .module {
-      @apply col-span-12 content-center items-center gap-8 grid p-8 md:p-12;
+      @apply col-span-12 grid content-center items-center gap-8 p-8 md:p-12;
 
       &[data-layout="single-column-align-center-justify-center-wide"] {
         @apply justify-items-center text-center;
@@ -294,7 +299,7 @@
       }
 
       & h2 {
-        @apply text-4xl md:text-7xl max-w-[20ch];
+        @apply max-w-[20ch] text-4xl md:text-7xl;
       }
     }
   }
