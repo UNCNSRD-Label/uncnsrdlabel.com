@@ -19,14 +19,14 @@ export function Logo({ blend, className, fill }: Props) {
   return (
     <div
       className={cn(
-        "pointer-events-none relative inset-0 z-50",
+        "grid pointer-events-none relative inset-0 z-50",
         blend && "mix-blend-difference",
       )}
       ref={rootRef}
     >
       <Link
         className={cn(
-          "bottom-12 grid w-full justify-items-center pointer-events-auto sm:bottom-20",
+          "bottom-12 grid justify-items-center pointer-events-auto sm:bottom-20 justify-self-center",
           className,
         )}
         href="/"
