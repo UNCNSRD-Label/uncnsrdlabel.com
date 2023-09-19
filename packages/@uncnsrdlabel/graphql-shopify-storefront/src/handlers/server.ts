@@ -22,6 +22,7 @@ import {
   GetCollectionProductsQueryVariables,
   GetCollectionQueryVariables,
   GetCollectionsQueryVariables,
+  GetCustomerCareQueryVariables,
   GetMenuQueryVariables,
   GetPageQueryVariables,
   GetPagesQueryVariables,
@@ -37,6 +38,7 @@ import {
 } from "../fragments/index";
 import {
   getCartQuery,
+  getCustomerCareQuery,
   getMenuQuery,
   getPageQuery,
   getPagesQuery,
@@ -266,6 +268,24 @@ export class Server {
     ];
 
     return collections;
+  }
+
+  async getCustomerCare(variables: GetCustomerCareQueryVariables) {
+    const { metaobject } = await getShopifyGraphQL(getCustomerCareQuery, {
+      ...this.inContextVariables,
+      ...variables,
+    });
+
+    if (!metaobject) {
+      throw {
+        status: 404,
+        message: `Metaobject not found for handle \`${variables.handle}\``,
+      };
+    }
+
+    console.log({ metaobject });
+
+    return metaobject;
   }
 
   async getMenu(variables: GetMenuQueryVariables) {

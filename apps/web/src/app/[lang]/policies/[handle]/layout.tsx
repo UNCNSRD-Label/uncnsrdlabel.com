@@ -14,7 +14,7 @@ export default function SearchLayout({
         <NavbarContent />
       </Navbar>
       <Suspense>
-        <div className="policy min-h-[100dvh]">{children}</div>
+        <div className="policy max-w-[100dvw] min-h-fullMinusNavbar gap-16 grid md:grid-cols-[2fr_3fr]">{children}</div>
       </Suspense>
       <Logo />
     </>
