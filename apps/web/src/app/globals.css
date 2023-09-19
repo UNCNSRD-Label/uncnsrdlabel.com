@@ -211,10 +211,10 @@
       @apply grid grid-cols-12 bg-cover bg-center md:min-h-[100dvh] md:py-32;
 
       &.has-background {
-        @apply bg-black;
+        @apply bg-black md:min-h-[max(100dvh,_66.66dvw)];
 
         & .module {
-          @apply bg-black/50 backdrop-blur;
+          @apply backdrop-blur bg-black/50 self-center;
         }
       }
 
