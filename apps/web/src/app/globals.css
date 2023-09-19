@@ -283,19 +283,19 @@
       @apply col-span-12 grid content-center items-center gap-8 p-8 md:p-12;
 
       &[data-layout="single-column-align-center-justify-center-wide"] {
-        @apply justify-items-center text-center;
+        @apply md:justify-items-center md:text-center;
       }
 
       &[data-layout="single-column-align-start-justify-start"] {
-        @apply justify-items-start text-left;
+        @apply md:justify-items-start md:text-left;
       }
 
       &[data-layout="single-column-align-start-justify-center"] {
-        @apply justify-items-center text-center;
+        @apply md:justify-items-center md:text-center;
       }
 
       &[data-layout="single-column-align-start-justify-end"] {
-        @apply justify-items-end text-right;
+        @apply md:justify-items-end md:text-right;
       }
 
       & h2 {
