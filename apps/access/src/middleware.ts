@@ -27,28 +27,12 @@ export const config = {
 export function middleware(request: NextRequest) {
   const url = request.nextUrl;
 
-  const accessCodeActual = process.env.NEXT_PUBLIC_PREVIEW_ACCESS_CODE!;
-
-  const accessCodeReceived = url.searchParams.get("code");
-
-  const match = accessCodeReceived === accessCodeActual;
-
   const previewCookie = request.cookies.get("preview")?.value;
 
-  if (match === true) {
-    url.searchParams.delete("code");
-
-    const response = NextResponse.redirect(url);
-
-    response.cookies.set("preview", "true");
-
-    return response;
-  } else {
-    if (previewCookie !== "true") {
-      return NextResponse.redirect(`${process.env.NEXT_PUBLIC_PROTOCOL}://${process.env.NEXT_PUBLIC_SITE_DOMAIN_ACCESS}`);
-    }
+  if (previewCookie === "true") {
+    return NextResponse.redirect(`${process.env.NEXT_PUBLIC_PROTOCOL}://${process.env.NEXT_PUBLIC_SITE_DOMAIN_WEB}`);
   }
-
+  
   const detectedLanguage =
     request.headers
       .get("accept-language")
@@ -59,7 +43,7 @@ export function middleware(request: NextRequest) {
   const detectedCountry =
     request.geo?.country ?? defaultLocale.split("-")?.[1] ?? "AU";
 
-  const headers: Negotiator.Headers = {
+  const headers = {
     "accept-language": `${detectedLanguage}-${detectedCountry},en;q=0.5`,
   };
 

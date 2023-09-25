@@ -1,13 +1,4 @@
-import { HandleRouteChange } from "@/components/analytics/handle-route-change";
-import { Banner } from "@/components/layout/banner";
-import { Footer } from "@/components/layout/footer/index";
-import { Progress } from "@/components/layout/progress/index";
-import { Organization } from "@/components/schema.org/organization";
-import { getDictionary } from "@/lib/dictionary";
-import { getIntl } from "@/lib/i18n/server";
-import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";
-import { type LayoutProps } from "@/types/next";
 import {
   SITE_DOMAIN_WEB,
   cn,
@@ -15,11 +6,14 @@ import {
   getLocaleObjectFromIETFLanguageTag,
   locales,
 } from "@uncnsrdlabel/lib";
-import { AppProviders } from "@uncnsrdlabel/providers";
+import { AppAnalyticsProvider } from "@uncnsrdlabel/providers";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import localFont from "next/font/local";
 import { PropsWithChildren, Suspense } from "react";
+import { HandleRouteChange } from "../../../../web/src/components/analytics/handle-route-change";
+import { Organization } from "../../../../web/src/components/schema.org/organization";
+import { type LayoutProps } from "../../../../web/src/types/next";
 import "../globals.css";
 
 const {
@@ -43,8 +37,6 @@ const languagesArray = locales.map((locale) => [
 export async function generateMetadata({
   params: { lang },
 }: LayoutProps): Promise<Metadata> {
-  const intlMetadata = await getIntl(lang, "global.metadata");
-  const intlKeywords = await getIntl(lang, "global.metadata.keywords");
 
   return {
     alternates: {
@@ -67,7 +59,7 @@ export async function generateMetadata({
         },
       ],
     },
-    description: intlMetadata.formatMessage({ id: "description" }),
+    description: "Discover UNCNSRD, a brand for the unapologetic rebellious soul. Explore our latest swimwear collection drawing inspiration from timeless cuts & nostalgic eras.",
     formatDetection: {
       telephone: false,
       date: false,
@@ -75,15 +67,6 @@ export async function generateMetadata({
       email: false,
       url: false,
     },
-    keywords: [
-      intlKeywords.formatMessage({ id: "bikini" }),
-      intlKeywords.formatMessage({ id: "swimsuit" }),
-      intlKeywords.formatMessage({ id: "swimwear" }),
-      intlKeywords.formatMessage({ id: "beachwear" }),
-      intlKeywords.formatMessage({ id: "sarong" }),
-      intlKeywords.formatMessage({ id: "scarf" }),
-      intlKeywords.formatMessage({ id: "boots" }),
-    ],
     metadataBase: new URL(
       `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}`,
     ),
@@ -112,14 +95,14 @@ export async function generateMetadata({
 }
 
 const bomberEscort = localFont({
-  src: "../fonts/bomber-escort/bomberescort.ttf",
+  src: "../../../../web/src/app/fonts/bomber-escort/bomberescort.ttf",
   display: "swap",
   variable: "--font-bomber-escort",
   weight: "400",
 });
 
 const bomberEscortOutline = localFont({
-  src: "../fonts/bomber-escort/bomberescortout.ttf",
+  src: "../../../../web/src/app/fonts/bomber-escort/bomberescortout.ttf",
   display: "swap",
   variable: "--font-bomber-escort-outline",
   weight: "400",
@@ -140,18 +123,11 @@ export async function generateStaticParams() {
   });
 }
 
-export default async function Layout({
+export default async function RootLayout({
   children,
   params: { lang },
 }: PropsWithChildren<LayoutProps>) {
   const locale = getLocaleObjectFromIETFLanguageTag(lang);
-
-  state$.lang.set(lang);
-  state$.locale.set(locale);
-
-  const showBanner = false;
-
-  const messages = await getDictionary(locale, "page.home");
 
   return (
     <html
@@ -159,11 +135,9 @@ export default async function Layout({
         bomberEscort.variable,
         bomberEscortOutline.variable,
         montserrat.variable,
-        // "[color-scheme:dark]",
-        // "snap-y",
-        // "dark"
+        "snap-y",
       )}
-      lang={lang}
+      lang="en"
     >
       <body
         className={cn(
@@ -171,22 +145,15 @@ export default async function Layout({
           "selection:bg-hotPink",
           themeColors,
         )}
+        style={{
+          textRendering: "optimizeLegibility",
+        }}
       >
-        <AppProviders
-          locale={getIETFLanguageTagFromlocaleTag(locale)}
-          messages={messages}
-        >
-          <Progress />
-          <Banner
-            className={cn("sticky top-0 w-full", !showBanner && "hidden")}
-          />
-          <Suspense>
-            {children}
-            <Footer />
-          </Suspense>
+        <AppAnalyticsProvider>
+          <Suspense>{children}</Suspense>
           <Organization />
           <HandleRouteChange />
-        </AppProviders>
+        </AppAnalyticsProvider>
       </body>
     </html>
   );

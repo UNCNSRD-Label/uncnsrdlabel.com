@@ -1,12 +1,17 @@
 {
   "dependencies": {
     "@ducanh2912/next-pwa": "^9.5.0",
+    "@formatjs/intl": "^2.9.2",
+    "@formatjs/intl-localematcher": "^0.4.2",
     "@next/bundle-analyzer": "^13.4.19",
     "@radix-ui/react-accessible-icon": "^1.0.3",
     "@react-hookz/web": "^23.1.0",
     "@tailwindcss/forms": "^0.5.6",
     "@uncnsrdlabel/lib": "workspace:*",
+    "@uncnsrdlabel/providers": "workspace:*",
+    "@uncnsrdlabel/tailwind-config": "workspace:*",
     "cross-env": "^7.0.3",
+    "negotiator": "^0.6.3",
     "next": "13.4.19",
     "next-compose-plugins": "^2.2.1",
     "react": "experimental",

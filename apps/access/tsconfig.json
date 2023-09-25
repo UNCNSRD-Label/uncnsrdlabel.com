@@ -12,7 +12,9 @@
     "moduleResolution": "node",
     "noEmit": true,
     "paths": {
-      "@/*": ["./*"]
+      "@/*": [
+        "./src/*"
+      ]
     },
     "plugins": [
       {

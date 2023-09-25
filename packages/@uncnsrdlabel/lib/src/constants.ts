@@ -14,7 +14,7 @@ export const SITE_DOMAIN_WEB =
   process.env.NEXT_PUBLIC_VERCEL_URL ||
   "localhost:3000";
 
-export const SITE_URL = `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}`;
+export const SITE_URL_WEB = `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}`;
 
 export const COOKIE_CONSENT = "consent";
 

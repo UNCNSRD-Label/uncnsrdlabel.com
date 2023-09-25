@@ -40,7 +40,7 @@
         "NEXT_PUBLIC_VERCEL_URL",
         "NODE_ENV",
         "SITE_NAME",
-        "SITE_URL",
+        "SITE_URL_WEB",
         "SUPABASE_SERVICE_ROLE_KEY"
       ],
       "outputs": ["dist/**"]
