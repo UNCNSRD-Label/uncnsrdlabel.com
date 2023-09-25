@@ -1,4 +1,5 @@
-import tailwindConfig from "@/tailwind.config.js";
+import { cn } from "@uncnsrdlabel/lib";
+import tailwindConfig from "@uncnsrdlabel/tailwind-config";
 import resolveConfig from "tailwindcss/resolveConfig";
 
 /** @type {import('tailwindcss').Config} */
@@ -15,3 +16,7 @@ export const minWidthLg =
 
 export const minWidthXl =
   (!Array.isArray(config.theme?.screens) && config.theme?.screens?.xl) ?? "0px";
+
+export const themeColors = cn(
+  "bg-gray-950 fill-hotPink stroke-hotPink text-hotPink",
+);

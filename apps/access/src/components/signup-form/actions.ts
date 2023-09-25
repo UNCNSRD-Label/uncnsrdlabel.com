@@ -52,9 +52,11 @@ export async function signUp(formData: FormData) {
     if (response.status >= 300) {
       const json = await response.json();
 
-      if (json.errors) {
+      // @ts-ignore
+      if (json?.errors) {
         console.error(`${response.status}, ${response.statusText}`);
-        console.error(json.errors);
+        // @ts-ignore
+        console.error(json?.errors);
       }
 
       cookies().set("statusText", response.statusText);
