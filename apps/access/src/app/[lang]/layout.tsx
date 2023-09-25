@@ -115,14 +115,6 @@ const montserrat = Montserrat({
   weight: "300",
 });
 
-export async function generateStaticParams() {
-  return locales.map((locale) => {
-    const lang = getIETFLanguageTagFromlocaleTag(locale);
-
-    return { lang };
-  });
-}
-
 export default async function RootLayout({
   children,
   params: { lang },
