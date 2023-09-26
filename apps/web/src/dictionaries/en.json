@@ -23,7 +23,7 @@
       "shop_now": "Shop now"
     },
     "products": {
-      "add_to_cart": "Add to cart",
+      "add_to_cart": "Add to bag",
       "add_to_wishlist": "Add to wishlist",
       "all_collections": "All collections",
       "all_products": "All products",
@@ -34,7 +34,7 @@
       "featured": "Featured",
       "more": "More",
       "new": "New",
-      "out_of_stock": "Stock rupture",
+      "out_of_stock": "Out of stock",
       "product_image_loading": "Product image loading",
       "quick_view": "Quick view",
       "sale": "Sale",
@@ -47,6 +47,13 @@
     }
   },
   "component": {
+    "AddToCart": {
+      "add_item_to_cart_disabled": "Unable to add item to bag",
+      "add_item_to_cart_enabled": "Add item to bag",
+      "add_to_cart": "Add to bag",
+      "out_of_stock": "Out of stock",
+      "select_options": "Please select options"
+    },
     "Banner": {
       "link": "Free shipping on eligible orders"
     },
