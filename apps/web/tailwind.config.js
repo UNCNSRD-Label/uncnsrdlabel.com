@@ -1,4 +1,4 @@
-import sharedConfig from "@uncnsrdlabel/tailwind-config";
+import componentConfig from "@uncnsrdlabel/components/tailwind.config";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -6,6 +6,6 @@ export default {
     "../../packages/*/dist/**/*.{js,ts,jsx,tsx}",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  presets: [sharedConfig],
+  presets: [componentConfig],
 }
 

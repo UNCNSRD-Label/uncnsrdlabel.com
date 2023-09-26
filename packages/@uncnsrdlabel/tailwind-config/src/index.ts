@@ -7,7 +7,7 @@ import plugin from "tailwindcss/plugin";
 /** @type {import('tailwindcss').Config} */
 export const config: Config = {
   content: [],
-  darkMode: "class",
+  darkMode: ["class"],
   theme: {
     extend: {
       animation: {
