@@ -64,6 +64,7 @@ export const PurchaseOptions = forwardRef<
       ) : null}
 
       <AddToCart
+        options={product.options}
         variants={variants}
         availableForSale={product.availableForSale}
       />
