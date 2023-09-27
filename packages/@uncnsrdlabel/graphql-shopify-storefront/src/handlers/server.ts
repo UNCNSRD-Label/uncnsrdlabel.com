@@ -34,9 +34,7 @@ import {
   GetRouteMetaObjectQueryVariables,
   RemoveFromCartMutationVariables,
 } from "../codegen/graphql";
-import {
-  collectionFragment
-} from "../fragments/index";
+import { collectionFragment } from "../fragments/index";
 import {
   getCartQuery,
   getCustomerCareQuery,
@@ -63,11 +61,15 @@ export class Server {
     this.lang = lang;
   }
 
-  async createCart(variables: CreateCartMutationVariables) {
-    const { cartCreate } = await getShopifyGraphQL(createCartMutation, {
-      ...this.inContextVariables,
-      ...variables,
-    });
+  async createCart(variables?: CreateCartMutationVariables) {
+    const { cartCreate } = await getShopifyGraphQL(
+      createCartMutation,
+      // @ts-expect-error Types of property 'country' are incompatible.
+      {
+        ...this.inContextVariables,
+        ...variables,
+      },
+    );
 
     if (!cartCreate) {
       return null;
