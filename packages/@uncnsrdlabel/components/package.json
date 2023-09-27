@@ -79,6 +79,11 @@
   },
   "exports": {
     "./tailwind.config": "./tailwind.config.js",
+    "./atoms/*": "./dist/atoms/*.js",
+    "./molecules/*": "./dist/molecules/*.js",
+    "./organisms/*": "./dist/organisms/*.js",
+    "./pages/*": "./dist/pages/*.js",
+    "./templates/*": "./dist/templates/*.js",
     "./ui/*": "./dist/ui/*.js"
   },
   "files": [

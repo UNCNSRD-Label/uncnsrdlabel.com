@@ -1,6 +1,11 @@
 {
   "compilerOptions": {
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
   },
   "display": "@uncnsrdlabel/components",
   "extends": "@uncnsrdlabel/tsconfig/react-library.json",

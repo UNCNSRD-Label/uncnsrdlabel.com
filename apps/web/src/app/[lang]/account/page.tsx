@@ -1,16 +1,14 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Authentication",
-  description: "Authentication forms built using the components.",
-}
+  title: "Account",
+  description: "Account forms built using the components.",
+};
 
-export default function AuthenticationPage() {
+export default function AccountPage() {
   return (
     <>
-      <div>
-    Lorem ipsum
-      </div>
+      <div>Lorem ipsum</div>
     </>
-  )
+  );
 }

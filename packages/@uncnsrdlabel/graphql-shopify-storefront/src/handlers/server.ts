@@ -31,6 +31,7 @@ import {
   GetProductRecommendationsQueryVariables,
   GetProductsQueryVariables,
   GetProductsWithVariantsQueryVariables,
+  GetRouteMetaObjectQueryVariables,
   RemoveFromCartMutationVariables,
 } from "../codegen/graphql";
 import {
@@ -47,6 +48,7 @@ import {
   getProductRecommendationsQuery,
   getProductsQuery,
   getProductsWithVariantsQuery,
+  getRouteMetaObjectQuery,
   getShopPoliciesQuery,
 } from "../queries/index";
 import { type PolicyName } from "../types";
@@ -272,6 +274,24 @@ export class Server {
 
   async getCustomerCare(variables: GetCustomerCareQueryVariables) {
     const { metaobject } = await getShopifyGraphQL(getCustomerCareQuery, {
+      ...this.inContextVariables,
+      ...variables,
+    });
+
+    if (!metaobject) {
+      throw {
+        status: 404,
+        message: `Metaobject not found for handle \`${variables.handle}\``,
+      };
+    }
+
+    console.log({ metaobject });
+
+    return metaobject;
+  }
+
+  async getRouteMetaObject(variables: GetRouteMetaObjectQueryVariables) {
+    const { metaobject } = await getShopifyGraphQL(getRouteMetaObjectQuery, {
       ...this.inContextVariables,
       ...variables,
     });

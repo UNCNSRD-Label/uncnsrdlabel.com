@@ -1,5 +1,3 @@
-import type { Metadata } from "next";
-
 import { server } from "@/clients/shopify";
 import { Prose } from "@/components/prose";
 import { type PageProps } from "@/types/next";
@@ -9,6 +7,7 @@ import {
   type PolicyName
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 

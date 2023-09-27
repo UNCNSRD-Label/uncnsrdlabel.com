@@ -43,7 +43,7 @@
     "prettier:check": "prettier --check --ignore-unknown .",
     "prettier:fix": "prettier --write --ignore-unknown .",
     "prettier:list-different": "npx prettier . --list-different",
-    "shadcn:add": "pnpm dlx shadcn-ui@latest add --cwd packages/@uncnsrdlabel/components",
+    "shadcn:add": "pnpm dlx shadcn-ui@latest add --cwd packages/@uncnsrdlabel/components --path atoms",
     "start": "dotenv -e .env.local -- turbo run start",
     "test:e2e": "playwright test",
     "test": "echo \"Error: no test specified\" && exit 0",
