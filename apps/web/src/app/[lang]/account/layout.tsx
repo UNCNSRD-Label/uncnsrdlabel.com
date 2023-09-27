@@ -30,14 +30,14 @@ export default async function AccountLayout({
 
   return (
     <>
-      <Navbar sticky>
+      <Navbar>
         <NavbarContent />
       </Navbar>
       <Suspense>
-        <div className="account min-h-fullMinusNavbar mx-8 grid max-w-[100dvw] gap-16 md:mx-0 md:grid-cols-[2fr_3fr]">
-          <nav className="md:min-h-fullMinusNavbar relative hidden content-start md:grid md:justify-center">
+        <div className="account mx-8 grid min-h-[100dvh] max-w-[100dvw] gap-16 md:mx-0 md:grid-cols-[1fr_1fr]">
+          <nav className="relative hidden place-content-center md:grid md:min-h-[100dvh] md:justify-center">
             {routeMenu.items.length ? (
-              <dl className="grid content-start gap-4 md:sticky md:top-64 md:mb-64">
+              <dl className="relative z-10 grid content-start justify-items-center gap-4 rounded bg-white p-8">
                 <dt className="text-sm uppercase">Account</dt>
                 {routeMenu.items.map((item, index) => (
                   <dd key={item.title || index}>
@@ -61,7 +61,6 @@ export default async function AccountLayout({
             {routeMetaObject.fields.map((field) => {
               if (field.__typename === "MetaobjectField") {
                 if (field.reference?.__typename === "MediaImage") {
-                  console.log(field.reference);
                   const image = getFragmentData(
                     imageFragment,
                     field.reference.image,
@@ -85,7 +84,9 @@ export default async function AccountLayout({
               }
             })}
           </nav>
-          <article className="grid mb-48 place-content-center">{children}</article>
+          <article className="mb-48 grid place-content-center">
+            {children}
+          </article>
         </div>
       </Suspense>
       <Logo />

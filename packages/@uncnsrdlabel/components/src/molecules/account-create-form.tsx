@@ -13,7 +13,7 @@ import {
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 
-export function CreateAccountForm({ className }: React.HTMLAttributes<typeof Card>) {
+export function AccountCreateForm({ className }: React.HTMLAttributes<typeof Card>) {
   return (
     <Card className={className}>
       <CardHeader className="space-y-1">

@@ -1,14 +1,14 @@
 import { Metadata } from "next";
 
-import { CreateAccountForm } from "@uncnsrdlabel/components/molecules/create-account-form";
+import { AccountCreateForm } from "@uncnsrdlabel/components/molecules/account-create-form";
 
 export const metadata: Metadata = {
   title: "Account",
   description: "Account forms built using the components.",
 };
 
-export default function AccountPage() {
+export default function AccountCreatePage() {
   return (
-    <CreateAccountForm className="max-w-lg" />
+    <AccountCreateForm className="max-w-lg" />
   );
 }

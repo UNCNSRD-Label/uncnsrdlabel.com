@@ -285,7 +285,7 @@ export class Server {
       };
     }
 
-    console.log({ metaobject });
+    // console.log({ metaobject });
 
     return metaobject;
   }
@@ -303,7 +303,7 @@ export class Server {
       };
     }
 
-    console.log({ metaobject });
+    // console.log({ metaobject });
 
     return metaobject;
   }

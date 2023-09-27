@@ -159,9 +159,6 @@ export default async function Layout({
         bomberEscort.variable,
         bomberEscortOutline.variable,
         montserrat.variable,
-        // "[color-scheme:dark]",
-        // "snap-y",
-        // "dark"
       )}
       lang={lang}
     >
