@@ -82,7 +82,7 @@ export function AddToCart({
           router.refresh();
         });
       }}
-      className={cn("btn btn-base btn-primary btn-bg relative w-full", {
+      className={cn("btn btn-base btn-primary btn-bg py-4 relative w-full", {
         "cursor-not-allowed opacity-60 hover:opacity-60":
           !availableForSale || !selectedVariantId,
         "cursor-not-allowed": isPending,
