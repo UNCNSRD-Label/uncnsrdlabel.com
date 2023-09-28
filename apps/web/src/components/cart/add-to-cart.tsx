@@ -4,17 +4,22 @@ import { addItem } from "@/components/cart/actions";
 import { LoadingDots } from "@/components/loading-dots";
 import { useGetIntl } from "@/lib/i18n/client";
 import { PlusIcon } from "@heroicons/react/24/outline";
-import { ProductVariant } from "@shopify/hydrogen/storefront-api-types";
+import {
+  ProductOption,
+  ProductVariant,
+} from "@shopify/hydrogen/storefront-api-types";
 import { cn } from "@uncnsrdlabel/lib";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState, useTransition } from "react";
 
 export function AddToCart({
-  variants,
   availableForSale,
+  options,
+  variants,
 }: {
-  variants: Pick<ProductVariant, "id" | "selectedOptions">[];
   availableForSale: boolean;
+  options: ProductOption[];
+  variants: Pick<ProductVariant, "id" | "selectedOptions">[];
 }) {
   const [selectedVariantId, setSelectedVariantId] = useState<
     string | undefined
@@ -25,15 +30,27 @@ export function AddToCart({
   const intl = useGetIntl("component.AddToCart");
 
   useEffect(() => {
-    const variant = variants.find((variant) =>
-      variant.selectedOptions?.every(
-        (option) =>
-          option?.value === searchParams.get(option.name.toLowerCase()),
-      ),
+    const variant = variants.find(
+      (variant) =>
+        variant.selectedOptions?.every((selectedOption) => {
+          const hasNoOptionsOrJustOneOption =
+            options.find((option) => option.name === selectedOption.name)
+              ?.values.length === 1;
+
+          if (hasNoOptionsOrJustOneOption) {
+            return true;
+          }
+
+          const value =
+            selectedOption?.value ===
+            searchParams.get(selectedOption.name.toLowerCase());
+
+          return value;
+        }),
     );
 
     setSelectedVariantId(variant?.id);
-  }, [searchParams, variants, setSelectedVariantId]);
+  }, [options, searchParams, variants, setSelectedVariantId]);
 
   const title = !availableForSale
     ? intl.formatMessage({ id: "out_of_stock" })
@@ -43,7 +60,11 @@ export function AddToCart({
 
   return (
     <button
-      aria-label={availableForSale ? intl.formatMessage({ id: "add_item_to_cart_enabled" }) : intl.formatMessage({ id: "add_item_to_cart_disabled" })}
+      aria-label={
+        availableForSale
+          ? intl.formatMessage({ id: "add_item_to_cart_enabled" })
+          : intl.formatMessage({ id: "add_item_to_cart_disabled" })
+      }
       disabled={isPending || !availableForSale || !selectedVariantId}
       title={title}
       onClick={() => {
@@ -61,7 +82,7 @@ export function AddToCart({
           router.refresh();
         });
       }}
-      className={cn("btn btn-base btn-primary btn-bg relative w-full", {
+      className={cn("btn btn-base btn-primary btn-bg py-4 relative w-full", {
         "cursor-not-allowed opacity-60 hover:opacity-60":
           !availableForSale || !selectedVariantId,
         "cursor-not-allowed": isPending,
@@ -74,7 +95,11 @@ export function AddToCart({
           <LoadingDots className="mb-3 bg-white" />
         )}
       </div>
-      <span>{availableForSale ? intl.formatMessage({ id: "add_to_cart" }) : intl.formatMessage({ id: "out_of_stock" })}</span>
+      <span>
+        {availableForSale
+          ? intl.formatMessage({ id: "add_to_cart" })
+          : intl.formatMessage({ id: "out_of_stock" })}
+      </span>
     </button>
   );
 }

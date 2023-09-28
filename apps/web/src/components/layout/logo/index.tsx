@@ -19,17 +19,17 @@ export function Logo({ blend, className, fill }: Props) {
   return (
     <div
       className={cn(
-        "grid pointer-events-none relative inset-0 z-50",
+        "pointer-events-none relative inset-0 z-50 grid",
         blend && "mix-blend-difference",
       )}
       ref={rootRef}
     >
-      <Link
+      <div
         className={cn(
-          "bottom-12 grid justify-items-center pointer-events-auto sm:bottom-20 justify-self-center",
+          "bottom-12 grid justify-items-center justify-self-center sm:bottom-20 w-full",
           className,
         )}
-        href="/"
+        ref={rootRef}
         style={{
           position:
             (rootIntersection?.intersectionRatio ?? 0) > 0 ||
@@ -38,20 +38,25 @@ export function Logo({ blend, className, fill }: Props) {
               : "fixed",
         }}
       >
-        <AccessibleIcon.Root
-          label={`${process.env.NEXT_PUBLIC_SITE_NAME} logotype`}
+        <Link
+          className={cn("pointer-events-auto", className)}
+          href="/"
         >
-          <LogotypeIcon
-            className={cn(
-              "h-8 fill-inherit drop-shadow transition duration-300 ease-in-out hover:scale-110 sm:h-10",
-              {
-                "fill-white": fill === "light" || blend,
-                "fill-black": fill === "dark",
-              },
-            )}
-          />
-        </AccessibleIcon.Root>
-      </Link>
+          <AccessibleIcon.Root
+            label={`${process.env.NEXT_PUBLIC_SITE_NAME} logotype`}
+          >
+            <LogotypeIcon
+              className={cn(
+                "h-8 fill-inherit drop-shadow transition duration-300 ease-in-out hover:scale-110 sm:h-10",
+                {
+                  "fill-white": fill === "light" || blend,
+                  "fill-black": fill === "dark",
+                },
+              )}
+            />
+          </AccessibleIcon.Root>
+        </Link>
+      </div>
     </div>
   );
 }

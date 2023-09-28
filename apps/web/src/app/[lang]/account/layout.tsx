@@ -73,7 +73,7 @@ export default async function AccountLayout({
                   return (
                     <figure className="absolute inset-0">
                       <Image
-                        alt={field.reference.alt ?? image.altText ?? ""}
+                        alt={field.reference.alt ?? image.altText ?? "Background image"}
                         className="object-cover"
                         fill
                         src={image?.url}

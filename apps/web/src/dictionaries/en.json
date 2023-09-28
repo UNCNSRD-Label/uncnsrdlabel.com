@@ -57,6 +57,9 @@
     "Banner": {
       "link": "Free shipping on eligible orders"
     },
+    "CartForm": {
+      "empty_cart": "Your bag is empty"
+    },
     "ConsentDialog": {
       "description": "UNCNSRD uses cookies that are essential to making this site work and would like to use additional cookies to improve your experience on this site.",
       "trigger": "Edit consent settings",

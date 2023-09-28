@@ -21,6 +21,7 @@ export const Video: FC<VideoProps> = ({
   poster,
   priority,
   title,
+  url,
   ...props
 }) => (
   <figure
@@ -29,7 +30,7 @@ export const Video: FC<VideoProps> = ({
       "relative h-full w-full overflow-hidden",
     )}
   >
-    <Image
+    {poster && <Image
       alt={alt}
       className="absolute h-full object-cover"
       fill
@@ -38,9 +39,8 @@ export const Video: FC<VideoProps> = ({
       sizes="100vw"
       src={poster}
       title={title}
-    />
+    />}
     <ReactPlayer
-      {...props}
       autoPlay={autoPlay}
       className="absolute inset-0 w-full [&>video]:object-cover"
       fallback={fallback}
@@ -52,6 +52,7 @@ export const Video: FC<VideoProps> = ({
       playsinline
       pip
       stopOnUnmount={false}
+      url={url}
       width="100%"
     />
     {props.title && <figcaption>{props.title}</figcaption>}

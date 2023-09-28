@@ -1,6 +1,8 @@
 import { DeleteItemButton } from "@/components/cart/delete-item-button";
 import { EditItemQuantityButton } from "@/components/cart/edit-item-quantity-button";
 import { Price } from "@/components/price";
+import { getIntl } from "@/lib/i18n/server";
+import { state$ } from "@/lib/store";
 import { ResultOf } from '@graphql-typed-document-node/core';
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import {
@@ -12,18 +14,23 @@ import {
 import { DEFAULT_OPTION, createUrl } from "@uncnsrdlabel/lib";
 import Image from "next/image";
 import Link from "next/link";
+import { use } from "react";
 
 type MerchandiseSearchParams = {
   [key: string]: string;
 };
 
-export async function CartForm({
+export function CartForm({
   cart,
   closeCart,
 }: {
   cart: ResultOf<typeof cartFragment> | null;
   closeCart: () => void;
 }) {
+  const lang = state$.lang.get();
+
+  const intl = use(getIntl(lang, "component.CartForm"));
+
   const lines = cart?.lines.edges.map((edge) => edge?.node);
 
   return (
@@ -32,7 +39,7 @@ export async function CartForm({
         <div className="mt-20 flex w-full flex-col items-center justify-center overflow-hidden">
           <ShoppingCartIcon className="h-16" />
           <p className="mt-6 text-center text-2xl font-bold">
-            Your cart is empty.
+          {intl.formatMessage({ id: "empty_cart" })}
           </p>
         </div>
       ) : (
