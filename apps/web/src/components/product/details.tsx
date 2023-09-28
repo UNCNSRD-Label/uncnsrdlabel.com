@@ -70,9 +70,9 @@ export function ProductDetails({
         sectionElementRefs={sectionElementRefs}
       />
       <div className="mb-48 [&:has(+_aside)]:mb-24">
-        <div className="lg:grid lg:grid-cols-6">
+        <div className="lg:grid lg:grid-cols-12">
           <div
-            className="grid justify-items-center gap-8 lg:col-span-4"
+            className="grid gap-8 lg:col-span-7 lg:col-start-2"
             id="images"
             ref={sectionElementRefs[0]}
           >
@@ -95,7 +95,7 @@ export function ProductDetails({
             />
           </div>
 
-          <div className="p-6 lg:col-span-2">
+          <div className="p-6 lg:col-span-4">
             <div className="sticky sm:top-24">
               <PurchaseOptions
                 id="purchase-options"

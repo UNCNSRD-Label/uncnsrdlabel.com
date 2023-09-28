@@ -15,6 +15,7 @@ import { HIDDEN_PRODUCT_TAG, cn } from "@uncnsrdlabel/lib";
 import { type Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import { Breadcrumb } from "./breadcrumb";
 
 // export const runtime = "edge";
 
@@ -73,6 +74,7 @@ export default async function ProductPage({
 
   return (
     <>
+      <Breadcrumb className="hidden my-6 lg:grid lg:grid-cols-12 [&>*]:lg:col-start-2 [&>*]:lg:col-end-10" productDetailsFragmentRef={productDetailsFragmentRef} />
       <main className="min-h-[100dvh]">
         <ProductDetails productDetailsFragmentRef={productDetailsFragmentRef} />
       </main>
