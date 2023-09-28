@@ -31,11 +31,10 @@ import {
   GetProductRecommendationsQueryVariables,
   GetProductsQueryVariables,
   GetProductsWithVariantsQueryVariables,
+  GetRouteMetaObjectQueryVariables,
   RemoveFromCartMutationVariables,
 } from "../codegen/graphql";
-import {
-  collectionFragment
-} from "../fragments/index";
+import { collectionFragment } from "../fragments/index";
 import {
   getCartQuery,
   getCustomerCareQuery,
@@ -47,6 +46,7 @@ import {
   getProductRecommendationsQuery,
   getProductsQuery,
   getProductsWithVariantsQuery,
+  getRouteMetaObjectQuery,
   getShopPoliciesQuery,
 } from "../queries/index";
 import { type PolicyName } from "../types";
@@ -61,11 +61,15 @@ export class Server {
     this.lang = lang;
   }
 
-  async createCart(variables: CreateCartMutationVariables) {
-    const { cartCreate } = await getShopifyGraphQL(createCartMutation, {
-      ...this.inContextVariables,
-      ...variables,
-    });
+  async createCart(variables?: CreateCartMutationVariables) {
+    const { cartCreate } = await getShopifyGraphQL(
+      createCartMutation,
+      // @ts-expect-error Types of property 'country' are incompatible.
+      {
+        ...this.inContextVariables,
+        ...variables,
+      },
+    );
 
     if (!cartCreate) {
       return null;
@@ -283,7 +287,25 @@ export class Server {
       };
     }
 
-    console.log({ metaobject });
+    // console.log({ metaobject });
+
+    return metaobject;
+  }
+
+  async getRouteMetaObject(variables: GetRouteMetaObjectQueryVariables) {
+    const { metaobject } = await getShopifyGraphQL(getRouteMetaObjectQuery, {
+      ...this.inContextVariables,
+      ...variables,
+    });
+
+    if (!metaobject) {
+      throw {
+        status: 404,
+        message: `Metaobject not found for handle \`${variables.handle}\``,
+      };
+    }
+
+    // console.log({ metaobject });
 
     return metaobject;
   }

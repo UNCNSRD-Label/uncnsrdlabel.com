@@ -45,8 +45,16 @@ export function Tile({
     return null;
   }
 
-  const tileImage = getFragmentData(imageFragment, image);
-  const tileVideo = getFragmentData(videoFragment, video);
+  let tileImage = null;
+  let tileVideo = null;
+
+  if (image) {
+    tileImage = getFragmentData(imageFragment, image);
+  }
+
+  if (video) {
+    tileVideo = getFragmentData(videoFragment, video);
+  }
 
   return (
     <>
@@ -64,6 +72,7 @@ export function Tile({
           "bg-gray-100 dark:bg-gray-900": !background,
         })}
       >
+        {/* TODO: Only play video on hover */}
         {tileVideo?.__typename === "Video" && <Video
           {...tileVideo}
           className="video absolute inset-0"

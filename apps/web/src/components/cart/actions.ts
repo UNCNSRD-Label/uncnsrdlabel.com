@@ -19,7 +19,7 @@ export const addItem = async (
   }
 
   if (!cartId || !cartFragmentRef) {
-    cartFragmentRef = await server.createCart({});
+    cartFragmentRef = await server.createCart();
 
     const cart = getFragmentData(cartFragment, cartFragmentRef);
 

@@ -2,6 +2,7 @@
 
 import { addItem } from "@/components/cart/actions";
 import { LoadingDots } from "@/components/loading-dots";
+import { useGetIntl } from "@/lib/i18n/client";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { ProductVariant } from "@shopify/hydrogen/storefront-api-types";
 import { cn } from "@uncnsrdlabel/lib";
@@ -21,6 +22,7 @@ export function AddToCart({
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
+  const intl = useGetIntl("component.AddToCart");
 
   useEffect(() => {
     const variant = variants.find((variant) =>
@@ -34,14 +36,14 @@ export function AddToCart({
   }, [searchParams, variants, setSelectedVariantId]);
 
   const title = !availableForSale
-    ? "Out of stock"
+    ? intl.formatMessage({ id: "out_of_stock" })
     : !selectedVariantId
-    ? "Please select options"
+    ? intl.formatMessage({ id: "select_options" })
     : undefined;
 
   return (
     <button
-      aria-label="Add item to cart"
+      aria-label={availableForSale ? intl.formatMessage({ id: "add_item_to_cart_enabled" }) : intl.formatMessage({ id: "add_item_to_cart_disabled" })}
       disabled={isPending || !availableForSale || !selectedVariantId}
       title={title}
       onClick={() => {
@@ -72,7 +74,7 @@ export function AddToCart({
           <LoadingDots className="mb-3 bg-white" />
         )}
       </div>
-      <span>{availableForSale ? "Add To Cart" : "Out Of Stock"}</span>
+      <span>{availableForSale ? intl.formatMessage({ id: "add_to_cart" }) : intl.formatMessage({ id: "out_of_stock" })}</span>
     </button>
   );
 }
