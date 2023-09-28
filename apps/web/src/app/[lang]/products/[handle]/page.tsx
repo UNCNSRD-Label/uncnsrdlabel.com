@@ -120,7 +120,7 @@ async function RelatedProducts({
       <div className="mb-8 text-center text-xl font-bold uppercase">
         {intl.formatMessage({ id: "title" })}
       </div>
-      <Grid className="grid-cols-2 lg:grid-cols-5 [&>*:last-child:nth-child(odd)]:hidden [&>*:last-child:nth-child(odd)]:md:list-item">
+      <Grid className="grid-cols-2 lg:grid-cols-5 [&>*:last-child:nth-child(odd)]:hidden [&>*:last-child:nth-child(odd)]:lg:list-item">
         <ProductGridItems limit={5} productFragmentRefs={productRecommendationRefs} />
       </Grid>
     </aside>
