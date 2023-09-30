@@ -32,6 +32,9 @@ export function Images({
                   fill
                   sizes={sizes}
                   src={image.src}
+                  style={{
+                    objectFit: "contain",
+                  }}
                 />
                 <SlMagnifierAdd className="icon absolute bottom-4 right-4 h-5 w-5 text-light drop-shadow" />
               </button>
