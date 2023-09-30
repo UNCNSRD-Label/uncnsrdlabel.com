@@ -1,7 +1,7 @@
-import { Separator } from "@uncnsrdlabel/components/ui/separator"
-import { Metadata } from "next"
-import Image from "next/image"
-import { SidebarNav } from "./sidebar-nav"
+import { Separator } from "@uncnsrdlabel/components/ui/separator";
+import { Metadata } from "next";
+import Image from "next/image";
+import { SidebarNav } from "./sidebar-nav";
 
 export const metadata: Metadata = {
   title: "Forms",
@@ -18,16 +18,12 @@ const sidebarNavItems = [
     href: "/my-account/account",
   },
   {
-    title: "Appearance",
-    href: "/my-account/appearance",
-  },
-  {
     title: "Notifications",
     href: "/my-account/notifications",
   },
   {
-    title: "Display",
-    href: "/my-account/display",
+    title: "Orders",
+    href: "/my-account/orders",
   },
   {
     title: "Consent",
@@ -40,6 +36,14 @@ interface SettingsLayoutProps {
 }
 
 export default function SettingsLayout({ children }: SettingsLayoutProps) {
+  // TODO: Check user is signed in
+  // const { data, isLoading, isInitialLoading } = useCustomer()
+  
+  // if (Boolean(!data?.id)) {
+  //   // this is a protected route - only users who are signed in can view this route
+  //   redirect("/signin");
+  // }
+
   return (
     <>
       <div className="md:hidden">
