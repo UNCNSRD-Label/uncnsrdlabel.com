@@ -1,6 +1,6 @@
 {
   "products": {
-    "add_to_cart": "Ajouter au panier",
+    "add_to_cart_enabled": "Ajouter au panier",
     "add_to_wishlist": "Ajouter à la liste de souhaits",
     "all_collections": "Toutes les collections",
     "all": "Tous les produits",

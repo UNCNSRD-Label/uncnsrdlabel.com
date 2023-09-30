@@ -1,6 +1,6 @@
 {
   "products": {
-    "add_to_cart": "カートに追加",
+    "add_to_cart_enabled": "カートに追加",
     "add_to_wishlist": "ほしい物リストに追加する",
     "all_collections": "すべてのコレクション",
     "all": "すべての製品",

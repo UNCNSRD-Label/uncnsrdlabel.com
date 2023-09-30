@@ -1,6 +1,6 @@
 {
   "products": {
-    "add_to_cart": "장바구니에 담기",
+    "add_to_cart_enabled": "장바구니에 담기",
     "add_to_wishlist": "위시리스트에 추가",
     "all_collections": "모든 컬렉션",
     "all": "모든 상품",

@@ -1,6 +1,6 @@
 {
   "products": {
-    "add_to_cart": "添加到购物车",
+    "add_to_cart_enabled": "添加到购物车",
     "add_to_wishlist": "添加到愿望清单",
     "all_collections": "所有系列",
     "all": "所有产品",

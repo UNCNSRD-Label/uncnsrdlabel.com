@@ -18,10 +18,12 @@ export const minWidthXl =
   (!Array.isArray(config.theme?.screens) && config.theme?.screens?.xl) ?? "0px";
 
 export const themeColors = cn(
-  "bg-gray-50 fill-gray-950 stroke-gray-950 text-gray-950",
-  "dark:bg-gray-950 dark:fill-gray-300 dark:stroke-gray-300 dark:text-gray-300",
+  "fill-gray-950 stroke-gray-950 text-gray-950",
+  "dark:fill-gray-300 dark:stroke-gray-300 dark:text-gray-300",
+  "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))]",
+  "from-gray-50 to-gray-100",
+  "dark:from-gray-950 dark:to-gray-900",
 );
-
 
 export const animationDelays = [
   "animation-delay-[0ms]",
@@ -228,4 +230,3 @@ export const transitionDelays = [
   // "transition-delay-[9800ms]",
   "transition-delay-[9900ms]",
 ];
-

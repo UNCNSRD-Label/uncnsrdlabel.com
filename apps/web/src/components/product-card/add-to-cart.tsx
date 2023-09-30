@@ -10,7 +10,7 @@ import {
 } from "@shopify/hydrogen/storefront-api-types";
 import { cn } from "@uncnsrdlabel/lib";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState, useTransition } from "react";
+import { useTransition } from "react";
 
 export function AddToCart({
   availableForSale,
@@ -23,46 +23,35 @@ export function AddToCart({
   options: ProductOption[];
   variants: Pick<ProductVariant, "id" | "selectedOptions">[];
 }) {
-  const [selectedVariantId, setSelectedVariantId] = useState<
-    string | undefined
-  >(undefined);
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
   const intl = useGetIntl("component.AddToCart");
 
-  useEffect(() => {
-    const variant = variants.find(
-      (variant) =>
-        variant.selectedOptions?.every((selectedOption) => {
-          const hasNoOptionsOrJustOneOption =
-            !options.length ||
-            (options.find((option) => option.name === selectedOption.name)?.values.length === 1);
+  const variant = variants.find(
+    (variant) =>
+      variant.selectedOptions?.every((selectedOption) => {
+        const hasNoOptionsOrJustOneOption =
+          !options.length ||
+          (options.find((option) => option.name === selectedOption.name)?.values.length === 1);
 
-          if (hasNoOptionsOrJustOneOption) {
-            return true;
-          }
+        if (hasNoOptionsOrJustOneOption) {
+          return true;
+        }
 
-          const value =
-            selectedOption?.value ===
-            searchParams.get(selectedOption.name.toLowerCase());
+        const value =
+          selectedOption?.value ===
+          searchParams.get(selectedOption.name.toLowerCase());
 
-          return value;
-        }),
-    );
+        return value;
+      }),
+  );
 
-    if (variant?.id) {
-      setSelectedVariantId(variant.id);
-    }
-  }, [options, searchParams, variants, setSelectedVariantId]);
+  const selectedVariantId = variant?.id;
 
   const title = !availableForSale
     ? intl.formatMessage({ id: "out_of_stock" })
-    : !selectedVariantId
-    ? intl.formatMessage({ id: "select_options" })
     : intl.formatMessage({ id: "add_to_cart_enabled" });
-
-    console.log({selectedVariantId, title});
 
   return (
     <button
@@ -71,11 +60,11 @@ export function AddToCart({
           ? intl.formatMessage({ id: "add_to_cart_enabled" })
           : intl.formatMessage({ id: "add_to_cart_disabled" })
       }
-      disabled={isPending || !availableForSale || !selectedVariantId}
+      disabled={isPending || !availableForSale}
       title={title}
       onClick={() => {
         // Safeguard in case someone messes with `disabled` in devtools.
-        if (!availableForSale || !selectedVariantId) return;
+        if (!availableForSale) return;
 
         startTransition(async () => {
           const error = await addItem(selectedVariantId);
@@ -89,7 +78,7 @@ export function AddToCart({
         });
       }}
       className={cn(
-        "items-center grid gap-4 grid-flow-col",
+        "content-center grid gap-4 grid-flow-col",
         {
           "cursor-not-allowed opacity-60 hover:opacity-60":
             !availableForSale || !selectedVariantId,
