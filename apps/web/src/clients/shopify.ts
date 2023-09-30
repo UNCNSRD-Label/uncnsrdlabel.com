@@ -1,8 +1,6 @@
 import { state$ } from "@/lib/store";
 import { Server } from "@uncnsrdlabel/graphql-shopify-storefront";
 
-export let server: Server | null = null;
+const lang = state$.lang.get();
 
-state$.onChange(({ value }) => {
-    server = new Server(value.lang);
-})
+export const server = new Server(lang);
