@@ -64,9 +64,10 @@ export const PurchaseOptions = forwardRef<
       ) : null}
 
       <AddToCart
+        availableForSale={product.availableForSale}
+        className="btn btn-base btn-primary btn-bg justify-center py-4 relative w-full"
         options={product.options}
         variants={variants}
-        availableForSale={product.availableForSale}
       />
     </>
   );

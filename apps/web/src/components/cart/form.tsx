@@ -1,3 +1,4 @@
+import { AddPremiumPackaging } from "@/components/cart/add-premium-packaging";
 import { DeleteItemButton } from "@/components/cart/delete-item-button";
 import { EditItemQuantityButton } from "@/components/cart/edit-item-quantity-button";
 import { Price } from "@/components/price";
@@ -37,7 +38,7 @@ export function CartForm({
     <>
       {!cart || lines?.length === 0 ? (
         <div className="mt-20 flex w-full flex-col items-center justify-center overflow-hidden">
-          <ShoppingCartIcon className="h-16" />
+          <ShoppingCartIcon className="h-12" />
           <p className="mt-6 text-center text-2xl font-bold">
           {intl.formatMessage({ id: "empty_cart" })}
           </p>
@@ -62,7 +63,7 @@ export function CartForm({
               const featuredImage = getFragmentData(imageFragment, product.featuredImage);
 
               const merchandiseUrl = createUrl(
-                `/product/${product.handle}`,
+                `/products/${product.handle}`,
                 new URLSearchParams(merchandiseSearchParams),
               );
 
@@ -126,6 +127,10 @@ export function CartForm({
             })}
           </ul>
           
+          <div className="flex flex-col my-4">
+            <AddPremiumPackaging />
+          </div>
+
           <div className="py-4 text-sm text-neutral-500 dark:text-neutral-400">
             {cart.cost.totalTaxAmount && <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 dark:border-neutral-700">
               <p className="uppercase">Taxes</p>

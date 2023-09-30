@@ -23,7 +23,6 @@
       "shop_now": "Shop now"
     },
     "products": {
-      "add_to_cart": "Add to bag",
       "add_to_wishlist": "Add to wishlist",
       "all_collections": "All collections",
       "all_products": "All products",
@@ -48,9 +47,8 @@
   },
   "component": {
     "AddToCart": {
-      "add_item_to_cart_disabled": "Unable to add item to bag",
-      "add_item_to_cart_enabled": "Add item to bag",
-      "add_to_cart": "Add to bag",
+      "add_to_cart_disabled": "Unable to add item to bag",
+      "add_to_cart_enabled": "Add to bag",
       "out_of_stock": "Out of stock",
       "select_options": "Please select options"
     },
