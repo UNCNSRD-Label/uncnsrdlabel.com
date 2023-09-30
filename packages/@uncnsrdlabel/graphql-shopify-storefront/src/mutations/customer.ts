@@ -165,7 +165,7 @@ export const CustomerUpdateMutation = graphql(/* GraphQL */ `
         message
       }
       customer {
-        ...Customer
+        ...customer
       }
     }
   }
