@@ -74,13 +74,13 @@ export default async function ProductPage({
 
   return (
     <>
-      <Breadcrumb className="hidden my-6 lg:grid lg:grid-cols-12 [&>*]:lg:col-start-2 [&>*]:lg:col-end-10" productDetailsFragmentRef={productDetailsFragmentRef} />
-      <main className="min-h-[100dvh] mb-48 [&:has(+_aside)]:mb-12">
+      <Breadcrumb className="hidden my-6 lg:grid lg:grid-cols-12 [&>*]:lg:col-start-2 [&>*]:lg:col-end-10 relative z-20" productDetailsFragmentRef={productDetailsFragmentRef} />
+      <main className="min-h-[100dvh] mb-48 [&:has(+_aside)]:mb-0">
         <ProductDetails productDetailsFragmentRef={productDetailsFragmentRef} />
       </main>
       <Suspense>
         <RelatedProducts
-          className="text-dark dark:text-light relative bg-gray-300 pb-48 pt-12 dark:bg-gray-800"
+          className="text-dark dark:text-light relative bg-gray-300 pb-48 pt-12 dark:bg-gray-800 [contain:paint]"
           productDetailsFragmentRef={productDetailsFragmentRef}
           lang={lang}
         />

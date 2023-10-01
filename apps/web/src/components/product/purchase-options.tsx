@@ -37,7 +37,7 @@ export const PurchaseOptions = forwardRef<
   return (
     <>
       <div
-        className={cn("mb-16 pt-24 sm:pt-0", className)}
+        className={cn("mb-8 lg:mb-16 pt-16 lg:pt-24 sm:pt-0", className)}
         id={id}
         ref={forwardedRef}
       >

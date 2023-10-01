@@ -1,21 +1,16 @@
 "use client";
 
-import { LoadingDots } from "@/components/loading-dots";
 import { Image } from "@/components/media/image";
 import { cn } from "@uncnsrdlabel/lib";
 import { useRef } from "react";
-import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 
 export function ProductImageZoom({
   active,
   className,
-  isInteractive = true,
   ...props
 }: {
   active?: boolean;
   className?: string;
-  isInteractive?: boolean;
-  scale?: number;
 } & React.ComponentProps<typeof Image>) {
   const figureRef = useRef<HTMLElement>(null);
 
@@ -25,43 +20,23 @@ export function ProductImageZoom({
 
   return (
     <>
-      <TransformWrapper
-        centerZoomedOut={false}
-        limitToBounds={false}
-        onPanningStop={(ref, event) => {
-          console.info("onPanningStop", ref, event);
-          if (figureRef.current) {
-            figureRef.current.classList.remove("dragging");
-          }
-        }}
-        onPanningStart={(ref, event) => {
-          console.info("onPanningStart", ref, event);
-          if (figureRef.current) {
-            figureRef.current.classList.add("dragging");
-          }
-        }}
+      <figure
+        className={cn(
+          "w-[100dvw]",
+          className,
+        )}
+        ref={figureRef}
       >
-        <TransformComponent>
-          <figure
-            className={cn(
-              "relative grid w-[100dvw] cursor-grab place-items-center bg-black [&.dragging]:cursor-grabbing",
-              className,
-            )}
-            ref={figureRef}
-          >
-            <Image
-              className={cn("relative block h-full w-full object-cover", {
-                "z-10 transition duration-300 ease-in-out": isInteractive,
-              })}
-              {...props}
-              alt={props.title || ""}
-            />
-            <div className="bg-red place-center absolute top-0 z-0 grid h-[100dvh]">
-              <LoadingDots className="h-4 w-4 bg-white" />
-            </div>
-          </figure>
-        </TransformComponent>
-      </TransformWrapper>
+        <Image
+          {...props}
+          alt={props.title || ""}
+          className={cn("relative block min-h-full min-w-full object-cover")}
+          quality={100}
+          sizes="500vw"
+          height={400}
+          width={300}
+        />
+      </figure>
     </>
   );
 }
