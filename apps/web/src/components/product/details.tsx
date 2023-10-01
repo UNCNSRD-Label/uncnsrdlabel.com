@@ -121,7 +121,7 @@ export function ProductDetails({
           <nav className="fixed left-8 z-30 hidden lg:grid w-16 grid-flow-row gap-4 top-0 h-full content-center pointer-events-none">
             {images.map((image, index) => (
               <Link
-                className="relative aspect-square w-full overflow-hidden rounded-full pointer-events-auto my-auto"
+                className="relative aspect-square w-full overflow-hidden rounded-full pointer-events-auto my-auto shadow"
                 href={`#main-${index}`}
                 onClick={(event) => {
                   event.preventDefault();
@@ -145,7 +145,7 @@ export function ProductDetails({
           </nav>
         </div>
 
-        <div className="col-span-full relative lg:-top-12 z-10 sm:col-start-3 sm:col-end-11 grid h-fit sm:bg-white/90 p-6 shadow backdrop-blur lg:col-start-8 lg:col-end-12 sm:rounded-xl">
+        <div className="col-span-full relative lg:-top-12 z-10 sm:col-start-3 sm:col-end-11 grid h-fit lg:bg-white/90 p-6 lg:shadow lg:backdrop-blur lg:backdrop-saturate-50 lg:col-start-9 lg:col-end-12 lg:rounded-xl">
           <PurchaseOptions
             id="purchase-options"
             ref={sectionElementRefs[1]}

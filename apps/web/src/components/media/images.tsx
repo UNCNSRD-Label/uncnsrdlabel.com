@@ -36,6 +36,7 @@ export function Images({
                 <Image
                   alt={image?.altText}
                   fill
+                  revealEffect={false}
                   sizes={sizes}
                   src={image.src}
                   style={{
