@@ -62,8 +62,6 @@ export function AddToCart({
     ? intl.formatMessage({ id: "select_options" })
     : intl.formatMessage({ id: "add_to_cart_enabled" });
 
-    console.log({selectedVariantId, title});
-
   return (
     <button
       aria-label={
