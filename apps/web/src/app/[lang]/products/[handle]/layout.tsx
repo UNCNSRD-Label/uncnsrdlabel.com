@@ -11,7 +11,7 @@ export default function SearchLayout({
 }) {
   return (
     <>
-      <Navbar sticky>
+      <Navbar>
         <NavbarContent />
       </Navbar>
       <Suspense>

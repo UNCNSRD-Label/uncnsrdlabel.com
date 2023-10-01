@@ -37,13 +37,13 @@ export const PurchaseOptions = forwardRef<
   return (
     <>
       <div
-        className={cn("mb-16 pt-24 sm:pt-0", className)}
+        className={cn("mb-6", className)}
         id={id}
         ref={forwardedRef}
       >
         <h3
           data-testid="product-name"
-          className="box-decoration-clone text-2xl"
+          className="box-decoration-clone text-xl"
         >
           {product.title}
         </h3>
@@ -58,14 +58,14 @@ export const PurchaseOptions = forwardRef<
 
       {product.descriptionHtml ? (
         <Prose
-          className="mb-6 text-sm leading-tight"
+          className="mb-6 text-xs leading-tight"
           html={product.descriptionHtml}
         />
       ) : null}
 
       <AddToCart
         availableForSale={product.availableForSale}
-        className="btn btn-base btn-primary btn-bg justify-center py-4 relative w-full"
+        className="btn btn-base text-sm btn-primary btn-bg justify-center py-4 relative w-full"
         options={product.options}
         variants={variants}
       />
