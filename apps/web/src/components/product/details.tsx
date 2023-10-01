@@ -69,50 +69,48 @@ export function ProductDetails({
         className="fixed inset-x-0 bottom-0 z-10 w-full sm:hidden"
         sectionElementRefs={sectionElementRefs}
       />
-      <div className="mb-48 [&:has(+_aside)]:mb-24">
-        <div className="lg:grid lg:grid-cols-12">
-          <div
-            className="grid gap-8 lg:col-span-7 lg:col-start-2"
-            id="images"
-            ref={sectionElementRefs[0]}
-          >
-            <Images
-              className="aspect-2/3 relative w-full overflow-hidden lg:w-4/6"
-              images={images
-                .map((imageFragmentRef) =>
-                  getFragmentData(imageFragment, imageFragmentRef),
-                )
-                .map((image, index) => ({
-                  altText: image.altText ?? product.title,
-                  id: image.id ?? `image-${index}`,
-                  src: image.url,
-                }))}
-              sizes="(max-width: 639px) 100vw, 66vw"
-            />
-            <Videos
-              className="aspect-2/3 relative w-full lg:w-4/6"
-              videos={videos}
-            />
-          </div>
 
-          <div className="p-6 lg:col-span-4">
-            <div className="sticky sm:top-24">
-              <PurchaseOptions
-                id="purchase-options"
-                ref={sectionElementRefs[1]}
-                product={product}
-              />
-
-              <MetaFields
-                metafieldFragments={metafieldFragments}
-                className="min-h-[100dvh] pt-24 sm:pt-0"
-                id="details"
-                ref={sectionElementRefs[2]}
-              />
-            </div>
-          </div>
+      <div className="lg:grid lg:grid-cols-12">
+        <div
+          className="grid gap-8 lg:col-start-2 lg:col-end-7"
+          id="images"
+          ref={sectionElementRefs[0]}
+        >
+          <Images
+            className="aspect-2/3 relative w-full overflow-hidden"
+            images={images
+              .map((imageFragmentRef) =>
+                getFragmentData(imageFragment, imageFragmentRef),
+              )
+              .map((image, index) => ({
+                altText: image.altText ?? product.title,
+                id: image.id ?? `image-${index}`,
+                src: image.url,
+              }))}
+            sizes="(max-width: 639px) 100vw, 66vw"
+          />
+          <Videos
+            className="aspect-2/3 relative w-full lg:w-4/6"
+            videos={videos}
+          />
         </div>
+
+        <div className="p-6 lg:col-start-8 lg:col-end-12 bg-white h-fit">
+          <PurchaseOptions
+            id="purchase-options"
+            ref={sectionElementRefs[1]}
+            product={product}
+          />
+        </div>
+
       </div>
+
+      <MetaFields
+        metafieldFragments={metafieldFragments}
+        className="min-h-[100dvh] pt-24 sm:pt-0"
+        id="details"
+        ref={sectionElementRefs[2]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
