@@ -83,13 +83,13 @@ export function ProductDetails({
   return (
     <ProductProvider data={product}>
       <NavigationMenu
-        className="fixed inset-x-0 bottom-0 z-10 w-full sm:hidden"
+        className="fixed inset-x-0 bottom-0 z-50 w-full sm:hidden"
         sectionElementRefs={sectionElementRefs}
       />
 
       <div className="grid min-h-[100dvh] grid-cols-12 content-center lg:h-[100dvh]">
         <div
-          className="z-0 col-span-full grid w-full snap-both grid-flow-col overflow-x-scroll scroll-smooth lg:fixed lg:inset-0 relative"
+          className="z-0 col-span-full grid w-full snap-both snap-mandatory grid-flow-col overflow-x-scroll scroll-smooth lg:fixed lg:inset-0 relative"
           id="images"
           ref={sectionElementRefs[0]}
         >          
@@ -145,19 +145,18 @@ export function ProductDetails({
           </nav>
         </div>
 
-        <div className="col-span-full relative lg:-top-12 z-10 sm:col-start-3 sm:col-end-11 grid h-fit lg:bg-white/90 p-6 lg:shadow lg:backdrop-blur lg:backdrop-saturate-50 lg:col-start-9 lg:col-end-12 lg:rounded-xl">
+        <div className="col-span-full relative lg:-top-12 z-10 sm:col-start-3 sm:col-end-11 grid h-fit lg:bg-white/90 p-6 pt-20 lg:shadow lg:backdrop-blur lg:backdrop-saturate-50 lg:col-start-7 xl:col-start-9 lg:col-end-12 lg:rounded-xl" id="purchase-options">
           <PurchaseOptions
-            id="purchase-options"
             ref={sectionElementRefs[1]}
             product={product}
           />
         </div>
       </div>
 
-      <div className="relative z-10 h-fit bg-white/90 p-6 backdrop-blur lg:col-span-full">
+      <div className="h-fit bg-white/90 p-6 lg:backdrop-blur lg:col-span-full">
         <MetaFields
           metafieldFragments={metafieldFragments}
-          className="min-h-[100dvh] pt-24 sm:pt-0"
+          className="gap-4 grid min-h-[100dvh] lg:min-h-fit pt-20 sm:pt-0 max-w-xl"
           id="details"
           ref={sectionElementRefs[2]}
         />
