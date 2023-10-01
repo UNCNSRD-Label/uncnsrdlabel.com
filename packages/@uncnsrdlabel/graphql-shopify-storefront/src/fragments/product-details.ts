@@ -47,14 +47,14 @@ export const productDetailsFragment = graphql(/* GraphQL */ `
     }
     metafields(
       identifiers: [
-        { namespace: "custom", key: "component" }
-        { namespace: "custom", key: "details" }
-        { namespace: "custom", key: "fabric" }
         { namespace: "custom", key: "inspiration" }
+        { namespace: "custom", key: "details" }
+        { namespace: "custom", key: "sizing" }
         { namespace: "custom", key: "line" }
+        { namespace: "custom", key: "component" }
+        { namespace: "custom", key: "fabric" }
         { namespace: "custom", key: "model" }
         { namespace: "custom", key: "shape" }
-        { namespace: "custom", key: "sizing" }
         { namespace: "descriptors", key: "care_guide" }
         {
           namespace: "shopify--discovery--product_recommendation"

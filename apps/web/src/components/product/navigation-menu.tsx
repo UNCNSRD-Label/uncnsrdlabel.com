@@ -7,7 +7,7 @@ import useScrollSpy from "react-use-scrollspy";
 import slugify from "slugify";
 
 const LinkClassName =
-  "block select-none rounded-[4px] px-3 py-3 text-xs no-underline outline-none drop-shadow";
+  "block select-none rounded-[4px] px-3 py-3 text-xs no-underline outline-none border";
 export function NavigationMenu({
   className,
   sectionElementRefs,
@@ -31,7 +31,8 @@ export function NavigationMenu({
         {sectionElements.map((sectionElement, index) => (
           <NavigationMenuPrimitive.Item
             key={sectionElement || index}
-            className={cn(activeSection === index && "bg-hotPink")}
+            // className={cn(activeSection === index && "bg-hotPink rounded-xl border-4")}
+            className={cn(activeSection === index && "text-hotPink")}
           >
             <NavigationMenuPrimitive.Link
               className={cn(LinkClassName)}

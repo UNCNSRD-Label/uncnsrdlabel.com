@@ -26,11 +26,6 @@ export const MetaFields = forwardRef<MetaFieldsRef, MetaFieldsProps>(
       .filter(
         (key) =>
           ![
-            "component",
-            "returns",
-            "shipping",
-            "model",
-            "complementary_products",
             "related_products",
           ].includes(key),
       );
@@ -63,9 +58,6 @@ export const MetaFields = forwardRef<MetaFieldsRef, MetaFieldsProps>(
             </AccordionTrigger>
             <AccordionContent className="collapsible-content prose prose-sm overflow-x-auto dark:prose-invert">
               <MetafieldMapper metafield={metafield} />
-              {/* <pre className="w-max-[calc(100%_-_4rem)]">
-                <code>{JSON.stringify(metafield, null, 2)}</code>
-              </pre> */}
             </AccordionContent>
           </AccordionItem>
         ))}
