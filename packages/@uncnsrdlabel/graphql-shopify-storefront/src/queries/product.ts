@@ -8,9 +8,17 @@ export const getProductBasicQuery = graphql(/* GraphQL */ `
   }
 `);
 
-export const getProductDetailsQuery = graphql(/* GraphQL */ `
-  query getProductDetails($country: CountryCode, $handle: String!, $language: LanguageCode) @inContext(country: $country, language: $language) {
+export const getProductDetailsByHandleQuery = graphql(/* GraphQL */ `
+  query getProductDetailsByHandle($country: CountryCode, $handle: String!, $language: LanguageCode) @inContext(country: $country, language: $language) {
     product(handle: $handle) {
+      ...productDetails
+    }
+  }
+`);
+
+export const getProductDetailsByIdQuery = graphql(/* GraphQL */ `
+  query getProductDetailsById($country: CountryCode, $id: ID!, $language: LanguageCode) @inContext(country: $country, language: $language) {
+    product(id: $id) {
       ...productDetails
     }
   }

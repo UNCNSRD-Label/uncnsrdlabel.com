@@ -25,7 +25,8 @@ import {
   GetPageQueryVariables,
   GetPagesQueryVariables,
   GetProductBasicQueryVariables,
-  GetProductDetailsQueryVariables,
+  GetProductDetailsByHandleQueryVariables,
+  GetProductDetailsByIdQueryVariables,
   GetProductRecommendationsQueryVariables,
   GetProductsQueryVariables,
   GetProductsWithVariantsQueryVariables,
@@ -44,7 +45,8 @@ import {
   getPageQuery,
   getPagesQuery,
   getProductBasicQuery,
-  getProductDetailsQuery,
+  getProductDetailsByHandleQuery,
+  getProductDetailsByIdQuery,
   getProductRecommendationsQuery,
   getProductsQuery,
   getProductsWithVariantsQuery,
@@ -452,11 +454,11 @@ export function useGetProductBasic(
   return product;
 }
 
-export function useGetProductDetails(
-  variables: GetProductDetailsQueryVariables,
+export function usegetProductDetailsByHandle(
+  variables: GetProductDetailsByHandleQueryVariables,
 ) {
   const { data } = useGetShopifyGraphQL(
-    getProductDetailsQuery,
+    getProductDetailsByHandleQuery,
     variables,
   );
 
@@ -470,6 +472,39 @@ export function useGetProductDetails(
     throw {
       status: 404,
       message: `Product not found for handle \`${variables.handle}\``,
+    };
+  }
+
+  // console.log({ productDetailsFragmentRef });
+
+  const product = getFragmentData(
+    productDetailsFragment,
+    productDetailsFragmentRef,
+  );
+
+  // console.log({ product });
+
+  return product;
+}
+
+export function usegetProductDetailsById(
+  variables: GetProductDetailsByIdQueryVariables,
+) {
+  const { data } = useGetShopifyGraphQL(
+    getProductDetailsByIdQuery,
+    variables,
+  );
+
+  if (!data) {
+    return null;
+  }
+
+  const { product: productDetailsFragmentRef } = data;
+
+  if (!productDetailsFragmentRef) {
+    throw {
+      status: 404,
+      message: `Product not found for id \`${variables.id}\``,
     };
   }
 

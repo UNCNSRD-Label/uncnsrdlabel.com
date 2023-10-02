@@ -52,7 +52,8 @@ const documents = {
     "\n  query getPage($country: CountryCode, $handle: String!, $language: LanguageCode) @inContext(country: $country, language: $language) {\n    pageByHandle(handle: $handle) {\n      ...page\n    }\n  }\n": types.GetPageDocument,
     "\n  query getPages($country: CountryCode, $first: Int! = 250, $language: LanguageCode) @inContext(country: $country, language: $language) {\n    pages(first: $first) {\n      edges {\n        node {\n          ...page\n        }\n      }\n    }\n  }\n": types.GetPagesDocument,
     "\n  query getProductBasic($country: CountryCode, $handle: String!, $language: LanguageCode) @inContext(country: $country, language: $language) {\n    product(handle: $handle) {\n      ...productBasic\n    }\n  }\n": types.GetProductBasicDocument,
-    "\n  query getProductDetails($country: CountryCode, $handle: String!, $language: LanguageCode) @inContext(country: $country, language: $language) {\n    product(handle: $handle) {\n      ...productDetails\n    }\n  }\n": types.GetProductDetailsDocument,
+    "\n  query getProductDetailsByHandle($country: CountryCode, $handle: String!, $language: LanguageCode) @inContext(country: $country, language: $language) {\n    product(handle: $handle) {\n      ...productDetails\n    }\n  }\n": types.GetProductDetailsByHandleDocument,
+    "\n  query getProductDetailsById($country: CountryCode, $id: ID!, $language: LanguageCode) @inContext(country: $country, language: $language) {\n    product(id: $id) {\n      ...productDetails\n    }\n  }\n": types.GetProductDetailsByIdDocument,
     "\n  query getProductRecommendations($country: CountryCode, $productId: ID!, $language: LanguageCode) @inContext(country: $country, language: $language) {\n    productRecommendations(productId: $productId) {\n      ...productBasic\n    }\n  }\n": types.GetProductRecommendationsDocument,
     "\n  query getProducts(\n    $sortKey: ProductSortKeys\n    $reverse: Boolean\n    $query: String\n  ) {\n    products(sortKey: $sortKey, reverse: $reverse, query: $query, first: 96) {\n      edges {\n        node {\n          ...productBasic\n        }\n      }\n    }\n  }\n": types.GetProductsDocument,
     "\n  query getProductsWithVariants(\n    $sortKey: ProductSortKeys\n    $reverse: Boolean\n    $query: String\n  ) {\n    products(sortKey: $sortKey, reverse: $reverse, query: $query, first: 96) {\n      edges {\n        node {\n          ...productWithVariants\n        }\n      }\n    }\n  }\n": types.GetProductsWithVariantsDocument,
@@ -233,7 +234,11 @@ export function graphql(source: "\n  query getProductBasic($country: CountryCode
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query getProductDetails($country: CountryCode, $handle: String!, $language: LanguageCode) @inContext(country: $country, language: $language) {\n    product(handle: $handle) {\n      ...productDetails\n    }\n  }\n"): (typeof documents)["\n  query getProductDetails($country: CountryCode, $handle: String!, $language: LanguageCode) @inContext(country: $country, language: $language) {\n    product(handle: $handle) {\n      ...productDetails\n    }\n  }\n"];
+export function graphql(source: "\n  query getProductDetailsByHandle($country: CountryCode, $handle: String!, $language: LanguageCode) @inContext(country: $country, language: $language) {\n    product(handle: $handle) {\n      ...productDetails\n    }\n  }\n"): (typeof documents)["\n  query getProductDetailsByHandle($country: CountryCode, $handle: String!, $language: LanguageCode) @inContext(country: $country, language: $language) {\n    product(handle: $handle) {\n      ...productDetails\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query getProductDetailsById($country: CountryCode, $id: ID!, $language: LanguageCode) @inContext(country: $country, language: $language) {\n    product(id: $id) {\n      ...productDetails\n    }\n  }\n"): (typeof documents)["\n  query getProductDetailsById($country: CountryCode, $id: ID!, $language: LanguageCode) @inContext(country: $country, language: $language) {\n    product(id: $id) {\n      ...productDetails\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

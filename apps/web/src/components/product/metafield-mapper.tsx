@@ -1,9 +1,17 @@
+import { server } from "@/clients/shopify";
+import { Tile } from "@/components/grid/tile";
+import { transitionDelays } from "@/lib/tailwind";
 import { ResultOf } from "@graphql-typed-document-node/core";
 import {
   type Metaobject,
   type MetaobjectField,
 } from "@shopify/hydrogen/storefront-api-types";
-import { productMetafieldFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
+import {
+  getFragmentData,
+  productDetailsFragment,
+  productMetafieldFragment,
+} from "@uncnsrdlabel/graphql-shopify-storefront";
+import Link from "next/link";
 import { ReactNode } from "react";
 import { JsonValue } from "type-fest";
 
@@ -34,8 +42,12 @@ const getTextFieldValueList = (parsedValue: JsonValue) => {
 };
 
 export const MetafieldMapper = ({
+  excludedKeys,
+  includedKeys,
   metafield,
 }: {
+  excludedKeys?: string[];
+  includedKeys?: string[];
   metafield: ResultOf<typeof productMetafieldFragment> | MetaobjectField;
 }) => {
   let value: ReactNode = null;
@@ -52,11 +64,17 @@ export const MetafieldMapper = ({
     // console.error(error);
   }
 
+  if (excludedKeys?.includes(metafield.key)) {
+    return null;
+  }
+
+  if (includedKeys?.length && !includedKeys?.includes(metafield.key)) {
+    return null;
+  }
+
   switch (metafield.type) {
     case "list.single_line_text_field":
     case "list.multi_line_text_field": {
-      // const parsedValue = JSON.parse(metafield.value) as JsonValue;
-
       value = getTextFieldValueList(parsedValue);
     }
     case "metaobject_reference":
@@ -77,24 +95,67 @@ export const MetafieldMapper = ({
         const references = metafield.references?.nodes as Metaobject[];
 
         if (Array.isArray(references)) {
-          return references.map((reference, index) => (
-            <dl className="gap-2 grid grid-cols-2 justify-start" key={index}>
+          value = references.map((reference, index) => (
+            <dl className="grid grid-cols-2 justify-start gap-2" key={index}>
               {reference.fields.map((field) => {
                 if (["name", "portfolio"].includes(field.key)) {
                   return null;
                 }
 
-                console.log({ field });
-
-                return <>
-                  <dt className="capitalize mt-0">{field.key}</dt>
-                  <dd className="pl-0">
-                    {MetafieldMapper({ metafield: field })}
-                  </dd>
-                </>;
+                return (
+                  <>
+                    <dt className="mt-0 capitalize">{field.key}</dt>
+                    <dd className="pl-0">
+                      {MetafieldMapper({
+                        excludedKeys,
+                        includedKeys,
+                        metafield: field,
+                      })}
+                    </dd>
+                  </>
+                );
               })}
             </dl>
           ));
+        }
+      }
+      break;
+    case "list.product_reference":
+      {
+        if (Array.isArray(parsedValue)) {
+          value = parsedValue.map(async (id, index) => {
+            if (typeof id === "string") {
+              // return <span key={index}>{id}</span>;
+
+              const productDetailsFragmentRef = await server.getProductDetailsById({
+                id,
+              });
+
+              const product = getFragmentData(
+                productDetailsFragment,
+                productDetailsFragmentRef,
+              );
+
+              return (
+                <Link
+                  className="block h-full w-full"
+                  href={`/products/${product.handle}`}
+                >
+                  <Tile
+                    className={transitionDelays[index]}
+                    image={product.featuredImage}
+                    labels={{
+                      title: product.title ?? "Product",
+                      amount: product.priceRange?.maxVariantPrice?.amount,
+                      currencyCode:
+                        product.priceRange?.maxVariantPrice?.currencyCode,
+                    }}
+                    // video={video}
+                  />
+                </Link>
+              );
+            }
+          });
         }
       }
       break;
@@ -102,10 +163,14 @@ export const MetafieldMapper = ({
       {
         const dimension = parsedValue as { value: string; unit: string };
 
-        value = <>
-          <span data-key="value">{dimension.value}</span>&nbsp;
-          <span className="lowercase" data-key="unit">{dimension.unit}</span>
-        </>;
+        value = (
+          <>
+            <span data-key="value">{dimension.value}</span>&nbsp;
+            <span className="lowercase" data-key="unit">
+              {dimension.unit}
+            </span>
+          </>
+        );
       }
       break;
     case "number_integer":

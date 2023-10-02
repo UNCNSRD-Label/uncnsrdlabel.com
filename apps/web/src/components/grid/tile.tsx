@@ -85,7 +85,7 @@ export function Tile({
             type: `video/${source.format}`,
           }))}
         />}
-        <figure className="image absolute inset-0">
+        <figure className="image absolute inset-0 mb-0 mt-0">
           {tileImage?.url ? (
             <Image
               className={cn(

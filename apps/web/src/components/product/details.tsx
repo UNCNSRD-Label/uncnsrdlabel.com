@@ -14,6 +14,7 @@ import {
   imageFragment,
   productDetailsFragment,
   productMetafieldFragment,
+  videoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import Image from "next/image";
@@ -26,9 +27,61 @@ export function ProductDetails({
 }: {
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }) {
-  const sectionElementRefs = [useRef(null), useRef(null), useRef(null)];
+  const sectionElementRefs = [
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+  ];
 
   const imageElementRefs: MutableRefObject<HTMLButtonElement | null>[] = [
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+  ];
+
+  const videoElementRefs: MutableRefObject<HTMLElement | null>[] = [
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
     useRef(null),
     useRef(null),
     useRef(null),
@@ -80,6 +133,9 @@ export function ProductDetails({
   const mediaClassName =
     "lg:aspect-3/4 min-h-[100dvh] lg:h-[100dvh] overflow-y-clip relative snap-start w-[100dvw] lg:w-auto";
 
+  const thumbnailClassName =
+    "bg-black pointer-events-auto relative my-auto aspect-square w-full overflow-hidden rounded-full shadow";
+
   return (
     <ProductProvider data={product}>
       <NavigationMenu
@@ -87,28 +143,26 @@ export function ProductDetails({
         sectionElementRefs={sectionElementRefs}
       />
 
-      <div className="grid min-h-[100dvh] grid-cols-12 content-center lg:h-[100dvh]">
+      <section className="grid min-h-[100dvh] grid-cols-12 content-center lg:h-[100dvh]">
         <div
-          className="z-0 col-span-full grid w-full snap-both snap-mandatory grid-flow-col overflow-x-scroll scroll-smooth lg:fixed lg:inset-0 relative"
+          className="relative z-0 col-span-full grid w-full snap-both snap-mandatory grid-flow-col overflow-x-scroll scroll-smooth lg:fixed lg:inset-0"
           id="images"
           ref={sectionElementRefs[0]}
-        >          
-          {/* <Images
-            className={cn(mediaClassName, "hidden lg:grid")}
-            idPrefix="prefix"
-            images={images}
-            sizes="(max-width: 639px) 100vw, 50vw"
-          />
-          <Videos className={cn(mediaClassName, "hidden lg:grid")} videos={videos} /> */}
-
+        >
           <Images
             className={mediaClassName}
-            idPrefix="main"
+            idPrefix="image"
             images={images}
             imageElementRefs={imageElementRefs}
             sizes="(max-width: 639px) 100vw, 50vw"
           />
-          <Videos className={mediaClassName} videos={videos} />
+
+          <Videos
+            className={mediaClassName}
+            idPrefix="video"
+            videoElementRefs={videoElementRefs}
+            videos={videos}
+          />
 
           <Images
             className={cn(mediaClassName, "hidden lg:grid")}
@@ -116,13 +170,12 @@ export function ProductDetails({
             images={images}
             sizes="(max-width: 639px) 100vw, 50vw"
           />
-          <Videos className={cn(mediaClassName, "hidden lg:grid")} videos={videos} />
 
-          <nav className="fixed left-8 z-30 hidden lg:grid w-16 grid-flow-row gap-4 top-0 h-full content-center pointer-events-none">
+          <nav className="pointer-events-none fixed left-8 top-0 z-30 hidden h-full w-16 grid-flow-row content-center gap-4 lg:grid">
             {images.map((image, index) => (
               <Link
-                className="relative aspect-square w-full overflow-hidden rounded-full pointer-events-auto my-auto shadow"
-                href={`#main-${index}`}
+                className={thumbnailClassName}
+                href={`#image-${index}`}
                 onClick={(event) => {
                   event.preventDefault();
                   imageElementRefs?.[index].current?.scrollIntoView({
@@ -142,25 +195,61 @@ export function ProductDetails({
                 />
               </Link>
             ))}
+            {videos.map((videoFragmentRef, index) => {
+              const video = getFragmentData(videoFragment, videoFragmentRef);
+
+              return video.__typename === "Video" ? (
+                <Link
+                  className={thumbnailClassName}
+                  href={`#video-${index}`}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    console.log(videoElementRefs?.[index].current, video.id);
+                    videoElementRefs?.[index].current?.scrollIntoView({
+                      block: "start",
+                      inline: "start",
+                    });
+                  }}
+                >
+                  {video.previewImage?.url && (
+                    <Image
+                      alt={video?.previewImage?.altText ?? product.title}
+                      fill
+                      sizes="5vw"
+                      src={video.previewImage?.url}
+                      style={{
+                        objectFit: "cover",
+                      }}
+                    />
+                  )}
+                </Link>
+              ) : null;
+            })}
           </nav>
         </div>
 
-        <div className="col-span-full relative lg:-top-12 z-10 sm:col-start-3 sm:col-end-11 grid h-fit lg:bg-white/90 p-6 pt-20 lg:shadow lg:backdrop-blur lg:backdrop-saturate-50 lg:col-start-7 xl:col-start-9 lg:col-end-12 lg:rounded-xl" id="purchase-options">
-          <PurchaseOptions
-            ref={sectionElementRefs[1]}
-            product={product}
-          />
+        <div
+          className="relative z-10 col-span-full grid h-fit p-6 pt-20 sm:col-start-3 sm:col-end-11 lg:-top-12 lg:col-start-7 lg:col-end-12 lg:rounded-xl lg:bg-white/90 lg:shadow lg:backdrop-blur lg:backdrop-saturate-50 xl:col-start-9"
+          id="purchase-options"
+        >
+          <PurchaseOptions ref={sectionElementRefs[1]} product={product} />
         </div>
-      </div>
+      </section>
 
-      <div className="h-fit bg-white/90 p-6 lg:backdrop-blur lg:col-span-full">
+      <section className="gap-16 lg:gap-32 grid h-fit bg-white/90 lg:backdrop-blur grid-cols-12 py-20">
         <MetaFields
+          className="col-start-2 col-end-12 lg:col-end-7"
+          excludedKeys={["complementary_products"]}
           metafieldFragments={metafieldFragments}
-          className="gap-4 grid min-h-[100dvh] lg:min-h-fit pt-20 sm:pt-0 max-w-xl"
-          id="details"
           ref={sectionElementRefs[2]}
         />
-      </div>
+        <MetaFields
+          className="col-start-2 lg:col-start-7 col-end-12"
+          includedKeys={["complementary_products"]}
+          metafieldFragments={metafieldFragments}
+          ref={sectionElementRefs[2]}
+        />
+      </section>
 
       <script
         type="application/ld+json"

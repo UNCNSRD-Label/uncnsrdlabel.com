@@ -22,7 +22,7 @@ import { Breadcrumb } from "./breadcrumb";
 export async function generateMetadata({
   params: { handle },
 }: PageProps): Promise<Metadata> {
-  const productDetailsFragmentRef = await server.getProductDetails({ handle });
+  const productDetailsFragmentRef = await server.getProductDetailsByHandle({ handle });
 
   const product = getFragmentData(
     productDetailsFragment,
@@ -68,7 +68,7 @@ export default async function ProductPage({
   params: { handle, lang },
 }: PageProps) {
   // TODO: Remove getFragmentData from all server.<method> calls
-  const productDetailsFragmentRef = await server.getProductDetails({ handle });
+  const productDetailsFragmentRef = await server.getProductDetailsByHandle({ handle });
 
   if (!productDetailsFragmentRef) return notFound();
 
