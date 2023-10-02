@@ -229,7 +229,7 @@ export function ProductDetails({
         </div>
 
         <div
-          className="relative z-10 col-span-full grid h-fit p-6 pt-20 sm:col-start-3 sm:col-end-11 lg:-top-12 lg:col-start-7 lg:col-end-12 lg:rounded-xl lg:bg-white/90 lg:shadow lg:backdrop-blur lg:backdrop-saturate-50 xl:col-start-9"
+          className="relative z-10 col-span-full grid h-fit p-6 pt-20 sm:pt-6 sm:col-start-3 sm:col-end-11 lg:-top-12 lg:col-start-7 lg:col-end-12 lg:rounded-xl lg:bg-white/90 lg:shadow lg:backdrop-blur lg:backdrop-saturate-50 xl:col-start-9"
           id="purchase-options"
         >
           <PurchaseOptions ref={sectionElementRefs[1]} product={product} />
