@@ -243,11 +243,17 @@ export function ProductDetails({
         </div>
       </div>
 
-      <div className="h-fit bg-white/90 p-6 lg:col-span-full lg:backdrop-blur">
+      <div className="gap-16 lg:gap-32 grid h-fit bg-white/90 p-6 lg:col-span-full lg:backdrop-blur lg:grid-flow-col lg:grid-cols-2">
         <MetaFields
-          metafieldFragments={metafieldFragments}
           className="grid min-h-[100dvh] max-w-xl gap-4 pt-20 sm:pt-0 lg:min-h-fit"
-          id="details"
+          excludedKeys={["complementary_products"]}
+          metafieldFragments={metafieldFragments}
+          ref={sectionElementRefs[2]}
+        />
+        <MetaFields
+          className="grid min-h-[100dvh] max-w-xl gap-4 pt-20 sm:pt-0 lg:min-h-fit"
+          includedKeys={["complementary_products"]}
+          metafieldFragments={metafieldFragments}
           ref={sectionElementRefs[2]}
         />
       </div>
