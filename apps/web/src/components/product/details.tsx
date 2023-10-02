@@ -236,7 +236,7 @@ export function ProductDetails({
         </div>
       </section>
 
-      <section className="gap-16 lg:gap-32 grid h-fit bg-white/90 lg:backdrop-blur grid-cols-12 py-20">
+      <section className="gap-4 lg:gap-32 grid h-fit bg-white/90 lg:backdrop-blur grid-cols-12 pb-4 pt-12 sm:pb-12">
         <MetaFields
           className="col-start-2 col-end-12 lg:col-end-7"
           excludedKeys={["complementary_products"]}
