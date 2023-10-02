@@ -143,19 +143,12 @@ export function ProductDetails({
         sectionElementRefs={sectionElementRefs}
       />
 
-      <div className="grid min-h-[100dvh] grid-cols-12 content-center lg:h-[100dvh]">
+      <section className="grid min-h-[100dvh] grid-cols-12 content-center lg:h-[100dvh]">
         <div
           className="relative z-0 col-span-full grid w-full snap-both snap-mandatory grid-flow-col overflow-x-scroll scroll-smooth lg:fixed lg:inset-0"
           id="images"
           ref={sectionElementRefs[0]}
         >
-          {/* <Images
-            className={cn(mediaClassName, "hidden lg:grid")}
-            idPrefix="prefix"
-            images={images}
-            sizes="(max-width: 639px) 100vw, 50vw"
-          /> */}
-
           <Images
             className={mediaClassName}
             idPrefix="image"
@@ -241,22 +234,22 @@ export function ProductDetails({
         >
           <PurchaseOptions ref={sectionElementRefs[1]} product={product} />
         </div>
-      </div>
+      </section>
 
-      <div className="gap-16 lg:gap-32 grid h-fit bg-white/90 p-6 lg:col-span-full lg:backdrop-blur lg:grid-flow-col lg:grid-cols-2">
+      <section className="gap-16 lg:gap-32 grid h-fit bg-white/90 lg:backdrop-blur grid-cols-12 py-20">
         <MetaFields
-          className="grid min-h-[100dvh] max-w-xl gap-4 pt-20 sm:pt-0 lg:min-h-fit"
+          className="col-start-2 col-end-12 lg:col-end-7"
           excludedKeys={["complementary_products"]}
           metafieldFragments={metafieldFragments}
           ref={sectionElementRefs[2]}
         />
         <MetaFields
-          className="grid min-h-[100dvh] max-w-xl gap-4 pt-20 sm:pt-0 lg:min-h-fit"
+          className="col-start-2 lg:col-start-7 col-end-12"
           includedKeys={["complementary_products"]}
           metafieldFragments={metafieldFragments}
           ref={sectionElementRefs[2]}
         />
-      </div>
+      </section>
 
       <script
         type="application/ld+json"

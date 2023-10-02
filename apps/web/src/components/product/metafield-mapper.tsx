@@ -72,10 +72,6 @@ export const MetafieldMapper = ({
     return null;
   }
 
-  if (metafield.key === "complementary_products") {
-    console.log(metafield);
-  }
-
   switch (metafield.type) {
     case "list.single_line_text_field":
     case "list.multi_line_text_field": {
@@ -131,7 +127,7 @@ export const MetafieldMapper = ({
             if (typeof id === "string") {
               // return <span key={index}>{id}</span>;
 
-              const productDetailsFragmentRef = await server.getProductDetails({
+              const productDetailsFragmentRef = await server.getProductDetailsById({
                 id,
               });
 

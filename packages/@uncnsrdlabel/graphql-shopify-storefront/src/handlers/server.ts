@@ -27,7 +27,8 @@ import {
   GetPageQueryVariables,
   GetPagesQueryVariables,
   GetProductBasicQueryVariables,
-  GetProductDetailsQueryVariables,
+  GetProductDetailsByHandleQueryVariables,
+  GetProductDetailsByIdQueryVariables,
   GetProductRecommendationsQueryVariables,
   GetProductsQueryVariables,
   GetProductsWithVariantsQueryVariables,
@@ -42,7 +43,8 @@ import {
   getPageQuery,
   getPagesQuery,
   getProductBasicQuery,
-  getProductDetailsQuery,
+  getProductDetailsByHandleQuery,
+  getProductDetailsByIdQuery,
   getProductRecommendationsQuery,
   getProductsQuery,
   getProductsWithVariantsQuery,
@@ -422,9 +424,9 @@ export class Server {
     return productBasicFragmentRef;
   }
 
-  async getProductDetails(variables: GetProductDetailsQueryVariables) {
+  async getProductDetailsByHandle(variables: GetProductDetailsByHandleQueryVariables) {
     const { product: productDetailsFragmentRef } = await getShopifyGraphQL(
-      getProductDetailsQuery,
+      getProductDetailsByHandleQuery,
       // @ts-expect-error Types of property 'country' are incompatible.
       { ...this.inContextVariables, ...variables },
     );
@@ -433,6 +435,32 @@ export class Server {
       throw {
         status: 404,
         message: `Product not found for handle \`${variables.handle}\``,
+      };
+    }
+
+    // console.log({ productDetailsFragmentRef });
+
+    // const product = getFragmentData(
+    //   productDetailsFragment,
+    //   productDetailsFragmentRef,
+    // );
+
+    // console.log({ product });
+
+    return productDetailsFragmentRef;
+  }
+
+  async getProductDetailsById(variables: GetProductDetailsByIdQueryVariables) {
+    const { product: productDetailsFragmentRef } = await getShopifyGraphQL(
+      getProductDetailsByIdQuery,
+      // @ts-expect-error Types of property 'country' are incompatible.
+      { ...this.inContextVariables, ...variables },
+    );
+
+    if (!productDetailsFragmentRef) {
+      throw {
+        status: 404,
+        message: `Product not found for id \`${variables.id}\``,
       };
     }
 
