@@ -31,6 +31,7 @@ export const graphQLClient = new GraphQLClient(endpoint, {
   // errorPolicy: "all",
   fetch,
   headers,
+  cache: "no-store",
 });
 
 export const getShopifyQueryClient = cache(() => new QueryClient());
