@@ -3,32 +3,37 @@
 import { Image } from "@/components/media/image";
 import { cn } from "@uncnsrdlabel/lib";
 import dynamic from "next/dynamic";
+import { forwardRef } from "react";
 import { type ReactPlayerProps } from "react-player";
 
 const ReactPlayer = dynamic(() => import("react-player/lazy"), { ssr: false });
 
-import { FC } from "react";
-
 export type VideoProps = ReactPlayerProps;
+//  & {
+//   ref?: MutableRefObject<HTMLElement | null>;
+// };
 
-export const Video: FC<VideoProps> = ({
-  alt,
-  autoPlay = false,
-  className,
-  contentType,
-  fallback,
-  loop = false,
-  poster,
-  priority,
-  title,
-  url,
-  ...props
-}) => (
+export const Video = forwardRef<HTMLElement, VideoProps>(
+  ({ alt,
+    autoPlay = false,
+    className,
+    contentType,
+    fallback,
+    id,
+    loop = false,
+    poster,
+    priority,
+    ref,
+    title,
+    url,
+    ...props }, forwardedRef) => (
   <figure
     className={cn(
       className,
-      "relative h-full w-full overflow-hidden",
+      "relative h-full w-full",
     )}
+    id={id}
+    ref={forwardedRef}
   >
     {poster && <Image
       alt={alt}
@@ -57,4 +62,4 @@ export const Video: FC<VideoProps> = ({
     />
     {props.title && <figcaption>{props.title}</figcaption>}
   </figure>
-);
+));
