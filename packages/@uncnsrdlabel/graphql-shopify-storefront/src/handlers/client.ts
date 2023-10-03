@@ -53,7 +53,8 @@ import {
   getShopPoliciesQuery,
 } from "../queries/index";
 import { type PolicyName } from "../types";
-import { getMenuItems, useGetShopifyGraphQL } from "../utilities";
+import { useGetShopifyGraphQL } from "../utilities/client";
+import { getMenuItems } from "../utilities/server";
 
 export function useCreateCart(variables: CreateCartMutationVariables) {
   const { data } = useGetShopifyGraphQL(
