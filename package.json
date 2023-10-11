@@ -21,7 +21,7 @@
   "name": "uncnsrdlabel.com",
   "packageManager": "pnpm@8.6.10",
   "private": true,
-  "repository": "https://github.com/karlito-who-else/uncnsrdlabel.com.git",
+  "repository": "https://github.com/UNCNSRD-Label/uncnsrdlabel.com",
   "scripts": {
     "build": "dotenv -e .env.local -- turbo run build",
     "clean": "turbo run clean",
