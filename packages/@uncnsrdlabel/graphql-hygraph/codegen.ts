@@ -16,10 +16,8 @@ const config: CodegenConfig = {
     "./src/fragments/**/*.{graphql,ts,tsx}",
     "./src/mutations/**/*.{graphql,ts,tsx}",
     "./src/queries/**/*.{graphql,ts,tsx}",
-    "../../apps/app/app/**/*.hygraph.graphql",
-    "../../apps/app/components/**/*.hygraph.graphql",
-    "../../apps/app/app/**/*.{ts,tsx}",
-    "../../apps/app/components/**/*.{ts,tsx}",
+    "../../../apps/*/app/**/*.{hygraph.graphql,ts,tsx}",
+    "../../../apps/*/components/**/*.{hygraph.graphql,ts,tsx}",
   ],
   emitLegacyCommonJSImports: false,
   generates: {
