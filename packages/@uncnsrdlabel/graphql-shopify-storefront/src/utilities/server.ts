@@ -32,7 +32,7 @@ export async function getShopifyGraphQL<TResult, TVariables>(
   }
 }
 
-export function getPageImages(mediaImages: PageFragment["mediaImages"]) {
+export async function getPageImages(mediaImages: PageFragment["mediaImages"]) {
   const images = mediaImages?.references?.edges
     .map(
       ({ node }) =>
@@ -48,7 +48,7 @@ export function getPageImages(mediaImages: PageFragment["mediaImages"]) {
   return images;
 }
 
-export function getMenuItems(menuItems: Partial<MenuItem>[]) {
+export async function getMenuItems(menuItems: Partial<MenuItem>[]) {
   const images = menuItems.map((menuItem) => ({
     ...menuItem,
     url: menuItem.url

@@ -52,7 +52,7 @@ import {
   getShopPoliciesQuery,
 } from "../queries/index";
 import { type PolicyName } from "../types";
-import { getMenuItems, getShopifyGraphQL } from "../utilities";
+import { getMenuItems, getShopifyGraphQL } from "../utilities/server";
 
 export class Server {
   inContextVariables: ReturnType<typeof getInContextVariables>;
