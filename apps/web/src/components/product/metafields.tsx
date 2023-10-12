@@ -43,11 +43,7 @@ export const MetaFields = forwardRef<MetaFieldsRef, MetaFieldsProps>(
           .filter((metafield) => !excludedKeys?.includes(metafield.key))
           .filter(
             (metafield) => {
-              if(!includedKeys?.length) {
-                return true;
-              }
-
-              if(includedKeys?.includes(metafield.key)) {
+              if(!includedKeys?.length || includedKeys?.includes(metafield.key)) {
                 return true;
               }
             },
