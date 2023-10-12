@@ -113,7 +113,7 @@
   "scripts": {
     "analyze": "cross-env ANALYZE=true next build",
     "build": "DOTENV_CONFIG_PATH=\"../../../.env.local\" && npm run partytown && next build",
-    "dev": "DOTENV_CONFIG_PATH=\"../../../.env.local\" && next dev --turbo -p 3001",
+    "dev": "DOTENV_CONFIG_PATH=\"../../../.env.local\" && next dev -p 3001",
     "find:unused": "npx next-unused",
     "lint": "next lint",
     "partytown": "partytown copylib public/~partytown",
