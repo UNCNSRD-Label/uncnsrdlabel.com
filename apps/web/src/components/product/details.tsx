@@ -176,6 +176,7 @@ export function ProductDetails({
               <Link
                 className={thumbnailClassName}
                 href={`#image-${index}`}
+                key={image.id}
                 onClick={(event) => {
                   event.preventDefault();
                   imageElementRefs?.[index].current?.scrollIntoView({
@@ -202,6 +203,7 @@ export function ProductDetails({
                 <Link
                   className={thumbnailClassName}
                   href={`#video-${index}`}
+                  key={video.id}
                   onClick={(event) => {
                     event.preventDefault();
                     console.log(videoElementRefs?.[index].current, video.id);

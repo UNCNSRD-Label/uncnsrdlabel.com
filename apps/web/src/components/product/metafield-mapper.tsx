@@ -13,6 +13,7 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import Link from "next/link";
 import { ReactNode } from "react";
+import slugify from "slugify";
 import { JsonValue } from "type-fest";
 
 const getSingleLineTextFieldValue = (parsedValue: string) => {
@@ -33,7 +34,7 @@ const getTextFieldValueList = (parsedValue: JsonValue) => {
       <ul>
         {parsedValue.map((item, index) => {
           if (typeof item === "string") {
-            return <li key={index}>{item}</li>;
+            return <li key={slugify(item)}>{item}</li>;
           }
         })}
       </ul>
@@ -96,7 +97,7 @@ export const MetafieldMapper = ({
 
         if (Array.isArray(references)) {
           value = references.map((reference, index) => (
-            <dl className="grid grid-cols-2 justify-start gap-2" key={index}>
+            <dl className="grid grid-cols-2 justify-start gap-2" key={reference.id}>
               {reference.fields.map((field) => {
                 if (["name", "portfolio"].includes(field.key)) {
                   return null;
@@ -104,8 +105,8 @@ export const MetafieldMapper = ({
 
                 return (
                   <>
-                    <dt className="mt-0 capitalize">{field.key}</dt>
-                    <dd className="pl-0">
+                    <dt className="mt-0 capitalize" key={slugify(`${field.key}-dt`)}>{field.key}</dt>
+                    <dd className="pl-0" key={slugify(`${field.key}-dd`)}>
                       {MetafieldMapper({
                         excludedKeys,
                         includedKeys,
