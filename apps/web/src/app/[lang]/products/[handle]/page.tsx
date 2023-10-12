@@ -1,6 +1,7 @@
 import { server } from "@/clients/shopify";
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
+import { ProductAdditionalDetails } from "@/components/product/additional-details";
 import { ProductDetails } from "@/components/product/details";
 import { getIntl } from "@/lib/i18n/server";
 import { type PageProps } from "@/types/next";
@@ -77,6 +78,7 @@ export default async function ProductPage({
       <Breadcrumb className="hidden my-6 lg:grid lg:grid-cols-12 [&>*]:lg:col-start-2 [&>*]:lg:col-end-10 relative z-20" productDetailsFragmentRef={productDetailsFragmentRef} />
       <main className="min-h-[100dvh] mb-48 [&:has(+_aside)]:mb-0">
         <ProductDetails productDetailsFragmentRef={productDetailsFragmentRef} />
+        <ProductAdditionalDetails productDetailsFragmentRef={productDetailsFragmentRef} />
       </main>
       <Suspense>
         <RelatedProducts

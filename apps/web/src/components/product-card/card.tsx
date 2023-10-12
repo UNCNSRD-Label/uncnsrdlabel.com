@@ -1,6 +1,5 @@
 "use client";
 
-import { HandleTrackProduct } from "@/components/analytics/handle-track-product";
 import { Image } from "@/components/media/image";
 import { Price } from "@/components/price";
 import { ProductProvider } from "@shopify/hydrogen-react";
@@ -70,28 +69,27 @@ export function ProductCard({
     <ProductProvider data={product}>
       <div
         className={cn(
-          "card grid w-full grid-flow-col grid-cols-2 gap-4",
+          "card grid grid-flow-col col-gap-4 w-full",
           className,
         )}
       >
-        <div className="">
-          <figure
-            className="relative grid aspect-square gap-8 overflow-hidden"
-            id="image"
-          >
-            <Image
-              alt={image[0].altText}
-              className="aspect-2/3 object-contain snap snap-x-mandatory snap-align-start relative w-full overflow-y-hidden"
-              fill
-              sizes="(max-width: 639px) 100vw, 33vw"
-              src={image[0].src}
-              style={{
-                filter:
-                  "brightness(1.5) drop-shadow(2px 4px 6px rgba(0,0,0,0.5))",
-              }}
-            />
-          </figure>
-        </div>
+        <figure
+          className="aspect-square gap-8 grid overflow-hidden relative"
+          id="image"
+        >
+          <Image
+            alt={image[0].altText}
+            className="aspect-2/3 object-contain snap snap-x-mandatory snap-align-start relative w-full overflow-y-hidden"
+            fill
+            sizes="(max-width: 639px) 100vw, 33vw"
+            src={image[0].src}
+            style={{
+              filter:
+                "brightness(1.5) drop-shadow(2px 4px 6px rgba(0,0,0,0.5))",
+            }}
+          />
+        </figure>
+
         <div className={className}>
           <h3
             data-testid="product-name"

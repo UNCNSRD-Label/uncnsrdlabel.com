@@ -1,8 +1,11 @@
+"use client";
+
 import { AddToCart } from "@/components/cart/add-to-cart";
 import { Price } from "@/components/price";
 import { VariantSelector } from "@/components/product/variant-selector";
 import { Prose } from "@/components/prose";
 import { ResultOf } from "@graphql-typed-document-node/core";
+import { ProductProvider } from "@shopify/hydrogen-react";
 import { ProductVariant } from "@shopify/hydrogen/storefront-api-types";
 import {
   getFragmentData,
@@ -30,21 +33,13 @@ export const PurchaseOptions = forwardRef<
     variantsFragmentRefs,
   );
 
-  const variants: Pick<ProductVariant, "id" | "selectedOptions">[] = variantFragments.edges.map(
-    (edge) => edge?.node,
-  );
+  const variants: Pick<ProductVariant, "id" | "selectedOptions">[] =
+    variantFragments.edges.map((edge) => edge?.node);
 
   return (
-    <>
-      <div
-        className={cn("mb-6", className)}
-        id={id}
-        ref={forwardedRef}
-      >
-        <h3
-          data-testid="product-name"
-          className="box-decoration-clone text-xl"
-        >
+    <ProductProvider data={product}>
+      <div className={cn("mb-6", className)} id={id} ref={forwardedRef}>
+        <h3 data-testid="product-name" className="box-decoration-clone text-xl">
           {product.title}
         </h3>
         <Price
@@ -65,11 +60,11 @@ export const PurchaseOptions = forwardRef<
 
       <AddToCart
         availableForSale={product.availableForSale}
-        className="btn btn-base text-sm btn-primary btn-bg justify-center py-4 relative w-full"
+        className="btn btn-base btn-primary btn-bg relative w-full justify-center py-4 text-sm"
         options={product.options}
         variants={variants}
       />
-    </>
+    </ProductProvider>
   );
 });
 
