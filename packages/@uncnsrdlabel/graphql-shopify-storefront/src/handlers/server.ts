@@ -328,7 +328,7 @@ export class Server {
 
     // console.log({ menu });
 
-    return { ...menu, items: getMenuItems(menu.items) };
+    return { ...menu, items: await getMenuItems(menu.items) };
   }
 
   async getPage(variables: GetPageQueryVariables) {
