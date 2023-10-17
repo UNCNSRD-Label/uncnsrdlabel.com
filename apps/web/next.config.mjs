@@ -11,11 +11,7 @@ const withPWA = withPWAInit({
   disable: process.env.NEXT_PUBLIC_FEATURE_FLAG_PWA !== "true",
 });
 
-const plugins = [withBundleAnalyzer];
-
-if (process.env.NODE_ENV === "production") {
-  plugins.push([withPWA]);
-}
+const plugins = [withBundleAnalyzer, withPWA];
 
 function onlyUnique(value, index, array) {
   return array.indexOf(value) === index;
