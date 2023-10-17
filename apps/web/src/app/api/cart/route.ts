@@ -2,13 +2,13 @@ import { server } from "@/clients/shopify";
 import { isShopifyError } from "@uncnsrdlabel/lib";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
-import { Cart, CartResponse } from "./types";
+import { Cart } from "./types";
 
 function formatErrorMessage(err: Error): string {
   return JSON.stringify(err, Object.getOwnPropertyNames(err));
 }
 
-export async function POST(req: NextRequest): Promise<CartResponse> {
+export async function POST(req: NextRequest): Promise<Response> {
   const cartId = cookies().get("cartId")?.value;
   const { merchandiseId } = (await req.json()) as Cart;
 
@@ -16,24 +16,24 @@ export async function POST(req: NextRequest): Promise<CartResponse> {
     return NextResponse.json(
       { error: "Missing cartId or variantId" },
       { status: 400 },
-    );
+    ) satisfies Response;
   }
   try {
     await server.addToCart({ cartId, lines: [{ merchandiseId, quantity: 1 }] });
-    return NextResponse.json({ status: 204 });
+    return NextResponse.json({ status: 204 }) satisfies Response;
   } catch (e) {
     if (isShopifyError(e)) {
       return NextResponse.json(
         { message: formatErrorMessage(e.message) },
         { status: e.status },
-      );
+      ) satisfies Response;
     }
 
-    return NextResponse.json({ status: 500 });
+    return NextResponse.json({ status: 500 }) satisfies Response;
   }
 }
 
-export async function PUT(req: NextRequest): Promise<CartResponse> {
+export async function PUT(req: NextRequest): Promise<Response> {
   const cartId = cookies().get("cartId")?.value;
   const { variantId, quantity, lineId } = (await req.json()) as Cart;
 
@@ -41,7 +41,7 @@ export async function PUT(req: NextRequest): Promise<CartResponse> {
     return NextResponse.json(
       { error: "Missing cartId, variantId, lineId, or quantity" },
       { status: 400 },
-    ) as CartResponse;
+    );
   }
   try {
     await server.updateCart({
@@ -60,14 +60,14 @@ export async function PUT(req: NextRequest): Promise<CartResponse> {
       return NextResponse.json(
         { message: formatErrorMessage(e.message) },
         { status: e.status },
-      ) as CartResponse;
+      );
     }
 
     return NextResponse.json({ status: 500 });
   }
 }
 
-export async function DELETE(req: NextRequest): Promise<CartResponse> {
+export async function DELETE(req: NextRequest): Promise<Response> {
   const cartId = cookies().get("cartId")?.value;
   const { lineId } = (await req.json()) as Cart;
 
@@ -75,7 +75,7 @@ export async function DELETE(req: NextRequest): Promise<CartResponse> {
     return NextResponse.json(
       { error: "Missing cartId or lineId" },
       { status: 400 },
-    ) as CartResponse;
+    );
   }
   try {
     await server.removeFromCart({ cartId, lineIds: [lineId] });
@@ -85,7 +85,7 @@ export async function DELETE(req: NextRequest): Promise<CartResponse> {
       return NextResponse.json(
         { message: formatErrorMessage(error.message) },
         { status: error.status },
-      ) as CartResponse;
+      );
     }
 
     return NextResponse.json({ status: 500 });
