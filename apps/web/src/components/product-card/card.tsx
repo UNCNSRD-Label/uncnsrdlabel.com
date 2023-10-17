@@ -119,7 +119,6 @@ export function ProductCard({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         key="product-jsonld"
       />
-      <HandleTrackProduct />
     </ProductProvider>
   );
 }
