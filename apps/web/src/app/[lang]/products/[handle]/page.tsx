@@ -1,22 +1,19 @@
 import { server } from "@/clients/shopify";
-import { Grid } from "@/components/grid";
-import { ProductGridItems } from "@/components/layout/product-grid-items";
 import { ProductAdditionalDetails } from "@/components/product/additional-details";
 import { ProductDetails } from "@/components/product/details";
-import { getIntl } from "@/lib/i18n/server";
 import { type PageProps } from "@/types/next";
 import {
-  FragmentType,
   getFragmentData,
   imageFragment,
   productDetailsFragment,
   seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { HIDDEN_PRODUCT_TAG, cn } from "@uncnsrdlabel/lib";
+import { HIDDEN_PRODUCT_TAG } from "@uncnsrdlabel/lib";
 import { type Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { Breadcrumb } from "./breadcrumb";
+import { RelatedProducts } from "./related-products";
 
 // export const runtime = "edge";
 
@@ -80,7 +77,7 @@ export default async function ProductPage({
         <ProductDetails productDetailsFragmentRef={productDetailsFragmentRef} />
         <ProductAdditionalDetails productDetailsFragmentRef={productDetailsFragmentRef} />
       </main>
-      <Suspense>
+      <Suspense fallback={<span>Loading&hellip;</span>}>
         <RelatedProducts
           className="text-dark dark:text-light relative bg-gray-300 pb-48 pt-12 dark:bg-gray-800 [contain:paint]"
           productDetailsFragmentRef={productDetailsFragmentRef}
@@ -88,43 +85,5 @@ export default async function ProductPage({
         />
       </Suspense>
     </>
-  );
-}
-
-async function RelatedProducts({
-  className,
-  lang,
-  productDetailsFragmentRef,
-}: {
-  className?: string;
-  lang: Intl.BCP47LanguageTag;
-  productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
-}) {
-  const intl = await getIntl(lang, `component.RelatedProducts`);
-
-  const product = getFragmentData(
-    productDetailsFragment,
-    productDetailsFragmentRef,
-  );
-
-  if (!product) return null;
-
-  const { id } = product;
-
-  const productRecommendationRefs = await server.getProductRecommendations({
-    productId: id,
-  });
-
-  if (!productRecommendationRefs.length) return null;
-
-  return (
-    <aside className={cn("px-4 pb-48 pt-12", className)}>
-      <div className="mb-8 text-center text-xl font-bold uppercase">
-        {intl.formatMessage({ id: "title" })}
-      </div>
-      <Grid className="grid-cols-2 lg:grid-cols-5 [&>*:last-child:nth-child(odd)]:hidden [&>*:last-child:nth-child(odd)]:lg:list-item">
-        <ProductGridItems limit={5} productFragmentRefs={productRecommendationRefs} />
-      </Grid>
-    </aside>
   );
 }
