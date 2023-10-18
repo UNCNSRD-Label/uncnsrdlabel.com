@@ -6,7 +6,10 @@ import {
   type UseQueryResult
 } from "@tanstack/react-query";
 import { isShopifyError, useGetInContextVariables } from "@uncnsrdlabel/lib";
-import { getQueryKey, graphQLClient } from "../utilities";
+// import {
+//   type VariablesWithContext,
+// } from "../types";
+import { getQueryKey } from "../utilities";
 
 export function useGetShopifyGraphQL<TResult, TVariables>(
   document: TypedDocumentNode<TResult, TVariables>,
@@ -14,14 +17,14 @@ export function useGetShopifyGraphQL<TResult, TVariables>(
 ): UseQueryResult<TResult> {
   const inContextVariables = useGetInContextVariables();
 
-  const variablesWithContext = { ...inContextVariables, ...variables };
+  type TVariablesWithContext = typeof inContextVariables & TVariables;
+
+  const variablesWithContext = { ...inContextVariables, ...variables } as TVariablesWithContext;
 
   try {
-    const query = useQuery(
-      getQueryKey(document, variablesWithContext),
-      async ({ queryKey }) =>
-        graphQLClient.request(document, queryKey[1] ? queryKey[1] : undefined),
-    );
+    const queryKey = getQueryKey<TResult, TVariablesWithContext>(document, variablesWithContext);
+
+    const query = useQuery<TResult>({ queryKey });
 
     return query;
   } catch (error) {

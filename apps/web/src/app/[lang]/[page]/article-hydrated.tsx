@@ -1,5 +1,5 @@
 import { server } from "@/clients/shopify";
-import { dehydrate, Hydrate } from "@tanstack/react-query";
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import {
   getShopifyQueryClient
 } from "@uncnsrdlabel/graphql-shopify-storefront";
@@ -10,13 +10,16 @@ export async function ArticleHydrated({
   variables
 }: ArticleProps) {
   const shopifyQueryClient = getShopifyQueryClient();
-  await shopifyQueryClient.prefetchQuery([`getPage:${JSON.stringify(variables)}`], () => server.getPage(variables));
+  await shopifyQueryClient.prefetchQuery({
+    queryKey: [`getPage:${JSON.stringify(variables)}`],
+    queryFn: () => server.getPage(variables),
+  });
   const dehydratedState = dehydrate(shopifyQueryClient);
 
   return (
-    <Hydrate state={dehydratedState}>
+    <HydrationBoundary state={dehydratedState}>
       <Article className={className} variables={variables} />
-    </Hydrate>
+    </HydrationBoundary>
   );
 }
 

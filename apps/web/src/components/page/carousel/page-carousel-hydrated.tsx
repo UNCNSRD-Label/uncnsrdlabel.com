@@ -1,6 +1,6 @@
 import { LoadingDots } from "@/components/loading-dots";
 import { state$ } from "@/lib/store";
-import { dehydrate, Hydrate } from "@tanstack/react-query";
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import {
   getPageQuery,
   getQueryKey,
@@ -29,21 +29,24 @@ export async function PageCarouselHydrated({
 
   const variablesWithContext = { ...inContextVariables, ...variables };
 
-  await shopifyQueryClient.prefetchQuery(getQueryKey(getPageQuery, variablesWithContext), () =>
+  await shopifyQueryClient.prefetchQuery({
+    // @ts-ignore
+    queryKey: getQueryKey(getPageQuery, variablesWithContext),
+    queryFn: () =>
     getShopifyGraphQL(
       // TODO: Change to getPageImagesQuery to retrieve smaller data response
       getPageQuery,
       variables
-    ),
-  );
+    )
+  });
 
   const dehydratedState = dehydrate(shopifyQueryClient);
 
   return (
     <Suspense fallback={<LoadingDots />}>
-      <Hydrate state={dehydratedState}>
+      <HydrationBoundary state={dehydratedState}>
         <PageCarousel handle={handle} style={style} />
-      </Hydrate>
+      </HydrationBoundary>
     </Suspense>
   );
 }
