@@ -11,11 +11,7 @@ const withPWA = withPWAInit({
   disable: process.env.NEXT_PUBLIC_FEATURE_FLAG_PWA !== "true",
 });
 
-const plugins = [withBundleAnalyzer];
-
-if (process.env.NODE_ENV === "production") {
-  plugins.push([withPWA]);
-}
+const plugins = [withBundleAnalyzer, withPWA];
 
 function onlyUnique(value, index, array) {
   return array.indexOf(value) === index;
@@ -92,7 +88,6 @@ const nextConfig = {
   // },
   experimental: {
     // Avoid Module not found: ESM packages (supports-color) need to be imported. Use 'import' to reference the package instead. https://nextjs.org/docs/messages/import-esm-externals
-    esmExternals: "loose",
     scrollRestoration: true,
     serverActions: true,
     swcPlugins: [

@@ -52,7 +52,7 @@ import {
   getShopPoliciesQuery,
 } from "../queries/index";
 import { type PolicyName } from "../types";
-import { getMenuItems, getShopifyGraphQL } from "../utilities";
+import { getMenuItems, getShopifyGraphQL } from "../utilities/server";
 
 export class Server {
   inContextVariables: ReturnType<typeof getInContextVariables>;
@@ -328,7 +328,7 @@ export class Server {
 
     // console.log({ menu });
 
-    return { ...menu, items: getMenuItems(menu.items) };
+    return { ...menu, items: await getMenuItems(menu.items) };
   }
 
   async getPage(variables: GetPageQueryVariables) {

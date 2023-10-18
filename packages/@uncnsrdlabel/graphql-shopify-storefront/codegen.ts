@@ -9,10 +9,8 @@ const config: CodegenConfig = {
     "./src/fragments/**/*.{graphql,ts,tsx}",
     "./src/mutations/**/*.{graphql,ts,tsx}",
     "./src/queries/**/*.{graphql,ts,tsx}",
-    "../../apps/app/app/**/*.shopify.graphql",
-    "../../apps/app/components/**/*.shopify.graphql",
-    "../../apps/app/app/**/*.{ts,tsx}",
-    "../../apps/app/components/**/*.{ts,tsx}",
+    "../../../apps/*/app/**/*.{shopify.graphql,ts,tsx}",
+    "../../../apps/*/components/**/*.{shopify.graphql,ts,tsx}",
   ],
   emitLegacyCommonJSImports: false,
   generates: {

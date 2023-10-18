@@ -13,6 +13,7 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import Link from "next/link";
 import { ReactNode } from "react";
+import slugify from "slugify";
 import { JsonValue } from "type-fest";
 
 const getSingleLineTextFieldValue = (parsedValue: string) => {
@@ -31,9 +32,9 @@ const getTextFieldValueList = (parsedValue: JsonValue) => {
   if (Array.isArray(parsedValue)) {
     return (
       <ul>
-        {parsedValue.map((item, index) => {
+        {parsedValue.map((item) => {
           if (typeof item === "string") {
-            return <li key={index}>{item}</li>;
+            return <li key={slugify(item)}>{item}</li>;
           }
         })}
       </ul>
@@ -95,8 +96,8 @@ export const MetafieldMapper = ({
         const references = metafield.references?.nodes as Metaobject[];
 
         if (Array.isArray(references)) {
-          value = references.map((reference, index) => (
-            <dl className="grid grid-cols-2 justify-start gap-2" key={index}>
+          value = references.map((reference) => (
+            <dl className="items-center grid grid-cols-[auto_1fr] justify-start gap-x-10 gap-y-4" key={reference.id}>
               {reference.fields.map((field) => {
                 if (["name", "portfolio"].includes(field.key)) {
                   return null;
@@ -104,8 +105,8 @@ export const MetafieldMapper = ({
 
                 return (
                   <>
-                    <dt className="mt-0 capitalize">{field.key}</dt>
-                    <dd className="pl-0">
+                    <dt className="mb-4 mt-0 capitalize" key={slugify(`${field.key}-dt`)}>{field.key}</dt>
+                    <dd className="mt-0 pl-0" key={slugify(`${field.key}-dd`)}>
                       {MetafieldMapper({
                         excludedKeys,
                         includedKeys,

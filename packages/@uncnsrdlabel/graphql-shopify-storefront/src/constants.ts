@@ -86,3 +86,8 @@ export const productSorting: ProductSortFilterItem[] = [
     reverse: true,
   },
 ];
+
+export const domain = `https://${process.env
+  .NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!}`;
+
+  export const endpoint = `${domain}/api/${process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_API_VERSION}/graphql.json`;

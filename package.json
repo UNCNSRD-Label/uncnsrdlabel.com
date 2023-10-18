@@ -1,17 +1,17 @@
 {
   "devDependencies": {
     "@graphql-eslint/eslint-plugin": "^3.20.1",
-    "@turbo/gen": "^1.10.13",
-    "@types/node": "^20.6.0",
+    "@turbo/gen": "^1.10.15",
+    "@types/node": "^20.8.6",
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "dotenv-cli": "^7.3.0",
-    "eslint": "^8.49.0",
-    "eslint-config-turbo": "^1.10.13",
+    "eslint": "^8.51.0",
+    "eslint-config-turbo": "^1.10.15",
     "husky": "^8.0.3",
-    "lint-staged": "^14.0.1",
+    "lint-staged": "^15.0.1",
     "madge": "^6.1.0",
     "prettier": "^3.0.3",
-    "turbo": "^1.10.13"
+    "turbo": "^1.10.15"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
@@ -21,7 +21,7 @@
   "name": "uncnsrdlabel.com",
   "packageManager": "pnpm@8.6.10",
   "private": true,
-  "repository": "https://github.com/karlito-who-else/uncnsrdlabel.com.git",
+  "repository": "https://github.com/UNCNSRD-Label/uncnsrdlabel.com",
   "scripts": {
     "build": "dotenv -e .env.local -- turbo run build",
     "clean": "turbo run clean",

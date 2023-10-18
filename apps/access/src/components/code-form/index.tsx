@@ -3,6 +3,7 @@
 import { cn, SITE_URL_WEB } from "@uncnsrdlabel/lib";
 import { useRouter } from "next/navigation";
 import { forwardRef, useEffect, useRef, useState } from "react";
+// @ts-expect-error Module '"react-dom"' has no exported member 'experimental_useFormStatus'
 import { experimental_useFormStatus as useFormStatus } from "react-dom";
 import { checkCode } from "./actions";
 import styles from "./index.module.css";

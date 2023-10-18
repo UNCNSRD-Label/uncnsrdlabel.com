@@ -1,32 +1,52 @@
 "use client";
 
-import { HandleTrackProduct } from "@/components/analytics/handle-track-product";
 import { Images } from "@/components/media/images";
 import { Videos } from "@/components/media/videos";
-import { MetaFields } from "@/components/product/metafields";
 import { NavigationMenu } from "@/components/product/navigation-menu";
 import { PurchaseOptions } from "@/components/product/purchase-options";
+import { useEffect } from "react";
+import { useTrack } from "use-analytics";
 // import { WithVideo } from "@/types/shopify";
-import { ProductProvider } from "@shopify/hydrogen-react";
 import {
   FragmentType,
   getFragmentData,
   imageFragment,
   productDetailsFragment,
-  productMetafieldFragment,
   videoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useRef, type MutableRefObject } from "react";
 import { Product as ProductSchema, WithContext } from "schema-dts";
+import { usePage } from "use-analytics";
 
 export function ProductDetails({
   productDetailsFragmentRef,
 }: {
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }) {
+  const page = usePage();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const track = useTrack();
+
+  const product = getFragmentData(
+    productDetailsFragment,
+    productDetailsFragmentRef,
+  );
+
+  useEffect(() => {
+    track("product", {
+      product,
+    });
+  }, [product, track]);
+
+  useEffect(() => {
+    page();
+  }, [page, pathname, searchParams]);
+
   const sectionElementRefs = [
     useRef(null),
     useRef(null),
@@ -87,11 +107,6 @@ export function ProductDetails({
     useRef(null),
   ];
 
-  const product = getFragmentData(
-    productDetailsFragment,
-    productDetailsFragmentRef,
-  );
-
   const imagesNodes = product.images.edges.map((edge) => edge?.node);
 
   const images = imagesNodes
@@ -105,13 +120,6 @@ export function ProductDetails({
   const media = product.media.edges.map((edge) => edge?.node);
 
   const videos = media.filter((node) => node.__typename === "Video");
-
-  const metafieldsFragmentRefs = product.metafields;
-
-  const metafieldFragments = getFragmentData(
-    productMetafieldFragment,
-    metafieldsFragmentRefs.filter(Boolean),
-  );
 
   const featuredImage = getFragmentData(imageFragment, product.featuredImage);
 
@@ -137,7 +145,7 @@ export function ProductDetails({
     "bg-black pointer-events-auto relative my-auto aspect-square w-full overflow-hidden rounded-full shadow";
 
   return (
-    <ProductProvider data={product}>
+    <>
       <NavigationMenu
         className="fixed inset-x-0 bottom-0 z-50 w-full sm:hidden"
         sectionElementRefs={sectionElementRefs}
@@ -176,6 +184,7 @@ export function ProductDetails({
               <Link
                 className={thumbnailClassName}
                 href={`#image-${index}`}
+                key={image.id}
                 onClick={(event) => {
                   event.preventDefault();
                   imageElementRefs?.[index].current?.scrollIntoView({
@@ -202,6 +211,7 @@ export function ProductDetails({
                 <Link
                   className={thumbnailClassName}
                   href={`#video-${index}`}
+                  key={video.id}
                   onClick={(event) => {
                     event.preventDefault();
                     console.log(videoElementRefs?.[index].current, video.id);
@@ -229,26 +239,11 @@ export function ProductDetails({
         </div>
 
         <div
-          className="relative z-10 col-span-full grid h-fit p-6 pt-20 sm:pt-6 sm:col-start-3 sm:col-end-11 lg:-top-12 lg:col-start-7 lg:col-end-12 lg:rounded-xl lg:bg-white/90 lg:shadow lg:backdrop-blur lg:backdrop-saturate-50 xl:col-start-9"
+          className="relative z-10 col-span-full grid h-fit p-6 pt-20 sm:col-start-3 sm:col-end-11 sm:pt-6 lg:-top-12 lg:col-start-7 lg:col-end-12 lg:rounded-xl lg:bg-white/90 lg:shadow lg:backdrop-blur lg:backdrop-saturate-50 xl:col-start-9"
           id="purchase-options"
         >
           <PurchaseOptions ref={sectionElementRefs[1]} product={product} />
         </div>
-      </section>
-
-      <section className="gap-4 lg:gap-32 grid h-fit bg-white/90 lg:backdrop-blur grid-cols-12 pb-4 pt-12 sm:pb-12">
-        <MetaFields
-          className="col-start-2 col-end-12 lg:col-end-7"
-          excludedKeys={["complementary_products"]}
-          metafieldFragments={metafieldFragments}
-          ref={sectionElementRefs[2]}
-        />
-        <MetaFields
-          className="col-start-2 lg:col-start-7 col-end-12"
-          includedKeys={["complementary_products"]}
-          metafieldFragments={metafieldFragments}
-          ref={sectionElementRefs[2]}
-        />
       </section>
 
       <script
@@ -256,8 +251,6 @@ export function ProductDetails({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         key="product-jsonld"
       />
-
-      <HandleTrackProduct />
-    </ProductProvider>
+    </>
   );
 }
