@@ -31,7 +31,7 @@ const getMultiLineTextFieldValue = (parsedValue: string) => {
 const getTextFieldValueList = (parsedValue: JsonValue) => {
   if (Array.isArray(parsedValue)) {
     return (
-      <ul>
+      <ul className="heart-list">
         {parsedValue.map((item) => {
           if (typeof item === "string") {
             return <li key={slugify(item)}>{item}</li>;
@@ -86,7 +86,7 @@ export const MetafieldMapper = ({
           ?.value;
 
         if (typeof name === "string") {
-          value = <span>{name}</span>;
+          value = <span>❤ {name}</span>;
         }
       }
 
@@ -97,7 +97,7 @@ export const MetafieldMapper = ({
 
         if (Array.isArray(references)) {
           value = references.map((reference) => (
-            <dl className="items-center grid grid-cols-[auto_1fr] justify-start gap-x-10 gap-y-4" key={reference.id}>
+            <dl className="items-center grid grid-cols-[auto_1fr] justify-start gap-x-10 gap-y-2" key={reference.id}>
               {reference.fields.map((field) => {
                 if (["name", "portfolio"].includes(field.key)) {
                   return null;
@@ -105,7 +105,7 @@ export const MetafieldMapper = ({
 
                 return (
                   <>
-                    <dt className="mb-4 mt-0 capitalize" key={slugify(`${field.key}-dt`)}>{field.key}</dt>
+                    <dt className="mt-0 capitalize" data-type={field.type} key={slugify(`${field.key}-dt`)}>{field.key}</dt>
                     <dd className="mt-0 pl-0" key={slugify(`${field.key}-dd`)}>
                       {MetafieldMapper({
                         excludedKeys,

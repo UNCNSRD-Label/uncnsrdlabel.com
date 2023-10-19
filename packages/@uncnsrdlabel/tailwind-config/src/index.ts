@@ -73,7 +73,7 @@ export const config: Config = {
         hotPink: "#ff4dd8",
         stateFocus: colors.gray["500"],
         stateHover: colors.gray["500"],
-        dark: "#111111",
+        dark: "#010101",
         light: "#fafafa",
         disabled: colors.gray["300"],
         border: "hsl(var(--border))",

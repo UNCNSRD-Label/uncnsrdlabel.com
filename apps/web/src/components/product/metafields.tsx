@@ -32,6 +32,7 @@ export const MetaFields = ({
           <>
             <dt
               className="mb-2 text-sm uppercase"
+              data-type={metafield.type}
               key={`${metafield?.key}-dt`}
             >
               {metafield?.key
@@ -44,7 +45,10 @@ export const MetaFields = ({
             </dt>
 
             <dd
-              className="collapsible-content prose prose-sm dark:prose-invert overflow-x-auto [&+dt]:border-gray-200 [&+dt]:border-t [&+dt]:mt-8 [&+dt]:pt-8"
+              className={cn(
+                "collapsible-content prose prose-sm prose-invert overflow-x-auto [&+dt]:mt-4 [&+dt]:border-t [&+dt]:border-gray-800 [&+dt]:pt-4",
+              )}
+              data-type={metafield.type.replace(".", "|")}
               key={`${metafield?.key}-dd`}
             >
               <MetafieldMapper

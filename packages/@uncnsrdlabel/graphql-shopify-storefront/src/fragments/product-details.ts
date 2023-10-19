@@ -47,8 +47,8 @@ export const productDetailsFragment = graphql(/* GraphQL */ `
     }
     metafields(
       identifiers: [
-        { namespace: "custom", key: "inspiration" }
         { namespace: "custom", key: "details" }
+        { namespace: "custom", key: "inspiration" }
         { namespace: "custom", key: "sizing" }
         { namespace: "custom", key: "line" }
         { namespace: "custom", key: "component" }
