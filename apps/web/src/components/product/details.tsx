@@ -154,7 +154,7 @@ export function Details({
 
       <section className="grid min-h-[100dvh] grid-cols-12 content-center lg:h-[100dvh] lg:overflow-y-hidden">
         <div
-          className="relative z-0 col-span-full grid w-full snap-both snap-mandatory grid-flow-col overflow-x-scroll scroll-smooth lg:fixed lg:inset-0 ghost-scrollbar bg-black"
+          className="relative z-0 col-span-full grid w-full snap-both snap-mandatory grid-flow-col overflow-x-scroll scroll-smooth lg:fixed lg:inset-0 ghost-scrollbar bg-black justify-start"
           id="images"
           ref={sectionElementRefs[0]}
         >
@@ -244,7 +244,7 @@ export function Details({
           id="details"
         >
           <PurchaseOptions ref={sectionElementRefs[1]} product={product} />
-          <ProductDetailsTabs className="mt-8" excludedKeys={["complementary_products"]} productDetailsFragmentRef={productDetailsFragmentRef} />
+          <ProductDetailsTabs className="mt-8" excludedKeys={["complementary_products", "related_products"]} productDetailsFragmentRef={productDetailsFragmentRef} />
         </div>
       </section>
 
