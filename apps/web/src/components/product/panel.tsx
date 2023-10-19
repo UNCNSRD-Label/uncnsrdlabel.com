@@ -7,14 +7,13 @@ import { PurchaseOptions } from "@/components/product/purchase-options";
 import { useEffect } from "react";
 import { useTrack } from "use-analytics";
 // import { WithVideo } from "@/types/shopify";
-import { MetaFields } from "@/components/product/metafields";
+import { ProductDetailsTabs } from "@/components/product/details-tabs";
 import {
   FragmentType,
   getFragmentData,
   imageFragment,
   productDetailsFragment,
-  productMetafieldFragment,
-  videoFragment,
+  videoFragment
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import Image from "next/image";
@@ -24,7 +23,7 @@ import { useRef, type MutableRefObject } from "react";
 import { Product as ProductSchema, WithContext } from "schema-dts";
 import { usePage } from "use-analytics";
 
-export function ProductDetails({
+export function Panel({
   productDetailsFragmentRef,
 }: {
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
@@ -145,13 +144,6 @@ export function ProductDetails({
 
   const thumbnailClassName =
     "bg-black pointer-events-auto relative my-auto aspect-square w-full overflow-hidden rounded-full shadow";
-
-  const metafieldsFragmentRefs = product.metafields;
-
-  const metafieldFragments = getFragmentData(
-    productMetafieldFragment,
-    metafieldsFragmentRefs.filter(Boolean),
-  );
   
   return (
     <>
@@ -160,9 +152,9 @@ export function ProductDetails({
         sectionElementRefs={sectionElementRefs}
       />
 
-      <section className="grid min-h-[100dvh] grid-cols-12 content-center lg:h-[100dvh]">
+      <section className="grid min-h-[100dvh] grid-cols-12 content-center lg:h-[100dvh] lg:overflow-y-hidden">
         <div
-          className="relative z-0 col-span-full grid w-full snap-both snap-mandatory grid-flow-col overflow-x-scroll scroll-smooth lg:fixed lg:inset-0"
+          className="relative z-0 col-span-full grid w-full snap-both snap-mandatory grid-flow-col overflow-x-scroll scroll-smooth lg:fixed lg:inset-0 ghost-scrollbar"
           id="images"
           ref={sectionElementRefs[0]}
         >
@@ -252,11 +244,7 @@ export function ProductDetails({
           id="purchase-options"
         >
           <PurchaseOptions ref={sectionElementRefs[1]} product={product} />
-          <MetaFields
-            className="mt-12 overflow-x-auto"
-            excludedKeys={["complementary_products"]}
-            metafieldFragments={metafieldFragments}
-          />
+          <ProductDetailsTabs className="mt-8" excludedKeys={["complementary_products"]} productDetailsFragmentRef={productDetailsFragmentRef} />
         </div>
       </section>
 
