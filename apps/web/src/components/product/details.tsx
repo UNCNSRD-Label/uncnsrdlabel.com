@@ -244,7 +244,7 @@ export function Details({
           id="details"
         >
           <PurchaseOptions ref={sectionElementRefs[1]} product={product} />
-          <ProductDetailsTabs className="mt-8" excludedKeys={["complementary_products"]} productDetailsFragmentRef={productDetailsFragmentRef} />
+          <ProductDetailsTabs className="mt-8" excludedKeys={["complementary_products", "related_products"]} productDetailsFragmentRef={productDetailsFragmentRef} />
         </div>
       </section>
 
