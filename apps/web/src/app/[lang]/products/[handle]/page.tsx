@@ -79,7 +79,7 @@ export default async function ProductPage({
       </main>
       <Suspense fallback={<span>Loading&hellip;</span>}>
         <RelatedProducts
-          className="text-dark dark:text-light relative bg-gray-300 pb-48 pt-12 dark:bg-gray-800 [contain:paint]"
+          className="bg-white text-dark relative pb-48 pt-12 [contain:paint]"
           productDetailsFragmentRef={productDetailsFragmentRef}
           lang={lang}
         />

@@ -7,11 +7,13 @@ import { PurchaseOptions } from "@/components/product/purchase-options";
 import { useEffect } from "react";
 import { useTrack } from "use-analytics";
 // import { WithVideo } from "@/types/shopify";
+import { MetaFields } from "@/components/product/metafields";
 import {
   FragmentType,
   getFragmentData,
   imageFragment,
   productDetailsFragment,
+  productMetafieldFragment,
   videoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
@@ -144,6 +146,13 @@ export function ProductDetails({
   const thumbnailClassName =
     "bg-black pointer-events-auto relative my-auto aspect-square w-full overflow-hidden rounded-full shadow";
 
+  const metafieldsFragmentRefs = product.metafields;
+
+  const metafieldFragments = getFragmentData(
+    productMetafieldFragment,
+    metafieldsFragmentRefs.filter(Boolean),
+  );
+  
   return (
     <>
       <NavigationMenu
@@ -243,6 +252,11 @@ export function ProductDetails({
           id="purchase-options"
         >
           <PurchaseOptions ref={sectionElementRefs[1]} product={product} />
+          <MetaFields
+            className="mt-12 overflow-x-auto"
+            excludedKeys={["complementary_products"]}
+            metafieldFragments={metafieldFragments}
+          />
         </div>
       </section>
 

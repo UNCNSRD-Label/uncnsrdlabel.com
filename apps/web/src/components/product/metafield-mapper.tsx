@@ -105,7 +105,7 @@ export const MetafieldMapper = ({
 
                 return (
                   <>
-                    <dt className="mb-4 mt-0 capitalize" key={slugify(`${field.key}-dt`)}>{field.key}</dt>
+                    <dt className="mt-0 capitalize" data-type={field.type} key={slugify(`${field.key}-dt`)}>{field.key}</dt>
                     <dd className="mt-0 pl-0" key={slugify(`${field.key}-dd`)}>
                       {MetafieldMapper({
                         excludedKeys,
