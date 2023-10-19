@@ -103,7 +103,6 @@ export function ProductCard({
             currencyCode={product.priceRange.maxVariantPrice.currencyCode}
           />
           {/* <PurchaseOptions
-            id="purchase-options"
             product={product}
           /> */}
           <AddToCart

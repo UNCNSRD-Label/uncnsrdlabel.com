@@ -23,7 +23,7 @@ import { useRef, type MutableRefObject } from "react";
 import { Product as ProductSchema, WithContext } from "schema-dts";
 import { usePage } from "use-analytics";
 
-export function Panel({
+export function Details({
   productDetailsFragmentRef,
 }: {
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
@@ -154,7 +154,7 @@ export function Panel({
 
       <section className="grid min-h-[100dvh] grid-cols-12 content-center lg:h-[100dvh] lg:overflow-y-hidden">
         <div
-          className="relative z-0 col-span-full grid w-full snap-both snap-mandatory grid-flow-col overflow-x-scroll scroll-smooth lg:fixed lg:inset-0 ghost-scrollbar"
+          className="relative z-0 col-span-full grid w-full snap-both snap-mandatory grid-flow-col overflow-x-scroll scroll-smooth lg:fixed lg:inset-0 ghost-scrollbar bg-black"
           id="images"
           ref={sectionElementRefs[0]}
         >
@@ -240,8 +240,8 @@ export function Panel({
         </div>
 
         <div
-          className="relative z-10 col-span-full grid h-fit p-6 pt-20 sm:col-start-3 sm:col-end-11 sm:pt-6 lg:-top-12 lg:col-start-7 lg:col-end-12 lg:rounded-xl lg:bg-white/90 lg:shadow lg:backdrop-blur lg:backdrop-saturate-50 xl:col-start-9"
-          id="purchase-options"
+          className="relative z-10 col-span-full grid h-fit p-6 pt-20 sm:col-start-3 sm:col-end-11 sm:pt-6 lg:-top-12 lg:col-start-7 lg:col-end-12 lg:rounded-xl lg:bg-white/90 lg:shadow lg:backdrop-blur lg:backdrop-saturate-50 xl:col-start-9 md:max-h-[80dvh] overflow-y-auto"
+          id="details"
         >
           <PurchaseOptions ref={sectionElementRefs[1]} product={product} />
           <ProductDetailsTabs className="mt-8" excludedKeys={["complementary_products"]} productDetailsFragmentRef={productDetailsFragmentRef} />

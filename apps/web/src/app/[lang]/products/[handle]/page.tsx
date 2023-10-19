@@ -1,6 +1,6 @@
 import { server } from "@/clients/shopify";
 // import { ProductAdditionalDetails } from "@/components/product/additional-details";
-import { Panel } from "@/components/product/panel";
+import { Details } from "@/components/product/details";
 import { type PageProps } from "@/types/next";
 import {
   getFragmentData,
@@ -74,7 +74,7 @@ export default async function ProductPage({
     <>
       <Breadcrumb className="hidden my-6 lg:grid lg:grid-cols-12 [&>*]:lg:col-start-2 [&>*]:lg:col-end-10 relative z-20" productDetailsFragmentRef={productDetailsFragmentRef} />
       <main className="min-h-[100dvh] mb-48 [&:has(+_aside)]:mb-0">
-        <Panel productDetailsFragmentRef={productDetailsFragmentRef} />
+        <Details productDetailsFragmentRef={productDetailsFragmentRef} />
         {/* <ProductAdditionalDetails productDetailsFragmentRef={productDetailsFragmentRef} /> */}
       </main>
       <Suspense fallback={<span>Loading&hellip;</span>}>
