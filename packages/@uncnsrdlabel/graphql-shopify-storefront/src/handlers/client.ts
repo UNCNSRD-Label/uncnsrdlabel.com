@@ -391,12 +391,43 @@ import { useGetShopifyGraphQL } from "../utilities/client";
 
 //   const { product: productBasicFragmentRef } = data;
 
-//   if (!productBasicFragmentRef) {
-//     throw {
-//       status: 404,
-//       message: `Product not found for handle \`${variables.handle}\``,
-//     };
-//   }
+  const { page: pageFragmentRef } = data;
+
+  if (!pageFragmentRef) {
+    throw {
+      status: 404,
+      message: `Page not found for handle \`${variables.handle}\``,
+    };
+  }
+
+  const page = getFragmentData(pageFragment, pageFragmentRef);
+
+  // console.log({ page });
+
+  return page;
+}
+
+export function useGetPages(variables: GetPagesQueryVariables) {
+  const { data } = useGetShopifyGraphQL(getPagesQuery, variables);
+
+  if (!data) {
+    return null;
+  }
+
+  const { pages } = data;
+
+  if (!pages) {
+    throw {
+      status: 404,
+      message: `Pages not found`,
+    };
+  }
+
+  return pages;
+}
+
+export function useGetPolicy(handle: PolicyName) {
+  const policies = useGetShopPolicies();
 
 //   // console.log({ productBasicFragmentRef });
 

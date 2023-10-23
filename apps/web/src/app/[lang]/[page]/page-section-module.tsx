@@ -73,7 +73,7 @@ export function PageSectionModule({
                   (field) => field.key === "heading_1_color",
                 )?.value ?? "default";
 
-              element = <h2 data-color={heading1Color} key={field.key}>{field.value}</h2>;
+              element = <h2 data-color={heading1Color}>{field.value}</h2>;
               break;
             case "heading_2":
               const heading2Color =
@@ -81,7 +81,7 @@ export function PageSectionModule({
                   (field) => field.key === "heading_2_color",
                 )?.value ?? "default";
 
-              element = <h3 data-color={heading2Color} key={field.key}>{field.value}</h3>;
+              element = <h3 data-color={heading2Color}>{field.value}</h3>;
               break;
             case "media":
               const media = field?.references?.edges.map((edge) => edge?.node);
@@ -96,12 +96,13 @@ export function PageSectionModule({
 
                       if (image?.url) {
                         return (
-                          <figure className="relative" key={image?.id}>
+                          <figure className="relative">
                             <Image
                               // TODO: Add image alt fallback
                               alt={image?.altText || ""}
                               className="h-full object-cover"
                               fill
+                              key={image?.id}
                               sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
                               src={image?.url}
                             />

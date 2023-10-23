@@ -14,7 +14,6 @@ export const Prose: FunctionComponent<TextProps> = ({ className, html, style }) 
         className,
       )}
       dangerouslySetInnerHTML={{ __html: html }}
-      style={style}
     />
   );
 };
