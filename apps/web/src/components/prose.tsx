@@ -1,19 +1,20 @@
 import { cn } from "@uncnsrdlabel/lib";
 import type { FunctionComponent } from "react";
+import { HTMLProps } from "react";
 
-interface TextProps {
+export type TextProps = HTMLProps<HTMLElement> & {
   html: string;
-  className?: string;
-}
+};
 
-export const Prose: FunctionComponent<TextProps> = ({ html, className }) => {
+export const Prose: FunctionComponent<TextProps> = ({ className, html, style }) => {
   return (
     <div
       className={cn(
         "prose",
         className,
       )}
-      dangerouslySetInnerHTML={{ __html: html as string }}
+      dangerouslySetInnerHTML={{ __html: html }}
+      style={style}
     />
   );
 };

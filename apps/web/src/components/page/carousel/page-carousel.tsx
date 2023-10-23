@@ -26,7 +26,7 @@ export function PageCarousel({
 
   if (!data) return null;
 
-  const { pageByHandle: pageFragmentRef } = data;
+  const { page: pageFragmentRef } = data;
 
   const page = getFragmentData(pageFragment, pageFragmentRef);
 
