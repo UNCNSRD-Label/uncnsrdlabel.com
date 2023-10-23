@@ -23,7 +23,6 @@ const headers = new Headers({
 });
 
 export const graphQLClient = new GraphQLClient(endpoint, {
-  // errorPolicy: "all",
   fetch,
   headers,
   cache: "no-store",

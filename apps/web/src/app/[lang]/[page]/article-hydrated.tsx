@@ -20,7 +20,9 @@ export async function ArticleHydrated({
 
   return (
     <HydrationBoundary state={dehydratedState}>
-      <Article className={className} style={style} variables={variables}>
+      <Article className={className} style={{
+        ...style,
+      }} variables={variables}>
         {children}
       </Article>
     </HydrationBoundary>
