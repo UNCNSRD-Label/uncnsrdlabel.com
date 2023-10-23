@@ -57,7 +57,7 @@ export default async function Page({
   if (!page) return notFound();
 
   return (
-    <Suspense fallback={<div>Loading&helip;</div>}>
+    <Suspense fallback={<div>Loading&hellip;</div>}>
       <Article key={page.handle} variables={{ handle }}>
         {page.sections?.references?.nodes?.map(
           (pageSectionModuleFragmentRef, index) => {
