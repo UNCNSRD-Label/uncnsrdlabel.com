@@ -2,6 +2,7 @@ export * from "./cart";
 export * from "./collection";
 export * from "./image";
 export * from "./page";
+export * from "./page_section_module";
 export * from "./product-basic";
 export * from "./product-details";
 export * from "./product-metafields";

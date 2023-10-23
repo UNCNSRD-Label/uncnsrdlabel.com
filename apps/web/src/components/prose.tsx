@@ -13,7 +13,7 @@ export const Prose: FunctionComponent<TextProps> = ({ html, className }) => {
         "prose",
         className,
       )}
-      dangerouslySetInnerHTML={{ __html: html as string }}
+      dangerouslySetInnerHTML={{ __html: html }}
     />
   );
 };

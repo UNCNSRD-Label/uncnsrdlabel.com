@@ -332,7 +332,7 @@ export class Server {
   }
 
   async getPage(variables: GetPageQueryVariables) {
-    const { pageByHandle: pageFragmentRef } = await getShopifyGraphQL(
+    const { page: pageFragmentRef } = await getShopifyGraphQL(
       getPageQuery,
       // @ts-expect-error Types of property 'country' are incompatible.
       { ...this.inContextVariables, ...variables },

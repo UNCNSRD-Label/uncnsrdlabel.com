@@ -6,7 +6,9 @@ import {
 import { Article, type ArticleProps } from "./article";
 
 export async function ArticleHydrated({
+  children,
   className,
+  style,
   variables
 }: ArticleProps) {
   const shopifyQueryClient = getShopifyQueryClient();
@@ -18,7 +20,9 @@ export async function ArticleHydrated({
 
   return (
     <HydrationBoundary state={dehydratedState}>
-      <Article className={className} variables={variables} />
+      <Article className={className} style={style} variables={variables}>
+        {children}
+      </Article>
     </HydrationBoundary>
   );
 }

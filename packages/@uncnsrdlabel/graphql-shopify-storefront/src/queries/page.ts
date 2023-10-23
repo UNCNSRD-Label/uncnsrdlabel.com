@@ -2,7 +2,7 @@ import { graphql } from "../codegen/index";
 
 export const getPageQuery = graphql(/* GraphQL */ `
   query getPage($country: CountryCode, $handle: String!, $language: LanguageCode) @inContext(country: $country, language: $language) {
-    pageByHandle(handle: $handle) {
+    page(handle: $handle) {
       ...page
     }
   }

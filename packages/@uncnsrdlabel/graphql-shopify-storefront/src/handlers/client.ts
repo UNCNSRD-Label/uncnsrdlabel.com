@@ -352,7 +352,7 @@ export function useGetPage(variables: GetPageQueryVariables) {
     return null;
   }
 
-  const { pageByHandle: pageFragmentRef } = data;
+  const { page: pageFragmentRef } = data;
 
   if (!pageFragmentRef) {
     throw {
