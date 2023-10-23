@@ -2,12 +2,11 @@ import { server } from "@/clients/shopify";
 import {
   getFragmentData,
   pageFragment,
-  seoFragment
+  seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { cn, type ClassValue } from "@uncnsrdlabel/lib";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { CSSProperties } from "react";
+import { Suspense } from "react";
 import { ArticleHydrated as Article } from "./article-hydrated";
 import { PageSectionModule } from "./page-section-module";
 
@@ -58,31 +57,32 @@ export default async function Page({
   if (!page) return notFound();
 
   return (
-    <Article
-      className={cn(
-        "grid",
-        JSON.parse(page.classes?.value ?? "") as ClassValue,
-      )}
-      key={page.handle}
-      style={JSON.parse(page.style?.value ?? "") as CSSProperties}
-      variables={{ handle }}
-    >
-      {page.sections?.references?.nodes?.map((pageSectionModuleFragmentRef) => {
-        if (pageSectionModuleFragmentRef.__typename === "Metaobject") {
-          return <PageSectionModule pageSectionModuleFragmentRef={pageSectionModuleFragmentRef}  />
-        }
-      })}
-
-      <span className="mb-8 hidden text-sm italic">
-        {`This document was last updated on ${new Intl.DateTimeFormat(
-          undefined,
-          {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
+    <Suspense fallback={<div>Loading&helip;</div>}>
+      <Article key={page.handle} variables={{ handle }}>
+        {page.sections?.references?.nodes?.map(
+          (pageSectionModuleFragmentRef, index) => {
+            if (pageSectionModuleFragmentRef.__typename === "Metaobject") {
+              return (
+                <PageSectionModule
+                  key={index}
+                  pageSectionModuleFragmentRef={pageSectionModuleFragmentRef}
+                />
+              );
+            }
           },
-        ).format(new Date(page.updatedAt))}.`}
-      </span>
-    </Article>
+        )}
+
+        <span className="mb-8 hidden text-sm italic">
+          {`This document was last updated on ${new Intl.DateTimeFormat(
+            undefined,
+            {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            },
+          ).format(new Date(page.updatedAt))}.`}
+        </span>
+      </Article>
+    </Suspense>
   );
 }
