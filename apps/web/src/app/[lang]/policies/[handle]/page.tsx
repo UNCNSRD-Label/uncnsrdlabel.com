@@ -1,4 +1,5 @@
 import { server } from "@/clients/shopify";
+import { LoadingSkeleton } from "@/components/loading/skeleton";
 import { Prose } from "@/components/prose";
 import { type PageProps } from "@/types/next";
 import {
@@ -10,6 +11,7 @@ import { cn } from "@uncnsrdlabel/lib";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
 // export const runtime = "edge";
 
@@ -97,7 +99,9 @@ export default async function Policy({
           } */}
       </nav>
       <article className="mb-48">
-        <Prose className="prose-sm mb-8 grid" html={policy.body as string} />
+        <Suspense fallback={<LoadingSkeleton />}>
+          <Prose className="prose-sm mb-8 grid" html={policy.body as string} />
+        </Suspense>
       </article>
     </>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { LoadingDots } from "@/components/loading-dots";
+import { LoadingDots } from "@/components/loading/dots";
 import { Videos } from "@/components/media/videos";
 import {
   FragmentType,

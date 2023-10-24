@@ -1,5 +1,5 @@
 import { removeItem, updateItemQuantity } from "@/components/cart/actions";
-import { LoadingDots } from "@/components/loading-dots";
+import { LoadingDots } from "@/components/loading/dots";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { type CartLine, type CartLineCost, type ComponentizableCartLine, type Merchandise } from "@shopify/hydrogen/storefront-api-types";
 import { cn } from "@uncnsrdlabel/lib";

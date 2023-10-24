@@ -1,6 +1,6 @@
 "use client";
 
-import { LoadingDots } from "@/components/loading-dots";
+import { LoadingDots } from "@/components/loading/dots";
 import { Image } from "@/components/media/image";
 import {
   NukaCarousel,
