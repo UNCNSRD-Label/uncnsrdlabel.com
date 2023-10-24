@@ -9,21 +9,21 @@ import {
   useGetShopifyGraphQL
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, type ClassValue } from "@uncnsrdlabel/lib";
-import { CSSProperties, HTMLProps } from "react";
+import { CSSProperties, HTMLProps, useEffect, useState } from "react";
 
 export type ArticleProps = HTMLProps<HTMLElement> & {
   variables: { handle: string };
 };
 
-export async function Article(props: ArticleProps) {
+export function Article(props: ArticleProps) {
   const { children, className, variables } = props;
 
-  const { data, error, isError, isPending } = useGetShopifyGraphQL(
+  const { data, error, isError, isLoading } = useGetShopifyGraphQL(
     getPageQuery,
     variables,
   );
 
-  if (isPending) {
+  if (isLoading) {
     return <span>Loading...</span>
   }
 
@@ -44,6 +44,46 @@ export async function Article(props: ArticleProps) {
   );
   const isXl = useMediaQuery("only screen and (min-width : 1280px)");
 
+  const [style, setStyle] = useState<CSSProperties>(JSON.parse(page?.style?.value ?? "") as CSSProperties);
+
+  useEffect(() => {
+    if(isSm) {
+      setStyle(() => ({
+        ...JSON.parse(page?.style?.value ?? "") as CSSProperties,
+        ...(page?.styleSm?.value && (JSON.parse(page?.styleSm?.value ?? "") as CSSProperties))
+      }))
+    }
+
+    if(isMd) {
+      setStyle(() => ({
+        ...JSON.parse(page?.style?.value ?? "") as CSSProperties,
+        ...(page?.styleSm?.value && (JSON.parse(page?.styleSm?.value ?? "") as CSSProperties)),
+        ...(page?.styleMd?.value && (JSON.parse(page?.styleMd?.value ?? "") as CSSProperties))
+      }))
+    }
+
+    if(isLg) {
+      setStyle(() => ({
+        ...JSON.parse(page?.style?.value ?? "") as CSSProperties,
+        ...(page?.styleSm?.value && (JSON.parse(page?.styleSm?.value ?? "") as CSSProperties)),
+        ...(page?.styleMd?.value && (JSON.parse(page?.styleMd?.value ?? "") as CSSProperties)),
+        ...(page?.styleLg?.value && (JSON.parse(page?.styleLg?.value ?? "") as CSSProperties))
+      }))
+    }
+
+    if(isXl) {
+      setStyle(() => ({
+        ...JSON.parse(page?.style?.value ?? "") as CSSProperties,
+        ...(page?.styleSm?.value && (JSON.parse(page?.styleSm?.value ?? "") as CSSProperties)),
+        ...(page?.styleMd?.value && (JSON.parse(page?.styleMd?.value ?? "") as CSSProperties)),
+        ...(page?.styleLg?.value && (JSON.parse(page?.styleLg?.value ?? "") as CSSProperties)),
+        ...(page?.styleXl?.value && (JSON.parse(page?.styleXl?.value ?? "") as CSSProperties))
+      }))
+    }
+
+    console.log({isSm, isMd, isLg, isXl, style})
+  }, [isSm, isMd, isLg, isXl]);
+
   return (
     <article
       className={cn(
@@ -51,13 +91,7 @@ export async function Article(props: ArticleProps) {
         page?.classes?.value && JSON.parse(page?.classes?.value ?? "") as ClassValue,
         className,
       )}
-      style={{
-        ...(page?.style?.value && JSON.parse(page?.style?.value ?? "") as CSSProperties),
-        ...(isSm && page?.styleSm?.value && (JSON.parse(page?.styleSm?.value ?? "") as CSSProperties)),
-        ...(isMd && page?.styleMd?.value && (JSON.parse(page?.styleMd?.value ?? "") as CSSProperties)),
-        ...(isLg && page?.styleLg?.value && (JSON.parse(page?.styleLg?.value ?? "") as CSSProperties)),
-        ...(isXl && page?.styleXl?.value && (JSON.parse(page?.styleXl?.value ?? "") as CSSProperties)),
-      }}
+      style={style}
     >
       {page?.body && (
         <Prose
