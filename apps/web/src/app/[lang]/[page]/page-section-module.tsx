@@ -44,7 +44,7 @@ export function PageSectionModule({
   return (
     <section
       className={cn(
-        "pageSectionModule",
+        "pageSectionModule relative",
         backgroundColor && `bg-${backgroundColor}`,
         {
           "has-background": !!backgroundImage?.url,
@@ -96,7 +96,7 @@ export function PageSectionModule({
 
                       if (image?.url) {
                         return (
-                          <figure className="relative" key={image?.id}>
+                          <figure className="absolute inset-0" key={image?.id}>
                             <Image
                               // TODO: Add image alt fallback
                               alt={image?.altText || ""}
