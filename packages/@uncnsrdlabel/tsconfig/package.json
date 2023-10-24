@@ -1,10 +1,10 @@
 {
   "devDependencies": {
     "@eslint/eslintrc": "^2.1.2",
-    "@types/node": "^20.8.6",
+    "@types/node": "^20.8.7",
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "prettier": "^3.0.3",
-    "type-fest": "^4.4.0",
+    "type-fest": "^4.5.0",
     "typescript": "^5.2.2"
   },
   "exports": {

@@ -1,5 +1,5 @@
 import { observable } from "@legendapp/state";
-import { persistObservable } from '@legendapp/state/persist';
+import { configureObservablePersistence, persistObservable } from '@legendapp/state/persist';
 import { ObservablePersistLocalStorage } from '@legendapp/state/persist-plugins/local-storage';
 import { getLocaleObjectFromIETFLanguageTag } from "@uncnsrdlabel/lib";
 
@@ -12,7 +12,10 @@ export const state$ = observable({
   locale,
 });
 
+configureObservablePersistence({
+  pluginLocal: ObservablePersistLocalStorage
+})
+
 persistObservable(state$, {
   local: 'app',
-  persistLocal: ObservablePersistLocalStorage,
 });
