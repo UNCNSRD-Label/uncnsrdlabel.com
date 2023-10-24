@@ -50,6 +50,30 @@ export default {
       pattern: /m-.+/,
       variants
     },
+    {
+      pattern: /content-.+/,
+      variants
+    },
+    {
+      pattern: /items-.+/,
+      variants
+    },
+    {
+      pattern: /justify-.+/,
+      variants
+    },
+    {
+      pattern: /place-.+/,
+      variants
+    },
+    {
+      pattern: /self-.+/,
+      variants
+    },
+    {
+      pattern: /space-.+/,
+      variants
+    },
   ]
 }
 
