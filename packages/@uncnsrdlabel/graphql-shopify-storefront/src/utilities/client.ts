@@ -25,7 +25,7 @@ export function useGetShopifyGraphQL<TResult, TVariables>(
       queryKey,
       queryFn: async () => await graphQLClient.request(document, { ...variables })
     });
-console.log({variablesWithContext, queryKey, query})
+
     return query;
   } catch (error) {
     if (isShopifyError(error) || error instanceof Error) {
