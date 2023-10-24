@@ -1,7 +1,7 @@
 import { Logo } from "@/components/layout/logo/index";
 import { NavbarContent } from "@/components/layout/navbar/content";
 import { Navbar } from "@/components/layout/navbar/index";
-import { LoadingDots } from "@/components/loading-dots";
+import { LoadingDots } from "@/components/loading/dots";
 import { PageCarousel } from "@/components/page/carousel";
 import { Videos } from "@/components/page/videos";
 import { getIntl } from "@/lib/i18n/server";

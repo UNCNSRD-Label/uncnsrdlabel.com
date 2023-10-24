@@ -1,4 +1,5 @@
 import { server } from "@/clients/shopify";
+import { LoadingSkeleton } from "@/components/loading/skeleton";
 import {
   getFragmentData,
   pageFragment,
@@ -57,7 +58,7 @@ export default async function Page({
   if (!page) return notFound();
 
   return (
-    <Suspense fallback={<div>Loading&hellip;</div>}>
+    <Suspense fallback={<LoadingSkeleton />}>
       <Article key={page.handle} variables={{ handle }}>
         {page.sections?.references?.nodes?.map(
           (pageSectionModuleFragmentRef, index) => {

@@ -44,19 +44,19 @@ export function Article(props: ArticleProps) {
   );
   const isXl = useMediaQuery("only screen and (min-width : 1280px)");
 
-  const [style, setStyle] = useState<CSSProperties>(JSON.parse(page?.style?.value ?? "") as CSSProperties);
+  const [style, setStyle] = useState<CSSProperties>(page?.style?.value ? (JSON.parse(page?.style?.value ?? "") as CSSProperties) : {});
 
   useEffect(() => {
     if(isSm) {
       setStyle(() => ({
-        ...JSON.parse(page?.style?.value ?? "") as CSSProperties,
+        ...(page?.style?.value && (JSON.parse(page?.style?.value ?? "") as CSSProperties)),
         ...(page?.styleSm?.value && (JSON.parse(page?.styleSm?.value ?? "") as CSSProperties))
       }))
     }
 
     if(isMd) {
       setStyle(() => ({
-        ...JSON.parse(page?.style?.value ?? "") as CSSProperties,
+        ...(page?.style?.value && (JSON.parse(page?.style?.value ?? "") as CSSProperties)),
         ...(page?.styleSm?.value && (JSON.parse(page?.styleSm?.value ?? "") as CSSProperties)),
         ...(page?.styleMd?.value && (JSON.parse(page?.styleMd?.value ?? "") as CSSProperties))
       }))
@@ -64,7 +64,7 @@ export function Article(props: ArticleProps) {
 
     if(isLg) {
       setStyle(() => ({
-        ...JSON.parse(page?.style?.value ?? "") as CSSProperties,
+        ...(page?.style?.value && (JSON.parse(page?.style?.value ?? "") as CSSProperties)),
         ...(page?.styleSm?.value && (JSON.parse(page?.styleSm?.value ?? "") as CSSProperties)),
         ...(page?.styleMd?.value && (JSON.parse(page?.styleMd?.value ?? "") as CSSProperties)),
         ...(page?.styleLg?.value && (JSON.parse(page?.styleLg?.value ?? "") as CSSProperties))
@@ -73,15 +73,13 @@ export function Article(props: ArticleProps) {
 
     if(isXl) {
       setStyle(() => ({
-        ...JSON.parse(page?.style?.value ?? "") as CSSProperties,
+        ...(page?.style?.value && (JSON.parse(page?.style?.value ?? "") as CSSProperties)),
         ...(page?.styleSm?.value && (JSON.parse(page?.styleSm?.value ?? "") as CSSProperties)),
         ...(page?.styleMd?.value && (JSON.parse(page?.styleMd?.value ?? "") as CSSProperties)),
         ...(page?.styleLg?.value && (JSON.parse(page?.styleLg?.value ?? "") as CSSProperties)),
         ...(page?.styleXl?.value && (JSON.parse(page?.styleXl?.value ?? "") as CSSProperties))
       }))
     }
-
-    console.log({isSm, isMd, isLg, isXl, style})
   }, [isSm, isMd, isLg, isXl]);
 
   return (
