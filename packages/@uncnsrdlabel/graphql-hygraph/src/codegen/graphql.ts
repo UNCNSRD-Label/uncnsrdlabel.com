@@ -4175,6 +4175,55 @@ export type DocumentVersion = {
   stage: Stage;
 };
 
+/** An object with an ID */
+export type Entity = {
+  /** The id of the object. */
+  id: Scalars['ID']['output'];
+  /** The Stage of an object */
+  stage: Stage;
+};
+
+/** This enumeration holds all typenames that implement the Entity interface. Components implement the Entity interface. At the moment models are not supported, models are listed in this enum to avoid an empty enum without any components. */
+export enum EntityTypeName {
+  /** Asset system model */
+  Asset = 'Asset',
+  Banner = 'Banner',
+  BlogPost = 'BlogPost',
+  Breakpoint = 'Breakpoint',
+  Button = 'Button',
+  Company = 'Company',
+  Faq = 'Faq',
+  Feature = 'Feature',
+  Footer = 'Footer',
+  Grid = 'Grid',
+  Hero = 'Hero',
+  LogoCloud = 'LogoCloud',
+  Navigation = 'Navigation',
+  Newsletter = 'Newsletter',
+  Page = 'Page',
+  Person = 'Person',
+  PopUp = 'PopUp',
+  PricingPlan = 'PricingPlan',
+  /** Scheduled Operation system model */
+  ScheduledOperation = 'ScheduledOperation',
+  /** Scheduled Release system model */
+  ScheduledRelease = 'ScheduledRelease',
+  Seo = 'Seo',
+  Stat = 'Stat',
+  Testimonial = 'Testimonial',
+  /** User system model */
+  User = 'User'
+}
+
+/** Allows to specify input to query components directly */
+export type EntityWhereInput = {
+  /** The ID of an object */
+  id: Scalars['ID']['input'];
+  stage: Stage;
+  /** The Type name of an object */
+  typename: EntityTypeName;
+};
+
 export type Faq = Node & {
   __typename?: 'Faq';
   content: Scalars['String']['output'];
@@ -15596,6 +15645,8 @@ export type Query = {
   company?: Maybe<Company>;
   /** Retrieve document version */
   companyVersion?: Maybe<DocumentVersion>;
+  /** Fetches an object given its ID */
+  entities?: Maybe<Array<Entity>>;
   /** Retrieve a single faq */
   faq?: Maybe<Faq>;
   /** Retrieve document version */
@@ -15964,6 +16015,11 @@ export type QueryCompanyArgs = {
 
 export type QueryCompanyVersionArgs = {
   where: VersionWhereInput;
+};
+
+
+export type QueryEntitiesArgs = {
+  where: Array<EntityWhereInput>;
 };
 
 
