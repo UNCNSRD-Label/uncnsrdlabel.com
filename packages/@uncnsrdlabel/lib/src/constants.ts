@@ -1,5 +1,3 @@
-export const revalidate = 43200; // 12 hours in seconds
-
 export const TAGS = {
   collections: "collections",
   products: "products",

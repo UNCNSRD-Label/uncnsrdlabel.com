@@ -14,8 +14,6 @@ import { Suspense } from "react";
 import { ArticleHydrated as Article } from "./article-hydrated";
 import { PageSectionModule } from "./page-section-module";
 
-export { revalidate } from "@uncnsrdlabel/lib";
-
 // export const runtime = "edge";
 
 export async function generateMetadata({
