@@ -1,11 +1,9 @@
-"use client";
-
+import { addItem } from "@/components/cart/actions";
 import { AddToCart } from "@/components/cart/add-to-cart";
 import { Price } from "@/components/price";
 import { VariantSelector } from "@/components/product/variant-selector";
 import { Prose } from "@/components/prose";
 import { ResultOf } from "@graphql-typed-document-node/core";
-import { ProductProvider } from "@shopify/hydrogen-react";
 import { ProductVariant } from "@shopify/hydrogen/storefront-api-types";
 import {
   getFragmentData,
@@ -37,7 +35,7 @@ export const PurchaseOptions = forwardRef<
     variantFragments.edges.map((edge) => edge?.node);
 
   return (
-    <ProductProvider data={product}>
+    <>
       <div className={cn("mb-6", className)} id={id} ref={forwardedRef}>
         <h3 data-testid="product-name" className="box-decoration-clone text-xl">
           {product.title}
@@ -59,12 +57,13 @@ export const PurchaseOptions = forwardRef<
       ) : null}
 
       <AddToCart
+        addItem={addItem}
         availableForSale={product.availableForSale}
         className="btn btn-base btn-primary btn-bg relative w-full justify-center py-4 text-sm"
         options={product.options}
         variants={variants}
       />
-    </ProductProvider>
+    </>
   );
 });
 
