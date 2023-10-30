@@ -12,7 +12,6 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import localFont from "next/font/local";
 import { PropsWithChildren } from "react";
-import { HandleRouteChange } from "../../../../web/src/components/analytics/handle-route-change";
 import { Organization } from "../../../../web/src/components/schema.org/organization";
 import { type LayoutProps } from "../../../../web/src/types/next";
 import "../globals.css";
@@ -151,7 +150,6 @@ export default async function RootLayout({
         <AppAnalyticsProvider>
           {children}
           <Organization />
-          <HandleRouteChange />
         </AppAnalyticsProvider>
       </body>
     </html>

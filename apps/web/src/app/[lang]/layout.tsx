@@ -1,4 +1,3 @@
-import { HandleRouteChange } from "@/components/analytics/handle-route-change";
 import { Banner } from "@/components/layout/banner";
 import { Footer } from "@/components/layout/footer/index";
 import { Progress } from "@/components/layout/progress/index";
@@ -190,7 +189,6 @@ export default async function RootLayout({
             <Footer />
           </Suspense>
           <Organization />
-          <HandleRouteChange />
         </AppProviders>
       </body>
     </html>
