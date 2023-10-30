@@ -3,6 +3,7 @@ import { NavbarContent } from "@/components/layout/navbar/content";
 import { Navbar } from "@/components/layout/navbar/index";
 import { Collections } from "@/components/layout/search/collections";
 import { FilterList } from "@/components/layout/search/filter/index";
+import { LoadingDots } from "@/components/loading/dots";
 import { PageTransition } from "@/components/page-transition";
 import { productCollectionSorting } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
@@ -18,7 +19,7 @@ export default function SearchLayout({
       <Navbar sticky>
         <NavbarContent />
       </Navbar>
-      <Suspense>
+      <Suspense fallback={<LoadingDots />}>
         <PageTransition>
           <div className="mx-auto flex w-full flex-col justify-center py-6 pb-48 md:flex-row min-h-[100dvh]">
             <div

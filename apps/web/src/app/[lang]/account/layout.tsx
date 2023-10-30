@@ -2,6 +2,7 @@ import { server } from "@/clients/shopify";
 import { Logo } from "@/components/layout/logo/index";
 import { NavbarContent } from "@/components/layout/navbar/content";
 import { Navbar } from "@/components/layout/navbar/index";
+import { LoadingSkeleton } from "@/components/loading/skeleton";
 import {
   getFragmentData,
   imageFragment,
@@ -33,7 +34,7 @@ export default async function AccountLayout({
       <Navbar>
         <NavbarContent />
       </Navbar>
-      <Suspense>
+      <Suspense fallback={<LoadingSkeleton />}>
         <div className="account mx-8 grid min-h-[100dvh] max-w-[100dvw] gap-16 md:mx-0 md:grid-cols-[1fr_1fr]">
           <nav className="relative hidden place-content-center md:grid md:min-h-[100dvh] md:justify-center">
             {routeMenu.items.length ? (

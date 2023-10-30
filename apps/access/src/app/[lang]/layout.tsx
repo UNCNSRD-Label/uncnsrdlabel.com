@@ -1,3 +1,4 @@
+import { LoadingDots } from "@/components/loading/dots";
 import { themeColors } from "@/lib/tailwind";
 import {
   SITE_DOMAIN_WEB,
@@ -142,7 +143,7 @@ export default async function RootLayout({
         }}
       >
         <AppAnalyticsProvider>
-          <Suspense>{children}</Suspense>
+          <Suspense fallback={<LoadingDots />}>{children}</Suspense>
           <Organization />
           <HandleRouteChange />
         </AppAnalyticsProvider>

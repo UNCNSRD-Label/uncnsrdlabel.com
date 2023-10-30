@@ -2,6 +2,7 @@ import { HandleRouteChange } from "@/components/analytics/handle-route-change";
 import { Banner } from "@/components/layout/banner";
 import { Footer } from "@/components/layout/footer/index";
 import { Progress } from "@/components/layout/progress/index";
+import { LoadingDots } from "@/components/loading/dots";
 import { Organization } from "@/components/schema.org/organization";
 import { getDictionary } from "@/lib/dictionary";
 import { getIntl } from "@/lib/i18n/server";
@@ -177,7 +178,7 @@ export default async function Layout({
           <Banner
             className={cn("sticky top-0 w-full", !showBanner && "hidden")}
           />
-          <Suspense>
+          <Suspense fallback={<LoadingDots />}>
             {children}
             <Footer />
           </Suspense>

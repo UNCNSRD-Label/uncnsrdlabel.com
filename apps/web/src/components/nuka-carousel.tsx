@@ -1,5 +1,6 @@
 "use client";
 
+import { LoadingDots } from "@/components/loading/dots";
 import { minWidthLg, minWidthSm } from "@/lib/tailwind";
 import { useMediaQuery } from "@react-hookz/web";
 import { cn } from "@uncnsrdlabel/lib";
@@ -24,7 +25,7 @@ export function NukaCarousel(props: CarouselProps) {
   }
 
   return (
-    <Suspense>
+    <Suspense fallback={<LoadingDots />}>
       <Carousel
         {...props}
         className={cn(props.className)}
