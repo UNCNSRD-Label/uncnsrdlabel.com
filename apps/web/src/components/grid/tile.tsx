@@ -1,3 +1,5 @@
+'use server';
+
 import { Image } from "@/components/media/image";
 import { Video } from "@/components/media/video";
 import { Price } from "@/components/price";
@@ -6,10 +8,10 @@ import {
   getFragmentData,
   imageFragment,
   videoFragment,
-} from "@uncnsrdlabel/graphql-shopify-storefront";
+} from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import { cn } from "@uncnsrdlabel/lib";
 
-export function Tile({
+export async function Tile({
   active = true,
   background = "black",
   className,

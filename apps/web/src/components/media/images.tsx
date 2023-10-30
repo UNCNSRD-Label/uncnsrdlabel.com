@@ -1,12 +1,11 @@
 "use client";
 
-import * as Dialog from "@radix-ui/react-dialog";
-import { Cross2Icon } from "@radix-ui/react-icons";
-import { Suspense, type MutableRefObject } from "react";
-import { SlMagnifierAdd } from "react-icons/sl";
-
 import { Image } from "@/components/media/image";
 import { ProductImageZoom } from "@/components/media/image-zoom";
+import * as Dialog from "@radix-ui/react-dialog";
+import { Cross2Icon } from "@radix-ui/react-icons";
+import { type MutableRefObject } from "react";
+import { SlMagnifierAdd } from "react-icons/sl";
 
 export function Images({
   className,
@@ -36,6 +35,7 @@ export function Images({
                 <Image
                   alt={image?.altText}
                   fill
+                  priority={index < 4}
                   revealEffect={false}
                   sizes={sizes}
                   src={image.src}
@@ -49,13 +49,11 @@ export function Images({
             <Dialog.Portal>
               <Dialog.Overlay className="bg-white data-[state=open]:animate-overlayShow fixed inset-0 z-40">
                 <Dialog.Content className="data-[state=open]:animate-contentShow h-full relative touch-none w-full">
-                  <Suspense>
-                    <ProductImageZoom
-                      alt={image?.altText}
-                      className="h-full overflow-scroll relative touch-pinch-zoom w-full"
-                      src={image.src}
-                    />
-                  </Suspense>
+                  <ProductImageZoom
+                    alt={image?.altText}
+                    className="h-full overflow-scroll relative touch-pinch-zoom w-full"
+                    src={image.src}
+                  />
                   <Dialog.Close asChild>
                     <button
                       className="fixed right-4 top-4 inline-flex h-10 w-10 appearance-none items-center justify-center rounded-full p-2 drop-shadow focus:shadow-[0_0_0_1px] focus:shadow-white focus:outline-none"

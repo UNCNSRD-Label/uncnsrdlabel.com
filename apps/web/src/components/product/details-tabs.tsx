@@ -1,4 +1,8 @@
-import { MetafieldMapper } from "@/components/product/metafield-mapper";
+'use client';
+
+import {
+  MetafieldMapper
+} from "@/components/product/metafield-mapper";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import {
   FragmentType,
@@ -47,7 +51,7 @@ export function ProductDetailsTabs({
     <TabsPrimitive.Root className={cn("w-full", className)} defaultValue={defaultValue}>
       <TabsPrimitive.List className="flex gap-4 mb-4 overflow-x-auto w-80 scroll-pb-12 text-xs ghost-scrollbar">
         {metafieldFragmentsFiltered.map((metafield) => (
-          <TabsPrimitive.Trigger className="data-[state=active]:text-hotPink" value={metafield.key}>
+          <TabsPrimitive.Trigger className="data-[state=active]:text-hotPink" key={metafield.key} value={metafield.key}>
             {metafield?.key
               ?.split("_")
               .map(

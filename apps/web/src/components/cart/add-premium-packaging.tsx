@@ -2,7 +2,7 @@ import { ProductCard } from "@/components/product-card/card";
 import { state$ } from "@/lib/store";
 import {
   getProductDetailsByHandleHandler,
-} from "@uncnsrdlabel/graphql-shopify-storefront";
+} from "@uncnsrdlabel/graphql-shopify-storefront/server";
 
 export async function AddPremiumPackaging({ className }: { className?: string }) {
   const lang = state$.lang.get();

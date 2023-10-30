@@ -2,6 +2,7 @@
 
 import { state$ } from "@/lib/store";
 // import { ProductAdditionalDetails } from "@/components/product/additional-details";
+import { LoadingDots } from "@/components/loading/dots";
 import { Details } from "@/components/product/details";
 import { type PageProps } from "@/types/next";
 import {
@@ -82,7 +83,7 @@ export default async function ProductPage({
         <Details productDetailsFragmentRef={productDetailsFragmentRef} />
         {/* <ProductAdditionalDetails productDetailsFragmentRef={productDetailsFragmentRef} /> */}
       </main>
-      <Suspense fallback={<span>Loading&hellip;</span>}>
+      <Suspense fallback={<LoadingDots />}>
         <RelatedProducts
           className="bg-white text-dark relative pb-48 pt-12 [contain:paint]"
           productDetailsFragmentRef={productDetailsFragmentRef}

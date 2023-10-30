@@ -1,7 +1,6 @@
-'use server';
+"use client";
 
 import { Tile } from "@/components/grid/tile";
-import { state$ } from "@/lib/store";
 import { transitionDelays } from "@/lib/tailwind";
 import { ResultOf } from "@graphql-typed-document-node/core";
 import {
@@ -10,10 +9,12 @@ import {
 } from "@shopify/hydrogen/storefront-api-types";
 import {
   getFragmentData,
-  getProductDetailsByIdHandler,
+  getProductDetailsByIdQuery,
+  getShopifyGraphQL,
   productDetailsFragment,
-  productMetafieldFragment
-} from "@uncnsrdlabel/graphql-shopify-storefront";
+  productMetafieldFragment,
+} from "@uncnsrdlabel/graphql-shopify-storefront/server";
+import { useGetInContextVariables } from "@uncnsrdlabel/lib/client";
 import Link from "next/link";
 import { ReactNode } from "react";
 import slugify from "slugify";
@@ -45,17 +46,17 @@ const getTextFieldValueList = (parsedValue: JsonValue) => {
   }
 };
 
-export const MetafieldMapper = ({
-  excludedKeys,
-  includedKeys,
-  metafield,
-}: {
+export type MetafieldMapperProps = {
   excludedKeys?: string[];
   includedKeys?: string[];
   metafield: ResultOf<typeof productMetafieldFragment> | MetaobjectField;
-}) => {
-  const lang = state$.lang.get();
+};
 
+export async function MetafieldMapper({
+  excludedKeys,
+  includedKeys,
+  metafield,
+}: MetafieldMapperProps) {
   let value: ReactNode = null;
 
   let parsedValue = null;
@@ -102,7 +103,10 @@ export const MetafieldMapper = ({
 
         if (Array.isArray(references)) {
           value = references.map((reference) => (
-            <dl className="items-center grid grid-cols-[auto_1fr] justify-start gap-x-10 gap-y-2" key={reference.id}>
+            <dl
+              className="grid grid-cols-[auto_1fr] items-center justify-start gap-x-10 gap-y-2"
+              key={reference.id}
+            >
               {reference.fields.map((field) => {
                 if (["name", "portfolio"].includes(field.key)) {
                   return null;
@@ -110,7 +114,13 @@ export const MetafieldMapper = ({
 
                 return (
                   <>
-                    <dt className="mt-0 capitalize" data-type={field.type} key={slugify(`${field.key}-dt`)}>{field.key}</dt>
+                    <dt
+                      className="mt-0 capitalize"
+                      data-type={field.type}
+                      key={slugify(`${field.key}-dt`)}
+                    >
+                      {field.key}
+                    </dt>
                     <dd className="mt-0 pl-0" key={slugify(`${field.key}-dd`)}>
                       {MetafieldMapper({
                         excludedKeys,
@@ -131,16 +141,23 @@ export const MetafieldMapper = ({
         if (Array.isArray(parsedValue)) {
           value = parsedValue.map(async (id, index) => {
             if (typeof id === "string") {
-              // return <span key={index}>{id}</span>;
+              const inContextVariables = useGetInContextVariables();
 
-              const productDetailsFragmentRef = await getProductDetailsByIdHandler({
-                id,
-              }, lang);
+              const { product: productDetailsFragmentRef } =
+                await getShopifyGraphQL(
+                  getProductDetailsByIdQuery,
+                  // @ts-expect-error Types of property 'country' are incompatible.
+                  { ...inContextVariables, ...variables },
+                );
 
               const product = getFragmentData(
                 productDetailsFragment,
                 productDetailsFragmentRef,
               );
+
+              if (!product) {
+                return null;
+              }
 
               return (
                 <Link
@@ -201,4 +218,4 @@ export const MetafieldMapper = ({
   }
 
   return value;
-};
+}

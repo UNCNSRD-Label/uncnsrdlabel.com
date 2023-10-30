@@ -3,13 +3,15 @@ import { AddToCart } from "@/components/cart/add-to-cart";
 import { Price } from "@/components/price";
 import { VariantSelector } from "@/components/product/variant-selector";
 import { Prose } from "@/components/prose";
-import { ResultOf } from "@graphql-typed-document-node/core";
 import { ProductVariant } from "@shopify/hydrogen/storefront-api-types";
 import {
   getFragmentData,
   productDetailsFragment,
   productVariantConnectionFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
+import {
+  FragmentType
+} from "@uncnsrdlabel/graphql-shopify-storefront/client";
 import { cn } from "@uncnsrdlabel/lib";
 import { forwardRef } from "react";
 
@@ -18,13 +20,18 @@ type PurchaseOptionsRef = HTMLDivElement;
 interface PurchaseOptionsProps {
   className?: string;
   id?: string;
-  product: ResultOf<typeof productDetailsFragment>;
+  productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }
 
 export const PurchaseOptions = forwardRef<
   PurchaseOptionsRef,
   PurchaseOptionsProps
->(({ className, id, product }, forwardedRef) => {
+>(({ className, id, productDetailsFragmentRef }, forwardedRef) => {
+  const product = getFragmentData(
+    productDetailsFragment,
+    productDetailsFragmentRef,
+  );
+
   const variantsFragmentRefs = product.variants;
   const variantFragments = getFragmentData(
     productVariantConnectionFragment,
@@ -47,7 +54,7 @@ export const PurchaseOptions = forwardRef<
         />
       </div>
 
-      <VariantSelector options={product.options} variants={variants} />
+      <VariantSelector options={product.options} productDetailsFragmentRef={productDetailsFragmentRef} variants={variants} />
 
       {product.descriptionHtml ? (
         <Prose

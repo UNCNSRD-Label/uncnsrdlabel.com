@@ -1,4 +1,3 @@
-import { LoadingDots } from "@/components/loading/dots";
 import { themeColors } from "@/lib/tailwind";
 import {
   SITE_DOMAIN_WEB,
@@ -12,7 +11,7 @@ import { config } from "@uncnsrdlabel/tailwind-config";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import localFont from "next/font/local";
-import { PropsWithChildren, Suspense } from "react";
+import { PropsWithChildren } from "react";
 import { HandleRouteChange } from "../../../../web/src/components/analytics/handle-route-change";
 import { Organization } from "../../../../web/src/components/schema.org/organization";
 import { type LayoutProps } from "../../../../web/src/types/next";
@@ -150,7 +149,7 @@ export default async function RootLayout({
         }}
       >
         <AppAnalyticsProvider>
-          <Suspense fallback={<LoadingDots />}>{children}</Suspense>
+          {children}
           <Organization />
           <HandleRouteChange />
         </AppAnalyticsProvider>

@@ -11,10 +11,10 @@ import {
 
 // export const runtime = "edge";
 
-export const metadata = {
-  title: "Search",
-  description: "Search for products in the store.",
-};
+// export const metadata = {
+//   title: "Search",
+//   description: "Search for products in the store.",
+// };
 
 export default async function SearchPage({
   searchParams,
@@ -31,7 +31,7 @@ export default async function SearchPage({
     sortKey,
     reverse,
     query: searchValue,
-  });
+  }, lang);
 
   const productFragments = productConnection.edges.map((edge) => edge?.node);
 

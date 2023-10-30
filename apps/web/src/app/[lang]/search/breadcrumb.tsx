@@ -10,7 +10,6 @@ export function Breadcrumb({ className }: { className?: string; }) {
     <BreadcrumbRoot className={className}>
       <BreadcrumbItem>
         <BreadcrumbLink as={Link} className="flex items-center gap-2" href="/">
-          {/* <Icons.logo className="h-4 w-4" /> */}
           <span className="font-bold">
             {process.env.NEXT_PUBLIC_SITE_NAME}
           </span>

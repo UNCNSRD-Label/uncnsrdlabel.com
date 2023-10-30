@@ -1,5 +1,7 @@
+'use server';
+
 import { state$ } from "@/lib/store";
-import { getCollectionRefsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { getCollectionRefsHandler } from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import { cn } from "@uncnsrdlabel/lib";
 import { Suspense } from "react";
 import { FilterList } from "./filter";
@@ -16,7 +18,7 @@ const skeleton = "mb-3 h-4 w-5/6 animate-pulse rounded";
 const activeAndTitles = "bg-gray-800 dark:bg-gray-300";
 const items = "bg-gray-400 dark:bg-gray-700";
 
-export function Collections() {
+export async function Collections() {
   return (
     <Suspense
       fallback={
