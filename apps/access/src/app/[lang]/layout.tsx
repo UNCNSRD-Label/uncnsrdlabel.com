@@ -8,6 +8,7 @@ import {
   locales,
 } from "@uncnsrdlabel/lib";
 import { AppAnalyticsProvider } from "@uncnsrdlabel/providers";
+import { config } from "@uncnsrdlabel/tailwind-config";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import localFont from "next/font/local";
@@ -38,7 +39,6 @@ const languagesArray = locales.map((locale) => [
 export async function generateMetadata({
   params: { lang },
 }: LayoutProps): Promise<Metadata> {
-
   return {
     alternates: {
       canonical: new URL(
@@ -60,7 +60,8 @@ export async function generateMetadata({
         },
       ],
     },
-    description: "Discover UNCNSRD, a brand for the unapologetic rebellious soul. Explore our latest swimwear collection drawing inspiration from timeless cuts & nostalgic eras.",
+    description:
+      "Discover UNCNSRD, a brand for the unapologetic rebellious soul. Explore our latest swimwear collection drawing inspiration from timeless cuts & nostalgic eras.",
     formatDetection: {
       telephone: false,
       date: false,
@@ -76,8 +77,6 @@ export async function generateMetadata({
       follow: true,
       index: true,
     },
-    // TODO: Retrieve from Tailwind config
-    themeColor: "#ff4dd8",
     title: {
       default: NEXT_PUBLIC_SITE_NAME,
       template: `%s | ${NEXT_PUBLIC_SITE_NAME}`,
@@ -90,10 +89,18 @@ export async function generateMetadata({
           site: TWITTER_SITE,
         },
       }),
-    viewport:
-      "minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover",
   };
 }
+
+export const viewport = {
+  minimumScale: 1,
+  initialScale: 1,
+  width: "device-width",
+  shrinkToFit: "no",
+  viewportFit: "cover",
+  // @ts-expect-error Property 'hotPink' does not exist on type 'ResolvableTo<RecursiveKeyValuePair<string, string>>'.
+  ...(config.theme?.extend?.colors?.hotPink && {themeColor: config.theme.extend.colors.hotPink}),
+};
 
 const bomberEscort = localFont({
   src: "../../../../web/src/app/fonts/bomber-escort/bomberescort.ttf",

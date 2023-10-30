@@ -3,8 +3,7 @@
 import Image from "@/components/image";
 import { cn } from "@uncnsrdlabel/lib";
 import { useState } from "react";
-// @ts-expect-error Module '"react-dom"' has no exported member 'experimental_useFormStatus'
-import { experimental_useFormStatus as useFormStatus } from "react-dom";
+import { useFormStatus } from "react-dom";
 import { SlEnvolope } from "react-icons/sl";
 import { signUp } from "./actions";
 
