@@ -24,6 +24,7 @@ export async function Cart() {
 
   const variables = { ...inContextVariables, cartId }
 
+  // @ts-expect-error Argument of type is not assignable to parameter of type
   const { cart: cartFragmentRef } = await getShopifyGraphQL(getCartQuery, variables);
 
   if (cartFragmentRef) {

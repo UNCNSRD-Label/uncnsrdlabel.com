@@ -66,11 +66,13 @@ export function Image({
           "data-[loaded=true]:translate-y-0 data-[loaded=true]:scale-100 data-[loaded=true]:blur-none",
         props.className,
       )}
-      onLoad={(img: HTMLImageElement) => {
+      onLoad={(event) => {
+        const img = event.currentTarget as HTMLImageElement;
+
         onLoad(img);
 
         if (props.onLoad) {
-          props.onLoad(img);
+          props.onLoad(event);
         }
       }}
       ref={rootRef}

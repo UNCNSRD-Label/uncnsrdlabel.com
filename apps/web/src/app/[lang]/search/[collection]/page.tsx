@@ -2,10 +2,10 @@
 
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
-import { state$ } from "@/lib/store";
 import {
   collectionFragment,
   getCollectionHandler,
+  getCollectionProductsHandler,
   getFragmentData,
   productCollectionDefaultSort,
   productCollectionSorting,
@@ -21,8 +21,6 @@ export async function generateMetadata({
 }: {
   params: { collection: string };
 }): Promise<Metadata> {
-  const lang = state$.lang.get();
-
   const collectionFragmentRef = await getCollectionHandler({ handle });
 
   const collection = getFragmentData(
@@ -64,7 +62,7 @@ export default async function CategoryPage({
     productCollectionSorting.find((item) => item.slug === sort) ||
     productCollectionDefaultSort;
 
-  const collectionProducts = await server.getCollectionProducts({
+  const collectionProducts = await getCollectionProductsHandler({
     handle: params.collection,
     sortKey,
     reverse,

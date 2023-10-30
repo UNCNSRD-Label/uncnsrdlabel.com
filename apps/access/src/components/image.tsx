@@ -13,42 +13,26 @@ export default function Image({
   const rootRef = useRef<HTMLImageElement>(null);
 
   const [previousY, setPreviousY] = useState(0);
-  // const [previousRatio, setPreviousRatio] = useState(0);
   const [scrollDirection, setScrollDirection] = useState<"end" | "start">(
     "end",
   );
 
   const rootIntersection = useIntersectionObserver(rootRef, {
-    // rootMargin: "-15%",
     threshold: [0, 0.5],
   });
 
   const currentY = rootIntersection?.boundingClientRect.y || 0;
-  // const currentRatio = rootIntersection?.intersectionRatio || 0
   const isIntersecting = rootIntersection?.isIntersecting || false;
 
   useEffect(() => {
     // Scrolling down/up
     if (currentY < previousY) {
       setScrollDirection("end");
-
-      // if (currentRatio > previousRatio && isIntersecting) {
-      //   state.textContent ="Scrolling down enter"
-      // } else {
-      //   state.textContent ="Scrolling down leave"
-      // }
     } else if (currentY > previousY && isIntersecting) {
       setScrollDirection("start");
-
-      // if (currentRatio < previousRatio) {
-      //   state.textContent ="Scrolling up leave"
-      // } else {
-      //   state.textContent ="Scrolling up enter"
-      // }
     }
 
     setPreviousY(currentY);
-    // setPreviousRatio(currentRatio)
   }, [currentY, isIntersecting, previousY]);
 
   return (
@@ -67,11 +51,13 @@ export default function Image({
           "data-[loaded=true]:translate-y-0 data-[loaded=true]:scale-100 data-[loaded=true]:blur-none",
         props.className,
       )}
-      onLoad={(img: HTMLImageElement) => {
+      onLoad={(event) => {
+        const img = event.currentTarget as HTMLImageElement;
+
         onLoad(img);
 
         if (props.onLoad) {
-          props.onLoad(img);
+          props.onLoad(event);
         }
       }}
       ref={rootRef}

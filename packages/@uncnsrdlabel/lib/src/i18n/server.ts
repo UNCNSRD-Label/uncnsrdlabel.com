@@ -9,11 +9,11 @@ import {
 export const getInContextVariables = (lang: Intl.BCP47LanguageTag) => {
   const locale = new Intl.Locale(lang);
 
-  const country = (locale.region) as InputMaybe<CountryCode> | undefined;
+  const country = (locale.region) as InputMaybe<CountryCode>;
 
   const language = (
     locale.language
-  ).toLocaleUpperCase() as InputMaybe<LanguageCode> | undefined;
+  ).toLocaleUpperCase() as InputMaybe<LanguageCode>;
 
   return {
     country,

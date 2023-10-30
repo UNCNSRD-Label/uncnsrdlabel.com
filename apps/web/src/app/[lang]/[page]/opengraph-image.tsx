@@ -9,7 +9,7 @@ import {
   seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront/server";
 
-export const runtime = "edge";
+// export const runtime = "edge";
 
 export default async function Image({
   params: { page: handle },
