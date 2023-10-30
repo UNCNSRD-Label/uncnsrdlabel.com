@@ -1,7 +1,7 @@
 "use client";
 
 import { useIntersectionObserver } from "@react-hookz/web";
-import { cn, onLoadingComplete } from "@uncnsrdlabel/lib";
+import { cn, onLoad } from "@uncnsrdlabel/lib";
 import NextImage, { type ImageProps } from "next/image";
 import { useEffect, useRef, useState } from "react";
 
@@ -66,11 +66,11 @@ export function Image({
           "data-[loaded=true]:translate-y-0 data-[loaded=true]:scale-100 data-[loaded=true]:blur-none",
         props.className,
       )}
-      onLoadingComplete={(img: HTMLImageElement) => {
-        onLoadingComplete(img);
+      onLoad={(img: HTMLImageElement) => {
+        onLoad(img);
 
-        if (props.onLoadingComplete) {
-          props.onLoadingComplete(img);
+        if (props.onLoad) {
+          props.onLoad(img);
         }
       }}
       ref={rootRef}
