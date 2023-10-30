@@ -74,7 +74,7 @@ export function Details({
           className="relative col-span-full h-full md:h-[80dvh] sm:col-start-3 lg:col-start-7 sm:col-end-11 lg:col-end-12 lg:-top-12 lg:rounded-xl lg:bg-white/90 lg:shadow lg:backdrop-blur lg:backdrop-saturate-50 xl:col-start-9 z-10 overflow-hidden"
           id="details"
         >
-          <div className="absolute grid inset-0 overflow-y-auto p-6 pt-20 sm:pt-6 lg:pb-48">
+          <div className="absolute grid inset-0 overflow-y-auto p-6 pt-20 sm:pt-6 lg:pb-20">
             <PurchaseOptions
               // ref={sectionElementRefs[1]}
               productDetailsFragmentRef={productDetailsFragmentRef}

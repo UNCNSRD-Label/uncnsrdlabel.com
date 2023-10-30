@@ -32,7 +32,7 @@ const contentSecurityPolicyComponents = [
   // `connect-src 'self' *.clarity.ms *.facebook.com *.facebook.net *.klaviyo.com *.skimresources.com c.bing.com cdn.contentful.com fonts.googleapis.com fonts.gstatic.com images.ctfassets.net stats.g.doubleclick.net vitals.vercel-insights.com www.google-analytics.com www.googletagmanager.com ${domains}`,
   `connect-src *`,
   `default-src 'self' ${domains}`,
-  `font-src 'self' fonts.googleapis.com fonts.gstatic.com widget-v4.tidiochat.com ${domains}`,
+  `font-src 'self' fonts.googleapis.com fonts.gstatic.com sc-static.net widget-v4.tidiochat.com ${domains}`,
   `form-action 'self' www.facebook.com`,
   `frame-ancestors app.contentful.com`,
   `frame-src vercel.live www.facebook.com ${domains}`,
