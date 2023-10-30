@@ -121,7 +121,7 @@ const montserrat = Montserrat({
   weight: "300",
 });
 
-export default async function RootLayout({
+export default async function AccessRootLayout({
   children,
   params: { lang },
 }: PropsWithChildren<LayoutProps>) {
