@@ -1,6 +1,8 @@
-import { server } from "@/clients/shopify";
+'use server';
+
 import { Image } from "@/components/media/image";
-import { getFragmentData, imageFragment, pageFragment, productBasicFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { state$ } from "@/lib/store";
+import { getCollectionProductsHandler, getFragmentData, getPageHandler, imageFragment, pageFragment, productBasicFragment } from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -10,8 +12,10 @@ export async function Carousel({
 }: {
   handle: string;
 }) {
-  const pageFragmentRef = await server.getPage(
-    { handle },
+  const lang = state$.lang.get();
+
+  const pageFragmentRef = await getPageHandler(
+    { handle }, lang
   );
 
   const page = getFragmentData(
@@ -22,9 +26,9 @@ export async function Carousel({
   if (!page) return notFound();
 
   // Collections that start with `hidden-*` are hidden from the search page.
-  const collectionProducts = await server.getCollectionProducts({
+  const collectionProducts = await getCollectionProductsHandler({
     handle: "hidden-homepage-carousel",
-  });
+  }, lang);
 
   const products = collectionProducts.edges.map((edge) => edge?.node);
 

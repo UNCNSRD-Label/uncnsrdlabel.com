@@ -1,3 +1,5 @@
+'use client'
+
 import { SignUpForm } from "@/components/sign-up/form";
 import { cn } from "@uncnsrdlabel/lib";
 

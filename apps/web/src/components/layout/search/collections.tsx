@@ -1,10 +1,13 @@
-import { server } from "@/clients/shopify";
+import { state$ } from "@/lib/store";
+import { getCollectionRefsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { Suspense } from "react";
 import { FilterList } from "./filter";
 
 async function CollectionList() {
-  const collections = await server.getCollectionRefs({});
+  const lang = state$.lang.get();
+
+  const collections = await getCollectionRefsHandler({}, lang);
 
   return <FilterList list={collections} title="Collections" />;
 }

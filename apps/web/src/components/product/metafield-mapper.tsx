@@ -1,5 +1,7 @@
-import { server } from "@/clients/shopify";
+'use server';
+
 import { Tile } from "@/components/grid/tile";
+import { state$ } from "@/lib/store";
 import { transitionDelays } from "@/lib/tailwind";
 import { ResultOf } from "@graphql-typed-document-node/core";
 import {
@@ -8,8 +10,9 @@ import {
 } from "@shopify/hydrogen/storefront-api-types";
 import {
   getFragmentData,
+  getProductDetailsByIdHandler,
   productDetailsFragment,
-  productMetafieldFragment,
+  productMetafieldFragment
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import Link from "next/link";
 import { ReactNode } from "react";
@@ -51,6 +54,8 @@ export const MetafieldMapper = ({
   includedKeys?: string[];
   metafield: ResultOf<typeof productMetafieldFragment> | MetaobjectField;
 }) => {
+  const lang = state$.lang.get();
+
   let value: ReactNode = null;
 
   let parsedValue = null;
@@ -128,9 +133,9 @@ export const MetafieldMapper = ({
             if (typeof id === "string") {
               // return <span key={index}>{id}</span>;
 
-              const productDetailsFragmentRef = await server.getProductDetailsById({
+              const productDetailsFragmentRef = await getProductDetailsByIdHandler({
                 id,
-              });
+              }, lang);
 
               const product = getFragmentData(
                 productDetailsFragment,

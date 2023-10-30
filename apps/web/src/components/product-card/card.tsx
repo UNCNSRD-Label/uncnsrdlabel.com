@@ -1,5 +1,3 @@
-"use client";
-
 import { Image } from "@/components/media/image";
 import { Price } from "@/components/price";
 import { ProductVariant } from "@shopify/hydrogen/storefront-api-types";

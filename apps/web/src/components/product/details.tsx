@@ -14,7 +14,7 @@ import {
   imageFragment,
   productDetailsFragment,
   videoFragment
-} from "@uncnsrdlabel/graphql-shopify-storefront";
+} from "@uncnsrdlabel/graphql-shopify-storefront/client";
 import { cn } from "@uncnsrdlabel/lib";
 import Image from "next/image";
 import Link from "next/link";

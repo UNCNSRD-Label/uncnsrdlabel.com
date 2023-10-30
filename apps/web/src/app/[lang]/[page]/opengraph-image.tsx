@@ -1,11 +1,13 @@
-import { server } from "@/clients/shopify";
+'use server';
+
 import { OpengraphImage } from "@/components/opengraph-image";
+import { state$ } from "@/lib/store";
 import {
   getFragmentData,
+  getPageHandler,
   pageFragment,
   seoFragment,
-} from "@uncnsrdlabel/graphql-shopify-storefront";
-
+} from "@uncnsrdlabel/graphql-shopify-storefront/server";
 
 export const runtime = "edge";
 
@@ -14,8 +16,10 @@ export default async function Image({
 }: {
   params: { page: string };
 }) {
-  const pageFragmentRef = await server.getPage(
-    { handle },
+  const lang = state$.lang.get();
+
+  const pageFragmentRef = await getPageHandler(
+    { handle }, lang,
   );
 
   const page = getFragmentData(

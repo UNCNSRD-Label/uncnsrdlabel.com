@@ -6,7 +6,7 @@ import {
   PageFragment,
   type ImageFragment,
   type MediaImage,
-  type MenuItem,
+  type MenuItem
 } from "../codegen/graphql";
 import { getFragmentData } from "../codegen/index";
 import { domain } from "../constants";

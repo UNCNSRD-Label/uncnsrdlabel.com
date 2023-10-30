@@ -1,3 +1,7 @@
+'use server';
+
+// TODO: Remove this deprecated file
+
 import { LoadingDots } from "@/components/loading/dots";
 import PageVideos from "@/components/page/videos";
 import { state$ } from "@/lib/store";
@@ -7,8 +11,8 @@ import {
   getQueryKey,
   getShopifyGraphQL,
   getShopifyQueryClient,
-} from "@uncnsrdlabel/graphql-shopify-storefront";
-import { getInContextVariables } from "@uncnsrdlabel/lib";
+} from "@uncnsrdlabel/graphql-shopify-storefront/server";
+import { getInContextVariables } from "@uncnsrdlabel/lib/server";
 import { Suspense } from "react";
 
 // TODO: Change to videosHydrated and pass query and variables (handle) in props

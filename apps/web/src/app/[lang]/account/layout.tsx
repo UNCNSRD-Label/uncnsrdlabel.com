@@ -1,12 +1,16 @@
-import { server } from "@/clients/shopify";
+'use server';
+
 import { Logo } from "@/components/layout/logo/index";
 import { NavbarContent } from "@/components/layout/navbar/content";
 import { Navbar } from "@/components/layout/navbar/index";
 import { LoadingSkeleton } from "@/components/loading/skeleton";
+import { state$ } from "@/lib/store";
 import {
   getFragmentData,
+  getMenuHandler,
+  getRouteMetaObjectHandler,
   imageFragment,
-} from "@uncnsrdlabel/graphql-shopify-storefront";
+} from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import { cn } from "@uncnsrdlabel/lib";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,16 +22,18 @@ export default async function AccountLayout({
   children: React.ReactNode;
   params: { handle: string };
 }) {
+  const lang = state$.lang.get();
+
   const segment =
     isValidElement(children) && children.props.childProp
       ? children.props.childProp.segment
       : undefined;
 
-  const routeMetaObject = await server.getRouteMetaObject({
+  const routeMetaObject = await getRouteMetaObjectHandler({
     handle: `account_${segment}`,
-  });
+  }, lang);
 
-  const routeMenu = await server.getMenu({ handle: "account" });
+  const routeMenu = await getMenuHandler({ handle: "account" });
 
   return (
     <>

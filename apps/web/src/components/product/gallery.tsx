@@ -6,7 +6,7 @@ import {
   FragmentType,
   getFragmentData,
   imageFragment
-} from "@uncnsrdlabel/graphql-shopify-storefront";
+} from "@uncnsrdlabel/graphql-shopify-storefront/client";
 import { cn } from "@uncnsrdlabel/lib";
 import { useState } from "react";
 

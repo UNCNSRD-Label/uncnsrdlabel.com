@@ -1,5 +1,3 @@
-'use client';
-
 import { type IETFLanguageTag } from "@uncnsrdlabel/types";
 import { PropsWithChildren } from "react";
 import { type ResolvedIntlConfig } from "react-intl";

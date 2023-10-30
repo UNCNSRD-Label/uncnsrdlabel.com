@@ -1,4 +1,7 @@
-import { server } from "@/clients/shopify";
+'use server';
+
+import { state$ } from "@/lib/store";
+import { addToCartHandler, removeFromCartHandler, updateCartHandler } from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import { isShopifyError } from "@uncnsrdlabel/lib";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
@@ -9,6 +12,8 @@ function formatErrorMessage(err: Error): string {
 }
 
 export async function POST(req: NextRequest): Promise<Response> {
+  const lang = state$.lang.get();
+
   const cartId = cookies().get("cartId")?.value;
   const { merchandiseId } = (await req.json()) as Cart;
 
@@ -19,7 +24,7 @@ export async function POST(req: NextRequest): Promise<Response> {
     ) satisfies Response;
   }
   try {
-    await server.addToCart({ cartId, lines: [{ merchandiseId, quantity: 1 }] });
+    await addToCartHandler({ cartId, lines: [{ merchandiseId, quantity: 1 }] }, lang);
     return NextResponse.json({ status: 204 }) satisfies Response;
   } catch (e) {
     if (isShopifyError(e)) {
@@ -34,6 +39,8 @@ export async function POST(req: NextRequest): Promise<Response> {
 }
 
 export async function PUT(req: NextRequest): Promise<Response> {
+  const lang = state$.lang.get();
+
   const cartId = cookies().get("cartId")?.value;
   const { variantId, quantity, lineId } = (await req.json()) as Cart;
 
@@ -44,7 +51,7 @@ export async function PUT(req: NextRequest): Promise<Response> {
     );
   }
   try {
-    await server.updateCart({
+    await updateCartHandler({
       cartId,
       lines: [
         {
@@ -53,7 +60,7 @@ export async function PUT(req: NextRequest): Promise<Response> {
           quantity,
         },
       ],
-    });
+    }, lang);
     return NextResponse.json({ status: 204 });
   } catch (e) {
     if (isShopifyError(e)) {
@@ -68,6 +75,8 @@ export async function PUT(req: NextRequest): Promise<Response> {
 }
 
 export async function DELETE(req: NextRequest): Promise<Response> {
+  const lang = state$.lang.get();
+
   const cartId = cookies().get("cartId")?.value;
   const { lineId } = (await req.json()) as Cart;
 
@@ -78,7 +87,7 @@ export async function DELETE(req: NextRequest): Promise<Response> {
     );
   }
   try {
-    await server.removeFromCart({ cartId, lineIds: [lineId] });
+    await removeFromCartHandler({ cartId, lineIds: [lineId] }, lang);
     return NextResponse.json({ status: 204 });
   } catch (error) {
     if (isShopifyError(error)) {

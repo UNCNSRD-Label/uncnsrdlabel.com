@@ -1,3 +1,5 @@
+'use server';
+
 import { LoadingDots } from "@/components/loading/dots";
 import { state$ } from "@/lib/store";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
@@ -6,8 +8,8 @@ import {
   getQueryKey,
   getShopifyGraphQL,
   getShopifyQueryClient,
-} from "@uncnsrdlabel/graphql-shopify-storefront";
-import { getInContextVariables } from "@uncnsrdlabel/lib";
+} from "@uncnsrdlabel/graphql-shopify-storefront/server";
+import { getInContextVariables } from "@uncnsrdlabel/lib/server";
 import { Suspense } from "react";
 import { Videos } from "./videos";
 

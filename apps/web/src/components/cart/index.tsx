@@ -1,21 +1,30 @@
-import { server } from "@/clients/shopify";
-import { CartModal } from "@/components/cart/modal";
-import {
-  FragmentType,
-  cartFragment,
-  getFragmentData
-} from "@uncnsrdlabel/graphql-shopify-storefront";
-import { cookies } from "next/headers";
-import { use } from "react";
+'use server';
 
-export function Cart() {
+import { CartModal } from "@/components/cart/modal";
+import { state$ } from "@/lib/store";
+import {
+  cartFragment,
+  getCartQuery,
+  getFragmentData,
+  getShopifyGraphQL
+} from "@uncnsrdlabel/graphql-shopify-storefront/server";
+import { getInContextVariables } from "@uncnsrdlabel/lib/server";
+import { cookies } from "next/headers";
+
+export async function Cart() {
   const cartId = cookies().get("cartId")?.value;
 
-  let cartFragmentRef: FragmentType<typeof cartFragment> | null = null;
+  const lang = state$.lang.get();
 
-  if (cartId) {
-    cartFragmentRef = use(server.getCart({ cartId }));
+  if (!cartId) {
+    return null
   }
+
+  const inContextVariables = getInContextVariables(lang);
+
+  const variables = { ...inContextVariables, cartId }
+
+  const { cart: cartFragmentRef } = await getShopifyGraphQL(getCartQuery, variables);
 
   if (cartFragmentRef) {
     const cart = getFragmentData(cartFragment, cartFragmentRef);

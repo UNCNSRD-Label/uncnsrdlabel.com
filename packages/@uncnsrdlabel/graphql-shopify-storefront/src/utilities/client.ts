@@ -5,7 +5,8 @@ import {
   useSuspenseQuery,
   type UseSuspenseQueryResult
 } from "@tanstack/react-query";
-import { isShopifyError, useGetInContextVariables } from "@uncnsrdlabel/lib";
+import { isShopifyError } from "@uncnsrdlabel/lib";
+import { useGetInContextVariables } from "@uncnsrdlabel/lib/client";
 import { getQueryKey, graphQLClient } from "../utilities";
 
 export function useGetShopifyGraphQL<TResult, TVariables>(

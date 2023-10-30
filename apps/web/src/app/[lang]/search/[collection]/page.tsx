@@ -1,13 +1,16 @@
-import { server } from "@/clients/shopify";
+'use server';
+
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
+import { state$ } from "@/lib/store";
 import {
   collectionFragment,
+  getCollectionHandler,
   getFragmentData,
   productCollectionDefaultSort,
   productCollectionSorting,
   seoFragment
-} from "@uncnsrdlabel/graphql-shopify-storefront";
+} from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -18,7 +21,9 @@ export async function generateMetadata({
 }: {
   params: { collection: string };
 }): Promise<Metadata> {
-  const collectionFragmentRef = await server.getCollection({ handle });
+  const lang = state$.lang.get();
+
+  const collectionFragmentRef = await getCollectionHandler({ handle });
 
   const collection = getFragmentData(
       collectionFragment,
