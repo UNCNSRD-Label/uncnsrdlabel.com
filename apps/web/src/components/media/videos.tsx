@@ -46,5 +46,3 @@ export function Videos({
     </>
   ) : null;
 }
-
-export default Videos;

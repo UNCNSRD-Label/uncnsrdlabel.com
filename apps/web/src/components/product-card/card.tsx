@@ -1,3 +1,4 @@
+import { addItem } from "@/components/cart/actions";
 import { Image } from "@/components/media/image";
 import { Price } from "@/components/price";
 import { ProductVariant } from "@shopify/hydrogen/storefront-api-types";
@@ -103,6 +104,7 @@ export function ProductCard({
             product={product}
           /> */}
           <AddToCart
+            addItem={addItem}
             availableForSale={product.availableForSale}
             className="relative justify-start py-4 text-xs w-full"
             options={product.options}

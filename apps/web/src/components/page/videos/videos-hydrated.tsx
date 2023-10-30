@@ -50,5 +50,3 @@ export async function VideosHydrated({
     </Suspense>
   );
 }
-
-export default VideosHydrated;

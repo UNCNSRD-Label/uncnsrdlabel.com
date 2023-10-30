@@ -3,7 +3,7 @@
 // TODO: Remove this deprecated file
 
 import { LoadingDots } from "@/components/loading/dots";
-import PageVideos from "@/components/page/videos";
+import { VideosHydrated } from "@/components/page/videos/videos-hydrated";
 import { state$ } from "@/lib/store";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import {
@@ -48,10 +48,8 @@ export async function PageVideosHydrated({
   return (
     <Suspense fallback={<LoadingDots />}>
       <HydrationBoundary state={dehydratedState}>
-        <PageVideos {...props} handle={handle} />
+        <VideosHydrated {...props} handle={handle} />
       </HydrationBoundary>
     </Suspense>
   );
 }
-
-export default PageVideosHydrated;
