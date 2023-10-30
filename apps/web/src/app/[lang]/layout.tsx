@@ -141,7 +141,7 @@ export async function generateStaticParams() {
   });
 }
 
-export default async function Layout({
+export default async function RootLayout({
   children,
   params: { lang },
 }: PropsWithChildren<LayoutProps>) {

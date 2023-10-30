@@ -46,7 +46,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({
+export default async function PagePage({
   params: { page: handle },
 }: {
   params: { page: string };

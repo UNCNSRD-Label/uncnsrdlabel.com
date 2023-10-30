@@ -43,7 +43,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function Policy({
+export default async function PolicyPage({
   params,
 }: {
   params: { handle: PolicyName };

@@ -1,7 +1,7 @@
 import {
-    BreadcrumbItem,
-    BreadcrumbLink,
-    Breadcrumb as BreadcrumbRoot,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  Breadcrumb as BreadcrumbRoot,
 } from "@uncnsrdlabel/components/ui/breadcrumb";
 import { FragmentType, getFragmentData, productDetailsFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
 import Link from "next/link";

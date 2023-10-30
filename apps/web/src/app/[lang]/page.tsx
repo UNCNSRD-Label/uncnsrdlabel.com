@@ -10,7 +10,7 @@ import Link from "next/link";
 
 // export const runtime = "edge";
 
-export default async function HomePage({
+export default async function RootPage({
   params: {
     lang
   }

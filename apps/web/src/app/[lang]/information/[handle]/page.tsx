@@ -42,7 +42,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function Policy({
+export default async function InformationPage({
   params,
 }: {
   params: { handle: PolicyName };
