@@ -1,11 +1,11 @@
 import { LogotypeIcon } from "@/components/icons/logotype";
-import { ImageResponse } from "next/server";
+import { ImageResponse } from "next/og";
 
 export type Props = {
   title: string;
 };
 
-export async function OpengraphImage({
+export async function OpengraphImageResponse({
   title = process.env.SITE_NAME!,
 }: Props): Promise<ImageResponse> {
   return new ImageResponse(

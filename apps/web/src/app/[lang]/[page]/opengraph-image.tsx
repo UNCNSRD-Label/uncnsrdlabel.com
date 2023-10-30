@@ -1,6 +1,6 @@
 'use server';
 
-import { OpengraphImage } from "@/components/opengraph-image";
+import { OpengraphImageResponse } from "@/components/opengraph-image-response";
 import { state$ } from "@/lib/store";
 import {
   getFragmentData,
@@ -11,7 +11,7 @@ import {
 
 // export const runtime = "edge";
 
-export default async function Image({
+export default async function PageOpengraphImage({
   params: { page: handle },
 }: {
   params: { page: string };
@@ -27,10 +27,9 @@ export default async function Image({
     pageFragmentRef,
   );
 
-
   const seo = getFragmentData(seoFragment, page.seo);
 
   const title = seo?.title || page.title;
 
-  return await OpengraphImage({ title });
+  return await OpengraphImageResponse({ title });
 }

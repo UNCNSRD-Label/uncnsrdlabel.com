@@ -31,5 +31,3 @@ export async function ArticleHydrated({
     </HydrationBoundary>
   );
 }
-
-export default ArticleHydrated;

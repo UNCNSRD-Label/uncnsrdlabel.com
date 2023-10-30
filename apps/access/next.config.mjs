@@ -87,8 +87,8 @@ const nextConfig = {
   //   ignoreDuringBuilds: true,
   // },
   experimental: {
-    // Avoid Module not found: ESM packages (supports-color) need to be imported. Use 'import' to reference the package instead. https://nextjs.org/docs/messages/import-esm-externals
     scrollRestoration: true,
+    webpackBuildWorker: true,
   },
   async headers() {
     return [
