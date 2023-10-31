@@ -66,18 +66,15 @@ export function ProductCard({
   return (
     <>
       <div
-        className={cn(
-          "card grid grid-flow-col col-gap-4 w-full",
-          className,
-        )}
+        className={cn("card col-gap-4 grid w-full grid-flow-col", className)}
       >
         <figure
-          className="aspect-square gap-8 grid overflow-hidden relative"
+          className="relative grid aspect-square gap-8 overflow-hidden"
           id="image"
         >
           <Image
             alt={image[0].altText}
-            className="aspect-2/3 object-contain snap snap-x-mandatory snap-align-start relative w-full overflow-y-hidden"
+            className="aspect-2/3 snap snap-x-mandatory snap-align-start relative w-full overflow-y-hidden object-contain"
             fill
             sizes="(max-width: 639px) 100vw, 33vw"
             src={image[0].src}
@@ -106,7 +103,7 @@ export function ProductCard({
           <AddToCart
             addItem={addItem}
             availableForSale={product.availableForSale}
-            className="relative justify-start py-4 text-xs w-full"
+            className="relative w-full justify-start py-4 text-xs"
             options={product.options}
             variants={variants}
           />

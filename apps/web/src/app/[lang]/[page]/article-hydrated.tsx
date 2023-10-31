@@ -1,4 +1,4 @@
-'use server';
+"use server";
 
 import { state$ } from "@/lib/store";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
@@ -12,7 +12,7 @@ export async function ArticleHydrated({
   children,
   className,
   style,
-  variables
+  variables,
 }: ArticleProps) {
   const lang = state$.lang.get();
 

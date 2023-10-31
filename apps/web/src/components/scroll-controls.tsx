@@ -84,10 +84,7 @@ export function ScrollControls({
           {children}
         </ScrollArea.Viewport>
         <ScrollArea.Scrollbar
-          className={cn(
-            "ScrollAreaScrollbar",
-            classNames.ScrollAreaScrollbar,
-          )}
+          className={cn("ScrollAreaScrollbar", classNames.ScrollAreaScrollbar)}
           orientation="vertical"
         >
           <ScrollArea.Thumb
@@ -95,10 +92,7 @@ export function ScrollControls({
           />
         </ScrollArea.Scrollbar>
         <ScrollArea.Scrollbar
-          className={cn(
-            "ScrollAreaScrollbar",
-            classNames.ScrollAreaScrollbar,
-          )}
+          className={cn("ScrollAreaScrollbar", classNames.ScrollAreaScrollbar)}
           orientation="horizontal"
         >
           <ScrollArea.Thumb

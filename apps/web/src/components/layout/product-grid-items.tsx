@@ -4,7 +4,7 @@ import { transitionDelays } from "@/lib/tailwind";
 import {
   FragmentType,
   getFragmentData,
-  productBasicFragment
+  productBasicFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { HIDDEN_PRODUCT_TAG } from "@uncnsrdlabel/lib";
 import Link from "next/link";
@@ -19,21 +19,24 @@ export function ProductGridItems({
   return (
     <>
       {productFragmentRefs.slice(0, limit).map((productFragmentRef, index) => {
-          const product = getFragmentData(productBasicFragment, productFragmentRef);
+        const product = getFragmentData(
+          productBasicFragment,
+          productFragmentRef,
+        );
 
-          if (!product) return null;
+        if (!product) return null;
 
-          const hide = product.tags.includes(HIDDEN_PRODUCT_TAG);
+        const hide = product.tags.includes(HIDDEN_PRODUCT_TAG);
 
-          if (hide) return null;
+        if (hide) return null;
 
-          const media = product.media.edges.map((edge) => edge?.node);
+        const media = product.media.edges.map((edge) => edge?.node);
 
-          const videos = media.filter((node) => node.__typename === "Video");
-        
-          const video = videos?.[0];
+        const videos = media.filter((node) => node.__typename === "Video");
 
-          return (
+        const video = videos?.[0];
+
+        return (
           <Grid.Item key={product.id || index} className="animate-fadeIn">
             <Link
               className="block h-full w-full"

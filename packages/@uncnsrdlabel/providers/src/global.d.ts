@@ -2,9 +2,9 @@
 
 declare global {
   interface Window {
-    toggleDevtools: () => void
-    toggleFormDevTools: () => void
+    toggleDevtools: () => void;
+    toggleFormDevTools: () => void;
   }
 }
 
-export { };
+export {};

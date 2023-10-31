@@ -61,6 +61,6 @@ export function MetaFields({
         ))}
     </dl>
   );
-};
+}
 
 MetaFields.displayName = "MetaFields";

@@ -1,4 +1,4 @@
-'use server';
+"use server";
 
 import { Cart } from "@/components/cart";
 import { CartIcon } from "@/components/icons/cart";
@@ -17,7 +17,10 @@ type Props = { showLogo?: boolean };
 export async function NavbarContent(props: Props) {
   const lang = state$.lang.get();
 
-  const menu = await getMenuHandler({ handle: "next-js-frontend-header-menu" }, lang);
+  const menu = await getMenuHandler(
+    { handle: "next-js-frontend-header-menu" },
+    lang,
+  );
 
   return (
     <>

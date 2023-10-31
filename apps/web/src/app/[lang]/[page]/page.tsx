@@ -1,4 +1,4 @@
-'use server';
+"use server";
 
 import { LoadingSkeleton } from "@/components/loading/skeleton";
 import { state$ } from "@/lib/store";
@@ -6,7 +6,7 @@ import {
   getFragmentData,
   getPageHandler,
   pageFragment,
-  seoFragment
+  seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";

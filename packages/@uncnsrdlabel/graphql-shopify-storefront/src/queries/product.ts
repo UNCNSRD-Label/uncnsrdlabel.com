@@ -1,7 +1,11 @@
 import { graphql } from "../codegen/index";
 
 export const getProductBasicQuery = graphql(/* GraphQL */ `
-  query getProductBasic($country: CountryCode, $handle: String!, $language: LanguageCode) @inContext(country: $country, language: $language) {
+  query getProductBasic(
+    $country: CountryCode
+    $handle: String!
+    $language: LanguageCode
+  ) @inContext(country: $country, language: $language) {
     product(handle: $handle) {
       ...productBasic
     }
@@ -9,7 +13,11 @@ export const getProductBasicQuery = graphql(/* GraphQL */ `
 `);
 
 export const getProductDetailsByHandleQuery = graphql(/* GraphQL */ `
-  query getProductDetailsByHandle($country: CountryCode, $handle: String!, $language: LanguageCode) @inContext(country: $country, language: $language) {
+  query getProductDetailsByHandle(
+    $country: CountryCode
+    $handle: String!
+    $language: LanguageCode
+  ) @inContext(country: $country, language: $language) {
     product(handle: $handle) {
       ...productDetails
     }
@@ -17,7 +25,11 @@ export const getProductDetailsByHandleQuery = graphql(/* GraphQL */ `
 `);
 
 export const getProductDetailsByIdQuery = graphql(/* GraphQL */ `
-  query getProductDetailsById($country: CountryCode, $id: ID!, $language: LanguageCode) @inContext(country: $country, language: $language) {
+  query getProductDetailsById(
+    $country: CountryCode
+    $id: ID!
+    $language: LanguageCode
+  ) @inContext(country: $country, language: $language) {
     product(id: $id) {
       ...productDetails
     }
@@ -25,7 +37,11 @@ export const getProductDetailsByIdQuery = graphql(/* GraphQL */ `
 `);
 
 export const getProductRecommendationsQuery = graphql(/* GraphQL */ `
-  query getProductRecommendations($country: CountryCode, $productId: ID!, $language: LanguageCode) @inContext(country: $country, language: $language) {
+  query getProductRecommendations(
+    $country: CountryCode
+    $productId: ID!
+    $language: LanguageCode
+  ) @inContext(country: $country, language: $language) {
     productRecommendations(productId: $productId) {
       ...productBasic
     }

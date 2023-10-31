@@ -1,4 +1,4 @@
-'use server';
+"use server";
 
 import { state$ } from "@/lib/store";
 import {
@@ -43,10 +43,13 @@ export const addItem = async (
     return new Error("Missing variantId");
   }
   try {
-    await addToCartHandler({
-      cartId,
-      lines: [{ merchandiseId: variantId, quantity: 1 }],
-    }, lang);
+    await addToCartHandler(
+      {
+        cartId,
+        lines: [{ merchandiseId: variantId, quantity: 1 }],
+      },
+      lang,
+    );
 
     return undefined;
   } catch (e) {
@@ -91,16 +94,19 @@ export const updateItemQuantity = async ({
     return new Error("Missing cartId");
   }
   try {
-    await updateCartHandler({
-      cartId,
-      lines: [
-        {
-          id: lineId,
-          merchandiseId: variantId,
-          quantity,
-        },
-      ],
-    }, lang);
+    await updateCartHandler(
+      {
+        cartId,
+        lines: [
+          {
+            id: lineId,
+            merchandiseId: variantId,
+            quantity,
+          },
+        ],
+      },
+      lang,
+    );
 
     return undefined;
   } catch (e) {

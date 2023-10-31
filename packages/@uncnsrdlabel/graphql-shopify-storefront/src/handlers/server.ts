@@ -1,5 +1,4 @@
-
-'use server';
+"use server";
 
 import { getInContextVariables } from "@uncnsrdlabel/lib/server";
 import { CollectionFragment } from "../codegen/graphql";
@@ -36,7 +35,7 @@ import {
   GetProductsWithVariantsQueryVariables,
   GetRouteMetaObjectQueryVariables,
   GetShopPoliciesQueryVariables,
-  RemoveFromCartMutationVariables
+  RemoveFromCartMutationVariables,
 } from "../codegen/graphql";
 import { collectionFragment } from "../fragments/index";
 import {
@@ -51,13 +50,15 @@ import {
   getProductsQuery,
   getProductsWithVariantsQuery,
   getRouteMetaObjectQuery,
-  getShopPoliciesQuery
+  getShopPoliciesQuery,
 } from "../queries/index";
 import { type PolicyName } from "../types";
 import { getMenuItems, getShopifyGraphQL } from "../utilities/server";
 
-
-export async function createCartHandler(variables?: CreateCartMutationVariables, lang: Intl.BCP47LanguageTag = "en") {
+export async function createCartHandler(
+  variables?: CreateCartMutationVariables,
+  lang: Intl.BCP47LanguageTag = "en",
+) {
   const inContextVariables = getInContextVariables(lang);
 
   const { cartCreate } = await getShopifyGraphQL(
@@ -88,7 +89,10 @@ export async function createCartHandler(variables?: CreateCartMutationVariables,
   return cartFragmentRef;
 }
 
-export async function addToCartHandler(variables: AddToCartMutationVariables, lang: Intl.BCP47LanguageTag = "en") {
+export async function addToCartHandler(
+  variables: AddToCartMutationVariables,
+  lang: Intl.BCP47LanguageTag = "en",
+) {
   const inContextVariables = getInContextVariables(lang);
 
   const { cartLinesAdd } = await getShopifyGraphQL(addToCartMutation, {
@@ -115,13 +119,16 @@ export async function addToCartHandler(variables: AddToCartMutationVariables, la
   return cartFragmentRef;
 }
 
-export async function removeFromCartHandler(variables: RemoveFromCartMutationVariables, lang: Intl.BCP47LanguageTag = "en") {
+export async function removeFromCartHandler(
+  variables: RemoveFromCartMutationVariables,
+  lang: Intl.BCP47LanguageTag = "en",
+) {
   const inContextVariables = getInContextVariables(lang);
 
-  const { cartLinesRemove } = await getShopifyGraphQL(
-    removeFromCartMutation,
-    { ...inContextVariables, ...variables },
-  );
+  const { cartLinesRemove } = await getShopifyGraphQL(removeFromCartMutation, {
+    ...inContextVariables,
+    ...variables,
+  });
 
   if (!cartLinesRemove) {
     return null;
@@ -142,7 +149,10 @@ export async function removeFromCartHandler(variables: RemoveFromCartMutationVar
   return cartFragmentRef;
 }
 
-export async function updateCartHandler(variables: EditCartItemsMutationVariables, lang: Intl.BCP47LanguageTag = "en") {
+export async function updateCartHandler(
+  variables: EditCartItemsMutationVariables,
+  lang: Intl.BCP47LanguageTag = "en",
+) {
   const inContextVariables = getInContextVariables(lang);
 
   const { cartLinesUpdate } = await getShopifyGraphQL(editCartItemsMutation, {
@@ -169,7 +179,10 @@ export async function updateCartHandler(variables: EditCartItemsMutationVariable
   return cartFragmentRef;
 }
 
-export async function getCartHandler(variables: GetCartQueryVariables, lang: Intl.BCP47LanguageTag = "en") {
+export async function getCartHandler(
+  variables: GetCartQueryVariables,
+  lang: Intl.BCP47LanguageTag = "en",
+) {
   const inContextVariables = getInContextVariables(lang);
 
   // @ts-expect-error Types of property 'country' are incompatible.
@@ -189,7 +202,10 @@ export async function getCartHandler(variables: GetCartQueryVariables, lang: Int
   return cartFragmentRef;
 }
 
-export async function getCollectionHandler(variables: GetCollectionQueryVariables, lang: Intl.BCP47LanguageTag = "en") {
+export async function getCollectionHandler(
+  variables: GetCollectionQueryVariables,
+  lang: Intl.BCP47LanguageTag = "en",
+) {
   const inContextVariables = getInContextVariables(lang);
 
   const { collection: collectionFragmentRef } = await getShopifyGraphQL(
@@ -215,7 +231,10 @@ export async function getCollectionHandler(variables: GetCollectionQueryVariable
   return collectionFragmentRef;
 }
 
-export async function getCollectionProductsHandler(variables: GetCollectionProductsQueryVariables, lang: Intl.BCP47LanguageTag = "en") {
+export async function getCollectionProductsHandler(
+  variables: GetCollectionProductsQueryVariables,
+  lang: Intl.BCP47LanguageTag = "en",
+) {
   const inContextVariables = getInContextVariables(lang);
 
   // @ts-expect-error Types of property 'country' are incompatible.
@@ -238,7 +257,10 @@ export async function getCollectionProductsHandler(variables: GetCollectionProdu
   return products;
 }
 
-export async function getCollectionRefsHandler(variables: GetCollectionsQueryVariables, lang: Intl.BCP47LanguageTag = "en") {
+export async function getCollectionRefsHandler(
+  variables: GetCollectionsQueryVariables,
+  lang: Intl.BCP47LanguageTag = "en",
+) {
   const inContextVariables = getInContextVariables(lang);
 
   const { collections: shopifyCollectionConnection } =
@@ -286,7 +308,10 @@ export async function getCollectionRefsHandler(variables: GetCollectionsQueryVar
   return collections;
 }
 
-export async function getRouteMetaObjectHandler(variables: GetRouteMetaObjectQueryVariables, lang: Intl.BCP47LanguageTag = "en") {
+export async function getRouteMetaObjectHandler(
+  variables: GetRouteMetaObjectQueryVariables,
+  lang: Intl.BCP47LanguageTag = "en",
+) {
   const inContextVariables = getInContextVariables(lang);
 
   const { metaobject } = await getShopifyGraphQL(getRouteMetaObjectQuery, {
@@ -306,7 +331,10 @@ export async function getRouteMetaObjectHandler(variables: GetRouteMetaObjectQue
   return metaobject;
 }
 
-export async function getMenuHandler(variables: GetMenuQueryVariables, lang: Intl.BCP47LanguageTag = "en") {
+export async function getMenuHandler(
+  variables: GetMenuQueryVariables,
+  lang: Intl.BCP47LanguageTag = "en",
+) {
   const inContextVariables = getInContextVariables(lang);
 
   // @ts-expect-error Types of property 'country' are incompatible.
@@ -327,7 +355,10 @@ export async function getMenuHandler(variables: GetMenuQueryVariables, lang: Int
   return { ...menu, items: await getMenuItems(menu.items) };
 }
 
-export async function getPageHandler(variables: GetPageQueryVariables, lang: Intl.BCP47LanguageTag = "en") {
+export async function getPageHandler(
+  variables: GetPageQueryVariables,
+  lang: Intl.BCP47LanguageTag = "en",
+) {
   const inContextVariables = getInContextVariables(lang);
 
   const { page: pageFragmentRef } = await getShopifyGraphQL(
@@ -350,7 +381,10 @@ export async function getPageHandler(variables: GetPageQueryVariables, lang: Int
   return pageFragmentRef;
 }
 
-export async function getPagesHandler(variables: GetPagesQueryVariables, lang: Intl.BCP47LanguageTag = "en") {
+export async function getPagesHandler(
+  variables: GetPagesQueryVariables,
+  lang: Intl.BCP47LanguageTag = "en",
+) {
   const inContextVariables = getInContextVariables(lang);
 
   // @ts-expect-error Types of property 'country' are incompatible.
@@ -370,9 +404,12 @@ export async function getPagesHandler(variables: GetPagesQueryVariables, lang: I
 }
 
 // export async function getPolicyHandler(handle: PolicyName, lang: Intl.BCP47LanguageTag = "en") {
-export async function getPolicyHandler(variables: GetShopPoliciesQueryVariables & {
-  handle: PolicyName;
-}, lang: Intl.BCP47LanguageTag = "en") {
+export async function getPolicyHandler(
+  variables: GetShopPoliciesQueryVariables & {
+    handle: PolicyName;
+  },
+  lang: Intl.BCP47LanguageTag = "en",
+) {
   const policies = await getShopPoliciesHandler(lang);
 
   const { handle } = variables;
@@ -384,7 +421,9 @@ export async function getPolicyHandler(variables: GetShopPoliciesQueryVariables 
   return policy;
 }
 
-export async function getShopPoliciesHandler(lang: Intl.BCP47LanguageTag = "en") {
+export async function getShopPoliciesHandler(
+  lang: Intl.BCP47LanguageTag = "en",
+) {
   const inContextVariables = getInContextVariables(lang);
 
   const { shop } = await getShopifyGraphQL(
@@ -405,7 +444,10 @@ export async function getShopPoliciesHandler(lang: Intl.BCP47LanguageTag = "en")
   return shop;
 }
 
-export async function getProductBasicHandler(variables: GetProductBasicQueryVariables, lang: Intl.BCP47LanguageTag = "en") {
+export async function getProductBasicHandler(
+  variables: GetProductBasicQueryVariables,
+  lang: Intl.BCP47LanguageTag = "en",
+) {
   const inContextVariables = getInContextVariables(lang);
 
   const { product: productBasicFragmentRef } = await getShopifyGraphQL(
@@ -433,7 +475,10 @@ export async function getProductBasicHandler(variables: GetProductBasicQueryVari
   return productBasicFragmentRef;
 }
 
-export async function getProductDetailsByHandleHandler(variables: GetProductDetailsByHandleQueryVariables, lang: Intl.BCP47LanguageTag = "en") {
+export async function getProductDetailsByHandleHandler(
+  variables: GetProductDetailsByHandleQueryVariables,
+  lang: Intl.BCP47LanguageTag = "en",
+) {
   const inContextVariables = getInContextVariables(lang);
 
   const { product: productDetailsFragmentRef } = await getShopifyGraphQL(
@@ -461,7 +506,10 @@ export async function getProductDetailsByHandleHandler(variables: GetProductDeta
   return productDetailsFragmentRef;
 }
 
-export async function getProductDetailsByIdHandler(variables: GetProductDetailsByIdQueryVariables, lang: Intl.BCP47LanguageTag = "en") {
+export async function getProductDetailsByIdHandler(
+  variables: GetProductDetailsByIdQueryVariables,
+  lang: Intl.BCP47LanguageTag = "en",
+) {
   const inContextVariables = getInContextVariables(lang);
 
   const { product: productDetailsFragmentRef } = await getShopifyGraphQL(
@@ -490,7 +538,8 @@ export async function getProductDetailsByIdHandler(variables: GetProductDetailsB
 }
 
 export async function getProductRecommendationsHandler(
-  variables: GetProductRecommendationsQueryVariables, lang: Intl.BCP47LanguageTag = "en",
+  variables: GetProductRecommendationsQueryVariables,
+  lang: Intl.BCP47LanguageTag = "en",
 ) {
   const inContextVariables = getInContextVariables(lang);
 
@@ -498,7 +547,7 @@ export async function getProductRecommendationsHandler(
     await getShopifyGraphQL(
       getProductRecommendationsQuery,
       // @ts-expect-error Types of property 'country' are incompatible.
-      { ...inContextVariables, ...variables }
+      { ...inContextVariables, ...variables },
     );
 
   if (!productRecommendationRefs) {
@@ -516,13 +565,16 @@ export async function getProductRecommendationsHandler(
   return productRecommendationRefs;
 }
 
-export async function getProductsHandler(variables: GetProductsQueryVariables, lang: Intl.BCP47LanguageTag = "en") {
+export async function getProductsHandler(
+  variables: GetProductsQueryVariables,
+  lang: Intl.BCP47LanguageTag = "en",
+) {
   const inContextVariables = getInContextVariables(lang);
 
-  const { products } = await getShopifyGraphQL(
-    getProductsQuery,
-    { ...inContextVariables, ...variables },
-  );
+  const { products } = await getShopifyGraphQL(getProductsQuery, {
+    ...inContextVariables,
+    ...variables,
+  });
 
   if (!products) {
     throw {
@@ -535,7 +587,8 @@ export async function getProductsHandler(variables: GetProductsQueryVariables, l
 }
 
 export async function getProductsWithVariantsHandler(
-  variables: GetProductsWithVariantsQueryVariables, lang: Intl.BCP47LanguageTag = "en",
+  variables: GetProductsWithVariantsQueryVariables,
+  lang: Intl.BCP47LanguageTag = "en",
 ) {
   const inContextVariables = getInContextVariables(lang);
 

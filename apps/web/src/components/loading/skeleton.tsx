@@ -22,7 +22,7 @@ const ParagraphB = () => {
       <div className="flex-1 space-y-6 py-1">
         <div className="space-y-3">
           <div className="grid grid-cols-3 gap-4">
-          <div className="col-span-1 h-2 rounded bg-slate-200"></div>
+            <div className="col-span-1 h-2 rounded bg-slate-200"></div>
             <div className="col-span-2 h-2 rounded bg-slate-200"></div>
           </div>
           <div className="h-2 rounded bg-slate-200"></div>
@@ -36,7 +36,7 @@ const ParagraphB = () => {
 
 export const LoadingSkeleton = () => {
   return (
-    <div className="animate-pulse flex flex-col max-w-2xl mx-auto space-y-4">
+    <div className="mx-auto flex max-w-2xl animate-pulse flex-col space-y-4">
       <ParagraphA />
       <ParagraphB />
       <ParagraphA />

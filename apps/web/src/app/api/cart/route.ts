@@ -1,7 +1,11 @@
-'use server';
+"use server";
 
 import { state$ } from "@/lib/store";
-import { addToCartHandler, removeFromCartHandler, updateCartHandler } from "@uncnsrdlabel/graphql-shopify-storefront/server";
+import {
+  addToCartHandler,
+  removeFromCartHandler,
+  updateCartHandler,
+} from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import { isShopifyError } from "@uncnsrdlabel/lib";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
@@ -24,7 +28,10 @@ export async function POST(req: NextRequest): Promise<Response> {
     ) satisfies Response;
   }
   try {
-    await addToCartHandler({ cartId, lines: [{ merchandiseId, quantity: 1 }] }, lang);
+    await addToCartHandler(
+      { cartId, lines: [{ merchandiseId, quantity: 1 }] },
+      lang,
+    );
     return NextResponse.json({ status: 204 }) satisfies Response;
   } catch (e) {
     if (isShopifyError(e)) {
@@ -51,16 +58,19 @@ export async function PUT(req: NextRequest): Promise<Response> {
     );
   }
   try {
-    await updateCartHandler({
-      cartId,
-      lines: [
-        {
-          id: lineId,
-          merchandiseId: variantId,
-          quantity,
-        },
-      ],
-    }, lang);
+    await updateCartHandler(
+      {
+        cartId,
+        lines: [
+          {
+            id: lineId,
+            merchandiseId: variantId,
+            quantity,
+          },
+        ],
+      },
+      lang,
+    );
     return NextResponse.json({ status: 204 });
   } catch (e) {
     if (isShopifyError(e)) {

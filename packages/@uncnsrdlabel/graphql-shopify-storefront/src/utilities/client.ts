@@ -3,7 +3,7 @@
 import { type TypedDocumentNode } from "@graphql-typed-document-node/core";
 import {
   useSuspenseQuery,
-  type UseSuspenseQueryResult
+  type UseSuspenseQueryResult,
 } from "@tanstack/react-query";
 import { isShopifyError } from "@uncnsrdlabel/lib";
 import { useGetInContextVariables } from "@uncnsrdlabel/lib/client";
@@ -17,14 +17,21 @@ export function useGetShopifyGraphQL<TResult, TVariables>(
 
   type TVariablesWithContext = typeof inContextVariables & TVariables;
 
-  const variablesWithContext = { ...inContextVariables, ...variables } as TVariablesWithContext;
+  const variablesWithContext = {
+    ...inContextVariables,
+    ...variables,
+  } as TVariablesWithContext;
 
   try {
-    const queryKey = getQueryKey<TResult, TVariablesWithContext>(document, variablesWithContext);
+    const queryKey = getQueryKey<TResult, TVariablesWithContext>(
+      document,
+      variablesWithContext,
+    );
 
     const query = useSuspenseQuery<TResult>({
       queryKey,
-      queryFn: async () => await graphQLClient.request(document, { ...variables })
+      queryFn: async () =>
+        await graphQLClient.request(document, { ...variables }),
     });
 
     return query;

@@ -1,4 +1,4 @@
-'use server';
+"use server";
 
 import { LoadingDots } from "@/components/loading/dots";
 import { state$ } from "@/lib/store";
@@ -14,11 +14,7 @@ import { Suspense } from "react";
 import { Videos } from "./videos";
 
 // TODO: Change to videosHydrated and pass query and variables (handle) in props
-export async function VideosHydrated({
-  handle, ...props
-}: {
-  handle: string;
-}) {
+export async function VideosHydrated({ handle, ...props }: { handle: string }) {
   const lang = state$.lang.get();
 
   const shopifyQueryClient = getShopifyQueryClient();
@@ -33,11 +29,11 @@ export async function VideosHydrated({
     // @ts-ignore
     queryKey: getQueryKey(getPageQuery, variablesWithContext),
     queryFn: () =>
-    getShopifyGraphQL(
-      // TODO: Change to getPageImagesQuery to retrieve smaller data response
-      getPageQuery,
-      variables
-    )
+      getShopifyGraphQL(
+        // TODO: Change to getPageImagesQuery to retrieve smaller data response
+        getPageQuery,
+        variables,
+      ),
   });
 
   const dehydratedState = dehydrate(shopifyQueryClient);

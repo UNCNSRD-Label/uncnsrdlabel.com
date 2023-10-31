@@ -1,4 +1,4 @@
-'use server';
+"use server";
 
 import { Tile } from "@/components/grid/tile";
 import { state$ } from "@/lib/store";
@@ -27,7 +27,7 @@ function ThreeItemGridItem({
   if (!product.featuredImage) {
     return null;
   }
-  
+
   return (
     <div
       className={cn(
@@ -57,9 +57,12 @@ export async function ThreeItemGrid({ className }: { className?: string }) {
   const lang = state$.lang.get();
 
   // Collections that start with `hidden-*` are hidden from the search page.
-  const homepageItems = await getCollectionProductsHandler({
-    handle: "hidden-homepage-featured-items",
-  }, lang);
+  const homepageItems = await getCollectionProductsHandler(
+    {
+      handle: "hidden-homepage-featured-items",
+    },
+    lang,
+  );
 
   const products = homepageItems.edges.map((edge) => edge?.node);
 
@@ -70,9 +73,21 @@ export async function ThreeItemGrid({ className }: { className?: string }) {
       className={cn(className, "lg:grid lg:grid-cols-6 lg:grid-rows-2")}
       data-testid="homepage-products"
     >
-      <ThreeItemGridItem size="full" productFragmentRef={firstProduct} background="purple" />
-      <ThreeItemGridItem size="half" productFragmentRef={secondProduct} background="black" />
-      <ThreeItemGridItem size="half" productFragmentRef={thirdProduct} background="pink" />
+      <ThreeItemGridItem
+        size="full"
+        productFragmentRef={firstProduct}
+        background="purple"
+      />
+      <ThreeItemGridItem
+        size="half"
+        productFragmentRef={secondProduct}
+        background="black"
+      />
+      <ThreeItemGridItem
+        size="half"
+        productFragmentRef={thirdProduct}
+        background="pink"
+      />
     </section>
   );
 }

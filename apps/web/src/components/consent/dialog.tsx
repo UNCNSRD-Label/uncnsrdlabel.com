@@ -46,10 +46,10 @@ export function ConsentDialog(props: { className?: string }) {
   const onClose = () => {
     console.info("Closing dialog");
     setOpen(false);
-  }
+  };
 
   return (
-    <Dialog.Root >
+    <Dialog.Root>
       <Dialog.Trigger asChild>
         <button className={props.className}>
           {intl.formatMessage({ id: "trigger" })}

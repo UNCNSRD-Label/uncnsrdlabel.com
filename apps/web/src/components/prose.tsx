@@ -6,13 +6,14 @@ export type TextProps = HTMLProps<HTMLElement> & {
   html: string;
 };
 
-export const Prose: FunctionComponent<TextProps> = ({ className, html, style }) => {
+export const Prose: FunctionComponent<TextProps> = ({
+  className,
+  html,
+  style,
+}) => {
   return (
     <div
-      className={cn(
-        "prose",
-        className,
-      )}
+      className={cn("prose", className)}
       dangerouslySetInnerHTML={{ __html: html }}
       style={style}
     />

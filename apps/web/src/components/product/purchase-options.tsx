@@ -9,9 +9,7 @@ import {
   productDetailsFragment,
   productVariantConnectionFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import {
-  FragmentType
-} from "@uncnsrdlabel/graphql-shopify-storefront/client";
+import { FragmentType } from "@uncnsrdlabel/graphql-shopify-storefront/client";
 import { cn } from "@uncnsrdlabel/lib";
 import { forwardRef } from "react";
 
@@ -54,7 +52,11 @@ export const PurchaseOptions = forwardRef<
         />
       </div>
 
-      <VariantSelector options={product.options} productDetailsFragmentRef={productDetailsFragmentRef} variants={variants} />
+      <VariantSelector
+        options={product.options}
+        productDetailsFragmentRef={productDetailsFragmentRef}
+        variants={variants}
+      />
 
       {product.descriptionHtml ? (
         <Prose

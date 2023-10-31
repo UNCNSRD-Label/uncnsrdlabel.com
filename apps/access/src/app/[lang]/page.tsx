@@ -4,9 +4,16 @@ import Image from "next/image";
 
 export default function AccessRootPage() {
   return (
-    <div className="min-h-[100dvh] w-full grid content-center gap-12 py-12 justify-items-center">
-      <h1 className="max-w-7xl w-5/6 fill-hotPink">
-        <Image alt="UNCNSRD logo" src="/images/logos/logotype-hotpink-embossed.png" className="" title="UNCNSRD" height={400} width={1800}/>
+    <div className="grid min-h-[100dvh] w-full content-center justify-items-center gap-12 py-12">
+      <h1 className="fill-hotPink w-5/6 max-w-7xl">
+        <Image
+          alt="UNCNSRD logo"
+          src="/images/logos/logotype-hotpink-embossed.png"
+          className=""
+          title="UNCNSRD"
+          height={400}
+          width={1800}
+        />
       </h1>
 
       <CodeForm className="" />

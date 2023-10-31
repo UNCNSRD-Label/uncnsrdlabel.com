@@ -8,7 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function AccountCreatePage() {
-  return (
-    <AccountCreateForm className="max-w-lg" />
-  );
+  return <AccountCreateForm className="max-w-lg" />;
 }

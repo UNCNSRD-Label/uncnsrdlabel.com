@@ -5,7 +5,7 @@ import { Video } from "@/components/media/video";
 import {
   FragmentType,
   getFragmentData,
-  videoFragment
+  videoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { type MutableRefObject } from "react";
 
@@ -22,8 +22,7 @@ export function Videos({
 }) {
   return videos && videos.length > 0 ? (
     <>
-      {videos
-      ?.map((videoFragmentRef, index) => {
+      {videos?.map((videoFragmentRef, index) => {
         const video = getFragmentData(videoFragment, videoFragmentRef);
 
         return video.__typename === "Video" ? (
@@ -36,10 +35,12 @@ export function Videos({
             key={video.id}
             poster={video.previewImage?.url}
             ref={videoElementRefs?.[index]}
-            url={video.sources.filter(source => source.format !== 'm3u8').map((source) => ({
-              src: source.url,
-              type: `video/${source.format}`,
-            }))}
+            url={video.sources
+              .filter((source) => source.format !== "m3u8")
+              .map((source) => ({
+                src: source.url,
+                type: `video/${source.format}`,
+              }))}
           />
         ) : null;
       })}

@@ -72,7 +72,7 @@ export async function signUp(formData: FormData) {
     if (err instanceof Error) {
       throw new Error(err.message);
     }
-    
+
     if (typeof err === "string") {
       throw new Error(err);
     }

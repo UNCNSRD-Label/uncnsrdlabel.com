@@ -20,13 +20,7 @@ export function ProductImageZoom({
 
   return (
     <>
-      <figure
-        className={cn(
-          "w-[100dvw]",
-          className,
-        )}
-        ref={figureRef}
-      >
+      <figure className={cn("w-[100dvw]", className)} ref={figureRef}>
         <Image
           {...props}
           alt={props.title || ""}

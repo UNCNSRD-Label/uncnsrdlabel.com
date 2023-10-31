@@ -11,7 +11,7 @@ export function AppIntlProvider({
   messages,
 }: PropsWithChildren<{
   locale: IETFLanguageTag;
-  messages: ResolvedIntlConfig["messages"]
+  messages: ResolvedIntlConfig["messages"];
 }>) {
   return (
     <IntlProvider

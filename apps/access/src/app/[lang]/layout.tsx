@@ -97,7 +97,10 @@ export const viewport = {
   shrinkToFit: "no",
   viewportFit: "cover",
   // @ts-expect-error Property 'hotPink' does not exist on type 'ResolvableTo<RecursiveKeyValuePair<string, string>>'.
-  ...(config.theme?.extend?.colors?.hotPink && {themeColor: config.theme.extend.colors.hotPink}),
+  ...(config.theme?.extend?.colors?.hotPink && {
+    // @ts-expect-error Property 'hotPink' does not exist on type 'ResolvableTo<RecursiveKeyValuePair<string, string>>'.
+    themeColor: config.theme.extend.colors.hotPink,
+  }),
 };
 
 const bomberEscort = localFont({

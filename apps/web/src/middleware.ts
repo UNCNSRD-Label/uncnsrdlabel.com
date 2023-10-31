@@ -45,7 +45,9 @@ export function middleware(request: NextRequest) {
     return response;
   } else {
     if (previewCookie !== "true") {
-      return NextResponse.redirect(`${process.env.NEXT_PUBLIC_PROTOCOL}://${process.env.NEXT_PUBLIC_SITE_DOMAIN_ACCESS}`);
+      return NextResponse.redirect(
+        `${process.env.NEXT_PUBLIC_PROTOCOL}://${process.env.NEXT_PUBLIC_SITE_DOMAIN_ACCESS}`,
+      );
     }
   }
 

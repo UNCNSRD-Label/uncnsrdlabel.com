@@ -15,7 +15,7 @@ export default function SignUp({ className }: { className?: string }) {
     <form
       action={signUp}
       className={cn(
-        "grid gap-2 md:grid-flow-col md:grid-cols-3 [&:has(input:valid)>button]:opacity-100 w-full px-8 relative",
+        "relative grid w-full gap-2 px-8 md:grid-flow-col md:grid-cols-3 [&:has(input:valid)>button]:opacity-100",
         className,
       )}
       onSubmit={() => setInput("Submitted")}
@@ -23,7 +23,7 @@ export default function SignUp({ className }: { className?: string }) {
       <div className="field md:col-start-2">
         <input
           autoComplete="true"
-          className="w-full px-4 py-2 bg-transparent border-transparent border-b-white placeholder:text-white filter drop-shadow-md text-sm sm:text-base text-center focus:border-hotPink focus:ring-transparent focus:outline-transparent"
+          className="focus:border-hotPink w-full border-transparent border-b-white bg-transparent px-4 py-2 text-center text-sm drop-shadow-md filter placeholder:text-white focus:outline-transparent focus:ring-transparent sm:text-base"
           enterKeyHint="send"
           name="email"
           placeholder="Sign up to our newsletter for access code"
@@ -53,7 +53,7 @@ export default function SignUp({ className }: { className?: string }) {
         Get launch code
       </button> */}
       {input && (
-        <output className="absolute bg-black inset-0 grid place-content-center text-center">
+        <output className="absolute inset-0 grid place-content-center bg-black text-center">
           <figure className="">
             <Image
               alt="Models on deckchairs"

@@ -11,4 +11,3 @@ export * from "./product-with-variants";
 export * from "./seo";
 export * from "./shop-policy";
 export * from "./video";
-

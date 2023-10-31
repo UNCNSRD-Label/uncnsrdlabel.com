@@ -1,7 +1,7 @@
 import languageFallback from "@/dictionaries/en.json";
 import { getIETFLanguageTagFromlocaleTag, locales } from "@uncnsrdlabel/lib";
 import merge from "deepmerge";
-import { getProperty } from 'dot-prop';
+import { getProperty } from "dot-prop";
 import { type ResolvedIntlConfig } from "react-intl";
 
 const dictionariesFiles = [
@@ -15,9 +15,9 @@ const dictionariesFiles = [
   ...locales.map((locale) => [
     getIETFLanguageTagFromlocaleTag(locale),
     () =>
-      import(`@/dictionaries/${getIETFLanguageTagFromlocaleTag(locale)}.json`).then(
-        (module) => module.default,
-      ),
+      import(
+        `@/dictionaries/${getIETFLanguageTagFromlocaleTag(locale)}.json`
+      ).then((module) => module.default),
   ]),
 ];
 
@@ -26,9 +26,14 @@ const dictionaries = Object.fromEntries(dictionariesFiles);
 export const getDictionary = async (locale: Intl.Locale, namespace: string) => {
   const language = await dictionaries[locale.language]();
 
-  const languageLocalised = await dictionaries[getIETFLanguageTagFromlocaleTag(locale)]();
+  const languageLocalised =
+    await dictionaries[getIETFLanguageTagFromlocaleTag(locale)]();
 
-  const merged = merge.all([languageFallback, language, languageLocalised]) as typeof languageFallback;
+  const merged = merge.all([
+    languageFallback,
+    language,
+    languageLocalised,
+  ]) as typeof languageFallback;
 
   return getProperty(merged, namespace) as ResolvedIntlConfig["messages"];
 };

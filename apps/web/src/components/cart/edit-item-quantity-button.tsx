@@ -1,7 +1,12 @@
 import { removeItem, updateItemQuantity } from "@/components/cart/actions";
 import { LoadingDots } from "@/components/loading/dots";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
-import { type CartLine, type CartLineCost, type ComponentizableCartLine, type Merchandise } from "@shopify/hydrogen/storefront-api-types";
+import {
+  type CartLine,
+  type CartLineCost,
+  type ComponentizableCartLine,
+  type Merchandise,
+} from "@shopify/hydrogen/storefront-api-types";
 import { cn } from "@uncnsrdlabel/lib";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
@@ -10,11 +15,9 @@ export function EditItemQuantityButton({
   item,
   type,
 }: {
-  item: Pick<
-    (ComponentizableCartLine | CartLine), "id" | "quantity"
-  > & {
+  item: Pick<ComponentizableCartLine | CartLine, "id" | "quantity"> & {
     cost: Pick<CartLineCost, "totalAmount">;
-    merchandise: Pick<Merchandise, "id">
+    merchandise: Pick<Merchandise, "id">;
   };
   type: "plus" | "minus";
 }) {

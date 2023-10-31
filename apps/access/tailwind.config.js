@@ -7,5 +7,4 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   presets: [sharedConfig],
-}
-
+};

@@ -4,13 +4,13 @@ import { EditItemQuantityButton } from "@/components/cart/edit-item-quantity-but
 import { Price } from "@/components/price";
 import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
-import { ResultOf } from '@graphql-typed-document-node/core';
+import { ResultOf } from "@graphql-typed-document-node/core";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import {
   cartFragment,
   getFragmentData,
   imageFragment,
-  productBasicFragment
+  productBasicFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { DEFAULT_OPTION, createUrl } from "@uncnsrdlabel/lib";
 import Image from "next/image";
@@ -40,7 +40,7 @@ export function CartForm({
         <div className="mt-20 flex w-full flex-col items-center justify-center overflow-hidden">
           <ShoppingCartIcon className="h-12" />
           <p className="mt-6 text-center text-2xl font-bold">
-          {intl.formatMessage({ id: "empty_cart" })}
+            {intl.formatMessage({ id: "empty_cart" })}
           </p>
         </div>
       ) : (
@@ -60,7 +60,10 @@ export function CartForm({
                 item.merchandise.product,
               );
 
-              const featuredImage = getFragmentData(imageFragment, product.featuredImage);
+              const featuredImage = getFragmentData(
+                imageFragment,
+                product.featuredImage,
+              );
 
               const merchandiseUrl = createUrl(
                 `/products/${product.handle}`,
@@ -82,22 +85,19 @@ export function CartForm({
                       className="z-30 flex flex-row space-x-4"
                     >
                       <div className="relative h-16 w-16 cursor-pointer overflow-hidden rounded-md border border-neutral-300 bg-neutral-300 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:bg-neutral-800">
-                        {featuredImage?.url && <Image
-                          className="h-full w-full object-cover "
-                          width={64}
-                          height={64}
-                          alt={
-                            featuredImage?.altText ||
-                            product.title
-                          }
-                          src={featuredImage?.url}
-                        />}
+                        {featuredImage?.url && (
+                          <Image
+                            className="h-full w-full object-cover "
+                            width={64}
+                            height={64}
+                            alt={featuredImage?.altText || product.title}
+                            src={featuredImage?.url}
+                          />
+                        )}
                       </div>
 
                       <div className="flex flex-1 flex-col text-base">
-                        <span className="leading-tight">
-                          {product.title}
-                        </span>
+                        <span className="leading-tight">{product.title}</span>
                         {item.merchandise.title !== DEFAULT_OPTION ? (
                           <p className="text-sm text-neutral-500 dark:text-neutral-400">
                             {item.merchandise.title}
@@ -126,20 +126,22 @@ export function CartForm({
               );
             })}
           </ul>
-          
-          <div className="flex flex-col my-4">
+
+          <div className="my-4 flex flex-col">
             <AddPremiumPackaging />
           </div>
 
           <div className="py-4 text-sm text-neutral-500 dark:text-neutral-400">
-            {cart.cost.totalTaxAmount && <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 dark:border-neutral-700">
-              <p className="uppercase">Taxes</p>
-              <Price
-                className="text-right text-base text-black dark:text-white"
-                amount={cart.cost.totalTaxAmount.amount}
-                currencyCode={cart.cost.totalTaxAmount.currencyCode}
-              />
-            </div>}
+            {cart.cost.totalTaxAmount && (
+              <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 dark:border-neutral-700">
+                <p className="uppercase">Taxes</p>
+                <Price
+                  className="text-right text-base text-black dark:text-white"
+                  amount={cart.cost.totalTaxAmount.amount}
+                  currencyCode={cart.cost.totalTaxAmount.currencyCode}
+                />
+              </div>
+            )}
             <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1 dark:border-neutral-700">
               <p className="uppercase">Shipping</p>
               <p className="text-right">Calculated at checkout</p>

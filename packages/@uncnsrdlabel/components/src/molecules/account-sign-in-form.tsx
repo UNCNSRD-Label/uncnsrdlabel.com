@@ -11,7 +11,9 @@ import {
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 
-export function AccountSignInForm({ className }: React.HTMLAttributes<typeof Card>) {
+export function AccountSignInForm({
+  className,
+}: React.HTMLAttributes<typeof Card>) {
   return (
     <Card className={className}>
       <CardHeader className="space-y-1">

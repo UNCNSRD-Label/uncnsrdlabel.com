@@ -1,10 +1,10 @@
 import type { CodegenConfig } from "@graphql-codegen/cli";
-import { storefrontApiCustomScalars } from '@shopify/hydrogen-react';
+import { storefrontApiCustomScalars } from "@shopify/hydrogen-react";
 
 const config: CodegenConfig = {
   ignoreNoDocuments: true, // for better experience with the watcher
   overwrite: true,
-  schema: require.resolve('@shopify/hydrogen-react/storefront.schema.json'),
+  schema: require.resolve("@shopify/hydrogen-react/storefront.schema.json"),
   documents: [
     "./src/fragments/**/*.{graphql,ts,tsx}",
     "./src/mutations/**/*.{graphql,ts,tsx}",

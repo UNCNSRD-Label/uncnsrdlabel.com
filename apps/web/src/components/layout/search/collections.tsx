@@ -1,4 +1,4 @@
-'use server';
+"use server";
 
 import { state$ } from "@/lib/store";
 import { getCollectionRefsHandler } from "@uncnsrdlabel/graphql-shopify-storefront/server";

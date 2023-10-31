@@ -3,19 +3,11 @@
     "target": "es2017",
     "allowJs": true,
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"]
     }
   },
   "display": "@uncnsrdlabel/app-web",
   "extends": "@uncnsrdlabel/tsconfig/nextjs.json",
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    ".next/types/**/*.ts",
-    "next-env.d.ts",
-    "src"
-  ]
+  "exclude": ["node_modules"],
+  "include": [".next/types/**/*.ts", "next-env.d.ts", "src"]
 }

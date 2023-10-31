@@ -1,4 +1,4 @@
-'use server';
+"use server";
 
 import { Image } from "@/components/media/image";
 import { Video } from "@/components/media/video";
@@ -61,32 +61,40 @@ export async function Tile({
   return (
     <>
       <div
-        className={cn("aspect-3/4 relative mb-4 w-full overflow-hidden", "[&:has(.video)_.image]:focus:opacity-0 [&:has(.video)_.image]:hover:opacity-0", {
-          "bg-hotPink dark:bg-hotPink": background === "hotPink",
-          "bg-white dark:bg-white": background === "white",
-          "bg-[#ff0080] dark:bg-[#ff0080]": background === "pink",
-          "bg-[#7928ca] dark:bg-[#7928ca]": background === "purple",
-          "bg-gray-900 dark:bg-gray-900": background === "black",
-          "bg-violetDark dark:bg-violetDark": background === "purple-dark",
-          "bg-blue-500 dark:bg-blue-500": background === "blue",
-          "bg-cyan-500 dark:bg-cyan-500": background === "cyan",
-          "bg-gray-100 dark:bg-gray-100": background === "gray",
-          "bg-gray-100 dark:bg-gray-900": !background,
-        })}
+        className={cn(
+          "aspect-3/4 relative mb-4 w-full overflow-hidden",
+          "[&:has(.video)_.image]:hover:opacity-0 [&:has(.video)_.image]:focus:opacity-0",
+          {
+            "bg-hotPink dark:bg-hotPink": background === "hotPink",
+            "bg-white dark:bg-white": background === "white",
+            "bg-[#ff0080] dark:bg-[#ff0080]": background === "pink",
+            "bg-[#7928ca] dark:bg-[#7928ca]": background === "purple",
+            "bg-gray-900 dark:bg-gray-900": background === "black",
+            "bg-violetDark dark:bg-violetDark": background === "purple-dark",
+            "bg-blue-500 dark:bg-blue-500": background === "blue",
+            "bg-cyan-500 dark:bg-cyan-500": background === "cyan",
+            "bg-gray-100 dark:bg-gray-100": background === "gray",
+            "bg-gray-100 dark:bg-gray-900": !background,
+          },
+        )}
       >
         {/* TODO: Only play video on hover */}
-        {tileVideo?.__typename === "Video" && <Video
-          {...tileVideo}
-          className="video absolute inset-0"
-          autoPlay
-          loop
-          muted
-          playsInline
-          url={tileVideo?.sources?.filter(source => source.format !== 'm3u8').map((source) => ({
-            src: source.url,
-            type: `video/${source.format}`,
-          }))}
-        />}
+        {tileVideo?.__typename === "Video" && (
+          <Video
+            {...tileVideo}
+            className="video absolute inset-0"
+            autoPlay
+            loop
+            muted
+            playsInline
+            url={tileVideo?.sources
+              ?.filter((source) => source.format !== "m3u8")
+              .map((source) => ({
+                src: source.url,
+                type: `video/${source.format}`,
+              }))}
+          />
+        )}
         <figure className="image absolute inset-0 mb-0 mt-0">
           {tileImage?.url ? (
             <Image
