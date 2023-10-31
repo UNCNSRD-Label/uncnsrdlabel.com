@@ -41,7 +41,6 @@ next-env.d.ts
 .env*.local
 
 # PWA and sitemap
-**/public/~partytown/
 **/public/sitemap-*.xml
 **/public/sitemap.xml
 **/public/sw.js

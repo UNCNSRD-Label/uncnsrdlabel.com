@@ -1,5 +1,3 @@
-"use client";
-
 import { LogotypeIcon } from "@/components/icons/logotype";
 
 export function Logos() {

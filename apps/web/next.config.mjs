@@ -32,7 +32,7 @@ const contentSecurityPolicyComponents = [
   // `connect-src 'self' *.clarity.ms *.facebook.com *.facebook.net *.klaviyo.com *.skimresources.com c.bing.com cdn.contentful.com fonts.googleapis.com fonts.gstatic.com images.ctfassets.net stats.g.doubleclick.net vitals.vercel-insights.com www.google-analytics.com www.googletagmanager.com ${domains}`,
   `connect-src *`,
   `default-src 'self' ${domains}`,
-  `font-src 'self' fonts.googleapis.com fonts.gstatic.com widget-v4.tidiochat.com ${domains}`,
+  `font-src 'self' fonts.googleapis.com fonts.gstatic.com sc-static.net widget-v4.tidiochat.com ${domains}`,
   `form-action 'self' www.facebook.com`,
   `frame-ancestors app.contentful.com`,
   `frame-src vercel.live www.facebook.com ${domains}`,
@@ -87,12 +87,11 @@ const nextConfig = {
   //   ignoreDuringBuilds: true,
   // },
   experimental: {
-    // Avoid Module not found: ESM packages (supports-color) need to be imported. Use 'import' to reference the package instead. https://nextjs.org/docs/messages/import-esm-externals
     scrollRestoration: true,
-    serverActions: true,
     swcPlugins: [
       // ['@victorandree/graphql-codegen-client-preset-swc-plugin', { artifactDirectory: '@uncnsrdlabel/graphql-shopify-storefront/codegen', gqlTagName: 'graphql' }]
-    ]
+    ],
+    webpackBuildWorker: true,
   },
   async headers() {
     return [

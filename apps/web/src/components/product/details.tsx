@@ -1,126 +1,26 @@
-"use client";
-
-import { Images } from "@/components/media/images";
-import { Videos } from "@/components/media/videos";
-import { NavigationMenu } from "@/components/product/navigation-menu";
-import { PurchaseOptions } from "@/components/product/purchase-options";
-import { useEffect } from "react";
-import { useTrack } from "use-analytics";
-// import { WithVideo } from "@/types/shopify";
 import { ProductDetailsTabs } from "@/components/product/details-tabs";
+// import { NavigationMenu } from "@/components/product/navigation-menu";
+import { PurchaseOptions } from "@/components/product/purchase-options";
 import {
   FragmentType,
   getFragmentData,
   imageFragment,
   productDetailsFragment,
-  videoFragment
-} from "@uncnsrdlabel/graphql-shopify-storefront";
-import { cn } from "@uncnsrdlabel/lib";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
-import { useRef, type MutableRefObject } from "react";
+} from "@uncnsrdlabel/graphql-shopify-storefront/client";
+// import { useRef } from "react";
+// import { MetafieldMapper } from "@/components/product/metafield-mapper";
 import { Product as ProductSchema, WithContext } from "schema-dts";
-import { usePage } from "use-analytics";
+import { ProductMedia } from "./media";
 
 export function Details({
   productDetailsFragmentRef,
 }: {
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }) {
-  const page = usePage();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const track = useTrack();
-
   const product = getFragmentData(
     productDetailsFragment,
     productDetailsFragmentRef,
   );
-
-  useEffect(() => {
-    track("product", {
-      product,
-    });
-  }, [product, track]);
-
-  useEffect(() => {
-    page();
-  }, [page, pathname, searchParams]);
-
-  const sectionElementRefs = [
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-  ];
-
-  const imageElementRefs: MutableRefObject<HTMLButtonElement | null>[] = [
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-  ];
-
-  const videoElementRefs: MutableRefObject<HTMLElement | null>[] = [
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-  ];
-
-  const imagesNodes = product.images.edges.map((edge) => edge?.node);
-
-  const images = imagesNodes
-    .map((imageFragmentRef) => getFragmentData(imageFragment, imageFragmentRef))
-    .map((image, index) => ({
-      altText: image.altText ?? product.title,
-      id: image.id ?? `image-${index}`,
-      src: image.url,
-    }));
-
-  const media = product.media.edges.map((edge) => edge?.node);
-
-  const videos = media.filter((node) => node.__typename === "Video");
 
   const featuredImage = getFragmentData(imageFragment, product.featuredImage);
 
@@ -139,112 +39,54 @@ export function Details({
     description: product.description,
   };
 
-  const mediaClassName =
-    "lg:aspect-3/4 min-h-[100dvh] lg:h-[100dvh] overflow-y-clip relative snap-start w-[100dvw] lg:w-auto";
+  // const sectionElementRefs = [
+  //   useRef(null),
+  //   useRef(null),
+  //   useRef(null),
+  //   useRef(null),
+  //   useRef(null),
+  //   useRef(null),
+  //   useRef(null),
+  //   useRef(null),
+  //   useRef(null),
+  //   useRef(null),
+  //   useRef(null),
+  //   useRef(null),
+  //   useRef(null),
+  //   useRef(null),
+  //   useRef(null),
+  // ];
 
-  const thumbnailClassName =
-    "bg-black pointer-events-auto relative my-auto aspect-square w-full overflow-hidden rounded-full shadow";
-  
   return (
     <>
-      <NavigationMenu
+      {/* <NavigationMenu
         className="fixed inset-x-0 bottom-0 z-50 w-full sm:hidden"
         sectionElementRefs={sectionElementRefs}
-      />
+      /> */}
 
       <section className="grid min-h-[100dvh] grid-cols-12 content-center lg:h-[100dvh] lg:overflow-y-hidden">
-        <div
-          className="relative z-0 col-span-full grid w-full snap-both snap-mandatory grid-flow-col overflow-x-scroll scroll-smooth lg:fixed lg:inset-0 ghost-scrollbar bg-black justify-start"
-          id="images"
-          ref={sectionElementRefs[0]}
-        >
-          <Images
-            className={mediaClassName}
-            idPrefix="image"
-            images={images}
-            imageElementRefs={imageElementRefs}
-            sizes="(max-width: 639px) 100vw, 50vw"
-          />
-
-          <Videos
-            className={mediaClassName}
-            idPrefix="video"
-            videoElementRefs={videoElementRefs}
-            videos={videos}
-          />
-
-          <Images
-            className={cn(mediaClassName, "hidden lg:grid")}
-            idPrefix="suffix"
-            images={images}
-            sizes="(max-width: 639px) 100vw, 50vw"
-          />
-
-          <nav className="pointer-events-none fixed left-8 top-0 z-30 hidden h-full w-16 grid-flow-row content-center gap-4 lg:grid">
-            {images.map((image, index) => (
-              <Link
-                className={thumbnailClassName}
-                href={`#image-${index}`}
-                key={image.id}
-                onClick={(event) => {
-                  event.preventDefault();
-                  imageElementRefs?.[index].current?.scrollIntoView({
-                    block: "start",
-                    inline: "start",
-                  });
-                }}
-              >
-                <Image
-                  alt={image?.altText}
-                  fill
-                  sizes="5vw"
-                  src={image.src}
-                  style={{
-                    objectFit: "cover",
-                  }}
-                />
-              </Link>
-            ))}
-            {videos.map((videoFragmentRef, index) => {
-              const video = getFragmentData(videoFragment, videoFragmentRef);
-
-              return video.__typename === "Video" ? (
-                <Link
-                  className={thumbnailClassName}
-                  href={`#video-${index}`}
-                  key={video.id}
-                  onClick={(event) => {
-                    event.preventDefault();
-                    console.log(videoElementRefs?.[index].current, video.id);
-                    videoElementRefs?.[index].current?.scrollIntoView({
-                      block: "start",
-                      inline: "start",
-                    });
-                  }}
-                >
-                  {video.previewImage?.url && (
-                    <Image
-                      alt={video?.previewImage?.altText ?? product.title}
-                      fill
-                      sizes="5vw"
-                      src={video.previewImage?.url}
-                      style={{
-                        objectFit: "cover",
-                      }}
-                    />
-                  )}
-                </Link>
-              ) : null;
-            })}
-          </nav>
-        </div>
+        <ProductMedia
+          // ref={sectionElementRefs[0]}
+          productDetailsFragmentRef={productDetailsFragmentRef}
+        />
 
         <div
-          className="relative z-10 col-span-full grid h-fit p-6 pt-20 sm:col-start-3 sm:col-end-11 sm:pt-6 lg:-top-12 lg:col-start-7 lg:col-end-12 lg:rounded-xl lg:bg-white/90 lg:shadow lg:backdrop-blur lg:backdrop-saturate-50 xl:col-start-9 md:max-h-[80dvh] overflow-y-auto"
+          className="relative col-span-full h-full md:h-[80dvh] sm:col-start-3 lg:col-start-7 sm:col-end-11 lg:col-end-12 lg:-top-12 lg:rounded-xl lg:bg-white/90 lg:shadow lg:backdrop-blur lg:backdrop-saturate-50 xl:col-start-9 z-10 overflow-hidden"
           id="details"
         >
-          <PurchaseOptions ref={sectionElementRefs[1]} product={product} />
-          <ProductDetailsTabs className="mt-8" excludedKeys={["complementary_products", "related_products"]} productDetailsFragmentRef={productDetailsFragmentRef} />
+          <div className="absolute grid inset-0 overflow-y-auto p-6 pt-20 sm:pt-6 lg:pb-20">
+            <PurchaseOptions
+              // ref={sectionElementRefs[1]}
+              productDetailsFragmentRef={productDetailsFragmentRef}
+            />
+            <ProductDetailsTabs
+              className="mt-8"
+              excludedKeys={["complementary_products", "related_products"]}
+              // MetafieldMapper={MetafieldMapper}
+              productDetailsFragmentRef={productDetailsFragmentRef}
+            />
+          </div>
+          <div className="bg-gradient-to-t from-white to-transparent to-15% absolute inset-0 z-20 pointer-events-none hidden lg:block"></div>
         </div>
       </section>
 

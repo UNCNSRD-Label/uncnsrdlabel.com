@@ -1,10 +1,13 @@
-import { server } from "@/clients/shopify";
+'use server';
+
 import { Tile } from "@/components/grid/tile";
+import { state$ } from "@/lib/store";
 import {
   FragmentType,
+  getCollectionProductsHandler,
   getFragmentData,
-  productBasicFragment
-} from "@uncnsrdlabel/graphql-shopify-storefront";
+  productBasicFragment,
+} from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import { cn } from "@uncnsrdlabel/lib";
 import Link from "next/link";
 
@@ -51,10 +54,12 @@ function ThreeItemGridItem({
 }
 
 export async function ThreeItemGrid({ className }: { className?: string }) {
+  const lang = state$.lang.get();
+
   // Collections that start with `hidden-*` are hidden from the search page.
-  const homepageItems = await server.getCollectionProducts({
+  const homepageItems = await getCollectionProductsHandler({
     handle: "hidden-homepage-featured-items",
-  });
+  }, lang);
 
   const products = homepageItems.edges.map((edge) => edge?.node);
 

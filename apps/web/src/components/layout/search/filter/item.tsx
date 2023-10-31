@@ -1,7 +1,7 @@
 "use client";
 
 import { ResultOf } from '@graphql-typed-document-node/core';
-import { ProductCollectionSortFilterItem, collectionFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { ProductCollectionSortFilterItem, collectionFragment } from "@uncnsrdlabel/graphql-shopify-storefront/client";
 import { cn, createUrl } from "@uncnsrdlabel/lib";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";

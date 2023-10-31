@@ -1,4 +1,7 @@
-import { getInContextVariables } from "@uncnsrdlabel/lib";
+
+'use server';
+
+import { getInContextVariables } from "@uncnsrdlabel/lib/server";
 import { CollectionFragment } from "../codegen/graphql";
 import { getFragmentData } from "../codegen/index";
 import {
@@ -22,7 +25,6 @@ import {
   GetCollectionProductsQueryVariables,
   GetCollectionQueryVariables,
   GetCollectionsQueryVariables,
-  GetCustomerCareQueryVariables,
   GetMenuQueryVariables,
   GetPageQueryVariables,
   GetPagesQueryVariables,
@@ -33,12 +35,12 @@ import {
   GetProductsQueryVariables,
   GetProductsWithVariantsQueryVariables,
   GetRouteMetaObjectQueryVariables,
-  RemoveFromCartMutationVariables,
+  GetShopPoliciesQueryVariables,
+  RemoveFromCartMutationVariables
 } from "../codegen/graphql";
 import { collectionFragment } from "../fragments/index";
 import {
   getCartQuery,
-  getCustomerCareQuery,
   getMenuQuery,
   getPageQuery,
   getPagesQuery,
@@ -49,482 +51,505 @@ import {
   getProductsQuery,
   getProductsWithVariantsQuery,
   getRouteMetaObjectQuery,
-  getShopPoliciesQuery,
+  getShopPoliciesQuery
 } from "../queries/index";
 import { type PolicyName } from "../types";
 import { getMenuItems, getShopifyGraphQL } from "../utilities/server";
 
-export class Server {
-  inContextVariables: ReturnType<typeof getInContextVariables>;
-  lang: Intl.BCP47LanguageTag;
 
-  constructor(lang: Intl.BCP47LanguageTag) {
-    this.inContextVariables = getInContextVariables(lang);
-    this.lang = lang;
+export async function createCartHandler(variables?: CreateCartMutationVariables, lang: Intl.BCP47LanguageTag = "en") {
+  const inContextVariables = getInContextVariables(lang);
+
+  const { cartCreate } = await getShopifyGraphQL(
+    createCartMutation,
+    // @ts-expect-error Types of property 'country' are incompatible.
+    {
+      ...inContextVariables,
+      ...variables,
+    },
+  );
+
+  if (!cartCreate) {
+    return null;
   }
 
-  async createCart(variables?: CreateCartMutationVariables) {
-    const { cartCreate } = await getShopifyGraphQL(
-      createCartMutation,
-      // @ts-expect-error Types of property 'country' are incompatible.
-      {
-        ...this.inContextVariables,
-        ...variables,
+  // console.log({ cartCreate });
+
+  const { cart: cartFragmentRef } = cartCreate;
+
+  if (!cartFragmentRef) {
+    return null;
+  }
+
+  // console.log({ cartFragmentRef });
+
+  // const cart = getFragmentData(cartFragment, cartFragmentRef);
+
+  return cartFragmentRef;
+}
+
+export async function addToCartHandler(variables: AddToCartMutationVariables, lang: Intl.BCP47LanguageTag = "en") {
+  const inContextVariables = getInContextVariables(lang);
+
+  const { cartLinesAdd } = await getShopifyGraphQL(addToCartMutation, {
+    ...inContextVariables,
+    ...variables,
+  });
+
+  if (!cartLinesAdd) {
+    return null;
+  }
+
+  // console.log({ cartLinesAdd });
+
+  const { cart: cartFragmentRef } = cartLinesAdd;
+
+  if (!cartFragmentRef) {
+    return null;
+  }
+
+  // console.log({ cartFragmentRef });
+
+  // const cart = getFragmentData(cartFragment, cartFragmentRef);
+
+  return cartFragmentRef;
+}
+
+export async function removeFromCartHandler(variables: RemoveFromCartMutationVariables, lang: Intl.BCP47LanguageTag = "en") {
+  const inContextVariables = getInContextVariables(lang);
+
+  const { cartLinesRemove } = await getShopifyGraphQL(
+    removeFromCartMutation,
+    { ...inContextVariables, ...variables },
+  );
+
+  if (!cartLinesRemove) {
+    return null;
+  }
+
+  // console.log({ cartLinesRemove });
+
+  const { cart: cartFragmentRef } = cartLinesRemove;
+
+  if (!cartFragmentRef) {
+    return null;
+  }
+
+  // console.log({ cartFragmentRef });
+
+  // const cart = getFragmentData(cartFragment, cartFragmentRef);
+
+  return cartFragmentRef;
+}
+
+export async function updateCartHandler(variables: EditCartItemsMutationVariables, lang: Intl.BCP47LanguageTag = "en") {
+  const inContextVariables = getInContextVariables(lang);
+
+  const { cartLinesUpdate } = await getShopifyGraphQL(editCartItemsMutation, {
+    ...inContextVariables,
+    ...variables,
+  });
+
+  if (!cartLinesUpdate) {
+    return null;
+  }
+
+  // console.log({ cartLinesUpdate });
+
+  const { cart: cartFragmentRef } = cartLinesUpdate;
+
+  if (!cartFragmentRef) {
+    return null;
+  }
+
+  // console.log({ cartFragmentRef });
+
+  // const cart = getFragmentData(cartFragment, cartFragmentRef);
+
+  return cartFragmentRef;
+}
+
+export async function getCartHandler(variables: GetCartQueryVariables, lang: Intl.BCP47LanguageTag = "en") {
+  const inContextVariables = getInContextVariables(lang);
+
+  // @ts-expect-error Types of property 'country' are incompatible.
+  const { cart: cartFragmentRef } = await getShopifyGraphQL(getCartQuery, {
+    ...inContextVariables,
+    ...variables,
+  });
+
+  if (!cartFragmentRef) {
+    return null;
+  }
+
+  // console.log({ cartFragmentRef });
+
+  // const cart = getFragmentData(cartFragment, cartFragmentRef);
+
+  return cartFragmentRef;
+}
+
+export async function getCollectionHandler(variables: GetCollectionQueryVariables, lang: Intl.BCP47LanguageTag = "en") {
+  const inContextVariables = getInContextVariables(lang);
+
+  const { collection: collectionFragmentRef } = await getShopifyGraphQL(
+    getCollectionQuery,
+    // @ts-expect-error Types of property 'country' are incompatible.
+    { ...inContextVariables, ...variables },
+  );
+
+  if (!collectionFragmentRef) {
+    throw {
+      status: 404,
+      message: `Collection not found for handle \`${variables.handle}\``,
+    };
+  }
+
+  // console.log({ collectionFragmentRef });
+
+  // const collection = getFragmentData(
+  //   collectionFragment,
+  //   collectionFragmentRef,
+  // );
+
+  return collectionFragmentRef;
+}
+
+export async function getCollectionProductsHandler(variables: GetCollectionProductsQueryVariables, lang: Intl.BCP47LanguageTag = "en") {
+  const inContextVariables = getInContextVariables(lang);
+
+  // @ts-expect-error Types of property 'country' are incompatible.
+  const { collection } = await getShopifyGraphQL(getCollectionProductsQuery, {
+    ...inContextVariables,
+    ...variables,
+  });
+
+  if (!collection) {
+    throw {
+      status: 404,
+      message: `Collection not found for handle \`${variables.handle}\``,
+    };
+  }
+
+  // console.log({ collection });
+
+  const { products } = collection;
+
+  return products;
+}
+
+export async function getCollectionRefsHandler(variables: GetCollectionsQueryVariables, lang: Intl.BCP47LanguageTag = "en") {
+  const inContextVariables = getInContextVariables(lang);
+
+  const { collections: shopifyCollectionConnection } =
+    // @ts-expect-error Types of property 'country' are incompatible.
+    await getShopifyGraphQL(getCollectionsQuery, {
+      ...inContextVariables,
+      ...variables,
+    });
+
+  if (!shopifyCollectionConnection) {
+    throw {
+      status: 404,
+      message: `Collections not found`,
+    };
+  }
+
+  // console.log({ shopifyCollectionConnection });
+
+  const collectionsRefs = shopifyCollectionConnection.edges.map(
+    (edge) => edge?.node,
+  );
+
+  const collections: CollectionFragment[] = [
+    {
+      __typename: "Collection",
+      handle: "",
+      title: "All",
+      description: "All products",
+      seo: {
+        //   title: "All",
+        //   description: "All products",
       },
-    );
+      // path: "/search",
+      updatedAt: new Date().toISOString(),
+    },
+    // Filter out the `hidden` collections.
+    // Collections that start with `hidden-*` need to be hidden on the search page.
+    ...collectionsRefs
+      .map((collectionFragmentRef) =>
+        getFragmentData(collectionFragment, collectionFragmentRef),
+      )
+      .filter((collection) => !collection.handle.startsWith("hidden")),
+  ];
 
-    if (!cartCreate) {
-      return null;
-    }
+  return collections;
+}
 
-    // console.log({ cartCreate });
+export async function getRouteMetaObjectHandler(variables: GetRouteMetaObjectQueryVariables, lang: Intl.BCP47LanguageTag = "en") {
+  const inContextVariables = getInContextVariables(lang);
 
-    const { cart: cartFragmentRef } = cartCreate;
+  const { metaobject } = await getShopifyGraphQL(getRouteMetaObjectQuery, {
+    ...inContextVariables,
+    ...variables,
+  });
 
-    if (!cartFragmentRef) {
-      return null;
-    }
-
-    // console.log({ cartFragmentRef });
-
-    // const cart = getFragmentData(cartFragment, cartFragmentRef);
-
-    return cartFragmentRef;
+  if (!metaobject) {
+    throw {
+      status: 404,
+      message: `Metaobject not found for handle \`${variables.handle}\``,
+    };
   }
 
-  async addToCart(variables: AddToCartMutationVariables) {
-    const { cartLinesAdd } = await getShopifyGraphQL(addToCartMutation, {
-      ...this.inContextVariables,
-      ...variables,
-    });
+  // console.log({ metaobject });
 
-    if (!cartLinesAdd) {
-      return null;
-    }
+  return metaobject;
+}
 
-    // console.log({ cartLinesAdd });
+export async function getMenuHandler(variables: GetMenuQueryVariables, lang: Intl.BCP47LanguageTag = "en") {
+  const inContextVariables = getInContextVariables(lang);
 
-    const { cart: cartFragmentRef } = cartLinesAdd;
+  // @ts-expect-error Types of property 'country' are incompatible.
+  const { menu } = await getShopifyGraphQL(getMenuQuery, {
+    ...inContextVariables,
+    ...variables,
+  });
 
-    if (!cartFragmentRef) {
-      return null;
-    }
-
-    // console.log({ cartFragmentRef });
-
-    // const cart = getFragmentData(cartFragment, cartFragmentRef);
-
-    return cartFragmentRef;
+  if (!menu) {
+    throw {
+      status: 404,
+      message: `Menu not found for handle \`${variables.handle}\``,
+    };
   }
 
-  async removeFromCart(variables: RemoveFromCartMutationVariables) {
-    const { cartLinesRemove } = await getShopifyGraphQL(
-      removeFromCartMutation,
-      { ...this.inContextVariables, ...variables },
-    );
+  // console.log({ menu });
 
-    if (!cartLinesRemove) {
-      return null;
-    }
+  return { ...menu, items: await getMenuItems(menu.items) };
+}
 
-    // console.log({ cartLinesRemove });
+export async function getPageHandler(variables: GetPageQueryVariables, lang: Intl.BCP47LanguageTag = "en") {
+  const inContextVariables = getInContextVariables(lang);
 
-    const { cart: cartFragmentRef } = cartLinesRemove;
-
-    if (!cartFragmentRef) {
-      return null;
-    }
-
-    // console.log({ cartFragmentRef });
-
-    // const cart = getFragmentData(cartFragment, cartFragmentRef);
-
-    return cartFragmentRef;
-  }
-
-  async updateCart(variables: EditCartItemsMutationVariables) {
-    const { cartLinesUpdate } = await getShopifyGraphQL(editCartItemsMutation, {
-      ...this.inContextVariables,
-      ...variables,
-    });
-
-    if (!cartLinesUpdate) {
-      return null;
-    }
-
-    // console.log({ cartLinesUpdate });
-
-    const { cart: cartFragmentRef } = cartLinesUpdate;
-
-    if (!cartFragmentRef) {
-      return null;
-    }
-
-    // console.log({ cartFragmentRef });
-
-    // const cart = getFragmentData(cartFragment, cartFragmentRef);
-
-    return cartFragmentRef;
-  }
-
-  async getCart(variables: GetCartQueryVariables) {
+  const { page: pageFragmentRef } = await getShopifyGraphQL(
+    getPageQuery,
     // @ts-expect-error Types of property 'country' are incompatible.
-    const { cart: cartFragmentRef } = await getShopifyGraphQL(getCartQuery, {
-      ...this.inContextVariables,
-      ...variables,
-    });
+    { ...inContextVariables, ...variables },
+  );
 
-    if (!cartFragmentRef) {
-      return null;
-    }
-
-    // console.log({ cartFragmentRef });
-
-    // const cart = getFragmentData(cartFragment, cartFragmentRef);
-
-    return cartFragmentRef;
+  if (!pageFragmentRef) {
+    throw {
+      status: 404,
+      message: `Page not found for handle \`${variables.handle}\``,
+    };
   }
 
-  async getCollection(variables: GetCollectionQueryVariables) {
-    const { collection: collectionFragmentRef } = await getShopifyGraphQL(
-      getCollectionQuery,
-      // @ts-expect-error Types of property 'country' are incompatible.
-      { ...this.inContextVariables, ...variables },
-    );
+  // const page = getFragmentData(pageFragment, pageFragmentRef);
 
-    if (!collectionFragmentRef) {
-      throw {
-        status: 404,
-        message: `Collection not found for handle \`${variables.handle}\``,
-      };
-    }
+  // console.log({ page });
 
-    // console.log({ collectionFragmentRef });
+  return pageFragmentRef;
+}
 
-    // const collection = getFragmentData(
-    //   collectionFragment,
-    //   collectionFragmentRef,
-    // );
+export async function getPagesHandler(variables: GetPagesQueryVariables, lang: Intl.BCP47LanguageTag = "en") {
+  const inContextVariables = getInContextVariables(lang);
 
-    return collectionFragmentRef;
+  // @ts-expect-error Types of property 'country' are incompatible.
+  const { pages } = await getShopifyGraphQL(getPagesQuery, {
+    ...inContextVariables,
+    ...variables,
+  });
+
+  if (!pages) {
+    throw {
+      status: 404,
+      message: `Pages not found`,
+    };
   }
 
-  async getCollectionProducts(variables: GetCollectionProductsQueryVariables) {
+  return pages;
+}
+
+// export async function getPolicyHandler(handle: PolicyName, lang: Intl.BCP47LanguageTag = "en") {
+export async function getPolicyHandler(variables: GetShopPoliciesQueryVariables & {
+  handle: PolicyName;
+}, lang: Intl.BCP47LanguageTag = "en") {
+  const policies = await getShopPoliciesHandler(lang);
+
+  const { handle } = variables;
+
+  const policyName = camelCase(handle) as PolicyName;
+
+  const policy = policies[policyName];
+
+  return policy;
+}
+
+export async function getShopPoliciesHandler(lang: Intl.BCP47LanguageTag = "en") {
+  const inContextVariables = getInContextVariables(lang);
+
+  const { shop } = await getShopifyGraphQL(
+    getShopPoliciesQuery,
     // @ts-expect-error Types of property 'country' are incompatible.
-    const { collection } = await getShopifyGraphQL(getCollectionProductsQuery, {
-      ...this.inContextVariables,
-      ...variables,
-    });
+    inContextVariables,
+  );
 
-    if (!collection) {
-      throw {
-        status: 404,
-        message: `Collection not found for handle \`${variables.handle}\``,
-      };
-    }
-
-    // console.log({ collection });
-
-    const { products } = collection;
-
-    return products;
+  if (!shop) {
+    throw {
+      status: 404,
+      message: `Shop not found`,
+    };
   }
 
-  async getCollectionRefs(variables: GetCollectionsQueryVariables) {
-    const { collections: shopifyCollectionConnection } =
-      // @ts-expect-error Types of property 'country' are incompatible.
-      await getShopifyGraphQL(getCollectionsQuery, {
-        ...this.inContextVariables,
-        ...variables,
-      });
+  // console.log({ shop });
 
-    if (!shopifyCollectionConnection) {
-      throw {
-        status: 404,
-        message: `Collections not found`,
-      };
-    }
+  return shop;
+}
 
-    // console.log({ shopifyCollectionConnection });
+export async function getProductBasicHandler(variables: GetProductBasicQueryVariables, lang: Intl.BCP47LanguageTag = "en") {
+  const inContextVariables = getInContextVariables(lang);
 
-    const collectionsRefs = shopifyCollectionConnection.edges.map(
-      (edge) => edge?.node,
-    );
-
-    const collections: CollectionFragment[] = [
-      {
-        __typename: "Collection",
-        handle: "",
-        title: "All",
-        description: "All products",
-        seo: {
-          //   title: "All",
-          //   description: "All products",
-        },
-        // path: "/search",
-        updatedAt: new Date().toISOString(),
-      },
-      // Filter out the `hidden` collections.
-      // Collections that start with `hidden-*` need to be hidden on the search page.
-      ...collectionsRefs
-        .map((collectionFragmentRef) =>
-          getFragmentData(collectionFragment, collectionFragmentRef),
-        )
-        .filter((collection) => !collection.handle.startsWith("hidden")),
-    ];
-
-    return collections;
-  }
-
-  async getCustomerCare(variables: GetCustomerCareQueryVariables) {
-    const { metaobject } = await getShopifyGraphQL(getCustomerCareQuery, {
-      ...this.inContextVariables,
-      ...variables,
-    });
-
-    if (!metaobject) {
-      throw {
-        status: 404,
-        message: `Metaobject not found for handle \`${variables.handle}\``,
-      };
-    }
-
-    // console.log({ metaobject });
-
-    return metaobject;
-  }
-
-  async getRouteMetaObject(variables: GetRouteMetaObjectQueryVariables) {
-    const { metaobject } = await getShopifyGraphQL(getRouteMetaObjectQuery, {
-      ...this.inContextVariables,
-      ...variables,
-    });
-
-    if (!metaobject) {
-      throw {
-        status: 404,
-        message: `Metaobject not found for handle \`${variables.handle}\``,
-      };
-    }
-
-    // console.log({ metaobject });
-
-    return metaobject;
-  }
-
-  async getMenu(variables: GetMenuQueryVariables) {
+  const { product: productBasicFragmentRef } = await getShopifyGraphQL(
+    getProductBasicQuery,
     // @ts-expect-error Types of property 'country' are incompatible.
-    const { menu } = await getShopifyGraphQL(getMenuQuery, {
-      ...this.inContextVariables,
-      ...variables,
-    });
+    { ...inContextVariables, ...variables },
+  );
 
-    if (!menu) {
-      throw {
-        status: 404,
-        message: `Menu not found for handle \`${variables.handle}\``,
-      };
-    }
-
-    // console.log({ menu });
-
-    return { ...menu, items: await getMenuItems(menu.items) };
+  if (!productBasicFragmentRef) {
+    throw {
+      status: 404,
+      message: `Product not found for handle \`${variables.handle}\``,
+    };
   }
 
-  async getPage(variables: GetPageQueryVariables) {
-    const { page: pageFragmentRef } = await getShopifyGraphQL(
-      getPageQuery,
-      // @ts-expect-error Types of property 'country' are incompatible.
-      { ...this.inContextVariables, ...variables },
-    );
+  // console.log({ productBasicFragmentRef });
 
-    if (!pageFragmentRef) {
-      throw {
-        status: 404,
-        message: `Page not found for handle \`${variables.handle}\``,
-      };
-    }
+  // const product = getFragmentData(
+  //   productBasicFragment,
+  //   productBasicFragmentRef,
+  // );
 
-    // const page = getFragmentData(pageFragment, pageFragmentRef);
+  // console.log({ product });
 
-    // console.log({ page });
+  return productBasicFragmentRef;
+}
 
-    return pageFragmentRef;
-  }
+export async function getProductDetailsByHandleHandler(variables: GetProductDetailsByHandleQueryVariables, lang: Intl.BCP47LanguageTag = "en") {
+  const inContextVariables = getInContextVariables(lang);
 
-  async getPages(variables: GetPagesQueryVariables) {
+  const { product: productDetailsFragmentRef } = await getShopifyGraphQL(
+    getProductDetailsByHandleQuery,
     // @ts-expect-error Types of property 'country' are incompatible.
-    const { pages } = await getShopifyGraphQL(getPagesQuery, {
-      ...this.inContextVariables,
-      ...variables,
-    });
+    { ...inContextVariables, ...variables },
+  );
 
-    if (!pages) {
-      throw {
-        status: 404,
-        message: `Pages not found`,
-      };
-    }
-
-    return pages;
+  if (!productDetailsFragmentRef) {
+    throw {
+      status: 404,
+      message: `Product not found for handle \`${variables.handle}\``,
+    };
   }
 
-  async getPolicy(handle: PolicyName) {
-    const policies = await this.getShopPolicies();
+  // console.log({ productDetailsFragmentRef });
 
-    const policyName = camelCase(handle) as PolicyName;
+  // const product = getFragmentData(
+  //   productDetailsFragment,
+  //   productDetailsFragmentRef,
+  // );
 
-    const policy = policies[policyName];
+  // console.log({ product });
 
-    return policy;
+  return productDetailsFragmentRef;
+}
+
+export async function getProductDetailsByIdHandler(variables: GetProductDetailsByIdQueryVariables, lang: Intl.BCP47LanguageTag = "en") {
+  const inContextVariables = getInContextVariables(lang);
+
+  const { product: productDetailsFragmentRef } = await getShopifyGraphQL(
+    getProductDetailsByIdQuery,
+    // @ts-expect-error Types of property 'country' are incompatible.
+    { ...inContextVariables, ...variables },
+  );
+
+  if (!productDetailsFragmentRef) {
+    throw {
+      status: 404,
+      message: `Product not found for id \`${variables.id}\``,
+    };
   }
 
-  async getShopPolicies() {
-    const { shop } = await getShopifyGraphQL(
-      getShopPoliciesQuery,
+  // console.log({ productDetailsFragmentRef });
+
+  // const product = getFragmentData(
+  //   productDetailsFragment,
+  //   productDetailsFragmentRef,
+  // );
+
+  // console.log({ product });
+
+  return productDetailsFragmentRef;
+}
+
+export async function getProductRecommendationsHandler(
+  variables: GetProductRecommendationsQueryVariables, lang: Intl.BCP47LanguageTag = "en",
+) {
+  const inContextVariables = getInContextVariables(lang);
+
+  const { productRecommendations: productRecommendationRefs } =
+    await getShopifyGraphQL(
+      getProductRecommendationsQuery,
       // @ts-expect-error Types of property 'country' are incompatible.
-      this.inContextVariables,
+      { ...inContextVariables, ...variables }
     );
 
-    if (!shop) {
-      throw {
-        status: 404,
-        message: `Shop not found`,
-      };
-    }
-
-    // console.log({ shop });
-
-    return shop;
+  if (!productRecommendationRefs) {
+    throw {
+      status: 404,
+      message: `Products not found`,
+    };
   }
 
-  async getProductBasic(variables: GetProductBasicQueryVariables) {
-    const { product: productBasicFragmentRef } = await getShopifyGraphQL(
-      getProductBasicQuery,
-      // @ts-expect-error Types of property 'country' are incompatible.
-      { ...this.inContextVariables, ...variables },
-    );
+  // const productRecommendations = productRecommendationRefs.map(
+  //   (productRecommendationRef) =>
+  //     getFragmentData(productBasicFragment, productRecommendationRef),
+  // );
 
-    if (!productBasicFragmentRef) {
-      throw {
-        status: 404,
-        message: `Product not found for handle \`${variables.handle}\``,
-      };
-    }
+  return productRecommendationRefs;
+}
 
-    // console.log({ productBasicFragmentRef });
+export async function getProductsHandler(variables: GetProductsQueryVariables, lang: Intl.BCP47LanguageTag = "en") {
+  const inContextVariables = getInContextVariables(lang);
 
-    // const product = getFragmentData(
-    //   productBasicFragment,
-    //   productBasicFragmentRef,
-    // );
+  const { products } = await getShopifyGraphQL(
+    getProductsQuery,
+    { ...inContextVariables, ...variables },
+  );
 
-    // console.log({ product });
-
-    return productBasicFragmentRef;
+  if (!products) {
+    throw {
+      status: 404,
+      message: `Products not found`,
+    };
   }
 
-  async getProductDetailsByHandle(variables: GetProductDetailsByHandleQueryVariables) {
-    const { product: productDetailsFragmentRef } = await getShopifyGraphQL(
-      getProductDetailsByHandleQuery,
-      // @ts-expect-error Types of property 'country' are incompatible.
-      { ...this.inContextVariables, ...variables },
-    );
+  return products;
+}
 
-    if (!productDetailsFragmentRef) {
-      throw {
-        status: 404,
-        message: `Product not found for handle \`${variables.handle}\``,
-      };
-    }
+export async function getProductsWithVariantsHandler(
+  variables: GetProductsWithVariantsQueryVariables, lang: Intl.BCP47LanguageTag = "en",
+) {
+  const inContextVariables = getInContextVariables(lang);
 
-    // console.log({ productDetailsFragmentRef });
+  const { products } = await getShopifyGraphQL(getProductsWithVariantsQuery, {
+    ...inContextVariables,
+    ...variables,
+  });
 
-    // const product = getFragmentData(
-    //   productDetailsFragment,
-    //   productDetailsFragmentRef,
-    // );
-
-    // console.log({ product });
-
-    return productDetailsFragmentRef;
+  if (!products) {
+    throw {
+      status: 404,
+      message: `Products not found`,
+    };
   }
 
-  async getProductDetailsById(variables: GetProductDetailsByIdQueryVariables) {
-    const { product: productDetailsFragmentRef } = await getShopifyGraphQL(
-      getProductDetailsByIdQuery,
-      // @ts-expect-error Types of property 'country' are incompatible.
-      { ...this.inContextVariables, ...variables },
-    );
-
-    if (!productDetailsFragmentRef) {
-      throw {
-        status: 404,
-        message: `Product not found for id \`${variables.id}\``,
-      };
-    }
-
-    // console.log({ productDetailsFragmentRef });
-
-    // const product = getFragmentData(
-    //   productDetailsFragment,
-    //   productDetailsFragmentRef,
-    // );
-
-    // console.log({ product });
-
-    return productDetailsFragmentRef;
-  }
-
-  async getProductRecommendations(
-    variables: GetProductRecommendationsQueryVariables,
-  ) {
-    const { productRecommendations: productRecommendationRefs } =
-      await getShopifyGraphQL(getProductRecommendationsQuery, variables);
-
-    if (!productRecommendationRefs) {
-      throw {
-        status: 404,
-        message: `Products not found`,
-      };
-    }
-
-    // const productRecommendations = productRecommendationRefs.map(
-    //   (productRecommendationRef) =>
-    //     getFragmentData(productBasicFragment, productRecommendationRef),
-    // );
-
-    return productRecommendationRefs;
-  }
-
-  async getProducts(variables: GetProductsQueryVariables) {
-    const { products } = await getShopifyGraphQL(getProductsQuery, variables);
-
-    if (!products) {
-      throw {
-        status: 404,
-        message: `Products not found`,
-      };
-    }
-
-    return products;
-  }
-
-  async getProductsWithVariants(
-    variables: GetProductsWithVariantsQueryVariables,
-  ) {
-    const { products } = await getShopifyGraphQL(getProductsWithVariantsQuery, {
-      ...this.inContextVariables,
-      ...variables,
-    });
-
-    if (!products) {
-      throw {
-        status: 404,
-        message: `Products not found`,
-      };
-    }
-
-    return products;
-  }
+  return products;
 }

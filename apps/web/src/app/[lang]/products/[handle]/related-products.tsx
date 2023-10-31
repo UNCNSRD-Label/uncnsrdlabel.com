@@ -1,23 +1,26 @@
-import { server } from "@/clients/shopify";
+'use server';
+
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
 import { getIntl } from "@/lib/i18n/server";
+import { state$ } from "@/lib/store";
 import {
   FragmentType,
   getFragmentData,
+  getProductRecommendationsHandler,
   productDetailsFragment
-} from "@uncnsrdlabel/graphql-shopify-storefront";
+} from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import { cn } from "@uncnsrdlabel/lib";
 
 export async function RelatedProducts({
   className,
-  lang,
   productDetailsFragmentRef,
 }: {
   className?: string;
-  lang: Intl.BCP47LanguageTag;
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }) {
+  const lang = state$.lang.get();
+
   const intl = await getIntl(lang, `component.RelatedProducts`);
 
   const product = getFragmentData(
@@ -29,9 +32,9 @@ export async function RelatedProducts({
 
   const { id } = product;
 
-  const productRecommendationRefs = await server.getProductRecommendations({
+  const productRecommendationRefs = await getProductRecommendationsHandler({
     productId: id,
-  });
+  }, lang);
 
   if (!productRecommendationRefs?.length) return null;
 

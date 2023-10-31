@@ -1,7 +1,7 @@
-import { HandleRouteChange } from "@/components/analytics/handle-route-change";
 import { Banner } from "@/components/layout/banner";
 import { Footer } from "@/components/layout/footer/index";
 import { Progress } from "@/components/layout/progress/index";
+import { LoadingDots } from "@/components/loading/dots";
 import { Organization } from "@/components/schema.org/organization";
 import { getDictionary } from "@/lib/dictionary";
 import { getIntl } from "@/lib/i18n/server";
@@ -16,6 +16,7 @@ import {
   locales,
 } from "@uncnsrdlabel/lib";
 import { AppProviders } from "@uncnsrdlabel/providers";
+import { config } from "@uncnsrdlabel/tailwind-config";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import localFont from "next/font/local";
@@ -92,8 +93,6 @@ export async function generateMetadata({
       follow: true,
       index: true,
     },
-    // TODO: Retrieve from Tailwind config
-    themeColor: "#ff4dd8",
     title: {
       default: NEXT_PUBLIC_SITE_NAME,
       template: `%s | ${NEXT_PUBLIC_SITE_NAME}`,
@@ -106,10 +105,18 @@ export async function generateMetadata({
           site: TWITTER_SITE,
         },
       }),
-    viewport:
-      "minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover",
   };
 }
+
+export const viewport = {
+  minimumScale: 1,
+  initialScale: 1,
+  width: "device-width",
+  shrinkToFit: "no",
+  viewportFit: "cover",
+  // @ts-expect-error Property 'hotPink' does not exist on type 'ResolvableTo<RecursiveKeyValuePair<string, string>>'.
+  ...(config.theme?.extend?.colors?.hotPink && {themeColor: config.theme.extend.colors.hotPink}),
+};
 
 const bomberEscort = localFont({
   src: "../fonts/bomber-escort/bomberescort.ttf",
@@ -140,7 +147,7 @@ export async function generateStaticParams() {
   });
 }
 
-export default async function Layout({
+export default async function RootLayout({
   children,
   params: { lang },
 }: PropsWithChildren<LayoutProps>) {
@@ -177,12 +184,11 @@ export default async function Layout({
           <Banner
             className={cn("sticky top-0 w-full", !showBanner && "hidden")}
           />
-          <Suspense>
+          <Suspense fallback={<LoadingDots />}>
             {children}
             <Footer />
           </Suspense>
           <Organization />
-          <HandleRouteChange />
         </AppProviders>
       </body>
     </html>

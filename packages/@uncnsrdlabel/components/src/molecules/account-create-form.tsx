@@ -1,5 +1,3 @@
-"use client";
-
 import { ImGithub, ImGoogle } from "react-icons/im";
 import { Button } from "../ui/button";
 import {

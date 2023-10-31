@@ -11,13 +11,13 @@ interface MetaFieldsProps {
   metafieldFragments: readonly ResultOf<typeof productMetafieldFragment>[];
 }
 
-export const MetaFields = ({
+export function MetaFields({
   className,
   excludedKeys,
   includedKeys,
   metafieldFragments,
   ...props
-}: MetaFieldsProps) => {
+}: MetaFieldsProps) {
   return (
     <dl className={cn("max-w-[100dvw]", className)} {...props}>
       {metafieldFragments

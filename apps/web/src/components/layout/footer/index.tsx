@@ -1,22 +1,21 @@
-import Link from "next/link";
+'use server';
 
 import { ConsentDialog } from "@/components/consent/dialog";
 import { LogotypeIcon } from "@/components/icons/logotype";
-// import { RedeemCode } from "@/components/redeem-code/dialog";
-import { server } from "@/clients/shopify";
 import { SignUp } from "@/components/sign-up";
 import { SocialMenu } from "@/components/social-menu";
 import { themeColors } from "@/lib/tailwind";
-import { use } from "react";
+import { getMenuHandler } from "@uncnsrdlabel/graphql-shopify-storefront/server";
+import Link from "next/link";
 
 const { NEXT_PUBLIC_SITE_NAME } = process.env;
 
-export function Footer() {
+export async function Footer() {
   const currentYear = new Date().getFullYear();
   const copyrightDate = 2023 + (currentYear > 2023 ? `-${currentYear}` : "");
-  const customerCareMenu = use(server.getMenu({ handle: "customer-care" }));
-  const informationMenu = use(server.getMenu({ handle: "information" }));
-  const followUsMenu = use(server.getMenu({ handle: "follow-us" }));
+  const customerCareMenu = await getMenuHandler({ handle: "customer-care" });
+  const informationMenu = await getMenuHandler({ handle: "information" });
+  const followUsMenu = await getMenuHandler({ handle: "follow-us" });
 
   const linkClassName =
     "text-xs sm:text-xxs transition uppercase duration-150 ease-in-out";

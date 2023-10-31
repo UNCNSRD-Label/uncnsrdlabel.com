@@ -1,5 +1,7 @@
 "use client";
 
+// TODO: Remove this deprecated file
+
 import { LoadingDots } from "@/components/loading/dots";
 import { Videos } from "@/components/media/videos";
 import {
@@ -9,7 +11,7 @@ import {
   pageFragment,
   useGetShopifyGraphQL,
   videoFragment
-} from "@uncnsrdlabel/graphql-shopify-storefront";
+} from "@uncnsrdlabel/graphql-shopify-storefront/client";
 import { Suspense } from "react";
 
 export function PageVideos({ handle, ...props }: { handle: string }) {

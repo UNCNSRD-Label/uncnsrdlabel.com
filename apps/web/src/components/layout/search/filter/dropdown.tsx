@@ -2,7 +2,7 @@
 
 import { CaretRightIcon } from "@/components/icons/caret-right";
 import { ResultOf } from '@graphql-typed-document-node/core';
-import { ProductCollectionSortFilterItem, collectionFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { ProductCollectionSortFilterItem, collectionFragment } from "@uncnsrdlabel/graphql-shopify-storefront/client";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { FilterItem } from "./item";

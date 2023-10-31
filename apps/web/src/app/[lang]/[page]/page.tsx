@@ -1,17 +1,18 @@
-import { server } from "@/clients/shopify";
+'use server';
+
 import { LoadingSkeleton } from "@/components/loading/skeleton";
+import { state$ } from "@/lib/store";
 import {
   getFragmentData,
+  getPageHandler,
   pageFragment,
-  seoFragment,
-} from "@uncnsrdlabel/graphql-shopify-storefront";
+  seoFragment
+} from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { ArticleHydrated as Article } from "./article-hydrated";
 import { PageSectionModule } from "./page-section-module";
-
-export { revalidate } from "@uncnsrdlabel/lib";
 
 // export const runtime = "edge";
 
@@ -20,7 +21,9 @@ export async function generateMetadata({
 }: {
   params: { page: string };
 }): Promise<Metadata> {
-  const pageFragmentRef = await server.getPage({ handle });
+  const lang = state$.lang.get();
+
+  const pageFragmentRef = await getPageHandler({ handle }, lang);
 
   const page = getFragmentData(pageFragment, pageFragmentRef);
 
@@ -46,12 +49,14 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({
+export default async function PagePage({
   params: { page: handle },
 }: {
   params: { page: string };
 }) {
-  const pageFragmentRef = await server.getPage({ handle });
+  const lang = state$.lang.get();
+
+  const pageFragmentRef = await getPageHandler({ handle }, lang);
 
   const page = getFragmentData(pageFragment, pageFragmentRef);
 

@@ -1,7 +1,7 @@
 import { Separator } from "@uncnsrdlabel/components/ui/separator"
 import { ProfileForm } from "./profile-form"
 
-export default function SettingsProfilePage() {
+export default function SettingsPage() {
   return (
     <div className="space-y-6">
       <div>

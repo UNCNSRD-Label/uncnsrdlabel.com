@@ -1,7 +1,7 @@
 import {
-    BreadcrumbItem,
-    BreadcrumbLink,
-    Breadcrumb as BreadcrumbRoot,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  Breadcrumb as BreadcrumbRoot,
 } from "@uncnsrdlabel/components/ui/breadcrumb";
 import { FragmentType, getFragmentData, productDetailsFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
 import Link from "next/link";
@@ -16,7 +16,6 @@ export function Breadcrumb({ className, productDetailsFragmentRef }: { className
     <BreadcrumbRoot className={className}>
       <BreadcrumbItem>
         <BreadcrumbLink as={Link} className="flex items-center gap-2" href="/">
-          {/* <Icons.logo className="h-4 w-4" /> */}
           <span className="font-bold">
             {process.env.NEXT_PUBLIC_SITE_NAME}
           </span>

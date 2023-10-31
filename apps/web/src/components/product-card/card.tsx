@@ -1,8 +1,6 @@
-"use client";
-
+import { addItem } from "@/components/cart/actions";
 import { Image } from "@/components/media/image";
 import { Price } from "@/components/price";
-import { ProductProvider } from "@shopify/hydrogen-react";
 import { ProductVariant } from "@shopify/hydrogen/storefront-api-types";
 import {
   FragmentType,
@@ -66,7 +64,7 @@ export function ProductCard({
   };
 
   return (
-    <ProductProvider data={product}>
+    <>
       <div
         className={cn(
           "card grid grid-flow-col col-gap-4 w-full",
@@ -106,6 +104,7 @@ export function ProductCard({
             product={product}
           /> */}
           <AddToCart
+            addItem={addItem}
             availableForSale={product.availableForSale}
             className="relative justify-start py-4 text-xs w-full"
             options={product.options}
@@ -118,6 +117,6 @@ export function ProductCard({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         key="product-jsonld"
       />
-    </ProductProvider>
+    </>
   );
 }

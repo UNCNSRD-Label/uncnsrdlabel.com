@@ -1,12 +1,16 @@
-import { server } from "@/clients/shopify";
+'use server';
+
 import { LoadingSkeleton } from "@/components/loading/skeleton";
 import { Prose } from "@/components/prose";
+import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";
 import {
   getFragmentData,
+  getMenuHandler,
+  getPolicyHandler,
   shopPolicyFragment,
   type PolicyName
-} from "@uncnsrdlabel/graphql-shopify-storefront";
+} from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import { cn } from "@uncnsrdlabel/lib";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -15,14 +19,14 @@ import { Suspense } from "react";
 
 // export const runtime = "edge";
 
-export const revalidate = 43200; // 12 hours in seconds
-
 export async function generateMetadata({
   params: { handle },
 }: {
   params: PageProps & { handle: PolicyName };
 }): Promise<Metadata> {
-  const shopPolicyFragmentRef = await server.getPolicy(handle);
+  const lang = state$.lang.get();
+
+  const shopPolicyFragmentRef = await getPolicyHandler({handle}, lang);
 
   if (!shopPolicyFragmentRef) return notFound();
 
@@ -43,15 +47,18 @@ export async function generateMetadata({
   };
 }
 
-export default async function Policy({
+export default async function PolicyPage({
   params,
 }: {
   params: { handle: PolicyName };
 }) {
+  const lang = state$.lang.get();
+
   const handle = params.handle as PolicyName;
-  const shopPolicyFragmentRef = await server.getPolicy(handle);
-  // const customerCare = await server.getCustomerCare({ handle });
-  const customerCareMenu = await server.getMenu({ handle: "customer-care" });
+
+  const shopPolicyFragmentRef = await getPolicyHandler({handle}, lang);
+
+  const customerCareMenu = await getMenuHandler({ handle: "customer-care" });
 
   if (!shopPolicyFragmentRef) return notFound();
 

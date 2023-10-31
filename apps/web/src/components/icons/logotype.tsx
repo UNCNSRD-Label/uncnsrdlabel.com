@@ -1,4 +1,5 @@
 import { cn } from "@uncnsrdlabel/lib";
+import React from "react";
 
 type Props = { className?: string; style?: React.CSSProperties };
 

@@ -8,7 +8,7 @@ import { ResultOf } from '@graphql-typed-document-node/core';
 import { Dialog } from "@headlessui/react";
 import {
   cartFragment
-} from "@uncnsrdlabel/graphql-shopify-storefront";
+} from "@uncnsrdlabel/graphql-shopify-storefront/client";
 import { cn } from "@uncnsrdlabel/lib";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";

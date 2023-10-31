@@ -1,6 +1,5 @@
 "use client";
 
-import { addItem } from "@/components/cart/actions";
 import { LoadingDots } from "@/components/loading/dots";
 import { useGetIntl } from "@/lib/i18n/client";
 import { PlusIcon } from "@heroicons/react/24/outline";
@@ -13,11 +12,13 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState, useTransition } from "react";
 
 export function AddToCart({
+  addItem,
   availableForSale,
   className,
   options,
   variants,
 }: {
+  addItem: (variantId: string | undefined) => Promise<Error | undefined>;
   availableForSale: boolean;
   className?: string;
   options: ProductOption[];

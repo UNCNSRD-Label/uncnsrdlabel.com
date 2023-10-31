@@ -1,13 +1,17 @@
-import { server } from "@/clients/shopify";
+'use server';
+
+import { state$ } from "@/lib/store";
 // import { ProductAdditionalDetails } from "@/components/product/additional-details";
+import { LoadingDots } from "@/components/loading/dots";
 import { Details } from "@/components/product/details";
 import { type PageProps } from "@/types/next";
 import {
   getFragmentData,
+  getProductDetailsByHandleHandler,
   imageFragment,
   productDetailsFragment,
   seoFragment,
-} from "@uncnsrdlabel/graphql-shopify-storefront";
+} from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import { HIDDEN_PRODUCT_TAG } from "@uncnsrdlabel/lib";
 import { type Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -20,7 +24,9 @@ import { RelatedProducts } from "./related-products";
 export async function generateMetadata({
   params: { handle },
 }: PageProps): Promise<Metadata> {
-  const productDetailsFragmentRef = await server.getProductDetailsByHandle({ handle });
+  const lang = state$.lang.get();
+
+  const productDetailsFragmentRef = await getProductDetailsByHandleHandler({ handle }, lang);
 
   const product = getFragmentData(
     productDetailsFragment,
@@ -63,10 +69,10 @@ export async function generateMetadata({
 }
 
 export default async function ProductPage({
-  params: { handle, lang },
+  params: { handle },
 }: PageProps) {
   // TODO: Remove getFragmentData from all server.<method> calls
-  const productDetailsFragmentRef = await server.getProductDetailsByHandle({ handle });
+  const productDetailsFragmentRef = await getProductDetailsByHandleHandler({ handle });
 
   if (!productDetailsFragmentRef) return notFound();
 
@@ -77,11 +83,10 @@ export default async function ProductPage({
         <Details productDetailsFragmentRef={productDetailsFragmentRef} />
         {/* <ProductAdditionalDetails productDetailsFragmentRef={productDetailsFragmentRef} /> */}
       </main>
-      <Suspense fallback={<span>Loading&hellip;</span>}>
+      <Suspense fallback={<LoadingDots />}>
         <RelatedProducts
           className="bg-white text-dark relative pb-48 pt-12 [contain:paint]"
           productDetailsFragmentRef={productDetailsFragmentRef}
-          lang={lang}
         />
       </Suspense>
     </>

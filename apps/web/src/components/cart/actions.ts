@@ -1,25 +1,32 @@
-"use server";
+'use server';
 
-import { server } from "@/clients/shopify";
+import { state$ } from "@/lib/store";
 import {
   FragmentType,
+  addToCartHandler,
   cartFragment,
-  getFragmentData
-} from "@uncnsrdlabel/graphql-shopify-storefront";
+  createCartHandler,
+  getCartHandler,
+  getFragmentData,
+  removeFromCartHandler,
+  updateCartHandler,
+} from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import { cookies } from "next/headers";
 
 export const addItem = async (
   variantId: string | undefined,
 ): Promise<Error | undefined> => {
+  const lang = state$.lang.get();
+
   let cartId = cookies().get("cartId")?.value;
   let cartFragmentRef: FragmentType<typeof cartFragment> | null = null;
 
   if (cartId) {
-    cartFragmentRef = await server.getCart({ cartId });
+    cartFragmentRef = await getCartHandler({ cartId }, lang);
   }
 
   if (!cartId || !cartFragmentRef) {
-    cartFragmentRef = await server.createCart();
+    cartFragmentRef = await createCartHandler(undefined, lang);
 
     const cart = getFragmentData(cartFragment, cartFragmentRef);
 
@@ -36,10 +43,10 @@ export const addItem = async (
     return new Error("Missing variantId");
   }
   try {
-    await server.addToCart({
+    await addToCartHandler({
       cartId,
       lines: [{ merchandiseId: variantId, quantity: 1 }],
-    });
+    }, lang);
 
     return undefined;
   } catch (e) {
@@ -50,6 +57,8 @@ export const addItem = async (
 export const removeItem = async (
   lineId: string,
 ): Promise<Error | undefined> => {
+  const lang = state$.lang.get();
+
   const cartId = cookies().get("cartId")?.value;
 
   if (!cartId) {
@@ -57,7 +66,7 @@ export const removeItem = async (
   }
 
   try {
-    await server.removeFromCart({ cartId, lineIds: [lineId] });
+    await removeFromCartHandler({ cartId, lineIds: [lineId] }, lang);
 
     return undefined;
   } catch (e) {
@@ -74,13 +83,15 @@ export const updateItemQuantity = async ({
   variantId: string;
   quantity: number;
 }): Promise<Error | undefined> => {
+  const lang = state$.lang.get();
+
   const cartId = cookies().get("cartId")?.value;
 
   if (!cartId) {
     return new Error("Missing cartId");
   }
   try {
-    await server.updateCart({
+    await updateCartHandler({
       cartId,
       lines: [
         {
@@ -89,7 +100,7 @@ export const updateItemQuantity = async ({
           quantity,
         },
       ],
-    });
+    }, lang);
 
     return undefined;
   } catch (e) {

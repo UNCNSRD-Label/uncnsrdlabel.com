@@ -26,7 +26,7 @@
     "@uncnsrdlabel/types": "workspace:*",
     "eslint": "^8.52.0",
     "prettier": "^3.0.3",
-    "type-fest": "^4.5.0",
+    "type-fest": "^4.6.0",
     "typescript": "^5.2.2",
     "typescript-graphql-request": "^4.4.6"
   },
