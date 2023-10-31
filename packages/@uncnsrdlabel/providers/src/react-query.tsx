@@ -2,16 +2,14 @@
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { ReactQueryStreamedHydration } from '@tanstack/react-query-next-experimental';
+import { ReactQueryStreamedHydration } from "@tanstack/react-query-next-experimental";
 import { PropsWithChildren, lazy, useEffect, useState } from "react";
 
 const ReactQueryDevtoolsProduction = lazy(() =>
-  import('@tanstack/react-query-devtools/production').then(
-    (d) => ({
-      default: d.ReactQueryDevtools,
-    }),
-  ),
-)
+  import("@tanstack/react-query-devtools/production").then((d) => ({
+    default: d.ReactQueryDevtools,
+  })),
+);
 
 export function AppReactQueryProvider({ children }: PropsWithChildren) {
   const [queryClient] = useState(() => new QueryClient());
@@ -23,9 +21,7 @@ export function AppReactQueryProvider({ children }: PropsWithChildren) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ReactQueryStreamedHydration>
-        {children}
-      </ReactQueryStreamedHydration>
+      <ReactQueryStreamedHydration>{children}</ReactQueryStreamedHydration>
       <ReactQueryDevtools initialIsOpen />
       {showDevtools && <ReactQueryDevtoolsProduction />}
     </QueryClientProvider>

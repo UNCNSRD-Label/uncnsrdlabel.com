@@ -8,7 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function AccountSignInPage() {
-  return (
-    <AccountSignInForm className="max-w-lg" />
-  );
+  return <AccountSignInForm className="max-w-lg" />;
 }

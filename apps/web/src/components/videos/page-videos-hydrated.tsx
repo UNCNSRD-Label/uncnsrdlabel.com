@@ -1,4 +1,4 @@
-'use server';
+"use server";
 
 // TODO: Remove this deprecated file
 
@@ -36,11 +36,11 @@ export async function PageVideosHydrated({
     // @ts-ignore
     queryKey: getQueryKey(getPageQuery, variablesWithContext),
     queryFn: () =>
-    getShopifyGraphQL(
-      // TODO: Change to getPageImagesQuery to retrieve smaller data response
-      getPageQuery,
-      variables
-    )
+      getShopifyGraphQL(
+        // TODO: Change to getPageImagesQuery to retrieve smaller data response
+        getPageQuery,
+        variables,
+      ),
   });
 
   const dehydratedState = dehydrate(shopifyQueryClient);

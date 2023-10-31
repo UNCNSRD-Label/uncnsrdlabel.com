@@ -30,9 +30,11 @@ export function middleware(request: NextRequest) {
   const previewCookie = request.cookies.get("preview")?.value;
 
   if (previewCookie === "true") {
-    return NextResponse.redirect(`${process.env.NEXT_PUBLIC_PROTOCOL}://${process.env.NEXT_PUBLIC_SITE_DOMAIN_WEB}`);
+    return NextResponse.redirect(
+      `${process.env.NEXT_PUBLIC_PROTOCOL}://${process.env.NEXT_PUBLIC_SITE_DOMAIN_WEB}`,
+    );
   }
-  
+
   const detectedLanguage =
     request.headers
       .get("accept-language")

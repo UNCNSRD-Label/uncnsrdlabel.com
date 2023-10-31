@@ -15,7 +15,7 @@ export default function SearchLayout({
         <NavbarContent />
       </Navbar>
       <Suspense fallback={<LoadingSkeleton />}>
-        <main className="page mb-48 min-h-fullMinusNavbar">{children}</main>
+        <main className="page min-h-fullMinusNavbar mb-48">{children}</main>
       </Suspense>
       <Logo />
     </>

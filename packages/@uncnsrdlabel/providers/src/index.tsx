@@ -6,11 +6,20 @@ import { AppIntlProvider } from "./react-intl";
 import { AppReactQueryProvider } from "./react-query";
 import { AppShopifyProvider } from "./shopify";
 
-export { AppAnalyticsProvider, AppIntlProvider, AppReactQueryProvider, AppShopifyProvider };
+export {
+  AppAnalyticsProvider,
+  AppIntlProvider,
+  AppReactQueryProvider,
+  AppShopifyProvider,
+};
 
-export function AppProviders({ children, locale, messages }: PropsWithChildren<{
+export function AppProviders({
+  children,
+  locale,
+  messages,
+}: PropsWithChildren<{
   locale: IETFLanguageTag;
-  messages: ResolvedIntlConfig["messages"]
+  messages: ResolvedIntlConfig["messages"];
 }>) {
   return (
     <AppReactQueryProvider>

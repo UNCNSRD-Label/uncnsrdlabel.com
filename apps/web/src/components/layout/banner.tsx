@@ -11,7 +11,7 @@ export const Banner = ({ className }: { className?: string }) => {
   return (
     <div
       className={cn(
-        "grid snap-start place-content-center bg-hotPink p-7 uppercase text-light",
+        "bg-hotPink text-light grid snap-start place-content-center p-7 uppercase",
         className,
       )}
     >

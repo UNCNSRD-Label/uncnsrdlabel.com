@@ -1,4 +1,4 @@
-'use server';
+"use server";
 
 import { Grid } from "@/components/grid/index";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
@@ -6,7 +6,7 @@ import { state$ } from "@/lib/store";
 import {
   getProductsHandler,
   productDefaultSort,
-  productSorting
+  productSorting,
 } from "@uncnsrdlabel/graphql-shopify-storefront/server";
 
 // export const runtime = "edge";
@@ -27,11 +27,14 @@ export default async function SearchPage({
   const { sortKey, reverse } =
     productSorting.find((item) => item.slug === sort) || productDefaultSort;
 
-  const productConnection = await getProductsHandler({
-    sortKey,
-    reverse,
-    query: searchValue,
-  }, lang);
+  const productConnection = await getProductsHandler(
+    {
+      sortKey,
+      reverse,
+      query: searchValue,
+    },
+    lang,
+  );
 
   const productFragments = productConnection.edges.map((edge) => edge?.node);
 

@@ -11,8 +11,12 @@ export const addToCartMutation = graphql(/* GraphQL */ `
 `);
 
 export const createCartMutation = graphql(/* GraphQL */ `
-  mutation createCart($country: CountryCode!, $language: LanguageCode!, $lineItems: [CartLineInput!]) @inContext(country: $country, language: $language) {
-  # mutation createCart($cartInput: CartInput!, $country: CountryCode, $language: LanguageCode, $lineItems: [CartLineInput!]) @inContext(country: $country, language: $language) {
+  mutation createCart(
+    $country: CountryCode!
+    $language: LanguageCode!
+    $lineItems: [CartLineInput!]
+  ) @inContext(country: $country, language: $language) {
+    # mutation createCart($cartInput: CartInput!, $country: CountryCode, $language: LanguageCode, $lineItems: [CartLineInput!]) @inContext(country: $country, language: $language) {
     cartCreate(input: { lines: $lineItems }) {
       cart {
         ...cart

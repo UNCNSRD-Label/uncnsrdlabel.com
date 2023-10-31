@@ -15,7 +15,10 @@ const storeDomain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!;
 const storefrontApiVersion =
   process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_API_VERSION!;
 
-export function AppShopifyProvider({ children, locale }: PropsWithChildren<{
+export function AppShopifyProvider({
+  children,
+  locale,
+}: PropsWithChildren<{
   locale: IETFLanguageTag;
 }>) {
   const localeTag = getLocaleObjectFromIETFLanguageTag(locale);

@@ -11,7 +11,9 @@ export default function Error({ reset }: { reset: () => void }) {
       <LogotypeIcon className="w-96 fill-inherit" />
       <h2>{intl.formatMessage({ id: "title" })}</h2>
       <p>{intl.formatMessage({ id: "message" })}</p>
-      <button onClick={() => reset()}>{intl.formatMessage({ id: "button" })}</button>
+      <button onClick={() => reset()}>
+        {intl.formatMessage({ id: "button" })}
+      </button>
     </div>
   );
 }

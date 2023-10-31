@@ -1,13 +1,23 @@
 "use client";
 
 import { CaretRightIcon } from "@/components/icons/caret-right";
-import { ResultOf } from '@graphql-typed-document-node/core';
-import { ProductCollectionSortFilterItem, collectionFragment } from "@uncnsrdlabel/graphql-shopify-storefront/client";
+import { ResultOf } from "@graphql-typed-document-node/core";
+import {
+  ProductCollectionSortFilterItem,
+  collectionFragment,
+} from "@uncnsrdlabel/graphql-shopify-storefront/client";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { FilterItem } from "./item";
 
-export function FilterItemDropdown({ list }: { list: (ResultOf<typeof collectionFragment> | ProductCollectionSortFilterItem)[] }) {
+export function FilterItemDropdown({
+  list,
+}: {
+  list: (
+    | ResultOf<typeof collectionFragment>
+    | ProductCollectionSortFilterItem
+  )[];
+}) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [active, setActive] = useState("");
@@ -25,7 +35,7 @@ export function FilterItemDropdown({ list }: { list: (ResultOf<typeof collection
     return () => window.removeEventListener("click", handleClickOutside);
   }, []);
 
-  useEffect(() => {  
+  useEffect(() => {
     list.forEach((listItem) => {
       if (
         ("path" in listItem && pathname === listItem.path) ||
@@ -53,7 +63,7 @@ export function FilterItemDropdown({ list }: { list: (ResultOf<typeof collection
             setOpenSelect(false);
           }}
           className="absolute z-40 w-full rounded-b-md bg-white p-4 shadow-md dark:bg-black"
-        >        
+        >
           {list.map((item, index) => (
             <FilterItem key={item.title || index} item={item} />
           ))}

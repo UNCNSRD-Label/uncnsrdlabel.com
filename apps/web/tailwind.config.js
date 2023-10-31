@@ -1,6 +1,6 @@
 import componentConfig from "@uncnsrdlabel/components/tailwind.config";
 
-const variants = ['sm', 'md', 'lg', 'xl']
+const variants = ["sm", "md", "lg", "xl"];
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -12,68 +12,67 @@ export default {
   safelist: [
     {
       pattern: /h-.+/,
-      variants
+      variants,
     },
     {
       pattern: /w-.+/,
-      variants
+      variants,
     },
     {
       pattern: /min-h-.+/,
-      variants
+      variants,
     },
     {
       pattern: /min-w-.+/,
-      variants
+      variants,
     },
     {
       pattern: /max-h-.+/,
-      variants
+      variants,
     },
     {
       pattern: /max-w-.+/,
-      variants
+      variants,
     },
     {
       pattern: /gap-.+/,
-      variants
+      variants,
     },
     {
       pattern: /grid-.+/,
-      variants
+      variants,
     },
     {
       pattern: /p-.+/,
-      variants
+      variants,
     },
     {
       pattern: /m-.+/,
-      variants
+      variants,
     },
     {
       pattern: /content-.+/,
-      variants
+      variants,
     },
     {
       pattern: /items-.+/,
-      variants
+      variants,
     },
     {
       pattern: /justify-.+/,
-      variants
+      variants,
     },
     {
       pattern: /place-.+/,
-      variants
+      variants,
     },
     {
       pattern: /self-.+/,
-      variants
+      variants,
     },
     {
       pattern: /space-.+/,
-      variants
+      variants,
     },
-  ]
-}
-
+  ],
+};

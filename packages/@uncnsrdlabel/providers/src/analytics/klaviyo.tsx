@@ -98,7 +98,7 @@ export function klaviyo(config: KlaviyoConfig): KlaviyoAnalyticsPlugin {
           ProductID: payload.properties.product.id ?? null,
           Categories:
             payload.properties.product.collections.edges?.map(
-              ({node}) => node?.title,
+              ({ node }) => node?.title,
             ) ?? null,
           ImageURL: payload.properties.product?.featuredImage?.url ?? null,
           URL: payload.properties.url ?? getClientBrowserParameters().url,

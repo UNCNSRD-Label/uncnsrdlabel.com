@@ -43,15 +43,15 @@ export function Images({
                     objectFit: "cover",
                   }}
                 />
-                <SlMagnifierAdd className="icon absolute bottom-4 right-4 h-5 w-5 text-light drop-shadow" />
+                <SlMagnifierAdd className="icon text-light absolute bottom-4 right-4 h-5 w-5 drop-shadow" />
               </button>
             </Dialog.Trigger>
             <Dialog.Portal>
-              <Dialog.Overlay className="bg-white data-[state=open]:animate-overlayShow fixed inset-0 z-40">
-                <Dialog.Content className="data-[state=open]:animate-contentShow h-full relative touch-none w-full">
+              <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0 z-40 bg-white">
+                <Dialog.Content className="data-[state=open]:animate-contentShow relative h-full w-full touch-none">
                   <ProductImageZoom
                     alt={image?.altText}
-                    className="h-full overflow-scroll relative touch-pinch-zoom w-full"
+                    className="relative h-full w-full touch-pinch-zoom overflow-scroll"
                     src={image.src}
                   />
                   <Dialog.Close asChild>
@@ -62,7 +62,7 @@ export function Images({
                       //   setScale(1);
                       // }}
                     >
-                      <Cross2Icon className="h-full w-full text-light" />
+                      <Cross2Icon className="text-light h-full w-full" />
                     </button>
                   </Dialog.Close>
                 </Dialog.Content>

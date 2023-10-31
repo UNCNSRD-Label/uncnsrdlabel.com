@@ -12,7 +12,9 @@ declare module "@analytics/google-analytics" {
   }
 
   // eslint-disable-next-line no-unused-vars
-  export function googleAnalytics(config: GoogleAnalyticsConfig): AnalyticsPlugin;
+  export function googleAnalytics(
+    config: GoogleAnalyticsConfig,
+  ): AnalyticsPlugin;
 
   export default googleAnalytics;
 }
@@ -31,7 +33,9 @@ declare module "@analytics/google-tag-manager" {
   }
 
   // eslint-disable-next-line no-unused-vars
-  export function googleTagManager(config: GoogleTagManagerConfig): AnalyticsPlugin;
+  export function googleTagManager(
+    config: GoogleTagManagerConfig,
+  ): AnalyticsPlugin;
 
   export default googleTagManager;
 }
@@ -45,7 +49,9 @@ declare module "analytics-plugin-event-validation" {
   }
 
   // eslint-disable-next-line no-unused-vars
-  export function eventValidation(config: EventValidationConfig): AnalyticsPlugin;
+  export function eventValidation(
+    config: EventValidationConfig,
+  ): AnalyticsPlugin;
 
   export default eventValidation;
 }

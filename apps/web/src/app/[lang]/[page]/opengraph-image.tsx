@@ -1,4 +1,4 @@
-'use server';
+"use server";
 
 import { OpengraphImageResponse } from "@/components/opengraph-image-response";
 import { state$ } from "@/lib/store";
@@ -18,14 +18,9 @@ export default async function PageOpengraphImage({
 }) {
   const lang = state$.lang.get();
 
-  const pageFragmentRef = await getPageHandler(
-    { handle }, lang,
-  );
+  const pageFragmentRef = await getPageHandler({ handle }, lang);
 
-  const page = getFragmentData(
-    pageFragment,
-    pageFragmentRef,
-  );
+  const page = getFragmentData(pageFragment, pageFragmentRef);
 
   const seo = getFragmentData(seoFragment, page.seo);
 

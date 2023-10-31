@@ -41,7 +41,7 @@ export const config: Config = {
         blink: "blink 1.4s both infinite",
         carousel: "marquee 60s linear infinite",
         fadein: "fadein .3s ease-in-out",
-        'grow-progress': 'linear growProgress forwards',
+        "grow-progress": "linear growProgress forwards",
       },
       aspectRatio: {
         "13/21": "13 / 21",
@@ -139,29 +139,33 @@ export const config: Config = {
           "100%": { transform: "translateX(-100%)" },
         },
       },
-      typography: ({ theme }: { theme: (path: string, defaultValue?: unknown) => any }) => ({
+      typography: ({
+        theme,
+      }: {
+        theme: (path: string, defaultValue?: unknown) => any;
+      }) => ({
         hotGreen: {
           css: {
-            '--tw-prose-body': theme('colors.hotGreen'),
-            '--tw-prose-headings': theme('colors.hotGreen'),
+            "--tw-prose-body": theme("colors.hotGreen"),
+            "--tw-prose-headings": theme("colors.hotGreen"),
           },
         },
         hotOrange: {
           css: {
-            '--tw-prose-body': theme('colors.hotOrange'),
-            '--tw-prose-headings': theme('colors.hotOrange'),
+            "--tw-prose-body": theme("colors.hotOrange"),
+            "--tw-prose-headings": theme("colors.hotOrange"),
           },
         },
         hotPink: {
           css: {
-            '--tw-prose-body': theme('colors.hotPink'),
-            '--tw-prose-headings': theme('colors.hotPink'),
+            "--tw-prose-body": theme("colors.hotPink"),
+            "--tw-prose-headings": theme("colors.hotPink"),
           },
         },
         white: {
           css: {
-            '--tw-prose-body': theme('colors.white'),
-            '--tw-prose-headings': theme('colors.white'),
+            "--tw-prose-body": theme("colors.white"),
+            "--tw-prose-headings": theme("colors.white"),
           },
         },
       }),

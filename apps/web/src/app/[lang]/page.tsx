@@ -10,11 +10,7 @@ import Link from "next/link";
 
 // export const runtime = "edge";
 
-export default async function RootPage({
-  params: {
-    lang
-  }
-}: PageProps) {
+export default async function RootPage({ params: { lang } }: PageProps) {
   const handle = "home";
 
   const intl = await getIntl(lang, `page.${handle}`);

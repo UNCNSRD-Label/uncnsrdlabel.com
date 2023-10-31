@@ -15,7 +15,9 @@ export default function SearchLayout({
         <NavbarContent />
       </Navbar>
       <Suspense fallback={<LoadingSkeleton />}>
-        <div className="policy max-w-[100dvw] min-h-fullMinusNavbar gap-16 grid md:grid-cols-[2fr_3fr] mx-8 md:mx-0 mt-12">{children}</div>
+        <div className="policy min-h-fullMinusNavbar mx-8 mt-12 grid max-w-[100dvw] gap-16 md:mx-0 md:grid-cols-[2fr_3fr]">
+          {children}
+        </div>
       </Suspense>
       <Logo />
     </>

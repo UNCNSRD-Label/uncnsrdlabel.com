@@ -6,7 +6,7 @@ import {
   PageFragment,
   type ImageFragment,
   type MediaImage,
-  type MenuItem
+  type MenuItem,
 } from "../codegen/graphql";
 import { getFragmentData } from "../codegen/index";
 import { domain } from "../constants";
@@ -16,7 +16,7 @@ import { graphQLClient } from "../utilities";
 export async function getShopifyGraphQL<TResult, TVariables>(
   document: TypedDocumentNode<TResult, TVariables>,
   ...[variables]: TVariables extends Record<string, never> ? [] : [TVariables]
-): Promise<TResult> {  
+): Promise<TResult> {
   try {
     const request = graphQLClient.request(document, { ...variables });
 

@@ -16,7 +16,9 @@ export function SignUpForm({ className }: { className?: string }) {
 
   const [open, setOpen] = useState(false);
   const timerRef = useRef(0);
-  const [toastMessage, setToastMessage] = useState<string | null>("Waiting for signup confirmation");
+  const [toastMessage, setToastMessage] = useState<string | null>(
+    "Waiting for signup confirmation",
+  );
 
   useEffect(() => {
     return () => clearTimeout(timerRef.current);

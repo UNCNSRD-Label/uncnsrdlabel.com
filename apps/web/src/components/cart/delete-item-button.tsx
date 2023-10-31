@@ -14,10 +14,7 @@ import { useTransition } from "react";
 export function DeleteItemButton({
   item,
 }: {
-  item: Pick<
-    ComponentizableCartLine | CartLine,
-    "id" | "quantity"
-  > & {
+  item: Pick<ComponentizableCartLine | CartLine, "id" | "quantity"> & {
     cost: Pick<CartLineCost, "totalAmount">;
     merchandise: Pick<Merchandise, "id">;
   };

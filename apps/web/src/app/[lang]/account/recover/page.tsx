@@ -8,7 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function AccountRecoverPage() {
-  return (
-    <AccountRecoverForm className="max-w-lg" />
-  );
+  return <AccountRecoverForm className="max-w-lg" />;
 }

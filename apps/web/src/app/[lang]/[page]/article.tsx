@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { Prose } from "@/components/prose";
 import { useMediaQuery } from "@react-hookz/web";
@@ -6,7 +6,7 @@ import {
   getFragmentData,
   getPageQuery,
   pageFragment,
-  useGetShopifyGraphQL
+  useGetShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront/client";
 import { cn, type ClassValue } from "@uncnsrdlabel/lib";
 import { CSSProperties, HTMLProps, useEffect, useState } from "react";
@@ -24,11 +24,11 @@ export function Article(props: ArticleProps) {
   );
 
   if (isLoading) {
-    return <span>Loading...</span>
+    return <span>Loading...</span>;
   }
 
   if (isError) {
-    return <span>Error: {error?.message}</span>
+    return <span>Error: {error?.message}</span>;
   }
 
   const { page: pageFragmentRef } = data;
@@ -36,49 +36,63 @@ export function Article(props: ArticleProps) {
   const page = getFragmentData(pageFragment, pageFragmentRef);
 
   const isSm = useMediaQuery("only screen and (min-width : 640px)");
-  const isMd = useMediaQuery(
-    "only screen and (min-width : 768px)",
-  );
-  const isLg = useMediaQuery(
-    "only screen and (min-width : 1024px)",
-  );
+  const isMd = useMediaQuery("only screen and (min-width : 768px)");
+  const isLg = useMediaQuery("only screen and (min-width : 1024px)");
   const isXl = useMediaQuery("only screen and (min-width : 1280px)");
 
-  const [style, setStyle] = useState<CSSProperties>(page?.style?.value ? (JSON.parse(page?.style?.value ?? "") as CSSProperties) : {});
+  const [style, setStyle] = useState<CSSProperties>(
+    page?.style?.value
+      ? (JSON.parse(page?.style?.value ?? "") as CSSProperties)
+      : {},
+  );
 
   useEffect(() => {
-    if(isSm) {
+    if (isSm) {
       setStyle(() => ({
-        ...(page?.style?.value && (JSON.parse(page?.style?.value ?? "") as CSSProperties)),
-        ...(page?.styleSm?.value && (JSON.parse(page?.styleSm?.value ?? "") as CSSProperties))
-      }))
+        ...(page?.style?.value &&
+          (JSON.parse(page?.style?.value ?? "") as CSSProperties)),
+        ...(page?.styleSm?.value &&
+          (JSON.parse(page?.styleSm?.value ?? "") as CSSProperties)),
+      }));
     }
 
-    if(isMd) {
+    if (isMd) {
       setStyle(() => ({
-        ...(page?.style?.value && (JSON.parse(page?.style?.value ?? "") as CSSProperties)),
-        ...(page?.styleSm?.value && (JSON.parse(page?.styleSm?.value ?? "") as CSSProperties)),
-        ...(page?.styleMd?.value && (JSON.parse(page?.styleMd?.value ?? "") as CSSProperties))
-      }))
+        ...(page?.style?.value &&
+          (JSON.parse(page?.style?.value ?? "") as CSSProperties)),
+        ...(page?.styleSm?.value &&
+          (JSON.parse(page?.styleSm?.value ?? "") as CSSProperties)),
+        ...(page?.styleMd?.value &&
+          (JSON.parse(page?.styleMd?.value ?? "") as CSSProperties)),
+      }));
     }
 
-    if(isLg) {
+    if (isLg) {
       setStyle(() => ({
-        ...(page?.style?.value && (JSON.parse(page?.style?.value ?? "") as CSSProperties)),
-        ...(page?.styleSm?.value && (JSON.parse(page?.styleSm?.value ?? "") as CSSProperties)),
-        ...(page?.styleMd?.value && (JSON.parse(page?.styleMd?.value ?? "") as CSSProperties)),
-        ...(page?.styleLg?.value && (JSON.parse(page?.styleLg?.value ?? "") as CSSProperties))
-      }))
+        ...(page?.style?.value &&
+          (JSON.parse(page?.style?.value ?? "") as CSSProperties)),
+        ...(page?.styleSm?.value &&
+          (JSON.parse(page?.styleSm?.value ?? "") as CSSProperties)),
+        ...(page?.styleMd?.value &&
+          (JSON.parse(page?.styleMd?.value ?? "") as CSSProperties)),
+        ...(page?.styleLg?.value &&
+          (JSON.parse(page?.styleLg?.value ?? "") as CSSProperties)),
+      }));
     }
 
-    if(isXl) {
+    if (isXl) {
       setStyle(() => ({
-        ...(page?.style?.value && (JSON.parse(page?.style?.value ?? "") as CSSProperties)),
-        ...(page?.styleSm?.value && (JSON.parse(page?.styleSm?.value ?? "") as CSSProperties)),
-        ...(page?.styleMd?.value && (JSON.parse(page?.styleMd?.value ?? "") as CSSProperties)),
-        ...(page?.styleLg?.value && (JSON.parse(page?.styleLg?.value ?? "") as CSSProperties)),
-        ...(page?.styleXl?.value && (JSON.parse(page?.styleXl?.value ?? "") as CSSProperties))
-      }))
+        ...(page?.style?.value &&
+          (JSON.parse(page?.style?.value ?? "") as CSSProperties)),
+        ...(page?.styleSm?.value &&
+          (JSON.parse(page?.styleSm?.value ?? "") as CSSProperties)),
+        ...(page?.styleMd?.value &&
+          (JSON.parse(page?.styleMd?.value ?? "") as CSSProperties)),
+        ...(page?.styleLg?.value &&
+          (JSON.parse(page?.styleLg?.value ?? "") as CSSProperties)),
+        ...(page?.styleXl?.value &&
+          (JSON.parse(page?.styleXl?.value ?? "") as CSSProperties)),
+      }));
     }
   }, [isSm, isMd, isLg, isXl]);
 
@@ -86,7 +100,8 @@ export function Article(props: ArticleProps) {
     <article
       className={cn(
         "grid snap-y snap-start",
-        page?.classes?.value && JSON.parse(page?.classes?.value ?? "") as ClassValue,
+        page?.classes?.value &&
+          (JSON.parse(page?.classes?.value ?? "") as ClassValue),
         className,
       )}
       style={style}

@@ -1,4 +1,4 @@
-'use server';
+"use server";
 
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
@@ -8,7 +8,7 @@ import {
   FragmentType,
   getFragmentData,
   getProductRecommendationsHandler,
-  productDetailsFragment
+  productDetailsFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import { cn } from "@uncnsrdlabel/lib";
 
@@ -32,9 +32,12 @@ export async function RelatedProducts({
 
   const { id } = product;
 
-  const productRecommendationRefs = await getProductRecommendationsHandler({
-    productId: id,
-  }, lang);
+  const productRecommendationRefs = await getProductRecommendationsHandler(
+    {
+      productId: id,
+    },
+    lang,
+  );
 
   if (!productRecommendationRefs?.length) return null;
 
@@ -44,7 +47,10 @@ export async function RelatedProducts({
         {intl.formatMessage({ id: "title" })}
       </div>
       <Grid className="grid-cols-2 lg:grid-cols-5 [&>*:last-child:nth-child(odd)]:hidden [&>*:last-child:nth-child(odd)]:lg:list-item">
-        <ProductGridItems limit={5} productFragmentRefs={productRecommendationRefs} />
+        <ProductGridItems
+          limit={5}
+          productFragmentRefs={productRecommendationRefs}
+        />
       </Grid>
     </aside>
   );

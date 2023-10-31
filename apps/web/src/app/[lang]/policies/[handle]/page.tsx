@@ -1,4 +1,4 @@
-'use server';
+"use server";
 
 import { LoadingSkeleton } from "@/components/loading/skeleton";
 import { Prose } from "@/components/prose";
@@ -9,7 +9,7 @@ import {
   getMenuHandler,
   getPolicyHandler,
   shopPolicyFragment,
-  type PolicyName
+  type PolicyName,
 } from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import { cn } from "@uncnsrdlabel/lib";
 import type { Metadata } from "next";
@@ -26,7 +26,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const lang = state$.lang.get();
 
-  const shopPolicyFragmentRef = await getPolicyHandler({handle}, lang);
+  const shopPolicyFragmentRef = await getPolicyHandler({ handle }, lang);
 
   if (!shopPolicyFragmentRef) return notFound();
 
@@ -56,7 +56,7 @@ export default async function PolicyPage({
 
   const handle = params.handle as PolicyName;
 
-  const shopPolicyFragmentRef = await getPolicyHandler({handle}, lang);
+  const shopPolicyFragmentRef = await getPolicyHandler({ handle }, lang);
 
   const customerCareMenu = await getMenuHandler({ handle: "customer-care" });
 
@@ -66,15 +66,24 @@ export default async function PolicyPage({
 
   return (
     <>
-      <nav className="md:min-h-fullMinusNavbar relative hidden md:grid content-start md:justify-center">
+      <nav className="md:min-h-fullMinusNavbar relative hidden content-start md:grid md:justify-center">
         {customerCareMenu.items.length ? (
-          <dl className="md:sticky md:top-64 md:mb-64 grid content-start gap-4">
+          <dl className="grid content-start gap-4 md:sticky md:top-64 md:mb-64">
             <dt className="text-sm uppercase">Customer Care</dt>
             {customerCareMenu.items.map((item, index) => (
               <dd key={item.title || index}>
-                <Link href={item.url ?? "#"} className={cn("text-xs sm:text-xxs transition uppercase duration-150 ease-in-out", {
-                  "decoration-dotted underline underline-offset-8": item.url?.endsWith(params.handle)
-                })}>{item.title}</Link>
+                <Link
+                  href={item.url ?? "#"}
+                  className={cn(
+                    "sm:text-xxs text-xs uppercase transition duration-150 ease-in-out",
+                    {
+                      "underline decoration-dotted underline-offset-8":
+                        item.url?.endsWith(params.handle),
+                    },
+                  )}
+                >
+                  {item.title}
+                </Link>
               </dd>
             ))}
           </dl>

@@ -73,7 +73,11 @@ export function PageSectionModule({
                   (field) => field.key === "heading_1_color",
                 )?.value ?? "default";
 
-              element = <h2 data-color={heading1Color} key={field.key}>{field.value}</h2>;
+              element = (
+                <h2 data-color={heading1Color} key={field.key}>
+                  {field.value}
+                </h2>
+              );
               break;
             case "heading_2":
               const heading2Color =
@@ -81,7 +85,11 @@ export function PageSectionModule({
                   (field) => field.key === "heading_2_color",
                 )?.value ?? "default";
 
-              element = <h3 data-color={heading2Color} key={field.key}>{field.value}</h3>;
+              element = (
+                <h3 data-color={heading2Color} key={field.key}>
+                  {field.value}
+                </h3>
+              );
               break;
             case "media":
               const media = field?.references?.edges.map((edge) => edge?.node);

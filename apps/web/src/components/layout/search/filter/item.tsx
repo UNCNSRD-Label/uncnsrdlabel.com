@@ -1,13 +1,20 @@
 "use client";
 
-import { ResultOf } from '@graphql-typed-document-node/core';
-import { ProductCollectionSortFilterItem, collectionFragment } from "@uncnsrdlabel/graphql-shopify-storefront/client";
+import { ResultOf } from "@graphql-typed-document-node/core";
+import {
+  ProductCollectionSortFilterItem,
+  collectionFragment,
+} from "@uncnsrdlabel/graphql-shopify-storefront/client";
 import { cn, createUrl } from "@uncnsrdlabel/lib";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-function PathFilterItem({ item }: { item: ResultOf<typeof collectionFragment> }) {
+function PathFilterItem({
+  item,
+}: {
+  item: ResultOf<typeof collectionFragment>;
+}) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const path = `/search/${item.handle}`;
@@ -26,7 +33,7 @@ function PathFilterItem({ item }: { item: ResultOf<typeof collectionFragment> })
         href={createUrl(path, newParams)}
         className={cn("w-full hover:text-gray-800 dark:hover:text-gray-100", {
           "text-gray-600 dark:text-gray-400": !active,
-          "font-semibold text-dark dark:text-light": active,
+          "text-dark dark:text-light font-semibold": active,
         })}
       >
         {item.title}
@@ -63,7 +70,7 @@ function SortFilterItem({ item }: { item: ProductCollectionSortFilterItem }) {
         href={href}
         className={cn("w-full hover:text-gray-800 dark:hover:text-gray-100", {
           "text-gray-600 dark:text-gray-400": !active,
-          "font-semibold text-dark dark:text-light": active,
+          "text-dark dark:text-light font-semibold": active,
         })}
       >
         {item.title}
@@ -72,8 +79,12 @@ function SortFilterItem({ item }: { item: ProductCollectionSortFilterItem }) {
   );
 }
 
-export function FilterItem({ item }: { item: ResultOf<typeof collectionFragment> | ProductCollectionSortFilterItem }) {
-  return 'handle' in item ? (
+export function FilterItem({
+  item,
+}: {
+  item: ResultOf<typeof collectionFragment> | ProductCollectionSortFilterItem;
+}) {
+  return "handle" in item ? (
     <PathFilterItem item={item} />
   ) : (
     <SortFilterItem item={item} />

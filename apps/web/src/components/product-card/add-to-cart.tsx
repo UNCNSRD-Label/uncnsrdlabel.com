@@ -34,7 +34,8 @@ export function AddToCart({
       variant.selectedOptions?.every((selectedOption) => {
         const hasNoOptionsOrJustOneOption =
           !options.length ||
-          (options.find((option) => option.name === selectedOption.name)?.values.length === 1);
+          options.find((option) => option.name === selectedOption.name)?.values
+            .length === 1;
 
         if (hasNoOptionsOrJustOneOption) {
           return true;
@@ -79,7 +80,7 @@ export function AddToCart({
         });
       }}
       className={cn(
-        "content-center grid gap-4 grid-flow-col",
+        "grid grid-flow-col content-center gap-4",
         {
           "cursor-not-allowed opacity-60 hover:opacity-60":
             !availableForSale || !selectedVariantId,
@@ -93,9 +94,7 @@ export function AddToCart({
       ) : (
         <LoadingDots className="mb-3 bg-white" />
       )}
-      <span>
-        {title}
-      </span>
+      <span>{title}</span>
     </button>
   );
 }

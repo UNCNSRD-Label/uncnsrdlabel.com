@@ -5,12 +5,12 @@ import { cn, getValidChildren } from "@uncnsrdlabel/lib";
 
 export interface BreadcrumbProps extends React.ComponentPropsWithoutRef<"nav"> {
   /* The visual separator between each breadcrumb item */
-  separator?: React.ReactNode
+  separator?: React.ReactNode;
   /**
    * If `true`, adds a separator between each breadcrumb item.
    * @default true
    */
-  addSeparator?: boolean
+  addSeparator?: boolean;
 }
 
 export const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
@@ -22,16 +22,16 @@ export const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
       addSeparator = true,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => {
-    const validChildren = getValidChildren(children)
+    const validChildren = getValidChildren(children);
     const clones = validChildren.map((child, index) => {
       return React.cloneElement(child, {
         addSeparator,
         separator,
         isLastChild: validChildren.length === index + 1,
-      })
-    })
+      });
+    });
 
     return (
       <nav
@@ -42,18 +42,18 @@ export const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
       >
         <ol className="flex items-center">{clones}</ol>
       </nav>
-    )
-  }
-)
-Breadcrumb.displayName = "Breadcrumb"
+    );
+  },
+);
+Breadcrumb.displayName = "Breadcrumb";
 
 export interface BreadcrumbItemProps extends BreadcrumbProps {
   /**
    * If `true`, indicates that the breadcrumb item is active, adds
    * `aria-current=page` and renders a `span`
    */
-  isCurrentPage?: boolean
-  isLastChild?: boolean
+  isCurrentPage?: boolean;
+  isLastChild?: boolean;
 }
 
 export const BreadcrumbItem = React.forwardRef<
@@ -70,22 +70,22 @@ export const BreadcrumbItem = React.forwardRef<
       addSeparator,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => {
-    const validChildren = getValidChildren(children)
+    const validChildren = getValidChildren(children);
     const clones = validChildren.map((child) => {
       if (child.type === BreadcrumbLink) {
-        return React.cloneElement(child, { isCurrentPage })
+        return React.cloneElement(child, { isCurrentPage });
       }
 
       if (child.type === BreadcrumbSeparator) {
         return React.cloneElement(child, {
           children: separator || child.props.children,
-        })
+        });
       }
 
-      return child
-    })
+      return child;
+    });
 
     return (
       <li
@@ -98,38 +98,38 @@ export const BreadcrumbItem = React.forwardRef<
           <BreadcrumbSeparator>{separator}</BreadcrumbSeparator>
         )}
       </li>
-    )
-  }
-)
-BreadcrumbItem.displayName = "BreadcrumbItem"
+    );
+  },
+);
+BreadcrumbItem.displayName = "BreadcrumbItem";
 
 export interface BreadcrumbLinkProps
   extends React.ComponentPropsWithoutRef<"a">,
     Pick<BreadcrumbItemProps, "isCurrentPage"> {
-  as?: React.ElementType
+  as?: React.ElementType;
 }
 
 export const BreadcrumbLink = React.forwardRef<
   HTMLAnchorElement,
   BreadcrumbLinkProps
 >(({ className, as: asComp, isCurrentPage, ...props }, forwardedRef) => {
-  const Comp = (isCurrentPage ? "span" : asComp || "a") as "a"
+  const Comp = (isCurrentPage ? "span" : asComp || "a") as "a";
 
   return (
     <Comp
       className={cn(
         "text-sm font-medium underline-offset-4 aria-[current]:opacity-60 [&:not([aria-current])]:hover:underline",
-        className
+        className,
       )}
       aria-current={isCurrentPage ? "page" : undefined}
       {...props}
       ref={forwardedRef}
     />
-  )
-})
-BreadcrumbLink.displayName = "BreadcrumbLink"
+  );
+});
+BreadcrumbLink.displayName = "BreadcrumbLink";
 
-export type BreadcrumbSeparatorProps = React.ComponentPropsWithoutRef<"span">
+export type BreadcrumbSeparatorProps = React.ComponentPropsWithoutRef<"span">;
 
 export const BreadcrumbSeparator = React.forwardRef<
   HTMLSpanElement,
@@ -142,6 +142,6 @@ export const BreadcrumbSeparator = React.forwardRef<
       {...props}
       ref={forwardedRef}
     />
-  )
-})
-BreadcrumbSeparator.displayName = "BreadcrumbSeparator"
+  );
+});
+BreadcrumbSeparator.displayName = "BreadcrumbSeparator";

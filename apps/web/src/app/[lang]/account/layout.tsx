@@ -1,4 +1,4 @@
-'use server';
+"use server";
 
 import { Logo } from "@/components/layout/logo/index";
 import { NavbarContent } from "@/components/layout/navbar/content";
@@ -29,9 +29,12 @@ export default async function AccountLayout({
       ? children.props.childProp.segment
       : undefined;
 
-  const routeMetaObject = await getRouteMetaObjectHandler({
-    handle: `account_${segment}`,
-  }, lang);
+  const routeMetaObject = await getRouteMetaObjectHandler(
+    {
+      handle: `account_${segment}`,
+    },
+    lang,
+  );
 
   const routeMenu = await getMenuHandler({ handle: "account" });
 
@@ -80,7 +83,11 @@ export default async function AccountLayout({
                   return (
                     <figure className="absolute inset-0">
                       <Image
-                        alt={field.reference.alt ?? image.altText ?? "Background image"}
+                        alt={
+                          field.reference.alt ??
+                          image.altText ??
+                          "Background image"
+                        }
                         className="object-cover"
                         fill
                         src={image?.url}

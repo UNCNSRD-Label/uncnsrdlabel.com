@@ -26,7 +26,7 @@ export function Logo({ blend, className, fill }: Props) {
     >
       <div
         className={cn(
-          "bottom-12 grid justify-items-center justify-self-center sm:bottom-20 w-full",
+          "bottom-12 grid w-full justify-items-center justify-self-center sm:bottom-20",
           className,
         )}
         ref={rootRef}
@@ -38,10 +38,7 @@ export function Logo({ blend, className, fill }: Props) {
               : "fixed",
         }}
       >
-        <Link
-          className={cn("pointer-events-auto", className)}
-          href="/"
-        >
+        <Link className={cn("pointer-events-auto", className)} href="/">
           <AccessibleIcon.Root
             label={`${process.env.NEXT_PUBLIC_SITE_NAME} logotype`}
           >

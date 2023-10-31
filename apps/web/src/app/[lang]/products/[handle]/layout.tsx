@@ -16,9 +16,7 @@ export default function SearchLayout({
         <NavbarContent />
       </Navbar>
       <Suspense fallback={<LoadingDots />}>
-        <PageTransition>
-          {children}
-        </PageTransition>
+        <PageTransition>{children}</PageTransition>
         <Logo className="bottom-20" />
       </Suspense>
     </>

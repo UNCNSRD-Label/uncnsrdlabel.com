@@ -1,4 +1,3 @@
-
 import {
   type CountryCode,
   type LanguageCode,
@@ -13,4 +12,4 @@ export type PolicyName =
 export type VariablesWithContext = {
   country: CountryCode;
   language: LanguageCode;
-}
+};

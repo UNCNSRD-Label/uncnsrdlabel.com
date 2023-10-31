@@ -1,4 +1,4 @@
-'use server';
+"use server";
 
 import { LoadingDots } from "@/components/loading/dots";
 import { state$ } from "@/lib/store";
@@ -35,11 +35,11 @@ export async function PageCarouselHydrated({
     // @ts-ignore
     queryKey: getQueryKey(getPageQuery, variablesWithContext),
     queryFn: () =>
-    getShopifyGraphQL(
-      // TODO: Change to getPageImagesQuery to retrieve smaller data response
-      getPageQuery,
-      variables
-    )
+      getShopifyGraphQL(
+        // TODO: Change to getPageImagesQuery to retrieve smaller data response
+        getPageQuery,
+        variables,
+      ),
   });
 
   const dehydratedState = dehydrate(shopifyQueryClient);

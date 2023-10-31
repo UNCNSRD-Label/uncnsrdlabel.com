@@ -1,4 +1,4 @@
-'use server';
+"use server";
 
 import { state$ } from "@/lib/store";
 // import { ProductAdditionalDetails } from "@/components/product/additional-details";
@@ -26,7 +26,10 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const lang = state$.lang.get();
 
-  const productDetailsFragmentRef = await getProductDetailsByHandleHandler({ handle }, lang);
+  const productDetailsFragmentRef = await getProductDetailsByHandleHandler(
+    { handle },
+    lang,
+  );
 
   const product = getFragmentData(
     productDetailsFragment,
@@ -34,7 +37,7 @@ export async function generateMetadata({
   );
 
   const featuredImage = getFragmentData(imageFragment, product.featuredImage);
-  
+
   const seo = getFragmentData(seoFragment, product.seo);
 
   if (!product) return notFound();
@@ -68,24 +71,27 @@ export async function generateMetadata({
   };
 }
 
-export default async function ProductPage({
-  params: { handle },
-}: PageProps) {
+export default async function ProductPage({ params: { handle } }: PageProps) {
   // TODO: Remove getFragmentData from all server.<method> calls
-  const productDetailsFragmentRef = await getProductDetailsByHandleHandler({ handle });
+  const productDetailsFragmentRef = await getProductDetailsByHandleHandler({
+    handle,
+  });
 
   if (!productDetailsFragmentRef) return notFound();
 
   return (
     <>
-      <Breadcrumb className="hidden my-6 lg:grid lg:grid-cols-12 [&>*]:lg:col-start-2 [&>*]:lg:col-end-10 relative z-20" productDetailsFragmentRef={productDetailsFragmentRef} />
-      <main className="min-h-[100dvh] mb-48 [&:has(+_aside)]:mb-0">
+      <Breadcrumb
+        className="relative z-20 my-6 hidden lg:grid lg:grid-cols-12 [&>*]:lg:col-start-2 [&>*]:lg:col-end-10"
+        productDetailsFragmentRef={productDetailsFragmentRef}
+      />
+      <main className="mb-48 min-h-[100dvh] [&:has(+_aside)]:mb-0">
         <Details productDetailsFragmentRef={productDetailsFragmentRef} />
         {/* <ProductAdditionalDetails productDetailsFragmentRef={productDetailsFragmentRef} /> */}
       </main>
       <Suspense fallback={<LoadingDots />}>
         <RelatedProducts
-          className="bg-white text-dark relative pb-48 pt-12 [contain:paint]"
+          className="text-dark relative bg-white pb-48 pt-12 [contain:paint]"
           productDetailsFragmentRef={productDetailsFragmentRef}
         />
       </Suspense>

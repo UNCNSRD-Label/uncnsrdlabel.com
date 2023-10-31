@@ -1,34 +1,34 @@
-'use server';
+"use server";
 
 import { Image } from "@/components/media/image";
 import { state$ } from "@/lib/store";
-import { getCollectionProductsHandler, getFragmentData, getPageHandler, imageFragment, pageFragment, productBasicFragment } from "@uncnsrdlabel/graphql-shopify-storefront/server";
+import {
+  getCollectionProductsHandler,
+  getFragmentData,
+  getPageHandler,
+  imageFragment,
+  pageFragment,
+  productBasicFragment,
+} from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-
-export async function Carousel({
-  handle,
-}: {
-  handle: string;
-}) {
+export async function Carousel({ handle }: { handle: string }) {
   const lang = state$.lang.get();
 
-  const pageFragmentRef = await getPageHandler(
-    { handle }, lang
-  );
+  const pageFragmentRef = await getPageHandler({ handle }, lang);
 
-  const page = getFragmentData(
-    pageFragment,
-    pageFragmentRef,
-  );
+  const page = getFragmentData(pageFragment, pageFragmentRef);
 
   if (!page) return notFound();
 
   // Collections that start with `hidden-*` are hidden from the search page.
-  const collectionProducts = await getCollectionProductsHandler({
-    handle: "hidden-homepage-carousel",
-  }, lang);
+  const collectionProducts = await getCollectionProductsHandler(
+    {
+      handle: "hidden-homepage-carousel",
+    },
+    lang,
+  );
 
   const products = collectionProducts.edges.map((edge) => edge?.node);
 
@@ -38,11 +38,17 @@ export async function Carousel({
 
   return (
     <div className="relative w-full overflow-hidden">
-      <div className="flex animate-carousel">
+      <div className="animate-carousel flex">
         {products.map((productFragmentRef, index) => {
-          const product = getFragmentData(productBasicFragment, productFragmentRef);
+          const product = getFragmentData(
+            productBasicFragment,
+            productFragmentRef,
+          );
 
-          const featuredImage = getFragmentData(imageFragment, product.featuredImage);
+          const featuredImage = getFragmentData(
+            imageFragment,
+            product.featuredImage,
+          );
 
           return (
             <Link
@@ -65,7 +71,7 @@ export async function Carousel({
                 </div>
               </div>
             </Link>
-          )
+          );
         })}
       </div>
     </div>

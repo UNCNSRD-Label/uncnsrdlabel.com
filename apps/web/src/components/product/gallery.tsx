@@ -5,7 +5,7 @@ import { ArrowLeftIcon } from "@/components/icons/arrow-left";
 import {
   FragmentType,
   getFragmentData,
-  imageFragment
+  imageFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront/client";
 import { cn } from "@uncnsrdlabel/lib";
 import { useState } from "react";
@@ -54,7 +54,7 @@ export function Gallery({
         )}
 
         {images.length > 1 ? (
-          <div className="absolute bottom-10 right-10 flex h-12 flex-row border border-white text-light shadow-xl dark:border-black dark:text-dark">
+          <div className="text-light dark:text-dark absolute bottom-10 right-10 flex h-12 flex-row border border-white shadow-xl dark:border-black">
             <button
               aria-label="Previous product image"
               className={cn(

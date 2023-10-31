@@ -1,7 +1,4 @@
-import {
-  ProductCollectionSortKeys,
-  ProductSortKeys,
-} from "./codegen/graphql";
+import { ProductCollectionSortKeys, ProductSortKeys } from "./codegen/graphql";
 
 export type SortFilterItem = {
   title: string;
@@ -90,4 +87,4 @@ export const productSorting: ProductSortFilterItem[] = [
 export const domain = `https://${process.env
   .NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!}`;
 
-  export const endpoint = `${domain}/api/${process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_API_VERSION}/graphql.json`;
+export const endpoint = `${domain}/api/${process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_API_VERSION}/graphql.json`;

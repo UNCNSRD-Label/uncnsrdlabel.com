@@ -1,4 +1,4 @@
-'use server';
+"use server";
 
 import { Image } from "@/components/media/image";
 import { state$ } from "@/lib/store";
@@ -20,14 +20,9 @@ export async function HorizontalScroll({
 }) {
   const lang = state$.lang.get();
 
-  const pageFragmentRef = await getPageHandler(
-    { handle }, lang,
-  );
+  const pageFragmentRef = await getPageHandler({ handle }, lang);
 
-  const page = getFragmentData(
-    pageFragment,
-    pageFragmentRef,
-  );
+  const page = getFragmentData(pageFragment, pageFragmentRef);
 
   if (!page) return notFound();
 

@@ -1,4 +1,4 @@
-'use server';
+"use server";
 
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
@@ -9,7 +9,7 @@ import {
   getFragmentData,
   productCollectionDefaultSort,
   productCollectionSorting,
-  seoFragment
+  seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -23,10 +23,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const collectionFragmentRef = await getCollectionHandler({ handle });
 
-  const collection = getFragmentData(
-      collectionFragment,
-      collectionFragmentRef,
-    );
+  const collection = getFragmentData(collectionFragment, collectionFragmentRef);
 
   if (!collection) return notFound();
 

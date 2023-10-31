@@ -10,7 +10,7 @@ import {
   getPageQuery,
   pageFragment,
   useGetShopifyGraphQL,
-  videoFragment
+  videoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront/client";
 import { Suspense } from "react";
 
@@ -27,10 +27,13 @@ export function PageVideos({ handle, ...props }: { handle: string }) {
 
   if (!page) return null;
 
-  const mediaVideos = page?.mediaVideos?.references?.edges
-    .map((edge) => edge?.node);
+  const mediaVideos = page?.mediaVideos?.references?.edges.map(
+    (edge) => edge?.node,
+  );
 
-  const videos = mediaVideos?.filter((node) => node.__typename === "Video")  as unknown as FragmentType<typeof videoFragment>[];
+  const videos = mediaVideos?.filter(
+    (node) => node.__typename === "Video",
+  ) as unknown as FragmentType<typeof videoFragment>[];
 
   return (
     <Suspense fallback={<LoadingDots />}>

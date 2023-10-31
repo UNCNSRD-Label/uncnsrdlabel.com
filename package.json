@@ -2,7 +2,7 @@
   "devDependencies": {
     "@graphql-eslint/eslint-plugin": "^3.20.1",
     "@turbo/gen": "^1.10.16",
-    "@types/node": "^20.8.9",
+    "@types/node": "^20.8.10",
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "dotenv-cli": "^7.3.0",
     "eslint": "^8.52.0",

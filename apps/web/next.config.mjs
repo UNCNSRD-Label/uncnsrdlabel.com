@@ -25,7 +25,9 @@ const domains = [
   process.env.NEXT_PUBLIC_SITE_DOMAIN_WEB, // localhost, production or preview
   process.env.NEXT_PUBLIC_SITE_DOMAIN_WEB_PRODUCTION, // production for anything directly linked to the web app
   process.env.NEXT_PUBLIC_VERCEL_URL,
-].filter(onlyUnique).join(" ");
+]
+  .filter(onlyUnique)
+  .join(" ");
 
 const contentSecurityPolicyComponents = [
   `base-uri 'self'`,

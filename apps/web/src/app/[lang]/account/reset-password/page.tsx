@@ -8,7 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function AccountPasswordResetPage() {
-  return (
-    <AccountPasswordResetForm className="max-w-lg" />
-  );
+  return <AccountPasswordResetForm className="max-w-lg" />;
 }
