@@ -71,7 +71,7 @@ export function Details({
         />
 
         <div
-          className="relative z-10 col-span-full h-full overflow-hidden sm:col-start-3 sm:col-end-11 md:h-[80dvh] lg:-top-12 lg:col-start-7 lg:col-end-12 lg:rounded-xl lg:bg-white/90 lg:shadow lg:backdrop-blur lg:backdrop-saturate-50 xl:col-start-9"
+          className="relative z-10 col-span-full h-full min-h-[100dvh] sm:min-h-fit overflow-hidden sm:col-start-3 sm:col-end-11 md:h-[80dvh] lg:-top-12 lg:col-start-7 lg:col-end-12 lg:rounded-xl lg:bg-white/90 lg:shadow lg:backdrop-blur lg:backdrop-saturate-50 xl:col-start-9"
           id="details"
         >
           <div className="absolute inset-0 grid overflow-y-auto p-6 pt-20 sm:pt-6 lg:pb-20">

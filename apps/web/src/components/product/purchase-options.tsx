@@ -54,7 +54,6 @@ export const PurchaseOptions = forwardRef<
 
       <VariantSelector
         options={product.options}
-        productDetailsFragmentRef={productDetailsFragmentRef}
         variants={variants}
       />
 
