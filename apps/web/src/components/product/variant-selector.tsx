@@ -1,15 +1,9 @@
 "use client";
 
-import { ProductProvider } from "@shopify/hydrogen-react";
 import {
   ProductOption,
   ProductVariant,
 } from "@shopify/hydrogen/storefront-api-types";
-import {
-  FragmentType,
-  getFragmentData,
-  productDetailsFragment,
-} from "@uncnsrdlabel/graphql-shopify-storefront/client";
 import { cn, createUrl } from "@uncnsrdlabel/lib";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { PartialDeep } from "type-fest";
@@ -22,11 +16,9 @@ type Combination = {
 
 export function VariantSelector({
   options,
-  productDetailsFragmentRef,
   variants,
 }: {
   options: ProductOption[];
-  productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
   variants: PartialDeep<
     ProductVariant,
     {
@@ -45,11 +37,6 @@ export function VariantSelector({
     return null;
   }
 
-  const product = getFragmentData(
-    productDetailsFragment,
-    productDetailsFragmentRef,
-  );
-
   const combinations: Combination[] = variants.map((variant, index) => ({
     id: variant.id ?? `variant-${index}`,
     availableForSale: !!variant.availableForSale,
@@ -64,7 +51,7 @@ export function VariantSelector({
   }));
 
   return (
-    <ProductProvider data={product}>
+    <>
       {options.map((option) => (
         <dl className="mb-3 md:mb-6" key={option.id}>
           <dt className="mb-2 text-sm uppercase">{option.name}</dt>
@@ -142,6 +129,6 @@ export function VariantSelector({
           </dd>
         </dl>
       ))}
-    </ProductProvider>
+    </>
   );
 }
