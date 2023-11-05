@@ -1,5 +1,6 @@
 import { addItem } from "@/components/cart/actions";
 import { AddToCart } from "@/components/cart/add-to-cart";
+import { LoadingDots } from "@/components/loading/dots";
 import { Price } from "@/components/price";
 import { VariantSelector } from "@/components/product/variant-selector";
 import { Prose } from "@/components/prose";
@@ -11,7 +12,7 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { FragmentType } from "@uncnsrdlabel/graphql-shopify-storefront/client";
 import { cn } from "@uncnsrdlabel/lib";
-import { forwardRef } from "react";
+import { Suspense, forwardRef } from "react";
 
 type PurchaseOptionsRef = HTMLDivElement;
 
@@ -52,25 +53,28 @@ export const PurchaseOptions = forwardRef<
         />
       </div>
 
-      <VariantSelector
-        options={product.options}
-        variants={variants}
-      />
+      <Suspense fallback={<LoadingDots />}>
+        <VariantSelector options={product.options} variants={variants} />
+      </Suspense>
 
-      {product.descriptionHtml ? (
-        <Prose
-          className="mb-6 text-xs leading-tight"
-          html={product.descriptionHtml}
+      <Suspense fallback={<LoadingDots />}>
+        {product.descriptionHtml ? (
+          <Prose
+            className="mb-6 text-xs leading-tight"
+            html={product.descriptionHtml}
+          />
+        ) : null}
+      </Suspense>
+
+      <Suspense fallback={<LoadingDots />}>
+        <AddToCart
+          addItem={addItem}
+          availableForSale={product.availableForSale}
+          className="btn btn-base btn-primary btn-bg relative w-full justify-center py-4 text-sm"
+          options={product.options}
+          variants={variants}
         />
-      ) : null}
-
-      <AddToCart
-        addItem={addItem}
-        availableForSale={product.availableForSale}
-        className="btn btn-base btn-primary btn-bg relative w-full justify-center py-4 text-sm"
-        options={product.options}
-        variants={variants}
-      />
+      </Suspense>
     </>
   );
 });

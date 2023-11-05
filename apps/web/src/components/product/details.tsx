@@ -1,5 +1,6 @@
 import { ProductDetailsTabs } from "@/components/product/details-tabs";
 // import { NavigationMenu } from "@/components/product/navigation-menu";
+import { LoadingDots } from "@/components/loading/dots";
 import { PurchaseOptions } from "@/components/product/purchase-options";
 import {
   FragmentType,
@@ -9,6 +10,7 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront/client";
 // import { useRef } from "react";
 // import { MetafieldMapper } from "@/components/product/metafield-mapper";
+import { Suspense } from "react";
 import { Product as ProductSchema, WithContext } from "schema-dts";
 import { ProductMedia } from "./media";
 
@@ -71,7 +73,7 @@ export function Details({
         />
 
         <div
-          className="relative z-10 col-span-full h-full min-h-[100dvh] sm:min-h-fit overflow-hidden sm:col-start-3 sm:col-end-11 md:h-[80dvh] lg:-top-12 lg:col-start-7 lg:col-end-12 lg:rounded-xl lg:bg-white/90 lg:shadow lg:backdrop-blur lg:backdrop-saturate-50 xl:col-start-9"
+          className="relative z-10 col-span-full h-full min-h-[100dvh] overflow-hidden sm:col-start-3 sm:col-end-11 sm:min-h-fit md:h-[80dvh] lg:-top-12 lg:col-start-7 lg:col-end-12 lg:rounded-xl lg:bg-white/90 lg:shadow lg:backdrop-blur lg:backdrop-saturate-50 xl:col-start-9"
           id="details"
         >
           <div className="absolute inset-0 grid overflow-y-auto p-6 pt-20 sm:pt-6 lg:pb-20">
@@ -79,12 +81,14 @@ export function Details({
               // ref={sectionElementRefs[1]}
               productDetailsFragmentRef={productDetailsFragmentRef}
             />
-            <ProductDetailsTabs
-              className="mt-8"
-              excludedKeys={["complementary_products", "related_products"]}
-              // MetafieldMapper={MetafieldMapper}
-              productDetailsFragmentRef={productDetailsFragmentRef}
-            />
+            <Suspense fallback={<LoadingDots />}>
+              <ProductDetailsTabs
+                className="mt-8"
+                excludedKeys={["complementary_products", "related_products"]}
+                // MetafieldMapper={MetafieldMapper}
+                productDetailsFragmentRef={productDetailsFragmentRef}
+              />
+            </Suspense>
           </div>
           <div className="pointer-events-none absolute inset-0 z-20 hidden bg-gradient-to-t from-white to-transparent to-15% lg:block"></div>
         </div>
