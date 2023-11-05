@@ -108,6 +108,7 @@ export function Article(props: ArticleProps) {
     >
       {page?.body && (
         <Prose
+          className={cn("prose-thead:border-hotPink prose-tr:border-hotPink")}
           html={page.body}
           style={{
             gridArea: "body",

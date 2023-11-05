@@ -60,7 +60,7 @@ export const PurchaseOptions = forwardRef<
       <Suspense fallback={<LoadingDots />}>
         {product.descriptionHtml ? (
           <Prose
-            className="mb-6 text-xs leading-tight"
+            className="mb-6 text-xs leading-tight prose-thead:border-hotPink prose-tr:border-hotPink"
             html={product.descriptionHtml}
           />
         ) : null}

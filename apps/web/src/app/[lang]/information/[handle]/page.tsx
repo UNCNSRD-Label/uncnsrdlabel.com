@@ -116,7 +116,7 @@ export default async function InformationPage({
           } */}
       </nav>
       <article className="mb-48">
-        <Prose className="prose-sm mb-8 grid" html={policy.body as string} />
+        <Prose className="prose-sm mb-8 grid prose-thead:border-hotPink prose-tr:border-hotPink" html={policy.body as string} />
       </article>
     </>
   );
