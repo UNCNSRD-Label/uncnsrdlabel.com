@@ -136,7 +136,7 @@ export function PageSectionModule({
 
               element = (
                 <Prose
-                  className={cn("max-w-full", `prose-${textSize}`, {
+                  className={cn("max-w-full prose-thead:border-hotPink prose-tr:border-hotPink", `prose-${textSize}`, {
                     "prose-hotGreen": textColor === "hotGreen",
                     "prose-hotOrange": textColor === "hotOrange",
                     "prose-hotPink": textColor === "hotPink",
