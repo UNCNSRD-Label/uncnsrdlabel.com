@@ -76,7 +76,7 @@ export function Details({
           className="relative z-10 col-span-full h-full min-h-[100dvh] overflow-hidden sm:col-start-3 sm:col-end-11 sm:min-h-fit md:h-[80dvh] lg:-top-12 lg:col-start-7 lg:col-end-12 lg:rounded-xl lg:bg-white/90 lg:shadow lg:backdrop-blur lg:backdrop-saturate-50 xl:col-start-9"
           id="details"
         >
-          <div className="absolute inset-0 grid overflow-y-auto p-6 pt-20 sm:pt-6 lg:pb-20">
+          <div className="absolute inset-0 grid overflow-y-auto p-6 pt-20 sm:pt-6 lg:pb-20 content-start">
             <PurchaseOptions
               // ref={sectionElementRefs[1]}
               productDetailsFragmentRef={productDetailsFragmentRef}
