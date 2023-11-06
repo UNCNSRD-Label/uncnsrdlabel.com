@@ -12,7 +12,7 @@ import {
   productDetailsFragment,
   seoFragment
 } from "@uncnsrdlabel/graphql-shopify-storefront/server";
-import { HIDDEN_PRODUCT_TAG } from "@uncnsrdlabel/lib";
+import { HIDDEN_PRODUCT_TAG, SITE_DOMAIN_WEB } from "@uncnsrdlabel/lib";
 import { type Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
@@ -51,6 +51,11 @@ export async function generateMetadata({
     },
     title: seo.title || product.title,
     description: seo.description || product.description,
+    openGraph: {
+      description: seo.description || product.description,
+      title: seo.title || product.title,
+      url: new URL("/", `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}/${path}`)
+    },
     robots: {
       index: hide,
       follow: hide,

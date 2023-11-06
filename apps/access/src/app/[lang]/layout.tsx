@@ -59,6 +59,11 @@ export async function generateMetadata({
       url: false,
     },
     manifest: "/manifest.json",
+    openGraph: {
+      description:
+      "Discover UNCNSRD, a brand for the unapologetic rebellious soul. Explore our latest swimwear collection drawing inspiration from timeless cuts & nostalgic eras.",
+      title: NEXT_PUBLIC_SITE_NAME,
+    },
     robots: {
       follow: true,
       index: true,

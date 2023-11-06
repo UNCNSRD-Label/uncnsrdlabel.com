@@ -2,6 +2,7 @@
 
 import { LoadingSkeleton } from "@/components/loading/skeleton";
 import { Prose } from "@/components/prose";
+import { languagesArray } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";
 import {
@@ -11,7 +12,7 @@ import {
   shopPolicyFragment,
   type PolicyName,
 } from "@uncnsrdlabel/graphql-shopify-storefront/server";
-import { cn } from "@uncnsrdlabel/lib";
+import { SITE_DOMAIN_WEB, cn } from "@uncnsrdlabel/lib";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -32,8 +33,18 @@ export async function generateMetadata({
 
   const policy = getFragmentData(shopPolicyFragment, shopPolicyFragmentRef);
 
+  const path = `/policies/${handle}`;
+
   return {
+    alternates: {
+      canonical: path,
+      languages: Object.fromEntries(languagesArray(path)),
+    },
     title: policy.title,
+    openGraph: {
+      title: policy.title,
+      url: new URL("/", `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}/${path}`)
+    },
   };
 }
 
