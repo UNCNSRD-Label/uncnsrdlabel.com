@@ -34,16 +34,6 @@ export async function generateMetadata({
 
   return {
     title: policy.title,
-    openGraph: {
-      images: [
-        {
-          url: `/api/og?title=${encodeURIComponent(policy.title)}`,
-          width: 1200,
-          height: 630,
-        },
-      ],
-      type: "article",
-    },
   };
 }
 

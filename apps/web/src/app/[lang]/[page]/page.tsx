@@ -34,18 +34,6 @@ export async function generateMetadata({
   return {
     title: seo?.title || page.title,
     description: seo?.description || page.bodySummary,
-    openGraph: {
-      images: [
-        {
-          url: `/api/og?title=${encodeURIComponent(page.title)}`,
-          width: 1200,
-          height: 630,
-        },
-      ],
-      publishedTime: page.createdAt,
-      modifiedTime: page.updatedAt,
-      type: "article",
-    },
   };
 }
 
