@@ -1,37 +1,48 @@
-import { LogotypeIcon } from "@/components/icons/logotype";
+import { ResultOf } from "@graphql-typed-document-node/core";
+import { MoneyV2 } from "@shopify/hydrogen/storefront-api-types";
+import { imageFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { ImageResponse } from "next/og";
- 
-export const alt = 'UNCNSRD logo'
-export const contentType = 'image/png'
-export const size = {
-  width: 1200,
-  height: 630,
-}
+
+export const alt = "UNCNSRD logo";
 
 export type Props = {
-  title: string;
+  description?: string;
+  image?: ResultOf<typeof imageFragment> | null;
+  price?: MoneyV2;
+  size?: {
+    height: number;
+    width: number;
+  };
+  title?: string;
 };
 
 export async function OpengraphImageResponse({
-  title = process.env.SITE_NAME!,
+  description,
+  image,
+  price,
+  size,
+  title,
 }: Props): Promise<ImageResponse> {
+console.log({image})
   return new ImageResponse(
     (
-      <div tw="flex h-full w-full flex-col items-center justify-center bg-hotOrange">
-        <LogotypeIcon style={{
-          fontSize: 48,
-          background: 'white',
-          width: '100%',
-          height: 'auto',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }} />
-        <p tw="mt-12 text-6xl font-bold">{title}</p>
+      <div tw="bg-black flex relative h-full w-full">
+        {image && <img tw="absolute inset-0 h-full w-full object-cover" alt={image.altText ?? title ?? description ?? "Product image"} height={size?.height} width={size?.width} src={image.url} />}
+        <div tw="flex flex-col relative h-full w-full items-start justify-end p-8 text-white">
+          {title && <h1 tw="mb-0">{title}</h1>}
+          {description && <p tw="mb-0 text-sm">{description}</p>}
+          {price && (
+            <p tw="mb-0 text-lg">{`${new Intl.NumberFormat(undefined, {
+              style: "currency",
+              currency: price.currencyCode,
+              currencyDisplay: "narrowSymbol",
+            }).format(parseFloat(price.amount))}`}</p>
+          )}
+        </div>
       </div>
     ),
     {
       ...size,
-    }
+    },
   );
 }

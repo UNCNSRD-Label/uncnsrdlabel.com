@@ -1,7 +1,7 @@
 import { graphql } from "../codegen/index";
 
 export const productMetafieldFragment = graphql(/* GraphQL */ `
-  fragment productMetafields on Metafield {
+  fragment productMetafield on Metafield {
     description
     id
     key
