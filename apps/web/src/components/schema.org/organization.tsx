@@ -11,7 +11,7 @@ export const Organization = () => {
         "@type": "Organization",
         name: NEXT_PUBLIC_SITE_NAME,
         url: `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}`,
-        logo: `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}/opengraph-image`,
+        logo: `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}/opengraph-image.jpg`,
         sameAs: [
           "https://tiktok.com/@uncnsrdlabel/",
           "https://www.instagram.com/uncnsrdlabel/",

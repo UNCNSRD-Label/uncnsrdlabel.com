@@ -66,7 +66,19 @@ export const productDetailsFragment = graphql(/* GraphQL */ `
         }
       ]
     ) {
-      ...productMetafields
+      ...productMetafield
+    }
+    openGraphImage: metafield(namespace: "custom", key: "open_graph_image") {
+      __typename
+      reference {
+        ... on MediaImage {
+          __typename
+          id
+          image {
+            ...image
+          }
+        }
+      }
     }
     options {
       id

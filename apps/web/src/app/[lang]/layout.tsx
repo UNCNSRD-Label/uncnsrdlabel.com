@@ -4,6 +4,7 @@ import { Progress } from "@/components/layout/progress/index";
 import { LoadingDots } from "@/components/loading/dots";
 import { Organization } from "@/components/schema.org/organization";
 import { getDictionary } from "@/lib/dictionary";
+import { languagesArray } from "@/lib/i18n";
 import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";
@@ -29,17 +30,7 @@ const {
   NEXT_PUBLIC_SITE_NAME = "UNCNSRD",
 } = process.env;
 
-const languagesArray = locales.map((locale) => [
-  getIETFLanguageTagFromlocaleTag(locale),
-  [
-    {
-      title: getIETFLanguageTagFromlocaleTag(locale),
-      url: new URL(
-        `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}/${locale}`,
-      ),
-    },
-  ],
-]);
+
 
 export async function generateMetadata({
   params: { lang },
@@ -49,10 +40,8 @@ export async function generateMetadata({
 
   return {
     alternates: {
-      canonical: new URL(
-        `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}`,
-      ),
-      languages: Object.fromEntries(languagesArray),
+      canonical: "/",
+      languages: Object.fromEntries(languagesArray("/")),
     },
     applicationName: NEXT_PUBLIC_SITE_NAME,
     appleWebApp: {

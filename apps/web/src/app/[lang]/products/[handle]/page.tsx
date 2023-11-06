@@ -4,13 +4,13 @@ import { state$ } from "@/lib/store";
 // import { ProductAdditionalDetails } from "@/components/product/additional-details";
 import { LoadingDots } from "@/components/loading/dots";
 import { Details } from "@/components/product/details";
+import { languagesArray } from "@/lib/i18n";
 import { type PageProps } from "@/types/next";
 import {
   getFragmentData,
   getProductDetailsByHandleHandler,
-  imageFragment,
   productDetailsFragment,
-  seoFragment,
+  seoFragment
 } from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import { HIDDEN_PRODUCT_TAG } from "@uncnsrdlabel/lib";
 import { type Metadata } from "next";
@@ -36,16 +36,19 @@ export async function generateMetadata({
     productDetailsFragmentRef,
   );
 
-  const featuredImage = getFragmentData(imageFragment, product.featuredImage);
-
   const seo = getFragmentData(seoFragment, product.seo);
 
   if (!product) return notFound();
 
-  const { url, width, height, altText: alt } = featuredImage || {};
   const hide = !product.tags.includes(HIDDEN_PRODUCT_TAG);
 
+  const path = `/products/${handle}`;
+
   return {
+    alternates: {
+      canonical: path,
+      languages: Object.fromEntries(languagesArray(path)),
+    },
     title: seo.title || product.title,
     description: seo.description || product.description,
     robots: {
@@ -56,23 +59,10 @@ export async function generateMetadata({
         follow: hide,
       },
     },
-    openGraph: url
-      ? {
-          images: [
-            {
-              alt: alt || product.title,
-              height: height ?? undefined,
-              url,
-              width: width ?? undefined,
-            },
-          ],
-        }
-      : null,
   };
 }
 
 export default async function ProductPage({ params: { handle } }: PageProps) {
-  // TODO: Remove getFragmentData from all server.<method> calls
   const productDetailsFragmentRef = await getProductDetailsByHandleHandler({
     handle,
   });
