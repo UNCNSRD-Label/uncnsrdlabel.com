@@ -35,15 +35,6 @@ export async function generateMetadata({
       seo?.description ||
       collection.description ||
       `${collection.title} products`,
-    openGraph: {
-      images: [
-        {
-          url: `/api/og?title=${encodeURIComponent(collection.title)}`,
-          width: 1200,
-          height: 630,
-        },
-      ],
-    },
   };
 }
 

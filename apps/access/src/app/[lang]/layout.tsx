@@ -39,9 +39,7 @@ export async function generateMetadata({
 }: LayoutProps): Promise<Metadata> {
   return {
     alternates: {
-      canonical: new URL(
-        `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}`,
-      ),
+      canonical: "/",
       languages: Object.fromEntries(languagesArray),
     },
     applicationName: NEXT_PUBLIC_SITE_NAME,
@@ -50,13 +48,6 @@ export async function generateMetadata({
       title: NEXT_PUBLIC_SITE_NAME,
       // statusBarStyle: "default",
       statusBarStyle: "black-translucent",
-      startupImage: [
-        "/assets/startup/apple-touch-startup-image-768x1004.png",
-        {
-          url: "/assets/startup/apple-touch-startup-image-1536x2008.png",
-          media: "(device-width: 768px) and (device-height: 1024px)",
-        },
-      ],
     },
     description:
       "Discover UNCNSRD, a brand for the unapologetic rebellious soul. Explore our latest swimwear collection drawing inspiration from timeless cuts & nostalgic eras.",
@@ -67,9 +58,6 @@ export async function generateMetadata({
       email: false,
       url: false,
     },
-    metadataBase: new URL(
-      `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}`,
-    ),
     manifest: "/manifest.json",
     robots: {
       follow: true,

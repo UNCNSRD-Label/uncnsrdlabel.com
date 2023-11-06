@@ -10,11 +10,10 @@ import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";
 import { type LayoutProps } from "@/types/next";
 import {
-  SITE_DOMAIN_WEB,
   cn,
   getIETFLanguageTagFromlocaleTag,
   getLocaleObjectFromIETFLanguageTag,
-  locales,
+  locales
 } from "@uncnsrdlabel/lib";
 import { AppProviders } from "@uncnsrdlabel/providers";
 import { config } from "@uncnsrdlabel/tailwind-config";
@@ -29,8 +28,6 @@ const {
   TWITTER_SITE,
   NEXT_PUBLIC_SITE_NAME = "UNCNSRD",
 } = process.env;
-
-
 
 export async function generateMetadata({
   params: { lang },
@@ -231,17 +228,14 @@ export async function generateMetadata({
       url: false,
     },
     keywords: [
-      intlKeywords.formatMessage({ id: "bikini" }),
-      intlKeywords.formatMessage({ id: "swimsuit" }),
-      intlKeywords.formatMessage({ id: "swimwear" }),
       intlKeywords.formatMessage({ id: "beachwear" }),
+      intlKeywords.formatMessage({ id: "bikini" }),
+      intlKeywords.formatMessage({ id: "boots" }),
       intlKeywords.formatMessage({ id: "sarong" }),
       intlKeywords.formatMessage({ id: "scarf" }),
-      intlKeywords.formatMessage({ id: "boots" }),
+      intlKeywords.formatMessage({ id: "swimsuit" }),
+      intlKeywords.formatMessage({ id: "swimwear" }),
     ],
-    metadataBase: new URL(
-      `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}`,
-    ),
     manifest: "/manifest.json",
     robots: {
       follow: true,
