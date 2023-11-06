@@ -1,5 +1,12 @@
 import { LogotypeIcon } from "@/components/icons/logotype";
 import { ImageResponse } from "next/og";
+ 
+export const alt = 'UNCNSRD logo'
+export const contentType = 'image/png'
+export const size = {
+  width: 1200,
+  height: 630,
+}
 
 export type Props = {
   title: string;
@@ -11,25 +18,20 @@ export async function OpengraphImageResponse({
   return new ImageResponse(
     (
       <div tw="flex h-full w-full flex-col items-center justify-center bg-hotOrange">
-        <div tw="flex flex-none items-center justify-center w-1/2 h-auto bg-hotPink">
-          <LogotypeIcon className="h-auto w-full" />
-        </div>
-        <p tw="mt-12 text-6xl font-bold text-green">{title}</p>
+        <LogotypeIcon style={{
+          fontSize: 48,
+          background: 'white',
+          width: '100%',
+          height: 'auto',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }} />
+        <p tw="mt-12 text-6xl font-bold">{title}</p>
       </div>
     ),
     {
-      width: 1200,
-      height: 630,
-      fonts: [
-        // {
-        //   name: "Inter",
-        //   data: await fetch(
-        //     new URL("../fonts/Inter-Bold.ttf", import.meta.url),
-        //   ).then((res) => res.arrayBuffer()),
-        //   style: "normal",
-        //   weight: 700,
-        // },
-      ],
-    },
+      ...size,
+    }
   );
 }
