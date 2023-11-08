@@ -110,6 +110,7 @@ export function PageSectionModule({
                               alt={image?.altText || ""}
                               className="h-full object-cover"
                               fill
+                              key={medium?.id}
                               sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
                               src={image?.url}
                             />
@@ -142,6 +143,7 @@ export function PageSectionModule({
                     "prose-hotPink": textColor === "hotPink",
                     "prose-white": textColor === "white",
                   })}
+                  key={field.key}
                   html={field.value}
                 />
               );

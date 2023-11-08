@@ -423,10 +423,22 @@
       @apply w-full overflow-x-auto;
 
       & tr {
-        @apply grid md:table-row;
-
-        & td {
+        & td,
+        & th {
           @apply p-2;
+
+          & p,
+          & span {
+            @apply break-all md:break-normal;
+          }
+        }
+      }
+
+      &.limit-mobile-columns {
+        & tr {
+          & :nth-child(n + 3 of td, th) {
+            display: none;
+          }
         }
       }
     }
