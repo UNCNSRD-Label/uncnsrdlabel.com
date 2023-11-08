@@ -2,13 +2,19 @@ declare module "@analytics/google-analytics" {
   import { AnalyticsPlugin } from "analytics";
 
   export interface GoogleAnalyticsConfig {
-    auth?: string;
     customScriptSrc?: string;
     dataLayerName?: string;
     debug?: boolean;
-    execution?: string;
-    preview?: string;
-    trackingId: string;
+    gtagConfig?: {
+      anonymize_ip?: boolean;
+      cookie_domain?: string;
+      cookie_expires?: number;
+      cookie_prefix?: string;
+      cookie_update?: string;
+      cookie_flags?: string;
+    };
+    gtagName?: string;
+    measurementIds: string[];
   }
 
   // eslint-disable-next-line no-unused-vars

@@ -1,6 +1,6 @@
 "use client";
 
-// import googleAnalytics from "@analytics/google-analytics";
+import googleAnalytics from "@analytics/google-analytics";
 import googleTagManager from "@analytics/google-tag-manager";
 import { Analytics } from "analytics";
 // import { eventValidation } from "analytics-plugin-event-validation";
@@ -41,9 +41,9 @@ export function AppAnalyticsProvider({ children }: PropsWithChildren) {
       //     "widget", // example app:widget_created
       //   ],
       // }),
-      // googleAnalytics({
-      //   trackingId: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_MEASUREMENT_ID!,
-      // }),
+      googleAnalytics({
+        measurementIds: [process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_MEASUREMENT_ID!],
+      }),
       googleTagManager({
         // userToken: cookies._shopify_y,
         containerId: process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID!,
