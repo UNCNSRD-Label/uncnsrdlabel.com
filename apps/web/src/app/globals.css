@@ -419,7 +419,7 @@
   }
 
   .prose {
-    @apply break-all md:break-normal;
+    @apply break-words md:break-normal;
 
     & table {
       @apply w-full overflow-x-auto;
