@@ -429,18 +429,14 @@
 
           & p,
           & span {
-            word-break: break-all;
+            @apply break-all md:break-normal;
           }
         }
       }
 
       &.limit-mobile-columns {
         & tr {
-          & td,
-          & th {
-          }
-
-          &:nth-child(n + 2 of td, th) {
+          & :nth-child(n + 3 of td, th) {
             display: none;
           }
         }
