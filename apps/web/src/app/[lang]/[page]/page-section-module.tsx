@@ -135,6 +135,13 @@ export function PageSectionModule({
                   (field) => field.key === "text_size",
                 )?.value ?? "default";
 
+              const hashtag_regexp = /(^|\s)(#[a-z\d-]+)/ig
+
+              const value = field.value.replaceAll(
+                hashtag_regexp,
+                "<span class=\"hashtag text-hotPink\">$2</span>"
+              );
+
               element = (
                 <Prose
                   className={cn("max-w-full prose-thead:border-hotPink prose-tr:border-hotPink whitespace-pre-line", `prose-${textSize}`, {
@@ -143,8 +150,8 @@ export function PageSectionModule({
                     "prose-hotPink": textColor === "hotPink",
                     "prose-white": textColor === "white",
                   })}
+                  html={value}
                   key={field.key}
-                  html={field.value}
                 />
               );
               break;
