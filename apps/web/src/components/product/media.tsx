@@ -149,7 +149,7 @@ export function ProductMedia({
               key={video.id}
               onClick={(event) => {
                 event.preventDefault();
-                console.log(videoElementRefs?.[index].current, video.id);
+
                 videoElementRefs?.[index].current?.scrollIntoView({
                   block: "start",
                   inline: "start",
