@@ -5,6 +5,7 @@ import { NavbarContent } from "@/components/layout/navbar/content";
 import { Navbar } from "@/components/layout/navbar/index";
 import { LoadingSkeleton } from "@/components/loading/skeleton";
 import { state$ } from "@/lib/store";
+import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   getFragmentData,
   getMenuHandler,
@@ -13,7 +14,6 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import { cn } from "@uncnsrdlabel/lib";
 import Image from "next/image";
-import Link from "next/link";
 import { Suspense, isValidElement } from "react";
 
 export default async function AccountLayout({

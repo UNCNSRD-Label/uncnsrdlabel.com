@@ -1,12 +1,12 @@
 "use client";
 
 import { ResultOf } from "@graphql-typed-document-node/core";
+import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   ProductCollectionSortFilterItem,
   collectionFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront/client";
 import { cn, createUrl } from "@uncnsrdlabel/lib";
-import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 

@@ -1,13 +1,13 @@
 import { Grid } from "@/components/grid";
 import { Tile } from "@/components/grid/tile";
 import { transitionDelays } from "@/lib/tailwind";
+import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   FragmentType,
   getFragmentData,
   productBasicFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { HIDDEN_PRODUCT_TAG } from "@uncnsrdlabel/lib";
-import Link from "next/link";
 
 export function ProductGridItems({
   limit = 128,

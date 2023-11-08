@@ -6,7 +6,7 @@ import { VideosHydrated } from "@/components/page/videos/videos-hydrated";
 import { getIntl } from "@/lib/i18n/server";
 import { themeColors } from "@/lib/tailwind";
 import { type PageProps } from "@/types/next";
-import Link from "next/link";
+import { Link } from "@uncnsrdlabel/components/atoms/link";
 
 // export const runtime = "edge";
 

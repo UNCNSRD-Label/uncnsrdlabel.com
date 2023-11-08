@@ -5,6 +5,7 @@ import { Prose } from "@/components/prose";
 import { languagesArray } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";
+import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   getFragmentData,
   getMenuHandler,
@@ -14,7 +15,6 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import { SITE_DOMAIN_WEB, cn } from "@uncnsrdlabel/lib";
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 

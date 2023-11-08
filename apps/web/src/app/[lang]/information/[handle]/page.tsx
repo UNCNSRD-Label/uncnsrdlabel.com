@@ -3,6 +3,7 @@
 import { Prose } from "@/components/prose";
 import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";
+import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   getFragmentData,
   getMenuHandler,
@@ -12,7 +13,6 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import { cn } from "@uncnsrdlabel/lib";
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 // export const runtime = "edge";

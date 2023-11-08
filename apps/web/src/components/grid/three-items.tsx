@@ -2,6 +2,7 @@
 
 import { Tile } from "@/components/grid/tile";
 import { state$ } from "@/lib/store";
+import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   FragmentType,
   getCollectionProductsHandler,
@@ -9,7 +10,6 @@ import {
   productBasicFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import { cn } from "@uncnsrdlabel/lib";
-import Link from "next/link";
 
 function ThreeItemGridItem({
   className,

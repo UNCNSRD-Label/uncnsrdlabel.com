@@ -2,6 +2,7 @@
 
 import { Image } from "@/components/media/image";
 import { state$ } from "@/lib/store";
+import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   getCollectionProductsHandler,
   getFragmentData,
@@ -10,7 +11,6 @@ import {
   pageFragment,
   productBasicFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront/server";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export async function Carousel({ handle }: { handle: string }) {

@@ -6,6 +6,7 @@ import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { ResultOf } from "@graphql-typed-document-node/core";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
+import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   cartFragment,
   getFragmentData,
@@ -14,7 +15,6 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { DEFAULT_OPTION, createUrl } from "@uncnsrdlabel/lib";
 import Image from "next/image";
-import Link from "next/link";
 import { use } from "react";
 
 type MerchandiseSearchParams = {
