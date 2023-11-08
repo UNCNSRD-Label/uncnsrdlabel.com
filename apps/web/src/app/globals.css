@@ -423,10 +423,26 @@
       @apply w-full overflow-x-auto;
 
       & tr {
-        @apply grid md:table-row;
-
-        & td {
+        & td,
+        & th {
           @apply p-2;
+
+          & p,
+          & span {
+            word-break: break-all;
+          }
+        }
+      }
+
+      &.limit-mobile-columns {
+        & tr {
+          & td,
+          & th {
+          }
+
+          &:nth-child(n + 2 of td, th) {
+            display: none;
+          }
         }
       }
     }
