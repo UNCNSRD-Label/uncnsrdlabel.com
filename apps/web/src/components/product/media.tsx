@@ -2,6 +2,7 @@
 
 import { Images } from "@/components/media/images";
 import { Videos } from "@/components/media/videos";
+import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   FragmentType,
   getFragmentData,
@@ -11,7 +12,6 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront/client";
 import { cn } from "@uncnsrdlabel/lib";
 import Image from "next/image";
-import Link from "next/link";
 import { useRef, type MutableRefObject } from "react";
 
 export function ProductMedia({

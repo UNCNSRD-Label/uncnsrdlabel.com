@@ -1,8 +1,8 @@
 "use client";
 
+import { Link } from "@uncnsrdlabel/components/atoms/link";
 import { buttonVariants } from "@uncnsrdlabel/components/ui/button";
 import { cn } from "@uncnsrdlabel/lib";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 interface SidebarNavProps extends React.HTMLAttributes<HTMLElement> {

@@ -7,6 +7,7 @@ import {
   type Metaobject,
   type MetaobjectField,
 } from "@shopify/hydrogen/storefront-api-types";
+import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   getFragmentData,
   getProductDetailsByIdQuery,
@@ -15,7 +16,6 @@ import {
   productMetafieldFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import { useGetInContextVariables } from "@uncnsrdlabel/lib/client";
-import Link from "next/link";
 import { ReactNode } from "react";
 import slugify from "slugify";
 import { JsonValue } from "type-fest";

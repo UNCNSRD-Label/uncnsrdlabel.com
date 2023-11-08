@@ -1,5 +1,6 @@
 import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
+import { Link } from "@uncnsrdlabel/components/atoms/link";
 import { cn } from "@uncnsrdlabel/lib";
 import { use } from "react";
 
@@ -15,7 +16,7 @@ export const Banner = ({ className }: { className?: string }) => {
         className,
       )}
     >
-      <a href="/shop">{intl.formatMessage({ id: "link" })}</a>
+      <Link href="/shop">{intl.formatMessage({ id: "link" })}</Link>
     </div>
   );
 };

@@ -3,8 +3,8 @@
 import { LogotypeIcon } from "@/components/icons/logotype";
 import * as AccessibleIcon from "@radix-ui/react-accessible-icon";
 import { useIntersectionObserver } from "@react-hookz/web";
+import { Link } from "@uncnsrdlabel/components/atoms/link";
 import { cn } from "@uncnsrdlabel/lib";
-import Link from "next/link";
 import { useRef } from "react";
 
 type Props = { blend?: boolean; className?: string; fill?: "dark" | "light" };

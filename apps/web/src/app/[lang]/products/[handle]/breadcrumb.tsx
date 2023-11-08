@@ -1,3 +1,4 @@
+import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   BreadcrumbItem,
   BreadcrumbLink,
@@ -8,7 +9,6 @@ import {
   getFragmentData,
   productDetailsFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import Link from "next/link";
 
 export function Breadcrumb({
   className,

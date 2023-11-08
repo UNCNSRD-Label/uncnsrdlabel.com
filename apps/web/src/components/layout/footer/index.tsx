@@ -5,8 +5,8 @@ import { LogotypeIcon } from "@/components/icons/logotype";
 import { SignUp } from "@/components/sign-up";
 import { SocialMenu } from "@/components/social-menu";
 import { themeColors } from "@/lib/tailwind";
+import { Link } from "@uncnsrdlabel/components/atoms/link";
 import { getMenuHandler } from "@uncnsrdlabel/graphql-shopify-storefront/server";
-import Link from "next/link";
 
 const { NEXT_PUBLIC_SITE_NAME } = process.env;
 
@@ -62,14 +62,14 @@ export async function Footer() {
                     <dt className="text-sm uppercase">Follow Us</dt>
                     {followUsMenu.items.map((item, index) => (
                       <dd key={item.title || index}>
-                        <a
+                        <Link
                           href={item.url ?? "#"}
                           className={linkClassName}
                           target="_blank"
                           rel="noopener noreferrer"
                         >
                           {item.title}
-                        </a>
+                        </Link>
                       </dd>
                     ))}
                   </dl>

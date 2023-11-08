@@ -1,7 +1,7 @@
 "use client";
 
 import { Dialog, Transition } from "@headlessui/react";
-import Link from "next/link";
+import { Link } from "@uncnsrdlabel/components/atoms/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
 
