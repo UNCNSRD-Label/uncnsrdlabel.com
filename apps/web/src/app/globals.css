@@ -419,6 +419,8 @@
   }
 
   .prose {
+    @apply break-all md:break-normal;
+
     & table {
       @apply w-full overflow-x-auto;
 
@@ -426,11 +428,6 @@
         & td,
         & th {
           @apply p-2;
-
-          & p,
-          & span {
-            @apply break-all md:break-normal;
-          }
         }
       }
 
