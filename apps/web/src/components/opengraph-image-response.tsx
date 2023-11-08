@@ -23,7 +23,6 @@ export async function OpengraphImageResponse({
   size,
   title,
 }: Props): Promise<ImageResponse> {
-console.log({image})
   return new ImageResponse(
     (
       <div tw="bg-black flex relative h-full w-full">
