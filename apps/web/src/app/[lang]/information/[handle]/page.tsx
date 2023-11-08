@@ -83,7 +83,6 @@ export default async function InformationPage({
         {/* {customerCare.fields.map((field) => {
           if (field.__typename === "MetaobjectField") {
             if (field.reference?.__typename === "MediaImage") {
-              console.log(field.reference);
               const image = getFragmentData(
                 imageFragment,
                 field.reference.image,
