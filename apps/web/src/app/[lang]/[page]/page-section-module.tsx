@@ -144,7 +144,7 @@ export function PageSectionModule({
                     "prose-white": textColor === "white",
                   })}
                   key={field.key}
-                  markdown={field.value}
+                  html={field.value}
                 />
               );
               break;
