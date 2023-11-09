@@ -89,6 +89,7 @@ export function klaviyo(config: KlaviyoConfig): KlaviyoAnalyticsPlugin {
       // console.log("klaviyo:trackEnd", { payload, config, instance });
 
       const customer_properties = {
+        // TODO: Remove hard-coded email address
         $email: "abraham.lincoln@klaviyo.com",
       };
 

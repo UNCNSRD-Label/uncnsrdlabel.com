@@ -88,7 +88,7 @@ export function AddToCart({
   availableForSale: boolean;
   className?: string;
   options: ProductOption[];
-  variants: Pick<ProductVariant, "id" | "selectedOptions">[];
+  variants: ProductVariantSubset[];
 }) {
   const [message, formAction] = useFormState(addItem, null);
   const searchParams = useSearchParams();
