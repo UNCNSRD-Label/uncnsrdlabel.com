@@ -1,4 +1,5 @@
 import { AddToCart } from "@/components/cart/add-to-cart";
+import { AddToCartShell } from "@/components/cart/add-to-cart-shell";
 import { LoadingDots } from "@/components/loading/dots";
 import { Price } from "@/components/price";
 import { VariantSelector } from "@/components/product/variant-selector";
@@ -65,7 +66,7 @@ export const PurchaseOptions = forwardRef<
         ) : null}
       </Suspense>
 
-      <Suspense fallback={<LoadingDots />}>
+      <Suspense fallback={<AddToCartShell />}>
         <AddToCart
           availableForSale={product.availableForSale}
           options={product.options}

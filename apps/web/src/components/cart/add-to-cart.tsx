@@ -12,7 +12,7 @@ import { cn } from "@uncnsrdlabel/lib";
 import { useSearchParams } from "next/navigation";
 import { useFormState, useFormStatus } from "react-dom";
 
-function SubmitButton({
+export function SubmitButton({
   availableForSale,
   selectedVariantId,
 }: {
@@ -112,9 +112,9 @@ export function AddToCart({
         availableForSale={availableForSale}
         selectedVariantId={selectedVariantId}
       />
-      <p aria-live="polite" className="sr-only" role="status">
+      <span aria-live="polite" className="sr-only" role="status">
         {message}
-      </p>
+      </span>
     </form>
   );
 }
