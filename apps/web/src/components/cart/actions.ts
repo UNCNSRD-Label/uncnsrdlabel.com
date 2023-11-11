@@ -55,8 +55,6 @@ export const addItem = async (
     );
 
     revalidateTag(TAGS.cart);
-
-    return undefined;
   } catch (e) {
     return "Error adding item to cart";
   }
@@ -71,15 +69,13 @@ export const removeItem = async (
   const cartId = cookies().get("cartId")?.value;
 
   if (!cartId) {
-    return "Missing cartId";
+    return 'Missing cart ID';
   }
 
   try {
     await removeFromCartHandler({ cartId, lineIds: [lineId] }, lang);
 
     revalidateTag(TAGS.cart);
-
-    return undefined;
   } catch (e) {
     return "Error removing item";
   }
@@ -88,16 +84,10 @@ export const removeItem = async (
 export const updateItemQuantity = async (_prevState: any,
   payload: {
     lineId: string;
-    variantId: string;
     quantity: number;
+    variantId: string;
   }): Promise<string | undefined> => {
   const lang = state$.lang.get();
-
-  const {
-    lineId,
-    variantId,
-    quantity,
-  } = payload
 
   const cartId = cookies().get("cartId")?.value;
 
@@ -105,7 +95,21 @@ export const updateItemQuantity = async (_prevState: any,
     return "Missing cartId";
   }
 
+  const {
+    lineId,
+    variantId,
+    quantity,
+  } = payload
+
   try {
+    if (quantity === 0) {
+      await removeFromCartHandler({ cartId, lineIds: [lineId] }, lang);
+
+      revalidateTag(TAGS.cart);
+
+      return;
+    }
+
     await updateCartHandler(
       {
         cartId,
@@ -121,8 +125,6 @@ export const updateItemQuantity = async (_prevState: any,
     );
 
     revalidateTag(TAGS.cart);
-
-    return undefined;
   } catch (e) {
     return "Error updating item quantity";
   }
