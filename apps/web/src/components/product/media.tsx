@@ -90,7 +90,6 @@ export function ProductMedia({
     <div
       className="ghost-scrollbar relative z-0 col-span-full grid w-full snap-both snap-mandatory grid-flow-col justify-start overflow-x-scroll scroll-smooth bg-black lg:fixed lg:inset-0"
       id="images"
-      //   ref={sectionElementRefs[0]}
     >
       <Images
         className={mediaClassName}

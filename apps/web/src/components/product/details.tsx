@@ -1,6 +1,5 @@
-import { ProductDetailsTabs } from "@/components/product/details-tabs";
-// import { NavigationMenu } from "@/components/product/navigation-menu";
 import { LoadingDots } from "@/components/loading/dots";
+import { ProductDetailsTabs } from "@/components/product/details-tabs";
 import { PurchaseOptions } from "@/components/product/purchase-options";
 import {
   FragmentType,
@@ -8,8 +7,6 @@ import {
   imageFragment,
   productDetailsFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront/client";
-// import { useRef } from "react";
-// import { MetafieldMapper } from "@/components/product/metafield-mapper";
 import { Suspense } from "react";
 import { Product as ProductSchema, WithContext } from "schema-dts";
 import { ProductMedia } from "./media";
@@ -41,34 +38,10 @@ export function Details({
     description: product.description,
   };
 
-  // const sectionElementRefs = [
-  //   useRef(null),
-  //   useRef(null),
-  //   useRef(null),
-  //   useRef(null),
-  //   useRef(null),
-  //   useRef(null),
-  //   useRef(null),
-  //   useRef(null),
-  //   useRef(null),
-  //   useRef(null),
-  //   useRef(null),
-  //   useRef(null),
-  //   useRef(null),
-  //   useRef(null),
-  //   useRef(null),
-  // ];
-
   return (
     <>
-      {/* <NavigationMenu
-        className="fixed inset-x-0 bottom-0 z-50 w-full sm:hidden"
-        sectionElementRefs={sectionElementRefs}
-      /> */}
-
       <section className="grid min-h-[100dvh] grid-cols-12 content-center lg:h-[100dvh] lg:overflow-y-hidden">
         <ProductMedia
-          // ref={sectionElementRefs[0]}
           productDetailsFragmentRef={productDetailsFragmentRef}
         />
 
@@ -78,14 +51,12 @@ export function Details({
         >
           <div className="absolute inset-0 grid overflow-y-auto p-6 pt-20 sm:pt-6 lg:pb-20 content-start">
             <PurchaseOptions
-              // ref={sectionElementRefs[1]}
               productDetailsFragmentRef={productDetailsFragmentRef}
             />
             <Suspense fallback={<LoadingDots />}>
               <ProductDetailsTabs
                 className="mt-8"
                 excludedKeys={["complementary_products", "related_products"]}
-                // MetafieldMapper={MetafieldMapper}
                 productDetailsFragmentRef={productDetailsFragmentRef}
               />
             </Suspense>
