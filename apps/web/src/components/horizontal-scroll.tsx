@@ -57,7 +57,7 @@ export async function HorizontalScroll({
 
             return (
               <figure
-                className="item aspect-3/4 relative w-full"
+                className="item aspect-2/3 relative w-full"
                 key={mediaImage.id || index}
               >
                 <Image

@@ -20,7 +20,7 @@ export function ProductMedia({
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }) {
   const mediaClassName =
-    "lg:aspect-3/4 min-h-[100dvh] lg:h-[100dvh] overflow-y-clip relative snap-start w-[100dvw] lg:w-auto";
+    "lg:aspect-2/3 min-h-[100dvh] lg:h-[100dvh] overflow-y-clip relative snap-start w-[100dvw] lg:w-auto";
 
   const thumbnailClassName =
     "bg-black pointer-events-auto relative my-auto aspect-square w-full overflow-hidden rounded-full shadow";

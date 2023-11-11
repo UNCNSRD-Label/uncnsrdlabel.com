@@ -91,7 +91,7 @@ export function PageCarousel({
 
           return (
             <figure
-              className="item aspect-3/4 relative"
+              className="item aspect-2/3 relative"
               key={image.url || index}
             >
               <Image
