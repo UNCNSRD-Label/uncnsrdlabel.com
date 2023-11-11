@@ -1,4 +1,3 @@
-import { addItem } from "@/components/cart/actions";
 import { AddToCart } from "@/components/cart/add-to-cart";
 import { LoadingDots } from "@/components/loading/dots";
 import { Price } from "@/components/price";
@@ -68,9 +67,7 @@ export const PurchaseOptions = forwardRef<
 
       <Suspense fallback={<LoadingDots />}>
         <AddToCart
-          addItem={addItem}
           availableForSale={product.availableForSale}
-          className="btn btn-base btn-primary btn-bg relative w-full justify-center py-4 text-sm"
           options={product.options}
           variants={variants}
         />
