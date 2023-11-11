@@ -23,6 +23,7 @@ export function Images({
         return (
           <figure
             className={cn("w-[100dvw]", className)}
+            key={image.id}
             ref={imageElementRefs?.[index]}
           >
             <Image
