@@ -9,9 +9,7 @@ import {
   productVariantConnectionFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { FragmentType } from "@uncnsrdlabel/graphql-shopify-storefront/client";
-import { Suspense, forwardRef } from "react";
-
-type PurchaseOptionsRef = HTMLDivElement;
+import { Suspense } from "react";
 
 interface PurchaseOptionsProps {
   className?: string;
@@ -19,10 +17,7 @@ interface PurchaseOptionsProps {
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }
 
-export const PurchaseOptions = forwardRef<
-  PurchaseOptionsRef,
-  PurchaseOptionsProps
->(({ className, id, productDetailsFragmentRef }, forwardedRef) => {
+export const PurchaseOptions = ({ productDetailsFragmentRef }: PurchaseOptionsProps) => {
   const product = getFragmentData(
     productDetailsFragment,
     productDetailsFragmentRef,
@@ -52,6 +47,6 @@ export const PurchaseOptions = forwardRef<
       </Suspense>
     </>
   );
-});
+}
 
 PurchaseOptions.displayName = "PurchaseOptions";
