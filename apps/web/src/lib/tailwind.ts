@@ -20,9 +20,6 @@ export const minWidthXl =
 export const themeColors = cn(
   "fill-gray-950 stroke-gray-950 text-gray-950 bg-white",
   "dark:fill-gray-100 dark:stroke-gray-100 dark:text-gray-100 dark:bg-black",
-  // "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))]",
-  // "from-gray-50 to-gray-100",
-  // "dark:from-gray-950 dark:to-gray-900",
 );
 
 export const animationDelays = [

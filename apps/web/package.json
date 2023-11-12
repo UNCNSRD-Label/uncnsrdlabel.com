@@ -90,6 +90,7 @@
     "@uncnsrdlabel/tsconfig": "workspace:*",
     "@uncnsrdlabel/types": "workspace:*",
     "autoprefixer": "^10.4.16",
+    "cssnano": "^6.0.1",
     "eslint": "^8.53.0",
     "postcss": "^8.4.31",
     "postcss-import": "^15.1.0",
@@ -107,6 +108,18 @@
   "name": "@uncnsrdlabel/app-web",
   "peerDependencies": {
     "encoding": "^0.1.13"
+  },
+  "postcss": {
+    "plugins": {
+      "postcss-import": {},
+      "tailwindcss/nesting": "postcss-nesting",
+      "tailwindcss": {},
+      "postcss-preset-env": {
+        "features": { "nesting-rules": false }
+      },
+      "autoprefixer": {},
+      "cssnano": {}
+    }
   },
   "private": true,
   "scripts": {

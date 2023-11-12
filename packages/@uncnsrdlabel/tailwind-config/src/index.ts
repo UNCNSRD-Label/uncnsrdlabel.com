@@ -7,40 +7,11 @@ import plugin from "tailwindcss/plugin";
 
 /** @type {import('tailwindcss').Config} */
 export const config: Config = {
-  animation: {
-    "accordion-down": "accordion-down 0.2s ease-out",
-    "accordion-up": "accordion-up 0.2s ease-out",
-  },
-  borderRadius: {
-    lg: "var(--radius)",
-    md: "calc(var(--radius) - 2px)",
-    sm: "calc(var(--radius) - 4px)",
-  },
-  container: {
-    center: true,
-    padding: "2rem",
-    screens: {
-      "2xl": "1400px",
-    },
-  },
   content: [],
   darkMode: ["class"],
-  keyframes: {
-    "accordion-down": {
-      from: { height: 0 },
-      to: { height: "var(--radix-accordion-content-height)" },
-    },
-    "accordion-up": {
-      from: { height: "var(--radix-accordion-content-height)" },
-      to: { height: 0 },
-    },
-  },
   theme: {
     extend: {
       animation: {
-        blink: "blink 1.4s both infinite",
-        carousel: "marquee 60s linear infinite",
-        fadein: "fadein .3s ease-in-out",
         "grow-progress": "linear growProgress forwards",
       },
       aspectRatio: {
@@ -51,10 +22,6 @@ export const config: Config = {
         "3/2": "3 / 2",
         "3/4": "3 / 4",
         "4/3": "4 / 3",
-      },
-      fontFamily: {
-        brand: ["var(--font-bomber-escort)"],
-        sans: ["var(--font-montserrat)"],
       },
       fontSize: {
         xxs: [
@@ -117,15 +84,6 @@ export const config: Config = {
         ...theme("colors"),
       }),
       keyframes: {
-        blink: {
-          "0%": { opacity: "0.2" },
-          "20%": { opacity: "1" },
-          "100% ": { opacity: "0.2" },
-        },
-        fadeIn: {
-          from: { opacity: "0" },
-          to: { opacity: "1" },
-        },
         growProgress: {
           from: {
             transform: "scaleX(0)",
@@ -133,10 +91,6 @@ export const config: Config = {
           to: {
             transform: "scaleX(1)",
           },
-        },
-        marquee: {
-          "0%": { transform: "translateX(0%)" },
-          "100%": { transform: "translateX(-100%)" },
         },
       },
       typography: ({
@@ -170,9 +124,6 @@ export const config: Config = {
         },
       }),
     },
-  },
-  future: {
-    hoverOnlyWhenSupported: true,
   },
   plugins: [
     animate,
