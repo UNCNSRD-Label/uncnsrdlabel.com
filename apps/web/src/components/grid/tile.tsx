@@ -1,5 +1,3 @@
-"use server";
-
 import { Image } from "@/components/media/image";
 import { Video } from "@/components/media/video";
 import { Price } from "@/components/price";
@@ -62,7 +60,7 @@ export async function Tile({
     <>
       <div
         className={cn(
-          "aspect-3/4 relative mb-4 w-full overflow-hidden",
+          "aspect-2/3 relative mb-4 w-full overflow-hidden",
           "[&:has(.video)_.image]:hover:opacity-0 [&:has(.video)_.image]:focus:opacity-0",
           {
             "bg-hotPink dark:bg-hotPink": background === "hotPink",

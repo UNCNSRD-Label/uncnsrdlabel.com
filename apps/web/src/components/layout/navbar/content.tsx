@@ -1,5 +1,3 @@
-"use server";
-
 import { Cart } from "@/components/cart";
 import { CartIcon } from "@/components/icons/cart";
 import { LogotypeIcon } from "@/components/icons/logotype";

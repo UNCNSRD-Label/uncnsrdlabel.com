@@ -1,5 +1,3 @@
-"use server";
-
 import { Prose } from "@/components/prose";
 import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";

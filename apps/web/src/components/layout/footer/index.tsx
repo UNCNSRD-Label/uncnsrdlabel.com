@@ -1,5 +1,3 @@
-"use server";
-
 import { ConsentDialog } from "@/components/consent/dialog";
 import { LogotypeIcon } from "@/components/icons/logotype";
 import { SignUp } from "@/components/sign-up";

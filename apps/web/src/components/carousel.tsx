@@ -1,5 +1,3 @@
-"use server";
-
 import { Image } from "@/components/media/image";
 import { state$ } from "@/lib/store";
 import { Link } from "@uncnsrdlabel/components/atoms/link";

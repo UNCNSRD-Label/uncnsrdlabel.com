@@ -84,24 +84,24 @@ export function CartForm({
                       onClick={closeCart}
                       className="z-30 flex flex-row space-x-4"
                     >
-                      <div className="relative h-16 w-16 cursor-pointer overflow-hidden rounded-md border border-neutral-300 bg-neutral-300 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:bg-neutral-800">
+                      <figure className="relative aspect-2/3 w-16 cursor-pointer overflow-hidden rounded-md border border-neutral-300 bg-neutral-300 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:bg-neutral-800">
                         {featuredImage?.url && (
                           <Image
-                            className="h-full w-full object-cover "
-                            width={64}
-                            height={64}
                             alt={featuredImage?.altText || product.title}
+                            className="h-full object-cover w-full"
+                            height={128}
                             src={featuredImage?.url}
+                            width={196}
                           />
                         )}
-                      </div>
+                      </figure>
 
-                      <div className="flex flex-1 flex-col text-base">
+                      <div className="flex flex-1 flex-col text-sm">
                         <span className="leading-tight">{product.title}</span>
                         {item.merchandise.title !== DEFAULT_OPTION ? (
-                          <p className="text-sm text-neutral-500 dark:text-neutral-400">
+                          <span className="text-sm text-neutral-500 dark:text-neutral-400">
                             {item.merchandise.title}
-                          </p>
+                          </span>
                         ) : null}
                       </div>
                     </Link>

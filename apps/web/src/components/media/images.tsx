@@ -23,20 +23,20 @@ export function Images({
         return (
           <figure
             className={cn("w-[100dvw]", className)}
+            key={image.id}
             ref={imageElementRefs?.[index]}
           >
             <Image
               alt={image.altText}
               className={cn(
-                "relative block min-h-full min-w-full object-cover",
+                "absolute inset-0 object-center object-cover",
               )}
+              fill
               id={`${idPrefix}-${index}`}
               key={image.id}
               quality={100}
               sizes={sizes}
               src={image.src}
-              height={400}
-              width={300}
             />
           </figure>
         );

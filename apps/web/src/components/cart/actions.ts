@@ -11,11 +11,14 @@ import {
   removeFromCartHandler,
   updateCartHandler,
 } from "@uncnsrdlabel/graphql-shopify-storefront/server";
+import { TAGS } from '@uncnsrdlabel/lib/constants';
+import { revalidateTag } from 'next/cache';
 import { cookies } from "next/headers";
 
 export const addItem = async (
-  variantId: string | undefined,
-): Promise<Error | undefined> => {
+  _prevState: any,
+  selectedVariantId: string | undefined,
+): Promise<string | undefined> => {
   const lang = state$.lang.get();
 
   let cartId = cookies().get("cartId")?.value;
@@ -31,7 +34,7 @@ export const addItem = async (
     const cart = getFragmentData(cartFragment, cartFragmentRef);
 
     if (!cart) {
-      return new Error("Error creating cart");
+      return "Error creating cart";
     }
 
     cartId = cart.id;
@@ -39,61 +42,75 @@ export const addItem = async (
     cookies().set("cartId", cartId);
   }
 
-  if (!variantId) {
-    return new Error("Missing variantId");
+  if (!selectedVariantId) {
+    return "Missing selectedVariantId";
   }
+
   try {
     await addToCartHandler(
       {
         cartId,
-        lines: [{ merchandiseId: variantId, quantity: 1 }],
+        lines: [{ merchandiseId: selectedVariantId, quantity: 1 }],
       },
       lang,
     );
 
-    return undefined;
+    revalidateTag(TAGS.cart);
   } catch (e) {
-    return new Error("Error adding item", { cause: e });
+    return "Error adding item to cart";
   }
 };
 
 export const removeItem = async (
+  _prevState: any,
   lineId: string,
-): Promise<Error | undefined> => {
+): Promise<string | undefined> => {
   const lang = state$.lang.get();
 
   const cartId = cookies().get("cartId")?.value;
 
   if (!cartId) {
-    return new Error("Missing cartId");
+    return 'Missing cart ID';
   }
 
   try {
     await removeFromCartHandler({ cartId, lineIds: [lineId] }, lang);
 
-    return undefined;
+    revalidateTag(TAGS.cart);
   } catch (e) {
-    return new Error("Error removing item", { cause: e });
+    return "Error removing item";
   }
 };
 
-export const updateItemQuantity = async ({
-  lineId,
-  variantId,
-  quantity,
-}: {
-  lineId: string;
-  variantId: string;
-  quantity: number;
-}): Promise<Error | undefined> => {
+export const updateItemQuantity = async (_prevState: any,
+  payload: {
+    lineId: string;
+    quantity: number;
+    variantId: string;
+  }): Promise<string | undefined> => {
   const lang = state$.lang.get();
 
   const cartId = cookies().get("cartId")?.value;
 
   if (!cartId) {
-    return new Error("Missing cartId");
+    return "Missing cartId";
   }
+
+  const {
+    lineId,
+    variantId,
+    quantity,
+  } = payload
+
   try {
+    if (quantity === 0) {
+      await removeFromCartHandler({ cartId, lineIds: [lineId] }, lang);
+
+      revalidateTag(TAGS.cart);
+
+      return;
+    }
+
     await updateCartHandler(
       {
         cartId,
@@ -108,8 +125,8 @@ export const updateItemQuantity = async ({
       lang,
     );
 
-    return undefined;
+    revalidateTag(TAGS.cart);
   } catch (e) {
-    return new Error("Error updating item quantity", { cause: e });
+    return "Error updating item quantity";
   }
 };

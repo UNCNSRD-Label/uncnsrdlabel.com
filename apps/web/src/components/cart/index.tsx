@@ -1,5 +1,3 @@
-"use server";
-
 import { CartModal } from "@/components/cart/modal";
 import { state$ } from "@/lib/store";
 import {

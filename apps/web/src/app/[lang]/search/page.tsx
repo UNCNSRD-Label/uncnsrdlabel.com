@@ -1,5 +1,3 @@
-"use server";
-
 import { Grid } from "@/components/grid/index";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
 import { state$ } from "@/lib/store";

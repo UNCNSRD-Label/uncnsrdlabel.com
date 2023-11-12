@@ -334,7 +334,7 @@
             @apply md:col-span-4 md:col-start-8;
 
             & figure {
-              @apply aspect-3/4 justify-self-stretch;
+              @apply aspect-2/3 justify-self-stretch;
             }
           }
         }

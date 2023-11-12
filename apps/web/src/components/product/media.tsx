@@ -20,10 +20,10 @@ export function ProductMedia({
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }) {
   const mediaClassName =
-    "lg:aspect-3/4 min-h-[100dvh] lg:h-[100dvh] overflow-y-clip relative snap-start w-[100dvw] lg:w-auto";
+    "lg:aspect-2/3 min-h-[100dvh] lg:h-[100dvh] overflow-y-clip relative snap-start w-[100dvw] lg:w-auto";
 
   const thumbnailClassName =
-    "bg-black pointer-events-auto relative my-auto aspect-square w-full overflow-hidden rounded-full shadow";
+    "pointer-events-auto relative my-auto aspect-square w-full overflow-hidden rounded-full shadow";
 
   const product = getFragmentData(
     productDetailsFragment,
@@ -88,9 +88,8 @@ export function ProductMedia({
 
   return (
     <div
-      className="ghost-scrollbar relative z-0 col-span-full grid w-full snap-both snap-mandatory grid-flow-col justify-start overflow-x-scroll scroll-smooth bg-black lg:fixed lg:inset-0"
+      className="ghost-scrollbar relative z-0 col-span-full grid w-full snap-both snap-mandatory grid-flow-col justify-start overflow-x-scroll scroll-smooth lg:fixed lg:inset-0"
       id="images"
-      //   ref={sectionElementRefs[0]}
     >
       <Images
         className={mediaClassName}

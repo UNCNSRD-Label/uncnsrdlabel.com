@@ -1,5 +1,3 @@
-"use server";
-
 import { LoadingDots } from "@/components/loading/dots";
 import { state$ } from "@/lib/store";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";

@@ -1,5 +1,3 @@
-"use server";
-
 import { LoadingSkeleton } from "@/components/loading/skeleton";
 import { state$ } from "@/lib/store";
 import {

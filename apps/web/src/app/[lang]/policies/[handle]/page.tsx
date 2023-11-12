@@ -1,5 +1,3 @@
-"use server";
-
 import { LoadingSkeleton } from "@/components/loading/skeleton";
 import { Prose } from "@/components/prose";
 import { languagesArray } from "@/lib/i18n";
