@@ -1,5 +1,3 @@
-"use server";
-
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
 import { getIntl } from "@/lib/i18n/server";

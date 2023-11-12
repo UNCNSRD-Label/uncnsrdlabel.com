@@ -1,5 +1,3 @@
-"use server";
-
 import { Tile } from "@/components/grid/tile";
 import { state$ } from "@/lib/store";
 import { Link } from "@uncnsrdlabel/components/atoms/link";

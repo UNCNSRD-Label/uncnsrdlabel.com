@@ -1,5 +1,3 @@
-"use server";
-
 import { Image } from "@/components/media/image";
 import { Video } from "@/components/media/video";
 import { Price } from "@/components/price";
