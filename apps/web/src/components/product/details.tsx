@@ -57,7 +57,7 @@ export function Details({
           </h3>
 
           <Price
-            className="text-sm font-semibold"
+            className="text-sm font-semibold mb-4"
             amount={product.priceRange.maxVariantPrice.amount}
             currencyCode={product.priceRange.maxVariantPrice.currencyCode}
           />
