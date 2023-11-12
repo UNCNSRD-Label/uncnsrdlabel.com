@@ -1,5 +1,3 @@
-"use server";
-
 import { state$ } from "@/lib/store";
 // import { ProductAdditionalDetails } from "@/components/product/additional-details";
 import { LoadingDots } from "@/components/loading/dots";

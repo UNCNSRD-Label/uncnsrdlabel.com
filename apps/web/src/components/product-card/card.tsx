@@ -1,4 +1,5 @@
 import { AddToCart } from "@/components/cart/add-to-cart";
+import { AddToCartShell } from "@/components/cart/add-to-cart-shell";
 import { Image } from "@/components/media/image";
 import { Price } from "@/components/price";
 import { ProductVariant } from "@shopify/hydrogen/storefront-api-types";
@@ -10,6 +11,7 @@ import {
   productVariantConnectionFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
+import { Suspense } from "react";
 import { Product as ProductSchema, WithContext } from "schema-dts";
 
 export function ProductCard({
@@ -99,12 +101,14 @@ export function ProductCard({
           {/* <PurchaseOptions
             product={product}
           /> */}
+          <Suspense fallback={<AddToCartShell />}>
             <AddToCart
               availableForSale={product.availableForSale}
               className="relative w-full justify-start py-4 text-xs"
               options={product.options}
               variants={variants}
             />
+          </Suspense>
         </div>
       </div>
       <script
