@@ -36,7 +36,7 @@ export function SubmitButton({
   if (!selectedVariantId) {
     return (
       <button
-        aria-label="Please select an option"
+        aria-label={intl.formatMessage({ id: "select_options" })}
         aria-disabled
         className={cn(buttonClasses, disabledClasses)}
       >
@@ -53,7 +53,7 @@ export function SubmitButton({
       onClick={(e: React.FormEvent<HTMLButtonElement>) => {
         if (pending) e.preventDefault();
       }}
-      aria-label="Add to cart"
+      aria-label={intl.formatMessage({ id: "add_to_cart_enabled" })}
       aria-disabled={pending}
       className={cn(buttonClasses, {
         "hover:opacity-90": true,
