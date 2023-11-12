@@ -45,6 +45,7 @@ export const addItem = async (
   if (!selectedVariantId) {
     return "Missing selectedVariantId";
   }
+
   try {
     await addToCartHandler(
       {

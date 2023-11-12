@@ -18,3 +18,5 @@ export async function AddToCartShell() {
     </form>
   );
 }
+
+AddToCartShell.displayName = "AddToCartShell";
