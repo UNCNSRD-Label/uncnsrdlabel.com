@@ -46,7 +46,7 @@ export function Details({
         <ProductMedia productDetailsFragmentRef={productDetailsFragmentRef} />
 
         <div
-          className="relative z-10 col-span-full h-full min-h-[100dvh] overflow-hidden sm:col-start-3 sm:col-end-11 sm:min-h-fit md:h-[80dvh] lg:-top-12 lg:col-start-7 lg:col-end-12 lg:rounded-xl lg:bg-white/90 lg:shadow lg:backdrop-blur lg:backdrop-saturate-50 xl:col-start-9 p-6"
+          className="relative z-10 col-span-full h-full min-h-[100dvh] overflow-hidden p-6 sm:col-start-3 sm:col-end-11 sm:min-h-fit md:h-[80dvh] lg:-top-12 lg:col-start-7 lg:col-end-12 lg:rounded-xl lg:bg-white/90 lg:shadow lg:backdrop-blur lg:backdrop-saturate-50 xl:col-start-9"
           id="details"
         >
           <h3
@@ -57,7 +57,7 @@ export function Details({
           </h3>
 
           <Price
-            className="text-sm font-semibold mb-4"
+            className="mb-4 text-sm font-semibold"
             amount={product.priceRange.maxVariantPrice.amount}
             currencyCode={product.priceRange.maxVariantPrice.currencyCode}
           />
@@ -69,11 +69,14 @@ export function Details({
             />
           ) : null}
 
-          <Suspense fallback={<LoadingDots />}>
-            <PurchaseOptions
-              productDetailsFragmentRef={productDetailsFragmentRef}
-            />
-          </Suspense>
+          <div className="relative h-64">
+            <Suspense fallback={<LoadingDots />}>
+              <PurchaseOptions
+                productDetailsFragmentRef={productDetailsFragmentRef}
+              />
+            </Suspense>
+          </div>
+
           <Suspense fallback={<LoadingDots />}>
             <ProductDetailsTabs
               className="mt-8"
