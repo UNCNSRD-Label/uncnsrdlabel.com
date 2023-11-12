@@ -1,7 +1,7 @@
-import forms from "@tailwindcss/forms";
+// import forms from "@tailwindcss/forms";
 import typography from "@tailwindcss/typography";
 import { type Config } from "tailwindcss";
-import animate from "tailwindcss-animate";
+// import animate from "tailwindcss-animate";
 import colors from "tailwindcss/colors";
 import plugin from "tailwindcss/plugin";
 
@@ -77,12 +77,12 @@ export const config: Config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
-      backgroundColor: ({ theme }) => ({
-        ...theme("colors"),
-      }),
-      borderColor: ({ theme }) => ({
-        ...theme("colors"),
-      }),
+      // backgroundColor: ({ theme }) => ({
+      //   ...theme("colors"),
+      // }),
+      // borderColor: ({ theme }) => ({
+      //   ...theme("colors"),
+      // }),
       keyframes: {
         growProgress: {
           from: {
@@ -126,8 +126,8 @@ export const config: Config = {
     },
   },
   plugins: [
-    animate,
-    forms,
+    // animate,
+    // forms,
     typography,
     plugin(({ matchUtilities, theme }) => {
       matchUtilities(

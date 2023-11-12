@@ -5,8 +5,8 @@ const variants = ["sm", "md", "lg", "xl"];
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "../../packages/@uncnsrdlabel/*/dist/**/*.{js,ts,jsx,tsx}",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "../../packages/@uncnsrdlabel/components/src/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
   ],
   presets: [componentConfig],
   safelist: [
