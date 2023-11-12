@@ -14,9 +14,11 @@ import { useFormState, useFormStatus } from "react-dom";
 
 export function SubmitButton({
   availableForSale,
+  className,
   selectedVariantId,
 }: {
   availableForSale: boolean;
+  className?: string;
   selectedVariantId: string | undefined;
 }) {
   const { pending } = useFormStatus();
@@ -27,7 +29,7 @@ export function SubmitButton({
 
   if (!availableForSale) {
     return (
-      <button aria-disabled className={cn(buttonClasses, disabledClasses)}>
+      <button aria-disabled className={cn(buttonClasses, disabledClasses, className)}>
         {intl.formatMessage({ id: "out_of_stock" })}
       </button>
     );
@@ -73,13 +75,15 @@ export function SubmitButton({
 }
 
 export function AddToCart({
-  variants,
   availableForSale,
+  className,
   options,
+  variants,
 }: {
-  variants: Pick<ProductVariant, "id" | "selectedOptions">[];
   availableForSale: boolean;
+  className?: string;
   options: ProductOption[];
+  variants: Pick<ProductVariant, "id" | "selectedOptions">[];
 }) {
   const [message, formAction] = useFormState(addItem, null);
   const searchParams = useSearchParams();
@@ -110,6 +114,7 @@ export function AddToCart({
     <form action={actionWithVariant}>
       <SubmitButton
         availableForSale={availableForSale}
+        className={className}
         selectedVariantId={selectedVariantId}
       />
       <span aria-live="polite" className="sr-only" role="status">

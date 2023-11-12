@@ -1,4 +1,4 @@
-import { addItem } from "@/components/cart/actions";
+import { AddToCart } from "@/components/cart/add-to-cart";
 import { Image } from "@/components/media/image";
 import { Price } from "@/components/price";
 import { ProductVariant } from "@shopify/hydrogen/storefront-api-types";
@@ -11,7 +11,6 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { Product as ProductSchema, WithContext } from "schema-dts";
-import { AddToCart } from "./add-to-cart";
 
 export function ProductCard({
   className,
@@ -100,13 +99,12 @@ export function ProductCard({
           {/* <PurchaseOptions
             product={product}
           /> */}
-          <AddToCart
-            addItem={addItem}
-            availableForSale={product.availableForSale}
-            className="relative w-full justify-start py-4 text-xs"
-            options={product.options}
-            variants={variants}
-          />
+            <AddToCart
+              availableForSale={product.availableForSale}
+              className="relative w-full justify-start py-4 text-xs"
+              options={product.options}
+              variants={variants}
+            />
         </div>
       </div>
       <script
