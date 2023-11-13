@@ -440,11 +440,4 @@
       }
     }
   }
-
-  @keyframes move {
-    100% {
-      transform: translateX(calc(-100% + 100dvw));
-      left: 0px;
-    }
-  }
 }
