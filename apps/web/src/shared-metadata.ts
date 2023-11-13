@@ -12,7 +12,7 @@ const {
 
 export const sharedMetadata: Metadata = {
     alternates: {
-        canonical: "/",
+        canonical: `${process.env.NEXT_PUBLIC_DEFAULT_LOCALE}/`,
         languages: Object.fromEntries(languagesArray("/")),
     },
     applicationName: NEXT_PUBLIC_SITE_NAME,

@@ -35,7 +35,7 @@ export async function generateMetadata({
 
   return {
     alternates: {
-      canonical: path,
+      canonical: `${process.env.NEXT_PUBLIC_DEFAULT_LOCALE}/${path}`,
       languages: Object.fromEntries(languagesArray(path)),
     },
     title: policy.title,

@@ -39,7 +39,7 @@ export async function generateMetadata({
 }: LayoutProps): Promise<Metadata> {
   return {
     alternates: {
-      canonical: "/",
+      canonical: `${process.env.NEXT_PUBLIC_DEFAULT_LOCALE}/`,
       languages: Object.fromEntries(languagesArray),
     },
     applicationName: NEXT_PUBLIC_SITE_NAME,

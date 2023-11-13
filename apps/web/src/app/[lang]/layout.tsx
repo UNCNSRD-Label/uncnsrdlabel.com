@@ -10,6 +10,7 @@ import { themeColors } from "@/lib/tailwind";
 import { sharedMetadata } from "@/shared-metadata";
 import { type LayoutProps } from "@/types/next";
 import {
+  SITE_DOMAIN_WEB,
   cn,
   getIETFLanguageTagFromlocaleTag,
   getLocaleObjectFromIETFLanguageTag,
@@ -41,6 +42,9 @@ export async function generateMetadata({
       intlKeywords.formatMessage({ id: "swimsuit" }),
       intlKeywords.formatMessage({ id: "swimwear" }),
     ],
+    metadataBase: new URL(
+        `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}`,
+    ),
     openGraph: {
       ...sharedMetadata.openGraph,
       description: intlMetadata.formatMessage({ id: "description" }),
