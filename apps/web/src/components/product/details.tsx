@@ -60,14 +60,14 @@ export function Details({
 <div className="gap-4 grid grid-flow-col justify-start mb-4">
           <Price
             className={cn("text-sm font-semibold", {
-"text-red-950": !!product.compareAtPriceRange?.minVariantPrice
+"text-red-600": !!product.compareAtPriceRange?.minVariantPrice
 })}
             amount={product.priceRange.minVariantPrice.amount}
             currencyCode={product.priceRange.minVariantPrice.currencyCode}
           />
 
           {product.compareAtPriceRange?.minVariantPrice && <Price
-            className="text-sm line-through decoration-red-950"
+            className="text-sm line-through decoration-red-600"
             amount={product.compareAtPriceRange.minVariantPrice.amount}
             currencyCode={product.compareAtPriceRange.minVariantPrice.currencyCode}
           />}
