@@ -56,7 +56,7 @@ export function Details({
             {product.title}
           </h3>
 
-<div className="gap-4 grid grid-flow-col mb-4">
+<div className="gap-4 grid grid-flow-col justify-start mb-4">
           <Price
             className="text-sm font-semibold"
             amount={product.priceRange.minVariantPrice.amount}
