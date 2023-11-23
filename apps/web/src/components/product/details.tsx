@@ -56,11 +56,19 @@ export function Details({
             {product.title}
           </h3>
 
+<div className="gap-4 grid mb-4">
           <Price
-            className="mb-4 text-sm font-semibold"
-            amount={product.priceRange.maxVariantPrice.amount}
-            currencyCode={product.priceRange.maxVariantPrice.currencyCode}
+            className="text-sm font-semibold"
+            amount={product.priceRange.minVariantPrice.amount}
+            currencyCode={product.priceRange.minVariantPrice.currencyCode}
           />
+
+          {product.compareAtPriceRange?.minVariantPrice && <Price
+            className="text-sm line-through"
+            amount={product.compareAtPriceRange.minVariantPrice.amount}
+            currencyCode={product.compareAtPriceRange.minVariantPrice.currencyCode}
+          />}
+</div>
 
           {product.descriptionHtml ? (
             <Prose
