@@ -9,6 +9,7 @@ import {
   imageFragment,
   productDetailsFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront/client";
+import { cn } from "@uncnsrdlabel/lib";
 import { Suspense } from "react";
 import { Product as ProductSchema, WithContext } from "schema-dts";
 import { ProductMedia } from "./media";
@@ -58,13 +59,15 @@ export function Details({
 
 <div className="gap-4 grid grid-flow-col justify-start mb-4">
           <Price
-            className="text-sm font-semibold"
+            className={cn("text-sm font-semibold", {
+"text-red-600": !!product.compareAtPriceRange?.minVariantPrice
+})}
             amount={product.priceRange.minVariantPrice.amount}
             currencyCode={product.priceRange.minVariantPrice.currencyCode}
           />
 
           {product.compareAtPriceRange?.minVariantPrice && <Price
-            className="text-sm line-through"
+            className="text-sm line-through decoration-red-600"
             amount={product.compareAtPriceRange.minVariantPrice.amount}
             currencyCode={product.compareAtPriceRange.minVariantPrice.currencyCode}
           />}
