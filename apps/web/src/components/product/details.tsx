@@ -56,7 +56,7 @@ export function Details({
             {product.title}
           </h3>
 
-          <PriceAndCompareAtPrice className="mb-4 text-sm" productDetailsFragmentRef={productDetailsFragmentRef} />
+          <PriceAndCompareAtPrice className="grid-flow-col mb-4 text-sm" productDetailsFragmentRef={productDetailsFragmentRef} />
 
           {product.descriptionHtml ? (
             <Prose
