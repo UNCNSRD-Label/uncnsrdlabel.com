@@ -18,10 +18,10 @@ export function ProductGridItems({
 }) {
   return (
     <>
-      {productFragmentRefs.slice(0, limit).map((productFragmentRef, index) => {
+      {productFragmentRefs.slice(0, limit).map((productBasicFragmentRef, index) => {
         const product = getFragmentData(
           productBasicFragment,
-          productFragmentRef,
+          productBasicFragmentRef,
         );
 
         if (!product) return null;
@@ -52,6 +52,7 @@ export function ProductGridItems({
                     product.priceRange?.maxVariantPrice?.currencyCode,
                 }}
                 priority={index < 4}
+                productBasicFragmentRef={productBasicFragmentRef}
                 video={video}
               />
             </Link>

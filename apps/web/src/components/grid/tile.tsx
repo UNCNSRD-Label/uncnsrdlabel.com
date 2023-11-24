@@ -1,6 +1,9 @@
 import { Image } from "@/components/media/image";
 import { Video } from "@/components/media/video";
-import { Price } from "@/components/price";
+import { PriceAndCompareAtPrice } from "@/components/price-and-compare-at-price";
+import {
+  productBasicFragment
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import {
   FragmentType,
   getFragmentData,
@@ -17,6 +20,7 @@ export async function Tile({
   isInteractive = true,
   labels,
   priority,
+  productBasicFragmentRef,
   video,
 }: {
   active?: boolean;
@@ -39,6 +43,7 @@ export async function Tile({
     currencyCode?: string;
   };
   priority?: boolean;
+  productBasicFragmentRef?: FragmentType<typeof productBasicFragment>;
   video?: FragmentType<typeof videoFragment>;
 }) {
   if (!active) {
@@ -122,10 +127,9 @@ export async function Tile({
           >
             {labels.title}
           </h3>
-          <Price
+          <PriceAndCompareAtPrice
             className="text-xs"
-            amount={labels.amount}
-            currencyCode={labels.currencyCode}
+            productBasicFragmentRef={productBasicFragmentRef}
           />
         </footer>
       ) : null}

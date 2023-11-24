@@ -1,5 +1,5 @@
 import { LoadingDots } from "@/components/loading/dots";
-import { Price } from "@/components/price";
+import { PriceAndCompareAtPrice } from "@/components/price-and-compare-at-price";
 import { ProductDetailsTabs } from "@/components/product/details-tabs";
 import { PurchaseOptions } from "@/components/product/purchase-options";
 import { Prose } from "@/components/prose";
@@ -9,7 +9,6 @@ import {
   imageFragment,
   productDetailsFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront/client";
-import { cn } from "@uncnsrdlabel/lib";
 import { Suspense } from "react";
 import { Product as ProductSchema, WithContext } from "schema-dts";
 import { ProductMedia } from "./media";
@@ -57,21 +56,7 @@ export function Details({
             {product.title}
           </h3>
 
-<div className="gap-4 grid grid-flow-col justify-start mb-4">
-          <Price
-            className={cn("text-sm font-semibold", {
-"text-red-600": !!product.compareAtPriceRange?.minVariantPrice
-})}
-            amount={product.priceRange.minVariantPrice.amount}
-            currencyCode={product.priceRange.minVariantPrice.currencyCode}
-          />
-
-          {product.compareAtPriceRange?.minVariantPrice && <Price
-            className="text-sm line-through decoration-red-600"
-            amount={product.compareAtPriceRange.minVariantPrice.amount}
-            currencyCode={product.compareAtPriceRange.minVariantPrice.currencyCode}
-          />}
-</div>
+          <PriceAndCompareAtPrice className="mb-4 text-sm" productDetailsFragmentRef={productDetailsFragmentRef} />
 
           {product.descriptionHtml ? (
             <Prose
