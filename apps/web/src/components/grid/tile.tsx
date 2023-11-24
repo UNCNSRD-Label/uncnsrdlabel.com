@@ -128,7 +128,7 @@ export async function Tile({
             {labels.title}
           </h3>
           <PriceAndCompareAtPrice
-            className="text-xs"
+            className="md:grid-flow-col text-xs"
             productBasicFragmentRef={productBasicFragmentRef}
           />
         </footer>

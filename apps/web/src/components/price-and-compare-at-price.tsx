@@ -38,7 +38,7 @@ export const PriceAndCompareAtPrice = ({
 
   return (
     <div
-      className={cn("grid grid-flow-col justify-start gap-4", className)}
+      className={cn("grid justify-start gap-x-4 gap-y-2", className)}
     >
       <Price
         className={cn("font-semibold", {
