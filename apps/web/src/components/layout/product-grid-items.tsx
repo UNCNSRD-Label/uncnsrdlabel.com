@@ -45,12 +45,6 @@ export function ProductGridItems({
               <Tile
                 className={transitionDelays[index]}
                 image={product.featuredImage}
-                labels={{
-                  title: product.title ?? "Product",
-                  amount: product.priceRange?.maxVariantPrice?.amount,
-                  currencyCode:
-                    product.priceRange?.maxVariantPrice?.currencyCode,
-                }}
                 priority={index < 4}
                 productBasicFragmentRef={productBasicFragmentRef}
                 video={video}

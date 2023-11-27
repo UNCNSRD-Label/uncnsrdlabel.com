@@ -150,6 +150,10 @@ export async function MetafieldMapper({
                   { ...inContextVariables, ...variables },
                 );
 
+              if (!productDetailsFragmentRef) {
+                return null;
+              }
+
               const product = getFragmentData(
                 productDetailsFragment,
                 productDetailsFragmentRef,
@@ -167,13 +171,7 @@ export async function MetafieldMapper({
                   <Tile
                     className={transitionDelays[index]}
                     image={product.featuredImage}
-                    labels={{
-                      title: product.title ?? "Product",
-                      amount: product.priceRange?.maxVariantPrice?.amount,
-                      currencyCode:
-                        product.priceRange?.maxVariantPrice?.currencyCode,
-                    }}
-                    // video={video}
+                    productDetailsFragmentRef={productDetailsFragmentRef}
                   />
                 </Link>
               );

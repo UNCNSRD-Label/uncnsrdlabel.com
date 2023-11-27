@@ -6,22 +6,22 @@ import {
   FragmentType,
   getFragmentData,
   imageFragment,
+  productBasicFragment,
   productVariantConnectionFragment,
-  productWithVariantsFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 
 export function ProductVariantGridItems({
   productFragments,
 }: {
   // productFragments: ResultOf<typeof productFragment>[]
-  productFragments: FragmentType<typeof productWithVariantsFragment>[];
+  productFragments: FragmentType<typeof productBasicFragment>[];
 }) {
   return (
     <>
-      {productFragments.map((productFragmentRef, productIndex) => {
+      {productFragments.map((productBasicFragmentRef, productIndex) => {
         const product = getFragmentData(
-          productWithVariantsFragment,
-          productFragmentRef,
+          productBasicFragment,
+          productBasicFragmentRef,
         );
 
         const media = product.media.edges.map((edge) => edge?.node);
@@ -69,12 +69,8 @@ export function ProductVariantGridItems({
                   <Tile
                     className={transitionDelays[productIndex]}
                     image={product.featuredImage}
-                    labels={{
-                      title: variant.fullTitle,
-                      amount: variant.price.amount,
-                      currencyCode: variant.price.currencyCode,
-                    }}
                     priority={productIndex < 4}
+                    productBasicFragmentRef={productBasicFragmentRef}
                     video={video}
                   />
                 )}

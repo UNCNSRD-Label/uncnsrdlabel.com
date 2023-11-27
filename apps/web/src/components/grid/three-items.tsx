@@ -11,16 +11,16 @@ import { cn } from "@uncnsrdlabel/lib";
 
 function ThreeItemGridItem({
   className,
-  productFragmentRef,
+  productBasicFragmentRef,
   size,
   background,
 }: {
   className?: string;
-  productFragmentRef: FragmentType<typeof productBasicFragment>;
+  productBasicFragmentRef: FragmentType<typeof productBasicFragment>;
   size: "full" | "half";
   background: "white" | "pink" | "purple" | "black";
 }) {
-  const product = getFragmentData(productBasicFragment, productFragmentRef);
+  const product = getFragmentData(productBasicFragment, productBasicFragmentRef);
 
   if (!product.featuredImage) {
     return null;
@@ -39,11 +39,7 @@ function ThreeItemGridItem({
         <Tile
           background={background}
           image={product.featuredImage}
-          labels={{
-            title: product.title as string,
-            amount: product.priceRange?.maxVariantPrice?.amount,
-            currencyCode: product.priceRange?.maxVariantPrice?.currencyCode,
-          }}
+          productBasicFragmentRef={productBasicFragmentRef}
           priority={true}
         />
       </Link>
@@ -73,17 +69,17 @@ export async function ThreeItemGrid({ className }: { className?: string }) {
     >
       <ThreeItemGridItem
         size="full"
-        productFragmentRef={firstProduct}
+        productBasicFragmentRef={firstProduct}
         background="purple"
       />
       <ThreeItemGridItem
         size="half"
-        productFragmentRef={secondProduct}
+        productBasicFragmentRef={secondProduct}
         background="black"
       />
       <ThreeItemGridItem
         size="half"
-        productFragmentRef={thirdProduct}
+        productBasicFragmentRef={thirdProduct}
         background="pink"
       />
     </section>

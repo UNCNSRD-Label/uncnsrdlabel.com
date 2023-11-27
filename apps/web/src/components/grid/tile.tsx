@@ -2,7 +2,8 @@ import { Image } from "@/components/media/image";
 import { Video } from "@/components/media/video";
 import { PriceAndCompareAtPrice } from "@/components/price-and-compare-at-price";
 import {
-  productBasicFragment
+  productBasicFragment,
+  productDetailsFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import {
   FragmentType,
@@ -18,9 +19,9 @@ export async function Tile({
   className,
   image,
   isInteractive = true,
-  labels,
   priority,
   productBasicFragmentRef,
+  productDetailsFragmentRef,
   video,
 }: {
   active?: boolean;
@@ -37,16 +38,29 @@ export async function Tile({
   className?: string;
   image?: FragmentType<typeof imageFragment> | null;
   isInteractive?: boolean;
-  labels: {
-    title: string;
-    amount?: string;
-    currencyCode?: string;
-  };
   priority?: boolean;
   productBasicFragmentRef?: FragmentType<typeof productBasicFragment>;
+  productDetailsFragmentRef?: FragmentType<typeof productDetailsFragment>;
   video?: FragmentType<typeof videoFragment>;
 }) {
   if (!active) {
+    return null;
+  }
+
+  let product;
+
+  if (productBasicFragmentRef) {
+    product = getFragmentData(productBasicFragment, productBasicFragmentRef);
+  }
+
+  if (productDetailsFragmentRef) {
+    product = getFragmentData(
+      productDetailsFragment,
+      productDetailsFragmentRef,
+    );
+  }
+
+  if (!product) {
     return null;
   }
 
@@ -108,7 +122,7 @@ export async function Tile({
                 },
                 className,
               )}
-              alt={tileImage.altText ?? labels?.title}
+              alt={tileImage.altText ?? product?.title ?? ""}
               fill
               height={undefined}
               priority={priority}
@@ -119,16 +133,16 @@ export async function Tile({
           ) : null}
         </figure>
       </div>
-      {labels?.amount && labels?.currencyCode ? (
+      {product?.priceRange.minVariantPrice ? (
         <footer>
           <h3
             data-testid="product-name"
             className={cn("mb-2 box-decoration-clone text-xs")}
           >
-            {labels.title}
+            {product.title}
           </h3>
           <PriceAndCompareAtPrice
-            className="md:grid-flow-col text-xs"
+            className="text-xs md:grid-flow-col"
             productBasicFragmentRef={productBasicFragmentRef}
           />
         </footer>
