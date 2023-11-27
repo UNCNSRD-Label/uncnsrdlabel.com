@@ -1,5 +1,4 @@
 import { Image } from "@/components/media/image";
-import { Price } from "@/components/price";
 import { ProductVariant } from "@shopify/hydrogen/storefront-api-types";
 import {
   FragmentType,
@@ -10,6 +9,7 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { Product as ProductSchema, WithContext } from "schema-dts";
+import { PriceAndCompareAtPrice } from "../price-and-compare-at-price";
 import { AddToCart } from "./add-to-cart";
 
 export function ProductCard({
@@ -91,10 +91,9 @@ export function ProductCard({
           >
             {product.title}
           </h3>
-          <Price
+          <PriceAndCompareAtPrice
             className="text-xs font-semibold"
-            amount={product.priceRange.maxVariantPrice.amount}
-            currencyCode={product.priceRange.maxVariantPrice.currencyCode}
+            productDetailsFragmentRef={productDetailsFragmentRef}
           />
           {/* <PurchaseOptions
             product={product}
