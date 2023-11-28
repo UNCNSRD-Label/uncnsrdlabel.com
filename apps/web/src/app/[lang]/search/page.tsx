@@ -1,11 +1,15 @@
 import { Grid } from "@/components/grid/index";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
-import { state$ } from "@/lib/store";
+import { type PageProps } from "@/types/next";
 import {
   getProductsHandler,
   productDefaultSort,
   productSorting,
 } from "@uncnsrdlabel/graphql-shopify-storefront/server";
+import {
+  getLocaleObjectFromIETFLanguageTag
+} from "@uncnsrdlabel/lib";
+import { PropsWithChildren } from "react";
 
 // export const runtime = "edge";
 
@@ -15,13 +19,16 @@ import {
 // };
 
 export default async function SearchPage({
-  searchParams,
-}: {
-  searchParams?: { [key: string]: string | string[] | undefined };
-}) {
-  const lang = state$.lang.get();
+  params: { lang },
+  searchParams
+}: PropsWithChildren<PageProps>) {
+  // const lang = state$.lang.get();
+  // const locale = state$.locale.get();
+  const locale = getLocaleObjectFromIETFLanguageTag(lang);
 
-  const { sort, q: searchValue } = searchParams as { [key: string]: string };
+  console.log('search', {lang, locale});
+
+  const { sort, q: query } = searchParams as { [key: string]: string };
   const { sortKey, reverse } =
     productSorting.find((item) => item.slug === sort) || productDefaultSort;
 
@@ -29,28 +36,28 @@ export default async function SearchPage({
     {
       sortKey,
       reverse,
-      query: searchValue,
+      query,
     },
     lang,
   );
 
-  const productFragments = productConnection.edges.map((edge) => edge?.node);
-
-  const resultsText = productFragments.length > 1 ? "results" : "result";
+  const productFragmentRefs = productConnection.edges.map((edge) => edge?.node);
+  // console.log('productFragmentRefs[0]', productFragmentRefs[0])
+  const resultsText = productFragmentRefs.length > 1 ? "results" : "result";
 
   return (
     <>
-      {searchValue ? (
+      {query ? (
         <p>
-          {productFragments.length === 0
+          {productFragmentRefs.length === 0
             ? "There are no products that match "
-            : `Showing ${productFragments.length} ${resultsText} for `}
-          <span className="font-bold">&quot;{searchValue}&quot;</span>
+            : `Showing ${productFragmentRefs.length} ${resultsText} for `}
+          <span className="font-bold">&quot;{query}&quot;</span>
         </p>
       ) : null}
-      {productFragments.length > 0 ? (
+      {productFragmentRefs.length > 0 ? (
         <Grid className="grid-cols-2 lg:grid-cols-3">
-          <ProductGridItems productFragmentRefs={productFragments} />
+          <ProductGridItems productFragmentRefs={productFragmentRefs} />
         </Grid>
       ) : null}
     </>

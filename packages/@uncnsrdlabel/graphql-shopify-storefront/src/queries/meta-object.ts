@@ -1,7 +1,11 @@
 import { graphql } from "../codegen/index";
 
 export const getRouteMetaObjectQuery = graphql(/* GraphQL */ `
-  query getRouteMetaObject($handle: String!) {
+  query getRouteMetaObject(
+    $country: CountryCode
+    $handle: String!
+    $language: LanguageCode
+  ) @inContext(country: $country, language: $language) {
     metaobject(handle: { type: "route", handle: $handle }) {
       handle
       updatedAt

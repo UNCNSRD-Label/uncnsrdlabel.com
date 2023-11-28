@@ -1,7 +1,11 @@
 import { graphql } from "../codegen/index";
 
 export const getCustomerCareQuery = graphql(/* GraphQL */ `
-  query getCustomerCare($handle: String!) {
+  query getCustomerCare(
+    $country: CountryCode
+    $handle: String!
+    $language: LanguageCode
+  ) @inContext(country: $country, language: $language) {
     metaobject(handle: { type: "customer_care", handle: $handle }) {
       handle
       updatedAt

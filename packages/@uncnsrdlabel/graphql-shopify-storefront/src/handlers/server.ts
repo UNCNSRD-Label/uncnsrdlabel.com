@@ -314,10 +314,11 @@ export async function getRouteMetaObjectHandler(
 ) {
   const inContextVariables = getInContextVariables(lang);
 
-  const { metaobject } = await getShopifyGraphQL(getRouteMetaObjectQuery, {
-    ...inContextVariables,
-    ...variables,
-  });
+  const { metaobject } = await getShopifyGraphQL(
+    getRouteMetaObjectQuery,
+    // @ts-expect-error Types of property 'country' are incompatible.
+    { ...inContextVariables, ...variables}
+  );
 
   if (!metaobject) {
     throw {
@@ -557,11 +558,6 @@ export async function getProductRecommendationsHandler(
     };
   }
 
-  // const productRecommendations = productRecommendationRefs.map(
-  //   (productRecommendationRef) =>
-  //     getFragmentData(productBasicFragment, productRecommendationRef),
-  // );
-
   return productRecommendationRefs;
 }
 
@@ -571,10 +567,11 @@ export async function getProductsHandler(
 ) {
   const inContextVariables = getInContextVariables(lang);
 
-  const { products } = await getShopifyGraphQL(getProductsQuery, {
-    ...inContextVariables,
-    ...variables,
-  });
+  const { products } = await getShopifyGraphQL(
+    getProductsQuery,
+    // @ts-expect-error Types of property 'country' are incompatible.
+    { ...inContextVariables, ...variables }
+  );
 
   if (!products) {
     throw {
@@ -592,10 +589,11 @@ export async function getProductsWithVariantsHandler(
 ) {
   const inContextVariables = getInContextVariables(lang);
 
-  const { products } = await getShopifyGraphQL(getProductsWithVariantsQuery, {
-    ...inContextVariables,
-    ...variables,
-  });
+  const { products } = await getShopifyGraphQL(
+    getProductsWithVariantsQuery,
+    // @ts-expect-error Types of property 'country' are incompatible.
+    { ...inContextVariables, ...variables }
+  );
 
   if (!products) {
     throw {

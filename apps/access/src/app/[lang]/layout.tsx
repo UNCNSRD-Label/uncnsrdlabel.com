@@ -131,7 +131,7 @@ export default async function AccessRootLayout({
         montserrat.variable,
         "snap-y",
       )}
-      lang="en"
+      lang={process.env.NEXT_PUBLIC_DEFAULT_LOCALE}
     >
       <body
         className={cn(
