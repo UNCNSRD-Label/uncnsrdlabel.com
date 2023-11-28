@@ -50,10 +50,12 @@ export const getProductRecommendationsQuery = graphql(/* GraphQL */ `
 
 export const getProductsQuery = graphql(/* GraphQL */ `
   query getProducts(
-    $sortKey: ProductSortKeys
-    $reverse: Boolean
+    $country: CountryCode
+    $language: LanguageCode
     $query: String
-  ) {
+    $reverse: Boolean
+    $sortKey: ProductSortKeys
+  ) @inContext(country: $country, language: $language) {
     products(sortKey: $sortKey, reverse: $reverse, query: $query, first: 96) {
       edges {
         node {
@@ -66,10 +68,12 @@ export const getProductsQuery = graphql(/* GraphQL */ `
 
 export const getProductsWithVariantsQuery = graphql(/* GraphQL */ `
   query getProductsWithVariants(
-    $sortKey: ProductSortKeys
-    $reverse: Boolean
+    $country: CountryCode
+    $language: LanguageCode
     $query: String
-  ) {
+    $reverse: Boolean
+    $sortKey: ProductSortKeys
+  ) @inContext(country: $country, language: $language) {
     products(sortKey: $sortKey, reverse: $reverse, query: $query, first: 96) {
       edges {
         node {
