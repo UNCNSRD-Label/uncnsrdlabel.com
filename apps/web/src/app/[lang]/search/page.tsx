@@ -1,21 +1,39 @@
 import { Grid } from "@/components/grid/index";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
+import { languagesArray } from "@/lib/i18n";
+import { getIntl } from "@/lib/i18n/server";
+import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";
 import {
   getProductsHandler,
   productDefaultSort,
-  productSorting,
+  productSorting
 } from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import {
   getLocaleObjectFromIETFLanguageTag
 } from "@uncnsrdlabel/lib";
+import { type Metadata } from "next";
 
 // export const runtime = "edge";
 
-// export const metadata = {
-//   title: "Search",
-//   description: "Search for products in the store.",
-// };
+export async function generateMetadata(): Promise<Metadata> {
+  const lang = state$.lang.get();
+
+  const handle = "search";
+
+  const intl = await getIntl(lang, `page.${handle}`);
+
+  const path = `/search`;
+
+  return {
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_DEFAULT_LOCALE}/${path}`,
+      languages: Object.fromEntries(languagesArray(path)),
+    },
+    title: intl.formatMessage({ id: "title" }),
+    description: intl.formatMessage({ id: "description" }),
+  };
+}
 
 export default async function SearchPage({
   params: { lang },
