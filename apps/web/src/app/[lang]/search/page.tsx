@@ -9,7 +9,6 @@ import {
 import {
   getLocaleObjectFromIETFLanguageTag
 } from "@uncnsrdlabel/lib";
-import { PropsWithChildren } from "react";
 
 // export const runtime = "edge";
 
@@ -21,7 +20,7 @@ import { PropsWithChildren } from "react";
 export default async function SearchPage({
   params: { lang },
   searchParams
-}: PropsWithChildren<PageProps>) {
+}: PageProps) {
   // const lang = state$.lang.get();
   // const locale = state$.locale.get();
   const locale = getLocaleObjectFromIETFLanguageTag(lang);

@@ -8,7 +8,7 @@ import {
   getFragmentData,
   getProductDetailsByHandleHandler,
   productDetailsFragment,
-  seoFragment
+  seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import { HIDDEN_PRODUCT_TAG, SITE_DOMAIN_WEB } from "@uncnsrdlabel/lib";
 import { type Metadata } from "next";
@@ -52,7 +52,10 @@ export async function generateMetadata({
     openGraph: {
       description: seo.description || product.description,
       title: seo.title || product.title,
-      url: new URL("/", `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}/${path}`)
+      url: new URL(
+        "/",
+        `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}/${path}`,
+      ),
     },
     robots: {
       index: hide,
@@ -65,10 +68,13 @@ export async function generateMetadata({
   };
 }
 
-export default async function ProductPage({ params: { handle } }: PageProps) {
-  const productDetailsFragmentRef = await getProductDetailsByHandleHandler({
-    handle,
-  });
+export default async function ProductPage({ params: { handle, lang } }: PageProps) {
+  const productDetailsFragmentRef = await getProductDetailsByHandleHandler(
+    {
+      handle,
+    },
+    lang,
+  );
 
   if (!productDetailsFragmentRef) return notFound();
 
