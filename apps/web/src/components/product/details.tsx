@@ -46,7 +46,7 @@ export function Details({
         <ProductMedia productDetailsFragmentRef={productDetailsFragmentRef} />
 
         <div
-          className="relative z-10 col-span-full h-full min-h-[100dvh] overflow-hidden p-6 sm:col-start-3 sm:col-end-11 sm:min-h-fit md:h-[80dvh] lg:-top-12 lg:col-start-7 lg:col-end-12 lg:rounded-xl lg:bg-white/90 lg:shadow lg:backdrop-blur lg:backdrop-saturate-50 xl:col-start-9"
+          className="relative z-10 col-span-full h-full min-h-[100dvh] overflow-hidden p-6 sm:col-start-3 sm:col-end-11 sm:min-h-fit md:h-[80dvh] lg:-top-12 lg:col-start-7 lg:col-end-12 lg:rounded-xl lg:bg-white/90 lg:shadow lg:backdrop-blur lg:backdrop-saturate-50 xl:col-start-9 overflow-y-auto"
           id="details"
         >
           <h3
