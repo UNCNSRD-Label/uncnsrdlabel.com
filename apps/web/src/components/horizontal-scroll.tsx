@@ -18,7 +18,7 @@ export async function HorizontalScroll({
 }) {
   const lang = state$.lang.get();
 
-  const pageFragmentRef = await getPageHandler({ handle }, lang);
+  const pageFragmentRef = await getPageHandler({ variables: { handle }, lang });
 
   const page = getFragmentData(pageFragment, pageFragmentRef);
 

@@ -15,10 +15,10 @@ type Props = { showLogo?: boolean };
 export async function NavbarContent(props: Props) {
   const lang = state$.lang.get();
 
-  const menu = await getMenuHandler(
-    { handle: "next-js-frontend-header-menu" },
+  const menu = await getMenuHandler({
+    variables: { handle: "next-js-frontend-header-menu" },
     lang,
-  );
+  });
 
   return (
     <>

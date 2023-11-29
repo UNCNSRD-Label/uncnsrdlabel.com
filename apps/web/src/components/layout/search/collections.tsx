@@ -7,7 +7,7 @@ import { FilterList } from "./filter";
 async function CollectionList() {
   const lang = state$.lang.get();
 
-  const collections = await getCollectionRefsHandler({}, lang);
+  const collections = await getCollectionRefsHandler({ lang, variables: { first: 100 } });
 
   return <FilterList list={collections} title="Collections" />;
 }

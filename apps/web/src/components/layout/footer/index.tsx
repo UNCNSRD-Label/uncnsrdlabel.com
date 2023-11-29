@@ -2,6 +2,7 @@ import { ConsentDialog } from "@/components/consent/dialog";
 import { LogotypeIcon } from "@/components/icons/logotype";
 import { SignUp } from "@/components/sign-up";
 import { SocialMenu } from "@/components/social-menu";
+import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import { getMenuHandler } from "@uncnsrdlabel/graphql-shopify-storefront/server";
@@ -9,11 +10,25 @@ import { getMenuHandler } from "@uncnsrdlabel/graphql-shopify-storefront/server"
 const { NEXT_PUBLIC_SITE_NAME } = process.env;
 
 export async function Footer() {
+  const lang = state$.lang.get();
+
   const currentYear = new Date().getFullYear();
   const copyrightDate = 2023 + (currentYear > 2023 ? `-${currentYear}` : "");
-  const customerCareMenu = await getMenuHandler({ handle: "customer-care" });
-  const informationMenu = await getMenuHandler({ handle: "information" });
-  const followUsMenu = await getMenuHandler({ handle: "follow-us" });
+
+  const customerCareMenu = await getMenuHandler({
+    variables: { handle: "customer-care" },
+    lang,
+  });
+
+  const informationMenu = await getMenuHandler({
+    variables: { handle: "information" },
+    lang,
+  });
+
+  const followUsMenu = await getMenuHandler({
+    variables: { handle: "follow-us" },
+    lang,
+  });
 
   const linkClassName =
     "text-xs sm:text-xxs transition uppercase duration-150 ease-in-out";

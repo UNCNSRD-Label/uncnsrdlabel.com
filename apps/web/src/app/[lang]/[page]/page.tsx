@@ -24,7 +24,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const lang = state$.lang.get();
 
-  const pageFragmentRef = await getPageHandler({ handle }, lang);
+  const variables = {
+    handle,
+  };
+
+  const pageFragmentRef = await getPageHandler({variables, lang});
 
   const page = getFragmentData(pageFragment, pageFragmentRef);
 
@@ -50,7 +54,11 @@ export default async function PagePage({
 }) {
   const lang = state$.lang.get();
 
-  const pageFragmentRef = await getPageHandler({ handle }, lang);
+  const variables = {
+    handle,
+  };
+
+  const pageFragmentRef = await getPageHandler({ variables, lang });
 
   const page = getFragmentData(pageFragment, pageFragmentRef);
 

@@ -30,12 +30,12 @@ export async function RelatedProducts({
 
   const { id } = product;
 
-  const productRecommendationRefs = await getProductRecommendationsHandler(
-    {
+  const productRecommendationRefs = await getProductRecommendationsHandler({
+    variables: {
       productId: id,
     },
     lang,
-  );
+  });
 
   if (!productRecommendationRefs?.length) return null;
 

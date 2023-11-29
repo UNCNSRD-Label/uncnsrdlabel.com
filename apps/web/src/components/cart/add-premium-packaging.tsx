@@ -11,10 +11,10 @@ export async function AddPremiumPackaging({
 
   const handle = "premium-packaging";
 
-  const productDetailsFragmentRef = await getProductDetailsByHandleHandler(
-    { handle },
+  const productDetailsFragmentRef = await getProductDetailsByHandleHandler({
+    variables: { handle },
     lang,
-  );
+  });
 
   if (!productDetailsFragmentRef) {
     return null;

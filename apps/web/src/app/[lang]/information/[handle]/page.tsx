@@ -22,7 +22,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const lang = state$.lang.get();
 
-  const shopPolicyFragmentRef = await getPolicyHandler({ handle }, lang);
+  const shopPolicyFragmentRef = await getPolicyHandler({
+    variables: { handle },
+    lang,
+  });
 
   if (!shopPolicyFragmentRef) return notFound();
 
@@ -42,12 +45,15 @@ export default async function InformationPage({
 
   const handle = params.handle as PolicyName;
 
-  const shopPolicyFragmentRef = await getPolicyHandler({ handle }, lang);
-
-  const customerCareMenu = await getMenuHandler(
-    { handle: "customer-care" },
+  const shopPolicyFragmentRef = await getPolicyHandler({
+    variables: { handle },
     lang,
-  );
+  });
+
+  const customerCareMenu = await getMenuHandler({
+    variables: { handle: "customer-care" },
+    lang,
+  });
 
   if (!shopPolicyFragmentRef) return notFound();
 
@@ -103,7 +109,10 @@ export default async function InformationPage({
           } */}
       </nav>
       <article className="mb-48">
-        <Prose className="prose-sm mb-8 grid prose-thead:border-hotPink prose-tr:border-hotPink" html={policy.body as string} />
+        <Prose
+          className="prose-sm prose-thead:border-hotPink prose-tr:border-hotPink mb-8 grid"
+          html={policy.body as string}
+        />
       </article>
     </>
   );

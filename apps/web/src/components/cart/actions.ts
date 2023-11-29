@@ -25,11 +25,11 @@ export const addItem = async (
   let cartFragmentRef: FragmentType<typeof cartFragment> | null = null;
 
   if (cartId) {
-    cartFragmentRef = await getCartHandler({ cartId }, lang);
+    cartFragmentRef = await getCartHandler({ variables: { cartId }, lang });
   }
 
   if (!cartId || !cartFragmentRef) {
-    cartFragmentRef = await createCartHandler(undefined, lang);
+    cartFragmentRef = await createCartHandler({ lang });
 
     const cart = getFragmentData(cartFragment, cartFragmentRef);
 
@@ -49,10 +49,12 @@ export const addItem = async (
   try {
     await addToCartHandler(
       {
-        cartId,
-        lines: [{ merchandiseId: selectedVariantId, quantity: 1 }],
-      },
-      lang,
+        variables: {
+          cartId,
+          lines: [{ merchandiseId: selectedVariantId, quantity: 1 }],
+        },
+        lang,
+      }
     );
 
     revalidateTag(TAGS.cart);
@@ -74,7 +76,7 @@ export const removeItem = async (
   }
 
   try {
-    await removeFromCartHandler({ cartId, lineIds: [lineId] }, lang);
+    await removeFromCartHandler({ variables: { cartId, lineIds: [lineId] }, lang });
 
     revalidateTag(TAGS.cart);
   } catch (e) {
@@ -104,7 +106,7 @@ export const updateItemQuantity = async (_prevState: any,
 
   try {
     if (quantity === 0) {
-      await removeFromCartHandler({ cartId, lineIds: [lineId] }, lang);
+      await removeFromCartHandler({ variables: { cartId, lineIds: [lineId] }, lang });
 
       revalidateTag(TAGS.cart);
 
@@ -113,16 +115,18 @@ export const updateItemQuantity = async (_prevState: any,
 
     await updateCartHandler(
       {
-        cartId,
-        lines: [
-          {
-            id: lineId,
-            merchandiseId: variantId,
-            quantity,
-          },
-        ],
-      },
-      lang,
+        variables: {
+          cartId,
+          lines: [
+            {
+              id: lineId,
+              merchandiseId: variantId,
+              quantity,
+            },
+          ],
+        },
+        lang,
+      }
     );
 
     revalidateTag(TAGS.cart);

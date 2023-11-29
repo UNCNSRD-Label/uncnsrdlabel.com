@@ -23,10 +23,10 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const lang = state$.lang.get();
 
-  const productDetailsFragmentRef = await getProductDetailsByHandleHandler(
-    { handle },
+  const productDetailsFragmentRef = await getProductDetailsByHandleHandler({
+    variables: { handle },
     lang,
-  );
+  });
 
   const product = getFragmentData(
     productDetailsFragment,
@@ -67,13 +67,15 @@ export async function generateMetadata({
   };
 }
 
-export default async function ProductPage({ params: { handle, lang } }: PageProps) {
-  const productDetailsFragmentRef = await getProductDetailsByHandleHandler(
-    {
+export default async function ProductPage({
+  params: { handle, lang },
+}: PageProps) {
+  const productDetailsFragmentRef = await getProductDetailsByHandleHandler({
+    variables: {
       handle,
     },
     lang,
-  );
+  });
 
   if (!productDetailsFragmentRef) return notFound();
 

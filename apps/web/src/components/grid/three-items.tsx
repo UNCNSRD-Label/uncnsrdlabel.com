@@ -20,7 +20,10 @@ function ThreeItemGridItem({
   size: "full" | "half";
   background: "white" | "pink" | "purple" | "black";
 }) {
-  const product = getFragmentData(productBasicFragment, productBasicFragmentRef);
+  const product = getFragmentData(
+    productBasicFragment,
+    productBasicFragmentRef,
+  );
 
   if (!product.featuredImage) {
     return null;
@@ -51,12 +54,12 @@ export async function ThreeItemGrid({ className }: { className?: string }) {
   const lang = state$.lang.get();
 
   // Collections that start with `hidden-*` are hidden from the search page.
-  const homepageItems = await getCollectionProductsHandler(
-    {
+  const homepageItems = await getCollectionProductsHandler({
+    variables: {
       handle: "hidden-homepage-featured-items",
     },
     lang,
-  );
+  });
 
   const products = homepageItems.edges.map((edge) => edge?.node);
 

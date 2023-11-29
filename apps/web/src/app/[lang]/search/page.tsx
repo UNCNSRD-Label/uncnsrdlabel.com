@@ -7,11 +7,9 @@ import { type PageProps } from "@/types/next";
 import {
   getProductsHandler,
   productDefaultSort,
-  productSorting
+  productSorting,
 } from "@uncnsrdlabel/graphql-shopify-storefront/server";
-import {
-  getLocaleObjectFromIETFLanguageTag
-} from "@uncnsrdlabel/lib";
+import { getLocaleObjectFromIETFLanguageTag } from "@uncnsrdlabel/lib";
 import { type Metadata } from "next";
 
 // export const runtime = "edge";
@@ -37,26 +35,26 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function SearchPage({
   params: { lang },
-  searchParams
+  searchParams,
 }: PageProps) {
   // const lang = state$.lang.get();
   // const locale = state$.locale.get();
   const locale = getLocaleObjectFromIETFLanguageTag(lang);
 
-  console.log('search', {lang, locale});
+  console.log("search", { lang, locale });
 
   const { sort, q: query } = searchParams as { [key: string]: string };
   const { sortKey, reverse } =
     productSorting.find((item) => item.slug === sort) || productDefaultSort;
 
-  const productConnection = await getProductsHandler(
-    {
+  const productConnection = await getProductsHandler({
+    variables: {
       sortKey,
       reverse,
       query,
     },
     lang,
-  );
+  });
 
   const productFragmentRefs = productConnection.edges.map((edge) => edge?.node);
   // console.log('productFragmentRefs[0]', productFragmentRefs[0])

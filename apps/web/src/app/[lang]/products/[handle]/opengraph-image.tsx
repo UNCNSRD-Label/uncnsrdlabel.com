@@ -1,4 +1,5 @@
 import { OpengraphImageResponse } from "@/components/opengraph-image-response";
+import { state$ } from "@/lib/store";
 import {
   imageFragment,
   productDetailsFragment,
@@ -23,8 +24,11 @@ export default async function OpenGraphImage({
 }: {
   params: { handle: string };
 }) {
+  const lang = state$.lang.get();
+
   const productDetailsFragmentRef = await getProductDetailsByHandleHandler({
-    handle,
+    variables: { handle },
+    lang,
   });
 
   const product = getFragmentData(

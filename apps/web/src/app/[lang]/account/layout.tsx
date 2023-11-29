@@ -29,14 +29,17 @@ export default async function AccountLayout({
       ? children.props.childPropSegment
       : undefined;
 
-  const routeMetaObject = await getRouteMetaObjectHandler(
-    {
+  const routeMetaObject = await getRouteMetaObjectHandler({
+    variables: {
       handle: `account_${segment}`,
     },
     lang,
-  );
+  });
 
-  const routeMenu = await getMenuHandler({ handle: "account" });
+  const routeMenu = await getMenuHandler({
+    variables: { handle: "account" },
+    lang,
+  });
 
   return (
     <>

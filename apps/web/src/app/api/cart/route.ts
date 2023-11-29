@@ -29,8 +29,10 @@ export async function POST(req: NextRequest): Promise<Response> {
   }
   try {
     await addToCartHandler(
-      { cartId, lines: [{ merchandiseId, quantity: 1 }] },
-      lang,
+      {
+        variables: { cartId, lines: [{ merchandiseId, quantity: 1 }] },
+        lang,
+      }
     );
     return NextResponse.json({ status: 204 }) satisfies Response;
   } catch (e) {
@@ -60,16 +62,18 @@ export async function PUT(req: NextRequest): Promise<Response> {
   try {
     await updateCartHandler(
       {
-        cartId,
-        lines: [
-          {
-            id: lineId,
-            merchandiseId: variantId,
-            quantity,
-          },
-        ],
-      },
-      lang,
+        variables: {
+          cartId,
+          lines: [
+            {
+              id: lineId,
+              merchandiseId: variantId,
+              quantity,
+            },
+          ],
+        },
+        lang,
+      }
     );
     return NextResponse.json({ status: 204 });
   } catch (e) {
@@ -97,7 +101,7 @@ export async function DELETE(req: NextRequest): Promise<Response> {
     );
   }
   try {
-    await removeFromCartHandler({ cartId, lineIds: [lineId] }, lang);
+    await removeFromCartHandler({ variables: { cartId, lineIds: [lineId] }, lang });
     return NextResponse.json({ status: 204 });
   } catch (error) {
     if (isShopifyError(error)) {

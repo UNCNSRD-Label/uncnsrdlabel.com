@@ -19,7 +19,7 @@ export async function ArticleHydrated({
   const shopifyQueryClient = getShopifyQueryClient();
   await shopifyQueryClient.prefetchQuery({
     queryKey: [`getPage:${JSON.stringify(variables)}`],
-    queryFn: () => getPageHandler(variables, lang),
+    queryFn: () => getPageHandler({ variables, lang }),
   });
   const dehydratedState = dehydrate(shopifyQueryClient);
 

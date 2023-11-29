@@ -14,19 +14,19 @@ import { notFound } from "next/navigation";
 export async function Carousel({ handle }: { handle: string }) {
   const lang = state$.lang.get();
 
-  const pageFragmentRef = await getPageHandler({ handle }, lang);
+  const pageFragmentRef = await getPageHandler({ variables: { handle }, lang });
 
   const page = getFragmentData(pageFragment, pageFragmentRef);
 
   if (!page) return notFound();
 
   // Collections that start with `hidden-*` are hidden from the search page.
-  const collectionProducts = await getCollectionProductsHandler(
-    {
+  const collectionProducts = await getCollectionProductsHandler({
+    variables: {
       handle: "hidden-homepage-carousel",
     },
     lang,
-  );
+  });
 
   const products = collectionProducts.edges.map((edge) => edge?.node);
 

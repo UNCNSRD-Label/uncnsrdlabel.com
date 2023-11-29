@@ -25,7 +25,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const lang = state$.lang.get();
 
-  const shopPolicyFragmentRef = await getPolicyHandler({ handle }, lang);
+  const variables = {
+    handle,
+  };
+
+  const shopPolicyFragmentRef = await getPolicyHandler({ lang, variables });
 
   if (!shopPolicyFragmentRef) return notFound();
 
@@ -41,7 +45,10 @@ export async function generateMetadata({
     title: policy.title,
     openGraph: {
       title: policy.title,
-      url: new URL("/", `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}/${path}`)
+      url: new URL(
+        "/",
+        `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}/${path}`,
+      ),
     },
   };
 }
@@ -55,9 +62,19 @@ export default async function PolicyPage({
 
   const handle = params.handle as PolicyName;
 
-  const shopPolicyFragmentRef = await getPolicyHandler({ handle }, lang);
+  const shopPolicyFragmentRef = await getPolicyHandler({
+    lang,
+    variables: {
+      handle,
+    },
+  });
 
-  const customerCareMenu = await getMenuHandler({ handle: "customer-care" });
+  const customerCareMenu = await getMenuHandler({
+    lang,
+    variables: {
+      handle: "customer-care",
+    },
+  });
 
   if (!shopPolicyFragmentRef) return notFound();
 
@@ -114,7 +131,10 @@ export default async function PolicyPage({
       </nav>
       <article className="mb-48">
         <Suspense fallback={<LoadingSkeleton />}>
-          <Prose className="prose-sm mb-8 grid prose-thead:border-hotPink prose-tr:border-hotPink" html={policy.body as string} />
+          <Prose
+            className="prose-sm prose-thead:border-hotPink prose-tr:border-hotPink mb-8 grid"
+            html={policy.body as string}
+          />
         </Suspense>
       </article>
     </>
