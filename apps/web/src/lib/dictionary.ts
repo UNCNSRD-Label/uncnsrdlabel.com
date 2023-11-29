@@ -1,37 +1,25 @@
 import languageFallback from "@/dictionaries/en.json";
-import { getIETFLanguageTagFromlocaleTag, locales } from "@uncnsrdlabel/lib";
+import {
+  getLocalizationHandler,
+} from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import merge from "deepmerge";
 import { getProperty } from "dot-prop";
 import { type ResolvedIntlConfig } from "react-intl";
 
-const dictionariesFiles = [
-  ...locales.map((locale) => [
-    locale.language,
-    () =>
-      import(`@/dictionaries/${locale.language}.json`).then(
-        (module) => module.default,
-      ),
-  ]),
-  ...locales.map((locale) => [
-    getIETFLanguageTagFromlocaleTag(locale),
-    () =>
-      import(
-        `@/dictionaries/${getIETFLanguageTagFromlocaleTag(locale)}.json`
-      ).then((module) => module.default),
-  ]),
-];
+export const getDictionary = async (lang: Intl.BCP47LanguageTag, namespace: string) => {
+  const localization = await getLocalizationHandler(lang);
 
-const dictionaries = Object.fromEntries(dictionariesFiles);
+  const languageGeneric = import(`@/dictionaries/${localization.language.isoCode}.json`).then(
+    (module) => module.default,
+  );
 
-export const getDictionary = async (locale: Intl.Locale, namespace: string) => {
-  const language = await dictionaries[locale.language]();
-
-  const languageLocalised =
-    await dictionaries[getIETFLanguageTagFromlocaleTag(locale)]();
+  const languageLocalised = import(`@/dictionaries/${localization.language.isoCode}-${localization.country.isoCode}.json`).then(
+    (module) => module.default,
+  );
 
   const merged = merge.all([
     languageFallback,
-    language,
+    languageGeneric,
     languageLocalised,
   ]) as typeof languageFallback;
 

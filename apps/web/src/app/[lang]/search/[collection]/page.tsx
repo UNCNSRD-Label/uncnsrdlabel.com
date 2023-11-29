@@ -1,6 +1,6 @@
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
-import { languagesArray } from "@/lib/i18n";
+import { getAlternativeLanguages } from "@/lib/i18n";
 import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import {
@@ -36,7 +36,7 @@ export async function generateMetadata({
   return {
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_DEFAULT_LOCALE}/${path}`,
-      languages: Object.fromEntries(languagesArray(path)),
+      languages: await getAlternativeLanguages(path),
     },
     title: seo?.title || collection.title,
     description:

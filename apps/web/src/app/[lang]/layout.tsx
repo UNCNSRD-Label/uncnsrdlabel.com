@@ -10,14 +10,17 @@ import { themeColors } from "@/lib/tailwind";
 import { sharedMetadata } from "@/shared-metadata";
 import { type LayoutProps } from "@/types/next";
 import {
+  getLocalizationHandler,
+} from "@uncnsrdlabel/graphql-shopify-storefront/server";
+import {
   SITE_DOMAIN_WEB,
   cn,
   getIETFLanguageTagFromlocaleTag,
   getLocaleObjectFromIETFLanguageTag,
-  locales
 } from "@uncnsrdlabel/lib";
 import { AppProviders } from "@uncnsrdlabel/providers";
 import { config } from "@uncnsrdlabel/tailwind-config";
+import { type IETFLanguageTag } from "@uncnsrdlabel/types";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import localFont from "next/font/local";
@@ -90,11 +93,11 @@ const montserrat = Montserrat({
 });
 
 export async function generateStaticParams() {
-  return locales.map((locale) => {
-    const lang = getIETFLanguageTagFromlocaleTag(locale);
+  const localization = await getLocalizationHandler();
 
-    return { lang };
-  });
+  const IETFLanguageTags = localization.availableCountries.flatMap((availableCountry) => availableCountry.availableLanguages.map((availableLanguage) => `${availableCountry.isoCode}-${availableLanguage.isoCode}` as unknown as IETFLanguageTag))
+
+  return IETFLanguageTags
 }
 
 export default async function RootLayout({
@@ -102,13 +105,13 @@ export default async function RootLayout({
   params: { lang },
 }: PropsWithChildren<LayoutProps>) {
   const locale = getLocaleObjectFromIETFLanguageTag(lang);
+  const IETFLanguageTag = getIETFLanguageTagFromlocaleTag(locale);
 
-  state$.lang.set(lang);
-  state$.locale.set(locale);
+  state$.lang.set(IETFLanguageTag);
 
   const showBanner = false;
 
-  const messages = await getDictionary(locale, "page.home");
+  const messages = await getDictionary(IETFLanguageTag, "page.home");
 
   return (
     <html

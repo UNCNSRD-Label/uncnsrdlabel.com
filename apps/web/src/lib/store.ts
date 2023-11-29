@@ -4,15 +4,12 @@ import {
   persistObservable,
 } from "@legendapp/state/persist";
 import { ObservablePersistLocalStorage } from "@legendapp/state/persist-plugins/local-storage";
-import { getLocaleObjectFromIETFLanguageTag } from "@uncnsrdlabel/lib";
+import { type IETFLanguageTag } from "@uncnsrdlabel/types";
 
-const lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE!;
-
-const locale = getLocaleObjectFromIETFLanguageTag(lang);
+const lang = 'en-AU' as IETFLanguageTag;
 
 export const state$ = observable({
   lang,
-  locale,
 });
 
 configureObservablePersistence({

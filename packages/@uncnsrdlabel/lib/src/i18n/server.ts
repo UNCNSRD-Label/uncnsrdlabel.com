@@ -6,7 +6,11 @@ import {
   type LanguageCode,
 } from "@shopify/hydrogen-react/storefront-api-types";
 
-export const getInContextVariables = (lang: Intl.BCP47LanguageTag) => {
+export const getInContextVariables = (lang?: Intl.BCP47LanguageTag) => {
+  if (!lang) {
+    return null;
+  }
+
   const locale = new Intl.Locale(lang);
 
   const country = locale.region as InputMaybe<CountryCode>;

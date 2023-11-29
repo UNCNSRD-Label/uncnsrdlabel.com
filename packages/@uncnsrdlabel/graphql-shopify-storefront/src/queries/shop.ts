@@ -1,25 +1,5 @@
 import { graphql } from "../codegen/index";
 
-export const getShopPoliciesQuery = graphql(/* GraphQL */ `
-  query getShopPolicies($country: CountryCode, $language: LanguageCode)
-  @inContext(country: $country, language: $language) {
-    shop {
-      privacyPolicy {
-        ...shopPolicy
-      }
-      refundPolicy {
-        ...shopPolicy
-      }
-      shippingPolicy {
-        ...shopPolicy
-      }
-      termsOfService {
-        ...shopPolicy
-      }
-    }
-  }
-`);
-
 export const getShopDetailsQuery = graphql(/* GraphQL */ `
   query getShopDetails($country: CountryCode, $language: LanguageCode)
   @inContext(country: $country, language: $language) {
@@ -56,15 +36,45 @@ export const getShopDetailsQuery = graphql(/* GraphQL */ `
         shortDescription
         slogan
       }
+      description
+      id
+      moneyFormat
       name
       paymentSettings {
         acceptedCardBrands
         cardVaultUrl
-        supportedDigitalWallets
-        shopifyPaymentsAccountId
+        countryCode
+        currencyCode
         enabledPresentmentCurrencies
+        shopifyPaymentsAccountId
+        supportedDigitalWallets
+      }
+      primaryDomain {
+        host
+        sslEnabled
+        url
       }
       shipsToCountries
+    }
+  }
+`);
+
+export const getShopPoliciesQuery = graphql(/* GraphQL */ `
+  query getShopPolicies($country: CountryCode, $language: LanguageCode)
+  @inContext(country: $country, language: $language) {
+    shop {
+      privacyPolicy {
+        ...shopPolicy
+      }
+      refundPolicy {
+        ...shopPolicy
+      }
+      shippingPolicy {
+        ...shopPolicy
+      }
+      termsOfService {
+        ...shopPolicy
+      }
     }
   }
 `);

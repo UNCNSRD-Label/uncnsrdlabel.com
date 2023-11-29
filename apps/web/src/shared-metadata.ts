@@ -1,4 +1,3 @@
-import { languagesArray } from "@/lib/i18n";
 import {
     SITE_DOMAIN_WEB
 } from "@uncnsrdlabel/lib";
@@ -13,9 +12,15 @@ const {
 export const sharedMetadata: Metadata = {
     alternates: {
         canonical: `${process.env.NEXT_PUBLIC_DEFAULT_LOCALE}/`,
-        languages: Object.fromEntries(languagesArray("/")),
+        // languages: await getAlternativeLanguages("/"),
     },
     applicationName: NEXT_PUBLIC_SITE_NAME,
+    appLinks: {
+        web: {
+            url: `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}`,
+            should_fallback: true,
+        },
+    },
     appleWebApp: {
         capable: true,
         title: NEXT_PUBLIC_SITE_NAME,

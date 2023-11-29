@@ -1,6 +1,6 @@
 import { Grid } from "@/components/grid/index";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
-import { languagesArray } from "@/lib/i18n";
+import { getAlternativeLanguages } from "@/lib/i18n";
 import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";
@@ -28,7 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_DEFAULT_LOCALE}/${path}`,
-      languages: Object.fromEntries(languagesArray(path)),
+      languages: await getAlternativeLanguages(path),
     },
     title: intl.formatMessage({ id: "title" }),
     description: intl.formatMessage({ id: "description" }),

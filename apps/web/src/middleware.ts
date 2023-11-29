@@ -1,15 +1,10 @@
 import { match } from "@formatjs/intl-localematcher";
+import {
+  getLocalizationHandler,
+} from "@uncnsrdlabel/graphql-shopify-storefront/server";
+import { type IETFLanguageTag } from "@uncnsrdlabel/types";
 import Negotiator from "negotiator";
 import { NextResponse, type NextRequest } from "next/server";
-
-const defaultLocale = process.env.NEXT_PUBLIC_DEFAULT_LOCALE!;
-
-const locales = (
-  process.env.NEXT_PUBLIC_SUPPORTED_LOCALES ?? defaultLocale
-).split(",");
-
-const getLocale = (languages: string[]) =>
-  match(languages, locales, defaultLocale);
 
 export const config = {
   matcher: [
@@ -24,8 +19,17 @@ export const config = {
   ],
 };
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const url = request.nextUrl;
+
+  const localization = await getLocalizationHandler();
+
+  const defaultLocale = localization.country.isoCode;
+
+  const IETFLanguageTags = localization.availableCountries.flatMap((availableCountry) => availableCountry.availableLanguages.map((availableLanguage) => `${availableCountry.isoCode}-${availableLanguage.isoCode}` as unknown as IETFLanguageTag))
+
+  const getLocale = (languages: string[]) =>
+    match(languages, IETFLanguageTags, defaultLocale);
 
   const detectedLanguage =
     request.headers
@@ -46,9 +50,9 @@ export function middleware(request: NextRequest) {
   // Check if there is any supported locale in the pathname
   const pathname = url.pathname;
 
-  const pathnameIsMissingLocale = locales.every(
-    (locale) =>
-      !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
+  const pathnameIsMissingLocale = IETFLanguageTags.every(
+    (IETFLanguageTag) =>
+      !pathname.startsWith(`/${IETFLanguageTag}/`) && pathname !== `/${IETFLanguageTag}`,
   );
 
   // Redirect if there is no locale

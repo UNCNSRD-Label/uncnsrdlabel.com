@@ -1,8 +1,7 @@
-import { state$ } from "@/lib/store";
-// import { ProductAdditionalDetails } from "@/components/product/additional-details";
 import { LoadingDots } from "@/components/loading/dots";
 import { Details } from "@/components/product/details";
-import { languagesArray } from "@/lib/i18n";
+import { getAlternativeLanguages } from "@/lib/i18n";
+import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";
 import {
   getFragmentData,
@@ -45,7 +44,7 @@ export async function generateMetadata({
   return {
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_DEFAULT_LOCALE}/${path}`,
-      languages: Object.fromEntries(languagesArray(path)),
+      languages: await getAlternativeLanguages(path),
     },
     title: seo.title || product.title,
     description: seo.description || product.description,

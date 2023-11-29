@@ -1,6 +1,6 @@
 import { LoadingSkeleton } from "@/components/loading/skeleton";
 import { Prose } from "@/components/prose";
-import { languagesArray } from "@/lib/i18n";
+import { getAlternativeLanguages } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
@@ -36,7 +36,7 @@ export async function generateMetadata({
   return {
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_DEFAULT_LOCALE}/${path}`,
-      languages: Object.fromEntries(languagesArray(path)),
+      languages: await getAlternativeLanguages(path),
     },
     title: policy.title,
     openGraph: {
