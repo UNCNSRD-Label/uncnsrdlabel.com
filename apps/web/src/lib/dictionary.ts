@@ -1,37 +1,21 @@
+import languageFallback from "@/dictionaries/en.json";
 import {
-  getLocalizationDetailsHandler,
-} from "@uncnsrdlabel/graphql-shopify-storefront";
+  getLocalizationHandler,
+} from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import merge from "deepmerge";
 import { getProperty } from "dot-prop";
 import { type ResolvedIntlConfig } from "react-intl";
 
 export const getDictionary = async (lang: Intl.BCP47LanguageTag, namespace: string) => {
-  const localization = await getLocalizationDetailsHandler({ lang });
+  const localization = await getLocalizationHandler(lang);
 
-  let languageFallback = {}
-  let languageGeneric = {}
-  let languageLocalised = {}
+  const languageGeneric = import(`@/dictionaries/${localization.language.isoCode}.json`).then(
+    (module) => module.default,
+  );
 
-  try {
-    const { default: languageFallbackDictionary } = await import(`@/dictionaries/en.json`);
-    languageFallback = languageFallbackDictionary;
-  } catch (error) {
-    console.error(error);
-  }
-
-  try {
-    const { default: languageGenericDictionary } = await import(`@/dictionaries/${localization.language.isoCode.toLocaleLowerCase()}.json`) ?? {};
-    languageGeneric = languageGenericDictionary;
-  } catch (error) {
-    // console.error(error);
-  }
-
-  try {
-    const { default: languageLocalisedDictionary } = await import(`@/dictionaries/${localization.language.isoCode.toLocaleLowerCase()}-${localization.country.isoCode}.json`) ?? {};
-    languageLocalised = languageLocalisedDictionary;
-  } catch (error) {
-    // console.error(error);
-  }
+  const languageLocalised = import(`@/dictionaries/${localization.language.isoCode}-${localization.country.isoCode}.json`).then(
+    (module) => module.default,
+  );
 
   const merged = merge.all([
     languageFallback,

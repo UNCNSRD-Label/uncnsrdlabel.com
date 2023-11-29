@@ -3,20 +3,24 @@ import { Footer } from "@/components/layout/footer/index";
 import { Progress } from "@/components/layout/progress/index";
 import { LoadingDots } from "@/components/loading/dots";
 import { Organization } from "@/components/schema.org/organization";
-import { getIntl } from "@/lib/i18n";
-import { getBaseMetadata } from "@/lib/metadata";
+import { getDictionary } from "@/lib/dictionary";
+import { getIntl } from "@/lib/i18n/server";
+import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";
+import { sharedMetadata } from "@/shared-metadata";
 import { type LayoutProps } from "@/types/next";
-import { getLocalizationAvailableBCP47LanguageTagsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 import {
-  DEFAULT_BCP47_LANGUAGE_TAGS,
+  getLocalizationHandler,
+} from "@uncnsrdlabel/graphql-shopify-storefront/server";
+import {
+  SITE_DOMAIN_WEB,
   cn,
   getIETFLanguageTagFromlocaleTag,
   getLocaleObjectFromIETFLanguageTag,
 } from "@uncnsrdlabel/lib";
 import { AppProviders } from "@uncnsrdlabel/providers";
 import { config } from "@uncnsrdlabel/tailwind-config";
-import { intersection } from "lodash";
+import { type IETFLanguageTag } from "@uncnsrdlabel/types";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import localFont from "next/font/local";
@@ -29,12 +33,8 @@ export async function generateMetadata({
   const intlMetadata = await getIntl(lang, "global.metadata");
   const intlKeywords = await getIntl(lang, "global.metadata.keywords");
 
-  const baseMetadata = await getBaseMetadata({
-    lang,
-  });
-
   return {
-    ...baseMetadata,
+    ...sharedMetadata,
     description: intlMetadata.formatMessage({ id: "description" }),
     keywords: [
       intlKeywords.formatMessage({ id: "beachwear" }),
@@ -45,8 +45,11 @@ export async function generateMetadata({
       intlKeywords.formatMessage({ id: "swimsuit" }),
       intlKeywords.formatMessage({ id: "swimwear" }),
     ],
+    metadataBase: new URL(
+        `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}`,
+    ),
     openGraph: {
-      ...baseMetadata.openGraph,
+      ...sharedMetadata.openGraph,
       description: intlMetadata.formatMessage({ id: "description" }),
       locale: getIETFLanguageTagFromlocaleTag(
         getLocaleObjectFromIETFLanguageTag(lang),
@@ -90,33 +93,25 @@ const montserrat = Montserrat({
 });
 
 export async function generateStaticParams() {
-  const localization = await getLocalizationAvailableBCP47LanguageTagsHandler();
+  const localization = await getLocalizationHandler();
 
-  const shopifyBCP47LanguageTags: Intl.BCP47LanguageTag[] =
-    localization.availableCountries.flatMap((availableCountry) =>
-      availableCountry.availableLanguages.map(
-        (availableLanguage) =>
-          `${availableLanguage.isoCode.toLocaleLowerCase()}-${
-            availableCountry.isoCode
-          }` as Intl.BCP47LanguageTag,
-      ),
-    );
+  const IETFLanguageTags = localization.availableCountries.flatMap((availableCountry) => availableCountry.availableLanguages.map((availableLanguage) => `${availableCountry.isoCode}-${availableLanguage.isoCode}` as unknown as IETFLanguageTag))
 
-  const supportedDefaultBCP47LanguageTags = intersection(
-    DEFAULT_BCP47_LANGUAGE_TAGS,
-    shopifyBCP47LanguageTags,
-  );
-
-  return supportedDefaultBCP47LanguageTags.map((BCP47LanguageTag) => ({
-    lang: BCP47LanguageTag,
-  }));
+  return IETFLanguageTags
 }
 
 export default async function RootLayout({
   children,
   params: { lang },
 }: PropsWithChildren<LayoutProps>) {
+  const locale = getLocaleObjectFromIETFLanguageTag(lang);
+  const IETFLanguageTag = getIETFLanguageTagFromlocaleTag(locale);
+
+  state$.lang.set(IETFLanguageTag);
+
   const showBanner = false;
+
+  const messages = await getDictionary(IETFLanguageTag, "page.home");
 
   return (
     <html
@@ -134,7 +129,10 @@ export default async function RootLayout({
           themeColors,
         )}
       >
-        <AppProviders lang={lang}>
+        <AppProviders
+          locale={getIETFLanguageTagFromlocaleTag(locale)}
+          messages={messages}
+        >
           <Progress />
           <Banner
             className={cn("sticky top-0 w-full", !showBanner && "hidden")}

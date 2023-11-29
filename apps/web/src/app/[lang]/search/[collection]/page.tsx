@@ -1,6 +1,7 @@
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
-import { getIntl } from "@/lib/i18n";
+import { getAlternativeLanguages } from "@/lib/i18n";
+import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import {
   collectionFragment,
@@ -10,9 +11,10 @@ import {
   productCollectionDefaultSort,
   productCollectionSorting,
   seoFragment,
-} from "@uncnsrdlabel/graphql-shopify-storefront";
+} from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+
 
 // export const runtime = "edge";
 
@@ -21,12 +23,7 @@ export async function generateMetadata({
 }: {
   params: { collection: string };
 }): Promise<Metadata> {
-  const lang = state$.lang.get();
-
-  const collectionFragmentRef = await getCollectionHandler({
-    variables: { handle },
-    lang,
-  });
+  const collectionFragmentRef = await getCollectionHandler({ handle });
 
   const collection = getFragmentData(collectionFragment, collectionFragmentRef);
 
@@ -39,7 +36,7 @@ export async function generateMetadata({
   return {
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_DEFAULT_LOCALE}/${path}`,
-      // languages: await getAlternativeLanguages({ lang, path }),
+      languages: await getAlternativeLanguages(path),
     },
     title: seo?.title || collection.title,
     description:
@@ -66,22 +63,17 @@ export default async function CategoryPage({
     productCollectionDefaultSort;
 
   const collectionProducts = await getCollectionProductsHandler({
-    variables: {
-      handle,
-      sortKey,
-      reverse,
-    },
-    lang,
+    handle,
+    sortKey,
+    reverse,
   });
 
   const products = collectionProducts.edges.map((edge) => edge?.node);
 
   return (
     <section>
-      {products?.length === 0 ? (
-        <p className="py-3 text-lg">
-          {intl.formatMessage({ id: "no-products-found" })}
-        </p>
+      {products.length === 0 ? (
+        <p className="py-3 text-lg">{intl.formatMessage({ id: "no-products-found" })}</p>
       ) : (
         <Grid className="grid-cols-2 lg:grid-cols-3">
           <ProductGridItems productFragmentRefs={products} />
