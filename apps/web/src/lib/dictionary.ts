@@ -7,7 +7,7 @@ import { getProperty } from "dot-prop";
 import { type ResolvedIntlConfig } from "react-intl";
 
 export const getDictionary = async (lang: Intl.BCP47LanguageTag, namespace: string) => {
-  const localization = await getLocalizationHandler(lang);
+  const localization = await getLocalizationHandler({ lang });
 
   const languageGeneric = import(`@/dictionaries/${localization.language.isoCode}.json`).then(
     (module) => module.default,

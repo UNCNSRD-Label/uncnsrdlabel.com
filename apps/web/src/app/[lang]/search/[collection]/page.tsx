@@ -15,7 +15,6 @@ import {
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-
 // export const runtime = "edge";
 
 export async function generateMetadata({
@@ -23,7 +22,12 @@ export async function generateMetadata({
 }: {
   params: { collection: string };
 }): Promise<Metadata> {
-  const collectionFragmentRef = await getCollectionHandler({ handle });
+  const lang = state$.lang.get();
+
+  const collectionFragmentRef = await getCollectionHandler({
+    variables: { handle },
+    lang,
+  });
 
   const collection = getFragmentData(collectionFragment, collectionFragmentRef);
 
@@ -63,9 +67,12 @@ export default async function CategoryPage({
     productCollectionDefaultSort;
 
   const collectionProducts = await getCollectionProductsHandler({
-    handle,
-    sortKey,
-    reverse,
+    variables: {
+      handle,
+      sortKey,
+      reverse,
+    },
+    lang,
   });
 
   const products = collectionProducts.edges.map((edge) => edge?.node);
@@ -73,7 +80,9 @@ export default async function CategoryPage({
   return (
     <section>
       {products.length === 0 ? (
-        <p className="py-3 text-lg">{intl.formatMessage({ id: "no-products-found" })}</p>
+        <p className="py-3 text-lg">
+          {intl.formatMessage({ id: "no-products-found" })}
+        </p>
       ) : (
         <Grid className="grid-cols-2 lg:grid-cols-3">
           <ProductGridItems productFragmentRefs={products} />

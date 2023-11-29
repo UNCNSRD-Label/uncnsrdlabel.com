@@ -1,12 +1,14 @@
 import { OpengraphImageResponse } from "@/components/opengraph-image-response";
 import { state$ } from "@/lib/store";
 import {
-  getFragmentData,
-  getProductDetailsByHandleHandler,
   imageFragment,
   productDetailsFragment,
-  seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
+import {
+  getFragmentData,
+  getProductDetailsByHandleHandler,
+  seoFragment,
+} from "@uncnsrdlabel/graphql-shopify-storefront/server";
 
 // export const runtime = "edge";
 
