@@ -115,6 +115,10 @@ export default async function RootLayout({
 }: PropsWithChildren<LayoutProps>) {
   const showBanner = false;
 
+  const localization = await getLocalizationHandler({ lang });
+
+  const defaultLocale = localization.country.isoCode;
+
   const messages = await getDictionary(lang, "page.home");
 
   return (
@@ -133,7 +137,7 @@ export default async function RootLayout({
           themeColors,
         )}
       >
-        <AppProviders lang={lang} messages={messages}>
+        <AppProviders defaultLocale={defaultLocale} lang={lang} messages={messages}>
           <Progress />
           <Banner
             className={cn("sticky top-0 w-full", !showBanner && "hidden")}

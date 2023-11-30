@@ -14,15 +14,17 @@ export {
 
 export function AppProviders({
   children,
+  defaultLocale,
   lang,
   messages,
 }: PropsWithChildren<{
+  defaultLocale: Intl.BCP47LanguageTag;
   lang: Intl.BCP47LanguageTag;
   messages: ResolvedIntlConfig["messages"];
 }>) {
   return (
     <AppReactQueryProvider>
-      <AppIntlProvider lang={lang} messages={messages}>
+      <AppIntlProvider defaultLocale={defaultLocale} lang={lang} messages={messages}>
         <AppShopifyProvider lang={lang}>
           <AppAnalyticsProvider>{children}</AppAnalyticsProvider>
         </AppShopifyProvider>

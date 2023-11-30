@@ -30,6 +30,7 @@ export async function middleware(request: NextRequest) {
   const language = state$.language.get();
 
   const localization = await getLocalizationHandler({
+    // @ts-ignore Type '"AF"' is not assignable to type 'LanguageCode'.
     variables: { country, language }
   });
 
