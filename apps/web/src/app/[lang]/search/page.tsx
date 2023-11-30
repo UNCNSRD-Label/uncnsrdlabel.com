@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_DEFAULT_LOCALE}/${path}`,
-      languages: await getAlternativeLanguages(path),
+      languages: await getAlternativeLanguages({ lang, path }),
     },
     title: intl.formatMessage({ id: "title" }),
     description: intl.formatMessage({ id: "description" }),

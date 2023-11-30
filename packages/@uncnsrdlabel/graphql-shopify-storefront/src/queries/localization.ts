@@ -1,7 +1,7 @@
 import { graphql } from "../codegen/index";
 
 export const getLocalizationQuery = graphql(/* GraphQL */ `
-query getLocalization($country: CountryCode!, $language: LanguageCode!) @inContext(country: $country, language: $language) {
+query getLocalization($country: CountryCode, $language: LanguageCode) @inContext(country: $country, language: $language) {
   localization {
     availableCountries {
       availableLanguages {

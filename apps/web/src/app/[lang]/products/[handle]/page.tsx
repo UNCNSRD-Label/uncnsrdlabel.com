@@ -44,7 +44,7 @@ export async function generateMetadata({
   return {
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_DEFAULT_LOCALE}/${path}`,
-      languages: await getAlternativeLanguages(path),
+      languages: await getAlternativeLanguages({ lang, path }),
     },
     title: seo.title || product.title,
     description: seo.description || product.description,
