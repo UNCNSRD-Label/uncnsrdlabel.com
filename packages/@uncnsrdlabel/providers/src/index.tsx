@@ -1,4 +1,5 @@
 import { PropsWithChildren } from "react";
+import { type ResolvedIntlConfig } from "react-intl";
 import { AppAnalyticsProvider } from "./analytics/index";
 import { AppIntlProvider } from "./react-intl";
 import { AppReactQueryProvider } from "./react-query";
@@ -14,14 +15,18 @@ export {
 export function AppProviders({
   children,
   lang,
+  messages,
 }: PropsWithChildren<{
   lang: Intl.BCP47LanguageTag;
+  messages: ResolvedIntlConfig["messages"];
 }>) {
   return (
     <AppReactQueryProvider>
-      <AppShopifyProvider lang={lang}>
-        <AppAnalyticsProvider>{children}</AppAnalyticsProvider>
-      </AppShopifyProvider>
+      <AppIntlProvider lang={lang} messages={messages}>
+        <AppShopifyProvider lang={lang}>
+          <AppAnalyticsProvider>{children}</AppAnalyticsProvider>
+        </AppShopifyProvider>
+      </AppIntlProvider>
     </AppReactQueryProvider>
   );
 }

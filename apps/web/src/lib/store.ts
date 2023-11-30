@@ -4,12 +4,21 @@ import {
   persistObservable,
 } from "@legendapp/state/persist";
 import { ObservablePersistLocalStorage } from "@legendapp/state/persist-plugins/local-storage";
-import { type IETFLanguageTag } from "@uncnsrdlabel/types";
+import {
+  type CountryCode,
+  type LanguageCode,
+} from "@shopify/hydrogen/storefront-api-types";
 
-const lang = 'en-AU' as IETFLanguageTag;
+const country = process.env.NEXT_PUBLIC_DEFAULT_COUNTRY as CountryCode;
+
+const lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag;
+
+const language = lang.split("-")[0] as LanguageCode;
 
 export const state$ = observable({
+  country,
   lang,
+  language,
 });
 
 configureObservablePersistence({

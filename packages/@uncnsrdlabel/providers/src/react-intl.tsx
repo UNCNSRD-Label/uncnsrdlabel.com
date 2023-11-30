@@ -3,26 +3,27 @@
 import {
   getLocalizationHandler,
 } from "@uncnsrdlabel/graphql-shopify-storefront/server";
-import { type IETFLanguageTag } from "@uncnsrdlabel/types";
 import { PropsWithChildren } from "react";
 import { IntlProvider, type ResolvedIntlConfig } from "react-intl";
 
 export async function AppIntlProvider({
   children,
-  locale,
+  lang,
   messages,
 }: PropsWithChildren<{
-  locale: IETFLanguageTag;
+  lang: Intl.BCP47LanguageTag;
   messages: ResolvedIntlConfig["messages"];
 }>) {
-  const localization = await getLocalizationHandler();
+  const localization = await getLocalizationHandler({
+    lang,
+  });
 
   const defaultLocale = localization.country.isoCode;
 
   return (
     <IntlProvider
       messages={messages}
-      locale={locale}
+      locale={lang}
       defaultLocale={defaultLocale}
     >
       {children}

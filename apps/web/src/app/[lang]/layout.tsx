@@ -5,13 +5,13 @@ import { LoadingDots } from "@/components/loading/dots";
 import { Organization } from "@/components/schema.org/organization";
 import { getDictionary } from "@/lib/dictionary";
 import { getIntl } from "@/lib/i18n/server";
-import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";
 import { sharedMetadata } from "@/shared-metadata";
 import { type LayoutProps } from "@/types/next";
 import {
-  getLocalizationHandler,
-} from "@uncnsrdlabel/graphql-shopify-storefront/server";
+  type CountryCode
+} from "@shopify/hydrogen/storefront-api-types";
+import { getLocalizationHandler } from "@uncnsrdlabel/graphql-shopify-storefront/server";
 import {
   SITE_DOMAIN_WEB,
   cn,
@@ -20,7 +20,6 @@ import {
 } from "@uncnsrdlabel/lib";
 import { AppProviders } from "@uncnsrdlabel/providers";
 import { config } from "@uncnsrdlabel/tailwind-config";
-import { type IETFLanguageTag } from "@uncnsrdlabel/types";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import localFont from "next/font/local";
@@ -46,7 +45,7 @@ export async function generateMetadata({
       intlKeywords.formatMessage({ id: "swimwear" }),
     ],
     metadataBase: new URL(
-        `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}`,
+      `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}`,
     ),
     openGraph: {
       ...sharedMetadata.openGraph,
@@ -92,26 +91,31 @@ const montserrat = Montserrat({
   weight: "300",
 });
 
-export async function generateStaticParams() {
-  const localization = await getLocalizationHandler();
+export async function generateStaticParams({
+  lang,
+}: {
+  lang: CountryCode;
+}) {
+  const localization = await getLocalizationHandler({ lang });
 
-  const IETFLanguageTags = localization.availableCountries.flatMap((availableCountry) => availableCountry.availableLanguages.map((availableLanguage) => `${availableCountry.isoCode}-${availableLanguage.isoCode}` as unknown as IETFLanguageTag))
+  const IETFLanguageTags = localization.availableCountries.flatMap(
+    (availableCountry) =>
+      availableCountry.availableLanguages.map(
+        (availableLanguage) =>
+          `${availableCountry.isoCode}-${availableLanguage.isoCode}` as Intl.BCP47LanguageTag,
+      ),
+  );
 
-  return IETFLanguageTags
+  return IETFLanguageTags;
 }
 
 export default async function RootLayout({
   children,
   params: { lang },
 }: PropsWithChildren<LayoutProps>) {
-  const locale = getLocaleObjectFromIETFLanguageTag(lang);
-  const IETFLanguageTag = getIETFLanguageTagFromlocaleTag(locale);
-
-  state$.lang.set(IETFLanguageTag);
-
   const showBanner = false;
 
-  const messages = await getDictionary(IETFLanguageTag, "page.home");
+  const messages = await getDictionary(lang, "page.home");
 
   return (
     <html
@@ -129,10 +133,7 @@ export default async function RootLayout({
           themeColors,
         )}
       >
-        <AppProviders
-          locale={getIETFLanguageTagFromlocaleTag(locale)}
-          messages={messages}
-        >
+        <AppProviders lang={lang} messages={messages}>
           <Progress />
           <Banner
             className={cn("sticky top-0 w-full", !showBanner && "hidden")}
