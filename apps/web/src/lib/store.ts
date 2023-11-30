@@ -9,9 +9,9 @@ import {
   type LanguageCode,
 } from "@shopify/hydrogen/storefront-api-types";
 
-const country = process.env.NEXT_PUBLIC_DEFAULT_COUNTRY as CountryCode;
+const lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE ?? "en-AU" as Intl.BCP47LanguageTag;
 
-const lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag;
+const country = lang.split("-")[1] as CountryCode;
 
 const language = lang.split("-")[0] as LanguageCode;
 
