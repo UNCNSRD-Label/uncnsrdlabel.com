@@ -8,12 +8,10 @@ import { use } from "react";
 export function useGetIntl(namespace: string) {
   const { lang } = useParams();
 
-  const tag = Array.isArray(lang) ? lang[0] : lang;
-
-  const locale = new Intl.Locale(tag);
+  const locale = Array.isArray(lang) ? lang[0] : lang;
 
   return createIntl({
-    locale: tag,
+    locale,
     messages: use(getDictionary(locale, namespace)),
   });
 }

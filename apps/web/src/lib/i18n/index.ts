@@ -1,17 +1,20 @@
 import {
     getLocalizationHandler,
 } from "@uncnsrdlabel/graphql-shopify-storefront/server";
-import { type AlternateURLs } from "next/dist/lib/metadata/types/alternative-urls-types";
 
-export const getAlternativeLanguages = async (path?: string) => {
-    const localization = await getLocalizationHandler();
+export const getAlternativeLanguages = async ({ lang, path }: { lang: Intl.BCP47LanguageTag; path: string }) => {
+    const localization = await getLocalizationHandler({ lang });
 
-    const IETFLanguageTags = localization.availableCountries.flatMap((availableCountry) => availableCountry.availableLanguages.map((availableLanguage) => `${availableCountry.isoCode}-${availableLanguage.isoCode}` as unknown as Intl.BCP47LanguageTag))
+    const BCP47LanguageTags = localization.availableCountries.flatMap((availableCountry) => availableCountry.availableLanguages.map((availableLanguage) => `${availableCountry.isoCode}-${availableLanguage.isoCode}` as Intl.BCP47LanguageTag))
 
-    const AlternateLinkDescriptors = IETFLanguageTags.map((IETFLanguageTag) => ({
-        title: Intl.BCP47LanguageTag,
-        url: path ? `/${IETFLanguageTag}/${path}` : `/${IETFLanguageTag}`,
-    })) as unknown as Required<AlternateURLs['languages']>;
+    const languages = [];
 
-    return AlternateLinkDescriptors
+    for (const BCP47LanguageTag in BCP47LanguageTags) {
+        languages.push([BCP47LanguageTag, {
+            title: BCP47LanguageTag,
+            url: `/${BCP47LanguageTag}/${path}`,
+        }]);
+    }
+
+    return Object.fromEntries(languages);
 }
