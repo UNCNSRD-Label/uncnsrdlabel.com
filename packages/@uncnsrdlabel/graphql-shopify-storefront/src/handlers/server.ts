@@ -24,6 +24,7 @@ import {
   GetCollectionProductsQueryVariables,
   GetCollectionQueryVariables,
   GetCollectionsQueryVariables,
+  GetLocalizationQueryVariables,
   GetMenuQueryVariables,
   GetPageQueryVariables,
   GetPagesQueryVariables,
@@ -425,17 +426,16 @@ export async function getShopDetailsHandler({ lang }: {
   return shop;
 }
 
-export async function getLocalizationHandler(variables?: {
+export async function getLocalizationHandler({ variables, lang }: {
+  variables?: GetLocalizationQueryVariables,
   lang?: Intl.BCP47LanguageTag,
 }) {
-  const lang = variables?.lang;
-
   const inContextVariables = getInContextVariables(lang);
 
   const { localization } = await getShopifyGraphQL(
     getLocalizationQuery,
     // @ts-expect-error Types of property 'country' are incompatible.
-    inContextVariables,
+    { ...variables, ...inContextVariables, }
   );
 
   if (!localization) {

@@ -1,8 +1,11 @@
+import { state$ } from "@/lib/store";
 import { match } from "@formatjs/intl-localematcher";
+import {
+  type CountryCode
+} from "@shopify/hydrogen/storefront-api-types";
 import {
   getLocalizationHandler,
 } from "@uncnsrdlabel/graphql-shopify-storefront/server";
-import { type IETFLanguageTag } from "@uncnsrdlabel/types";
 import Negotiator from "negotiator";
 import { NextResponse, type NextRequest } from "next/server";
 
@@ -22,11 +25,17 @@ export const config = {
 export async function middleware(request: NextRequest) {
   const url = request.nextUrl;
 
-  const localization = await getLocalizationHandler();
+  const country = request.geo?.country as CountryCode ?? state$.country.get()
+
+  const language = state$.language.get();
+
+  const localization = await getLocalizationHandler({
+    variables: { country, language }
+  });
 
   const defaultLocale = localization.country.isoCode;
 
-  const IETFLanguageTags = localization.availableCountries.flatMap((availableCountry) => availableCountry.availableLanguages.map((availableLanguage) => `${availableCountry.isoCode}-${availableLanguage.isoCode}` as unknown as IETFLanguageTag))
+  const IETFLanguageTags = localization.availableCountries.flatMap((availableCountry) => availableCountry.availableLanguages.map((availableLanguage) => `${availableCountry.isoCode}-${availableLanguage.isoCode}` as Intl.BCP47LanguageTag))
 
   const getLocale = (languages: string[]) =>
     match(languages, IETFLanguageTags, defaultLocale);
@@ -57,11 +66,14 @@ export async function middleware(request: NextRequest) {
 
   // Redirect if there is no locale
   if (pathnameIsMissingLocale) {
-    const locale = getLocale(languages);
+    const lang = getLocale(languages);
+
+    state$.country.set(country);
+    state$.lang.set(lang);
 
     // e.g. incoming request is /products, new URL is now /en-AU/products
     return NextResponse.redirect(
-      new URL(`/${locale}/${pathname}`, request.url),
+      new URL(`/${lang}/${pathname}`, request.url),
     );
   }
 
