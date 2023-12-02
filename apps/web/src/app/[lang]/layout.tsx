@@ -4,14 +4,11 @@ import { Progress } from "@/components/layout/progress/index";
 import { LoadingDots } from "@/components/loading/dots";
 import { Organization } from "@/components/schema.org/organization";
 import { getDictionary } from "@/lib/dictionary";
-import { getIntl } from "@/lib/i18n/server";
+import { getIntl } from "@/lib/i18n";
 import { themeColors } from "@/lib/tailwind";
 import { sharedMetadata } from "@/shared-metadata";
 import { type LayoutProps } from "@/types/next";
-import {
-  type CountryCode
-} from "@shopify/hydrogen/storefront-api-types";
-import { getLocalizationHandler } from "@uncnsrdlabel/graphql-shopify-storefront/server";
+import { getLocalizationHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 import {
   SITE_DOMAIN_WEB,
   cn,
@@ -91,23 +88,23 @@ const montserrat = Montserrat({
   weight: "300",
 });
 
-export async function generateStaticParams({
-  lang,
-}: {
-  lang: CountryCode;
-}) {
-  const localization = await getLocalizationHandler({ lang });
+// export async function generateStaticParams({
+//   lang,
+// }: {
+//   lang: CountryCode;
+// }) {
+//   const localization = await getLocalizationHandler({ lang });
 
-  const IETFLanguageTags = localization.availableCountries.flatMap(
-    (availableCountry) =>
-      availableCountry.availableLanguages.map(
-        (availableLanguage) =>
-          `${availableCountry.isoCode}-${availableLanguage.isoCode}` as Intl.BCP47LanguageTag,
-      ),
-  );
+//   const IETFLanguageTags = localization.availableCountries.flatMap(
+//     (availableCountry) =>
+//       availableCountry.availableLanguages.map(
+//         (availableLanguage) =>
+//           `${availableLanguage.isoCode}-${availableCountry.isoCode}` as Intl.BCP47LanguageTag,
+//       ),
+//   );
 
-  return IETFLanguageTags;
-}
+//   return IETFLanguageTags;
+// }
 
 export default async function RootLayout({
   children,

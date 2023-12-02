@@ -15,7 +15,7 @@ import {
   productDetailsFragment,
   productMetafieldFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { useGetInContextVariables } from "@uncnsrdlabel/lib";
+import { useGetInContextVariables } from "@uncnsrdlabel/lib/client";
 import { ReactNode } from "react";
 import slugify from "slugify";
 import { JsonValue } from "type-fest";
