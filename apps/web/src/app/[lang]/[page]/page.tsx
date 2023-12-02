@@ -5,7 +5,7 @@ import {
   getPageHandler,
   pageFragment,
   seoFragment,
-} from "@uncnsrdlabel/graphql-shopify-storefront/server";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import {
   SITE_DOMAIN_WEB
 } from "@uncnsrdlabel/lib";

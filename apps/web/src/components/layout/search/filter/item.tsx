@@ -5,7 +5,7 @@ import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   ProductCollectionSortFilterItem,
   collectionFragment,
-} from "@uncnsrdlabel/graphql-shopify-storefront/client";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, createUrl } from "@uncnsrdlabel/lib";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";

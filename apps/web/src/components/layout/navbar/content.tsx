@@ -4,7 +4,7 @@ import { LogotypeIcon } from "@/components/icons/logotype";
 import { Search } from "@/components/search/index";
 import { state$ } from "@/lib/store";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
-import { getMenuHandler } from "@uncnsrdlabel/graphql-shopify-storefront/server";
+import { getMenuHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { Suspense } from "react";
 import { SlHeart, SlUser } from "react-icons/sl";

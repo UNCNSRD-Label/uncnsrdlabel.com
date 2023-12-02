@@ -5,7 +5,7 @@ import {
 } from "@shopify/hydrogen/storefront-api-types";
 // import {
 //   getLocalizationHandler,
-// } from "@uncnsrdlabel/graphql-shopify-storefront/server";
+// } from "@uncnsrdlabel/graphql-shopify-storefront";
 import Negotiator from "negotiator";
 import { NextResponse, type NextRequest } from "next/server";
 
@@ -54,7 +54,7 @@ export async function middleware(request: NextRequest) {
 
   const defaultLocale = localization.country.isoCode;
 
-  const IETFLanguageTags = localization.availableCountries.flatMap((availableCountry) => availableCountry.availableLanguages.map((availableLanguage) => `${availableCountry.isoCode}-${availableLanguage.isoCode}` as Intl.BCP47LanguageTag))
+  const IETFLanguageTags = localization.availableCountries.flatMap((availableCountry) => availableCountry.availableLanguages.map((availableLanguage) => `${availableLanguage.isoCode.toLocaleLowerCase()}-${availableCountry.isoCode}` as Intl.BCP47LanguageTag))
 
   const getLocale = (languages: string[]) =>
     match(languages, IETFLanguageTags, defaultLocale);
@@ -63,8 +63,7 @@ export async function middleware(request: NextRequest) {
     request.headers
       .get("accept-language")
       ?.split(",")?.[0]
-      .split("-")?.[0]
-      .toLowerCase() || "en";
+      .split("-")?.[0] || "en";
 
   const detectedCountry =
     request.geo?.country ?? defaultLocale.split("-")?.[1] ?? "AU";

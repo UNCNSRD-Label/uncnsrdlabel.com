@@ -5,7 +5,7 @@ import { SocialMenu } from "@/components/social-menu";
 import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
-import { getMenuHandler } from "@uncnsrdlabel/graphql-shopify-storefront/server";
+import { getMenuHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 
 const { NEXT_PUBLIC_SITE_NAME } = process.env;
 

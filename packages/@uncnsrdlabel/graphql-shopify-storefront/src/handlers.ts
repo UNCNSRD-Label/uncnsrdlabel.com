@@ -1,20 +1,18 @@
-"use server";
-
-import { getInContextVariables } from "@uncnsrdlabel/lib/server";
-import { CollectionFragment } from "../codegen/graphql";
-import { getFragmentData } from "../codegen/index";
+import { getInContextVariables } from "@uncnsrdlabel/lib";
+import { CollectionFragment } from "./codegen/graphql";
+import { getFragmentData } from "./codegen/index";
 import {
   addToCartMutation,
   createCartMutation,
   editCartItemsMutation,
   removeFromCartMutation,
-} from "../mutations/cart";
+} from "./mutations/cart";
 import {
   getCollectionProductsQuery,
   getCollectionQuery,
   getCollectionsQuery,
-} from "../queries/collection";
-// import { collectionFragment } from "../fragments/collection";
+} from "./queries/collection";
+// import { collectionFragment } from "./fragments/collection";
 import { camelCase } from "lodash";
 import {
   AddToCartMutationVariables,
@@ -37,8 +35,8 @@ import {
   GetRouteMetaObjectQueryVariables,
   GetShopPoliciesQueryVariables,
   RemoveFromCartMutationVariables
-} from "../codegen/graphql";
-import { collectionFragment } from "../fragments/index";
+} from "./codegen/graphql";
+import { collectionFragment } from "./fragments/index";
 import {
   getCartQuery,
   getLocalizationQuery,
@@ -54,9 +52,9 @@ import {
   getRouteMetaObjectQuery,
   getShopDetailsQuery,
   getShopPoliciesQuery,
-} from "../queries/index";
-import { type PolicyName } from "../types";
-import { getMenuItems, getShopifyGraphQL } from "../utilities/server";
+} from "./queries/index";
+import { type PolicyName } from "./types";
+import { getMenuItems, getShopifyGraphQL } from "./utilities";
 
 export async function createCartHandler({ variables, lang }: {
   variables?: Pick<CreateCartMutationVariables, "lineItems">,

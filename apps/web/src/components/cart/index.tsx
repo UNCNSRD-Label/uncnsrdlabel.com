@@ -5,8 +5,8 @@ import {
   getCartQuery,
   getFragmentData,
   getShopifyGraphQL,
-} from "@uncnsrdlabel/graphql-shopify-storefront/server";
-import { getInContextVariables } from "@uncnsrdlabel/lib/server";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
+import { getInContextVariables } from "@uncnsrdlabel/lib";
 import { cookies } from "next/headers";
 
 export async function Cart() {

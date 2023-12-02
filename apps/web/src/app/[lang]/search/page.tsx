@@ -1,14 +1,13 @@
 import { Grid } from "@/components/grid/index";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
-import { getAlternativeLanguages } from "@/lib/i18n";
-import { getIntl } from "@/lib/i18n/server";
+import { getAlternativeLanguages, getIntl } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";
 import {
   getProductsHandler,
   productDefaultSort,
   productSorting,
-} from "@uncnsrdlabel/graphql-shopify-storefront/server";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getLocaleObjectFromIETFLanguageTag } from "@uncnsrdlabel/lib";
 import { type Metadata } from "next";
 

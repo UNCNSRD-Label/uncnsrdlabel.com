@@ -1,10 +1,10 @@
 import { Price } from "@/components/price";
 import {
+  FragmentType,
   getFragmentData,
   productBasicFragment,
   productDetailsFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { FragmentType } from "@uncnsrdlabel/graphql-shopify-storefront/client";
 import { cn } from "@uncnsrdlabel/lib";
 
 export const PriceAndCompareAtPrice = ({

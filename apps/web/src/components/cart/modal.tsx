@@ -6,7 +6,7 @@ import { OpenCart } from "@/components/cart/open-cart";
 import { themeColors } from "@/lib/tailwind";
 import { ResultOf } from "@graphql-typed-document-node/core";
 import { Dialog } from "@headlessui/react";
-import { cartFragment } from "@uncnsrdlabel/graphql-shopify-storefront/client";
+import { cartFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";

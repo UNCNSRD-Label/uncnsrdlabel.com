@@ -5,7 +5,7 @@ import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import {
   getPageHandler,
   getShopifyQueryClient,
-} from "@uncnsrdlabel/graphql-shopify-storefront/server";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Article, type ArticleProps } from "./article";
 
 export async function ArticleHydrated({

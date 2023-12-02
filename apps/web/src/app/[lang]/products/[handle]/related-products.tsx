@@ -1,13 +1,13 @@
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
-import { getIntl } from "@/lib/i18n/server";
+import { getIntl } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
 import {
   FragmentType,
   getFragmentData,
   getProductRecommendationsHandler,
   productDetailsFragment,
-} from "@uncnsrdlabel/graphql-shopify-storefront/server";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 
 export async function RelatedProducts({

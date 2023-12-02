@@ -5,7 +5,7 @@ import { ResultOf } from "@graphql-typed-document-node/core";
 import {
   ProductCollectionSortFilterItem,
   collectionFragment,
-} from "@uncnsrdlabel/graphql-shopify-storefront/client";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { FilterItem } from "./item";

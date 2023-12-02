@@ -1,5 +1,3 @@
-"use server";
-
 import { Logo } from "@/components/layout/logo/index";
 import { NavbarContent } from "@/components/layout/navbar/content";
 import { Navbar } from "@/components/layout/navbar/index";
@@ -11,7 +9,7 @@ import {
   getMenuHandler,
   getRouteMetaObjectHandler,
   imageFragment,
-} from "@uncnsrdlabel/graphql-shopify-storefront/server";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import Image from "next/image";
 import { Suspense, isValidElement } from "react";

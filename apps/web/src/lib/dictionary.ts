@@ -1,7 +1,6 @@
-import languageFallback from "@/dictionaries/en.json";
 import {
   getLocalizationHandler,
-} from "@uncnsrdlabel/graphql-shopify-storefront/server";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import merge from "deepmerge";
 import { getProperty } from "dot-prop";
 import { type ResolvedIntlConfig } from "react-intl";
@@ -9,13 +8,11 @@ import { type ResolvedIntlConfig } from "react-intl";
 export const getDictionary = async (lang: Intl.BCP47LanguageTag, namespace: string) => {
   const localization = await getLocalizationHandler({ lang });
 
-  const languageGeneric = import(`@/dictionaries/${localization.language.isoCode}.json`).then(
-    (module) => module.default,
-  );
+  const { default: languageFallback } = await import(`@/dictionaries/en.json`);
 
-  const languageLocalised = import(`@/dictionaries/${localization.language.isoCode}-${localization.country.isoCode}.json`).then(
-    (module) => module.default,
-  );
+  const { default: languageGeneric } = await import(`@/dictionaries/${localization.language.isoCode.toLocaleLowerCase()}.json`);
+
+  const { default: languageLocalised } = await import(`@/dictionaries/${localization.language.isoCode.toLocaleLowerCase()}-${localization.country.isoCode}.json`);
 
   const merged = merge.all([
     languageFallback,

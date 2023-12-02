@@ -8,7 +8,7 @@ import {
   getProductDetailsByHandleHandler,
   productDetailsFragment,
   seoFragment,
-} from "@uncnsrdlabel/graphql-shopify-storefront/server";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { HIDDEN_PRODUCT_TAG, SITE_DOMAIN_WEB } from "@uncnsrdlabel/lib";
 import { type Metadata } from "next";
 import { notFound } from "next/navigation";

@@ -6,7 +6,7 @@ import {
   getCollectionProductsHandler,
   getFragmentData,
   productBasicFragment,
-} from "@uncnsrdlabel/graphql-shopify-storefront/server";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 
 function ThreeItemGridItem({

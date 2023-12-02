@@ -8,7 +8,7 @@ import {
   imageFragment,
   pageFragment,
   productBasicFragment,
-} from "@uncnsrdlabel/graphql-shopify-storefront/server";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { notFound } from "next/navigation";
 
 export async function Carousel({ handle }: { handle: string }) {

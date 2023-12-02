@@ -1,4 +1,4 @@
-import { getIntl } from "@/lib/i18n/server";
+import { getIntl } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
 import { SubmitButton } from "./add-to-cart";
 

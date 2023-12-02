@@ -1,6 +1,6 @@
 import { ProductCard } from "@/components/product-card/card";
 import { state$ } from "@/lib/store";
-import { getProductDetailsByHandleHandler } from "@uncnsrdlabel/graphql-shopify-storefront/server";
+import { getProductDetailsByHandleHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 
 export async function AddPremiumPackaging({
   className,

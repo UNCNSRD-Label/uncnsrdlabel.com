@@ -8,7 +8,7 @@ import {
   getFragmentData,
   imageFragment,
   productDetailsFragment,
-} from "@uncnsrdlabel/graphql-shopify-storefront/client";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Suspense } from "react";
 import { Product as ProductSchema, WithContext } from "schema-dts";
 import { ProductMedia } from "./media";

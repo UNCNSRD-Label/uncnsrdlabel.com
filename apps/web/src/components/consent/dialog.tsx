@@ -1,7 +1,7 @@
 "use client";
 
 import { ConsentForm } from "@/components/consent/form";
-import { useGetIntl } from "@/lib/i18n/client";
+import { useGetIntl } from "@/lib/i18n";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { useTimeoutEffect } from "@react-hookz/web";

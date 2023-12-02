@@ -8,7 +8,7 @@ import {
   getPolicyHandler,
   shopPolicyFragment,
   type PolicyName,
-} from "@uncnsrdlabel/graphql-shopify-storefront/server";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";

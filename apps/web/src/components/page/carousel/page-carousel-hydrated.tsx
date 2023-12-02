@@ -6,8 +6,8 @@ import {
   getQueryKey,
   getShopifyGraphQL,
   getShopifyQueryClient,
-} from "@uncnsrdlabel/graphql-shopify-storefront/server";
-import { getInContextVariables } from "@uncnsrdlabel/lib/server";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
+import { getInContextVariables } from "@uncnsrdlabel/lib";
 import { Suspense, type CSSProperties } from "react";
 import { PageCarousel } from "./page-carousel";
 

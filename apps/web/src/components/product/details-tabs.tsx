@@ -60,7 +60,7 @@ export function ProductDetailsTabs({
             {metafield?.key
               ?.split("_")
               .map(
-                (word: string) => word.charAt(0).toUpperCase() + word.slice(1),
+                (word: string) => word.charAt(0).toLocaleUpperCase() + word.slice(1),
               )
               .join(" ")}
           </TabsPrimitive.Trigger>

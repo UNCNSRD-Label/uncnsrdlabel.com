@@ -1,5 +1,5 @@
 import { state$ } from "@/lib/store";
-import { getCollectionRefsHandler } from "@uncnsrdlabel/graphql-shopify-storefront/server";
+import { getCollectionRefsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { Suspense } from "react";
 import { FilterList } from "./filter";

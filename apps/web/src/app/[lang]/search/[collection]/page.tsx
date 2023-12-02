@@ -1,7 +1,6 @@
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
-import { getAlternativeLanguages } from "@/lib/i18n";
-import { getIntl } from "@/lib/i18n/server";
+import { getAlternativeLanguages, getIntl } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
 import {
   collectionFragment,
@@ -11,7 +10,7 @@ import {
   productCollectionDefaultSort,
   productCollectionSorting,
   seoFragment,
-} from "@uncnsrdlabel/graphql-shopify-storefront/server";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 

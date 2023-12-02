@@ -13,7 +13,7 @@ import {
   imageFragment,
   pageFragment,
   useGetShopifyGraphQL,
-} from "@uncnsrdlabel/graphql-shopify-storefront/client";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Suspense } from "react";
 
 export function PageCarousel({

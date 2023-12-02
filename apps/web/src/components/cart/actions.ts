@@ -10,7 +10,7 @@ import {
   getFragmentData,
   removeFromCartHandler,
   updateCartHandler,
-} from "@uncnsrdlabel/graphql-shopify-storefront/server";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { TAGS } from '@uncnsrdlabel/lib/constants';
 import { revalidateTag } from 'next/cache';
 import { cookies } from "next/headers";
@@ -58,7 +58,7 @@ export const addItem = async (
     );
 
     revalidateTag(TAGS.cart);
-  } catch (e) {
+  } catch (error) {
     return "Error adding item to cart";
   }
 };
@@ -79,7 +79,7 @@ export const removeItem = async (
     await removeFromCartHandler({ variables: { cartId, lineIds: [lineId] }, lang });
 
     revalidateTag(TAGS.cart);
-  } catch (e) {
+  } catch (error) {
     return "Error removing item";
   }
 };
@@ -130,7 +130,7 @@ export const updateItemQuantity = async (_prevState: any,
     );
 
     revalidateTag(TAGS.cart);
-  } catch (e) {
+  } catch (error) {
     return "Error updating item quantity";
   }
 };
