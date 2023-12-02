@@ -47,6 +47,11 @@
       "view_all": "View all",
       "view_details": "View the details",
       "wishlist": "Wishlist"
+    },
+    "search": {
+      "title": "Search",
+      "description": "Search for products",
+      "no-results": "No results found for {{ terms }}"
     }
   },
   "component": {

@@ -1,35 +1,7 @@
 {
-  "global": {
-    "metadata": {
-      "keywords": {
-        "bikini": "bikini",
-        "swimsuit": "swimsuit",
-        "swimwear": "swimwear",
-        "beachwear": "beachwear",
-        "sarong": "sarong",
-        "scarf": "scarf",
-        "boots": "boots"
-      }
-    }
-  },
   "page": {
-    "error": {
-      "title": "Something went wrong",
-      "message": "An error occurred while processing your request.",
-      "button": "Try again"
-    },
     "home": {
-      "shop_now": "Shop now"
-    }
-  },
-  "component": {
-    "Banner": {
-      "link": "Free shipping on orders over £80"
-    },
-    "ConsentDialog": {
-      "description": "UNCNSRD uses cookies that are essential to making this site work and would like to use additional cookies to improve your experience on this site.",
-      "trigger": "Edit consent settings",
-      "title": "Consent settings"
+      "shop_now": "Shop now old chap"
     }
   }
 }
