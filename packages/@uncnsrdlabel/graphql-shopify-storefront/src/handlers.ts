@@ -1,6 +1,7 @@
 import { getInContextVariables } from "@uncnsrdlabel/lib";
 import { CollectionFragment } from "./codegen/graphql";
 import { getFragmentData } from "./codegen/index";
+import { domain } from "./constants";
 import {
   addToCartMutation,
   createCartMutation,
@@ -54,7 +55,7 @@ import {
   getShopPoliciesQuery,
 } from "./queries/index";
 import { type PolicyName } from "./types";
-import { getMenuItems, getShopifyGraphQL } from "./utilities";
+import { getShopifyGraphQL } from "./utilities";
 
 export async function createCartHandler({ variables, lang }: {
   variables?: Pick<CreateCartMutationVariables, "lineItems">,
@@ -350,7 +351,16 @@ export async function getMenuHandler({ variables, lang }: {
 
   // console.log({ menu });
 
-  return { ...menu, items: await getMenuItems(menu.items) };
+  const items = menu.items.map((item) => ({
+    ...item,
+    url: item.url
+      ?.replace(domain, "")
+      .replace("/collections/", "/search/")
+      .replace("/pages/", "/"),
+  }));
+
+
+  return { ...menu, items };
 }
 
 export async function getPageHandler({ variables, lang }: {
@@ -646,4 +656,28 @@ export async function getProductsWithVariantsHandler({ variables, lang }: {
   }
 
   return products;
+}
+
+export async function useGetLocalizationHandler({ variables, lang }: {
+  variables?: GetLocalizationQueryVariables,
+  lang?: Intl.BCP47LanguageTag,
+}) {
+  const inContextVariables = getInContextVariables(lang);
+
+  const { localization } = await getShopifyGraphQL(
+    getLocalizationQuery,
+    // @ts-expect-error Types of property 'country' are incompatible.
+    { ...variables, ...inContextVariables, }
+  );
+
+  if (!localization) {
+    throw {
+      status: 404,
+      message: `Localization not found`,
+    };
+  }
+
+  // console.log({ localization });
+
+  return localization;
 }
