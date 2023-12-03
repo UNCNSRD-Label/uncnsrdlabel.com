@@ -29,7 +29,6 @@ const headers = new Headers({
 export const graphQLClient = new GraphQLClient(endpoint, {
   fetch,
   headers,
-  cache: "no-store",
 });
 
 export const getShopifyQueryClient = cache(() => new QueryClient());
