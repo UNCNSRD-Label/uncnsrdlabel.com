@@ -1,6 +1,5 @@
 import { LoadingDots } from "@/components/loading/dots";
 import { Details } from "@/components/product/details";
-import { getAlternativeLanguages } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";
 import {
@@ -44,7 +43,7 @@ export async function generateMetadata({
   return {
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_DEFAULT_LOCALE}/${path}`,
-      languages: await getAlternativeLanguages({ lang, path }),
+      // languages: await getAlternativeLanguages({ lang, path }),
     },
     title: seo.title || product.title,
     description: seo.description || product.description,

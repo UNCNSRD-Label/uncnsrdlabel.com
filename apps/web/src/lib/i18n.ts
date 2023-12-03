@@ -7,20 +7,20 @@ import { useParams } from "next/navigation";
 import { use } from "react";
 
 export const getAlternativeLanguages = async ({ lang, path }: { lang: Intl.BCP47LanguageTag; path: string }) => {
-    const localization = await getLocalizationHandler({ lang });
+  const localization = await getLocalizationHandler({ lang });
 
-    const BCP47LanguageTags = localization.availableCountries.flatMap((availableCountry) => availableCountry.availableLanguages.map((availableLanguage) => `${availableCountry.isoCode}-${availableLanguage.isoCode}` as Intl.BCP47LanguageTag))
+  const BCP47LanguageTags = localization.availableCountries.flatMap((availableCountry) => availableCountry.availableLanguages.map((availableLanguage) => `${availableCountry.isoCode}-${availableLanguage.isoCode}` as Intl.BCP47LanguageTag))
 
-    const languages = [];
+  const languages = [];
 
-    for (const BCP47LanguageTag in BCP47LanguageTags) {
-        languages.push([BCP47LanguageTag, {
-            title: BCP47LanguageTag,
-            url: `/${BCP47LanguageTag}/${path}`,
-        }]);
-    }
+  for (const BCP47LanguageTag in BCP47LanguageTags) {
+    languages.push([BCP47LanguageTag, {
+      title: BCP47LanguageTag,
+      url: `/${BCP47LanguageTag}/${path}`,
+    }]);
+  }
 
-    return Object.fromEntries(languages);
+  return Object.fromEntries(languages);
 }
 
 export async function getIntl(tag: Intl.BCP47LanguageTag, namespace: string) {
@@ -32,7 +32,7 @@ export async function getIntl(tag: Intl.BCP47LanguageTag, namespace: string) {
 
     locale = canonicalLocale;
   } catch (error) {
-    console.error({ error }, 'getIntl');
+    console.error({ error });
   } finally {
     return createIntl({
       locale,

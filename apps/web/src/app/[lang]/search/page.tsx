@@ -1,6 +1,6 @@
 import { Grid } from "@/components/grid/index";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
-import { getAlternativeLanguages, getIntl } from "@/lib/i18n";
+import { getIntl } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";
 import {
@@ -28,8 +28,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     alternates: {
-      languages: await getAlternativeLanguages({ lang, path }),
       canonical: `${localization.language.isoCode.toLocaleLowerCase()}-${localization.country.isoCode}/${path}`,
+      // languages: await getAlternativeLanguages({ lang, path }),
     },
     title: intl.formatMessage({ id: "title" }),
     description: intl.formatMessage({ id: "description" }),
