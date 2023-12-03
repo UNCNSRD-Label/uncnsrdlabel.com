@@ -51,7 +51,7 @@
     "search": {
       "title": "Search",
       "description": "Search for products",
-      "no-results": "No results found for {{ terms }}"
+      "results": "{ results, plural, =0 {No search results} =1 {# search result} other {# search results} } found for \"{query}\""
     }
   },
   "component": {
