@@ -200,10 +200,10 @@ export const sharedMetadata: Metadata = {
         ],
     },
     formatDetection: {
-        telephone: false,
-        date: false,
         address: false,
+        date: false,
         email: false,
+        telephone: false,
         url: false,
     },
     metadataBase: new URL(
