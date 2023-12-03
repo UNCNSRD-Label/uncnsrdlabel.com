@@ -6,10 +6,7 @@ import {
 import { formatErrorMessage, isShopifyError, useGetInContextVariables } from "@uncnsrdlabel/lib";
 import { GraphQLClient } from "graphql-request";
 import { cache } from "react";
-import {
-  type MenuItem
-} from "./codegen/graphql";
-import { domain, endpoint } from "./constants";
+import { endpoint } from "./constants";
 
 export { graphql } from "./codegen/index";
 
@@ -91,16 +88,4 @@ export function useGetShopifyGraphQL<TResult, TVariables>(
 
     throw error;
   }
-}
-
-export async function getMenuItems(menuItems: Partial<MenuItem>[]) {
-  const images = menuItems.map((menuItem) => ({
-    ...menuItem,
-    url: menuItem.url
-      ?.replace(domain, "")
-      .replace("/collections/", "/search/")
-      .replace("/pages/", "/"),
-  }));
-
-  return images;
 }
