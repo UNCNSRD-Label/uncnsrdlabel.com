@@ -1,6 +1,6 @@
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
-import { getAlternativeLanguages, getIntl } from "@/lib/i18n";
+import { getIntl } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
 import {
   collectionFragment,
@@ -39,7 +39,7 @@ export async function generateMetadata({
   return {
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_DEFAULT_LOCALE}/${path}`,
-      languages: await getAlternativeLanguages({ lang, path }),
+      // languages: await getAlternativeLanguages({ lang, path }),
     },
     title: seo?.title || collection.title,
     description:
