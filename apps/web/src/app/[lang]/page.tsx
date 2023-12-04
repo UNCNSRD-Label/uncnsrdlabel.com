@@ -10,9 +10,9 @@ import { Link } from "@uncnsrdlabel/components/atoms/link";
 
 // export const runtime = "edge";
 
-export default async function RootPage({ params: { lang } }: PageProps) {
-  const handle = "home";
+const handle = "home";
 
+export default async function RootPage({ params: { lang } }: PageProps) {
   const intl = await getIntl(lang, `page.${handle}`);
 
   return (
