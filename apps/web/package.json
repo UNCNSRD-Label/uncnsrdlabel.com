@@ -117,7 +117,7 @@
     "lint": "next lint",
     "prettier:check": "prettier --check --ignore-unknown .",
     "prettier:fix": "prettier --write --ignore-unknown .",
-    "start": "next start",
+    "start": "next start -p 3001",
     "types:check": "tsc --noEmit"
   },
   "type": "module"
