@@ -63,10 +63,10 @@ export async function middleware(request: NextRequest) {
     request.headers
       .get("accept-language")
       ?.split(",")?.[0]
-      .split("-")?.[0] || "en";
+      .split("-")?.[0] ?? process.env.NEXT_PUBLIC_DEFAULT_LOCALE?.split("-")?.[0];
 
   const detectedCountry =
-    request.geo?.country ?? defaultLocale.split("-")?.[1] ?? "AU";
+    request.geo?.country ?? defaultLocale.split("-")?.[1] ?? process.env.NEXT_PUBLIC_DEFAULT_LOCALE?.split("-")?.[1];
 
   const headers: Negotiator.Headers = {
     "accept-language": `${detectedLanguage}-${detectedCountry},en;q=0.5`,

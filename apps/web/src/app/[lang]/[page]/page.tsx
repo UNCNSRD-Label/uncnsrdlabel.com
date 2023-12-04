@@ -6,9 +6,7 @@ import {
   pageFragment,
   seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import {
-  SITE_DOMAIN_WEB
-} from "@uncnsrdlabel/lib";
+import { SITE_DOMAIN_WEB } from "@uncnsrdlabel/lib";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
@@ -28,7 +26,7 @@ export async function generateMetadata({
     handle,
   };
 
-  const pageFragmentRef = await getPageHandler({variables, lang});
+  const pageFragmentRef = await getPageHandler({ variables, lang });
 
   const page = getFragmentData(pageFragment, pageFragmentRef);
 
@@ -40,9 +38,12 @@ export async function generateMetadata({
     title: seo?.title || page.title,
     description: seo?.description || page.bodySummary,
     openGraph: {
-        description: seo?.description || page.bodySummary,
-        title: seo?.title || page.title,
-        url: new URL("/", `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}/${handle}`)
+      description: seo?.description || page.bodySummary,
+      title: seo?.title || page.title,
+      url: new URL(
+        "/",
+        `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}/${handle}`,
+      ),
     },
   };
 }
