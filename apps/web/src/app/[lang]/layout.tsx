@@ -4,8 +4,8 @@ import { Progress } from "@/components/layout/progress/index";
 import { LoadingDots } from "@/components/loading/dots";
 import { Organization } from "@/components/schema.org/organization";
 import { getIntl } from "@/lib/i18n";
+// import { getBaseMetadata } from "@/lib/metadata";
 import { themeColors } from "@/lib/tailwind";
-import { sharedMetadata } from "@/shared-metadata";
 import { type LayoutProps } from "@/types/next";
 import {
   type CountryCode
@@ -30,8 +30,12 @@ export async function generateMetadata({
   const intlMetadata = await getIntl(lang, "global.metadata");
   const intlKeywords = await getIntl(lang, "global.metadata.keywords");
 
+  // const baseMetadata = await getBaseMetadata({
+  //   lang,
+  // });
+
   return {
-    ...sharedMetadata,
+    // ...baseMetadata,
     description: intlMetadata.formatMessage({ id: "description" }),
     keywords: [
       intlKeywords.formatMessage({ id: "beachwear" }),
@@ -43,7 +47,7 @@ export async function generateMetadata({
       intlKeywords.formatMessage({ id: "swimwear" }),
     ],
     openGraph: {
-      ...sharedMetadata.openGraph,
+      ...baseMetadata.openGraph,
       description: intlMetadata.formatMessage({ id: "description" }),
       locale: getIETFLanguageTagFromlocaleTag(
         getLocaleObjectFromIETFLanguageTag(lang),
@@ -117,7 +121,7 @@ export default async function RootLayout({
         bomberEscortOutline.variable,
         montserrat.variable,
       )}
-      lang={lang ?? process.env.NEXT_PUBLIC_DEFAULT_LOCALE}
+      lang={lang}
     >
       <body
         className={cn(

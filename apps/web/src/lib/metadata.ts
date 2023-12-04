@@ -1,5 +1,5 @@
 import { getAlternativeLanguages } from "@/lib/i18n";
-import { getLocalizationDetailsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { getLocalizationHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 import {
     SITE_DOMAIN_WEB
 } from "@uncnsrdlabel/lib";
@@ -16,14 +16,14 @@ export const getBaseMetadata = async ({
 }: {
     lang: Intl.BCP47LanguageTag,
 }) => {
-    const localization = await getLocalizationDetailsHandler({ lang });
+    const localization = await getLocalizationHandler({ lang });
 
     const path = `/`;
 
-    const metadata: Metadata = {
+    const metadataBase: Metadata = {
         alternates: {
             canonical: `${localization.language.isoCode.toLocaleLowerCase()}-${localization.country.isoCode}`,
-            languages: await getAlternativeLanguages({ localization, path }),
+            languages: await getAlternativeLanguages({ lang, path }),
         },
         applicationName: NEXT_PUBLIC_SITE_NAME,
         appLinks: {
@@ -217,10 +217,10 @@ export const getBaseMetadata = async ({
             telephone: false,
             url: false,
         },
-        manifest: "/manifest.json",
         metadataBase: new URL(
             `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}`,
         ),
+        manifest: "/manifest.json",
         openGraph: {
             siteName: NEXT_PUBLIC_SITE_NAME,
             title: NEXT_PUBLIC_SITE_NAME,
@@ -245,5 +245,5 @@ export const getBaseMetadata = async ({
         }),
     }
 
-    return metadata;
+    return metadataBase;
 }
