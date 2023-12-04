@@ -1,0 +1,90 @@
+{
+  "global": {
+    "metadata": {
+      "description": "探索 UNCNSRD，一个专为毫无歉意的叛逆灵魂打造的品牌。",
+      "keywords": {
+        "bikini": "比基尼",
+        "swimsuit": "泳装",
+        "swimwear": "游泳衣",
+        "beachwear": "沙滩装",
+        "sarong": "纱笼",
+        "scarf": "围巾",
+        "boots": "靴子"
+      }
+    }
+  },
+  "page": {
+    "collection": {
+      "title": "收藏",
+      "no-products-found": "该系列中未找到任何产品"
+    },
+    "error": {
+      "title": "出了些问题",
+      "message": "处理您的请求时发生错误。",
+      "button": "再试一次"
+    },
+    "home": {
+      "shop_now": "现在去购物"
+    },
+    "products": {
+      "add_to_wishlist": "添加到愿望清单",
+      "all_collections": "所有系列",
+      "all_products": "所有产品",
+      "back_to_collection": "回到收藏",
+      "best_sellers": "最畅销",
+      "browse": "浏览",
+      "buy": "购买",
+      "featured": "精选",
+      "more": "更多的",
+      "new": "新的",
+      "out_of_stock": "缺货",
+      "product_image_loading": "产品图片加载",
+      "quick_view": "快速浏览",
+      "sale": "销售",
+      "see_all": "查看全部",
+      "see_details": "查看具体信息",
+      "select_options": "选择选项",
+      "view_all": "查看全部",
+      "view_details": "查看详情",
+      "wishlist": "愿望清单"
+    },
+    "search": {
+      "title": "搜索",
+      "description": "搜索产品",
+      "results": "{ results, 复数, =0 {无搜索结果} =1 {"
+    }
+  },
+  "component": {
+    "AddToCart": {
+      "add_to_cart_disabled": "无法将商品添加至购物袋",
+      "add_to_cart_enabled": "添加至购物袋",
+      "out_of_stock": "缺货",
+      "select_options": "请选择选项"
+    },
+    "Banner": {
+      "link": "符合条件的订单免运费"
+    },
+    "CartForm": {
+      "empty_cart": "你的包是空的"
+    },
+    "ConsentDialog": {
+      "description": "UNCNSRD 使用对于本网站正常运行至关重要的 cookie，并希望使用其他 cookie 来改善您在本网站上的体验。",
+      "trigger": "编辑同意设置",
+      "title": "同意设置"
+    },
+    "Menu": {
+      "categories": "类别",
+      "search": "搜索",
+      "toggle": "查看菜单"
+    },
+    "Newsletter": {
+      "description": "接收新产品和优惠的更新。",
+      "placeholder": "输入你的电子邮箱地址",
+      "submit": "提交",
+      "title": "通讯"
+    },
+    "RelatedProducts": {
+      "title": "相关产品"
+    }
+  }
+}

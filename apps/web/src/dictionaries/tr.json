@@ -1,0 +1,90 @@
+{
+  "global": {
+    "metadata": {
+      "description": "Pişmanlık duymayan asi ruha yönelik bir marka olan UNCNSRD'yi keşfedin. ",
+      "keywords": {
+        "bikini": "bikini",
+        "swimsuit": "mayo",
+        "swimwear": "mayo",
+        "beachwear": "plaj kıyafeti",
+        "sarong": "Malaya peştemâli",
+        "scarf": "atkı",
+        "boots": "bot ayakkabı"
+      }
+    }
+  },
+  "page": {
+    "collection": {
+      "title": "Toplamak",
+      "no-products-found": "Bu koleksiyonda ürün bulunamadı"
+    },
+    "error": {
+      "title": "Bir şeyler yanlış gitti",
+      "message": "İşleminiz gerçekleştirilirken bir hata oluştu.",
+      "button": "Tekrar deneyin"
+    },
+    "home": {
+      "shop_now": "Şimdi satın al"
+    },
+    "products": {
+      "add_to_wishlist": "İstek listesine ekle",
+      "all_collections": "Tüm koleksiyonlar",
+      "all_products": "Tüm ürünler",
+      "back_to_collection": "Koleksiyona geri dön",
+      "best_sellers": "En çok satanlar",
+      "browse": "Araştır",
+      "buy": "Satın almak",
+      "featured": "Öne Çıkanlar",
+      "more": "Daha",
+      "new": "Yeni",
+      "out_of_stock": "Stoklar tükendi",
+      "product_image_loading": "Ürün görseli yükleniyor",
+      "quick_view": "Hızlı Görünüm",
+      "sale": "Satış",
+      "see_all": "Hepsini gör",
+      "see_details": "Ayrıntılara bakınız",
+      "select_options": "Seçenekleri seçin",
+      "view_all": "Hepsini gör",
+      "view_details": "Ayrıntıları görüntüle",
+      "wishlist": "İstek listesi"
+    },
+    "search": {
+      "title": "Aramak",
+      "description": "Ürün ara",
+      "results": "{ sonuçlar, çoğul, =0 {Arama sonucu yok} =1 {"
+    }
+  },
+  "component": {
+    "AddToCart": {
+      "add_to_cart_disabled": "Çantaya öğe eklenemiyor",
+      "add_to_cart_enabled": "Sepete ekle",
+      "out_of_stock": "Stoklar tükendi",
+      "select_options": "Lütfen seçenekleri seçin"
+    },
+    "Banner": {
+      "link": "Uygun siparişlerde ücretsiz gönderim"
+    },
+    "CartForm": {
+      "empty_cart": "Çantan boş"
+    },
+    "ConsentDialog": {
+      "description": "UNCNSRD, bu sitenin çalışması için gerekli olan çerezleri kullanır ve bu sitedeki deneyiminizi geliştirmek için ek çerezler kullanmak ister.",
+      "trigger": "İzin ayarlarını düzenleyin",
+      "title": "İzin ayarları"
+    },
+    "Menu": {
+      "categories": "Kategoriler",
+      "search": "Aramak",
+      "toggle": "Menüyü görüntüle"
+    },
+    "Newsletter": {
+      "description": "Yeni ürünler ve tekliflerle ilgili güncellemeleri alın.",
+      "placeholder": "E-posta adresinizi giriniz",
+      "submit": "Göndermek",
+      "title": "Bülten"
+    },
+    "RelatedProducts": {
+      "title": "İlgili ürünler"
+    }
+  }
+}

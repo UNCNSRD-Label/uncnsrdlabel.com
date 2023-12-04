@@ -1,0 +1,90 @@
+{
+  "global": {
+    "metadata": {
+      "description": "Oplev UNCNSRD, et mærke for den uundskyldende oprørske sjæl. ",
+      "keywords": {
+        "bikini": "bikini",
+        "swimsuit": "badedragt",
+        "swimwear": "badetøj",
+        "beachwear": "strandtøj",
+        "sarong": "sarong",
+        "scarf": "halstørklæde",
+        "boots": "støvler"
+      }
+    }
+  },
+  "page": {
+    "collection": {
+      "title": "Kollektion",
+      "no-products-found": "Ingen produkter fundet i denne kollektion"
+    },
+    "error": {
+      "title": "Noget gik galt",
+      "message": "En fejl opstod under behandlingen af ​​din anmodning.",
+      "button": "Prøv igen"
+    },
+    "home": {
+      "shop_now": "Køb nu"
+    },
+    "products": {
+      "add_to_wishlist": "Tilføj til ønskeliste",
+      "all_collections": "Alle samlinger",
+      "all_products": "Alle produkter",
+      "back_to_collection": "Tilbage til samlingen",
+      "best_sellers": "Bestsellere",
+      "browse": "Gennemse",
+      "buy": "Køb",
+      "featured": "Udvalgte",
+      "more": "Mere",
+      "new": "Ny",
+      "out_of_stock": "Udsolgt",
+      "product_image_loading": "Produktbillede indlæses",
+      "quick_view": "Hurtigt kig",
+      "sale": "Salg",
+      "see_all": "Se alt",
+      "see_details": "Se detaljer",
+      "select_options": "Vælg muligheder",
+      "view_all": "Se alt",
+      "view_details": "Se detaljerne",
+      "wishlist": "Ønskeliste"
+    },
+    "search": {
+      "title": "Søg",
+      "description": "Søg efter produkter",
+      "results": "{ resultater, flertal, =0 {Ingen søgeresultater} =1 {"
+    }
+  },
+  "component": {
+    "AddToCart": {
+      "add_to_cart_disabled": "Varen kunne ikke tilføjes til tasken",
+      "add_to_cart_enabled": "Tilføj til kurv",
+      "out_of_stock": "Udsolgt",
+      "select_options": "Vælg venligst muligheder"
+    },
+    "Banner": {
+      "link": "Gratis forsendelse på kvalificerede ordrer"
+    },
+    "CartForm": {
+      "empty_cart": "Din taske er tom"
+    },
+    "ConsentDialog": {
+      "description": "UNCNSRD bruger cookies, der er afgørende for at få denne side til at fungere og vil gerne bruge yderligere cookies til at forbedre din oplevelse på denne side.",
+      "trigger": "Rediger samtykkeindstillinger",
+      "title": "Indstillinger for samtykke"
+    },
+    "Menu": {
+      "categories": "Kategorier",
+      "search": "Søg",
+      "toggle": "Se menuen"
+    },
+    "Newsletter": {
+      "description": "Modtag opdateringer om nye produkter og tilbud.",
+      "placeholder": "Indtast din e-mailadresse",
+      "submit": "Indsend",
+      "title": "Nyhedsbrev"
+    },
+    "RelatedProducts": {
+      "title": "Relaterede produkter"
+    }
+  }
+}

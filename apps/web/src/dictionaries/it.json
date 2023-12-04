@@ -1,0 +1,90 @@
+{
+  "global": {
+    "metadata": {
+      "description": "Scopri UNCNSRD, un marchio per l'anima ribelle impenitente. ",
+      "keywords": {
+        "bikini": "bikini",
+        "swimsuit": "costume da bagno",
+        "swimwear": "costumi da bagno",
+        "beachwear": "abbigliamento da spiaggia",
+        "sarong": "sarong",
+        "scarf": "sciarpa",
+        "boots": "stivali"
+      }
+    }
+  },
+  "page": {
+    "collection": {
+      "title": "Collezione",
+      "no-products-found": "Nessun prodotto trovato in questa collezione"
+    },
+    "error": {
+      "title": "Qualcosa è andato storto",
+      "message": "Si è verificato un errore durante l'elaborazione della richiesta.",
+      "button": "Riprova"
+    },
+    "home": {
+      "shop_now": "Acquistare ora"
+    },
+    "products": {
+      "add_to_wishlist": "Aggiungi alla lista dei desideri",
+      "all_collections": "Tutte le collezioni",
+      "all_products": "Tutti i prodotti",
+      "back_to_collection": "Torniamo alla collezione",
+      "best_sellers": "I più venduti",
+      "browse": "Navigare",
+      "buy": "Acquistare",
+      "featured": "In primo piano",
+      "more": "Di più",
+      "new": "Nuovo",
+      "out_of_stock": "Esaurito",
+      "product_image_loading": "Caricamento immagine prodotto",
+      "quick_view": "Occhiata veloce",
+      "sale": "Vendita",
+      "see_all": "Vedi tutto",
+      "see_details": "Guarda i detagli",
+      "select_options": "Seleziona le opzioni",
+      "view_all": "Mostra tutto",
+      "view_details": "Visualizza i dettagli",
+      "wishlist": "Lista dei desideri"
+    },
+    "search": {
+      "title": "Ricerca",
+      "description": "Cerca prodotti",
+      "results": "{ risultati, plurale, =0 {Nessun risultato di ricerca} =1 {"
+    }
+  },
+  "component": {
+    "AddToCart": {
+      "add_to_cart_disabled": "Impossibile aggiungere l'articolo al carrello",
+      "add_to_cart_enabled": "Aggiungi al carrello",
+      "out_of_stock": "Esaurito",
+      "select_options": "Seleziona le opzioni"
+    },
+    "Banner": {
+      "link": "Spedizione gratuita sugli ordini idonei"
+    },
+    "CartForm": {
+      "empty_cart": "La tua borsa è vuota"
+    },
+    "ConsentDialog": {
+      "description": "L'UNCNSRD utilizza cookie essenziali per il funzionamento di questo sito e vorrebbe utilizzare cookie aggiuntivi per migliorare la tua esperienza su questo sito.",
+      "trigger": "Modifica le impostazioni del consenso",
+      "title": "Impostazioni del consenso"
+    },
+    "Menu": {
+      "categories": "Categorie",
+      "search": "Ricerca",
+      "toggle": "Visualizza il menù"
+    },
+    "Newsletter": {
+      "description": "Ricevi aggiornamenti su nuovi prodotti e offerte.",
+      "placeholder": "Inserisci il tuo indirizzo email",
+      "submit": "Invia",
+      "title": "Notiziario"
+    },
+    "RelatedProducts": {
+      "title": "Prodotti correlati"
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "global": {
+    "metadata": {
+      "description": "Ontdek UNCNSRD, een merk voor de onbeschaamde rebelse ziel. ",
+      "keywords": {
+        "bikini": "bikini",
+        "swimsuit": "zwempak",
+        "swimwear": "badkleding",
+        "beachwear": "strandkleding",
+        "sarong": "sarong",
+        "scarf": "sjaal",
+        "boots": "laarzen"
+      }
+    }
+  },
+  "page": {
+    "collection": {
+      "title": "Verzameling",
+      "no-products-found": "Er zijn geen producten gevonden in deze collectie"
+    },
+    "error": {
+      "title": "Er is iets fout gegaan",
+      "message": "Er is een fout opgetreden bij het verwerken van uw verzoek.",
+      "button": "Probeer het nog eens"
+    },
+    "home": {
+      "shop_now": "Winkel nu"
+    },
+    "products": {
+      "add_to_wishlist": "Voeg toe aan verlanglijst",
+      "all_collections": "Alle collecties",
+      "all_products": "Alle producten",
+      "back_to_collection": "Terug naar de collectie",
+      "best_sellers": "Beste verkopers",
+      "browse": "Blader",
+      "buy": "Aankoop",
+      "featured": "Uitgelicht",
+      "more": "Meer",
+      "new": "Nieuw",
+      "out_of_stock": "Geen voorraad meer",
+      "product_image_loading": "Productafbeelding wordt geladen",
+      "quick_view": "Snelle kijk",
+      "sale": "Verkoop",
+      "see_all": "Alles zien",
+      "see_details": "Zie de details",
+      "select_options": "selecteer opties",
+      "view_all": "Bekijk alles",
+      "view_details": "Bekijk de details",
+      "wishlist": "Verlanglijst"
+    },
+    "search": {
+      "title": "Zoekopdracht",
+      "description": "Zoek naar producten",
+      "results": "{ resultaten, meervoud, =0 {Geen zoekresultaten} =1 {"
+    }
+  },
+  "component": {
+    "AddToCart": {
+      "add_to_cart_disabled": "Kan item niet toevoegen aan tas",
+      "add_to_cart_enabled": "Aan tas toevoegen",
+      "out_of_stock": "Geen voorraad meer",
+      "select_options": "Selecteer opties"
+    },
+    "Banner": {
+      "link": "Gratis verzending voor in aanmerking komende bestellingen"
+    },
+    "CartForm": {
+      "empty_cart": "Je tas is leeg"
+    },
+    "ConsentDialog": {
+      "description": "UNCNSRD gebruikt cookies die essentieel zijn om deze site te laten werken en wil graag aanvullende cookies gebruiken om uw ervaring op deze site te verbeteren.",
+      "trigger": "Toestemmingsinstellingen bewerken",
+      "title": "Toestemmingsinstellingen"
+    },
+    "Menu": {
+      "categories": "Categorieën",
+      "search": "Zoekopdracht",
+      "toggle": "Bekijk de menukaart"
+    },
+    "Newsletter": {
+      "description": "Ontvang updates over nieuwe producten en aanbiedingen.",
+      "placeholder": "Vul je e-mailadres in",
+      "submit": "Indienen",
+      "title": "Nieuwsbrief"
+    },
+    "RelatedProducts": {
+      "title": "Gerelateerde producten"
+    }
+  }
+}

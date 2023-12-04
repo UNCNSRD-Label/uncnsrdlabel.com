@@ -1,0 +1,90 @@
+{
+  "global": {
+    "metadata": {
+      "description": "Avastage UNCNSRD, bränd vabandamata mässumeelsele hingele. ",
+      "keywords": {
+        "bikini": "bikiinid",
+        "swimsuit": "ujumistrikoo",
+        "swimwear": "ujumisriided",
+        "beachwear": "rannariided",
+        "sarong": "sarong",
+        "scarf": "sall",
+        "boots": "saapad"
+      }
+    }
+  },
+  "page": {
+    "collection": {
+      "title": "Kollektsioon",
+      "no-products-found": "Sellest kollektsioonist ei leitud ühtegi toodet"
+    },
+    "error": {
+      "title": "Midagi läks valesti",
+      "message": "Teie taotluse töötlemisel ilmnes viga.",
+      "button": "Proovi uuesti"
+    },
+    "home": {
+      "shop_now": "Osta nüüd"
+    },
+    "products": {
+      "add_to_wishlist": "Soovinimekirja lisama",
+      "all_collections": "Kõik kollektsioonid",
+      "all_products": "Kõik tooted",
+      "back_to_collection": "Tagasi kollektsiooni juurde",
+      "best_sellers": "Parimad müüjad",
+      "browse": "Sirvige",
+      "buy": "ostma",
+      "featured": "Esiletõstetud",
+      "more": "Rohkem",
+      "new": "Uus",
+      "out_of_stock": "Läbimüüdud",
+      "product_image_loading": "Tootepildi laadimine",
+      "quick_view": "Kiire vaade",
+      "sale": "Soodustus",
+      "see_all": "Vaata kõiki",
+      "see_details": "Vaata detaile",
+      "select_options": "Valige valikud",
+      "view_all": "Vaata kõiki",
+      "view_details": "Vaadake üksikasju",
+      "wishlist": "Soovinimekiri"
+    },
+    "search": {
+      "title": "Otsing",
+      "description": "Otsige tooteid",
+      "results": "{ tulemused, mitmus, =0 {Otsingutulemusi pole} =1 {"
+    }
+  },
+  "component": {
+    "AddToCart": {
+      "add_to_cart_disabled": "Üksust ei saa kotti lisada",
+      "add_to_cart_enabled": "Lisa kotti",
+      "out_of_stock": "Läbimüüdud",
+      "select_options": "Palun valige valikud"
+    },
+    "Banner": {
+      "link": "Tasuta kohaletoimetamine sobilike tellimuste puhul"
+    },
+    "CartForm": {
+      "empty_cart": "Teie kott on tühi"
+    },
+    "ConsentDialog": {
+      "description": "UNCNSRD kasutab küpsiseid, mis on selle saidi toimimiseks hädavajalikud, ja soovib kasutada täiendavaid küpsiseid, et parandada teie kasutuskogemust sellel saidil.",
+      "trigger": "Muutke nõusoleku seadeid",
+      "title": "Nõusoleku seaded"
+    },
+    "Menu": {
+      "categories": "Kategooriad",
+      "search": "Otsing",
+      "toggle": "Vaadake menüüd"
+    },
+    "Newsletter": {
+      "description": "Saate värskendusi uute toodete ja pakkumiste kohta.",
+      "placeholder": "Sisesta oma emaili aadress",
+      "submit": "Esita",
+      "title": "Infoleht"
+    },
+    "RelatedProducts": {
+      "title": "Seotud tooted"
+    }
+  }
+}

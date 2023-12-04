@@ -1,0 +1,90 @@
+{
+  "global": {
+    "metadata": {
+      "description": "Atraskite UNCNSRD – prekės ženklą, skirtą neatsiprašančiai maištaujančiai sielai. ",
+      "keywords": {
+        "bikini": "bikinis",
+        "swimsuit": "maudymosi kostiumėlis",
+        "swimwear": "maudymosi kostiumėliai",
+        "beachwear": "paplūdimio drabužiai",
+        "sarong": "sarongas",
+        "scarf": "skara",
+        "boots": "batai"
+      }
+    }
+  },
+  "page": {
+    "collection": {
+      "title": "Kolekcija",
+      "no-products-found": "Šioje kolekcijoje produktų nerasta"
+    },
+    "error": {
+      "title": "Kažkas nutiko",
+      "message": "Apdorojant jūsų užklausą įvyko klaida.",
+      "button": "Bandyk iš naujo"
+    },
+    "home": {
+      "shop_now": "Apsipirk dabar"
+    },
+    "products": {
+      "add_to_wishlist": "Pridėti į norų sąrašą",
+      "all_collections": "Visos kolekcijos",
+      "all_products": "Visi produktai",
+      "back_to_collection": "Atgal į kolekciją",
+      "best_sellers": "Bestseleriai",
+      "browse": "Naršyti",
+      "buy": "Pirkimas",
+      "featured": "Teminiai",
+      "more": "Daugiau",
+      "new": "Nauja",
+      "out_of_stock": "Išparduota",
+      "product_image_loading": "Prekės vaizdas įkeliamas",
+      "quick_view": "Greita peržiūra",
+      "sale": "Išpardavimas",
+      "see_all": "Matyti viską",
+      "see_details": "Žr. išsamią informaciją",
+      "select_options": "Pasirinkite parinktis",
+      "view_all": "Peržiūrėti visus",
+      "view_details": "Peržiūrėkite išsamią informaciją",
+      "wishlist": "Norų sąrašas"
+    },
+    "search": {
+      "title": "Paieška",
+      "description": "Ieškoti produktų",
+      "results": "{ rezultatai, daugiskaita, =0 {Paieškos rezultatų nėra} =1 {"
+    }
+  },
+  "component": {
+    "AddToCart": {
+      "add_to_cart_disabled": "Nepavyko pridėti prekės į krepšį",
+      "add_to_cart_enabled": "Pridėti į maišelį",
+      "out_of_stock": "Išparduota",
+      "select_options": "Prašome pasirinkti parinktis"
+    },
+    "Banner": {
+      "link": "Nemokamas tinkamų užsakymų pristatymas"
+    },
+    "CartForm": {
+      "empty_cart": "Tavo krepšys tuščias"
+    },
+    "ConsentDialog": {
+      "description": "UNCNSRD naudoja slapukus, kurie yra būtini, kad ši svetainė veiktų, ir norėtų naudoti papildomus slapukus, kad pagerintų jūsų patirtį šioje svetainėje.",
+      "trigger": "Redaguoti sutikimo nustatymus",
+      "title": "Sutikimo nustatymai"
+    },
+    "Menu": {
+      "categories": "Kategorijos",
+      "search": "Paieška",
+      "toggle": "Peržiūrėkite meniu"
+    },
+    "Newsletter": {
+      "description": "Gaukite naujienas apie naujus produktus ir pasiūlymus.",
+      "placeholder": "Įveskite savo elektroninio pašto adresą",
+      "submit": "Pateikti",
+      "title": "Naujienlaiškis"
+    },
+    "RelatedProducts": {
+      "title": "Susiję produktai"
+    }
+  }
+}

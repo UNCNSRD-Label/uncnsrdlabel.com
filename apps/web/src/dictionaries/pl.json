@@ -1,0 +1,90 @@
+{
+  "global": {
+    "metadata": {
+      "description": "Odkryj UNCNSRD, markę dla niepokornych, buntowniczych dusz. ",
+      "keywords": {
+        "bikini": "bikini",
+        "swimsuit": "kostium kąpielowy",
+        "swimwear": "stroje kąpielowe",
+        "beachwear": "kostium plażowy",
+        "sarong": "sarong",
+        "scarf": "szalik",
+        "boots": "buty"
+      }
+    }
+  },
+  "page": {
+    "collection": {
+      "title": "Kolekcja",
+      "no-products-found": "Nie znaleziono produktów w tej kolekcji"
+    },
+    "error": {
+      "title": "Coś poszło nie tak",
+      "message": "Podczas przetwarzania żądania wystąpił błąd.",
+      "button": "Spróbuj ponownie"
+    },
+    "home": {
+      "shop_now": "Kupuj teraz"
+    },
+    "products": {
+      "add_to_wishlist": "Dodaj do listy życzeń",
+      "all_collections": "Wszystkie kolekcje",
+      "all_products": "Wszystkie produkty",
+      "back_to_collection": "Powrót do kolekcji",
+      "best_sellers": "Bestsellery",
+      "browse": "Przeglądać",
+      "buy": "Zakup",
+      "featured": "Wyróżniony",
+      "more": "Więcej",
+      "new": "Nowy",
+      "out_of_stock": "Obecnie brak na stanie",
+      "product_image_loading": "Ładowanie obrazu produktu",
+      "quick_view": "Szybki podgląd",
+      "sale": "Sprzedaż",
+      "see_all": "Widzieć wszystko",
+      "see_details": "Patrz szczegóły",
+      "select_options": "Wybierz opcje",
+      "view_all": "Pokaż wszystkie",
+      "view_details": "Zobacz szczegóły",
+      "wishlist": "Lista życzeń"
+    },
+    "search": {
+      "title": "Szukaj",
+      "description": "Wyszukaj produkty",
+      "results": "{ wyniki, liczba mnoga, =0 {Brak wyników wyszukiwania} =1 {"
+    }
+  },
+  "component": {
+    "AddToCart": {
+      "add_to_cart_disabled": "Nie można dodać przedmiotu do koszyka",
+      "add_to_cart_enabled": "Dodaj do torby",
+      "out_of_stock": "Obecnie brak na stanie",
+      "select_options": "Proszę wybrać opcje"
+    },
+    "Banner": {
+      "link": "Bezpłatna wysyłka kwalifikujących się zamówień"
+    },
+    "CartForm": {
+      "empty_cart": "Twoja torba jest pusta"
+    },
+    "ConsentDialog": {
+      "description": "UNCNSRD wykorzystuje pliki cookie niezbędne do działania tej witryny i pragnie używać dodatkowych plików cookie, aby poprawić komfort korzystania z tej witryny.",
+      "trigger": "Edytuj ustawienia zgody",
+      "title": "Ustawienia zgody"
+    },
+    "Menu": {
+      "categories": "Kategorie",
+      "search": "Szukaj",
+      "toggle": "Zobacz menu"
+    },
+    "Newsletter": {
+      "description": "Otrzymuj powiadomienia o nowych produktach i ofertach.",
+      "placeholder": "Wpisz swój adres e-mail",
+      "submit": "Składać",
+      "title": "Biuletyn"
+    },
+    "RelatedProducts": {
+      "title": "Produkty powiązane"
+    }
+  }
+}

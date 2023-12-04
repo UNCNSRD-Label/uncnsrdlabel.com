@@ -1,0 +1,90 @@
+{
+  "global": {
+    "metadata": {
+      "description": "Fedezze fel az UNCNSRD-t, a nem bocsánatkérő lázadó lélek márkáját. ",
+      "keywords": {
+        "bikini": "bikini",
+        "swimsuit": "fürdőruha",
+        "swimwear": "fürdőruha",
+        "beachwear": "strandruha",
+        "sarong": "maláji szoknya",
+        "scarf": "sál",
+        "boots": "csizma"
+      }
+    }
+  },
+  "page": {
+    "collection": {
+      "title": "Gyűjtemény",
+      "no-products-found": "Nem található termék ebben a gyűjteményben"
+    },
+    "error": {
+      "title": "Valami elromlott",
+      "message": "Hiba történt a kérése feldolgozása során.",
+      "button": "Próbáld újra"
+    },
+    "home": {
+      "shop_now": "Vásárolj most"
+    },
+    "products": {
+      "add_to_wishlist": "Hozzáadni a Kívánságlistához",
+      "all_collections": "Minden gyűjtemény",
+      "all_products": "Minden termék",
+      "back_to_collection": "Vissza a gyűjteményhez",
+      "best_sellers": "Legtöbbet eladott",
+      "browse": "Tallózás",
+      "buy": "Vásárlás",
+      "featured": "Kiemelt",
+      "more": "Több",
+      "new": "Új",
+      "out_of_stock": "Nincs raktáron",
+      "product_image_loading": "A termék képének betöltése",
+      "quick_view": "Gyors nézet",
+      "sale": "Eladás",
+      "see_all": "Az összes megtekintése",
+      "see_details": "Lásd a részleteket",
+      "select_options": "Válasszon opciókat",
+      "view_all": "Összes megtekintése",
+      "view_details": "Tekintse meg a részleteket",
+      "wishlist": "Kívánság lista"
+    },
+    "search": {
+      "title": "Keresés",
+      "description": "Termékek keresése",
+      "results": "{ eredmények, többes szám, =0 {Nincs keresési eredmény} =1 {"
+    }
+  },
+  "component": {
+    "AddToCart": {
+      "add_to_cart_disabled": "Nem sikerült hozzáadni az elemet a táskához",
+      "add_to_cart_enabled": "Zacskóba tesz",
+      "out_of_stock": "Nincs raktáron",
+      "select_options": "Kérjük, válasszon lehetőségeket"
+    },
+    "Banner": {
+      "link": "Ingyenes szállítás a megfelelő rendelések esetén"
+    },
+    "CartForm": {
+      "empty_cart": "Üres a táskád"
+    },
+    "ConsentDialog": {
+      "description": "Az UNCNSRD olyan cookie-kat használ, amelyek elengedhetetlenek a webhely működéséhez, és további cookie-kat szeretne használni, hogy javítsa az Ön élményét ezen az oldalon.",
+      "trigger": "Szerkessze a beleegyezési beállításokat",
+      "title": "Hozzájárulás beállításai"
+    },
+    "Menu": {
+      "categories": "Kategóriák",
+      "search": "Keresés",
+      "toggle": "Nézze meg a menüt"
+    },
+    "Newsletter": {
+      "description": "Friss híreket kaphat az új termékekről és ajánlatokról.",
+      "placeholder": "írd be az email címed",
+      "submit": "Beküldés",
+      "title": "Hírlevél"
+    },
+    "RelatedProducts": {
+      "title": "Kapcsolódó termékek"
+    }
+  }
+}

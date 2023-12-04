@@ -1,0 +1,90 @@
+{
+  "global": {
+    "metadata": {
+      "description": "Khám phá UNCNSRD, thương hiệu dành cho tâm hồn nổi loạn không hối lỗi. ",
+      "keywords": {
+        "bikini": "bikini",
+        "swimsuit": "đồ bơi",
+        "swimwear": "đồ bơi",
+        "beachwear": "đồ đi biển",
+        "sarong": "xà rông",
+        "scarf": "khăn quàng cổ",
+        "boots": "bốt"
+      }
+    }
+  },
+  "page": {
+    "collection": {
+      "title": "Bộ sưu tập",
+      "no-products-found": "Không sản phẩm nào được tìm thấy trong bộ sưu tập này"
+    },
+    "error": {
+      "title": "Đã xảy ra lỗi",
+      "message": "Đã xảy ra lỗi trong khi xử lý yêu cầu của bạn.",
+      "button": "Thử lại"
+    },
+    "home": {
+      "shop_now": "Mua sắm ngay bây giờ"
+    },
+    "products": {
+      "add_to_wishlist": "Thêm vào danh sách yêu thích",
+      "all_collections": "Tất cả bộ sưu tập",
+      "all_products": "Tất cả sản phẩm",
+      "back_to_collection": "Quay lại bộ sưu tập",
+      "best_sellers": "Bán chạy nhất",
+      "browse": "Duyệt qua",
+      "buy": "Mua",
+      "featured": "Đặc sắc",
+      "more": "Hơn",
+      "new": "Mới",
+      "out_of_stock": "Hết hàng",
+      "product_image_loading": "Đang tải hình ảnh sản phẩm",
+      "quick_view": "Xem lướt qua",
+      "sale": "Doanh thu",
+      "see_all": "Nhìn thấy tất cả",
+      "see_details": "Xem chi tiết",
+      "select_options": "lựa chọn các phương án",
+      "view_all": "Xem tất cả",
+      "view_details": "Xem chi tiết",
+      "wishlist": "Danh sách yêu thích"
+    },
+    "search": {
+      "title": "Tìm kiếm",
+      "description": "tìm kiếm sản phẩm",
+      "results": "{ kết quả, số nhiều, =0 {Không có kết quả tìm kiếm} =1 {"
+    }
+  },
+  "component": {
+    "AddToCart": {
+      "add_to_cart_disabled": "Không thể thêm vật phẩm vào túi",
+      "add_to_cart_enabled": "Thêm vào túi",
+      "out_of_stock": "Hết hàng",
+      "select_options": "Vui lòng chọn tùy chọn"
+    },
+    "Banner": {
+      "link": "Miễn phí vận chuyển cho các đơn hàng đủ điều kiện"
+    },
+    "CartForm": {
+      "empty_cart": "Túi của bạn trống rỗng"
+    },
+    "ConsentDialog": {
+      "description": "UNCNSRD sử dụng các cookie cần thiết để giúp trang web này hoạt động và muốn sử dụng các cookie bổ sung để cải thiện trải nghiệm của bạn trên trang web này.",
+      "trigger": "Chỉnh sửa cài đặt đồng ý",
+      "title": "Cài đặt đồng ý"
+    },
+    "Menu": {
+      "categories": "Thể loại",
+      "search": "Tìm kiếm",
+      "toggle": "Xem thực đơn"
+    },
+    "Newsletter": {
+      "description": "Nhận thông tin cập nhật về sản phẩm và ưu đãi mới.",
+      "placeholder": "nhập địa chỉ email của bạn",
+      "submit": "Nộp",
+      "title": "Bản tin"
+    },
+    "RelatedProducts": {
+      "title": "Những sảm phẩm tương tự"
+    }
+  }
+}

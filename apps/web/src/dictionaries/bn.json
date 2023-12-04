@@ -1,0 +1,90 @@
+{
+  "global": {
+    "metadata": {
+      "description": "UNCNSRD আবিষ্কার করুন, অপ্রস্তুত বিদ্রোহী আত্মার জন্য একটি ব্র্যান্ড। ",
+      "keywords": {
+        "bikini": "বিকিনি",
+        "swimsuit": "সাঁতারের পোষাক",
+        "swimwear": "সাঁতারের পোষাক",
+        "beachwear": "সৈকত পোশাক",
+        "sarong": "সারং",
+        "scarf": "ওড়না",
+        "boots": "বুট"
+      }
+    }
+  },
+  "page": {
+    "collection": {
+      "title": "সংগ্রহ",
+      "no-products-found": "কোন পণ্য এই সংগ্রহে পাওয়া যায় নি"
+    },
+    "error": {
+      "title": "কিছু ভুল হয়েছে",
+      "message": "আপনার অনুরোধ প্রক্রিয়াকরণের সময় একটি ত্রুটি ঘটেছে।",
+      "button": "আবার চেষ্টা কর"
+    },
+    "home": {
+      "shop_now": "এখনই কিনুন"
+    },
+    "products": {
+      "add_to_wishlist": "চাহিদাপত্রে যোগ করা",
+      "all_collections": "সমস্ত সংগ্রহ",
+      "all_products": "সব পণ্য",
+      "back_to_collection": "সংগ্রহে ফিরে যান",
+      "best_sellers": "সর্বোচ্চ বিক্রেতা",
+      "browse": "ব্রাউজ করুন",
+      "buy": "ক্রয়",
+      "featured": "বৈশিষ্ট্যযুক্ত",
+      "more": "আরও",
+      "new": "নতুন",
+      "out_of_stock": "স্টক শেষ",
+      "product_image_loading": "পণ্য ইমেজ লোড হচ্ছে",
+      "quick_view": "তারাতারি দেখা",
+      "sale": "বিক্রয়",
+      "see_all": "সবগুলো দেখ",
+      "see_details": "বিস্তারিত দেখুন",
+      "select_options": "বিকল্প নির্বাচন করুন",
+      "view_all": "সব দেখ",
+      "view_details": "বিস্তারিত দেখুন",
+      "wishlist": "ইচ্ছেতালিকা"
+    },
+    "search": {
+      "title": "অনুসন্ধান করুন",
+      "description": "পণ্য অনুসন্ধান করুন",
+      "results": "{ ফলাফল, বহুবচন, =0 {কোন অনুসন্ধান ফলাফল নেই} =1 {"
+    }
+  },
+  "component": {
+    "AddToCart": {
+      "add_to_cart_disabled": "ব্যাগে আইটেম যোগ করতে অক্ষম",
+      "add_to_cart_enabled": "ব্যাগে রাখো",
+      "out_of_stock": "স্টক শেষ",
+      "select_options": "বিকল্প নির্বাচন করুন"
+    },
+    "Banner": {
+      "link": "যোগ্য অর্ডারে বিনামূল্যে শিপিং"
+    },
+    "CartForm": {
+      "empty_cart": "তোমার ব্যাগ খালি"
+    },
+    "ConsentDialog": {
+      "description": "UNCNSRD কুকিজ ব্যবহার করে যা এই সাইটে কাজ করার জন্য অপরিহার্য এবং এই সাইটে আপনার অভিজ্ঞতা উন্নত করতে অতিরিক্ত কুকি ব্যবহার করতে চায়।",
+      "trigger": "সম্মতি সেটিংস সম্পাদনা করুন",
+      "title": "সম্মতি সেটিংস"
+    },
+    "Menu": {
+      "categories": "ক্যাটাগরি",
+      "search": "অনুসন্ধান করুন",
+      "toggle": "মেনু দেখুন"
+    },
+    "Newsletter": {
+      "description": "নতুন পণ্য এবং অফার আপডেট পান.",
+      "placeholder": "তোমার ই - মেইল ​​ঠিকানা লেখো",
+      "submit": "জমা দিন",
+      "title": "নিউজলেটার"
+    },
+    "RelatedProducts": {
+      "title": "সংশ্লিষ্ট পণ্য"
+    }
+  }
+}

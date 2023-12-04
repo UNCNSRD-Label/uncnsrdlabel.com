@@ -1,0 +1,90 @@
+{
+  "global": {
+    "metadata": {
+      "description": "Odkrijte UNCNSRD, blagovno znamko za neprizanesljivo uporniško dušo. ",
+      "keywords": {
+        "bikini": "bikini",
+        "swimsuit": "kopalke",
+        "swimwear": "kopalke",
+        "beachwear": "oblačila za plažo",
+        "sarong": "sarong",
+        "scarf": "šal",
+        "boots": "škornji"
+      }
+    }
+  },
+  "page": {
+    "collection": {
+      "title": "Zbirka",
+      "no-products-found": "V tej zbirki ni nobenega izdelka"
+    },
+    "error": {
+      "title": "Nekaj ​​je šlo narobe",
+      "message": "Pri obdelavi vaše zahteve je prišlo do napake.",
+      "button": "Poskusi ponovno"
+    },
+    "home": {
+      "shop_now": "Nakupujte zdaj"
+    },
+    "products": {
+      "add_to_wishlist": "Dodaj na seznam želja",
+      "all_collections": "Vse zbirke",
+      "all_products": "Vsi izdelki",
+      "back_to_collection": "Nazaj v zbirko",
+      "best_sellers": "Najbolj prodajano",
+      "browse": "Prebrskaj",
+      "buy": "Nakup",
+      "featured": "Predstavljeno",
+      "more": "več",
+      "new": "Novo",
+      "out_of_stock": "Ni na zalogi",
+      "product_image_loading": "Nalaganje slike izdelka",
+      "quick_view": "Hiter pogled",
+      "sale": "Prodaja",
+      "see_all": "Poglej vse",
+      "see_details": "Glej podrobnosti",
+      "select_options": "Izberite možnosti",
+      "view_all": "Poglej vse",
+      "view_details": "Oglejte si podrobnosti",
+      "wishlist": "Seznam želja"
+    },
+    "search": {
+      "title": "Iskanje",
+      "description": "Iskanje izdelkov",
+      "results": "{ rezultati, množina, =0 {Ni rezultatov iskanja} =1 {"
+    }
+  },
+  "component": {
+    "AddToCart": {
+      "add_to_cart_disabled": "Predmeta ni mogoče dodati v torbo",
+      "add_to_cart_enabled": "Dodaj v torbo",
+      "out_of_stock": "Ni na zalogi",
+      "select_options": "Izberite možnosti"
+    },
+    "Banner": {
+      "link": "Brezplačna dostava za primerna naročila"
+    },
+    "CartForm": {
+      "empty_cart": "Vaša torba je prazna"
+    },
+    "ConsentDialog": {
+      "description": "UNCNSRD uporablja piškotke, ki so bistveni za delovanje te strani, in želi uporabiti dodatne piškotke za izboljšanje vaše izkušnje na tej strani.",
+      "trigger": "Uredite nastavitve soglasja",
+      "title": "Nastavitve soglasja"
+    },
+    "Menu": {
+      "categories": "kategorije",
+      "search": "Iskanje",
+      "toggle": "Oglejte si meni"
+    },
+    "Newsletter": {
+      "description": "Prejemajte posodobitve o novih izdelkih in ponudbah.",
+      "placeholder": "Vnesi svoj elektronski naslov",
+      "submit": "Predloži",
+      "title": "Glasilo"
+    },
+    "RelatedProducts": {
+      "title": "Podobni izdelki"
+    }
+  }
+}

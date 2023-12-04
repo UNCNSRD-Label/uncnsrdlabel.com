@@ -1,0 +1,90 @@
+{
+  "global": {
+    "metadata": {
+      "description": "Descoperiți UNCNSRD, un brand pentru sufletul rebel fără scuze. ",
+      "keywords": {
+        "bikini": "bikini",
+        "swimsuit": "costum de baie",
+        "swimwear": "costume de baie",
+        "beachwear": "îmbrăcăminte de plajă",
+        "sarong": "sarong",
+        "scarf": "eșarfă",
+        "boots": "cizme"
+      }
+    }
+  },
+  "page": {
+    "collection": {
+      "title": "Colectie",
+      "no-products-found": "Nu s-au găsit produse în această colecție"
+    },
+    "error": {
+      "title": "Ceva n-a mers bine",
+      "message": "A apărut o eroare în timpul procesării cererii dumneavoastră.",
+      "button": "Încearcă din nou"
+    },
+    "home": {
+      "shop_now": "Cumpără acum"
+    },
+    "products": {
+      "add_to_wishlist": "Adaugă la lista de dorințe",
+      "all_collections": "Toate colecțiile",
+      "all_products": "Toate produsele",
+      "back_to_collection": "Înapoi la colecție",
+      "best_sellers": "Cele mai vandute",
+      "browse": "Naviga",
+      "buy": "Cumpărare",
+      "featured": "Recomandate",
+      "more": "Mai mult",
+      "new": "Nou",
+      "out_of_stock": "Epuizat",
+      "product_image_loading": "Se încarcă imaginea produsului",
+      "quick_view": "Vizualizare rapidă",
+      "sale": "Vânzare",
+      "see_all": "Vezi toate",
+      "see_details": "Vezi detalii",
+      "select_options": "selectati optiunile",
+      "view_all": "A vedea tot",
+      "view_details": "Vezi detaliile",
+      "wishlist": "lista de dorințe"
+    },
+    "search": {
+      "title": "Căutare",
+      "description": "Caută produse",
+      "results": "{ results, plural, =0 {Fără rezultate de căutare} =1 {"
+    }
+  },
+  "component": {
+    "AddToCart": {
+      "add_to_cart_disabled": "Nu se poate adăuga articolul în geantă",
+      "add_to_cart_enabled": "Adăugați în coș",
+      "out_of_stock": "Epuizat",
+      "select_options": "Vă rugăm să selectați opțiuni"
+    },
+    "Banner": {
+      "link": "Livrare gratuită pentru comenzile eligibile"
+    },
+    "CartForm": {
+      "empty_cart": "Geanta ta este goală"
+    },
+    "ConsentDialog": {
+      "description": "UNCNSRD folosește cookie-uri care sunt esențiale pentru ca acest site să funcționeze și ar dori să folosească cookie-uri suplimentare pentru a vă îmbunătăți experiența pe acest site.",
+      "trigger": "Editați setările de consimțământ",
+      "title": "Setări de consimțământ"
+    },
+    "Menu": {
+      "categories": "Categorii",
+      "search": "Căutare",
+      "toggle": "Vizualizați meniul"
+    },
+    "Newsletter": {
+      "description": "Primiți actualizări despre produse și oferte noi.",
+      "placeholder": "Introdu adresa ta de e-mail",
+      "submit": "Trimite",
+      "title": "Buletin informativ"
+    },
+    "RelatedProducts": {
+      "title": "Produse asemanatoare"
+    }
+  }
+}

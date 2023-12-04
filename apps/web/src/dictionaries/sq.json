@@ -1,0 +1,90 @@
+{
+  "global": {
+    "metadata": {
+      "description": "Zbuloni UNCNSRD, një markë për shpirtin rebel të pafalshëm. ",
+      "keywords": {
+        "bikini": "bikini",
+        "swimsuit": "rroba banje",
+        "swimwear": "rroba banje",
+        "beachwear": "veshje plazhi",
+        "sarong": "sarong",
+        "scarf": "shall",
+        "boots": "çizmet"
+      }
+    }
+  },
+  "page": {
+    "collection": {
+      "title": "Mbledhja",
+      "no-products-found": "Nuk u gjet asnjë produkt në këtë koleksion"
+    },
+    "error": {
+      "title": "Dicka shkoi keq",
+      "message": "Ndodhi një gabim gjatë përpunimit të kërkesës suaj.",
+      "button": "Provo përsëri"
+    },
+    "home": {
+      "shop_now": "Bli Tani"
+    },
+    "products": {
+      "add_to_wishlist": "Shtoje tek Preferencat Shtoje tek Lista e deshirave",
+      "all_collections": "Të gjitha koleksionet",
+      "all_products": "Të gjitha produktet",
+      "back_to_collection": "Kthehu te koleksioni",
+      "best_sellers": "Shitesit me te mire",
+      "browse": "Shfletoni",
+      "buy": "Blerje",
+      "featured": "Të paraqitura",
+      "more": "Më shumë",
+      "new": "I ri",
+      "out_of_stock": "Jashtë stok",
+      "product_image_loading": "Ngarkimi i imazhit të produktit",
+      "quick_view": "Vështrim i shpejtë",
+      "sale": "Shitje",
+      "see_all": "Shiko gjithcka",
+      "see_details": "Shih detajet",
+      "select_options": "Zgjidhni opsionet",
+      "view_all": "Shiko te gjitha",
+      "view_details": "Shikoni detajet",
+      "wishlist": "Lista e dëshirave"
+    },
+    "search": {
+      "title": "Kërko",
+      "description": "Kërkoni për produkte",
+      "results": "{ rezultate, shumës, =0 {Nuk ka rezultate kërkimi} =1 {"
+    }
+  },
+  "component": {
+    "AddToCart": {
+      "add_to_cart_disabled": "Nuk mund të shtohet artikulli në çantë",
+      "add_to_cart_enabled": "Shtoni në qese",
+      "out_of_stock": "Jashtë stok",
+      "select_options": "Ju lutemi zgjidhni opsionet"
+    },
+    "Banner": {
+      "link": "Transporti falas për porositë e pranueshme"
+    },
+    "CartForm": {
+      "empty_cart": "Çanta juaj është bosh"
+    },
+    "ConsentDialog": {
+      "description": "UNCNSRD përdor cookie që janë thelbësore për funksionimin e kësaj faqeje dhe dëshiron të përdorë skedarë shtesë për të përmirësuar përvojën tuaj në këtë sajt.",
+      "trigger": "Modifiko cilësimet e pëlqimit",
+      "title": "Cilësimet e pëlqimit"
+    },
+    "Menu": {
+      "categories": "Kategoritë",
+      "search": "Kërko",
+      "toggle": "Shikoni menunë"
+    },
+    "Newsletter": {
+      "description": "Merrni përditësime për produktet dhe ofertat e reja.",
+      "placeholder": "Shkruani adresën tuaj të emailit",
+      "submit": "Paraqisni",
+      "title": "Gazete"
+    },
+    "RelatedProducts": {
+      "title": "Produkte të ngjashme"
+    }
+  }
+}

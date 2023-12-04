@@ -1,0 +1,90 @@
+{
+  "global": {
+    "metadata": {
+      "description": "Temukan UNCNSRD, sebuah merek untuk jiwa pemberontak yang tidak menyesal. ",
+      "keywords": {
+        "bikini": "bikini",
+        "swimsuit": "baju renang",
+        "swimwear": "baju renang",
+        "beachwear": "pakaian pantai",
+        "sarong": "sarung",
+        "scarf": "syal",
+        "boots": "sepatu bot"
+      }
+    }
+  },
+  "page": {
+    "collection": {
+      "title": "Koleksi",
+      "no-products-found": "Tidak ada produk yang ditemukan dalam koleksi ini"
+    },
+    "error": {
+      "title": "Ada yang salah",
+      "message": "Kesalahan terjadi saat memproses permintaan Anda.",
+      "button": "Coba lagi"
+    },
+    "home": {
+      "shop_now": "Berbelanja sekarang"
+    },
+    "products": {
+      "add_to_wishlist": "Tambahkan ke Daftar Keinginan b Indonesia",
+      "all_collections": "Semua koleksi",
+      "all_products": "Semua produk",
+      "back_to_collection": "Kembali ke koleksi",
+      "best_sellers": "Penjualan terbaik",
+      "browse": "Jelajahi",
+      "buy": "Pembelian",
+      "featured": "Unggulan",
+      "more": "Lagi",
+      "new": "Baru",
+      "out_of_stock": "Stok Habis",
+      "product_image_loading": "Pemuatan gambar produk",
+      "quick_view": "Lihat sekilas",
+      "sale": "Penjualan",
+      "see_all": "Lihat semua",
+      "see_details": "Lihat detailnya",
+      "select_options": "Pilih Pilihan",
+      "view_all": "Lihat semua",
+      "view_details": "Lihat detailnya",
+      "wishlist": "Daftar Keinginan"
+    },
+    "search": {
+      "title": "Mencari",
+      "description": "Cari produk",
+      "results": "{ hasil, jamak, =0 {Tidak ada hasil penelusuran} =1 {"
+    }
+  },
+  "component": {
+    "AddToCart": {
+      "add_to_cart_disabled": "Tidak dapat menambahkan item ke tas",
+      "add_to_cart_enabled": "Tambahkan ke tas",
+      "out_of_stock": "Stok Habis",
+      "select_options": "Silakan pilih opsi"
+    },
+    "Banner": {
+      "link": "Pengiriman gratis untuk pesanan yang memenuhi syarat"
+    },
+    "CartForm": {
+      "empty_cart": "Tasmu kosong"
+    },
+    "ConsentDialog": {
+      "description": "UNCNSRD menggunakan cookie yang penting untuk membuat situs ini berfungsi dan ingin menggunakan cookie tambahan untuk meningkatkan pengalaman Anda di situs ini.",
+      "trigger": "Edit pengaturan persetujuan",
+      "title": "Pengaturan persetujuan"
+    },
+    "Menu": {
+      "categories": "Kategori",
+      "search": "Mencari",
+      "toggle": "Lihat menunya"
+    },
+    "Newsletter": {
+      "description": "Terima pembaruan tentang produk dan penawaran baru.",
+      "placeholder": "Masukkan alamat email Anda",
+      "submit": "Kirim",
+      "title": "Buletin"
+    },
+    "RelatedProducts": {
+      "title": "Produk-produk terkait"
+    }
+  }
+}
