@@ -24,7 +24,7 @@ export const getAlternativeLanguages = async ({ lang, path }: { lang: Intl.BCP47
 }
 
 export async function getIntl(tag: Intl.BCP47LanguageTag, namespace: string) {
-  let locale = process.env.NEXT_PUBLIC_DEFAULT_LOCALE ?? 'en-AU';
+  let locale = process.env.NEXT_PUBLIC_DEFAULT_LOCALE;
 
   try {
     // @ts-expect-error Property 'getCanonicalLocales' does not exist on type 'typeof Intl'.
