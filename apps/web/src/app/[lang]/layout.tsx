@@ -3,7 +3,6 @@ import { Footer } from "@/components/layout/footer/index";
 import { Progress } from "@/components/layout/progress/index";
 import { LoadingDots } from "@/components/loading/dots";
 import { Organization } from "@/components/schema.org/organization";
-import { getDictionary } from "@/lib/dictionary";
 import { getIntl } from "@/lib/i18n";
 import { themeColors } from "@/lib/tailwind";
 import { sharedMetadata } from "@/shared-metadata";
@@ -111,12 +110,6 @@ export default async function RootLayout({
 }: PropsWithChildren<LayoutProps>) {
   const showBanner = false;
 
-  const localization = await getLocalizationHandler({ lang });
-
-  const defaultLocale = localization.country.isoCode;
-
-  const messages = await getDictionary(lang, "page.home");
-
   return (
     <html
       className={cn(
@@ -124,7 +117,7 @@ export default async function RootLayout({
         bomberEscortOutline.variable,
         montserrat.variable,
       )}
-      lang={lang}
+      lang={lang ?? process.env.NEXT_PUBLIC_DEFAULT_LOCALE}
     >
       <body
         className={cn(
@@ -133,7 +126,7 @@ export default async function RootLayout({
           themeColors,
         )}
       >
-        <AppProviders defaultLocale={defaultLocale} lang={lang} messages={messages}>
+        <AppProviders lang={lang}>
           <Progress />
           <Banner
             className={cn("sticky top-0 w-full", !showBanner && "hidden")}
