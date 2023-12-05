@@ -20,7 +20,7 @@ export const getBaseMetadata = async ({
 
     const path = `/`;
 
-    const metadataBase: Metadata = {
+    const metadata: Metadata = {
         alternates: {
             canonical: `${localization.language.isoCode.toLocaleLowerCase()}-${localization.country.isoCode}`,
             languages: await getAlternativeLanguages({ localization, path }),
@@ -217,10 +217,10 @@ export const getBaseMetadata = async ({
             telephone: false,
             url: false,
         },
+        manifest: "/manifest.json",
         metadataBase: new URL(
             `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}`,
         ),
-        manifest: "/manifest.json",
         openGraph: {
             siteName: NEXT_PUBLIC_SITE_NAME,
             title: NEXT_PUBLIC_SITE_NAME,
@@ -245,5 +245,5 @@ export const getBaseMetadata = async ({
         }),
     }
 
-    return metadataBase;
+    return metadata;
 }
