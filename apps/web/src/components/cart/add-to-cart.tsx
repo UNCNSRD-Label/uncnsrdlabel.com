@@ -2,7 +2,7 @@
 
 import { addItem } from "@/components/cart/actions";
 import { LoadingDots } from "@/components/loading/dots";
-import { useGetIntl } from "@/lib/i18n/client";
+import { useGetIntl } from "@/lib/i18n";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import {
   ProductOption,
@@ -92,8 +92,8 @@ export function AddToCart({
     (variant) =>
       variant.selectedOptions?.every((selectedOption) => {
         const hasNoOptionsOrJustOneOption =
-          !options.length ||
-          options.find((option) => option.name === selectedOption.name)?.values
+          !options?.length ||
+          options?.find((option) => option.name === selectedOption.name)?.values
             .length === 1;
 
         if (hasNoOptionsOrJustOneOption) {

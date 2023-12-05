@@ -1,0 +1,90 @@
+{
+  "global": {
+    "metadata": {
+      "description": "Tutustu UNCNSRD:hen, joka on anteeksipyytämättömän kapinallisen sielun tuotemerkki. ",
+      "keywords": {
+        "bikini": "bikinit",
+        "swimsuit": "uimapuku",
+        "swimwear": "uimapuvut",
+        "beachwear": "rantaasut",
+        "sarong": "sarong",
+        "scarf": "huivi",
+        "boots": "saappaat"
+      }
+    }
+  },
+  "page": {
+    "collection": {
+      "title": "Kokoelma",
+      "no-products-found": "Tästä kokoelmasta ei löytynyt tuotteita"
+    },
+    "error": {
+      "title": "Jotain meni pieleen",
+      "message": "Virhe pyynnön käsittelyn yhteydessä.",
+      "button": "Yritä uudelleen"
+    },
+    "home": {
+      "shop_now": "Osta nyt"
+    },
+    "products": {
+      "add_to_wishlist": "Lisää toivelistaan",
+      "all_collections": "Kaikki kokoelmat",
+      "all_products": "Kaikki tuotteet",
+      "back_to_collection": "Takaisin kokoelmaan",
+      "best_sellers": "Myydyimmät",
+      "browse": "Selaa",
+      "buy": "Ostaa",
+      "featured": "Esittelyssä",
+      "more": "Lisää",
+      "new": "Uusi",
+      "out_of_stock": "Loppu varastosta",
+      "product_image_loading": "Tuotekuvaa ladataan",
+      "quick_view": "Katsaus",
+      "sale": "Myynti",
+      "see_all": "Näytä kaikki",
+      "see_details": "Katso yksityiskohdat",
+      "select_options": "Valitse vaihtoehdot",
+      "view_all": "Näytä kaikki",
+      "view_details": "Katso tiedot",
+      "wishlist": "Toivelista"
+    },
+    "search": {
+      "title": "Hae",
+      "description": "Etsi tuotteita",
+      "results": "{ tulokset, monikko, =0 {Ei hakutuloksia} =1 {"
+    }
+  },
+  "component": {
+    "AddToCart": {
+      "add_to_cart_disabled": "Kohdetta ei voi lisätä laukkuun",
+      "add_to_cart_enabled": "Lisää kassiin",
+      "out_of_stock": "Loppu varastosta",
+      "select_options": "Valitse vaihtoehdot"
+    },
+    "Banner": {
+      "link": "Ilmainen toimitus kelvollisille tilauksille"
+    },
+    "CartForm": {
+      "empty_cart": "Laukkusi on tyhjä"
+    },
+    "ConsentDialog": {
+      "description": "UNCNSRD käyttää evästeitä, jotka ovat välttämättömiä tämän sivuston toiminnan kannalta, ja haluaisivat käyttää lisäevästeitä parantaakseen käyttökokemustasi tällä sivustolla.",
+      "trigger": "Muokkaa suostumusasetuksia",
+      "title": "Suostumusasetukset"
+    },
+    "Menu": {
+      "categories": "Luokat",
+      "search": "Hae",
+      "toggle": "Näytä valikko"
+    },
+    "Newsletter": {
+      "description": "Saat päivityksiä uusista tuotteista ja tarjouksista.",
+      "placeholder": "Syötä sähköpostiosoitteesi",
+      "submit": "Lähetä",
+      "title": "Uutiskirje"
+    },
+    "RelatedProducts": {
+      "title": "Liittyvät tuotteet"
+    }
+  }
+}

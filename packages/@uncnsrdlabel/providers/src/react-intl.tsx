@@ -1,23 +1,23 @@
 "use client";
 
-import { defaultLocale } from "@uncnsrdlabel/lib";
-import { type IETFLanguageTag } from "@uncnsrdlabel/types";
 import { PropsWithChildren } from "react";
 import { IntlProvider, type ResolvedIntlConfig } from "react-intl";
 
 export function AppIntlProvider({
   children,
-  locale,
+  defaultLocale,
+  lang,
   messages,
 }: PropsWithChildren<{
-  locale: IETFLanguageTag;
+  defaultLocale: Intl.BCP47LanguageTag;
+  lang: Intl.BCP47LanguageTag;
   messages: ResolvedIntlConfig["messages"];
 }>) {
   return (
     <IntlProvider
       messages={messages}
-      locale={locale}
-      defaultLocale={defaultLocale.language}
+      locale={lang}
+      defaultLocale={defaultLocale}
     >
       {children}
     </IntlProvider>

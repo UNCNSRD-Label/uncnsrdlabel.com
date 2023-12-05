@@ -47,6 +47,11 @@
       "view_all": "View all",
       "view_details": "View the details",
       "wishlist": "Wishlist"
+    },
+    "search": {
+      "title": "Search",
+      "description": "Search for products",
+      "results": "{ results, plural, =0 {No search results} =1 {# search result} other {# search results} } found for \"{query}\""
     }
   },
   "component": {

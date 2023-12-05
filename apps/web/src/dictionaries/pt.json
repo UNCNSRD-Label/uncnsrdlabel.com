@@ -1,0 +1,90 @@
+{
+  "global": {
+    "metadata": {
+      "description": "Descubra a UNCNSRD, uma marca para a alma rebelde e sem remorso. ",
+      "keywords": {
+        "bikini": "bikini",
+        "swimsuit": "roupa de banho",
+        "swimwear": "trajes de banho",
+        "beachwear": "moda praia",
+        "sarong": "sarongue",
+        "scarf": "lenço",
+        "boots": "botas"
+      }
+    }
+  },
+  "page": {
+    "collection": {
+      "title": "Coleção",
+      "no-products-found": "Nenhum produto encontrado nesta coleção"
+    },
+    "error": {
+      "title": "Algo deu errado",
+      "message": "Um erro ocorreu durante o processamento do seu pedido.",
+      "button": "Tente novamente"
+    },
+    "home": {
+      "shop_now": "Compre agora"
+    },
+    "products": {
+      "add_to_wishlist": "Adicionar a lista de desejos",
+      "all_collections": "Todas as coleções",
+      "all_products": "Todos os produtos",
+      "back_to_collection": "Voltar para a coleção",
+      "best_sellers": "Mais vendidos",
+      "browse": "Navegar",
+      "buy": "Comprar",
+      "featured": "Apresentou",
+      "more": "Mais",
+      "new": "Novo",
+      "out_of_stock": "Fora de estoque",
+      "product_image_loading": "Carregamento de imagem do produto",
+      "quick_view": "Olhada rápida",
+      "sale": "Oferta",
+      "see_all": "Ver tudo",
+      "see_details": "Veja detalhes",
+      "select_options": "Selecione as opções",
+      "view_all": "Ver tudo",
+      "view_details": "Veja os detalhes",
+      "wishlist": "Lista de Desejos"
+    },
+    "search": {
+      "title": "Procurar",
+      "description": "Pesquisar produtos",
+      "results": "{ resultados, plural, =0 {Nenhum resultado de pesquisa} =1 {"
+    }
+  },
+  "component": {
+    "AddToCart": {
+      "add_to_cart_disabled": "Não foi possível adicionar item à sacola",
+      "add_to_cart_enabled": "Adicionar ao saco",
+      "out_of_stock": "Fora de estoque",
+      "select_options": "Selecione as opções"
+    },
+    "Banner": {
+      "link": "Frete grátis em pedidos qualificados"
+    },
+    "CartForm": {
+      "empty_cart": "Sua bolsa está vazia"
+    },
+    "ConsentDialog": {
+      "description": "A UNCNSRD utiliza cookies que são essenciais para o funcionamento deste site e gostaria de utilizar cookies adicionais para melhorar a sua experiência neste site.",
+      "trigger": "Editar configurações de consentimento",
+      "title": "Configurações de consentimento"
+    },
+    "Menu": {
+      "categories": "Categorias",
+      "search": "Procurar",
+      "toggle": "Veja o cardápio"
+    },
+    "Newsletter": {
+      "description": "Receba atualizações sobre novos produtos e ofertas.",
+      "placeholder": "Insira o seu endereço de email",
+      "submit": "Enviar",
+      "title": "Boletim de Notícias"
+    },
+    "RelatedProducts": {
+      "title": "Produtos relacionados"
+    }
+  }
+}

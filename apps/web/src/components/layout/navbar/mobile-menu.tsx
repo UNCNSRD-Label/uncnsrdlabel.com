@@ -77,7 +77,7 @@ export function MobileMenu({ menu }: { menu: Menu[] }) {
                 <div className="mb-4 w-full">
                   <NavbarSearch />
                 </div>
-                {menu.length ? (
+                {menu?.length ? (
                   <ul className="flex flex-col">
                     {menu.map((item, index) => (
                       <li key={item.title || index}>

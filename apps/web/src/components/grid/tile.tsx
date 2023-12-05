@@ -2,15 +2,13 @@ import { Image } from "@/components/media/image";
 import { Video } from "@/components/media/video";
 import { PriceAndCompareAtPrice } from "@/components/price-and-compare-at-price";
 import {
-  productBasicFragment,
-  productDetailsFragment,
-} from "@uncnsrdlabel/graphql-shopify-storefront";
-import {
   FragmentType,
   getFragmentData,
   imageFragment,
+  productBasicFragment,
+  productDetailsFragment,
   videoFragment,
-} from "@uncnsrdlabel/graphql-shopify-storefront/server";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 
 export async function Tile({

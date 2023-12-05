@@ -1,6 +1,4 @@
-import { type IETFLanguageTag } from "@uncnsrdlabel/types";
 import { PropsWithChildren } from "react";
-import { type ResolvedIntlConfig } from "react-intl";
 import { AppAnalyticsProvider } from "./analytics/index";
 import { AppIntlProvider } from "./react-intl";
 import { AppReactQueryProvider } from "./react-query";
@@ -15,19 +13,15 @@ export {
 
 export function AppProviders({
   children,
-  locale,
-  messages,
+  lang,
 }: PropsWithChildren<{
-  locale: IETFLanguageTag;
-  messages: ResolvedIntlConfig["messages"];
+  lang: Intl.BCP47LanguageTag;
 }>) {
   return (
     <AppReactQueryProvider>
-      <AppIntlProvider locale={locale} messages={messages}>
-        <AppShopifyProvider locale={locale}>
-          <AppAnalyticsProvider>{children}</AppAnalyticsProvider>
-        </AppShopifyProvider>
-      </AppIntlProvider>
+      <AppShopifyProvider lang={lang}>
+        <AppAnalyticsProvider>{children}</AppAnalyticsProvider>
+      </AppShopifyProvider>
     </AppReactQueryProvider>
   );
 }

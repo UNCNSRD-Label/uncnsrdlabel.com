@@ -7,7 +7,7 @@ import {
   getPageQuery,
   pageFragment,
   useGetShopifyGraphQL,
-} from "@uncnsrdlabel/graphql-shopify-storefront/client";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, type ClassValue } from "@uncnsrdlabel/lib";
 import { CSSProperties, HTMLProps, useEffect, useState } from "react";
 

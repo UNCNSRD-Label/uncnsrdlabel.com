@@ -5,10 +5,8 @@ import {
   getPageHandler,
   pageFragment,
   seoFragment,
-} from "@uncnsrdlabel/graphql-shopify-storefront/server";
-import {
-  SITE_DOMAIN_WEB
-} from "@uncnsrdlabel/lib";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
+import { SITE_DOMAIN_WEB } from "@uncnsrdlabel/lib";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
@@ -24,7 +22,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const lang = state$.lang.get();
 
-  const pageFragmentRef = await getPageHandler({ handle }, lang);
+  const variables = {
+    handle,
+  };
+
+  const pageFragmentRef = await getPageHandler({ variables, lang });
 
   const page = getFragmentData(pageFragment, pageFragmentRef);
 
@@ -36,9 +38,12 @@ export async function generateMetadata({
     title: seo?.title || page.title,
     description: seo?.description || page.bodySummary,
     openGraph: {
-        description: seo?.description || page.bodySummary,
-        title: seo?.title || page.title,
-        url: new URL("/", `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}/${handle}`)
+      description: seo?.description || page.bodySummary,
+      title: seo?.title || page.title,
+      url: new URL(
+        "/",
+        `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}/${handle}`,
+      ),
     },
   };
 }
@@ -50,7 +55,11 @@ export default async function PagePage({
 }) {
   const lang = state$.lang.get();
 
-  const pageFragmentRef = await getPageHandler({ handle }, lang);
+  const variables = {
+    handle,
+  };
+
+  const pageFragmentRef = await getPageHandler({ variables, lang });
 
   const page = getFragmentData(pageFragment, pageFragmentRef);
 

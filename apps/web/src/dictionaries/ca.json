@@ -1,0 +1,90 @@
+{
+  "global": {
+    "metadata": {
+      "description": "Descobriu UNCNSRD, una marca per a l'ànima rebel sense disculpes. ",
+      "keywords": {
+        "bikini": "biquini",
+        "swimsuit": "vestit de bany",
+        "swimwear": "vestit de bany",
+        "beachwear": "roba de platja",
+        "sarong": "sarong",
+        "scarf": "bufanda",
+        "boots": "botes"
+      }
+    }
+  },
+  "page": {
+    "collection": {
+      "title": "Col · lecció",
+      "no-products-found": "No s'han trobat productes en aquesta col·lecció"
+    },
+    "error": {
+      "title": "Alguna cosa ha anat malament",
+      "message": "S'ha produït un error en processar la seva sol · licitud.",
+      "button": "Torna-ho a provar"
+    },
+    "home": {
+      "shop_now": "Compra ara"
+    },
+    "products": {
+      "add_to_wishlist": "Afegir a la llista de desitjos",
+      "all_collections": "Totes les col·leccions",
+      "all_products": "Tots els productes",
+      "back_to_collection": "Torna a la col·lecció",
+      "best_sellers": "Els mes venuts",
+      "browse": "Navega",
+      "buy": "Compra",
+      "featured": "Destacat",
+      "more": "Més",
+      "new": "Nou",
+      "out_of_stock": "Esgotat",
+      "product_image_loading": "Càrrega de la imatge del producte",
+      "quick_view": "Vista ràpida",
+      "sale": "Venda",
+      "see_all": "Veure tot",
+      "see_details": "Veure detalls",
+      "select_options": "Seleccioneu opcions",
+      "view_all": "Veure tot",
+      "view_details": "Veure els detalls",
+      "wishlist": "Llista de desitjos"
+    },
+    "search": {
+      "title": "Cerca",
+      "description": "Cerca de productes",
+      "results": "{ resultats, plural, =0 {Sense resultats de cerca} =1 {"
+    }
+  },
+  "component": {
+    "AddToCart": {
+      "add_to_cart_disabled": "No es pot afegir l'article a la bossa",
+      "add_to_cart_enabled": "Afegir a la bossa",
+      "out_of_stock": "Esgotat",
+      "select_options": "Seleccioneu opcions"
+    },
+    "Banner": {
+      "link": "Enviament gratuït en comandes aptes"
+    },
+    "CartForm": {
+      "empty_cart": "La teva bossa està buida"
+    },
+    "ConsentDialog": {
+      "description": "UNCNSRD utilitza galetes que són essencials per fer que aquest lloc funcioni i voldria utilitzar galetes addicionals per millorar la vostra experiència en aquest lloc.",
+      "trigger": "Editeu la configuració del consentiment",
+      "title": "Configuració del consentiment"
+    },
+    "Menu": {
+      "categories": "Categories",
+      "search": "Cerca",
+      "toggle": "Veure el menú"
+    },
+    "Newsletter": {
+      "description": "Rebre actualitzacions de nous productes i ofertes.",
+      "placeholder": "Introdueix la teva adreça de correu electrònic",
+      "submit": "Presentar",
+      "title": "Butlletí informatiu"
+    },
+    "RelatedProducts": {
+      "title": "Productes relacionats"
+    }
+  }
+}

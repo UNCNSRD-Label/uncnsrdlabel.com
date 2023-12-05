@@ -1,6 +1,6 @@
 import { ProductCard } from "@/components/product-card/card";
 import { state$ } from "@/lib/store";
-import { getProductDetailsByHandleHandler } from "@uncnsrdlabel/graphql-shopify-storefront/server";
+import { getProductDetailsByHandleHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 
 export async function AddPremiumPackaging({
   className,
@@ -11,10 +11,10 @@ export async function AddPremiumPackaging({
 
   const handle = "premium-packaging";
 
-  const productDetailsFragmentRef = await getProductDetailsByHandleHandler(
-    { handle },
+  const productDetailsFragmentRef = await getProductDetailsByHandleHandler({
+    variables: { handle },
     lang,
-  );
+  });
 
   if (!productDetailsFragmentRef) {
     return null;

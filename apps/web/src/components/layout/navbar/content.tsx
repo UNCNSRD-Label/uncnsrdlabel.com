@@ -4,7 +4,7 @@ import { LogotypeIcon } from "@/components/icons/logotype";
 import { Search } from "@/components/search/index";
 import { state$ } from "@/lib/store";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
-import { getMenuHandler } from "@uncnsrdlabel/graphql-shopify-storefront/server";
+import { getMenuHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { Suspense } from "react";
 import { SlHeart, SlUser } from "react-icons/sl";
@@ -15,10 +15,10 @@ type Props = { showLogo?: boolean };
 export async function NavbarContent(props: Props) {
   const lang = state$.lang.get();
 
-  const menu = await getMenuHandler(
-    { handle: "next-js-frontend-header-menu" },
+  const menu = await getMenuHandler({
+    variables: { handle: "next-js-frontend-header-menu" },
     lang,
-  );
+  });
 
   return (
     <>

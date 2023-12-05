@@ -11,8 +11,8 @@ import {
   getQueryKey,
   getShopifyGraphQL,
   getShopifyQueryClient,
-} from "@uncnsrdlabel/graphql-shopify-storefront/server";
-import { getInContextVariables } from "@uncnsrdlabel/lib/server";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
+import { getInContextVariables } from "@uncnsrdlabel/lib";
 import { Suspense } from "react";
 
 // TODO: Change to videosHydrated and pass query and variables (handle) in props

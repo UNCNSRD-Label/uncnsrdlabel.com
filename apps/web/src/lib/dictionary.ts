@@ -1,37 +1,41 @@
-import languageFallback from "@/dictionaries/en.json";
-import { getIETFLanguageTagFromlocaleTag, locales } from "@uncnsrdlabel/lib";
+import {
+  getLocalizationDetailsHandler,
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import merge from "deepmerge";
 import { getProperty } from "dot-prop";
 import { type ResolvedIntlConfig } from "react-intl";
 
-const dictionariesFiles = [
-  ...locales.map((locale) => [
-    locale.language,
-    () =>
-      import(`@/dictionaries/${locale.language}.json`).then(
-        (module) => module.default,
-      ),
-  ]),
-  ...locales.map((locale) => [
-    getIETFLanguageTagFromlocaleTag(locale),
-    () =>
-      import(
-        `@/dictionaries/${getIETFLanguageTagFromlocaleTag(locale)}.json`
-      ).then((module) => module.default),
-  ]),
-];
+export const getDictionary = async (lang: Intl.BCP47LanguageTag, namespace: string) => {
+  const localization = await getLocalizationDetailsHandler({ lang });
 
-const dictionaries = Object.fromEntries(dictionariesFiles);
+  let languageFallback = {}
+  let languageGeneric = {}
+  let languageLocalised = {}
 
-export const getDictionary = async (locale: Intl.Locale, namespace: string) => {
-  const language = await dictionaries[locale.language]();
+  try {
+    const { default: languageFallbackDictionary } = await import(`@/dictionaries/en.json`);
+    languageFallback = languageFallbackDictionary;
+  } catch (error) {
+    console.error(error);
+  }
 
-  const languageLocalised =
-    await dictionaries[getIETFLanguageTagFromlocaleTag(locale)]();
+  try {
+    const { default: languageGenericDictionary } = await import(`@/dictionaries/${localization.language.isoCode.toLocaleLowerCase()}.json`) ?? {};
+    languageGeneric = languageGenericDictionary;
+  } catch (error) {
+    // console.error(error);
+  }
+
+  try {
+    const { default: languageLocalisedDictionary } = await import(`@/dictionaries/${localization.language.isoCode.toLocaleLowerCase()}-${localization.country.isoCode}.json`) ?? {};
+    languageLocalised = languageLocalisedDictionary;
+  } catch (error) {
+    // console.error(error);
+  }
 
   const merged = merge.all([
     languageFallback,
-    language,
+    languageGeneric,
     languageLocalised,
   ]) as typeof languageFallback;
 

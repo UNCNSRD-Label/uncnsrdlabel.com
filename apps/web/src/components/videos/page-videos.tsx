@@ -11,7 +11,7 @@ import {
   pageFragment,
   useGetShopifyGraphQL,
   videoFragment,
-} from "@uncnsrdlabel/graphql-shopify-storefront/client";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Suspense } from "react";
 
 export function PageVideos({ handle, ...props }: { handle: string }) {

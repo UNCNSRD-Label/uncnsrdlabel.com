@@ -1,0 +1,76 @@
+import { graphql } from "../codegen/index";
+
+export const getLocalizationAvailableBCP47LanguageTagsQuery = graphql(/* GraphQL */ `
+query getLocalizationAvailableBCP47LanguageTags {
+  localization {
+    availableCountries {
+      availableLanguages {
+        isoCode
+      }
+      isoCode
+    }
+    country {
+      isoCode
+    }
+  }
+}
+`);
+
+export const getLocalizationDetailsQuery = graphql(/* GraphQL */ `
+query getLocalizationDetails($country: CountryCode, $language: LanguageCode) @inContext(country: $country, language: $language) {
+  localization {
+    availableCountries {
+      availableLanguages {
+        endonymName
+        isoCode
+        name
+      }
+      currency {
+        isoCode
+        name
+        symbol
+      }
+      isoCode
+      market {
+        handle
+        id
+      }
+      name
+      unitSystem
+    }
+    availableLanguages {
+      endonymName
+      isoCode
+      name
+    }
+    country {
+      availableLanguages {
+        endonymName
+        isoCode
+        name
+      }
+      currency {
+        isoCode
+        name
+        symbol
+      }
+      isoCode
+      market {
+        handle
+        id
+      }
+      name
+      unitSystem
+    }
+    language {
+      endonymName
+      isoCode
+      name
+    }
+    market {
+      handle
+      id
+    }
+  }
+}
+`);

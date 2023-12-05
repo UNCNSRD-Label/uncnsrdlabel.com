@@ -9,7 +9,7 @@ import {
   imageFragment,
   productDetailsFragment,
   videoFragment,
-} from "@uncnsrdlabel/graphql-shopify-storefront/client";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import Image from "next/image";
 import { useRef, type MutableRefObject } from "react";

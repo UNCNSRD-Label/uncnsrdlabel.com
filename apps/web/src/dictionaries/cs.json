@@ -1,0 +1,90 @@
+{
+  "global": {
+    "metadata": {
+      "description": "Objevte UNCNSRD, značku pro neomluvitelné rebelské duše. ",
+      "keywords": {
+        "bikini": "bikiny",
+        "swimsuit": "plavky",
+        "swimwear": "plavky",
+        "beachwear": "plážové oblečení",
+        "sarong": "sarong",
+        "scarf": "šátek",
+        "boots": "boty"
+      }
+    }
+  },
+  "page": {
+    "collection": {
+      "title": "Sbírka",
+      "no-products-found": "V této kolekci nebyly nalezeny žádné produkty"
+    },
+    "error": {
+      "title": "Něco se pokazilo",
+      "message": "Při zpracování vašeho požadavku nastala chyba.",
+      "button": "Zkus to znovu"
+    },
+    "home": {
+      "shop_now": "Kupuj teď"
+    },
+    "products": {
+      "add_to_wishlist": "Přidat do seznamu přání",
+      "all_collections": "Všechny kolekce",
+      "all_products": "Všechny produkty",
+      "back_to_collection": "Zpět ke sbírce",
+      "best_sellers": "Nejlepší prodejci",
+      "browse": "Procházet",
+      "buy": "Nákup",
+      "featured": "Nejlepší",
+      "more": "Více",
+      "new": "Nový",
+      "out_of_stock": "Vyprodáno",
+      "product_image_loading": "Načítání obrázku produktu",
+      "quick_view": "Rychlý pohled",
+      "sale": "Prodej",
+      "see_all": "Vidět vše",
+      "see_details": "Prohlednout detaily",
+      "select_options": "Vyberte možnosti",
+      "view_all": "Zobrazit vše",
+      "view_details": "Zobrazit podrobnosti",
+      "wishlist": "Seznam přání"
+    },
+    "search": {
+      "title": "Vyhledávání",
+      "description": "Hledat produkty",
+      "results": "{ výsledky, množné číslo, =0 {Žádné výsledky vyhledávání} =1 {"
+    }
+  },
+  "component": {
+    "AddToCart": {
+      "add_to_cart_disabled": "Nelze přidat položku do tašky",
+      "add_to_cart_enabled": "Přidat do batohu",
+      "out_of_stock": "Vyprodáno",
+      "select_options": "Vyberte možnosti"
+    },
+    "Banner": {
+      "link": "Doprava zdarma u způsobilých objednávek"
+    },
+    "CartForm": {
+      "empty_cart": "Vaše taška je prázdná"
+    },
+    "ConsentDialog": {
+      "description": "UNCNSRD používá soubory cookie, které jsou nezbytné pro fungování tohoto webu, a rád by používal další soubory cookie ke zlepšení vaší zkušenosti na tomto webu.",
+      "trigger": "Upravit nastavení souhlasu",
+      "title": "Nastavení souhlasu"
+    },
+    "Menu": {
+      "categories": "Kategorie",
+      "search": "Vyhledávání",
+      "toggle": "Zobrazit nabídku"
+    },
+    "Newsletter": {
+      "description": "Získejte aktualizace o nových produktech a nabídkách.",
+      "placeholder": "vložte svou e-mailovou adresu",
+      "submit": "Předložit",
+      "title": "Zpravodaj"
+    },
+    "RelatedProducts": {
+      "title": "Související produkty"
+    }
+  }
+}

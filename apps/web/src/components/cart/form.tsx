@@ -2,7 +2,7 @@ import { AddPremiumPackaging } from "@/components/cart/add-premium-packaging";
 import { DeleteItemButton } from "@/components/cart/delete-item-button";
 import { EditItemQuantityButton } from "@/components/cart/edit-item-quantity-button";
 import { Price } from "@/components/price";
-import { getIntl } from "@/lib/i18n/server";
+import { getIntl } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
 import { ResultOf } from "@graphql-typed-document-node/core";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";

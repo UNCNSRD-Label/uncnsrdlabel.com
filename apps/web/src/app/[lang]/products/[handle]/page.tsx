@@ -1,15 +1,13 @@
-import { state$ } from "@/lib/store";
-// import { ProductAdditionalDetails } from "@/components/product/additional-details";
 import { LoadingDots } from "@/components/loading/dots";
 import { Details } from "@/components/product/details";
-import { languagesArray } from "@/lib/i18n";
+import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";
 import {
   getFragmentData,
   getProductDetailsByHandleHandler,
   productDetailsFragment,
   seoFragment,
-} from "@uncnsrdlabel/graphql-shopify-storefront/server";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { HIDDEN_PRODUCT_TAG, SITE_DOMAIN_WEB } from "@uncnsrdlabel/lib";
 import { type Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -24,10 +22,10 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const lang = state$.lang.get();
 
-  const productDetailsFragmentRef = await getProductDetailsByHandleHandler(
-    { handle },
+  const productDetailsFragmentRef = await getProductDetailsByHandleHandler({
+    variables: { handle },
     lang,
-  );
+  });
 
   const product = getFragmentData(
     productDetailsFragment,
@@ -45,7 +43,7 @@ export async function generateMetadata({
   return {
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_DEFAULT_LOCALE}/${path}`,
-      languages: Object.fromEntries(languagesArray(path)),
+      // languages: await getAlternativeLanguages({ lang, path }),
     },
     title: seo.title || product.title,
     description: seo.description || product.description,
@@ -68,13 +66,15 @@ export async function generateMetadata({
   };
 }
 
-export default async function ProductPage({ params: { handle, lang } }: PageProps) {
-  const productDetailsFragmentRef = await getProductDetailsByHandleHandler(
-    {
+export default async function ProductPage({
+  params: { handle, lang },
+}: PageProps) {
+  const productDetailsFragmentRef = await getProductDetailsByHandleHandler({
+    variables: {
       handle,
     },
     lang,
-  );
+  });
 
   if (!productDetailsFragmentRef) return notFound();
 

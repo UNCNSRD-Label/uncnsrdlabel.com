@@ -31,7 +31,11 @@ const sendKlaviyoAnalytics = async (
     body: encodedParams,
   };
 
-  await fetch(`https://a.klaviyo.com/api/${type}`, options);
+  try {
+    await fetch(`https://a.klaviyo.com/api/${type}`, options);
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 // eslint-disable-next-line no-unused-vars

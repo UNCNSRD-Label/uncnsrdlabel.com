@@ -1,7 +1,7 @@
 "use client";
 
 import { LogotypeIcon } from "@/components/icons/logotype";
-import { useGetIntl } from "@/lib/i18n/client";
+import { useGetIntl } from "@/lib/i18n";
 
 export default function Error({ reset }: { reset: () => void }) {
   const intl = useGetIntl("page.error");

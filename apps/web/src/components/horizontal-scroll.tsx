@@ -5,7 +5,7 @@ import {
   getPageHandler,
   imageFragment,
   pageFragment,
-} from "@uncnsrdlabel/graphql-shopify-storefront/server";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { notFound } from "next/navigation";
 
@@ -18,7 +18,7 @@ export async function HorizontalScroll({
 }) {
   const lang = state$.lang.get();
 
-  const pageFragmentRef = await getPageHandler({ handle }, lang);
+  const pageFragmentRef = await getPageHandler({ variables: { handle }, lang });
 
   const page = getFragmentData(pageFragment, pageFragmentRef);
 

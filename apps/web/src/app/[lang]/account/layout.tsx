@@ -1,5 +1,3 @@
-"use server";
-
 import { Logo } from "@/components/layout/logo/index";
 import { NavbarContent } from "@/components/layout/navbar/content";
 import { Navbar } from "@/components/layout/navbar/index";
@@ -11,7 +9,7 @@ import {
   getMenuHandler,
   getRouteMetaObjectHandler,
   imageFragment,
-} from "@uncnsrdlabel/graphql-shopify-storefront/server";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import Image from "next/image";
 import { Suspense, isValidElement } from "react";
@@ -29,14 +27,17 @@ export default async function AccountLayout({
       ? children.props.childPropSegment
       : undefined;
 
-  const routeMetaObject = await getRouteMetaObjectHandler(
-    {
+  const routeMetaObject = await getRouteMetaObjectHandler({
+    variables: {
       handle: `account_${segment}`,
     },
     lang,
-  );
+  });
 
-  const routeMenu = await getMenuHandler({ handle: "account" });
+  const routeMenu = await getMenuHandler({
+    variables: { handle: "account" },
+    lang,
+  });
 
   return (
     <>
@@ -46,7 +47,7 @@ export default async function AccountLayout({
       <Suspense fallback={<LoadingSkeleton />}>
         <div className="account mx-8 grid min-h-[100dvh] max-w-[100dvw] gap-16 md:mx-0 md:grid-cols-[1fr_1fr]">
           <nav className="relative hidden place-content-center md:grid md:min-h-[100dvh] md:justify-center">
-            {routeMenu.items.length ? (
+            {routeMenu.items?.length ? (
               <dl className="relative z-10 grid content-start justify-items-center gap-4 rounded bg-white p-8">
                 <dt className="text-sm uppercase">Account</dt>
                 {routeMenu.items.map((item, index) => (

@@ -1,0 +1,90 @@
+{
+  "global": {
+    "metadata": {
+      "description": "UNCNSRD は、悪びれない反逆的な魂のためのブランドです。",
+      "keywords": {
+        "bikini": "ビキニ",
+        "swimsuit": "水着",
+        "swimwear": "水着",
+        "beachwear": "ビーチウェア",
+        "sarong": "サロン",
+        "scarf": "スカーフ",
+        "boots": "ブーツ"
+      }
+    }
+  },
+  "page": {
+    "collection": {
+      "title": "コレクション",
+      "no-products-found": "このコレクションに製品は見つかりませんでした"
+    },
+    "error": {
+      "title": "何か問題が発生しました",
+      "message": "リクエストの処理中にエラーが発生しました。",
+      "button": "もう一度やり直してください"
+    },
+    "home": {
+      "shop_now": "今すぐ購入"
+    },
+    "products": {
+      "add_to_wishlist": "ほしい物リストに追加する",
+      "all_collections": "すべてのコレクション",
+      "all_products": "すべての製品",
+      "back_to_collection": "コレクションに戻る",
+      "best_sellers": "ベストセラー",
+      "browse": "ブラウズ",
+      "buy": "購入",
+      "featured": "特徴",
+      "more": "もっと",
+      "new": "新しい",
+      "out_of_stock": "在庫切れ",
+      "product_image_loading": "商品画像読み込み",
+      "quick_view": "クイックビュー",
+      "sale": "セール",
+      "see_all": "すべてを見る",
+      "see_details": "詳細を見る",
+      "select_options": "オプションを選択",
+      "view_all": "すべて見る",
+      "view_details": "詳細を見る",
+      "wishlist": "ウィッシュリスト"
+    },
+    "search": {
+      "title": "検索",
+      "description": "製品を探す",
+      "results": "{ 結果、複数形、 =0 {検索結果なし} =1 {"
+    }
+  },
+  "component": {
+    "AddToCart": {
+      "add_to_cart_disabled": "バッグにアイテムを追加できません",
+      "add_to_cart_enabled": "かごに入れます",
+      "out_of_stock": "在庫切れ",
+      "select_options": "オプションを選択してください"
+    },
+    "Banner": {
+      "link": "対象注文で送料無料"
+    },
+    "CartForm": {
+      "empty_cart": "あなたのバッグは空です"
+    },
+    "ConsentDialog": {
+      "description": "UNCNSRD は、このサイトの動作に不可欠な Cookie を使用しており、このサイトでのエクスペリエンスを向上させるために追加の Cookie を使用したいと考えています。",
+      "trigger": "同意設定を編集する",
+      "title": "同意設定"
+    },
+    "Menu": {
+      "categories": "カテゴリー",
+      "search": "検索",
+      "toggle": "メニューを見る"
+    },
+    "Newsletter": {
+      "description": "新製品やオファーに関する最新情報を受け取ります。",
+      "placeholder": "メールアドレスを入力してください",
+      "submit": "提出する",
+      "title": "ニュースレター"
+    },
+    "RelatedProducts": {
+      "title": "関連製品"
+    }
+  }
+}

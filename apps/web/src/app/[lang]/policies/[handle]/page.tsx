@@ -1,17 +1,17 @@
 import { LoadingSkeleton } from "@/components/loading/skeleton";
 import { Prose } from "@/components/prose";
-import { languagesArray } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   getFragmentData,
   getMenuHandler,
-  getPolicyHandler,
+  getShopPoliciesHandler,
   shopPolicyFragment,
   type PolicyName,
-} from "@uncnsrdlabel/graphql-shopify-storefront/server";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { SITE_DOMAIN_WEB, cn } from "@uncnsrdlabel/lib";
+import { camelCase } from "lodash";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
@@ -25,23 +25,30 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const lang = state$.lang.get();
 
-  const shopPolicyFragmentRef = await getPolicyHandler({ handle }, lang);
+  const path = `/policies/${handle}`;
+
+  const policies = await getShopPoliciesHandler({ lang });
+
+  const policyName = camelCase(handle) as PolicyName;
+
+  const shopPolicyFragmentRef = policies[policyName];
 
   if (!shopPolicyFragmentRef) return notFound();
 
   const policy = getFragmentData(shopPolicyFragment, shopPolicyFragmentRef);
 
-  const path = `/policies/${handle}`;
-
   return {
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_DEFAULT_LOCALE}/${path}`,
-      languages: Object.fromEntries(languagesArray(path)),
+      // languages: await getAlternativeLanguages({ lang, path }),
     },
     title: policy.title,
     openGraph: {
       title: policy.title,
-      url: new URL("/", `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}/${path}`)
+      url: new URL(
+        "/",
+        `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}/${path}`,
+      ),
     },
   };
 }
@@ -55,9 +62,18 @@ export default async function PolicyPage({
 
   const handle = params.handle as PolicyName;
 
-  const shopPolicyFragmentRef = await getPolicyHandler({ handle }, lang);
+  const customerCareMenu = await getMenuHandler({
+    lang,
+    variables: {
+      handle: "customer-care",
+    },
+  });
 
-  const customerCareMenu = await getMenuHandler({ handle: "customer-care" });
+  const policies = await getShopPoliciesHandler({ lang });
+
+  const policyName = camelCase(handle) as PolicyName;
+
+  const shopPolicyFragmentRef = policies[policyName];
 
   if (!shopPolicyFragmentRef) return notFound();
 
@@ -66,7 +82,7 @@ export default async function PolicyPage({
   return (
     <>
       <nav className="md:min-h-fullMinusNavbar relative hidden content-start md:grid md:justify-center">
-        {customerCareMenu.items.length ? (
+        {customerCareMenu.items?.length ? (
           <dl className="grid content-start gap-4 md:sticky md:top-64 md:mb-64">
             <dt className="text-sm uppercase">Customer Care</dt>
             {customerCareMenu.items.map((item, index) => (
@@ -114,7 +130,10 @@ export default async function PolicyPage({
       </nav>
       <article className="mb-48">
         <Suspense fallback={<LoadingSkeleton />}>
-          <Prose className="prose-sm mb-8 grid prose-thead:border-hotPink prose-tr:border-hotPink" html={policy.body as string} />
+          <Prose
+            className="prose-sm prose-thead:border-hotPink prose-tr:border-hotPink mb-8 grid"
+            html={policy.body as string}
+          />
         </Suspense>
       </article>
     </>

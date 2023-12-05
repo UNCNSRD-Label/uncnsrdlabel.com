@@ -4,11 +4,11 @@ import { VariantSelector } from "@/components/product/variant-selector";
 import { VariantSelectorShell } from "@/components/product/variant-selector-shell";
 import { ProductVariant } from "@shopify/hydrogen/storefront-api-types";
 import {
+  FragmentType,
   getFragmentData,
   productDetailsFragment,
   productVariantConnectionFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { FragmentType } from "@uncnsrdlabel/graphql-shopify-storefront/client";
 import { Suspense } from "react";
 
 interface PurchaseOptionsProps {

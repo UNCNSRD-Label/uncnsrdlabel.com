@@ -5,15 +5,11 @@ import {
   addToCartHandler,
   removeFromCartHandler,
   updateCartHandler,
-} from "@uncnsrdlabel/graphql-shopify-storefront/server";
-import { isShopifyError } from "@uncnsrdlabel/lib";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
+import { formatErrorMessage, isShopifyError } from "@uncnsrdlabel/lib";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import { Cart } from "./types";
-
-function formatErrorMessage(err: Error): string {
-  return JSON.stringify(err, Object.getOwnPropertyNames(err));
-}
 
 export async function POST(req: NextRequest): Promise<Response> {
   const lang = state$.lang.get();
@@ -29,15 +25,17 @@ export async function POST(req: NextRequest): Promise<Response> {
   }
   try {
     await addToCartHandler(
-      { cartId, lines: [{ merchandiseId, quantity: 1 }] },
-      lang,
+      {
+        variables: { cartId, lines: [{ merchandiseId, quantity: 1 }] },
+        lang,
+      }
     );
     return NextResponse.json({ status: 204 }) satisfies Response;
-  } catch (e) {
-    if (isShopifyError(e)) {
+  } catch (error) {
+    if (isShopifyError(error)) {
       return NextResponse.json(
-        { message: formatErrorMessage(e.message) },
-        { status: e.status },
+        { message: formatErrorMessage(error.message) },
+        { status: error.status },
       ) satisfies Response;
     }
 
@@ -60,23 +58,25 @@ export async function PUT(req: NextRequest): Promise<Response> {
   try {
     await updateCartHandler(
       {
-        cartId,
-        lines: [
-          {
-            id: lineId,
-            merchandiseId: variantId,
-            quantity,
-          },
-        ],
-      },
-      lang,
+        variables: {
+          cartId,
+          lines: [
+            {
+              id: lineId,
+              merchandiseId: variantId,
+              quantity,
+            },
+          ],
+        },
+        lang,
+      }
     );
     return NextResponse.json({ status: 204 });
-  } catch (e) {
-    if (isShopifyError(e)) {
+  } catch (error) {
+    if (isShopifyError(error)) {
       return NextResponse.json(
-        { message: formatErrorMessage(e.message) },
-        { status: e.status },
+        { message: formatErrorMessage(error.message) },
+        { status: error.status },
       );
     }
 
@@ -97,7 +97,7 @@ export async function DELETE(req: NextRequest): Promise<Response> {
     );
   }
   try {
-    await removeFromCartHandler({ cartId, lineIds: [lineId] }, lang);
+    await removeFromCartHandler({ variables: { cartId, lineIds: [lineId] }, lang });
     return NextResponse.json({ status: 204 });
   } catch (error) {
     if (isShopifyError(error)) {

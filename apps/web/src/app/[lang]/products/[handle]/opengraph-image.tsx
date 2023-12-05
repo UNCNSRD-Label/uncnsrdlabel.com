@@ -1,13 +1,12 @@
 import { OpengraphImageResponse } from "@/components/opengraph-image-response";
-import {
-  imageFragment,
-  productDetailsFragment,
-} from "@uncnsrdlabel/graphql-shopify-storefront";
+import { state$ } from "@/lib/store";
 import {
   getFragmentData,
   getProductDetailsByHandleHandler,
+  imageFragment,
+  productDetailsFragment,
   seoFragment,
-} from "@uncnsrdlabel/graphql-shopify-storefront/server";
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 
 // export const runtime = "edge";
 
@@ -23,8 +22,11 @@ export default async function OpenGraphImage({
 }: {
   params: { handle: string };
 }) {
+  const lang = state$.lang.get();
+
   const productDetailsFragmentRef = await getProductDetailsByHandleHandler({
-    handle,
+    variables: { handle },
+    lang,
   });
 
   const product = getFragmentData(

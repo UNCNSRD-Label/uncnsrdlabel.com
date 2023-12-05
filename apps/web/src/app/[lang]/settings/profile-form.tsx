@@ -2,9 +2,6 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
-import { useFieldArray, useForm } from "react-hook-form";
-import * as z from "zod";
-
 import { Button } from "@uncnsrdlabel/components/ui/button";
 import {
   Form,
@@ -26,6 +23,8 @@ import {
 import { Textarea } from "@uncnsrdlabel/components/ui/textarea";
 import { toast } from "@uncnsrdlabel/components/ui/use-toast";
 import { cn } from "@uncnsrdlabel/lib";
+import { useFieldArray, useForm } from "react-hook-form";
+import * as z from "zod";
 
 const profileFormSchema = z.object({
   username: z

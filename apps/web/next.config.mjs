@@ -89,10 +89,9 @@ const nextConfig = {
   //   ignoreDuringBuilds: true,
   // },
   experimental: {
-    scrollRestoration: true,
-    swcPlugins: [
-      // ['@victorandree/graphql-codegen-client-preset-swc-plugin', { artifactDirectory: '@uncnsrdlabel/graphql-shopify-storefront/codegen', gqlTagName: 'graphql' }]
-    ],
+    // swcPlugins: [
+    //   ['@victorandree/graphql-codegen-client-preset-swc-plugin', { artifactDirectory: '@uncnsrdlabel/graphql-shopify-storefront/codegen', gqlTagName: 'graphql' }]
+    // ],
     webpackBuildWorker: true,
   },
   async headers() {

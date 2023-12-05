@@ -1,0 +1,90 @@
+{
+  "global": {
+    "metadata": {
+      "description": "اكتشف UNCNSRD، العلامة التجارية للروح المتمردة الجريئة. ",
+      "keywords": {
+        "bikini": "بيكيني",
+        "swimsuit": "ملابس السباحة",
+        "swimwear": "ملابس سباحة",
+        "beachwear": "ثياب البحر",
+        "sarong": "ردائه",
+        "scarf": "وشاح",
+        "boots": "أحذية"
+      }
+    }
+  },
+  "page": {
+    "collection": {
+      "title": "مجموعة",
+      "no-products-found": "لا توجد منتجات في هذه المجموعة"
+    },
+    "error": {
+      "title": "هناك خطأ ما",
+      "message": "حدث خطأ أثناء معالجة طلبك.",
+      "button": "حاول ثانية"
+    },
+    "home": {
+      "shop_now": "تسوق الآن"
+    },
+    "products": {
+      "add_to_wishlist": "أضف إلى قائمة الامنيات",
+      "all_collections": "جميع المجموعات",
+      "all_products": "جميع المنتجات",
+      "back_to_collection": "العودة إلى المجموعة",
+      "best_sellers": "الأكثر مبيعا",
+      "browse": "تصفح",
+      "buy": "شراء",
+      "featured": "متميز",
+      "more": "أكثر",
+      "new": "جديد",
+      "out_of_stock": "إنتهى من المخزن",
+      "product_image_loading": "تحميل صورة المنتج",
+      "quick_view": "نظرة سريعة",
+      "sale": "أُوكَازيُون",
+      "see_all": "اظهار الكل",
+      "see_details": "انظر التفاصيل",
+      "select_options": "اشر على الخيارات",
+      "view_all": "عرض الكل",
+      "view_details": "عرض التفاصيل",
+      "wishlist": "قائمة الرغبات"
+    },
+    "search": {
+      "title": "يبحث",
+      "description": "البحث عن المنتجات",
+      "results": "{ النتائج، الجمع، =0 {لا توجد نتائج بحث} =1 {"
+    }
+  },
+  "component": {
+    "AddToCart": {
+      "add_to_cart_disabled": "غير قادر على إضافة عنصر إلى الحقيبة",
+      "add_to_cart_enabled": "أضف الى الحقيبة",
+      "out_of_stock": "إنتهى من المخزن",
+      "select_options": "الرجاء تحديد الخيارات"
+    },
+    "Banner": {
+      "link": "شحن مجاني للطلبات المؤهلة"
+    },
+    "CartForm": {
+      "empty_cart": "حقيبتك فارغة"
+    },
+    "ConsentDialog": {
+      "description": "يستخدم UNCNSRD ملفات تعريف الارتباط الضرورية لتشغيل هذا الموقع ويرغب في استخدام ملفات تعريف ارتباط إضافية لتحسين تجربتك على هذا الموقع.",
+      "trigger": "تعديل إعدادات الموافقة",
+      "title": "إعدادات الموافقة"
+    },
+    "Menu": {
+      "categories": "فئات",
+      "search": "يبحث",
+      "toggle": "عرض القائمة"
+    },
+    "Newsletter": {
+      "description": "تلقي التحديثات على المنتجات والعروض الجديدة.",
+      "placeholder": "أدخل عنوان بريدك الالكتروني",
+      "submit": "يُقدِّم",
+      "title": "النشرة الإخبارية"
+    },
+    "RelatedProducts": {
+      "title": "منتجات ذات صله"
+    }
+  }
+}
