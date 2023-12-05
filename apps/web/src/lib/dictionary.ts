@@ -23,14 +23,14 @@ export const getDictionary = async (lang: Intl.BCP47LanguageTag, namespace: stri
     const { default: languageGenericDictionary } = await import(`@/dictionaries/${localization.language.isoCode.toLocaleLowerCase()}.json`) ?? {};
     languageGeneric = languageGenericDictionary;
   } catch (error) {
-    console.error(error);
+    // console.error(error);
   }
 
   try {
     const { default: languageLocalisedDictionary } = await import(`@/dictionaries/${localization.language.isoCode.toLocaleLowerCase()}-${localization.country.isoCode}.json`) ?? {};
     languageLocalised = languageLocalisedDictionary;
   } catch (error) {
-    console.error(error);
+    // console.error(error);
   }
 
   const merged = merge.all([
