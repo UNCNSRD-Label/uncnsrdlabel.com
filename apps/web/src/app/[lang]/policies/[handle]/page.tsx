@@ -6,11 +6,12 @@ import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   getFragmentData,
   getMenuHandler,
-  getPolicyHandler,
+  getShopPoliciesHandler,
   shopPolicyFragment,
   type PolicyName,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { SITE_DOMAIN_WEB, cn } from "@uncnsrdlabel/lib";
+import { camelCase } from "lodash";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
@@ -24,17 +25,17 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const lang = state$.lang.get();
 
-  const variables = {
-    handle,
-  };
+  const path = `/policies/${handle}`;
 
-  const shopPolicyFragmentRef = await getPolicyHandler({ lang, variables });
+  const policies = await getShopPoliciesHandler({ lang });
+
+  const policyName = camelCase(handle) as PolicyName;
+
+  const shopPolicyFragmentRef = policies[policyName];
 
   if (!shopPolicyFragmentRef) return notFound();
 
   const policy = getFragmentData(shopPolicyFragment, shopPolicyFragmentRef);
-
-  const path = `/policies/${handle}`;
 
   return {
     alternates: {
@@ -61,19 +62,18 @@ export default async function PolicyPage({
 
   const handle = params.handle as PolicyName;
 
-  const shopPolicyFragmentRef = await getPolicyHandler({
-    lang,
-    variables: {
-      handle,
-    },
-  });
-
   const customerCareMenu = await getMenuHandler({
     lang,
     variables: {
       handle: "customer-care",
     },
   });
+
+  const policies = await getShopPoliciesHandler({ lang });
+
+  const policyName = camelCase(handle) as PolicyName;
+
+  const shopPolicyFragmentRef = policies[policyName];
 
   if (!shopPolicyFragmentRef) return notFound();
 

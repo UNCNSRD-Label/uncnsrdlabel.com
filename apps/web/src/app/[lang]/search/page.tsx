@@ -4,7 +4,7 @@ import { getIntl } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";
 import {
-  getLocalizationHandler,
+  getLocalizationDetailsHandler,
   getProductsHandler,
   productDefaultSort,
   productSorting,
@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   const intl = await getIntl(lang, `page.${handle}`);
 
-  const localization = await getLocalizationHandler({ lang });
+  const localization = await getLocalizationDetailsHandler({ lang });
 
 
   return {

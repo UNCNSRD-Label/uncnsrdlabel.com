@@ -1,11 +1,12 @@
 import { state$ } from "@/lib/store";
 import { match } from "@formatjs/intl-localematcher";
 import {
-  type CountryCode
+  type CountryCode,
+  type LanguageCode,
 } from "@shopify/hydrogen/storefront-api-types";
-// import {
-//   getLocalizationHandler,
-// } from "@uncnsrdlabel/graphql-shopify-storefront";
+import {
+  getLocalizationAvailableBCP47LanguageTagsHandler,
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import Negotiator from "negotiator";
 import { NextResponse, type NextRequest } from "next/server";
 
@@ -27,30 +28,7 @@ export async function middleware(request: NextRequest) {
 
   const country = request.geo?.country as CountryCode ?? state$.country.get()
 
-  // const language = state$.language.get();
-
-  // const localization = await getLocalizationHandler({
-  //   // @ts-ignore Type '"AF"' is not assignable to type 'LanguageCode'.
-  //   variables: { country, language }
-  // });
-
-  const localization = {
-    __typename: "Localization",
-    availableCountries: [{
-      __typename: "Country",
-      isoCode: "GB",
-      name: "Great Britain",
-      unitSystem: "metric",
-      availableLanguages: [
-        {
-          isoCode: "en"
-        }
-      ]
-    }],
-    country: {
-      isoCode: "GB"
-    }
-  }
+  const localization = await getLocalizationAvailableBCP47LanguageTagsHandler();
 
   const defaultLocale = localization.country.isoCode;
 
@@ -60,13 +38,15 @@ export async function middleware(request: NextRequest) {
     match(languages, IETFLanguageTags, defaultLocale);
 
   const detectedLanguage =
-    request.headers
+    (request.headers
       .get("accept-language")
       ?.split(",")?.[0]
-      .split("-")?.[0] ?? process.env.NEXT_PUBLIC_DEFAULT_LOCALE?.split("-")?.[0];
+      .split("-")?.[0] ?? process.env.NEXT_PUBLIC_DEFAULT_LOCALE?.split("-")?.[0]) as LanguageCode;
 
   const detectedCountry =
     request.geo?.country ?? defaultLocale.split("-")?.[1] ?? process.env.NEXT_PUBLIC_DEFAULT_LOCALE?.split("-")?.[1];
+
+  state$.language.set(detectedLanguage);
 
   const headers: Negotiator.Headers = {
     "accept-language": `${detectedLanguage}-${detectedCountry},en;q=0.5`,
@@ -79,7 +59,7 @@ export async function middleware(request: NextRequest) {
 
   const pathnameIsMissingLocale = IETFLanguageTags.every(
     (IETFLanguageTag) =>
-      !pathname.startsWith(`/${IETFLanguageTag}/`) && pathname !== `/${IETFLanguageTag}`,
+      !pathname.startsWith(`/${IETFLanguageTag}`),
   );
 
   // Redirect if there is no locale

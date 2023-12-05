@@ -14,7 +14,6 @@ import {
   getCollectionsQuery,
 } from "./queries/collection";
 // import { collectionFragment } from "./fragments/collection";
-import { camelCase } from "lodash";
 import {
   AddToCartMutationVariables,
   CreateCartMutationVariables,
@@ -23,7 +22,7 @@ import {
   GetCollectionProductsQueryVariables,
   GetCollectionQueryVariables,
   GetCollectionsQueryVariables,
-  GetLocalizationQueryVariables,
+  GetLocalizationDetailsQueryVariables,
   GetMenuQueryVariables,
   GetPageQueryVariables,
   GetPagesQueryVariables,
@@ -34,13 +33,13 @@ import {
   GetProductsQueryVariables,
   GetProductsWithVariantsQueryVariables,
   GetRouteMetaObjectQueryVariables,
-  GetShopPoliciesQueryVariables,
   RemoveFromCartMutationVariables
 } from "./codegen/graphql";
 import { collectionFragment } from "./fragments/index";
 import {
   getCartQuery,
-  getLocalizationQuery,
+  getLocalizationAvailableBCP47LanguageTagsQuery,
+  getLocalizationDetailsQuery,
   getMenuQuery,
   getPageQuery,
   getPagesQuery,
@@ -54,7 +53,6 @@ import {
   getShopDetailsQuery,
   getShopPoliciesQuery,
 } from "./queries/index";
-import { type PolicyName } from "./types";
 import { getShopifyGraphQL } from "./utilities";
 
 export async function createCartHandler({ variables, lang }: {
@@ -434,16 +432,10 @@ export async function getShopDetailsHandler({ lang }: {
   return shop;
 }
 
-export async function getLocalizationHandler({ variables, lang }: {
-  variables?: GetLocalizationQueryVariables,
-  lang?: Intl.BCP47LanguageTag,
-}) {
-  const inContextVariables = getInContextVariables(lang);
+export async function getLocalizationAvailableBCP47LanguageTagsHandler() {
 
   const { localization } = await getShopifyGraphQL(
-    getLocalizationQuery,
-    // @ts-expect-error Types of property 'country' are incompatible.
-    { ...variables, ...inContextVariables, }
+    getLocalizationAvailableBCP47LanguageTagsQuery,
   );
 
   if (!localization) {
@@ -458,21 +450,28 @@ export async function getLocalizationHandler({ variables, lang }: {
   return localization;
 }
 
-export async function getPolicyHandler({ variables, lang }: {
-  variables: GetShopPoliciesQueryVariables & {
-    handle: PolicyName;
-  },
-  lang: Intl.BCP47LanguageTag,
+export async function getLocalizationDetailsHandler({ variables, lang }: {
+  variables?: GetLocalizationDetailsQueryVariables,
+  lang?: Intl.BCP47LanguageTag,
 }) {
-  const policies = await getShopPoliciesHandler({ lang });
+  const inContextVariables = getInContextVariables(lang);
 
-  const { handle } = variables;
+  const { localization } = await getShopifyGraphQL(
+    getLocalizationDetailsQuery,
+    // @ts-expect-error Types of property 'country' are incompatible.
+    { ...variables, ...inContextVariables, }
+  );
 
-  const policyName = camelCase(handle) as PolicyName;
+  if (!localization) {
+    throw {
+      status: 404,
+      message: `Localization not found`,
+    };
+  }
 
-  const policy = policies[policyName];
+  // console.log({ localization });
 
-  return policy;
+  return localization;
 }
 
 export async function getShopPoliciesHandler({ lang }: {
@@ -658,14 +657,14 @@ export async function getProductsWithVariantsHandler({ variables, lang }: {
   return products;
 }
 
-export async function useGetLocalizationHandler({ variables, lang }: {
-  variables?: GetLocalizationQueryVariables,
+export async function usegetLocalizationDetailsHandler({ variables, lang }: {
+  variables?: GetLocalizationDetailsQueryVariables,
   lang?: Intl.BCP47LanguageTag,
 }) {
   const inContextVariables = getInContextVariables(lang);
 
   const { localization } = await getShopifyGraphQL(
-    getLocalizationQuery,
+    getLocalizationDetailsQuery,
     // @ts-expect-error Types of property 'country' are incompatible.
     { ...variables, ...inContextVariables, }
   );
