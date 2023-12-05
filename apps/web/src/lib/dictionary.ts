@@ -8,11 +8,30 @@ import { type ResolvedIntlConfig } from "react-intl";
 export const getDictionary = async (lang: Intl.BCP47LanguageTag, namespace: string) => {
   const localization = await getLocalizationDetailsHandler({ lang });
 
-  const { default: languageFallback } = await import(`@/dictionaries/en.json`);
+  let languageFallback = {}
+  let languageGeneric = {}
+  let languageLocalised = {}
 
-  const { default: languageGeneric } = await import(`@/dictionaries/${localization.language.isoCode.toLocaleLowerCase()}.json`);
+  try {
+    const { default: languageFallbackDictionary } = await import(`@/dictionaries/en.json`);
+    languageFallback = languageFallbackDictionary;
+  } catch (error) {
+    console.error(error);
+  }
 
-  const { default: languageLocalised } = await import(`@/dictionaries/${localization.language.isoCode.toLocaleLowerCase()}-${localization.country.isoCode}.json`);
+  try {
+    const { default: languageGenericDictionary } = await import(`@/dictionaries/${localization.language.isoCode.toLocaleLowerCase()}.json`) ?? {};
+    languageGeneric = languageGenericDictionary;
+  } catch (error) {
+    console.error(error);
+  }
+
+  try {
+    const { default: languageLocalisedDictionary } = await import(`@/dictionaries/${localization.language.isoCode.toLocaleLowerCase()}-${localization.country.isoCode}.json`) ?? {};
+    languageLocalised = languageLocalisedDictionary;
+  } catch (error) {
+    console.error(error);
+  }
 
   const merged = merge.all([
     languageFallback,
