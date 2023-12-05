@@ -4,7 +4,7 @@ import { Progress } from "@/components/layout/progress/index";
 import { LoadingDots } from "@/components/loading/dots";
 import { Organization } from "@/components/schema.org/organization";
 import { getIntl } from "@/lib/i18n";
-// import { getBaseMetadata } from "@/lib/metadata";
+import { getBaseMetadata } from "@/lib/metadata";
 import { themeColors } from "@/lib/tailwind";
 import { type LayoutProps } from "@/types/next";
 import {
@@ -30,12 +30,12 @@ export async function generateMetadata({
   const intlMetadata = await getIntl(lang, "global.metadata");
   const intlKeywords = await getIntl(lang, "global.metadata.keywords");
 
-  // const baseMetadata = await getBaseMetadata({
-  //   lang,
-  // });
+  const baseMetadata = await getBaseMetadata({
+    lang,
+  });
 
   return {
-    // ...baseMetadata,
+    ...baseMetadata,
     description: intlMetadata.formatMessage({ id: "description" }),
     keywords: [
       intlKeywords.formatMessage({ id: "beachwear" }),

@@ -32,10 +32,10 @@ export async function middleware(request: NextRequest) {
 
   const defaultLocale = localization.country.isoCode;
 
-  const IETFLanguageTags = localization.availableCountries.flatMap((availableCountry) => availableCountry.availableLanguages.map((availableLanguage) => `${availableLanguage.isoCode.toLocaleLowerCase()}-${availableCountry.isoCode}` as Intl.BCP47LanguageTag))
+  const BCP47LanguageTags: Intl.BCP47LanguageTag[] = localization.availableCountries.flatMap((availableCountry) => availableCountry.availableLanguages.map((availableLanguage) => `${availableLanguage.isoCode.toLocaleLowerCase()}-${availableCountry.isoCode}` as Intl.BCP47LanguageTag))
 
   const getLocale = (languages: string[]) =>
-    match(languages, IETFLanguageTags, defaultLocale);
+    match(languages, BCP47LanguageTags, defaultLocale);
 
   const detectedLanguage =
     (request.headers
@@ -57,7 +57,7 @@ export async function middleware(request: NextRequest) {
   // Check if there is any supported locale in the pathname
   const pathname = url.pathname;
 
-  const pathnameIsMissingLocale = IETFLanguageTags.every(
+  const pathnameIsMissingLocale = BCP47LanguageTags.every(
     (IETFLanguageTag) =>
       !pathname.startsWith(`/${IETFLanguageTag}`),
   );
