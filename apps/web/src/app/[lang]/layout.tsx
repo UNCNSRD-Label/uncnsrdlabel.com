@@ -7,10 +7,7 @@ import { getIntl } from "@/lib/i18n";
 import { getBaseMetadata } from "@/lib/metadata";
 import { themeColors } from "@/lib/tailwind";
 import { type LayoutProps } from "@/types/next";
-import {
-  type CountryCode
-} from "@shopify/hydrogen/storefront-api-types";
-import { getLocalizationDetailsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { getLocalizationAvailableBCP47LanguageTagsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 import {
   cn,
   getIETFLanguageTagFromlocaleTag,
@@ -90,22 +87,14 @@ const montserrat = Montserrat({
   weight: "300",
 });
 
-export async function generateStaticParams({
-  lang,
-}: {
-  lang: CountryCode;
-}) {
-  const localization = await getLocalizationDetailsHandler({ lang });
+export async function generateStaticParams() {
+  const localization = await getLocalizationAvailableBCP47LanguageTagsHandler();
 
-  const IETFLanguageTags = localization.availableCountries.flatMap(
-    (availableCountry) =>
-      availableCountry.availableLanguages.map(
-        (availableLanguage) =>
-          `${availableLanguage.isoCode}-${availableCountry.isoCode}` as Intl.BCP47LanguageTag,
-      ),
-  );
+  const BCP47LanguageTags: Intl.BCP47LanguageTag[] = localization.availableCountries.flatMap((availableCountry) => availableCountry.availableLanguages.map((availableLanguage) => `${availableLanguage.isoCode.toLocaleLowerCase()}-${availableCountry.isoCode}` as Intl.BCP47LanguageTag))
 
-  return IETFLanguageTags;
+  return BCP47LanguageTags.map((BCP47LanguageTag) => ({
+    lang: BCP47LanguageTag,
+  }))
 }
 
 export default async function RootLayout({
