@@ -10,7 +10,7 @@ import { type LayoutProps } from "@/types/next";
 import {
   type CountryCode
 } from "@shopify/hydrogen/storefront-api-types";
-import { getLocalizationHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { getLocalizationDetailsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 import {
   cn,
   getIETFLanguageTagFromlocaleTag,
@@ -95,7 +95,7 @@ export async function generateStaticParams({
 }: {
   lang: CountryCode;
 }) {
-  const localization = await getLocalizationHandler({ lang });
+  const localization = await getLocalizationDetailsHandler({ lang });
 
   const IETFLanguageTags = localization.availableCountries.flatMap(
     (availableCountry) =>

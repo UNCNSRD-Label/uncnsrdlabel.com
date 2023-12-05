@@ -1,12 +1,12 @@
 import {
-  getLocalizationHandler,
+  getLocalizationDetailsHandler,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import merge from "deepmerge";
 import { getProperty } from "dot-prop";
 import { type ResolvedIntlConfig } from "react-intl";
 
 export const getDictionary = async (lang: Intl.BCP47LanguageTag, namespace: string) => {
-  const localization = await getLocalizationHandler({ lang });
+  const localization = await getLocalizationDetailsHandler({ lang });
 
   const { default: languageFallback } = await import(`@/dictionaries/en.json`);
 

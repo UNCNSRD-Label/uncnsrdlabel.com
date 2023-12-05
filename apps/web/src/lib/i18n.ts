@@ -1,13 +1,13 @@
 import { getDictionary } from "@/lib/dictionary";
 import { createIntl } from "@formatjs/intl";
 import {
-  getLocalizationHandler,
+  getLocalizationDetailsHandler,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { useParams } from "next/navigation";
 import { use } from "react";
 
 export const getAlternativeLanguages = async ({ lang, path }: { lang: Intl.BCP47LanguageTag; path: string }) => {
-  const localization = await getLocalizationHandler({ lang });
+  const localization = await getLocalizationDetailsHandler({ lang });
 
   const BCP47LanguageTags = localization.availableCountries.flatMap((availableCountry) => availableCountry.availableLanguages.map((availableLanguage) => `${availableCountry.isoCode}-${availableLanguage.isoCode}` as Intl.BCP47LanguageTag))
 
@@ -24,13 +24,13 @@ export const getAlternativeLanguages = async ({ lang, path }: { lang: Intl.BCP47
 }
 
 export async function getIntl(tag: Intl.BCP47LanguageTag, namespace: string) {
-  let locale = process.env.NEXT_PUBLIC_DEFAULT_LOCALE;
+  let locale: Intl.BCP47LanguageTag = process.env.NEXT_PUBLIC_DEFAULT_LOCALE!;
 
   try {
     // @ts-expect-error Property 'getCanonicalLocales' does not exist on type 'typeof Intl'.
     const [canonicalLocale] = Intl.getCanonicalLocales(tag)
 
-    locale = canonicalLocale;
+    locale = canonicalLocale as Intl.BCP47LanguageTag;
   } catch (error) {
     console.error({ error });
   } finally {

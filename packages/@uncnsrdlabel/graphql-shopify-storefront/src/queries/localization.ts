@@ -1,7 +1,23 @@
 import { graphql } from "../codegen/index";
 
-export const getLocalizationQuery = graphql(/* GraphQL */ `
-query getLocalization($country: CountryCode, $language: LanguageCode) @inContext(country: $country, language: $language) {
+export const getLocalizationAvailableBCP47LanguageTagsQuery = graphql(/* GraphQL */ `
+query getLocalizationAvailableBCP47LanguageTags {
+  localization {
+    availableCountries {
+      availableLanguages {
+        isoCode
+      }
+      isoCode
+    }
+    country {
+      isoCode
+    }
+  }
+}
+`);
+
+export const getLocalizationDetailsQuery = graphql(/* GraphQL */ `
+query getLocalizationDetails($country: CountryCode, $language: LanguageCode) @inContext(country: $country, language: $language) {
   localization {
     availableCountries {
       availableLanguages {
