@@ -92,8 +92,8 @@ export function AddToCart({
     (variant) =>
       variant.selectedOptions?.every((selectedOption) => {
         const hasNoOptionsOrJustOneOption =
-          !options.length ||
-          options.find((option) => option.name === selectedOption.name)?.values
+          !options?.length ||
+          options?.find((option) => option.name === selectedOption.name)?.values
             .length === 1;
 
         if (hasNoOptionsOrJustOneOption) {

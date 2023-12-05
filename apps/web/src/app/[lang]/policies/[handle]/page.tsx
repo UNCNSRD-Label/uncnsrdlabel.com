@@ -82,7 +82,7 @@ export default async function PolicyPage({
   return (
     <>
       <nav className="md:min-h-fullMinusNavbar relative hidden content-start md:grid md:justify-center">
-        {customerCareMenu.items.length ? (
+        {customerCareMenu.items?.length ? (
           <dl className="grid content-start gap-4 md:sticky md:top-64 md:mb-64">
             <dt className="text-sm uppercase">Customer Care</dt>
             {customerCareMenu.items.map((item, index) => (

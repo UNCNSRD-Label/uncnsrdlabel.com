@@ -78,7 +78,7 @@ export default async function CategoryPage({
 
   return (
     <section>
-      {products.length === 0 ? (
+      {products?.length === 0 ? (
         <p className="py-3 text-lg">
           {intl.formatMessage({ id: "no-products-found" })}
         </p>

@@ -47,7 +47,7 @@ export default async function AccountLayout({
       <Suspense fallback={<LoadingSkeleton />}>
         <div className="account mx-8 grid min-h-[100dvh] max-w-[100dvw] gap-16 md:mx-0 md:grid-cols-[1fr_1fr]">
           <nav className="relative hidden place-content-center md:grid md:min-h-[100dvh] md:justify-center">
-            {routeMenu.items.length ? (
+            {routeMenu.items?.length ? (
               <dl className="relative z-10 grid content-start justify-items-center gap-4 rounded bg-white p-8">
                 <dt className="text-sm uppercase">Account</dt>
                 {routeMenu.items.map((item, index) => (
