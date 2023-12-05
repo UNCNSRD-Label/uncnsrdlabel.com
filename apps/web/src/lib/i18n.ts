@@ -3,14 +3,16 @@ import { createIntl } from "@formatjs/intl";
 import { useParams } from "next/navigation";
 import { use } from "react";
 
-export const getAlternativeLanguages = async ({ localization, path }: { localization: {
-  availableCountries: {
-    availableLanguages: {
+export const getAlternativeLanguages = async ({ localization, path }: {
+  localization: {
+    availableCountries: {
+      availableLanguages: {
+        isoCode: string;
+      }[]
       isoCode: string;
     }[]
-    isoCode: string;
-  }[]
-}; path: string }) => {
+  }; path: string
+}) => {
   const BCP47LanguageTags: Intl.BCP47LanguageTag[] = localization.availableCountries.flatMap((availableCountry) => availableCountry.availableLanguages.map((availableLanguage) => `${availableLanguage.isoCode.toLocaleLowerCase()}-${availableCountry.isoCode}` as Intl.BCP47LanguageTag))
 
   const languages: Record<string, string> = {};
