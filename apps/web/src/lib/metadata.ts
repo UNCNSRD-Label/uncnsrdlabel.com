@@ -23,7 +23,7 @@ export const getBaseMetadata = async ({
     const metadataBase: Metadata = {
         alternates: {
             canonical: `${localization.language.isoCode.toLocaleLowerCase()}-${localization.country.isoCode}`,
-            languages: await getAlternativeLanguages({ lang, path }),
+            languages: await getAlternativeLanguages({ localization, path }),
         },
         applicationName: NEXT_PUBLIC_SITE_NAME,
         appLinks: {

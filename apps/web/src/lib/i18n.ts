@@ -1,26 +1,25 @@
 import { getDictionary } from "@/lib/dictionary";
 import { createIntl } from "@formatjs/intl";
-import {
-  getLocalizationDetailsHandler,
-} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { useParams } from "next/navigation";
 import { use } from "react";
 
-export const getAlternativeLanguages = async ({ lang, path }: { lang: Intl.BCP47LanguageTag; path: string }) => {
-  const localization = await getLocalizationDetailsHandler({ lang });
+export const getAlternativeLanguages = async ({ localization, path }: { localization: {
+  availableCountries: {
+    availableLanguages: {
+      isoCode: string;
+    }[]
+    isoCode: string;
+  }[]
+}; path: string }) => {
+  const BCP47LanguageTags: Intl.BCP47LanguageTag[] = localization.availableCountries.flatMap((availableCountry) => availableCountry.availableLanguages.map((availableLanguage) => `${availableLanguage.isoCode.toLocaleLowerCase()}-${availableCountry.isoCode}` as Intl.BCP47LanguageTag))
 
-  const BCP47LanguageTags = localization.availableCountries.flatMap((availableCountry) => availableCountry.availableLanguages.map((availableLanguage) => `${availableCountry.isoCode}-${availableLanguage.isoCode}` as Intl.BCP47LanguageTag))
+  const languages: Record<string, string> = {};
 
-  const languages = [];
+  BCP47LanguageTags.forEach((BCP47LanguageTag) => {
+    languages[BCP47LanguageTag] = `/${BCP47LanguageTag}/${path}`.replace(/([^:]\/)\/+/g, "$1");
+  })
 
-  for (const BCP47LanguageTag in BCP47LanguageTags) {
-    languages.push([BCP47LanguageTag, {
-      title: BCP47LanguageTag,
-      url: `/${BCP47LanguageTag}/${path}`,
-    }]);
-  }
-
-  return Object.fromEntries(languages);
+  return languages;
 }
 
 export async function getIntl(tag: Intl.BCP47LanguageTag, namespace: string) {
