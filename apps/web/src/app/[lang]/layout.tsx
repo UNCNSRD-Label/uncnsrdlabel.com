@@ -9,12 +9,14 @@ import { themeColors } from "@/lib/tailwind";
 import { type LayoutProps } from "@/types/next";
 import { getLocalizationAvailableBCP47LanguageTagsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 import {
+  DEFAULT_BCP47_LANGUAGE_TAGS,
   cn,
   getIETFLanguageTagFromlocaleTag,
-  getLocaleObjectFromIETFLanguageTag
+  getLocaleObjectFromIETFLanguageTag,
 } from "@uncnsrdlabel/lib";
 import { AppProviders } from "@uncnsrdlabel/providers";
 import { config } from "@uncnsrdlabel/tailwind-config";
+import { intersection } from "lodash";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import localFont from "next/font/local";
@@ -90,11 +92,24 @@ const montserrat = Montserrat({
 export async function generateStaticParams() {
   const localization = await getLocalizationAvailableBCP47LanguageTagsHandler();
 
-  const BCP47LanguageTags: Intl.BCP47LanguageTag[] = localization.availableCountries.flatMap((availableCountry) => availableCountry.availableLanguages.map((availableLanguage) => `${availableLanguage.isoCode.toLocaleLowerCase()}-${availableCountry.isoCode}` as Intl.BCP47LanguageTag))
+  const shopifyBCP47LanguageTags: Intl.BCP47LanguageTag[] =
+    localization.availableCountries.flatMap((availableCountry) =>
+      availableCountry.availableLanguages.map(
+        (availableLanguage) =>
+          `${availableLanguage.isoCode.toLocaleLowerCase()}-${
+            availableCountry.isoCode
+          }` as Intl.BCP47LanguageTag,
+      ),
+    );
 
-  return BCP47LanguageTags.map((BCP47LanguageTag) => ({
+  const supportedDefaultBCP47LanguageTags = intersection(
+    DEFAULT_BCP47_LANGUAGE_TAGS,
+    shopifyBCP47LanguageTags,
+  );
+
+  return supportedDefaultBCP47LanguageTags.map((BCP47LanguageTag) => ({
     lang: BCP47LanguageTag,
-  }))
+  }));
 }
 
 export default async function RootLayout({
