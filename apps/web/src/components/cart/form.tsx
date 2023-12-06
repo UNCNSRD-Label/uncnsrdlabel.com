@@ -84,11 +84,11 @@ export function CartForm({
                       onClick={closeCart}
                       className="z-30 flex flex-row space-x-4"
                     >
-                      <figure className="relative aspect-2/3 w-16 cursor-pointer overflow-hidden rounded-md border border-neutral-300 bg-neutral-300 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:bg-neutral-800">
+                      <figure className="aspect-2/3 relative w-16 cursor-pointer overflow-hidden rounded-md border border-neutral-300 bg-neutral-300 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:bg-neutral-800">
                         {featuredImage?.url && (
                           <Image
                             alt={featuredImage?.altText || product.title}
-                            className="h-full object-cover w-full"
+                            className="h-full w-full object-cover"
                             height={128}
                             src={featuredImage?.url}
                             width={196}
@@ -96,21 +96,21 @@ export function CartForm({
                         )}
                       </figure>
 
-                      <div className="flex flex-1 flex-col text-sm">
+                      <div className="flex flex-1 flex-col gap-2 text-sm">
                         <span className="leading-tight">{product.title}</span>
                         {item.merchandise.title !== DEFAULT_OPTION ? (
                           <span className="text-sm text-neutral-500 dark:text-neutral-400">
                             {item.merchandise.title}
                           </span>
                         ) : null}
+                        <Price
+                          className="text-xs"
+                          amount={item.cost.totalAmount.amount}
+                          currencyCode={item.cost.totalAmount.currencyCode}
+                        />
                       </div>
                     </Link>
                     <div className="flex h-16 flex-col justify-between">
-                      <Price
-                        className="flex justify-end space-y-2 text-right text-sm"
-                        amount={item.cost.totalAmount.amount}
-                        currencyCode={item.cost.totalAmount.currencyCode}
-                      />
                       <div className="ml-auto flex h-9 flex-row items-center rounded-full border border-neutral-200 dark:border-neutral-700">
                         <EditItemQuantityButton item={item} type="minus" />
                         <p className="w-6 text-center ">
