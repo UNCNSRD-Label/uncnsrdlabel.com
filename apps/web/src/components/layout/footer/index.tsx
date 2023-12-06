@@ -34,7 +34,7 @@ export async function Footer() {
     "text-xs sm:text-xxs transition uppercase duration-150 ease-in-out";
 
   return (
-    <footer className="dark relative z-40 border-t border-inherit sm:snap-start">
+    <footer className="dark relative z-40 border-t border-inherit sm:snap-start self-end">
       <div className={themeColors}>
         <div className="mx-auto w-full max-w-7xl px-6 pb-12">
           <div className="grid grid-cols-1 items-start gap-8 border-b border-inherit py-6 transition-colors duration-150 sm:grid-cols-12 sm:py-12">
