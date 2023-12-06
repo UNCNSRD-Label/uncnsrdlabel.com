@@ -1,6 +1,6 @@
 import { Grid } from "@/components/grid/index";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
-import { getAlternativeLanguages, getIntl, getLocalizationDetailsCached } from "@/lib/i18n";
+import { getAlternativeLanguages, getIntl } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";
 import {
@@ -20,9 +20,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
   const lang = state$.lang.get();
 
-  const intl = await getIntl(lang, `page.${handle}`);
+  const localization = state$.localization.get();
 
-  const localization = await getLocalizationDetailsCached({ lang });
+  const intl = await getIntl(lang, `page.${handle}`);
 
   return {
     alternates: {

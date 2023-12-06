@@ -1,4 +1,5 @@
-import { getAlternativeLanguages, getLocalizationDetailsCached } from "@/lib/i18n";
+import { getAlternativeLanguages } from "@/lib/i18n";
+import { state$ } from "@/lib/store";
 import {
     SITE_DOMAIN_WEB
 } from "@uncnsrdlabel/lib";
@@ -10,12 +11,8 @@ const {
     NEXT_PUBLIC_SITE_NAME = "UNCNSRD",
 } = process.env;
 
-export const getBaseMetadata = async ({
-    lang
-}: {
-    lang: Intl.BCP47LanguageTag,
-}) => {
-    const localization = await getLocalizationDetailsCached({ lang });
+export const getBaseMetadata = async () => {
+    const localization = state$.localization.get();
 
     const path = `/`;
 

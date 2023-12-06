@@ -1,6 +1,6 @@
 import { LoadingDots } from "@/components/loading/dots";
 import { Details } from "@/components/product/details";
-import { getAlternativeLanguages, getLocalizationDetailsCached } from "@/lib/i18n";
+import { getAlternativeLanguages } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";
 import {
@@ -23,7 +23,7 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const lang = state$.lang.get();
 
-  const localization = await getLocalizationDetailsCached({ lang });
+  const localization = state$.localization.get();
 
   const path = `/products/${handle}`;
 
@@ -45,7 +45,7 @@ export async function generateMetadata({
 
   return {
     alternates: {
-      canonical: `${process.env.NEXT_PUBLIC_DEFAULT_LOCALE}/${path}`,
+      canonical: `${localization.language.isoCode.toLocaleLowerCase()}-${localization.country.isoCode}/${path}`,
       languages: await getAlternativeLanguages({ localization, path }),
     },
     title: seo.title || product.title,

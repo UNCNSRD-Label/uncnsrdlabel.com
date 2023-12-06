@@ -29,9 +29,7 @@ export async function generateMetadata({
   const intlMetadata = await getIntl(lang, "global.metadata");
   const intlKeywords = await getIntl(lang, "global.metadata.keywords");
 
-  const baseMetadata = await getBaseMetadata({
-    lang,
-  });
+  const baseMetadata = await getBaseMetadata();
 
   return {
     ...baseMetadata,

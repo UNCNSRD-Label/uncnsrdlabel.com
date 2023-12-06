@@ -15,10 +15,39 @@ const country = lang.split("-")[1] as CountryCode;
 
 const language = lang.split("-")[0] as LanguageCode;
 
+const localization: {
+  availableCountries: {
+    availableLanguages: {
+      isoCode: string;
+    }[]
+    isoCode: string;
+  }[]
+  country: {
+    isoCode: string;
+  }
+  language: {
+    isoCode: string;
+  }
+} = {
+  availableCountries: [{
+    availableLanguages: [{
+      isoCode: language
+    }],
+    isoCode: country
+  }],
+  country: {
+    isoCode: country,
+  },
+  language: {
+    isoCode: language,
+  },
+};
+
 export const state$ = observable({
   country,
   lang,
   language,
+  localization,
 });
 
 configureObservablePersistence({

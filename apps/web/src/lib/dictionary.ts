@@ -1,10 +1,10 @@
-import { getLocalizationDetailsCached } from "@/lib/i18n";
+import { state$ } from "@/lib/store";
 import merge from "deepmerge";
 import { getProperty } from "dot-prop";
 import { type ResolvedIntlConfig } from "react-intl";
 
-export const getDictionary = async (lang: Intl.BCP47LanguageTag, namespace: string) => {
-  const localization = await getLocalizationDetailsCached({ lang });
+export const getDictionary = async (namespace: string) => {
+  const localization = state$.localization.get();
 
   let languageFallback = {}
   let languageGeneric = {}
