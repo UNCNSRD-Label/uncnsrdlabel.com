@@ -1,6 +1,6 @@
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
-import { getIntl } from "@/lib/i18n";
+import { getAlternativeLanguages, getIntl, getLocalizationDetailsCached } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
 import {
   collectionFragment,
@@ -23,6 +23,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const lang = state$.lang.get();
 
+  const localization = await getLocalizationDetailsCached({ lang });
+
   const collectionFragmentRef = await getCollectionHandler({
     variables: { handle },
     lang,
@@ -39,7 +41,7 @@ export async function generateMetadata({
   return {
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_DEFAULT_LOCALE}/${path}`,
-      // languages: await getAlternativeLanguages({ lang, path }),
+      languages: await getAlternativeLanguages({ localization, path }),
     },
     title: seo?.title || collection.title,
     description:

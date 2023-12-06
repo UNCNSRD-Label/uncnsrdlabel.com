@@ -1,5 +1,4 @@
-import { getAlternativeLanguages } from "@/lib/i18n";
-import { getLocalizationDetailsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { getAlternativeLanguages, getLocalizationDetailsCached } from "@/lib/i18n";
 import {
     SITE_DOMAIN_WEB
 } from "@uncnsrdlabel/lib";
@@ -16,7 +15,7 @@ export const getBaseMetadata = async ({
 }: {
     lang: Intl.BCP47LanguageTag,
 }) => {
-    const localization = await getLocalizationDetailsHandler({ lang });
+    const localization = await getLocalizationDetailsCached({ lang });
 
     const path = `/`;
 

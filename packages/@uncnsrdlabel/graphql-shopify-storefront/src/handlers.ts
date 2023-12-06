@@ -656,27 +656,3 @@ export async function getProductsWithVariantsHandler({ variables, lang }: {
 
   return products;
 }
-
-export async function usegetLocalizationDetailsHandler({ variables, lang }: {
-  variables?: GetLocalizationDetailsQueryVariables,
-  lang?: Intl.BCP47LanguageTag,
-}) {
-  const inContextVariables = getInContextVariables(lang);
-
-  const { localization } = await getShopifyGraphQL(
-    getLocalizationDetailsQuery,
-    // @ts-expect-error Types of property 'country' are incompatible.
-    { ...variables, ...inContextVariables, }
-  );
-
-  if (!localization) {
-    throw {
-      status: 404,
-      message: `Localization not found`,
-    };
-  }
-
-  // console.log({ localization });
-
-  return localization;
-}

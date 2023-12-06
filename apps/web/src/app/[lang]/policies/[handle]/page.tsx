@@ -1,5 +1,6 @@
 import { LoadingSkeleton } from "@/components/loading/skeleton";
 import { Prose } from "@/components/prose";
+import { getAlternativeLanguages, getLocalizationDetailsCached } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
@@ -25,6 +26,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const lang = state$.lang.get();
 
+  const localization = await getLocalizationDetailsCached({ lang });
+
   const path = `/policies/${handle}`;
 
   const policies = await getShopPoliciesHandler({ lang });
@@ -40,7 +43,7 @@ export async function generateMetadata({
   return {
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_DEFAULT_LOCALE}/${path}`,
-      // languages: await getAlternativeLanguages({ lang, path }),
+      languages: await getAlternativeLanguages({ localization, path }),
     },
     title: policy.title,
     openGraph: {

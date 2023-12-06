@@ -1,7 +1,10 @@
 import { getDictionary } from "@/lib/dictionary";
 import { createIntl } from "@formatjs/intl";
+import { getLocalizationDetailsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { useParams } from "next/navigation";
-import { use } from "react";
+import { cache, use } from "react";
+
+export const getLocalizationDetailsCached = cache(async ({ lang }: { lang?: string; }) => getLocalizationDetailsHandler({ lang }))
 
 export const getAlternativeLanguages = async ({ localization, path }: {
   localization: {
