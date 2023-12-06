@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Toplamak",
-      "no-products-found": "Bu koleksiyonda ürün bulunamadı"
+      "no_products_found": "Bu koleksiyonda ürün bulunamadı"
     },
     "error": {
       "title": "Bir şeyler yanlış gitti",

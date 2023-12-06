@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Gyűjtemény",
-      "no-products-found": "Nem található termék ebben a gyűjteményben"
+      "no_products_found": "Nem található termék ebben a gyűjteményben"
     },
     "error": {
       "title": "Valami elromlott",

@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Zbirka",
-      "no-products-found": "V tej zbirki ni nobenega izdelka"
+      "no_products_found": "V tej zbirki ni nobenega izdelka"
     },
     "error": {
       "title": "Nekaj ​​je šlo narobe",

@@ -82,7 +82,7 @@ export default async function CategoryPage({
     <section>
       {products?.length === 0 ? (
         <p className="py-3 text-lg">
-          {intl.formatMessage({ id: "no-products-found" })}
+          {intl.formatMessage({ id: "no_products_found" })}
         </p>
       ) : (
         <Grid className="grid-cols-2 lg:grid-cols-3">

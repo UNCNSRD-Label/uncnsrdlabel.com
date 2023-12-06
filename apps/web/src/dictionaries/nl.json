@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Verzameling",
-      "no-products-found": "Er zijn geen producten gevonden in deze collectie"
+      "no_products_found": "Er zijn geen producten gevonden in deze collectie"
     },
     "error": {
       "title": "Er is iets fout gegaan",

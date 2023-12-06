@@ -159,7 +159,7 @@ export function CartForm({
             href={cart.checkoutUrl}
             className="text-light dark:text-dark flex w-full items-center justify-center bg-black p-3 text-sm font-medium uppercase opacity-90 hover:opacity-100 dark:bg-white"
           >
-            Proceed to Checkout
+            {intl.formatMessage({ id: "proceed-to-checkout" })}
           </a>
         </div>
       )}

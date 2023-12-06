@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Samling",
-      "no-products-found": "Inga produkter hittades i denna samling"
+      "no_products_found": "Inga produkter hittades i denna samling"
     },
     "error": {
       "title": "Något gick fel",

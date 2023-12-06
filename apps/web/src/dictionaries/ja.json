@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "コレクション",
-      "no-products-found": "このコレクションに製品は見つかりませんでした"
+      "no_products_found": "このコレクションに製品は見つかりませんでした"
     },
     "error": {
       "title": "何か問題が発生しました",

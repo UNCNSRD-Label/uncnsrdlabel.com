@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Recopilación",
-      "no-products-found": "no se encontraron productos en esta colección"
+      "no_products_found": "no se encontraron productos en esta colección"
     },
     "error": {
       "title": "Algo salió mal",

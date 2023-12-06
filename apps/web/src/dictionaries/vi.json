@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Bộ sưu tập",
-      "no-products-found": "Không sản phẩm nào được tìm thấy trong bộ sưu tập này"
+      "no_products_found": "Không sản phẩm nào được tìm thấy trong bộ sưu tập này"
     },
     "error": {
       "title": "Đã xảy ra lỗi",

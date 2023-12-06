@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "ของสะสม",
-      "no-products-found": "ไม่พบสินค้าในคอลเลกชันนี้"
+      "no_products_found": "ไม่พบสินค้าในคอลเลกชันนี้"
     },
     "error": {
       "title": "บางอย่างผิดพลาด",

@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Koleksi",
-      "no-products-found": "Tidak ada produk yang ditemukan dalam koleksi ini"
+      "no_products_found": "Tidak ada produk yang ditemukan dalam koleksi ini"
     },
     "error": {
       "title": "Ada yang salah",

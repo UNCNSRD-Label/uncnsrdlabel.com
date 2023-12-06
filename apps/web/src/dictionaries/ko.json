@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "수집",
-      "no-products-found": "이 컬렉션에는 제품이 없습니다."
+      "no_products_found": "이 컬렉션에는 제품이 없습니다."
     },
     "error": {
       "title": "문제가 발생했습니다.",

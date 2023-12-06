@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Kollektsioon",
-      "no-products-found": "Sellest kollektsioonist ei leitud ühtegi toodet"
+      "no_products_found": "Sellest kollektsioonist ei leitud ühtegi toodet"
     },
     "error": {
       "title": "Midagi läks valesti",
