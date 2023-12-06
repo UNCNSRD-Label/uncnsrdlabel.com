@@ -22,7 +22,6 @@ import {
   GetCollectionProductsQueryVariables,
   GetCollectionQueryVariables,
   GetCollectionsQueryVariables,
-  GetLocalizationDetailsQueryVariables,
   GetMenuQueryVariables,
   GetPageQueryVariables,
   GetPagesQueryVariables,
@@ -450,8 +449,7 @@ export async function getLocalizationAvailableBCP47LanguageTagsHandler() {
   return localization;
 }
 
-export async function getLocalizationDetailsHandler({ variables, lang }: {
-  variables?: GetLocalizationDetailsQueryVariables,
+export async function getLocalizationDetailsHandler({ lang }: {
   lang?: Intl.BCP47LanguageTag,
 }) {
   const inContextVariables = getInContextVariables(lang);
@@ -459,7 +457,7 @@ export async function getLocalizationDetailsHandler({ variables, lang }: {
   const { localization } = await getShopifyGraphQL(
     getLocalizationDetailsQuery,
     // @ts-expect-error Types of property 'country' are incompatible.
-    { ...variables, ...inContextVariables, }
+    inContextVariables,
   );
 
   if (!localization) {

@@ -10,7 +10,6 @@ import {
 } from "@shopify/hydrogen/storefront-api-types";
 
 const lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag;
-// const lang = "fr-FR";
 
 const country = lang.split("-")[1] as CountryCode;
 
