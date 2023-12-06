@@ -1,3 +1,4 @@
+import { state$ } from "@/lib/store";
 import { cn } from "@uncnsrdlabel/lib";
 
 export const Price = ({
@@ -10,15 +11,19 @@ export const Price = ({
   className?: string;
   currencyCode: string;
   currencyCodeClassName?: string;
-} & React.ComponentProps<"p">) => (
-  <p suppressHydrationWarning={true} className={className}>
-    {`${new Intl.NumberFormat(undefined, {
-      style: "currency",
-      currency: currencyCode,
-      currencyDisplay: "narrowSymbol",
-    }).format(parseFloat(amount))}`}
-    <span
-      className={cn("ml-1 inline", currencyCodeClassName)}
-    >{`${currencyCode}`}</span>
-  </p>
-);
+} & React.ComponentProps<"p">) => {
+  const lang = state$.lang.get();
+
+  return (
+    <p suppressHydrationWarning={true} className={className}>
+      {`${new Intl.NumberFormat(lang, {
+        style: "currency",
+        currency: currencyCode,
+        currencyDisplay: "narrowSymbol",
+      }).format(parseFloat(amount))}`}
+      <span
+        className={cn("ml-1 inline", currencyCodeClassName)}
+      >{`${currencyCode}`}</span>
+    </p>
+  );
+};
