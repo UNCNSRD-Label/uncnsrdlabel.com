@@ -55,9 +55,11 @@ export function CartForm({
                 }
               });
 
+              const productBasicFragmentRef = item.merchandise.product;
+
               const product = getFragmentData(
                 productBasicFragment,
-                item.merchandise.product,
+                productBasicFragmentRef,
               );
 
               const featuredImage = getFragmentData(

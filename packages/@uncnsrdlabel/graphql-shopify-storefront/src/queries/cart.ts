@@ -1,8 +1,7 @@
 import { graphql } from "../codegen/index";
 
 export const getCartQuery = graphql(/* GraphQL */ `
-  query getCart($cartId: ID!, $country: CountryCode, $language: LanguageCode)
-  @inContext(country: $country, language: $language) {
+  query getCart($cartId: ID!) {
     cart(id: $cartId) {
       ...cart
     }

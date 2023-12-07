@@ -54,15 +54,12 @@ import {
 } from "./queries/index";
 import { getShopifyGraphQL } from "./utilities";
 
-export async function createCartHandler({ variables, lang }: {
-  variables?: Pick<CreateCartMutationVariables, "lineItems">,
-  lang: Intl.BCP47LanguageTag,
+export async function createCartHandler({ variables }: {
+  variables: CreateCartMutationVariables,
 }) {
-  const inContextVariables = getInContextVariables(lang) as Pick<CreateCartMutationVariables, "country" | "language">;
-
   const { cartCreate } = await getShopifyGraphQL(
     createCartMutation,
-    { ...inContextVariables, ...variables, },
+    variables,
   );
 
   if (!cartCreate) {
@@ -84,16 +81,11 @@ export async function createCartHandler({ variables, lang }: {
   return cartFragmentRef;
 }
 
-export async function addToCartHandler({ variables, lang }: {
+export async function addToCartHandler({ variables }: {
   variables: AddToCartMutationVariables,
-  lang: Intl.BCP47LanguageTag,
 }) {
-  const inContextVariables = getInContextVariables(lang);
 
-  const { cartLinesAdd } = await getShopifyGraphQL(addToCartMutation, {
-    ...inContextVariables,
-    ...variables,
-  });
+  const { cartLinesAdd } = await getShopifyGraphQL(addToCartMutation, variables,);
 
   if (!cartLinesAdd) {
     return null;
@@ -180,7 +172,6 @@ export async function getCartHandler({ variables, lang }: {
 }) {
   const inContextVariables = getInContextVariables(lang);
 
-  // @ts-expect-error Types of property 'country' are incompatible.
   const { cart: cartFragmentRef } = await getShopifyGraphQL(getCartQuery, {
     ...inContextVariables,
     ...variables,
