@@ -24,7 +24,17 @@ export const config = {
 export async function middleware(request: NextRequest) {
   const url = request.nextUrl;
 
-  const localization = await getLocalizationDetailsHandler({});
+  const detectedCountry = request.geo?.country as CountryCode;
+
+  const detectedLanguage =
+    request.headers
+      .get("accept-language")
+      ?.split(",")?.[0]
+      .split("-")?.[0]?.toLocaleUpperCase() as LanguageCode;
+
+  const localization = await getLocalizationDetailsHandler({
+    lang: `${detectedLanguage}-${detectedCountry}`,
+  });
 
   const defaultLocale = `${localization.language.isoCode}-${localization.country.isoCode}`;
 
@@ -33,15 +43,6 @@ export async function middleware(request: NextRequest) {
   const getLocale = (languages: string[]) =>
     match(languages, BCP47LanguageTags, defaultLocale);
 
-  const detectedCountry =
-    (request.geo?.country ?? localization.country.isoCode) as CountryCode;
-
-  const detectedLanguage =
-    (request.headers
-      .get("accept-language")
-      ?.split(",")?.[0]
-      .split("-")?.[0] ?? localization.language.isoCode) as LanguageCode;
-
   const headers: Negotiator.Headers = {
     "accept-language": `${detectedLanguage}-${detectedCountry},en;q=0.5`,
   };
@@ -49,7 +50,9 @@ export async function middleware(request: NextRequest) {
   const languages = new Negotiator({ headers }).languages();
 
   const lang = getLocale(languages);
-
+  
+  console.log({ detectedCountry, detectedLanguage, localization, defaultLocale, BCP47LanguageTags, languages, lang });
+  
   state$.country.set(detectedCountry);
   state$.lang.set(lang);
   state$.language.set(detectedLanguage);
