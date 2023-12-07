@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Col · lecció",
-      "no-products-found": "No s'han trobat productes en aquesta col·lecció"
+      "no_products_found": "No s'han trobat productes en aquesta col·lecció"
     },
     "error": {
       "title": "Alguna cosa ha anat malament",

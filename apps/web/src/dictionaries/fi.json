@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Kokoelma",
-      "no-products-found": "Tästä kokoelmasta ei löytynyt tuotteita"
+      "no_products_found": "Tästä kokoelmasta ei löytynyt tuotteita"
     },
     "error": {
       "title": "Jotain meni pieleen",

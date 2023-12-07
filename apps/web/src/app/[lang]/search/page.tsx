@@ -1,10 +1,9 @@
 import { Grid } from "@/components/grid/index";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
-import { getIntl } from "@/lib/i18n";
+import { getAlternativeLanguages, getIntl } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";
 import {
-  getLocalizationDetailsHandler,
   getProductsHandler,
   productDefaultSort,
   productSorting,
@@ -21,15 +20,14 @@ export async function generateMetadata(): Promise<Metadata> {
 
   const lang = state$.lang.get();
 
+  const localization = state$.localization.get();
+
   const intl = await getIntl(lang, `page.${handle}`);
-
-  const localization = await getLocalizationDetailsHandler({ lang });
-
 
   return {
     alternates: {
       canonical: `${localization.language.isoCode.toLocaleLowerCase()}-${localization.country.isoCode}/${path}`,
-      // languages: await getAlternativeLanguages({ lang, path }),
+      languages: await getAlternativeLanguages({ localization, path }),
     },
     title: intl.formatMessage({ id: "title" }),
     description: intl.formatMessage({ id: "description" }),

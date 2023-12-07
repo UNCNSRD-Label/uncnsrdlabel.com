@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "সংগ্রহ",
-      "no-products-found": "কোন পণ্য এই সংগ্রহে পাওয়া যায় নি"
+      "no_products_found": "কোন পণ্য এই সংগ্রহে পাওয়া যায় নি"
     },
     "error": {
       "title": "কিছু ভুল হয়েছে",

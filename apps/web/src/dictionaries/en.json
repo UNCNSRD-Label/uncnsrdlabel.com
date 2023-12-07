@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Collection",
-      "no-products-found": "No products found in this collection"
+      "no_products_found": "No products found in this collection"
     },
     "error": {
       "title": "Something went wrong",
@@ -65,7 +65,8 @@
       "link": "Free shipping on eligible orders"
     },
     "CartForm": {
-      "empty_cart": "Your bag is empty"
+      "empty_cart": "Your bag is empty",
+      "proceed-to-checkout": "Proceed to checkout"
     },
     "ConsentDialog": {
       "description": "UNCNSRD uses cookies that are essential to making this site work and would like to use additional cookies to improve your experience on this site.",

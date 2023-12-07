@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Kolekcija",
-      "no-products-found": "Šioje kolekcijoje produktų nerasta"
+      "no_products_found": "Šioje kolekcijoje produktų nerasta"
     },
     "error": {
       "title": "Kažkas nutiko",

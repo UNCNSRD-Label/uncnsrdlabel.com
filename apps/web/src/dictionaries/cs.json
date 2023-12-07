@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Sbírka",
-      "no-products-found": "V této kolekci nebyly nalezeny žádné produkty"
+      "no_products_found": "V této kolekci nebyly nalezeny žádné produkty"
     },
     "error": {
       "title": "Něco se pokazilo",

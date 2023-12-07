@@ -1,30 +1,23 @@
 import { CartModal } from "@/components/cart/modal";
-import { state$ } from "@/lib/store";
 import {
   cartFragment,
   getCartQuery,
   getFragmentData,
   getShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { getInContextVariables } from "@uncnsrdlabel/lib";
 import { cookies } from "next/headers";
 
 export async function Cart() {
   const cartId = cookies().get("cartId")?.value;
 
-  const lang = state$.lang.get();
-
   if (!cartId) {
     return null;
   }
 
-  const inContextVariables = getInContextVariables(lang);
-
-  const variables = { ...inContextVariables, cartId };
+  const variables = { cartId };
 
   const { cart: cartFragmentRef } = await getShopifyGraphQL(
     getCartQuery,
-    // @ts-expect-error Argument of type is not assignable to parameter of type
     variables,
   );
 

@@ -11,25 +11,97 @@ import {
   removeFromCartHandler,
   updateCartHandler,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { TAGS } from '@uncnsrdlabel/lib/constants';
+import { TAGS } from '@uncnsrdlabel/lib';
 import { revalidateTag } from 'next/cache';
 import { cookies } from "next/headers";
 
 export const addItem = async (
   _prevState: any,
-  selectedVariantId: string | undefined,
+  selectedVariantId: string,
 ): Promise<string | undefined> => {
+  const country = state$.country.get();
   const lang = state$.lang.get();
 
   let cartId = cookies().get("cartId")?.value;
   let cartFragmentRef: FragmentType<typeof cartFragment> | null = null;
 
+  console.log({ lang, cartFragmentRef });
+
   if (cartId) {
     cartFragmentRef = await getCartHandler({ variables: { cartId }, lang });
   }
 
+
   if (!cartId || !cartFragmentRef) {
-    cartFragmentRef = await createCartHandler({ lang });
+    cartFragmentRef = await createCartHandler({
+      variables: {
+        input: {
+          // attributes: [
+          //   {
+          //     key: "",
+          //     value: ""
+          //   }
+          // ],
+          buyerIdentity: {
+            // @ts-expect-error Type 'CountryCode' is not assignable to type 'InputMaybe<CountryCode> | undefined'.
+            countryCode: country,
+            // customerAccessToken: "",
+            // deliveryAddressPreferences: [
+            //   {
+            //     customerAddressId: "",
+            //     deliveryAddress: {
+            //       address1: "",
+            //       address2: "",
+            //       city: "",
+            //       company: "",
+            //       country: "",
+            //       firstName: "",
+            //       lastName: "",
+            //       phone: "",
+            //       province: "",
+            //       zip: ""
+            //     }
+            //   }
+            // ],
+            // email: "",
+            // phone: "",
+            // walletPreferences: [
+            //   ""
+            // ]
+          },
+          // discountCodes: [
+          //   ""
+          // ],
+          // lines: [
+          //   {
+          //     attributes: [
+          //       {
+          //         key: "",
+          //         value: ""
+          //       }
+          //     ],
+          //     merchandiseId: "",
+          //     quantity: 1,
+          //     sellingPlanId: ""
+          //   }
+          // ],
+          lines: [
+            {
+              merchandiseId: selectedVariantId,
+              quantity: 1
+            }
+          ],
+          // metafields: [
+          //   {
+          //     key: "",
+          //     type: "",
+          //     value: ""
+          //   }
+          // ],
+          // note: ""
+        }
+      }
+    });
 
     const cart = getFragmentData(cartFragment, cartFragmentRef);
 
@@ -53,7 +125,6 @@ export const addItem = async (
           cartId,
           lines: [{ merchandiseId: selectedVariantId, quantity: 1 }],
         },
-        lang,
       }
     );
 

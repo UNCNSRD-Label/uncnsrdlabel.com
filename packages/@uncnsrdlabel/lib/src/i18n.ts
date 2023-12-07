@@ -13,7 +13,6 @@ export const getLocaleObjectFromIETFLanguageTag = (
   tag: Intl.BCP47LanguageTag,
 ) => new Intl.Locale(tag);
 
-
 export const getInContextVariables = (tag?: Intl.BCP47LanguageTag) => {
   if (!tag) {
     return null;

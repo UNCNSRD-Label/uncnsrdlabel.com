@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "संग्रह",
-      "no-products-found": "इस संग्रह में कोई उत्पाद नहीं मिला"
+      "no_products_found": "इस संग्रह में कोई उत्पाद नहीं मिला"
     },
     "error": {
       "title": "कुछ गलत हो गया",

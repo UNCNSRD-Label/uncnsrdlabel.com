@@ -22,7 +22,6 @@ import {
   GetCollectionProductsQueryVariables,
   GetCollectionQueryVariables,
   GetCollectionsQueryVariables,
-  GetLocalizationDetailsQueryVariables,
   GetMenuQueryVariables,
   GetPageQueryVariables,
   GetPagesQueryVariables,
@@ -55,15 +54,12 @@ import {
 } from "./queries/index";
 import { getShopifyGraphQL } from "./utilities";
 
-export async function createCartHandler({ variables, lang }: {
-  variables?: Pick<CreateCartMutationVariables, "lineItems">,
-  lang: Intl.BCP47LanguageTag,
+export async function createCartHandler({ variables }: {
+  variables: CreateCartMutationVariables,
 }) {
-  const inContextVariables = getInContextVariables(lang) as Pick<CreateCartMutationVariables, "country" | "language">;
-
   const { cartCreate } = await getShopifyGraphQL(
     createCartMutation,
-    { ...inContextVariables, ...variables, },
+    variables,
   );
 
   if (!cartCreate) {
@@ -85,16 +81,11 @@ export async function createCartHandler({ variables, lang }: {
   return cartFragmentRef;
 }
 
-export async function addToCartHandler({ variables, lang }: {
+export async function addToCartHandler({ variables }: {
   variables: AddToCartMutationVariables,
-  lang: Intl.BCP47LanguageTag,
 }) {
-  const inContextVariables = getInContextVariables(lang);
 
-  const { cartLinesAdd } = await getShopifyGraphQL(addToCartMutation, {
-    ...inContextVariables,
-    ...variables,
-  });
+  const { cartLinesAdd } = await getShopifyGraphQL(addToCartMutation, variables,);
 
   if (!cartLinesAdd) {
     return null;
@@ -181,7 +172,6 @@ export async function getCartHandler({ variables, lang }: {
 }) {
   const inContextVariables = getInContextVariables(lang);
 
-  // @ts-expect-error Types of property 'country' are incompatible.
   const { cart: cartFragmentRef } = await getShopifyGraphQL(getCartQuery, {
     ...inContextVariables,
     ...variables,
@@ -450,8 +440,7 @@ export async function getLocalizationAvailableBCP47LanguageTagsHandler() {
   return localization;
 }
 
-export async function getLocalizationDetailsHandler({ variables, lang }: {
-  variables?: GetLocalizationDetailsQueryVariables,
+export async function getLocalizationDetailsHandler({ lang }: {
   lang?: Intl.BCP47LanguageTag,
 }) {
   const inContextVariables = getInContextVariables(lang);
@@ -459,7 +448,7 @@ export async function getLocalizationDetailsHandler({ variables, lang }: {
   const { localization } = await getShopifyGraphQL(
     getLocalizationDetailsQuery,
     // @ts-expect-error Types of property 'country' are incompatible.
-    { ...variables, ...inContextVariables, }
+    inContextVariables,
   );
 
   if (!localization) {
@@ -655,28 +644,4 @@ export async function getProductsWithVariantsHandler({ variables, lang }: {
   }
 
   return products;
-}
-
-export async function usegetLocalizationDetailsHandler({ variables, lang }: {
-  variables?: GetLocalizationDetailsQueryVariables,
-  lang?: Intl.BCP47LanguageTag,
-}) {
-  const inContextVariables = getInContextVariables(lang);
-
-  const { localization } = await getShopifyGraphQL(
-    getLocalizationDetailsQuery,
-    // @ts-expect-error Types of property 'country' are incompatible.
-    { ...variables, ...inContextVariables, }
-  );
-
-  if (!localization) {
-    throw {
-      status: 404,
-      message: `Localization not found`,
-    };
-  }
-
-  // console.log({ localization });
-
-  return localization;
 }

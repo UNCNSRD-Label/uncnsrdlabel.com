@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "收藏",
-      "no-products-found": "该系列中未找到任何产品"
+      "no_products_found": "该系列中未找到任何产品"
     },
     "error": {
       "title": "出了些问题",

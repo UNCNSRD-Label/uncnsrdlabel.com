@@ -1,5 +1,6 @@
 import { LoadingDots } from "@/components/loading/dots";
 import { Details } from "@/components/product/details";
+import { getAlternativeLanguages } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";
 import {
@@ -22,6 +23,10 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const lang = state$.lang.get();
 
+  const localization = state$.localization.get();
+
+  const path = `/products/${handle}`;
+
   const productDetailsFragmentRef = await getProductDetailsByHandleHandler({
     variables: { handle },
     lang,
@@ -38,12 +43,10 @@ export async function generateMetadata({
 
   const hide = !product.tags.includes(HIDDEN_PRODUCT_TAG);
 
-  const path = `/products/${handle}`;
-
   return {
     alternates: {
-      canonical: `${process.env.NEXT_PUBLIC_DEFAULT_LOCALE}/${path}`,
-      // languages: await getAlternativeLanguages({ lang, path }),
+      canonical: `${localization.language.isoCode.toLocaleLowerCase()}-${localization.country.isoCode}/${path}`,
+      languages: await getAlternativeLanguages({ localization, path }),
     },
     title: seo.title || product.title,
     description: seo.description || product.description,

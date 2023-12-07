@@ -12,8 +12,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { Cart } from "./types";
 
 export async function POST(req: NextRequest): Promise<Response> {
-  const lang = state$.lang.get();
-
   const cartId = cookies().get("cartId")?.value;
   const { merchandiseId } = (await req.json()) as Cart;
 
@@ -27,7 +25,6 @@ export async function POST(req: NextRequest): Promise<Response> {
     await addToCartHandler(
       {
         variables: { cartId, lines: [{ merchandiseId, quantity: 1 }] },
-        lang,
       }
     );
     return NextResponse.json({ status: 204 }) satisfies Response;

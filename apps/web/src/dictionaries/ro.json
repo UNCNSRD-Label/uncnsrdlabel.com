@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Colectie",
-      "no-products-found": "Nu s-au găsit produse în această colecție"
+      "no_products_found": "Nu s-au găsit produse în această colecție"
     },
     "error": {
       "title": "Ceva n-a mers bine",

@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Mbledhja",
-      "no-products-found": "Nuk u gjet asnjë produkt në këtë koleksion"
+      "no_products_found": "Nuk u gjet asnjë produkt në këtë koleksion"
     },
     "error": {
       "title": "Dicka shkoi keq",

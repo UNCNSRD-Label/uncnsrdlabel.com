@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Kollektion",
-      "no-products-found": "Ingen produkter fundet i denne kollektion"
+      "no_products_found": "Ingen produkter fundet i denne kollektion"
     },
     "error": {
       "title": "Noget gik galt",
