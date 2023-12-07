@@ -1,13 +1,16 @@
 import { Banner } from "@/components/layout/banner";
 import { Footer } from "@/components/layout/footer/index";
 import { Progress } from "@/components/layout/progress/index";
+import { SetState } from "@/components/layout/set-state";
 import { LoadingDots } from "@/components/loading/dots";
 import { Organization } from "@/components/schema.org/organization";
 import { getIntl } from "@/lib/i18n";
 import { getBaseMetadata } from "@/lib/metadata";
+import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";
 import { type LayoutProps } from "@/types/next";
-import { getLocalizationAvailableBCP47LanguageTagsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { type CountryCode, type LanguageCode } from "@shopify/hydrogen/storefront-api-types";
+import { getLocalizationAvailableBCP47LanguageTagsHandler, getLocalizationDetailsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 import {
   DEFAULT_BCP47_LANGUAGE_TAGS,
   cn,
@@ -116,6 +119,13 @@ export default async function RootLayout({
 }: PropsWithChildren<LayoutProps>) {
   const showBanner = false;
 
+  const localization = await getLocalizationDetailsHandler({ lang });
+
+  state$.country.set(lang.split("-")[1] as CountryCode);
+  state$.lang.set(lang);
+  state$.language.set(lang.split("-")[0] as LanguageCode);
+  state$.localization.set(localization);
+
   return (
     <html
       className={cn(
@@ -133,6 +143,7 @@ export default async function RootLayout({
         )}
       >
         <AppProviders lang={lang}>
+          <SetState lang={lang} />
           <Progress />
           <Banner
             className={cn("sticky top-0 w-full", !showBanner && "hidden")}
