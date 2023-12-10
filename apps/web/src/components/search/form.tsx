@@ -1,3 +1,6 @@
+"use client";
+
+import { useGetIntl } from "@/lib/i18n";
 import { cn, createUrl } from "@uncnsrdlabel/lib";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -6,9 +9,10 @@ export function SearchForm({
   setSearchIsOpen,
 }: {
   isOpen: boolean;
-  // eslint-disable-next-line no-unused-vars
   setSearchIsOpen: (open: boolean) => void;
 }) {
+  const intl = useGetIntl("component.SearchForm");
+
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -34,7 +38,7 @@ export function SearchForm({
     <form
       className={cn("relative m-0 flex items-center p-0")}
       id="search-form"
-      // onBlur={() => setSearchIsOpen(false)}
+      onBlur={() => setSearchIsOpen(false)}
       onSubmit={onSubmit}
       tabIndex={-1}
     >
@@ -47,7 +51,7 @@ export function SearchForm({
         defaultValue={searchParams?.get("q") || ""}
         name="search"
         onFocus={() => setSearchIsOpen(true)}
-        placeholder="Search for products..."
+        placeholder={intl.formatMessage({ id: "placeholder" })}
         tabIndex={0}
         type="text"
       />
