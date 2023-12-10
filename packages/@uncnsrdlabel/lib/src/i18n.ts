@@ -14,7 +14,7 @@ export const getLocaleObjectFromIETFLanguageTag = (
 ) => new Intl.Locale(tag);
 
 export const getInContextVariables = (tag?: Intl.BCP47LanguageTag) => {
-  if (!tag) {
+  if (!tag || tag === "favicon.ico") {
     return null;
   }
 
@@ -34,7 +34,7 @@ export const getInContextVariables = (tag?: Intl.BCP47LanguageTag) => {
       language,
     };
   } catch (error) {
-    console.error({ error }, 'getInContextVariables');
+    console.error({ tag, error }, 'getInContextVariables');
 
     return {};
   }
