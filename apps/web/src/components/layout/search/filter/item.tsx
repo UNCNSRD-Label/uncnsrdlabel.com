@@ -30,11 +30,11 @@ function PathFilterItem({
   return (
     <li className="mt-2 flex text-sm text-gray-400" key={item.title}>
       <Link
-        href={createUrl(path, newParams)}
         className={cn("w-full hover:text-gray-800 dark:hover:text-gray-100", {
           "text-gray-600 dark:text-gray-400": !active,
           "text-dark dark:text-light font-semibold": active,
         })}
+        href={createUrl(path, newParams)}
       >
         {item.title}
       </Link>
@@ -66,12 +66,12 @@ function SortFilterItem({ item }: { item: ProductCollectionSortFilterItem }) {
   return (
     <li className="mt-2 flex text-sm text-gray-400" key={item.title}>
       <Link
-        prefetch={false}
-        href={href}
         className={cn("w-full hover:text-gray-800 dark:hover:text-gray-100", {
           "text-gray-600 dark:text-gray-400": !active,
           "text-dark dark:text-light font-semibold": active,
         })}
+        href={href}
+        prefetch={false}
       >
         {item.title}
       </Link>
