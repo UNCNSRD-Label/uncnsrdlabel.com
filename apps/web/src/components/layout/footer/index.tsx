@@ -78,10 +78,10 @@ export async function Footer() {
                     {followUsMenu.items.map((item, index) => (
                       <dd key={item.title || index}>
                         <Link
-                          href={item.url ?? "#"}
                           className={linkClassName}
-                          target="_blank"
+                          href={item.url ?? "#"}
                           rel="noopener noreferrer"
+                          target="_blank"
                         >
                           {item.title}
                         </Link>

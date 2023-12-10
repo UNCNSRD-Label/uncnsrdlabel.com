@@ -84,8 +84,8 @@ export function MobileMenu({ menu }: { menu: Menu[] }) {
                     {menu.map((item, index) => (
                       <li key={item.title || index}>
                         <Link
-                          href={item.handle}
                           className="text-dark dark:text-light rounded-lg py-1 text-xl transition-colors hover:text-gray-500"
+                          href={item.handle}
                           onClick={closeMobileMenu}
                         >
                           {item.title}

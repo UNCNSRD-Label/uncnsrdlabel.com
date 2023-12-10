@@ -113,8 +113,8 @@ export function SidebarMenu({
                     {menu.items.map((item, index) => (
                       <li key={item?.title || index}>
                         <Link
-                          href={item?.url ?? "#"}
                           className="rounded-lg py-1 text-sm uppercase text-inherit"
+                          href={item?.url ?? "#"}
                           onClick={() => {
                             setSidebarMenuIsOpen(false);
                           }}

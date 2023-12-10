@@ -82,6 +82,9 @@
       "open": "Open the bag",
       "title": "Your bag"
     },
+    "CollectionList": {
+      "title": "Collections"
+    },
     "ConsentDialog": {
       "close": "Close the consent dialog",
       "description": "UNCNSRD uses cookies that are essential to making this site work and would like to use additional cookies to improve your experience on this site.",
@@ -119,6 +122,9 @@
       "link-search": "Search for products",
       "link-wishlist": "View your wishlist"
     },
+    "NavbarSearch": {
+      "placeholder": "Search for products"
+    },
     "Newsletter": {
       "description": "Receive updates on new products and offers.",
       "placeholder": "Enter your email address",
@@ -137,6 +143,12 @@
     },
     "SearchButton": {
       "submit": "Submit search"
+    },
+    "SearchForm": {
+      "placeholder": "Search for products"
+    },
+    "SearchLayout": {
+      "title": "Sort by"
     },
     "SidebarMenu": {
       "close": "Close the menu",

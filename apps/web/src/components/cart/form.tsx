@@ -82,9 +82,9 @@ export function CartForm({
                       <DeleteItemButton item={item} />
                     </div>
                     <Link
+                      className="z-30 flex flex-row space-x-4"
                       href={merchandiseUrl}
                       onClick={closeCart}
-                      className="z-30 flex flex-row space-x-4"
                     >
                       <figure className="aspect-2/3 relative w-16 cursor-pointer overflow-hidden rounded-md border border-neutral-300 bg-neutral-300 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:bg-neutral-800">
                         {featuredImage?.url && (
