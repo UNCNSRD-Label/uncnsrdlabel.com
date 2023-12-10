@@ -9,7 +9,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 export async function NavbarSearch() {
   const lang = state$.lang.get();
 
-  const intl = await getIntl(lang, "component.SearchLayout");
+  const intl = await getIntl(lang, "component.NavbarSearch");
 
   const router = useRouter();
   const searchParams = useSearchParams();

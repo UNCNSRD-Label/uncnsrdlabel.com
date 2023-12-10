@@ -16,7 +16,7 @@ type Props = { showLogo?: boolean };
 export async function NavbarContent(props: Props) {
   const lang = state$.lang.get();
 
-  const intl = await getIntl(lang, "component.SignUp");
+  const intl = await getIntl(lang, "component.NavbarContent");
 
   const menu = await getMenuHandler({
     variables: { handle: "next-js-frontend-header-menu" },
