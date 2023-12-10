@@ -108,7 +108,7 @@ export function PageSectionModule({
                             <Image
                               // TODO: Add image alt fallback
                               alt={image?.altText || ""}
-                              className="h-full object-cover"
+                              className="h-full object-contain"
                               fill
                               key={medium?.id}
                               sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
