@@ -1,5 +1,7 @@
 import { updateItemQuantity } from "@/components/cart/actions";
 import { LoadingDots } from "@/components/loading/dots";
+import { getIntl } from "@/lib/i18n";
+import { state$ } from "@/lib/store";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import {
   type CartLine,
@@ -10,7 +12,11 @@ import {
 import { cn } from "@uncnsrdlabel/lib";
 import { useFormState, useFormStatus } from 'react-dom';
 
-function SubmitButton({ type }: { type: 'plus' | 'minus' }) {
+async function SubmitButton({ type }: { type: 'plus' | 'minus' }) {
+  const lang = state$.lang.get();
+
+  const intl = await getIntl(lang, "component.SignUp");
+
   const { pending } = useFormStatus();
 
   return (
@@ -19,7 +25,7 @@ function SubmitButton({ type }: { type: 'plus' | 'minus' }) {
       onClick={(e: React.FormEvent<HTMLButtonElement>) => {
         if (pending) e.preventDefault();
       }}
-      aria-label={type === 'plus' ? 'Increase item quantity' : 'Reduce item quantity'}
+      aria-label={type === 'plus' ? intl.formatMessage({ id: "increase" }) : intl.formatMessage({ id: "decrease" })}
       aria-disabled={pending}
       className={cn(
         'ease flex h-full min-w-[36px] max-w-[36px] flex-none items-center justify-center rounded-full px-2 transition-all duration-200 hover:border-neutral-800 hover:opacity-80',

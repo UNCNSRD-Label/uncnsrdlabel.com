@@ -11,6 +11,15 @@
         "scarf": "scarf",
         "boots": "boots"
       }
+    },
+    "footer": {
+      "copyright": "&copy; {currentYear} {siteName}. All rights reserved.",
+      "menu": {
+        "follow-us": "Follow Us",
+        "customer_service": "Customer service",
+        "legal": "Legal",
+        "social": "Social"
+      }
     }
   },
   "page": {
@@ -68,15 +77,47 @@
       "empty_cart": "Your bag is empty",
       "proceed-to-checkout": "Proceed to checkout"
     },
+    "CartModal": {
+      "close": "Close the bag",
+      "open": "Open the bag",
+      "title": "Your bag"
+    },
     "ConsentDialog": {
+      "close": "Close the consent dialog",
       "description": "UNCNSRD uses cookies that are essential to making this site work and would like to use additional cookies to improve your experience on this site.",
       "trigger": "Edit consent settings",
       "title": "Consent settings"
+    },
+    "ConsentForm": {
+      "accept": "Accept selected cookies",
+      "manage": "Manage cookies",
+      "accept-all": "Accept all cookies",
+      "deny-additional": "Deny additional cookies",
+      "decline": "Decline",
+      "description": "UNCNSRD uses cookies that are essential to making this site work and would like to use additional cookies to improve your experience on this site.",
+      "title": "Consent settings"
+    },
+    "DeleteItemButton": {
+      "button": "Remove bag item"
+    },
+    "EditItemButton": {
+      "decrease": "Decrease item quantity",
+      "increase": "Increase item quantity"
+    },
+    "MobileMenu": {
+      "close": "Close the menu",
+      "open": "Open the menu"
     },
     "Menu": {
       "categories": "Categories",
       "search": "Search",
       "toggle": "View the menu"
+    },
+    "NavbarContent": {
+      "link-account": "View your account",
+      "link-home": "Return to the homepage",
+      "link-search": "Search for products",
+      "link-wishlist": "View your wishlist"
     },
     "Newsletter": {
       "description": "Receive updates on new products and offers.",
@@ -84,8 +125,38 @@
       "submit": "Submit",
       "title": "Newsletter"
     },
+    "RedeemCode": {
+      "close": "Close the code redemption form dialog"
+    },
+    "RedeemCodeForm": {
+      "placeholder": "Enter your code",
+      "submit": "Redeem code"
+    },
     "RelatedProducts": {
       "title": "Related products"
+    },
+    "SearchButton": {
+      "submit": "Submit search"
+    },
+    "SidebarMenu": {
+      "close": "Close the menu",
+      "open": "Open the menu"
+    },
+    "SignUp": {
+      "title": "Sign up to our newsletter",
+      "summary": "Sign up and receive 10% off your first purchase"
+    },
+    "SignUpForm": {
+      "message": "Waiting for signup confirmation",
+      "pattern": "Entered value does not match email format",
+      "placeholder": "Sign up to our newsletter",
+      "required": "Email address is required",
+      "submit": "Sign up",
+      "toast": {
+        "close-alt": "Close this message",
+        "close-button": "Close",
+        "title": "Newsletter signup"
+      }
     }
   }
 }

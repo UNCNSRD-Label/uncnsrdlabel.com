@@ -1,10 +1,13 @@
 "use client";
 
 import { redeemCodeAction } from "@/components/redeem-code/action";
+import { useGetIntl } from "@/lib/i18n";
 import { cn } from "@uncnsrdlabel/lib";
 import { useForm } from "react-hook-form";
 
 export function RedeemCodeForm({ className }: { className?: string }) {
+  const intl = useGetIntl("component.RedeemCodeForm");
+
   const codeInputs: number[] = [...Array(5)];
 
   const defaultValues = Object.fromEntries(
@@ -29,7 +32,7 @@ export function RedeemCodeForm({ className }: { className?: string }) {
           <input
             autoComplete="true"
             className="w-full border-none outline-none placeholder:text-inherit"
-            placeholder="0"
+            placeholder={intl.formatMessage({ id: "placeholder" })}
             type="number"
             {...register(`code-${i}`, {
               required: true,
@@ -43,7 +46,7 @@ export function RedeemCodeForm({ className }: { className?: string }) {
         className="btn btn-primary btn-solid btn-sm justify-self-end !no-underline"
         disabled={!isValid}
       >
-        Sign up
+        {intl.formatMessage({ id: "submit" })}
       </button>
     </form>
   );

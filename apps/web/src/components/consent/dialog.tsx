@@ -74,7 +74,7 @@ export function ConsentDialog(props: { className?: string }) {
           <Dialog.Close asChild>
             <button
               className="absolute right-6 top-6 inline-flex"
-              aria-label="Close"
+              aria-label={intl.formatMessage({ id: "close" })}
               onClick={onClose}
             >
               <Cross2Icon />

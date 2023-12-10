@@ -1,16 +1,18 @@
 "use client";
 
+import { CloseIcon } from "@/components/icons/close";
+import { MenuIcon } from "@/components/icons/menu";
+import { useGetIntl } from "@/lib/i18n";
 import { Dialog, Transition } from "@headlessui/react";
+import { Menu } from "@shopify/hydrogen/storefront-api-types";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
-
-import { CloseIcon } from "@/components/icons/close";
-import { MenuIcon } from "@/components/icons/menu";
-import { Menu } from "@shopify/hydrogen/storefront-api-types";
 import { NavbarSearch } from "./search";
 
 export function MobileMenu({ menu }: { menu: Menu[] }) {
+  const intl = useGetIntl("component.MobileMenu");
+
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +37,7 @@ export function MobileMenu({ menu }: { menu: Menu[] }) {
     <>
       <button
         onClick={openMobileMenu}
-        aria-label="Open mobile menu"
+        aria-label={intl.formatMessage({ id: "open" })}
         className="md:hidden"
         data-testid="open-mobile-menu"
       >
@@ -68,7 +70,7 @@ export function MobileMenu({ menu }: { menu: Menu[] }) {
                 <button
                   className="mb-4"
                   onClick={closeMobileMenu}
-                  aria-label="Close mobile menu"
+                  aria-label={intl.formatMessage({ id: "close" })}
                   data-testid="close-mobile-menu"
                 >
                   <CloseIcon className="h-6" />

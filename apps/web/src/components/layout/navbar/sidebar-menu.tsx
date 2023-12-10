@@ -3,6 +3,7 @@
 import { CloseIcon } from "@/components/icons/close";
 import { LogotypeIcon } from "@/components/icons/logotype";
 import { MenuIcon } from "@/components/icons/menu";
+import { useGetIntl } from "@/lib/i18n";
 import { themeColors } from "@/lib/tailwind";
 import { Dialog } from "@headlessui/react";
 import { Menu } from "@shopify/hydrogen/storefront-api-types";
@@ -24,6 +25,8 @@ export function SidebarMenu({
     }
   >;
 }) {
+  const intl = useGetIntl("component.SidebarMenu");
+
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [sidebarMenuIsOpen, setSidebarMenuIsOpen] = useState(false);
@@ -48,7 +51,7 @@ export function SidebarMenu({
         onClick={() => {
           setSidebarMenuIsOpen(!sidebarMenuIsOpen);
         }}
-        aria-label="Open sidebar menu"
+        aria-label={intl.formatMessage({ id: "open" })}
         data-testid="open-sidebar-menu"
       >
         <MenuIcon className="h-5 stroke-inherit drop-shadow" />
@@ -94,7 +97,7 @@ export function SidebarMenu({
                   onClick={() => {
                     setSidebarMenuIsOpen(false);
                   }}
-                  aria-label="Close sidebar menu"
+                  aria-label={intl.formatMessage({ id: "open" })}
                   data-testid="close-sidebar-menu"
                 >
                   <div className="relative flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors dark:border-neutral-700 dark:text-white">

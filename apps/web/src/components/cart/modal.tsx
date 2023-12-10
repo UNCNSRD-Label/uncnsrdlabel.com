@@ -3,6 +3,7 @@
 import { CloseCart } from "@/components/cart/close-cart";
 import { CartForm } from "@/components/cart/form";
 import { OpenCart } from "@/components/cart/open-cart";
+import { useGetIntl } from "@/lib/i18n";
 import { themeColors } from "@/lib/tailwind";
 import { ResultOf } from "@graphql-typed-document-node/core";
 import { Dialog } from "@headlessui/react";
@@ -16,6 +17,8 @@ export function CartModal({
 }: {
   cart: ResultOf<typeof cartFragment> | null;
 }) {
+  const intl = useGetIntl("component.CartModal");
+
   const [isOpen, setIsOpen] = useState(false);
   const quantityRef = useRef(cart?.totalQuantity);
   const openCart = () => setIsOpen(true);
@@ -36,7 +39,7 @@ export function CartModal({
 
   return (
     <>
-      <button aria-label="Open cart" onClick={openCart}>
+      <button aria-label={intl.formatMessage({ id: "open" })} onClick={openCart}>
         <OpenCart quantity={cart?.totalQuantity} />
       </button>
 
@@ -78,7 +81,7 @@ export function CartModal({
                 <div className="flex items-center justify-between">
                   <p className="text-lg uppercase">My Bag</p>
 
-                  <button aria-label="Close cart" onClick={closeCart}>
+                  <button aria-label={intl.formatMessage({ id: "close" })} onClick={closeCart}>
                     <CloseCart />
                   </button>
                 </div>

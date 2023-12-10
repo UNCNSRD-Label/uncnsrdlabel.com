@@ -1,16 +1,17 @@
 "use client";
 
+import { RedeemCodeForm } from "@/components/redeem-code/form";
+import { useGetIntl } from "@/lib/i18n";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { useTimeoutEffect } from "@react-hookz/web";
+import { COOKIE_REDEEM_CODE } from "@uncnsrdlabel/lib";
 import { hasCookie } from "cookies-next";
 import { useState } from "react";
 
-import { RedeemCodeForm } from "@/components/redeem-code/form";
-
-import { COOKIE_REDEEM_CODE } from "@uncnsrdlabel/lib";
-
 export function RedeemCode(props: { className?: string }) {
+  const intl = useGetIntl("component.RedeemCode");
+
   useTimeoutEffect(
     () => {
       setOpen(true);
@@ -41,7 +42,7 @@ export function RedeemCode(props: { className?: string }) {
           <Dialog.Close asChild>
             <button
               className="absolute right-6 top-6 inline-flex"
-              aria-label="Close"
+              aria-label={intl.formatMessage({ id: "close" })}
               onClick={onClose}
             >
               <Cross2Icon />

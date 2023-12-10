@@ -1,5 +1,6 @@
 "use client";
 
+import { useGetIntl } from "@/lib/i18n";
 import * as Checkbox from "@radix-ui/react-checkbox";
 import { CheckIcon } from "@radix-ui/react-icons";
 import {
@@ -25,6 +26,8 @@ type ConsentDialogProps = {
 };
 
 export function ConsentForm(props: ConsentDialogProps) {
+  const intl = useGetIntl("component.ConsentForm");
+
   const [optionsOpen, setOptionsOpen] = useState(false);
 
   const acceptSelectedConsents = (event: React.FormEvent<HTMLFormElement>) => {
@@ -110,7 +113,7 @@ export function ConsentForm(props: ConsentDialogProps) {
             hidden: !optionsOpen,
           })}
         >
-          Accept selected cookies
+          {intl.formatMessage({ id: "accept" })}
         </button>
         <button
           className={cn("btn btn-xs btn-outline btn-primary btn-bg", {
@@ -120,21 +123,21 @@ export function ConsentForm(props: ConsentDialogProps) {
           onClick={manageConsents}
           type="button"
         >
-          Manage cookies
+          {intl.formatMessage({ id: "manage" })}
         </button>
         <button
           className="btn btn-xs btn-outline btn-primary"
           onClick={acceptAllConsents}
           type="button"
         >
-          Accept all cookies
+          {intl.formatMessage({ id: "accept-all" })}
         </button>
         <button
           className="btn btn-xs btn-outline btn-primary"
           onClick={denyAllAdditionalConsents}
           type="button"
         >
-          Deny additional cookies
+          {intl.formatMessage({ id: "deny-additional" })}
         </button>
       </div>
     </form>

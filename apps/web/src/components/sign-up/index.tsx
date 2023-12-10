@@ -1,14 +1,18 @@
-"use client";
-
 import { SignUpForm } from "@/components/sign-up/form";
+import { getIntl } from "@/lib/i18n";
+import { state$ } from "@/lib/store";
 import { cn } from "@uncnsrdlabel/lib";
 
-export function SignUp({ className }: { className?: string }) {
+export async function SignUp({ className }: { className?: string }) {
+  const lang = state$.lang.get();
+
+  const intl = await getIntl(lang, "component.SignUp");
+
   return (
     <section className={cn("grid gap-4", className)}>
-      <h3 className="text-sm uppercase">Sign up to our newsletter</h3>
+      <h3 className="text-sm uppercase">{intl.formatMessage({ id: "title" })}</h3>
       <span className="text-xs">
-        Sign up and receive 10% off your first purchase
+        {intl.formatMessage({ id: "summary" })}
       </span>
       <SignUpForm />
     </section>
