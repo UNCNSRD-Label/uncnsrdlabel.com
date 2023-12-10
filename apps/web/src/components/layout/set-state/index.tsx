@@ -2,8 +2,8 @@
 
 import { state$ } from "@/lib/store";
 import {
-    type CountryCode,
-    type LanguageCode,
+  type CountryCode,
+  type LanguageCode,
 } from "@shopify/hydrogen/storefront-api-types";
 import { getLocalizationDetailsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { useEffect } from "react";
@@ -11,13 +11,19 @@ import { useEffect } from "react";
 export function SetState({ lang }: { lang: Intl.BCP47LanguageTag }) {
   useEffect(() => {
     const setState = async () => {
-        const localization = await getLocalizationDetailsHandler({ lang });
+      const localization = await getLocalizationDetailsHandler({ lang });
 
+      state$.lang.set(lang);
+      state$.localization.set(localization);
+
+      if (lang?.split("-")?.[1]) {
         state$.country.set(lang.split("-")[1] as CountryCode);
-        state$.lang.set(lang);
+      }
+
+      if (lang?.split("-")?.[0]) {
         state$.language.set(lang.split("-")[0] as LanguageCode);
-        state$.localization.set(localization);
-    }
+      }
+    };
 
     setState();
   });

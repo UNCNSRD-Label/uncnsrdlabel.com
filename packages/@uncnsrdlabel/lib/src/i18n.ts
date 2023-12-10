@@ -34,7 +34,7 @@ export const getInContextVariables = (tag?: Intl.BCP47LanguageTag) => {
       language,
     };
   } catch (error) {
-    console.error({ tag, error }, 'getInContextVariables');
+    console.error({ error });
 
     return {};
   }
