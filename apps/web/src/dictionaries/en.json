@@ -13,7 +13,7 @@
       }
     },
     "footer": {
-      "copyright": "&copy; {currentYear} {siteName}. All rights reserved.",
+      "copyright": "© {currentYear} {siteName}. All rights reserved.",
       "menu": {
         "customer-care": "Customer care",
         "follow-us": "Follow Us",

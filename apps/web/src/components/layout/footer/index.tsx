@@ -34,7 +34,7 @@ export async function Footer() {
   });
 
   const linkClassName =
-    "text-xs sm:text-xxs transition uppercase duration-150 ease-in-out";
+    "text-xs sm:text-xxs transition uppercase duration-150 ease-in-out text-start";
 
   return (
     <footer className="dark relative z-40 border-t border-inherit sm:snap-start self-end">
