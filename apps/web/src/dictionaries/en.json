@@ -11,12 +11,20 @@
         "scarf": "scarf",
         "boots": "boots"
       }
+    },
+    "footer": {
+      "copyright": "© {currentYear} {siteName}. All rights reserved.",
+      "menu": {
+        "customer-care": "Customer care",
+        "follow-us": "Follow Us",
+        "information": "Information"
+      }
     }
   },
   "page": {
     "collection": {
       "title": "Collection",
-      "no_products_found": "No products found in this collection"
+      "no-products-found": "No products found in this collection"
     },
     "error": {
       "title": "Something went wrong",
@@ -24,28 +32,28 @@
       "button": "Try again"
     },
     "home": {
-      "shop_now": "Shop now"
+      "shop-now": "Shop now"
     },
     "products": {
-      "add_to_wishlist": "Add to wishlist",
-      "all_collections": "All collections",
-      "all_products": "All products",
-      "back_to_collection": "Back to the collection",
-      "best_sellers": "Best sellers",
+      "add-to-wishlist": "Add to wishlist",
+      "all-collections": "All collections",
+      "all-products": "All products",
+      "back-to-collection": "Back to the collection",
+      "best-sellers": "Best sellers",
       "browse": "Browse",
       "buy": "Purchase",
       "featured": "Featured",
       "more": "More",
       "new": "New",
-      "out_of_stock": "Out of stock",
-      "product_image_loading": "Product image loading",
-      "quick_view": "Quick view",
+      "out-of-stock": "Out of stock",
+      "product-image-loading": "Product image loading",
+      "quick-view": "Quick view",
       "sale": "Sale",
-      "see_all": "See all",
-      "see_details": "See details",
-      "select_options": "Select options",
-      "view_all": "View all",
-      "view_details": "View the details",
+      "see-all": "See all",
+      "see-details": "See details",
+      "select-options": "Select options",
+      "view-all": "View all",
+      "view-details": "View the details",
       "wishlist": "Wishlist"
     },
     "search": {
@@ -56,27 +64,65 @@
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "Unable to add item to bag",
-      "add_to_cart_enabled": "Add to bag",
-      "out_of_stock": "Out of stock",
-      "select_options": "Please select options"
+      "add-to-cart-disabled": "Unable to add item to bag",
+      "add-to-cart-enabled": "Add to bag",
+      "out-of-stock": "Out of stock",
+      "select-options": "Please select options"
     },
     "Banner": {
       "link": "Free shipping on eligible orders"
     },
     "CartForm": {
-      "empty_cart": "Your bag is empty",
+      "empty-cart": "Your bag is empty",
       "proceed-to-checkout": "Proceed to checkout"
     },
+    "CartModal": {
+      "close": "Close the bag",
+      "open": "Open the bag",
+      "title": "Your bag"
+    },
+    "CollectionList": {
+      "title": "Collections"
+    },
     "ConsentDialog": {
+      "close": "Close the consent dialog",
       "description": "UNCNSRD uses cookies that are essential to making this site work and would like to use additional cookies to improve your experience on this site.",
       "trigger": "Edit consent settings",
       "title": "Consent settings"
+    },
+    "ConsentForm": {
+      "accept": "Accept selected cookies",
+      "manage": "Manage cookies",
+      "accept-all": "Accept all cookies",
+      "deny-additional": "Deny additional cookies",
+      "decline": "Decline",
+      "description": "UNCNSRD uses cookies that are essential to making this site work and would like to use additional cookies to improve your experience on this site.",
+      "title": "Consent settings"
+    },
+    "DeleteItemButton": {
+      "button": "Remove bag item"
+    },
+    "EditItemButton": {
+      "decrease": "Decrease item quantity",
+      "increase": "Increase item quantity"
+    },
+    "MobileMenu": {
+      "close": "Close the menu",
+      "open": "Open the menu"
     },
     "Menu": {
       "categories": "Categories",
       "search": "Search",
       "toggle": "View the menu"
+    },
+    "NavbarContent": {
+      "link-account": "View your account",
+      "link-home": "Return to the homepage",
+      "link-search": "Search for products",
+      "link-wishlist": "View your wishlist"
+    },
+    "NavbarSearch": {
+      "placeholder": "Search for products"
     },
     "Newsletter": {
       "description": "Receive updates on new products and offers.",
@@ -84,8 +130,44 @@
       "submit": "Submit",
       "title": "Newsletter"
     },
+    "RedeemCode": {
+      "close": "Close the code redemption form dialog"
+    },
+    "RedeemCodeForm": {
+      "placeholder": "Enter your code",
+      "submit": "Redeem code"
+    },
     "RelatedProducts": {
       "title": "Related products"
+    },
+    "SearchButton": {
+      "submit": "Submit search"
+    },
+    "SearchForm": {
+      "placeholder": "Search for products"
+    },
+    "SearchLayout": {
+      "title": "Sort by"
+    },
+    "SidebarMenu": {
+      "close": "Close the menu",
+      "open": "Open the menu"
+    },
+    "SignUp": {
+      "title": "Sign up to our newsletter",
+      "summary": "Sign up and receive 10% off your first purchase"
+    },
+    "SignUpForm": {
+      "message": "Waiting for signup confirmation",
+      "pattern": "Entered value does not match email format",
+      "placeholder": "Sign up to our newsletter",
+      "required": "Email address is required",
+      "submit": "Sign up",
+      "toast": {
+        "close-alt": "Close this message",
+        "close-button": "Close",
+        "title": "Newsletter signup"
+      }
     }
   }
 }

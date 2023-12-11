@@ -2,6 +2,7 @@ import { ConsentDialog } from "@/components/consent/dialog";
 import { LogotypeIcon } from "@/components/icons/logotype";
 import { SignUp } from "@/components/sign-up";
 import { SocialMenu } from "@/components/social-menu";
+import { getIntl } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
@@ -12,8 +13,10 @@ const { NEXT_PUBLIC_SITE_NAME } = process.env;
 export async function Footer() {
   const lang = state$.lang.get();
 
+  const intl = await getIntl(lang, "global.footer");
+  const intlMenu = await getIntl(lang, "global.footer.menu");
+
   const currentYear = new Date().getFullYear();
-  const copyrightDate = 2023 + (currentYear > 2023 ? `-${currentYear}` : "");
 
   const customerCareMenu = await getMenuHandler({
     variables: { handle: "customer-care" },
@@ -31,7 +34,7 @@ export async function Footer() {
   });
 
   const linkClassName =
-    "text-xs sm:text-xxs transition uppercase duration-150 ease-in-out";
+    "text-xs sm:text-xxs transition uppercase duration-150 ease-in-out text-start";
 
   return (
     <footer className="dark relative z-40 border-t border-inherit sm:snap-start self-end">
@@ -41,7 +44,7 @@ export async function Footer() {
             <nav className="col-span-1 grid gap-8 sm:col-span-12 sm:grid-cols-12 lg:col-span-8 lg:grid-cols-9">
               {customerCareMenu.items?.length ? (
                 <dl className="grid content-start gap-2 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
-                  <dt className="text-sm uppercase">Customer Care</dt>
+                  <dt className="text-sm uppercase">{intlMenu.formatMessage({ id: "customer-care" })}</dt>
                   {customerCareMenu.items.map((item, index) => (
                     <dd key={item.title || index}>
                       <Link href={item.url ?? "#"} className={linkClassName}>
@@ -56,7 +59,7 @@ export async function Footer() {
               ) : null}
               {informationMenu.items?.length ? (
                 <dl className="grid content-start gap-2 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
-                  <dt className="text-sm uppercase">Information</dt>
+                  <dt className="text-sm uppercase">{intlMenu.formatMessage({ id: "information" })}</dt>
                   {informationMenu.items.map((item, index) => (
                     <dd key={item.title || index}>
                       <Link href={item.url ?? "#"} className={linkClassName}>
@@ -72,14 +75,14 @@ export async function Footer() {
               <div className="grid gap-4 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
                 {followUsMenu.items?.length ? (
                   <dl className="grid content-start gap-2">
-                    <dt className="text-sm uppercase">Follow Us</dt>
+                    <dt className="text-sm uppercase">{intlMenu.formatMessage({ id: "follow-us" })}</dt>
                     {followUsMenu.items.map((item, index) => (
                       <dd key={item.title || index}>
                         <Link
-                          href={item.url ?? "#"}
                           className={linkClassName}
-                          target="_blank"
+                          href={item.url ?? "#"}
                           rel="noopener noreferrer"
+                          target="_blank"
                         >
                           {item.title}
                         </Link>
@@ -94,8 +97,7 @@ export async function Footer() {
           <div className="flex flex-col items-center justify-between text-xs uppercase sm:flex-row sm:pt-6">
             <SocialMenu className="my-8 h-10 sm:my-0" />
             <span className="sm:order-first">
-              &copy; {copyrightDate} {NEXT_PUBLIC_SITE_NAME}. All rights
-              reserved.
+              {intl.formatMessage({ id: "copyright" }, { currentYear, siteName: NEXT_PUBLIC_SITE_NAME })}
             </span>
           </div>
           <LogotypeIcon className="mx-auto mt-8 h-6 fill-inherit drop-shadow transition duration-300 ease-in-out hover:scale-110 sm:hidden sm:h-10 " />

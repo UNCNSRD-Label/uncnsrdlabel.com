@@ -91,7 +91,6 @@ export default async function PolicyPage({
             {customerCareMenu.items.map((item, index) => (
               <dd key={item.title || index}>
                 <Link
-                  href={item.url ?? "#"}
                   className={cn(
                     "sm:text-xxs text-xs uppercase transition duration-150 ease-in-out",
                     {
@@ -99,6 +98,7 @@ export default async function PolicyPage({
                         item.url?.endsWith(params.handle),
                     },
                   )}
+                  href={item.url ?? "#"}
                 >
                   {item.title}
                 </Link>

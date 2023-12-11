@@ -12,7 +12,6 @@ export async function AddPremiumPackaging({
   className?: string;
 }) {
   const lang = state$.lang.get();
-  console.log({lang});
 
   const handle = "premium-packaging";
 

@@ -1,11 +1,11 @@
 import { Button } from "../ui/button";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
 } from "../ui/card";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
@@ -24,7 +24,7 @@ export function AccountRecoverForm({
       <CardContent className="grid gap-4">
         <div className="grid gap-2">
           <Label htmlFor="email">Email</Label>
-          <Input id="email" type="email" placeholder="m@example.com" />
+          <Input id="email" type="email" placeholder="me@example.com" />
         </div>
       </CardContent>
       <CardFooter>

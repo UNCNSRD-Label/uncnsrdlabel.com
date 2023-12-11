@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "مجموعة",
-      "no_products_found": "لا توجد منتجات في هذه المجموعة"
+      "no-products-found": "لا توجد منتجات في هذه المجموعة"
     },
     "error": {
       "title": "هناك خطأ ما",
@@ -24,28 +24,28 @@
       "button": "حاول ثانية"
     },
     "home": {
-      "shop_now": "تسوق الآن"
+      "shop-now": "تسوق الآن"
     },
     "products": {
-      "add_to_wishlist": "أضف إلى قائمة الامنيات",
-      "all_collections": "جميع المجموعات",
-      "all_products": "جميع المنتجات",
-      "back_to_collection": "العودة إلى المجموعة",
-      "best_sellers": "الأكثر مبيعا",
+      "add-to-wishlist": "أضف إلى قائمة الامنيات",
+      "all-collections": "جميع المجموعات",
+      "all-products": "جميع المنتجات",
+      "back-to-collection": "العودة إلى المجموعة",
+      "best-sellers": "الأكثر مبيعا",
       "browse": "تصفح",
       "buy": "شراء",
       "featured": "متميز",
       "more": "أكثر",
       "new": "جديد",
-      "out_of_stock": "إنتهى من المخزن",
-      "product_image_loading": "تحميل صورة المنتج",
-      "quick_view": "نظرة سريعة",
+      "out-of-stock": "إنتهى من المخزن",
+      "product-image-loading": "تحميل صورة المنتج",
+      "quick-view": "نظرة سريعة",
       "sale": "أُوكَازيُون",
-      "see_all": "اظهار الكل",
-      "see_details": "انظر التفاصيل",
-      "select_options": "اشر على الخيارات",
-      "view_all": "عرض الكل",
-      "view_details": "عرض التفاصيل",
+      "see-all": "اظهار الكل",
+      "see-details": "انظر التفاصيل",
+      "select-options": "اشر على الخيارات",
+      "view-all": "عرض الكل",
+      "view-details": "عرض التفاصيل",
       "wishlist": "قائمة الرغبات"
     },
     "search": {
@@ -56,16 +56,16 @@
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "غير قادر على إضافة عنصر إلى الحقيبة",
-      "add_to_cart_enabled": "أضف الى الحقيبة",
-      "out_of_stock": "إنتهى من المخزن",
-      "select_options": "الرجاء تحديد الخيارات"
+      "add-to-cart-disabled": "غير قادر على إضافة عنصر إلى الحقيبة",
+      "add-to-cart-enabled": "أضف الى الحقيبة",
+      "out-of-stock": "إنتهى من المخزن",
+      "select-options": "الرجاء تحديد الخيارات"
     },
     "Banner": {
       "link": "شحن مجاني للطلبات المؤهلة"
     },
     "CartForm": {
-      "empty_cart": "حقيبتك فارغة"
+      "empty-cart": "حقيبتك فارغة"
     },
     "ConsentDialog": {
       "description": "يستخدم UNCNSRD ملفات تعريف الارتباط الضرورية لتشغيل هذا الموقع ويرغب في استخدام ملفات تعريف ارتباط إضافية لتحسين تجربتك على هذا الموقع.",

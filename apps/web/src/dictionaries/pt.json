@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Coleção",
-      "no_products_found": "Nenhum produto encontrado nesta coleção"
+      "no-products-found": "Nenhum produto encontrado nesta coleção"
     },
     "error": {
       "title": "Algo deu errado",
@@ -24,28 +24,28 @@
       "button": "Tente novamente"
     },
     "home": {
-      "shop_now": "Compre agora"
+      "shop-now": "Compre agora"
     },
     "products": {
-      "add_to_wishlist": "Adicionar a lista de desejos",
-      "all_collections": "Todas as coleções",
-      "all_products": "Todos os produtos",
-      "back_to_collection": "Voltar para a coleção",
-      "best_sellers": "Mais vendidos",
+      "add-to-wishlist": "Adicionar a lista de desejos",
+      "all-collections": "Todas as coleções",
+      "all-products": "Todos os produtos",
+      "back-to-collection": "Voltar para a coleção",
+      "best-sellers": "Mais vendidos",
       "browse": "Navegar",
       "buy": "Comprar",
       "featured": "Apresentou",
       "more": "Mais",
       "new": "Novo",
-      "out_of_stock": "Fora de estoque",
-      "product_image_loading": "Carregamento de imagem do produto",
-      "quick_view": "Olhada rápida",
+      "out-of-stock": "Fora de estoque",
+      "product-image-loading": "Carregamento de imagem do produto",
+      "quick-view": "Olhada rápida",
       "sale": "Oferta",
-      "see_all": "Ver tudo",
-      "see_details": "Veja detalhes",
-      "select_options": "Selecione as opções",
-      "view_all": "Ver tudo",
-      "view_details": "Veja os detalhes",
+      "see-all": "Ver tudo",
+      "see-details": "Veja detalhes",
+      "select-options": "Selecione as opções",
+      "view-all": "Ver tudo",
+      "view-details": "Veja os detalhes",
       "wishlist": "Lista de Desejos"
     },
     "search": {
@@ -56,16 +56,16 @@
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "Não foi possível adicionar item à sacola",
-      "add_to_cart_enabled": "Adicionar ao saco",
-      "out_of_stock": "Fora de estoque",
-      "select_options": "Selecione as opções"
+      "add-to-cart-disabled": "Não foi possível adicionar item à sacola",
+      "add-to-cart-enabled": "Adicionar ao saco",
+      "out-of-stock": "Fora de estoque",
+      "select-options": "Selecione as opções"
     },
     "Banner": {
       "link": "Frete grátis em pedidos qualificados"
     },
     "CartForm": {
-      "empty_cart": "Sua bolsa está vazia"
+      "empty-cart": "Sua bolsa está vazia"
     },
     "ConsentDialog": {
       "description": "A UNCNSRD utiliza cookies que são essenciais para o funcionamento deste site e gostaria de utilizar cookies adicionais para melhorar a sua experiência neste site.",

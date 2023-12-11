@@ -18,7 +18,7 @@ export const COOKIE_CONSENT = "consent";
 
 export const COOKIE_REDEEM_CODE = "redeem-code";
 
-export const DEFAULT_BCP47_LANGUAGE_TAGS: Intl.BCP47LanguageTag[] = [
+export const PRE_GENERATED_BCP47_LANGUAGE_TAGS: Intl.BCP47LanguageTag[] = [
   "ar-SA",
   "bn-BD",
   "bn-IN",

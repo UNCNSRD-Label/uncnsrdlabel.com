@@ -1,5 +1,8 @@
+'use client';
+
 import { removeItem } from "@/components/cart/actions";
 import { LoadingDots } from "@/components/loading/dots";
+import { useGetIntl } from "@/lib/i18n";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
   type CartLine,
@@ -11,6 +14,8 @@ import { cn } from "@uncnsrdlabel/lib";
 import { useFormState, useFormStatus } from "react-dom";
 
 function SubmitButton() {
+  const intl = useGetIntl("component.DeleteItemButton");
+
   const { pending } = useFormStatus();
 
   return (
@@ -19,7 +24,7 @@ function SubmitButton() {
       onClick={(e: React.FormEvent<HTMLButtonElement>) => {
         if (pending) e.preventDefault();
       }}
-      aria-label="Remove cart item"
+      aria-label={intl.formatMessage({ id: "remove" })}
       aria-disabled={pending}
       className={cn(
         "ease flex h-4 w-4 items-center justify-center rounded-full bg-neutral-500 transition-all duration-200",

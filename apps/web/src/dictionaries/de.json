@@ -11,12 +11,20 @@
         "scarf": "Schal",
         "boots": "Stiefel"
       }
+    },
+    "footer": {
+      "copyright": "© {currentYear} {siteName}. Alle Rechte vorbehalten.",
+      "menu": {
+        "customer-care": "Kundendienst",
+        "follow-us": "Folgen Sie uns",
+        "information": "Information"
+      }
     }
   },
   "page": {
     "collection": {
       "title": "Sammlung",
-      "no_products_found": "In dieser Sammlung wurden keine Produkte gefunden"
+      "no-products-found": "In dieser Sammlung wurden keine Produkte gefunden"
     },
     "error": {
       "title": "Etwas ist schief gelaufen",
@@ -24,58 +32,97 @@
       "button": "Versuchen Sie es erneut"
     },
     "home": {
-      "shop_now": "Jetzt einkaufen"
+      "shop-now": "Jetzt einkaufen"
     },
     "products": {
-      "add_to_wishlist": "Zur Wunschliste hinzufügen",
-      "all_collections": "Alle Sammlungen",
-      "all_products": "Alle Produkte",
-      "back_to_collection": "Zurück zur Sammlung",
-      "best_sellers": "Bestseller",
+      "add-to-wishlist": "Zur Wunschliste hinzufügen",
+      "all-collections": "Alle Sammlungen",
+      "all-products": "Alle Produkte",
+      "back-to-collection": "Zurück zur Sammlung",
+      "best-sellers": "Bestseller",
       "browse": "Durchsuche",
       "buy": "Kaufen",
       "featured": "Hervorgehoben",
       "more": "Mehr",
       "new": "Neu",
-      "out_of_stock": "Ausverkauft",
-      "product_image_loading": "Produktbild wird geladen",
-      "quick_view": "Schnellansicht",
+      "out-of-stock": "Ausverkauft",
+      "product-image-loading": "Produktbild wird geladen",
+      "quick-view": "Schnellansicht",
       "sale": "Verkauf",
-      "see_all": "Alles sehen",
-      "see_details": "Siehe Einzelheiten",
-      "select_options": "Optionen wählen",
-      "view_all": "Alle ansehen",
-      "view_details": "Sehen Sie sich die Details an",
+      "see-all": "Alles sehen",
+      "see-details": "Siehe Einzelheiten",
+      "select-options": "Optionen wählen",
+      "view-all": "Alle ansehen",
+      "view-details": "Sehen Sie sich die Details an",
       "wishlist": "Wunschzettel"
     },
     "search": {
       "title": "Suchen",
       "description": "Nach Produkten suchen",
-      "results": "{ Ergebnisse, Plural, =0 {Keine Suchergebnisse} =1 {"
+      "results": "{ results, plural, =0 {Es wurden keine Suchergebnisse} =1 {# Suchergebnis} other {# Suchergebnisse} } für „{query}“ gefunden"
     }
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "Artikel konnte nicht zur Tasche hinzugefügt werden",
-      "add_to_cart_enabled": "Der Tasche hinzufügen",
-      "out_of_stock": "Ausverkauft",
-      "select_options": "Bitte wählen Sie Optionen aus"
+      "add-to-cart-disabled": "Artikel konnte nicht zur Tasche hinzugefügt werden",
+      "add-to-cart-enabled": "Der Tasche hinzufügen",
+      "out-of-stock": "Ausverkauft",
+      "select-options": "Bitte wählen Sie Optionen aus"
     },
     "Banner": {
       "link": "Kostenloser Versand für berechtigte Bestellungen"
     },
     "CartForm": {
-      "empty_cart": "Deine Tasche ist leer"
+      "empty-cart": "Deine Tasche ist leer",
+      "proceed-to-checkout": "Zur Kasse"
+    },
+    "CartModal": {
+      "close": "Schließen Sie den Beutel",
+      "open": "Öffnen Sie die Tasche",
+      "title": "Deine Tasche"
+    },
+    "CollectionList": {
+      "title": "Sammlungen"
     },
     "ConsentDialog": {
+      "close": "Schließen Sie den Einwilligungsdialog",
       "description": "UNCNSRD verwendet Cookies, die für das Funktionieren dieser Website unerlässlich sind, und möchte zusätzliche Cookies verwenden, um Ihr Erlebnis auf dieser Website zu verbessern.",
       "trigger": "Einwilligungseinstellungen bearbeiten",
       "title": "Einwilligungseinstellungen"
+    },
+    "ConsentForm": {
+      "accept": "Ausgewählte Cookies akzeptieren",
+      "manage": "Cookies verwalten",
+      "accept-all": "Akzeptieren Sie alle Cookies",
+      "deny-additional": "Weitere Cookies ablehnen",
+      "decline": "Abfall",
+      "description": "UNCNSRD verwendet Cookies, die für das Funktionieren dieser Website unerlässlich sind, und möchte zusätzliche Cookies verwenden, um Ihr Erlebnis auf dieser Website zu verbessern.",
+      "title": "Einwilligungseinstellungen"
+    },
+    "DeleteItemButton": {
+      "button": "Beutelgegenstand entfernen"
+    },
+    "EditItemButton": {
+      "decrease": "Artikelmenge verringern",
+      "increase": "Artikelmenge erhöhen"
+    },
+    "MobileMenu": {
+      "close": "Schließen Sie das Menü",
+      "open": "Öffnen Sie das Menü"
     },
     "Menu": {
       "categories": "Kategorien",
       "search": "Suchen",
       "toggle": "Sehen Sie sich das Menü an"
+    },
+    "NavbarContent": {
+      "link-account": "Sehen Sie sich Ihr Konto an",
+      "link-home": "Zurück zur Homepage",
+      "link-search": "Nach Produkten suchen",
+      "link-wishlist": "Sehen Sie sich Ihre Wunschliste an"
+    },
+    "NavbarSearch": {
+      "placeholder": "Nach Produkten suchen"
     },
     "Newsletter": {
       "description": "Erhalten Sie Updates zu neuen Produkten und Angeboten.",
@@ -83,8 +130,44 @@
       "submit": "Einreichen",
       "title": "Newsletter"
     },
+    "RedeemCode": {
+      "close": "Schließen Sie den Dialog zum Einlösen des Codes"
+    },
+    "RedeemCodeForm": {
+      "placeholder": "Gib deinen Code ein",
+      "submit": "Code einlösen"
+    },
     "RelatedProducts": {
       "title": "Verwandte Produkte"
+    },
+    "SearchButton": {
+      "submit": "Suche absenden"
+    },
+    "SearchForm": {
+      "placeholder": "Nach Produkten suchen"
+    },
+    "SearchLayout": {
+      "title": "Sortiere nach"
+    },
+    "SidebarMenu": {
+      "close": "Schließen Sie das Menü",
+      "open": "Öffnen Sie das Menü"
+    },
+    "SignUp": {
+      "title": "Registriere dich für unseren Newsletter",
+      "summary": "Melden Sie sich an und erhalten Sie 10 % Rabatt auf Ihren ersten Einkauf"
+    },
+    "SignUpForm": {
+      "message": "Warten auf Anmeldebestätigung",
+      "pattern": "Der eingegebene Wert stimmt nicht mit dem E-Mail-Format überein",
+      "placeholder": "Registriere dich für unseren Newsletter",
+      "required": "E-Mailadresse wird benötigt",
+      "submit": "Melden Sie sich an",
+      "toast": {
+        "close-alt": "Schließen Sie diese Nachricht",
+        "close-button": "Schließen",
+        "title": "Newsletter abonnieren"
+      }
     }
   }
 }

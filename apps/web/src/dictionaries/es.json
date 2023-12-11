@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Recopilación",
-      "no_products_found": "no se encontraron productos en esta colección"
+      "no-products-found": "no se encontraron productos en esta colección"
     },
     "error": {
       "title": "Algo salió mal",
@@ -24,28 +24,28 @@
       "button": "Intentar otra vez"
     },
     "home": {
-      "shop_now": "Compra ahora"
+      "shop-now": "Compra ahora"
     },
     "products": {
-      "add_to_wishlist": "Añadir a la lista de deseos",
-      "all_collections": "Todas las colecciones",
-      "all_products": "Todos los productos",
-      "back_to_collection": "Volver a la colección",
-      "best_sellers": "Los más vendidos",
+      "add-to-wishlist": "Añadir a la lista de deseos",
+      "all-collections": "Todas las colecciones",
+      "all-products": "Todos los productos",
+      "back-to-collection": "Volver a la colección",
+      "best-sellers": "Los más vendidos",
       "browse": "Navegar",
       "buy": "Compra",
       "featured": "Presentado",
       "more": "Más",
       "new": "Nuevo",
-      "out_of_stock": "Agotado",
-      "product_image_loading": "Cargando imagen del producto",
-      "quick_view": "Vista rápida",
+      "out-of-stock": "Agotado",
+      "product-image-loading": "Cargando imagen del producto",
+      "quick-view": "Vista rápida",
       "sale": "Venta",
-      "see_all": "Ver todo",
-      "see_details": "Ver detalles",
-      "select_options": "Seleccione opciones",
-      "view_all": "Ver todo",
-      "view_details": "Ver los detalles",
+      "see-all": "Ver todo",
+      "see-details": "Ver detalles",
+      "select-options": "Seleccione opciones",
+      "view-all": "Ver todo",
+      "view-details": "Ver los detalles",
       "wishlist": "Lista de deseos"
     },
     "search": {
@@ -56,16 +56,16 @@
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "No se puede agregar el artículo a la bolsa",
-      "add_to_cart_enabled": "Agregar a la bolsa",
-      "out_of_stock": "Agotado",
-      "select_options": "Por favor seleccione opciones"
+      "add-to-cart-disabled": "No se puede agregar el artículo a la bolsa",
+      "add-to-cart-enabled": "Agregar a la bolsa",
+      "out-of-stock": "Agotado",
+      "select-options": "Por favor seleccione opciones"
     },
     "Banner": {
       "link": "Envío gratuito en pedidos elegibles"
     },
     "CartForm": {
-      "empty_cart": "tu bolso esta vacio"
+      "empty-cart": "tu bolso esta vacio"
     },
     "ConsentDialog": {
       "description": "UNCNSRD utiliza cookies que son esenciales para que este sitio funcione y le gustaría utilizar cookies adicionales para mejorar su experiencia en este sitio.",

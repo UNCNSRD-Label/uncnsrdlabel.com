@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Zbirka",
-      "no_products_found": "V tej zbirki ni nobenega izdelka"
+      "no-products-found": "V tej zbirki ni nobenega izdelka"
     },
     "error": {
       "title": "Nekaj ​​je šlo narobe",
@@ -24,28 +24,28 @@
       "button": "Poskusi ponovno"
     },
     "home": {
-      "shop_now": "Nakupujte zdaj"
+      "shop-now": "Nakupujte zdaj"
     },
     "products": {
-      "add_to_wishlist": "Dodaj na seznam želja",
-      "all_collections": "Vse zbirke",
-      "all_products": "Vsi izdelki",
-      "back_to_collection": "Nazaj v zbirko",
-      "best_sellers": "Najbolj prodajano",
+      "add-to-wishlist": "Dodaj na seznam želja",
+      "all-collections": "Vse zbirke",
+      "all-products": "Vsi izdelki",
+      "back-to-collection": "Nazaj v zbirko",
+      "best-sellers": "Najbolj prodajano",
       "browse": "Prebrskaj",
       "buy": "Nakup",
       "featured": "Predstavljeno",
       "more": "več",
       "new": "Novo",
-      "out_of_stock": "Ni na zalogi",
-      "product_image_loading": "Nalaganje slike izdelka",
-      "quick_view": "Hiter pogled",
+      "out-of-stock": "Ni na zalogi",
+      "product-image-loading": "Nalaganje slike izdelka",
+      "quick-view": "Hiter pogled",
       "sale": "Prodaja",
-      "see_all": "Poglej vse",
-      "see_details": "Glej podrobnosti",
-      "select_options": "Izberite možnosti",
-      "view_all": "Poglej vse",
-      "view_details": "Oglejte si podrobnosti",
+      "see-all": "Poglej vse",
+      "see-details": "Glej podrobnosti",
+      "select-options": "Izberite možnosti",
+      "view-all": "Poglej vse",
+      "view-details": "Oglejte si podrobnosti",
       "wishlist": "Seznam želja"
     },
     "search": {
@@ -56,16 +56,16 @@
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "Predmeta ni mogoče dodati v torbo",
-      "add_to_cart_enabled": "Dodaj v torbo",
-      "out_of_stock": "Ni na zalogi",
-      "select_options": "Izberite možnosti"
+      "add-to-cart-disabled": "Predmeta ni mogoče dodati v torbo",
+      "add-to-cart-enabled": "Dodaj v torbo",
+      "out-of-stock": "Ni na zalogi",
+      "select-options": "Izberite možnosti"
     },
     "Banner": {
       "link": "Brezplačna dostava za primerna naročila"
     },
     "CartForm": {
-      "empty_cart": "Vaša torba je prazna"
+      "empty-cart": "Vaša torba je prazna"
     },
     "ConsentDialog": {
       "description": "UNCNSRD uporablja piškotke, ki so bistveni za delovanje te strani, in želi uporabiti dodatne piškotke za izboljšanje vaše izkušnje na tej strani.",

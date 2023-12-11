@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Gyűjtemény",
-      "no_products_found": "Nem található termék ebben a gyűjteményben"
+      "no-products-found": "Nem található termék ebben a gyűjteményben"
     },
     "error": {
       "title": "Valami elromlott",
@@ -24,28 +24,28 @@
       "button": "Próbáld újra"
     },
     "home": {
-      "shop_now": "Vásárolj most"
+      "shop-now": "Vásárolj most"
     },
     "products": {
-      "add_to_wishlist": "Hozzáadni a Kívánságlistához",
-      "all_collections": "Minden gyűjtemény",
-      "all_products": "Minden termék",
-      "back_to_collection": "Vissza a gyűjteményhez",
-      "best_sellers": "Legtöbbet eladott",
+      "add-to-wishlist": "Hozzáadni a Kívánságlistához",
+      "all-collections": "Minden gyűjtemény",
+      "all-products": "Minden termék",
+      "back-to-collection": "Vissza a gyűjteményhez",
+      "best-sellers": "Legtöbbet eladott",
       "browse": "Tallózás",
       "buy": "Vásárlás",
       "featured": "Kiemelt",
       "more": "Több",
       "new": "Új",
-      "out_of_stock": "Nincs raktáron",
-      "product_image_loading": "A termék képének betöltése",
-      "quick_view": "Gyors nézet",
+      "out-of-stock": "Nincs raktáron",
+      "product-image-loading": "A termék képének betöltése",
+      "quick-view": "Gyors nézet",
       "sale": "Eladás",
-      "see_all": "Az összes megtekintése",
-      "see_details": "Lásd a részleteket",
-      "select_options": "Válasszon opciókat",
-      "view_all": "Összes megtekintése",
-      "view_details": "Tekintse meg a részleteket",
+      "see-all": "Az összes megtekintése",
+      "see-details": "Lásd a részleteket",
+      "select-options": "Válasszon opciókat",
+      "view-all": "Összes megtekintése",
+      "view-details": "Tekintse meg a részleteket",
       "wishlist": "Kívánság lista"
     },
     "search": {
@@ -56,16 +56,16 @@
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "Nem sikerült hozzáadni az elemet a táskához",
-      "add_to_cart_enabled": "Zacskóba tesz",
-      "out_of_stock": "Nincs raktáron",
-      "select_options": "Kérjük, válasszon lehetőségeket"
+      "add-to-cart-disabled": "Nem sikerült hozzáadni az elemet a táskához",
+      "add-to-cart-enabled": "Zacskóba tesz",
+      "out-of-stock": "Nincs raktáron",
+      "select-options": "Kérjük, válasszon lehetőségeket"
     },
     "Banner": {
       "link": "Ingyenes szállítás a megfelelő rendelések esetén"
     },
     "CartForm": {
-      "empty_cart": "Üres a táskád"
+      "empty-cart": "Üres a táskád"
     },
     "ConsentDialog": {
       "description": "Az UNCNSRD olyan cookie-kat használ, amelyek elengedhetetlenek a webhely működéséhez, és további cookie-kat szeretne használni, hogy javítsa az Ön élményét ezen az oldalon.",

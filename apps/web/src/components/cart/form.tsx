@@ -5,7 +5,6 @@ import { Price } from "@/components/price";
 import { getIntl } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
 import { ResultOf } from "@graphql-typed-document-node/core";
-import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   cartFragment,
@@ -16,6 +15,7 @@ import {
 import { DEFAULT_OPTION, createUrl } from "@uncnsrdlabel/lib";
 import Image from "next/image";
 import { use } from "react";
+import { SlBag } from "react-icons/sl";
 
 type MerchandiseSearchParams = {
   [key: string]: string;
@@ -38,9 +38,9 @@ export function CartForm({
     <>
       {!cart || lines?.length === 0 ? (
         <div className="mt-20 flex w-full flex-col items-center justify-center overflow-hidden">
-          <ShoppingCartIcon className="h-12" />
+          <SlBag className="icon fill h-12 w-12 m-2" />
           <p className="mt-6 text-center text-2xl font-bold">
-            {intl.formatMessage({ id: "empty_cart" })}
+            {intl.formatMessage({ id: "empty-cart" })}
           </p>
         </div>
       ) : (
@@ -82,9 +82,9 @@ export function CartForm({
                       <DeleteItemButton item={item} />
                     </div>
                     <Link
+                      className="z-30 flex flex-row space-x-4"
                       href={merchandiseUrl}
                       onClick={closeCart}
-                      className="z-30 flex flex-row space-x-4"
                     >
                       <figure className="aspect-2/3 relative w-16 cursor-pointer overflow-hidden rounded-md border border-neutral-300 bg-neutral-300 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:bg-neutral-800">
                         {featuredImage?.url && (

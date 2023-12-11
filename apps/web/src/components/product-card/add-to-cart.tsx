@@ -29,7 +29,7 @@ export function SubmitButton({
   if (!availableForSale) {
     return (
       <button aria-disabled className={cn(buttonClasses, disabledClasses, className)}>
-        {intl.formatMessage({ id: "out_of_stock" })}
+        {intl.formatMessage({ id: "out-of-stock" })}
       </button>
     );
   }
@@ -37,12 +37,12 @@ export function SubmitButton({
   if (!selectedVariantId) {
     return (
       <button
-        aria-label={intl.formatMessage({ id: "select_options" })}
+        aria-label={intl.formatMessage({ id: "select-options" })}
         aria-disabled
         className={cn(buttonClasses, disabledClasses)}
       >
         <PlusIcon className="h-5" />
-        {intl.formatMessage({ id: "select_options" })}
+        {intl.formatMessage({ id: "select-options" })}
       </button>
     );
   }
@@ -52,7 +52,7 @@ export function SubmitButton({
       onClick={(e: React.FormEvent<HTMLButtonElement>) => {
         if (pending) e.preventDefault();
       }}
-      aria-label={intl.formatMessage({ id: "add_to_cart_enabled" })}
+      aria-label={intl.formatMessage({ id: "add-to-cart-enabled" })}
       aria-disabled={pending}
       className={cn(buttonClasses, {
         "hover:opacity-90": true,
@@ -64,7 +64,7 @@ export function SubmitButton({
       ) : (
         <PlusIcon className="h-5" />
       )}
-      {intl.formatMessage({ id: "add_to_cart_enabled" })}
+      {intl.formatMessage({ id: "add-to-cart-enabled" })}
     </button>
   );
 }

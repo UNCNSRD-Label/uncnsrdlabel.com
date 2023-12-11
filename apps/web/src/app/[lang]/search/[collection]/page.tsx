@@ -3,13 +3,13 @@ import { ProductGridItems } from "@/components/layout/product-grid-items";
 import { getAlternativeLanguages, getIntl } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
 import {
-  collectionFragment,
-  getCollectionHandler,
-  getCollectionProductsHandler,
-  getFragmentData,
-  productCollectionDefaultSort,
-  productCollectionSorting,
-  seoFragment,
+    collectionFragment,
+    getCollectionHandler,
+    getCollectionProductsHandler,
+    getFragmentData,
+    productCollectionDefaultSort,
+    productCollectionSorting,
+    seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -82,7 +82,7 @@ export default async function CategoryPage({
     <section>
       {products?.length === 0 ? (
         <p className="py-3 text-lg">
-          {intl.formatMessage({ id: "no_products_found" })}
+          {intl.formatMessage({ id: "no-products-found" })}
         </p>
       ) : (
         <Grid className="grid-cols-2 lg:grid-cols-3">

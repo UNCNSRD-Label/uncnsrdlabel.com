@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Samling",
-      "no_products_found": "Inga produkter hittades i denna samling"
+      "no-products-found": "Inga produkter hittades i denna samling"
     },
     "error": {
       "title": "Något gick fel",
@@ -24,28 +24,28 @@
       "button": "Försök igen"
     },
     "home": {
-      "shop_now": "Shoppa nu"
+      "shop-now": "Shoppa nu"
     },
     "products": {
-      "add_to_wishlist": "Lägg till i önskelista",
-      "all_collections": "Alla samlingar",
-      "all_products": "Alla produkter",
-      "back_to_collection": "Tillbaka till samlingen",
-      "best_sellers": "Bästsäljare",
+      "add-to-wishlist": "Lägg till i önskelista",
+      "all-collections": "Alla samlingar",
+      "all-products": "Alla produkter",
+      "back-to-collection": "Tillbaka till samlingen",
+      "best-sellers": "Bästsäljare",
       "browse": "Bläddra",
       "buy": "Inköp",
       "featured": "Utvalda",
       "more": "Mer",
       "new": "Ny",
-      "out_of_stock": "Slut i lager",
-      "product_image_loading": "Produktbild laddas",
-      "quick_view": "Snabbtitt",
+      "out-of-stock": "Slut i lager",
+      "product-image-loading": "Produktbild laddas",
+      "quick-view": "Snabbtitt",
       "sale": "Försäljning",
-      "see_all": "Se allt",
-      "see_details": "Se detaljer",
-      "select_options": "Välj inställningar",
-      "view_all": "Visa alla",
-      "view_details": "Se detaljerna",
+      "see-all": "Se allt",
+      "see-details": "Se detaljer",
+      "select-options": "Välj inställningar",
+      "view-all": "Visa alla",
+      "view-details": "Se detaljerna",
       "wishlist": "önskelista"
     },
     "search": {
@@ -56,16 +56,16 @@
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "Det gick inte att lägga till vara i väskan",
-      "add_to_cart_enabled": "Lägg i varukorg",
-      "out_of_stock": "Slut i lager",
-      "select_options": "Välj alternativ"
+      "add-to-cart-disabled": "Det gick inte att lägga till vara i väskan",
+      "add-to-cart-enabled": "Lägg i varukorg",
+      "out-of-stock": "Slut i lager",
+      "select-options": "Välj alternativ"
     },
     "Banner": {
       "link": "Fri frakt på kvalificerade beställningar"
     },
     "CartForm": {
-      "empty_cart": "Din väska är tom"
+      "empty-cart": "Din väska är tom"
     },
     "ConsentDialog": {
       "description": "UNCNSRD använder cookies som är nödvändiga för att få den här sidan att fungera och vill använda ytterligare cookies för att förbättra din upplevelse på den här sidan.",

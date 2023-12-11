@@ -25,11 +25,11 @@ export default async function RootPage({ params: { lang } }: PageProps) {
           <section className="relative grid h-[100dvh] items-center overflow-hidden sm:snap-start">
             <VideosHydrated handle={handle} />
             <Link
-              aria-label={intl.formatMessage({ id: "shop_now" })}
+              aria-label={intl.formatMessage({ id: "shop-now" })}
               className="btn btn-outline btn-primary btn-base absolute z-20 justify-self-center whitespace-nowrap uppercase"
               href="/search"
             >
-              {intl.formatMessage({ id: "shop_now" })}
+              {intl.formatMessage({ id: "shop-now" })}
             </Link>
           </section>
           <section className="max-w-[100dvw] py-48 sm:snap-center">

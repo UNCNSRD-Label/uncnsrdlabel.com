@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Kokoelma",
-      "no_products_found": "Tästä kokoelmasta ei löytynyt tuotteita"
+      "no-products-found": "Tästä kokoelmasta ei löytynyt tuotteita"
     },
     "error": {
       "title": "Jotain meni pieleen",
@@ -24,28 +24,28 @@
       "button": "Yritä uudelleen"
     },
     "home": {
-      "shop_now": "Osta nyt"
+      "shop-now": "Osta nyt"
     },
     "products": {
-      "add_to_wishlist": "Lisää toivelistaan",
-      "all_collections": "Kaikki kokoelmat",
-      "all_products": "Kaikki tuotteet",
-      "back_to_collection": "Takaisin kokoelmaan",
-      "best_sellers": "Myydyimmät",
+      "add-to-wishlist": "Lisää toivelistaan",
+      "all-collections": "Kaikki kokoelmat",
+      "all-products": "Kaikki tuotteet",
+      "back-to-collection": "Takaisin kokoelmaan",
+      "best-sellers": "Myydyimmät",
       "browse": "Selaa",
       "buy": "Ostaa",
       "featured": "Esittelyssä",
       "more": "Lisää",
       "new": "Uusi",
-      "out_of_stock": "Loppu varastosta",
-      "product_image_loading": "Tuotekuvaa ladataan",
-      "quick_view": "Katsaus",
+      "out-of-stock": "Loppu varastosta",
+      "product-image-loading": "Tuotekuvaa ladataan",
+      "quick-view": "Katsaus",
       "sale": "Myynti",
-      "see_all": "Näytä kaikki",
-      "see_details": "Katso yksityiskohdat",
-      "select_options": "Valitse vaihtoehdot",
-      "view_all": "Näytä kaikki",
-      "view_details": "Katso tiedot",
+      "see-all": "Näytä kaikki",
+      "see-details": "Katso yksityiskohdat",
+      "select-options": "Valitse vaihtoehdot",
+      "view-all": "Näytä kaikki",
+      "view-details": "Katso tiedot",
       "wishlist": "Toivelista"
     },
     "search": {
@@ -56,16 +56,16 @@
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "Kohdetta ei voi lisätä laukkuun",
-      "add_to_cart_enabled": "Lisää kassiin",
-      "out_of_stock": "Loppu varastosta",
-      "select_options": "Valitse vaihtoehdot"
+      "add-to-cart-disabled": "Kohdetta ei voi lisätä laukkuun",
+      "add-to-cart-enabled": "Lisää kassiin",
+      "out-of-stock": "Loppu varastosta",
+      "select-options": "Valitse vaihtoehdot"
     },
     "Banner": {
       "link": "Ilmainen toimitus kelvollisille tilauksille"
     },
     "CartForm": {
-      "empty_cart": "Laukkusi on tyhjä"
+      "empty-cart": "Laukkusi on tyhjä"
     },
     "ConsentDialog": {
       "description": "UNCNSRD käyttää evästeitä, jotka ovat välttämättömiä tämän sivuston toiminnan kannalta, ja haluaisivat käyttää lisäevästeitä parantaakseen käyttökokemustasi tällä sivustolla.",

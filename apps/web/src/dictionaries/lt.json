@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Kolekcija",
-      "no_products_found": "Šioje kolekcijoje produktų nerasta"
+      "no-products-found": "Šioje kolekcijoje produktų nerasta"
     },
     "error": {
       "title": "Kažkas nutiko",
@@ -24,28 +24,28 @@
       "button": "Bandyk iš naujo"
     },
     "home": {
-      "shop_now": "Apsipirk dabar"
+      "shop-now": "Apsipirk dabar"
     },
     "products": {
-      "add_to_wishlist": "Pridėti į norų sąrašą",
-      "all_collections": "Visos kolekcijos",
-      "all_products": "Visi produktai",
-      "back_to_collection": "Atgal į kolekciją",
-      "best_sellers": "Bestseleriai",
+      "add-to-wishlist": "Pridėti į norų sąrašą",
+      "all-collections": "Visos kolekcijos",
+      "all-products": "Visi produktai",
+      "back-to-collection": "Atgal į kolekciją",
+      "best-sellers": "Bestseleriai",
       "browse": "Naršyti",
       "buy": "Pirkimas",
       "featured": "Teminiai",
       "more": "Daugiau",
       "new": "Nauja",
-      "out_of_stock": "Išparduota",
-      "product_image_loading": "Prekės vaizdas įkeliamas",
-      "quick_view": "Greita peržiūra",
+      "out-of-stock": "Išparduota",
+      "product-image-loading": "Prekės vaizdas įkeliamas",
+      "quick-view": "Greita peržiūra",
       "sale": "Išpardavimas",
-      "see_all": "Matyti viską",
-      "see_details": "Žr. išsamią informaciją",
-      "select_options": "Pasirinkite parinktis",
-      "view_all": "Peržiūrėti visus",
-      "view_details": "Peržiūrėkite išsamią informaciją",
+      "see-all": "Matyti viską",
+      "see-details": "Žr. išsamią informaciją",
+      "select-options": "Pasirinkite parinktis",
+      "view-all": "Peržiūrėti visus",
+      "view-details": "Peržiūrėkite išsamią informaciją",
       "wishlist": "Norų sąrašas"
     },
     "search": {
@@ -56,16 +56,16 @@
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "Nepavyko pridėti prekės į krepšį",
-      "add_to_cart_enabled": "Pridėti į maišelį",
-      "out_of_stock": "Išparduota",
-      "select_options": "Prašome pasirinkti parinktis"
+      "add-to-cart-disabled": "Nepavyko pridėti prekės į krepšį",
+      "add-to-cart-enabled": "Pridėti į maišelį",
+      "out-of-stock": "Išparduota",
+      "select-options": "Prašome pasirinkti parinktis"
     },
     "Banner": {
       "link": "Nemokamas tinkamų užsakymų pristatymas"
     },
     "CartForm": {
-      "empty_cart": "Tavo krepšys tuščias"
+      "empty-cart": "Tavo krepšys tuščias"
     },
     "ConsentDialog": {
       "description": "UNCNSRD naudoja slapukus, kurie yra būtini, kad ši svetainė veiktų, ir norėtų naudoti papildomus slapukus, kad pagerintų jūsų patirtį šioje svetainėje.",

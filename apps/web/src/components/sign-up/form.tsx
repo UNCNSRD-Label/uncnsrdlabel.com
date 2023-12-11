@@ -1,6 +1,7 @@
 "use client";
 
 import { signUpAction } from "@/components/sign-up/action";
+import { useGetIntl } from "@/lib/i18n";
 import { themeColors } from "@/lib/tailwind";
 import * as Toast from "@radix-ui/react-toast";
 import { cn } from "@uncnsrdlabel/lib";
@@ -9,6 +10,9 @@ import { useForm } from "react-hook-form";
 import { SlEnvolope } from "react-icons/sl";
 
 export function SignUpForm({ className }: { className?: string }) {
+  const intl = useGetIntl("component.SignUpForm");
+  const intlToast = useGetIntl("component.SignUpForm.toast");
+
   const {
     formState: { errors, isValid },
     register,
@@ -17,7 +21,7 @@ export function SignUpForm({ className }: { className?: string }) {
   const [open, setOpen] = useState(false);
   const timerRef = useRef(0);
   const [toastMessage, setToastMessage] = useState<string | null>(
-    "Waiting for signup confirmation",
+    intl.formatMessage({ id: "message" }),
   );
 
   useEffect(() => {
@@ -34,7 +38,6 @@ export function SignUpForm({ className }: { className?: string }) {
     }, 10_000);
 
     // grab location from context
-    // this.name = "Sign Up Form (Footer)";
     const response = await signUpAction(formData, "Sign Up Form (Footer)");
 
     if (response?.message) {
@@ -47,38 +50,32 @@ export function SignUpForm({ className }: { className?: string }) {
       <form action={action} className={cn("mt-8 grid gap-4", className)}>
         <div className="field">
           <input
-            autoComplete="true"
+            aria-invalid={errors.email ? "true" : "false"}
+            autoComplete="on"
             className="w-full bg-gray-800/50 px-4 py-2 placeholder:text-inherit"
-            placeholder="Sign up to our newsletter"
+            placeholder={intl.formatMessage({ id: "placeholder" })}
             type="email"
             {...register("email", {
-              required: "Email address is required",
+              required: intl.formatMessage({ id: "required" }),
               pattern: {
                 value: /\S+@\S+\.\S+/,
-                message: "Entered value does not match email format",
+                message: intl.formatMessage({ id: "pattern" }),
               },
             })}
-            aria-invalid={errors.email ? "true" : "false"}
           />
           {errors.email && <p role="alert">{errors.email?.message}</p>}
           <button
             className="btn absolute right-0 mr-3"
-            aria-label="Submit email"
+            aria-label={intl.formatMessage({ id: "submit" })}
           >
             <SlEnvolope />
           </button>
         </div>
-        {/* <input
-            type="tel"
-            name="phone_number"
-            placeholder="Sign up to our newsletter"
-            className="w-full px-4 py-2"
-          /> */}
         <button
           className="btn btn-primary btn-solid btn-sm justify-self-end !no-underline"
           disabled={!isValid}
         >
-          Sign up
+          {intl.formatMessage({ id: "submit" })}
         </button>
       </form>
 
@@ -93,7 +90,7 @@ export function SignUpForm({ className }: { className?: string }) {
         onOpenChange={setOpen}
       >
         <Toast.Title className="mb-2 font-medium [grid-area:_title]">
-          Newsletter signup
+          {intlToast.formatMessage({ id: "title" })}
         </Toast.Title>
         <Toast.Description asChild>
           <div className="m-0 text-sm [grid-area:_description]">
@@ -103,9 +100,9 @@ export function SignUpForm({ className }: { className?: string }) {
         <Toast.Action
           className="[grid-area:_action]"
           asChild
-          altText="Close this message"
+          altText={intlToast.formatMessage({ id: "close-alt" })}
         >
-          <button className="">Close</button>
+          <button>{intlToast.formatMessage({ id: "close-button" })}</button>
         </Toast.Action>
       </Toast.Root>
       <Toast.Viewport className="fixed bottom-0 right-0 z-50 m-0 flex w-96 max-w-[100vw] list-none flex-col gap-[10px] p-[var(--viewport-padding)] outline-none [--viewport-padding:_25px]" />

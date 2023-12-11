@@ -1,3 +1,4 @@
+import { getIntl } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
 import { getCollectionRefsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
@@ -7,9 +8,11 @@ import { FilterList } from "./filter";
 async function CollectionList() {
   const lang = state$.lang.get();
 
+  const intl = await getIntl(lang, "component.CollectionList");
+
   const collections = await getCollectionRefsHandler({ lang, variables: { first: 100 } });
 
-  return <FilterList list={collections} title="Collections" />;
+  return <FilterList list={collections} title={intl.formatMessage({ id: "title" })} />;
 }
 
 const skeleton = "mb-3 h-4 w-5/6 animate-pulse rounded";

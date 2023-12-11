@@ -50,9 +50,9 @@ export async function Carousel({ handle }: { handle: string }) {
 
           return (
             <Link
-              key={product.id || index}
-              href={`/products/${product.handle}`}
               className="relative h-[30vh] w-1/2 flex-none md:w-1/3"
+              href={`/products/${product.handle}`}
+              key={product.id || index}
             >
               {featuredImage ? (
                 <Image

@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Verzameling",
-      "no_products_found": "Er zijn geen producten gevonden in deze collectie"
+      "no-products-found": "Er zijn geen producten gevonden in deze collectie"
     },
     "error": {
       "title": "Er is iets fout gegaan",
@@ -24,28 +24,28 @@
       "button": "Probeer het nog eens"
     },
     "home": {
-      "shop_now": "Winkel nu"
+      "shop-now": "Winkel nu"
     },
     "products": {
-      "add_to_wishlist": "Voeg toe aan verlanglijst",
-      "all_collections": "Alle collecties",
-      "all_products": "Alle producten",
-      "back_to_collection": "Terug naar de collectie",
-      "best_sellers": "Beste verkopers",
+      "add-to-wishlist": "Voeg toe aan verlanglijst",
+      "all-collections": "Alle collecties",
+      "all-products": "Alle producten",
+      "back-to-collection": "Terug naar de collectie",
+      "best-sellers": "Beste verkopers",
       "browse": "Blader",
       "buy": "Aankoop",
       "featured": "Uitgelicht",
       "more": "Meer",
       "new": "Nieuw",
-      "out_of_stock": "Geen voorraad meer",
-      "product_image_loading": "Productafbeelding wordt geladen",
-      "quick_view": "Snelle kijk",
+      "out-of-stock": "Geen voorraad meer",
+      "product-image-loading": "Productafbeelding wordt geladen",
+      "quick-view": "Snelle kijk",
       "sale": "Verkoop",
-      "see_all": "Alles zien",
-      "see_details": "Zie de details",
-      "select_options": "selecteer opties",
-      "view_all": "Bekijk alles",
-      "view_details": "Bekijk de details",
+      "see-all": "Alles zien",
+      "see-details": "Zie de details",
+      "select-options": "selecteer opties",
+      "view-all": "Bekijk alles",
+      "view-details": "Bekijk de details",
       "wishlist": "Verlanglijst"
     },
     "search": {
@@ -56,16 +56,16 @@
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "Kan item niet toevoegen aan tas",
-      "add_to_cart_enabled": "Aan tas toevoegen",
-      "out_of_stock": "Geen voorraad meer",
-      "select_options": "Selecteer opties"
+      "add-to-cart-disabled": "Kan item niet toevoegen aan tas",
+      "add-to-cart-enabled": "Aan tas toevoegen",
+      "out-of-stock": "Geen voorraad meer",
+      "select-options": "Selecteer opties"
     },
     "Banner": {
       "link": "Gratis verzending voor in aanmerking komende bestellingen"
     },
     "CartForm": {
-      "empty_cart": "Je tas is leeg"
+      "empty-cart": "Je tas is leeg"
     },
     "ConsentDialog": {
       "description": "UNCNSRD gebruikt cookies die essentieel zijn om deze site te laten werken en wil graag aanvullende cookies gebruiken om uw ervaring op deze site te verbeteren.",

@@ -4,7 +4,7 @@ import { Navbar } from "@/components/layout/navbar/index";
 import { LoadingSkeleton } from "@/components/loading/skeleton";
 import { Suspense } from "react";
 
-export default function SearchLayout({
+export default function PageLayout({
   children,
 }: {
   children: React.ReactNode;

@@ -1,11 +1,13 @@
 "use client";
 
+import { SearchIcon } from "@/components/icons/search";
+import { useGetIntl } from "@/lib/i18n";
+import { createUrl } from "@uncnsrdlabel/lib";
 import { useRouter, useSearchParams } from "next/navigation";
 
-import { SearchIcon } from "@/components/icons/search";
-import { createUrl } from "@uncnsrdlabel/lib";
-
 export function NavbarSearch() {
+  const intl = useGetIntl("component.NavbarSearch");
+
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -28,16 +30,16 @@ export function NavbarSearch() {
   return (
     <form onSubmit={onSubmit} className="relative">
       <input
-        type="text"
-        name="search"
-        placeholder="Search for products..."
-        autoComplete="off"
-        defaultValue={searchParams?.get("q") || ""}
+        autoComplete="on"
         className="focus:inherit w-full bg-gray-800/50 px-4 py-2 placeholder:text-inherit"
+        defaultValue={searchParams?.get("q") || ""}
+        name="search"
+        placeholder={intl.formatMessage({ id: "placeholder" })}
+        type="text"
       />
-      <div className="absolute right-0 top-0 mr-3 flex h-full items-center">
+      <button className="absolute right-0 top-0 mr-3 flex h-full items-center">
         <SearchIcon className="h-5" />
-      </div>
+      </button>
     </form>
   );
 }

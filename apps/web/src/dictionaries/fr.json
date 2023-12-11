@@ -11,12 +11,20 @@
         "scarf": "foulard",
         "boots": "bottes"
       }
+    },
+    "footer": {
+      "copyright": "© {currentYear} {siteName}. ",
+      "menu": {
+        "customer-care": "Service client",
+        "follow-us": "Suivez-nous",
+        "information": "Information"
+      }
     }
   },
   "page": {
     "collection": {
       "title": "Collection",
-      "no_products_found": "Aucun produit trouvé dans cette collection"
+      "no-products-found": "Aucun produit trouvé dans cette collection"
     },
     "error": {
       "title": "Quelque chose s'est mal passé",
@@ -24,58 +32,97 @@
       "button": "Essayer à nouveau"
     },
     "home": {
-      "shop_now": "Achetez maintenant"
+      "shop-now": "Achetez maintenant"
     },
     "products": {
-      "add_to_wishlist": "Ajouter à la liste de souhaits",
-      "all_collections": "Toutes les collections",
-      "all_products": "Tous les produits",
-      "back_to_collection": "Retour à la collection",
-      "best_sellers": "Meilleures ventes",
+      "add-to-wishlist": "Ajouter à la liste de souhaits",
+      "all-collections": "Toutes les collections",
+      "all-products": "Tous les produits",
+      "back-to-collection": "Retour à la collection",
+      "best-sellers": "Meilleures ventes",
       "browse": "Parcourir",
       "buy": "Achat",
       "featured": "En vedette",
       "more": "Plus",
       "new": "Nouveau",
-      "out_of_stock": "En rupture de stock",
-      "product_image_loading": "Chargement de l'image du produit",
-      "quick_view": "Aperçu rapide",
+      "out-of-stock": "En rupture de stock",
+      "product-image-loading": "Chargement de l'image du produit",
+      "quick-view": "Aperçu rapide",
       "sale": "Vente",
-      "see_all": "Voir tout",
-      "see_details": "Voir les détails",
-      "select_options": "Sélectionnez les options",
-      "view_all": "Voir tout",
-      "view_details": "Voir les détails",
+      "see-all": "Voir tout",
+      "see-details": "Voir les détails",
+      "select-options": "Sélectionnez les options",
+      "view-all": "Voir tout",
+      "view-details": "Voir les détails",
       "wishlist": "Liste de souhaits"
     },
     "search": {
       "title": "Recherche",
       "description": "Rechercher des produits",
-      "results": "{ résultats, pluriel, =0 {Aucun résultat de recherche} =1 {"
+      "results": "{ results, plural, =0 {Aucun résultat de recherche} =1 {# résultat de recherche} other {# résultat de recherche} } trouvé pour \"{query}\""
     }
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "Impossible d'ajouter l'article au panier",
-      "add_to_cart_enabled": "Ajouter au panier",
-      "out_of_stock": "En rupture de stock",
-      "select_options": "Veuillez sélectionner les options"
+      "add-to-cart-disabled": "Impossible d'ajouter l'article au panier",
+      "add-to-cart-enabled": "Ajouter au panier",
+      "out-of-stock": "En rupture de stock",
+      "select-options": "Veuillez sélectionner les options"
     },
     "Banner": {
       "link": "Livraison gratuite sur les commandes éligibles"
     },
     "CartForm": {
-      "empty_cart": "Votre sac est vide"
+      "empty-cart": "Votre sac est vide",
+      "proceed-to-checkout": "Passer à la caisse"
+    },
+    "CartModal": {
+      "close": "Fermez le sac",
+      "open": "Ouvrez le sac",
+      "title": "Ton sac"
+    },
+    "CollectionList": {
+      "title": "Collections"
     },
     "ConsentDialog": {
+      "close": "Fermer la boîte de dialogue de consentement",
       "description": "L'UNCNSRD utilise des cookies essentiels au fonctionnement de ce site et souhaite utiliser des cookies supplémentaires pour améliorer votre expérience sur ce site.",
       "trigger": "Modifier les paramètres de consentement",
       "title": "Paramètres de consentement"
+    },
+    "ConsentForm": {
+      "accept": "Accepter les cookies sélectionnés",
+      "manage": "Gérer les cookies",
+      "accept-all": "Acceptez tous les cookies",
+      "deny-additional": "Refuser les cookies supplémentaires",
+      "decline": "Déclin",
+      "description": "L'UNCNSRD utilise des cookies essentiels au fonctionnement de ce site et souhaite utiliser des cookies supplémentaires pour améliorer votre expérience sur ce site.",
+      "title": "Paramètres de consentement"
+    },
+    "DeleteItemButton": {
+      "button": "Supprimer l'article du sac"
+    },
+    "EditItemButton": {
+      "decrease": "Diminuer la quantité d'articles",
+      "increase": "Augmenter la quantité d'articles"
+    },
+    "MobileMenu": {
+      "close": "Fermer le menu",
+      "open": "Ouvrir le menu"
     },
     "Menu": {
       "categories": "Catégories",
       "search": "Recherche",
       "toggle": "Voir le menu"
+    },
+    "NavbarContent": {
+      "link-account": "Afficher votre compte",
+      "link-home": "Retour à la page d'accueil",
+      "link-search": "Rechercher des produits",
+      "link-wishlist": "Afficher votre liste de souhaits"
+    },
+    "NavbarSearch": {
+      "placeholder": "Rechercher des produits"
     },
     "Newsletter": {
       "description": "Recevez des mises à jour sur les nouveaux produits et offres.",
@@ -83,8 +130,44 @@
       "submit": "Soumettre",
       "title": "Bulletin"
     },
+    "RedeemCode": {
+      "close": "Fermez la boîte de dialogue du formulaire d'échange de code"
+    },
+    "RedeemCodeForm": {
+      "placeholder": "entrez votre code",
+      "submit": "Utiliser le code"
+    },
     "RelatedProducts": {
       "title": "Produits connexes"
+    },
+    "SearchButton": {
+      "submit": "Soumettre la recherche"
+    },
+    "SearchForm": {
+      "placeholder": "Rechercher des produits"
+    },
+    "SearchLayout": {
+      "title": "Trier par"
+    },
+    "SidebarMenu": {
+      "close": "Fermer le menu",
+      "open": "Ouvrir le menu"
+    },
+    "SignUp": {
+      "title": "Abonnez-vous à notre lettre d'information",
+      "summary": "Inscrivez-vous et recevez 10 % de réduction sur votre premier achat"
+    },
+    "SignUpForm": {
+      "message": "En attente de confirmation d'inscription",
+      "pattern": "La valeur saisie ne correspond pas au format de l'e-mail",
+      "placeholder": "Abonnez-vous à notre lettre d'information",
+      "required": "Adresse e-mail est nécessaire",
+      "submit": "S'inscrire",
+      "toast": {
+        "close-alt": "Fermez ce message",
+        "close-button": "Fermer",
+        "title": "Inscription à la newsletter"
+      }
     }
   }
 }

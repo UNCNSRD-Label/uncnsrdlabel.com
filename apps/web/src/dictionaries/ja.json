@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "コレクション",
-      "no_products_found": "このコレクションに製品は見つかりませんでした"
+      "no-products-found": "このコレクションに製品は見つかりませんでした"
     },
     "error": {
       "title": "何か問題が発生しました",
@@ -24,28 +24,28 @@
       "button": "もう一度やり直してください"
     },
     "home": {
-      "shop_now": "今すぐ購入"
+      "shop-now": "今すぐ購入"
     },
     "products": {
-      "add_to_wishlist": "ほしい物リストに追加する",
-      "all_collections": "すべてのコレクション",
-      "all_products": "すべての製品",
-      "back_to_collection": "コレクションに戻る",
-      "best_sellers": "ベストセラー",
+      "add-to-wishlist": "ほしい物リストに追加する",
+      "all-collections": "すべてのコレクション",
+      "all-products": "すべての製品",
+      "back-to-collection": "コレクションに戻る",
+      "best-sellers": "ベストセラー",
       "browse": "ブラウズ",
       "buy": "購入",
       "featured": "特徴",
       "more": "もっと",
       "new": "新しい",
-      "out_of_stock": "在庫切れ",
-      "product_image_loading": "商品画像読み込み",
-      "quick_view": "クイックビュー",
+      "out-of-stock": "在庫切れ",
+      "product-image-loading": "商品画像読み込み",
+      "quick-view": "クイックビュー",
       "sale": "セール",
-      "see_all": "すべてを見る",
-      "see_details": "詳細を見る",
-      "select_options": "オプションを選択",
-      "view_all": "すべて見る",
-      "view_details": "詳細を見る",
+      "see-all": "すべてを見る",
+      "see-details": "詳細を見る",
+      "select-options": "オプションを選択",
+      "view-all": "すべて見る",
+      "view-details": "詳細を見る",
       "wishlist": "ウィッシュリスト"
     },
     "search": {
@@ -56,16 +56,16 @@
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "バッグにアイテムを追加できません",
-      "add_to_cart_enabled": "かごに入れます",
-      "out_of_stock": "在庫切れ",
-      "select_options": "オプションを選択してください"
+      "add-to-cart-disabled": "バッグにアイテムを追加できません",
+      "add-to-cart-enabled": "かごに入れます",
+      "out-of-stock": "在庫切れ",
+      "select-options": "オプションを選択してください"
     },
     "Banner": {
       "link": "対象注文で送料無料"
     },
     "CartForm": {
-      "empty_cart": "あなたのバッグは空です"
+      "empty-cart": "あなたのバッグは空です"
     },
     "ConsentDialog": {
       "description": "UNCNSRD は、このサイトの動作に不可欠な Cookie を使用しており、このサイトでのエクスペリエンスを向上させるために追加の Cookie を使用したいと考えています。",

@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Sbírka",
-      "no_products_found": "V této kolekci nebyly nalezeny žádné produkty"
+      "no-products-found": "V této kolekci nebyly nalezeny žádné produkty"
     },
     "error": {
       "title": "Něco se pokazilo",
@@ -24,28 +24,28 @@
       "button": "Zkus to znovu"
     },
     "home": {
-      "shop_now": "Kupuj teď"
+      "shop-now": "Kupuj teď"
     },
     "products": {
-      "add_to_wishlist": "Přidat do seznamu přání",
-      "all_collections": "Všechny kolekce",
-      "all_products": "Všechny produkty",
-      "back_to_collection": "Zpět ke sbírce",
-      "best_sellers": "Nejlepší prodejci",
+      "add-to-wishlist": "Přidat do seznamu přání",
+      "all-collections": "Všechny kolekce",
+      "all-products": "Všechny produkty",
+      "back-to-collection": "Zpět ke sbírce",
+      "best-sellers": "Nejlepší prodejci",
       "browse": "Procházet",
       "buy": "Nákup",
       "featured": "Nejlepší",
       "more": "Více",
       "new": "Nový",
-      "out_of_stock": "Vyprodáno",
-      "product_image_loading": "Načítání obrázku produktu",
-      "quick_view": "Rychlý pohled",
+      "out-of-stock": "Vyprodáno",
+      "product-image-loading": "Načítání obrázku produktu",
+      "quick-view": "Rychlý pohled",
       "sale": "Prodej",
-      "see_all": "Vidět vše",
-      "see_details": "Prohlednout detaily",
-      "select_options": "Vyberte možnosti",
-      "view_all": "Zobrazit vše",
-      "view_details": "Zobrazit podrobnosti",
+      "see-all": "Vidět vše",
+      "see-details": "Prohlednout detaily",
+      "select-options": "Vyberte možnosti",
+      "view-all": "Zobrazit vše",
+      "view-details": "Zobrazit podrobnosti",
       "wishlist": "Seznam přání"
     },
     "search": {
@@ -56,16 +56,16 @@
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "Nelze přidat položku do tašky",
-      "add_to_cart_enabled": "Přidat do batohu",
-      "out_of_stock": "Vyprodáno",
-      "select_options": "Vyberte možnosti"
+      "add-to-cart-disabled": "Nelze přidat položku do tašky",
+      "add-to-cart-enabled": "Přidat do batohu",
+      "out-of-stock": "Vyprodáno",
+      "select-options": "Vyberte možnosti"
     },
     "Banner": {
       "link": "Doprava zdarma u způsobilých objednávek"
     },
     "CartForm": {
-      "empty_cart": "Vaše taška je prázdná"
+      "empty-cart": "Vaše taška je prázdná"
     },
     "ConsentDialog": {
       "description": "UNCNSRD používá soubory cookie, které jsou nezbytné pro fungování tohoto webu, a rád by používal další soubory cookie ke zlepšení vaší zkušenosti na tomto webu.",

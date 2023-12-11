@@ -4,15 +4,21 @@ import { Navbar } from "@/components/layout/navbar/index";
 import { Collections } from "@/components/layout/search/collections";
 import { FilterList } from "@/components/layout/search/filter/index";
 import { LoadingDots } from "@/components/loading/dots";
+import { getIntl } from "@/lib/i18n";
+import { state$ } from "@/lib/store";
 import { productCollectionSorting } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { Suspense } from "react";
 
-export default function SearchLayout({
+export default async function SearchLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const lang = state$.lang.get();
+
+  const intl = await getIntl(lang, "component.SearchLayout");
+
   return (
     <>
       <Navbar sticky>
@@ -39,7 +45,7 @@ export default function SearchLayout({
                 "true" && "hidden",
             )}
           >
-            <FilterList list={productCollectionSorting} title="Sort by" />
+            <FilterList list={productCollectionSorting} title={intl.formatMessage({ id: "title" })} />
           </div>
         </div>
         <Logo className="bottom-20" />

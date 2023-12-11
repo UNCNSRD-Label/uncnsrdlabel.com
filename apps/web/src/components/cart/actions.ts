@@ -12,6 +12,7 @@ import {
   updateCartHandler,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { TAGS } from '@uncnsrdlabel/lib';
+import { parse } from 'bcp-47';
 import { revalidateTag } from 'next/cache';
 import { cookies } from "next/headers";
 
@@ -19,119 +20,124 @@ export const addItem = async (
   _prevState: any,
   selectedVariantId: string,
 ): Promise<string | undefined> => {
-  const country = state$.country.get();
-  const lang = state$.lang.get();
+  if (!selectedVariantId) {
+    return "Missing selectedVariantId";
+  }
+
+  const lang = cookies().get("lang")?.value ?? process.env.NEXT_PUBLIC_DEFAULT_LOCALE!;
+ 
+  const parsedLang = parse(lang);
+
+  const country = parsedLang.region;
 
   let cartId = cookies().get("cartId")?.value;
   let cartFragmentRef: FragmentType<typeof cartFragment> | null = null;
-
-  console.log({ lang, cartFragmentRef });
 
   if (cartId) {
     cartFragmentRef = await getCartHandler({ variables: { cartId }, lang });
   }
 
-
   if (!cartId || !cartFragmentRef) {
-    cartFragmentRef = await createCartHandler({
-      variables: {
-        input: {
-          // attributes: [
-          //   {
-          //     key: "",
-          //     value: ""
-          //   }
-          // ],
-          buyerIdentity: {
-            // @ts-expect-error Type 'CountryCode' is not assignable to type 'InputMaybe<CountryCode> | undefined'.
-            countryCode: country,
-            // customerAccessToken: "",
-            // deliveryAddressPreferences: [
+    try {
+      cartFragmentRef = await createCartHandler({
+        variables: {
+          input: {
+            // attributes: [
             //   {
-            //     customerAddressId: "",
-            //     deliveryAddress: {
-            //       address1: "",
-            //       address2: "",
-            //       city: "",
-            //       company: "",
-            //       country: "",
-            //       firstName: "",
-            //       lastName: "",
-            //       phone: "",
-            //       province: "",
-            //       zip: ""
-            //     }
+            //     key: "",
+            //     value: ""
             //   }
             // ],
-            // email: "",
-            // phone: "",
-            // walletPreferences: [
+            buyerIdentity: {
+              // @ts-expect-error Type 'CountryCode' is not assignable to type 'InputMaybe<CountryCode> | undefined'.
+              countryCode: country,
+              // customerAccessToken: "",
+              // deliveryAddressPreferences: [
+              //   {
+              //     customerAddressId: "",
+              //     deliveryAddress: {
+              //       address1: "",
+              //       address2: "",
+              //       city: "",
+              //       company: "",
+              //       country: "",
+              //       firstName: "",
+              //       lastName: "",
+              //       phone: "",
+              //       province: "",
+              //       zip: ""
+              //     }
+              //   }
+              // ],
+              // email: "",
+              // phone: "",
+              // walletPreferences: [
+              //   ""
+              // ]
+            },
+            // discountCodes: [
             //   ""
-            // ]
-          },
-          // discountCodes: [
-          //   ""
-          // ],
-          // lines: [
-          //   {
-          //     attributes: [
-          //       {
-          //         key: "",
-          //         value: ""
-          //       }
-          //     ],
-          //     merchandiseId: "",
-          //     quantity: 1,
-          //     sellingPlanId: ""
-          //   }
-          // ],
-          lines: [
-            {
-              merchandiseId: selectedVariantId,
-              quantity: 1
-            }
-          ],
-          // metafields: [
-          //   {
-          //     key: "",
-          //     type: "",
-          //     value: ""
-          //   }
-          // ],
-          // note: ""
+            // ],
+            // lines: [
+            //   {
+            //     attributes: [
+            //       {
+            //         key: "",
+            //         value: ""
+            //       }
+            //     ],
+            //     merchandiseId: "",
+            //     quantity: 1,
+            //     sellingPlanId: ""
+            //   }
+            // ],
+            lines: [
+              {
+                merchandiseId: selectedVariantId,
+                quantity: 1
+              }
+            ],
+            // metafields: [
+            //   {
+            //     key: "",
+            //     type: "",
+            //     value: ""
+            //   }
+            // ],
+            // note: ""
+          }
         }
+      });
+
+      const cart = getFragmentData(cartFragment, cartFragmentRef);
+
+      if (!cart) {
+        return "Error creating cart";
       }
-    });
 
-    const cart = getFragmentData(cartFragment, cartFragmentRef);
+      cartId = cart.id;
 
-    if (!cart) {
+      cookies().set("cartId", cartId);
+    } catch (error) {
       return "Error creating cart";
     }
+  } else {
+    try {
+      await addToCartHandler(
+        {
+          variables: {
+            cartId,
+            lines: [{ merchandiseId: selectedVariantId, quantity: 1 }],
+          },
+        }
+      );
 
-    cartId = cart.id;
-
-    cookies().set("cartId", cartId);
+      revalidateTag(TAGS.cart);
+    } catch (error) {
+      return "Error adding item to cart";
+    }
   }
 
-  if (!selectedVariantId) {
-    return "Missing selectedVariantId";
-  }
-
-  try {
-    await addToCartHandler(
-      {
-        variables: {
-          cartId,
-          lines: [{ merchandiseId: selectedVariantId, quantity: 1 }],
-        },
-      }
-    );
-
-    revalidateTag(TAGS.cart);
-  } catch (error) {
-    return "Error adding item to cart";
-  }
 };
 
 export const removeItem = async (
