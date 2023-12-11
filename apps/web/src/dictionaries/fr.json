@@ -11,6 +11,14 @@
         "scarf": "foulard",
         "boots": "bottes"
       }
+    },
+    "footer": {
+      "copyright": "© {currentYear} {siteName}. ",
+      "menu": {
+        "customer-care": "Service client",
+        "follow-us": "Suivez-nous",
+        "information": "Information"
+      }
     }
   },
   "page": {
@@ -65,17 +73,56 @@
       "link": "Livraison gratuite sur les commandes éligibles"
     },
     "CartForm": {
-      "empty-cart": "Votre sac est vide"
+      "empty-cart": "Votre sac est vide",
+      "proceed-to-checkout": "Passer à la caisse"
+    },
+    "CartModal": {
+      "close": "Fermez le sac",
+      "open": "Ouvrez le sac",
+      "title": "Ton sac"
+    },
+    "CollectionList": {
+      "title": "Collections"
     },
     "ConsentDialog": {
+      "close": "Fermer la boîte de dialogue de consentement",
       "description": "L'UNCNSRD utilise des cookies essentiels au fonctionnement de ce site et souhaite utiliser des cookies supplémentaires pour améliorer votre expérience sur ce site.",
       "trigger": "Modifier les paramètres de consentement",
       "title": "Paramètres de consentement"
+    },
+    "ConsentForm": {
+      "accept": "Accepter les cookies sélectionnés",
+      "manage": "Gérer les cookies",
+      "accept-all": "Acceptez tous les cookies",
+      "deny-additional": "Refuser les cookies supplémentaires",
+      "decline": "Déclin",
+      "description": "L'UNCNSRD utilise des cookies essentiels au fonctionnement de ce site et souhaite utiliser des cookies supplémentaires pour améliorer votre expérience sur ce site.",
+      "title": "Paramètres de consentement"
+    },
+    "DeleteItemButton": {
+      "button": "Supprimer l'article du sac"
+    },
+    "EditItemButton": {
+      "decrease": "Diminuer la quantité d'articles",
+      "increase": "Augmenter la quantité d'articles"
+    },
+    "MobileMenu": {
+      "close": "Fermer le menu",
+      "open": "Ouvrir le menu"
     },
     "Menu": {
       "categories": "Catégories",
       "search": "Recherche",
       "toggle": "Voir le menu"
+    },
+    "NavbarContent": {
+      "link-account": "Afficher votre compte",
+      "link-home": "Retour à la page d'accueil",
+      "link-search": "Rechercher des produits",
+      "link-wishlist": "Afficher votre liste de souhaits"
+    },
+    "NavbarSearch": {
+      "placeholder": "Rechercher des produits"
     },
     "Newsletter": {
       "description": "Recevez des mises à jour sur les nouveaux produits et offres.",
@@ -83,8 +130,44 @@
       "submit": "Soumettre",
       "title": "Bulletin"
     },
+    "RedeemCode": {
+      "close": "Fermez la boîte de dialogue du formulaire d'échange de code"
+    },
+    "RedeemCodeForm": {
+      "placeholder": "entrez votre code",
+      "submit": "Utiliser le code"
+    },
     "RelatedProducts": {
       "title": "Produits connexes"
+    },
+    "SearchButton": {
+      "submit": "Soumettre la recherche"
+    },
+    "SearchForm": {
+      "placeholder": "Rechercher des produits"
+    },
+    "SearchLayout": {
+      "title": "Trier par"
+    },
+    "SidebarMenu": {
+      "close": "Fermer le menu",
+      "open": "Ouvrir le menu"
+    },
+    "SignUp": {
+      "title": "Abonnez-vous à notre lettre d'information",
+      "summary": "Inscrivez-vous et recevez 10 % de réduction sur votre premier achat"
+    },
+    "SignUpForm": {
+      "message": "En attente de confirmation d'inscription",
+      "pattern": "La valeur saisie ne correspond pas au format de l'e-mail",
+      "placeholder": "Abonnez-vous à notre lettre d'information",
+      "required": "Adresse e-mail est nécessaire",
+      "submit": "S'inscrire",
+      "toast": {
+        "close-alt": "Fermez ce message",
+        "close-button": "Fermer",
+        "title": "Inscription à la newsletter"
+      }
     }
   }
 }
