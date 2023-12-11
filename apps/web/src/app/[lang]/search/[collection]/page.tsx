@@ -3,13 +3,13 @@ import { ProductGridItems } from "@/components/layout/product-grid-items";
 import { getAlternativeLanguages, getIntl } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
 import {
-  collectionFragment,
-  getCollectionHandler,
-  getCollectionProductsHandler,
-  getFragmentData,
-  productCollectionDefaultSort,
-  productCollectionSorting,
-  seoFragment,
+    collectionFragment,
+    getCollectionHandler,
+    getCollectionProductsHandler,
+    getFragmentData,
+    productCollectionDefaultSort,
+    productCollectionSorting,
+    seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";

@@ -21,8 +21,10 @@ export function SubmitButton({
   className?: string;
   selectedVariantId: string | undefined;
 }) {
-  const { pending } = useFormStatus();
   const intl = useGetIntl("component.AddToCart");
+
+  const { pending } = useFormStatus();
+  
   const buttonClasses =
     "btn btn-base btn-primary btn-bg relative w-full justify-center py-4 text-sm";
   const disabledClasses = "cursor-not-allowed opacity-60 hover:opacity-60";

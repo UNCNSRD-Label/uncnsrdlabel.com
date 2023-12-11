@@ -25,12 +25,9 @@ export const addItem = async (
   let cartId = cookies().get("cartId")?.value;
   let cartFragmentRef: FragmentType<typeof cartFragment> | null = null;
 
-  console.log({ lang, cartFragmentRef });
-
   if (cartId) {
     cartFragmentRef = await getCartHandler({ variables: { cartId }, lang });
   }
-
 
   if (!cartId || !cartFragmentRef) {
     cartFragmentRef = await createCartHandler({

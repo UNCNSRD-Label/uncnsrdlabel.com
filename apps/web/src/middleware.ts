@@ -91,8 +91,6 @@ export async function middleware(request: NextRequest) {
       (BCP47LanguageTag) => pathname.startsWith(`/${BCP47LanguageTag}`)
     )
 
-    console.log({ cookie, detectedLanguageTagInPathname, pathnameHasSupportedBCP47LanguageTag, detectedCountryCode, detectedLanguageCode, localization, defaultLanguageTag, BCP47LanguageTags, languages, detectedLanguageTag });
-
     state$.country.set(detectedCountryCode);
     state$.lang.set(detectedLanguageTag);
     state$.language.set(detectedLanguageCode);
