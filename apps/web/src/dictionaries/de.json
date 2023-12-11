@@ -59,7 +59,7 @@
     "search": {
       "title": "Suchen",
       "description": "Nach Produkten suchen",
-      "results": "{ Ergebnisse, Plural, =0 {Keine Suchergebnisse} =1 {"
+      "results": "{ results, plural, =0 {Es wurden keine Suchergebnisse} =1 {# Suchergebnis} other {# Suchergebnisse} } für „{query}“ gefunden"
     }
   },
   "component": {
