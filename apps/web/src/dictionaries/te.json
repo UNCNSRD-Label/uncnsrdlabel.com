@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "సేకరణ",
-      "no_products_found": "ఈ సేకరణలో ఉత్పత్తులు ఏవీ కనుగొనబడలేదు"
+      "no-products-found": "ఈ సేకరణలో ఉత్పత్తులు ఏవీ కనుగొనబడలేదు"
     },
     "error": {
       "title": "ఎక్కడో తేడ జరిగింది",
@@ -24,28 +24,28 @@
       "button": "మళ్లీ ప్రయత్నించండి"
     },
     "home": {
-      "shop_now": "ఇప్పుడు కొను"
+      "shop-now": "ఇప్పుడు కొను"
     },
     "products": {
-      "add_to_wishlist": "కోరిక జాబితాకి జోడించండి",
-      "all_collections": "అన్ని సేకరణలు",
-      "all_products": "అన్ని ఉత్పత్తులు",
-      "back_to_collection": "సేకరణకు తిరిగి వెళ్ళు",
-      "best_sellers": "ఉత్తమ అమ్మకందారుల",
+      "add-to-wishlist": "కోరిక జాబితాకి జోడించండి",
+      "all-collections": "అన్ని సేకరణలు",
+      "all-products": "అన్ని ఉత్పత్తులు",
+      "back-to-collection": "సేకరణకు తిరిగి వెళ్ళు",
+      "best-sellers": "ఉత్తమ అమ్మకందారుల",
       "browse": "బ్రౌజ్ చేయండి",
       "buy": "కొనుగోలు",
       "featured": "ఫీచర్ చేయబడింది",
       "more": "మరింత",
       "new": "కొత్తది",
-      "out_of_stock": "స్టాక్ లేదు",
-      "product_image_loading": "ఉత్పత్తి చిత్రం లోడ్ అవుతోంది",
-      "quick_view": "త్వరిత వీక్షణ",
+      "out-of-stock": "స్టాక్ లేదు",
+      "product-image-loading": "ఉత్పత్తి చిత్రం లోడ్ అవుతోంది",
+      "quick-view": "త్వరిత వీక్షణ",
       "sale": "అమ్మకం",
-      "see_all": "అన్నింటిని చూడు",
-      "see_details": "వివరములు చూడు",
-      "select_options": "ఎంపికలను ఎంచుకోండి",
-      "view_all": "అన్నీ చూడండి",
-      "view_details": "వివరాలను చూడండి",
+      "see-all": "అన్నింటిని చూడు",
+      "see-details": "వివరములు చూడు",
+      "select-options": "ఎంపికలను ఎంచుకోండి",
+      "view-all": "అన్నీ చూడండి",
+      "view-details": "వివరాలను చూడండి",
       "wishlist": "కోరికల జాబితా"
     },
     "search": {
@@ -56,16 +56,16 @@
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "వస్తువును బ్యాగ్‌కి జోడించడం సాధ్యపడలేదు",
-      "add_to_cart_enabled": "బ్యాగ్‌కి జోడించండి",
-      "out_of_stock": "స్టాక్ లేదు",
-      "select_options": "దయచేసి ఎంపికలను ఎంచుకోండి"
+      "add-to-cart-disabled": "వస్తువును బ్యాగ్‌కి జోడించడం సాధ్యపడలేదు",
+      "add-to-cart-enabled": "బ్యాగ్‌కి జోడించండి",
+      "out-of-stock": "స్టాక్ లేదు",
+      "select-options": "దయచేసి ఎంపికలను ఎంచుకోండి"
     },
     "Banner": {
       "link": "అర్హత ఉన్న ఆర్డర్‌లపై ఉచిత షిప్పింగ్"
     },
     "CartForm": {
-      "empty_cart": "మీ బ్యాగ్ ఖాళీగా ఉంది"
+      "empty-cart": "మీ బ్యాగ్ ఖాళీగా ఉంది"
     },
     "ConsentDialog": {
       "description": "UNCNSRD ఈ సైట్ పని చేయడానికి అవసరమైన కుక్కీలను ఉపయోగిస్తుంది మరియు ఈ సైట్‌లో మీ అనుభవాన్ని మెరుగుపరచడానికి అదనపు కుక్కీలను ఉపయోగించాలనుకుంటోంది.",

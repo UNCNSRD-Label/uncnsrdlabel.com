@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "مجموعہ",
-      "no_products_found": "اس مجموعہ میں کوئی پروڈکٹس نہیں ملے"
+      "no-products-found": "اس مجموعہ میں کوئی پروڈکٹس نہیں ملے"
     },
     "error": {
       "title": "کچھ غلط ہو گیا",
@@ -24,28 +24,28 @@
       "button": "دوبارہ کوشش کریں"
     },
     "home": {
-      "shop_now": "ابھی خریداری کریں۔"
+      "shop-now": "ابھی خریداری کریں۔"
     },
     "products": {
-      "add_to_wishlist": "خواہشات کی فہرست میں شامل کرنا",
-      "all_collections": "تمام مجموعے۔",
-      "all_products": "تمام مصنوعات",
-      "back_to_collection": "مجموعہ پر واپس جائیں۔",
-      "best_sellers": "بہترین فروخت کنندگان",
+      "add-to-wishlist": "خواہشات کی فہرست میں شامل کرنا",
+      "all-collections": "تمام مجموعے۔",
+      "all-products": "تمام مصنوعات",
+      "back-to-collection": "مجموعہ پر واپس جائیں۔",
+      "best-sellers": "بہترین فروخت کنندگان",
       "browse": "براؤز کریں۔",
       "buy": "خریداری",
       "featured": "نمایاں",
       "more": "مزید",
       "new": "نئی",
-      "out_of_stock": "زخیرے سے باہر",
-      "product_image_loading": "پروڈکٹ کی تصویر لوڈ ہو رہی ہے۔",
-      "quick_view": "فوری نظارہ",
+      "out-of-stock": "زخیرے سے باہر",
+      "product-image-loading": "پروڈکٹ کی تصویر لوڈ ہو رہی ہے۔",
+      "quick-view": "فوری نظارہ",
       "sale": "فروخت",
-      "see_all": "تمام دیکھیں",
-      "see_details": "تفصیلات دیکھیں",
-      "select_options": "اختیارات منتخب کریں۔",
-      "view_all": "سب دیکھیں",
-      "view_details": "تفصیلات دیکھیں",
+      "see-all": "تمام دیکھیں",
+      "see-details": "تفصیلات دیکھیں",
+      "select-options": "اختیارات منتخب کریں۔",
+      "view-all": "سب دیکھیں",
+      "view-details": "تفصیلات دیکھیں",
       "wishlist": "خواہش کی فہرست"
     },
     "search": {
@@ -56,16 +56,16 @@
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "بیگ میں آئٹم شامل کرنے سے قاصر",
-      "add_to_cart_enabled": "بیگ میں ڈال دو",
-      "out_of_stock": "زخیرے سے باہر",
-      "select_options": "براہ کرم اختیارات منتخب کریں۔"
+      "add-to-cart-disabled": "بیگ میں آئٹم شامل کرنے سے قاصر",
+      "add-to-cart-enabled": "بیگ میں ڈال دو",
+      "out-of-stock": "زخیرے سے باہر",
+      "select-options": "براہ کرم اختیارات منتخب کریں۔"
     },
     "Banner": {
       "link": "اہل آرڈرز پر مفت شپنگ"
     },
     "CartForm": {
-      "empty_cart": "آپ کا بیگ خالی ہے۔"
+      "empty-cart": "آپ کا بیگ خالی ہے۔"
     },
     "ConsentDialog": {
       "description": "UNCNSRD کوکیز استعمال کرتا ہے جو اس سائٹ کو کام کرنے کے لیے ضروری ہیں اور اس سائٹ پر آپ کے تجربے کو بہتر بنانے کے لیے اضافی کوکیز استعمال کرنا چاہیں گے۔",

@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Συλλογή",
-      "no_products_found": "Δεν βρέθηκαν προϊόντα σε αυτή τη συλλογή"
+      "no-products-found": "Δεν βρέθηκαν προϊόντα σε αυτή τη συλλογή"
     },
     "error": {
       "title": "Κάτι πήγε στραβά",
@@ -24,28 +24,28 @@
       "button": "Προσπάθησε ξανά"
     },
     "home": {
-      "shop_now": "Ψώνισε τώρα"
+      "shop-now": "Ψώνισε τώρα"
     },
     "products": {
-      "add_to_wishlist": "Πρόσθεσε στην λίστα επιθυμιών",
-      "all_collections": "Όλες οι συλλογές",
-      "all_products": "Ολα τα προϊόντα",
-      "back_to_collection": "Επιστροφή στη συλλογή",
-      "best_sellers": "Best Sellers",
+      "add-to-wishlist": "Πρόσθεσε στην λίστα επιθυμιών",
+      "all-collections": "Όλες οι συλλογές",
+      "all-products": "Ολα τα προϊόντα",
+      "back-to-collection": "Επιστροφή στη συλλογή",
+      "best-sellers": "Best Sellers",
       "browse": "Ξεφυλλίζω",
       "buy": "Αγορά",
       "featured": "Προτεινόμενα",
       "more": "Περισσότερο",
       "new": "Νέος",
-      "out_of_stock": "Εκτός αποθέματος",
-      "product_image_loading": "Φόρτωση εικόνας προϊόντος",
-      "quick_view": "Γρήγορη ματιά",
+      "out-of-stock": "Εκτός αποθέματος",
+      "product-image-loading": "Φόρτωση εικόνας προϊόντος",
+      "quick-view": "Γρήγορη ματιά",
       "sale": "Πώληση",
-      "see_all": "Προβολή όλων",
-      "see_details": "Δείτε λεπτομέρειες",
-      "select_options": "Επιλέξτε επιλογές",
-      "view_all": "Προβολή όλων",
-      "view_details": "Δείτε τις λεπτομέρειες",
+      "see-all": "Προβολή όλων",
+      "see-details": "Δείτε λεπτομέρειες",
+      "select-options": "Επιλέξτε επιλογές",
+      "view-all": "Προβολή όλων",
+      "view-details": "Δείτε τις λεπτομέρειες",
       "wishlist": "Λίστα επιθυμιών"
     },
     "search": {
@@ -56,16 +56,16 @@
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "Δεν είναι δυνατή η προσθήκη αντικειμένου στην τσάντα",
-      "add_to_cart_enabled": "Προσθήκη στην τσάντα",
-      "out_of_stock": "Εκτός αποθέματος",
-      "select_options": "Επιλέξτε επιλογές"
+      "add-to-cart-disabled": "Δεν είναι δυνατή η προσθήκη αντικειμένου στην τσάντα",
+      "add-to-cart-enabled": "Προσθήκη στην τσάντα",
+      "out-of-stock": "Εκτός αποθέματος",
+      "select-options": "Επιλέξτε επιλογές"
     },
     "Banner": {
       "link": "Δωρεάν αποστολή για επιλέξιμες παραγγελίες"
     },
     "CartForm": {
-      "empty_cart": "Η τσάντα σας είναι άδεια"
+      "empty-cart": "Η τσάντα σας είναι άδεια"
     },
     "ConsentDialog": {
       "description": "Το UNCNSRD χρησιμοποιεί cookies που είναι απαραίτητα για τη λειτουργία αυτού του ιστότοπου και θα ήθελε να χρησιμοποιήσει επιπλέον cookies για να βελτιώσει την εμπειρία σας σε αυτόν τον ιστότοπο.",

@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "ของสะสม",
-      "no_products_found": "ไม่พบสินค้าในคอลเลกชันนี้"
+      "no-products-found": "ไม่พบสินค้าในคอลเลกชันนี้"
     },
     "error": {
       "title": "บางอย่างผิดพลาด",
@@ -24,28 +24,28 @@
       "button": "ลองอีกครั้ง"
     },
     "home": {
-      "shop_now": "ช้อปเลย"
+      "shop-now": "ช้อปเลย"
     },
     "products": {
-      "add_to_wishlist": "เพิ่มเข้าในรายการที่ต้องการ",
-      "all_collections": "คอลเลกชันทั้งหมด",
-      "all_products": "สินค้าทั้งหมด",
-      "back_to_collection": "กลับไปที่คอลเลกชัน",
-      "best_sellers": "ขายดี",
+      "add-to-wishlist": "เพิ่มเข้าในรายการที่ต้องการ",
+      "all-collections": "คอลเลกชันทั้งหมด",
+      "all-products": "สินค้าทั้งหมด",
+      "back-to-collection": "กลับไปที่คอลเลกชัน",
+      "best-sellers": "ขายดี",
       "browse": "เรียกดู",
       "buy": "ซื้อ",
       "featured": "โดดเด่น",
       "more": "มากกว่า",
       "new": "ใหม่",
-      "out_of_stock": "สินค้าหมด",
-      "product_image_loading": "กำลังโหลดรูปภาพสินค้า",
-      "quick_view": "ดูด่วน",
+      "out-of-stock": "สินค้าหมด",
+      "product-image-loading": "กำลังโหลดรูปภาพสินค้า",
+      "quick-view": "ดูด่วน",
       "sale": "ขาย",
-      "see_all": "ดูทั้งหมด",
-      "see_details": "ดูรายละเอียด",
-      "select_options": "เลือกตัวเลือก",
-      "view_all": "ดูทั้งหมด",
-      "view_details": "ดูรายละเอียด",
+      "see-all": "ดูทั้งหมด",
+      "see-details": "ดูรายละเอียด",
+      "select-options": "เลือกตัวเลือก",
+      "view-all": "ดูทั้งหมด",
+      "view-details": "ดูรายละเอียด",
       "wishlist": "สิ่งที่ปรารถนา"
     },
     "search": {
@@ -56,16 +56,16 @@
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "ไม่สามารถเพิ่มรายการลงในกระเป๋าได้",
-      "add_to_cart_enabled": "เพิ่มลงถุง",
-      "out_of_stock": "สินค้าหมด",
-      "select_options": "โปรดเลือกตัวเลือก"
+      "add-to-cart-disabled": "ไม่สามารถเพิ่มรายการลงในกระเป๋าได้",
+      "add-to-cart-enabled": "เพิ่มลงถุง",
+      "out-of-stock": "สินค้าหมด",
+      "select-options": "โปรดเลือกตัวเลือก"
     },
     "Banner": {
       "link": "จัดส่งฟรีเมื่อสั่งซื้อที่มีสิทธิ์"
     },
     "CartForm": {
-      "empty_cart": "กระเป๋าของคุณว่างเปล่า"
+      "empty-cart": "กระเป๋าของคุณว่างเปล่า"
     },
     "ConsentDialog": {
       "description": "UNCNSRD ใช้คุกกี้ที่จำเป็นในการทำให้ไซต์นี้ใช้งานได้ และต้องการใช้คุกกี้เพิ่มเติมเพื่อปรับปรุงประสบการณ์ของคุณบนไซต์นี้",

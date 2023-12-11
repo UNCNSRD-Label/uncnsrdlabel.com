@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Mbledhja",
-      "no_products_found": "Nuk u gjet asnjë produkt në këtë koleksion"
+      "no-products-found": "Nuk u gjet asnjë produkt në këtë koleksion"
     },
     "error": {
       "title": "Dicka shkoi keq",
@@ -24,28 +24,28 @@
       "button": "Provo përsëri"
     },
     "home": {
-      "shop_now": "Bli Tani"
+      "shop-now": "Bli Tani"
     },
     "products": {
-      "add_to_wishlist": "Shtoje tek Preferencat Shtoje tek Lista e deshirave",
-      "all_collections": "Të gjitha koleksionet",
-      "all_products": "Të gjitha produktet",
-      "back_to_collection": "Kthehu te koleksioni",
-      "best_sellers": "Shitesit me te mire",
+      "add-to-wishlist": "Shtoje tek Preferencat Shtoje tek Lista e deshirave",
+      "all-collections": "Të gjitha koleksionet",
+      "all-products": "Të gjitha produktet",
+      "back-to-collection": "Kthehu te koleksioni",
+      "best-sellers": "Shitesit me te mire",
       "browse": "Shfletoni",
       "buy": "Blerje",
       "featured": "Të paraqitura",
       "more": "Më shumë",
       "new": "I ri",
-      "out_of_stock": "Jashtë stok",
-      "product_image_loading": "Ngarkimi i imazhit të produktit",
-      "quick_view": "Vështrim i shpejtë",
+      "out-of-stock": "Jashtë stok",
+      "product-image-loading": "Ngarkimi i imazhit të produktit",
+      "quick-view": "Vështrim i shpejtë",
       "sale": "Shitje",
-      "see_all": "Shiko gjithcka",
-      "see_details": "Shih detajet",
-      "select_options": "Zgjidhni opsionet",
-      "view_all": "Shiko te gjitha",
-      "view_details": "Shikoni detajet",
+      "see-all": "Shiko gjithcka",
+      "see-details": "Shih detajet",
+      "select-options": "Zgjidhni opsionet",
+      "view-all": "Shiko te gjitha",
+      "view-details": "Shikoni detajet",
       "wishlist": "Lista e dëshirave"
     },
     "search": {
@@ -56,16 +56,16 @@
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "Nuk mund të shtohet artikulli në çantë",
-      "add_to_cart_enabled": "Shtoni në qese",
-      "out_of_stock": "Jashtë stok",
-      "select_options": "Ju lutemi zgjidhni opsionet"
+      "add-to-cart-disabled": "Nuk mund të shtohet artikulli në çantë",
+      "add-to-cart-enabled": "Shtoni në qese",
+      "out-of-stock": "Jashtë stok",
+      "select-options": "Ju lutemi zgjidhni opsionet"
     },
     "Banner": {
       "link": "Transporti falas për porositë e pranueshme"
     },
     "CartForm": {
-      "empty_cart": "Çanta juaj është bosh"
+      "empty-cart": "Çanta juaj është bosh"
     },
     "ConsentDialog": {
       "description": "UNCNSRD përdor cookie që janë thelbësore për funksionimin e kësaj faqeje dhe dëshiron të përdorë skedarë shtesë për të përmirësuar përvojën tuaj në këtë sajt.",

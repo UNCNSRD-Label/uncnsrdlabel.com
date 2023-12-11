@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "수집",
-      "no_products_found": "이 컬렉션에는 제품이 없습니다."
+      "no-products-found": "이 컬렉션에는 제품이 없습니다."
     },
     "error": {
       "title": "문제가 발생했습니다.",
@@ -24,28 +24,28 @@
       "button": "다시 시도하십시오"
     },
     "home": {
-      "shop_now": "지금 쇼핑하세요"
+      "shop-now": "지금 쇼핑하세요"
     },
     "products": {
-      "add_to_wishlist": "위시리스트에 추가",
-      "all_collections": "모든 컬렉션",
-      "all_products": "모든 상품",
-      "back_to_collection": "컬렉션으로 돌아가기",
-      "best_sellers": "베스트 셀러",
+      "add-to-wishlist": "위시리스트에 추가",
+      "all-collections": "모든 컬렉션",
+      "all-products": "모든 상품",
+      "back-to-collection": "컬렉션으로 돌아가기",
+      "best-sellers": "베스트 셀러",
       "browse": "검색",
       "buy": "구입",
       "featured": "추천",
       "more": "더",
       "new": "새로운",
-      "out_of_stock": "품절",
-      "product_image_loading": "제품 이미지 로딩",
-      "quick_view": "퀵뷰",
+      "out-of-stock": "품절",
+      "product-image-loading": "제품 이미지 로딩",
+      "quick-view": "퀵뷰",
       "sale": "판매",
-      "see_all": "모두 보기",
-      "see_details": "자세히보다",
-      "select_options": "옵션 선택",
-      "view_all": "모두보기",
-      "view_details": "세부정보 보기",
+      "see-all": "모두 보기",
+      "see-details": "자세히보다",
+      "select-options": "옵션 선택",
+      "view-all": "모두보기",
+      "view-details": "세부정보 보기",
       "wishlist": "위시리스트"
     },
     "search": {
@@ -56,16 +56,16 @@
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "장바구니에 상품을 추가할 수 없습니다.",
-      "add_to_cart_enabled": "가방에 추가하다",
-      "out_of_stock": "품절",
-      "select_options": "옵션을 선택해주세요"
+      "add-to-cart-disabled": "장바구니에 상품을 추가할 수 없습니다.",
+      "add-to-cart-enabled": "가방에 추가하다",
+      "out-of-stock": "품절",
+      "select-options": "옵션을 선택해주세요"
     },
     "Banner": {
       "link": "적격 주문에 대해 무료 배송"
     },
     "CartForm": {
-      "empty_cart": "가방이 비어 있어요"
+      "empty-cart": "가방이 비어 있어요"
     },
     "ConsentDialog": {
       "description": "UNCNSRD는 이 사이트를 작동하는 데 필수적인 쿠키를 사용하며 이 사이트에서의 사용자 경험을 개선하기 위해 추가 쿠키를 사용하고자 합니다.",

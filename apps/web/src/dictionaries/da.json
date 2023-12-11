@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Kollektion",
-      "no_products_found": "Ingen produkter fundet i denne kollektion"
+      "no-products-found": "Ingen produkter fundet i denne kollektion"
     },
     "error": {
       "title": "Noget gik galt",
@@ -24,28 +24,28 @@
       "button": "Prøv igen"
     },
     "home": {
-      "shop_now": "Køb nu"
+      "shop-now": "Køb nu"
     },
     "products": {
-      "add_to_wishlist": "Tilføj til ønskeliste",
-      "all_collections": "Alle samlinger",
-      "all_products": "Alle produkter",
-      "back_to_collection": "Tilbage til samlingen",
-      "best_sellers": "Bestsellere",
+      "add-to-wishlist": "Tilføj til ønskeliste",
+      "all-collections": "Alle samlinger",
+      "all-products": "Alle produkter",
+      "back-to-collection": "Tilbage til samlingen",
+      "best-sellers": "Bestsellere",
       "browse": "Gennemse",
       "buy": "Køb",
       "featured": "Udvalgte",
       "more": "Mere",
       "new": "Ny",
-      "out_of_stock": "Udsolgt",
-      "product_image_loading": "Produktbillede indlæses",
-      "quick_view": "Hurtigt kig",
+      "out-of-stock": "Udsolgt",
+      "product-image-loading": "Produktbillede indlæses",
+      "quick-view": "Hurtigt kig",
       "sale": "Salg",
-      "see_all": "Se alt",
-      "see_details": "Se detaljer",
-      "select_options": "Vælg muligheder",
-      "view_all": "Se alt",
-      "view_details": "Se detaljerne",
+      "see-all": "Se alt",
+      "see-details": "Se detaljer",
+      "select-options": "Vælg muligheder",
+      "view-all": "Se alt",
+      "view-details": "Se detaljerne",
       "wishlist": "Ønskeliste"
     },
     "search": {
@@ -56,16 +56,16 @@
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "Varen kunne ikke tilføjes til tasken",
-      "add_to_cart_enabled": "Tilføj til kurv",
-      "out_of_stock": "Udsolgt",
-      "select_options": "Vælg venligst muligheder"
+      "add-to-cart-disabled": "Varen kunne ikke tilføjes til tasken",
+      "add-to-cart-enabled": "Tilføj til kurv",
+      "out-of-stock": "Udsolgt",
+      "select-options": "Vælg venligst muligheder"
     },
     "Banner": {
       "link": "Gratis forsendelse på kvalificerede ordrer"
     },
     "CartForm": {
-      "empty_cart": "Din taske er tom"
+      "empty-cart": "Din taske er tom"
     },
     "ConsentDialog": {
       "description": "UNCNSRD bruger cookies, der er afgørende for at få denne side til at fungere og vil gerne bruge yderligere cookies til at forbedre din oplevelse på denne side.",

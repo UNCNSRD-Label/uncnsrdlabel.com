@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "收藏",
-      "no_products_found": "该系列中未找到任何产品"
+      "no-products-found": "该系列中未找到任何产品"
     },
     "error": {
       "title": "出了些问题",
@@ -24,28 +24,28 @@
       "button": "再试一次"
     },
     "home": {
-      "shop_now": "现在去购物"
+      "shop-now": "现在去购物"
     },
     "products": {
-      "add_to_wishlist": "添加到愿望清单",
-      "all_collections": "所有系列",
-      "all_products": "所有产品",
-      "back_to_collection": "回到收藏",
-      "best_sellers": "最畅销",
+      "add-to-wishlist": "添加到愿望清单",
+      "all-collections": "所有系列",
+      "all-products": "所有产品",
+      "back-to-collection": "回到收藏",
+      "best-sellers": "最畅销",
       "browse": "浏览",
       "buy": "购买",
       "featured": "精选",
       "more": "更多的",
       "new": "新的",
-      "out_of_stock": "缺货",
-      "product_image_loading": "产品图片加载",
-      "quick_view": "快速浏览",
+      "out-of-stock": "缺货",
+      "product-image-loading": "产品图片加载",
+      "quick-view": "快速浏览",
       "sale": "销售",
-      "see_all": "查看全部",
-      "see_details": "查看具体信息",
-      "select_options": "选择选项",
-      "view_all": "查看全部",
-      "view_details": "查看详情",
+      "see-all": "查看全部",
+      "see-details": "查看具体信息",
+      "select-options": "选择选项",
+      "view-all": "查看全部",
+      "view-details": "查看详情",
       "wishlist": "愿望清单"
     },
     "search": {
@@ -56,16 +56,16 @@
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "无法将商品添加至购物袋",
-      "add_to_cart_enabled": "添加至购物袋",
-      "out_of_stock": "缺货",
-      "select_options": "请选择选项"
+      "add-to-cart-disabled": "无法将商品添加至购物袋",
+      "add-to-cart-enabled": "添加至购物袋",
+      "out-of-stock": "缺货",
+      "select-options": "请选择选项"
     },
     "Banner": {
       "link": "符合条件的订单免运费"
     },
     "CartForm": {
-      "empty_cart": "你的包是空的"
+      "empty-cart": "你的包是空的"
     },
     "ConsentDialog": {
       "description": "UNCNSRD 使用对于本网站正常运行至关重要的 cookie，并希望使用其他 cookie 来改善您在本网站上的体验。",

@@ -1,7 +1,8 @@
+'use client';
+
 import { updateItemQuantity } from "@/components/cart/actions";
 import { LoadingDots } from "@/components/loading/dots";
-import { getIntl } from "@/lib/i18n";
-import { state$ } from "@/lib/store";
+import { useGetIntl } from "@/lib/i18n";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import {
   type CartLine,
@@ -12,10 +13,8 @@ import {
 import { cn } from "@uncnsrdlabel/lib";
 import { useFormState, useFormStatus } from 'react-dom';
 
-async function SubmitButton({ type }: { type: 'plus' | 'minus' }) {
-  const lang = state$.lang.get();
-
-  const intl = await getIntl(lang, "component.SignUp");
+function SubmitButton({ type }: { type: 'plus' | 'minus' }) {
+  const intl = useGetIntl("component.EditItemQuantityButton");
 
   const { pending } = useFormStatus();
 

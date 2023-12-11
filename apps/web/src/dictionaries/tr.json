@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Toplamak",
-      "no_products_found": "Bu koleksiyonda ürün bulunamadı"
+      "no-products-found": "Bu koleksiyonda ürün bulunamadı"
     },
     "error": {
       "title": "Bir şeyler yanlış gitti",
@@ -24,28 +24,28 @@
       "button": "Tekrar deneyin"
     },
     "home": {
-      "shop_now": "Şimdi satın al"
+      "shop-now": "Şimdi satın al"
     },
     "products": {
-      "add_to_wishlist": "İstek listesine ekle",
-      "all_collections": "Tüm koleksiyonlar",
-      "all_products": "Tüm ürünler",
-      "back_to_collection": "Koleksiyona geri dön",
-      "best_sellers": "En çok satanlar",
+      "add-to-wishlist": "İstek listesine ekle",
+      "all-collections": "Tüm koleksiyonlar",
+      "all-products": "Tüm ürünler",
+      "back-to-collection": "Koleksiyona geri dön",
+      "best-sellers": "En çok satanlar",
       "browse": "Araştır",
       "buy": "Satın almak",
       "featured": "Öne Çıkanlar",
       "more": "Daha",
       "new": "Yeni",
-      "out_of_stock": "Stoklar tükendi",
-      "product_image_loading": "Ürün görseli yükleniyor",
-      "quick_view": "Hızlı Görünüm",
+      "out-of-stock": "Stoklar tükendi",
+      "product-image-loading": "Ürün görseli yükleniyor",
+      "quick-view": "Hızlı Görünüm",
       "sale": "Satış",
-      "see_all": "Hepsini gör",
-      "see_details": "Ayrıntılara bakınız",
-      "select_options": "Seçenekleri seçin",
-      "view_all": "Hepsini gör",
-      "view_details": "Ayrıntıları görüntüle",
+      "see-all": "Hepsini gör",
+      "see-details": "Ayrıntılara bakınız",
+      "select-options": "Seçenekleri seçin",
+      "view-all": "Hepsini gör",
+      "view-details": "Ayrıntıları görüntüle",
       "wishlist": "İstek listesi"
     },
     "search": {
@@ -56,16 +56,16 @@
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "Çantaya öğe eklenemiyor",
-      "add_to_cart_enabled": "Sepete ekle",
-      "out_of_stock": "Stoklar tükendi",
-      "select_options": "Lütfen seçenekleri seçin"
+      "add-to-cart-disabled": "Çantaya öğe eklenemiyor",
+      "add-to-cart-enabled": "Sepete ekle",
+      "out-of-stock": "Stoklar tükendi",
+      "select-options": "Lütfen seçenekleri seçin"
     },
     "Banner": {
       "link": "Uygun siparişlerde ücretsiz gönderim"
     },
     "CartForm": {
-      "empty_cart": "Çantan boş"
+      "empty-cart": "Çantan boş"
     },
     "ConsentDialog": {
       "description": "UNCNSRD, bu sitenin çalışması için gerekli olan çerezleri kullanır ve bu sitedeki deneyiminizi geliştirmek için ek çerezler kullanmak ister.",

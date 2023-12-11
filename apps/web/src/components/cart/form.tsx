@@ -40,7 +40,7 @@ export function CartForm({
         <div className="mt-20 flex w-full flex-col items-center justify-center overflow-hidden">
           <ShoppingCartIcon className="h-12" />
           <p className="mt-6 text-center text-2xl font-bold">
-            {intl.formatMessage({ id: "empty_cart" })}
+            {intl.formatMessage({ id: "empty-cart" })}
           </p>
         </div>
       ) : (

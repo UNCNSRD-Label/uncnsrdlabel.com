@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Col · lecció",
-      "no_products_found": "No s'han trobat productes en aquesta col·lecció"
+      "no-products-found": "No s'han trobat productes en aquesta col·lecció"
     },
     "error": {
       "title": "Alguna cosa ha anat malament",
@@ -24,28 +24,28 @@
       "button": "Torna-ho a provar"
     },
     "home": {
-      "shop_now": "Compra ara"
+      "shop-now": "Compra ara"
     },
     "products": {
-      "add_to_wishlist": "Afegir a la llista de desitjos",
-      "all_collections": "Totes les col·leccions",
-      "all_products": "Tots els productes",
-      "back_to_collection": "Torna a la col·lecció",
-      "best_sellers": "Els mes venuts",
+      "add-to-wishlist": "Afegir a la llista de desitjos",
+      "all-collections": "Totes les col·leccions",
+      "all-products": "Tots els productes",
+      "back-to-collection": "Torna a la col·lecció",
+      "best-sellers": "Els mes venuts",
       "browse": "Navega",
       "buy": "Compra",
       "featured": "Destacat",
       "more": "Més",
       "new": "Nou",
-      "out_of_stock": "Esgotat",
-      "product_image_loading": "Càrrega de la imatge del producte",
-      "quick_view": "Vista ràpida",
+      "out-of-stock": "Esgotat",
+      "product-image-loading": "Càrrega de la imatge del producte",
+      "quick-view": "Vista ràpida",
       "sale": "Venda",
-      "see_all": "Veure tot",
-      "see_details": "Veure detalls",
-      "select_options": "Seleccioneu opcions",
-      "view_all": "Veure tot",
-      "view_details": "Veure els detalls",
+      "see-all": "Veure tot",
+      "see-details": "Veure detalls",
+      "select-options": "Seleccioneu opcions",
+      "view-all": "Veure tot",
+      "view-details": "Veure els detalls",
       "wishlist": "Llista de desitjos"
     },
     "search": {
@@ -56,16 +56,16 @@
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "No es pot afegir l'article a la bossa",
-      "add_to_cart_enabled": "Afegir a la bossa",
-      "out_of_stock": "Esgotat",
-      "select_options": "Seleccioneu opcions"
+      "add-to-cart-disabled": "No es pot afegir l'article a la bossa",
+      "add-to-cart-enabled": "Afegir a la bossa",
+      "out-of-stock": "Esgotat",
+      "select-options": "Seleccioneu opcions"
     },
     "Banner": {
       "link": "Enviament gratuït en comandes aptes"
     },
     "CartForm": {
-      "empty_cart": "La teva bossa està buida"
+      "empty-cart": "La teva bossa està buida"
     },
     "ConsentDialog": {
       "description": "UNCNSRD utilitza galetes que són essencials per fer que aquest lloc funcioni i voldria utilitzar galetes addicionals per millorar la vostra experiència en aquest lloc.",

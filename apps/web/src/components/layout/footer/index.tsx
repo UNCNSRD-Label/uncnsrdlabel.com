@@ -14,6 +14,7 @@ export async function Footer() {
   const lang = state$.lang.get();
 
   const intl = await getIntl(lang, "global.footer");
+  const intlMenu = await getIntl(lang, "global.footer.menu");
 
   const currentYear = new Date().getFullYear();
 
@@ -43,7 +44,7 @@ export async function Footer() {
             <nav className="col-span-1 grid gap-8 sm:col-span-12 sm:grid-cols-12 lg:col-span-8 lg:grid-cols-9">
               {customerCareMenu.items?.length ? (
                 <dl className="grid content-start gap-2 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
-                  <dt className="text-sm uppercase">Customer Care</dt>
+                  <dt className="text-sm uppercase">{intlMenu.formatMessage({ id: "customer-care" })}</dt>
                   {customerCareMenu.items.map((item, index) => (
                     <dd key={item.title || index}>
                       <Link href={item.url ?? "#"} className={linkClassName}>
@@ -58,7 +59,7 @@ export async function Footer() {
               ) : null}
               {informationMenu.items?.length ? (
                 <dl className="grid content-start gap-2 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
-                  <dt className="text-sm uppercase">Information</dt>
+                  <dt className="text-sm uppercase">{intlMenu.formatMessage({ id: "information" })}</dt>
                   {informationMenu.items.map((item, index) => (
                     <dd key={item.title || index}>
                       <Link href={item.url ?? "#"} className={linkClassName}>
@@ -74,7 +75,7 @@ export async function Footer() {
               <div className="grid gap-4 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
                 {followUsMenu.items?.length ? (
                   <dl className="grid content-start gap-2">
-                    <dt className="text-sm uppercase">{intl.formatMessage({ id: "menu-follow-us" })}</dt>
+                    <dt className="text-sm uppercase">{intlMenu.formatMessage({ id: "follow-us" })}</dt>
                     {followUsMenu.items.map((item, index) => (
                       <dd key={item.title || index}>
                         <Link

@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Kollektsioon",
-      "no_products_found": "Sellest kollektsioonist ei leitud ühtegi toodet"
+      "no-products-found": "Sellest kollektsioonist ei leitud ühtegi toodet"
     },
     "error": {
       "title": "Midagi läks valesti",
@@ -24,28 +24,28 @@
       "button": "Proovi uuesti"
     },
     "home": {
-      "shop_now": "Osta nüüd"
+      "shop-now": "Osta nüüd"
     },
     "products": {
-      "add_to_wishlist": "Soovinimekirja lisama",
-      "all_collections": "Kõik kollektsioonid",
-      "all_products": "Kõik tooted",
-      "back_to_collection": "Tagasi kollektsiooni juurde",
-      "best_sellers": "Parimad müüjad",
+      "add-to-wishlist": "Soovinimekirja lisama",
+      "all-collections": "Kõik kollektsioonid",
+      "all-products": "Kõik tooted",
+      "back-to-collection": "Tagasi kollektsiooni juurde",
+      "best-sellers": "Parimad müüjad",
       "browse": "Sirvige",
       "buy": "ostma",
       "featured": "Esiletõstetud",
       "more": "Rohkem",
       "new": "Uus",
-      "out_of_stock": "Läbimüüdud",
-      "product_image_loading": "Tootepildi laadimine",
-      "quick_view": "Kiire vaade",
+      "out-of-stock": "Läbimüüdud",
+      "product-image-loading": "Tootepildi laadimine",
+      "quick-view": "Kiire vaade",
       "sale": "Soodustus",
-      "see_all": "Vaata kõiki",
-      "see_details": "Vaata detaile",
-      "select_options": "Valige valikud",
-      "view_all": "Vaata kõiki",
-      "view_details": "Vaadake üksikasju",
+      "see-all": "Vaata kõiki",
+      "see-details": "Vaata detaile",
+      "select-options": "Valige valikud",
+      "view-all": "Vaata kõiki",
+      "view-details": "Vaadake üksikasju",
       "wishlist": "Soovinimekiri"
     },
     "search": {
@@ -56,16 +56,16 @@
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "Üksust ei saa kotti lisada",
-      "add_to_cart_enabled": "Lisa kotti",
-      "out_of_stock": "Läbimüüdud",
-      "select_options": "Palun valige valikud"
+      "add-to-cart-disabled": "Üksust ei saa kotti lisada",
+      "add-to-cart-enabled": "Lisa kotti",
+      "out-of-stock": "Läbimüüdud",
+      "select-options": "Palun valige valikud"
     },
     "Banner": {
       "link": "Tasuta kohaletoimetamine sobilike tellimuste puhul"
     },
     "CartForm": {
-      "empty_cart": "Teie kott on tühi"
+      "empty-cart": "Teie kott on tühi"
     },
     "ConsentDialog": {
       "description": "UNCNSRD kasutab küpsiseid, mis on selle saidi toimimiseks hädavajalikud, ja soovib kasutada täiendavaid küpsiseid, et parandada teie kasutuskogemust sellel saidil.",

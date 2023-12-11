@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Bộ sưu tập",
-      "no_products_found": "Không sản phẩm nào được tìm thấy trong bộ sưu tập này"
+      "no-products-found": "Không sản phẩm nào được tìm thấy trong bộ sưu tập này"
     },
     "error": {
       "title": "Đã xảy ra lỗi",
@@ -24,28 +24,28 @@
       "button": "Thử lại"
     },
     "home": {
-      "shop_now": "Mua sắm ngay bây giờ"
+      "shop-now": "Mua sắm ngay bây giờ"
     },
     "products": {
-      "add_to_wishlist": "Thêm vào danh sách yêu thích",
-      "all_collections": "Tất cả bộ sưu tập",
-      "all_products": "Tất cả sản phẩm",
-      "back_to_collection": "Quay lại bộ sưu tập",
-      "best_sellers": "Bán chạy nhất",
+      "add-to-wishlist": "Thêm vào danh sách yêu thích",
+      "all-collections": "Tất cả bộ sưu tập",
+      "all-products": "Tất cả sản phẩm",
+      "back-to-collection": "Quay lại bộ sưu tập",
+      "best-sellers": "Bán chạy nhất",
       "browse": "Duyệt qua",
       "buy": "Mua",
       "featured": "Đặc sắc",
       "more": "Hơn",
       "new": "Mới",
-      "out_of_stock": "Hết hàng",
-      "product_image_loading": "Đang tải hình ảnh sản phẩm",
-      "quick_view": "Xem lướt qua",
+      "out-of-stock": "Hết hàng",
+      "product-image-loading": "Đang tải hình ảnh sản phẩm",
+      "quick-view": "Xem lướt qua",
       "sale": "Doanh thu",
-      "see_all": "Nhìn thấy tất cả",
-      "see_details": "Xem chi tiết",
-      "select_options": "lựa chọn các phương án",
-      "view_all": "Xem tất cả",
-      "view_details": "Xem chi tiết",
+      "see-all": "Nhìn thấy tất cả",
+      "see-details": "Xem chi tiết",
+      "select-options": "lựa chọn các phương án",
+      "view-all": "Xem tất cả",
+      "view-details": "Xem chi tiết",
       "wishlist": "Danh sách yêu thích"
     },
     "search": {
@@ -56,16 +56,16 @@
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "Không thể thêm vật phẩm vào túi",
-      "add_to_cart_enabled": "Thêm vào túi",
-      "out_of_stock": "Hết hàng",
-      "select_options": "Vui lòng chọn tùy chọn"
+      "add-to-cart-disabled": "Không thể thêm vật phẩm vào túi",
+      "add-to-cart-enabled": "Thêm vào túi",
+      "out-of-stock": "Hết hàng",
+      "select-options": "Vui lòng chọn tùy chọn"
     },
     "Banner": {
       "link": "Miễn phí vận chuyển cho các đơn hàng đủ điều kiện"
     },
     "CartForm": {
-      "empty_cart": "Túi của bạn trống rỗng"
+      "empty-cart": "Túi của bạn trống rỗng"
     },
     "ConsentDialog": {
       "description": "UNCNSRD sử dụng các cookie cần thiết để giúp trang web này hoạt động và muốn sử dụng các cookie bổ sung để cải thiện trải nghiệm của bạn trên trang web này.",

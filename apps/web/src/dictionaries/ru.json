@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Коллекция",
-      "no_products_found": "В этой коллекции товаров не найдено"
+      "no-products-found": "В этой коллекции товаров не найдено"
     },
     "error": {
       "title": "Что-то пошло не так",
@@ -24,28 +24,28 @@
       "button": "Попробуйте еще раз"
     },
     "home": {
-      "shop_now": "Купить сейчас"
+      "shop-now": "Купить сейчас"
     },
     "products": {
-      "add_to_wishlist": "Добавить в список желаний",
-      "all_collections": "Все коллекции",
-      "all_products": "Все продукты",
-      "back_to_collection": "Вернуться к коллекции",
-      "best_sellers": "Бестселлеры",
+      "add-to-wishlist": "Добавить в список желаний",
+      "all-collections": "Все коллекции",
+      "all-products": "Все продукты",
+      "back-to-collection": "Вернуться к коллекции",
+      "best-sellers": "Бестселлеры",
       "browse": "Просматривать",
       "buy": "Покупка",
       "featured": "Рекомендуемые",
       "more": "Более",
       "new": "Новый",
-      "out_of_stock": "Распродано",
-      "product_image_loading": "Загрузка изображения продукта",
-      "quick_view": "Быстрый просмотр",
+      "out-of-stock": "Распродано",
+      "product-image-loading": "Загрузка изображения продукта",
+      "quick-view": "Быстрый просмотр",
       "sale": "Распродажа",
-      "see_all": "Увидеть все",
-      "see_details": "Смотрите подробности",
-      "select_options": "Выберите параметры",
-      "view_all": "Посмотреть все",
-      "view_details": "Посмотреть подробности",
+      "see-all": "Увидеть все",
+      "see-details": "Смотрите подробности",
+      "select-options": "Выберите параметры",
+      "view-all": "Посмотреть все",
+      "view-details": "Посмотреть подробности",
       "wishlist": "Список желаний"
     },
     "search": {
@@ -56,16 +56,16 @@
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "Невозможно добавить товар в корзину",
-      "add_to_cart_enabled": "Добавить в корзину",
-      "out_of_stock": "Распродано",
-      "select_options": "Пожалуйста, выберите варианты"
+      "add-to-cart-disabled": "Невозможно добавить товар в корзину",
+      "add-to-cart-enabled": "Добавить в корзину",
+      "out-of-stock": "Распродано",
+      "select-options": "Пожалуйста, выберите варианты"
     },
     "Banner": {
       "link": "Бесплатная доставка подходящих заказов"
     },
     "CartForm": {
-      "empty_cart": "Ваша сумка пуста"
+      "empty-cart": "Ваша сумка пуста"
     },
     "ConsentDialog": {
       "description": "UNCNSRD использует файлы cookie, необходимые для работы этого сайта, и хотел бы использовать дополнительные файлы cookie, чтобы улучшить вашу работу на этом сайте.",

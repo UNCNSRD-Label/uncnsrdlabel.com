@@ -79,7 +79,7 @@ export function CartModal({
                 className={cn("flex w-full flex-col p-6", themeColors)}
               >
                 <div className="flex items-center justify-between">
-                  <p className="text-lg uppercase">My Bag</p>
+                  <h3 className="text-lg uppercase">{intl.formatMessage({ id: "title" })}</h3>
 
                   <button aria-label={intl.formatMessage({ id: "close" })} onClick={closeCart}>
                     <CloseCart />

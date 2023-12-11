@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "Kolekcja",
-      "no_products_found": "Nie znaleziono produktów w tej kolekcji"
+      "no-products-found": "Nie znaleziono produktów w tej kolekcji"
     },
     "error": {
       "title": "Coś poszło nie tak",
@@ -24,28 +24,28 @@
       "button": "Spróbuj ponownie"
     },
     "home": {
-      "shop_now": "Kupuj teraz"
+      "shop-now": "Kupuj teraz"
     },
     "products": {
-      "add_to_wishlist": "Dodaj do listy życzeń",
-      "all_collections": "Wszystkie kolekcje",
-      "all_products": "Wszystkie produkty",
-      "back_to_collection": "Powrót do kolekcji",
-      "best_sellers": "Bestsellery",
+      "add-to-wishlist": "Dodaj do listy życzeń",
+      "all-collections": "Wszystkie kolekcje",
+      "all-products": "Wszystkie produkty",
+      "back-to-collection": "Powrót do kolekcji",
+      "best-sellers": "Bestsellery",
       "browse": "Przeglądać",
       "buy": "Zakup",
       "featured": "Wyróżniony",
       "more": "Więcej",
       "new": "Nowy",
-      "out_of_stock": "Obecnie brak na stanie",
-      "product_image_loading": "Ładowanie obrazu produktu",
-      "quick_view": "Szybki podgląd",
+      "out-of-stock": "Obecnie brak na stanie",
+      "product-image-loading": "Ładowanie obrazu produktu",
+      "quick-view": "Szybki podgląd",
       "sale": "Sprzedaż",
-      "see_all": "Widzieć wszystko",
-      "see_details": "Patrz szczegóły",
-      "select_options": "Wybierz opcje",
-      "view_all": "Pokaż wszystkie",
-      "view_details": "Zobacz szczegóły",
+      "see-all": "Widzieć wszystko",
+      "see-details": "Patrz szczegóły",
+      "select-options": "Wybierz opcje",
+      "view-all": "Pokaż wszystkie",
+      "view-details": "Zobacz szczegóły",
       "wishlist": "Lista życzeń"
     },
     "search": {
@@ -56,16 +56,16 @@
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "Nie można dodać przedmiotu do koszyka",
-      "add_to_cart_enabled": "Dodaj do torby",
-      "out_of_stock": "Obecnie brak na stanie",
-      "select_options": "Proszę wybrać opcje"
+      "add-to-cart-disabled": "Nie można dodać przedmiotu do koszyka",
+      "add-to-cart-enabled": "Dodaj do torby",
+      "out-of-stock": "Obecnie brak na stanie",
+      "select-options": "Proszę wybrać opcje"
     },
     "Banner": {
       "link": "Bezpłatna wysyłka kwalifikujących się zamówień"
     },
     "CartForm": {
-      "empty_cart": "Twoja torba jest pusta"
+      "empty-cart": "Twoja torba jest pusta"
     },
     "ConsentDialog": {
       "description": "UNCNSRD wykorzystuje pliki cookie niezbędne do działania tej witryny i pragnie używać dodatkowych plików cookie, aby poprawić komfort korzystania z tej witryny.",

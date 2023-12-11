@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "সংগ্রহ",
-      "no_products_found": "কোন পণ্য এই সংগ্রহে পাওয়া যায় নি"
+      "no-products-found": "কোন পণ্য এই সংগ্রহে পাওয়া যায় নি"
     },
     "error": {
       "title": "কিছু ভুল হয়েছে",
@@ -24,28 +24,28 @@
       "button": "আবার চেষ্টা কর"
     },
     "home": {
-      "shop_now": "এখনই কিনুন"
+      "shop-now": "এখনই কিনুন"
     },
     "products": {
-      "add_to_wishlist": "চাহিদাপত্রে যোগ করা",
-      "all_collections": "সমস্ত সংগ্রহ",
-      "all_products": "সব পণ্য",
-      "back_to_collection": "সংগ্রহে ফিরে যান",
-      "best_sellers": "সর্বোচ্চ বিক্রেতা",
+      "add-to-wishlist": "চাহিদাপত্রে যোগ করা",
+      "all-collections": "সমস্ত সংগ্রহ",
+      "all-products": "সব পণ্য",
+      "back-to-collection": "সংগ্রহে ফিরে যান",
+      "best-sellers": "সর্বোচ্চ বিক্রেতা",
       "browse": "ব্রাউজ করুন",
       "buy": "ক্রয়",
       "featured": "বৈশিষ্ট্যযুক্ত",
       "more": "আরও",
       "new": "নতুন",
-      "out_of_stock": "স্টক শেষ",
-      "product_image_loading": "পণ্য ইমেজ লোড হচ্ছে",
-      "quick_view": "তারাতারি দেখা",
+      "out-of-stock": "স্টক শেষ",
+      "product-image-loading": "পণ্য ইমেজ লোড হচ্ছে",
+      "quick-view": "তারাতারি দেখা",
       "sale": "বিক্রয়",
-      "see_all": "সবগুলো দেখ",
-      "see_details": "বিস্তারিত দেখুন",
-      "select_options": "বিকল্প নির্বাচন করুন",
-      "view_all": "সব দেখ",
-      "view_details": "বিস্তারিত দেখুন",
+      "see-all": "সবগুলো দেখ",
+      "see-details": "বিস্তারিত দেখুন",
+      "select-options": "বিকল্প নির্বাচন করুন",
+      "view-all": "সব দেখ",
+      "view-details": "বিস্তারিত দেখুন",
       "wishlist": "ইচ্ছেতালিকা"
     },
     "search": {
@@ -56,16 +56,16 @@
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "ব্যাগে আইটেম যোগ করতে অক্ষম",
-      "add_to_cart_enabled": "ব্যাগে রাখো",
-      "out_of_stock": "স্টক শেষ",
-      "select_options": "বিকল্প নির্বাচন করুন"
+      "add-to-cart-disabled": "ব্যাগে আইটেম যোগ করতে অক্ষম",
+      "add-to-cart-enabled": "ব্যাগে রাখো",
+      "out-of-stock": "স্টক শেষ",
+      "select-options": "বিকল্প নির্বাচন করুন"
     },
     "Banner": {
       "link": "যোগ্য অর্ডারে বিনামূল্যে শিপিং"
     },
     "CartForm": {
-      "empty_cart": "তোমার ব্যাগ খালি"
+      "empty-cart": "তোমার ব্যাগ খালি"
     },
     "ConsentDialog": {
       "description": "UNCNSRD কুকিজ ব্যবহার করে যা এই সাইটে কাজ করার জন্য অপরিহার্য এবং এই সাইটে আপনার অভিজ্ঞতা উন্নত করতে অতিরিক্ত কুকি ব্যবহার করতে চায়।",

@@ -97,7 +97,7 @@ export function SidebarMenu({
                   onClick={() => {
                     setSidebarMenuIsOpen(false);
                   }}
-                  aria-label={intl.formatMessage({ id: "open" })}
+                  aria-label={intl.formatMessage({ id: "close" })}
                   data-testid="close-sidebar-menu"
                 >
                   <div className="relative flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors dark:border-neutral-700 dark:text-white">

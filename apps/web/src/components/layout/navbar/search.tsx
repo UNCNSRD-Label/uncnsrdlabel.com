@@ -1,15 +1,12 @@
 "use client";
 
 import { SearchIcon } from "@/components/icons/search";
-import { getIntl } from "@/lib/i18n";
-import { state$ } from "@/lib/store";
+import { useGetIntl } from "@/lib/i18n";
 import { createUrl } from "@uncnsrdlabel/lib";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export async function NavbarSearch() {
-  const lang = state$.lang.get();
-
-  const intl = await getIntl(lang, "component.NavbarSearch");
+export function NavbarSearch() {
+  const intl = useGetIntl("component.NavbarSearch");
 
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -33,12 +30,12 @@ export async function NavbarSearch() {
   return (
     <form onSubmit={onSubmit} className="relative">
       <input
-        type="text"
+        autoComplete="on"
+        className="focus:inherit w-full bg-gray-800/50 px-4 py-2 placeholder:text-inherit"
+        defaultValue={searchParams?.get("q") || ""}
         name="search"
         placeholder={intl.formatMessage({ id: "placeholder" })}
-        autoComplete="off"
-        defaultValue={searchParams?.get("q") || ""}
-        className="focus:inherit w-full bg-gray-800/50 px-4 py-2 placeholder:text-inherit"
+        type="text"
       />
       <div className="absolute right-0 top-0 mr-3 flex h-full items-center">
         <SearchIcon className="h-5" />

@@ -11,7 +11,7 @@ export async function AddToCartShell() {
     <form>
       <SubmitButton availableForSale={false} selectedVariantId={undefined} />
       <span aria-live="polite" className="sr-only" role="status">
-        {intl.formatMessage({ id: "select_options" })}
+        {intl.formatMessage({ id: "select-options" })}
       </span>
     </form>
   );

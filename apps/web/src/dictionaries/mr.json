@@ -16,7 +16,7 @@
   "page": {
     "collection": {
       "title": "संकलन",
-      "no_products_found": "या संग्रहात कोणतीही उत्पादने आढळली नाहीत"
+      "no-products-found": "या संग्रहात कोणतीही उत्पादने आढळली नाहीत"
     },
     "error": {
       "title": "काहीतरी चूक झाली",
@@ -24,28 +24,28 @@
       "button": "पुन्हा प्रयत्न करा"
     },
     "home": {
-      "shop_now": "आता खरेदी करा"
+      "shop-now": "आता खरेदी करा"
     },
     "products": {
-      "add_to_wishlist": "विशलिस्टमध्ये जोडा",
-      "all_collections": "सर्व संग्रह",
-      "all_products": "सर्व उत्पादने",
-      "back_to_collection": "संग्रहाकडे परत या",
-      "best_sellers": "सर्वाधिक खपणारे",
+      "add-to-wishlist": "विशलिस्टमध्ये जोडा",
+      "all-collections": "सर्व संग्रह",
+      "all-products": "सर्व उत्पादने",
+      "back-to-collection": "संग्रहाकडे परत या",
+      "best-sellers": "सर्वाधिक खपणारे",
       "browse": "ब्राउझ करा",
       "buy": "खरेदी",
       "featured": "वैशिष्ट्यपूर्ण",
       "more": "अधिक",
       "new": "नवीन",
-      "out_of_stock": "स्टॉक संपला",
-      "product_image_loading": "उत्पादन प्रतिमा लोड होत आहे",
-      "quick_view": "द्रुत दृश्य",
+      "out-of-stock": "स्टॉक संपला",
+      "product-image-loading": "उत्पादन प्रतिमा लोड होत आहे",
+      "quick-view": "द्रुत दृश्य",
       "sale": "विक्री",
-      "see_all": "सर्व पाहा",
-      "see_details": "तपशील बघा",
-      "select_options": "पर्याय निवडा",
-      "view_all": "सर्व पहा",
-      "view_details": "तपशील पहा",
+      "see-all": "सर्व पाहा",
+      "see-details": "तपशील बघा",
+      "select-options": "पर्याय निवडा",
+      "view-all": "सर्व पहा",
+      "view-details": "तपशील पहा",
       "wishlist": "विशलिस्ट"
     },
     "search": {
@@ -56,16 +56,16 @@
   },
   "component": {
     "AddToCart": {
-      "add_to_cart_disabled": "बॅगमध्ये आयटम जोडता आला नाही",
-      "add_to_cart_enabled": "पिशवीत जोडा",
-      "out_of_stock": "स्टॉक संपला",
-      "select_options": "कृपया पर्याय निवडा"
+      "add-to-cart-disabled": "बॅगमध्ये आयटम जोडता आला नाही",
+      "add-to-cart-enabled": "पिशवीत जोडा",
+      "out-of-stock": "स्टॉक संपला",
+      "select-options": "कृपया पर्याय निवडा"
     },
     "Banner": {
       "link": "पात्र ऑर्डरवर विनामूल्य शिपिंग"
     },
     "CartForm": {
-      "empty_cart": "तुझी बॅग रिकामी आहे"
+      "empty-cart": "तुझी बॅग रिकामी आहे"
     },
     "ConsentDialog": {
       "description": "UNCNSRD कुकीज वापरते जी ही साइट कार्य करण्यासाठी आवश्यक आहे आणि या साइटवरील तुमचा अनुभव सुधारण्यासाठी अतिरिक्त कुकीज वापरू इच्छिते.",
