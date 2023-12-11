@@ -30,7 +30,7 @@ export function RedeemCodeForm({ className }: { className?: string }) {
           key={`code-${codeInput}-${i}`}
         >
           <input
-            autoComplete="true"
+            autoComplete="on"
             className="w-full border-none outline-none placeholder:text-inherit"
             placeholder={intl.formatMessage({ id: "placeholder" })}
             type="number"

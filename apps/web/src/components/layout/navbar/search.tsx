@@ -37,9 +37,9 @@ export function NavbarSearch() {
         placeholder={intl.formatMessage({ id: "placeholder" })}
         type="text"
       />
-      <div className="absolute right-0 top-0 mr-3 flex h-full items-center">
+      <button className="absolute right-0 top-0 mr-3 flex h-full items-center">
         <SearchIcon className="h-5" />
-      </div>
+      </button>
     </form>
   );
 }

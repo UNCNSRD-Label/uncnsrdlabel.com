@@ -54,7 +54,7 @@ export function SidebarMenu({
         aria-label={intl.formatMessage({ id: "open" })}
         data-testid="open-sidebar-menu"
       >
-        <MenuIcon className="h-5 stroke-inherit drop-shadow" />
+        <MenuIcon className="h-5 icon stroke-inherit drop-shadow" />
       </button>
       <AnimatePresence initial={false}>
         {sidebarMenuIsOpen && (

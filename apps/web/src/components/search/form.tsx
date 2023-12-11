@@ -43,7 +43,7 @@ export function SearchForm({
       tabIndex={-1}
     >
       <input
-        autoComplete="off"
+        autoComplete="on"
         className={cn(
           "w-full border-x-0 border-b border-t-0 border-inherit bg-transparent px-4 py-2 pr-8 transition-all placeholder:text-inherit",
           isOpen ? "opacity-100" : "opacity-0",

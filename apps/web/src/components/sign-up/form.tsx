@@ -50,7 +50,8 @@ export function SignUpForm({ className }: { className?: string }) {
       <form action={action} className={cn("mt-8 grid gap-4", className)}>
         <div className="field">
           <input
-            autoComplete="true"
+            aria-invalid={errors.email ? "true" : "false"}
+            autoComplete="on"
             className="w-full bg-gray-800/50 px-4 py-2 placeholder:text-inherit"
             placeholder={intl.formatMessage({ id: "placeholder" })}
             type="email"
@@ -61,7 +62,6 @@ export function SignUpForm({ className }: { className?: string }) {
                 message: intl.formatMessage({ id: "pattern" }),
               },
             })}
-            aria-invalid={errors.email ? "true" : "false"}
           />
           {errors.email && <p role="alert">{errors.email?.message}</p>}
           <button
