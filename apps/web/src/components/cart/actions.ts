@@ -19,9 +19,13 @@ export const addItem = async (
   _prevState: any,
   selectedVariantId: string,
 ): Promise<string | undefined> => {
+  if (!selectedVariantId) {
+    return "Missing selectedVariantId";
+  }
+
   const country = state$.country.get();
   const lang = state$.lang.get();
-
+console.log('country', country);
   let cartId = cookies().get("cartId")?.value;
   let cartFragmentRef: FragmentType<typeof cartFragment> | null = null;
 
@@ -30,105 +34,106 @@ export const addItem = async (
   }
 
   if (!cartId || !cartFragmentRef) {
-    cartFragmentRef = await createCartHandler({
-      variables: {
-        input: {
-          // attributes: [
-          //   {
-          //     key: "",
-          //     value: ""
-          //   }
-          // ],
-          buyerIdentity: {
-            // @ts-expect-error Type 'CountryCode' is not assignable to type 'InputMaybe<CountryCode> | undefined'.
-            countryCode: country,
-            // customerAccessToken: "",
-            // deliveryAddressPreferences: [
+    try {
+      cartFragmentRef = await createCartHandler({
+        variables: {
+          input: {
+            // attributes: [
             //   {
-            //     customerAddressId: "",
-            //     deliveryAddress: {
-            //       address1: "",
-            //       address2: "",
-            //       city: "",
-            //       company: "",
-            //       country: "",
-            //       firstName: "",
-            //       lastName: "",
-            //       phone: "",
-            //       province: "",
-            //       zip: ""
-            //     }
+            //     key: "",
+            //     value: ""
             //   }
             // ],
-            // email: "",
-            // phone: "",
-            // walletPreferences: [
+            buyerIdentity: {
+              // @ts-expect-error Type 'CountryCode' is not assignable to type 'InputMaybe<CountryCode> | undefined'.
+              countryCode: country,
+              // customerAccessToken: "",
+              // deliveryAddressPreferences: [
+              //   {
+              //     customerAddressId: "",
+              //     deliveryAddress: {
+              //       address1: "",
+              //       address2: "",
+              //       city: "",
+              //       company: "",
+              //       country: "",
+              //       firstName: "",
+              //       lastName: "",
+              //       phone: "",
+              //       province: "",
+              //       zip: ""
+              //     }
+              //   }
+              // ],
+              // email: "",
+              // phone: "",
+              // walletPreferences: [
+              //   ""
+              // ]
+            },
+            // discountCodes: [
             //   ""
-            // ]
-          },
-          // discountCodes: [
-          //   ""
-          // ],
-          // lines: [
-          //   {
-          //     attributes: [
-          //       {
-          //         key: "",
-          //         value: ""
-          //       }
-          //     ],
-          //     merchandiseId: "",
-          //     quantity: 1,
-          //     sellingPlanId: ""
-          //   }
-          // ],
-          lines: [
-            {
-              merchandiseId: selectedVariantId,
-              quantity: 1
-            }
-          ],
-          // metafields: [
-          //   {
-          //     key: "",
-          //     type: "",
-          //     value: ""
-          //   }
-          // ],
-          // note: ""
+            // ],
+            // lines: [
+            //   {
+            //     attributes: [
+            //       {
+            //         key: "",
+            //         value: ""
+            //       }
+            //     ],
+            //     merchandiseId: "",
+            //     quantity: 1,
+            //     sellingPlanId: ""
+            //   }
+            // ],
+            lines: [
+              {
+                merchandiseId: selectedVariantId,
+                quantity: 1
+              }
+            ],
+            // metafields: [
+            //   {
+            //     key: "",
+            //     type: "",
+            //     value: ""
+            //   }
+            // ],
+            // note: ""
+          }
         }
+      });
+
+      const cart = getFragmentData(cartFragment, cartFragmentRef);
+
+      if (!cart) {
+        return "Error creating cart";
       }
-    });
 
-    const cart = getFragmentData(cartFragment, cartFragmentRef);
+      cartId = cart.id;
 
-    if (!cart) {
+      cookies().set("cartId", cartId);
+    } catch (error) {
       return "Error creating cart";
     }
+  } else {
+    try {
+      await addToCartHandler(
+        {
+          variables: {
+            cartId,
+            lines: [{ merchandiseId: selectedVariantId, quantity: 1 }],
+          },
+        }
+      );
 
-    cartId = cart.id;
-
-    cookies().set("cartId", cartId);
+      revalidateTag(TAGS.cart);
+    } catch (error) {
+      return "Error adding item to cart";
+    }
   }
 
-  if (!selectedVariantId) {
-    return "Missing selectedVariantId";
-  }
-
-  try {
-    await addToCartHandler(
-      {
-        variables: {
-          cartId,
-          lines: [{ merchandiseId: selectedVariantId, quantity: 1 }],
-        },
-      }
-    );
-
-    revalidateTag(TAGS.cart);
-  } catch (error) {
-    return "Error adding item to cart";
-  }
 };
 
 export const removeItem = async (
