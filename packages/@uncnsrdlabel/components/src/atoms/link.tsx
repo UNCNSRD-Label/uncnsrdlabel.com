@@ -16,11 +16,13 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(function Link(
     if(rest.href.hasOwnProperty('pathname')) {
       const url = new URL(rest.href as string);
       url.pathname = url.pathname.replace('shop.', 'www.');
+      url.pathname = url.pathname.replace('https://www.uncnsrdlabel.com/', '/');
       rest.href = url.toString();
     }
 
     if(typeof rest.href === 'string') {
       rest.href = rest.href.replace('shop.', 'www.');
+      rest.href = rest.href.replace('https://www.uncnsrdlabel.com/', '/');
     }
   }
 
