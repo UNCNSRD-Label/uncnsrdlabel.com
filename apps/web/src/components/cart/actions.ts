@@ -12,6 +12,7 @@ import {
   updateCartHandler,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { TAGS } from '@uncnsrdlabel/lib';
+import { parse } from 'bcp-47';
 import { revalidateTag } from 'next/cache';
 import { cookies } from "next/headers";
 
@@ -23,9 +24,12 @@ export const addItem = async (
     return "Missing selectedVariantId";
   }
 
-  const country = state$.country.get();
-  const lang = state$.lang.get();
-console.log('country', country);
+  const lang = cookies().get("lang")?.value ?? process.env.NEXT_PUBLIC_DEFAULT_LOCALE!;
+ 
+  const parsedLang = parse(lang);
+
+  const country = parsedLang.region;
+
   let cartId = cookies().get("cartId")?.value;
   let cartFragmentRef: FragmentType<typeof cartFragment> | null = null;
 

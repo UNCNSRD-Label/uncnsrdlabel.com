@@ -42,6 +42,7 @@
     "add": "^2.0.6",
     "analytics": "^0.8.9",
     "analytics-plugin-event-validation": "^0.1.2",
+    "bcp-47": "^2.1.0",
     "cookies-next": "^4.1.0",
     "cross-env": "^7.0.3",
     "deepmerge": "^4.3.1",

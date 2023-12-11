@@ -13,16 +13,10 @@ export function SetState({ lang }: { lang: Intl.BCP47LanguageTag }) {
     const setState = async () => {
       const localization = await getLocalizationDetailsHandler({ lang });
 
+      state$.country.set(lang.split("-")[1] as CountryCode);
       state$.lang.set(lang);
+      state$.language.set(lang.split("-")[0] as LanguageCode);
       state$.localization.set(localization);
-
-      if (lang?.split("-")?.[1]) {
-        state$.country.set(lang.split("-")[1] as CountryCode);
-      }
-
-      if (lang?.split("-")?.[0]) {
-        state$.language.set(lang.split("-")[0] as LanguageCode);
-      }
     };
 
     setState();

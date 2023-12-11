@@ -35,6 +35,11 @@ export async function middleware(request: NextRequest) {
   const detectedLanguageTagInPathname = pathname.split("/")?.[1];
 
   if (detectedLanguageTagInPathname && check(detectedLanguageTagInPathname)) {
+    state$.country.set(detectedLanguageTagInPathname.split("-")[1] as CountryCode);
+    state$.lang.set(detectedLanguageTagInPathname);
+    state$.language.set(detectedLanguageTagInPathname.split("-")[0] as LanguageCode);
+    // state$.localization.set(localization);
+
     const response = NextResponse.next();
 
     response.cookies.set('lang', detectedLanguageTagInPathname)
@@ -47,7 +52,12 @@ export async function middleware(request: NextRequest) {
 
     if (pathnameHasLangCookieValue) {
       return
-    } else {
+    } else if (check(cookie?.value)) {
+      state$.country.set(cookie.value.split("-")[1] as CountryCode);
+      state$.lang.set(cookie.value);
+      state$.language.set(cookie.value.split("-")[0] as LanguageCode);
+      // state$.localization.set(localization);
+
       // Redirect if there is no BCP47LanguageTag in the pathname
       // e.g. incoming request is /products, new URL is now /en-AU/products
       request.nextUrl.pathname = `/${cookie.value}${pathname}`
