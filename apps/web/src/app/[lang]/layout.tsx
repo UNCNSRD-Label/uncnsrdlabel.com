@@ -126,8 +126,6 @@ export default async function RootLayout({
   children,
   params: { lang },
 }: PropsWithChildren<LayoutProps>) {
-  const showBanner = false;
-
   if (lang) {
     const localization = await getLocalizationDetailsHandler({ lang });
 
@@ -157,7 +155,7 @@ export default async function RootLayout({
           <SetState lang={lang} />
           <Progress />
           <Banner
-            className={cn("sticky top-0 w-full", !showBanner && "hidden")}
+            className={cn("sticky top-0 w-full")}
           />
           <Suspense fallback={<LoadingDots />}>
             {children}
