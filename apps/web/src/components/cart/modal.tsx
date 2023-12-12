@@ -76,7 +76,7 @@ export function CartModal({
                   closed: { translateX: "100%" },
                 }}
                 transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-                className={cn("flex w-full flex-col p-6", themeColors)}
+                className={cn("flex w-full flex-col p-6 pt-[env(safe-area-inset-top,_2rem)", themeColors)}
               >
                 <div className="flex items-center justify-between">
                   <h3 className="text-lg uppercase">{intl.formatMessage({ id: "title" })}</h3>
