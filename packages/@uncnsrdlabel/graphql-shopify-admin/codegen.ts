@@ -1,24 +1,27 @@
 import type { CodegenConfig } from "@graphql-codegen/cli";
-import { storefrontApiCustomScalars } from "@shopify/hydrogen-react";
+import { endpoint } from "./src/constants";
 
 const config: CodegenConfig = {
   ignoreNoDocuments: true, // for better experience with the watcher
   overwrite: true,
-  schema: require.resolve("@shopify/hydrogen-react/storefront.schema.json"),
+  schema: {
+    [endpoint]:
+      {
+        headers: {
+          'X-Shopify-Access-Token': process.env.SHOPIFY_PRIVATE_ACCESS_TOKEN || '',
+        },
+      },
+  },
   documents: [
     "./src/fragments/**/*.{graphql,ts,tsx}",
     "./src/mutations/**/*.{graphql,ts,tsx}",
     "./src/queries/**/*.{graphql,ts,tsx}",
-    "../../../apps/*/app/**/*.{shopify-storefront.graphql,ts,tsx}",
-    "../../../apps/*/components/**/*.{shopify-storefront.graphql,ts,tsx}",
+    "../../../apps/*/app/**/*.{shopify-admin.graphql,ts,tsx}",
+    "../../../apps/*/components/**/*.{shopify-admin.graphql,ts,tsx}",
   ],
   emitLegacyCommonJSImports: false,
   generates: {
     "./src/codegen/": {
-      config: {
-        // defines the custom scalars used in the Storefront API
-        scalars: storefrontApiCustomScalars,
-      },
       preset: "client",
       presetConfig: {
         fragmentMasking: { unmaskFunctionName: "getFragmentData" },

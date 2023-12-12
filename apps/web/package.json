@@ -33,6 +33,7 @@
     "@tanstack/react-query-devtools": "^5.12.2",
     "@uncnsrdlabel/components": "workspace:*",
     "@uncnsrdlabel/graphql-hygraph": "workspace:*",
+    "@uncnsrdlabel/graphql-shopify-admin": "workspace:*",
     "@uncnsrdlabel/graphql-shopify-storefront": "workspace:*",
     "@uncnsrdlabel/lib": "workspace:*",
     "@uncnsrdlabel/providers": "workspace:*",
