@@ -33,6 +33,7 @@ export async function NavbarContent(props: Props) {
           </Suspense>
         </div>
       </div>
+
       <div className={cn("hidden", props.showLogo && "md:block")} tabIndex={-1}>
         <Link
           aria-label={intl.formatMessage({ id: "link-home" })}

@@ -48,11 +48,11 @@ export function SidebarMenu({
   return (
     <>
       <button
+        aria-label={intl.formatMessage({ id: "open" })}
+        data-testid="open-sidebar-menu"
         onClick={() => {
           setSidebarMenuIsOpen(!sidebarMenuIsOpen);
         }}
-        aria-label={intl.formatMessage({ id: "open" })}
-        data-testid="open-sidebar-menu"
       >
         <MenuIcon className="h-5 icon stroke-inherit drop-shadow" />
       </button>
@@ -90,7 +90,7 @@ export function SidebarMenu({
                   closed: { translateX: "-100%" },
                 }}
                 transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-                className={cn("flex w-full flex-col p-6", themeColors)}
+                className={cn("flex w-full flex-col p-6 pt-safeTop", themeColors)}
               >
                 <button
                   className="mb-4"

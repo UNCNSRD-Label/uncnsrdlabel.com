@@ -74,5 +74,5 @@ export default {
       pattern: /space-.+/,
       variants,
     },
-  ],
+  ]
 };
