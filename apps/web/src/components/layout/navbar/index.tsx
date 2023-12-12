@@ -11,7 +11,7 @@ export function Navbar(props: Props) {
   return (
     <nav
       className={cn(
-        "navbar-global pointer-events-none left-0 top-0 z-30 grid w-full grid-flow-col items-center justify-between gap-20 px-6 py-4 sm:auto-cols-fr pt-[env(safe-area-inset-top,_2rem)]",
+        "navbar-global pointer-events-none left-0 top-0 z-30 grid w-full grid-flow-col items-center justify-between gap-20 px-6 py-4 sm:auto-cols-fr pt-safeTop",
         {
           "text-light fill-white stroke-white mix-blend-difference":
             props.blend,

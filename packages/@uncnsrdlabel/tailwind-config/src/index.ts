@@ -139,6 +139,9 @@ export const config: Config = {
           "100%": { transform: "translateX(-100%)" },
         },
       },
+      spacing: {
+        safeTop: "env(safe-area-inset-top, 1.5rem)",
+      },
       typography: ({
         theme,
       }: {

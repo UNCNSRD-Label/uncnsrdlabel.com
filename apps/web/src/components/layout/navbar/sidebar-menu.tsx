@@ -90,7 +90,7 @@ export function SidebarMenu({
                   closed: { translateX: "-100%" },
                 }}
                 transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-                className={cn("flex w-full flex-col p-6 pt-[env(safe-area-inset-top,_2rem)", themeColors)}
+                className={cn("flex w-full flex-col p-6 pt-safeTop", themeColors)}
               >
                 <button
                   className="mb-4"
