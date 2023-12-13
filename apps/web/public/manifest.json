@@ -1,7 +1,6 @@
 {
   "name": "UNCNSRD",
   "short_name": "UNCNSRD",
-  "description": "UNCNSRD web app",
   "categories": [
     "swimware",
     "bikini",
@@ -10,75 +9,189 @@
     "fashion",
     "clothing"
   ],
+  "description": "UNCNSRD online store",
+  "display_override": ["window-controls-overlay"],
+  "id": "/",
   "images/screenshots": [
     {
-      "src": "/images/screenshots/screenshot-1.png",
-      "sizes": "1280x800",
+      "form_factor": "narrow",
+      "label": "Mobile narrow screenshot of home page",
+      "src": "/images/screenshots/screenshot-ios-narrow-home.png",
+      "sizes": "1170x2532",
       "type": "image/png"
     },
     {
-      "src": "/images/screenshots/screenshot-2.png",
-      "sizes": "1280x800",
+      "form_factor": "narrow",
+      "label": "Mobile narrow screenshot of search page",
+      "src": "/images/screenshots/screenshot-ios-narrow-search.png",
+      "sizes": "1170x2532",
       "type": "image/png"
     },
     {
-      "src": "/images/screenshots/screenshot-3.png",
-      "sizes": "1280x800",
+      "form_factor": "narrow",
+      "label": "Mobile narrow screenshot of product page",
+      "src": "/images/screenshots/screenshot-ios-narrow-product.png",
+      "sizes": "1170x2532",
+      "type": "image/png"
+    },
+    {
+      "form_factor": "narrow",
+      "label": "Tablet narrow screenshot of home page",
+      "src": "/images/screenshots/screenshot-ipados-narrow-home.png",
+      "sizes": "1668x2388",
+      "type": "image/png"
+    },
+    {
+      "form_factor": "narrow",
+      "label": "Tablet narrow screenshot of search page",
+      "src": "/images/screenshots/screenshot-ipados-narrow-search.png",
+      "sizes": "1668x2388",
+      "type": "image/png"
+    },
+    {
+      "form_factor": "narrow",
+      "label": "Tablet narrow screenshot of product page",
+      "src": "/images/screenshots/screenshot-ipados-narrow-product.png",
+      "sizes": "1668x2388",
+      "type": "image/png"
+    },
+    {
+      "form_factor": "wide",
+      "label": "Tablet wide screenshot of home page",
+      "src": "/images/screenshots/screenshot-ipados-wide-home.png",
+      "sizes": "2388x1668",
+      "type": "image/png"
+    },
+    {
+      "form_factor": "wide",
+      "label": "Tablet wide screenshot of search page",
+      "src": "/images/screenshots/screenshot-ipados-wide-search.png",
+      "sizes": "2388x1668",
+      "type": "image/png"
+    },
+    {
+      "form_factor": "wide",
+      "label": "Tablet wide screenshot of product page",
+      "src": "/images/screenshots/screenshot-ipados-wide-product.png",
+      "sizes": "2388x1668",
+      "type": "image/png"
+    },
+    {
+      "form_factor": "narrow",
+      "label": "iOS narrow screenshot of home page",
+      "platform": "ios",
+      "src": "/images/screenshots/screenshot-ios-narrow-home.png",
+      "sizes": "1170x2532",
+      "type": "image/png"
+    },
+    {
+      "form_factor": "narrow",
+      "label": "iOS narrow screenshot of search page",
+      "platform": "ios",
+      "src": "/images/screenshots/screenshot-ios-narrow-search.png",
+      "sizes": "1170x2532",
+      "type": "image/png"
+    },
+    {
+      "form_factor": "narrow",
+      "label": "iOS narrow screenshot of product page",
+      "platform": "ios",
+      "src": "/images/screenshots/screenshot-ios-narrow-product.png",
+      "sizes": "1170x2532",
+      "type": "image/png"
+    },
+    {
+      "form_factor": "narrow",
+      "label": "iPadOS narrow screenshot of home page",
+      "platform": "ipados",
+      "src": "/images/screenshots/screenshot-ipados-narrow-home.png",
+      "sizes": "1668x2388",
+      "type": "image/png"
+    },
+    {
+      "form_factor": "narrow",
+      "label": "iPadOS narrow screenshot of search page",
+      "platform": "ipados",
+      "src": "/images/screenshots/screenshot-ipados-narrow-search.png",
+      "sizes": "1668x2388",
+      "type": "image/png"
+    },
+    {
+      "form_factor": "narrow",
+      "label": "iPadOS narrow screenshot of product page",
+      "platform": "ipados",
+      "src": "/images/screenshots/screenshot-ipados-narrow-product.png",
+      "sizes": "1668x2388",
+      "type": "image/png"
+    },
+    {
+      "form_factor": "wide",
+      "label": "iPadOS wide screenshot of home page",
+      "platform": "ipados",
+      "src": "/images/screenshots/screenshot-ipados-wide-home.png",
+      "sizes": "2388x1668",
+      "type": "image/png"
+    },
+    {
+      "form_factor": "wide",
+      "label": "iPadOS wide screenshot of search page",
+      "platform": "ipados",
+      "src": "/images/screenshots/screenshot-ipados-wide-search.png",
+      "sizes": "2388x1668",
+      "type": "image/png"
+    },
+    {
+      "form_factor": "wide",
+      "label": "iPadOS wide screenshot of product page",
+      "platform": "ipados",
+      "src": "/images/screenshots/screenshot-ipados-wide-product.png",
+      "sizes": "2388x1668",
       "type": "image/png"
     }
   ],
   "icons": [
     {
-      "purpose": "any maskable",
       "src": "/images/chrome/maskable_icon_x48.png",
       "sizes": "48x48",
       "type": "image/png"
     },
     {
-      "purpose": "any maskable",
       "src": "/images/chrome/maskable_icon_x72.png",
       "sizes": "72x72",
       "type": "image/png"
     },
     {
-      "purpose": "any maskable",
       "src": "/images/chrome/maskable_icon_x96.png",
       "sizes": "96x96",
       "type": "image/png"
     },
     {
-      "purpose": "any maskable",
       "src": "/images/chrome/maskable_icon_x128.png",
       "sizes": "128x128",
       "type": "image/png"
     },
     {
-      "purpose": "any maskable",
       "src": "/images/chrome/maskable_icon_x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "purpose": "any maskable",
       "src": "/images/chrome/maskable_icon_x384.png",
       "sizes": "384x384",
       "type": "image/png"
     },
     {
-      "purpose": "any maskable",
       "src": "/images/chrome/maskable_icon_x512.png",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "purpose": "any maskable",
       "src": "/images/chrome/maskable_icon_x1024.png",
       "sizes": "1024x1024",
       "type": "image/png"
     }
   ],
-  "id": "www",
-  "lang": "en-GB",
+  "lang": "en-AU",
   "theme_color": "#ff4dd8",
   "background_color": "#111111",
   "start_url": "/",
