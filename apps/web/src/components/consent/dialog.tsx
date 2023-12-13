@@ -10,11 +10,21 @@ import { COOKIE_CONSENT } from "@uncnsrdlabel/lib";
 import { hasCookie } from "cookies-next";
 import { Suspense, useState } from "react";
 import { Button } from "./button";
+import { useState } from "react";
+import { useTrack } from "use-analytics";
 
 export function ConsentDialog({ className }: { className?: string }) {
   const intl = useGetIntl("component.ConsentDialog");
 
   const [open, setOpen] = useState(false);
+  const track = useTrack();
+
+  useTimeoutEffect(
+    () => {
+      setOpen(true);
+    },
+    hasCookie(COOKIE_CONSENT) ? undefined : 10_000,
+  );
 
   const acceptSelectedConsents = () => {
     setOpen(false);
@@ -39,6 +49,8 @@ export function ConsentDialog({ className }: { className?: string }) {
   };
 
   const onClose = () => {
+    track("Consent - close");
+
     setOpen(false);
 
     console.info("Closing dialog");

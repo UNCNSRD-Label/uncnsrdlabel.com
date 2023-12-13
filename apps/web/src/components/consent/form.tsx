@@ -15,6 +15,7 @@ import {
 } from "@uncnsrdlabel/lib";
 import { getCookie, setCookie } from "cookies-next";
 import { useState } from "react";
+import { useTrack } from "use-analytics";
 
 type ConsentDialogProps = {
   className?: string;
@@ -28,6 +29,8 @@ type ConsentDialogProps = {
 export function ConsentForm(props: ConsentDialogProps) {
   const intl = useGetIntl("component.ConsentForm");
 
+  const track = useTrack();
+
   const [optionsOpen, setOptionsOpen] = useState(false);
 
   const acceptSelectedConsents = (event: React.FormEvent<HTMLFormElement>) => {
@@ -35,6 +38,8 @@ export function ConsentForm(props: ConsentDialogProps) {
     const consentParams = Object.fromEntries(formData.entries());
 
     setCookie(COOKIE_CONSENT, consentParams, cookieOptions);
+
+    track("Consent - accept selected", consentParams);
 
     console.info("Granting selected consents");
 
@@ -46,6 +51,8 @@ export function ConsentForm(props: ConsentDialogProps) {
   const acceptAllConsents = () => {
     setCookie(COOKIE_CONSENT, acceptAllConsentSettings, cookieOptions);
 
+    track("Consent - accept all", acceptAllConsentSettings);
+
     console.info("Accepting all consents");
 
     props.acceptAllConsents();
@@ -54,6 +61,8 @@ export function ConsentForm(props: ConsentDialogProps) {
   const denyAllAdditionalConsents = () => {
     setCookie(COOKIE_CONSENT, denyAllAdditionalConsentSettings, cookieOptions);
 
+    track("Consent - deny all", denyAllAdditionalConsentSettings);
+
     console.info("Denying all additional consents");
 
     props.denyAllAdditionalConsents();
@@ -61,6 +70,8 @@ export function ConsentForm(props: ConsentDialogProps) {
 
   const manageConsents = () => {
     setOptionsOpen(true);
+    
+    track("Consent - manage", denyAllAdditionalConsentSettings);
 
     console.info("Manage consents");
 
