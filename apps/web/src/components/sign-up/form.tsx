@@ -8,6 +8,15 @@ import { cn } from "@uncnsrdlabel/lib";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { SlEnvolope } from "react-icons/sl";
+import { zodResolver } from "@hookform/resolvers/zod"
+import * as z from "zod"
+
+const schema = z.object({
+  email: z.string().email(),
+})
+
+
+type Schema = z.infer<typeof schema>
 
 export function SignUpForm({ className }: { className?: string }) {
   const intl = useGetIntl("component.SignUpForm");
@@ -15,9 +24,15 @@ export function SignUpForm({ className }: { className?: string }) {
 
   const {
     formState: { errors, isValid },
+    handleSubmit,
     register,
-  } = useForm({ defaultValues: { email: "" } });
+    reset,
+    watch,
+  } = useForm<Schema>({
+    resolver: zodResolver(schema),
+  })
 
+  const [data, setData] = useState<Schema>()
   const [open, setOpen] = useState(false);
   const timerRef = useRef(0);
   const [toastMessage, setToastMessage] = useState<string | null>(
@@ -29,6 +44,8 @@ export function SignUpForm({ className }: { className?: string }) {
   }, []);
 
   const action = async (formData: FormData) => {
+    const result = await addEntry(data)
+
     setOpen(true);
 
     window.clearTimeout(timerRef.current);
@@ -65,8 +82,9 @@ export function SignUpForm({ className }: { className?: string }) {
           />
           {errors.email && <p role="alert">{errors.email?.message}</p>}
           <button
-            className="btn absolute right-0 mr-3"
             aria-label={intl.formatMessage({ id: "submit" })}
+            className="btn absolute right-0 mr-3"
+            disabled={!isValid}
           >
             <SlEnvolope />
           </button>
