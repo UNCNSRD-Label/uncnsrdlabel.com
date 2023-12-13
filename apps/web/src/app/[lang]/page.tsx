@@ -18,7 +18,7 @@ export default async function RootPage({ params: { lang } }: PageProps) {
   return (
     <div className="dark min-h-[100dvh]">
       <div className={themeColors}>
-        <Navbar>
+        <Navbar offset sticky>
           <NavbarContent />
         </Navbar>
         <main className="relative grid grid-rows-[1fr_auto]">

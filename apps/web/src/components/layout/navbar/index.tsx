@@ -4,6 +4,7 @@ type Props = {
   children: React.ReactNode;
   className?: string;
   blend?: boolean;
+  offset?: boolean;
   sticky?: boolean;
 };
 
@@ -16,6 +17,7 @@ export function Navbar(props: Props) {
           "text-light fill-white stroke-white mix-blend-difference":
             props.blend,
         },
+        props.offset ? "pointer-events-none min-h-0 h-0 py-0 [&_>_*]:pointer-events-auto [&_>_*]:relative [&_>_*]:top-4" : null,
         props.sticky ? "sticky" : "fixed",
         props.className,
       )}

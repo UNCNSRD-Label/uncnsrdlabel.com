@@ -1,4 +1,3 @@
-import { state$ } from "@/lib/store";
 import {
   discountNodeFragment,
   getDiscountNodesQuery,
@@ -9,8 +8,6 @@ import { cn } from "@uncnsrdlabel/lib";
 import { use } from "react";
 
 export const Banner = ({ className }: { className?: string }) => {
-  const lang = state$.lang.get();
-
   const variables = {
     first: 16,
     query: "status:active",

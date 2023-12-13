@@ -21,11 +21,11 @@ export default async function SearchLayout({
 
   return (
     <>
-      <Navbar sticky>
+      <Navbar offset sticky>
         <NavbarContent />
       </Navbar>
       <Suspense fallback={<LoadingDots />}>
-        <div className="mx-auto flex min-h-[100dvh] w-full flex-col justify-center py-6 pb-48 md:flex-row">
+        <div className="mx-auto flex min-h-[100dvh] w-full flex-col justify-center pt-14 pb-48 md:flex-row bg-white relative">
           <div
             className={cn(
               "order-first flex-none md:w-1/6",
