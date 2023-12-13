@@ -81,12 +81,12 @@ export async function middleware(request: NextRequest) {
       lang: `${detectedLanguageCode}-${detectedCountryCode}`,
     });
 
-    const languageCodes = localization.availableLanguages.map(
-      (availableLanguage) =>
-        availableLanguage.isoCode.toLocaleLowerCase() as LanguageCode,
-    );
+    const matchingCountryCode = localization.availableCountries.find((availableCountry) => availableCountry.isoCode === detectedCountryCode) ?? localization.country;
 
-    const BCP47LanguageTags: Intl.BCP47LanguageTag[] = localization.availableCountries.flatMap((availableCountry) => availableCountry.availableLanguages.map((availableLanguage) => `${availableLanguage.isoCode.toLocaleLowerCase()}-${availableCountry.isoCode}` as Intl.BCP47LanguageTag))
+    const BCP47LanguageTags: Intl.BCP47LanguageTag[] = matchingCountryCode.availableLanguages.flatMap((availableLanguage) => [
+      availableLanguage.isoCode.toLocaleLowerCase() as LanguageCode,
+      `${availableLanguage.isoCode.toLocaleLowerCase()}-${matchingCountryCode.isoCode}` as Intl.BCP47LanguageTag
+    ]);
 
     const headers: Negotiator.Headers = {
       "accept-language": `${detectedLanguageCode}-${detectedCountryCode},en;q=0.5`,
@@ -94,7 +94,9 @@ export async function middleware(request: NextRequest) {
 
     const languages = new Negotiator({ headers }).languages();
 
-    const detectedLanguageTag = match(languages, [...languageCodes, ...BCP47LanguageTags], defaultLanguageCode);
+    const availableLocales = BCP47LanguageTags
+
+    const detectedLanguageTag = match(languages, availableLocales, defaultLanguageCode);
 
     // Check if there is any supported BCP47LanguageTag in the pathname
     const pathnameHasSupportedBCP47LanguageTag = BCP47LanguageTags.some(
