@@ -1,5 +1,4 @@
 import { AddToCart } from "@/components/cart/add-to-cart";
-import { AddToCartShell } from "@/components/cart/add-to-cart-shell";
 import { VariantSelector } from "@/components/product/variant-selector";
 import { VariantSelectorShell } from "@/components/product/variant-selector-shell";
 import { ProductVariant } from "@shopify/hydrogen/storefront-api-types";
@@ -38,14 +37,12 @@ export const PurchaseOptions = ({ productDetailsFragmentRef }: PurchaseOptionsPr
         <VariantSelector options={product.options} variants={variants} />
       </Suspense>
 
-      <Suspense fallback={<AddToCartShell />}>
-        <AddToCart
-          availableForSale={product.availableForSale}
-          className="mt-8"
-          options={product.options}
-          variants={variants}
-        />
-      </Suspense>
+      <AddToCart
+        availableForSale={product.availableForSale}
+        className="mt-8"
+        options={product.options}
+        variants={variants}
+      />
     </>
   );
 }

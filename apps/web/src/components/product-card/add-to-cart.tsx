@@ -12,7 +12,7 @@ import { cn } from "@uncnsrdlabel/lib";
 import { useSearchParams } from "next/navigation";
 import { useFormState, useFormStatus } from "react-dom";
 
-export function SubmitButton({
+function SubmitButton({
   availableForSale,
   className,
   selectedVariantId,
