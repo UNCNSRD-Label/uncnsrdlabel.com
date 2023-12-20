@@ -29,6 +29,8 @@ const headers = new Headers({
 export const graphQLClient = new GraphQLClient(endpoint, {
   fetch,
   headers,
+  // @ts-expect-error Object literal may only specify known properties, and 'next' does not exist in type 'RequestConfig'.
+  next: { revalidate: 300 },
 });
 
 export const getShopifyQueryClient = cache(() => new QueryClient());
