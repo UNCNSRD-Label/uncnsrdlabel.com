@@ -45,7 +45,9 @@ export async function generateMetadata({
 
   return {
     alternates: {
-      canonical: `${localization.language.isoCode.toLocaleLowerCase()}-${localization.country.isoCode}/${path}`,
+      canonical: `${localization.language.isoCode.toLocaleLowerCase()}-${
+        localization.country.isoCode
+      }/${path}`,
       languages: await getAlternativeLanguages({ localization, path }),
     },
     title: seo.title || product.title,
@@ -82,12 +84,12 @@ export default async function ProductPage({
   if (!productDetailsFragmentRef) return notFound();
 
   return (
-    <>
+    <div className="dark relative grid grid-rows-[1fr_auto] gap-2 bg-black pb-48">
       <Breadcrumb
         className="relative z-20 my-6 hidden lg:grid lg:grid-cols-12 [&>*]:lg:col-start-2 [&>*]:lg:col-end-10"
         productDetailsFragmentRef={productDetailsFragmentRef}
       />
-      <main className="mb-48 min-h-[100dvh] [&:has(+_aside)]:mb-0 relative bg-inherit">
+      <main className="mb-48 grid min-h-[100dvh] grid-cols-12 content-center bg-inherit lg:h-[100dvh] lg:overflow-y-hidden [&:has(+_aside)]:mb-0">
         <Details productDetailsFragmentRef={productDetailsFragmentRef} />
         {/* <ProductAdditionalDetails productDetailsFragmentRef={productDetailsFragmentRef} /> */}
       </main>
@@ -97,6 +99,6 @@ export default async function ProductPage({
           productDetailsFragmentRef={productDetailsFragmentRef}
         />
       </Suspense>
-    </>
+    </div>
   );
 }

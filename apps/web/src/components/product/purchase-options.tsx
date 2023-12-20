@@ -41,6 +41,7 @@ export const PurchaseOptions = ({ productDetailsFragmentRef }: PurchaseOptionsPr
       <Suspense fallback={<AddToCartShell />}>
         <AddToCart
           availableForSale={product.availableForSale}
+          className="mt-8"
           options={product.options}
           variants={variants}
         />

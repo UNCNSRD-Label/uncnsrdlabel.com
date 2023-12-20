@@ -18,10 +18,11 @@ export const minWidthXl =
   (!Array.isArray(config.theme?.screens) && config.theme?.screens?.xl) ?? "0px";
 
 export const themeColors = cn(
-  "fill-gray-950 stroke-gray-950 text-gray-950 bg-white",
-  "dark:fill-gray-100 dark:stroke-gray-100 dark:text-gray-100 dark:bg-black",
+  "fill-black stroke-black text-black bg-white",
+  "dark:fill-white dark:stroke-white dark:text-white dark:bg-black",
+  "selection:bg-gray-500/50",
   // "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))]",
-  // "from-gray-50 to-gray-100",
+  // "from-gray-50 to-white",
   // "dark:from-gray-950 dark:to-gray-900",
 );
 

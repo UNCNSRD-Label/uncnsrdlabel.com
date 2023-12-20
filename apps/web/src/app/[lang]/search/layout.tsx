@@ -25,28 +25,26 @@ export default async function SearchLayout({
         <NavbarContent />
       </Navbar>
       <Suspense fallback={<LoadingDots />}>
-        <div className="mx-auto flex min-h-[100dvh] w-full flex-col justify-center pt-14 pb-48 md:flex-row bg-white relative">
-          <div
-            className={cn(
-              "order-first flex-none md:w-1/6",
-              process.env.NEXT_PUBLIC_FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE !==
-                "true" && "hidden",
-            )}
-          >
-            <Collections />
-          </div>
-          <main className="order-last w-full max-w-7xl px-4 md:order-none">
-            {children}
-          </main>
-          <div
-            className={cn(
-              "order-none md:order-last md:w-1/6 md:flex-none",
-              process.env.NEXT_PUBLIC_FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE !==
-                "true" && "hidden",
-            )}
-          >
-            <FilterList list={productCollectionSorting} title={intl.formatMessage({ id: "title" })} />
-          </div>
+        <div className="bg-white flex flex-col md:flex-row justify-center relative mx-auto px-2 sm:px-4 min-h-[100dvh] pb-48 pt-20 w-full">
+          <Collections
+            className={cn("flex-none md:w-1/6", {
+              hidden:
+                process.env
+                  .NEXT_PUBLIC_FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE !==
+                "true",
+            })}
+          />
+          <FilterList
+            className={cn("flex-none md:w-1/6", {
+              hidden:
+                process.env
+                  .NEXT_PUBLIC_FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE !==
+                "true",
+            })}
+            list={productCollectionSorting}
+            title={intl.formatMessage({ id: "title" })}
+          />
+          {children}
         </div>
         <Logo className="bottom-20" />
       </Suspense>
