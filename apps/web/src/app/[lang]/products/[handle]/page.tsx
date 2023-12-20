@@ -87,7 +87,7 @@ export default async function ProductPage({
         className="relative z-20 my-6 hidden lg:grid lg:grid-cols-12 [&>*]:lg:col-start-2 [&>*]:lg:col-end-10"
         productDetailsFragmentRef={productDetailsFragmentRef}
       />
-      <main className="mb-48 min-h-[100dvh] [&:has(+_aside)]:mb-0">
+      <main className="mb-48 min-h-[100dvh] [&:has(+_aside)]:mb-0 relative bg-inherit">
         <Details productDetailsFragmentRef={productDetailsFragmentRef} />
         {/* <ProductAdditionalDetails productDetailsFragmentRef={productDetailsFragmentRef} /> */}
       </main>
