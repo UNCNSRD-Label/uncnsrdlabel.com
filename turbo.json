@@ -1,15 +1,9 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDotEnv": [".env", ".env.local"],
+  "globalDependencies": [".env.local"],
   "pipeline": {
     "build": {
-      "dependsOn": ["^build"],
-      "dotEnv": [
-        ".env.production.local",
-        ".env.local",
-        ".env.production",
-        ".env"
-      ]
+      "dependsOn": ["^build"]
     },
     "clean": {
       "cache": false
@@ -17,12 +11,6 @@
     "dev": {
       "cache": false,
       "dependsOn": ["^build"],
-      "dotEnv": [
-        ".env.development.local",
-        ".env.local",
-        ".env.development",
-        ".env"
-      ],
       "env": [
         "ANALYZE",
         "NEXT_PUBLIC_FEATURE_FLAG_HOLDING_REDIRECT_ENABLE",
@@ -56,7 +44,6 @@
     },
     "test": {
       "dependsOn": ["^build"],
-      "dotEnv": [".env.test.local", ".env.test", ".env"],
       "outputs": []
     },
     "types:check": {
