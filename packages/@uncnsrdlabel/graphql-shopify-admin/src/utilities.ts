@@ -31,7 +31,7 @@ export const graphQLClient = new GraphQLClient(endpoint, {
     fetch(url, {
       ...params,
       // @ts-expect-error Object literal may only specify known properties, and 'next' does not exist in type 'RequestConfig'.
-      next: { revalidate: 600 }
+      next: { revalidate: 60 }
     })
   ),
   headers,
