@@ -20,9 +20,6 @@ importers:
       '@uncnsrdlabel/eslint-config-custom':
         specifier: workspace:*
         version: link:packages/@uncnsrdlabel/eslint-config-custom
-      dotenv-cli:
-        specifier: ^7.3.0
-        version: 7.3.0
       eslint:
         specifier: ^8.55.0
         version: 8.55.0
@@ -620,9 +617,6 @@ importers:
       '@uncnsrdlabel/lib':
         specifier: workspace:*
         version: link:../lib
-      dotenv-cli:
-        specifier: ^7.3.0
-        version: 7.3.0
       graphql:
         specifier: ^16.8.1
         version: 16.8.1
@@ -7601,10 +7595,12 @@ packages:
       dotenv: 16.3.1
       dotenv-expand: 10.0.0
       minimist: 1.2.8
+    dev: false
 
   /dotenv-expand@10.0.0:
     resolution: {integrity: sha512-GopVGCpVS1UKH75VKHGuQFqS1Gusej0z4FyQkPdwjil2gNIv+LNsqBlboOzpJFZKVT95GkCyWJbBSdFEFUWI2A==}
     engines: {node: '>=12'}
+    dev: false
 
   /dotenv@16.0.3:
     resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
@@ -7613,6 +7609,7 @@ packages:
   /dotenv@16.3.1:
     resolution: {integrity: sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==}
     engines: {node: '>=12'}
+    dev: false
 
   /dset@3.1.2:
     resolution: {integrity: sha512-g/M9sqy3oHe477Ar4voQxWtaPIFw1jTdKZuomOjhCcBx9nHUNn0pu6NopuFFrTh/TRZIKEj+76vLWFu9BNKk+Q==}
