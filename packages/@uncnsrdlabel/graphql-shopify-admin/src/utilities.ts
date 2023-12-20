@@ -27,10 +27,14 @@ const headers = new Headers({
 });
 
 export const graphQLClient = new GraphQLClient(endpoint, {
-  fetch,
+  fetch: cache(async (url: RequestInfo | URL, params: RequestInit | undefined) => 
+    fetch(url, {
+      ...params,
+      // @ts-expect-error Object literal may only specify known properties, and 'next' does not exist in type 'RequestConfig'.
+      next: { revalidate: 600 }
+    })
+  ),
   headers,
-  // @ts-expect-error Object literal may only specify known properties, and 'next' does not exist in type 'RequestConfig'.
-  next: { revalidate: 300 },
 });
 
 export const getShopifyQueryClient = cache(() => new QueryClient());
