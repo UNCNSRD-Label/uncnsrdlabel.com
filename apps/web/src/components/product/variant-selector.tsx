@@ -4,6 +4,7 @@ import {
   type ProductOption,
   type ProductVariant,
 } from "@shopify/hydrogen/storefront-api-types";
+import { Button } from "@uncnsrdlabel/components/ui/button";
 import { cn, createUrl } from "@uncnsrdlabel/lib";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Fragment } from "react";
@@ -100,7 +101,7 @@ export function VariantSelector({
                 option.values.length === 1;
 
               return (
-                <button
+                <Button
                   key={value}
                   aria-disabled={!isAvailableForSale}
                   disabled={!isAvailableForSale}
@@ -122,9 +123,10 @@ export function VariantSelector({
                         !isAvailableForSale,
                     },
                   )}
+                  variant="ghost"
                 >
                   {value}
-                </button>
+                </Button>
               );
             })}
           </dd>

@@ -5,6 +5,7 @@ import { useGetIntl } from "@/lib/i18n";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { useTimeoutEffect } from "@react-hookz/web";
+import { Button } from "@uncnsrdlabel/components/ui/button";
 import { COOKIE_REDEEM_CODE } from "@uncnsrdlabel/lib";
 import { hasCookie } from "cookies-next";
 import { useState } from "react";
@@ -26,7 +27,7 @@ export function RedeemCode(props: { className?: string }) {
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
-        <button className={props.className}>Redeem code</button>
+        <Button className={props.className}>Redeem code</Button>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0 z-40 bg-black/80" />
@@ -40,13 +41,13 @@ export function RedeemCode(props: { className?: string }) {
           </Dialog.Description>
           <RedeemCodeForm />
           <Dialog.Close asChild>
-            <button
+            <Button
               className="absolute right-6 top-6 inline-flex"
               aria-label={intl.formatMessage({ id: "close" })}
               onClick={onClose}
             >
               <Cross2Icon />
-            </button>
+            </Button>
           </Dialog.Close>
         </Dialog.Content>
       </Dialog.Portal>

@@ -2,6 +2,7 @@
 
 import { signUpAction } from "@/components/sign-up/action";
 import { useGetIntl } from "@/lib/i18n";
+import { Button } from "@uncnsrdlabel/components/ui/button";
 import { cn } from "@uncnsrdlabel/lib";
 import { useFormState, useFormStatus } from "react-dom";
 import { SlEnvolope } from "react-icons/sl";
@@ -16,9 +17,9 @@ function Submit({
   const status = useFormStatus();
 
   return (
-    <button className={className} disabled={status.pending}>
+    <Button className={className} disabled={status.pending}>
       {intl.formatMessage({ id: "submit" })}
-    </button>
+    </Button>
   );
 }
 
@@ -41,12 +42,12 @@ export function SignUpForm({ className }: { className?: string }) {
           placeholder={intl.formatMessage({ id: "placeholder" })}
           type="email"
         />
-        <button
+        <Button
           aria-label={intl.formatMessage({ id: "submit" })}
           className="btn absolute right-0 mr-3"
         >
           <SlEnvolope />
-        </button>
+        </Button>
       </div>
       <Submit
         className="btn btn-primary btn-solid btn-sm justify-self-end !no-underline"

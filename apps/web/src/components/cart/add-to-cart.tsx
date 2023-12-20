@@ -8,6 +8,7 @@ import {
   type ProductOption,
   type ProductVariant,
 } from "@shopify/hydrogen/storefront-api-types";
+import { Button } from "@uncnsrdlabel/components/ui/button";
 import { cn } from "@uncnsrdlabel/lib";
 import { useSearchParams } from "next/navigation";
 import { useFormState, useFormStatus } from "react-dom";
@@ -31,32 +32,33 @@ function SubmitButton({
 
   if (!availableForSale) {
     return (
-      <button
+      <Button
         aria-disabled
         className={cn(buttonClasses, disabledClasses, className)}
       >
         {intl.formatMessage({ id: "out-of-stock" })}
-      </button>
+      </Button>
     );
   }
 
   if (!selectedVariantId) {
     return (
-      <button
+      <Button
         aria-label={intl.formatMessage({ id: "select-options" })}
         aria-disabled
         className={cn(buttonClasses, disabledClasses)}
+        variant="ghost"
       >
         <div className="absolute left-0 ml-4">
           <PlusIcon className="h-5" />
         </div>
         {intl.formatMessage({ id: "select-options" })}
-      </button>
+      </Button>
     );
   }
 
   return (
-    <button
+    <Button
       onClick={(e: React.FormEvent<HTMLButtonElement>) => {
         if (pending) e.preventDefault();
       }}
@@ -75,7 +77,7 @@ function SubmitButton({
         )}
       </div>
       {intl.formatMessage({ id: "add-to-cart-enabled" })}
-    </button>
+    </Button>
   );
 }
 

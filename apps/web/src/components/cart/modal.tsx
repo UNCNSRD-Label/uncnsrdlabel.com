@@ -7,6 +7,7 @@ import { useGetIntl } from "@/lib/i18n";
 import { themeColors } from "@/lib/tailwind";
 import { ResultOf } from "@graphql-typed-document-node/core";
 import { Dialog } from "@headlessui/react";
+import { Button } from "@uncnsrdlabel/components/ui/button";
 import { cartFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { AnimatePresence, motion } from "framer-motion";
@@ -39,9 +40,9 @@ export function CartModal({
 
   return (
     <>
-      <button aria-label={intl.formatMessage({ id: "open" })} onClick={openCart}>
+      <Button aria-label={intl.formatMessage({ id: "open" })} onClick={openCart} variant="ghost">
         <OpenCart quantity={cart?.totalQuantity} />
-      </button>
+      </Button>
 
       <AnimatePresence initial={false}>
         {isOpen && (
@@ -81,9 +82,9 @@ export function CartModal({
                 <div className="flex items-center justify-between">
                   <h3 className="text-lg uppercase">{intl.formatMessage({ id: "title" })}</h3>
 
-                  <button aria-label={intl.formatMessage({ id: "close" })} onClick={closeCart}>
+                  <Button aria-label={intl.formatMessage({ id: "close" })} onClick={closeCart}>
                     <CloseCart />
-                  </button>
+                  </Button>
                 </div>
 
                 <CartForm cart={cart} closeCart={closeCart} />

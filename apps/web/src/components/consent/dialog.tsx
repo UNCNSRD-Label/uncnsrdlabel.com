@@ -6,12 +6,12 @@ import { useGetIntl } from "@/lib/i18n";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { useTimeoutEffect } from "@react-hookz/web";
+import { Button } from "@uncnsrdlabel/components/ui/button";
 import { COOKIE_CONSENT } from "@uncnsrdlabel/lib";
 import { hasCookie } from "cookies-next";
 import { Suspense, useState } from "react";
-import { Button } from "./button";
-import { useState } from "react";
 import { useTrack } from "use-analytics";
+import { ConsentButton } from "./button";
 
 export function ConsentDialog({ className }: { className?: string }) {
   const intl = useGetIntl("component.ConsentDialog");
@@ -73,7 +73,7 @@ export function ConsentDialog({ className }: { className?: string }) {
 
   return (
     <>
-      <Button className={className} onClick={onOpen} />
+      <ConsentButton className={className} onClick={onOpen} />
       <Dialog.Root onOpenChange={setOpen} open={open}>
         <Dialog.Portal>
           <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0 z-40 bg-black/80" />
@@ -94,13 +94,13 @@ export function ConsentDialog({ className }: { className?: string }) {
               />
             </Suspense>
             <Dialog.Close asChild>
-              <button
+              <Button
                 aria-label={intl.formatMessage({ id: "close" })}
                 className="absolute right-6 top-6 inline-flex"
                 onClick={onClose}
               >
                 <Cross2Icon />
-              </button>
+              </Button>
             </Dialog.Close>
           </Dialog.Content>
         </Dialog.Portal>

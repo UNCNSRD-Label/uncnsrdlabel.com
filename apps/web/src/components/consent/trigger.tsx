@@ -1,10 +1,10 @@
 import { Suspense } from "react";
-import { Button } from "./button";
+import { ConsentButton } from "./button";
 import { ConsentDialog } from "./dialog";
 
 export function ConsentTrigger({ className }: { className?: string }) {
   return (
-    <Suspense fallback={<Button className={className} />}>
+    <Suspense fallback={<ConsentButton className={className} />}>
         <ConsentDialog className={className} />
     </Suspense>
   );

@@ -2,6 +2,7 @@
 
 import { redeemCodeAction } from "@/components/redeem-code/action";
 import { useGetIntl } from "@/lib/i18n";
+import { Button } from "@uncnsrdlabel/components/ui/button";
 import { cn } from "@uncnsrdlabel/lib";
 import { useForm } from "react-hook-form";
 
@@ -42,12 +43,12 @@ export function RedeemCodeForm({ className }: { className?: string }) {
         </div>
       ))}
 
-      <button
+      <Button
         className="btn btn-primary btn-solid btn-sm justify-self-end !no-underline"
         disabled={!isValid}
       >
         {intl.formatMessage({ id: "submit" })}
-      </button>
+      </Button>
     </form>
   );
 }
