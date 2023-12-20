@@ -10,17 +10,21 @@ import { use } from "react";
 export const Banner = ({ className }: { className?: string }) => {
   const variables = {
     first: 16,
-    query: "status:active",
+    query: "status:active AND title:Site|*",
   };
 
   const { discountNodes } = use(
     getShopifyAdminGraphQL(getDiscountNodesQuery, variables),
   );
 
+  if (!discountNodes?.edges?.length) {
+    return null;
+  }
+
   return (
     <article
       className={cn(
-        "bg-hotPink text-light grid snap-start place-content-center p-6 text-xs uppercase sm:text-base",
+        "bg-hotPink text-light pt-safeTop grid snap-start place-content-center p-6 text-xs uppercase sm:text-base",
         className,
       )}
     >
@@ -37,7 +41,7 @@ export const Banner = ({ className }: { className?: string }) => {
               case "DiscountCodeBasic":
                 return (
                   <span data-type="DiscountCodeBasic">
-                    {discountNode.discount.title} -{" "}
+                    {discountNode.discount.title.replace("Site|", "")} -{" "}
                     {discountNode.discount.shortSummary}
                   </span>
                 );
@@ -45,7 +49,7 @@ export const Banner = ({ className }: { className?: string }) => {
               case "DiscountAutomaticBasic":
                 return (
                   <span data-type="DiscountAutomaticBasic">
-                    {discountNode.discount.title} -{" "}
+                    {discountNode.discount.title.replace("Site|", "")} -{" "}
                     {discountNode.discount.shortSummary}
                   </span>
                 );
