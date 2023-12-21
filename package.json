@@ -1,16 +1,16 @@
 {
   "devDependencies": {
     "@graphql-eslint/eslint-plugin": "^3.20.1",
-    "@turbo/gen": "^1.10.16",
-    "@types/node": "^20.10.2",
+    "@turbo/gen": "^1.11.2",
+    "@types/node": "^20.10.5",
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",
-    "eslint": "^8.55.0",
-    "eslint-config-turbo": "^1.10.16",
+    "eslint": "^8.56.0",
+    "eslint-config-turbo": "^1.11.2",
     "husky": "^8.0.3",
-    "lint-staged": "^15.1.0",
+    "lint-staged": "^15.2.0",
     "madge": "^6.1.0",
-    "prettier": "^3.1.0",
-    "turbo": "^1.11.0"
+    "prettier": "^3.1.1",
+    "turbo": "^1.11.2"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
