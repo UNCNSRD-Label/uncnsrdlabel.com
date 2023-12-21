@@ -69,7 +69,7 @@ export function ProductVariantGridItems({
                   <Tile
                     className={transitionDelays[productIndex]}
                     image={product.featuredImage}
-                    priority={productIndex < 4}
+                    priority={productIndex <= 1}
                     productBasicFragmentRef={productBasicFragmentRef}
                     video={video}
                   />

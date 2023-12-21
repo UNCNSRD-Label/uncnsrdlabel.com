@@ -34,7 +34,7 @@ export function Images({
               fill
               id={`${idPrefix}-${index}`}
               key={image.id}
-              priority={index === 0}
+              priority={index <= 1}
               quality={100}
               sizes={sizes}
               src={image.src}
