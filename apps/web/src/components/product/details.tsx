@@ -1,4 +1,3 @@
-import { LoadingDots } from "@/components/loading/dots";
 import { PriceAndCompareAtPrice } from "@/components/price-and-compare-at-price";
 import { ProductDetailsTabs } from "@/components/product/details-tabs";
 import { PurchaseOptions } from "@/components/product/purchase-options";
@@ -9,7 +8,6 @@ import {
   imageFragment,
   productDetailsFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { Suspense } from "react";
 import { Product as ProductSchema, WithContext } from "schema-dts";
 import { ProductMedia } from "./media";
 
@@ -65,20 +63,16 @@ export function Details({
         ) : null}
 
         <div className="relative h-64">
-          <Suspense fallback={<LoadingDots />}>
-            <PurchaseOptions
-              productDetailsFragmentRef={productDetailsFragmentRef}
-            />
-          </Suspense>
-        </div>
-
-        <Suspense fallback={<LoadingDots />}>
-          <ProductDetailsTabs
-            className="mt-8"
-            excludedKeys={["complementary_products", "related_products"]}
+          <PurchaseOptions
             productDetailsFragmentRef={productDetailsFragmentRef}
           />
-        </Suspense>
+        </div>
+
+        <ProductDetailsTabs
+          className="mt-8"
+          excludedKeys={["complementary_products", "related_products"]}
+          productDetailsFragmentRef={productDetailsFragmentRef}
+        />
       </section>
 
       <script
