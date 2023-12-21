@@ -54,7 +54,7 @@ export function ProductDetailsTabs({
         {metafieldFragmentsFiltered.map((metafield) => (
           <TabsPrimitive.Trigger
             className="data-[state=active]:text-hotPink"
-            key={metafield.key}
+            key={`Trigger.${metafield.key}`}
             value={metafield.key}
           >
             {metafield?.key
@@ -69,7 +69,7 @@ export function ProductDetailsTabs({
       {metafieldFragmentsFiltered.map((metafield) => (
         <TabsPrimitive.Content
           className="text-xs"
-          key={metafield.key}
+          key={`Content.${metafield.key}`}
           value={metafield.key}
         >
           <MetafieldMapper
