@@ -6,6 +6,7 @@ import {
 } from "@shopify/hydrogen/storefront-api-types";
 import { cn, createUrl } from "@uncnsrdlabel/lib";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { Fragment } from "react";
 import { PartialDeep } from "type-fest";
 
 type Combination = {
@@ -51,11 +52,11 @@ export function VariantSelector({
   }));
 
   return (
-    <>
+    <dl className="grid gap-1 md:gap-2 mb-2">
       {options.map((option) => (
-        <dl className="mb-3 md:mb-6" key={option.id}>
-          <dt className="mb-2 text-sm uppercase">{option.name}</dt>
-          <dd className="flex flex-wrap gap-3">
+        <Fragment key={option.id}>
+          <dt className="text-sm uppercase">{option.name}</dt>
+          <dd className="flex flex-wrap gap-3 mb-2">
             {option.values.map((value) => {
               const optionNameLowerCase = option.name.toLowerCase();
 
@@ -110,7 +111,7 @@ export function VariantSelector({
                     !isAvailableForSale ? " (Out of Stock)" : ""
                   }`}
                   className={cn(
-                    "focus-visible:bg-hotPink/20 focus-visible:ring-hotPink flex h-12 min-w-[48px] items-center justify-center px-2 text-sm",
+                    "focus-visible:bg-hotPink/20 focus-visible:ring-hotPink flex h-8 min-w-[48px] items-center justify-center px-2 text-sm",
                     "hover:text-dark focus-visible:text-dark",
                     {
                       "text-hotPink ring-hotPink cursor-default ring-1":
@@ -127,8 +128,8 @@ export function VariantSelector({
               );
             })}
           </dd>
-        </dl>
-      ))}
-    </>
+        </Fragment>
+      ))}    
+    </dl>
   );
 }

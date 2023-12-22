@@ -43,7 +43,7 @@ export function Details({
       <ProductMedia productDetailsFragmentRef={productDetailsFragmentRef} />
 
       <section
-        className="relative z-10 col-span-full h-full min-h-[100dvh] overflow-hidden overflow-y-auto p-6 sm:col-start-3 sm:col-end-11 sm:min-h-fit md:h-[80dvh] lg:-top-12 lg:col-start-7 lg:col-end-12 lg:rounded-xl lg:bg-white/90 lg:shadow lg:backdrop-blur lg:backdrop-saturate-50 xl:col-start-9"
+        className="relative z-10 grid gap-3 col-span-full h-full min-h-[100dvh] overflow-hidden overflow-y-auto p-6 sm:col-start-3 sm:col-end-11 sm:min-h-fit md:h-[85dvh] lg:col-start-7 lg:col-end-13 lg:mr-8 lg:rounded-xl lg:bg-white/90 lg:shadow lg:backdrop-blur lg:backdrop-saturate-50 xl:col-start-9 content-start"
         id="details"
       >
         <h3 data-testid="product-name" className="box-decoration-clone text-xl">
@@ -51,25 +51,25 @@ export function Details({
         </h3>
 
         <PriceAndCompareAtPrice
-          className="mb-4 grid-flow-col text-sm"
+          className="grid-flow-col text-sm"
           productDetailsFragmentRef={productDetailsFragmentRef}
         />
 
         {product.descriptionHtml ? (
           <Prose
-            className="prose-thead:border-hotPink prose-tr:border-hotPink mb-6 text-xs leading-tight"
+            className="prose-thead:border-hotPink prose-tr:border-hotPink text-xs leading-tight"
             html={product.descriptionHtml}
           />
         ) : null}
 
-        <div className="relative h-64">
+        <div className="relative">
           <PurchaseOptions
             productDetailsFragmentRef={productDetailsFragmentRef}
           />
         </div>
 
         <ProductDetailsTabs
-          className="mt-8"
+          className=""
           excludedKeys={["complementary_products", "related_products"]}
           productDetailsFragmentRef={productDetailsFragmentRef}
         />

@@ -84,18 +84,18 @@ export default async function ProductPage({
   if (!productDetailsFragmentRef) return notFound();
 
   return (
-    <div className="dark relative grid grid-rows-[1fr_auto] gap-2 bg-black pb-48">
+    <div className="dark relative grid grid-rows-[1fr_auto]">
       <Breadcrumb
-        className="relative z-20 my-6 hidden lg:grid lg:grid-cols-12 [&>*]:lg:col-start-2 [&>*]:lg:col-end-10"
+        className="absolute left-12 top-6 z-20 hidden lg:grid lg:grid-cols-12 [&>*]:lg:col-start-2 [&>*]:lg:col-end-10"
         productDetailsFragmentRef={productDetailsFragmentRef}
       />
-      <main className="mb-48 grid min-h-[100dvh] grid-cols-12 content-center bg-inherit lg:h-[100dvh] lg:overflow-y-hidden [&:has(+_aside)]:mb-0">
+      <main className="mb-48 grid grid-cols-12 content-center bg-inherit min-h-[100dvh] lg:h-[100dvh] lg:overflow-y-hidden [&:has(+_aside)]:mb-0">
         <Details productDetailsFragmentRef={productDetailsFragmentRef} />
         {/* <ProductAdditionalDetails productDetailsFragmentRef={productDetailsFragmentRef} /> */}
       </main>
       <Suspense fallback={<LoadingDots />}>
         <RelatedProducts
-          className="text-dark relative bg-white pb-48 pt-12 [contain:paint]"
+          className="text-dark relative bg-white"
           productDetailsFragmentRef={productDetailsFragmentRef}
         />
       </Suspense>

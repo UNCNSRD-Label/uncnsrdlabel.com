@@ -88,7 +88,7 @@ export function ProductMedia({
 
   return (
     <div
-      className="ghost-scrollbar relative z-0 col-span-full grid w-full snap-both snap-mandatory grid-flow-col justify-start overflow-x-scroll scroll-smooth lg:absolute lg:inset-0"
+      className="ghost-scrollbar relative z-0 col-span-full grid w-full snap-both snap-mandatory grid-flow-col justify-start overflow-x-scroll scroll-smooth lg:fixed lg:inset-0"
       id="images"
     >
       <Images
