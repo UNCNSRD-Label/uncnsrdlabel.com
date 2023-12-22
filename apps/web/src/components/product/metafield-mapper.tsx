@@ -1,6 +1,5 @@
-"use client";
-
 import { Tile } from "@/components/grid/tile";
+import { state$ } from "@/lib/store";
 import { transitionDelays } from "@/lib/tailwind";
 import { ResultOf } from "@graphql-typed-document-node/core";
 import {
@@ -15,7 +14,7 @@ import {
   productDetailsFragment,
   productMetafieldFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { useGetInContextVariables } from "@uncnsrdlabel/lib";
+import { getInContextVariables } from "@uncnsrdlabel/lib";
 import { Fragment, ReactNode } from "react";
 import slugify from "slugify";
 import { JsonValue } from "type-fest";
@@ -57,6 +56,8 @@ export async function MetafieldMapper({
   includedKeys,
   metafield,
 }: MetafieldMapperProps) {
+  const lang = state$.lang.get();
+
   let value: ReactNode = null;
 
   let parsedValue = null;
@@ -141,7 +142,11 @@ export async function MetafieldMapper({
         if (Array.isArray(parsedValue)) {
           value = parsedValue.map(async (id, index) => {
             if (typeof id === "string") {
-              const inContextVariables = useGetInContextVariables();
+              const inContextVariables = getInContextVariables(lang);
+
+              console.log({ id });
+
+              const variables = { id };
 
               const { product: productDetailsFragmentRef } =
                 await getShopifyGraphQL(
