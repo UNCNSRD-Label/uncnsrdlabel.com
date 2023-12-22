@@ -153,7 +153,7 @@ export default async function RootLayout({
         <AppProviders lang={lang}>
           <SetState lang={lang} />
           <Banner
-            className={cn("sticky top-0 w-full")}
+            className={cn("sticky top-0 w-full z-30")}
           />
           <Progress />
           <Suspense fallback={<LoadingDots />}>

@@ -21,11 +21,11 @@ export default async function SearchLayout({
 
   return (
     <>
-      <Navbar offset sticky>
+      <Navbar className="z-50" offset sticky>
         <NavbarContent />
       </Navbar>
       <Suspense fallback={<LoadingDots />}>
-        <div className="bg-white flex flex-col md:flex-row justify-center relative mx-auto px-2 sm:px-4 min-h-[100dvh] pb-48 pt-20 w-full">
+        <div className="bg-white flex flex-col md:flex-row justify-center relative mx-auto px-2 sm:px-4 min-h-[100dvh] pb-48 pt-20 w-full z-40">
           <Collections
             className={cn("flex-none md:w-1/6", {
               hidden:
