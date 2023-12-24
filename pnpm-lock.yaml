@@ -120,23 +120,23 @@ importers:
         specifier: ^0.5.1
         version: 0.5.1(react@0.0.0-experimental-c17a27ef4-20231127)
       '@react-hookz/web':
-        specifier: ^24.0.1
-        version: 24.0.1(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
+        specifier: ^24.0.2
+        version: 24.0.2(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@remix-run/react':
-        specifier: ^2.4.0
-        version: 2.4.0(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)(typescript@5.3.3)
+        specifier: ^2.4.1
+        version: 2.4.1(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)(typescript@5.3.3)
       '@shopify/hydrogen':
         specifier: ^2023.10.3
-        version: 2023.10.3(@remix-run/react@2.4.0)(@remix-run/server-runtime@2.3.1)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
+        version: 2023.10.3(@remix-run/react@2.4.1)(@remix-run/server-runtime@2.4.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@shopify/hydrogen-react':
         specifier: ^2023.10.1
         version: 2023.10.1(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@tanstack/react-query':
-        specifier: ^5.14.2
-        version: 5.14.2(react@0.0.0-experimental-c17a27ef4-20231127)
+        specifier: ^5.14.6
+        version: 5.14.6(react@0.0.0-experimental-c17a27ef4-20231127)
       '@tanstack/react-query-devtools':
-        specifier: ^5.14.2
-        version: 5.14.2(@tanstack/react-query@5.14.2)(react@0.0.0-experimental-c17a27ef4-20231127)
+        specifier: ^5.14.6
+        version: 5.14.6(@tanstack/react-query@5.14.6)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@uncnsrdlabel/components':
         specifier: workspace:*
         version: link:../../packages/@uncnsrdlabel/components
@@ -418,17 +418,17 @@ importers:
         specifier: ^0.5.1
         version: 0.5.1(react@0.0.0-experimental-c17a27ef4-20231127)
       '@react-hookz/web':
-        specifier: ^24.0.1
-        version: 24.0.1(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
+        specifier: ^24.0.2
+        version: 24.0.2(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@shopify/hydrogen':
         specifier: ^2023.10.3
-        version: 2023.10.3(@remix-run/react@2.4.0)(@remix-run/server-runtime@2.3.1)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
+        version: 2023.10.3(@remix-run/react@2.4.1)(@remix-run/server-runtime@2.4.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@shopify/hydrogen-react':
         specifier: ^2023.10.1
         version: 2023.10.1(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@tanstack/react-query':
-        specifier: ^5.14.2
-        version: 5.14.2(react@0.0.0-experimental-c17a27ef4-20231127)
+        specifier: ^5.14.6
+        version: 5.14.6(react@0.0.0-experimental-c17a27ef4-20231127)
       '@uncnsrdlabel/graphql-shopify-storefront':
         specifier: workspace:*
         version: link:../graphql-shopify-storefront
@@ -460,8 +460,8 @@ importers:
         specifier: ^4.17.21
         version: 4.17.21
       lucide-react:
-        specifier: ^0.299.0
-        version: 0.299.0(react@0.0.0-experimental-c17a27ef4-20231127)
+        specifier: ^0.301.0
+        version: 0.301.0(react@0.0.0-experimental-c17a27ef4-20231127)
       next:
         specifier: 14.0.4
         version: 14.0.4(@babel/core@7.22.11)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
@@ -505,8 +505,8 @@ importers:
         specifier: ^1.6.6
         version: 1.6.6
       tailwind-merge:
-        specifier: ^2.1.0
-        version: 2.1.0
+        specifier: ^2.2.0
+        version: 2.2.0
       use-analytics:
         specifier: ^1.1.0
         version: 1.1.0(react@0.0.0-experimental-c17a27ef4-20231127)
@@ -587,8 +587,8 @@ importers:
         specifier: 7.33.2
         version: 7.33.2(eslint@8.56.0)
       eslint-plugin-unicorn:
-        specifier: ^49.0.0
-        version: 49.0.0(eslint@8.56.0)
+        specifier: ^50.0.1
+        version: 50.0.1(eslint@8.56.0)
       next:
         specifier: 14.0.4
         version: 14.0.4(@babel/core@7.22.11)(react-dom@18.2.0)(react@18.2.0)
@@ -612,8 +612,8 @@ importers:
         specifier: ^2.2.0
         version: 2.2.0
       '@tanstack/react-query':
-        specifier: ^5.14.2
-        version: 5.14.2(react@18.2.0)
+        specifier: ^5.14.6
+        version: 5.14.6(react@18.2.0)
       '@types/node':
         specifier: ^20.5.6
         version: 20.5.6
@@ -697,8 +697,8 @@ importers:
         specifier: ^2023.10.1
         version: 2023.10.1(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-0cdfef19b-20231211)
       '@tanstack/react-query':
-        specifier: ^5.14.2
-        version: 5.14.2(react@0.0.0-experimental-0cdfef19b-20231211)
+        specifier: ^5.14.6
+        version: 5.14.6(react@0.0.0-experimental-0cdfef19b-20231211)
       '@types/node':
         specifier: ^20.5.6
         version: 20.10.2
@@ -791,8 +791,8 @@ importers:
         specifier: ^2023.10.1
         version: 2023.10.1(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@tanstack/react-query':
-        specifier: ^5.14.2
-        version: 5.14.2(react@0.0.0-experimental-c17a27ef4-20231127)
+        specifier: ^5.14.6
+        version: 5.14.6(react@0.0.0-experimental-c17a27ef4-20231127)
       '@types/node':
         specifier: ^20.5.6
         version: 20.5.6
@@ -882,8 +882,8 @@ importers:
         specifier: 14.0.4
         version: 14.0.4(@babel/core@7.22.11)(react-dom@18.2.0)(react@18.2.0)
       tailwind-merge:
-        specifier: ^2.1.0
-        version: 2.1.0
+        specifier: ^2.2.0
+        version: 2.2.0
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^2.1.4
@@ -935,19 +935,19 @@ importers:
         version: 0.5.5
       '@shopify/hydrogen':
         specifier: ^2023.10.3
-        version: 2023.10.3(@remix-run/react@2.4.0)(@remix-run/server-runtime@2.3.1)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
+        version: 2023.10.3(@remix-run/react@2.4.1)(@remix-run/server-runtime@2.4.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@shopify/hydrogen-react':
         specifier: ^2023.10.1
         version: 2023.10.1(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@tanstack/react-query':
-        specifier: ^5.14.2
-        version: 5.14.2(react@0.0.0-experimental-c17a27ef4-20231127)
+        specifier: ^5.14.6
+        version: 5.14.6(react@0.0.0-experimental-c17a27ef4-20231127)
       '@tanstack/react-query-devtools':
-        specifier: ^5.14.2
-        version: 5.14.2(@tanstack/react-query@5.14.2)(react@0.0.0-experimental-c17a27ef4-20231127)
+        specifier: ^5.14.6
+        version: 5.14.6(@tanstack/react-query@5.14.6)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@tanstack/react-query-next-experimental':
-        specifier: ^5.14.2
-        version: 5.14.2(@tanstack/react-query@5.14.2)(next@14.0.4)(react@0.0.0-experimental-c17a27ef4-20231127)
+        specifier: ^5.14.6
+        version: 5.14.6(@tanstack/react-query@5.14.6)(next@14.0.4)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@uncnsrdlabel/graphql-shopify-storefront':
         specifier: workspace:*
         version: link:../graphql-shopify-storefront
@@ -1088,7 +1088,7 @@ importers:
         version: 2.1.4
       '@shopify/hydrogen':
         specifier: ^2023.10.3
-        version: 2023.10.3(@remix-run/react@2.4.0)(@remix-run/server-runtime@2.3.1)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
+        version: 2023.10.3(@remix-run/react@2.4.1)(@remix-run/server-runtime@2.4.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@total-typescript/ts-reset':
         specifier: ^0.5.1
         version: 0.5.1
@@ -1201,7 +1201,7 @@ packages:
       '@babel/core': 7.22.11
       '@babel/generator': 7.22.10
       '@babel/parser': 7.22.11
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
       '@babel/traverse': 7.22.11
       '@babel/types': 7.22.11
       babel-preset-fbjs: 3.4.0(@babel/core@7.22.11)
@@ -1469,7 +1469,7 @@ packages:
     resolution: {integrity: sha512-78aUtVcT7MUscr0K5mIEnkwxPE0MaxkR5RxRwuHaQ+JuU5AmTPhY+do2mdzVTnIJJpyBglql2pehuBIWHug+WQ==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/helper-validator-identifier': 7.22.5
+      '@babel/helper-validator-identifier': 7.22.20
       chalk: 2.4.2
       js-tokens: 4.0.0
 
@@ -2391,6 +2391,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.14.0
+    dev: false
 
   /@babel/runtime@7.23.5:
     resolution: {integrity: sha512-NdUTHcPe4C99WxPub+K9l9tK5/lV4UXIoaHSYgzco9BCyjKAAwzdBI+wWtYqHt7LJdbo74ZjRPJgzVweq1sz0w==}
@@ -4673,13 +4674,13 @@ packages:
   /@radix-ui/number@1.0.1:
     resolution: {integrity: sha512-T5gIdVO2mmPW3NNhjNgEP3cqMXjXL9UbO0BzWcXfvdBs+BohbQxvd/K5hSVKmn9/lbTdsQVKbUcP5WLCwvUbBg==}
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
     dev: false
 
   /@radix-ui/primitive@1.0.1:
     resolution: {integrity: sha512-yQ8oGX2GVsEYMWGxcovu1uGWPCxV5BFfeeYxqPmuAzUyLT9qmaMXSAhXpb0WrspIeqYzdJpkh2vHModJPgRIaw==}
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
     dev: false
 
   /@radix-ui/react-accessible-icon@1.0.3(@types/react-dom@18.2.18)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127):
@@ -4745,7 +4746,7 @@ packages:
       '@types/react-dom':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
       '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.2.18)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@types/react': 18.2.45
       '@types/react-dom': 18.2.18
@@ -4822,7 +4823,7 @@ packages:
       '@types/react-dom':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
       '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.2.45)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@radix-ui/react-context': 1.0.1(@types/react@18.2.45)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.2.18)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
@@ -4842,7 +4843,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
       '@types/react': 18.2.45
       react: 0.0.0-experimental-c17a27ef4-20231127
     dev: false
@@ -4856,7 +4857,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
       '@types/react': 18.2.45
       react: 0.0.0-experimental-c17a27ef4-20231127
     dev: false
@@ -4904,7 +4905,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
       '@types/react': 18.2.45
       react: 0.0.0-experimental-c17a27ef4-20231127
     dev: false
@@ -4922,7 +4923,7 @@ packages:
       '@types/react-dom':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
       '@radix-ui/primitive': 1.0.1
       '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.2.45)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.2.18)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
@@ -4943,7 +4944,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
       '@types/react': 18.2.45
       react: 0.0.0-experimental-c17a27ef4-20231127
     dev: false
@@ -4961,7 +4962,7 @@ packages:
       '@types/react-dom':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
       '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.2.45)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.2.18)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@radix-ui/react-use-callback-ref': 1.0.1(@types/react@18.2.45)(react@0.0.0-experimental-c17a27ef4-20231127)
@@ -4988,7 +4989,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
       '@radix-ui/react-use-layout-effect': 1.0.1(@types/react@18.2.45)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@types/react': 18.2.45
       react: 0.0.0-experimental-c17a27ef4-20231127
@@ -5062,7 +5063,7 @@ packages:
       '@types/react-dom':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
       '@floating-ui/react-dom': 2.0.1(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@radix-ui/react-arrow': 1.0.3(@types/react-dom@18.2.18)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.2.45)(react@0.0.0-experimental-c17a27ef4-20231127)
@@ -5092,7 +5093,7 @@ packages:
       '@types/react-dom':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
       '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.2.18)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@types/react': 18.2.45
       '@types/react-dom': 18.2.18
@@ -5113,7 +5114,7 @@ packages:
       '@types/react-dom':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
       '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.2.45)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@radix-ui/react-use-layout-effect': 1.0.1(@types/react@18.2.45)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@types/react': 18.2.45
@@ -5135,7 +5136,7 @@ packages:
       '@types/react-dom':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
       '@radix-ui/react-slot': 1.0.2(@types/react@18.2.45)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@types/react': 18.2.45
       '@types/react-dom': 18.2.18
@@ -5156,7 +5157,7 @@ packages:
       '@types/react-dom':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
       '@radix-ui/primitive': 1.0.1
       '@radix-ui/react-collection': 1.0.3(@types/react-dom@18.2.18)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.2.45)(react@0.0.0-experimental-c17a27ef4-20231127)
@@ -5303,7 +5304,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
       '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.2.45)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@types/react': 18.2.45
       react: 0.0.0-experimental-c17a27ef4-20231127
@@ -5382,7 +5383,7 @@ packages:
       '@types/react-dom':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
       '@radix-ui/primitive': 1.0.1
       '@radix-ui/react-context': 1.0.1(@types/react@18.2.45)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@radix-ui/react-direction': 1.0.1(@types/react@18.2.45)(react@0.0.0-experimental-c17a27ef4-20231127)
@@ -5409,7 +5410,7 @@ packages:
       '@types/react-dom':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
       '@radix-ui/primitive': 1.0.1
       '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.2.18)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@radix-ui/react-use-controllable-state': 1.0.1(@types/react@18.2.45)(react@0.0.0-experimental-c17a27ef4-20231127)
@@ -5487,7 +5488,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
       '@types/react': 18.2.45
       react: 0.0.0-experimental-c17a27ef4-20231127
     dev: false
@@ -5501,7 +5502,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
       '@radix-ui/react-use-callback-ref': 1.0.1(@types/react@18.2.45)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@types/react': 18.2.45
       react: 0.0.0-experimental-c17a27ef4-20231127
@@ -5516,7 +5517,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
       '@radix-ui/react-use-callback-ref': 1.0.1(@types/react@18.2.45)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@types/react': 18.2.45
       react: 0.0.0-experimental-c17a27ef4-20231127
@@ -5531,7 +5532,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
       '@types/react': 18.2.45
       react: 0.0.0-experimental-c17a27ef4-20231127
     dev: false
@@ -5545,7 +5546,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
       '@types/react': 18.2.45
       react: 0.0.0-experimental-c17a27ef4-20231127
     dev: false
@@ -5559,7 +5560,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
       '@radix-ui/rect': 1.0.1
       '@types/react': 18.2.45
       react: 0.0.0-experimental-c17a27ef4-20231127
@@ -5574,7 +5575,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
       '@radix-ui/react-use-layout-effect': 1.0.1(@types/react@18.2.45)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@types/react': 18.2.45
       react: 0.0.0-experimental-c17a27ef4-20231127
@@ -5593,7 +5594,7 @@ packages:
       '@types/react-dom':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
       '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.2.18)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@types/react': 18.2.45
       '@types/react-dom': 18.2.18
@@ -5604,7 +5605,7 @@ packages:
   /@radix-ui/rect@1.0.1:
     resolution: {integrity: sha512-fyrgCaedtvMg9NK3en0pnOYJdtfwxUcNolezkNPUsoX57X8oQk+NkqcvzHXD2uKNij6GXmWU9NDru2IWjrO4BQ==}
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.5
     dev: false
 
   /@react-hooks-library/core@0.5.1(react@0.0.0-experimental-c17a27ef4-20231127):
@@ -5624,9 +5625,9 @@ packages:
     resolution: {integrity: sha512-N56fTrAPUDz/R423pag+n6TXWbvlBZDtTehaGFjK0InmN+V2OFWLE/WmORhmn6Ce7dlwH5+tQN1LJFw3ngTJVg==}
     dev: false
 
-  /@react-hookz/web@24.0.1(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127):
-    resolution: {integrity: sha512-twRqGr4+28x0mnbn3usCmfmMAnE6Zj0JQ7YC+6+HXICpLHtqJoQ1diwxbFna4QV6Edsf99cfcQ5tLbCqgHsbzg==}
-    engines: {node: '>=20.0.0'}
+  /@react-hookz/web@24.0.2(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127):
+    resolution: {integrity: sha512-LhWw/LzhxKYRZDRIKd42mCMqRa9pTMSpwpwnfpa0hYoUNcrHw//3NlpoPlynkmKT3G88mumTTuV0HeWnNkarog==}
+    engines: {node: '>=18.0.0'}
     peerDependencies:
       js-cookie: ^3.0.5
       react: ^16.8 || ^17 || ^18
@@ -5640,8 +5641,8 @@ packages:
       react-dom: 18.2.0(react@0.0.0-experimental-c17a27ef4-20231127)
     dev: false
 
-  /@remix-run/react@2.4.0(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)(typescript@5.3.3):
-    resolution: {integrity: sha512-SO+VTSTd5oN7eAoTXV2E//LEu7cEO3VsqVDqETZG3X+MfpaU6dtng18FnY6X/ulBP62BjlH6HTwdTK8Lk+2msQ==}
+  /@remix-run/react@2.4.1(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)(typescript@5.3.3):
+    resolution: {integrity: sha512-6qfLpijD96fKd276/MOtarf/SkFmWDKXTXzpMQzYTiRXofUDezRGG3VqbkopD1O+jl4BjTuKQvI+7YfLcfGx8w==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       react: ^18.0.0
@@ -5651,38 +5652,21 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@remix-run/router': 1.14.0
-      '@remix-run/server-runtime': 2.4.0(typescript@5.3.3)
+      '@remix-run/router': 1.14.1
+      '@remix-run/server-runtime': 2.4.1(typescript@5.3.3)
       react: 0.0.0-experimental-c17a27ef4-20231127
       react-dom: 18.2.0(react@0.0.0-experimental-c17a27ef4-20231127)
-      react-router: 6.21.0(react@0.0.0-experimental-c17a27ef4-20231127)
-      react-router-dom: 6.21.0(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
+      react-router: 6.21.1(react@0.0.0-experimental-c17a27ef4-20231127)
+      react-router-dom: 6.21.1(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       typescript: 5.3.3
-
-  /@remix-run/router@1.13.0:
-    resolution: {integrity: sha512-5dMOnVnefRsl4uRnAdoWjtVTdh8e6aZqgM4puy9nmEADH72ck+uXwzpJLEKE9Q6F8ZljNewLgmTfkxUrBdv4WA==}
-    engines: {node: '>=14.0.0'}
 
   /@remix-run/router@1.14.0:
     resolution: {integrity: sha512-WOHih+ClN7N8oHk9N4JUiMxQJmRVaOxcg8w7F/oHUXzJt920ekASLI/7cYX8XkntDWRhLZtsk6LbGrkgOAvi5A==}
     engines: {node: '>=14.0.0'}
 
-  /@remix-run/server-runtime@2.3.1(typescript@5.3.3):
-    resolution: {integrity: sha512-ym1nfuYJKn5Vd4bqGIJbZMR1wh/A/qXSzOwqCrZxjdsAmb4YLUBnUAJFIoCRBrvcge92kXq/lXjGOFYf+qidZg==}
-    engines: {node: '>=18.0.0'}
-    peerDependencies:
-      typescript: ^5.1.0
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@remix-run/router': 1.13.0
-      '@types/cookie': 0.5.4
-      '@web3-storage/multipart-parser': 1.0.0
-      cookie: 0.5.0
-      set-cookie-parser: 2.6.0
-      source-map: 0.7.4
-      typescript: 5.3.3
+  /@remix-run/router@1.14.1:
+    resolution: {integrity: sha512-Qg4DMQsfPNAs88rb2xkdk03N3bjK4jgX5fR24eHCTR9q6PrhZQZ4UJBPzCHJkIpTRN1UKxx2DzjZmnC+7Lj0Ow==}
+    engines: {node: '>=14.0.0'}
 
   /@remix-run/server-runtime@2.4.0(typescript@5.3.3):
     resolution: {integrity: sha512-okNGtxB2eqEEsI0aDbmC/yCFhsDVD41P0TNPDHBxXy7PK3nzI9yywhknxLvim0lrxc/zKri/5gVKVJpipRekGQ==}
@@ -5694,6 +5678,23 @@ packages:
         optional: true
     dependencies:
       '@remix-run/router': 1.14.0
+      '@types/cookie': 0.5.4
+      '@web3-storage/multipart-parser': 1.0.0
+      cookie: 0.5.0
+      set-cookie-parser: 2.6.0
+      source-map: 0.7.4
+      typescript: 5.3.3
+
+  /@remix-run/server-runtime@2.4.1(typescript@5.3.3):
+    resolution: {integrity: sha512-aQyBa0U8Db4E9sv2sruMfPDBYB4jlqvZ43YvkaZ1BGjUzi84ssfmaHdWgX/QveB6hi61RABTi6v8DV548kmRQg==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      typescript: ^5.1.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@remix-run/router': 1.14.1
       '@types/cookie': 0.5.4
       '@web3-storage/multipart-parser': 1.0.0
       cookie: 0.5.0
@@ -5826,15 +5827,15 @@ packages:
       - xstate
     dev: false
 
-  /@shopify/hydrogen@2023.10.3(@remix-run/react@2.4.0)(@remix-run/server-runtime@2.3.1)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127):
+  /@shopify/hydrogen@2023.10.3(@remix-run/react@2.4.1)(@remix-run/server-runtime@2.4.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127):
     resolution: {integrity: sha512-oTNjdsBHzb5W4S4S2b83qZ1SiHeY1MJgTRjaq9OqKYHMmchggd9ap44lheZjG67CgQYyuE9ocr/bgBq1yU8hoA==}
     peerDependencies:
       '@remix-run/react': ^2.1.0
       '@remix-run/server-runtime': ^2.1.0
       react: ^18.2.0
     dependencies:
-      '@remix-run/react': 2.4.0(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)(typescript@5.3.3)
-      '@remix-run/server-runtime': 2.3.1(typescript@5.3.3)
+      '@remix-run/react': 2.4.1(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)(typescript@5.3.3)
+      '@remix-run/server-runtime': 2.4.0(typescript@5.3.3)
       '@shopify/hydrogen-react': 2023.10.1(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       content-security-policy-builder: 2.1.1
       react: 0.0.0-experimental-c17a27ef4-20231127
@@ -5901,35 +5902,35 @@ packages:
     resolution: {integrity: sha512-QmoJvC72sSWs3hgGis8JdmlDvqLfYGWUK4UG6OR9Q6t28JMN9m2FDwKPqoSJ9YVocELCSjMt/FGjEiLfk8000Q==}
     dev: false
 
-  /@tanstack/query-devtools@5.13.5:
-    resolution: {integrity: sha512-effSYz9AWcZ6sNd+c8LCBYFIuDZApoCTXEpRlEYChBZpMz9QUUVMLToThwCyUY49+T5pANL3XxgZf3HV7hwJlg==}
+  /@tanstack/query-devtools@5.14.6:
+    resolution: {integrity: sha512-Kj820qMnyrTodqznWGnYQzef4SSsGrTnz6kW2ViFesA/ikJ79Rz+GB327Tx+xr8rSEsF4MTKEB8oH8+PKpXL4g==}
     dev: false
 
-  /@tanstack/react-query-devtools@5.14.2(@tanstack/react-query@5.14.2)(react@0.0.0-experimental-c17a27ef4-20231127):
-    resolution: {integrity: sha512-qSV88emQbUNM61IWCZqUdqjShPNyVcQnEaAJMFM1eaCAcUnDIpRtsGRMNEYYAjuWAXbkCjAo/JdwArF/z5hyMQ==}
+  /@tanstack/react-query-devtools@5.14.6(@tanstack/react-query@5.14.6)(react@0.0.0-experimental-c17a27ef4-20231127):
+    resolution: {integrity: sha512-RR+y3hrv8BzFCa0tPA6Vi2lvlMDORBzNGwjDRHTTowUcx84xElbJbgB0O82HO4gYWaXMFJC4Lr2w4QfvMRVVeg==}
     peerDependencies:
-      '@tanstack/react-query': ^5.14.2
+      '@tanstack/react-query': ^5.14.6
       react: ^18.0.0
     dependencies:
-      '@tanstack/query-devtools': 5.13.5
-      '@tanstack/react-query': 5.14.2(react@0.0.0-experimental-c17a27ef4-20231127)
+      '@tanstack/query-devtools': 5.14.6
+      '@tanstack/react-query': 5.14.6(react@0.0.0-experimental-c17a27ef4-20231127)
       react: 0.0.0-experimental-c17a27ef4-20231127
     dev: false
 
-  /@tanstack/react-query-next-experimental@5.14.2(@tanstack/react-query@5.14.2)(next@14.0.4)(react@0.0.0-experimental-c17a27ef4-20231127):
-    resolution: {integrity: sha512-o+WQ0tXvGhoRM0KnjISYLV5+HHnauxQSBrkzmlCzArSdnKWXeHEeZrnrrVE79YpSbj21gZBie7s9PN+CBLJuAQ==}
+  /@tanstack/react-query-next-experimental@5.14.6(@tanstack/react-query@5.14.6)(next@14.0.4)(react@0.0.0-experimental-c17a27ef4-20231127):
+    resolution: {integrity: sha512-Zz0yjNQ504kNMiB01v4+nlJRWkZm4fIzd11IK2IqTocFmsOts49NcLxVy4QKN7EcgErqVp6YzntcxBdsJ76Miw==}
     peerDependencies:
-      '@tanstack/react-query': ^5.14.2
+      '@tanstack/react-query': ^5.14.6
       next: ^13 || ^14
       react: ^18.0.0
     dependencies:
-      '@tanstack/react-query': 5.14.2(react@0.0.0-experimental-c17a27ef4-20231127)
+      '@tanstack/react-query': 5.14.6(react@0.0.0-experimental-c17a27ef4-20231127)
       next: 14.0.4(@babel/core@7.22.11)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       react: 0.0.0-experimental-c17a27ef4-20231127
     dev: false
 
-  /@tanstack/react-query@5.14.2(react@0.0.0-experimental-0cdfef19b-20231211):
-    resolution: {integrity: sha512-SbOzV7UBW8ED3tOnyn6kqNGscnOAfoxShYlbvaQo/5528mDZKpvrwoL/1du1/ukSC6RMAiKmx95SrYqlwPzWDw==}
+  /@tanstack/react-query@5.14.6(react@0.0.0-experimental-0cdfef19b-20231211):
+    resolution: {integrity: sha512-+INnJdq/904d+K2XQjqdIC58glpNGfQ8Xz93M6WBeJs5FPGFV8SEuFVzPtW/bKZ/Hu7hAiJpbFLDg5Lysvwmuw==}
     peerDependencies:
       react: ^18.0.0
     dependencies:
@@ -5937,8 +5938,8 @@ packages:
       react: 0.0.0-experimental-0cdfef19b-20231211
     dev: false
 
-  /@tanstack/react-query@5.14.2(react@0.0.0-experimental-c17a27ef4-20231127):
-    resolution: {integrity: sha512-SbOzV7UBW8ED3tOnyn6kqNGscnOAfoxShYlbvaQo/5528mDZKpvrwoL/1du1/ukSC6RMAiKmx95SrYqlwPzWDw==}
+  /@tanstack/react-query@5.14.6(react@0.0.0-experimental-c17a27ef4-20231127):
+    resolution: {integrity: sha512-+INnJdq/904d+K2XQjqdIC58glpNGfQ8Xz93M6WBeJs5FPGFV8SEuFVzPtW/bKZ/Hu7hAiJpbFLDg5Lysvwmuw==}
     peerDependencies:
       react: ^18.0.0
     dependencies:
@@ -5946,8 +5947,8 @@ packages:
       react: 0.0.0-experimental-c17a27ef4-20231127
     dev: false
 
-  /@tanstack/react-query@5.14.2(react@18.2.0):
-    resolution: {integrity: sha512-SbOzV7UBW8ED3tOnyn6kqNGscnOAfoxShYlbvaQo/5528mDZKpvrwoL/1du1/ukSC6RMAiKmx95SrYqlwPzWDw==}
+  /@tanstack/react-query@5.14.6(react@18.2.0):
+    resolution: {integrity: sha512-+INnJdq/904d+K2XQjqdIC58glpNGfQ8Xz93M6WBeJs5FPGFV8SEuFVzPtW/bKZ/Hu7hAiJpbFLDg5Lysvwmuw==}
     peerDependencies:
       react: ^18.0.0
     dependencies:
@@ -7029,6 +7030,17 @@ packages:
       node-releases: 2.0.13
       update-browserslist-db: 1.0.13(browserslist@4.22.1)
 
+  /browserslist@4.22.2:
+    resolution: {integrity: sha512-0UgcrvQmBDvZHFGdYUehrCNIazki7/lUP3kkoi/r3YB2amZbFM9J43ZRkJTXBUZK4gmx56+Sqk9+Vs9mwZx9+A==}
+    engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
+    hasBin: true
+    dependencies:
+      caniuse-lite: 1.0.30001571
+      electron-to-chromium: 1.4.616
+      node-releases: 2.0.14
+      update-browserslist-db: 1.0.13(browserslist@4.22.2)
+    dev: false
+
   /bser@2.1.1:
     resolution: {integrity: sha512-gQxTNE/GAfIIrmHLUE3oJyp5FO6HRBfhjnw4/wMmA63ZGDJnWBmgY/lyQBpnDUkGmAhbSe39tx2d/iTOAfglwQ==}
     dependencies:
@@ -7098,6 +7110,10 @@ packages:
 
   /caniuse-lite@1.0.30001543:
     resolution: {integrity: sha512-qxdO8KPWPQ+Zk6bvNpPeQIOH47qZSYdFZd6dXQzb2KzhnSXju4Kd7H1PkSJx6NICSMgo/IhRZRhhfPTHYpJUCA==}
+
+  /caniuse-lite@1.0.30001571:
+    resolution: {integrity: sha512-tYq/6MoXhdezDLFZuCO/TKboTzuQ/xR5cFdgXPfDtM7/kchBO3b4VWghE/OAi/DV7tTdhmLjZiZBZi1fA/GheQ==}
+    dev: false
 
   /capital-case@1.0.4:
     resolution: {integrity: sha512-ds37W8CytHgwnhGGTi88pcPyR15qoNkOpYwmMMfnWqqWgESapLqvDx6huFjQ5vqWSn2Z06173XNA7LtMOeUh1A==}
@@ -7224,8 +7240,8 @@ packages:
     resolution: {integrity: sha512-p3KULyQg4S7NIHixdwbGX+nFHkoBiA4YQmyWtjb8XngSKV124nJmRysgAeujbUVb15vh+RvFUfCPqU7rXk+hZg==}
     engines: {node: '>=6.0'}
 
-  /ci-info@3.8.0:
-    resolution: {integrity: sha512-eXTggHWSooYhq49F2opQhuHWgzucfF2YgODK4e1566GQs5BIfP30B0oenwBJHfWxAs2fyPB1s7Mg949zLf61Yw==}
+  /ci-info@4.0.0:
+    resolution: {integrity: sha512-TdHqgGf9odd8SXNuxtUBVx8Nv+qZOejE6qyqiy5NtbYYQOeFa6zmHkxlPzmaLxWWHsU6nJmB7AETdVPi+2NBUg==}
     engines: {node: '>=8'}
     dev: false
 
@@ -7436,6 +7452,12 @@ packages:
     resolution: {integrity: sha512-GSvKDv4wE0bPnQtjklV101juQ85g6H3rm5PDP20mqlS5j0kXF3pP97YvAu5hl+uFHqMictp3b2VxOHljWMAtuA==}
     dependencies:
       browserslist: 4.22.1
+    dev: false
+
+  /core-js-compat@3.34.0:
+    resolution: {integrity: sha512-4ZIyeNbW/Cn1wkMMDy+mvrRUxrwFNjKwbhCfQpDd+eLgYipDqp8oGFGtLmhh18EDPKA0g3VUBYOxQGGwvWLVpA==}
+    dependencies:
+      browserslist: 4.22.2
     dev: false
 
   /core-js-pure@3.32.1:
@@ -7966,6 +7988,10 @@ packages:
   /electron-to-chromium@1.4.550:
     resolution: {integrity: sha512-LfcsAzGj18xBYFM5WetwNQdqA03iLDozfCo0SWpu5G9zA5H1G/2GOiHOVnQdOrqaZ8vI8IiSgS3JMUrq930zsw==}
 
+  /electron-to-chromium@1.4.616:
+    resolution: {integrity: sha512-1n7zWYh8eS0L9Uy+GskE0lkBUNK83cXTVJI0pU3mGprFsbfSdAc15VTFbo+A+Bq4pwstmL30AVcEU3Fo463lNg==}
+    dev: false
+
   /emoji-regex@10.2.1:
     resolution: {integrity: sha512-97g6QgOk8zlDRdgq1WxwgTMgEWGVAQvB5Fdpgc1MkNy56la5SKP9GsMXKDOdqwn90/41a8yPwIGk1Y6WVbeMQA==}
     dev: false
@@ -8325,16 +8351,18 @@ packages:
       dotenv: 16.0.3
       eslint: 8.56.0
 
-  /eslint-plugin-unicorn@49.0.0(eslint@8.56.0):
-    resolution: {integrity: sha512-0fHEa/8Pih5cmzFW5L7xMEfUTvI9WKeQtjmKpTUmY+BiFCDxkxrTdnURJOHKykhtwIeyYsxnecbGvDCml++z4Q==}
+  /eslint-plugin-unicorn@50.0.1(eslint@8.56.0):
+    resolution: {integrity: sha512-KxenCZxqSYW0GWHH18okDlOQcpezcitm5aOSz6EnobyJ6BIByiPDviQRjJIUAjG/tMN11958MxaQ+qCoU6lfDA==}
     engines: {node: '>=16'}
     peerDependencies:
-      eslint: '>=8.52.0'
+      eslint: '>=8.56.0'
     dependencies:
       '@babel/helper-validator-identifier': 7.22.20
       '@eslint-community/eslint-utils': 4.4.0(eslint@8.56.0)
-      ci-info: 3.8.0
+      '@eslint/eslintrc': 2.1.4
+      ci-info: 4.0.0
       clean-regexp: 1.0.0
+      core-js-compat: 3.34.0
       eslint: 8.56.0
       esquery: 1.5.0
       indent-string: 4.0.0
@@ -8346,6 +8374,8 @@ packages:
       regjsparser: 0.10.0
       semver: 7.5.4
       strip-indent: 3.0.0
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /eslint-scope@5.1.1:
@@ -10099,8 +10129,8 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /lucide-react@0.299.0(react@0.0.0-experimental-c17a27ef4-20231127):
-    resolution: {integrity: sha512-59MiDzDzFI/efHhb4n0vGdXelMNwou7JlAFvVS4boA1G/7aYU7garPciYo73CODzkhrhz0JOgdtSTPSe5dMrlQ==}
+  /lucide-react@0.301.0(react@0.0.0-experimental-c17a27ef4-20231127):
+    resolution: {integrity: sha512-ZMbsXSv8qg3u0wqGngW+dG2Tu20fBqQAu3e0MikjGIx6KUN+4TrL2j3XwWZCcpHEfH9Tw+gqnQXRhHVne5DzJQ==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:
@@ -10493,6 +10523,10 @@ packages:
 
   /node-releases@2.0.13:
     resolution: {integrity: sha512-uYr7J37ae/ORWdZeQ1xxMJe3NtdmqMC/JZK+geofDrkLUApKRHPd18/TxtBOJ4A0/+uUIliorNrfYV6s1b02eQ==}
+
+  /node-releases@2.0.14:
+    resolution: {integrity: sha512-y10wOWt8yZpqXmOgRo77WaHEmhYQYGNA6y421PKsKYWEK8aW+cqAphborZDhqfyKrbZEN92CN1X2KbafY2s7Yw==}
+    dev: false
 
   /node-source-walk@4.3.0:
     resolution: {integrity: sha512-8Q1hXew6ETzqKRAs3jjLioSxNfT1cx74ooiF8RlAONwVMcfq+UdzLC2eB5qcPldUxaE5w3ytLkrmV1TGddhZTA==}
@@ -11784,25 +11818,25 @@ packages:
       use-sidecar: 1.1.2(@types/react@18.2.45)(react@0.0.0-experimental-c17a27ef4-20231127)
     dev: false
 
-  /react-router-dom@6.21.0(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127):
-    resolution: {integrity: sha512-1dUdVj3cwc1npzJaf23gulB562ESNvxf7E4x8upNJycqyUm5BRRZ6dd3LrlzhtLaMrwOCO8R0zoiYxdaJx4LlQ==}
+  /react-router-dom@6.21.1(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127):
+    resolution: {integrity: sha512-QCNrtjtDPwHDO+AO21MJd7yIcr41UetYt5jzaB9Y1UYaPTCnVuJq6S748g1dE11OQlCFIQg+RtAA1SEZIyiBeA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       react: '>=16.8'
       react-dom: '>=16.8'
     dependencies:
-      '@remix-run/router': 1.14.0
+      '@remix-run/router': 1.14.1
       react: 0.0.0-experimental-c17a27ef4-20231127
       react-dom: 18.2.0(react@0.0.0-experimental-c17a27ef4-20231127)
-      react-router: 6.21.0(react@0.0.0-experimental-c17a27ef4-20231127)
+      react-router: 6.21.1(react@0.0.0-experimental-c17a27ef4-20231127)
 
-  /react-router@6.21.0(react@0.0.0-experimental-c17a27ef4-20231127):
-    resolution: {integrity: sha512-hGZ0HXbwz3zw52pLZV3j3+ec+m/PQ9cTpBvqjFQmy2XVUWGn5MD+31oXHb6dVTxYzmAeaiUBYjkoNz66n3RGCg==}
+  /react-router@6.21.1(react@0.0.0-experimental-c17a27ef4-20231127):
+    resolution: {integrity: sha512-W0l13YlMTm1YrpVIOpjCADJqEUpz1vm+CMo47RuFX4Ftegwm6KOYsL5G3eiE52jnJpKvzm6uB/vTKTPKM8dmkA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       react: '>=16.8'
     dependencies:
-      '@remix-run/router': 1.14.0
+      '@remix-run/router': 1.14.1
       react: 0.0.0-experimental-c17a27ef4-20231127
 
   /react-social-icons@6.7.0(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127):
@@ -12754,8 +12788,8 @@ packages:
     dependencies:
       tslib: 2.6.2
 
-  /tailwind-merge@2.1.0:
-    resolution: {integrity: sha512-l11VvI4nSwW7MtLSLYT4ldidDEUwQAMWuSHk7l4zcXZDgnCRa0V3OdCwFfM7DCzakVXMNRwAeje9maFFXT71dQ==}
+  /tailwind-merge@2.2.0:
+    resolution: {integrity: sha512-SqqhhaL0T06SW59+JVNfAqKdqLs0497esifRrZ7jOaefP3o64fdFNDMrAQWZFMxTLJPiHVjRLUywT8uFz1xNWQ==}
     dependencies:
       '@babel/runtime': 7.23.5
     dev: false
@@ -13316,6 +13350,17 @@ packages:
       browserslist: 4.22.1
       escalade: 3.1.1
       picocolors: 1.0.0
+
+  /update-browserslist-db@1.0.13(browserslist@4.22.2):
+    resolution: {integrity: sha512-xebP81SNcPuNpPP3uzeW1NYXxI3rxyJzF3pD6sH4jE7o/IX+WtSpwnVU+qIsDPyk0d3hmFQ7mjqc6AtV604hbg==}
+    hasBin: true
+    peerDependencies:
+      browserslist: '>= 4.21.0'
+    dependencies:
+      browserslist: 4.22.2
+      escalade: 3.1.1
+      picocolors: 1.0.0
+    dev: false
 
   /update-check@1.5.4:
     resolution: {integrity: sha512-5YHsflzHP4t1G+8WGPlvKbJEbAJGCgw+Em+dGR1KmBUbr1J36SJBqlHLjR7oob7sco5hWHGQVcr9B2poIVDDTQ==}
