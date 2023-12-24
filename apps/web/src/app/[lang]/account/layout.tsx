@@ -23,8 +23,8 @@ export default async function AccountLayout({
   const lang = state$.lang.get();
 
   const segment =
-    isValidElement(children) && children.props.childPropSegment
-      ? children.props.childPropSegment
+    isValidElement(children) && children.props.childProp.segment
+      ? children.props.childProp.segment
       : undefined;
 
   const routeMetaObject = await getRouteMetaObjectHandler({
