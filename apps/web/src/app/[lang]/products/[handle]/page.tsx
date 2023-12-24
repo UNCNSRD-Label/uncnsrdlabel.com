@@ -84,7 +84,7 @@ export default async function ProductPage({
   if (!productDetailsFragmentRef) return notFound();
 
   return (
-    <div className="dark relative grid grid-rows-[1fr_auto]">
+    <div className="dark grid grid-rows-[1fr_auto] sticky top-0 z-40">
       <Breadcrumb
         className="absolute left-12 top-6 z-20 hidden lg:grid lg:grid-cols-12 [&>*]:lg:col-start-2 [&>*]:lg:col-end-10"
         productDetailsFragmentRef={productDetailsFragmentRef}
@@ -95,7 +95,7 @@ export default async function ProductPage({
       </main>
       <Suspense fallback={<LoadingDots />}>
         <RelatedProducts
-          className="text-dark relative bg-white"
+          className="text-dark relative bg-white z-50"
           productDetailsFragmentRef={productDetailsFragmentRef}
         />
       </Suspense>

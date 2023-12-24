@@ -11,7 +11,7 @@ export default function ProductsLayout({
 }) {
   return (
     <>
-      <Navbar offset sticky>
+      <Navbar className="z-30" offset sticky>
         <NavbarContent />
       </Navbar>
       <Suspense fallback={<LoadingDots />}>
