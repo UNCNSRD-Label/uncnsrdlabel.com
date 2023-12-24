@@ -112,12 +112,12 @@
   "scripts": {
     "analyze": "cross-env ANALYZE=true next build",
     "build": "next build",
-    "dev": "next dev -p 3001",
+    "dev": "next dev",
     "find:unused": "npx next-unused",
     "lint": "next lint",
     "prettier:check": "prettier --check --ignore-unknown .",
     "prettier:fix": "prettier --write --ignore-unknown .",
-    "start": "next start -p 3001",
+    "start": "next start",
     "types:check": "tsc --noEmit"
   },
   "type": "module"
