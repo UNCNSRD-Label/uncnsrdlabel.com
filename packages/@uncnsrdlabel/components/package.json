@@ -36,7 +36,7 @@
     "framer-motion": "^10.16.16",
     "lodash": "^4.17.21",
     "lucide-react": "^0.301.0",
-    "next": "14.0.4",
+    "next": "14.0.3",
     "nuka-carousel": "^7.0.0",
     "react": "experimental",
     "react-barcode": "^1.4.6",

@@ -46,7 +46,7 @@ importers:
     dependencies:
       '@ducanh2912/next-pwa':
         specifier: ^10.0.0
-        version: 10.0.0(next@14.0.4)(webpack@5.89.0)
+        version: 10.0.0(next@14.0.3)(webpack@5.89.0)
       '@formatjs/intl':
         specifier: ^2.9.9
         version: 2.9.9(typescript@5.3.3)
@@ -122,12 +122,9 @@ importers:
       '@react-hookz/web':
         specifier: ^24.0.2
         version: 24.0.2(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
-      '@remix-run/react':
-        specifier: ^2.4.1
-        version: 2.4.1(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)(typescript@5.3.3)
       '@shopify/hydrogen':
         specifier: ^2023.10.3
-        version: 2023.10.3(@remix-run/react@2.4.1)(@remix-run/server-runtime@2.4.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
+        version: 2023.10.3(@remix-run/react@2.4.1)(@remix-run/server-runtime@2.4.1)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@shopify/hydrogen-react':
         specifier: ^2023.10.1
         version: 2023.10.1(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
@@ -204,8 +201,8 @@ importers:
         specifier: ^0.6.3
         version: 0.6.3
       next:
-        specifier: 14.0.4
-        version: 14.0.4(@babel/core@7.22.11)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
+        specifier: 14.0.3
+        version: 14.0.3(@babel/core@7.22.11)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       next-compose-plugins:
         specifier: ^2.2.1
         version: 2.2.1
@@ -422,7 +419,7 @@ importers:
         version: 24.0.2(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@shopify/hydrogen':
         specifier: ^2023.10.3
-        version: 2023.10.3(@remix-run/react@2.4.1)(@remix-run/server-runtime@2.4.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
+        version: 2023.10.3(@remix-run/react@2.4.1)(@remix-run/server-runtime@2.4.1)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@shopify/hydrogen-react':
         specifier: ^2023.10.1
         version: 2023.10.1(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
@@ -463,8 +460,8 @@ importers:
         specifier: ^0.301.0
         version: 0.301.0(react@0.0.0-experimental-c17a27ef4-20231127)
       next:
-        specifier: 14.0.4
-        version: 14.0.4(@babel/core@7.22.11)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
+        specifier: 14.0.3
+        version: 14.0.3(@babel/core@7.22.11)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       nuka-carousel:
         specifier: ^7.0.0
         version: 7.0.0(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
@@ -590,8 +587,8 @@ importers:
         specifier: ^50.0.1
         version: 50.0.1(eslint@8.56.0)
       next:
-        specifier: 14.0.4
-        version: 14.0.4(@babel/core@7.22.11)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 14.0.3
+        version: 14.0.3(@babel/core@7.22.11)(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^2.1.4
@@ -879,8 +876,8 @@ importers:
         specifier: ^4.17.21
         version: 4.17.21
       next:
-        specifier: 14.0.4
-        version: 14.0.4(@babel/core@7.22.11)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 14.0.3
+        version: 14.0.3(@babel/core@7.22.11)(react-dom@18.2.0)(react@18.2.0)
       tailwind-merge:
         specifier: ^2.2.0
         version: 2.2.0
@@ -935,7 +932,7 @@ importers:
         version: 0.5.5
       '@shopify/hydrogen':
         specifier: ^2023.10.3
-        version: 2023.10.3(@remix-run/react@2.4.1)(@remix-run/server-runtime@2.4.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
+        version: 2023.10.3(@remix-run/react@2.4.1)(@remix-run/server-runtime@2.4.1)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@shopify/hydrogen-react':
         specifier: ^2023.10.1
         version: 2023.10.1(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
@@ -947,7 +944,7 @@ importers:
         version: 5.14.6(@tanstack/react-query@5.14.6)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@tanstack/react-query-next-experimental':
         specifier: ^5.14.6
-        version: 5.14.6(@tanstack/react-query@5.14.6)(next@14.0.4)(react@0.0.0-experimental-c17a27ef4-20231127)
+        version: 5.14.6(@tanstack/react-query@5.14.6)(next@14.0.3)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@uncnsrdlabel/graphql-shopify-storefront':
         specifier: workspace:*
         version: link:../graphql-shopify-storefront
@@ -964,8 +961,8 @@ importers:
         specifier: ^4.1.0
         version: 4.1.0
       next:
-        specifier: 14.0.4
-        version: 14.0.4(@babel/core@7.22.11)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
+        specifier: 14.0.3
+        version: 14.0.3(@babel/core@7.22.11)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       react:
         specifier: experimental
         version: 0.0.0-experimental-c17a27ef4-20231127
@@ -1088,7 +1085,7 @@ importers:
         version: 2.1.4
       '@shopify/hydrogen':
         specifier: ^2023.10.3
-        version: 2023.10.3(@remix-run/react@2.4.1)(@remix-run/server-runtime@2.4.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
+        version: 2023.10.3(@remix-run/react@2.4.1)(@remix-run/server-runtime@2.4.1)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@total-typescript/ts-reset':
         specifier: ^0.5.1
         version: 0.5.1
@@ -2839,7 +2836,7 @@ packages:
       node-source-walk: 5.0.2
     dev: true
 
-  /@ducanh2912/next-pwa@10.0.0(next@14.0.4)(webpack@5.89.0):
+  /@ducanh2912/next-pwa@10.0.0(next@14.0.3)(webpack@5.89.0):
     resolution: {integrity: sha512-6VWpF0IzP9Az9n0jmqL9XH8iWA6LYJrC72b8GDEn7Swfi1mR+hYPItNFKJnraqwJheIqeeZXIHAqs5/VdyDF5A==}
     peerDependencies:
       next: '>=14.0.0'
@@ -2847,7 +2844,7 @@ packages:
     dependencies:
       clean-webpack-plugin: 4.0.0(webpack@5.89.0)
       fast-glob: 3.3.2
-      next: 14.0.4(@babel/core@7.22.11)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
+      next: 14.0.3(@babel/core@7.22.11)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       semver: 7.5.4
       terser-webpack-plugin: 5.3.9(webpack@5.89.0)
       webpack: 5.89.0
@@ -4416,8 +4413,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@next/env@14.0.4:
-    resolution: {integrity: sha512-irQnbMLbUNQpP1wcE5NstJtbuA/69kRfzBrpAD7Gsn8zm/CY6YQYc3HQBz8QPxwISG26tIm5afvvVbu508oBeQ==}
+  /@next/env@14.0.3:
+    resolution: {integrity: sha512-7xRqh9nMvP5xrW4/+L0jgRRX+HoNRGnfJpD+5Wq6/13j3dsdzxO3BCXn7D3hMqsDb+vjZnJq+vI7+EtgrYZTeA==}
     dev: false
 
   /@next/eslint-plugin-next@14.0.4:
@@ -4426,8 +4423,8 @@ packages:
       glob: 7.1.7
     dev: false
 
-  /@next/swc-darwin-arm64@14.0.4:
-    resolution: {integrity: sha512-mF05E/5uPthWzyYDyptcwHptucf/jj09i2SXBPwNzbgBNc+XnwzrL0U6BmPjQeOL+FiB+iG1gwBeq7mlDjSRPg==}
+  /@next/swc-darwin-arm64@14.0.3:
+    resolution: {integrity: sha512-64JbSvi3nbbcEtyitNn2LEDS/hcleAFpHdykpcnrstITFlzFgB/bW0ER5/SJJwUPj+ZPY+z3e+1jAfcczRLVGw==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
@@ -4435,8 +4432,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-darwin-x64@14.0.4:
-    resolution: {integrity: sha512-IZQ3C7Bx0k2rYtrZZxKKiusMTM9WWcK5ajyhOZkYYTCc8xytmwSzR1skU7qLgVT/EY9xtXDG0WhY6fyujnI3rw==}
+  /@next/swc-darwin-x64@14.0.3:
+    resolution: {integrity: sha512-RkTf+KbAD0SgYdVn1XzqE/+sIxYGB7NLMZRn9I4Z24afrhUpVJx6L8hsRnIwxz3ERE2NFURNliPjJ2QNfnWicQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
@@ -4444,8 +4441,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-linux-arm64-gnu@14.0.4:
-    resolution: {integrity: sha512-VwwZKrBQo/MGb1VOrxJ6LrKvbpo7UbROuyMRvQKTFKhNaXjUmKTu7wxVkIuCARAfiI8JpaWAnKR+D6tzpCcM4w==}
+  /@next/swc-linux-arm64-gnu@14.0.3:
+    resolution: {integrity: sha512-3tBWGgz7M9RKLO6sPWC6c4pAw4geujSwQ7q7Si4d6bo0l6cLs4tmO+lnSwFp1Tm3lxwfMk0SgkJT7EdwYSJvcg==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
@@ -4453,8 +4450,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-linux-arm64-musl@14.0.4:
-    resolution: {integrity: sha512-8QftwPEW37XxXoAwsn+nXlodKWHfpMaSvt81W43Wh8dv0gkheD+30ezWMcFGHLI71KiWmHK5PSQbTQGUiidvLQ==}
+  /@next/swc-linux-arm64-musl@14.0.3:
+    resolution: {integrity: sha512-v0v8Kb8j8T23jvVUWZeA2D8+izWspeyeDGNaT2/mTHWp7+37fiNfL8bmBWiOmeumXkacM/AB0XOUQvEbncSnHA==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
@@ -4462,8 +4459,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-linux-x64-gnu@14.0.4:
-    resolution: {integrity: sha512-/s/Pme3VKfZAfISlYVq2hzFS8AcAIOTnoKupc/j4WlvF6GQ0VouS2Q2KEgPuO1eMBwakWPB1aYFIA4VNVh667A==}
+  /@next/swc-linux-x64-gnu@14.0.3:
+    resolution: {integrity: sha512-VM1aE1tJKLBwMGtyBR21yy+STfl0MapMQnNrXkxeyLs0GFv/kZqXS5Jw/TQ3TSUnbv0QPDf/X8sDXuMtSgG6eg==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
@@ -4471,8 +4468,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-linux-x64-musl@14.0.4:
-    resolution: {integrity: sha512-m8z/6Fyal4L9Bnlxde5g2Mfa1Z7dasMQyhEhskDATpqr+Y0mjOBZcXQ7G5U+vgL22cI4T7MfvgtrM2jdopqWaw==}
+  /@next/swc-linux-x64-musl@14.0.3:
+    resolution: {integrity: sha512-64EnmKy18MYFL5CzLaSuUn561hbO1Gk16jM/KHznYP3iCIfF9e3yULtHaMy0D8zbHfxset9LTOv6cuYKJgcOxg==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
@@ -4480,8 +4477,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-win32-arm64-msvc@14.0.4:
-    resolution: {integrity: sha512-7Wv4PRiWIAWbm5XrGz3D8HUkCVDMMz9igffZG4NB1p4u1KoItwx9qjATHz88kwCEal/HXmbShucaslXCQXUM5w==}
+  /@next/swc-win32-arm64-msvc@14.0.3:
+    resolution: {integrity: sha512-WRDp8QrmsL1bbGtsh5GqQ/KWulmrnMBgbnb+59qNTW1kVi1nG/2ndZLkcbs2GX7NpFLlToLRMWSQXmPzQm4tog==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
@@ -4489,8 +4486,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-win32-ia32-msvc@14.0.4:
-    resolution: {integrity: sha512-zLeNEAPULsl0phfGb4kdzF/cAVIfaC7hY+kt0/d+y9mzcZHsMS3hAS829WbJ31DkSlVKQeHEjZHIdhN+Pg7Gyg==}
+  /@next/swc-win32-ia32-msvc@14.0.3:
+    resolution: {integrity: sha512-EKffQeqCrj+t6qFFhIFTRoqb2QwX1mU7iTOvMyLbYw3QtqTw9sMwjykyiMlZlrfm2a4fA84+/aeW+PMg1MjuTg==}
     engines: {node: '>= 10'}
     cpu: [ia32]
     os: [win32]
@@ -4498,8 +4495,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-win32-x64-msvc@14.0.4:
-    resolution: {integrity: sha512-yEh2+R8qDlDCjxVpzOTEpBLQTEFAcP2A8fUFLaWNap9GitYKkKv1//y2S6XY6zsR4rCOPRpU7plYDR+az2n30A==}
+  /@next/swc-win32-x64-msvc@14.0.3:
+    resolution: {integrity: sha512-ERhKPSJ1vQrPiwrs15Pjz/rvDHZmkmvbf/BjPN/UCOI++ODftT0GtasDPi0j+y6PPJi5HsXw+dpRaXUaw4vjuQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
@@ -5660,30 +5657,9 @@ packages:
       react-router-dom: 6.21.1(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       typescript: 5.3.3
 
-  /@remix-run/router@1.14.0:
-    resolution: {integrity: sha512-WOHih+ClN7N8oHk9N4JUiMxQJmRVaOxcg8w7F/oHUXzJt920ekASLI/7cYX8XkntDWRhLZtsk6LbGrkgOAvi5A==}
-    engines: {node: '>=14.0.0'}
-
   /@remix-run/router@1.14.1:
     resolution: {integrity: sha512-Qg4DMQsfPNAs88rb2xkdk03N3bjK4jgX5fR24eHCTR9q6PrhZQZ4UJBPzCHJkIpTRN1UKxx2DzjZmnC+7Lj0Ow==}
     engines: {node: '>=14.0.0'}
-
-  /@remix-run/server-runtime@2.4.0(typescript@5.3.3):
-    resolution: {integrity: sha512-okNGtxB2eqEEsI0aDbmC/yCFhsDVD41P0TNPDHBxXy7PK3nzI9yywhknxLvim0lrxc/zKri/5gVKVJpipRekGQ==}
-    engines: {node: '>=18.0.0'}
-    peerDependencies:
-      typescript: ^5.1.0
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@remix-run/router': 1.14.0
-      '@types/cookie': 0.5.4
-      '@web3-storage/multipart-parser': 1.0.0
-      cookie: 0.5.0
-      set-cookie-parser: 2.6.0
-      source-map: 0.7.4
-      typescript: 5.3.3
 
   /@remix-run/server-runtime@2.4.1(typescript@5.3.3):
     resolution: {integrity: sha512-aQyBa0U8Db4E9sv2sruMfPDBYB4jlqvZ43YvkaZ1BGjUzi84ssfmaHdWgX/QveB6hi61RABTi6v8DV548kmRQg==}
@@ -5827,7 +5803,7 @@ packages:
       - xstate
     dev: false
 
-  /@shopify/hydrogen@2023.10.3(@remix-run/react@2.4.1)(@remix-run/server-runtime@2.4.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127):
+  /@shopify/hydrogen@2023.10.3(@remix-run/react@2.4.1)(@remix-run/server-runtime@2.4.1)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127):
     resolution: {integrity: sha512-oTNjdsBHzb5W4S4S2b83qZ1SiHeY1MJgTRjaq9OqKYHMmchggd9ap44lheZjG67CgQYyuE9ocr/bgBq1yU8hoA==}
     peerDependencies:
       '@remix-run/react': ^2.1.0
@@ -5835,7 +5811,7 @@ packages:
       react: ^18.2.0
     dependencies:
       '@remix-run/react': 2.4.1(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)(typescript@5.3.3)
-      '@remix-run/server-runtime': 2.4.0(typescript@5.3.3)
+      '@remix-run/server-runtime': 2.4.1(typescript@5.3.3)
       '@shopify/hydrogen-react': 2023.10.1(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       content-security-policy-builder: 2.1.1
       react: 0.0.0-experimental-c17a27ef4-20231127
@@ -5917,7 +5893,7 @@ packages:
       react: 0.0.0-experimental-c17a27ef4-20231127
     dev: false
 
-  /@tanstack/react-query-next-experimental@5.14.6(@tanstack/react-query@5.14.6)(next@14.0.4)(react@0.0.0-experimental-c17a27ef4-20231127):
+  /@tanstack/react-query-next-experimental@5.14.6(@tanstack/react-query@5.14.6)(next@14.0.3)(react@0.0.0-experimental-c17a27ef4-20231127):
     resolution: {integrity: sha512-Zz0yjNQ504kNMiB01v4+nlJRWkZm4fIzd11IK2IqTocFmsOts49NcLxVy4QKN7EcgErqVp6YzntcxBdsJ76Miw==}
     peerDependencies:
       '@tanstack/react-query': ^5.14.6
@@ -5925,7 +5901,7 @@ packages:
       react: ^18.0.0
     dependencies:
       '@tanstack/react-query': 5.14.6(react@0.0.0-experimental-c17a27ef4-20231127)
-      next: 14.0.4(@babel/core@7.22.11)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
+      next: 14.0.3(@babel/core@7.22.11)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       react: 0.0.0-experimental-c17a27ef4-20231127
     dev: false
 
@@ -10390,8 +10366,8 @@ packages:
     resolution: {integrity: sha512-OjJ+fV15FXO2uQXQagLD4C0abYErBjyjE0I0FHpOEIB8upw0hg1ldFP6cqHTJBH1cZqy96OeR3u1dJ+Ez2D4Bg==}
     dev: false
 
-  /next@14.0.4(@babel/core@7.22.11)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127):
-    resolution: {integrity: sha512-qbwypnM7327SadwFtxXnQdGiKpkuhaRLE2uq62/nRul9cj9KhQ5LhHmlziTNqUidZotw/Q1I9OjirBROdUJNgA==}
+  /next@14.0.3(@babel/core@7.22.11)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127):
+    resolution: {integrity: sha512-AbYdRNfImBr3XGtvnwOxq8ekVCwbFTv/UJoLwmaX89nk9i051AEY4/HAWzU0YpaTDw8IofUpmuIlvzWF13jxIw==}
     engines: {node: '>=18.17.0'}
     hasBin: true
     peerDependencies:
@@ -10405,33 +10381,32 @@ packages:
       sass:
         optional: true
     dependencies:
-      '@next/env': 14.0.4
+      '@next/env': 14.0.3
       '@swc/helpers': 0.5.2
       busboy: 1.6.0
-      caniuse-lite: 1.0.30001543
-      graceful-fs: 4.2.11
+      caniuse-lite: 1.0.30001571
       postcss: 8.4.31
       react: 0.0.0-experimental-c17a27ef4-20231127
       react-dom: 18.2.0(react@0.0.0-experimental-c17a27ef4-20231127)
       styled-jsx: 5.1.1(@babel/core@7.22.11)(react@0.0.0-experimental-c17a27ef4-20231127)
       watchpack: 2.4.0
     optionalDependencies:
-      '@next/swc-darwin-arm64': 14.0.4
-      '@next/swc-darwin-x64': 14.0.4
-      '@next/swc-linux-arm64-gnu': 14.0.4
-      '@next/swc-linux-arm64-musl': 14.0.4
-      '@next/swc-linux-x64-gnu': 14.0.4
-      '@next/swc-linux-x64-musl': 14.0.4
-      '@next/swc-win32-arm64-msvc': 14.0.4
-      '@next/swc-win32-ia32-msvc': 14.0.4
-      '@next/swc-win32-x64-msvc': 14.0.4
+      '@next/swc-darwin-arm64': 14.0.3
+      '@next/swc-darwin-x64': 14.0.3
+      '@next/swc-linux-arm64-gnu': 14.0.3
+      '@next/swc-linux-arm64-musl': 14.0.3
+      '@next/swc-linux-x64-gnu': 14.0.3
+      '@next/swc-linux-x64-musl': 14.0.3
+      '@next/swc-win32-arm64-msvc': 14.0.3
+      '@next/swc-win32-ia32-msvc': 14.0.3
+      '@next/swc-win32-x64-msvc': 14.0.3
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
     dev: false
 
-  /next@14.0.4(@babel/core@7.22.11)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-qbwypnM7327SadwFtxXnQdGiKpkuhaRLE2uq62/nRul9cj9KhQ5LhHmlziTNqUidZotw/Q1I9OjirBROdUJNgA==}
+  /next@14.0.3(@babel/core@7.22.11)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-AbYdRNfImBr3XGtvnwOxq8ekVCwbFTv/UJoLwmaX89nk9i051AEY4/HAWzU0YpaTDw8IofUpmuIlvzWF13jxIw==}
     engines: {node: '>=18.17.0'}
     hasBin: true
     peerDependencies:
@@ -10445,26 +10420,25 @@ packages:
       sass:
         optional: true
     dependencies:
-      '@next/env': 14.0.4
+      '@next/env': 14.0.3
       '@swc/helpers': 0.5.2
       busboy: 1.6.0
-      caniuse-lite: 1.0.30001543
-      graceful-fs: 4.2.11
+      caniuse-lite: 1.0.30001571
       postcss: 8.4.31
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       styled-jsx: 5.1.1(@babel/core@7.22.11)(react@18.2.0)
       watchpack: 2.4.0
     optionalDependencies:
-      '@next/swc-darwin-arm64': 14.0.4
-      '@next/swc-darwin-x64': 14.0.4
-      '@next/swc-linux-arm64-gnu': 14.0.4
-      '@next/swc-linux-arm64-musl': 14.0.4
-      '@next/swc-linux-x64-gnu': 14.0.4
-      '@next/swc-linux-x64-musl': 14.0.4
-      '@next/swc-win32-arm64-msvc': 14.0.4
-      '@next/swc-win32-ia32-msvc': 14.0.4
-      '@next/swc-win32-x64-msvc': 14.0.4
+      '@next/swc-darwin-arm64': 14.0.3
+      '@next/swc-darwin-x64': 14.0.3
+      '@next/swc-linux-arm64-gnu': 14.0.3
+      '@next/swc-linux-arm64-musl': 14.0.3
+      '@next/swc-linux-x64-gnu': 14.0.3
+      '@next/swc-linux-x64-musl': 14.0.3
+      '@next/swc-win32-arm64-msvc': 14.0.3
+      '@next/swc-win32-ia32-msvc': 14.0.3
+      '@next/swc-win32-x64-msvc': 14.0.3
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
