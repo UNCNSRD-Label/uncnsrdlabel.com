@@ -1,6 +1,5 @@
-"use client";
-
 import { Tile } from "@/components/grid/tile";
+import { state$ } from "@/lib/store";
 import { transitionDelays } from "@/lib/tailwind";
 import { ResultOf } from "@graphql-typed-document-node/core";
 import {
@@ -15,8 +14,8 @@ import {
   productDetailsFragment,
   productMetafieldFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { useGetInContextVariables } from "@uncnsrdlabel/lib";
-import { ReactNode } from "react";
+import { getInContextVariables } from "@uncnsrdlabel/lib";
+import { Fragment, ReactNode } from "react";
 import slugify from "slugify";
 import { JsonValue } from "type-fest";
 
@@ -57,6 +56,8 @@ export async function MetafieldMapper({
   includedKeys,
   metafield,
 }: MetafieldMapperProps) {
+  const lang = state$.lang.get();
+
   let value: ReactNode = null;
 
   let parsedValue = null;
@@ -92,7 +93,7 @@ export async function MetafieldMapper({
           ?.value;
 
         if (typeof name === "string") {
-          value = <span>❤ {name}</span>;
+          value = <span key={`${metafield.key}.name`}>❤ {name}</span>;
         }
       }
 
@@ -113,22 +114,22 @@ export async function MetafieldMapper({
                 }
 
                 return (
-                  <>
+                  <Fragment key={field.key}>
                     <dt
                       className="mt-0 capitalize"
                       data-type={field.type}
-                      key={slugify(`${field.key}-dt`)}
+                      key={`dt.${field.key}`}
                     >
                       {field.key}
                     </dt>
-                    <dd className="mt-0 pl-0" key={slugify(`${field.key}-dd`)}>
+                    <dd className="mt-0 pl-0" key={`dd.${field.key}`}>
                       {MetafieldMapper({
                         excludedKeys,
                         includedKeys,
                         metafield: field,
                       })}
                     </dd>
-                  </>
+                  </Fragment>
                 );
               })}
             </dl>
@@ -141,7 +142,11 @@ export async function MetafieldMapper({
         if (Array.isArray(parsedValue)) {
           value = parsedValue.map(async (id, index) => {
             if (typeof id === "string") {
-              const inContextVariables = useGetInContextVariables();
+              const inContextVariables = getInContextVariables(lang);
+
+              console.log({ id });
+
+              const variables = { id };
 
               const { product: productDetailsFragmentRef } =
                 await getShopifyGraphQL(
@@ -167,6 +172,7 @@ export async function MetafieldMapper({
                 <Link
                   className="block h-full w-full"
                   href={`/products/${product.handle}`}
+                  key={product.id}
                 >
                   <Tile
                     className={transitionDelays[index]}
@@ -186,8 +192,8 @@ export async function MetafieldMapper({
 
         value = (
           <>
-            <span data-key="value">{dimension.value}</span>&nbsp;
-            <span className="lowercase" data-key="unit">
+            <span key={`${metafield.key}.value`}>{dimension.value}</span>&nbsp;
+            <span className="lowercase" key={`${metafield.key}.unit`}>
               {dimension.unit}
             </span>
           </>

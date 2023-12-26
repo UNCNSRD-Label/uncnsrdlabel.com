@@ -45,7 +45,9 @@ export async function generateMetadata({
 
   return {
     alternates: {
-      canonical: `${localization.language.isoCode.toLocaleLowerCase()}-${localization.country.isoCode}/${path}`,
+      canonical: `${localization.language.isoCode.toLocaleLowerCase()}-${
+        localization.country.isoCode
+      }/${path}`,
       languages: await getAlternativeLanguages({ localization, path }),
     },
     title: seo.title || product.title,
@@ -82,21 +84,21 @@ export default async function ProductPage({
   if (!productDetailsFragmentRef) return notFound();
 
   return (
-    <>
+    <div className="dark grid grid-rows-[1fr_auto] relative top-0 z-40">
       <Breadcrumb
-        className="relative z-20 my-6 hidden lg:grid lg:grid-cols-12 [&>*]:lg:col-start-2 [&>*]:lg:col-end-10"
+        className="absolute left-12 top-6 z-20 hidden lg:grid lg:grid-cols-12 [&>*]:lg:col-start-2 [&>*]:lg:col-end-10"
         productDetailsFragmentRef={productDetailsFragmentRef}
       />
-      <main className="mb-48 min-h-[100dvh] [&:has(+_aside)]:mb-0">
+      <main className="mb-48 grid grid-cols-12 content-center bg-inherit min-h-[100dvh] lg:h-[100dvh] lg:overflow-y-hidden [&:has(+_aside)]:mb-0 lg:sticky top-0">
         <Details productDetailsFragmentRef={productDetailsFragmentRef} />
         {/* <ProductAdditionalDetails productDetailsFragmentRef={productDetailsFragmentRef} /> */}
       </main>
       <Suspense fallback={<LoadingDots />}>
         <RelatedProducts
-          className="text-dark relative bg-white pb-48 pt-12 [contain:paint]"
+          className="text-dark relative bg-white z-50"
           productDetailsFragmentRef={productDetailsFragmentRef}
         />
       </Suspense>
-    </>
+    </div>
   );
 }

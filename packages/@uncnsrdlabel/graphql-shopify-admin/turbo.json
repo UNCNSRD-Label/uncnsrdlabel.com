@@ -1,0 +1,16 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "extends": ["//"],
+  "pipeline": {
+    "build": {
+      "env": [
+        "NEXT_PUBLIC_PROTOCOL",
+        "SHOPIFY_PRIVATE_ACCESS_TOKEN",
+        "NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN",
+        "NEXT_PUBLIC_SHOPIFY_ADMIN_API_VERSION",
+        "SHOPIFY_REVALIDATION_SECRET"
+      ],
+      "outputs": ["dist/**"]
+    }
+  }
+}

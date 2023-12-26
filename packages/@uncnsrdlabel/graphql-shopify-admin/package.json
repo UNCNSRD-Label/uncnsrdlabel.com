@@ -1,0 +1,63 @@
+{
+  "dependencies": {
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/client-preset": "^4.1.0",
+    "@graphql-typed-document-node/core": "^3.2.0",
+    "@shopify/hydrogen-react": "^2023.10.1",
+    "@tanstack/react-query": "^5.14.6",
+    "@types/node": "^20.5.6",
+    "@uncnsrdlabel/lib": "workspace:*",
+    "dotenv-cli": "^7.3.0",
+    "graphql": "^16.8.1",
+    "graphql-config": "^5.0.3",
+    "graphql-request": "^6.1.0",
+    "graphql-tag": "^2.12.6",
+    "lodash": "^4.17.21",
+    "npm-run-all": "^4.1.5",
+    "react": "experimental",
+    "slugify": "^1.6.6",
+    "zod": "^3.22.4",
+    "zod-fetch": "^0.1.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^2.1.4",
+    "@types/lodash": "^4.14.202",
+    "@types/node": "latest",
+    "@types/react": "18.2.45",
+    "@uncnsrdlabel/eslint-config-custom": "workspace:*",
+    "@uncnsrdlabel/tsconfig": "workspace:*",
+    "@uncnsrdlabel/types": "workspace:*",
+    "eslint": "^8.56.0",
+    "prettier": "^3.1.1",
+    "type-fest": "^4.8.3",
+    "typescript": "^5.3.3",
+    "typescript-graphql-request": "^4.4.6"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./*": "./dist/*.js"
+  },
+  "files": [
+    "dist/**"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "name": "@uncnsrdlabel/graphql-shopify-admin",
+  "peerDependencies": {
+    "@parcel/watcher": "^2.2.0"
+  },
+  "scripts": {
+    "build": "DOTENV_CONFIG_PATH=\"../../../.env.local\" graphql-codegen --require dotenv/config && tsc --project ./tsconfig.json",
+    "clean": "rm -rf dist",
+    "dev:graphql-codegen": "DOTENV_CONFIG_PATH=\"../../../.env.local\" graphql-codegen --require dotenv/config --watch",
+    "dev:ts": "tsc --project ./tsconfig.json --watch",
+    "dev": "npm-run-all dev:graphql-codegen dev:ts",
+    "generate:component": "turbo gen react-component",
+    "lint": "eslint",
+    "types:check": "tsc --noEmit"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "version": "0.0.0"
+}

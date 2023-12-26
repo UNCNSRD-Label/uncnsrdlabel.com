@@ -33,7 +33,7 @@ export function MetaFields({
             <dt
               className="mb-2 text-sm uppercase"
               data-type={metafield.type}
-              key={`${metafield?.key}-dt`}
+              key={`dt.${metafield?.key}`}
             >
               {metafield?.key
                 ?.split("_")
@@ -49,7 +49,7 @@ export function MetaFields({
                 "collapsible-content prose prose-sm prose-invert overflow-x-auto [&+dt]:mt-4 [&+dt]:border-t [&+dt]:border-gray-800 [&+dt]:pt-4",
               )}
               data-type={metafield.type.replace(".", "|")}
-              key={`${metafield?.key}-dd`}
+              key={`dd.${metafield?.key}`}
             >
               <MetafieldMapper
                 metafield={metafield}

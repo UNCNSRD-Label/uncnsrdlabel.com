@@ -63,7 +63,7 @@ export default async function SearchPage({
         <p>{intl.formatMessage({ id: "results" }, { query, results })}</p>
       ) : null}
       {productFragmentRefs.length > 0 ? (
-        <Grid className="grid-cols-2 lg:grid-cols-3">
+        <Grid className="grid-cols-2 lg:grid-cols-3 w-full max-w-7xl">
           <ProductGridItems productFragmentRefs={productFragmentRefs} />
         </Grid>
       ) : null}

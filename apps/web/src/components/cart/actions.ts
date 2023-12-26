@@ -16,10 +16,10 @@ import { parse } from 'bcp-47';
 import { revalidateTag } from 'next/cache';
 import { cookies } from "next/headers";
 
-export const addItem = async (
+export async function addItem(
   _prevState: any,
   selectedVariantId: string,
-): Promise<string | undefined> => {
+) {
   if (!selectedVariantId) {
     return "Missing selectedVariantId";
   }
@@ -140,10 +140,10 @@ export const addItem = async (
 
 };
 
-export const removeItem = async (
+export async function removeItem (
   _prevState: any,
   lineId: string,
-): Promise<string | undefined> => {
+) {
   const lang = state$.lang.get();
 
   const cartId = cookies().get("cartId")?.value;
@@ -161,12 +161,12 @@ export const removeItem = async (
   }
 };
 
-export const updateItemQuantity = async (_prevState: any,
+export async function updateItemQuantity(_prevState: any,
   payload: {
     lineId: string;
     quantity: number;
     variantId: string;
-  }): Promise<string | undefined> => {
+  }): Promise<string | undefined> {
   const lang = state$.lang.get();
 
   const cartId = cookies().get("cartId")?.value;

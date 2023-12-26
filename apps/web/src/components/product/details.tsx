@@ -1,4 +1,3 @@
-import { LoadingDots } from "@/components/loading/dots";
 import { PriceAndCompareAtPrice } from "@/components/price-and-compare-at-price";
 import { ProductDetailsTabs } from "@/components/product/details-tabs";
 import { PurchaseOptions } from "@/components/product/purchase-options";
@@ -9,7 +8,6 @@ import {
   imageFragment,
   productDetailsFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { Suspense } from "react";
 import { Product as ProductSchema, WithContext } from "schema-dts";
 import { ProductMedia } from "./media";
 
@@ -42,45 +40,39 @@ export function Details({
 
   return (
     <>
-      <section className="grid min-h-[100dvh] grid-cols-12 content-center lg:h-[100dvh] lg:overflow-y-hidden">
-        <ProductMedia productDetailsFragmentRef={productDetailsFragmentRef} />
+      <ProductMedia productDetailsFragmentRef={productDetailsFragmentRef} />
 
-        <div
-          className="relative z-10 col-span-full h-full min-h-[100dvh] overflow-hidden p-6 sm:col-start-3 sm:col-end-11 sm:min-h-fit md:h-[80dvh] lg:-top-12 lg:col-start-7 lg:col-end-12 lg:rounded-xl lg:bg-white/90 lg:shadow lg:backdrop-blur lg:backdrop-saturate-50 xl:col-start-9 overflow-y-auto"
-          id="details"
-        >
-          <h3
-            data-testid="product-name"
-            className="box-decoration-clone text-xl"
-          >
-            {product.title}
-          </h3>
+      <section
+        className="relative z-10 grid gap-3 col-span-full h-full min-h-[100dvh] lg:h-[calc(85dvh-4rem)] overflow-hidden overflow-y-auto p-6 sm:col-start-3 sm:col-end-11 sm:min-h-fit lg:col-start-7 lg:col-end-13 lg:mr-8 lg:rounded-xl bg-white lg:bg-white/90 lg:shadow lg:backdrop-blur lg:backdrop-saturate-50 xl:col-start-9 content-start"
+        id="details"
+      >
+        <h3 data-testid="product-name" className="box-decoration-clone text-xl">
+          {product.title}
+        </h3>
 
-          <PriceAndCompareAtPrice className="grid-flow-col mb-4 text-sm" productDetailsFragmentRef={productDetailsFragmentRef} />
+        <PriceAndCompareAtPrice
+          className="grid-flow-col text-sm"
+          productDetailsFragmentRef={productDetailsFragmentRef}
+        />
 
-          {product.descriptionHtml ? (
-            <Prose
-              className="prose-thead:border-hotPink prose-tr:border-hotPink mb-6 text-xs leading-tight"
-              html={product.descriptionHtml}
-            />
-          ) : null}
+        {product.descriptionHtml ? (
+          <Prose
+            className="prose-thead:border-hotPink prose-tr:border-hotPink text-xs leading-tight"
+            html={product.descriptionHtml}
+          />
+        ) : null}
 
-          <div className="relative h-64">
-            <Suspense fallback={<LoadingDots />}>
-              <PurchaseOptions
-                productDetailsFragmentRef={productDetailsFragmentRef}
-              />
-            </Suspense>
-          </div>
-
-          <Suspense fallback={<LoadingDots />}>
-            <ProductDetailsTabs
-              className="mt-8"
-              excludedKeys={["complementary_products", "related_products"]}
-              productDetailsFragmentRef={productDetailsFragmentRef}
-            />
-          </Suspense>
+        <div className="relative">
+          <PurchaseOptions
+            productDetailsFragmentRef={productDetailsFragmentRef}
+          />
         </div>
+
+        <ProductDetailsTabs
+          className=""
+          excludedKeys={["complementary_products", "related_products"]}
+          productDetailsFragmentRef={productDetailsFragmentRef}
+        />
       </section>
 
       <script

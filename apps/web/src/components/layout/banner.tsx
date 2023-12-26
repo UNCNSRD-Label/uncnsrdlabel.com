@@ -1,22 +1,61 @@
-import { getIntl } from "@/lib/i18n";
-import { state$ } from "@/lib/store";
-import { Link } from "@uncnsrdlabel/components/atoms/link";
+import {
+  discountNodeFragment,
+  getDiscountNodesQuery,
+  getFragmentData,
+  getShopifyGraphQL as getShopifyAdminGraphQL,
+} from "@uncnsrdlabel/graphql-shopify-admin";
 import { cn } from "@uncnsrdlabel/lib";
 import { use } from "react";
 
 export const Banner = ({ className }: { className?: string }) => {
-  const lang = state$.lang.get();
+  const variables = {
+    first: 16,
+    query: "status:active AND title:Site|*",
+  };
 
-  const intl = use(getIntl(lang, "component.Banner"));
+  const { discountNodes } = use(
+    getShopifyAdminGraphQL(getDiscountNodesQuery, variables),
+  );
+
+  if (!discountNodes?.edges?.length) {
+    return null;
+  }
 
   return (
-    <div
+    <article
       className={cn(
-        "bg-hotPink text-light grid snap-start place-content-center p-7 uppercase",
+        "bg-hotPink text-light pt-safeTop grid snap-start place-content-center p-6 text-xs uppercase sm:text-base",
         className,
       )}
     >
-      <Link href="/shop">{intl.formatMessage({ id: "link" })}</Link>
-    </div>
+      {
+        discountNodes?.edges
+          ?.map((edge) => edge.node)
+          ?.map((discountNodeFragmentRef) => {
+            const discountNode = getFragmentData(
+              discountNodeFragment,
+              discountNodeFragmentRef,
+            );
+
+            switch (discountNode.discount.__typename) {
+              case "DiscountCodeBasic":
+                return (
+                  <span data-type="DiscountCodeBasic">
+                    {discountNode.discount.title.replace("Site|", "")} -{" "}
+                    {discountNode.discount.shortSummary}
+                  </span>
+                );
+
+              case "DiscountAutomaticBasic":
+                return (
+                  <span data-type="DiscountAutomaticBasic">
+                    {discountNode.discount.title.replace("Site|", "")} -{" "}
+                    {discountNode.discount.shortSummary}
+                  </span>
+                );
+            }
+          })?.[0]
+      }
+    </article>
   );
 };

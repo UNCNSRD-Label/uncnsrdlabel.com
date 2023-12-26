@@ -40,10 +40,10 @@ export async function RelatedProducts({
   if (!productRecommendationRefs?.length) return null;
 
   return (
-    <aside className={cn("px-4 pb-48 pt-12", className)}>
-      <div className="mb-8 text-center text-xl font-bold uppercase">
+    <aside className={cn("px-2 sm:px-4 pb-48 pt-12", className)}>
+      <h2 className="mb-8 text-center text-xl font-bold uppercase">
         {intl.formatMessage({ id: "title" })}
-      </div>
+      </h2>
       <Grid className="grid-cols-2 lg:grid-cols-5 [&>*:last-child:nth-child(odd)]:hidden [&>*:last-child:nth-child(odd)]:lg:list-item">
         <ProductGridItems
           limit={5}

@@ -1,7 +1,5 @@
 import { AddToCart } from "@/components/cart/add-to-cart";
-import { AddToCartShell } from "@/components/cart/add-to-cart-shell";
 import { VariantSelector } from "@/components/product/variant-selector";
-import { VariantSelectorShell } from "@/components/product/variant-selector-shell";
 import { ProductVariant } from "@shopify/hydrogen/storefront-api-types";
 import {
   FragmentType,
@@ -9,7 +7,6 @@ import {
   productDetailsFragment,
   productVariantConnectionFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { Suspense } from "react";
 
 interface PurchaseOptionsProps {
   className?: string;
@@ -34,17 +31,13 @@ export const PurchaseOptions = ({ productDetailsFragmentRef }: PurchaseOptionsPr
 
   return (
     <>
-      <Suspense fallback={<VariantSelectorShell options={product.options} />}>
-        <VariantSelector options={product.options} variants={variants} />
-      </Suspense>
+      <VariantSelector options={product.options} variants={variants} />
 
-      <Suspense fallback={<AddToCartShell />}>
-        <AddToCart
-          availableForSale={product.availableForSale}
-          options={product.options}
-          variants={variants}
-        />
-      </Suspense>
+      <AddToCart
+        availableForSale={product.availableForSale}
+        options={product.options}
+        variants={variants}
+      />
     </>
   );
 }

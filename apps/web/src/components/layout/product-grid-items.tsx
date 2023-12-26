@@ -45,7 +45,7 @@ export function ProductGridItems({
               <Tile
                 className={transitionDelays[index]}
                 image={product.featuredImage}
-                priority={index < 4}
+                priority={index <= 1}
                 productBasicFragmentRef={productBasicFragmentRef}
                 video={video}
               />

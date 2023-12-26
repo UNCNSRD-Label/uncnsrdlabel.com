@@ -5,6 +5,7 @@ import {
   ProductCollectionSortFilterItem,
   collectionFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { cn } from "@uncnsrdlabel/lib";
 
 function FilterItemList({
   list,
@@ -31,9 +32,11 @@ function FilterItemList({
 }
 
 export function FilterList({
+  className,
   list,
   title,
 }: {
+  className?: string;
   list: (
     | ResultOf<typeof collectionFragment>
     | ProductCollectionSortFilterItem
@@ -42,7 +45,7 @@ export function FilterList({
 }) {
   return (
     <>
-      <nav className="col-span-2 w-full flex-none px-6 py-2 uppercase md:py-4 md:pl-10">
+      <nav className={cn("uppercase", className)}>
         {title ? (
           <h3 className="text-dark dark:text-light hidden font-semibold md:block">
             {title}

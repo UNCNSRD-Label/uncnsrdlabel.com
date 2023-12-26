@@ -126,8 +126,6 @@ export default async function RootLayout({
   children,
   params: { lang },
 }: PropsWithChildren<LayoutProps>) {
-  const showBanner = false;
-
   if (lang) {
     const localization = await getLocalizationDetailsHandler({ lang });
 
@@ -148,17 +146,16 @@ export default async function RootLayout({
     >
       <body
         className={cn(
-          "grid min-h-[100dvh] grid-rows-[auto_1fr] tracking-widest",
-          "selection:bg-gray-500/50",
           themeColors,
+          "grid grid-rows-[auto_1fr] min-h-[100dvh] tracking-widest",
         )}
       >
         <AppProviders lang={lang}>
           <SetState lang={lang} />
-          <Progress />
           <Banner
-            className={cn("sticky top-0 w-full", !showBanner && "hidden")}
+            className={cn("sticky top-0 w-full z-30")}
           />
+          <Progress />
           <Suspense fallback={<LoadingDots />}>
             {children}
             <Footer />
