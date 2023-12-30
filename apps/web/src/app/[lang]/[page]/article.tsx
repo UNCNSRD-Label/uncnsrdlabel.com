@@ -9,11 +9,20 @@ import {
   useGetShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, type ClassValue } from "@uncnsrdlabel/lib";
+import sharedConfig from "@uncnsrdlabel/tailwind-config";
+import Script from "next/script";
 import { CSSProperties, HTMLProps, useEffect, useState } from "react";
 
 export type ArticleProps = HTMLProps<HTMLElement> & {
   variables: { handle: string };
 };
+
+function onReadyTailwind() {
+  // @ts-expect-error Property 'tailwind' does not exist on type 'Window & typeof globalThis'.
+  tailwind.config = {
+    presets: [sharedConfig],
+  }
+}
 
 export function Article(props: ArticleProps) {
   const { children, className, variables } = props;
@@ -97,25 +106,28 @@ export function Article(props: ArticleProps) {
   }, [isSm, isMd, isLg, isXl]);
 
   return (
-    <article
-      className={cn(
-        "grid snap-y snap-start",
-        page?.classes?.value &&
-          (JSON.parse(page?.classes?.value ?? "") as ClassValue),
-        className,
-      )}
-      style={style}
-    >
-      {page?.body && (
-        <Prose
-          className={cn("prose-thead:border-hotPink prose-tr:border-hotPink")}
-          html={page.body}
-          style={{
-            gridArea: "body",
-          }}
-        />
-      )}
-      {children}
-    </article>
+    <>
+      <article
+        className={cn(
+          "grid snap-y snap-start",
+          page?.classes?.value &&
+            (JSON.parse(page?.classes?.value ?? "") as ClassValue),
+          className,
+        )}
+        style={style}
+      >
+        {page?.body && (
+          <Prose
+            className={cn("prose-thead:border-hotPink prose-tr:border-hotPink")}
+            html={page.body}
+            style={{
+              gridArea: "body",
+            }}
+          />
+        )}
+        {children}
+      </article>
+      <Script id="tailwind" src="https://cdn.tailwindcss.com" onReady={onReadyTailwind} />
+    </>
   );
 }
