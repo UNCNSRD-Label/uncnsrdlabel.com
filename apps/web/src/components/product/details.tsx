@@ -70,7 +70,7 @@ export function Details({
 
         <ProductDetailsTabs
           className=""
-          excludedKeys={["complementary_products", "related_products"]}
+          excludedKeys={["complementary_products", "line", "related_products", "shape"]}
           productDetailsFragmentRef={productDetailsFragmentRef}
         />
       </section>
