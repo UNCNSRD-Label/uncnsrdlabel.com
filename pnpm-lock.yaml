@@ -206,9 +206,6 @@ importers:
       next-compose-plugins:
         specifier: ^2.2.1
         version: 2.2.1
-      nuka-carousel:
-        specifier: ^7.0.0
-        version: 7.0.0(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       react:
         specifier: experimental
         version: 0.0.0-experimental-c17a27ef4-20231127
@@ -465,9 +462,6 @@ importers:
       next:
         specifier: 14.0.3
         version: 14.0.3(@babel/core@7.22.11)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
-      nuka-carousel:
-        specifier: ^7.0.0
-        version: 7.0.0(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       react:
         specifier: experimental
         version: 0.0.0-experimental-c17a27ef4-20231127
@@ -10626,17 +10620,6 @@ packages:
     dependencies:
       path-key: 4.0.0
     dev: true
-
-  /nuka-carousel@7.0.0(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127):
-    resolution: {integrity: sha512-KE0WV1MuE4Gq6ynL8P3qJH2rGq/DkJ0ej+ezo0IuZp4oklV8WNqu6P6O1utJqihHLGoEuFppq5wlHSHfhdCHXA==}
-    engines: {node: '>=12.0.0'}
-    peerDependencies:
-      react: '>=18.0.0'
-      react-dom: '>=18.0.0'
-    dependencies:
-      react: 0.0.0-experimental-c17a27ef4-20231127
-      react-dom: 18.2.0(react@0.0.0-experimental-c17a27ef4-20231127)
-    dev: false
 
   /nullthrows@1.1.1:
     resolution: {integrity: sha512-2vPPEi+Z7WqML2jZYddDIfy5Dqb0r2fze2zTxNNknZaFpVHU3mFB3R+DWeJWGVx0ecvttSGlJTI+WG+8Z4cDWw==}
