@@ -6,11 +6,12 @@ import { useGetIntl } from "@/lib/i18n";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import {
   ProductOption,
-  ProductVariant,
 } from "@shopify/hydrogen/storefront-api-types";
+import { ProductVariantSubset } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { useSearchParams } from "next/navigation";
 import { useFormState, useFormStatus } from "react-dom";
+import { useAnalytics } from "use-analytics";
 
 function SubmitButton({
   availableForSale,
@@ -22,6 +23,8 @@ function SubmitButton({
   selectedVariantId: string | undefined;
 }) {
   const intl = useGetIntl("component.AddToCart");
+  
+  const { track } = useAnalytics()
 
   const { pending } = useFormStatus();
 
@@ -58,6 +61,15 @@ function SubmitButton({
   return (
     <button
       onClick={(e: React.FormEvent<HTMLButtonElement>) => {
+        track('product_added_to_cart', {
+          clientId: '1234567890',
+          context: {
+            
+          },
+          name: 'product_added_to_cart',
+          variantId: selectedVariantId
+        })
+
         if (pending) e.preventDefault();
       }}
       aria-label={intl.formatMessage({ id: "add-to-cart-enabled" })}
