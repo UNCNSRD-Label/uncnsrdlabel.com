@@ -38,7 +38,7 @@ export const pageFragment = graphql(/* GraphQL */ `
     }
     mediaImages: metafield(namespace: "custom", key: "images") {
       value
-      references(first: 10) {
+      references(first: 16) {
         edges {
           node {
             __typename
@@ -54,7 +54,7 @@ export const pageFragment = graphql(/* GraphQL */ `
     }
     mediaVideos: metafield(namespace: "custom", key: "videos") {
       value
-      references(first: 10) {
+      references(first: 16) {
         edges {
           node {
             __typename

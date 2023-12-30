@@ -206,9 +206,6 @@ importers:
       next-compose-plugins:
         specifier: ^2.2.1
         version: 2.2.1
-      nuka-carousel:
-        specifier: ^7.0.0
-        version: 7.0.0(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       react:
         specifier: experimental
         version: 0.0.0-experimental-c17a27ef4-20231127
@@ -450,6 +447,9 @@ importers:
       cookies-next:
         specifier: ^4.1.0
         version: 4.1.0
+      embla-carousel-react:
+        specifier: 8.0.0-rc17
+        version: 8.0.0-rc17(react@0.0.0-experimental-c17a27ef4-20231127)
       framer-motion:
         specifier: ^10.16.16
         version: 10.16.16(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
@@ -462,9 +462,6 @@ importers:
       next:
         specifier: 14.0.3
         version: 14.0.3(@babel/core@7.22.11)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
-      nuka-carousel:
-        specifier: ^7.0.0
-        version: 7.0.0(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       react:
         specifier: experimental
         version: 0.0.0-experimental-c17a27ef4-20231127
@@ -3089,7 +3086,7 @@ packages:
       string-env-interpolation: 1.0.1
       ts-log: 2.2.5
       tslib: 2.6.2
-      yaml: 2.3.4
+      yaml: 2.3.1
       yargs: 17.7.2
     transitivePeerDependencies:
       - '@types/node'
@@ -7996,6 +7993,28 @@ packages:
     resolution: {integrity: sha512-1n7zWYh8eS0L9Uy+GskE0lkBUNK83cXTVJI0pU3mGprFsbfSdAc15VTFbo+A+Bq4pwstmL30AVcEU3Fo463lNg==}
     dev: false
 
+  /embla-carousel-react@8.0.0-rc17(react@0.0.0-experimental-c17a27ef4-20231127):
+    resolution: {integrity: sha512-x4aFprwFB+PQO9EsHHZsrDxARb0uYNBYn9mr5oDFdBdPez4M8G1r5yidWbUcT9pNUc8AQXC9sGzlfauBfBxVOw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.1 || ^18.0.0
+    dependencies:
+      embla-carousel: 8.0.0-rc17
+      embla-carousel-reactive-utils: 8.0.0-rc17(embla-carousel@8.0.0-rc17)
+      react: 0.0.0-experimental-c17a27ef4-20231127
+    dev: false
+
+  /embla-carousel-reactive-utils@8.0.0-rc17(embla-carousel@8.0.0-rc17):
+    resolution: {integrity: sha512-eluEOK/u5HdjYaTLC4bUG3iTCnyX7RsYix3il0aH4ZECOKa5fS+pVK2vrM17Mgw6C5Hyjcr3r3lfJtGerVzVsQ==}
+    peerDependencies:
+      embla-carousel: 8.0.0-rc17
+    dependencies:
+      embla-carousel: 8.0.0-rc17
+    dev: false
+
+  /embla-carousel@8.0.0-rc17:
+    resolution: {integrity: sha512-evF49b88VOitvqFtlvhvKVSu96Y8A+QSFdhok87Bfm8R7OYuk95FT+o8+M1GQLi/EhGDUlT193HTVAR0Wt2neQ==}
+    dev: false
+
   /emoji-regex@10.2.1:
     resolution: {integrity: sha512-97g6QgOk8zlDRdgq1WxwgTMgEWGVAQvB5Fdpgc1MkNy56la5SKP9GsMXKDOdqwn90/41a8yPwIGk1Y6WVbeMQA==}
     dev: false
@@ -10601,17 +10620,6 @@ packages:
     dependencies:
       path-key: 4.0.0
     dev: true
-
-  /nuka-carousel@7.0.0(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127):
-    resolution: {integrity: sha512-KE0WV1MuE4Gq6ynL8P3qJH2rGq/DkJ0ej+ezo0IuZp4oklV8WNqu6P6O1utJqihHLGoEuFppq5wlHSHfhdCHXA==}
-    engines: {node: '>=12.0.0'}
-    peerDependencies:
-      react: '>=18.0.0'
-      react-dom: '>=18.0.0'
-    dependencies:
-      react: 0.0.0-experimental-c17a27ef4-20231127
-      react-dom: 18.2.0(react@0.0.0-experimental-c17a27ef4-20231127)
-    dev: false
 
   /nullthrows@1.1.1:
     resolution: {integrity: sha512-2vPPEi+Z7WqML2jZYddDIfy5Dqb0r2fze2zTxNNknZaFpVHU3mFB3R+DWeJWGVx0ecvttSGlJTI+WG+8Z4cDWw==}

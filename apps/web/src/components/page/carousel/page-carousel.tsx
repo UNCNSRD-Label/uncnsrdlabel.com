@@ -1,32 +1,34 @@
-"use client";
-
-import { LoadingDots } from "@/components/loading/dots";
 import { Image } from "@/components/media/image";
-import {
-  NukaCarousel,
-  type NukaCarouselProps,
-} from "@/components/nuka-carousel";
 import { minWidthLg, minWidthSm } from "@/lib/tailwind";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@uncnsrdlabel/components/ui/carousel";
 import {
   getFragmentData,
   getPageQuery,
+  getShopifyGraphQL,
   imageFragment,
   pageFragment,
-  useGetShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { Suspense } from "react";
+import { cn } from "@uncnsrdlabel/lib";
 
-export function PageCarousel({
+export async function PageCarousel({
+  className,
   handle,
-  ...props
-}: NukaCarouselProps & { handle: string }) {
+}: {
+  className?: string;
+  handle: string;
+}) {
   const variables = { handle };
 
-  const { data } = useGetShopifyGraphQL(getPageQuery, variables);
-
-  if (!data) return null;
-
-  const { page: pageFragmentRef } = data;
+  const { page: pageFragmentRef } = await getShopifyGraphQL(
+    getPageQuery,
+    variables,
+  );
 
   const page = getFragmentData(pageFragment, pageFragmentRef);
 
@@ -36,48 +38,9 @@ export function PageCarousel({
     (edge) => edge?.node,
   );
 
-  const buttonClassName =
-    "!px-6 text-6xl drop-shadow focus-visible:!text-stateFocus hover:!text-stateHover";
-
-  const buttonStyle = {
-    backgroundColor: "unset",
-    color: "unset",
-    opacity: "unset",
-    padding: "unset",
-  };
-
-  const pagingDotsClassName =
-    "[&_.paging-dot]:h-4 [&_.paging-dot]:w-4 !fill-inherit stroke-none mix-blend-difference";
-  const pagingDotsContainerClassName = "gap-8 [&_.active]:!fill-stateFocus";
-  const pagingDotsStyle = {
-    display: "none",
-    opacity: "!opacity-100",
-  };
-
   return (
-    <Suspense fallback={<LoadingDots />}>
-      <NukaCarousel
-        adaptiveHeight
-        autoplay
-        autoplayInterval={5000}
-        className="cursor-grab [&.dragging]:cursor-grabbing"
-        defaultControlsConfig={{
-          nextButtonClassName: buttonClassName,
-          nextButtonText: "›",
-          nextButtonStyle: buttonStyle,
-          prevButtonClassName: buttonClassName,
-          prevButtonStyle: buttonStyle,
-          prevButtonText: "‹",
-          pagingDotsClassName,
-          pagingDotsContainerClassName,
-          pagingDotsStyle,
-        }}
-        enableKeyboardControls
-        pauseOnHover
-        speed={1500}
-        wrapAround
-        {...props}
-      >
+    <Carousel className={cn("items-stretch", className)}>
+      <CarouselContent className="items-stretch">
         {mediaImages?.map((mediaImage, index) => {
           if (mediaImage.__typename !== "MediaImage") {
             return null;
@@ -90,22 +53,26 @@ export function PageCarousel({
           }
 
           return (
-            <figure
-              className="item aspect-2/3 relative"
+            <CarouselItem
+              className="sm:basis-1/2 lg:basis-1/3 relative"
               key={image.url || index}
             >
               <Image
                 alt={image.altText || page.title}
+                blurDataURL={image.blurDataURL}
                 className="h-full object-cover"
                 fill
+                placeholder="blur"
                 revealEffect={false}
                 sizes={`100vw, (min-width: ${minWidthSm}) 50vw, (min-width: ${minWidthLg}) 33vw`}
                 src={image.url}
               />
-            </figure>
+            </CarouselItem>
           );
         })}
-      </NukaCarousel>
-    </Suspense>
+      </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
+    </Carousel>
   );
 }
