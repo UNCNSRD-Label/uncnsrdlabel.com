@@ -3,12 +3,12 @@
 import { LoadingDots } from "@/components/loading/dots";
 import { Videos as MediaVideos } from "@/components/media/videos";
 import {
-  FragmentType,
   getFragmentData,
   getPageQuery,
   pageFragment,
   useGetShopifyGraphQL,
   videoFragment,
+  type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Suspense } from "react";
 

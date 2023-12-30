@@ -4,11 +4,11 @@ import { Images } from "@/components/media/images";
 import { Videos } from "@/components/media/videos";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
-  FragmentType,
   getFragmentData,
   imageFragment,
   productDetailsFragment,
   videoFragment,
+  type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import Image from "next/image";

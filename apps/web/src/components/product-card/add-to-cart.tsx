@@ -5,8 +5,8 @@ import { LoadingDots } from "@/components/loading/dots";
 import { useGetIntl } from "@/lib/i18n";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import {
-  ProductOption,
-  ProductVariant,
+  type ProductOption,
+  type ProductVariant,
 } from "@shopify/hydrogen/storefront-api-types";
 import { cn } from "@uncnsrdlabel/lib";
 import { useSearchParams } from "next/navigation";

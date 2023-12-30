@@ -6,13 +6,13 @@ import { MenuIcon } from "@/components/icons/menu";
 import { useGetIntl } from "@/lib/i18n";
 import { themeColors } from "@/lib/tailwind";
 import { Dialog } from "@headlessui/react";
-import { Menu } from "@shopify/hydrogen/storefront-api-types";
+import { type Menu } from "@shopify/hydrogen/storefront-api-types";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import { cn } from "@uncnsrdlabel/lib";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { PartialDeep } from "type-fest";
+import { type PartialDeep } from "type-fest";
 import { NavbarSearch } from "./search";
 
 export function SidebarMenu({

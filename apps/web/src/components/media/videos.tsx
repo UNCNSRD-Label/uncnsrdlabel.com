@@ -3,9 +3,9 @@
 import { Video } from "@/components/media/video";
 // import { WithVideo } from "@/types/shopify";
 import {
-  FragmentType,
   getFragmentData,
   videoFragment,
+  type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { type MutableRefObject } from "react";
 

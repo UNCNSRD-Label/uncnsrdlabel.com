@@ -1,9 +1,9 @@
 import { Prose } from "@/components/prose";
 import {
-  FragmentType,
   getFragmentData,
   imageFragment,
   pageSectionModuleFragment,
+  type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, type ClassValue } from "@uncnsrdlabel/lib";
 import Image from "next/image";

@@ -3,10 +3,10 @@ import { ProductDetailsTabs } from "@/components/product/details-tabs";
 import { PurchaseOptions } from "@/components/product/purchase-options";
 import { Prose } from "@/components/prose";
 import {
-  FragmentType,
   getFragmentData,
   imageFragment,
   productDetailsFragment,
+  type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Product as ProductSchema, WithContext } from "schema-dts";
 import { ProductMedia } from "./media";

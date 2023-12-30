@@ -4,7 +4,7 @@ import { CloseIcon } from "@/components/icons/close";
 import { MenuIcon } from "@/components/icons/menu";
 import { useGetIntl } from "@/lib/i18n";
 import { Dialog, Transition } from "@headlessui/react";
-import { Menu } from "@shopify/hydrogen/storefront-api-types";
+import { type Menu } from "@shopify/hydrogen/storefront-api-types";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";

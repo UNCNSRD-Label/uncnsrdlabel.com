@@ -1,13 +1,13 @@
 "use client";
 
 import {
-  ProductOption,
-  ProductVariant,
+  type ProductOption,
+  type ProductVariant,
 } from "@shopify/hydrogen/storefront-api-types";
 import { cn, createUrl } from "@uncnsrdlabel/lib";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Fragment } from "react";
-import { PartialDeep } from "type-fest";
+import { type PartialDeep } from "type-fest";
 
 type Combination = {
   id: string;
