@@ -59,8 +59,10 @@ export async function PageCarousel({
             >
               <Image
                 alt={image.altText || page.title}
+                blurDataURL={image.blurDataURL}
                 className="h-full object-cover"
                 fill
+                placeholder="blur"
                 revealEffect={false}
                 sizes={`100vw, (min-width: ${minWidthSm}) 50vw, (min-width: ${minWidthLg}) 33vw`}
                 src={image.url}
