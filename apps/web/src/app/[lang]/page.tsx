@@ -1,7 +1,7 @@
 import { Logo } from "@/components/layout/logo/index";
 import { NavbarContent } from "@/components/layout/navbar/content";
 import { Navbar } from "@/components/layout/navbar/index";
-import { PageCarouselHydrated } from "@/components/page/carousel/page-carousel-hydrated";
+import { PageCarousel } from "@/components/page/carousel/page-carousel";
 import { VideosHydrated } from "@/components/page/videos/videos-hydrated";
 import { getIntl } from "@/lib/i18n";
 import { type PageProps } from "@/types/next";
@@ -30,9 +30,7 @@ export default async function RootPage({ params: { lang } }: PageProps) {
             {intl.formatMessage({ id: "shop-now" })}
           </Link>
         </section>
-        <section className="max-w-[100dvw] sm:snap-center">
-          <PageCarouselHydrated handle={handle} />
-        </section>
+        <PageCarousel className="h-[calc(100dvw_*_1.5)] sm:h-[calc(50dvw_*_1.5)] lg:h-[calc(33.33dvw_*_1.5)]" handle={handle} />
       </main>
       <Logo className="fill-white" />
     </>
