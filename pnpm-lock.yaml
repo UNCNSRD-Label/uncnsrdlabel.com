@@ -45,8 +45,8 @@ importers:
   apps/web:
     dependencies:
       '@ducanh2912/next-pwa':
-        specifier: ^10.0.0
-        version: 10.0.0(next@14.0.3)(webpack@5.89.0)
+        specifier: ^10.0.2
+        version: 10.0.2(next@14.0.3)(webpack@5.89.0)
       '@formatjs/intl':
         specifier: ^2.9.9
         version: 2.9.9(typescript@5.3.3)
@@ -66,8 +66,8 @@ importers:
         specifier: ^2.1.1
         version: 2.1.1(react@0.0.0-experimental-c17a27ef4-20231127)
       '@hookform/resolvers':
-        specifier: ^3.3.2
-        version: 3.3.2(react-hook-form@7.49.2)
+        specifier: ^3.3.3
+        version: 3.3.3(react-hook-form@7.49.2)
       '@legendapp/state':
         specifier: ^2.1.4
         version: 2.1.4(react@0.0.0-experimental-c17a27ef4-20231127)
@@ -129,11 +129,11 @@ importers:
         specifier: ^2023.10.1
         version: 2023.10.1(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@tanstack/react-query':
-        specifier: ^5.14.6
-        version: 5.14.6(react@0.0.0-experimental-c17a27ef4-20231127)
+        specifier: ^5.15.0
+        version: 5.15.0(react@0.0.0-experimental-c17a27ef4-20231127)
       '@tanstack/react-query-devtools':
-        specifier: ^5.14.6
-        version: 5.14.6(@tanstack/react-query@5.14.6)(react@0.0.0-experimental-c17a27ef4-20231127)
+        specifier: ^5.15.0
+        version: 5.15.0(@tanstack/react-query@5.15.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@uncnsrdlabel/components':
         specifier: workspace:*
         version: link:../../packages/@uncnsrdlabel/components
@@ -259,8 +259,8 @@ importers:
         version: 0.1.1
     devDependencies:
       '@eslint/eslintrc':
-        specifier: ^2.1.4
-        version: 2.1.4
+        specifier: ^3.0.0
+        version: 3.0.0
       '@playwright/test':
         specifier: ^1.40.1
         version: 1.40.1
@@ -319,8 +319,8 @@ importers:
         specifier: ^15.1.0
         version: 15.1.0(postcss@8.4.32)
       postcss-loader:
-        specifier: ^7.3.3
-        version: 7.3.3(postcss@8.4.32)(webpack@5.89.0)
+        specifier: ^7.3.4
+        version: 7.3.4(postcss@8.4.32)(typescript@5.3.3)(webpack@5.89.0)
       postcss-nesting:
         specifier: ^12.0.2
         version: 12.0.2(postcss@8.4.32)
@@ -340,8 +340,8 @@ importers:
         specifier: ^3.4.0
         version: 3.4.0
       type-fest:
-        specifier: ^4.8.3
-        version: 4.8.3
+        specifier: ^4.9.0
+        version: 4.9.0
       typescript:
         specifier: 5.3.3
         version: 5.3.3
@@ -358,8 +358,8 @@ importers:
         specifier: ^2.1.1
         version: 2.1.1(react@0.0.0-experimental-c17a27ef4-20231127)
       '@hookform/resolvers':
-        specifier: ^3.3.2
-        version: 3.3.2(react-hook-form@7.49.2)
+        specifier: ^3.3.3
+        version: 3.3.3(react-hook-form@7.49.2)
       '@radix-ui/react-accessible-icon':
         specifier: ^1.0.3
         version: 1.0.3(@types/react-dom@18.2.18)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
@@ -424,8 +424,8 @@ importers:
         specifier: ^2023.10.1
         version: 2023.10.1(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@tanstack/react-query':
-        specifier: ^5.14.6
-        version: 5.14.6(react@0.0.0-experimental-c17a27ef4-20231127)
+        specifier: ^5.15.0
+        version: 5.15.0(react@0.0.0-experimental-c17a27ef4-20231127)
       '@uncnsrdlabel/graphql-shopify-storefront':
         specifier: workspace:*
         version: link:../graphql-shopify-storefront
@@ -457,8 +457,8 @@ importers:
         specifier: ^4.17.21
         version: 4.17.21
       lucide-react:
-        specifier: ^0.301.0
-        version: 0.301.0(react@0.0.0-experimental-c17a27ef4-20231127)
+        specifier: ^0.303.0
+        version: 0.303.0(react@0.0.0-experimental-c17a27ef4-20231127)
       next:
         specifier: 14.0.3
         version: 14.0.3(@babel/core@7.22.11)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
@@ -515,8 +515,8 @@ importers:
         version: 0.1.1
     devDependencies:
       '@eslint/eslintrc':
-        specifier: ^2.1.4
-        version: 2.1.4
+        specifier: ^3.0.0
+        version: 3.0.0
       '@tailwindcss/container-queries':
         specifier: ^0.1.1
         version: 0.1.1(tailwindcss@3.4.0)
@@ -563,8 +563,8 @@ importers:
         specifier: ^3.4.0
         version: 3.4.0
       type-fest:
-        specifier: ^4.8.3
-        version: 4.8.3
+        specifier: ^4.9.0
+        version: 4.9.0
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -591,8 +591,8 @@ importers:
         version: 14.0.3(@babel/core@7.22.11)(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
       '@eslint/eslintrc':
-        specifier: ^2.1.4
-        version: 2.1.4
+        specifier: ^3.0.0
+        version: 3.0.0
 
   packages/@uncnsrdlabel/graphql-hygraph:
     dependencies:
@@ -609,8 +609,8 @@ importers:
         specifier: ^2.2.0
         version: 2.2.0
       '@tanstack/react-query':
-        specifier: ^5.14.6
-        version: 5.14.6(react@18.2.0)
+        specifier: ^5.15.0
+        version: 5.15.0(react@18.2.0)
       '@types/node':
         specifier: ^20.5.6
         version: 20.5.6
@@ -646,8 +646,8 @@ importers:
         version: 0.1.1
     devDependencies:
       '@eslint/eslintrc':
-        specifier: ^2.1.4
-        version: 2.1.4
+        specifier: ^3.0.0
+        version: 3.0.0
       '@types/lodash':
         specifier: ^4.14.202
         version: 4.14.202
@@ -667,8 +667,8 @@ importers:
         specifier: ^3.1.1
         version: 3.1.1
       type-fest:
-        specifier: ^4.8.3
-        version: 4.8.3
+        specifier: ^4.9.0
+        version: 4.9.0
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -694,8 +694,8 @@ importers:
         specifier: ^2023.10.1
         version: 2023.10.1(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-0cdfef19b-20231211)
       '@tanstack/react-query':
-        specifier: ^5.14.6
-        version: 5.14.6(react@0.0.0-experimental-0cdfef19b-20231211)
+        specifier: ^5.15.0
+        version: 5.15.0(react@0.0.0-experimental-0cdfef19b-20231211)
       '@types/node':
         specifier: ^20.5.6
         version: 20.10.2
@@ -737,8 +737,8 @@ importers:
         version: 0.1.1
     devDependencies:
       '@eslint/eslintrc':
-        specifier: ^2.1.4
-        version: 2.1.4
+        specifier: ^3.0.0
+        version: 3.0.0
       '@types/lodash':
         specifier: ^4.14.202
         version: 4.14.202
@@ -761,8 +761,8 @@ importers:
         specifier: ^3.1.1
         version: 3.1.1
       type-fest:
-        specifier: ^4.8.3
-        version: 4.8.3
+        specifier: ^4.9.0
+        version: 4.9.0
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -788,8 +788,8 @@ importers:
         specifier: ^2023.10.1
         version: 2023.10.1(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@tanstack/react-query':
-        specifier: ^5.14.6
-        version: 5.14.6(react@0.0.0-experimental-c17a27ef4-20231127)
+        specifier: ^5.15.0
+        version: 5.15.0(react@0.0.0-experimental-c17a27ef4-20231127)
       '@types/node':
         specifier: ^20.5.6
         version: 20.5.6
@@ -831,8 +831,8 @@ importers:
         version: 0.1.1
     devDependencies:
       '@eslint/eslintrc':
-        specifier: ^2.1.4
-        version: 2.1.4
+        specifier: ^3.0.0
+        version: 3.0.0
       '@types/lodash':
         specifier: ^4.14.202
         version: 4.14.202
@@ -855,8 +855,8 @@ importers:
         specifier: ^3.1.1
         version: 3.1.1
       type-fest:
-        specifier: ^4.8.3
-        version: 4.8.3
+        specifier: ^4.9.0
+        version: 4.9.0
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -883,8 +883,8 @@ importers:
         version: 2.2.0
     devDependencies:
       '@eslint/eslintrc':
-        specifier: ^2.1.4
-        version: 2.1.4
+        specifier: ^3.0.0
+        version: 3.0.0
       '@types/lodash':
         specifier: ^4.14.202
         version: 4.14.202
@@ -916,8 +916,8 @@ importers:
         specifier: ^3.1.1
         version: 3.1.1
       type-fest:
-        specifier: ^4.8.3
-        version: 4.8.3
+        specifier: ^4.9.0
+        version: 4.9.0
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -937,14 +937,14 @@ importers:
         specifier: ^2023.10.1
         version: 2023.10.1(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@tanstack/react-query':
-        specifier: ^5.14.6
-        version: 5.14.6(react@0.0.0-experimental-c17a27ef4-20231127)
+        specifier: ^5.15.0
+        version: 5.15.0(react@0.0.0-experimental-c17a27ef4-20231127)
       '@tanstack/react-query-devtools':
-        specifier: ^5.14.6
-        version: 5.14.6(@tanstack/react-query@5.14.6)(react@0.0.0-experimental-c17a27ef4-20231127)
+        specifier: ^5.15.0
+        version: 5.15.0(@tanstack/react-query@5.15.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@tanstack/react-query-next-experimental':
-        specifier: ^5.14.6
-        version: 5.14.6(@tanstack/react-query@5.14.6)(next@14.0.3)(react@0.0.0-experimental-c17a27ef4-20231127)
+        specifier: ^5.15.0
+        version: 5.15.0(@tanstack/react-query@5.15.0)(next@14.0.3)(react@0.0.0-experimental-c17a27ef4-20231127)
       '@uncnsrdlabel/graphql-shopify-storefront':
         specifier: workspace:*
         version: link:../graphql-shopify-storefront
@@ -974,8 +974,8 @@ importers:
         version: 1.1.0(react@0.0.0-experimental-c17a27ef4-20231127)
     devDependencies:
       '@eslint/eslintrc':
-        specifier: ^2.1.4
-        version: 2.1.4
+        specifier: ^3.0.0
+        version: 3.0.0
       '@types/gtag.js':
         specifier: ^0.0.18
         version: 0.0.18
@@ -1004,8 +1004,8 @@ importers:
         specifier: ^3.1.1
         version: 3.1.1
       type-fest:
-        specifier: ^4.8.3
-        version: 4.8.3
+        specifier: ^4.9.0
+        version: 4.9.0
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -1017,8 +1017,8 @@ importers:
         version: 3.4.0
     devDependencies:
       '@eslint/eslintrc':
-        specifier: ^2.1.4
-        version: 2.1.4
+        specifier: ^3.0.0
+        version: 3.0.0
       '@tailwindcss/container-queries':
         specifier: ^0.1.1
         version: 0.1.1(tailwindcss@3.4.0)
@@ -1047,8 +1047,8 @@ importers:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.0)
       type-fest:
-        specifier: ^4.8.3
-        version: 4.8.3
+        specifier: ^4.9.0
+        version: 4.9.0
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -1056,8 +1056,8 @@ importers:
   packages/@uncnsrdlabel/tsconfig:
     devDependencies:
       '@eslint/eslintrc':
-        specifier: ^2.1.4
-        version: 2.1.4
+        specifier: ^3.0.0
+        version: 3.0.0
       '@types/node':
         specifier: ^20.10.5
         version: 20.10.5
@@ -1068,8 +1068,8 @@ importers:
         specifier: ^3.1.1
         version: 3.1.1
       type-fest:
-        specifier: ^4.8.3
-        version: 4.8.3
+        specifier: ^4.9.0
+        version: 4.9.0
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -1081,8 +1081,8 @@ importers:
         version: 0.0.0-experimental-c17a27ef4-20231127
     devDependencies:
       '@eslint/eslintrc':
-        specifier: ^2.1.4
-        version: 2.1.4
+        specifier: ^3.0.0
+        version: 3.0.0
       '@shopify/hydrogen':
         specifier: ^2023.10.3
         version: 2023.10.3(@remix-run/react@2.4.1)(@remix-run/server-runtime@2.4.1)(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
@@ -1105,8 +1105,8 @@ importers:
         specifier: ^3.1.1
         version: 3.1.1
       type-fest:
-        specifier: ^4.8.3
-        version: 4.8.3
+        specifier: ^4.9.0
+        version: 4.9.0
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -2347,7 +2347,7 @@ packages:
       babel-plugin-polyfill-corejs2: 0.4.5(@babel/core@7.22.11)
       babel-plugin-polyfill-corejs3: 0.8.3(@babel/core@7.22.11)
       babel-plugin-polyfill-regenerator: 0.5.2(@babel/core@7.22.11)
-      core-js-compat: 3.32.1
+      core-js-compat: 3.34.0
       semver: 6.3.1
     transitivePeerDependencies:
       - supports-color
@@ -2836,8 +2836,8 @@ packages:
       node-source-walk: 5.0.2
     dev: true
 
-  /@ducanh2912/next-pwa@10.0.0(next@14.0.3)(webpack@5.89.0):
-    resolution: {integrity: sha512-6VWpF0IzP9Az9n0jmqL9XH8iWA6LYJrC72b8GDEn7Swfi1mR+hYPItNFKJnraqwJheIqeeZXIHAqs5/VdyDF5A==}
+  /@ducanh2912/next-pwa@10.0.2(next@14.0.3)(webpack@5.89.0):
+    resolution: {integrity: sha512-6/6+l0L+xHCD9TluaoXlwKHl65iZ0OlvTO2L1YPV9zyZjN9sl4DbEjQ7JbOADnUGGbGVicPE4MhViGJA0+ezjQ==}
     peerDependencies:
       next: '>=14.0.0'
       webpack: '>=5.9.0'
@@ -2910,6 +2910,23 @@ packages:
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
       - supports-color
+
+  /@eslint/eslintrc@3.0.0:
+    resolution: {integrity: sha512-R8p3jN1kdWvFRiRfgpUxZ4PMgfJJFt6NuLGDnnqLb7RKmsd5Xa0KqRMjmaqRO7e38ZbG/9zKPgDjeJeqsDofSA==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    dependencies:
+      ajv: 6.12.6
+      debug: 4.3.4
+      espree: 9.6.1
+      globals: 13.21.0
+      ignore: 5.2.4
+      import-fresh: 3.3.0
+      js-yaml: 4.1.0
+      minimatch: 3.1.2
+      strip-json-comments: 3.1.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
 
   /@eslint/js@8.56.0:
     resolution: {integrity: sha512-gMsVel9D7f2HLkBma9VbtzZRehRogVRfbr++f06nL2vnCGCNlzOD+/MUov/F4p8myyAHspEhVobgjpX64q5m6A==}
@@ -4133,8 +4150,8 @@ packages:
       react: 0.0.0-experimental-c17a27ef4-20231127
     dev: false
 
-  /@hookform/resolvers@3.3.2(react-hook-form@7.49.2):
-    resolution: {integrity: sha512-Tw+GGPnBp+5DOsSg4ek3LCPgkBOuOgS5DsDV7qsWNH9LZc433kgsWICjlsh2J9p04H2K66hsXPPb9qn9ILdUtA==}
+  /@hookform/resolvers@3.3.3(react-hook-form@7.49.2):
+    resolution: {integrity: sha512-bOMxKkSD3zWcS11TKoUQ8O0ZqKslFohvUsPKSrdCHiuEuMjRo/u3cq9YRJD/+xtNGYup++XD2LkjhegP5XENiw==}
     peerDependencies:
       react-hook-form: ^7.0.0
     dependencies:
@@ -5757,7 +5774,7 @@ packages:
       graphql: 16.8.1
       react: 0.0.0-experimental-0cdfef19b-20231211
       react-dom: 18.2.0(react@0.0.0-experimental-0cdfef19b-20231211)
-      type-fest: 4.8.3
+      type-fest: 4.9.0
       worktop: 0.7.3
     transitivePeerDependencies:
       - '@types/react'
@@ -5777,7 +5794,7 @@ packages:
       graphql: 16.8.1
       react: 0.0.0-experimental-c17a27ef4-20231127
       react-dom: 18.2.0(react@0.0.0-experimental-c17a27ef4-20231127)
-      type-fest: 4.8.3
+      type-fest: 4.9.0
       worktop: 0.7.3
     transitivePeerDependencies:
       - '@types/react'
@@ -5796,7 +5813,7 @@ packages:
       graphql: 16.8.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      type-fest: 4.8.3
+      type-fest: 4.9.0
       worktop: 0.7.3
     transitivePeerDependencies:
       - '@types/react'
@@ -5815,7 +5832,7 @@ packages:
       '@shopify/hydrogen-react': 2023.10.1(@types/react@18.2.45)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       content-security-policy-builder: 2.1.1
       react: 0.0.0-experimental-c17a27ef4-20231127
-      type-fest: 4.8.3
+      type-fest: 4.9.0
     transitivePeerDependencies:
       - '@types/react'
       - react-dom
@@ -5878,35 +5895,35 @@ packages:
     resolution: {integrity: sha512-QmoJvC72sSWs3hgGis8JdmlDvqLfYGWUK4UG6OR9Q6t28JMN9m2FDwKPqoSJ9YVocELCSjMt/FGjEiLfk8000Q==}
     dev: false
 
-  /@tanstack/query-devtools@5.14.6:
-    resolution: {integrity: sha512-Kj820qMnyrTodqznWGnYQzef4SSsGrTnz6kW2ViFesA/ikJ79Rz+GB327Tx+xr8rSEsF4MTKEB8oH8+PKpXL4g==}
+  /@tanstack/query-devtools@5.15.0:
+    resolution: {integrity: sha512-oz+xBIf+fanmAQ3CZrV4t+1VZiK2nyTcH3zY3G8ukzw+LwX2QGa04ZfF+OCOVF6tPZ2dn1cekMibUb4tevf/aw==}
     dev: false
 
-  /@tanstack/react-query-devtools@5.14.6(@tanstack/react-query@5.14.6)(react@0.0.0-experimental-c17a27ef4-20231127):
-    resolution: {integrity: sha512-RR+y3hrv8BzFCa0tPA6Vi2lvlMDORBzNGwjDRHTTowUcx84xElbJbgB0O82HO4gYWaXMFJC4Lr2w4QfvMRVVeg==}
+  /@tanstack/react-query-devtools@5.15.0(@tanstack/react-query@5.15.0)(react@0.0.0-experimental-c17a27ef4-20231127):
+    resolution: {integrity: sha512-wDF2I3eyVVzjaP7Jh8zW9pFbhg4T4cU8pltjoHE2aIY4oO+xnrhbI+curFVNJhczFZkTDLIc77hvlAN3Y8seyg==}
     peerDependencies:
-      '@tanstack/react-query': ^5.14.6
+      '@tanstack/react-query': ^5.15.0
       react: ^18.0.0
     dependencies:
-      '@tanstack/query-devtools': 5.14.6
-      '@tanstack/react-query': 5.14.6(react@0.0.0-experimental-c17a27ef4-20231127)
+      '@tanstack/query-devtools': 5.15.0
+      '@tanstack/react-query': 5.15.0(react@0.0.0-experimental-c17a27ef4-20231127)
       react: 0.0.0-experimental-c17a27ef4-20231127
     dev: false
 
-  /@tanstack/react-query-next-experimental@5.14.6(@tanstack/react-query@5.14.6)(next@14.0.3)(react@0.0.0-experimental-c17a27ef4-20231127):
-    resolution: {integrity: sha512-Zz0yjNQ504kNMiB01v4+nlJRWkZm4fIzd11IK2IqTocFmsOts49NcLxVy4QKN7EcgErqVp6YzntcxBdsJ76Miw==}
+  /@tanstack/react-query-next-experimental@5.15.0(@tanstack/react-query@5.15.0)(next@14.0.3)(react@0.0.0-experimental-c17a27ef4-20231127):
+    resolution: {integrity: sha512-3pIG6XjyV/IFm/WLMpF/83pEcizz2pHJAd5IFuHQ3d6mk1flhmjmWFJgCZkS3colIG7Aphr3IhJLd8387EopMw==}
     peerDependencies:
-      '@tanstack/react-query': ^5.14.6
+      '@tanstack/react-query': ^5.15.0
       next: ^13 || ^14
       react: ^18.0.0
     dependencies:
-      '@tanstack/react-query': 5.14.6(react@0.0.0-experimental-c17a27ef4-20231127)
+      '@tanstack/react-query': 5.15.0(react@0.0.0-experimental-c17a27ef4-20231127)
       next: 14.0.3(@babel/core@7.22.11)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127)
       react: 0.0.0-experimental-c17a27ef4-20231127
     dev: false
 
-  /@tanstack/react-query@5.14.6(react@0.0.0-experimental-0cdfef19b-20231211):
-    resolution: {integrity: sha512-+INnJdq/904d+K2XQjqdIC58glpNGfQ8Xz93M6WBeJs5FPGFV8SEuFVzPtW/bKZ/Hu7hAiJpbFLDg5Lysvwmuw==}
+  /@tanstack/react-query@5.15.0(react@0.0.0-experimental-0cdfef19b-20231211):
+    resolution: {integrity: sha512-hWLuZ2Hg9HzmHJ3VtWzhvK+sTxPz+rIIujYUxzapPoU9PPXe7NCm8k8EaKpm+Sc65FM7Dljfk/Ov9yYMhwg9vw==}
     peerDependencies:
       react: ^18.0.0
     dependencies:
@@ -5914,8 +5931,8 @@ packages:
       react: 0.0.0-experimental-0cdfef19b-20231211
     dev: false
 
-  /@tanstack/react-query@5.14.6(react@0.0.0-experimental-c17a27ef4-20231127):
-    resolution: {integrity: sha512-+INnJdq/904d+K2XQjqdIC58glpNGfQ8Xz93M6WBeJs5FPGFV8SEuFVzPtW/bKZ/Hu7hAiJpbFLDg5Lysvwmuw==}
+  /@tanstack/react-query@5.15.0(react@0.0.0-experimental-c17a27ef4-20231127):
+    resolution: {integrity: sha512-hWLuZ2Hg9HzmHJ3VtWzhvK+sTxPz+rIIujYUxzapPoU9PPXe7NCm8k8EaKpm+Sc65FM7Dljfk/Ov9yYMhwg9vw==}
     peerDependencies:
       react: ^18.0.0
     dependencies:
@@ -5923,8 +5940,8 @@ packages:
       react: 0.0.0-experimental-c17a27ef4-20231127
     dev: false
 
-  /@tanstack/react-query@5.14.6(react@18.2.0):
-    resolution: {integrity: sha512-+INnJdq/904d+K2XQjqdIC58glpNGfQ8Xz93M6WBeJs5FPGFV8SEuFVzPtW/bKZ/Hu7hAiJpbFLDg5Lysvwmuw==}
+  /@tanstack/react-query@5.15.0(react@18.2.0):
+    resolution: {integrity: sha512-hWLuZ2Hg9HzmHJ3VtWzhvK+sTxPz+rIIujYUxzapPoU9PPXe7NCm8k8EaKpm+Sc65FM7Dljfk/Ov9yYMhwg9vw==}
     peerDependencies:
       react: ^18.0.0
     dependencies:
@@ -5986,7 +6003,7 @@ packages:
       chalk: 2.4.2
       commander: 10.0.1
       execa: 5.1.1
-      fast-glob: 3.3.1
+      fast-glob: 3.3.2
       fs-extra: 10.1.0
       gradient-string: 2.0.2
       inquirer: 8.2.6
@@ -6880,7 +6897,7 @@ packages:
     dependencies:
       '@babel/core': 7.22.11
       '@babel/helper-define-polyfill-provider': 0.4.2(@babel/core@7.22.11)
-      core-js-compat: 3.32.1
+      core-js-compat: 3.34.0
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -7424,12 +7441,6 @@ packages:
       cookie: 0.4.2
     dev: false
 
-  /core-js-compat@3.32.1:
-    resolution: {integrity: sha512-GSvKDv4wE0bPnQtjklV101juQ85g6H3rm5PDP20mqlS5j0kXF3pP97YvAu5hl+uFHqMictp3b2VxOHljWMAtuA==}
-    dependencies:
-      browserslist: 4.22.1
-    dev: false
-
   /core-js-compat@3.34.0:
     resolution: {integrity: sha512-4ZIyeNbW/Cn1wkMMDy+mvrRUxrwFNjKwbhCfQpDd+eLgYipDqp8oGFGtLmhh18EDPKA0g3VUBYOxQGGwvWLVpA==}
     dependencies:
@@ -7459,6 +7470,23 @@ packages:
       js-yaml: 4.1.0
       parse-json: 5.2.0
       path-type: 4.0.0
+    dev: false
+
+  /cosmiconfig@8.3.6(typescript@5.3.3):
+    resolution: {integrity: sha512-kcZ6+W5QzcJ3P1Mt+83OUv/oHFqZHIx8DuxG6eZ5RGMERoLqp4BuGjhHLYGK+Kf5XVkQvqBSmAy/nGWN3qDgEA==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      typescript: '>=4.9.5'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      import-fresh: 3.3.0
+      js-yaml: 4.1.0
+      parse-json: 5.2.0
+      path-type: 4.0.0
+      typescript: 5.3.3
+    dev: true
 
   /create-require@1.1.1:
     resolution: {integrity: sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==}
@@ -8184,7 +8212,7 @@ packages:
       eslint: 8.56.0
       eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.4.1)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0)(eslint@8.56.0)
       eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.4.1)(eslint-import-resolver-typescript@3.6.0)(eslint@8.56.0)
-      fast-glob: 3.3.1
+      fast-glob: 3.3.2
       get-tsconfig: 4.7.0
       is-core-module: 2.13.0
       is-glob: 4.0.3
@@ -8540,7 +8568,6 @@ packages:
       glob-parent: 5.1.2
       merge2: 1.4.1
       micromatch: 4.0.5
-    dev: false
 
   /fast-json-stable-stringify@2.1.0:
     resolution: {integrity: sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==}
@@ -8907,7 +8934,7 @@ packages:
       '@types/glob': 7.2.0
       array-union: 2.1.0
       dir-glob: 3.0.1
-      fast-glob: 3.3.1
+      fast-glob: 3.3.2
       glob: 7.2.3
       ignore: 5.2.4
       merge2: 1.4.1
@@ -8920,7 +8947,7 @@ packages:
     dependencies:
       array-union: 2.1.0
       dir-glob: 3.0.1
-      fast-glob: 3.3.1
+      fast-glob: 3.3.2
       ignore: 5.2.4
       merge2: 1.4.1
       slash: 3.0.0
@@ -9731,6 +9758,11 @@ packages:
     resolution: {integrity: sha512-5eEbBDQT/jF1xg6l36P+mWGGoH9Spuy0PCdSr2dtWRDGC6ph/w9ZCL4lmESW8f8F7MwT3XKescfP0wnZWAKL9w==}
     hasBin: true
 
+  /jiti@1.21.0:
+    resolution: {integrity: sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q==}
+    hasBin: true
+    dev: true
+
   /jose@4.14.4:
     resolution: {integrity: sha512-j8GhLiKmUAh+dsFXlX1aJCbt5KMibuKb+d7j1JaOJG6s2UjX1PQlW+OKB/sD4a/5ZYF4RcmYmLSndOoU3Lt/3g==}
     dev: false
@@ -10105,8 +10137,8 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /lucide-react@0.301.0(react@0.0.0-experimental-c17a27ef4-20231127):
-    resolution: {integrity: sha512-ZMbsXSv8qg3u0wqGngW+dG2Tu20fBqQAu3e0MikjGIx6KUN+4TrL2j3XwWZCcpHEfH9Tw+gqnQXRhHVne5DzJQ==}
+  /lucide-react@0.303.0(react@0.0.0-experimental-c17a27ef4-20231127):
+    resolution: {integrity: sha512-B0B9T3dLEFBYPCUlnUS1mvAhW1craSbF9HO+JfBjAtpFUJ7gMIqmEwNSclikY3RiN2OnCkj/V1ReAQpaHae8Bg==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:
@@ -11202,18 +11234,20 @@ packages:
       postcss: 8.4.32
       yaml: 2.3.4
 
-  /postcss-loader@7.3.3(postcss@8.4.32)(webpack@5.89.0):
-    resolution: {integrity: sha512-YgO/yhtevGO/vJePCQmTxiaEwER94LABZN0ZMT4A0vsak9TpO+RvKRs7EmJ8peIlB9xfXCsS7M8LjqncsUZ5HA==}
+  /postcss-loader@7.3.4(postcss@8.4.32)(typescript@5.3.3)(webpack@5.89.0):
+    resolution: {integrity: sha512-iW5WTTBSC5BfsBJ9daFMPVrLT36MrNiC6fqOZTTaHjBNX6Pfd5p+hSBqe/fEeNd7pc13QiAyGt7VdGMw4eRC4A==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       postcss: ^7.0.0 || ^8.0.1
       webpack: ^5.0.0
     dependencies:
-      cosmiconfig: 8.2.0
-      jiti: 1.19.3
+      cosmiconfig: 8.3.6(typescript@5.3.3)
+      jiti: 1.21.0
       postcss: 8.4.32
       semver: 7.5.4
       webpack: 5.89.0
+    transitivePeerDependencies:
+      - typescript
     dev: true
 
   /postcss-logical@7.0.0(postcss@8.4.32):
@@ -13131,8 +13165,8 @@ packages:
     resolution: {integrity: sha512-tLq3bSNx+xSpwvAJnzrK0Ep5CLNWjvFTOp71URMaAEWBfRb9nnJiBoUe0tF8bI4ZFO3omgBR6NvnbzVUT3Ly4g==}
     engines: {node: '>=14.16'}
 
-  /type-fest@4.8.3:
-    resolution: {integrity: sha512-//BaTm14Q/gHBn09xlnKNqfI8t6bmdzx2DXYfPBNofN0WUybCEUDcbCWcTa0oF09lzLjZgPphXAsvRiMK0V6Bw==}
+  /type-fest@4.9.0:
+    resolution: {integrity: sha512-KS/6lh/ynPGiHD/LnAobrEFq3Ad4pBzOlJ1wAnJx9N4EYoqFhMfLIBjUT2UEx4wg5ZE+cC1ob6DCSpppVo+rtg==}
     engines: {node: '>=16'}
 
   /typed-array-buffer@1.0.0:

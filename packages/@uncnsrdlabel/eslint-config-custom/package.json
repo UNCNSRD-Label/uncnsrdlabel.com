@@ -8,7 +8,7 @@
     "next": "14.0.3"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^2.1.4"
+    "@eslint/eslintrc": "^3.0.0"
   },
   "main": "eslint.config.js",
   "name": "@uncnsrdlabel/eslint-config-custom",

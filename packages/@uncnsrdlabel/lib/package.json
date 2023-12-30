@@ -7,7 +7,7 @@
     "tailwind-merge": "^2.2.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^2.1.4",
+    "@eslint/eslintrc": "^3.0.0",
     "@types/lodash": "^4.14.202",
     "@types/negotiator": "^0.6.3",
     "@types/node": "^20.10.5",
@@ -18,7 +18,7 @@
     "@uncnsrdlabel/tsconfig": "workspace:*",
     "@uncnsrdlabel/types": "workspace:*",
     "prettier": "^3.1.1",
-    "type-fest": "^4.8.3",
+    "type-fest": "^4.9.0",
     "typescript": "^5.3.3"
   },
   "exports": {
