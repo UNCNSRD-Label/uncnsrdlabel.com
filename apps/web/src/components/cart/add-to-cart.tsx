@@ -24,14 +24,17 @@ function SubmitButton({
   const intl = useGetIntl("component.AddToCart");
 
   const { pending } = useFormStatus();
-  
+
   const buttonClasses =
-    "btn btn-base btn-primary btn-bg relative w-full justify-center py-4 text-sm";
+    "btn btn-bg btn-primary btn-lg relative w-full justify-center";
   const disabledClasses = "cursor-not-allowed opacity-60 hover:opacity-60";
 
   if (!availableForSale) {
     return (
-      <button aria-disabled className={cn(buttonClasses, disabledClasses, className)}>
+      <button
+        aria-disabled
+        className={cn(buttonClasses, disabledClasses, className)}
+      >
         {intl.formatMessage({ id: "out-of-stock" })}
       </button>
     );
@@ -66,7 +69,7 @@ function SubmitButton({
     >
       <div className="absolute left-0 ml-4">
         {pending ? (
-          <LoadingDots className="mb-3 bg-white" />
+          <LoadingDots className="mb-3" />
         ) : (
           <PlusIcon className="h-5" />
         )}
