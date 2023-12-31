@@ -35,7 +35,6 @@ export function ConsentForm(props: ConsentDialogProps) {
     const consentParams = Object.fromEntries(formData.entries());
 
     setCookie(COOKIE_CONSENT, consentParams, cookieOptions);
-    gtag("consent", "update", consentParams);
 
     console.info("Granting selected consents");
 
@@ -46,7 +45,6 @@ export function ConsentForm(props: ConsentDialogProps) {
 
   const acceptAllConsents = () => {
     setCookie(COOKIE_CONSENT, acceptAllConsentSettings, cookieOptions);
-    gtag("consent", "update", acceptAllConsentSettings);
 
     console.info("Accepting all consents");
 
@@ -55,7 +53,6 @@ export function ConsentForm(props: ConsentDialogProps) {
 
   const denyAllAdditionalConsents = () => {
     setCookie(COOKIE_CONSENT, denyAllAdditionalConsentSettings, cookieOptions);
-    gtag("consent", "update", denyAllAdditionalConsentSettings);
 
     console.info("Denying all additional consents");
 
