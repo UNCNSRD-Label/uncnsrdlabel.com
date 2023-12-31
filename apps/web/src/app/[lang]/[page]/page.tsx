@@ -1,4 +1,3 @@
-import { LoadingSkeleton } from "@/components/loading/skeleton";
 import { state$ } from "@/lib/store";
 import {
   getFragmentData,
@@ -9,7 +8,6 @@ import {
 import { SITE_DOMAIN_WEB } from "@uncnsrdlabel/lib";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
 import { ArticleHydrated as Article } from "./article-hydrated";
 import { PageSectionModule } from "./page-section-module";
 
@@ -66,32 +64,30 @@ export default async function PagePage({
   if (!page) return notFound();
 
   return (
-    <Suspense fallback={<LoadingSkeleton />}>
-      <Article key={page.handle} variables={{ handle }}>
-        {page.sections?.references?.nodes?.map(
-          (pageSectionModuleFragmentRef, index) => {
-            if (pageSectionModuleFragmentRef.__typename === "Metaobject") {
-              return (
-                <PageSectionModule
-                  key={index}
-                  pageSectionModuleFragmentRef={pageSectionModuleFragmentRef}
-                />
-              );
-            }
-          },
-        )}
+    <Article key={page.handle} variables={{ handle }}>
+      {page.sections?.references?.nodes?.map(
+        (pageSectionModuleFragmentRef, index) => {
+          if (pageSectionModuleFragmentRef.__typename === "Metaobject") {
+            return (
+              <PageSectionModule
+                key={index}
+                pageSectionModuleFragmentRef={pageSectionModuleFragmentRef}
+              />
+            );
+          }
+        },
+      )}
 
-        <span className="mb-8 hidden text-sm italic">
-          {`This document was last updated on ${new Intl.DateTimeFormat(
-            undefined,
-            {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            },
-          ).format(new Date(page.updatedAt))}.`}
-        </span>
-      </Article>
-    </Suspense>
+      <span className="mb-8 hidden text-sm italic">
+        {`This document was last updated on ${new Intl.DateTimeFormat(
+          undefined,
+          {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          },
+        ).format(new Date(page.updatedAt))}.`}
+      </span>
+    </Article>
   );
 }

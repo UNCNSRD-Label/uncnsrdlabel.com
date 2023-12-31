@@ -1,4 +1,3 @@
-import { LoadingDots } from "@/components/loading/dots";
 import { Details } from "@/components/product/details";
 import { getAlternativeLanguages } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
@@ -12,7 +11,6 @@ import {
 import { HIDDEN_PRODUCT_TAG, SITE_DOMAIN_WEB } from "@uncnsrdlabel/lib";
 import { type Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
 import { Breadcrumb } from "./breadcrumb";
 import { RelatedProducts } from "./related-products";
 
@@ -93,12 +91,10 @@ export default async function ProductPage({
         <Details productDetailsFragmentRef={productDetailsFragmentRef} />
         {/* <ProductAdditionalDetails productDetailsFragmentRef={productDetailsFragmentRef} /> */}
       </main>
-      <Suspense fallback={<LoadingDots />}>
-        <RelatedProducts
-          className="text-dark relative bg-white z-50"
-          productDetailsFragmentRef={productDetailsFragmentRef}
-        />
-      </Suspense>
+      <RelatedProducts
+        className="text-dark relative bg-white z-50"
+        productDetailsFragmentRef={productDetailsFragmentRef}
+      />
     </div>
   );
 }

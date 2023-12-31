@@ -2,7 +2,6 @@
 
 // TODO: Remove this deprecated file
 
-import { LoadingDots } from "@/components/loading/dots";
 import { VideosHydrated } from "@/components/page/videos/videos-hydrated";
 import { state$ } from "@/lib/store";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
@@ -13,7 +12,6 @@ import {
   getShopifyQueryClient,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getInContextVariables } from "@uncnsrdlabel/lib";
-import { Suspense } from "react";
 
 // TODO: Change to videosHydrated and pass query and variables (handle) in props
 export async function PageVideosHydrated({
@@ -46,10 +44,8 @@ export async function PageVideosHydrated({
   const dehydratedState = dehydrate(shopifyQueryClient);
 
   return (
-    <Suspense fallback={<LoadingDots />}>
-      <HydrationBoundary state={dehydratedState}>
-        <VideosHydrated {...props} handle={handle} />
-      </HydrationBoundary>
-    </Suspense>
+    <HydrationBoundary state={dehydratedState}>
+      <VideosHydrated {...props} handle={handle} />
+    </HydrationBoundary>
   );
 }

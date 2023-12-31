@@ -1,4 +1,3 @@
-import { LoadingSkeleton } from "@/components/loading/skeleton";
 import { Prose } from "@/components/prose";
 import { getAlternativeLanguages } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
@@ -15,7 +14,6 @@ import { SITE_DOMAIN_WEB, cn } from "@uncnsrdlabel/lib";
 import { camelCase } from "lodash";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
 
 // export const runtime = "edge";
 
@@ -42,7 +40,9 @@ export async function generateMetadata({
 
   return {
     alternates: {
-      canonical: `${localization.language.isoCode.toLocaleLowerCase()}-${localization.country.isoCode}/${path}`,
+      canonical: `${localization.language.isoCode.toLocaleLowerCase()}-${
+        localization.country.isoCode
+      }/${path}`,
       languages: await getAlternativeLanguages({ localization, path }),
     },
     title: policy.title,
@@ -132,12 +132,10 @@ export default async function PolicyPage({
           } */}
       </nav>
       <article className="mb-48">
-        <Suspense fallback={<LoadingSkeleton />}>
-          <Prose
-            className="prose-sm prose-thead:border-hotPink prose-tr:border-hotPink mb-8 grid"
-            html={policy.body as string}
-          />
-        </Suspense>
+        <Prose
+          className="prose-sm prose-thead:border-hotPink prose-tr:border-hotPink mb-8 grid"
+          html={policy.body as string}
+        />
       </article>
     </>
   );

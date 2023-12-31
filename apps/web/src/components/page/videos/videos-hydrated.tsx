@@ -1,4 +1,3 @@
-import { LoadingDots } from "@/components/loading/dots";
 import { state$ } from "@/lib/store";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import {
@@ -8,7 +7,6 @@ import {
   getShopifyQueryClient,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getInContextVariables } from "@uncnsrdlabel/lib";
-import { Suspense } from "react";
 import { Videos } from "./videos";
 
 // TODO: Change to videosHydrated and pass query and variables (handle) in props
@@ -37,10 +35,8 @@ export async function VideosHydrated({ handle, ...props }: { handle: string }) {
   const dehydratedState = dehydrate(shopifyQueryClient);
 
   return (
-    <Suspense fallback={<LoadingDots />}>
-      <HydrationBoundary state={dehydratedState}>
-        <Videos {...props} handle={handle} />
-      </HydrationBoundary>
-    </Suspense>
+    <HydrationBoundary state={dehydratedState}>
+      <Videos {...props} handle={handle} />
+    </HydrationBoundary>
   );
 }
