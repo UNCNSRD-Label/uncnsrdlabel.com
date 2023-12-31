@@ -1,5 +1,4 @@
 import { LoadingDots } from "@/components/loading/dots";
-import { signUpAction } from "@/components/sign-up/action";
 import { SignUpForm } from "@/components/sign-up/form";
 import { getIntl } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
@@ -18,7 +17,7 @@ export async function SignUp({ className }: { className?: string }) {
         {intl.formatMessage({ id: "summary" })}
       </span>
       <Suspense fallback={<LoadingDots />}>
-        <SignUpForm action={signUpAction} />
+        <SignUpForm />
       </Suspense>
     </section>
   );

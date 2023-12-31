@@ -1,61 +1,60 @@
 "use client";
 
+import { signUpAction } from "@/components/sign-up/action";
 import { useGetIntl } from "@/lib/i18n";
 import { cn } from "@uncnsrdlabel/lib";
-import { useForm } from "react-hook-form";
+import { useFormState, useFormStatus } from "react-dom";
 import { SlEnvolope } from "react-icons/sl";
 
-export function SignUpForm({
-  action,
+function Submit({
   className,
 }: {
-  action: (
-    formData: FormData,
-    custom_source?: string,
-  ) => Promise<{
-    message: string;
-  }>;
   className?: string;
 }) {
-  const intlForm = useGetIntl("component.SignUpForm");
+  const intl = useGetIntl("component.SignUpForm");
 
-  const {
-    formState: { errors, isValid },
-    register,
-  } = useForm({ defaultValues: { email: "" } });
+  const status = useFormStatus();
 
   return (
-    <form action={action} className={cn("mt-8 grid gap-4", className)}>
+    <button className={className} disabled={status.pending}>
+      {intl.formatMessage({ id: "submit" })}
+    </button>
+  );
+}
+
+export function SignUpForm({ className }: { className?: string }) {
+  const intl = useGetIntl("component.SignUpForm");
+
+  const [output, formAction] = useFormState(signUpAction, null);
+
+  const hasError = (output && output.status > 299) ?? false;
+
+  return (
+    <form action={formAction} className={cn("mt-8 grid gap-4", className)}>
       <div className="field">
         <input
-          aria-invalid={errors.email ? "true" : "false"}
+          aria-invalid={hasError ? "true" : "false"}
           autoComplete="on"
-          className="w-full bg-gray-800/50 px-4 py-2 placeholder:text-inherit"
-          placeholder={intlForm.formatMessage({ id: "placeholder" })}
-          type="email"
-          {...register("email", {
-            required: intlForm.formatMessage({ id: "required" }),
-            pattern: {
-              value: /\S+@\S+\.\S+/,
-              message: intlForm.formatMessage({ id: "pattern" }),
-            },
+          className={cn("w-full bg-gray-800/50 px-4 py-2 placeholder:text-inherit", {
+            "border-red-500": hasError,
           })}
+          placeholder={intl.formatMessage({ id: "placeholder" })}
+          type="email"
         />
-        {errors.email && <p role="alert">{errors.email?.message}</p>}
         <button
-          aria-label={intlForm.formatMessage({ id: "submit" })}
+          aria-label={intl.formatMessage({ id: "submit" })}
           className="btn absolute right-0 mr-3"
-          disabled={!isValid}
         >
           <SlEnvolope />
         </button>
       </div>
-      <button
+      <Submit
         className="btn btn-primary btn-solid btn-sm justify-self-end !no-underline"
-        disabled={!isValid}
-      >
-        {intlForm.formatMessage({ id: "submit" })}
-      </button>
+      />
+      {output ? <output className={cn("text-sm", {
+        "text-red-500": hasError,
+        "text-green-500": !hasError,
+      })} role="alert">{output.message}</output> : null}
     </form>
   );
 }
