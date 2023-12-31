@@ -4,6 +4,7 @@ import { createIntl } from "@formatjs/intl";
 import { getLocalizationDetailsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { useParams } from "next/navigation";
 import { cache, use } from "react";
+import { type ResolvedIntlConfig } from "react-intl";
 
 export const getLocalizationDetailsCached = cache(async ({ lang }: { lang?: string; }) => getLocalizationDetailsHandler({ lang }))
 
@@ -40,20 +41,34 @@ export async function getIntl(tag: Intl.BCP47LanguageTag, namespace: string) {
   } catch (error) {
     console.error({ error });
   } finally {
+    const messages: ResolvedIntlConfig["messages"] = await getDictionary(namespace);
+
     return createIntl({
       locale,
-      messages: await getDictionary(namespace),
+      messages,
     });
   }
 }
 
 export function useGetIntl(namespace: string) {
-  const { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! } = useParams();
+  'use client';
 
-  const locale = Array.isArray(lang) ? lang[0] : lang;
+  let locale: Intl.BCP47LanguageTag = process.env.NEXT_PUBLIC_DEFAULT_LOCALE!;
 
-  return createIntl({
-    locale,
-    messages: use(getDictionary(namespace)),
-  });
+  try {
+    const { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! } = useParams();
+
+    locale = (Array.isArray(lang) ? lang[0] : lang) as Intl.BCP47LanguageTag;
+
+
+  } catch (error) {
+    console.error({ error });
+  } finally {
+    const messages: ResolvedIntlConfig["messages"] = use(getDictionary(namespace));
+
+    return createIntl({
+      locale,
+      messages,
+    });
+  }
 }
