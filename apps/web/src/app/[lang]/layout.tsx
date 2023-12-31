@@ -29,7 +29,7 @@ import { PropsWithChildren } from "react";
 import "../globals.css";
 
 export async function generateMetadata({
-  params: { lang },
+  params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
 }: LayoutProps): Promise<Metadata> {
   const intlMetadata = await getIntl(lang, "global.metadata");
   const intlKeywords = await getIntl(lang, "global.metadata.keywords");
@@ -123,7 +123,7 @@ export async function generateStaticParams() {
 
 export default async function RootLayout({
   children,
-  params: { lang },
+  params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
 }: PropsWithChildren<LayoutProps>) {
   if (lang) {
     const localization = await getLocalizationDetailsHandler({ lang });
