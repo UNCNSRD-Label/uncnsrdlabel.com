@@ -2,12 +2,12 @@ import { Image } from "@/components/media/image";
 import { Video } from "@/components/media/video";
 import { PriceAndCompareAtPrice } from "@/components/price-and-compare-at-price";
 import {
-  FragmentType,
   getFragmentData,
   imageFragment,
   productBasicFragment,
   productDetailsFragment,
   videoFragment,
+  type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 

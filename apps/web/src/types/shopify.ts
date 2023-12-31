@@ -1,7 +1,7 @@
 import { ResultOf } from "@graphql-typed-document-node/core";
 import {
-  FragmentType,
   videoFragment,
+  type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 
 export type WithVideoFragment = Required<

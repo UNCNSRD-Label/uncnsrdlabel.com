@@ -1,11 +1,11 @@
 import { AddToCart } from "@/components/cart/add-to-cart";
 import { VariantSelector } from "@/components/product/variant-selector";
-import { ProductVariant } from "@shopify/hydrogen/storefront-api-types";
+import { type ProductVariant } from "@shopify/hydrogen/storefront-api-types";
 import {
-  FragmentType,
   getFragmentData,
   productDetailsFragment,
   productVariantConnectionFragment,
+  type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 
 interface PurchaseOptionsProps {

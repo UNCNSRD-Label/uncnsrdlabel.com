@@ -5,9 +5,9 @@ import {
   Breadcrumb as BreadcrumbRoot,
 } from "@uncnsrdlabel/components/ui/breadcrumb";
 import {
-  FragmentType,
   getFragmentData,
   productDetailsFragment,
+  type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 
 export function Breadcrumb({

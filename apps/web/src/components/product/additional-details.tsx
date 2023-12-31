@@ -1,9 +1,9 @@
 import { MetaFields } from "@/components/product/metafields";
 import {
-  FragmentType,
   getFragmentData,
   productDetailsFragment,
   productMetafieldFragment,
+  type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 
 export function ProductAdditionalDetails({

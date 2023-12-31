@@ -9,9 +9,9 @@ import {
   type ShopifyAddToCartPayload,
   type ShopifyPageViewPayload,
 } from "@shopify/hydrogen";
-import type {
-  CurrencyCode,
-  LanguageCode,
+import {
+  type CurrencyCode,
+  type LanguageCode,
 } from "@shopify/hydrogen/storefront-api-types";
 import { getCookie } from "cookies-next";
 

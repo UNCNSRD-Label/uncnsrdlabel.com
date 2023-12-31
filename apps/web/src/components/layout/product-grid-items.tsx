@@ -3,9 +3,9 @@ import { Tile } from "@/components/grid/tile";
 import { transitionDelays } from "@/lib/tailwind";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
-  FragmentType,
   getFragmentData,
   productBasicFragment,
+  type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { HIDDEN_PRODUCT_TAG } from "@uncnsrdlabel/lib";
 

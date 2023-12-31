@@ -2,7 +2,6 @@
 
 import { state$ } from "@/lib/store";
 import {
-  FragmentType,
   addToCartHandler,
   cartFragment,
   createCartHandler,
@@ -10,6 +9,7 @@ import {
   getFragmentData,
   removeFromCartHandler,
   updateCartHandler,
+  type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { TAGS } from '@uncnsrdlabel/lib';
 import { parse } from 'bcp-47';

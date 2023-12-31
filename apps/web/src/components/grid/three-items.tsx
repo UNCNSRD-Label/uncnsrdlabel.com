@@ -2,10 +2,10 @@ import { Tile } from "@/components/grid/tile";
 import { state$ } from "@/lib/store";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
-  FragmentType,
   getCollectionProductsHandler,
   getFragmentData,
   productBasicFragment,
+  type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 

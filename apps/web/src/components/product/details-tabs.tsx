@@ -1,10 +1,10 @@
 import { MetafieldMapper } from "@/components/product/metafield-mapper";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@uncnsrdlabel/components/ui/tabs";
 import {
-  FragmentType,
   getFragmentData,
   productDetailsFragment,
   productMetafieldFragment,
+  type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 

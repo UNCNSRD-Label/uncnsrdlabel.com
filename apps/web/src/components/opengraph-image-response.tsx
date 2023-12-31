@@ -1,5 +1,5 @@
-import { ResultOf } from "@graphql-typed-document-node/core";
-import { MoneyV2 } from "@shopify/hydrogen/storefront-api-types";
+import { type ResultOf } from "@graphql-typed-document-node/core";
+import { type MoneyV2 } from "@shopify/hydrogen/storefront-api-types";
 import { imageFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { ImageResponse } from "next/og";
 

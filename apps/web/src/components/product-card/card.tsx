@@ -1,11 +1,11 @@
 import { Image } from "@/components/media/image";
-import { ProductVariant } from "@shopify/hydrogen/storefront-api-types";
+import { type ProductVariant } from "@shopify/hydrogen/storefront-api-types";
 import {
-  FragmentType,
   getFragmentData,
   imageFragment,
   productDetailsFragment,
   productVariantConnectionFragment,
+  type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { Product as ProductSchema, WithContext } from "schema-dts";

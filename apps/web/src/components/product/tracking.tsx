@@ -1,9 +1,9 @@
 "use client";
 
 import {
-  FragmentType,
   getFragmentData,
   productDetailsFragment,
+  type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect } from "react";

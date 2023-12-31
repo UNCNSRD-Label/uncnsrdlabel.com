@@ -3,11 +3,11 @@ import { Tile } from "@/components/grid/tile";
 import { transitionDelays } from "@/lib/tailwind";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
-  FragmentType,
   getFragmentData,
   imageFragment,
   productBasicFragment,
   productVariantConnectionFragment,
+  type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 
 export function ProductVariantGridItems({

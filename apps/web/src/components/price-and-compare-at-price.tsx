@@ -1,9 +1,9 @@
 import { Price } from "@/components/price";
 import {
-  FragmentType,
   getFragmentData,
   productBasicFragment,
   productDetailsFragment,
+  type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 
