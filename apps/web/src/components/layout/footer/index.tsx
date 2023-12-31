@@ -1,4 +1,4 @@
-import { ConsentDialog } from "@/components/consent/dialog";
+import { ConsentTrigger } from "@/components/consent/trigger";
 import { LogotypeIcon } from "@/components/icons/logotype";
 import { SignUp } from "@/components/sign-up";
 import { SocialMenu } from "@/components/social-menu";
@@ -44,7 +44,9 @@ export async function Footer() {
             <nav className="col-span-1 grid gap-8 sm:col-span-12 sm:grid-cols-12 lg:col-span-8 lg:grid-cols-9">
               {customerCareMenu.items?.length ? (
                 <dl className="grid content-start gap-2 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
-                  <dt className="text-sm uppercase">{intlMenu.formatMessage({ id: "customer-care" })}</dt>
+                  <dt className="text-sm uppercase">
+                    {intlMenu.formatMessage({ id: "customer-care" })}
+                  </dt>
                   {customerCareMenu.items.map((item, index) => (
                     <dd key={item.title || index}>
                       <Link href={item.url ?? "#"} className={linkClassName}>
@@ -53,13 +55,15 @@ export async function Footer() {
                     </dd>
                   ))}
                   <dd>
-                    <ConsentDialog className={linkClassName} />
+                    <ConsentTrigger className={linkClassName} />
                   </dd>
                 </dl>
               ) : null}
               {informationMenu.items?.length ? (
                 <dl className="grid content-start gap-2 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
-                  <dt className="text-sm uppercase">{intlMenu.formatMessage({ id: "information" })}</dt>
+                  <dt className="text-sm uppercase">
+                    {intlMenu.formatMessage({ id: "information" })}
+                  </dt>
                   {informationMenu.items.map((item, index) => (
                     <dd key={item.title || index}>
                       <Link href={item.url ?? "#"} className={linkClassName}>
@@ -75,7 +79,9 @@ export async function Footer() {
               <div className="grid gap-4 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
                 {followUsMenu.items?.length ? (
                   <dl className="grid content-start gap-2">
-                    <dt className="text-sm uppercase">{intlMenu.formatMessage({ id: "follow-us" })}</dt>
+                    <dt className="text-sm uppercase">
+                      {intlMenu.formatMessage({ id: "follow-us" })}
+                    </dt>
                     {followUsMenu.items.map((item, index) => (
                       <dd key={item.title || index}>
                         <Link
@@ -97,7 +103,10 @@ export async function Footer() {
           <div className="flex flex-col items-center justify-between text-xs uppercase sm:flex-row sm:pt-6">
             <SocialMenu className="my-8 h-10 sm:my-0" />
             <span className="sm:order-first">
-              {intl.formatMessage({ id: "copyright" }, { currentYear, siteName: NEXT_PUBLIC_SITE_NAME })}
+              {intl.formatMessage(
+                { id: "copyright" },
+                { currentYear, siteName: NEXT_PUBLIC_SITE_NAME },
+              )}
             </span>
           </div>
           <LogotypeIcon className="mx-auto mt-8 h-6 fill-inherit drop-shadow transition duration-300 ease-in-out hover:scale-110 sm:hidden sm:h-10 " />
