@@ -92,7 +92,7 @@ export default async function ProductPage({
         {/* <ProductAdditionalDetails productDetailsFragmentRef={productDetailsFragmentRef} /> */}
       </main>
       <RelatedProducts
-        className="text-dark relative bg-white z-50"
+        className="text-dark relative bg-white z-50 [contain:layout_style]"
         productDetailsFragmentRef={productDetailsFragmentRef}
       />
     </div>

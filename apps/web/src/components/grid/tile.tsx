@@ -110,7 +110,7 @@ export async function Tile({
               }))}
           />
         )}
-        <figure className="image absolute inset-0 mb-0 mt-0">
+        <figure className="image absolute inset-0 mb-0 mt-0 [contain:inline-size_layout_style]">
           {tileImage?.url ? (
             <Image
               className={cn(
