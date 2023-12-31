@@ -15,6 +15,7 @@ export async function Tile({
   active = true,
   background = "black",
   className,
+  delay,
   image,
   isInteractive = true,
   priority,
@@ -34,6 +35,7 @@ export async function Tile({
     | "cyan"
     | "gray";
   className?: string;
+  delay?: number;
   image?: FragmentType<typeof imageFragment> | null;
   isInteractive?: boolean;
   priority?: boolean;
@@ -110,13 +112,30 @@ export async function Tile({
               }))}
           />
         )}
-        <figure className="image absolute inset-0 mb-0 mt-0">
+        <figure className="image absolute inset-0 mb-0 mt-0 [contain:inline-size_layout_style]">
           {tileImage?.url ? (
             <Image
               className={cn(
                 "relative h-full w-full object-cover",
                 {
                   "transition hover:scale-105": isInteractive,
+                  "animation-delay-[0ms]": delay === 0,
+                  "animation-delay-[300ms]": delay === 1,
+                  "animation-delay-[600ms]": delay === 2,
+                  "animation-delay-[900ms]": delay === 3,
+                  "animation-delay-[1200ms]": delay === 4,
+                  "animation-delay-[1500ms]": delay === 5,
+                  "animation-delay-[1800ms]": delay === 6,
+                  "animation-delay-[2100ms]": delay === 7,
+                  "animation-delay-[2400ms]": delay === 8,
+                  "animation-delay-[2700ms]": delay === 9,
+                  "animation-delay-[3000ms]": delay === 10,
+                  "animation-delay-[3300ms]": delay === 11,
+                  "animation-delay-[3600ms]": delay === 12,
+                  "animation-delay-[3900ms]": delay === 13,
+                  "animation-delay-[4200ms]": delay === 14,
+                  "animation-delay-[4500ms]": delay === 15,
+                  "animation-delay-[4800ms]": delay === 16,
                 },
                 className,
               )}

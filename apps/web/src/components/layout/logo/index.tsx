@@ -16,10 +16,15 @@ export function Logo({ blend, className, fill }: Props) {
     threshold: [0, 0.5],
   });
 
+  const intersecting = (((rootIntersection?.intersectionRatio ?? 0) > 0) ||
+  ((rootIntersection?.boundingClientRect?.top ?? 0) < 0))
+
+  const position = intersecting ? "absolute" : "fixed";
+
   return (
     <div
       className={cn(
-        "pointer-events-none relative inset-0 z-50 grid",
+        "pointer-events-none relative inset-0 z-50 grid [contain:layout_style]",
         blend && "mix-blend-difference",
       )}
       ref={rootRef}
@@ -31,11 +36,7 @@ export function Logo({ blend, className, fill }: Props) {
         )}
         ref={rootRef}
         style={{
-          position:
-            (rootIntersection?.intersectionRatio ?? 0) > 0 ||
-            (rootIntersection?.boundingClientRect?.top ?? 0) < 0
-              ? "absolute"
-              : "fixed",
+          position
         }}
       >
         <Link className={cn("pointer-events-auto", className)} href="/">

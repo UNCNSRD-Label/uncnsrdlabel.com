@@ -2,7 +2,6 @@ import { Banner } from "@/components/layout/banner";
 import { Footer } from "@/components/layout/footer/index";
 import { Progress } from "@/components/layout/progress/index";
 import { SetState } from "@/components/layout/set-state";
-import { LoadingDots } from "@/components/loading/dots";
 import { Organization } from "@/components/schema.org/organization";
 import { getIntl } from "@/lib/i18n";
 import { getBaseMetadata } from "@/lib/metadata";
@@ -26,11 +25,11 @@ import { intersection } from "lodash";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import localFont from "next/font/local";
-import { PropsWithChildren, Suspense } from "react";
+import { PropsWithChildren } from "react";
 import "../globals.css";
 
 export async function generateMetadata({
-  params: { lang },
+  params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
 }: LayoutProps): Promise<Metadata> {
   const intlMetadata = await getIntl(lang, "global.metadata");
   const intlKeywords = await getIntl(lang, "global.metadata.keywords");
@@ -124,7 +123,7 @@ export async function generateStaticParams() {
 
 export default async function RootLayout({
   children,
-  params: { lang },
+  params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
 }: PropsWithChildren<LayoutProps>) {
   if (lang) {
     const localization = await getLocalizationDetailsHandler({ lang });
@@ -156,10 +155,8 @@ export default async function RootLayout({
             className={cn("sticky top-0 w-full z-30")}
           />
           <Progress />
-          <Suspense fallback={<LoadingDots />}>
-            {children}
-            <Footer />
-          </Suspense>
+          {children}
+          <Footer />
           <Organization />
         </AppProviders>
       </body>

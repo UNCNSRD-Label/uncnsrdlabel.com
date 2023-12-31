@@ -3,11 +3,12 @@
 import { type KlaviyoResponse } from "@uncnsrdlabel/types";
 
 export async function signUpAction(
+  _prevState: any,
   formData: FormData,
-  custom_source: string = "Website",
-): Promise<{ message: string }> {
+) {
   const email = formData.get("email");
   const phone_number = formData.get("phone_number");
+  const custom_source = formData.get("custom_source") ?? "Website";
 
   if (!email) {
     console.error("email not set");
@@ -51,13 +52,17 @@ export async function signUpAction(
 
   let message = "Something went wrong. Please try again.";
 
+  let status = 500;
+
   try {
     const response = await fetch(url, options);
+
+    status = response.status;
 
     console.info(response.status, response.statusText);
 
     if (response?.ok) {
-      message = "Use the response here!";
+      message = "Email address submitted successfully!";
 
       if (response.status >= 300) {
         const json = (await response.json()) as KlaviyoResponse;
@@ -74,7 +79,9 @@ export async function signUpAction(
         message = "You have successfully signed up to our mailing list!";
       }
     } else {
-      message = `HTTP Response Code: ${response?.status}`;
+      console.error(response?.status, response?.statusText)
+
+      message = `Email address submittion failed with HTTP Response Code: ${response?.status}`;
     }
   } catch (error) {
     console.error(error);
@@ -87,6 +94,7 @@ export async function signUpAction(
   } finally {
     return {
       message,
+      status,
     };
   }
 }
