@@ -35,6 +35,8 @@ export function SignUpForm({ className }: { className?: string }) {
 
     timerRef.current = window.setTimeout(() => {
       setOpen(false);
+
+      console.info("Closing SignUpForm toast");
     }, 10_000);
 
     // grab location from context
