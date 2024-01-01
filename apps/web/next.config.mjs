@@ -229,7 +229,7 @@ const contentSecurityPolicyComponents = [
   `form-action 'self' www.facebook.com`,
   `frame-ancestors app.contentful.com`,
   `frame-src 'self' td.doubleclick.net vercel.live www.facebook.com ${domains}`,
-  `img-src 'self' data: *.clarity.ms *.facebook.com *.facebook.net *.klaviyo.com *.skimresources.com assets.tidiochat.com assets.vercel.com c.bing.com cdnjs.cloudflare.com/ajax/libs/twemoji/ cdn.shopify.com fonts.gstatic.com googleads.g.doubleclick.net heapanalytics.com s3.amazonaws.com/bp9hssvzhoimfzyehfletkb8havpgjc2/conversation/ s3.amazonaws.com/tidio-files/ s3-eu-west-1.amazonaws.com/hj-insights script.hotjar.com vercel.com ${googleSupportedDomains.map(domain => `www.${domain}`)} images.ctfassets.net tidio-images-messenger.s3.amazonaws.com www.google-analytics.com www.googletagmanager.com`,
+  `img-src 'self' data: *.clarity.ms *.facebook.com *.facebook.net *.klaviyo.com *.skimresources.com assets.tidiochat.com assets.vercel.com c.bing.com cdnjs.cloudflare.com/ajax/libs/twemoji/ cdn.shopify.com fonts.gstatic.com googleads.g.doubleclick.net heapanalytics.com s3.amazonaws.com/bp9hssvzhoimfzyehfletkb8havpgjc2/conversation/ s3.amazonaws.com/tidio-files/ s3-eu-west-1.amazonaws.com/hj-insights script.hotjar.com vercel.com ${googleSupportedDomains.map(domain => `www.${domain}`).join(' ')} images.ctfassets.net tidio-images-messenger.s3.amazonaws.com www.google-analytics.com www.googletagmanager.com`,
   `media-src 'self' cdn.shopify.com videos.ctfassets.net widget-v4.tidiochat.com`,
   `object-src 'self'`,
   `script-src 'self' 'unsafe-eval' *.clarity.ms *.facebook.net *.klaviyo.com *.skimresources.com heapanalytics.com vitals.vercel-insights.com`,
