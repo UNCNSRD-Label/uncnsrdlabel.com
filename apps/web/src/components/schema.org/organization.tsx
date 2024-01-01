@@ -9,6 +9,7 @@ export const Organization = () => {
       {JSON.stringify({
         "@context": "https://schema.org",
         "@type": "Organization",
+        // TODO: Replace with data retrieved from Shopify
         name: NEXT_PUBLIC_SITE_NAME,
         url: `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}`,
         logo: `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}/opengraph-image.jpg`,
