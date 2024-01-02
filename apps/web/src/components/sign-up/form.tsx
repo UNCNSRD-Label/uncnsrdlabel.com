@@ -17,7 +17,7 @@ function Submit({
   const status = useFormStatus();
 
   return (
-    <Button className={className} disabled={status.pending}>
+    <Button className={className} disabled={status.pending} variant="ghost">
       {intl.formatMessage({ id: "submit" })}
     </Button>
   );
@@ -45,6 +45,7 @@ export function SignUpForm({ className }: { className?: string }) {
         <Button
           aria-label={intl.formatMessage({ id: "submit" })}
           className="btn absolute right-0 mr-3"
+          variant="ghost"
         >
           <SlEnvolope />
         </Button>

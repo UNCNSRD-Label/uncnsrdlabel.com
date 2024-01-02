@@ -8,7 +8,7 @@ export async function ConsentButton({ className, onClick }: { className?: string
   const intl = await getIntl(lang, "component.ConsentDialog");
 
   return (
-    <Button className={className} onClick={onClick}>
+    <Button className={className} onClick={onClick} variant="ghost">
       {intl.formatMessage({ id: "trigger" })}
     </Button>
   );
