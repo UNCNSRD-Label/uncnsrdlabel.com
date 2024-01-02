@@ -82,7 +82,7 @@ export function CartModal({
                 <div className="flex items-center justify-between">
                   <h3 className="text-lg uppercase">{intl.formatMessage({ id: "title" })}</h3>
 
-                  <Button aria-label={intl.formatMessage({ id: "close" })} onClick={closeCart}>
+                  <Button aria-label={intl.formatMessage({ id: "close" })} onClick={closeCart} variant="ghost">
                     <CloseCart />
                   </Button>
                 </div>

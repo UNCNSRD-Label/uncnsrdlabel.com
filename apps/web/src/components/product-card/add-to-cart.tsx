@@ -29,7 +29,7 @@ function SubmitButton({
 
   if (!availableForSale) {
     return (
-      <Button aria-disabled className={cn(buttonClasses, disabledClasses, className)}>
+      <Button aria-disabled className={cn(buttonClasses, disabledClasses, className)} variant="ghost">
         {intl.formatMessage({ id: "out-of-stock" })}
       </Button>
     );
@@ -41,6 +41,7 @@ function SubmitButton({
         aria-label={intl.formatMessage({ id: "select-options" })}
         aria-disabled
         className={cn(buttonClasses, disabledClasses)}
+        variant="ghost"
       >
         <PlusIcon className="h-5" />
         {intl.formatMessage({ id: "select-options" })}
@@ -59,6 +60,7 @@ function SubmitButton({
         "hover:opacity-90": true,
         disabledClasses: pending,
       })}
+      variant="ghost"
     >
       {pending ? (
         <LoadingDots className="mb-3 bg-white" />

@@ -33,6 +33,7 @@ function SubmitButton() {
           "cursor-not-allowed px-0": pending,
         },
       )}
+      variant="ghost"
     >
       {pending ? (
         <LoadingDots className="bg-white" />

@@ -34,6 +34,7 @@ function SubmitButton({ type }: { type: 'plus' | 'minus' }) {
           'ml-auto': type === 'minus'
         }
       )}
+      variant="ghost"
     >
       {pending ? (
         <LoadingDots className="bg-black dark:bg-white" />
