@@ -23,6 +23,19 @@ export type GoogleTagManagerAnalyticsPlugin = AnalyticsPlugin &
  * @link https://getanalytics.io/plugins/google-tag-manager
  * @link https://developers.google.com/tag-manager/
  * @link https://github.com/DavidWells/analytics/pull/349/files
+ * @param {object} pluginConfig - Plugin settings
+ * @param {string} pluginConfig.containerId - The Container ID uniquely identifies the GTM Container.
+ * @param {string} [pluginConfig.dataLayerName=dataLayer] - The optional name for dataLayer-object. Defaults to dataLayer.
+ * @param {string} [pluginConfig.customScriptSrc] - Load Google Tag Manager script from a custom source
+ * @param {string} [pluginConfig.preview] - The preview-mode environment
+ * @param {string} [pluginConfig.auth] - The preview-mode authentication credentials
+ * @param {string} [pluginConfig.execution] - The script execution mode
+ * @return {object} Analytics plugin
+ * @example
+ *
+ * googleTagManager({
+ *   containerId: 'GTM-123xyz'
+ * })
  */
 export const config: Omit<GoogleTagManagerConfig, "containerId"> = {
   auth: undefined,
