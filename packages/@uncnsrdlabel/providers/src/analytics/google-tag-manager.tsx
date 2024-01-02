@@ -110,16 +110,16 @@ function googleTagManager(
         })(window, document, "script", dataLayerName, containerId);
         /* eslint-enable */
         initializedDataLayerName = dataLayerName;
-        // @ts-expect-error Element implicitly has an 'any' type because index expression is not of type 'number'
-        config.dataLayer = window[dataLayerName];
       }
     },
-    page: ({ payload }) => {
+    page: ({ payload, config }) => {
       console.log({ config });
-      if (typeof config.dataLayer !== "undefined") {
+      if (typeof window[config.dataLayerName] !== "undefined") {
         if (config.pageViewEvent) {
           console.log("config.pageViewEvent", config.pageViewEvent);
-          config.dataLayer.push({
+
+          // @ts-expect-error Property 'push' does not exist on type 'Window'.
+          window[config.dataLayerName].push({
             event: config.pageViewEvent,
             ...payload.properties,
           });
@@ -127,7 +127,7 @@ function googleTagManager(
       }
     },
     track: ({ payload, config }) => {
-      if (typeof config.dataLayer !== "undefined") {
+      if (typeof window[config.dataLayerName] !== "undefined") {
         const { anonymousId, userId, properties } = payload;
         const formattedPayload = properties;
         if (userId) {
@@ -145,7 +145,9 @@ function googleTagManager(
             ...formattedPayload,
           });
         }
-        config.dataLayer.push({
+
+        // @ts-expect-error Property 'push' does not exist on type 'Window'.
+        window[config.dataLayerName].push({
           event: payload.event,
           ...formattedPayload,
         });
