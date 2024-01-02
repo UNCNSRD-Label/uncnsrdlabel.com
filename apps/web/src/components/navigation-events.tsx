@@ -13,11 +13,7 @@ export function NavigationEvents() {
   useEffect(() => {
     const url = `${pathname}?${searchParams}`;
 
-    console.log(url);
-
     page();
-
-    // track("page_view");
   }, [pathname, searchParams]);
 
   return null;
