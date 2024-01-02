@@ -1,0 +1,205 @@
+import { AnalyticsPlugin } from "analytics";
+import type { SetOptional } from "type-fest";
+import { Payload, PluginConfig, PluginEventFunctions } from "./types";
+
+export interface GoogleTagManagerConfig extends PluginConfig {
+  auth: string | undefined;
+  collectionHandle?: string;
+  containerId: string;
+  customScriptSrc?: string;
+  dataLayer: Pick<Payload, "event">[];
+  dataLayerName: string;
+  execution: "async" | "defer";
+  pageViewEvent: string;
+  preview: string | undefined;
+  storefrontId?: string;
+}
+
+export type GoogleTagManagerAnalyticsPlugin = AnalyticsPlugin &
+  PluginEventFunctions;
+
+/**
+ * Google tag manager plugin
+ * @link https://getanalytics.io/plugins/google-tag-manager
+ * @link https://developers.google.com/tag-manager/
+ * @link https://github.com/DavidWells/analytics/pull/349/files
+ */
+export const config: Omit<GoogleTagManagerConfig, "containerId"> = {
+  auth: undefined,
+  dataLayer: [],
+  dataLayerName: "dataLayer",
+  debug: false,
+  execution: "async",
+  hasUserConsent: false,
+  pageViewEvent: "page_view",
+  preview: undefined,
+};
+
+let initializedDataLayerName: string | undefined;
+
+function googleTagManager(
+  pluginConfig: SetOptional<
+    Pick<
+      GoogleTagManagerConfig,
+      "containerId" | "customScriptSrc" | "dataLayerName" | "pageViewEvent"
+    >,
+    "dataLayerName" | "pageViewEvent"
+  >,
+): GoogleTagManagerAnalyticsPlugin {
+  "use client";
+
+  const defaultScriptSrc = "https://www.googletagmanager.com/gtm.js";
+
+  // Allow for userland overides of base methods
+  return {
+    name: "google-tag-manager",
+    config: {
+      ...config,
+      ...pluginConfig,
+    },
+    initialize: ({ config }: { config: GoogleTagManagerConfig }) => {
+      const {
+        containerId,
+        dataLayerName,
+        customScriptSrc,
+        preview,
+        auth,
+        execution,
+      } = config;
+
+      if (!containerId) {
+        throw new Error("No google tag manager containerId defined");
+      }
+
+      if (preview && !auth) {
+        throw new Error(
+          "When enabling preview mode, both preview and auth parameters must be defined",
+        );
+      }
+
+      const scriptSrc = customScriptSrc || defaultScriptSrc;
+
+      if (!scriptLoaded(containerId, scriptSrc)) {
+        /* eslint-disable */
+        (function (
+          w: Window & typeof globalThis,
+          d: Document,
+          s: "script",
+          l: string,
+          i: string,
+        ) {
+          // @ts-expect-error Element implicitly has an 'any' type because index expression is not of type 'number'
+          w[l] = w[l] || [];
+          // @ts-expect-error Element implicitly has an 'any' type because index expression is not of type 'number'
+          w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+          var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != "dataLayer" ? "&l=" + l : "",
+            p = preview
+              ? "&gtm_preview=" +
+                preview +
+                "&gtm_auth=" +
+                auth +
+                "&gtm_cookies_win=x"
+              : "";
+          if (execution) {
+            j[execution] = true;
+          }
+          j.src = `${scriptSrc}?id=` + i + dl + p;
+          f.parentNode?.insertBefore(j, f);
+        })(window, document, "script", dataLayerName, containerId);
+        /* eslint-enable */
+        initializedDataLayerName = dataLayerName;
+        // @ts-expect-error Element implicitly has an 'any' type because index expression is not of type 'number'
+        config.dataLayer = window[dataLayerName];
+      }
+    },
+    page: ({ payload }) => {
+      console.log({ config });
+      if (typeof config.dataLayer !== "undefined") {
+        if (config.pageViewEvent) {
+          console.log("config.pageViewEvent", config.pageViewEvent);
+          config.dataLayer.push({
+            event: config.pageViewEvent,
+            ...payload.properties,
+          });
+        }
+      }
+    },
+    track: ({ payload, config }) => {
+      if (typeof config.dataLayer !== "undefined") {
+        const { anonymousId, userId, properties } = payload;
+        const formattedPayload = properties;
+        if (userId) {
+          formattedPayload.userId = userId;
+        }
+        if (anonymousId) {
+          formattedPayload.anonymousId = anonymousId;
+        }
+        if (!properties.category) {
+          formattedPayload.category = "All";
+        }
+        if (config.debug) {
+          console.log("dataLayer push", {
+            event: payload.event,
+            ...formattedPayload,
+          });
+        }
+        config.dataLayer.push({
+          event: payload.event,
+          ...formattedPayload,
+        });
+      }
+    },
+    loaded: () => {
+      const hasDataLayer =
+        !!initializedDataLayerName &&
+        // @ts-expect-error Element implicitly has an 'any' type because index expression is not of type 'number'
+        typeof window[initializedDataLayerName] !== "undefined" &&
+        // @ts-expect-error Element implicitly has an 'any' type because index expression is not of type 'number'
+        Array.prototype.push !== window[initializedDataLayerName].push;
+      return (
+        scriptLoaded(
+          pluginConfig.containerId,
+          pluginConfig.customScriptSrc || defaultScriptSrc,
+        ) && hasDataLayer
+      );
+    },
+  };
+}
+
+export default googleTagManager;
+
+const regexCache: Record<string, RegExp> = {};
+
+/*
+  TODO add logic to make it impossible to load 2 plugins with the same container ID
+  [containerID]: pluginName
+  */
+
+function scriptLoaded(
+  containerId: GoogleTagManagerConfig["containerId"],
+  scriptSrc: string,
+) {
+  "use client";
+
+  if (typeof window === "undefined") {
+    console.error("window is undefined");
+    return;
+  }
+
+  let regex = regexCache[containerId];
+  if (!regex) {
+    const scriptSrcEscaped = scriptSrc
+      .replace(/^https?:\/\//, "")
+      .replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+    regex = new RegExp(scriptSrcEscaped + ".*[?&]id=" + containerId);
+    regexCache[containerId] = regex;
+  }
+  const scripts = document.querySelectorAll("script[src]");
+  return !!Object.keys(scripts).filter((key) =>
+    // @ts-expect-error Element implicitly has an 'any' type because index expression is not of type 'number'
+    (scripts[key].src || "").match(regex),
+  ).length;
+}
