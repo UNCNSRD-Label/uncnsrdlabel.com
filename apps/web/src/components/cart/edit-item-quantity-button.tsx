@@ -63,9 +63,9 @@ export function EditItemQuantityButton({ item, type }: {   item: Pick<Componenti
   return (
     <form action={actionWithVariant}>
       <SubmitButton type={type} />
-      <p aria-live="polite" className="sr-only" role="status">
+      <span aria-live="polite" className="sr-only" role="status">
         {message}
-      </p>
+      </span>
     </form>
   );
 }
