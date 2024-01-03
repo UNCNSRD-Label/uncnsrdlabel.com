@@ -100,9 +100,9 @@
       "title": "Einwilligungseinstellungen"
     },
     "DeleteItemButton": {
-      "button": "Beutelgegenstand entfernen"
+      "remove": "Beutelgegenstand entfernen"
     },
-    "EditItemButton": {
+    "EditItemQuantityButton": {
       "decrease": "Artikelmenge verringern",
       "increase": "Artikelmenge erhöhen"
     },

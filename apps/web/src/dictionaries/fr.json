@@ -100,9 +100,9 @@
       "title": "Paramètres de consentement"
     },
     "DeleteItemButton": {
-      "button": "Supprimer l'article du sac"
+      "remove": "Supprimer l'article du sac"
     },
-    "EditItemButton": {
+    "EditItemQuantityButton": {
       "decrease": "Diminuer la quantité d'articles",
       "increase": "Augmenter la quantité d'articles"
     },
