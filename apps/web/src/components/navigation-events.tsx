@@ -11,7 +11,7 @@ export function NavigationEvents() {
   const { page } = useAnalytics();
 
   useEffect(() => {
-    const url = `${pathname}?${searchParams}`;
+    // const url = `${pathname}?${searchParams}`;
 
     page();
   }, [pathname, searchParams]);
