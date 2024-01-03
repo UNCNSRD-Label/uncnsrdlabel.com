@@ -26,7 +26,7 @@ export const productDetailsFragment = graphql(/* GraphQL */ `
     featuredImage {
       ...image
     }
-    images(first: 20) {
+    images(first: 16) {
       edges {
         node {
           ...image
@@ -37,7 +37,7 @@ export const productDetailsFragment = graphql(/* GraphQL */ `
     descriptionHtml
     handle
     id
-    media(first: 10) {
+    media(first: 8) {
       edges {
         node {
           __typename
