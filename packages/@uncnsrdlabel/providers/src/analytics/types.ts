@@ -2,7 +2,7 @@ import { type Product } from "@shopify/hydrogen/storefront-api-types";
 
 export type PluginConfig = {
   debug?: boolean;
-  hasUserConsent?: boolean;
+  hasUserConsent: boolean;
 }
 
 export type Payload = {
