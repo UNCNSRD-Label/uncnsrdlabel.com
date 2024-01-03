@@ -9,7 +9,7 @@ const withBundleAnalyzer = bundleAnalyzer({
 const withSerwist = withSerwistInit({
   cacheOnFrontEndNav: true,
   disable: process.env.NEXT_PUBLIC_FEATURE_FLAG_PWA !== "true",
-  swSrc: "app/sw.ts",
+  swSrc: "src/app/sw.ts",
   swDest: "public/sw.js",
 });
 
