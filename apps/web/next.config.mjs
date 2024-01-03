@@ -1,17 +1,19 @@
-import withPWAInit from "@ducanh2912/next-pwa";
 import bundleAnalyzer from "@next/bundle-analyzer";
+import withSerwistInit from "@serwist/next";
 import withPlugins from "next-compose-plugins";
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
 });
 
-const withPWA = withPWAInit({
-  dest: "public",
+const withSerwist = withSerwistInit({
+  cacheOnFrontEndNav: true,
   disable: process.env.NEXT_PUBLIC_FEATURE_FLAG_PWA !== "true",
+  swSrc: "app/sw.ts",
+  swDest: "public/sw.js",
 });
 
-const plugins = [withBundleAnalyzer, withPWA];
+const plugins = [withBundleAnalyzer, withSerwist];
 
 function onlyUnique(value, index, array) {
   return array.indexOf(value) === index;
@@ -19,8 +21,6 @@ function onlyUnique(value, index, array) {
 
 const domains = [
   `www.${process.env.NEXT_PUBLIC_SITE_DOMAIN_WEB_PRODUCTION}`,
-  process.env.NEXT_PUBLIC_SITE_DOMAIN_ACCESS,
-  process.env.NEXT_PUBLIC_SITE_DOMAIN_ACCESS_PRODUCTION,
   process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN,
   process.env.NEXT_PUBLIC_SITE_DOMAIN_WEB, // localhost, production or preview
   process.env.NEXT_PUBLIC_SITE_DOMAIN_WEB_PRODUCTION, // production for anything directly linked to the web app
