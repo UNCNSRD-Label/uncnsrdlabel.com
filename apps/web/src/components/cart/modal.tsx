@@ -6,11 +6,11 @@ import { OpenCart } from "@/components/cart/open-cart";
 import { useGetIntl } from "@/lib/i18n";
 import { themeColors } from "@/lib/tailwind";
 import { ResultOf } from "@graphql-typed-document-node/core";
-import { Dialog } from "@headlessui/react";
+import { Dialog, Transition } from "@headlessui/react";
+import { Button } from "@uncnsrdlabel/components/ui/button";
 import { cartFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
-import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 
 export function CartModal({
   cart,
@@ -25,7 +25,7 @@ export function CartModal({
   const closeCart = () => setIsOpen(false);
 
   useEffect(() => {
-    // Open cart modal when when quantity changes.
+    // Open cart modal when quantity changes.
     if (cart?.totalQuantity !== quantityRef.current) {
       // But only if it's not already open (quantity also changes when editing items in cart).
       if (!isOpen) {
@@ -39,59 +39,61 @@ export function CartModal({
 
   return (
     <>
-      <button aria-label={intl.formatMessage({ id: "open" })} onClick={openCart}>
+      <Button
+        aria-label={intl.formatMessage({ id: "open" })}
+        onClick={openCart}
+        variant="ghost"
+      >
         <OpenCart quantity={cart?.totalQuantity} />
-      </button>
-
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <Dialog
-            as={motion.div}
-            initial="closed"
-            animate="open"
-            exit="closed"
-            key="dialog"
-            static
-            open={isOpen}
-            onClose={closeCart}
-            className="dark relative z-50"
+      </Button>
+      <Transition show={isOpen}>
+        <Dialog onClose={closeCart} className="dark relative z-50">
+          <Transition.Child
+            as={Fragment}
+            enter="transition-all ease-in-out duration-300"
+            enterFrom="opacity-0 backdrop-blur-none"
+            enterTo="opacity-100 backdrop-blur-[.5px]"
+            leave="transition-all ease-in-out duration-200"
+            leaveFrom="opacity-100 backdrop-blur-[.5px]"
+            leaveTo="opacity-0 backdrop-blur-none"
           >
-            <motion.div
-              variants={{
-                open: { opacity: 1 },
-                closed: { opacity: 0 },
-              }}
-              className="fixed inset-0 bg-black/30"
-              aria-hidden="true"
-            />
-
-            <div
-              className="fixed inset-y-0 end-0 flex w-full max-w-sm justify-end"
-              data-testid="cart"
+            <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+          </Transition.Child>
+          <Transition.Child
+            as={Fragment}
+            enter="transition-all ease-in-out duration-300"
+            enterFrom="translate-x-full"
+            enterTo="translate-x-0"
+            leave="transition-all ease-in-out duration-200"
+            leaveFrom="translate-x-0"
+            leaveTo="translate-x-full"
+          >
+            <Dialog.Panel
+              className={cn(
+                "pt-safeTop flex-col p-6",
+                "fixed bottom-0 right-0 top-0 flex h-full w-full flex-col border-l border-neutral-200 bg-white/80 p-6 text-black backdrop-blur-xl dark:border-neutral-700 dark:bg-black/80 dark:text-white md:w-[390px]",
+                themeColors,
+              )}
             >
-              <Dialog.Panel
-                as={motion.div}
-                variants={{
-                  open: { translateX: 0 },
-                  closed: { translateX: "100%" },
-                }}
-                transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-                className={cn("flex w-full flex-col p-6 pt-safeTop", themeColors)}
-              >
-                <div className="flex items-center justify-between">
-                  <h3 className="text-lg uppercase">{intl.formatMessage({ id: "title" })}</h3>
+              <div className="flex items-center justify-between">
+                <h3 className="text-lg uppercase">
+                  {intl.formatMessage({ id: "title" })}
+                </h3>
 
-                  <button aria-label={intl.formatMessage({ id: "close" })} onClick={closeCart}>
-                    <CloseCart />
-                  </button>
-                </div>
+                <Button
+                  aria-label={intl.formatMessage({ id: "close" })}
+                  onClick={closeCart}
+                  variant="ghost"
+                >
+                  <CloseCart />
+                </Button>
+              </div>
 
-                <CartForm cart={cart} closeCart={closeCart} />
-              </Dialog.Panel>
-            </div>
-          </Dialog>
-        )}
-      </AnimatePresence>
+              <CartForm cart={cart} closeCart={closeCart} />
+            </Dialog.Panel>
+          </Transition.Child>
+        </Dialog>
+      </Transition>
     </>
   );
 }

@@ -1,5 +1,5 @@
 import { Cart } from "@/components/cart";
-import { CartIcon } from "@/components/icons/cart";
+import { OpenCart } from '@/components/cart/open-cart';
 import { LogotypeIcon } from "@/components/icons/logotype";
 import { MenuIcon } from "@/components/icons/menu";
 import { Search } from "@/components/search/index";
@@ -28,7 +28,11 @@ export async function NavbarContent(props: Props) {
     <>
       <div className="flex md:justify-self-start">
         <div className="pointer-events-auto md:mr-4">
-          <Suspense fallback={<MenuIcon className="h-5 icon stroke-inherit drop-shadow" />}>
+          <Suspense
+            fallback={
+              <MenuIcon className="icon h-5 stroke-inherit drop-shadow" />
+            }
+          >
             <SidebarMenu menu={menu} />
           </Suspense>
         </div>
@@ -45,16 +49,23 @@ export async function NavbarContent(props: Props) {
       </div>
 
       <div className="pointer-events-auto flex items-center justify-end gap-5">
-        <Suspense fallback={<CartIcon className="icon fill h-5" />}>
-          <Search />
-          <Link href="/account" aria-label={intl.formatMessage({ id: "link-account" })} prefetch={false}>
-            <SlUser className="icon fill h-5 w-5 drop-shadow" />
+        <Search />
+        <Link
+          href="/account"
+          aria-label={intl.formatMessage({ id: "link-account" })}
+          prefetch={false}
+        >
+          <SlUser className="icon fill h-5 w-5 drop-shadow" />
+        </Link>
+        {process.env.NEXT_PUBLIC_FEATURE_FLAG_WISHLIST_ENABLE === "true" && (
+          <Link
+            href="#"
+            aria-label={intl.formatMessage({ id: "link-wishlist" })}
+          >
+            <SlHeart className="icon fill h-5 w-5 drop-shadow" />
           </Link>
-          {process.env.NEXT_PUBLIC_FEATURE_FLAG_WISHLIST_ENABLE === "true" && (
-            <Link href="#" aria-label={intl.formatMessage({ id: "link-wishlist" })}>
-              <SlHeart className="icon fill h-5 w-5 drop-shadow" />
-            </Link>
-          )}
+        )}
+        <Suspense fallback={<OpenCart />}>
           <Cart />
         </Suspense>
       </div>

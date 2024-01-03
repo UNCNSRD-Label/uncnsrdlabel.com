@@ -8,6 +8,7 @@ import { themeColors } from "@/lib/tailwind";
 import { Dialog } from "@headlessui/react";
 import { type Menu } from "@shopify/hydrogen/storefront-api-types";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
+import { Button } from "@uncnsrdlabel/components/ui/button";
 import { cn } from "@uncnsrdlabel/lib";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname, useSearchParams } from "next/navigation";
@@ -47,19 +48,22 @@ export function SidebarMenu({
 
   return (
     <>
-      <button
+      <Button
         aria-label={intl.formatMessage({ id: "open" })}
+        className="relative"
         data-testid="open-sidebar-menu"
         onClick={() => {
           setSidebarMenuIsOpen(!sidebarMenuIsOpen);
         }}
+        variant="ghost"
       >
         <MenuIcon className="h-5 icon stroke-inherit drop-shadow" />
-      </button>
+      </Button>
       <AnimatePresence initial={false}>
         {sidebarMenuIsOpen && (
           <Dialog
             as={motion.div}
+            className="dark relative z-50"
             initial="closed"
             animate="open"
             exit="closed"
@@ -69,7 +73,6 @@ export function SidebarMenu({
             onClose={() => {
               setSidebarMenuIsOpen(false);
             }}
-            className="dark relative z-50"
           >
             <motion.div
               variants={{
@@ -92,18 +95,19 @@ export function SidebarMenu({
                 transition={{ type: "spring", bounce: 0, duration: 0.3 }}
                 className={cn("flex w-full flex-col p-6 pt-safeTop", themeColors)}
               >
-                <button
+                <Button
+                  aria-label={intl.formatMessage({ id: "close" })}
                   className="mb-4"
+                  data-testid="close-sidebar-menu"
                   onClick={() => {
                     setSidebarMenuIsOpen(false);
                   }}
-                  aria-label={intl.formatMessage({ id: "close" })}
-                  data-testid="close-sidebar-menu"
+                  variant="ghost"
                 >
                   <div className="relative flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors dark:border-neutral-700 dark:text-white">
                     <CloseIcon className="icon h-5 stroke-inherit drop-shadow" />
                   </div>
-                </button>
+                </Button>
 
                 <div className="mb-4 w-full">
                   <NavbarSearch />

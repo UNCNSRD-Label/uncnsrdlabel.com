@@ -27,6 +27,7 @@ declare module "@analytics/google-tag-manager" {
     containerId: string;
     customScriptSrc?: string;
     dataLayerName?: string;
+    dataLayer: Record<string, unknown>[];
     debug?: boolean;
     execution?: string;
     preview?: string;

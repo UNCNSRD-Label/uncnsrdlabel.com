@@ -3,11 +3,13 @@
 import { addItem } from "@/components/cart/actions";
 import { LoadingDots } from "@/components/loading/dots";
 import { useGetIntl } from "@/lib/i18n";
+import { createIntl } from "@formatjs/intl";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import {
   type ProductOption,
   type ProductVariant,
 } from "@shopify/hydrogen/storefront-api-types";
+import { Button } from "@uncnsrdlabel/components/ui/button";
 import { cn } from "@uncnsrdlabel/lib";
 import { useSearchParams } from "next/navigation";
 import { useFormState, useFormStatus } from "react-dom";
@@ -15,14 +17,14 @@ import { useFormState, useFormStatus } from "react-dom";
 function SubmitButton({
   availableForSale,
   className,
+  intl,
   selectedVariantId,
 }: {
   availableForSale: boolean;
   className?: string;
+  intl: ReturnType<typeof createIntl<string>>;
   selectedVariantId: string | undefined;
 }) {
-  const intl = useGetIntl("component.AddToCart");
-
   const { pending } = useFormStatus();
 
   const buttonClasses =
@@ -31,32 +33,33 @@ function SubmitButton({
 
   if (!availableForSale) {
     return (
-      <button
+      <Button
         aria-disabled
         className={cn(buttonClasses, disabledClasses, className)}
       >
         {intl.formatMessage({ id: "out-of-stock" })}
-      </button>
+      </Button>
     );
   }
 
   if (!selectedVariantId) {
     return (
-      <button
+      <Button
         aria-label={intl.formatMessage({ id: "select-options" })}
         aria-disabled
         className={cn(buttonClasses, disabledClasses)}
+        variant="ghost"
       >
         <div className="absolute left-0 ml-4">
           <PlusIcon className="h-5" />
         </div>
         {intl.formatMessage({ id: "select-options" })}
-      </button>
+      </Button>
     );
   }
 
   return (
-    <button
+    <Button
       onClick={(e: React.FormEvent<HTMLButtonElement>) => {
         if (pending) e.preventDefault();
       }}
@@ -75,7 +78,7 @@ function SubmitButton({
         )}
       </div>
       {intl.formatMessage({ id: "add-to-cart-enabled" })}
-    </button>
+    </Button>
   );
 }
 
@@ -90,6 +93,8 @@ export function AddToCart({
   options: ProductOption[];
   variants: Pick<ProductVariant, "id" | "selectedOptions">[];
 }) {
+  const intl = useGetIntl("component.AddToCart");
+
   const [message, formAction] = useFormState(addItem, null);
   const searchParams = useSearchParams();
   const defaultVariantId = variants[0]?.id;
@@ -112,7 +117,7 @@ export function AddToCart({
         return value;
       }),
   );
-  const selectedVariantId = variant?.id ?? defaultVariantId;
+  const selectedVariantId = variant?.id || defaultVariantId;
   const actionWithVariant = formAction.bind(null, selectedVariantId);
 
   return (
@@ -120,6 +125,7 @@ export function AddToCart({
       <SubmitButton
         availableForSale={availableForSale}
         className={className}
+        intl={intl}
         selectedVariantId={selectedVariantId}
       />
       <span aria-live="polite" className="sr-only" role="status">

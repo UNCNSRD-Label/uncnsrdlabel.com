@@ -2,6 +2,7 @@
 
 import { SearchIcon } from "@/components/icons/search";
 import { useGetIntl } from "@/lib/i18n";
+import { Button } from "@uncnsrdlabel/components/ui/button";
 import { createUrl } from "@uncnsrdlabel/lib";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -37,9 +38,9 @@ export function NavbarSearch() {
         placeholder={intl.formatMessage({ id: "placeholder" })}
         type="text"
       />
-      <button className="absolute right-0 top-0 mr-3 flex h-full items-center">
+      <Button className="absolute right-0 top-0 mr-3 flex h-full items-center" variant="ghost">
         <SearchIcon className="h-5" />
-      </button>
+      </Button>
     </form>
   );
 }

@@ -13,13 +13,12 @@ import {
   type CurrencyCode,
   type LanguageCode,
 } from "@shopify/hydrogen/storefront-api-types";
-import { getCookie } from "cookies-next";
-
 import { AnalyticsPlugin } from "analytics";
-import { PluginEventFunctions } from "./types";
-export interface ShopifyConfig {
+import { getCookie } from "cookies-next";
+import { PluginConfig, PluginEventFunctions } from "./types";
+
+export interface ShopifyConfig extends PluginConfig {
   collectionHandle?: string;
-  hasUserConsent: boolean;
   locale: Intl.Locale;
   shopId: string;
   storefrontId?: string;
@@ -65,7 +64,7 @@ export function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
     /* Name is a required field for plugins */
     name: "shopify-plugin",
     page: ({ payload }) => {
-      // console.log("shopify:page", { payload, config, instance });
+      // console.log("shopify:page", { payload, config });
 
       const shopifyPageViewPayload: ShopifyPageViewPayload = {
         ...getClientBrowserParameters(),
@@ -109,7 +108,7 @@ export function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
     },
     track: ({ payload, config }) => {
       // Fire custom logic after analytics.track() calls
-      // console.log("shopify:trackEnd", { payload, config, instance });
+      // console.log("shopify:trackEnd", { payload, config });
 
       if (payload.event === "product") {
         const shopifyPageViewPayload: ShopifyPageViewPayload = {

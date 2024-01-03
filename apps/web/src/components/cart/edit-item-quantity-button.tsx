@@ -10,6 +10,7 @@ import {
   type ComponentizableCartLine,
   type Merchandise,
 } from "@shopify/hydrogen/storefront-api-types";
+import { Button } from "@uncnsrdlabel/components/ui/button";
 import { cn } from "@uncnsrdlabel/lib";
 import { useFormState, useFormStatus } from 'react-dom';
 
@@ -19,7 +20,7 @@ function SubmitButton({ type }: { type: 'plus' | 'minus' }) {
   const { pending } = useFormStatus();
 
   return (
-    <button
+    <Button
       type="submit"
       onClick={(e: React.FormEvent<HTMLButtonElement>) => {
         if (pending) e.preventDefault();
@@ -33,6 +34,7 @@ function SubmitButton({ type }: { type: 'plus' | 'minus' }) {
           'ml-auto': type === 'minus'
         }
       )}
+      variant="ghost"
     >
       {pending ? (
         <LoadingDots className="bg-black dark:bg-white" />
@@ -41,7 +43,7 @@ function SubmitButton({ type }: { type: 'plus' | 'minus' }) {
       ) : (
         <MinusIcon className="h-4 w-4 dark:text-neutral-500" />
       )}
-    </button>
+    </Button>
   );
 }
 
@@ -61,9 +63,9 @@ export function EditItemQuantityButton({ item, type }: {   item: Pick<Componenti
   return (
     <form action={actionWithVariant}>
       <SubmitButton type={type} />
-      <p aria-live="polite" className="sr-only" role="status">
+      <span aria-live="polite" className="sr-only" role="status">
         {message}
-      </p>
+      </span>
     </form>
   );
 }

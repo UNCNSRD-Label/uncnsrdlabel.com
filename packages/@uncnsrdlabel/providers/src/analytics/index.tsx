@@ -1,8 +1,8 @@
 "use client";
 
 // import googleAnalytics from "@analytics/google-analytics";
-import googleTagManager from "@analytics/google-tag-manager";
 import { Analytics } from "analytics";
+import googleTagManager from "./google-tag-manager";
 // import { eventValidation } from "analytics-plugin-event-validation";
 import { getShopifyCookies, useShop } from "@shopify/hydrogen-react";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
@@ -25,8 +25,7 @@ export function AppAnalyticsProvider({ children }: PropsWithChildren) {
 
   const locale = new Intl.Locale(`${languageIsoCode}-${countryIsoCode}`);
 
-  /* Initialize analytics & load plugins */
-  const analytics = Analytics({
+  const config = {
     app: process.env.NEXT_PUBLIC_SITE_NAME,
     debug: true,
     plugins: [
@@ -47,6 +46,8 @@ export function AppAnalyticsProvider({ children }: PropsWithChildren) {
       googleTagManager({
         // userToken: cookies._shopify_y,
         containerId: process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID!,
+        // dataLayerName: "dataLayer",
+        // pageViewEvent: "pageview",
       }),
       klaviyo({
         // userToken: cookies._shopify_y,
@@ -63,7 +64,10 @@ export function AppAnalyticsProvider({ children }: PropsWithChildren) {
         storefrontId,
       }),
     ],
-  });
+  };
+
+  /* Initialize analytics & load plugins */
+  const analytics = Analytics(config);
 
   if (typeof window !== "undefined") {
     const cookies = getShopifyCookies(document.cookie);
@@ -76,6 +80,7 @@ export function AppAnalyticsProvider({ children }: PropsWithChildren) {
   return (
     <AnalyticsProvider instance={analytics}>
       {children}
+
       <VercelAnalytics />
     </AnalyticsProvider>
   );

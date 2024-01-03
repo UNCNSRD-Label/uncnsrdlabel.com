@@ -3,6 +3,7 @@
 import { useGetIntl } from "@/lib/i18n";
 import * as Checkbox from "@radix-ui/react-checkbox";
 import { CheckIcon } from "@radix-ui/react-icons";
+import { Button } from "@uncnsrdlabel/components/ui/button";
 import {
   COOKIE_CONSENT,
   acceptAllConsentSettings,
@@ -15,6 +16,7 @@ import {
 } from "@uncnsrdlabel/lib";
 import { getCookie, setCookie } from "cookies-next";
 import { useState } from "react";
+import { useTrack } from "use-analytics";
 
 type ConsentDialogProps = {
   className?: string;
@@ -28,6 +30,8 @@ type ConsentDialogProps = {
 export function ConsentForm(props: ConsentDialogProps) {
   const intl = useGetIntl("component.ConsentForm");
 
+  const track = useTrack();
+
   const [optionsOpen, setOptionsOpen] = useState(false);
 
   const acceptSelectedConsents = (event: React.FormEvent<HTMLFormElement>) => {
@@ -35,6 +39,8 @@ export function ConsentForm(props: ConsentDialogProps) {
     const consentParams = Object.fromEntries(formData.entries());
 
     setCookie(COOKIE_CONSENT, consentParams, cookieOptions);
+
+    track("Consent - accept selected", consentParams);
 
     console.info("Granting selected consents");
 
@@ -46,6 +52,8 @@ export function ConsentForm(props: ConsentDialogProps) {
   const acceptAllConsents = () => {
     setCookie(COOKIE_CONSENT, acceptAllConsentSettings, cookieOptions);
 
+    track("Consent - accept all", acceptAllConsentSettings);
+
     console.info("Accepting all consents");
 
     props.acceptAllConsents();
@@ -54,6 +62,8 @@ export function ConsentForm(props: ConsentDialogProps) {
   const denyAllAdditionalConsents = () => {
     setCookie(COOKIE_CONSENT, denyAllAdditionalConsentSettings, cookieOptions);
 
+    track("Consent - deny all", denyAllAdditionalConsentSettings);
+
     console.info("Denying all additional consents");
 
     props.denyAllAdditionalConsents();
@@ -61,6 +71,8 @@ export function ConsentForm(props: ConsentDialogProps) {
 
   const manageConsents = () => {
     setOptionsOpen(true);
+    
+    track("Consent - manage", denyAllAdditionalConsentSettings);
 
     console.info("Manage consents");
 
@@ -104,15 +116,15 @@ export function ConsentForm(props: ConsentDialogProps) {
         </fieldset>
       ))}
       <div className="mt-2 grid gap-4 sm:grid-flow-col">
-        <button
+        <Button
           className={cn("btn btn-xs btn-outline btn-primary btn-bg", {
             block: optionsOpen,
             hidden: !optionsOpen,
           })}
         >
           {intl.formatMessage({ id: "accept" })}
-        </button>
-        <button
+        </Button>
+        <Button
           className={cn("btn btn-xs btn-outline btn-primary btn-bg", {
             block: !optionsOpen,
             hidden: optionsOpen,
@@ -121,21 +133,21 @@ export function ConsentForm(props: ConsentDialogProps) {
           type="button"
         >
           {intl.formatMessage({ id: "manage" })}
-        </button>
-        <button
+        </Button>
+        <Button
           className="btn btn-xs btn-outline btn-primary"
           onClick={acceptAllConsents}
           type="button"
         >
           {intl.formatMessage({ id: "accept-all" })}
-        </button>
-        <button
+        </Button>
+        <Button
           className="btn btn-xs btn-outline btn-primary"
           onClick={denyAllAdditionalConsents}
           type="button"
         >
           {intl.formatMessage({ id: "deny-additional" })}
-        </button>
+        </Button>
       </div>
     </form>
   );

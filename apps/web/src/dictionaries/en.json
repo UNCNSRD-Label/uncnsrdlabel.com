@@ -100,9 +100,9 @@
       "title": "Consent settings"
     },
     "DeleteItemButton": {
-      "button": "Remove bag item"
+      "remove": "Remove bag item"
     },
-    "EditItemButton": {
+    "EditItemQuantityButton": {
       "decrease": "Decrease item quantity",
       "increase": "Increase item quantity"
     },

@@ -6,6 +6,7 @@ import { useGetIntl } from "@/lib/i18n";
 import { Dialog, Transition } from "@headlessui/react";
 import { type Menu } from "@shopify/hydrogen/storefront-api-types";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
+import { Button } from "@uncnsrdlabel/components/ui/button";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
 import { NavbarSearch } from "./search";
@@ -35,14 +36,14 @@ export function MobileMenu({ menu }: { menu: Menu[] }) {
 
   return (
     <>
-      <button
+      <Button
         onClick={openMobileMenu}
         aria-label={intl.formatMessage({ id: "open" })}
         className="md:hidden"
         data-testid="open-mobile-menu"
       >
         <MenuIcon className="h-6" />
-      </button>
+      </Button>
       <Transition show={isOpen}>
         <Dialog onClose={closeMobileMenu} className="relative z-50">
           <Transition.Child
@@ -67,14 +68,14 @@ export function MobileMenu({ menu }: { menu: Menu[] }) {
           >
             <Dialog.Panel className="fixed bottom-0 left-0 right-0 top-0 flex h-full w-full flex-col bg-white pb-6 dark:bg-black">
               <div className="p-4">
-                <button
+                <Button
                   className="mb-4"
                   onClick={closeMobileMenu}
                   aria-label={intl.formatMessage({ id: "close" })}
                   data-testid="close-mobile-menu"
                 >
                   <CloseIcon className="h-6" />
-                </button>
+                </Button>
 
                 <div className="mb-4 w-full">
                   <NavbarSearch />

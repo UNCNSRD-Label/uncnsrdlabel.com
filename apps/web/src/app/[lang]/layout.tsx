@@ -2,6 +2,7 @@ import { Banner } from "@/components/layout/banner";
 import { Footer } from "@/components/layout/footer/index";
 import { Progress } from "@/components/layout/progress/index";
 import { SetState } from "@/components/layout/set-state";
+import { NavigationEvents } from '@/components/navigation-events';
 import { Organization } from "@/components/schema.org/organization";
 import { getIntl } from "@/lib/i18n";
 import { getBaseMetadata } from "@/lib/metadata";
@@ -25,7 +26,7 @@ import { intersection } from "lodash";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import localFont from "next/font/local";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, Suspense } from "react";
 import "../globals.css";
 
 export async function generateMetadata({
@@ -158,6 +159,9 @@ export default async function RootLayout({
           {children}
           <Footer />
           <Organization />
+          <Suspense fallback={null}>
+            <NavigationEvents />
+          </Suspense>
         </AppProviders>
       </body>
     </html>

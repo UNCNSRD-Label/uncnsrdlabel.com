@@ -2,11 +2,10 @@
 
 import { getClientBrowserParameters } from "@shopify/hydrogen";
 import { AnalyticsPlugin } from "analytics";
-import { PluginEventFunctions } from "./types";
+import { PluginConfig, PluginEventFunctions } from "./types";
 
-export interface KlaviyoConfig {
+export interface KlaviyoConfig extends PluginConfig {
   collectionHandle?: string;
-  hasUserConsent: boolean;
   locale: Intl.Locale;
   shopId: string;
   storefrontId?: string;

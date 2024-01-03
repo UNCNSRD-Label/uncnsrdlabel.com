@@ -10,6 +10,7 @@ import {
   type ComponentizableCartLine,
   type Merchandise,
 } from "@shopify/hydrogen/storefront-api-types";
+import { Button } from "@uncnsrdlabel/components/ui/button";
 import { cn } from "@uncnsrdlabel/lib";
 import { useFormState, useFormStatus } from "react-dom";
 
@@ -19,7 +20,7 @@ function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
-    <button
+    <Button
       type="submit"
       onClick={(e: React.FormEvent<HTMLButtonElement>) => {
         if (pending) e.preventDefault();
@@ -32,13 +33,14 @@ function SubmitButton() {
           "cursor-not-allowed px-0": pending,
         },
       )}
+      variant="ghost"
     >
       {pending ? (
         <LoadingDots className="bg-white" />
       ) : (
         <XMarkIcon className="hover:text-accent-3 mx-0.5 h-4 w-4 text-white dark:text-black" />
       )}
-    </button>
+    </Button>
   );
 }
 
