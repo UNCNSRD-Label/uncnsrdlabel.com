@@ -3,6 +3,7 @@
 import { addItem } from "@/components/cart/actions";
 import { LoadingDots } from "@/components/loading/dots";
 import { useGetIntl } from "@/lib/i18n";
+import { createIntl } from "@formatjs/intl";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import {
   type ProductOption,
@@ -16,14 +17,14 @@ import { useFormState, useFormStatus } from "react-dom";
 function SubmitButton({
   availableForSale,
   className,
+  intl,
   selectedVariantId,
 }: {
   availableForSale: boolean;
   className?: string;
+  intl: ReturnType<typeof createIntl>;
   selectedVariantId: string | undefined;
 }) {
-  const intl = useGetIntl("component.AddToCart");
-
   const { pending } = useFormStatus();
 
   const buttonClasses =
@@ -92,6 +93,8 @@ export function AddToCart({
   options: ProductOption[];
   variants: Pick<ProductVariant, "id" | "selectedOptions">[];
 }) {
+  const intl = useGetIntl("component.AddToCart");
+
   const [message, formAction] = useFormState(addItem, null);
   const searchParams = useSearchParams();
   const defaultVariantId = variants[0]?.id;
@@ -114,7 +117,7 @@ export function AddToCart({
         return value;
       }),
   );
-  const selectedVariantId = variant?.id ?? defaultVariantId;
+  const selectedVariantId = variant?.id || defaultVariantId;
   const actionWithVariant = formAction.bind(null, selectedVariantId);
 
   return (
@@ -122,6 +125,7 @@ export function AddToCart({
       <SubmitButton
         availableForSale={availableForSale}
         className={className}
+        intl={intl}
         selectedVariantId={selectedVariantId}
       />
       <span aria-live="polite" className="sr-only" role="status">
