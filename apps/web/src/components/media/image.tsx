@@ -62,14 +62,13 @@ export function Image({
       alt={props.alt || ""}
       className={cn(
         revealEffect &&
-          "ease-in-out [transition:filter_500ms,opacity_250ms,transform_1000ms] motion-reduce:transition-none",
-        revealEffect && "scale-105 opacity-0 blur-sm",
+          "ease-in-out [transition:transform_500ms] motion-reduce:transition-none",
+        revealEffect && "scale-105",
         revealEffect && scrollDirection === "end" && "translate-y-2",
         revealEffect && scrollDirection === "start" && "-translate-y-2",
-        revealEffect && "data-[status=loaded]:opacity-100",
         revealEffect &&
           rootIntersection?.isIntersecting &&
-          "data-[status=loaded]:translate-y-0 data-[status=loaded]:scale-100 data-[status=loaded]:blur-none",
+          "data-[status=loaded]:translate-y-0 data-[status=loaded]:scale-100",
         props.className,
       )}
       onLoad={(event) => {

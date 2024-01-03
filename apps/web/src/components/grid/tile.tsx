@@ -13,7 +13,7 @@ import { cn } from "@uncnsrdlabel/lib";
 
 export async function Tile({
   active = true,
-  background = "black",
+  background,
   className,
   delay = 0,
   image,
@@ -76,8 +76,9 @@ export async function Tile({
 
   return (
     <>
-      <div
+      <figure
         className={cn(
+          "mb-0 mt-0 overflow-hidden [contain:inline-size_layout_style]",
           "aspect-2/3 relative mb-4 w-full overflow-hidden",
           "[&:has(.video)_.image]:hover:opacity-0 [&:has(.video)_.image]:focus:opacity-0",
           {
@@ -90,7 +91,6 @@ export async function Tile({
             "bg-blue-500 dark:bg-blue-500": background === "blue",
             "bg-cyan-500 dark:bg-cyan-500": background === "cyan",
             "bg-gray-100 dark:bg-gray-100": background === "gray",
-            "bg-gray-100 dark:bg-gray-900": !background,
           },
         )}
       >
@@ -111,25 +111,23 @@ export async function Tile({
               }))}
           />
         )}
-        <figure className="image absolute inset-0 mb-0 mt-0 [contain:inline-size_layout_style] overflow-hidden">
-          {tileImage?.url ? (
-            <Image
-              className={cn(
-                "relative h-full w-full object-cover",
-                className,
-              )}
-              alt={tileImage.altText ?? product?.title ?? ""}
-              delay={delay * 100}
-              fill
-              height={undefined}
-              priority={priority}
-              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
-              src={tileImage.url}
-              width={undefined}
-            />
-          ) : null}
-        </figure>
-      </div>
+        {tileImage?.url ? (
+          <Image
+            className={cn("relative h-full w-full object-cover", className)}
+            alt={tileImage.altText ?? product?.title ?? ""}
+            blurDataURL={tileImage.blurDataURL}
+            delay={delay}
+            fill
+            height={undefined}
+            placeholder="blur"
+            priority={priority}
+            revealEffect={false}
+            sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+            src={tileImage.url}
+            width={undefined}
+          />
+        ) : null}
+      </figure>
       {product?.priceRange.minVariantPrice ? (
         <footer>
           <h3
