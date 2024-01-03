@@ -178,6 +178,7 @@ function googleTagManager(
       const hasDataLayer =
         !!initializedDataLayerName &&
         !!(
+          // @ts-expect-error Element implicitly has an 'any' type because index expression is not of type 'number'
           window[initializedDataLayerName] &&
           // @ts-expect-error Property 'push' does not exist on type 'never'.
           Array.prototype.push !== window[initializedDataLayerName].push
