@@ -1,3 +1,5 @@
+"use client";
+
 import { AnalyticsPlugin } from "analytics";
 import type { SetOptional } from "type-fest";
 import { Payload, PluginConfig, PluginEventFunctions } from "./types";
@@ -59,8 +61,6 @@ function googleTagManager(
     "dataLayerName" | "pageViewEvent"
   >,
 ): GoogleTagManagerAnalyticsPlugin {
-  "use client";
-
   const defaultScriptSrc = "https://www.googletagmanager.com/gtm.js";
 
   // Allow for userland overides of base methods
@@ -71,6 +71,10 @@ function googleTagManager(
       ...pluginConfig,
     },
     initialize: ({ config }: { config: GoogleTagManagerConfig }) => {
+      if (typeof window === "undefined") {
+        return;
+      }
+    
       const {
         containerId,
         dataLayerName,
@@ -167,12 +171,17 @@ function googleTagManager(
       }
     },
     loaded: () => {
+      if (typeof window === "undefined") {
+        return;
+      }
+
       const hasDataLayer =
         !!initializedDataLayerName &&
-        // @ts-expect-error Element implicitly has an 'any' type because index expression is not of type 'number'
-        typeof window[initializedDataLayerName] !== "undefined" &&
-        // @ts-expect-error Element implicitly has an 'any' type because index expression is not of type 'number'
-        Array.prototype.push !== window[initializedDataLayerName].push;
+        !!(
+          window[initializedDataLayerName] &&
+          // @ts-expect-error Property 'push' does not exist on type 'never'.
+          Array.prototype.push !== window[initializedDataLayerName].push
+        );
       return (
         scriptLoaded(
           pluginConfig.containerId,
@@ -196,14 +205,12 @@ function scriptLoaded(
   containerId: GoogleTagManagerConfig["containerId"],
   scriptSrc: string,
 ) {
-  "use client";
-
   if (typeof window === "undefined") {
-    console.error("window is undefined");
     return;
   }
-
+  
   let regex = regexCache[containerId];
+
   if (!regex) {
     const scriptSrcEscaped = scriptSrc
       .replace(/^https?:\/\//, "")
@@ -212,7 +219,9 @@ function scriptLoaded(
     regex = new RegExp(scriptSrcEscaped + ".*[?&]id=" + containerId);
     regexCache[containerId] = regex;
   }
+
   const scripts = document.querySelectorAll("script[src]");
+
   return !!Object.keys(scripts).filter((key) =>
     // @ts-expect-error Element implicitly has an 'any' type because index expression is not of type 'number'
     (scripts[key].src || "").match(regex),
