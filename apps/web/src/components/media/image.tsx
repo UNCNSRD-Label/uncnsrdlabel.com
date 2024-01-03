@@ -1,14 +1,14 @@
 "use client";
 
 import { useIntersectionObserver } from "@react-hookz/web";
-import { cn, onLoad } from "@uncnsrdlabel/lib";
+import { cn, onLoad, onLoading } from "@uncnsrdlabel/lib";
 import NextImage, { type ImageProps } from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 export function Image({
   revealEffect = true,
   ...props
-}: ImageProps & { revealEffect?: boolean }) {
+}: ImageProps & { delay?: number; revealEffect?: boolean }) {
   const rootRef = useRef<HTMLImageElement>(null);
 
   const [previousY, setPreviousY] = useState(0);
@@ -50,6 +50,12 @@ export function Image({
     // setPreviousRatio(currentRatio)
   }, [currentY, isIntersecting, previousY]);
 
+  useEffect(() => {
+    if (rootRef.current) {
+      onLoading(rootRef.current);
+    }
+  }, [rootRef.current]);
+
   return (
     <NextImage
       {...props}
@@ -60,16 +66,18 @@ export function Image({
         revealEffect && "scale-105 opacity-0 blur-sm",
         revealEffect && scrollDirection === "end" && "translate-y-2",
         revealEffect && scrollDirection === "start" && "-translate-y-2",
-        revealEffect && "data-[loaded=true]:opacity-100",
+        revealEffect && "data-[status=loaded]:opacity-100",
         revealEffect &&
           rootIntersection?.isIntersecting &&
-          "data-[loaded=true]:translate-y-0 data-[loaded=true]:scale-100 data-[loaded=true]:blur-none",
+          "data-[status=loaded]:translate-y-0 data-[status=loaded]:scale-100 data-[status=loaded]:blur-none",
         props.className,
       )}
       onLoad={(event) => {
         const img = event.currentTarget as HTMLImageElement;
 
-        onLoad(img);
+        setTimeout(() => {
+          onLoad(img);
+        }, props.delay || 0);
 
         if (props.onLoad) {
           props.onLoad(event);
