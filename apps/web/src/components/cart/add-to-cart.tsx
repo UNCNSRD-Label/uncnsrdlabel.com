@@ -22,7 +22,7 @@ function SubmitButton({
 }: {
   availableForSale: boolean;
   className?: string;
-  intl: ReturnType<typeof createIntl>;
+  intl: ReturnType<typeof createIntl<string>>;
   selectedVariantId: string | undefined;
 }) {
   const { pending } = useFormStatus();
