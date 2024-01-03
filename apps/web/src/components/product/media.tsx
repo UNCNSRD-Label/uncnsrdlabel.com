@@ -74,13 +74,9 @@ export function ProductMedia({
 
   const imagesNodes = product.images.edges.map((edge) => edge?.node);
 
-  const images = imagesNodes
-    .map((imageFragmentRef) => getFragmentData(imageFragment, imageFragmentRef))
-    .map((image, index) => ({
-      altText: image.altText ?? product.title,
-      id: image.id ?? `image-${index}`,
-      src: image.url,
-    }));
+  const images = imagesNodes.map((imageFragmentRef) =>
+    getFragmentData(imageFragment, imageFragmentRef),
+  );
 
   const media = product.media.edges.map((edge) => edge?.node);
 
@@ -88,7 +84,7 @@ export function ProductMedia({
 
   return (
     <div
-      className="ghost-scrollbar relative lg:absolute z-0 col-span-full grid w-full snap-both snap-mandatory grid-flow-col justify-start overflow-x-scroll scroll-smooth h-fit"
+      className="ghost-scrollbar relative z-0 col-span-full grid h-fit w-full snap-both snap-mandatory grid-flow-col justify-start overflow-x-scroll scroll-smooth lg:absolute"
       id="images"
     >
       <Images
@@ -96,6 +92,7 @@ export function ProductMedia({
         idPrefix="image"
         images={images}
         imageElementRefs={imageElementRefs}
+        instance={0}
         sizes="(max-width: 639px) 100vw, 50vw"
       />
 
@@ -110,6 +107,7 @@ export function ProductMedia({
         className={cn(mediaClassName, "hidden lg:grid")}
         idPrefix="suffix"
         images={images}
+        instance={1}
         sizes="(max-width: 639px) 100vw, 50vw"
       />
 
@@ -128,10 +126,11 @@ export function ProductMedia({
             }}
           >
             <Image
-              alt={image?.altText}
+              alt={image.altText ?? product.title}
+              blurDataURL={image.blurDataURL}
               fill
               sizes="5vw"
-              src={image.src}
+              src={image.url}
               style={{
                 objectFit: "cover",
               }}
