@@ -106,16 +106,10 @@ export async function addToCartHandler({ variables }: {
   return cartFragmentRef;
 }
 
-export async function removeFromCartHandler({ variables, lang }: {
+export async function removeFromCartHandler({ variables }: {
   variables: RemoveFromCartMutationVariables,
-  lang: Intl.BCP47LanguageTag,
 }) {
-  const inContextVariables = getInContextVariables(lang);
-
-  const { cartLinesRemove } = await getShopifyGraphQL(removeFromCartMutation, {
-    ...inContextVariables,
-    ...variables,
-  });
+  const { cartLinesRemove } = await getShopifyGraphQL(removeFromCartMutation, variables);
 
   if (!cartLinesRemove) {
     return null;
@@ -136,16 +130,10 @@ export async function removeFromCartHandler({ variables, lang }: {
   return cartFragmentRef;
 }
 
-export async function updateCartHandler({ variables, lang }: {
+export async function updateCartHandler({ variables }: {
   variables: EditCartItemsMutationVariables,
-  lang: Intl.BCP47LanguageTag,
 }) {
-  const inContextVariables = getInContextVariables(lang);
-
-  const { cartLinesUpdate } = await getShopifyGraphQL(editCartItemsMutation, {
-    ...inContextVariables,
-    ...variables,
-  });
+  const { cartLinesUpdate } = await getShopifyGraphQL(editCartItemsMutation, variables);
 
   if (!cartLinesUpdate) {
     return null;

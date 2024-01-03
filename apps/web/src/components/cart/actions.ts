@@ -1,6 +1,5 @@
 "use server";
 
-import { state$ } from "@/lib/store";
 import {
   addToCartHandler,
   cartFragment,
@@ -144,8 +143,6 @@ export async function removeItem (
   _prevState: any,
   lineId: string,
 ) {
-  const lang = state$.lang.get();
-
   const cartId = cookies().get("cartId")?.value;
 
   if (!cartId) {
@@ -153,7 +150,7 @@ export async function removeItem (
   }
 
   try {
-    await removeFromCartHandler({ variables: { cartId, lineIds: [lineId] }, lang });
+    await removeFromCartHandler({ variables: { cartId, lineIds: [lineId] } });
 
     revalidateTag(TAGS.cart);
   } catch (error) {
@@ -166,9 +163,7 @@ export async function updateItemQuantity(_prevState: any,
     lineId: string;
     quantity: number;
     variantId: string;
-  }): Promise<string | undefined> {
-  const lang = state$.lang.get();
-
+  }) {
   const cartId = cookies().get("cartId")?.value;
 
   if (!cartId) {
@@ -183,7 +178,7 @@ export async function updateItemQuantity(_prevState: any,
 
   try {
     if (quantity === 0) {
-      await removeFromCartHandler({ variables: { cartId, lineIds: [lineId] }, lang });
+      await removeFromCartHandler({ variables: { cartId, lineIds: [lineId] } });
 
       revalidateTag(TAGS.cart);
 
@@ -202,7 +197,6 @@ export async function updateItemQuantity(_prevState: any,
             },
           ],
         },
-        lang,
       }
     );
 
