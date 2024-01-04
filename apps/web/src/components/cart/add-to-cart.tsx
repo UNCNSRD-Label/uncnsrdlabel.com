@@ -1,18 +1,34 @@
 "use client";
 
-import { addItem } from "@/components/cart/actions";
 import { LoadingDots } from "@/components/loading/dots";
 import { useGetIntl } from "@/lib/i18n";
 import { createIntl } from "@formatjs/intl";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import {
+  type CartLineInput,
   type ProductOption,
   type ProductVariant,
 } from "@shopify/hydrogen/storefront-api-types";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@uncnsrdlabel/components/ui/button";
-import { cn } from "@uncnsrdlabel/lib";
+import {
+  addToCartMutation,
+  cartFragment,
+  createCartMutation,
+  getCartQuery,
+  getFragmentData,
+  getQueryKey,
+  getShopifyGraphQL,
+  type AddToCartMutationVariables,
+  type CreateCartMutationVariables,
+} from "@uncnsrdlabel/graphql-shopify-storefront";
+import {
+  cn,
+  cookieOptions,
+  useGetInContextVariables
+} from "@uncnsrdlabel/lib";
+import { getCookie, setCookie } from "cookies-next";
 import { useSearchParams } from "next/navigation";
-import { useFormState, useFormStatus } from "react-dom";
 
 function SubmitButton({
   availableForSale,
@@ -25,19 +41,64 @@ function SubmitButton({
   intl: ReturnType<typeof createIntl<string>>;
   selectedVariantId: string | undefined;
 }) {
-  const { pending } = useFormStatus();
-
   const buttonClasses =
     "btn btn-bg btn-primary btn-lg relative w-full justify-center";
   const disabledClasses = "cursor-not-allowed opacity-60 hover:opacity-60";
+
+  let cartId = getCookie("cartId") as string;
+
+  const { country } = useGetInContextVariables();
+
+  const shopifyQueryClient = useQueryClient();
+
+  const {
+    isPending: isPendingAddToCart,
+    mutate: mutateAddToCart,
+    status: statusAddToCart,
+  } = useMutation({
+    mutationFn: (variables: AddToCartMutationVariables) =>
+      getShopifyGraphQL(addToCartMutation, variables),
+    onSuccess: () => {
+      const queryKey = getQueryKey(getCartQuery, {
+        cartId,
+      });
+
+      shopifyQueryClient.invalidateQueries({
+        queryKey,
+      });
+    },
+  });
+
+  const {
+    isPending: isPendingCreateCart,
+    mutate: mutateCreateCart,
+    status: statusCreateCart,
+  } = useMutation({
+    mutationFn: (variables: CreateCartMutationVariables) =>
+      getShopifyGraphQL(createCartMutation, variables),
+    onSuccess: () => {
+      const queryKey = getQueryKey(getCartQuery, {
+        cartId,
+      });
+
+      shopifyQueryClient.invalidateQueries({
+        queryKey,
+      });
+    },
+  });
 
   if (!availableForSale) {
     return (
       <Button
         aria-disabled
         className={cn(buttonClasses, disabledClasses, className)}
+        disabled
       >
         {intl.formatMessage({ id: "out-of-stock" })}
+
+        <span aria-live="polite" className="sr-only" role="status">
+          {statusAddToCart}
+        </span>
       </Button>
     );
   }
@@ -48,36 +109,100 @@ function SubmitButton({
         aria-label={intl.formatMessage({ id: "select-options" })}
         aria-disabled
         className={cn(buttonClasses, disabledClasses)}
-        variant="ghost"
+        disabled
       >
         <div className="absolute left-0 ml-4">
           <PlusIcon className="h-5" />
         </div>
         {intl.formatMessage({ id: "select-options" })}
+
+        <span aria-live="polite" className="sr-only" role="status">
+          {statusAddToCart}
+        </span>
       </Button>
     );
   }
 
   return (
     <Button
-      onClick={(e: React.FormEvent<HTMLButtonElement>) => {
-        if (pending) e.preventDefault();
-      }}
       aria-label={intl.formatMessage({ id: "add-to-cart-enabled" })}
-      aria-disabled={pending}
+      aria-disabled={isPendingAddToCart}
       className={cn(buttonClasses, {
         "hover:opacity-90": true,
-        disabledClasses: pending,
+        disabledClasses: isPendingAddToCart,
       })}
+      onClick={(e: React.FormEvent<HTMLButtonElement>) => {
+        if (isPendingAddToCart || isPendingCreateCart) e.preventDefault();
+
+        const payload = {
+          merchandiseId: selectedVariantId,
+          quantity: 1,
+        } satisfies CartLineInput;
+
+        if (cartId) {
+          mutateAddToCart(
+            {
+              cartId,
+              lines: [payload],
+            },
+            {
+              onSuccess: (data) => {
+                console.log({ data });
+              },
+            },
+          );
+        } else {
+          mutateCreateCart(
+            {
+              input: {
+                buyerIdentity: {
+                  // @ts-expect-error Type 'CountryCode' is not assignable to type 'InputMaybe<CountryCode> | undefined'.
+                  countryCode: country,
+                },
+                lines: [payload],
+              },
+            },
+            {
+              onSuccess: (data) => {
+                const { cartCreate } = data;
+
+                if (cartCreate) {
+                  const { cart: cartFragmentRef } = cartCreate;
+
+                  const cart = getFragmentData(cartFragment, cartFragmentRef);
+
+                  if (cart) {
+                    cartId = cart.id;
+
+                    setCookie('cartId', cartId, cookieOptions);
+
+                    const queryKey = getQueryKey(getCartQuery, {
+                      cartId,
+                    });
+
+                    shopifyQueryClient.invalidateQueries({
+                      queryKey,
+                    });
+                  }
+                }
+              },
+            },
+          );
+        }
+      }}
     >
       <div className="absolute left-0 ml-4">
-        {pending ? (
+        {isPendingAddToCart ? (
           <LoadingDots className="mb-3" />
         ) : (
           <PlusIcon className="h-5" />
         )}
       </div>
       {intl.formatMessage({ id: "add-to-cart-enabled" })}
+
+      <span aria-live="polite" className="sr-only" role="status">
+        {statusAddToCart || statusCreateCart}
+      </span>
     </Button>
   );
 }
@@ -95,9 +220,8 @@ export function AddToCart({
 }) {
   const intl = useGetIntl("component.AddToCart");
 
-  const [message, formAction] = useFormState(addItem, null);
   const searchParams = useSearchParams();
-  const defaultVariantId = variants[0]?.id;
+
   const variant = variants.find(
     (variant) =>
       variant.selectedOptions?.every((selectedOption) => {
@@ -117,20 +241,14 @@ export function AddToCart({
         return value;
       }),
   );
-  const selectedVariantId = variant?.id || defaultVariantId;
-  const actionWithVariant = formAction.bind(null, selectedVariantId);
+  const selectedVariantId = variant?.id;
 
   return (
-    <form action={actionWithVariant}>
-      <SubmitButton
-        availableForSale={availableForSale}
-        className={className}
-        intl={intl}
-        selectedVariantId={selectedVariantId}
-      />
-      <span aria-live="polite" className="sr-only" role="status">
-        {message}
-      </span>
-    </form>
+    <SubmitButton
+      availableForSale={availableForSale}
+      className={className}
+      intl={intl}
+      selectedVariantId={selectedVariantId}
+    />
   );
 }
