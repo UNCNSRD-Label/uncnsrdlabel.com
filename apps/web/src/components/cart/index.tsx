@@ -105,7 +105,7 @@ export function Cart() {
                 </Button>
               </div>
 
-              <CartForm cart={cart} cartId={cartId} closeCart={closeCart} />
+              {cart && <CartForm cart={cart} cartId={cartId} />}
             </Dialog.Panel>
           </Transition.Child>
         </Dialog>
