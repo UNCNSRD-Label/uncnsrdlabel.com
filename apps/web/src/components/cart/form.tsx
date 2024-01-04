@@ -6,14 +6,18 @@ import { EditItemQuantityButton } from "@/components/cart/edit-item-quantity-but
 import { Price } from "@/components/price";
 import { useGetIntl } from "@/lib/i18n";
 import { ResultOf } from "@graphql-typed-document-node/core";
+import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
+import { Button } from "@uncnsrdlabel/components/ui/button";
 import {
-  cartFragment, getFragmentData,
+  cartFragment,
+  getFragmentData,
   imageFragment,
-  productBasicFragment
+  productBasicFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { DEFAULT_OPTION, createUrl } from "@uncnsrdlabel/lib";
+import { DEFAULT_OPTION, cn, createUrl } from "@uncnsrdlabel/lib";
 import Image from "next/image";
+import { Suspense } from "react";
 import { SlBag } from "react-icons/sl";
 
 type MerchandiseSearchParams = {
@@ -69,17 +73,21 @@ export function CartForm({
                 new URLSearchParams(merchandiseSearchParams),
               );
 
+              const editItemQuantityButtonclassName = cn(
+                "ease flex h-full min-w-[36px] max-w-[36px] flex-none items-center justify-center rounded-full px-2 transition-all duration-200 hover:border-neutral-800 hover:opacity-80",
+              );
+
               return (
                 <li
                   key={i}
                   className="flex w-full flex-col border-b border-neutral-300 dark:border-neutral-700"
                 >
-                  <div className="relative flex w-full flex-row justify-between px-1 py-4">
-                    <div className="absolute z-40 -mt-2 ml-[55px]">
+                  <div className="relative flex w-full flex-row justify-between px-1 py-4 items-end">
+                    <div className="absolute z-40 -mt-2 ml-[55px] self-start">
                       <DeleteItemButton cartId={cartId} item={item} />
                     </div>
                     <Link
-                      className="z-30 flex flex-row space-x-4"
+                      className="z-30 flex flex-row space-x-4 mb-3"
                       href={merchandiseUrl}
                     >
                       <figure className="aspect-2/3 relative w-16 cursor-pointer overflow-hidden rounded-md border border-neutral-300 bg-neutral-300 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:bg-neutral-800">
@@ -94,7 +102,7 @@ export function CartForm({
                         )}
                       </figure>
 
-                      <div className="flex flex-1 flex-col gap-2 text-sm">
+                      <div className="flex flex-1 flex-col gap-4 text-sm">
                         <span className="leading-tight">{product.title}</span>
                         {item.merchandise.title !== DEFAULT_OPTION ? (
                           <span className="text-sm text-neutral-500 dark:text-neutral-400">
@@ -108,16 +116,30 @@ export function CartForm({
                         />
                       </div>
                     </Link>
-                    <div className="flex h-16 flex-col justify-between">
+                    <div className="flex flex-col justify-between">
                       <div className="ml-auto flex h-9 flex-row items-center rounded-full border border-neutral-200 dark:border-neutral-700">
-                        <EditItemQuantityButton cartId={cartId} item={item} type="minus" />
+                        <Suspense fallback={<Button aria-disabled={true} className={editItemQuantityButtonclassName} disabled variant="ghost"><MinusIcon className="h-4 w-4 dark:text-neutral-500" /></Button>}>
+                          <EditItemQuantityButton
+                            cartId={cartId}
+                            className={editItemQuantityButtonclassName}
+                            item={item}
+                            type="minus"
+                          />
+                        </Suspense>
                         {/* TODO: Set <span aria-live="polite" className="sr-only" role="status"> for changed quantity */}
                         <p className="w-6 text-center ">
                           <span className="w-full text-sm">
                             {item.quantity}
                           </span>
                         </p>
-                        <EditItemQuantityButton cartId={cartId} item={item} type="plus" />
+                        <Suspense fallback={<Button aria-disabled={true} className={editItemQuantityButtonclassName} disabled variant="ghost"><PlusIcon className="h-4 w-4 dark:text-neutral-500" /></Button>}>
+                          <EditItemQuantityButton
+                            cartId={cartId}
+                            className={editItemQuantityButtonclassName}
+                            item={item}
+                            type="plus"
+                          />
+                        </Suspense>
                       </div>
                     </div>
                   </div>

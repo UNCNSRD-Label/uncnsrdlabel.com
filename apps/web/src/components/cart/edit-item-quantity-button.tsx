@@ -22,10 +22,12 @@ import { cn } from "@uncnsrdlabel/lib";
 
 export function EditItemQuantityButton({
   cartId,
+  className,
   item,
   type,
 }: {
   cartId: string;
+  className?: string;
   item: Pick<ComponentizableCartLine | CartLine, "id" | "quantity"> & {
     cost: Pick<CartLineCost, "totalAmount">;
     merchandise: Pick<Merchandise, "id">;
@@ -64,13 +66,10 @@ export function EditItemQuantityButton({
           : intl.formatMessage({ id: "decrease" })
       }
       aria-disabled={isPending}
-      className={cn(
-        "ease flex h-full min-w-[36px] max-w-[36px] flex-none items-center justify-center rounded-full px-2 transition-all duration-200 hover:border-neutral-800 hover:opacity-80",
-        {
-          "cursor-not-allowed": isPending,
-          "ml-auto": type === "minus",
-        },
-      )}
+      className={cn(className, {
+        "cursor-not-allowed": isPending,
+        "ml-auto": type === "minus",
+      })}
       onClick={(e: React.FormEvent<HTMLButtonElement>) => {
         if (isPending) e.preventDefault();
 

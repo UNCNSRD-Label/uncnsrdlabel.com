@@ -66,7 +66,7 @@ export function Cart({ cartId }: { cartId: string }) {
             enter="transition-all ease-in-out duration-300"
             enterFrom="opacity-0 backdrop-blur-none"
             enterTo="opacity-100 backdrop-blur-[.5px]"
-            leave="transition-all ease-in-out duration-200"
+            leave="transition-all ease-in-out duration-200 delay-200"
             leaveFrom="opacity-100 backdrop-blur-[.5px]"
             leaveTo="opacity-0 backdrop-blur-none"
           >
@@ -77,7 +77,7 @@ export function Cart({ cartId }: { cartId: string }) {
             enter="transition-all ease-in-out duration-300"
             enterFrom="translate-x-full"
             enterTo="translate-x-0"
-            leave="transition-all ease-in-out duration-200"
+            leave="transition-all ease-in-out duration-200 delay-200"
             leaveFrom="translate-x-0"
             leaveTo="translate-x-full"
           >
