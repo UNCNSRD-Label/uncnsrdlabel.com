@@ -58,15 +58,6 @@ export function EditItemQuantityButton({
 
   return (
     <Button
-      type="submit"
-      onClick={(e: React.FormEvent<HTMLButtonElement>) => {
-        if (isPending) e.preventDefault();
-
-        mutate({
-          cartId,
-          lines: [payload],
-        });
-      }}
       aria-label={
         type === "plus"
           ? intl.formatMessage({ id: "increase" })
@@ -80,6 +71,14 @@ export function EditItemQuantityButton({
           "ml-auto": type === "minus",
         },
       )}
+      onClick={(e: React.FormEvent<HTMLButtonElement>) => {
+        if (isPending) e.preventDefault();
+
+        mutate({
+          cartId,
+          lines: [payload],
+        });
+      }}
       variant="ghost"
     >
       {isPending ? (

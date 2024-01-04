@@ -5,19 +5,14 @@ import { DeleteItemButton } from "@/components/cart/delete-item-button";
 import { EditItemQuantityButton } from "@/components/cart/edit-item-quantity-button";
 import { Price } from "@/components/price";
 import { useGetIntl } from "@/lib/i18n";
-import { useSuspenseQuery } from "@tanstack/react-query";
+import { ResultOf } from "@graphql-typed-document-node/core";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
-  cartFragment,
-  getCartQuery,
-  getFragmentData,
-  getQueryKey,
-  getShopifyGraphQL,
+  cartFragment, getFragmentData,
   imageFragment,
-  productBasicFragment,
+  productBasicFragment
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { DEFAULT_OPTION, createUrl } from "@uncnsrdlabel/lib";
-import { getCookie } from "cookies-next";
 import Image from "next/image";
 import { SlBag } from "react-icons/sl";
 
@@ -26,25 +21,15 @@ type MerchandiseSearchParams = {
 };
 
 export function CartForm({
+  cart,
+  cartId,
   closeCart,
 }: {
+  cart: ResultOf<typeof cartFragment> | null;
+  cartId: string;
   closeCart: () => void;
 }) {
   const intl = useGetIntl("component.CartForm");
-
-  const cartId = (getCookie("cartId") as string) ?? "{}";
-
-  const variables = { cartId };
-
-  const { data } = useSuspenseQuery({
-    queryKey: getQueryKey(getCartQuery, variables),
-    queryFn: () => getShopifyGraphQL(getCartQuery, variables),
-    // staleTime: 5 * 1000,
-  });
-
-  const { cart: cartFragmentRef } = data;
-
-  const cart = getFragmentData(cartFragment, cartFragmentRef);
 
   const lines = cart?.lines.edges.map((edge) => edge?.node);
 

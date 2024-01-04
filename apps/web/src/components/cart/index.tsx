@@ -5,19 +5,35 @@ import { CartForm } from "@/components/cart/form";
 import { OpenCart } from "@/components/cart/open-cart";
 import { useGetIntl } from "@/lib/i18n";
 import { themeColors } from "@/lib/tailwind";
-import { ResultOf } from "@graphql-typed-document-node/core";
 import { Dialog, Transition } from "@headlessui/react";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { Button } from "@uncnsrdlabel/components/ui/button";
-import { cartFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
+import {
+  cartFragment, getCartQuery,
+  getFragmentData,
+  getQueryKey,
+  getShopifyGraphQL
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
+import { getCookie } from "cookies-next";
 import { Fragment, useEffect, useRef, useState } from "react";
 
-export function Cart({
-  cart,
-}: {
-  cart: ResultOf<typeof cartFragment> | null;
-}) {
+export function Cart() {
   const intl = useGetIntl("component.CartModal");
+
+  const cartId = (getCookie("cartId") as string) ?? "{}";
+
+  const variables = { cartId };
+
+  const { data } = useSuspenseQuery({
+    queryKey: getQueryKey(getCartQuery, variables),
+    queryFn: () => getShopifyGraphQL(getCartQuery, variables),
+    // staleTime: 5 * 1000,
+  });
+
+  const { cart: cartFragmentRef } = data;
+
+  const cart = getFragmentData(cartFragment, cartFragmentRef);
 
   const [isOpen, setIsOpen] = useState(false);
   const quantityRef = useRef(cart?.totalQuantity);
@@ -89,7 +105,7 @@ export function Cart({
                 </Button>
               </div>
 
-              <CartForm closeCart={closeCart} />
+              <CartForm cart={cart} cartId={cartId} closeCart={closeCart} />
             </Dialog.Panel>
           </Transition.Child>
         </Dialog>
