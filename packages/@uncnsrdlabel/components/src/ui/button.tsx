@@ -5,7 +5,7 @@ import * as React from "react";
 import { cn } from "@uncnsrdlabel/lib";
 
 const blockStyles =
-  "font-medium gap-2 inline-flex items-center justify-center text-sm py-2 px-4";
+  "font-medium gap-2 inline-flex items-center justify-center text-sm p-2 uppercase";
 
 const buttonVariants = cva(
   "ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
