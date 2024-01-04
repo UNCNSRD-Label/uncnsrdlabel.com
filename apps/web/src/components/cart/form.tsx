@@ -28,7 +28,7 @@ export function CartForm({
   cart,
   cartId,
 }: {
-  cart: ResultOf<typeof cartFragment> | null;
+  cart?: ResultOf<typeof cartFragment> | null;
   cartId: string;
 }) {
   const intl = useGetIntl("component.CartForm");

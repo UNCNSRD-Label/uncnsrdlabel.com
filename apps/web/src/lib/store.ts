@@ -9,6 +9,8 @@ import {
   type LanguageCode,
 } from "@shopify/hydrogen/storefront-api-types";
 
+// const cartId: string | undefined = undefined;
+
 const lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag;
 
 const country = lang.split("-")[1] as CountryCode;
@@ -43,12 +45,17 @@ const localization: {
   },
 };
 
-export const state$ = observable({
+const defaultState = {
+  // cartId,
   country,
   lang,
   language,
   localization,
-});
+};
+
+export const state$ = observable<typeof defaultState & {
+  cartId?: string;
+}>(defaultState);
 
 configureObservablePersistence({
   pluginLocal: ObservablePersistLocalStorage,

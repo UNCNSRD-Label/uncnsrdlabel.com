@@ -2,6 +2,7 @@
 
 import { LoadingDots } from "@/components/loading/dots";
 import { useGetIntl } from "@/lib/i18n";
+import { state$ } from "@/lib/store";
 import { createIntl } from "@formatjs/intl";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import {
@@ -145,11 +146,6 @@ function SubmitButton({
               cartId,
               lines: [payload],
             },
-            {
-              onSuccess: (data) => {
-                console.log({ data });
-              },
-            },
           );
         } else {
           mutateCreateCart(
@@ -175,6 +171,8 @@ function SubmitButton({
                     cartId = cart.id;
 
                     setCookie('cartId', cartId, cookieOptions);
+
+                    state$.cartId.set(cartId);
 
                     const queryKey = getQueryKey(getCartQuery, {
                       cartId,

@@ -144,8 +144,6 @@ export async function MetafieldMapper({
             if (typeof id === "string") {
               const inContextVariables = getInContextVariables(lang);
 
-              console.log({ id });
-
               const variables = { id };
 
               const { product: productDetailsFragmentRef } =

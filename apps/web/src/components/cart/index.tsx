@@ -4,9 +4,11 @@ import { CloseCart } from "@/components/cart/close-cart";
 import { CartForm } from "@/components/cart/form";
 import { OpenCart } from "@/components/cart/open-cart";
 import { useGetIntl } from "@/lib/i18n";
+import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";
 import { Dialog, Transition } from "@headlessui/react";
-import { useSuspenseQuery } from "@tanstack/react-query";
+import { useSelector } from "@legendapp/state/react";
+import { useQuery } from "@tanstack/react-query";
 import { Button } from "@uncnsrdlabel/components/ui/button";
 import {
   cartFragment, getCartQuery,
@@ -17,15 +19,20 @@ import {
 import { cn } from "@uncnsrdlabel/lib";
 import { Fragment, useEffect, useRef, useState } from "react";
 
-export function Cart({ cartId }: { cartId: string }) {
+export function Cart() {
   const intl = useGetIntl("component.CartModal");
+
+  const cartId = useSelector<string>(() => state$.cartId.get())
 
   const variables = { cartId };
 
-  const { data } = useSuspenseQuery({
+  const { data = {
+    cart: null,
+  } } = useQuery({
+    enabled: !!cartId,
     queryKey: getQueryKey(getCartQuery, variables),
     queryFn: () => getShopifyGraphQL(getCartQuery, variables),
-    // staleTime: 5 * 1000,
+    staleTime: 5 * 1000,
   });
 
   const { cart: cartFragmentRef } = data;
@@ -102,7 +109,7 @@ export function Cart({ cartId }: { cartId: string }) {
                 </Button>
               </div>
 
-              {cart && <CartForm cart={cart} cartId={cartId} />}
+              <CartForm cart={cart} cartId={cartId} />
             </Dialog.Panel>
           </Transition.Child>
         </Dialog>

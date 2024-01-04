@@ -7,13 +7,9 @@ import { getIntl } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
-  cartFragment,
-  createCartHandler,
-  getFragmentData,
-  getMenuHandler,
+  getMenuHandler
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
-import { cookies } from "next/headers";
 import { Suspense } from "react";
 import { SlHeart, SlUser } from "react-icons/sl";
 import { SidebarMenu } from "./sidebar-menu";
@@ -23,38 +19,12 @@ type Props = { showLogo?: boolean };
 export async function NavbarContent(props: Props) {
   const lang = state$.lang.get();
 
-  const country = state$.country.get();
-
   const intl = await getIntl(lang, "component.NavbarContent");
 
   const menu = await getMenuHandler({
     variables: { handle: "next-js-frontend-header-menu" },
     lang,
   });
-
-  // TODO: Make a utility function for this to get the cartId from cookies or create a new cart.
-  let cartId = cookies().get("cartId")?.value;
-
-  if (!cartId) {
-    const cartFragmentRef = await createCartHandler({
-      variables: {
-        input: {
-          buyerIdentity: {
-            // @ts-expect-error Type 'CountryCode' is not assignable to type 'InputMaybe<CountryCode> | undefined'.
-            countryCode: country,
-          },
-        },
-      },
-    });
-
-    const cart = getFragmentData(cartFragment, cartFragmentRef);
-
-    if (!cart) {
-      return "Error creating cart";
-    }
-
-    cartId = cart.id;
-  }
 
   return (
     <>
@@ -98,7 +68,7 @@ export async function NavbarContent(props: Props) {
           </Link>
         )}
         <Suspense fallback={<OpenCart />}>
-          <Cart cartId={cartId} />
+          <Cart />
         </Suspense>
       </div>
     </>
