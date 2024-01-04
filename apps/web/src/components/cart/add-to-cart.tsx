@@ -13,12 +13,21 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@uncnsrdlabel/components/ui/button";
 import {
   addToCartMutation,
+  cartFragment,
+  createCartMutation,
   getCartQuery,
+  getFragmentData,
   getQueryKey,
   getShopifyGraphQL,
+  type AddToCartMutationVariables,
+  type CreateCartMutationVariables,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { cn } from "@uncnsrdlabel/lib";
-import { getCookie } from "cookies-next";
+import {
+  cn,
+  cookieOptions,
+  useGetInContextVariables
+} from "@uncnsrdlabel/lib";
+import { getCookie, setCookie } from "cookies-next";
 import { useSearchParams } from "next/navigation";
 
 function SubmitButton({
@@ -36,13 +45,37 @@ function SubmitButton({
     "btn btn-bg btn-primary btn-lg relative w-full justify-center";
   const disabledClasses = "cursor-not-allowed opacity-60 hover:opacity-60";
 
-  const cartId = (getCookie("cartId") as string) ?? "{}";
+  let cartId = getCookie("cartId") as string;
+
+  const { country } = useGetInContextVariables();
 
   const shopifyQueryClient = useQueryClient();
 
-  const { isPending, mutate, status } = useMutation({
-    mutationFn: (variables: { cartId: string; lines: CartLineInput[] }) =>
+  const {
+    isPending: isPendingAddToCart,
+    mutate: mutateAddToCart,
+    status: statusAddToCart,
+  } = useMutation({
+    mutationFn: (variables: AddToCartMutationVariables) =>
       getShopifyGraphQL(addToCartMutation, variables),
+    onSuccess: () => {
+      const queryKey = getQueryKey(getCartQuery, {
+        cartId,
+      });
+
+      shopifyQueryClient.invalidateQueries({
+        queryKey,
+      });
+    },
+  });
+
+  const {
+    isPending: isPendingCreateCart,
+    mutate: mutateCreateCart,
+    status: statusCreateCart,
+  } = useMutation({
+    mutationFn: (variables: CreateCartMutationVariables) =>
+      getShopifyGraphQL(createCartMutation, variables),
     onSuccess: () => {
       const queryKey = getQueryKey(getCartQuery, {
         cartId,
@@ -64,7 +97,7 @@ function SubmitButton({
         {intl.formatMessage({ id: "out-of-stock" })}
 
         <span aria-live="polite" className="sr-only" role="status">
-          {status}
+          {statusAddToCart}
         </span>
       </Button>
     );
@@ -84,7 +117,7 @@ function SubmitButton({
         {intl.formatMessage({ id: "select-options" })}
 
         <span aria-live="polite" className="sr-only" role="status">
-          {status}
+          {statusAddToCart}
         </span>
       </Button>
     );
@@ -93,27 +126,73 @@ function SubmitButton({
   return (
     <Button
       aria-label={intl.formatMessage({ id: "add-to-cart-enabled" })}
-      aria-disabled={isPending}
+      aria-disabled={isPendingAddToCart}
       className={cn(buttonClasses, {
         "hover:opacity-90": true,
-        disabledClasses: isPending,
+        disabledClasses: isPendingAddToCart,
       })}
       onClick={(e: React.FormEvent<HTMLButtonElement>) => {
-        if (isPending) e.preventDefault();
+        if (isPendingAddToCart || isPendingCreateCart) e.preventDefault();
 
         const payload = {
           merchandiseId: selectedVariantId,
           quantity: 1,
         } satisfies CartLineInput;
 
-        mutate({
-          cartId,
-          lines: [payload],
-        });
+        if (cartId) {
+          mutateAddToCart(
+            {
+              cartId,
+              lines: [payload],
+            },
+            {
+              onSuccess: (data) => {
+                console.log({ data });
+              },
+            },
+          );
+        } else {
+          mutateCreateCart(
+            {
+              input: {
+                buyerIdentity: {
+                  // @ts-expect-error Type 'CountryCode' is not assignable to type 'InputMaybe<CountryCode> | undefined'.
+                  countryCode: country,
+                },
+                lines: [payload],
+              },
+            },
+            {
+              onSuccess: (data) => {
+                const { cartCreate } = data;
+
+                if (cartCreate) {
+                  const { cart: cartFragmentRef } = cartCreate;
+
+                  const cart = getFragmentData(cartFragment, cartFragmentRef);
+
+                  if (cart) {
+                    cartId = cart.id;
+
+                    setCookie('cartId', cartId, cookieOptions);
+
+                    const queryKey = getQueryKey(getCartQuery, {
+                      cartId,
+                    });
+
+                    shopifyQueryClient.invalidateQueries({
+                      queryKey,
+                    });
+                  }
+                }
+              },
+            },
+          );
+        }
       }}
     >
       <div className="absolute left-0 ml-4">
-        {isPending ? (
+        {isPendingAddToCart ? (
           <LoadingDots className="mb-3" />
         ) : (
           <PlusIcon className="h-5" />
@@ -122,7 +201,7 @@ function SubmitButton({
       {intl.formatMessage({ id: "add-to-cart-enabled" })}
 
       <span aria-live="polite" className="sr-only" role="status">
-        {status}
+        {statusAddToCart || statusCreateCart}
       </span>
     </Button>
   );

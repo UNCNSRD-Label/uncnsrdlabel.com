@@ -15,13 +15,10 @@ import {
   getShopifyGraphQL
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
-import { getCookie } from "cookies-next";
 import { Fragment, useEffect, useRef, useState } from "react";
 
-export function Cart() {
+export function Cart({ cartId }: { cartId: string }) {
   const intl = useGetIntl("component.CartModal");
-
-  const cartId = (getCookie("cartId") as string) ?? "{}";
 
   const variables = { cartId };
 
