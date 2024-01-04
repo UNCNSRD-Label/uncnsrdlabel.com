@@ -85,7 +85,7 @@ export async function addToCartHandler({ variables }: {
   variables: AddToCartMutationVariables,
 }) {
 
-  const { cartLinesAdd } = await getShopifyGraphQL(addToCartMutation, variables,);
+  const { cartLinesAdd } = await getShopifyGraphQL(addToCartMutation, variables);
 
   if (!cartLinesAdd) {
     return null;

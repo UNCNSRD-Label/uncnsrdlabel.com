@@ -59,8 +59,6 @@ export function useGetIntl(namespace: string) {
     const { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! } = useParams();
 
     locale = (Array.isArray(lang) ? lang[0] : lang) as Intl.BCP47LanguageTag;
-
-
   } catch (error) {
     console.error({ error });
   } finally {

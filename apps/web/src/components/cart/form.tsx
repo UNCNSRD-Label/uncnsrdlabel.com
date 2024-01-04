@@ -1,20 +1,24 @@
+"use client";
+
 import { AddPremiumPackaging } from "@/components/cart/add-premium-packaging";
 import { DeleteItemButton } from "@/components/cart/delete-item-button";
 import { EditItemQuantityButton } from "@/components/cart/edit-item-quantity-button";
 import { Price } from "@/components/price";
-import { getIntl } from "@/lib/i18n";
-import { state$ } from "@/lib/store";
-import { ResultOf } from "@graphql-typed-document-node/core";
+import { useGetIntl } from "@/lib/i18n";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   cartFragment,
+  getCartQuery,
   getFragmentData,
+  getQueryKey,
+  getShopifyGraphQL,
   imageFragment,
   productBasicFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { DEFAULT_OPTION, createUrl } from "@uncnsrdlabel/lib";
+import { getCookie } from "cookies-next";
 import Image from "next/image";
-import { use } from "react";
 import { SlBag } from "react-icons/sl";
 
 type MerchandiseSearchParams = {
@@ -22,15 +26,25 @@ type MerchandiseSearchParams = {
 };
 
 export function CartForm({
-  cart,
   closeCart,
 }: {
-  cart: ResultOf<typeof cartFragment> | null;
   closeCart: () => void;
 }) {
-  const lang = state$.lang.get();
+  const intl = useGetIntl("component.CartForm");
 
-  const intl = use(getIntl(lang, "component.CartForm"));
+  const cartId = (getCookie("cartId") as string) ?? "{}";
+
+  const variables = { cartId };
+
+  const { data } = useSuspenseQuery({
+    queryKey: getQueryKey(getCartQuery, variables),
+    queryFn: () => getShopifyGraphQL(getCartQuery, variables),
+    // staleTime: 5 * 1000,
+  });
+
+  const { cart: cartFragmentRef } = data;
+
+  const cart = getFragmentData(cartFragment, cartFragmentRef);
 
   const lines = cart?.lines.edges.map((edge) => edge?.node);
 
@@ -38,8 +52,8 @@ export function CartForm({
     <>
       {!cart || lines?.length === 0 ? (
         <div className="mt-20 flex w-full flex-col items-center justify-center overflow-hidden">
-          <SlBag className="icon fill h-12 w-12 m-2" />
-          <p className="mt-6 text-center text-2xl font-bold">
+          <SlBag className="icon fill h-8 w-8" />
+          <p className="mt-6 text-center text-sm">
             {intl.formatMessage({ id: "empty-cart" })}
           </p>
         </div>
@@ -79,7 +93,7 @@ export function CartForm({
                 >
                   <div className="relative flex w-full flex-row justify-between px-1 py-4">
                     <div className="absolute z-40 -mt-2 ml-[55px]">
-                      <DeleteItemButton item={item} />
+                      <DeleteItemButton cartId={cartId} item={item} />
                     </div>
                     <Link
                       className="z-30 flex flex-row space-x-4"
@@ -114,13 +128,14 @@ export function CartForm({
                     </Link>
                     <div className="flex h-16 flex-col justify-between">
                       <div className="ml-auto flex h-9 flex-row items-center rounded-full border border-neutral-200 dark:border-neutral-700">
-                        <EditItemQuantityButton item={item} type="minus" />
+                        <EditItemQuantityButton cartId={cartId} item={item} type="minus" />
+                        {/* TODO: Set <span aria-live="polite" className="sr-only" role="status"> for changed quantity */}
                         <p className="w-6 text-center ">
                           <span className="w-full text-sm">
                             {item.quantity}
                           </span>
                         </p>
-                        <EditItemQuantityButton item={item} type="plus" />
+                        <EditItemQuantityButton cartId={cartId} item={item} type="plus" />
                       </div>
                     </div>
                   </div>
