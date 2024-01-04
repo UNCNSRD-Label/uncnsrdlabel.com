@@ -142,7 +142,7 @@ export function AddToCart({
   const intl = useGetIntl("component.AddToCart");
 
   const searchParams = useSearchParams();
-  const defaultVariantId = variants[0]?.id;
+
   const variant = variants.find(
     (variant) =>
       variant.selectedOptions?.every((selectedOption) => {
