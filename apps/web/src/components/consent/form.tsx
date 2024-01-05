@@ -117,34 +117,40 @@ export function ConsentForm(props: ConsentDialogProps) {
       ))}
       <div className="mt-2 grid gap-4 sm:grid-flow-col">
         <Button
-          className={cn("btn btn-xs btn-outline btn-primary btn-bg", {
+          className={cn({
             block: optionsOpen,
             hidden: !optionsOpen,
           })}
+          size="base"
+          variant="default"
         >
           {intl.formatMessage({ id: "accept" })}
         </Button>
         <Button
-          className={cn("btn btn-xs btn-outline btn-primary btn-bg", {
+          className={cn({
             block: !optionsOpen,
             hidden: optionsOpen,
           })}
           onClick={manageConsents}
           type="button"
+          size="base"
+          variant="secondary"
         >
           {intl.formatMessage({ id: "manage" })}
         </Button>
         <Button
-          className="btn btn-xs btn-outline btn-primary"
           onClick={acceptAllConsents}
           type="button"
+          size="base"
+          variant="default"
         >
           {intl.formatMessage({ id: "accept-all" })}
         </Button>
         <Button
-          className="btn btn-xs btn-outline btn-primary"
           onClick={denyAllAdditionalConsents}
           type="button"
+          size="base"
+          variant="default"
         >
           {intl.formatMessage({ id: "deny-additional" })}
         </Button>

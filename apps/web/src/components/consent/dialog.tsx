@@ -98,6 +98,7 @@ export function ConsentDialog({ className }: { className?: string }) {
                 aria-label={intl.formatMessage({ id: "close" })}
                 className="absolute right-6 top-6 inline-flex"
                 onClick={onClose}
+                variant="ghost"
               >
                 <Cross2Icon />
               </Button>
