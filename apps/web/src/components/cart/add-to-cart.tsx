@@ -35,14 +35,14 @@ function SubmitButton({
   container,
   intl,
   selectedVariantId,
-  view,
+  view = "standard",
 }: {
   availableForSale: boolean;
   className?: string;
   container?: string;
   intl: ReturnType<typeof createIntl<string>>;
   selectedVariantId: string | undefined;
-  view: "compact" | "standard";
+  view?: "compact" | "standard";
 }) {
   const buttonClasses = cn("flex gap-2 relative w-full", {
     "btn btn-lg justify-center": view === "standard"
@@ -235,7 +235,7 @@ export function AddToCart({
   container?: string;
   options: ProductOption[];
   variants: Pick<ProductVariant, "id" | "selectedOptions">[];
-  view: "compact" | "standard";
+  view?: "compact" | "standard";
 }) {
   const intl = useGetIntl("component.AddToCart");
 
