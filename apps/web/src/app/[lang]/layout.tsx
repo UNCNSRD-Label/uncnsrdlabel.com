@@ -147,7 +147,7 @@ export default async function RootLayout({
       <body
         className={cn(
           themeColors,
-          "grid grid-rows-[auto_1fr] min-h-[100dvh] tracking-widest",
+          "grid min-h-[100dvh] grid-rows-[auto_1fr] tracking-widest",
         )}
       >
         <AppProviders lang={lang}>

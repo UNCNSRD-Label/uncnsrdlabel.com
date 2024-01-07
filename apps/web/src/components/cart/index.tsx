@@ -4,9 +4,11 @@ import { CloseCart } from "@/components/cart/close-cart";
 import { CartForm } from "@/components/cart/form";
 import { OpenCart } from "@/components/cart/open-cart";
 import { useGetIntl } from "@/lib/i18n";
+import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";
 import { Dialog, Transition } from "@headlessui/react";
-import { useSuspenseQuery } from "@tanstack/react-query";
+import { useSelector } from "@legendapp/state/react";
+import { useQuery } from "@tanstack/react-query";
 import { Button } from "@uncnsrdlabel/components/ui/button";
 import {
   cartFragment, getCartQuery,
@@ -15,17 +17,23 @@ import {
   getShopifyGraphQL
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
-import { Fragment, useEffect, useRef, useState } from "react";
+import { Fragment, useCallback, useEffect, useRef, useState } from "react";
+import { useTrack } from "use-analytics";
 
-export function Cart({ cartId }: { cartId: string }) {
+export function Cart() {
   const intl = useGetIntl("component.CartModal");
+
+  const cartId = useSelector<string>(() => state$.cartId.get())
 
   const variables = { cartId };
 
-  const { data } = useSuspenseQuery({
+  const { data = {
+    cart: null,
+  } } = useQuery({
+    enabled: !!cartId,
     queryKey: getQueryKey(getCartQuery, variables),
     queryFn: () => getShopifyGraphQL(getCartQuery, variables),
-    // staleTime: 5 * 1000,
+    staleTime: 5 * 1000,
   });
 
   const { cart: cartFragmentRef } = data;
@@ -36,6 +44,8 @@ export function Cart({ cartId }: { cartId: string }) {
   const quantityRef = useRef(cart?.totalQuantity);
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);
+
+  const track = useTrack();
 
   useEffect(() => {
     // Open cart modal when quantity changes.
@@ -50,11 +60,24 @@ export function Cart({ cartId }: { cartId: string }) {
     }
   }, [isOpen, cart?.totalQuantity, quantityRef]);
 
+  const handleClickTrack = (event: React.MouseEvent<HTMLButtonElement>) => {
+    openCart();
+
+    const { dataset } = event.currentTarget;
+
+    track("view_cart", {
+      ...dataset,
+    });
+  };
+
   return (
     <>
       <Button
         aria-label={intl.formatMessage({ id: "open" })}
-        onClick={openCart}
+        onClick={useCallback(
+          handleClickTrack,
+          [],
+        )}
         variant="ghost"
       >
         <OpenCart quantity={cart?.totalQuantity} />
@@ -102,7 +125,7 @@ export function Cart({ cartId }: { cartId: string }) {
                 </Button>
               </div>
 
-              {cart && <CartForm cart={cart} cartId={cartId} />}
+              <CartForm cart={cart} cartId={cartId} container="Cart" />
             </Dialog.Panel>
           </Transition.Child>
         </Dialog>
