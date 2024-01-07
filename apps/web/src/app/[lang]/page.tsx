@@ -19,7 +19,7 @@ export default async function RootPage({ params: { lang } }: PageProps) {
       <Navbar className="z-50" offset sticky>
         <NavbarContent />
       </Navbar>
-      <main className="bg-black dark relative grid grid-rows-[1fr_auto] gap-2 pb-48 z-40">
+      <main className="dark relative z-40 grid grid-rows-[1fr_auto] gap-2 bg-black pb-48">
         <section className="relative grid h-[100dvh] items-center overflow-hidden sm:snap-start">
           <VideosHydrated handle={handle} />
           <Link
