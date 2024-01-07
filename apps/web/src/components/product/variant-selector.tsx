@@ -136,6 +136,7 @@ export function VariantSelector({
                     const { dataset } = event.currentTarget;
 
                     track("view_item", {
+                      ...dataset,
                       currency:
                         product.compareAtPriceRange.minVariantPrice
                           .currencyCode,
