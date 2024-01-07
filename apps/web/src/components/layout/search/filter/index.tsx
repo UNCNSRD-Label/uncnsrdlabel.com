@@ -6,6 +6,7 @@ import {
   collectionFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
+import { Suspense } from "react";
 
 function FilterItemList({
   list,
@@ -52,10 +53,14 @@ export function FilterList({
           </h3>
         ) : null}
         <ul className="hidden md:block">
-          <FilterItemList list={list} />
+          <Suspense fallback={null}>
+            <FilterItemList list={list} />
+          </Suspense>
         </ul>
         <ul className="md:hidden">
-          <FilterItemDropdown list={list} />
+          <Suspense fallback={null}>
+            <FilterItemDropdown list={list} />
+          </Suspense>
         </ul>
       </nav>
     </>

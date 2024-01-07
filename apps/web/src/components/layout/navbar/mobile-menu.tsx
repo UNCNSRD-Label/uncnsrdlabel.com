@@ -8,7 +8,7 @@ import { type Menu } from "@shopify/hydrogen/storefront-api-types";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import { Button } from "@uncnsrdlabel/components/ui/button";
 import { usePathname, useSearchParams } from "next/navigation";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, Suspense, useEffect, useState } from "react";
 import { NavbarSearch } from "./search";
 
 export function MobileMenu({ menu }: { menu: Menu[] }) {
@@ -78,7 +78,9 @@ export function MobileMenu({ menu }: { menu: Menu[] }) {
                 </Button>
 
                 <div className="mb-4 w-full">
-                  <NavbarSearch />
+                  <Suspense fallback={null}>
+                    <NavbarSearch />
+                  </Suspense>
                 </div>
                 {menu?.length ? (
                   <ul className="flex flex-col">
