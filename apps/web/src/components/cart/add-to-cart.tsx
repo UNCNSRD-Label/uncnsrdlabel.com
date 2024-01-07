@@ -5,6 +5,7 @@ import { useGetIntl } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
 import { createIntl } from "@formatjs/intl";
 import { PlusIcon } from "@heroicons/react/24/outline";
+import { useSelector } from "@legendapp/state/react";
 import {
   type CartLineInput,
   type ProductOption,
@@ -23,22 +24,21 @@ import {
   type AddToCartMutationVariables,
   type CreateCartMutationVariables,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import {
-  cn,
-  cookieOptions,
-  useGetInContextVariables
-} from "@uncnsrdlabel/lib";
-import { getCookie, setCookie } from "cookies-next";
+import { cn, useGetInContextVariables } from "@uncnsrdlabel/lib";
 import { useSearchParams } from "next/navigation";
+import { useCallback } from "react";
+import { useTrack } from "use-analytics";
 
 function SubmitButton({
   availableForSale,
   className,
+  container,
   intl,
   selectedVariantId,
 }: {
   availableForSale: boolean;
   className?: string;
+  container?: string;
   intl: ReturnType<typeof createIntl<string>>;
   selectedVariantId: string | undefined;
 }) {
@@ -46,7 +46,7 @@ function SubmitButton({
     "btn btn-bg btn-primary btn-lg relative w-full justify-center";
   const disabledClasses = "cursor-not-allowed opacity-60 hover:opacity-60";
 
-  let cartId = getCookie("cartId") as string;
+  const cartId = useSelector<string>(() => state$.cartId.get());
 
   const { country } = useGetInContextVariables();
 
@@ -88,11 +88,28 @@ function SubmitButton({
     },
   });
 
+  const track = useTrack();
+
+  const handleClickTrack = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const { dataset } = event.currentTarget;
+
+    track("add_to_cart", {
+      ...dataset,
+      availableForSale,
+      container,
+      selectedVariantId,
+    });
+  };
+
   if (!availableForSale) {
     return (
       <Button
         aria-disabled
         className={cn(buttonClasses, disabledClasses, className)}
+        onClick={useCallback(
+          handleClickTrack,
+          [],
+        )}
         disabled
       >
         {intl.formatMessage({ id: "out-of-stock" })}
@@ -110,6 +127,10 @@ function SubmitButton({
         aria-label={intl.formatMessage({ id: "select-options" })}
         aria-disabled
         className={cn(buttonClasses, disabledClasses)}
+        onClick={useCallback(
+          handleClickTrack,
+          [],
+        )}
         disabled
       >
         <div className="absolute left-0 ml-4">
@@ -132,62 +153,62 @@ function SubmitButton({
         "hover:opacity-90": true,
         disabledClasses: isPendingAddToCart,
       })}
-      onClick={(e: React.FormEvent<HTMLButtonElement>) => {
-        if (isPendingAddToCart || isPendingCreateCart) e.preventDefault();
+      onClick={useCallback(
+        (event: React.MouseEvent<HTMLButtonElement>) => {
+          handleClickTrack(event);
 
-        const payload = {
-          merchandiseId: selectedVariantId,
-          quantity: 1,
-        } satisfies CartLineInput;
+          if (isPendingAddToCart || isPendingCreateCart) event.preventDefault();
 
-        if (cartId) {
-          mutateAddToCart(
-            {
+          const payload = {
+            merchandiseId: selectedVariantId,
+            quantity: 1,
+          } satisfies CartLineInput;
+
+          if (cartId) {
+            mutateAddToCart({
               cartId,
               lines: [payload],
-            },
-          );
-        } else {
-          mutateCreateCart(
-            {
-              input: {
-                buyerIdentity: {
-                  // @ts-expect-error Type 'CountryCode' is not assignable to type 'InputMaybe<CountryCode> | undefined'.
-                  countryCode: country,
+            });
+          } else {
+            mutateCreateCart(
+              {
+                input: {
+                  buyerIdentity: {
+                    // @ts-expect-error Type 'CountryCode' is not assignable to type 'InputMaybe<CountryCode> | undefined'.
+                    countryCode: country,
+                  },
+                  lines: [payload],
                 },
-                lines: [payload],
               },
-            },
-            {
-              onSuccess: (data) => {
-                const { cartCreate } = data;
+              {
+                onSuccess: (data) => {
+                  const { cartCreate } = data;
 
-                if (cartCreate) {
-                  const { cart: cartFragmentRef } = cartCreate;
+                  if (cartCreate) {
+                    const { cart: cartFragmentRef } = cartCreate;
 
-                  const cart = getFragmentData(cartFragment, cartFragmentRef);
+                    const cart = getFragmentData(cartFragment, cartFragmentRef);
 
-                  if (cart) {
-                    cartId = cart.id;
+                    if (cart) {
+                      // @ts-expect-error Argument of type 'string' is not assignable to parameter of type 'Nullable<never> | ((prev: never) => never) | Promise<never>'
+                      state$.cartId.set(cartId);
 
-                    setCookie('cartId', cartId, cookieOptions);
+                      const queryKey = getQueryKey(getCartQuery, {
+                        cartId,
+                      });
 
-                    state$.cartId.set(cartId);
-
-                    const queryKey = getQueryKey(getCartQuery, {
-                      cartId,
-                    });
-
-                    shopifyQueryClient.invalidateQueries({
-                      queryKey,
-                    });
+                      shopifyQueryClient.invalidateQueries({
+                        queryKey,
+                      });
+                    }
                   }
-                }
+                },
               },
-            },
-          );
-        }
-      }}
+            );
+          }
+        },
+        [],
+      )}
     >
       <div className="absolute left-0 ml-4">
         {isPendingAddToCart ? (
@@ -208,11 +229,13 @@ function SubmitButton({
 export function AddToCart({
   availableForSale,
   className,
+  container,
   options,
   variants,
 }: {
   availableForSale: boolean;
   className?: string;
+  container?: string;
   options: ProductOption[];
   variants: Pick<ProductVariant, "id" | "selectedOptions">[];
 }) {
@@ -239,12 +262,14 @@ export function AddToCart({
         return value;
       }),
   );
+
   const selectedVariantId = variant?.id;
 
   return (
     <SubmitButton
       availableForSale={availableForSale}
       className={className}
+      container={container}
       intl={intl}
       selectedVariantId={selectedVariantId}
     />

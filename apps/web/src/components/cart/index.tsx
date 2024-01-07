@@ -17,7 +17,8 @@ import {
   getShopifyGraphQL
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
-import { Fragment, useEffect, useRef, useState } from "react";
+import { Fragment, useCallback, useEffect, useRef, useState } from "react";
+import { useTrack } from "use-analytics";
 
 export function Cart() {
   const intl = useGetIntl("component.CartModal");
@@ -44,6 +45,8 @@ export function Cart() {
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);
 
+  const track = useTrack();
+
   useEffect(() => {
     // Open cart modal when quantity changes.
     if (cart?.totalQuantity !== quantityRef.current) {
@@ -57,11 +60,24 @@ export function Cart() {
     }
   }, [isOpen, cart?.totalQuantity, quantityRef]);
 
+  const handleClickTrack = (event: React.MouseEvent<HTMLButtonElement>) => {
+    openCart();
+
+    const { dataset } = event.currentTarget;
+
+    track("view_cart", {
+      ...dataset,
+    });
+  };
+
   return (
     <>
       <Button
         aria-label={intl.formatMessage({ id: "open" })}
-        onClick={openCart}
+        onClick={useCallback(
+          handleClickTrack,
+          [],
+        )}
         variant="ghost"
       >
         <OpenCart quantity={cart?.totalQuantity} />
@@ -109,7 +125,7 @@ export function Cart() {
                 </Button>
               </div>
 
-              <CartForm cart={cart} cartId={cartId} />
+              <CartForm cart={cart} cartId={cartId} container="Cart" />
             </Dialog.Panel>
           </Transition.Child>
         </Dialog>

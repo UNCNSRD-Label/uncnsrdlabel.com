@@ -100,6 +100,7 @@ export function ProductCard({
           /> */}
           <AddToCart
             availableForSale={product.availableForSale}
+            container="ProductCard"
             options={product.options}
             variants={variants}
           />

@@ -5,10 +5,16 @@ import {
   type ProductVariant,
 } from "@shopify/hydrogen/storefront-api-types";
 import { Button } from "@uncnsrdlabel/components/ui/button";
+import {
+  getFragmentData,
+  productDetailsFragment,
+  type FragmentType
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, createUrl } from "@uncnsrdlabel/lib";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Fragment } from "react";
 import { type PartialDeep } from "type-fest";
+import { useTrack } from "use-analytics";
 
 type Combination = {
   id: string;
@@ -18,9 +24,11 @@ type Combination = {
 
 export function VariantSelector({
   options,
+  productDetailsFragmentRef,
   variants,
 }: {
   options: ProductOption[];
+  productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
   variants: PartialDeep<
     ProductVariant,
     {
@@ -31,6 +39,13 @@ export function VariantSelector({
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const track = useTrack();
+
+  const product = getFragmentData(
+    productDetailsFragment,
+    productDetailsFragmentRef,
+  );
+
   const hasNoOptionsOrJustOneOption =
     !options.length ||
     (options.length === 1 && options[0]?.values.length === 1);
@@ -52,12 +67,24 @@ export function VariantSelector({
     ),
   }));
 
+  const item = {
+    // item_variant:
+    discount:
+      Number.parseInt(product.priceRange.minVariantPrice.amount) -
+      Number.parseInt(product.compareAtPriceRange.minVariantPrice.amount),
+    item_brand: product.vendor,
+    item_category: product.collections.edges[0].node.title,
+    item_id: product.id,
+    item_name: product.title,
+    price: product.priceRange.minVariantPrice.amount,
+  };
+
   return (
-    <dl className="grid gap-1 md:gap-2 mb-2">
+    <dl className="mb-2 grid gap-1 md:gap-2">
       {options.map((option) => (
         <Fragment key={option.id}>
           <dt className="text-sm uppercase">{option.name}</dt>
-          <dd className="flex flex-wrap gap-3 mb-2">
+          <dd className="mb-2 flex flex-wrap gap-3">
             {option.values.map((value) => {
               const optionNameLowerCase = option.name.toLowerCase();
 
@@ -105,7 +132,17 @@ export function VariantSelector({
                   key={value}
                   aria-disabled={!isAvailableForSale}
                   disabled={!isAvailableForSale}
-                  onClick={() => {
+                  onClick={(event) => {
+                    const { dataset } = event.currentTarget;
+
+                    track("view_item", {
+                      currency:
+                        product.compareAtPriceRange.minVariantPrice
+                          .currencyCode,
+                      value: product.priceRange.minVariantPrice.amount,
+                      items: [{ ...item, item_variant: value }],
+                    });
+
                     router.replace(optionUrl, { scroll: false });
                   }}
                   title={`${option.name} ${value}${
@@ -131,7 +168,7 @@ export function VariantSelector({
             })}
           </dd>
         </Fragment>
-      ))}    
+      ))}
     </dl>
   );
 }
