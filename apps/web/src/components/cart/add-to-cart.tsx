@@ -35,15 +35,18 @@ function SubmitButton({
   container,
   intl,
   selectedVariantId,
+  view,
 }: {
   availableForSale: boolean;
   className?: string;
   container?: string;
   intl: ReturnType<typeof createIntl<string>>;
   selectedVariantId: string | undefined;
+  view: "compact" | "standard";
 }) {
-  const buttonClasses =
-    "btn btn-bg btn-primary btn-lg relative w-full justify-center";
+  const buttonClasses = cn("flex gap-2 relative w-full", {
+    "btn btn-lg justify-center": view === "standard"
+  });
   const disabledClasses = "cursor-not-allowed opacity-60 hover:opacity-60";
 
   const cartId = useSelector<string>(() => state$.cartId.get());
@@ -101,16 +104,16 @@ function SubmitButton({
     });
   };
 
+  const variant = view === "compact" ? "ghost" : undefined
+
   if (!availableForSale) {
     return (
       <Button
         aria-disabled
         className={cn(buttonClasses, disabledClasses, className)}
-        onClick={useCallback(
-          handleClickTrack,
-          [],
-        )}
         disabled
+        onClick={useCallback(handleClickTrack, [])}
+        variant={variant}
       >
         {intl.formatMessage({ id: "out-of-stock" })}
 
@@ -127,15 +130,12 @@ function SubmitButton({
         aria-label={intl.formatMessage({ id: "select-options" })}
         aria-disabled
         className={cn(buttonClasses, disabledClasses)}
-        onClick={useCallback(
-          handleClickTrack,
-          [],
-        )}
         disabled
+        onClick={useCallback(handleClickTrack, [])}
+        variant={variant}
       >
-        <div className="absolute left-0 ml-4">
-          <PlusIcon className="h-5" />
-        </div>
+        <PlusIcon className="h-5" />
+
         {intl.formatMessage({ id: "select-options" })}
 
         <span aria-live="polite" className="sr-only" role="status">
@@ -153,70 +153,66 @@ function SubmitButton({
         "hover:opacity-90": true,
         disabledClasses: isPendingAddToCart,
       })}
-      onClick={useCallback(
-        (event: React.MouseEvent<HTMLButtonElement>) => {
-          handleClickTrack(event);
+      onClick={useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
+        handleClickTrack(event);
 
-          if (isPendingAddToCart || isPendingCreateCart) event.preventDefault();
+        if (isPendingAddToCart || isPendingCreateCart) event.preventDefault();
 
-          const payload = {
-            merchandiseId: selectedVariantId,
-            quantity: 1,
-          } satisfies CartLineInput;
+        const payload = {
+          merchandiseId: selectedVariantId,
+          quantity: 1,
+        } satisfies CartLineInput;
 
-          if (cartId) {
-            mutateAddToCart({
-              cartId,
-              lines: [payload],
-            });
-          } else {
-            mutateCreateCart(
-              {
-                input: {
-                  buyerIdentity: {
-                    // @ts-expect-error Type 'CountryCode' is not assignable to type 'InputMaybe<CountryCode> | undefined'.
-                    countryCode: country,
-                  },
-                  lines: [payload],
+        if (cartId) {
+          mutateAddToCart({
+            cartId,
+            lines: [payload],
+          });
+        } else {
+          mutateCreateCart(
+            {
+              input: {
+                buyerIdentity: {
+                  // @ts-expect-error Type 'CountryCode' is not assignable to type 'InputMaybe<CountryCode> | undefined'.
+                  countryCode: country,
                 },
+                lines: [payload],
               },
-              {
-                onSuccess: (data) => {
-                  const { cartCreate } = data;
+            },
+            {
+              onSuccess: (data) => {
+                const { cartCreate } = data;
 
-                  if (cartCreate) {
-                    const { cart: cartFragmentRef } = cartCreate;
+                if (cartCreate) {
+                  const { cart: cartFragmentRef } = cartCreate;
 
-                    const cart = getFragmentData(cartFragment, cartFragmentRef);
+                  const cart = getFragmentData(cartFragment, cartFragmentRef);
 
-                    if (cart) {
-                      // @ts-expect-error Argument of type 'string' is not assignable to parameter of type 'Nullable<never> | ((prev: never) => never) | Promise<never>'
-                      state$.cartId.set(cartId);
+                  if (cart) {
+                    // @ts-expect-error Argument of type 'string' is not assignable to parameter of type 'Nullable<never> | ((prev: never) => never) | Promise<never>'
+                    state$.cartId.set(cartId);
 
-                      const queryKey = getQueryKey(getCartQuery, {
-                        cartId,
-                      });
+                    const queryKey = getQueryKey(getCartQuery, {
+                      cartId,
+                    });
 
-                      shopifyQueryClient.invalidateQueries({
-                        queryKey,
-                      });
-                    }
+                    shopifyQueryClient.invalidateQueries({
+                      queryKey,
+                    });
                   }
-                },
+                }
               },
-            );
-          }
-        },
-        [],
-      )}
+            },
+          );
+        }
+      }, [])}
+      variant={variant}
     >
-      <div className="absolute left-0 ml-4">
-        {isPendingAddToCart ? (
-          <LoadingDots className="mb-3" />
-        ) : (
-          <PlusIcon className="h-5" />
-        )}
-      </div>
+      {isPendingAddToCart ? (
+        <LoadingDots className="mb-3" />
+      ) : (
+        <PlusIcon className="h-5" />
+      )}
       {intl.formatMessage({ id: "add-to-cart-enabled" })}
 
       <span aria-live="polite" className="sr-only" role="status">
@@ -232,12 +228,14 @@ export function AddToCart({
   container,
   options,
   variants,
+  view = "standard",
 }: {
   availableForSale: boolean;
   className?: string;
   container?: string;
   options: ProductOption[];
   variants: Pick<ProductVariant, "id" | "selectedOptions">[];
+  view: "compact" | "standard";
 }) {
   const intl = useGetIntl("component.AddToCart");
 
@@ -272,6 +270,7 @@ export function AddToCart({
       container={container}
       intl={intl}
       selectedVariantId={selectedVariantId}
+      view={view}
     />
   );
 }

@@ -192,11 +192,11 @@ export function CartForm({
           </div>
           <a
             href={cart.checkoutUrl}
+            className="text-light dark:text-dark flex w-full items-center justify-center bg-black p-3 text-sm font-medium uppercase opacity-90 hover:opacity-100 dark:bg-white"
             onClick={useCallback(
               handleClickTrack,
               [],
             )}
-            className="text-light dark:text-dark flex w-full items-center justify-center bg-black p-3 text-sm font-medium uppercase opacity-90 hover:opacity-100 dark:bg-white"
           >
             {intl.formatMessage({ id: "proceed-to-checkout" })}
           </a>
