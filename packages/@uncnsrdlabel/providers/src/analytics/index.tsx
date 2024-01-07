@@ -27,7 +27,7 @@ export function AppAnalyticsProvider({ children }: PropsWithChildren) {
 
   const config = {
     app: process.env.NEXT_PUBLIC_SITE_NAME,
-    debug: true,
+    debug: false,
     plugins: [
       // eventValidation({
       //   // Namespace of current application
