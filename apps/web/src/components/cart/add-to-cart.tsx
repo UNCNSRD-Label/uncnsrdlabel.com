@@ -3,7 +3,6 @@
 import { LoadingDots } from "@/components/loading/dots";
 import { useGetIntl } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
-import { createIntl } from "@formatjs/intl";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { useSelector } from "@legendapp/state/react";
 import {
@@ -12,7 +11,7 @@ import {
   type ProductVariant,
 } from "@shopify/hydrogen/storefront-api-types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Button } from "@uncnsrdlabel/components/ui/button";
+import { Button, type ButtonProps } from "@uncnsrdlabel/components/ui/button";
 import {
   addToCartMutation,
   cartFragment,
@@ -26,26 +25,30 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, useGetInContextVariables } from "@uncnsrdlabel/lib";
 import { useSearchParams } from "next/navigation";
-import { useCallback } from "react";
+import { Suspense, useCallback } from "react";
 import { useTrack } from "use-analytics";
 
 function SubmitButton({
   availableForSale,
   className,
   container,
-  intl,
   selectedVariantId,
+  size,
+  variant,
   view = "standard",
 }: {
   availableForSale: boolean;
   className?: string;
   container?: string;
-  intl: ReturnType<typeof createIntl<string>>;
   selectedVariantId: string | undefined;
+  size: ButtonProps['size'];
+  variant: ButtonProps['variant'];
   view?: "compact" | "standard";
 }) {
+  const intl = useGetIntl("component.AddToCart");
+
   const buttonClasses = cn("flex gap-2 relative w-full", {
-    "btn btn-lg justify-center": view === "standard"
+    "justify-center": view === "standard",
   });
   const disabledClasses = "cursor-not-allowed opacity-60 hover:opacity-60";
 
@@ -104,8 +107,6 @@ function SubmitButton({
     });
   };
 
-  const variant = view === "compact" ? "ghost" : undefined
-
   if (!availableForSale) {
     return (
       <Button
@@ -113,6 +114,7 @@ function SubmitButton({
         className={cn(buttonClasses, disabledClasses, className)}
         disabled
         onClick={useCallback(handleClickTrack, [])}
+        size={size}
         variant={variant}
       >
         {intl.formatMessage({ id: "out-of-stock" })}
@@ -132,6 +134,7 @@ function SubmitButton({
         className={cn(buttonClasses, disabledClasses)}
         disabled
         onClick={useCallback(handleClickTrack, [])}
+        size={size}
         variant={variant}
       >
         <PlusIcon className="h-5" />
@@ -206,6 +209,7 @@ function SubmitButton({
           );
         }
       }, [])}
+      size={size}
       variant={variant}
     >
       {isPendingAddToCart ? (
@@ -237,11 +241,9 @@ export function AddToCart({
   variants: Pick<ProductVariant, "id" | "selectedOptions">[];
   view?: "compact" | "standard";
 }) {
-  const intl = useGetIntl("component.AddToCart");
-
   const searchParams = useSearchParams();
 
-  const variant = variants.find(
+  const selectedVariant = variants.find(
     (variant) =>
       variant.selectedOptions?.every((selectedOption) => {
         const hasNoOptionsOrJustOneOption =
@@ -261,16 +263,37 @@ export function AddToCart({
       }),
   );
 
-  const selectedVariantId = variant?.id;
+  const selectedVariantId = selectedVariant?.id;
+
+  const size = view === "compact" ? undefined : "lg";
+
+  const variant = view === "compact" ? "ghost" : undefined;
 
   return (
-    <SubmitButton
-      availableForSale={availableForSale}
-      className={className}
-      container={container}
-      intl={intl}
-      selectedVariantId={selectedVariantId}
-      view={view}
-    />
+    <Suspense
+      fallback={
+        <Button
+          aria-disabled
+          className={className}
+          disabled
+          size={size}
+          variant={variant}
+        >
+          <LoadingDots className="mb-3" />
+
+          {/* {intl.formatMessage({ id: "add-to-cart-disabled" })} */}
+        </Button>
+      }
+    >
+      <SubmitButton
+        availableForSale={availableForSale}
+        className={className}
+        container={container}
+        selectedVariantId={selectedVariantId}
+        size={size}
+        variant={variant}
+        view={view}
+      />
+    </Suspense>
   );
 }
