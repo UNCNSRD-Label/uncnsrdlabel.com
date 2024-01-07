@@ -17,7 +17,7 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { DEFAULT_OPTION, cn, createUrl } from "@uncnsrdlabel/lib";
 import Image from "next/image";
-import { Suspense, useCallback } from "react";
+import { Suspense } from "react";
 import { SlBag } from "react-icons/sl";
 import { useTrack } from "use-analytics";
 
@@ -193,10 +193,7 @@ export function CartForm({
           <a
             href={cart.checkoutUrl}
             className="text-light dark:text-dark flex w-full items-center justify-center bg-black p-3 text-sm font-medium uppercase opacity-90 hover:opacity-100 dark:bg-white"
-            onClick={useCallback(
-              handleClickTrack,
-              [],
-            )}
+            onClick={handleClickTrack}
           >
             {intl.formatMessage({ id: "proceed-to-checkout" })}
           </a>
