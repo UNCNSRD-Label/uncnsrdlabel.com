@@ -24,7 +24,7 @@ export function Logo({ blend, className, fill }: Props) {
   return (
     <div
       className={cn(
-        "pointer-events-none relative inset-0 z-50 grid [contain:layout_style]",
+        "pointer-events-none relative inset-0 z-50 grid",
         blend && "mix-blend-difference",
       )}
       ref={rootRef}
