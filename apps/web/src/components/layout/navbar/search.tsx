@@ -1,7 +1,7 @@
 "use client";
 
 import { SearchIcon } from "@/components/icons/search";
-import { getIntl as getIntlHook } from "@/lib/i18n/server";
+import { type GetIntlFn } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { Button } from "@uncnsrdlabel/components/ui/button";
 import { cn, createUrl } from "@uncnsrdlabel/lib";
@@ -9,7 +9,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { use } from "react";
 import { useTrack } from "use-analytics";
 
-export function NavbarSearch({ className, getIntl }: { className?: string; getIntl: typeof getIntlHook; }) {
+export function NavbarSearch({ className, getIntl }: { className?: string; getIntl: GetIntlFn; }) {
   const lang = state$.lang.get();
 
   const intl = use(getIntl(lang, "component.NavbarSearch"));

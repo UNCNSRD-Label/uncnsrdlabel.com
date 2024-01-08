@@ -3,7 +3,7 @@
 import { CloseIcon } from "@/components/icons/close";
 import { LogotypeIcon } from "@/components/icons/logotype";
 import { MenuIcon } from "@/components/icons/menu";
-import { getIntl as getIntlHook } from "@/lib/i18n/server";
+import { type GetIntlFn } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";
 import { Dialog } from "@headlessui/react";
@@ -21,7 +21,7 @@ export function SidebarMenu({
   getIntl,
   menu,
 }: {
-  getIntl: typeof getIntlHook;
+  getIntl: GetIntlFn;
   menu: PartialDeep<
     Menu,
     {

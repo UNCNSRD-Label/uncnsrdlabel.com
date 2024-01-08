@@ -3,7 +3,7 @@
 import { CloseCart } from "@/components/cart/close-cart";
 import { CartForm } from "@/components/cart/form";
 import { OpenCart } from "@/components/cart/open-cart";
-import { getIntl as getIntlHook } from "@/lib/i18n/server";
+import { type GetIntlFn } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";
 import { Dialog, Transition } from "@headlessui/react";
@@ -23,7 +23,7 @@ import { useTrack } from "use-analytics";
 export function Cart({
   getIntl,
 }: {
-  getIntl: typeof getIntlHook;
+  getIntl: GetIntlFn;
 }) {
   const lang = state$.lang.get();
 

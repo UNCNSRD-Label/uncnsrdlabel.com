@@ -4,7 +4,7 @@ import { AddPremiumPackaging } from "@/components/cart/add-premium-packaging";
 import { DeleteItemButton } from "@/components/cart/delete-item-button";
 import { EditItemQuantityButton } from "@/components/cart/edit-item-quantity-button";
 import { Price } from "@/components/price";
-import { getIntl as getIntlHook } from "@/lib/i18n/server";
+import { type GetIntlFn } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { ResultOf } from "@graphql-typed-document-node/core";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
@@ -35,7 +35,7 @@ export function CartForm({
   cart?: ResultOf<typeof cartFragment> | null;
   cartId: string;
   container?: string;
-  getIntl: typeof getIntlHook;
+  getIntl: GetIntlFn;
 }) {
   const lang = state$.lang.get();
 
