@@ -1,15 +1,16 @@
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
-import { getAlternativeLanguages, getIntl } from "@/lib/i18n";
+import { getAlternativeLanguages } from "@/lib/i18n";
+import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import {
-    collectionFragment,
-    getCollectionHandler,
-    getCollectionProductsHandler,
-    getFragmentData,
-    productCollectionDefaultSort,
-    productCollectionSorting,
-    seoFragment,
+  collectionFragment,
+  getCollectionHandler,
+  getCollectionProductsHandler,
+  getFragmentData,
+  productCollectionDefaultSort,
+  productCollectionSorting,
+  seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";

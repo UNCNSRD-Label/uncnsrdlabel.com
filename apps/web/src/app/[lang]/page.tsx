@@ -3,7 +3,7 @@ import { NavbarContent } from "@/components/layout/navbar/content";
 import { Navbar } from "@/components/layout/navbar/index";
 import { PageCarousel } from "@/components/page/carousel/page-carousel";
 import { VideosHydrated } from "@/components/page/videos/videos-hydrated";
-import { getIntl } from "@/lib/i18n";
+import { getIntl } from "@/lib/i18n/server";
 import { type PageProps } from "@/types/next";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 

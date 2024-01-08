@@ -1,6 +1,7 @@
 "use client";
 
-import { useGetIntl } from "@/lib/i18n";
+import { getIntl as getIntlHook } from "@/lib/i18n/server";
+import { state$ } from "@/lib/store";
 import * as Checkbox from "@radix-ui/react-checkbox";
 import { CheckIcon } from "@radix-ui/react-icons";
 import { Button } from "@uncnsrdlabel/components/ui/button";
@@ -15,7 +16,7 @@ import {
   type ConsentSettings,
 } from "@uncnsrdlabel/lib";
 import { getCookie, setCookie } from "cookies-next";
-import { useState } from "react";
+import { use, useState } from "react";
 import { useTrack } from "use-analytics";
 
 type ConsentDialogProps = {
@@ -24,11 +25,14 @@ type ConsentDialogProps = {
   acceptSelectedConsents: (event: React.FormEvent<HTMLFormElement>) => void;
   acceptAllConsents: () => void;
   denyAllAdditionalConsents: () => void;
+  getIntl: typeof getIntlHook;
   manageConsents: () => void;
 };
 
 export function ConsentForm(props: ConsentDialogProps) {
-  const intl = useGetIntl("component.ConsentForm");
+  const lang = state$.lang.get();
+
+  const intl = use(props.getIntl(lang, "component.ConsentForm"));
 
   const track = useTrack();
 

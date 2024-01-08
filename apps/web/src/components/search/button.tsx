@@ -1,4 +1,4 @@
-import { getIntl } from "@/lib/i18n";
+import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { Button } from "@uncnsrdlabel/components/ui/button";
 import { cn } from "@uncnsrdlabel/lib";

@@ -1,6 +1,7 @@
 import { Grid } from "@/components/grid/index";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
-import { getAlternativeLanguages, getIntl } from "@/lib/i18n";
+import { getAlternativeLanguages } from "@/lib/i18n";
+import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";
 import { Link } from "@uncnsrdlabel/components/atoms/link";

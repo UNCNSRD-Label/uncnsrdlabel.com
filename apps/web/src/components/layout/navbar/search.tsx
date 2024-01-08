@@ -1,16 +1,21 @@
 "use client";
 
 import { SearchIcon } from "@/components/icons/search";
-import { useGetIntl } from "@/lib/i18n";
+import { getIntl as getIntlHook } from "@/lib/i18n/server";
+import { state$ } from "@/lib/store";
 import { Button } from "@uncnsrdlabel/components/ui/button";
-import { createUrl } from "@uncnsrdlabel/lib";
+import { cn, createUrl } from "@uncnsrdlabel/lib";
 import { useRouter, useSearchParams } from "next/navigation";
+import { use } from "react";
 import { useTrack } from "use-analytics";
 
-export function NavbarSearch() {
-  const intl = useGetIntl("component.NavbarSearch");
+export function NavbarSearch({ className, getIntl }: { className?: string; getIntl: typeof getIntlHook; }) {
+  const lang = state$.lang.get();
+
+  const intl = use(getIntl(lang, "component.NavbarSearch"));
 
   const router = useRouter();
+
   const searchParams = useSearchParams();
 
   const track = useTrack();
@@ -41,7 +46,7 @@ export function NavbarSearch() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="relative">
+    <form onSubmit={onSubmit} className={cn("relative", className)}>
       <input
         autoComplete="on"
         className="focus:inherit w-full bg-gray-800/50 px-4 py-2 placeholder:text-inherit"

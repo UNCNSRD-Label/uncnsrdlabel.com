@@ -1,4 +1,4 @@
-import { getIntl } from "@/lib/i18n";
+import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { getCollectionRefsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";

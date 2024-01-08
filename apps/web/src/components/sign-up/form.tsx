@@ -1,18 +1,24 @@
 "use client";
 
 import { signUpAction } from "@/components/sign-up/action";
-import { useGetIntl } from "@/lib/i18n";
+import { getIntl as getIntlHook } from "@/lib/i18n/server";
+import { state$ } from "@/lib/store";
 import { Button } from "@uncnsrdlabel/components/ui/button";
 import { cn } from "@uncnsrdlabel/lib";
+import { use } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { SlEnvolope } from "react-icons/sl";
 
 function Submit({
   className,
+  getIntl,
 }: {
   className?: string;
+  getIntl: typeof getIntlHook;
 }) {
-  const intl = useGetIntl("component.SignUpForm");
+  const lang = state$.lang.get();
+
+  const intl = use(getIntl(lang, "component.SignUpForm"));
 
   const status = useFormStatus();
 
@@ -23,8 +29,10 @@ function Submit({
   );
 }
 
-export function SignUpForm({ className }: { className?: string }) {
-  const intl = useGetIntl("component.SignUpForm");
+export function SignUpForm({ className, getIntl }: { className?: string; getIntl: typeof getIntlHook; }) {
+  const lang = state$.lang.get();
+
+  const intl = use(getIntl(lang, "component.SignUpForm"));
 
   const [output, formAction] = useFormState(signUpAction, null);
 
@@ -51,7 +59,7 @@ export function SignUpForm({ className }: { className?: string }) {
         </Button>
       </div>
       <Submit
-        className="btn btn-primary btn-solid btn-sm justify-self-end !no-underline"
+        className="btn btn-primary btn-solid btn-sm justify-self-end !no-underline" getIntl={getIntl}
       />
       {output ? <output className={cn("text-sm", {
         "text-red-500": hasError,

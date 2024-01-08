@@ -1,6 +1,6 @@
 import { LoadingDots } from "@/components/loading/dots";
 import { SignUpForm } from "@/components/sign-up/form";
-import { getIntl } from "@/lib/i18n";
+import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { cn } from "@uncnsrdlabel/lib";
 import { Suspense } from "react";
@@ -17,7 +17,7 @@ export async function SignUp({ className }: { className?: string }) {
         {intl.formatMessage({ id: "summary" })}
       </span>
       <Suspense fallback={<LoadingDots />}>
-        <SignUpForm />
+        <SignUpForm getIntl={getIntl} />
       </Suspense>
     </section>
   );

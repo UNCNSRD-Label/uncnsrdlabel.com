@@ -3,7 +3,7 @@
 import { CloseCart } from "@/components/cart/close-cart";
 import { CartForm } from "@/components/cart/form";
 import { OpenCart } from "@/components/cart/open-cart";
-import { useGetIntl } from "@/lib/i18n";
+import { getIntl as getIntlHook } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";
 import { Dialog, Transition } from "@headlessui/react";
@@ -17,11 +17,17 @@ import {
   getShopifyGraphQL
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
-import { Fragment, useCallback, useEffect, useRef, useState } from "react";
+import { Fragment, use, useCallback, useEffect, useRef, useState } from "react";
 import { useTrack } from "use-analytics";
 
-export function Cart() {
-  const intl = useGetIntl("component.CartModal");
+export function Cart({
+  getIntl,
+}: {
+  getIntl: typeof getIntlHook;
+}) {
+  const lang = state$.lang.get();
+
+  const intl = use(getIntl(lang, "component.CartModal"));
 
   const cartId = useSelector<string>(() => state$.cartId.get())
 
@@ -125,7 +131,7 @@ export function Cart() {
                 </Button>
               </div>
 
-              <CartForm cart={cart} cartId={cartId} container="Cart" />
+              <CartForm cart={cart} cartId={cartId} container="Cart" getIntl={getIntl} />
             </Dialog.Panel>
           </Transition.Child>
         </Dialog>

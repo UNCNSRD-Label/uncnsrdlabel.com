@@ -1,7 +1,7 @@
 "use client";
 
 import { LoadingDots } from "@/components/loading/dots";
-import { useGetIntl } from "@/lib/i18n";
+import { getIntl as getIntlHook } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { useSelector } from "@legendapp/state/react";
@@ -25,13 +25,14 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, useGetInContextVariables } from "@uncnsrdlabel/lib";
 import { useSearchParams } from "next/navigation";
-import { Suspense, useCallback } from "react";
+import { Suspense, use, useCallback } from "react";
 import { useTrack } from "use-analytics";
 
 function SubmitButton({
   availableForSale,
   className,
   container,
+  getIntl,
   selectedVariantId,
   size,
   variant,
@@ -40,12 +41,15 @@ function SubmitButton({
   availableForSale: boolean;
   className?: string;
   container?: string;
+  getIntl: typeof getIntlHook;
   selectedVariantId: string | undefined;
   size: ButtonProps['size'];
   variant: ButtonProps['variant'];
   view?: "compact" | "standard";
 }) {
-  const intl = useGetIntl("component.AddToCart");
+  const lang = state$.lang.get();
+
+  const intl = use(getIntl(lang, "component.AddToCart"));
 
   const buttonClasses = cn("flex gap-2 relative w-full", {
     "justify-center": view === "standard",
@@ -230,6 +234,7 @@ export function AddToCart({
   availableForSale,
   className,
   container,
+  getIntl,
   options,
   variants,
   view = "standard",
@@ -237,6 +242,7 @@ export function AddToCart({
   availableForSale: boolean;
   className?: string;
   container?: string;
+  getIntl: typeof getIntlHook;
   options: ProductOption[];
   variants: Pick<ProductVariant, "id" | "selectedOptions">[];
   view?: "compact" | "standard";
@@ -289,6 +295,7 @@ export function AddToCart({
         availableForSale={availableForSale}
         className={className}
         container={container}
+        getIntl={getIntl}
         selectedVariantId={selectedVariantId}
         size={size}
         variant={variant}

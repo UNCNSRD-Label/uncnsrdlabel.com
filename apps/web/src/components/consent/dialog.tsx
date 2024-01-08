@@ -2,19 +2,22 @@
 
 import { ConsentForm } from "@/components/consent/form";
 import { LoadingDots } from "@/components/loading/dots";
-import { useGetIntl } from "@/lib/i18n";
+import { getIntl as getIntlHook } from "@/lib/i18n/server";
+import { state$ } from "@/lib/store";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { useTimeoutEffect } from "@react-hookz/web";
 import { Button } from "@uncnsrdlabel/components/ui/button";
 import { COOKIE_CONSENT } from "@uncnsrdlabel/lib";
 import { hasCookie } from "cookies-next";
-import { Suspense, useState } from "react";
+import { Suspense, use, useState } from "react";
 import { useTrack } from "use-analytics";
 import { ConsentButton } from "./button";
 
-export function ConsentDialog({ className }: { className?: string }) {
-  const intl = useGetIntl("component.ConsentDialog");
+export function ConsentDialog({ className, getIntl }: { className?: string; getIntl: typeof getIntlHook; }) {
+  const lang = state$.lang.get();
+
+  const intl = use(getIntl(lang, "component.ConsentDialog"));
 
   const [open, setOpen] = useState(false);
   const track = useTrack();
@@ -90,6 +93,7 @@ export function ConsentDialog({ className }: { className?: string }) {
                 acceptSelectedConsents={acceptSelectedConsents}
                 acceptAllConsents={acceptAllConsents}
                 denyAllAdditionalConsents={denyAllAdditionalConsents}
+                getIntl={getIntl}
                 manageConsents={manageConsents}
               />
             </Suspense>

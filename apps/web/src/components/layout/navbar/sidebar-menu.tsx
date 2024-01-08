@@ -3,7 +3,8 @@
 import { CloseIcon } from "@/components/icons/close";
 import { LogotypeIcon } from "@/components/icons/logotype";
 import { MenuIcon } from "@/components/icons/menu";
-import { useGetIntl } from "@/lib/i18n";
+import { getIntl as getIntlHook } from "@/lib/i18n/server";
+import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";
 import { Dialog } from "@headlessui/react";
 import { type Menu } from "@shopify/hydrogen/storefront-api-types";
@@ -12,13 +13,15 @@ import { Button } from "@uncnsrdlabel/components/ui/button";
 import { cn } from "@uncnsrdlabel/lib";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { type PartialDeep } from "type-fest";
 import { NavbarSearch } from "./search";
 
 export function SidebarMenu({
+  getIntl,
   menu,
 }: {
+  getIntl: typeof getIntlHook;
   menu: PartialDeep<
     Menu,
     {
@@ -26,7 +29,9 @@ export function SidebarMenu({
     }
   >;
 }) {
-  const intl = useGetIntl("component.SidebarMenu");
+  const lang = state$.lang.get();
+
+  const intl = use(getIntl(lang, "component.SidebarMenu"));
 
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -110,7 +115,7 @@ export function SidebarMenu({
                 </Button>
 
                 <div className="mb-4 w-full">
-                  <NavbarSearch />
+                  <NavbarSearch getIntl={getIntl} />
                 </div>
                 {menu?.items?.length && menu?.items?.length > 0 ? (
                   <ul className="flex flex-1 flex-col gap-2">
