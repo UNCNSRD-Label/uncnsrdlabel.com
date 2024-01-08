@@ -1,7 +1,7 @@
 "use client";
 
 import { LoadingDots } from "@/components/loading/dots";
-import { getIntl as getIntlHook } from "@/lib/i18n/server";
+import { type GetIntlFn } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { useSelector } from "@legendapp/state/react";
@@ -41,7 +41,7 @@ function SubmitButton({
   availableForSale: boolean;
   className?: string;
   container?: string;
-  getIntl: typeof getIntlHook;
+  getIntl: GetIntlFn;
   selectedVariantId: string | undefined;
   size: ButtonProps['size'];
   variant: ButtonProps['variant'];
@@ -242,7 +242,7 @@ export function AddToCart({
   availableForSale: boolean;
   className?: string;
   container?: string;
-  getIntl: typeof getIntlHook;
+  getIntl: GetIntlFn;
   options: ProductOption[];
   variants: Pick<ProductVariant, "id" | "selectedOptions">[];
   view?: "compact" | "standard";

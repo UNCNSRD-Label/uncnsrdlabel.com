@@ -51,7 +51,7 @@ export async function NavbarContent(props: Props) {
       </div>
 
       <div className="pointer-events-auto flex items-center justify-end gap-5">
-        <Search />
+        <Search getIntl={getIntl} />
         <Link
           href="/account"
           aria-label={intl.formatMessage({ id: "link-account" })}

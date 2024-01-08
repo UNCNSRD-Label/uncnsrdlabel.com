@@ -1,6 +1,6 @@
 "use client";
 
-import { getIntl as getIntlHook } from "@/lib/i18n/server";
+import { type GetIntlFn } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { cn, createUrl } from "@uncnsrdlabel/lib";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -13,7 +13,7 @@ export function SearchForm({
   setSearchIsOpen,
 }: {
   className?: string;
-  getIntl: typeof getIntlHook;
+  getIntl: GetIntlFn;
   isOpen: boolean;
   setSearchIsOpen: (open: boolean) => void;
 }) {

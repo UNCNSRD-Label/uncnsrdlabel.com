@@ -1,6 +1,6 @@
 "use client";
 
-import { getIntl as getIntlHook } from "@/lib/i18n/server";
+import { type GetIntlFn } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import * as Checkbox from "@radix-ui/react-checkbox";
 import { CheckIcon } from "@radix-ui/react-icons";
@@ -25,7 +25,7 @@ type ConsentDialogProps = {
   acceptSelectedConsents: (event: React.FormEvent<HTMLFormElement>) => void;
   acceptAllConsents: () => void;
   denyAllAdditionalConsents: () => void;
-  getIntl: typeof getIntlHook;
+  getIntl: GetIntlFn;
   manageConsents: () => void;
 };
 

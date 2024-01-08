@@ -2,7 +2,7 @@
 
 import { ConsentForm } from "@/components/consent/form";
 import { LoadingDots } from "@/components/loading/dots";
-import { getIntl as getIntlHook } from "@/lib/i18n/server";
+import { type GetIntlFn } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
@@ -14,7 +14,7 @@ import { Suspense, use, useState } from "react";
 import { useTrack } from "use-analytics";
 import { ConsentButton } from "./button";
 
-export function ConsentDialog({ className, getIntl }: { className?: string; getIntl: typeof getIntlHook; }) {
+export function ConsentDialog({ className, getIntl }: { className?: string; getIntl: GetIntlFn; }) {
   const lang = state$.lang.get();
 
   const intl = use(getIntl(lang, "component.ConsentDialog"));

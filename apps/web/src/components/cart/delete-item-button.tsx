@@ -1,7 +1,7 @@
 "use client";
 
 import { LoadingDots } from "@/components/loading/dots";
-import { getIntl as getIntlHook } from "@/lib/i18n/server";
+import { type GetIntlFn } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
@@ -28,7 +28,7 @@ export function DeleteItemButton({
   item,
 }: {
   cartId: string;
-  getIntl: typeof getIntlHook;
+  getIntl: GetIntlFn;
   item: Pick<ComponentizableCartLine | CartLine, "id" | "quantity"> & {
     cost: Pick<CartLineCost, "totalAmount">;
     merchandise: Pick<Merchandise, "id">;

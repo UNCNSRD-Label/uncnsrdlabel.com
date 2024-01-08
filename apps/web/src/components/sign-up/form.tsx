@@ -1,7 +1,7 @@
 "use client";
 
 import { signUpAction } from "@/components/sign-up/action";
-import { getIntl as getIntlHook } from "@/lib/i18n/server";
+import { type GetIntlFn } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { Button } from "@uncnsrdlabel/components/ui/button";
 import { cn } from "@uncnsrdlabel/lib";
@@ -14,7 +14,7 @@ function Submit({
   getIntl,
 }: {
   className?: string;
-  getIntl: typeof getIntlHook;
+  getIntl: GetIntlFn;
 }) {
   const lang = state$.lang.get();
 
@@ -29,7 +29,7 @@ function Submit({
   );
 }
 
-export function SignUpForm({ className, getIntl }: { className?: string; getIntl: typeof getIntlHook; }) {
+export function SignUpForm({ className, getIntl }: { className?: string; getIntl: GetIntlFn; }) {
   const lang = state$.lang.get();
 
   const intl = use(getIntl(lang, "component.SignUpForm"));

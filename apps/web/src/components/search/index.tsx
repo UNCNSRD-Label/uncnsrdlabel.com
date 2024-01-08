@@ -2,10 +2,10 @@
 
 import { SearchButton } from "@/components/search/button";
 import { SearchForm } from "@/components/search/form";
-import { getIntl } from "@/lib/i18n/server";
+import { type GetIntlFn } from "@/lib/i18n/server";
 import { Suspense, useState } from "react";
 
-export function Search() {
+export function Search({ getIntl }: { getIntl: GetIntlFn; }) {
   const [searchIsOpen, setSearchIsOpen] = useState(false);
 
   return (
