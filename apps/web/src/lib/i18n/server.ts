@@ -7,16 +7,10 @@ import { type ResolvedIntlConfig } from "react-intl";
 
 export type GetIntlFn = (_tag: string | undefined, _namespace: string) => Promise<IntlShape<string>>
 
-export async function getIntl(tag: Intl.BCP47LanguageTag = process.env.NEXT_PUBLIC_DEFAULT_LOCALE!, namespace: string) {
-  'use server';
-
+export async function getIntl(tag: Intl.BCP47LanguageTag = process.env.NEXT_PUBLIC_DEFAULT_LOCALE!, namespace?: string) {
   // createIntl refers to a BCP47LanguageTag as a "locale"
   let locale: Intl.BCP47LanguageTag = state$.lang.get();
 
-
-  if (!namespace) {
-    throw new Error("No namespace provided to getIntl")
-  }
 
   if (!tag) {
     throw new Error("No tag provided to getIntl")
