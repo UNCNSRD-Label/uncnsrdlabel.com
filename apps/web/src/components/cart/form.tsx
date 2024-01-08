@@ -4,7 +4,8 @@ import { AddPremiumPackaging } from "@/components/cart/add-premium-packaging";
 import { DeleteItemButton } from "@/components/cart/delete-item-button";
 import { EditItemQuantityButton } from "@/components/cart/edit-item-quantity-button";
 import { Price } from "@/components/price";
-import { useGetIntl } from "@/lib/i18n";
+import { getIntl as getIntlHook } from "@/lib/i18n/server";
+import { state$ } from "@/lib/store";
 import { ResultOf } from "@graphql-typed-document-node/core";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
@@ -17,7 +18,7 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { DEFAULT_OPTION, cn, createUrl } from "@uncnsrdlabel/lib";
 import Image from "next/image";
-import { Suspense } from "react";
+import { Suspense, use } from "react";
 import { SlBag } from "react-icons/sl";
 import { useTrack } from "use-analytics";
 
@@ -29,12 +30,16 @@ export function CartForm({
   cart,
   cartId,
   container,
+  getIntl,
 }: {
   cart?: ResultOf<typeof cartFragment> | null;
   cartId: string;
   container?: string;
+  getIntl: typeof getIntlHook;
 }) {
-  const intl = useGetIntl("component.CartForm");
+  const lang = state$.lang.get();
+
+  const intl = use(getIntl(lang, "component.CartForm"));
   
   const track = useTrack();
 
@@ -98,7 +103,7 @@ export function CartForm({
                 >
                   <div className="relative flex w-full flex-row justify-between px-1 py-4 items-end">
                     <div className="absolute z-40 -mt-2 ml-[55px] self-start">
-                      <DeleteItemButton cartId={cartId} item={item} />
+                      <DeleteItemButton cartId={cartId} getIntl={getIntl} item={item} />
                     </div>
                     <Link
                       className="z-30 flex flex-row space-x-4 mb-3"
@@ -136,6 +141,7 @@ export function CartForm({
                           <EditItemQuantityButton
                             cartId={cartId}
                             className={editItemQuantityButtonclassName}
+                            getIntl={getIntl}
                             item={item}
                             type="minus"
                           />
@@ -150,6 +156,7 @@ export function CartForm({
                           <EditItemQuantityButton
                             cartId={cartId}
                             className={editItemQuantityButtonclassName}
+                            getIntl={getIntl}
                             item={item}
                             type="plus"
                           />

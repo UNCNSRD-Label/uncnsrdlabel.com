@@ -1,5 +1,6 @@
 import { AddToCart } from "@/components/cart/add-to-cart";
 import { VariantSelector } from "@/components/product/variant-selector";
+import { getIntl } from "@/lib/i18n/server";
 import { type ProductVariant } from "@shopify/hydrogen/storefront-api-types";
 import {
   getFragmentData,
@@ -38,6 +39,7 @@ export const PurchaseOptions = ({
       <AddToCart
         availableForSale={product.availableForSale}
         container="PurchaseOptions"
+        getIntl={getIntl}
         options={product.options}
         variants={variants}
       />

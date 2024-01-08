@@ -4,7 +4,7 @@ import { Progress } from "@/components/layout/progress/index";
 import { SetState } from "@/components/layout/set-state";
 import { NavigationEvents } from '@/components/navigation-events';
 import { Organization } from "@/components/schema.org/organization";
-import { getIntl } from "@/lib/i18n";
+import { getIntl } from "@/lib/i18n/server";
 import { getBaseMetadata } from "@/lib/metadata";
 import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";

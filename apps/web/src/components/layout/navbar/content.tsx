@@ -3,7 +3,7 @@ import { OpenCart } from "@/components/cart/open-cart";
 import { LogotypeIcon } from "@/components/icons/logotype";
 import { MenuIcon } from "@/components/icons/menu";
 import { Search } from "@/components/search/index";
-import { getIntl } from "@/lib/i18n";
+import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
@@ -35,7 +35,7 @@ export async function NavbarContent(props: Props) {
               <MenuIcon className="icon h-5 stroke-inherit drop-shadow" />
             }
           >
-            <SidebarMenu menu={menu} />
+            <SidebarMenu getIntl={getIntl} menu={menu} />
           </Suspense>
         </div>
       </div>
@@ -68,7 +68,7 @@ export async function NavbarContent(props: Props) {
           </Link>
         )}
         <Suspense fallback={<OpenCart />}>
-          <Cart />
+          <Cart getIntl={getIntl} />
         </Suspense>
       </div>
     </>

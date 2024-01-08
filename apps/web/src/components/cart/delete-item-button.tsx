@@ -1,7 +1,8 @@
 "use client";
 
 import { LoadingDots } from "@/components/loading/dots";
-import { useGetIntl } from "@/lib/i18n";
+import { getIntl as getIntlHook } from "@/lib/i18n/server";
+import { state$ } from "@/lib/store";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
   type CartLine,
@@ -18,20 +19,24 @@ import {
   removeFromCartMutation,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
-import { useCallback } from "react";
+import { use, useCallback } from "react";
 import { useTrack } from "use-analytics";
 
 export function DeleteItemButton({
   cartId,
+  getIntl,
   item,
 }: {
   cartId: string;
+  getIntl: typeof getIntlHook;
   item: Pick<ComponentizableCartLine | CartLine, "id" | "quantity"> & {
     cost: Pick<CartLineCost, "totalAmount">;
     merchandise: Pick<Merchandise, "id">;
   };
 }) {
-  const intl = useGetIntl("component.DeleteItemButton");
+  const lang = state$.lang.get();
+
+  const intl = use(getIntl(lang, "component.DeleteItemButton"));
 
   const payload = item.id;
 

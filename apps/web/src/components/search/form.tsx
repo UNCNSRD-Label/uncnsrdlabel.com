@@ -1,19 +1,28 @@
 "use client";
 
-import { useGetIntl } from "@/lib/i18n";
+import { getIntl as getIntlHook } from "@/lib/i18n/server";
+import { state$ } from "@/lib/store";
 import { cn, createUrl } from "@uncnsrdlabel/lib";
 import { useRouter, useSearchParams } from "next/navigation";
+import { use } from "react";
 
 export function SearchForm({
+  className,
+  getIntl,
   isOpen,
   setSearchIsOpen,
 }: {
+  className?: string;
+  getIntl: typeof getIntlHook;
   isOpen: boolean;
   setSearchIsOpen: (open: boolean) => void;
 }) {
-  const intl = useGetIntl("component.SearchForm");
+  const lang = state$.lang.get();
+
+  const intl = use(getIntl(lang, "component.SearchForm"));
 
   const router = useRouter();
+
   const searchParams = useSearchParams();
 
   function onSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -36,7 +45,7 @@ export function SearchForm({
 
   return (
     <form
-      className={cn("relative m-0 flex items-center p-0")}
+      className={cn("relative m-0 flex items-center p-0", className)}
       id="search-form"
       onBlur={() => setSearchIsOpen(false)}
       onSubmit={onSubmit}
