@@ -65,8 +65,6 @@ export async function createCartHandler({ variables }: {
     return null;
   }
 
-  // console.log({ cartCreate });
-
   const { cart: cartFragmentRef } = cartCreate;
 
   if (!cartFragmentRef) {
@@ -86,17 +84,11 @@ export async function addToCartHandler({ variables }: {
     return null;
   }
 
-  // console.log({ cartLinesAdd });
-
   const { cart: cartFragmentRef } = cartLinesAdd;
 
   if (!cartFragmentRef) {
     return null;
   }
-
-  // console.log({ cartFragmentRef });
-
-  // const cart = getFragmentData(cartFragment, cartFragmentRef);
 
   return cartFragmentRef;
 }
@@ -110,17 +102,11 @@ export async function removeFromCartHandler({ variables }: {
     return null;
   }
 
-  // console.log({ cartLinesRemove });
-
   const { cart: cartFragmentRef } = cartLinesRemove;
 
   if (!cartFragmentRef) {
     return null;
   }
-
-  // console.log({ cartFragmentRef });
-
-  // const cart = getFragmentData(cartFragment, cartFragmentRef);
 
   return cartFragmentRef;
 }
@@ -134,17 +120,11 @@ export async function updateCartHandler({ variables }: {
     return null;
   }
 
-  // console.log({ cartLinesUpdate });
-
   const { cart: cartFragmentRef } = cartLinesUpdate;
 
   if (!cartFragmentRef) {
     return null;
   }
-
-  // console.log({ cartFragmentRef });
-
-  // const cart = getFragmentData(cartFragment, cartFragmentRef);
 
   return cartFragmentRef;
 }
@@ -163,10 +143,6 @@ export async function getCartHandler({ variables, lang }: {
   if (!cartFragmentRef) {
     return null;
   }
-
-  // console.log({ cartFragmentRef });
-
-  // const cart = getFragmentData(cartFragment, cartFragmentRef);
 
   return cartFragmentRef;
 }
@@ -190,13 +166,6 @@ export async function getCollectionHandler({ variables, lang }: {
     };
   }
 
-  // console.log({ collectionFragmentRef });
-
-  // const collection = getFragmentData(
-  //   collectionFragment,
-  //   collectionFragmentRef,
-  // );
-
   return collectionFragmentRef;
 }
 
@@ -218,8 +187,6 @@ export async function getCollectionProductsHandler({ variables, lang }: {
       message: `Collection not found for handle \`${variables.handle}\``,
     };
   }
-
-  // console.log({ collection });
 
   const { products } = collection;
 
@@ -245,8 +212,6 @@ export async function getCollectionRefsHandler({ variables, lang }: {
       message: `Collections not found`,
     };
   }
-
-  // console.log({ shopifyCollectionConnection });
 
   const collectionsRefs = shopifyCollectionConnection.edges.map(
     (edge) => edge?.node,
@@ -296,8 +261,6 @@ export async function getRouteMetaObjectHandler({ variables, lang }: {
     };
   }
 
-  // console.log({ metaobject });
-
   return metaobject;
 }
 
@@ -319,8 +282,6 @@ export async function getMenuHandler({ variables, lang }: {
       message: `Menu not found for handle \`${variables.handle}\``,
     };
   }
-
-  // console.log({ menu });
 
   const items = menu.items.map((item) => ({
     ...item,
@@ -352,10 +313,6 @@ export async function getPageHandler({ variables, lang }: {
       message: `Page not found for handle \`${variables.handle}\``,
     };
   }
-
-  // const page = getFragmentData(pageFragment, pageFragmentRef);
-
-  // console.log({ page });
 
   return pageFragmentRef;
 }
@@ -400,8 +357,6 @@ export async function getShopDetailsHandler({ lang }: {
     };
   }
 
-  // console.log({ shop });
-
   return shop;
 }
 
@@ -437,8 +392,6 @@ export async function getShopPoliciesHandler({ lang }: {
     };
   }
 
-  // console.log({ shop });
-
   return shop;
 }
 
@@ -460,15 +413,6 @@ export async function getProductBasicHandler({ variables, lang }: {
       message: `Product not found for handle \`${variables.handle}\``,
     };
   }
-
-  // console.log({ productBasicFragmentRef });
-
-  // const product = getFragmentData(
-  //   productBasicFragment,
-  //   productBasicFragmentRef,
-  // );
-
-  // console.log({ product });
 
   return productBasicFragmentRef;
 }
@@ -492,15 +436,6 @@ export async function getProductDetailsByHandleHandler({ variables, lang }: {
     };
   }
 
-  // console.log({ productDetailsFragmentRef });
-
-  // const product = getFragmentData(
-  //   productDetailsFragment,
-  //   productDetailsFragmentRef,
-  // );
-
-  // console.log({ product });
-
   return productDetailsFragmentRef;
 }
 
@@ -522,15 +457,6 @@ export async function getProductDetailsByIdHandler({ variables, lang }: {
       message: `Product not found for id \`${variables.id}\``,
     };
   }
-
-  // console.log({ productDetailsFragmentRef });
-
-  // const product = getFragmentData(
-  //   productDetailsFragment,
-  //   productDetailsFragmentRef,
-  // );
-
-  // console.log({ product });
 
   return productDetailsFragmentRef;
 }

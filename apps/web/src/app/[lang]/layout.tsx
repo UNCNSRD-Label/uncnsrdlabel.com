@@ -28,8 +28,6 @@ import { PropsWithChildren, Suspense } from "react";
 import "../globals.css";
 
 export async function generateStaticParams() {
-  // const localization = state$.localization.get();
-
   // We need to get the localization details here to ensure the state is set correctly for the static generation
   // The lang value can be anything as we just want the list of available languages
   const localization = await getLocalizationDetailsHandler({ lang: process.env.NEXT_PUBLIC_DEFAULT_LOCALE! });

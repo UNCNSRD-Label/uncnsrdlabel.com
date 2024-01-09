@@ -9,7 +9,7 @@ import {
   type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
-  
+
 export async function RelatedProducts({
   className,
   productDetailsFragmentRef,
