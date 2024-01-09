@@ -3,7 +3,7 @@
 import { state$ } from "@/lib/store";
 import { getLocalizationDetailsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 import {
-  getInContextVariables
+  getLangProperties
 } from "@uncnsrdlabel/lib";
 import { useEffect } from "react";
 
@@ -11,7 +11,7 @@ import { useEffect } from "react";
 export function SetState({ lang }: { lang: Intl.BCP47LanguageTag }) {
   useEffect(() => {
     const setState = async () => {
-      const { country, language } = getInContextVariables(lang);
+      const { country, language } = getLangProperties(lang);
 
       const localization = await getLocalizationDetailsHandler({ lang });
 

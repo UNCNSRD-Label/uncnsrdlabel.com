@@ -1,10 +1,10 @@
 import { ProductCard } from "@/components/product-card/card";
 import { state$ } from "@/lib/store";
 import {
-  getProductDetailsByHandleQuery,
-  getShopifyGraphQL
+    getProductDetailsByHandleQuery,
+    getShopifyGraphQL
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { getInContextVariables } from "@uncnsrdlabel/lib";
+import { getLangProperties } from "@uncnsrdlabel/lib";
 
 export async function AddPremiumPackaging({
   className,
@@ -15,7 +15,7 @@ export async function AddPremiumPackaging({
 
   const handle = "premium-packaging";
 
-  const inContextVariables = getInContextVariables(lang);
+  const inContextVariables = getLangProperties(lang);
 
   const variables = { handle };
 

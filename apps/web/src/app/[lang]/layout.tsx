@@ -15,7 +15,7 @@ import {
   PRE_GENERATED_BCP47_LANGUAGE_TAGS,
   cn,
   getIETFLanguageTagFromlocaleTag,
-  getInContextVariables,
+  getLangProperties,
   getLocaleObjectFromIETFLanguageTag,
 } from "@uncnsrdlabel/lib";
 import { AppProviders } from "@uncnsrdlabel/providers";
@@ -127,7 +127,7 @@ export default async function RootLayout({
   children,
   params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
 }: PropsWithChildren<LayoutProps>) {
-  const { country, language } = getInContextVariables(lang);
+  const { country, language } = getLangProperties(lang);
 
   // const intl = state$.intl.get();
 
