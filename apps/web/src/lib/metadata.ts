@@ -13,9 +13,7 @@ const {
 } = process.env;
 
 export const getBaseMetadata = async () => {
-// export const getBaseMetadata = async ({ lang }: { lang: Intl.BCP47LanguageTag }) => {
     const localization = state$.localization.get();
-    // const localization = await getLocalizationDetailsHandler({ lang });
 
     const path = `/`;
 

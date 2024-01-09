@@ -13,7 +13,6 @@ import {
 export function ProductVariantGridItems({
   productFragments,
 }: {
-  // productFragments: ResultOf<typeof productFragment>[]
   productFragments: FragmentType<typeof productBasicFragment>[];
 }) {
   return (

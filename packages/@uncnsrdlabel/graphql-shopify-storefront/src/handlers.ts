@@ -73,10 +73,6 @@ export async function createCartHandler({ variables }: {
     return null;
   }
 
-  // console.log({ cartFragmentRef });
-
-  // const cart = getFragmentData(cartFragment, cartFragmentRef);
-
   return cartFragmentRef;
 }
 

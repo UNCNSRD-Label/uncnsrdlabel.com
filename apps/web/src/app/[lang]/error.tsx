@@ -1,20 +1,10 @@
 "use client";
 
 import { LogotypeIcon } from "@/components/icons/logotype";
-// import { state$ } from "@/lib/store";
-// import { createIntl } from "@formatjs/intl";
 import { getIntl } from "@/lib/i18n/server";
 import { Button } from "@uncnsrdlabel/components/ui/button";
 
 export default function Error({ reset }: { reset: () => void }) {
-  // const locale = state$.lang.get();
-  // const messages = state$.messages.get();
-
-  // const intl = createIntl({
-  //   locale,
-  //   messages,
-  // });
-
   const intl = getIntl();
 
   return (

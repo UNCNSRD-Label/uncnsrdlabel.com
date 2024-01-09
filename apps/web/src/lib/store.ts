@@ -6,7 +6,6 @@ import {
 } from "@legendapp/state/persist";
 import { ObservablePersistLocalStorage } from "@legendapp/state/persist-plugins/local-storage";
 import {
-  // getLocalizationDetailsQuery,
   getLocalizationDetailsHandler,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import {
@@ -21,13 +20,8 @@ const lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag;
 const { country, language } = getLangProperties(lang);
 
 const localization = await getLocalizationDetailsHandler({ lang });
-// const localization = {} as ReturnType<typeof getLocalizationDetailsHandler>;
 
 const messages: ResolvedIntlConfig["messages"] = await getDictionary({ localization });
-
-// Cannot serialise a function!
-// const intl = await getIntl({ localization });
-// const intl = {} as ReturnType<typeof getIntl>;
 
 const defaultState = {
   cartId,
