@@ -2,8 +2,11 @@ import { Details } from "@/components/product/details";
 import { getAlternativeLanguages } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";
+import { ResultOf } from "@graphql-typed-document-node/core";
+import { useSelector } from "@legendapp/state/react";
 import {
   getFragmentData,
+  getLocalizationDetailsQuery,
   getProductDetailsByHandleHandler,
   productDetailsFragment,
   seoFragment,
@@ -19,7 +22,7 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const lang = state$.lang.get();
 
-  const localization = state$.localization.get();
+  const localization = useSelector<ResultOf<typeof getLocalizationDetailsQuery>['localization']>(() => state$.localization.get());
 
   const path = `/products/${handle}`;
 
