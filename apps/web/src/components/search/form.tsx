@@ -1,25 +1,20 @@
 "use client";
 
-import { type GetIntlFn } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { cn, createUrl } from "@uncnsrdlabel/lib";
 import { useRouter, useSearchParams } from "next/navigation";
-import { use } from "react";
 
 export function SearchForm({
   className,
-  getIntl,
   isOpen,
   setSearchIsOpen,
 }: {
   className?: string;
-  getIntl: GetIntlFn;
+  
   isOpen: boolean;
   setSearchIsOpen: (open: boolean) => void;
 }) {
-  const lang = state$.lang.get();
-
-  const intl = use(getIntl(lang, "component.SearchForm"));
+  const intl = state$.intl.get();
 
   const router = useRouter();
 
@@ -60,7 +55,7 @@ export function SearchForm({
         defaultValue={searchParams?.get("q") || ""}
         name="search"
         onFocus={() => setSearchIsOpen(true)}
-        placeholder={intl.formatMessage({ id: "placeholder" })}
+        placeholder={intl.formatMessage({ id: "component.SearchForm.placeholder" })}
         tabIndex={0}
         type="text"
       />

@@ -1,6 +1,5 @@
 import { AddToCart } from "@/components/cart/add-to-cart";
 import { Image } from "@/components/media/image";
-import { getIntl } from "@/lib/i18n/server";
 import { type ProductVariant } from "@shopify/hydrogen/storefront-api-types";
 import {
   getFragmentData,
@@ -102,7 +101,6 @@ export function ProductCard({
           <AddToCart
             availableForSale={product.availableForSale}
             container="ProductCard"
-            getIntl={getIntl}
             options={product.options}
             variants={variants}
             view="compact"

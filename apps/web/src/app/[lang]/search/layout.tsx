@@ -3,7 +3,6 @@ import { NavbarContent } from "@/components/layout/navbar/content";
 import { Navbar } from "@/components/layout/navbar/index";
 import { Collections } from "@/components/layout/search/collections";
 import { FilterList } from "@/components/layout/search/filter/index";
-import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { productCollectionSorting } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
@@ -13,9 +12,7 @@ export default async function SearchLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const lang = state$.lang.get();
-
-  const intl = await getIntl(lang, "component.SearchLayout");
+  const intl = state$.intl.get();
 
   return (
     <>
@@ -37,7 +34,7 @@ export default async function SearchLayout({
               "true",
           })}
           list={productCollectionSorting}
-          title={intl.formatMessage({ id: "title" })}
+          title={intl.formatMessage({ id: "component.SearchLayout.title" })}
         />
         {children}
       </div>

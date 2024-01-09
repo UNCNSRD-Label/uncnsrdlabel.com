@@ -2,7 +2,6 @@
 
 import { ConsentForm } from "@/components/consent/form";
 import { LoadingDots } from "@/components/loading/dots";
-import { type GetIntlFn } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
@@ -10,16 +9,15 @@ import { useTimeoutEffect } from "@react-hookz/web";
 import { Button } from "@uncnsrdlabel/components/ui/button";
 import { COOKIE_CONSENT } from "@uncnsrdlabel/lib";
 import { hasCookie } from "cookies-next";
-import { Suspense, use, useState } from "react";
+import { Suspense, useState } from "react";
 import { useTrack } from "use-analytics";
 import { ConsentButton } from "./button";
 
-export function ConsentDialog({ className, getIntl }: { className?: string; getIntl: GetIntlFn; }) {
-  const lang = state$.lang.get();
-
-  const intl = use(getIntl(lang, "component.ConsentDialog"));
+export function ConsentDialog({ className }: { className?: string;  }) {
+  const intl = state$.intl.get();
 
   const [open, setOpen] = useState(false);
+  
   const track = useTrack();
 
   useTimeoutEffect(
@@ -84,22 +82,21 @@ export function ConsentDialog({ className, getIntl }: { className?: string; getI
             className="data-[state=open]:animate-contentShow fixed inset-x-4 bottom-4 z-50 grid gap-4 overflow-auto rounded border bg-inherit px-8 pb-8 pt-6 sm:left-auto sm:max-h-[calc(85dvh-4rem)] sm:w-[90dvw] sm:max-w-3xl"
             forceMount
           >
-            <Dialog.Title>{intl.formatMessage({ id: "title" })}</Dialog.Title>
+            <Dialog.Title>{intl.formatMessage({ id: "component.ConsentDialog.title" })}</Dialog.Title>
             <Dialog.Description className="text-sm">
-              {intl.formatMessage({ id: "description" })}
+              {intl.formatMessage({ id: "component.ConsentDialog.description" })}
             </Dialog.Description>
             <Suspense fallback={<LoadingDots />}>
               <ConsentForm
                 acceptSelectedConsents={acceptSelectedConsents}
                 acceptAllConsents={acceptAllConsents}
                 denyAllAdditionalConsents={denyAllAdditionalConsents}
-                getIntl={getIntl}
                 manageConsents={manageConsents}
               />
             </Suspense>
             <Dialog.Close asChild>
               <Button
-                aria-label={intl.formatMessage({ id: "close" })}
+                aria-label={intl.formatMessage({ id: "component.ConsentDialog.close" })}
                 className="absolute right-6 top-6 inline-flex"
                 onClick={onClose}
                 variant="ghost"

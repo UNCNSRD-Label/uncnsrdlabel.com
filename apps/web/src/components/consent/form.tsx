@@ -1,6 +1,5 @@
 "use client";
 
-import { type GetIntlFn } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import * as Checkbox from "@radix-ui/react-checkbox";
 import { CheckIcon } from "@radix-ui/react-icons";
@@ -16,7 +15,7 @@ import {
   type ConsentSettings,
 } from "@uncnsrdlabel/lib";
 import { getCookie, setCookie } from "cookies-next";
-import { use, useState } from "react";
+import { useState } from "react";
 import { useTrack } from "use-analytics";
 
 type ConsentDialogProps = {
@@ -25,14 +24,12 @@ type ConsentDialogProps = {
   acceptSelectedConsents: (event: React.FormEvent<HTMLFormElement>) => void;
   acceptAllConsents: () => void;
   denyAllAdditionalConsents: () => void;
-  getIntl: GetIntlFn;
+  
   manageConsents: () => void;
 };
 
 export function ConsentForm(props: ConsentDialogProps) {
-  const lang = state$.lang.get();
-
-  const intl = use(props.getIntl(lang, "component.ConsentForm"));
+  const intl = state$.intl.get();
 
   const track = useTrack();
 
@@ -128,7 +125,7 @@ export function ConsentForm(props: ConsentDialogProps) {
           size="base"
           variant="default"
         >
-          {intl.formatMessage({ id: "accept" })}
+          {intl.formatMessage({ id: "component.ConsentForm.accept" })}
         </Button>
         <Button
           className={cn({
@@ -140,7 +137,7 @@ export function ConsentForm(props: ConsentDialogProps) {
           size="base"
           variant="secondary"
         >
-          {intl.formatMessage({ id: "manage" })}
+          {intl.formatMessage({ id: "component.ConsentForm.manage" })}
         </Button>
         <Button
           onClick={acceptAllConsents}
@@ -148,7 +145,7 @@ export function ConsentForm(props: ConsentDialogProps) {
           size="base"
           variant="default"
         >
-          {intl.formatMessage({ id: "accept-all" })}
+          {intl.formatMessage({ id: "component.ConsentForm.accept-all" })}
         </Button>
         <Button
           onClick={denyAllAdditionalConsents}
@@ -156,7 +153,7 @@ export function ConsentForm(props: ConsentDialogProps) {
           size="base"
           variant="default"
         >
-          {intl.formatMessage({ id: "deny-additional" })}
+          {intl.formatMessage({ id: "component.ConsentForm.deny-additional" })}
         </Button>
       </div>
     </form>

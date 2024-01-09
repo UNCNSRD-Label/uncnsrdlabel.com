@@ -4,7 +4,6 @@ import { AddPremiumPackaging } from "@/components/cart/add-premium-packaging";
 import { DeleteItemButton } from "@/components/cart/delete-item-button";
 import { EditItemQuantityButton } from "@/components/cart/edit-item-quantity-button";
 import { Price } from "@/components/price";
-import { type GetIntlFn } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { ResultOf } from "@graphql-typed-document-node/core";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
@@ -18,7 +17,7 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { DEFAULT_OPTION, cn, createUrl } from "@uncnsrdlabel/lib";
 import Image from "next/image";
-import { Suspense, use } from "react";
+import { Suspense } from "react";
 import { SlBag } from "react-icons/sl";
 import { useTrack } from "use-analytics";
 
@@ -30,16 +29,13 @@ export function CartForm({
   cart,
   cartId,
   container,
-  getIntl,
 }: {
   cart?: ResultOf<typeof cartFragment> | null;
   cartId: string;
   container?: string;
-  getIntl: GetIntlFn;
+  
 }) {
-  const lang = state$.lang.get();
-
-  const intl = use(getIntl(lang, "component.CartForm"));
+  const intl = state$.intl.get();
   
   const track = useTrack();
 
@@ -60,7 +56,7 @@ export function CartForm({
         <div className="mt-20 flex w-full flex-col items-center justify-center overflow-hidden">
           <SlBag className="icon fill h-8 w-8" />
           <p className="mt-6 text-center text-sm">
-            {intl.formatMessage({ id: "empty-cart" })}
+            {intl.formatMessage({ id: "component.CartForm.empty-cart" })}
           </p>
         </div>
       ) : (
@@ -103,7 +99,7 @@ export function CartForm({
                 >
                   <div className="relative flex w-full flex-row justify-between px-1 py-4 items-end">
                     <div className="absolute z-40 -mt-2 ml-[55px] self-start">
-                      <DeleteItemButton cartId={cartId} getIntl={getIntl} item={item} />
+                      <DeleteItemButton cartId={cartId} item={item} />
                     </div>
                     <Link
                       className="z-30 flex flex-row space-x-4 mb-3"
@@ -141,7 +137,6 @@ export function CartForm({
                           <EditItemQuantityButton
                             cartId={cartId}
                             className={editItemQuantityButtonclassName}
-                            getIntl={getIntl}
                             item={item}
                             type="minus"
                           />
@@ -156,7 +151,6 @@ export function CartForm({
                           <EditItemQuantityButton
                             cartId={cartId}
                             className={editItemQuantityButtonclassName}
-                            getIntl={getIntl}
                             item={item}
                             type="plus"
                           />
@@ -202,7 +196,7 @@ export function CartForm({
             className="text-light dark:text-dark flex w-full items-center justify-center bg-black p-3 text-sm font-medium uppercase opacity-90 hover:opacity-100 dark:bg-white"
             onClick={handleClickTrack}
           >
-            {intl.formatMessage({ id: "proceed-to-checkout" })}
+            {intl.formatMessage({ id: "component.CartForm.proceed-to-checkout" })}
           </a>
         </div>
       )}

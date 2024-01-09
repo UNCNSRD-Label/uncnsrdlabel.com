@@ -3,7 +3,6 @@ import { OpenCart } from "@/components/cart/open-cart";
 import { LogotypeIcon } from "@/components/icons/logotype";
 import { MenuIcon } from "@/components/icons/menu";
 import { Search } from "@/components/search/index";
-import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
@@ -19,7 +18,7 @@ type Props = { showLogo?: boolean };
 export async function NavbarContent(props: Props) {
   const lang = state$.lang.get();
 
-  const intl = await getIntl(lang, "component.NavbarContent");
+  const intl = state$.intl.get();
 
   const menu = await getMenuHandler({
     variables: { handle: "next-js-frontend-header-menu" },
@@ -35,14 +34,14 @@ export async function NavbarContent(props: Props) {
               <MenuIcon className="icon h-5 stroke-inherit drop-shadow" />
             }
           >
-            <SidebarMenu getIntl={getIntl} menu={menu} />
+            <SidebarMenu menu={menu} />
           </Suspense>
         </div>
       </div>
 
       <div className={cn("hidden", props.showLogo && "md:block")} tabIndex={-1}>
         <Link
-          aria-label={intl.formatMessage({ id: "link-home" })}
+          aria-label={intl.formatMessage({ id: "component.NavbarContent.link-home" })}
           className="pointer-events-auto justify-center md:flex"
           href="/"
         >
@@ -51,10 +50,10 @@ export async function NavbarContent(props: Props) {
       </div>
 
       <div className="pointer-events-auto flex items-center justify-end gap-5">
-        <Search getIntl={getIntl} />
+        <Search />
         <Link
           href="/account"
-          aria-label={intl.formatMessage({ id: "link-account" })}
+          aria-label={intl.formatMessage({ id: "component.NavbarContent.link-account" })}
           prefetch={false}
         >
           <SlUser className="icon fill h-5 w-5 drop-shadow" />
@@ -62,13 +61,13 @@ export async function NavbarContent(props: Props) {
         {process.env.NEXT_PUBLIC_FEATURE_FLAG_WISHLIST_ENABLE === "true" && (
           <Link
             href="#"
-            aria-label={intl.formatMessage({ id: "link-wishlist" })}
+            aria-label={intl.formatMessage({ id: "component.NavbarContent.link-wishlist" })}
           >
             <SlHeart className="icon fill h-5 w-5 drop-shadow" />
           </Link>
         )}
         <Suspense fallback={<OpenCart />}>
-          <Cart getIntl={getIntl} />
+          <Cart />
         </Suspense>
       </div>
     </>

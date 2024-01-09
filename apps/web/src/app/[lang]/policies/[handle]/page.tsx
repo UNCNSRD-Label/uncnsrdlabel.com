@@ -15,8 +15,6 @@ import { camelCase } from "lodash";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-// export const runtime = "edge";
-
 export async function generateMetadata({
   params: { handle },
 }: {

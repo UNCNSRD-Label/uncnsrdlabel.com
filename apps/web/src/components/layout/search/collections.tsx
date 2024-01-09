@@ -1,4 +1,3 @@
-import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { getCollectionRefsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
@@ -7,8 +6,8 @@ import { FilterList } from "./filter";
 
 async function CollectionList({ className }: { className?: string }) {
   const lang = state$.lang.get();
-
-  const intl = await getIntl(lang, "component.CollectionList");
+  
+  const intl = state$.intl.get();
 
   const collections = await getCollectionRefsHandler({
     lang,
@@ -19,7 +18,7 @@ async function CollectionList({ className }: { className?: string }) {
     <FilterList
       className={className}
       list={collections}
-      title={intl.formatMessage({ id: "title" })}
+      title={intl.formatMessage({ id: "component.CollectionList.title" })}
     />
   );
 }

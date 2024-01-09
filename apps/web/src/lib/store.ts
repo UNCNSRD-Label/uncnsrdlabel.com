@@ -1,4 +1,4 @@
-import { ResultOf } from "@graphql-typed-document-node/core";
+import { getIntl } from "@/lib/i18n/server";
 import { observable } from "@legendapp/state";
 import {
   configureObservablePersistence,
@@ -6,44 +6,29 @@ import {
 } from "@legendapp/state/persist";
 import { ObservablePersistLocalStorage } from "@legendapp/state/persist-plugins/local-storage";
 import {
-  type CountryCode,
-  type LanguageCode,
-} from "@shopify/hydrogen/storefront-api-types";
-
-import {
-  getLocalizationDetailsQuery
+  // getLocalizationDetailsQuery,
+  getLocalizationDetailsHandler,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
+import {
+  getInContextVariables
+} from "@uncnsrdlabel/lib";
 
 const cartId: string | null = null;
 
 const lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag;
 
-const country = lang.split("-")[1] as CountryCode;
+const { country, language } = getInContextVariables(lang);
 
-const language = lang.split("-")[0] as LanguageCode;
+// const localization = await getLocalizationDetailsHandler({ lang });
+const localization = {} as ReturnType<typeof getLocalizationDetailsHandler>;
 
-const localization: ResultOf<typeof getLocalizationDetailsQuery>['localization'] = {
-  availableCountries: [{
-    availableLanguages: [{
-      // @ts-expect-error Type '"AF"' is not assignable to type 'LanguageCode'
-      isoCode: language
-    }],
-    // @ts-expect-error Type '"AC"' is not assignable to type 'CountryCode'
-    isoCode: country
-  }],
-  country: {
-    // @ts-expect-error Type '"AC"' is not assignable to type 'CountryCode'
-    isoCode: country,
-  },
-  language: {
-    // @ts-expect-error Type '"AF"' is not assignable to type 'LanguageCode'
-    isoCode: language,
-  },
-};
+// const intl = await getIntl({ localization });
+const intl = {} as ReturnType<typeof getIntl>;
 
 const defaultState = {
   cartId,
   country,
+  intl,
   lang,
   language,
   localization,

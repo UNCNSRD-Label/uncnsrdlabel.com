@@ -15,7 +15,7 @@ export {
 
 export function AppProviders({
   children,
-  lang,
+  lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE!,
 }: PropsWithChildren<{
   lang: Intl.BCP47LanguageTag;
 }>) {

@@ -1,7 +1,6 @@
 "use client";
 
 import { LoadingDots } from "@/components/loading/dots";
-import { type GetIntlFn } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import {
@@ -20,27 +19,23 @@ import {
   getShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
-import { use } from "react";
 
 export function EditItemQuantityButton({
   cartId,
   className,
-  getIntl,
   item,
   type,
 }: {
   cartId: string;
   className?: string;
-  getIntl: GetIntlFn;
+  
   item: Pick<ComponentizableCartLine | CartLine, "id" | "quantity"> & {
     cost: Pick<CartLineCost, "totalAmount">;
     merchandise: Pick<Merchandise, "id">;
   };
   type: "plus" | "minus";
 }) {
-  const lang = state$.lang.get();
-
-  const intl = use(getIntl(lang, "component.EditItemQuantityButton"));
+  const intl = state$.intl.get();
 
   const payload = {
     id: item.id,
@@ -68,8 +63,8 @@ export function EditItemQuantityButton({
     <Button
       aria-label={
         type === "plus"
-          ? intl.formatMessage({ id: "increase" })
-          : intl.formatMessage({ id: "decrease" })
+          ? intl.formatMessage({ id: "component.EditItemQuantityButton.increase" })
+          : intl.formatMessage({ id: "component.EditItemQuantityButton.decrease" })
       }
       aria-disabled={isPending}
       className={cn(className, {

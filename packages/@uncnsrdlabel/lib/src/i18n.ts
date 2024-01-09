@@ -5,39 +5,29 @@ import {
 } from "@shopify/hydrogen-react/storefront-api-types";
 import { useParams } from "next/navigation";
 
-export const getIETFLanguageTagFromlocaleTag = (localeTag: Intl.Locale) =>
-  localeTag?.baseName as Intl.BCP47LanguageTag;
+export const getIETFLanguageTagFromlocaleTag = (locale: Intl.Locale) =>
+  locale?.baseName as Intl.BCP47LanguageTag;
 
 
 export const getLocaleObjectFromIETFLanguageTag = (
-  tag: Intl.BCP47LanguageTag,
-) => new Intl.Locale(tag);
+  lang: Intl.BCP47LanguageTag = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag,
+) => new Intl.Locale(lang);
 
-export const getInContextVariables = (tag?: Intl.BCP47LanguageTag) => {
-  if (!tag || tag === "favicon.ico") {
-    return null;
-  }
+export const getInContextVariables = (lang: Intl.BCP47LanguageTag) => {
+  // @ts-expect-error Property 'getCanonicalLocales' does not exist on type 'typeof Intl'.
+  const [canonicalLocale] = Intl.getCanonicalLocales(lang)
 
-  try {
-    // @ts-expect-error Property 'getCanonicalLocales' does not exist on type 'typeof Intl'.
-    const [canonicalLocale] = Intl.getCanonicalLocales(tag)
+  const locale = new Intl.Locale(lang);
 
-    const locale = new Intl.Locale(tag);
+  const country = locale.region as InputMaybe<CountryCode>;
 
-    const country = locale.region as InputMaybe<CountryCode>;
+  const language =
+    locale.language.toLocaleUpperCase() as InputMaybe<LanguageCode>;
 
-    const language =
-      locale.language.toLocaleUpperCase() as InputMaybe<LanguageCode>;
-
-    return {
-      country,
-      language,
-    };
-  } catch (error) {
-    console.error({ error });
-
-    return {};
-  }
+  return {
+    country,
+    language,
+  };
 };
 
 export function useGetInContextVariables() {

@@ -2,7 +2,6 @@ import { ConsentTrigger } from "@/components/consent/trigger";
 import { LogotypeIcon } from "@/components/icons/logotype";
 import { SignUp } from "@/components/sign-up";
 import { SocialMenu } from "@/components/social-menu";
-import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
@@ -11,10 +10,9 @@ import { getMenuHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 const { NEXT_PUBLIC_SITE_NAME } = process.env;
 
 export async function Footer() {
-  const lang = state$.lang.get();
+  const intl = state$.intl.get();
 
-  const intl = await getIntl(lang, "global.footer");
-  const intlMenu = await getIntl(lang, "global.footer.menu");
+  const lang = state$.lang.get();
 
   const currentYear = new Date().getFullYear();
 
@@ -45,7 +43,7 @@ export async function Footer() {
               {customerCareMenu.items?.length ? (
                 <dl className="grid content-start gap-2 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
                   <dt className="text-sm uppercase">
-                    {intlMenu.formatMessage({ id: "customer-care" })}
+                    {intl.formatMessage({ id: "global.footer.menu.customer-care" })}
                   </dt>
                   {customerCareMenu.items.map((item, index) => (
                     <dd key={item.title || index}>
@@ -62,7 +60,7 @@ export async function Footer() {
               {informationMenu.items?.length ? (
                 <dl className="grid content-start gap-2 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
                   <dt className="text-sm uppercase">
-                    {intlMenu.formatMessage({ id: "information" })}
+                    {intl.formatMessage({ id: "global.footer.menu.information" })}
                   </dt>
                   {informationMenu.items.map((item, index) => (
                     <dd key={item.title || index}>
@@ -80,7 +78,7 @@ export async function Footer() {
                 {followUsMenu.items?.length ? (
                   <dl className="grid content-start gap-2">
                     <dt className="text-sm uppercase">
-                      {intlMenu.formatMessage({ id: "follow-us" })}
+                      {intl.formatMessage({ id: "global.footer.menu.follow-us" })}
                     </dt>
                     {followUsMenu.items.map((item, index) => (
                       <dd key={item.title || index}>
@@ -104,7 +102,7 @@ export async function Footer() {
             <SocialMenu className="my-8 h-10 sm:my-0" />
             <span className="sm:order-first">
               {intl.formatMessage(
-                { id: "copyright" },
+                { id: "global.footer.copyright" },
                 { currentYear, siteName: NEXT_PUBLIC_SITE_NAME },
               )}
             </span>

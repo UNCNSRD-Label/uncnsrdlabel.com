@@ -1,38 +1,31 @@
 "use client";
 
 import { signUpAction } from "@/components/sign-up/action";
-import { type GetIntlFn } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { Button } from "@uncnsrdlabel/components/ui/button";
 import { cn } from "@uncnsrdlabel/lib";
-import { use } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { SlEnvolope } from "react-icons/sl";
 
 function Submit({
   className,
-  getIntl,
 }: {
   className?: string;
-  getIntl: GetIntlFn;
+  
 }) {
-  const lang = state$.lang.get();
-
-  const intl = use(getIntl(lang, "component.SignUpForm"));
+  const intl = state$.intl.get();
 
   const status = useFormStatus();
 
   return (
     <Button className={className} disabled={status.pending} variant="ghost">
-      {intl.formatMessage({ id: "submit" })}
+      {intl.formatMessage({ id: "component.SignUpForm.submit" })}
     </Button>
   );
 }
 
-export function SignUpForm({ className, getIntl }: { className?: string; getIntl: GetIntlFn; }) {
-  const lang = state$.lang.get();
-
-  const intl = use(getIntl(lang, "component.SignUpForm"));
+export function SignUpForm({ className }: { className?: string;  }) {
+  const intl = state$.intl.get();
 
   const [output, formAction] = useFormState(signUpAction, null);
 
@@ -47,11 +40,11 @@ export function SignUpForm({ className, getIntl }: { className?: string; getIntl
           className={cn("w-full bg-gray-800/50 px-4 py-2 placeholder:text-inherit", {
             "border-red-500": hasError,
           })}
-          placeholder={intl.formatMessage({ id: "placeholder" })}
+          placeholder={intl.formatMessage({ id: "component.SignUpForm.placeholder" })}
           type="email"
         />
         <Button
-          aria-label={intl.formatMessage({ id: "submit" })}
+          aria-label={intl.formatMessage({ id: "component.SignUpForm.submit" })}
           className="btn absolute right-0 mr-3"
           variant="ghost"
         >
@@ -59,7 +52,7 @@ export function SignUpForm({ className, getIntl }: { className?: string; getIntl
         </Button>
       </div>
       <Submit
-        className="btn btn-primary btn-solid btn-sm justify-self-end !no-underline" getIntl={getIntl}
+        className="btn btn-primary btn-solid btn-sm justify-self-end !no-underline"
       />
       {output ? <output className={cn("text-sm", {
         "text-red-500": hasError,

@@ -8,8 +8,6 @@ import {
   seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 
-// export const runtime = "edge";
-
 export const contentType = "image/png";
 
 export const size = {

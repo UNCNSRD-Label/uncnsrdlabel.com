@@ -3,7 +3,6 @@
 import { CloseCart } from "@/components/cart/close-cart";
 import { CartForm } from "@/components/cart/form";
 import { OpenCart } from "@/components/cart/open-cart";
-import { type GetIntlFn } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";
 import { Dialog, Transition } from "@headlessui/react";
@@ -17,17 +16,11 @@ import {
   getShopifyGraphQL
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
-import { Fragment, use, useCallback, useEffect, useRef, useState } from "react";
+import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { useTrack } from "use-analytics";
 
-export function Cart({
-  getIntl,
-}: {
-  getIntl: GetIntlFn;
-}) {
-  const lang = state$.lang.get();
-
-  const intl = use(getIntl(lang, "component.CartModal"));
+export function Cart() {
+  const intl = state$.intl.get();
 
   const cartId = useSelector<string>(() => state$.cartId.get())
 
@@ -79,7 +72,7 @@ export function Cart({
   return (
     <>
       <Button
-        aria-label={intl.formatMessage({ id: "open" })}
+        aria-label={intl.formatMessage({ id: "component.CartModal.open" })}
         onClick={useCallback(
           handleClickTrack,
           [],
@@ -119,11 +112,11 @@ export function Cart({
             >
               <div className="flex items-center justify-between">
                 <h3 className="text-lg uppercase">
-                  {intl.formatMessage({ id: "title" })}
+                  {intl.formatMessage({ id: "component.CartModal.title" })}
                 </h3>
 
                 <Button
-                  aria-label={intl.formatMessage({ id: "close" })}
+                  aria-label={intl.formatMessage({ id: "component.CartModal.close" })}
                   onClick={closeCart}
                   variant="ghost"
                 >
@@ -131,7 +124,7 @@ export function Cart({
                 </Button>
               </div>
 
-              <CartForm cart={cart} cartId={cartId} container="Cart" getIntl={getIntl} />
+              <CartForm cart={cart} cartId={cartId} container="Cart" />
             </Dialog.Panel>
           </Transition.Child>
         </Dialog>

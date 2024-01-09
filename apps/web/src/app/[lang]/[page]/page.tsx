@@ -11,8 +11,6 @@ import { notFound } from "next/navigation";
 import { ArticleHydrated as Article } from "./article-hydrated";
 import { PageSectionModule } from "./page-section-module";
 
-// export const runtime = "edge";
-
 export async function generateMetadata({
   params: { page: handle },
 }: {

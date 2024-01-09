@@ -4,6 +4,7 @@ import {
     SITE_DOMAIN_WEB
 } from "@uncnsrdlabel/lib";
 import type { Metadata } from "next";
+// import { getLocalizationDetailsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 
 const {
     TWITTER_CREATOR,
@@ -12,7 +13,9 @@ const {
 } = process.env;
 
 export const getBaseMetadata = async () => {
+// export const getBaseMetadata = async ({ lang }: { lang: Intl.BCP47LanguageTag }) => {
     const localization = state$.localization.get();
+    // const localization = await getLocalizationDetailsHandler({ lang });
 
     const path = `/`;
 
