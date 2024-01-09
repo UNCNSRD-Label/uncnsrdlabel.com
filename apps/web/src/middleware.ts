@@ -1,13 +1,9 @@
-// import { state$ } from "@/lib/store";
 import { match } from "@formatjs/intl-localematcher";
 import {
   type CountryCode,
   type LanguageCode,
 } from "@shopify/hydrogen/storefront-api-types";
 import { getLocalizationDetailsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
-// import {
-//   getLangProperties
-// } from "@uncnsrdlabel/lib";
 import { check } from 'language-tags';
 import Negotiator from "negotiator";
 import { NextResponse, type NextRequest } from "next/server";
@@ -38,13 +34,6 @@ export async function middleware(request: NextRequest) {
   const detectedLanguageTagInPathname = pathname.split("/")?.[1];
 
   if (detectedLanguageTagInPathname && check(detectedLanguageTagInPathname)) {
-    // const localization = await getLocalizationDetailsHandler({ lang: detectedLanguageTagInPathname });
-
-    // state$.country.set(detectedLanguageTagInPathname.split("-")[1] as CountryCode);
-    // state$.lang.set(detectedLanguageTagInPathname);
-    // state$.language.set(detectedLanguageTagInPathname.split("-")[0] as LanguageCode);
-    // state$.localization.set(localization);
-
     const response = NextResponse.next();
 
     response.cookies.set('lang', detectedLanguageTagInPathname)
@@ -59,15 +48,6 @@ export async function middleware(request: NextRequest) {
       return
     } else if (check(cookie?.value)) {
       const lang = cookie.value as Intl.BCP47LanguageTag;
-
-      // const { country, language } = getLangProperties(lang);
-
-      // const localization = await getLocalizationDetailsHandler({ lang });
-
-      // state$.country.set(country);
-      // state$.lang.set(lang);
-      // state$.language.set(language);
-      // state$.localization.set(localization);
 
       // Redirect if there is no BCP47LanguageTag in the pathname
       // e.g. incoming request is /products, new URL is now /en-AU/products
@@ -113,11 +93,6 @@ export async function middleware(request: NextRequest) {
     const pathnameHasSupportedBCP47LanguageTag = BCP47LanguageTags.some(
       (BCP47LanguageTag) => pathname.startsWith(`/${BCP47LanguageTag}`)
     )
-
-    // state$.country.set(detectedCountryCode);
-    // state$.lang.set(detectedLanguageTag);
-    // state$.language.set(detectedLanguageCode);
-    // state$.localization.set(localization);
 
     if (pathnameHasSupportedBCP47LanguageTag) {
       return

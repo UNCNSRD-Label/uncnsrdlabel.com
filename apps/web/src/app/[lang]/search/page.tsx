@@ -12,7 +12,6 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { type Metadata } from "next";
 
-
 const handle = "search";
 
 const path = `/search`;
