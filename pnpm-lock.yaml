@@ -188,9 +188,6 @@ importers:
       deepmerge:
         specifier: ^4.3.1
         version: 4.3.1
-      dot-object:
-        specifier: ^2.1.4
-        version: 2.1.4
       dot-prop:
         specifier: ^8.0.2
         version: 8.0.2
@@ -7415,14 +7412,6 @@ packages:
     dependencies:
       no-case: 3.0.4
       tslib: 2.6.2
-
-  /dot-object@2.1.4:
-    resolution: {integrity: sha512-7FXnyyCLFawNYJ+NhkqyP9Wd2yzuo+7n9pGiYpkmXCTYa8Ci2U0eUNDVg5OuO5Pm6aFXI2SWN8/N/w7SJWu1WA==}
-    hasBin: true
-    dependencies:
-      commander: 4.1.1
-      glob: 7.2.3
-    dev: false
 
   /dot-prop@8.0.2:
     resolution: {integrity: sha512-xaBe6ZT4DHPkg0k4Ytbvn5xoxgpG0jOS1dYxSOwAHPuNLjP3/OzN0gH55SrLqpx8cBfSaVt91lXYkApjb+nYdQ==}
