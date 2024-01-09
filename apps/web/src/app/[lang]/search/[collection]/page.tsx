@@ -4,13 +4,13 @@ import { getAlternativeLanguages } from "@/lib/i18n";
 import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import {
-  collectionFragment,
-  getCollectionHandler,
-  getCollectionProductsHandler,
-  getFragmentData,
-  productCollectionDefaultSort,
-  productCollectionSorting,
-  seoFragment,
+    collectionFragment,
+    getCollectionHandler,
+    getCollectionProductsHandler,
+    getFragmentData,
+    productCollectionDefaultSort,
+    productCollectionSorting,
+    seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -39,7 +39,7 @@ export async function generateMetadata({
 
   return {
     alternates: {
-      canonical: `${localization.language.isoCode.toLocaleLowerCase()}-${localization.country.isoCode}/${path}`,
+      canonical: `${localization?.language?.isoCode.toLocaleLowerCase()}-${localization?.country?.isoCode}/${path}`,
       languages: getAlternativeLanguages({ localization, path }),
     },
     title: seo?.title || collection.title,

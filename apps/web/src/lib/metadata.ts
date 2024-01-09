@@ -19,7 +19,7 @@ export const getBaseMetadata = () => {
 
     const metadata: Metadata = {
         alternates: {
-            canonical: `${localization.language.isoCode.toLocaleLowerCase()}-${localization.country.isoCode}`,
+            canonical: `${localization?.language?.isoCode.toLocaleLowerCase()}-${localization?.country?.isoCode}`,
             languages: getAlternativeLanguages({ localization, path }),
         },
         applicationName: NEXT_PUBLIC_SITE_NAME,
