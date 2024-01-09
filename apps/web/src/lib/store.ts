@@ -19,11 +19,11 @@ const lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag;
 
 const { country, language } = getInContextVariables(lang);
 
-// const localization = await getLocalizationDetailsHandler({ lang });
-const localization = {} as ReturnType<typeof getLocalizationDetailsHandler>;
+const localization = await getLocalizationDetailsHandler({ lang });
+// const localization = {} as ReturnType<typeof getLocalizationDetailsHandler>;
 
-// const intl = await getIntl({ localization });
-const intl = {} as ReturnType<typeof getIntl>;
+const intl = await getIntl({ localization });
+// const intl = {} as ReturnType<typeof getIntl>;
 
 const defaultState = {
   cartId,
