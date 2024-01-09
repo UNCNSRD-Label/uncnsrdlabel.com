@@ -13,7 +13,7 @@ export const getLocaleObjectFromIETFLanguageTag = (
   lang: Intl.BCP47LanguageTag = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag,
 ) => new Intl.Locale(lang);
 
-export const getInContextVariables = (lang: Intl.BCP47LanguageTag) => {
+export const getLangProperties = (lang: Intl.BCP47LanguageTag) => {
   // @ts-expect-error Property 'getCanonicalLocales' does not exist on type 'typeof Intl'.
   const [canonicalLocale] = Intl.getCanonicalLocales(lang)
 

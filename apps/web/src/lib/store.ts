@@ -10,14 +10,14 @@ import {
   getLocalizationDetailsHandler,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import {
-  getInContextVariables
+  getLangProperties
 } from "@uncnsrdlabel/lib";
 
 const cartId: string | null = null;
 
 const lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag;
 
-const { country, language } = getInContextVariables(lang);
+const { country, language } = getLangProperties(lang);
 
 const localization = await getLocalizationDetailsHandler({ lang });
 // const localization = {} as ReturnType<typeof getLocalizationDetailsHandler>;

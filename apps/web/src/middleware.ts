@@ -6,7 +6,7 @@ import {
 } from "@shopify/hydrogen/storefront-api-types";
 import { getLocalizationDetailsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 // import {
-//   getInContextVariables
+//   getLangProperties
 // } from "@uncnsrdlabel/lib";
 import { check } from 'language-tags';
 import Negotiator from "negotiator";
@@ -60,7 +60,7 @@ export async function middleware(request: NextRequest) {
     } else if (check(cookie?.value)) {
       const lang = cookie.value as Intl.BCP47LanguageTag;
 
-      // const { country, language } = getInContextVariables(lang);
+      // const { country, language } = getLangProperties(lang);
 
       // const localization = await getLocalizationDetailsHandler({ lang });
 
