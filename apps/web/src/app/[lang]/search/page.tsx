@@ -16,7 +16,7 @@ const handle = "search";
 
 const path = `/search`;
 
-export async function generateMetadata(): Promise<Metadata> {
+export function generateMetadata(): Metadata {
   const intl = getIntl();
 
   const localization = state$.localization.get();
@@ -61,7 +61,10 @@ export default async function SearchPage({
       {query ? (
         <header className="mb-8">
           <span>
-            {intl.formatMessage({ id: `page.${handle}.results` }, { query, results })}
+            {intl.formatMessage(
+              { id: `page.${handle}.results` },
+              { query, results },
+            )}
           </span>
         </header>
       ) : null}

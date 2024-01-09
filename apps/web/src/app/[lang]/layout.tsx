@@ -60,12 +60,12 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({
+export function generateMetadata({
   params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
-}: LayoutProps): Promise<Metadata> {
+}: LayoutProps): Metadata {
   const intl = getIntl();
 
-  const baseMetadata = await getBaseMetadata();
+  const baseMetadata = getBaseMetadata();
 
   return {
     ...baseMetadata,

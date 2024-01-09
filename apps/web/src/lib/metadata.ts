@@ -12,7 +12,7 @@ const {
     NEXT_PUBLIC_SITE_NAME = "UNCNSRD",
 } = process.env;
 
-export const getBaseMetadata = async () => {
+export const getBaseMetadata = () => {
     const localization = state$.localization.get();
 
     const path = `/`;
