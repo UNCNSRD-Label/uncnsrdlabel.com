@@ -2,7 +2,7 @@
 
 import { ConsentForm } from "@/components/consent/form";
 import { LoadingDots } from "@/components/loading/dots";
-import { state$ } from "@/lib/store";
+import { getIntl } from "@/lib/i18n/server";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { useTimeoutEffect } from "@react-hookz/web";
@@ -14,7 +14,7 @@ import { useTrack } from "use-analytics";
 import { ConsentButton } from "./button";
 
 export function ConsentDialog({ className }: { className?: string;  }) {
-  const intl = state$.intl.get();
+  const intl = getIntl();
 
   const [open, setOpen] = useState(false);
   

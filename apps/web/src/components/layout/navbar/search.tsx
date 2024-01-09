@@ -1,14 +1,14 @@
 "use client";
 
 import { SearchIcon } from "@/components/icons/search";
-import { state$ } from "@/lib/store";
+import { getIntl } from "@/lib/i18n/server";
 import { Button } from "@uncnsrdlabel/components/ui/button";
 import { cn, createUrl } from "@uncnsrdlabel/lib";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useTrack } from "use-analytics";
 
 export function NavbarSearch({ className }: { className?: string;  }) {
-  const intl = state$.intl.get();
+  const intl = getIntl();
 
   const router = useRouter();
 

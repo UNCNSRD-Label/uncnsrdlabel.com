@@ -3,7 +3,7 @@
 import { CloseIcon } from "@/components/icons/close";
 import { LogotypeIcon } from "@/components/icons/logotype";
 import { MenuIcon } from "@/components/icons/menu";
-import { state$ } from "@/lib/store";
+import { getIntl } from "@/lib/i18n/server";
 import { themeColors } from "@/lib/tailwind";
 import { Dialog } from "@headlessui/react";
 import { type Menu } from "@shopify/hydrogen/storefront-api-types";
@@ -27,7 +27,7 @@ export function SidebarMenu({
     }
   >;
 }) {
-  const intl = state$.intl.get();
+  const intl = getIntl();
 
   const pathname = usePathname();
   const searchParams = useSearchParams();

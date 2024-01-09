@@ -1,11 +1,11 @@
 import { LoadingDots } from "@/components/loading/dots";
 import { SignUpForm } from "@/components/sign-up/form";
-import { state$ } from "@/lib/store";
+import { getIntl } from "@/lib/i18n/server";
 import { cn } from "@uncnsrdlabel/lib";
 import { Suspense } from "react";
 
 export async function SignUp({ className }: { className?: string }) {
-  const intl = state$.intl.get();
+  const intl = getIntl();
 
   return (
     <section className={cn("grid gap-4", className)}>

@@ -63,7 +63,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
 }: LayoutProps): Promise<Metadata> {
-  const intl = state$.intl.get();
+  const intl = getIntl();
 
   const baseMetadata = await getBaseMetadata();
 
@@ -129,17 +129,10 @@ export default async function RootLayout({
 }: PropsWithChildren<LayoutProps>) {
   const { country, language } = getLangProperties(lang);
 
-  // const intl = state$.intl.get();
-
-  // const localization = state$.localization.get();
-
   // We get the localization details here for the specific language to ensure the state is set correctly for the lang in the path
   const localization = await getLocalizationDetailsHandler({ lang });
 
-  const intl = await getIntl({ localization });
-
   state$.country.set(country);
-  state$.intl.set(intl);
   state$.lang.set(lang);
   state$.language.set(language);
   state$.localization.set(localization);

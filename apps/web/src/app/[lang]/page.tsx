@@ -3,13 +3,13 @@ import { NavbarContent } from "@/components/layout/navbar/content";
 import { Navbar } from "@/components/layout/navbar/index";
 import { PageCarousel } from "@/components/page/carousel/page-carousel";
 import { VideosHydrated } from "@/components/page/videos/videos-hydrated";
-import { state$ } from "@/lib/store";
+import { getIntl } from "@/lib/i18n/server";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 
 const handle = "home";
 
 export default async function RootPage() {
-  const intl = state$.intl.get();
+  const intl = getIntl();
 
   return (
     <>

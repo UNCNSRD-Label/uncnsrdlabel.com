@@ -1,6 +1,6 @@
 "use client";
 
-import { state$ } from "@/lib/store";
+import { getIntl } from "@/lib/i18n/server";
 import { cn, createUrl } from "@uncnsrdlabel/lib";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -14,7 +14,7 @@ export function SearchForm({
   isOpen: boolean;
   setSearchIsOpen: (open: boolean) => void;
 }) {
-  const intl = state$.intl.get();
+  const intl = getIntl();
 
   const router = useRouter();
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { state$ } from "@/lib/store";
+import { getIntl } from "@/lib/i18n/server";
 import * as Checkbox from "@radix-ui/react-checkbox";
 import { CheckIcon } from "@radix-ui/react-icons";
 import { Button } from "@uncnsrdlabel/components/ui/button";
@@ -29,7 +29,7 @@ type ConsentDialogProps = {
 };
 
 export function ConsentForm(props: ConsentDialogProps) {
-  const intl = state$.intl.get();
+  const intl = getIntl();
 
   const track = useTrack();
 
