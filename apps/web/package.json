@@ -48,7 +48,6 @@
     "cookies-next": "^4.1.0",
     "cross-env": "^7.0.3",
     "deepmerge": "^4.3.1",
-    "dot-object": "^2.1.4",
     "dot-prop": "^8.0.2",
     "framer-motion": "^10.17.6",
     "language-tags": "^1.0.9",

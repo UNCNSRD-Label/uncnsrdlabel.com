@@ -3,8 +3,7 @@ import {
   getLocalizationDetailsQuery
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import merge from "deepmerge";
-import { dot } from 'dot-object';
-import { getProperty } from "dot-prop";
+import { deepKeys, getProperty } from 'dot-prop';
 import { type ResolvedIntlConfig } from "react-intl";
 
 export const getDictionary = async ({ localization, namespace }: { localization: ResultOf<typeof getLocalizationDetailsQuery>['localization']; namespace?: string }) => {
@@ -40,14 +39,14 @@ export const getDictionary = async ({ localization, namespace }: { localization:
   ]) as typeof languageFallback;
 
   if (!namespace) {
-    const allMessagesFlattened = dot(allMessages) as ResolvedIntlConfig["messages"];
+    const allMessagesFlattened = deepKeys(allMessages) as unknown as ResolvedIntlConfig["messages"];
 
     return allMessagesFlattened
   }
 
   const namespaceMessages = getProperty(allMessages, namespace) as ResolvedIntlConfig["messages"];
 
-  const namespaceMessagesFlattened = dot(namespaceMessages);
+  const namespaceMessagesFlattened = deepKeys(namespaceMessages);
 
   return namespaceMessagesFlattened
 };
