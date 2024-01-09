@@ -2,22 +2,20 @@ import { Banner } from "@/components/layout/banner";
 import { Footer } from "@/components/layout/footer/index";
 import { Progress } from "@/components/layout/progress/index";
 import { SetState } from "@/components/layout/set-state";
-import { NavigationEvents } from '@/components/navigation-events';
+import { NavigationEvents } from "@/components/navigation-events";
 import { Organization } from "@/components/schema.org/organization";
 import { getIntl } from "@/lib/i18n/server";
 import { getBaseMetadata } from "@/lib/metadata";
 import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";
 import { type LayoutProps } from "@/types/next";
-import {
-  type CountryCode,
-  type LanguageCode,
-} from "@shopify/hydrogen/storefront-api-types";
+import { type LanguageCode } from "@shopify/hydrogen/storefront-api-types";
 import { getLocalizationDetailsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 import {
   PRE_GENERATED_BCP47_LANGUAGE_TAGS,
   cn,
   getIETFLanguageTagFromlocaleTag,
+  getInContextVariables,
   getLocaleObjectFromIETFLanguageTag,
 } from "@uncnsrdlabel/lib";
 import { AppProviders } from "@uncnsrdlabel/providers";
@@ -29,72 +27,12 @@ import localFont from "next/font/local";
 import { PropsWithChildren, Suspense } from "react";
 import "../globals.css";
 
-export async function generateMetadata({
-  params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
-}: LayoutProps): Promise<Metadata> {
-  const intlMetadata = await getIntl(lang, "global.metadata");
-  const intlKeywords = await getIntl(lang, "global.metadata.keywords");
-
-  const baseMetadata = await getBaseMetadata();
-
-  return {
-    ...baseMetadata,
-    description: intlMetadata.formatMessage({ id: "description" }),
-    keywords: [
-      intlKeywords.formatMessage({ id: "beachwear" }),
-      intlKeywords.formatMessage({ id: "bikini" }),
-      intlKeywords.formatMessage({ id: "boots" }),
-      intlKeywords.formatMessage({ id: "sarong" }),
-      intlKeywords.formatMessage({ id: "scarf" }),
-      intlKeywords.formatMessage({ id: "swimsuit" }),
-      intlKeywords.formatMessage({ id: "swimwear" }),
-    ],
-    openGraph: {
-      ...baseMetadata.openGraph,
-      description: intlMetadata.formatMessage({ id: "description" }),
-      locale: getIETFLanguageTagFromlocaleTag(
-        getLocaleObjectFromIETFLanguageTag(lang),
-      ),
-    },
-  };
-}
-
-export const viewport = {
-  minimumScale: 1,
-  initialScale: 1,
-  width: "device-width",
-  shrinkToFit: "no",
-  viewportFit: "cover",
-  // @ts-expect-error Property 'hotPink' does not exist on type 'ResolvableTo<RecursiveKeyValuePair<string, string>>'.
-  ...(config.theme?.extend?.colors?.hotPink && {
-    // @ts-expect-error Property 'hotPink' does not exist on type 'ResolvableTo<RecursiveKeyValuePair<string, string>>'.
-    themeColor: config.theme.extend.colors.hotPink,
-  }),
-};
-
-const bomberEscort = localFont({
-  src: "../fonts/bomber-escort/bomberescort.ttf",
-  display: "swap",
-  variable: "--font-bomber-escort",
-  weight: "400",
-});
-
-const bomberEscortOutline = localFont({
-  src: "../fonts/bomber-escort/bomberescortout.ttf",
-  display: "swap",
-  variable: "--font-bomber-escort-outline",
-  weight: "400",
-});
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-montserrat",
-  weight: "300",
-});
-
 export async function generateStaticParams() {
-  const localization = await getLocalizationDetailsHandler({});
+  // const localization = state$.localization.get();
+
+  // We need to get the localization details here to ensure the state is set correctly for the static generation
+  // The lang value can be anything as we just want the list of available languages
+  const localization = await getLocalizationDetailsHandler({ lang: process.env.NEXT_PUBLIC_DEFAULT_LOCALE! });
 
   const languageCodes = localization.availableLanguages.map(
     (availableLanguage) =>
@@ -122,18 +60,89 @@ export async function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({
+  params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
+}: LayoutProps): Promise<Metadata> {
+  const intl = state$.intl.get();
+
+  const baseMetadata = await getBaseMetadata();
+
+  return {
+    ...baseMetadata,
+    description: intl.formatMessage({ id: "global.metadata.description" }),
+    keywords: [
+      intl.formatMessage({ id: "global.metadata.keywords.beachwear" }),
+      intl.formatMessage({ id: "global.metadata.keywords.bikini" }),
+      intl.formatMessage({ id: "global.metadata.keywords.boots" }),
+      intl.formatMessage({ id: "global.metadata.keywords.sarong" }),
+      intl.formatMessage({ id: "global.metadata.keywords.scarf" }),
+      intl.formatMessage({ id: "global.metadata.keywords.swimsuit" }),
+      intl.formatMessage({ id: "global.metadata.keywords.swimwear" }),
+    ],
+    openGraph: {
+      ...baseMetadata.openGraph,
+      description: intl.formatMessage({ id: "global.metadata.description" }),
+      locale: getIETFLanguageTagFromlocaleTag(
+        getLocaleObjectFromIETFLanguageTag(lang),
+      ),
+    },
+  };
+}
+
+const bomberEscort = localFont({
+  src: "../fonts/bomber-escort/bomberescort.ttf",
+  display: "swap",
+  variable: "--font-bomber-escort",
+  weight: "400",
+});
+
+const bomberEscortOutline = localFont({
+  src: "../fonts/bomber-escort/bomberescortout.ttf",
+  display: "swap",
+  variable: "--font-bomber-escort-outline",
+  weight: "400",
+});
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-montserrat",
+  weight: "300",
+});
+
+export const viewport = {
+  minimumScale: 1,
+  initialScale: 1,
+  width: "device-width",
+  shrinkToFit: "no",
+  viewportFit: "cover",
+  // @ts-expect-error Property 'hotPink' does not exist on type 'ResolvableTo<RecursiveKeyValuePair<string, string>>'.
+  ...(config.theme?.extend?.colors?.hotPink && {
+    // @ts-expect-error Property 'hotPink' does not exist on type 'ResolvableTo<RecursiveKeyValuePair<string, string>>'.
+    themeColor: config.theme.extend.colors.hotPink,
+  }),
+};
+
 export default async function RootLayout({
   children,
   params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
 }: PropsWithChildren<LayoutProps>) {
-  if (lang) {
-    const localization = await getLocalizationDetailsHandler({ lang });
+  const { country, language } = getInContextVariables(lang);
 
-    state$.country.set(lang.split("-")[1] as CountryCode);
-    state$.lang.set(lang);
-    state$.language.set(lang.split("-")[0] as LanguageCode);
-    state$.localization.set(localization);
-  }
+  // const intl = state$.intl.get();
+
+  // const localization = state$.localization.get();
+
+  // We get the localization details here for the specific language to ensure the state is set correctly for the lang in the path
+  const localization = await getLocalizationDetailsHandler({ lang });
+
+  const intl = await getIntl({ localization });
+
+  state$.country.set(country);
+  state$.intl.set(intl);
+  state$.lang.set(lang);
+  state$.language.set(language);
+  state$.localization.set(localization);
 
   return (
     <html
@@ -152,9 +161,7 @@ export default async function RootLayout({
       >
         <AppProviders lang={lang}>
           <SetState lang={lang} />
-          <Banner
-            className={cn("sticky top-0 w-full z-30")}
-          />
+          <Banner className={cn("sticky top-0 z-30 w-full")} />
           <Progress />
           {children}
           <Footer />

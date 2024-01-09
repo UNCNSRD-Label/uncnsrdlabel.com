@@ -1,17 +1,14 @@
-import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { Button } from "@uncnsrdlabel/components/ui/button";
 import { cn } from "@uncnsrdlabel/lib";
 import { SlMagnifier } from "react-icons/sl";
 
 export async function SearchButton({ isOpen }: { isOpen: boolean }) {
-  const lang = state$.lang.get();
-
-  const intl = await getIntl(lang, "component.SearchButton");
+  const intl = state$.intl.get();
 
   return (
     <Button
-      aria-label={intl.formatMessage({ id: "submit" })}
+      aria-label={intl.formatMessage({ id: "component.SearchButton.submit" })}
       className={cn("btn absolute right-2", isOpen ?? "open")}
       data-testid="submit-search"
       form="search-form"

@@ -1,7 +1,6 @@
 "use client";
 
 import { LoadingDots } from "@/components/loading/dots";
-import { type GetIntlFn } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { useSelector } from "@legendapp/state/react";
@@ -25,14 +24,13 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, useGetInContextVariables } from "@uncnsrdlabel/lib";
 import { useSearchParams } from "next/navigation";
-import { Suspense, use, useCallback } from "react";
+import { Suspense, useCallback } from "react";
 import { useTrack } from "use-analytics";
 
 function SubmitButton({
   availableForSale,
   className,
   container,
-  getIntl,
   selectedVariantId,
   size,
   variant,
@@ -41,15 +39,13 @@ function SubmitButton({
   availableForSale: boolean;
   className?: string;
   container?: string;
-  getIntl: GetIntlFn;
+  
   selectedVariantId: string | undefined;
   size: ButtonProps['size'];
   variant: ButtonProps['variant'];
   view?: "compact" | "standard";
 }) {
-  const lang = state$.lang.get();
-
-  const intl = use(getIntl(lang, "component.AddToCart"));
+  const intl = state$.intl.get();
 
   const buttonClasses = cn("flex gap-2 relative w-full", {
     "justify-center": view === "standard",
@@ -121,7 +117,7 @@ function SubmitButton({
         size={size}
         variant={variant}
       >
-        {intl.formatMessage({ id: "out-of-stock" })}
+        {intl.formatMessage({ id: "component.AddToCart.out-of-stock" })}
 
         <span aria-live="polite" className="sr-only" role="status">
           {statusAddToCart}
@@ -133,7 +129,7 @@ function SubmitButton({
   if (!selectedVariantId) {
     return (
       <Button
-        aria-label={intl.formatMessage({ id: "select-options" })}
+        aria-label={intl.formatMessage({ id: "component.AddToCart.select-options" })}
         aria-disabled
         className={cn(buttonClasses, disabledClasses)}
         disabled
@@ -143,7 +139,7 @@ function SubmitButton({
       >
         <PlusIcon className="h-5" />
 
-        {intl.formatMessage({ id: "select-options" })}
+        {intl.formatMessage({ id: "component.AddToCart.select-options" })}
 
         <span aria-live="polite" className="sr-only" role="status">
           {statusAddToCart}
@@ -154,7 +150,7 @@ function SubmitButton({
 
   return (
     <Button
-      aria-label={intl.formatMessage({ id: "add-to-cart-enabled" })}
+      aria-label={intl.formatMessage({ id: "component.AddToCart.add-to-cart-enabled" })}
       aria-disabled={isPendingAddToCart}
       className={cn(buttonClasses, {
         "hover:opacity-90": true,
@@ -221,7 +217,7 @@ function SubmitButton({
       ) : (
         <PlusIcon className="h-5" />
       )}
-      {intl.formatMessage({ id: "add-to-cart-enabled" })}
+      {intl.formatMessage({ id: "component.AddToCart.add-to-cart-enabled" })}
 
       <span aria-live="polite" className="sr-only" role="status">
         {statusAddToCart || statusCreateCart}
@@ -234,7 +230,6 @@ export function AddToCart({
   availableForSale,
   className,
   container,
-  getIntl,
   options,
   variants,
   view = "standard",
@@ -242,7 +237,7 @@ export function AddToCart({
   availableForSale: boolean;
   className?: string;
   container?: string;
-  getIntl: GetIntlFn;
+  
   options: ProductOption[];
   variants: Pick<ProductVariant, "id" | "selectedOptions">[];
   view?: "compact" | "standard";
@@ -287,7 +282,7 @@ export function AddToCart({
         >
           <LoadingDots className="mb-3" />
 
-          {/* {intl.formatMessage({ id: "add-to-cart-disabled" })} */}
+          {/* {intl.formatMessage({ id: "component.AddToCart.add-to-cart-disabled" })} */}
         </Button>
       }
     >
@@ -295,7 +290,6 @@ export function AddToCart({
         availableForSale={availableForSale}
         className={className}
         container={container}
-        getIntl={getIntl}
         selectedVariantId={selectedVariantId}
         size={size}
         variant={variant}

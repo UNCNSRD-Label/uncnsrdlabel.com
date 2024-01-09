@@ -14,8 +14,6 @@ import { notFound } from "next/navigation";
 import { Breadcrumb } from "./breadcrumb";
 import { RelatedProducts } from "./related-products";
 
-// export const runtime = "edge";
-
 export async function generateMetadata({
   params: { handle },
 }: PageProps): Promise<Metadata> {

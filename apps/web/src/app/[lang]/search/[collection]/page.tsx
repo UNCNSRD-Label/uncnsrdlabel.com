@@ -1,7 +1,6 @@
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
 import { getAlternativeLanguages } from "@/lib/i18n";
-import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import {
   collectionFragment,
@@ -14,8 +13,6 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-
-// export const runtime = "edge";
 
 export async function generateMetadata({
   params: { collection: handle },
@@ -59,9 +56,9 @@ export default async function CategoryPage({
   params: { collection: string };
   searchParams?: { [key: string]: string | string[] | undefined };
 }) {
-  const lang = state$.lang.get();
+  const intl = state$.intl.get();
 
-  const intl = await getIntl(lang, `page.collection`);
+  const lang = state$.lang.get();
 
   const { sort } = searchParams as { [key: string]: string };
   const { sortKey, reverse } =
@@ -83,7 +80,7 @@ export default async function CategoryPage({
     <section>
       {products?.length === 0 ? (
         <p className="py-3 text-lg">
-          {intl.formatMessage({ id: "no-products-found" })}
+          {intl.formatMessage({ id: "page.collection.no-products-found" })}
         </p>
       ) : (
         <Grid className="grid-cols-2 lg:grid-cols-3">

@@ -1,7 +1,6 @@
 import { Grid } from "@/components/grid/index";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
 import { getAlternativeLanguages } from "@/lib/i18n";
-import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
@@ -12,18 +11,14 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { type Metadata } from "next";
 
-// export const runtime = "edge";
-
 const handle = "search";
 
 const path = `/search`;
 
 export async function generateMetadata(): Promise<Metadata> {
-  const lang = state$.lang.get();
+  const intl = state$.intl.get();
 
   const localization = state$.localization.get();
-
-  const intl = await getIntl(lang, `page.${handle}`);
 
   return {
     alternates: {
@@ -32,8 +27,8 @@ export async function generateMetadata(): Promise<Metadata> {
       }/${path}`,
       languages: await getAlternativeLanguages({ localization, path }),
     },
-    title: intl.formatMessage({ id: "title" }),
-    description: intl.formatMessage({ id: "description" }),
+    title: intl.formatMessage({ id: `page.${handle}.title` }),
+    description: intl.formatMessage({ id: `page.${handle}.description` }),
   };
 }
 
@@ -41,7 +36,7 @@ export default async function SearchPage({
   params: { lang },
   searchParams,
 }: PageProps) {
-  const intl = await getIntl(lang, `page.${handle}`);
+  const intl = state$.intl.get();
 
   const { sort, q: query } = searchParams as { [key: string]: string };
   const { sortKey, reverse } =
@@ -65,7 +60,7 @@ export default async function SearchPage({
       {query ? (
         <header className="mb-8">
           <span>
-            {intl.formatMessage({ id: "results" }, { query, results })}
+            {intl.formatMessage({ id: `page.${handle}.results` }, { query, results })}
           </span>
         </header>
       ) : null}
@@ -75,7 +70,7 @@ export default async function SearchPage({
         </Grid>
       ) : (
         <Link className="btn" href="/search">
-          {intl.formatMessage({ id: "reset" })}
+          {intl.formatMessage({ id: `page.${handle}.results` })}
         </Link>
       )}
     </>

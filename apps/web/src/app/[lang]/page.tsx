@@ -3,16 +3,13 @@ import { NavbarContent } from "@/components/layout/navbar/content";
 import { Navbar } from "@/components/layout/navbar/index";
 import { PageCarousel } from "@/components/page/carousel/page-carousel";
 import { VideosHydrated } from "@/components/page/videos/videos-hydrated";
-import { getIntl } from "@/lib/i18n/server";
-import { type PageProps } from "@/types/next";
+import { state$ } from "@/lib/store";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
-
-// export const runtime = "edge";
 
 const handle = "home";
 
-export default async function RootPage({ params: { lang } }: PageProps) {
-  const intl = await getIntl(lang, `page.${handle}`);
+export default async function RootPage() {
+  const intl = state$.intl.get();
 
   return (
     <>
@@ -23,11 +20,11 @@ export default async function RootPage({ params: { lang } }: PageProps) {
         <section className="relative grid h-[100dvh] items-center overflow-hidden sm:snap-start">
           <VideosHydrated handle={handle} />
           <Link
-            aria-label={intl.formatMessage({ id: "shop-now" })}
+            aria-label={intl.formatMessage({ id: `page.${handle}.shop-now` })}
             className="btn btn-outline btn-primary btn-base absolute z-20 justify-self-center whitespace-nowrap uppercase"
             href="/search"
           >
-            {intl.formatMessage({ id: "shop-now" })}
+            {intl.formatMessage({ id: `page.${handle}.shop-now` })}
           </Link>
         </section>
         <PageCarousel className="h-[calc(100dvw_*_1.5)] sm:h-[calc(50dvw_*_1.5)] lg:h-[calc(33.33dvw_*_1.5)]" handle={handle} />

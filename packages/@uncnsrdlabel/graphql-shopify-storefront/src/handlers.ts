@@ -37,7 +37,6 @@ import {
 import { collectionFragment } from "./fragments/index";
 import {
   getCartQuery,
-  getLocalizationAvailableBCP47LanguageTagsQuery,
   getLocalizationDetailsQuery,
   getMenuQuery,
   getPageQuery,
@@ -50,7 +49,7 @@ import {
   getProductsWithVariantsQuery,
   getRouteMetaObjectQuery,
   getShopDetailsQuery,
-  getShopPoliciesQuery,
+  getShopPoliciesQuery
 } from "./queries/index";
 import { getShopifyGraphQL } from "./utilities";
 
@@ -388,7 +387,7 @@ export async function getPagesHandler({ variables, lang }: {
 }
 
 export async function getShopDetailsHandler({ lang }: {
-  lang?: Intl.BCP47LanguageTag,
+  lang: Intl.BCP47LanguageTag,
 }) {
   const inContextVariables = getInContextVariables(lang);
 
@@ -410,26 +409,8 @@ export async function getShopDetailsHandler({ lang }: {
   return shop;
 }
 
-export async function getLocalizationAvailableBCP47LanguageTagsHandler() {
-
-  const { localization } = await getShopifyGraphQL(
-    getLocalizationAvailableBCP47LanguageTagsQuery,
-  );
-
-  if (!localization) {
-    throw {
-      status: 404,
-      message: `Localization not found`,
-    };
-  }
-
-  // console.log({ localization });
-
-  return localization;
-}
-
 export async function getLocalizationDetailsHandler({ lang }: {
-  lang?: Intl.BCP47LanguageTag,
+  lang: Intl.BCP47LanguageTag,
 }) {
   const inContextVariables = getInContextVariables(lang);
 
@@ -438,15 +419,6 @@ export async function getLocalizationDetailsHandler({ lang }: {
     // @ts-expect-error Types of property 'country' are incompatible.
     inContextVariables,
   );
-
-  if (!localization) {
-    throw {
-      status: 404,
-      message: `Localization not found`,
-    };
-  }
-
-  // console.log({ localization });
 
   return localization;
 }

@@ -1,12 +1,13 @@
-import { state$ } from "@/lib/store";
+import { ResultOf } from "@graphql-typed-document-node/core";
+import {
+  getLocalizationDetailsQuery
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import merge from "deepmerge";
 import { dot } from 'dot-object';
 import { getProperty } from "dot-prop";
 import { type ResolvedIntlConfig } from "react-intl";
 
-export const getDictionary = async (namespace?: string) => {
-  const localization = state$.localization.get();
-
+export const getDictionary = async ({ localization, namespace }: { localization: ResultOf<typeof getLocalizationDetailsQuery>['localization']; namespace?: string }) => {
   let languageFallback = {}
   let languageGeneric = {}
   let languageLocalised = {}

@@ -1,7 +1,6 @@
 "use client";
 
 import { LoadingDots } from "@/components/loading/dots";
-import { type GetIntlFn } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
@@ -19,24 +18,21 @@ import {
   removeFromCartMutation,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
-import { use, useCallback } from "react";
+import { useCallback } from "react";
 import { useTrack } from "use-analytics";
 
 export function DeleteItemButton({
   cartId,
-  getIntl,
   item,
 }: {
   cartId: string;
-  getIntl: GetIntlFn;
+  
   item: Pick<ComponentizableCartLine | CartLine, "id" | "quantity"> & {
     cost: Pick<CartLineCost, "totalAmount">;
     merchandise: Pick<Merchandise, "id">;
   };
 }) {
-  const lang = state$.lang.get();
-
-  const intl = use(getIntl(lang, "component.DeleteItemButton"));
+  const intl = state$.intl.get();
 
   const payload = item.id;
 
@@ -77,7 +73,7 @@ export function DeleteItemButton({
 
   return (
     <Button
-      aria-label={intl.formatMessage({ id: "remove" })}
+      aria-label={intl.formatMessage({ id: "component.DeleteItemButton.remove" })}
       aria-disabled={isPending}
       className={cn(
         "ease flex h-4 w-4 items-center justify-center rounded-full bg-neutral-500 transition-all duration-200",

@@ -1,6 +1,5 @@
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
-import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import {
   getFragmentData,
@@ -17,9 +16,9 @@ export async function RelatedProducts({
   className?: string;
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }) {
-  const lang = state$.lang.get();
+  const intl = state$.intl.get();
 
-  const intl = await getIntl(lang, `component.RelatedProducts`);
+  const lang = state$.lang.get();
 
   const product = getFragmentData(
     productDetailsFragment,
@@ -42,7 +41,7 @@ export async function RelatedProducts({
   return (
     <aside className={cn("px-2 sm:px-4 pb-48 pt-12", className)}>
       <h2 className="mb-8 text-center text-xl font-bold uppercase">
-        {intl.formatMessage({ id: "title" })}
+        {intl.formatMessage({ id: "component.RelatedProducts.title" })}
       </h2>
       <Grid className="grid-cols-2 lg:grid-cols-5 [&>*:last-child:nth-child(odd)]:hidden [&>*:last-child:nth-child(odd)]:lg:list-item">
         <ProductGridItems

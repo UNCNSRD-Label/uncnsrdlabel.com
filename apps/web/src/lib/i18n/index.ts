@@ -1,8 +1,3 @@
-import { getLocalizationDetailsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { cache } from "react";
-
-export const getLocalizationDetailsCached = cache(async ({ lang }: { lang?: string; }) => getLocalizationDetailsHandler({ lang }))
-
 export const getAlternativeLanguages = async ({ localization, path }: {
   localization: {
     availableCountries: {
