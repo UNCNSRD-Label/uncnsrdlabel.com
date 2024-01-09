@@ -18,8 +18,7 @@ export type ArticleProps = HTMLProps<HTMLElement> & {
 };
 
 function onReadyTailwind() {
-  // @ts-expect-error Property 'tailwind' does not exist on type 'Window & typeof globalThis'.
-  tailwind.config = {
+  window.tailwind.config = {
     presets: [sharedConfig],
   }
 }
