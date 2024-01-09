@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
       canonical: `${localization.language.isoCode.toLocaleLowerCase()}-${
         localization.country.isoCode
       }/${path}`,
-      languages: await getAlternativeLanguages({ localization, path }),
+      languages: getAlternativeLanguages({ localization, path }),
     },
     title: intl.formatMessage({ id: `page.${handle}.title` }),
     description: intl.formatMessage({ id: `page.${handle}.description` }),

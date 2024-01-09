@@ -40,7 +40,7 @@ export async function generateMetadata({
   return {
     alternates: {
       canonical: `${localization.language.isoCode.toLocaleLowerCase()}-${localization.country.isoCode}/${path}`,
-      languages: await getAlternativeLanguages({ localization, path }),
+      languages: getAlternativeLanguages({ localization, path }),
     },
     title: seo?.title || collection.title,
     description:

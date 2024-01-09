@@ -1,4 +1,4 @@
-export const getAlternativeLanguages = async ({ localization, path }: {
+export const getAlternativeLanguages = ({ localization, path }: {
   localization: {
     availableCountries: {
       availableLanguages: {
