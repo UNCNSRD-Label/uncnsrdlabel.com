@@ -1,7 +1,7 @@
 "use client";
 
 import { LoadingDots } from "@/components/loading/dots";
-import { state$ } from "@/lib/store";
+import { getIntl } from "@/lib/i18n/server";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import {
   type CartLine,
@@ -35,7 +35,7 @@ export function EditItemQuantityButton({
   };
   type: "plus" | "minus";
 }) {
-  const intl = state$.intl.get();
+const intl = getIntl();
 
   const payload = {
     id: item.id,

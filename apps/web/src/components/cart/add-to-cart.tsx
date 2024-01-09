@@ -1,6 +1,7 @@
 "use client";
 
 import { LoadingDots } from "@/components/loading/dots";
+import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { useSelector } from "@legendapp/state/react";
@@ -45,7 +46,7 @@ function SubmitButton({
   variant: ButtonProps['variant'];
   view?: "compact" | "standard";
 }) {
-  const intl = state$.intl.get();
+  const intl = getIntl();
 
   const buttonClasses = cn("flex gap-2 relative w-full", {
     "justify-center": view === "standard",

@@ -1,4 +1,4 @@
-import { getIntl } from "@/lib/i18n/server";
+import { getDictionary } from "@/lib/dictionary";
 import { observable } from "@legendapp/state";
 import {
   configureObservablePersistence,
@@ -12,6 +12,7 @@ import {
 import {
   getLangProperties
 } from "@uncnsrdlabel/lib";
+import { type ResolvedIntlConfig } from "react-intl";
 
 const cartId: string | null = null;
 
@@ -22,16 +23,19 @@ const { country, language } = getLangProperties(lang);
 const localization = await getLocalizationDetailsHandler({ lang });
 // const localization = {} as ReturnType<typeof getLocalizationDetailsHandler>;
 
-const intl = await getIntl({ localization });
+const messages: ResolvedIntlConfig["messages"] = await getDictionary({ localization });
+
+// Cannot serialise a function!
+// const intl = await getIntl({ localization });
 // const intl = {} as ReturnType<typeof getIntl>;
 
 const defaultState = {
   cartId,
   country,
-  intl,
   lang,
   language,
   localization,
+  messages,
 };
 
 export const state$ = observable(defaultState);

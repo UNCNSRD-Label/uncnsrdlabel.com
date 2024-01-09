@@ -3,7 +3,7 @@ import { NavbarContent } from "@/components/layout/navbar/content";
 import { Navbar } from "@/components/layout/navbar/index";
 import { Collections } from "@/components/layout/search/collections";
 import { FilterList } from "@/components/layout/search/filter/index";
-import { state$ } from "@/lib/store";
+import { getIntl } from "@/lib/i18n/server";
 import { productCollectionSorting } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 
@@ -12,7 +12,7 @@ export default async function SearchLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const intl = state$.intl.get();
+  const intl = getIntl();
 
   return (
     <>

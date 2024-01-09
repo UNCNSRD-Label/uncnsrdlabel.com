@@ -1,7 +1,7 @@
 "use client";
 
 import { signUpAction } from "@/components/sign-up/action";
-import { state$ } from "@/lib/store";
+import { getIntl } from "@/lib/i18n/server";
 import { Button } from "@uncnsrdlabel/components/ui/button";
 import { cn } from "@uncnsrdlabel/lib";
 import { useFormState, useFormStatus } from "react-dom";
@@ -13,7 +13,7 @@ function Submit({
   className?: string;
   
 }) {
-  const intl = state$.intl.get();
+  const intl = getIntl();
 
   const status = useFormStatus();
 
@@ -25,7 +25,7 @@ function Submit({
 }
 
 export function SignUpForm({ className }: { className?: string;  }) {
-  const intl = state$.intl.get();
+  const intl = getIntl();
 
   const [output, formAction] = useFormState(signUpAction, null);
 

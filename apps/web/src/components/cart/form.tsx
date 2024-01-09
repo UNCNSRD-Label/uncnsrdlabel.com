@@ -4,7 +4,7 @@ import { AddPremiumPackaging } from "@/components/cart/add-premium-packaging";
 import { DeleteItemButton } from "@/components/cart/delete-item-button";
 import { EditItemQuantityButton } from "@/components/cart/edit-item-quantity-button";
 import { Price } from "@/components/price";
-import { state$ } from "@/lib/store";
+import { getIntl } from "@/lib/i18n/server";
 import { ResultOf } from "@graphql-typed-document-node/core";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
@@ -35,7 +35,7 @@ export function CartForm({
   container?: string;
   
 }) {
-  const intl = state$.intl.get();
+  const intl = getIntl();
   
   const track = useTrack();
 

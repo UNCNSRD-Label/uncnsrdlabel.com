@@ -3,8 +3,8 @@
 import { state$ } from "@/lib/store";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import {
-  getPageHandler,
-  getShopifyQueryClient,
+    getPageHandler,
+    getShopifyQueryClient,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Article, type ArticleProps } from "./article";
 

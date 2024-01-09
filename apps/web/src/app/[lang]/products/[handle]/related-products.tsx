@@ -1,5 +1,6 @@
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
+import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import {
   getFragmentData,
@@ -8,7 +9,7 @@ import {
   type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
-
+  
 export async function RelatedProducts({
   className,
   productDetailsFragmentRef,
@@ -16,7 +17,7 @@ export async function RelatedProducts({
   className?: string;
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }) {
-  const intl = state$.intl.get();
+  const intl = getIntl();
 
   const lang = state$.lang.get();
 

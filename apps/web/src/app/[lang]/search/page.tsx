@@ -1,6 +1,7 @@
 import { Grid } from "@/components/grid/index";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
 import { getAlternativeLanguages } from "@/lib/i18n";
+import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
@@ -11,12 +12,13 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { type Metadata } from "next";
 
+
 const handle = "search";
 
 const path = `/search`;
 
 export async function generateMetadata(): Promise<Metadata> {
-  const intl = state$.intl.get();
+  const intl = getIntl();
 
   const localization = state$.localization.get();
 
@@ -36,7 +38,7 @@ export default async function SearchPage({
   params: { lang },
   searchParams,
 }: PageProps) {
-  const intl = state$.intl.get();
+  const intl = getIntl();
 
   const { sort, q: query } = searchParams as { [key: string]: string };
   const { sortKey, reverse } =

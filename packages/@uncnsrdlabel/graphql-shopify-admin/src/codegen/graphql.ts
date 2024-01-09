@@ -14413,6 +14413,17 @@ export type FilterOption = {
   value: Scalars['String']['output'];
 };
 
+/** Return type for `flowGenerateSignature` mutation. */
+export type FlowGenerateSignaturePayload = {
+  __typename?: 'FlowGenerateSignaturePayload';
+  /** The payload used to generate the signature. */
+  payload?: Maybe<Scalars['String']['output']>;
+  /** The generated signature. */
+  signature?: Maybe<Scalars['String']['output']>;
+  /** The list of errors that occurred from executing the mutation. */
+  userErrors: Array<UserError>;
+};
+
 /** Return type for `flowTriggerReceive` mutation. */
 export type FlowTriggerReceivePayload = {
   __typename?: 'FlowTriggerReceivePayload';
@@ -24696,6 +24707,8 @@ export type Mutation = {
   fileDelete?: Maybe<FileDeletePayload>;
   /** Updates an existing file asset that was uploaded to Shopify. */
   fileUpdate?: Maybe<FileUpdatePayload>;
+  /** Generates a signature for a Flow action payload. */
+  flowGenerateSignature?: Maybe<FlowGenerateSignaturePayload>;
   /** Triggers any workflows that begin with the trigger specified in the request body. To learn more, refer to [_Create Shopify Flow triggers_](https://shopify.dev/apps/flow/triggers). */
   flowTriggerReceive?: Maybe<FlowTriggerReceivePayload>;
   /** Cancels a fulfillment. */
@@ -26664,6 +26677,13 @@ export type MutationFileDeleteArgs = {
 /** The schema's entry point for all mutation operations. */
 export type MutationFileUpdateArgs = {
   files: Array<FileUpdateInput>;
+};
+
+
+/** The schema's entry point for all mutation operations. */
+export type MutationFlowGenerateSignatureArgs = {
+  id: Scalars['ID']['input'];
+  payload: Scalars['String']['input'];
 };
 
 

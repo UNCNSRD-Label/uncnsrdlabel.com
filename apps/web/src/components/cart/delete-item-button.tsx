@@ -1,7 +1,7 @@
 "use client";
 
 import { LoadingDots } from "@/components/loading/dots";
-import { state$ } from "@/lib/store";
+import { getIntl } from "@/lib/i18n/server";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
   type CartLine,
@@ -32,7 +32,7 @@ export function DeleteItemButton({
     merchandise: Pick<Merchandise, "id">;
   };
 }) {
-  const intl = state$.intl.get();
+  const intl = getIntl();
 
   const payload = item.id;
 

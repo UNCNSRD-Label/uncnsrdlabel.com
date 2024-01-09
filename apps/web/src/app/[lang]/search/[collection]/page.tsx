@@ -1,6 +1,7 @@
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
 import { getAlternativeLanguages } from "@/lib/i18n";
+import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import {
   collectionFragment,
@@ -56,7 +57,7 @@ export default async function CategoryPage({
   params: { collection: string };
   searchParams?: { [key: string]: string | string[] | undefined };
 }) {
-  const intl = state$.intl.get();
+  const intl = getIntl();
 
   const lang = state$.lang.get();
 

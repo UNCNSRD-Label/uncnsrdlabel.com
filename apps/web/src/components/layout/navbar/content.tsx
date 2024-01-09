@@ -3,6 +3,7 @@ import { OpenCart } from "@/components/cart/open-cart";
 import { LogotypeIcon } from "@/components/icons/logotype";
 import { MenuIcon } from "@/components/icons/menu";
 import { Search } from "@/components/search/index";
+import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
@@ -18,7 +19,7 @@ type Props = { showLogo?: boolean };
 export async function NavbarContent(props: Props) {
   const lang = state$.lang.get();
 
-  const intl = state$.intl.get();
+  const intl = getIntl();
 
   const menu = await getMenuHandler({
     variables: { handle: "next-js-frontend-header-menu" },
