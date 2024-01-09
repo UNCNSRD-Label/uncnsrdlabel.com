@@ -963,6 +963,9 @@ importers:
       '@vercel/analytics':
         specifier: ^1.1.1
         version: 1.1.1
+      '@vercel/speed-insights':
+        specifier: ^1.0.2
+        version: 1.0.2
       analytics:
         specifier: ^0.8.9
         version: 0.8.9(@types/dlv@1.1.2)
@@ -5829,6 +5832,11 @@ packages:
       '@resvg/resvg-wasm': 2.4.0
       satori: 0.10.9
       yoga-wasm-web: 0.3.3
+    dev: false
+
+  /@vercel/speed-insights@1.0.2:
+    resolution: {integrity: sha512-y5HWeB6RmlyVYxJAMrjiDEz8qAIy2cit0fhBq+MD78WaUwQvuBnQlX4+5MuwVTWi46bV3klaRMq83u9zUy1KOg==}
+    requiresBuild: true
     dev: false
 
   /@victorandree/graphql-codegen-client-preset-swc-plugin@0.3.0:
