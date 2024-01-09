@@ -27,10 +27,12 @@ import localFont from "next/font/local";
 import { PropsWithChildren, Suspense } from "react";
 import "../globals.css";
 
-export async function generateStaticParams() {
+export async function generateStaticParams({
+  lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE!,
+}) {
   // We need to get the localization details here to ensure the state is set correctly for the static generation
   // The lang value can be anything as we just want the list of available languages
-  const localization = await getLocalizationDetailsHandler({ lang: process.env.NEXT_PUBLIC_DEFAULT_LOCALE! });
+  const localization = await getLocalizationDetailsHandler({ lang });
 
   const languageCodes = localization.availableLanguages.map(
     (availableLanguage) =>
@@ -127,13 +129,12 @@ export default async function RootLayout({
 }: PropsWithChildren<LayoutProps>) {
   const { country, language } = getLangProperties(lang);
 
-  // We get the localization details here for the specific language to ensure the state is set correctly for the lang in the path
-  const localization = await getLocalizationDetailsHandler({ lang });
-
   state$.country.set(country);
   state$.lang.set(lang);
   state$.language.set(language);
-  state$.localization.set(localization);
+
+  // We set the localization details here for the specific language to ensure the state is set correctly for the lang in the path
+  state$.setLocalization({ lang });
 
   return (
     <html
