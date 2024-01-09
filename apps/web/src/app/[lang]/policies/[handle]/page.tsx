@@ -41,7 +41,7 @@ export async function generateMetadata({
       canonical: `${localization.language.isoCode.toLocaleLowerCase()}-${
         localization.country.isoCode
       }/${path}`,
-      languages: await getAlternativeLanguages({ localization, path }),
+      languages: getAlternativeLanguages({ localization, path }),
     },
     title: policy.title,
     openGraph: {
