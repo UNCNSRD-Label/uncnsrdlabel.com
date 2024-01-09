@@ -23,8 +23,8 @@ export function generateMetadata(): Metadata {
 
   return {
     alternates: {
-      canonical: `${localization.language.isoCode.toLocaleLowerCase()}-${
-        localization.country.isoCode
+      canonical: `${localization?.language?.isoCode.toLocaleLowerCase()}-${
+        localization?.country?.isoCode
       }/${path}`,
       languages: getAlternativeLanguages({ localization, path }),
     },

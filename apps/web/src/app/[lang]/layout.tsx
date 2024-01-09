@@ -63,17 +63,17 @@ export async function generateStaticParams({
   // The lang value can be anything as we just want the list of available languages
   const localization = await getLocalizationDetailsHandler({ lang });
 
-  const languageCodes = localization.availableLanguages.map(
+  const languageCodes = localization?.availableLanguages.map(
     (availableLanguage) =>
-      availableLanguage.isoCode.toLocaleLowerCase() as LanguageCode,
+      availableLanguage?.isoCode.toLocaleLowerCase() as LanguageCode,
   );
 
   const shopifyBCP47LanguageTags: Intl.BCP47LanguageTag[] =
-    localization.availableCountries.flatMap((availableCountry) =>
+    localization?.availableCountries.flatMap((availableCountry) =>
       availableCountry.availableLanguages.map(
         (availableLanguage) =>
-          `${availableLanguage.isoCode.toLocaleLowerCase()}-${
-            availableCountry.isoCode
+          `${availableLanguage?.isoCode.toLocaleLowerCase()}-${
+            availableCountry?.isoCode
           }` as Intl.BCP47LanguageTag,
       ),
     );
