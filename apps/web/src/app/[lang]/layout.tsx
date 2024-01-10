@@ -40,8 +40,8 @@ export async function generateStaticParams({
   );
 
   const shopifyBCP47LanguageTags: Intl.BCP47LanguageTag[] =
-    localization?.availableCountries.flatMap((availableCountry) =>
-      availableCountry.availableLanguages.map(
+    localization?.availableCountries?.flatMap((availableCountry) =>
+      availableCountry.availableLanguages?.map(
         (availableLanguage) =>
           `${availableLanguage?.isoCode.toLocaleLowerCase()}-${
             availableCountry?.isoCode
