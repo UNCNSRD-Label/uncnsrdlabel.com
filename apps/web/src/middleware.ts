@@ -72,11 +72,11 @@ export async function middleware(request: NextRequest) {
       lang: `${detectedLanguageCode}-${detectedCountryCode}`,
     });
 
-    const matchingCountryCode = localization?.availableCountries.find((availableCountry) => availableCountry?.isoCode === detectedCountryCode) ?? localization?.country;
+    const matchingCountryCode = localization.availableCountries.find((availableCountry) => availableCountry.isoCode === detectedCountryCode) ?? localization.country;
 
-    const BCP47LanguageTags: Intl.BCP47LanguageTag[] = matchingCountryCode?.availableLanguages?.flatMap((availableLanguage) => [
-      availableLanguage?.isoCode.toLocaleLowerCase() as LanguageCode,
-      `${availableLanguage?.isoCode.toLocaleLowerCase()}-${matchingCountryCode?.isoCode}` as Intl.BCP47LanguageTag
+    const BCP47LanguageTags: Intl.BCP47LanguageTag[] = matchingCountryCode?.availableLanguages.flatMap((availableLanguage) => [
+      availableLanguage.isoCode.toLocaleLowerCase() as LanguageCode,
+      `${availableLanguage.isoCode.toLocaleLowerCase()}-${matchingCountryCode.isoCode}` as Intl.BCP47LanguageTag
     ]);
 
     const headers: Negotiator.Headers = {

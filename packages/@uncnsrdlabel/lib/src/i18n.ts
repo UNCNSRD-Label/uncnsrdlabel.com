@@ -9,7 +9,6 @@ export function getIETFLanguageTagFromlocaleTag(locale: Intl.Locale) {
   return locale?.baseName as Intl.BCP47LanguageTag;
 }
 
-
 export function getLocaleObjectFromIETFLanguageTag(
   lang: Intl.BCP47LanguageTag = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag,
 ) {

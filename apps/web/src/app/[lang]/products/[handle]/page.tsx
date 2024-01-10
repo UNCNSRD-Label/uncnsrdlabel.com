@@ -41,8 +41,8 @@ export async function generateMetadata({
 
   return {
     alternates: {
-      canonical: `${localization?.language?.isoCode.toLocaleLowerCase()}-${
-        localization?.country?.isoCode
+      canonical: `${localization.language.isoCode.toLocaleLowerCase()}-${
+        localization.country.isoCode
       }/${path}`,
       languages: getAlternativeLanguages({ localization, path }),
     },
