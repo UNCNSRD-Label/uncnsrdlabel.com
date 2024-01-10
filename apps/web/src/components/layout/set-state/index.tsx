@@ -1,7 +1,6 @@
 "use client";
 
 import { state$ } from "@/lib/store";
-import { getLocalizationDetailsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 import {
   getLangProperties
 } from "@uncnsrdlabel/lib";
@@ -13,12 +12,11 @@ export function SetState({ lang }: { lang: Intl.BCP47LanguageTag }) {
     const setState = async () => {
       const { country, language } = getLangProperties(lang);
 
-      const localization = await getLocalizationDetailsHandler({ lang });
-
       state$.country.set(country);
       state$.lang.set(lang);
       state$.language.set(language);
-      state$.localization.set(localization);
+      
+      state$.setLocalization({ lang });
     };
 
     setState();

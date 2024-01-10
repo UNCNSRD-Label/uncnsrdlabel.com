@@ -1,10 +1,5 @@
 import { getAlternativeLanguages } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
-import { ResultOf } from "@graphql-typed-document-node/core";
-import { useSelector } from "@legendapp/state/react";
-import {
-    getLocalizationDetailsQuery
-} from "@uncnsrdlabel/graphql-shopify-storefront";
 import {
     SITE_DOMAIN_WEB
 } from "@uncnsrdlabel/lib";
@@ -17,7 +12,7 @@ const {
 } = process.env;
 
 export const getBaseMetadata = () => {
-    const localization = useSelector<ResultOf<typeof getLocalizationDetailsQuery>['localization']>(() => state$.localization.get());
+    const localization = state$.localization.get();
 
     const path = `/`;
 

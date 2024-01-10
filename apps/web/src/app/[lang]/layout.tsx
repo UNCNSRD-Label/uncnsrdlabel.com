@@ -128,7 +128,6 @@ export default async function RootLayout({
   children,
   params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
 }: PropsWithChildren<LayoutProps>) {
-  console.log({ lang }, "RootLayout")
   const { country, language } = getLangProperties(lang);
 
   state$.country.set(country);
