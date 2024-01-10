@@ -16,8 +16,10 @@ const handle = "search";
 
 const path = `/search`;
 
-export function generateMetadata(): Metadata {
-  const intl = getIntl();
+export function generateMetadata({
+  params: { lang },
+}: PageProps): Metadata {
+  const intl = getIntl(lang);
 
   const localization = state$.localization.get();
 
@@ -37,7 +39,7 @@ export default async function SearchPage({
   params: { lang },
   searchParams,
 }: PageProps) {
-  const intl = getIntl();
+  const intl = getIntl(lang);
 
   const { sort, q: query } = searchParams as { [key: string]: string };
   const { sortKey, reverse } =

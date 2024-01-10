@@ -7,8 +7,8 @@ import { cn, createUrl } from "@uncnsrdlabel/lib";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useTrack } from "use-analytics";
 
-export function NavbarSearch({ className }: { className?: string;  }) {
-  const intl = getIntl();
+export function NavbarSearch({ className, lang, }: { className?: string; lang: Intl.BCP47LanguageTag; }) {
+  const intl = getIntl(lang);
 
   const router = useRouter();
 

@@ -63,7 +63,7 @@ export async function generateStaticParams({
 export function generateMetadata({
   params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
 }: LayoutProps): Metadata {
-  const intl = getIntl();
+  const intl = getIntl(lang);
 
   const baseMetadata = getBaseMetadata();
 

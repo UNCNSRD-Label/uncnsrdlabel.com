@@ -1,7 +1,6 @@
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
 import { getIntl } from "@/lib/i18n/server";
-import { state$ } from "@/lib/store";
 import {
   getFragmentData,
   getProductRecommendationsHandler,
@@ -12,14 +11,14 @@ import { cn } from "@uncnsrdlabel/lib";
 
 export async function RelatedProducts({
   className,
+  lang,
   productDetailsFragmentRef,
 }: {
   className?: string;
+  lang: Intl.BCP47LanguageTag
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }) {
-  const intl = getIntl();
-
-  const lang = state$.lang.get();
+  const intl = getIntl(lang);
 
   const product = getFragmentData(
     productDetailsFragment,

@@ -1,4 +1,4 @@
-import { state$ } from "@/lib/store";
+import { type PageProps } from "@/types/next";
 import {
   getFragmentData,
   getPageHandler,
@@ -12,12 +12,10 @@ import { ArticleHydrated as Article } from "./article-hydrated";
 import { PageSectionModule } from "./page-section-module";
 
 export async function generateMetadata({
-  params: { page: handle },
+  params: { lang,page: handle },
 }: {
-  params: { page: string };
+  params: { lang: Intl.BCP47LanguageTag; page: string };
 }): Promise<Metadata> {
-  const lang = state$.lang.get();
-
   const variables = {
     handle,
   };
@@ -45,12 +43,10 @@ export async function generateMetadata({
 }
 
 export default async function PagePage({
-  params: { page: handle },
-}: {
+  params: { lang, page: handle },
+}: PageProps & {
   params: { page: string };
 }) {
-  const lang = state$.lang.get();
-
   const variables = {
     handle,
   };
@@ -62,7 +58,7 @@ export default async function PagePage({
   if (!page) return notFound();
 
   return (
-    <Article key={page.handle} variables={{ handle }}>
+    <Article key={page.handle} lang={lang} variables={{ handle }}>
       {page.sections?.references?.nodes?.map(
         (pageSectionModuleFragmentRef, index) => {
           if (pageSectionModuleFragmentRef.__typename === "Metaobject") {
