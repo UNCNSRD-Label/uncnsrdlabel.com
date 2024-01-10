@@ -4,14 +4,11 @@ import { getAlternativeLanguages } from "@/lib/i18n";
 import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";
-import { ResultOf } from "@graphql-typed-document-node/core";
-import { useSelector } from "@legendapp/state/react";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
-  getLocalizationDetailsQuery,
   getProductsHandler,
   productDefaultSort,
-  productSorting,
+  productSorting
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { type Metadata } from "next";
 
@@ -22,7 +19,7 @@ const path = `/search`;
 export function generateMetadata(): Metadata {
   const intl = getIntl();
 
-  const localization = useSelector<ResultOf<typeof getLocalizationDetailsQuery>['localization']>(() => state$.localization.get());
+  const localization = state$.localization.get();
 
   return {
     alternates: {
