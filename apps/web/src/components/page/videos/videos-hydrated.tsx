@@ -1,10 +1,10 @@
 import { state$ } from "@/lib/store";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import {
-    getPageQuery,
-    getQueryKey,
-    getShopifyGraphQL,
-    getShopifyQueryClient,
+  getPageQuery,
+  getQueryKey,
+  getShopifyGraphQL,
+  getShopifyQueryClient,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getLangProperties } from "@uncnsrdlabel/lib";
 import { Videos } from "./videos";

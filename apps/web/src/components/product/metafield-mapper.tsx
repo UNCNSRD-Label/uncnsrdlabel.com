@@ -3,16 +3,16 @@ import { state$ } from "@/lib/store";
 import { transitionDelays } from "@/lib/tailwind";
 import { ResultOf } from "@graphql-typed-document-node/core";
 import {
-    type Metaobject,
-    type MetaobjectField,
+  type Metaobject,
+  type MetaobjectField,
 } from "@shopify/hydrogen/storefront-api-types";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
-    getFragmentData,
-    getProductDetailsByIdQuery,
-    getShopifyGraphQL,
-    productDetailsFragment,
-    productMetafieldFragment,
+  getFragmentData,
+  getProductDetailsByIdQuery,
+  getShopifyGraphQL,
+  productDetailsFragment,
+  productMetafieldFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getLangProperties } from "@uncnsrdlabel/lib";
 import { Fragment, ReactNode } from "react";

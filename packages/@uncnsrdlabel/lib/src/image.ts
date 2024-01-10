@@ -1,7 +1,7 @@
-export const onLoad = (target: HTMLImageElement) => {
+export function onLoad (target: HTMLImageElement) {
   target.dataset.status = "loaded";
 };
 
-export const onLoading = (target: HTMLImageElement) => {
+export function onLoading (target: HTMLImageElement) {
   target.dataset.status = "loading";
 };

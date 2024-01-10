@@ -27,35 +27,6 @@ import localFont from "next/font/local";
 import { PropsWithChildren, Suspense } from "react";
 import "../globals.css";
 
-export function generateMetadata({
-  params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
-}: LayoutProps): Metadata {
-  const intl = getIntl();
-
-  const baseMetadata = getBaseMetadata();
-
-  return {
-    ...baseMetadata,
-    description: intl.formatMessage({ id: "global.metadata.description" }),
-    keywords: [
-      intl.formatMessage({ id: "global.metadata.keywords.beachwear" }),
-      intl.formatMessage({ id: "global.metadata.keywords.bikini" }),
-      intl.formatMessage({ id: "global.metadata.keywords.boots" }),
-      intl.formatMessage({ id: "global.metadata.keywords.sarong" }),
-      intl.formatMessage({ id: "global.metadata.keywords.scarf" }),
-      intl.formatMessage({ id: "global.metadata.keywords.swimsuit" }),
-      intl.formatMessage({ id: "global.metadata.keywords.swimwear" }),
-    ],
-    openGraph: {
-      ...baseMetadata.openGraph,
-      description: intl.formatMessage({ id: "global.metadata.description" }),
-      locale: getIETFLanguageTagFromlocaleTag(
-        getLocaleObjectFromIETFLanguageTag(lang),
-      ),
-    },
-  };
-}
-
 export async function generateStaticParams({
   lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE!,
 }) {
@@ -87,6 +58,36 @@ export async function generateStaticParams({
   return [...languageCodes, ...preGeneratedBCP47LanguageTags].map((lang) => ({
     lang,
   }));
+}
+
+export function generateMetadata({
+  params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
+}: LayoutProps): Metadata {
+  const intl = getIntl();
+
+  const baseMetadata = getBaseMetadata();
+
+  return {
+    ...baseMetadata,
+    description: intl.formatMessage({ id: "global.metadata.description" }),
+    keywords: [
+      // TODO: Add keywords from Shopify
+      intl.formatMessage({ id: "global.metadata.keywords.beachwear" }),
+      intl.formatMessage({ id: "global.metadata.keywords.bikini" }),
+      intl.formatMessage({ id: "global.metadata.keywords.boots" }),
+      intl.formatMessage({ id: "global.metadata.keywords.sarong" }),
+      intl.formatMessage({ id: "global.metadata.keywords.scarf" }),
+      intl.formatMessage({ id: "global.metadata.keywords.swimsuit" }),
+      intl.formatMessage({ id: "global.metadata.keywords.swimwear" }),
+    ],
+    openGraph: {
+      ...baseMetadata.openGraph,
+      description: intl.formatMessage({ id: "global.metadata.description" }),
+      locale: getIETFLanguageTagFromlocaleTag(
+        getLocaleObjectFromIETFLanguageTag(lang),
+      ),
+    },
+  };
 }
 
 const bomberEscort = localFont({
@@ -127,6 +128,7 @@ export default async function RootLayout({
   children,
   params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
 }: PropsWithChildren<LayoutProps>) {
+  console.log({ lang }, "RootLayout")
   const { country, language } = getLangProperties(lang);
 
   state$.country.set(country);

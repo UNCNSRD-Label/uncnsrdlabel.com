@@ -6,24 +6,24 @@ import { state$ } from "@/lib/store";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { useSelector } from "@legendapp/state/react";
 import {
-  type CartLineInput,
-  type ProductOption,
-  type ProductVariant,
+    type CartLineInput,
+    type ProductOption,
+    type ProductVariant,
 } from "@shopify/hydrogen/storefront-api-types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button, type ButtonProps } from "@uncnsrdlabel/components/ui/button";
 import {
-  addToCartMutation,
-  cartFragment,
-  createCartMutation,
-  getCartQuery,
-  getFragmentData,
-  getQueryKey,
-  getShopifyGraphQL,
-  type AddToCartMutationVariables,
-  type CreateCartMutationVariables,
+    addToCartMutation,
+    cartFragment,
+    createCartMutation,
+    getCartQuery,
+    getFragmentData,
+    getQueryKey,
+    getShopifyGraphQL,
+    type AddToCartMutationVariables,
+    type CreateCartMutationVariables,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { cn, useGetInContextVariables } from "@uncnsrdlabel/lib";
+import { cn, useGetLangProperties } from "@uncnsrdlabel/lib";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useCallback } from "react";
 import { useTrack } from "use-analytics";
@@ -55,7 +55,7 @@ function SubmitButton({
 
   const cartId = useSelector<string>(() => state$.cartId.get());
 
-  const { country } = useGetInContextVariables();
+  const { country } = useGetLangProperties();
 
   const shopifyQueryClient = useQueryClient();
 

@@ -1,9 +1,9 @@
 import { type TypedDocumentNode } from "@graphql-typed-document-node/core";
 import {
-  QueryClient, useSuspenseQuery,
-  type UseSuspenseQueryResult
+    QueryClient, useSuspenseQuery,
+    type UseSuspenseQueryResult
 } from "@tanstack/react-query";
-import { formatErrorMessage, isShopifyError, useGetInContextVariables } from "@uncnsrdlabel/lib";
+import { formatErrorMessage, isShopifyError, useGetLangProperties } from "@uncnsrdlabel/lib";
 import { GraphQLClient } from "graphql-request";
 import { cache } from "react";
 import { endpoint } from "./constants";
@@ -62,7 +62,7 @@ export function useGetShopifyGraphQL<TResult, TVariables>(
   document: TypedDocumentNode<TResult, TVariables>,
   ...[variables]: TVariables extends Record<string, never> ? [] : [TVariables]
 ): UseSuspenseQueryResult<TResult> {
-  const inContextVariables = useGetInContextVariables();
+  const inContextVariables = useGetLangProperties();
 
   type TVariablesWithContext = typeof inContextVariables & TVariables;
 
