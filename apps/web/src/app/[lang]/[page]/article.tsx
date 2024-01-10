@@ -14,7 +14,8 @@ import Script from "next/script";
 import { CSSProperties, HTMLProps, useEffect, useState } from "react";
 
 export type ArticleProps = HTMLProps<HTMLElement> & {
-  variables: { handle: string };
+  lang: Intl.BCP47LanguageTag
+  variables: { handle: string; };
 };
 
 function onReadyTailwind() {

@@ -14,12 +14,11 @@ import { Suspense } from "react";
 import { SlHeart, SlUser } from "react-icons/sl";
 import { SidebarMenu } from "./sidebar-menu";
 
-type Props = { showLogo?: boolean };
-
-export async function NavbarContent(props: Props) {
-  const lang = state$.lang.get();
-
-  const intl = getIntl();
+export async function NavbarContent({
+  lang = state$.lang.get(),
+  showLogo = false,
+}: { lang: Intl.BCP47LanguageTag; showLogo?: boolean }) {
+  const intl = getIntl(lang);
 
   const menu = await getMenuHandler({
     variables: { handle: "next-js-frontend-header-menu" },
@@ -35,12 +34,12 @@ export async function NavbarContent(props: Props) {
               <MenuIcon className="icon h-5 stroke-inherit drop-shadow" />
             }
           >
-            <SidebarMenu menu={menu} />
+            <SidebarMenu lang={lang} menu={menu} />
           </Suspense>
         </div>
       </div>
 
-      <div className={cn("hidden", props.showLogo && "md:block")} tabIndex={-1}>
+      <div className={cn("hidden", showLogo && "md:block")} tabIndex={-1}>
         <Link
           aria-label={intl.formatMessage({ id: "component.NavbarContent.link-home" })}
           className="pointer-events-auto justify-center md:flex"

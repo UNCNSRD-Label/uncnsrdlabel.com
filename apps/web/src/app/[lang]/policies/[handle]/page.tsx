@@ -16,12 +16,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({
-  params: { handle },
-}: {
-  params: PageProps & { handle: PolicyName };
+  params: { handle, lang },
+}: PageProps & {
+  params: { handle: PolicyName };
 }): Promise<Metadata> {
-  const lang = state$.lang.get();
-
   const localization = state$.localization.get();
 
   const path = `/policies/${handle}`;
@@ -55,14 +53,10 @@ export async function generateMetadata({
 }
 
 export default async function PolicyPage({
-  params,
-}: {
+  params: { handle, lang },
+}: PageProps & {
   params: { handle: PolicyName };
 }) {
-  const lang = state$.lang.get();
-
-  const handle = params.handle as PolicyName;
-
   const customerCareMenu = await getMenuHandler({
     lang,
     variables: {
@@ -93,7 +87,7 @@ export default async function PolicyPage({
                     "sm:text-xxs text-xs uppercase transition duration-150 ease-in-out",
                     {
                       "underline decoration-dotted underline-offset-8":
-                        item.url?.endsWith(params.handle),
+                        item.url?.endsWith(handle),
                     },
                   )}
                   href={item.url ?? "#"}

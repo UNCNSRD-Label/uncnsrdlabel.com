@@ -15,10 +15,8 @@ import { Breadcrumb } from "./breadcrumb";
 import { RelatedProducts } from "./related-products";
 
 export async function generateMetadata({
-  params: { handle },
+  params: { handle, lang },
 }: PageProps): Promise<Metadata> {
-  const lang = state$.lang.get();
-
   const localization = state$.localization.get();
 
   const path = `/products/${handle}`;
@@ -91,6 +89,7 @@ export default async function ProductPage({
       </main>
       <RelatedProducts
         className="text-dark relative bg-white z-50 [contain:layout_style]"
+        lang={lang}
         productDetailsFragmentRef={productDetailsFragmentRef}
       />
     </div>

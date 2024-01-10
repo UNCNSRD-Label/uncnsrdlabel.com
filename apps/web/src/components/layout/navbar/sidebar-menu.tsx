@@ -17,9 +17,10 @@ import { type PartialDeep } from "type-fest";
 import { NavbarSearch } from "./search";
 
 export function SidebarMenu({
+  lang,
   menu,
 }: {
-  
+  lang: Intl.BCP47LanguageTag;
   menu: PartialDeep<
     Menu,
     {
@@ -111,7 +112,7 @@ export function SidebarMenu({
                 </Button>
 
                 <div className="mb-4 w-full">
-                  <NavbarSearch />
+                  <NavbarSearch lang={lang} />
                 </div>
                 {menu?.items?.length && menu?.items?.length > 0 ? (
                   <ul className="flex flex-1 flex-col gap-2">
