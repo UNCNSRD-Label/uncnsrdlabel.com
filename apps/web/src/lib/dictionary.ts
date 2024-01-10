@@ -19,14 +19,14 @@ export const getDictionary = async ({ localization, namespace }: { localization:
   }
 
   try {
-    const { default: languageGenericDictionary } = await import(`@/dictionaries/${localization?.language?.isoCode.toLocaleLowerCase()}.json`) ?? {};
+    const { default: languageGenericDictionary } = await import(`@/dictionaries/${localization.language.isoCode.toLocaleLowerCase()}.json`) ?? {};
     languageGeneric = languageGenericDictionary;
   } catch (error) {
     console.error(error);
   }
 
   try {
-    const { default: languageLocalisedDictionary } = await import(`@/dictionaries/${localization?.language?.isoCode.toLocaleLowerCase()}-${localization?.country?.isoCode}.json`) ?? {};
+    const { default: languageLocalisedDictionary } = await import(`@/dictionaries/${localization.language.isoCode.toLocaleLowerCase()}-${localization.country.isoCode}.json`) ?? {};
     languageLocalised = languageLocalisedDictionary;
   } catch (error) {
     console.error(error);
