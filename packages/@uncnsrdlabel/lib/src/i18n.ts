@@ -30,7 +30,7 @@ export const getLangProperties = (lang: Intl.BCP47LanguageTag) => {
   };
 };
 
-export function useGetInContextVariables() {
+export function useGetLangProperties() {
   const { lang } = useParams();
 
   const tag = Array.isArray(lang) ? lang[0] : lang;
