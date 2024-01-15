@@ -74,7 +74,7 @@ export default async function PagePage({
 
       <span className="mb-8 hidden text-sm italic">
         {`This document was last updated on ${new Intl.DateTimeFormat(
-          undefined,
+          lang,
           {
             year: "numeric",
             month: "long",

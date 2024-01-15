@@ -37,10 +37,6 @@ export function MetaFields({
             >
               {metafield?.key
                 ?.split("_")
-                .map(
-                  (word: string) =>
-                    word.charAt(0).toLocaleUpperCase() + word.slice(1),
-                )
                 .join(" ")}
             </dt>
 
