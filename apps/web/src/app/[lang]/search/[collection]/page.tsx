@@ -3,13 +3,13 @@ import { ProductGridItems } from "@/components/layout/product-grid-items";
 import { getAlternativeLanguages, getIntl } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
 import {
-    collectionFragment,
-    getCollectionHandler,
-    getCollectionProductsHandler,
-    getFragmentData,
-    productCollectionDefaultSort,
-    productCollectionSorting,
-    seoFragment,
+  collectionFragment,
+  getCollectionHandler,
+  getCollectionProductsHandler,
+  getFragmentData,
+  productCollectionDefaultSort,
+  productCollectionSorting,
+  seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -67,7 +67,7 @@ export default async function CategoryPage({
     productCollectionSorting.find((item) => item.slug === sort) ||
     productCollectionDefaultSort;
 
-  const collectionProducts = await getCollectionProductsHandler({
+  const collectionConnection = await getCollectionProductsHandler({
     variables: {
       handle,
       sortKey,
@@ -76,19 +76,21 @@ export default async function CategoryPage({
     lang,
   });
 
-  const products = collectionProducts.edges.map((edge) => edge?.node);
+  const productFragmentRefs = collectionConnection.edges.map((edge) => edge?.node);
+
+  const results = collectionConnection.edges.length;
 
   return (
-    <section>
-      {products?.length === 0 ? (
+    <>
+      {results === 0 ? (
         <p className="py-3 text-lg">
           {intl.formatMessage({ id: "no-products-found" })}
         </p>
       ) : (
-        <Grid className="grid-cols-2 lg:grid-cols-3">
-          <ProductGridItems productFragmentRefs={products} />
+        <Grid className="grid-cols-2 lg:grid-cols-3 w-full max-w-7xl">
+          <ProductGridItems productFragmentRefs={productFragmentRefs} />
         </Grid>
       )}
-    </section>
+    </>
   );
 }

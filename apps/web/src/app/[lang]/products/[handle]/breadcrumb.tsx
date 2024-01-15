@@ -30,7 +30,7 @@ export function Breadcrumb({
         </BreadcrumbLink>
       </BreadcrumbItem>
       <BreadcrumbItem>
-        <BreadcrumbLink as={Link} href="/search">
+        <BreadcrumbLink as={Link} href="/search/all">
           Shop
         </BreadcrumbLink>
       </BreadcrumbItem>

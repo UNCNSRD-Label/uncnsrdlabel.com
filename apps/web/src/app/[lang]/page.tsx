@@ -25,7 +25,7 @@ export default async function RootPage({ params: { lang } }: PageProps) {
           <Link
             aria-label={intl.formatMessage({ id: "shop-now" })}
             className="btn btn-outline btn-primary btn-base absolute z-20 justify-self-center whitespace-nowrap uppercase"
-            href="/search"
+            href="/search/all"
           >
             {intl.formatMessage({ id: "shop-now" })}
           </Link>

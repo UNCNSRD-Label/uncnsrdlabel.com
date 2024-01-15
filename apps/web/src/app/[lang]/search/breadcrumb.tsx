@@ -14,7 +14,7 @@ export function Breadcrumb({ className }: { className?: string }) {
         </BreadcrumbLink>
       </BreadcrumbItem>
       <BreadcrumbItem isCurrentPage>
-        <BreadcrumbLink as={Link} href="/search">
+        <BreadcrumbLink as={Link} href="/search/all">
           Shop
         </BreadcrumbLink>
       </BreadcrumbItem>
