@@ -1,4 +1,4 @@
-import { Grid } from "@/components/grid/index";
+import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
 import { getAlternativeLanguages, getIntl } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
