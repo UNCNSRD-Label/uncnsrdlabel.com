@@ -26,17 +26,17 @@ import { useTrack } from "use-analytics";
 
 export function DeleteItemButton({
   cartId,
-  getDictionary,
+  dictionary,
   item,
 }: {
   cartId: string;
-  getDictionary: Usable<ResolvedIntlConfig["messages"]>;
+  dictionary: Usable<ResolvedIntlConfig["messages"]>;
   item: Pick<ComponentizableCartLine | CartLine, "id" | "quantity"> & {
     cost: Pick<CartLineCost, "totalAmount">;
     merchandise: Pick<Merchandise, "id">;
   };
 }) {
-  const messages = use<ResolvedIntlConfig["messages"]>(getDictionary);
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
   const locale = useSelector<string>(() => state$.lang.get());
 

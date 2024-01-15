@@ -13,12 +13,12 @@ import { type ResolvedIntlConfig } from "react-intl";
 
 function Submit({
   className,
-  getDictionary,
+  dictionary,
 }: {
   className?: string;
-  getDictionary: Usable<ResolvedIntlConfig["messages"]>;
+  dictionary: Usable<ResolvedIntlConfig["messages"]>;
 }) {
-  const messages = use<ResolvedIntlConfig["messages"]>(getDictionary);
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
   const locale = useSelector<string>(() => state$.lang.get());
 
@@ -36,8 +36,8 @@ function Submit({
   );
 }
 
-export function SignUpForm({ className, getDictionary }: { className?: string; getDictionary: Usable<ResolvedIntlConfig["messages"]>; }) {
-  const messages = use<ResolvedIntlConfig["messages"]>(getDictionary);
+export function SignUpForm({ className, dictionary }: { className?: string; dictionary: Usable<ResolvedIntlConfig["messages"]>; }) {
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
   const locale = useSelector<string>(() => state$.lang.get());
 
@@ -72,7 +72,7 @@ export function SignUpForm({ className, getDictionary }: { className?: string; g
       </div>
       <Submit
         className="btn btn-primary btn-solid btn-sm justify-self-end !no-underline"
-        getDictionary={getDictionary}
+        dictionary={dictionary}
       />
       {output ? <output className={cn("text-sm", {
         "text-red-500": hasError,

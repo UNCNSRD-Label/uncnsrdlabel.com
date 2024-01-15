@@ -2,6 +2,8 @@ import { PriceAndCompareAtPrice } from "@/components/price-and-compare-at-price"
 import { ProductDetailsTabs } from "@/components/product/details-tabs";
 import { PurchaseOptions } from "@/components/product/purchase-options";
 import { Prose } from "@/components/prose";
+import { getDictionary } from "@/lib/dictionary";
+import { state$ } from "@/lib/store";
 import {
   getFragmentData,
   imageFragment,
@@ -17,6 +19,10 @@ export function Details({
 }: {
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }) {
+  const lang = state$.lang.get();
+
+  const dictionary = getDictionary({ lang });
+
   const product = getFragmentData(
     productDetailsFragment,
     productDetailsFragmentRef,
@@ -66,6 +72,7 @@ export function Details({
         ) : null}
 
         <PurchaseOptions
+          dictionary={dictionary}
           productDetailsFragmentRef={productDetailsFragmentRef}
         />
 
