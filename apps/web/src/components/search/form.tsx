@@ -19,18 +19,18 @@ export function SearchForm({
   isOpen: boolean;
   setSearchIsOpen: (open: boolean) => void;
 }) {
-  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
+  const router = useRouter();
+
+  const searchParams = useSearchParams();
 
   const locale = useSelector<string>(() => state$.lang.get());
+
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
   const intl = createIntl({
     locale,
     messages,
   });
-
-  const router = useRouter();
-
-  const searchParams = useSearchParams();
 
   function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
