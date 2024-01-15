@@ -1,14 +1,21 @@
 "use client";
 
 import { SearchIcon } from "@/components/icons/search";
-import { getIntl } from "@/lib/i18n/server";
+import { createIntl } from "@formatjs/intl";
 import { Button } from "@uncnsrdlabel/components/ui/button";
 import { cn, createUrl } from "@uncnsrdlabel/lib";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Usable, use } from "react";
+import { type ResolvedIntlConfig } from "react-intl";
 import { useTrack } from "use-analytics";
 
-export function NavbarSearch({ className, lang, }: { className?: string; lang: Intl.BCP47LanguageTag; }) {
-  const intl = getIntl(lang);
+export function NavbarSearch({ className, getDictionary, lang }: { className?: string; getDictionary: Usable<ResolvedIntlConfig["messages"]>; lang: Intl.BCP47LanguageTag; }) {
+  const messages = use<ResolvedIntlConfig["messages"]>(getDictionary);
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   const router = useRouter();
 

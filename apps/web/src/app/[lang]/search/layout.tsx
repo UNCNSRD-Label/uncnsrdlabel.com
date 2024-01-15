@@ -3,17 +3,24 @@ import { NavbarContent } from "@/components/layout/navbar/content";
 import { Navbar } from "@/components/layout/navbar/index";
 import { Collections } from "@/components/layout/search/collections";
 import { FilterList } from "@/components/layout/search/filter/index";
-import { getIntl } from "@/lib/i18n/server";
+import { getDictionary } from "@/lib/dictionary";
 import { type LayoutProps } from "@/types/next";
+import { createIntl } from "@formatjs/intl";
 import { productCollectionSorting } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { PropsWithChildren } from "react";
+import { type ResolvedIntlConfig } from "react-intl";
 
 export default async function SearchLayout({
   children,
   params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
 }: PropsWithChildren<LayoutProps>) {
-  const intl = getIntl(lang);
+  const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   return (
     <>

@@ -1,12 +1,13 @@
-import { ResultOf } from "@graphql-typed-document-node/core";
 import {
-  getLocalizationDetailsQuery
+  getLocalizationDetailsHandler
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import merge from "deepmerge";
 import { deepKeys, getProperty } from 'dot-prop';
 import { type ResolvedIntlConfig } from "react-intl";
 
-export const getDictionary = async ({ localization, namespace }: { localization: ResultOf<typeof getLocalizationDetailsQuery>['localization']; namespace?: string }): Promise<ResolvedIntlConfig["messages"]> => {
+export const getDictionary = async ({ lang, namespace }: { lang: Intl.BCP47LanguageTag; namespace?: string }): Promise<ResolvedIntlConfig["messages"]> => {
+  const localization = await getLocalizationDetailsHandler({ lang });
+
   let languageFallback = {}
   let languageGeneric = {}
   let languageLocalised = {}

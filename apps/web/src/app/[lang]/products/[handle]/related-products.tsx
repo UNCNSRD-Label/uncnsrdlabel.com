@@ -1,6 +1,7 @@
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
-import { getIntl } from "@/lib/i18n/server";
+import { getDictionary } from "@/lib/dictionary";
+import { createIntl } from "@formatjs/intl";
 import {
   getFragmentData,
   getProductRecommendationsHandler,
@@ -8,6 +9,7 @@ import {
   type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
+import { type ResolvedIntlConfig } from "react-intl";
 
 export async function RelatedProducts({
   className,
@@ -18,7 +20,12 @@ export async function RelatedProducts({
   lang: Intl.BCP47LanguageTag
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }) {
-  const intl = getIntl(lang);
+  const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   const product = getFragmentData(
     productDetailsFragment,

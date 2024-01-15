@@ -3,14 +3,21 @@ import { NavbarContent } from "@/components/layout/navbar/content";
 import { Navbar } from "@/components/layout/navbar/index";
 import { PageCarousel } from "@/components/page/carousel/page-carousel";
 import { VideosHydrated } from "@/components/page/videos/videos-hydrated";
-import { getIntl } from "@/lib/i18n/server";
+import { getDictionary } from "@/lib/dictionary";
 import { type PageProps } from "@/types/next";
+import { createIntl } from "@formatjs/intl";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
+import { type ResolvedIntlConfig } from "react-intl";
 
 const handle = "home";
 
 export default async function RootPage({ params: { lang } }: PageProps) {
-  const intl = getIntl(lang);
+  const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   return (
     <>

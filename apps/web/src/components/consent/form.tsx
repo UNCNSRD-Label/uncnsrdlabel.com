@@ -1,6 +1,8 @@
 "use client";
 
-import { getIntl } from "@/lib/i18n/server";
+import { state$ } from "@/lib/store";
+import { createIntl } from "@formatjs/intl";
+import { useSelector } from "@legendapp/state/react";
 import * as Checkbox from "@radix-ui/react-checkbox";
 import { CheckIcon } from "@radix-ui/react-icons";
 import { Button } from "@uncnsrdlabel/components/ui/button";
@@ -15,21 +17,28 @@ import {
   type ConsentSettings,
 } from "@uncnsrdlabel/lib";
 import { getCookie, setCookie } from "cookies-next";
-import { useState } from "react";
+import { Usable, use, useState } from "react";
+import { type ResolvedIntlConfig } from "react-intl";
 import { useTrack } from "use-analytics";
 
 type ConsentDialogProps = {
   className?: string;
-  // eslint-disable-next-line no-unused-vars
   acceptSelectedConsents: (event: React.FormEvent<HTMLFormElement>) => void;
   acceptAllConsents: () => void;
   denyAllAdditionalConsents: () => void;
-  
+  getDictionary: Usable<ResolvedIntlConfig["messages"]>;
   manageConsents: () => void;
 };
 
-export function ConsentForm(props: ConsentDialogProps) {
-  const intl = getIntl();
+export function ConsentForm({className, getDictionary, ...props}: ConsentDialogProps) {
+  const messages = use<ResolvedIntlConfig["messages"]>(getDictionary);
+
+  const locale = useSelector<string>(() => state$.lang.get());
+
+  const intl = createIntl({
+    locale,
+    messages,
+  });
 
   const track = useTrack();
 
@@ -92,7 +101,7 @@ export function ConsentForm(props: ConsentDialogProps) {
   return (
     <form
       onSubmit={acceptSelectedConsents}
-      className={cn("flex flex-col gap-4 text-xs", props.className)}
+      className={cn("flex flex-col gap-4 text-xs", className)}
     >
       {types.map((consent, index) => (
         <fieldset

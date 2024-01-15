@@ -1,9 +1,10 @@
 import { Grid } from "@/components/grid/index";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
+import { getDictionary } from "@/lib/dictionary";
 import { getAlternativeLanguages } from "@/lib/i18n";
-import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";
+import { createIntl } from "@formatjs/intl";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   getProductsHandler,
@@ -11,15 +12,21 @@ import {
   productSorting
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { type Metadata } from "next";
+import { type ResolvedIntlConfig } from "react-intl";
 
 const handle = "search";
 
 const path = `/search`;
 
-export function generateMetadata({
+export async function generateMetadata({
   params: { lang },
-}: PageProps): Metadata {
-  const intl = getIntl(lang);
+}: PageProps): Promise<Metadata> {
+  const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   const localization = state$.localization.get();
 
@@ -39,7 +46,12 @@ export default async function SearchPage({
   params: { lang },
   searchParams,
 }: PageProps) {
-  const intl = getIntl(lang);
+  const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   const { sort, q: query } = searchParams as { [key: string]: string };
   const { sortKey, reverse } =
