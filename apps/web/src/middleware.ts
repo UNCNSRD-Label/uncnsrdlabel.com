@@ -4,6 +4,7 @@ import {
   type LanguageCode,
 } from "@shopify/hydrogen/storefront-api-types";
 import { getLocalizationDetailsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { getLangProperties } from "@uncnsrdlabel/lib";
 import { check } from 'language-tags';
 import Negotiator from "negotiator";
 import { NextResponse, type NextRequest } from "next/server";
@@ -60,11 +61,9 @@ export async function middleware(request: NextRequest) {
   }
 
   {
-    const detectedLanguageCode =
-      (request.headers
-        .get("accept-language")
-        ?.split(",")?.[0]
-        .split("-")?.[0]?.toLocaleUpperCase() ?? defaultLanguageCode) as LanguageCode;
+    const detectedLang = request.headers.get("accept-language")?.split(",")?.[0] ?? process.env.NEXT_PUBLIC_DEFAULT_LOCALE!;
+
+    const { language: detectedLanguageCode } = getLangProperties(detectedLang);
 
     const detectedCountryCode = (request.geo?.country ?? defaultCountryCode) as CountryCode;
 
