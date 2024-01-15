@@ -40,7 +40,7 @@ export function ConsentForm(props: ConsentDialogProps) {
 
     setCookie(COOKIE_CONSENT, consentParams, cookieOptions);
 
-    track("consent_accept_selected", consentParams);
+    track("Consent - accept selected", consentParams);
 
     console.info("Granting selected consents");
 
@@ -52,7 +52,7 @@ export function ConsentForm(props: ConsentDialogProps) {
   const acceptAllConsents = () => {
     setCookie(COOKIE_CONSENT, acceptAllConsentSettings, cookieOptions);
 
-    track("consent_accept_all", acceptAllConsentSettings);
+    track("Consent - accept all", acceptAllConsentSettings);
 
     console.info("Accepting all consents");
 
@@ -62,7 +62,7 @@ export function ConsentForm(props: ConsentDialogProps) {
   const denyAllAdditionalConsents = () => {
     setCookie(COOKIE_CONSENT, denyAllAdditionalConsentSettings, cookieOptions);
 
-    track("consent_deny_all", denyAllAdditionalConsentSettings);
+    track("Consent - deny all", denyAllAdditionalConsentSettings);
 
     console.info("Denying all additional consents");
 
@@ -72,7 +72,7 @@ export function ConsentForm(props: ConsentDialogProps) {
   const manageConsents = () => {
     setOptionsOpen(true);
     
-    track("consent_manage", denyAllAdditionalConsentSettings);
+    track("Consent - manage", denyAllAdditionalConsentSettings);
 
     console.info("Manage consents");
 

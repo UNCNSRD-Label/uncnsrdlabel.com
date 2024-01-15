@@ -6705,7 +6705,7 @@ export enum CountryCode {
   Tn = 'TN',
   /** Tonga. */
   To = 'TO',
-  /** Türkiye. */
+  /** Turkey. */
   Tr = 'TR',
   /** Trinidad & Tobago. */
   Tt = 'TT',
@@ -20709,8 +20709,7 @@ export type MarketCurrencySettings = {
    * Whether or not local currencies are enabled. If enabled, then prices will
    * be converted to give each customer the best experience based on their
    * region. If disabled, then all customers in this market will see prices
-   * in the market's base currency. For single country markets this will be true when
-   * the market's base currency is the same as the default currency for the region.
+   * in the market's base currency.
    *
    */
   localCurrencies: Scalars['Boolean']['output'];
@@ -21110,7 +21109,7 @@ export type MarketWebPresence = Node & {
   /**
    * The ISO code for the default locale. When a domain is used, this is the locale that will
    * be used when the domain root is accessed. For example, if French is the default locale,
-   * and `example.ca` is the market’s domain, then `example.ca` will load in French.
+   * and `example.ca` is the market’s domian, then `example.ca` will load in French.
    *
    */
   defaultLocale: Scalars['String']['output'];

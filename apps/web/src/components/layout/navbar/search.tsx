@@ -5,7 +5,6 @@ import { useGetIntl } from "@/lib/i18n";
 import { Button } from "@uncnsrdlabel/components/ui/button";
 import { createUrl } from "@uncnsrdlabel/lib";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useTrack } from "use-analytics";
 
 export function NavbarSearch() {
   const intl = useGetIntl("component.NavbarSearch");
@@ -13,26 +12,15 @@ export function NavbarSearch() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const track = useTrack();
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
 
-  function onSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    const val = event.target as HTMLFormElement;
+    const val = e.target as HTMLFormElement;
     const search = val.search as HTMLInputElement;
     const newParams = new URLSearchParams(searchParams.toString());
 
-    const { dataset } = event.currentTarget;
-
-    const { value } = search
-
-    track("search", {
-      ...dataset,
-      value,
-    });
-
-    if (value) {
-      newParams.set("q", value);
+    if (search.value) {
+      newParams.set("q", search.value);
     } else {
       newParams.delete("q");
     }

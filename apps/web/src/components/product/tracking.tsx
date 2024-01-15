@@ -5,14 +5,18 @@ import {
   productDetailsFragment,
   type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
-import { useTrack } from "use-analytics";
+import { usePage, useTrack } from "use-analytics";
 
 export const Tracking = ({
   productDetailsFragmentRef,
 }: {
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }) => {
+  const page = usePage();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const track = useTrack();
 
   const product = getFragmentData(
@@ -20,22 +24,19 @@ export const Tracking = ({
     productDetailsFragmentRef,
   );
 
-  const item = {
-    discount: Number.parseInt(product.priceRange.minVariantPrice.amount) - Number.parseInt(product.compareAtPriceRange.minVariantPrice.amount),
-    item_brand: product.vendor,
-    item_category: product.collections.edges[0].node.title,
-    item_id: product.id,
-    item_name: product.title,
-    price: product.priceRange.minVariantPrice.amount,
-  }
-
   useEffect(() => {
-    track("view_item", {
-      currency: product.compareAtPriceRange.minVariantPrice.currencyCode,
-      value: product.priceRange.minVariantPrice.amount,
-      items: [item],
+    track("product", {
+      product,
     });
   }, [product, track]);
+
+  useEffect(() => {
+    page();
+  }, [page, pathname, searchParams]);
+
+  useEffect(() => {
+    page();
+  }, [page, pathname, searchParams]);
 
   return null;
 };

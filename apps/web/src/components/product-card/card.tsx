@@ -1,4 +1,3 @@
-import { AddToCart } from "@/components/cart/add-to-cart";
 import { Image } from "@/components/media/image";
 import { type ProductVariant } from "@shopify/hydrogen/storefront-api-types";
 import {
@@ -11,6 +10,7 @@ import {
 import { cn } from "@uncnsrdlabel/lib";
 import { Product as ProductSchema, WithContext } from "schema-dts";
 import { PriceAndCompareAtPrice } from "../price-and-compare-at-price";
+import { AddToCart } from "./add-to-cart";
 
 export function ProductCard({
   className,
@@ -92,7 +92,7 @@ export function ProductCard({
             {product.title}
           </h3>
           <PriceAndCompareAtPrice
-            className="text-xs font-semibold mb-4"
+            className="text-xs font-semibold"
             productDetailsFragmentRef={productDetailsFragmentRef}
           />
           {/* <PurchaseOptions
@@ -100,10 +100,8 @@ export function ProductCard({
           /> */}
           <AddToCart
             availableForSale={product.availableForSale}
-            container="ProductCard"
             options={product.options}
             variants={variants}
-            view="compact"
           />
         </div>
       </div>

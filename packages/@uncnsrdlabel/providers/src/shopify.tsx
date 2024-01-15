@@ -16,7 +16,7 @@ const storefrontApiVersion =
 
 export function AppShopifyProvider({
   children,
-  lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE!,
+  lang,
 }: PropsWithChildren<{
   lang: Intl.BCP47LanguageTag;
 }>) {
