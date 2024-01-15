@@ -7,16 +7,18 @@ import {
   productVariantConnectionFragment,
   type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-
-interface PurchaseOptionsProps {
-  className?: string;
-  id?: string;
-  productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
-}
+import { Usable } from "react";
+import { type ResolvedIntlConfig } from "react-intl";
 
 export const PurchaseOptions = ({
+  dictionary,
   productDetailsFragmentRef,
-}: PurchaseOptionsProps) => {
+}: {
+  className?: string;
+  dictionary: Usable<ResolvedIntlConfig["messages"]>;
+  id?: string;
+  productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
+}) => {
   const product = getFragmentData(
     productDetailsFragment,
     productDetailsFragmentRef,
@@ -38,6 +40,7 @@ export const PurchaseOptions = ({
       <AddToCart
         availableForSale={product.availableForSale}
         container="PurchaseOptions"
+        dictionary={dictionary}
         options={product.options}
         variants={variants}
       />

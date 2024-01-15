@@ -27,20 +27,20 @@ import { type ResolvedIntlConfig } from "react-intl";
 export function EditItemQuantityButton({
   cartId,
   className,
-  getDictionary,
+  dictionary,
   item,
   type,
 }: {
   cartId: string;
   className?: string;
-  getDictionary: Usable<ResolvedIntlConfig["messages"]>;
+  dictionary: Usable<ResolvedIntlConfig["messages"]>;
   item: Pick<ComponentizableCartLine | CartLine, "id" | "quantity"> & {
     cost: Pick<CartLineCost, "totalAmount">;
     merchandise: Pick<Merchandise, "id">;
   };
   type: "plus" | "minus";
 }) {
-  const messages = use<ResolvedIntlConfig["messages"]>(getDictionary);
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
   const locale = useSelector<string>(() => state$.lang.get());
 

@@ -1,8 +1,8 @@
 import { ProductCard } from "@/components/product-card/card";
 import { state$ } from "@/lib/store";
 import {
-    getProductDetailsByHandleQuery,
-    getShopifyGraphQL
+  getProductDetailsByHandleQuery,
+  getShopifyGraphQL
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getLangProperties } from "@uncnsrdlabel/lib";
 

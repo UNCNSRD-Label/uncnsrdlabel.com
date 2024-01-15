@@ -10,16 +10,16 @@ import { type ResolvedIntlConfig } from "react-intl";
 
 export function SearchForm({
   className,
-  getDictionary,
+  dictionary,
   isOpen,
   setSearchIsOpen,
 }: {
   className?: string;
-  getDictionary: Usable<ResolvedIntlConfig["messages"]>;
+  dictionary: Usable<ResolvedIntlConfig["messages"]>;
   isOpen: boolean;
   setSearchIsOpen: (open: boolean) => void;
 }) {
-  const messages = use<ResolvedIntlConfig["messages"]>(getDictionary);
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
   const locale = useSelector<string>(() => state$.lang.get());
 

@@ -20,7 +20,9 @@ export async function NavbarContent({
   lang = state$.lang.get(),
   showLogo = false,
 }: { lang: Intl.BCP47LanguageTag; showLogo?: boolean }) {
-  const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
+  const dictionary = getDictionary({ lang });
+
+  const messages: ResolvedIntlConfig["messages"] = await dictionary;
 
   const intl = createIntl({
     locale: lang,
@@ -41,7 +43,7 @@ export async function NavbarContent({
               <MenuIcon className="icon h-5 stroke-inherit drop-shadow" />
             }
           >
-            <SidebarMenu getDictionary={getDictionary} lang={lang} menu={menu} />
+            <SidebarMenu dictionary={dictionary} lang={lang} menu={menu} />
           </Suspense>
         </div>
       </div>
@@ -57,7 +59,7 @@ export async function NavbarContent({
       </div>
 
       <div className="pointer-events-auto flex items-center justify-end gap-5">
-        <Search />
+        <Search dictionary={dictionary} />
         <Link
           href="/account"
           aria-label={intl.formatMessage({ id: "component.NavbarContent.link-account" })}
@@ -74,7 +76,7 @@ export async function NavbarContent({
           </Link>
         )}
         <Suspense fallback={<OpenCart />}>
-          <Cart getDictionary={getDictionary} />
+          <Cart dictionary={dictionary} />
         </Suspense>
       </div>
     </>

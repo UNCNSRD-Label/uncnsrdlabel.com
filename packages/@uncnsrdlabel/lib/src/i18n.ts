@@ -19,7 +19,7 @@ export function getLangProperties(lang: Intl.BCP47LanguageTag) {
   // @ts-expect-error Property 'getCanonicalLocales' does not exist on type 'typeof Intl'.
   const [canonicalLocale] = Intl.getCanonicalLocales(lang)
 
-  const locale = new Intl.Locale(lang);
+  const locale = canonicalLocale;
 
   const country = locale.region as InputMaybe<CountryCode>;
 

@@ -32,14 +32,14 @@ export async function CartForm({
   cart,
   cartId,
   container,
-  getDictionary,
+  dictionary,
 }: {
   cart?: ResultOf<typeof cartFragment> | null;
   cartId: string;
   container?: string;
-  getDictionary: Usable<ResolvedIntlConfig["messages"]>;
+  dictionary: Usable<ResolvedIntlConfig["messages"]>;
 }) {
-  const messages = use<ResolvedIntlConfig["messages"]>(getDictionary);
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
   const locale = useSelector<string>(() => state$.lang.get());
 
@@ -110,7 +110,7 @@ export async function CartForm({
                 >
                   <div className="relative flex w-full flex-row justify-between px-1 py-4 items-end">
                     <div className="absolute z-40 -mt-2 ml-[55px] self-start">
-                      <DeleteItemButton cartId={cartId} getDictionary={getDictionary} item={item} />
+                      <DeleteItemButton cartId={cartId} dictionary={dictionary} item={item} />
                     </div>
                     <Link
                       className="z-30 flex flex-row space-x-4 mb-3"
@@ -148,7 +148,7 @@ export async function CartForm({
                           <EditItemQuantityButton
                             cartId={cartId}
                             className={editItemQuantityButtonclassName}
-                            getDictionary={getDictionary}
+                            dictionary={dictionary}
                             item={item}
                             type="minus"
                           />
@@ -163,7 +163,7 @@ export async function CartForm({
                           <EditItemQuantityButton
                             cartId={cartId}
                             className={editItemQuantityButtonclassName}
-                            getDictionary={getDictionary}
+                            dictionary={dictionary}
                             item={item}
                             type="plus"
                           />

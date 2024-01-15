@@ -1,5 +1,7 @@
 import { AddToCart } from "@/components/cart/add-to-cart";
 import { Image } from "@/components/media/image";
+import { getDictionary } from "@/lib/dictionary";
+import { state$ } from "@/lib/store";
 import { type ProductVariant } from "@shopify/hydrogen/storefront-api-types";
 import {
   getFragmentData,
@@ -19,6 +21,10 @@ export function ProductCard({
   className?: string;
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }) {
+  const lang = state$.lang.get();
+
+  const dictionary = getDictionary({ lang });
+
   const product = getFragmentData(
     productDetailsFragment,
     productDetailsFragmentRef,
@@ -101,6 +107,7 @@ export function ProductCard({
           <AddToCart
             availableForSale={product.availableForSale}
             container="ProductCard"
+            dictionary={dictionary}
             options={product.options}
             variants={variants}
             view="compact"

@@ -9,8 +9,8 @@ import { Usable, use } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
 import { useTrack } from "use-analytics";
 
-export function NavbarSearch({ className, getDictionary, lang }: { className?: string; getDictionary: Usable<ResolvedIntlConfig["messages"]>; lang: Intl.BCP47LanguageTag; }) {
-  const messages = use<ResolvedIntlConfig["messages"]>(getDictionary);
+export function NavbarSearch({ className, dictionary, lang }: { className?: string; dictionary: Usable<ResolvedIntlConfig["messages"]>; lang: Intl.BCP47LanguageTag; }) {
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
   const intl = createIntl({
     locale: lang,

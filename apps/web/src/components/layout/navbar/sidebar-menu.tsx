@@ -20,11 +20,11 @@ import { type PartialDeep } from "type-fest";
 import { NavbarSearch } from "./search";
 
 export function SidebarMenu({
-  getDictionary,
+  dictionary,
   lang,
   menu,
 }: {
-  getDictionary: Usable<ResolvedIntlConfig["messages"]>;
+  dictionary: Usable<ResolvedIntlConfig["messages"]>;
   lang: Intl.BCP47LanguageTag;
   menu: PartialDeep<
     Menu,
@@ -33,7 +33,7 @@ export function SidebarMenu({
     }
   >;
 }) {
-  const messages = use<ResolvedIntlConfig["messages"]>(getDictionary);
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
   const locale = useSelector<string>(() => state$.lang.get());
 
@@ -124,7 +124,7 @@ export function SidebarMenu({
                 </Button>
 
                 <div className="mb-4 w-full">
-                  <NavbarSearch getDictionary={getDictionary} lang={lang} />
+                  <NavbarSearch dictionary={dictionary} lang={lang} />
                 </div>
                 {menu?.items?.length && menu?.items?.length > 0 ? (
                   <ul className="flex flex-1 flex-col gap-2">

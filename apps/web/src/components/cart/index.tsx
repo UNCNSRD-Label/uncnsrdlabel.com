@@ -21,8 +21,8 @@ import { Fragment, Usable, use, useCallback, useEffect, useRef, useState } from 
 import { type ResolvedIntlConfig } from "react-intl";
 import { useTrack } from "use-analytics";
 
-export function Cart({getDictionary}: { getDictionary: Usable<ResolvedIntlConfig["messages"]> }) {
-  const messages = use<ResolvedIntlConfig["messages"]>(getDictionary);
+export function Cart({dictionary}: { dictionary: Usable<ResolvedIntlConfig["messages"]> }) {
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
   const locale = useSelector<string>(() => state$.lang.get());
 
@@ -133,7 +133,7 @@ export function Cart({getDictionary}: { getDictionary: Usable<ResolvedIntlConfig
                 </Button>
               </div>
 
-              <CartForm cart={cart} cartId={cartId} container="Cart" getDictionary={getDictionary} />
+              <CartForm cart={cart} cartId={cartId} container="Cart" dictionary={dictionary} />
             </Dialog.Panel>
           </Transition.Child>
         </Dialog>

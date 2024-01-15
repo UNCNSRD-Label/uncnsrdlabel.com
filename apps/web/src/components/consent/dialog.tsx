@@ -16,8 +16,8 @@ import { type ResolvedIntlConfig } from "react-intl";
 import { useTrack } from "use-analytics";
 import { ConsentButton } from "./button";
 
-export function ConsentDialog({ className, getDictionary }: { className?: string; getDictionary: Usable<ResolvedIntlConfig["messages"]>; }) {
-  const messages = use<ResolvedIntlConfig["messages"]>(getDictionary);
+export function ConsentDialog({ className, dictionary }: { className?: string; dictionary: Usable<ResolvedIntlConfig["messages"]>; }) {
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
   const locale = useSelector<string>(() => state$.lang.get());
 
@@ -101,7 +101,7 @@ export function ConsentDialog({ className, getDictionary }: { className?: string
                 acceptSelectedConsents={acceptSelectedConsents}
                 acceptAllConsents={acceptAllConsents}
                 denyAllAdditionalConsents={denyAllAdditionalConsents}
-                getDictionary={getDictionary}
+                dictionary={dictionary}
                 manageConsents={manageConsents}
               />
             </Suspense>

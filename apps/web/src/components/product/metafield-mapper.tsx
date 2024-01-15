@@ -139,6 +139,7 @@ export async function MetafieldMapper({
       break;
     case "list.product_reference":
       {
+        console.log("list.product_reference", { lang })
         if (Array.isArray(parsedValue)) {
           value = parsedValue.map(async (id, index) => {
             if (typeof id === "string") {

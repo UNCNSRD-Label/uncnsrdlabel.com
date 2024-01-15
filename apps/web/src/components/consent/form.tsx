@@ -26,12 +26,12 @@ type ConsentDialogProps = {
   acceptSelectedConsents: (event: React.FormEvent<HTMLFormElement>) => void;
   acceptAllConsents: () => void;
   denyAllAdditionalConsents: () => void;
-  getDictionary: Usable<ResolvedIntlConfig["messages"]>;
+  dictionary: Usable<ResolvedIntlConfig["messages"]>;
   manageConsents: () => void;
 };
 
-export function ConsentForm({className, getDictionary, ...props}: ConsentDialogProps) {
-  const messages = use<ResolvedIntlConfig["messages"]>(getDictionary);
+export function ConsentForm({className, dictionary, ...props}: ConsentDialogProps) {
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
   const locale = useSelector<string>(() => state$.lang.get());
 

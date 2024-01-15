@@ -41331,7 +41331,7 @@ export enum SellingPlanRecurringDeliveryPolicyPreAnchorBehavior {
   Next = 'NEXT'
 }
 
-/** Represents a recurring selling plan pricing policy. */
+/** Represents a recurring selling plan pricing policy. It applies after the fixed pricing policy. By using the afterCycle parameter, you can specify the cycle when the recurring pricing policy comes into effect. Recurring pricing policies are not available for deferred purchase options. */
 export type SellingPlanRecurringPricingPolicy = SellingPlanPricingPolicyBase & {
   __typename?: 'SellingPlanRecurringPricingPolicy';
   /** The price adjustment type. */
