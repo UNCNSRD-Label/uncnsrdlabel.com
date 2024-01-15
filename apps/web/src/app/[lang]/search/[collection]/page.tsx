@@ -81,16 +81,16 @@ export default async function CategoryPage({
   const results = collectionConnection.edges.length;
 
   return (
-    <section>
+    <>
       {results === 0 ? (
         <p className="py-3 text-lg">
           {intl.formatMessage({ id: "no-products-found" })}
         </p>
       ) : (
-        <Grid className="w-full max-w-7xl grid-cols-2 lg:grid-cols-3">
+        <Grid className="grid-cols-2 lg:grid-cols-3 w-full max-w-7xl">
           <ProductGridItems productFragmentRefs={productFragmentRefs} />
         </Grid>
       )}
-    </section>
+    </>
   );
 }

@@ -10,8 +10,6 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { type Metadata } from "next";
 
-// export const runtime = "edge";
-
 const handle = "search";
 
 const path = `/search`;
