@@ -17,9 +17,8 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { DEFAULT_OPTION, cn, createUrl } from "@uncnsrdlabel/lib";
 import Image from "next/image";
-import { Suspense, useCallback } from "react";
+import { Suspense } from "react";
 import { SlBag } from "react-icons/sl";
-import { useTrack } from "use-analytics";
 
 type MerchandiseSearchParams = {
   [key: string]: string;
@@ -28,24 +27,11 @@ type MerchandiseSearchParams = {
 export function CartForm({
   cart,
   cartId,
-  container,
 }: {
-  cart?: ResultOf<typeof cartFragment> | null;
+  cart: ResultOf<typeof cartFragment> | null;
   cartId: string;
-  container?: string;
 }) {
   const intl = useGetIntl("component.CartForm");
-  
-  const track = useTrack();
-
-  const handleClickTrack = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    const { dataset } = event.currentTarget;
-
-    track("begin_checkout", {
-      ...dataset,
-      container,
-    });
-  };
 
   const lines = cart?.lines.edges.map((edge) => edge?.node);
 
@@ -193,10 +179,6 @@ export function CartForm({
           <a
             href={cart.checkoutUrl}
             className="text-light dark:text-dark flex w-full items-center justify-center bg-black p-3 text-sm font-medium uppercase opacity-90 hover:opacity-100 dark:bg-white"
-            onClick={useCallback(
-              handleClickTrack,
-              [],
-            )}
           >
             {intl.formatMessage({ id: "proceed-to-checkout" })}
           </a>

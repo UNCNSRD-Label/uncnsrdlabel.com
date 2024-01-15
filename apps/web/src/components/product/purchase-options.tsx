@@ -14,9 +14,7 @@ interface PurchaseOptionsProps {
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }
 
-export const PurchaseOptions = ({
-  productDetailsFragmentRef,
-}: PurchaseOptionsProps) => {
+export const PurchaseOptions = ({ productDetailsFragmentRef }: PurchaseOptionsProps) => {
   const product = getFragmentData(
     productDetailsFragment,
     productDetailsFragmentRef,
@@ -33,16 +31,15 @@ export const PurchaseOptions = ({
 
   return (
     <>
-      <VariantSelector options={product.options} productDetailsFragmentRef={productDetailsFragmentRef} variants={variants} />
+      <VariantSelector options={product.options} variants={variants} />
 
       <AddToCart
         availableForSale={product.availableForSale}
-        container="PurchaseOptions"
         options={product.options}
         variants={variants}
       />
     </>
   );
-};
+}
 
 PurchaseOptions.displayName = "PurchaseOptions";

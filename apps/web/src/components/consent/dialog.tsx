@@ -49,7 +49,7 @@ export function ConsentDialog({ className }: { className?: string }) {
   };
 
   const onClose = () => {
-    track("consent_close");
+    track("Consent - close");
 
     setOpen(false);
 

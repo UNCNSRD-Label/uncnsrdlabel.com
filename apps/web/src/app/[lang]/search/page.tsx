@@ -3,7 +3,6 @@ import { ProductGridItems } from "@/components/layout/product-grid-items";
 import { getAlternativeLanguages, getIntl } from "@/lib/i18n";
 import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";
-import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   getProductsHandler,
   productDefaultSort,
@@ -18,6 +17,7 @@ const handle = "search";
 const path = `/search`;
 
 export async function generateMetadata(): Promise<Metadata> {
+
   const lang = state$.lang.get();
 
   const localization = state$.localization.get();
@@ -26,9 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     alternates: {
-      canonical: `${localization.language.isoCode.toLocaleLowerCase()}-${
-        localization.country.isoCode
-      }/${path}`,
+      canonical: `${localization.language.isoCode.toLocaleLowerCase()}-${localization.country.isoCode}/${path}`,
       languages: await getAlternativeLanguages({ localization, path }),
     },
     title: intl.formatMessage({ id: "title" }),
@@ -62,21 +60,13 @@ export default async function SearchPage({
   return (
     <>
       {query ? (
-        <header className="mb-8">
-          <span>
-            {intl.formatMessage({ id: "results" }, { query, results })}
-          </span>
-        </header>
+        <p>{intl.formatMessage({ id: "results" }, { query, results })}</p>
       ) : null}
       {productFragmentRefs.length > 0 ? (
-        <Grid className="w-full max-w-7xl grid-cols-2 lg:grid-cols-3">
+        <Grid className="grid-cols-2 lg:grid-cols-3 w-full max-w-7xl">
           <ProductGridItems productFragmentRefs={productFragmentRefs} />
         </Grid>
-      ) : (
-        <Link className="btn" href="/search">
-          {intl.formatMessage({ id: "reset" })}
-        </Link>
-      )}
+      ) : null}
     </>
   );
 }
