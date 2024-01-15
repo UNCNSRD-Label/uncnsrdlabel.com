@@ -1,8 +1,10 @@
 "use client";
 
 import { LoadingDots } from "@/components/loading/dots";
-import { getIntl } from "@/lib/i18n/server";
+import { state$ } from "@/lib/store";
+import { createIntl } from "@formatjs/intl";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
+import { useSelector } from "@legendapp/state/react";
 import {
   type CartLine,
   type CartLineCost,
@@ -19,23 +21,33 @@ import {
   getShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
+import { Usable, use } from "react";
+import { type ResolvedIntlConfig } from "react-intl";
 
 export function EditItemQuantityButton({
   cartId,
   className,
+  getDictionary,
   item,
   type,
 }: {
   cartId: string;
   className?: string;
-  
+  getDictionary: Usable<ResolvedIntlConfig["messages"]>;
   item: Pick<ComponentizableCartLine | CartLine, "id" | "quantity"> & {
     cost: Pick<CartLineCost, "totalAmount">;
     merchandise: Pick<Merchandise, "id">;
   };
   type: "plus" | "minus";
 }) {
-const intl = getIntl();
+  const messages = use<ResolvedIntlConfig["messages"]>(getDictionary);
+
+  const locale = useSelector<string>(() => state$.lang.get());
+
+  const intl = createIntl({
+    locale,
+    messages,
+  });
 
   const payload = {
     id: item.id,

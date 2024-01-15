@@ -1,8 +1,10 @@
 "use client";
 
 import { LoadingDots } from "@/components/loading/dots";
-import { getIntl } from "@/lib/i18n/server";
+import { state$ } from "@/lib/store";
+import { createIntl } from "@formatjs/intl";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import { useSelector } from "@legendapp/state/react";
 import {
   type CartLine,
   type CartLineCost,
@@ -15,24 +17,33 @@ import {
   getCartQuery,
   getQueryKey,
   getShopifyGraphQL,
-  removeFromCartMutation,
+  removeFromCartMutation
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
-import { useCallback } from "react";
+import { Usable, use, useCallback } from "react";
+import { type ResolvedIntlConfig } from "react-intl";
 import { useTrack } from "use-analytics";
 
 export function DeleteItemButton({
   cartId,
+  getDictionary,
   item,
 }: {
   cartId: string;
-  
+  getDictionary: Usable<ResolvedIntlConfig["messages"]>;
   item: Pick<ComponentizableCartLine | CartLine, "id" | "quantity"> & {
     cost: Pick<CartLineCost, "totalAmount">;
     merchandise: Pick<Merchandise, "id">;
   };
 }) {
-  const intl = getIntl();
+  const messages = use<ResolvedIntlConfig["messages"]>(getDictionary);
+
+  const locale = useSelector<string>(() => state$.lang.get());
+
+  const intl = createIntl({
+    locale,
+    messages,
+  });
 
   const payload = item.id;
 

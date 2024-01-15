@@ -1,37 +1,39 @@
 "use client";
 
 import { LoadingDots } from "@/components/loading/dots";
-import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
+import { createIntl } from "@formatjs/intl";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { useSelector } from "@legendapp/state/react";
 import {
-    type CartLineInput,
-    type ProductOption,
-    type ProductVariant,
+  type CartLineInput,
+  type ProductOption,
+  type ProductVariant,
 } from "@shopify/hydrogen/storefront-api-types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button, type ButtonProps } from "@uncnsrdlabel/components/ui/button";
 import {
-    addToCartMutation,
-    cartFragment,
-    createCartMutation,
-    getCartQuery,
-    getFragmentData,
-    getQueryKey,
-    getShopifyGraphQL,
-    type AddToCartMutationVariables,
-    type CreateCartMutationVariables,
+  addToCartMutation,
+  cartFragment,
+  createCartMutation,
+  getCartQuery,
+  getFragmentData,
+  getQueryKey,
+  getShopifyGraphQL,
+  type AddToCartMutationVariables,
+  type CreateCartMutationVariables,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, useGetLangProperties } from "@uncnsrdlabel/lib";
 import { useSearchParams } from "next/navigation";
-import { Suspense, useCallback } from "react";
+import { Suspense, Usable, use, useCallback } from "react";
+import { type ResolvedIntlConfig } from "react-intl";
 import { useTrack } from "use-analytics";
 
 function SubmitButton({
   availableForSale,
   className,
   container,
+  getDictionary,
   selectedVariantId,
   size,
   variant,
@@ -40,13 +42,20 @@ function SubmitButton({
   availableForSale: boolean;
   className?: string;
   container?: string;
-  
+  getDictionary: Usable<ResolvedIntlConfig["messages"]>;
   selectedVariantId: string | undefined;
   size: ButtonProps['size'];
   variant: ButtonProps['variant'];
   view?: "compact" | "standard";
 }) {
-  const intl = getIntl();
+  const messages = use<ResolvedIntlConfig["messages"]>(getDictionary);
+
+  const locale = useSelector<string>(() => state$.lang.get());
+
+  const intl = createIntl({
+    locale,
+    messages,
+  });
 
   const buttonClasses = cn("flex gap-2 relative w-full", {
     "justify-center": view === "standard",
@@ -231,6 +240,7 @@ export function AddToCart({
   availableForSale,
   className,
   container,
+  getDictionary,
   options,
   variants,
   view = "standard",
@@ -238,7 +248,7 @@ export function AddToCart({
   availableForSale: boolean;
   className?: string;
   container?: string;
-  
+  getDictionary: Usable<ResolvedIntlConfig["messages"]>;
   options: ProductOption[];
   variants: Pick<ProductVariant, "id" | "selectedOptions">[];
   view?: "compact" | "standard";
@@ -291,6 +301,7 @@ export function AddToCart({
         availableForSale={availableForSale}
         className={className}
         container={container}
+        getDictionary={getDictionary}
         selectedVariantId={selectedVariantId}
         size={size}
         variant={variant}

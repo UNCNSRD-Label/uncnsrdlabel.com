@@ -3,9 +3,9 @@
 import { CloseCart } from "@/components/cart/close-cart";
 import { CartForm } from "@/components/cart/form";
 import { OpenCart } from "@/components/cart/open-cart";
-import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";
+import { createIntl } from "@formatjs/intl";
 import { Dialog, Transition } from "@headlessui/react";
 import { useSelector } from "@legendapp/state/react";
 import { useQuery } from "@tanstack/react-query";
@@ -17,11 +17,19 @@ import {
   getShopifyGraphQL
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
-import { Fragment, useCallback, useEffect, useRef, useState } from "react";
+import { Fragment, Usable, use, useCallback, useEffect, useRef, useState } from "react";
+import { type ResolvedIntlConfig } from "react-intl";
 import { useTrack } from "use-analytics";
 
-export function Cart() {
-  const intl = getIntl();
+export function Cart({getDictionary}: { getDictionary: Usable<ResolvedIntlConfig["messages"]> }) {
+  const messages = use<ResolvedIntlConfig["messages"]>(getDictionary);
+
+  const locale = useSelector<string>(() => state$.lang.get());
+
+  const intl = createIntl({
+    locale,
+    messages,
+  });
 
   const cartId = useSelector<string>(() => state$.cartId.get())
 
@@ -125,7 +133,7 @@ export function Cart() {
                 </Button>
               </div>
 
-              <CartForm cart={cart} cartId={cartId} container="Cart" />
+              <CartForm cart={cart} cartId={cartId} container="Cart" getDictionary={getDictionary} />
             </Dialog.Panel>
           </Transition.Child>
         </Dialog>

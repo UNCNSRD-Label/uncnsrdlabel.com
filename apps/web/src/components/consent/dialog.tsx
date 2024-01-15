@@ -2,19 +2,29 @@
 
 import { ConsentForm } from "@/components/consent/form";
 import { LoadingDots } from "@/components/loading/dots";
-import { getIntl } from "@/lib/i18n/server";
+import { state$ } from "@/lib/store";
+import { createIntl } from "@formatjs/intl";
+import { useSelector } from "@legendapp/state/react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { useTimeoutEffect } from "@react-hookz/web";
 import { Button } from "@uncnsrdlabel/components/ui/button";
 import { COOKIE_CONSENT } from "@uncnsrdlabel/lib";
 import { hasCookie } from "cookies-next";
-import { Suspense, useState } from "react";
+import { Suspense, Usable, use, useState } from "react";
+import { type ResolvedIntlConfig } from "react-intl";
 import { useTrack } from "use-analytics";
 import { ConsentButton } from "./button";
 
-export function ConsentDialog({ className }: { className?: string;  }) {
-  const intl = getIntl();
+export function ConsentDialog({ className, getDictionary }: { className?: string; getDictionary: Usable<ResolvedIntlConfig["messages"]>; }) {
+  const messages = use<ResolvedIntlConfig["messages"]>(getDictionary);
+
+  const locale = useSelector<string>(() => state$.lang.get());
+
+  const intl = createIntl({
+    locale,
+    messages,
+  });
 
   const [open, setOpen] = useState(false);
   
@@ -91,6 +101,7 @@ export function ConsentDialog({ className }: { className?: string;  }) {
                 acceptSelectedConsents={acceptSelectedConsents}
                 acceptAllConsents={acceptAllConsents}
                 denyAllAdditionalConsents={denyAllAdditionalConsents}
+                getDictionary={getDictionary}
                 manageConsents={manageConsents}
               />
             </Suspense>

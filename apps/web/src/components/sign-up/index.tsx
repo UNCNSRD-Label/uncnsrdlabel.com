@@ -1,11 +1,22 @@
 import { LoadingDots } from "@/components/loading/dots";
 import { SignUpForm } from "@/components/sign-up/form";
-import { getIntl } from "@/lib/i18n/server";
+import { getDictionary } from "@/lib/dictionary";
+import { state$ } from "@/lib/store";
 import { cn } from "@uncnsrdlabel/lib";
 import { Suspense } from "react";
+import { createIntl, type ResolvedIntlConfig } from "react-intl";
 
 export async function SignUp({ className }: { className?: string }) {
-  const intl = getIntl();
+  const lang = state$.lang.get();
+
+  const dictionary = getDictionary({ lang });
+
+  const messages: ResolvedIntlConfig["messages"] = await dictionary;
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   return (
     <section className={cn("grid gap-4", className)}>
@@ -14,7 +25,7 @@ export async function SignUp({ className }: { className?: string }) {
         {intl.formatMessage({ id: "component.SignUp.summary" })}
       </span>
       <Suspense fallback={<LoadingDots />}>
-        <SignUpForm />
+        <SignUpForm dictionary={dictionary} />
       </Suspense>
     </section>
   );

@@ -2,18 +2,24 @@ import { ConsentTrigger } from "@/components/consent/trigger";
 import { LogotypeIcon } from "@/components/icons/logotype";
 import { SignUp } from "@/components/sign-up";
 import { SocialMenu } from "@/components/social-menu";
-import { getIntl } from "@/lib/i18n/server";
+import { getDictionary } from "@/lib/dictionary";
 import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import { getMenuHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { createIntl, type ResolvedIntlConfig } from "react-intl";
 
 const { NEXT_PUBLIC_SITE_NAME } = process.env;
 
 export async function Footer() {
-  const intl = getIntl();
-
   const lang = state$.lang.get();
+
+  const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   const currentYear = new Date().getFullYear();
 

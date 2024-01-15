@@ -3,8 +3,9 @@ import { OpenCart } from "@/components/cart/open-cart";
 import { LogotypeIcon } from "@/components/icons/logotype";
 import { MenuIcon } from "@/components/icons/menu";
 import { Search } from "@/components/search/index";
-import { getIntl } from "@/lib/i18n/server";
+import { getDictionary } from "@/lib/dictionary";
 import { state$ } from "@/lib/store";
+import { createIntl } from "@formatjs/intl";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   getMenuHandler
@@ -12,13 +13,19 @@ import {
 import { cn } from "@uncnsrdlabel/lib";
 import { Suspense } from "react";
 import { SlHeart, SlUser } from "react-icons/sl";
+import { type ResolvedIntlConfig } from "react-intl";
 import { SidebarMenu } from "./sidebar-menu";
 
 export async function NavbarContent({
   lang = state$.lang.get(),
   showLogo = false,
 }: { lang: Intl.BCP47LanguageTag; showLogo?: boolean }) {
-  const intl = getIntl(lang);
+  const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   const menu = await getMenuHandler({
     variables: { handle: "next-js-frontend-header-menu" },
@@ -34,7 +41,7 @@ export async function NavbarContent({
               <MenuIcon className="icon h-5 stroke-inherit drop-shadow" />
             }
           >
-            <SidebarMenu lang={lang} menu={menu} />
+            <SidebarMenu getDictionary={getDictionary} lang={lang} menu={menu} />
           </Suspense>
         </div>
       </div>
@@ -67,7 +74,7 @@ export async function NavbarContent({
           </Link>
         )}
         <Suspense fallback={<OpenCart />}>
-          <Cart />
+          <Cart getDictionary={getDictionary} />
         </Suspense>
       </div>
     </>

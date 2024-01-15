@@ -1,7 +1,7 @@
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
+import { getDictionary } from "@/lib/dictionary";
 import { getAlternativeLanguages } from "@/lib/i18n";
-import { getIntl } from "@/lib/i18n/server";
 import { state$ } from "@/lib/store";
 import {
   collectionFragment,
@@ -14,6 +14,7 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { createIntl, type ResolvedIntlConfig } from "react-intl";
 
 export async function generateMetadata({
   params: { collection: handle },
@@ -57,9 +58,14 @@ export default async function CategoryPage({
   params: { collection: string };
   searchParams?: { [key: string]: string | string[] | undefined };
 }) {
-  const intl = getIntl();
-
   const lang = state$.lang.get();
+
+  const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   const { sort } = searchParams as { [key: string]: string };
   const { sortKey, reverse } =

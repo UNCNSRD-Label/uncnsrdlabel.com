@@ -1,19 +1,31 @@
 "use client";
 
 import { signUpAction } from "@/components/sign-up/action";
-import { getIntl } from "@/lib/i18n/server";
+import { state$ } from "@/lib/store";
+import { createIntl } from "@formatjs/intl";
+import { useSelector } from "@legendapp/state/react";
 import { Button } from "@uncnsrdlabel/components/ui/button";
 import { cn } from "@uncnsrdlabel/lib";
+import { Usable, use } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { SlEnvolope } from "react-icons/sl";
+import { type ResolvedIntlConfig } from "react-intl";
 
 function Submit({
   className,
+  getDictionary,
 }: {
   className?: string;
-  
+  getDictionary: Usable<ResolvedIntlConfig["messages"]>;
 }) {
-  const intl = getIntl();
+  const messages = use<ResolvedIntlConfig["messages"]>(getDictionary);
+
+  const locale = useSelector<string>(() => state$.lang.get());
+
+  const intl = createIntl({
+    locale,
+    messages,
+  });
 
   const status = useFormStatus();
 
@@ -24,8 +36,15 @@ function Submit({
   );
 }
 
-export function SignUpForm({ className }: { className?: string;  }) {
-  const intl = getIntl();
+export function SignUpForm({ className, getDictionary }: { className?: string; getDictionary: Usable<ResolvedIntlConfig["messages"]>; }) {
+  const messages = use<ResolvedIntlConfig["messages"]>(getDictionary);
+
+  const locale = useSelector<string>(() => state$.lang.get());
+
+  const intl = createIntl({
+    locale,
+    messages,
+  });
 
   const [output, formAction] = useFormState(signUpAction, null);
 
@@ -53,6 +72,7 @@ export function SignUpForm({ className }: { className?: string;  }) {
       </div>
       <Submit
         className="btn btn-primary btn-solid btn-sm justify-self-end !no-underline"
+        getDictionary={getDictionary}
       />
       {output ? <output className={cn("text-sm", {
         "text-red-500": hasError,

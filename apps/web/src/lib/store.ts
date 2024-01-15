@@ -34,7 +34,7 @@ const defaultState = {
   setLocalization: async ({ lang }: { lang: Intl.BCP47LanguageTag }) => {
     const localization = await getLocalizationDetailsHandler({ lang });
     
-    const messages: ResolvedIntlConfig["messages"] = await getDictionary({ localization });
+    const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
 
     state$.assign({
       localization,
@@ -42,8 +42,8 @@ const defaultState = {
     });
   },
   messages,
-  setMessages: async () => {
-    const messages: ResolvedIntlConfig["messages"] = await getDictionary({ localization: state$.localization.get() });
+  setMessages: async ({ lang }: { lang: Intl.BCP47LanguageTag }) => {
+    const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
 
     state$.assign({
       messages,

@@ -3,23 +3,28 @@
 import { CloseIcon } from "@/components/icons/close";
 import { LogotypeIcon } from "@/components/icons/logotype";
 import { MenuIcon } from "@/components/icons/menu";
-import { getIntl } from "@/lib/i18n/server";
+import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";
+import { createIntl } from "@formatjs/intl";
 import { Dialog } from "@headlessui/react";
+import { useSelector } from "@legendapp/state/react";
 import { type Menu } from "@shopify/hydrogen/storefront-api-types";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import { Button } from "@uncnsrdlabel/components/ui/button";
 import { cn } from "@uncnsrdlabel/lib";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Usable, use, useEffect, useState } from "react";
+import { type ResolvedIntlConfig } from "react-intl";
 import { type PartialDeep } from "type-fest";
 import { NavbarSearch } from "./search";
 
 export function SidebarMenu({
+  getDictionary,
   lang,
   menu,
 }: {
+  getDictionary: Usable<ResolvedIntlConfig["messages"]>;
   lang: Intl.BCP47LanguageTag;
   menu: PartialDeep<
     Menu,
@@ -28,7 +33,14 @@ export function SidebarMenu({
     }
   >;
 }) {
-  const intl = getIntl();
+  const messages = use<ResolvedIntlConfig["messages"]>(getDictionary);
+
+  const locale = useSelector<string>(() => state$.lang.get());
+
+  const intl = createIntl({
+    locale,
+    messages,
+  });
 
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -112,7 +124,7 @@ export function SidebarMenu({
                 </Button>
 
                 <div className="mb-4 w-full">
-                  <NavbarSearch lang={lang} />
+                  <NavbarSearch getDictionary={getDictionary} lang={lang} />
                 </div>
                 {menu?.items?.length && menu?.items?.length > 0 ? (
                   <ul className="flex flex-1 flex-col gap-2">

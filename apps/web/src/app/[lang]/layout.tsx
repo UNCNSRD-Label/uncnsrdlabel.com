@@ -4,19 +4,20 @@ import { Progress } from "@/components/layout/progress/index";
 import { SetState } from "@/components/layout/set-state";
 import { NavigationEvents } from "@/components/navigation-events";
 import { Organization } from "@/components/schema.org/organization";
-import { getIntl } from "@/lib/i18n/server";
+import { getDictionary } from "@/lib/dictionary";
 import { getBaseMetadata } from "@/lib/metadata";
 import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";
 import { type LayoutProps } from "@/types/next";
+import { createIntl } from "@formatjs/intl";
 import { type LanguageCode } from "@shopify/hydrogen/storefront-api-types";
 import { getLocalizationDetailsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 import {
-  PRE_GENERATED_BCP47_LANGUAGE_TAGS,
   cn,
   getIETFLanguageTagFromlocaleTag,
   getLangProperties,
   getLocaleObjectFromIETFLanguageTag,
+  PRE_GENERATED_BCP47_LANGUAGE_TAGS,
 } from "@uncnsrdlabel/lib";
 import { AppProviders } from "@uncnsrdlabel/providers";
 import { config } from "@uncnsrdlabel/tailwind-config";
@@ -25,6 +26,7 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import localFont from "next/font/local";
 import { PropsWithChildren, Suspense } from "react";
+import { type ResolvedIntlConfig } from "react-intl";
 import "../globals.css";
 
 export async function generateStaticParams({
@@ -60,10 +62,15 @@ export async function generateStaticParams({
   }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
-}: LayoutProps): Metadata {
-  const intl = getIntl(lang);
+}: LayoutProps): Promise<Metadata> {
+  const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   const baseMetadata = getBaseMetadata();
 
@@ -135,7 +142,7 @@ export default async function RootLayout({
   state$.language.set(language);
 
   // We set the localization details here for the specific language to ensure the state is set correctly for the lang in the path
-  state$.setLocalization({ lang });
+  await state$.setLocalization({ lang });
 
   return (
     <html

@@ -1,14 +1,20 @@
-import { getIntl } from "@/lib/i18n/server";
+import { getDictionary } from "@/lib/dictionary";
 import { state$ } from "@/lib/store";
 import { getCollectionRefsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { Suspense } from "react";
+import { createIntl, type ResolvedIntlConfig } from "react-intl";
 import { FilterList } from "./filter";
 
 async function CollectionList({ className }: { className?: string }) {
   const lang = state$.lang.get();
-  
-  const intl = getIntl();
+
+  const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   const collections = await getCollectionRefsHandler({
     lang,
