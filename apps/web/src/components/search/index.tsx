@@ -5,15 +5,26 @@ import { SearchForm } from "@/components/search/form";
 import { getDictionary } from "@/lib/dictionary";
 import { Suspense, useState } from "react";
 
-export function Search({ dictionary} : { dictionary: ReturnType<typeof getDictionary> }) {
+export function Search({
+  dictionary,
+  lang,
+}: {
+  dictionary: ReturnType<typeof getDictionary>;
+  lang: Intl.BCP47LanguageTag;
+}) {
   const [searchIsOpen, setSearchIsOpen] = useState(false);
 
   return (
     <div className="relative grid w-full items-center" tabIndex={-1}>
       <Suspense fallback={null}>
-        <SearchForm dictionary={dictionary} isOpen={searchIsOpen} setSearchIsOpen={setSearchIsOpen} />
+        <SearchForm
+          dictionary={dictionary}
+          isOpen={searchIsOpen}
+          lang={lang}
+          setSearchIsOpen={setSearchIsOpen}
+        />
       </Suspense>
-      <SearchButton isOpen={searchIsOpen} />
+      <SearchButton isOpen={searchIsOpen} lang={lang} />
     </div>
   );
 }

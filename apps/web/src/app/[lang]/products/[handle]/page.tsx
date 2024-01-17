@@ -1,9 +1,9 @@
 import { Details } from "@/components/product/details";
 import { getAlternativeLanguages } from "@/lib/i18n";
-import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";
 import {
   getFragmentData,
+  getLocalizationDetailsHandler,
   getProductDetailsByHandleHandler,
   productDetailsFragment,
   seoFragment
@@ -17,7 +17,7 @@ import { RelatedProducts } from "./related-products";
 export async function generateMetadata({
   params: { handle, lang },
 }: PageProps): Promise<Metadata> {
-  const localization = state$.localization.get();
+  const localization = await getLocalizationDetailsHandler({ lang });
 
   const path = `/products/${handle}`;
 
@@ -84,7 +84,7 @@ export default async function ProductPage({
         productDetailsFragmentRef={productDetailsFragmentRef}
       />
       <main className="mb-16 grid grid-cols-12 content-center bg-inherit min-h-[100dvh] lg:h-[100dvh] lg:overflow-y-hidden [&:has(+_aside)]:mb-0 lg:sticky top-0">
-        <Details productDetailsFragmentRef={productDetailsFragmentRef} />
+        <Details lang={lang} productDetailsFragmentRef={productDetailsFragmentRef} />
         {/* <ProductAdditionalDetails productDetailsFragmentRef={productDetailsFragmentRef} /> */}
       </main>
       <RelatedProducts

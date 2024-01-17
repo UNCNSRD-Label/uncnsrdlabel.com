@@ -11,8 +11,10 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 
 export function ProductVariantGridItems({
+  lang,
   productFragments,
 }: {
+  lang: Intl.BCP47LanguageTag;
   productFragments: FragmentType<typeof productBasicFragment>[];
 }) {
   return (
@@ -68,6 +70,7 @@ export function ProductVariantGridItems({
                   <Tile
                     className={transitionDelays[productIndex]}
                     image={product.featuredImage}
+                    lang={lang}
                     priority={productIndex <= 1}
                     productBasicFragmentRef={productBasicFragmentRef}
                     video={video}

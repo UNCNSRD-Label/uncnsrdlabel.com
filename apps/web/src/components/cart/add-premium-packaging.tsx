@@ -1,5 +1,4 @@
 import { ProductCard } from "@/components/product-card/card";
-import { state$ } from "@/lib/store";
 import {
   getProductDetailsByHandleQuery,
   getShopifyGraphQL
@@ -8,11 +7,11 @@ import { getLangProperties } from "@uncnsrdlabel/lib";
 
 export async function AddPremiumPackaging({
   className,
+  lang,
 }: {
   className?: string;
+  lang: Intl.BCP47LanguageTag;
 }) {
-  const lang = state$.lang.get();
-
   const handle = "premium-packaging";
 
   const inContextVariables = getLangProperties(lang);
@@ -33,6 +32,7 @@ export async function AddPremiumPackaging({
   return (
     <ProductCard
       className={className}
+      lang={lang}
       productDetailsFragmentRef={productDetailsFragmentRef}
     />
   );

@@ -10,9 +10,11 @@ import {
 import { HIDDEN_PRODUCT_TAG } from "@uncnsrdlabel/lib";
 
 export function ProductGridItems({
+  lang,
   limit = 128,
   productFragmentRefs,
 }: {
+  lang: Intl.BCP47LanguageTag;
   limit?: number;
   productFragmentRefs: FragmentType<typeof productBasicFragment>[];
 }) {
@@ -46,6 +48,7 @@ export function ProductGridItems({
                 className={transitionDelays[index]}
                 delay={index * 100}
                 image={product.featuredImage}
+                lang={lang}
                 priority={index <= 4}
                 productBasicFragmentRef={productBasicFragmentRef}
                 video={video}

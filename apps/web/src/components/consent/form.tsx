@@ -1,8 +1,6 @@
 "use client";
 
-import { state$ } from "@/lib/store";
 import { createIntl } from "@formatjs/intl";
-import { useSelector } from "@legendapp/state/react";
 import * as Checkbox from "@radix-ui/react-checkbox";
 import { CheckIcon } from "@radix-ui/react-icons";
 import { Button } from "@uncnsrdlabel/components/ui/button";
@@ -27,16 +25,15 @@ type ConsentDialogProps = {
   acceptAllConsents: () => void;
   denyAllAdditionalConsents: () => void;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
+  lang: Intl.BCP47LanguageTag;
   manageConsents: () => void;
 };
 
-export function ConsentForm({className, dictionary, ...props}: ConsentDialogProps) {
+export function ConsentForm({className, dictionary, lang, ...props}: ConsentDialogProps) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
-  const locale = useSelector<string>(() => state$.lang.get());
-
   const intl = createIntl({
-    locale,
+    locale: lang,
     messages,
   });
 

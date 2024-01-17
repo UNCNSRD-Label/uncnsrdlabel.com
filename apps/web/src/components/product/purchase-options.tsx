@@ -12,11 +12,11 @@ import { type ResolvedIntlConfig } from "react-intl";
 
 export const PurchaseOptions = ({
   dictionary,
+  lang,
   productDetailsFragmentRef,
 }: {
-  className?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
-  id?: string;
+  lang: Intl.BCP47LanguageTag;
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }) => {
   const product = getFragmentData(
@@ -41,6 +41,7 @@ export const PurchaseOptions = ({
         availableForSale={product.availableForSale}
         container="PurchaseOptions"
         dictionary={dictionary}
+        lang={lang}
         options={product.options}
         variants={variants}
       />

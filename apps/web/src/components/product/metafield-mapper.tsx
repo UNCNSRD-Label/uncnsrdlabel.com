@@ -1,5 +1,4 @@
 import { Tile } from "@/components/grid/tile";
-import { state$ } from "@/lib/store";
 import { transitionDelays } from "@/lib/tailwind";
 import { ResultOf } from "@graphql-typed-document-node/core";
 import {
@@ -48,16 +47,16 @@ const getTextFieldValueList = (parsedValue: JsonValue) => {
 export type MetafieldMapperProps = {
   excludedKeys?: string[];
   includedKeys?: string[];
+  lang: Intl.BCP47LanguageTag;
   metafield: ResultOf<typeof productMetafieldFragment> | MetaobjectField;
 };
 
 export async function MetafieldMapper({
   excludedKeys,
   includedKeys,
+  lang,
   metafield,
 }: MetafieldMapperProps) {
-  const lang = state$.lang.get();
-
   let value: ReactNode = null;
 
   let parsedValue = null;
@@ -126,6 +125,7 @@ export async function MetafieldMapper({
                       {MetafieldMapper({
                         excludedKeys,
                         includedKeys,
+                        lang,
                         metafield: field,
                       })}
                     </dd>
@@ -176,6 +176,7 @@ export async function MetafieldMapper({
                   <Tile
                     className={transitionDelays[index]}
                     image={product.featuredImage}
+                    lang={lang}
                     productDetailsFragmentRef={productDetailsFragmentRef}
                   />
                 </Link>

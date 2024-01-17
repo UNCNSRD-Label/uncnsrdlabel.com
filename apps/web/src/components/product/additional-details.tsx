@@ -7,8 +7,10 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 
 export function ProductAdditionalDetails({
+  lang,
   productDetailsFragmentRef,
 }: {
+  lang: Intl.BCP47LanguageTag;
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }) {
   const product = getFragmentData(
@@ -28,11 +30,13 @@ export function ProductAdditionalDetails({
       <MetaFields
         className="col-start-2 col-end-12 lg:col-end-7"
         excludedKeys={["complementary_products"]}
+        lang={lang}
         metafieldFragments={metafieldFragments}
       />
       <MetaFields
         className="col-start-2 col-end-12 lg:col-start-7"
         includedKeys={["complementary_products"]}
+        lang={lang}
         metafieldFragments={metafieldFragments}
       />
     </section>

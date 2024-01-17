@@ -1,24 +1,25 @@
 import { Tile } from "@/components/grid/tile";
-import { state$ } from "@/lib/store";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
-    getCollectionProductsHandler,
-    getFragmentData,
-    productBasicFragment,
-    type FragmentType,
+  getCollectionProductsHandler,
+  getFragmentData,
+  productBasicFragment,
+  type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 
 function ThreeItemGridItem({
+  background,
   className,
+  lang,
   productBasicFragmentRef,
   size,
-  background,
 }: {
+  background: "white" | "pink" | "purple" | "black";
   className?: string;
+  lang: Intl.BCP47LanguageTag;
   productBasicFragmentRef: FragmentType<typeof productBasicFragment>;
   size: "full" | "half";
-  background: "white" | "pink" | "purple" | "black";
 }) {
   const product = getFragmentData(
     productBasicFragment,
@@ -42,6 +43,7 @@ function ThreeItemGridItem({
         <Tile
           background={background}
           image={product.featuredImage}
+          lang={lang}
           productBasicFragmentRef={productBasicFragmentRef}
           priority={true}
         />
@@ -50,9 +52,7 @@ function ThreeItemGridItem({
   );
 }
 
-export async function ThreeItemGrid({ className }: { className?: string }) {
-  const lang = state$.lang.get();
-
+export async function ThreeItemGrid({ className, lang }: { className?: string; lang: Intl.BCP47LanguageTag; }) {
   // Collections that start with `hidden-*` are hidden from the search page.
   const homepageItems = await getCollectionProductsHandler({
     variables: {
@@ -71,19 +71,22 @@ export async function ThreeItemGrid({ className }: { className?: string }) {
       data-testid="homepage-products"
     >
       <ThreeItemGridItem
-        size="full"
-        productBasicFragmentRef={firstProduct}
         background="purple"
+        lang={lang}
+        productBasicFragmentRef={firstProduct}
+        size="full"
       />
       <ThreeItemGridItem
-        size="half"
-        productBasicFragmentRef={secondProduct}
         background="black"
+        lang={lang}
+        productBasicFragmentRef={secondProduct}
+        size="half"
       />
       <ThreeItemGridItem
-        size="half"
-        productBasicFragmentRef={thirdProduct}
         background="pink"
+        lang={lang}
+        productBasicFragmentRef={thirdProduct}
+        size="half"
       />
     </section>
   );

@@ -1,10 +1,8 @@
 "use client";
 
 import { LoadingDots } from "@/components/loading/dots";
-import { state$ } from "@/lib/store";
 import { createIntl } from "@formatjs/intl";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
-import { useSelector } from "@legendapp/state/react";
 import {
   type CartLine,
   type CartLineCost,
@@ -29,6 +27,7 @@ export function EditItemQuantityButton({
   className,
   dictionary,
   item,
+  lang,
   type,
 }: {
   cartId: string;
@@ -38,14 +37,13 @@ export function EditItemQuantityButton({
     cost: Pick<CartLineCost, "totalAmount">;
     merchandise: Pick<Merchandise, "id">;
   };
+  lang: Intl.BCP47LanguageTag;
   type: "plus" | "minus";
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
-  const locale = useSelector<string>(() => state$.lang.get());
-
   const intl = createIntl({
-    locale,
+    locale: lang,
     messages,
   });
 

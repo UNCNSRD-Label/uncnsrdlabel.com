@@ -3,7 +3,6 @@ import { ProductDetailsTabs } from "@/components/product/details-tabs";
 import { PurchaseOptions } from "@/components/product/purchase-options";
 import { Prose } from "@/components/prose";
 import { getDictionary } from "@/lib/dictionary";
-import { state$ } from "@/lib/store";
 import {
   getFragmentData,
   imageFragment,
@@ -16,11 +15,11 @@ import { Tracking } from "./tracking";
 
 export function Details({
   productDetailsFragmentRef,
+  lang,
 }: {
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
+  lang: Intl.BCP47LanguageTag;
 }) {
-  const lang = state$.lang.get();
-
   const dictionary = getDictionary({ lang });
 
   const product = getFragmentData(
@@ -61,6 +60,7 @@ export function Details({
 
         <PriceAndCompareAtPrice
           className="grid-flow-col text-sm"
+          lang={lang}
           productDetailsFragmentRef={productDetailsFragmentRef}
         />
 
@@ -73,6 +73,7 @@ export function Details({
 
         <PurchaseOptions
           dictionary={dictionary}
+          lang={lang}
           productDetailsFragmentRef={productDetailsFragmentRef}
         />
 
@@ -84,6 +85,7 @@ export function Details({
             "related_products",
             "shape",
           ]}
+          lang={lang}
           productDetailsFragmentRef={productDetailsFragmentRef}
         />
       </section>

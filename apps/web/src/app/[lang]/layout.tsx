@@ -6,7 +6,6 @@ import { NavigationEvents } from "@/components/navigation-events";
 import { Organization } from "@/components/schema.org/organization";
 import { getDictionary } from "@/lib/dictionary";
 import { getBaseMetadata } from "@/lib/metadata";
-import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";
 import { type LayoutProps } from "@/types/next";
 import { createIntl } from "@formatjs/intl";
@@ -15,9 +14,8 @@ import { getLocalizationDetailsHandler } from "@uncnsrdlabel/graphql-shopify-sto
 import {
   cn,
   getIETFLanguageTagFromlocaleTag,
-  getLangProperties,
   getLocaleObjectFromIETFLanguageTag,
-  PRE_GENERATED_BCP47_LANGUAGE_TAGS,
+  PRE_GENERATED_BCP47_LANGUAGE_TAGS
 } from "@uncnsrdlabel/lib";
 import { AppProviders } from "@uncnsrdlabel/providers";
 import { config } from "@uncnsrdlabel/tailwind-config";
@@ -65,18 +63,7 @@ export async function generateStaticParams({
 export async function generateMetadata({
   params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
 }: LayoutProps): Promise<Metadata> {
-  const { country, language } = getLangProperties(lang);
-
-  const localization = await getLocalizationDetailsHandler({ lang });
-
-  state$.country.set(country);
-  state$.lang.set(lang);
-  state$.language.set(language);
-  state$.localization.set(localization);
-
-  // We set the localization details here for the specific language to ensure the state is set correctly for the lang in the path
-  // await state$.setLocalization({ lang });
-
+  
   const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
 
   const intl = createIntl({
@@ -84,7 +71,7 @@ export async function generateMetadata({
     messages,
   });
 
-  const baseMetadata = getBaseMetadata();
+  const baseMetadata = await getBaseMetadata({ lang, path: "/" });
 
   return {
     ...baseMetadata,
@@ -147,17 +134,6 @@ export default async function RootLayout({
   children,
   params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
 }: PropsWithChildren<LayoutProps>) {
-  const { country, language } = getLangProperties(lang);
-
-  const localization = await getLocalizationDetailsHandler({ lang });
-
-  state$.country.set(country);
-  state$.lang.set(lang);
-  state$.language.set(language);
-  state$.localization.set(localization);
-
-  // We set the localization details here for the specific language to ensure the state is set correctly for the lang in the path
-
   return (
     <html
       className={cn(
@@ -175,10 +151,10 @@ export default async function RootLayout({
       >
         <AppProviders lang={lang}>
           <SetState lang={lang} />
-          <Banner className={cn("sticky top-0 z-30 w-full")} />
+          <Banner className={cn("sticky top-0 z-30 w-full")} lang={lang} />
           <Progress />
           {children}
-          <Footer />
+          <Footer lang={lang} />
           <Organization />
           <Suspense fallback={null}>
             <NavigationEvents />

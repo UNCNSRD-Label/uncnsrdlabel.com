@@ -3,7 +3,6 @@ import { LogotypeIcon } from "@/components/icons/logotype";
 import { SignUp } from "@/components/sign-up";
 import { SocialMenu } from "@/components/social-menu";
 import { getDictionary } from "@/lib/dictionary";
-import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import { getMenuHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
@@ -11,9 +10,7 @@ import { createIntl, type ResolvedIntlConfig } from "react-intl";
 
 const { NEXT_PUBLIC_SITE_NAME } = process.env;
 
-export async function Footer() {
-  const lang = state$.lang.get();
-
+export async function Footer({ lang }: { lang: Intl.BCP47LanguageTag; }) {
   const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
 
   const intl = createIntl({
@@ -60,7 +57,7 @@ export async function Footer() {
                     </dd>
                   ))}
                   <dd>
-                    <ConsentTrigger className={linkClassName} />
+                    <ConsentTrigger className={linkClassName} lang={lang} />
                   </dd>
                 </dl>
               ) : null}
@@ -103,7 +100,7 @@ export async function Footer() {
                 ) : null}
               </div>
             </nav>
-            <SignUp className="lg:col-start-0 col-span-1 sm:col-span-6 sm:col-start-7 lg:col-span-4" />
+            <SignUp className="lg:col-start-0 col-span-1 sm:col-span-6 sm:col-start-7 lg:col-span-4" lang={lang} />
           </div>
           <div className="flex flex-col items-center justify-between text-xs uppercase sm:flex-row sm:pt-6">
             <SocialMenu className="my-8 h-10 sm:my-0" />

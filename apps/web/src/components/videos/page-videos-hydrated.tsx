@@ -3,7 +3,6 @@
 // TODO: Remove this deprecated file
 
 import { VideosHydrated } from "@/components/page/videos/videos-hydrated";
-import { state$ } from "@/lib/store";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import {
   getPageQuery,
@@ -16,12 +15,12 @@ import { getLangProperties } from "@uncnsrdlabel/lib";
 // TODO: Change to videosHydrated and pass query and variables (handle) in props
 export async function PageVideosHydrated({
   handle,
+  lang,
   ...props
 }: {
   handle: string;
+  lang: Intl.BCP47LanguageTag;
 }) {
-  const lang = state$.lang.get();
-
   const shopifyQueryClient = getShopifyQueryClient();
 
   const variables = { handle };
@@ -45,7 +44,7 @@ export async function PageVideosHydrated({
 
   return (
     <HydrationBoundary state={dehydratedState}>
-      <VideosHydrated {...props} handle={handle} />
+      <VideosHydrated {...props} handle={handle} lang={lang} />
     </HydrationBoundary>
   );
 }

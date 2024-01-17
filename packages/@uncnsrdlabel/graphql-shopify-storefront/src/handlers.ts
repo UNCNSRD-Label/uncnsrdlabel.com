@@ -361,7 +361,7 @@ export async function getShopDetailsHandler({ lang }: {
 }
 
 export async function getLocalizationDetailsHandler({ lang }: {
-  lang: Intl.BCP47LanguageTag,
+  lang: Intl.BCP47LanguageTag;
 }) {
   const inContextVariables = getLangProperties(lang);
 

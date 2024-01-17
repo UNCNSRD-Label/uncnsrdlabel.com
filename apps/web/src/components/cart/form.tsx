@@ -4,11 +4,9 @@ import { AddPremiumPackaging } from "@/components/cart/add-premium-packaging";
 import { DeleteItemButton } from "@/components/cart/delete-item-button";
 import { EditItemQuantityButton } from "@/components/cart/edit-item-quantity-button";
 import { Price } from "@/components/price";
-import { state$ } from "@/lib/store";
 import { createIntl } from "@formatjs/intl";
 import { ResultOf } from "@graphql-typed-document-node/core";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
-import { useSelector } from "@legendapp/state/react";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import { Button } from "@uncnsrdlabel/components/ui/button";
 import {
@@ -33,18 +31,18 @@ export async function CartForm({
   cartId,
   container,
   dictionary,
+  lang,
 }: {
   cart?: ResultOf<typeof cartFragment> | null;
   cartId: string;
   container?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
+  lang: Intl.BCP47LanguageTag;
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
-  const locale = useSelector<string>(() => state$.lang.get());
-
   const intl = createIntl({
-    locale,
+    locale: lang,
     messages,
   });
   
@@ -110,7 +108,7 @@ export async function CartForm({
                 >
                   <div className="relative flex w-full flex-row justify-between px-1 py-4 items-end">
                     <div className="absolute z-40 -mt-2 ml-[55px] self-start">
-                      <DeleteItemButton cartId={cartId} dictionary={dictionary} item={item} />
+                      <DeleteItemButton cartId={cartId} dictionary={dictionary} item={item} lang={lang} />
                     </div>
                     <Link
                       className="z-30 flex flex-row space-x-4 mb-3"
@@ -136,9 +134,10 @@ export async function CartForm({
                           </span>
                         ) : null}
                         <Price
-                          className="text-xs"
                           amount={item.cost.totalAmount.amount}
+                          className="text-xs"
                           currencyCode={item.cost.totalAmount.currencyCode}
+                          lang={lang}
                         />
                       </div>
                     </Link>
@@ -150,6 +149,7 @@ export async function CartForm({
                             className={editItemQuantityButtonclassName}
                             dictionary={dictionary}
                             item={item}
+                            lang={lang}
                             type="minus"
                           />
                         </Suspense>
@@ -165,6 +165,7 @@ export async function CartForm({
                             className={editItemQuantityButtonclassName}
                             dictionary={dictionary}
                             item={item}
+                            lang={lang}
                             type="plus"
                           />
                         </Suspense>
@@ -177,7 +178,7 @@ export async function CartForm({
           </ul>
 
           <div className="my-4 flex flex-col">
-            <AddPremiumPackaging />
+            <AddPremiumPackaging lang={lang} />
           </div>
 
           <div className="py-4 text-sm text-neutral-500 dark:text-neutral-400">
@@ -185,9 +186,10 @@ export async function CartForm({
               <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 dark:border-neutral-700">
                 <p className="uppercase">Taxes</p>
                 <Price
-                  className="text-right text-base text-black dark:text-white"
                   amount={cart.cost.totalTaxAmount.amount}
+                  className="text-right text-base text-black dark:text-white"
                   currencyCode={cart.cost.totalTaxAmount.currencyCode}
+                  lang={lang}
                 />
               </div>
             )}
@@ -198,9 +200,10 @@ export async function CartForm({
             <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1 dark:border-neutral-700">
               <p className="uppercase">Total</p>
               <Price
-                className="text-right text-base text-black dark:text-white"
                 amount={cart.cost.totalAmount.amount}
+                className="text-right text-base text-black dark:text-white"
                 currencyCode={cart.cost.totalAmount.currencyCode}
+                lang={lang}
               />
             </div>
           </div>
