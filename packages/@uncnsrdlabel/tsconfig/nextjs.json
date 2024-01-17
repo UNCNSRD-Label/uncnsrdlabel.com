@@ -7,7 +7,7 @@
     "noEmit": true,
     "plugins": [{ "name": "next" }],
     "resolveJsonModule": true,
-    "target": "es5"
+    "target": "ESNext"
   },
   "display": "Next.js",
   "exclude": ["node_modules"],
