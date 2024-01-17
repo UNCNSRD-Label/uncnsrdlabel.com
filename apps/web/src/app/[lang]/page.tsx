@@ -26,7 +26,7 @@ export default async function RootPage({ params: { lang } }: PageProps) {
       </Navbar>
       <main className="dark relative z-40 grid grid-rows-[1fr_auto] gap-2 bg-black pb-48">
         <section className="relative grid h-[100dvh] items-center overflow-hidden sm:snap-start">
-          <VideosHydrated handle={handle} />
+          <VideosHydrated handle={handle} lang={lang} />
           <Link
             aria-label={intl.formatMessage({ id: `page.${handle}.shop-now` })}
             className="btn btn-outline btn-primary btn-base absolute z-20 justify-self-center whitespace-nowrap uppercase"

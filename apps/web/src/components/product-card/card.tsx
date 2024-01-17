@@ -1,7 +1,6 @@
 import { AddToCart } from "@/components/cart/add-to-cart";
 import { Image } from "@/components/media/image";
 import { getDictionary } from "@/lib/dictionary";
-import { state$ } from "@/lib/store";
 import { type ProductVariant } from "@shopify/hydrogen/storefront-api-types";
 import {
   getFragmentData,
@@ -16,13 +15,13 @@ import { PriceAndCompareAtPrice } from "../price-and-compare-at-price";
 
 export function ProductCard({
   className,
+  lang,
   productDetailsFragmentRef,
 }: {
   className?: string;
+  lang: Intl.BCP47LanguageTag;
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }) {
-  const lang = state$.lang.get();
-
   const dictionary = getDictionary({ lang });
 
   const product = getFragmentData(
@@ -99,6 +98,7 @@ export function ProductCard({
           </h3>
           <PriceAndCompareAtPrice
             className="text-xs font-semibold mb-4"
+            lang={lang}
             productDetailsFragmentRef={productDetailsFragmentRef}
           />
           {/* <PurchaseOptions
@@ -108,6 +108,7 @@ export function ProductCard({
             availableForSale={product.availableForSale}
             container="ProductCard"
             dictionary={dictionary}
+            lang={lang}
             options={product.options}
             variants={variants}
             view="compact"

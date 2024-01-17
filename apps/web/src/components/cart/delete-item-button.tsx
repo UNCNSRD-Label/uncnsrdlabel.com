@@ -1,10 +1,8 @@
 "use client";
 
 import { LoadingDots } from "@/components/loading/dots";
-import { state$ } from "@/lib/store";
 import { createIntl } from "@formatjs/intl";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { useSelector } from "@legendapp/state/react";
 import {
   type CartLine,
   type CartLineCost,
@@ -28,6 +26,7 @@ export function DeleteItemButton({
   cartId,
   dictionary,
   item,
+  lang,
 }: {
   cartId: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
@@ -35,13 +34,12 @@ export function DeleteItemButton({
     cost: Pick<CartLineCost, "totalAmount">;
     merchandise: Pick<Merchandise, "id">;
   };
+  lang: Intl.BCP47LanguageTag;
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
-  const locale = useSelector<string>(() => state$.lang.get());
-
   const intl = createIntl({
-    locale,
+    locale: lang,
     messages,
   });
 

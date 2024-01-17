@@ -1,4 +1,3 @@
-import { state$ } from "@/lib/store";
 import { cn } from "@uncnsrdlabel/lib";
 
 export const Price = ({
@@ -6,14 +5,14 @@ export const Price = ({
   className,
   currencyCode = "USD",
   currencyCodeClassName,
+  lang
 }: {
   amount: string;
   className?: string;
   currencyCode: string;
   currencyCodeClassName?: string;
+  lang: Intl.BCP47LanguageTag;
 } & React.ComponentProps<"p">) => {
-  const lang = state$.lang.get();
-
   return (
     <p suppressHydrationWarning={true} className={className}>
       {`${new Intl.NumberFormat(lang, {

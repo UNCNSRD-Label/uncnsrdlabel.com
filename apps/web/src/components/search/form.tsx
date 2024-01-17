@@ -1,8 +1,6 @@
 "use client";
 
-import { state$ } from "@/lib/store";
 import { createIntl } from "@formatjs/intl";
-import { useSelector } from "@legendapp/state/react";
 import { cn, createUrl } from "@uncnsrdlabel/lib";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Usable, use } from "react";
@@ -12,23 +10,23 @@ export function SearchForm({
   className,
   dictionary,
   isOpen,
+  lang,
   setSearchIsOpen,
 }: {
   className?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
   isOpen: boolean;
+  lang: Intl.BCP47LanguageTag;
   setSearchIsOpen: (open: boolean) => void;
 }) {
   const router = useRouter();
 
   const searchParams = useSearchParams();
 
-  const locale = useSelector<string>(() => state$.lang.get());
-
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
   const intl = createIntl({
-    locale,
+    locale: lang,
     messages,
   });
 

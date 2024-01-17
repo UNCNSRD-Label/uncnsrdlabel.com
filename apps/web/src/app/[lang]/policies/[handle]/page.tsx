@@ -1,10 +1,10 @@
 import { Prose } from "@/components/prose";
 import { getAlternativeLanguages } from "@/lib/i18n";
-import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   getFragmentData,
+  getLocalizationDetailsHandler,
   getMenuHandler,
   getShopPoliciesHandler,
   shopPolicyFragment,
@@ -12,15 +12,14 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { SITE_DOMAIN_WEB, cn } from "@uncnsrdlabel/lib";
 import { camelCase } from "lodash";
-import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({
   params: { handle, lang },
 }: PageProps & {
   params: { handle: PolicyName };
-}): Promise<Metadata> {
-  const localization = state$.localization.get();
+}) {
+  const localization = await getLocalizationDetailsHandler({ lang });
 
   const path = `/policies/${handle}`;
 

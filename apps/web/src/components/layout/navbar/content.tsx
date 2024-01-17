@@ -4,12 +4,9 @@ import { LogotypeIcon } from "@/components/icons/logotype";
 import { MenuIcon } from "@/components/icons/menu";
 import { Search } from "@/components/search/index";
 import { getDictionary } from "@/lib/dictionary";
-import { state$ } from "@/lib/store";
 import { createIntl } from "@formatjs/intl";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
-import {
-  getMenuHandler
-} from "@uncnsrdlabel/graphql-shopify-storefront";
+import { getMenuHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { Suspense } from "react";
 import { SlHeart, SlUser } from "react-icons/sl";
@@ -17,9 +14,12 @@ import { type ResolvedIntlConfig } from "react-intl";
 import { SidebarMenu } from "./sidebar-menu";
 
 export async function NavbarContent({
-  lang = state$.lang.get(),
+  lang,
   showLogo = false,
-}: { lang: Intl.BCP47LanguageTag; showLogo?: boolean }) {
+}: {
+  lang: Intl.BCP47LanguageTag;
+  showLogo?: boolean;
+}) {
   const dictionary = getDictionary({ lang });
 
   const messages: ResolvedIntlConfig["messages"] = await dictionary;
@@ -50,7 +50,9 @@ export async function NavbarContent({
 
       <div className={cn("hidden", showLogo && "md:block")} tabIndex={-1}>
         <Link
-          aria-label={intl.formatMessage({ id: "component.NavbarContent.link-home" })}
+          aria-label={intl.formatMessage({
+            id: "component.NavbarContent.link-home",
+          })}
           className="pointer-events-auto justify-center md:flex"
           href="/"
         >
@@ -59,10 +61,12 @@ export async function NavbarContent({
       </div>
 
       <div className="pointer-events-auto flex items-center justify-end gap-5">
-        <Search dictionary={dictionary} />
+        <Search dictionary={dictionary} lang={lang} />
         <Link
           href="/account"
-          aria-label={intl.formatMessage({ id: "component.NavbarContent.link-account" })}
+          aria-label={intl.formatMessage({
+            id: "component.NavbarContent.link-account",
+          })}
           prefetch={false}
         >
           <SlUser className="icon fill h-5 w-5 drop-shadow" />
@@ -70,13 +74,15 @@ export async function NavbarContent({
         {process.env.NEXT_PUBLIC_FEATURE_FLAG_WISHLIST_ENABLE === "true" && (
           <Link
             href="#"
-            aria-label={intl.formatMessage({ id: "component.NavbarContent.link-wishlist" })}
+            aria-label={intl.formatMessage({
+              id: "component.NavbarContent.link-wishlist",
+            })}
           >
             <SlHeart className="icon fill h-5 w-5 drop-shadow" />
           </Link>
         )}
         <Suspense fallback={<OpenCart />}>
-          <Cart dictionary={dictionary} />
+          <Cart dictionary={dictionary} lang={lang} />
         </Suspense>
       </div>
     </>

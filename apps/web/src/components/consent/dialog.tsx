@@ -2,9 +2,7 @@
 
 import { ConsentForm } from "@/components/consent/form";
 import { LoadingDots } from "@/components/loading/dots";
-import { state$ } from "@/lib/store";
 import { createIntl } from "@formatjs/intl";
-import { useSelector } from "@legendapp/state/react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { useTimeoutEffect } from "@react-hookz/web";
@@ -16,13 +14,11 @@ import { type ResolvedIntlConfig } from "react-intl";
 import { useTrack } from "use-analytics";
 import { ConsentButton } from "./button";
 
-export function ConsentDialog({ className, dictionary }: { className?: string; dictionary: Usable<ResolvedIntlConfig["messages"]>; }) {
+export function ConsentDialog({ className, dictionary, lang }: { className?: string; dictionary: Usable<ResolvedIntlConfig["messages"]>; lang: Intl.BCP47LanguageTag; }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
-  const locale = useSelector<string>(() => state$.lang.get());
-
   const intl = createIntl({
-    locale,
+    locale: lang,
     messages,
   });
 
@@ -84,7 +80,7 @@ export function ConsentDialog({ className, dictionary }: { className?: string; d
 
   return (
     <>
-      <ConsentButton className={className} onClick={onOpen} />
+      <ConsentButton className={className} lang={lang} onClick={onOpen} />
       <Dialog.Root onOpenChange={setOpen} open={open}>
         <Dialog.Portal>
           <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0 z-40 bg-black/80" />
@@ -102,6 +98,7 @@ export function ConsentDialog({ className, dictionary }: { className?: string; d
                 acceptAllConsents={acceptAllConsents}
                 denyAllAdditionalConsents={denyAllAdditionalConsents}
                 dictionary={dictionary}
+                lang={lang}
                 manageConsents={manageConsents}
               />
             </Suspense>

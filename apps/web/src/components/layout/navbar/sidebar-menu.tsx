@@ -3,11 +3,9 @@
 import { CloseIcon } from "@/components/icons/close";
 import { LogotypeIcon } from "@/components/icons/logotype";
 import { MenuIcon } from "@/components/icons/menu";
-import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";
 import { createIntl } from "@formatjs/intl";
 import { Dialog } from "@headlessui/react";
-import { useSelector } from "@legendapp/state/react";
 import { type Menu } from "@shopify/hydrogen/storefront-api-types";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import { Button } from "@uncnsrdlabel/components/ui/button";
@@ -35,10 +33,8 @@ export function SidebarMenu({
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
-  const locale = useSelector<string>(() => state$.lang.get());
-
   const intl = createIntl({
-    locale,
+    locale: lang,
     messages,
   });
 

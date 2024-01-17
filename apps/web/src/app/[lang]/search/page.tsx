@@ -2,11 +2,11 @@ import { Grid } from "@/components/grid/index";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
 import { getDictionary } from "@/lib/dictionary";
 import { getAlternativeLanguages } from "@/lib/i18n";
-import { state$ } from "@/lib/store";
 import { type PageProps } from "@/types/next";
 import { createIntl } from "@formatjs/intl";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
+  getLocalizationDetailsHandler,
   getProductsHandler,
   productDefaultSort,
   productSorting
@@ -28,7 +28,7 @@ export async function generateMetadata({
     messages,
   });
 
-  const localization = state$.localization.get();
+  const localization = await getLocalizationDetailsHandler({ lang });
 
   return {
     alternates: {
@@ -84,7 +84,7 @@ export default async function SearchPage({
       ) : null}
       {productFragmentRefs.length > 0 ? (
         <Grid className="w-full max-w-7xl grid-cols-2 lg:grid-cols-3">
-          <ProductGridItems productFragmentRefs={productFragmentRefs} />
+          <ProductGridItems lang={lang} productFragmentRefs={productFragmentRefs} />
         </Grid>
       ) : (
         <Link className="btn" href="/search">

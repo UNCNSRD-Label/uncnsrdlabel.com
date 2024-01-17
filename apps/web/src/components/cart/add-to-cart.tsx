@@ -34,6 +34,7 @@ function SubmitButton({
   className,
   container,
   dictionary,
+  lang,
   selectedVariantId,
   size,
   variant,
@@ -43,6 +44,7 @@ function SubmitButton({
   className?: string;
   container?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
+  lang: Intl.BCP47LanguageTag;
   selectedVariantId: string | undefined;
   size: ButtonProps['size'];
   variant: ButtonProps['variant'];
@@ -50,10 +52,8 @@ function SubmitButton({
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
-  const locale = useSelector<string>(() => state$.lang.get());
-
   const intl = createIntl({
-    locale,
+    locale: lang,
     messages,
   });
 
@@ -241,6 +241,7 @@ export function AddToCart({
   className,
   container,
   dictionary,
+  lang,
   options,
   variants,
   view = "standard",
@@ -249,6 +250,7 @@ export function AddToCart({
   className?: string;
   container?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
+  lang: Intl.BCP47LanguageTag;
   options: ProductOption[];
   variants: Pick<ProductVariant, "id" | "selectedOptions">[];
   view?: "compact" | "standard";
@@ -302,6 +304,7 @@ export function AddToCart({
         className={className}
         container={container}
         dictionary={dictionary}
+        lang={lang}
         selectedVariantId={selectedVariantId}
         size={size}
         variant={variant}

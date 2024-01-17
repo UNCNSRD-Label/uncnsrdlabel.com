@@ -2,12 +2,12 @@ import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
 import { getDictionary } from "@/lib/dictionary";
 import { getAlternativeLanguages } from "@/lib/i18n";
-import { state$ } from "@/lib/store";
 import {
   collectionFragment,
   getCollectionHandler,
   getCollectionProductsHandler,
   getFragmentData,
+  getLocalizationDetailsHandler,
   productCollectionDefaultSort,
   productCollectionSorting,
   seoFragment
@@ -17,13 +17,11 @@ import { notFound } from "next/navigation";
 import { createIntl, type ResolvedIntlConfig } from "react-intl";
 
 export async function generateMetadata({
-  params: { collection: handle },
+  params: { collection: handle, lang },
 }: {
-  params: { collection: string };
+  params: { collection: string; lang: Intl.BCP47LanguageTag; };
 }): Promise<Metadata> {
-  const lang = state$.lang.get();
-
-  const localization = state$.localization.get();
+  const localization = await getLocalizationDetailsHandler({ lang });
 
   const collectionFragmentRef = await getCollectionHandler({
     variables: { handle },
@@ -52,14 +50,12 @@ export async function generateMetadata({
 }
 
 export default async function CategoryPage({
-  params: { collection: handle },
+  params: { collection: handle, lang },
   searchParams,
 }: {
-  params: { collection: string };
+  params: { collection: string; lang: Intl.BCP47LanguageTag; };
   searchParams?: { [key: string]: string | string[] | undefined };
 }) {
-  const lang = state$.lang.get();
-
   const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
 
   const intl = createIntl({
@@ -91,7 +87,7 @@ export default async function CategoryPage({
         </p>
       ) : (
         <Grid className="grid-cols-2 lg:grid-cols-3">
-          <ProductGridItems productFragmentRefs={products} />
+          <ProductGridItems lang={lang} productFragmentRefs={products} />
         </Grid>
       )}
     </section>

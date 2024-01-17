@@ -34,6 +34,7 @@ export default async function SearchLayout({
               process.env.NEXT_PUBLIC_FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE !==
               "true",
           })}
+          lang={lang}
         />
         <FilterList
           className={cn("flex-none md:w-1/6", {

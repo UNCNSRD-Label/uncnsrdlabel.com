@@ -11,33 +11,48 @@ import { useSelector } from "@legendapp/state/react";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@uncnsrdlabel/components/ui/button";
 import {
-  cartFragment, getCartQuery,
+  cartFragment,
+  getCartQuery,
   getFragmentData,
   getQueryKey,
-  getShopifyGraphQL
+  getShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
-import { Fragment, Usable, use, useCallback, useEffect, useRef, useState } from "react";
+import {
+  Fragment,
+  Usable,
+  use,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { type ResolvedIntlConfig } from "react-intl";
 import { useTrack } from "use-analytics";
 
-export function Cart({dictionary}: { dictionary: Usable<ResolvedIntlConfig["messages"]> }) {
+export function Cart({
+  dictionary,
+  lang,
+}: {
+  dictionary: Usable<ResolvedIntlConfig["messages"]>;
+  lang: Intl.BCP47LanguageTag;
+}) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
-  const locale = useSelector<string>(() => state$.lang.get());
-
   const intl = createIntl({
-    locale,
+    locale: lang,
     messages,
   });
 
-  const cartId = useSelector<string>(() => state$.cartId.get())
+  const cartId = useSelector<string>(() => state$.cartId.get());
 
   const variables = { cartId };
 
-  const { data = {
-    cart: null,
-  } } = useQuery({
+  const {
+    data = {
+      cart: null,
+    },
+  } = useQuery({
     enabled: !!cartId,
     queryKey: getQueryKey(getCartQuery, variables),
     queryFn: () => getShopifyGraphQL(getCartQuery, variables),
@@ -82,10 +97,7 @@ export function Cart({dictionary}: { dictionary: Usable<ResolvedIntlConfig["mess
     <>
       <Button
         aria-label={intl.formatMessage({ id: "component.CartModal.open" })}
-        onClick={useCallback(
-          handleClickTrack,
-          [],
-        )}
+        onClick={useCallback(handleClickTrack, [])}
         variant="ghost"
       >
         <OpenCart quantity={cart?.totalQuantity} />
@@ -115,7 +127,7 @@ export function Cart({dictionary}: { dictionary: Usable<ResolvedIntlConfig["mess
             <Dialog.Panel
               className={cn(
                 "pt-safeTop flex-col p-6",
-                "fixed bottom-0 right-0 top-0 flex h-full w-full flex-col border-l border-neutral-200 bg-white/80 p-6 text-black backdrop-blur-xl dark:border-neutral-700 dark:bg-black/80 dark:text-white md:w-[390px]",
+                "fixed bottom-0 right-0 top-0 flex h-full w-full flex-col border-l border-neutral-200 bg-white/80 p-6 text-black backdrop-blur-xl md:w-[390px] dark:border-neutral-700 dark:bg-black/80 dark:text-white",
                 themeColors,
               )}
             >
@@ -125,7 +137,9 @@ export function Cart({dictionary}: { dictionary: Usable<ResolvedIntlConfig["mess
                 </h3>
 
                 <Button
-                  aria-label={intl.formatMessage({ id: "component.CartModal.close" })}
+                  aria-label={intl.formatMessage({
+                    id: "component.CartModal.close",
+                  })}
                   onClick={closeCart}
                   variant="ghost"
                 >
@@ -133,7 +147,13 @@ export function Cart({dictionary}: { dictionary: Usable<ResolvedIntlConfig["mess
                 </Button>
               </div>
 
-              <CartForm cart={cart} cartId={cartId} container="Cart" dictionary={dictionary} />
+              <CartForm
+                cart={cart}
+                cartId={cartId}
+                container="Cart"
+                dictionary={dictionary}
+                lang={lang}
+              />
             </Dialog.Panel>
           </Transition.Child>
         </Dialog>
