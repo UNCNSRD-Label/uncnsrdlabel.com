@@ -1,9 +1,9 @@
 {
   "devDependencies": {
     "@eslint/eslintrc": "^3.0.0",
-    "@types/node": "^20.10.6",
+    "@types/node": "^20.11.5",
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",
-    "prettier": "^3.1.1",
+    "prettier": "^3.2.4",
     "type-fest": "^4.9.0",
     "typescript": "^5.3.3"
   },
