@@ -283,6 +283,7 @@ const nextConfig = {
     // swcPlugins: [
     //   ['@victorandree/graphql-codegen-client-preset-swc-plugin', { artifactDirectory: '@uncnsrdlabel/graphql-shopify-storefront/codegen', gqlTagName: 'graphql' }]
     // ],
+    scrollRestoration: true,
     webpackBuildWorker: true,
   },
   async headers() {
