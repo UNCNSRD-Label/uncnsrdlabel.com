@@ -1,11 +1,26 @@
-import { getDictionary } from "@/lib/dictionary";
+"use client";
+
+import { createIntl } from "@formatjs/intl";
 import { Button } from "@uncnsrdlabel/components/ui/button";
 import { cn } from "@uncnsrdlabel/lib";
+import { Usable, use } from "react";
 import { SlMagnifier } from "react-icons/sl";
-import { createIntl, type ResolvedIntlConfig } from "react-intl";
+import { type ResolvedIntlConfig } from "react-intl";
 
-export async function SearchButton({ isOpen, lang, }: { isOpen: boolean; lang: Intl.BCP47LanguageTag; }) {
-  const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
+export function SearchButton({
+  dictionary,
+  isOpen,
+  lang,
+}: {
+  dictionary: Usable<ResolvedIntlConfig["messages"]>;
+  isOpen: boolean;
+  lang: Intl.BCP47LanguageTag;
+}) {
+  if (!lang) {
+    console.error("No lang in SearchButton");
+  }
+
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
   const intl = createIntl({
     locale: lang,

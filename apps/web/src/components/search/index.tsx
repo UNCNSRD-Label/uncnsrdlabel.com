@@ -22,7 +22,7 @@ export function Search({
         lang={lang}
         setSearchIsOpen={setSearchIsOpen}
       />
-      <SearchButton isOpen={searchIsOpen} lang={lang} />
+      <SearchButton dictionary={dictionary} isOpen={searchIsOpen} lang={lang} />
     </div>
   );
 }
