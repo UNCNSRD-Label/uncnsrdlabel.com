@@ -143,6 +143,10 @@ export async function MetafieldMapper({
         if (Array.isArray(parsedValue)) {
           value = parsedValue.map(async (id, index) => {
             if (typeof id === "string") {
+              if (!lang) {
+                console.error("No lang in list.product_reference");
+                return null;
+              }
               const inContextVariables = getInContextVariables(lang);
 
               const variables = { id };

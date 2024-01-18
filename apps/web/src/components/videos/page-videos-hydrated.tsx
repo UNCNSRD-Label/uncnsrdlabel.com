@@ -21,6 +21,10 @@ export async function PageVideosHydrated({
   handle: string;
   lang: Intl.BCP47LanguageTag;
 }) {
+  if (!lang) {
+    console.error("No lang in PageVideosHydrated");
+    return null;
+  }
   const shopifyQueryClient = getShopifyQueryClient();
 
   const variables = { handle };

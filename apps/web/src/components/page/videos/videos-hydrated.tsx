@@ -10,6 +10,10 @@ import { Videos } from "./videos";
 
 // TODO: Change to videosHydrated and pass query and variables (handle) in props
 export async function VideosHydrated({ handle, lang, ...props }: { handle: string; lang: Intl.BCP47LanguageTag; }) {
+  if (!lang) {
+    console.error("No lang in VideosHydrated");
+    return null;
+  }
   const shopifyQueryClient = getShopifyQueryClient();
 
   const variables = { handle };

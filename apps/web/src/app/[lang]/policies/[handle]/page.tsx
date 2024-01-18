@@ -19,6 +19,10 @@ export async function generateMetadata({
 }: PageProps & {
   params: { handle: PolicyName };
 }) {
+  if(!lang) {
+    console.error("No lang in policies generateMetadata")
+  }
+
   const localization = await getLocalizationDetailsHandler({ lang });
 
   const path = `/policies/${handle}`;

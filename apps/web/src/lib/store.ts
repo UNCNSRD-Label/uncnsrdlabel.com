@@ -31,7 +31,11 @@ const defaultState = {
   lang,
   language,
   localization,
-  setLocalization: async ({ lang }: { lang: Intl.BCP47LanguageTag }) => {
+  setLocalization: async ({ lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! }: { lang: Intl.BCP47LanguageTag }) => {
+    if (!lang) {
+      console.error("No lang in store")
+    }
+
     const localization = await getLocalizationDetailsHandler({ lang });
     
     const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });

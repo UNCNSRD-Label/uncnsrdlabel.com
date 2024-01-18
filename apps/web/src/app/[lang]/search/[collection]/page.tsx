@@ -21,6 +21,10 @@ export async function generateMetadata({
 }: {
   params: { collection: string; lang: Intl.BCP47LanguageTag; };
 }): Promise<Metadata> {
+  if(!lang) {
+    console.error("No lang in search collection generateMetadata")
+  }
+
   const localization = await getLocalizationDetailsHandler({ lang });
 
   const collectionFragmentRef = await getCollectionHandler({
