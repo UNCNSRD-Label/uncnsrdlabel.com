@@ -12,7 +12,7 @@ import { ArticleHydrated as Article } from "./article-hydrated";
 import { PageSectionModule } from "./page-section-module";
 
 export async function generateMetadata({
-  params: { lang,page: handle },
+  params: { lang, page: handle },
 }: {
   params: { lang: Intl.BCP47LanguageTag; page: string };
 }): Promise<Metadata> {

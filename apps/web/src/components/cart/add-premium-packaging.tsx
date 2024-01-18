@@ -3,7 +3,7 @@ import {
   getProductDetailsByHandleQuery,
   getShopifyGraphQL
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { getLangProperties } from "@uncnsrdlabel/lib";
+import { getInContextVariables } from "@uncnsrdlabel/lib";
 
 export async function AddPremiumPackaging({
   className,
@@ -14,7 +14,7 @@ export async function AddPremiumPackaging({
 }) {
   const handle = "premium-packaging";
 
-  const inContextVariables = getLangProperties(lang);
+  const inContextVariables = getInContextVariables(lang);
 
   const variables = { handle };
 

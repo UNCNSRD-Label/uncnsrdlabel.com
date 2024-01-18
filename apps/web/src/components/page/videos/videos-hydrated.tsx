@@ -5,7 +5,7 @@ import {
   getShopifyGraphQL,
   getShopifyQueryClient,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { getLangProperties } from "@uncnsrdlabel/lib";
+import { getInContextVariables } from "@uncnsrdlabel/lib";
 import { Videos } from "./videos";
 
 // TODO: Change to videosHydrated and pass query and variables (handle) in props
@@ -14,7 +14,7 @@ export async function VideosHydrated({ handle, lang, ...props }: { handle: strin
 
   const variables = { handle };
 
-  const inContextVariables = getLangProperties(lang);
+  const inContextVariables = getInContextVariables(lang);
 
   const variablesWithContext = { ...inContextVariables, ...variables };
 
