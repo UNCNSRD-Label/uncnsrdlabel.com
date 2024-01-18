@@ -233,18 +233,6 @@ export async function getCollectionRefsHandler({ variables, lang }: {
   );
 
   const collections: CollectionFragment[] = [
-    {
-      __typename: "Collection",
-      handle: "",
-      title: "All",
-      description: "All products",
-      seo: {
-        //   title: "All",
-        //   description: "All products",
-      },
-      // path: "/search",
-      updatedAt: new Date().toISOString(),
-    },
     // Filter out the `hidden` collections.
     // Collections that start with `hidden-*` need to be hidden on the search page.
     ...collectionsRefs
