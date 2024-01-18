@@ -27,14 +27,14 @@ export const getDictionary = async ({ lang, namespace }: { lang: Intl.BCP47Langu
     const { default: languageGenericDictionary } = await import(`@/dictionaries/${localization.language.isoCode.toLocaleLowerCase()}.json`) ?? {};
     languageGeneric = languageGenericDictionary;
   } catch (error) {
-    console.debug(error);
+    // console.debug(error);
   }
 
   try {
     const { default: languageLocalisedDictionary } = await import(`@/dictionaries/${localization.language.isoCode.toLocaleLowerCase()}-${localization.country.isoCode}.json`) ?? {};
     languageLocalised = languageLocalisedDictionary;
   } catch (error) {
-    console.debug(error);
+    // console.debug(error);
   }
 
   const allMessages = merge.all([
@@ -43,15 +43,17 @@ export const getDictionary = async ({ lang, namespace }: { lang: Intl.BCP47Langu
     languageLocalised,
   ]) as typeof languageFallback;
 
-  if (!namespace) {
-    const allMessagesFlattened = deepKeys(allMessages) as unknown as ResolvedIntlConfig["messages"];
+  const namespaceMessagesFlattened: Record<string, string> = {}
 
-    return allMessagesFlattened
+  let messages = allMessages
+
+  if (namespace) {
+    messages = getProperty(allMessages, namespace) as {};
   }
 
-  const namespaceMessages = getProperty(allMessages, namespace);
-
-  const namespaceMessagesFlattened = deepKeys(namespaceMessages) as unknown as ResolvedIntlConfig["messages"];
+  for (const property of deepKeys(messages)) {
+    namespaceMessagesFlattened[property] = getProperty(messages, property)
+  }
 
   return namespaceMessagesFlattened
 };

@@ -139,7 +139,6 @@ export async function MetafieldMapper({
       break;
     case "list.product_reference":
       {
-        console.log("list.product_reference", { lang })
         if (Array.isArray(parsedValue)) {
           value = parsedValue.map(async (id, index) => {
             if (typeof id === "string") {
@@ -147,6 +146,7 @@ export async function MetafieldMapper({
                 console.error("No lang in list.product_reference");
                 return null;
               }
+
               const inContextVariables = getInContextVariables(lang);
 
               const variables = { id };

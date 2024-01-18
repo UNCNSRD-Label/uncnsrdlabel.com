@@ -14,6 +14,7 @@ export async function VideosHydrated({ handle, lang, ...props }: { handle: strin
     console.error("No lang in VideosHydrated");
     return null;
   }
+
   const shopifyQueryClient = getShopifyQueryClient();
 
   const variables = { handle };

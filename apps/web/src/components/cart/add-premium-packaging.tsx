@@ -16,6 +16,7 @@ export async function AddPremiumPackaging({
     console.error("No lang in AddPremiumPackaging");
     return null;
   }
+  
   const handle = "premium-packaging";
 
   const inContextVariables = getInContextVariables(lang);
