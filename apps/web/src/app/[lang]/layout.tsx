@@ -1,7 +1,6 @@
 import { Banner } from "@/components/layout/banner";
 import { Footer } from "@/components/layout/footer/index";
 import { Progress } from "@/components/layout/progress/index";
-import { SetState } from "@/components/layout/set-state";
 import { NavigationEvents } from "@/components/navigation-events";
 import { Organization } from "@/components/schema.org/organization";
 import { getDictionary } from "@/lib/dictionary";
@@ -161,7 +160,6 @@ export default async function RootLayout({
         )}
       >
         <AppProviders lang={lang}>
-          <SetState lang={lang} />
           <Banner className={cn("sticky top-0 z-30 w-full")} />
           <Progress />
           {children}
