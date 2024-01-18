@@ -37,7 +37,7 @@
     "not-found": {
       "title": "Not found",
       "message": "Could not find requested resource",
-      "button": "View catalogue"
+      "button": "Try again"
     },
     "products": {
       "add-to-wishlist": "Add to wishlist",
