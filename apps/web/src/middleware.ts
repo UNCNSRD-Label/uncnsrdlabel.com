@@ -61,7 +61,7 @@ export async function middleware(request: NextRequest) {
   }
 
   {
-    const detectedLang = request.headers.get("accept-language")?.split(",")?.[0] ?? process.env.NEXT_PUBLIC_DEFAULT_LOCALE!;
+    const detectedLang = request.headers.get("Accept-Language")?.split(",")?.[0] ?? process.env.NEXT_PUBLIC_DEFAULT_LOCALE!;
 
     const { language: detectedLanguageCode } = getLangProperties(detectedLang);
 
