@@ -17,6 +17,10 @@ const {
 } = process.env;
 
 export const getBaseMetadata = async ({ lang, path = "/" }: { lang: Intl.BCP47LanguageTag; path: string }) => {
+    if (!lang) {
+        console.error("No lang in getBaseMetadata")
+    }
+
     const { country: canonicalCountry, language: canonicalLanguage } = getLangProperties(NEXT_PUBLIC_DEFAULT_LOCALE);
 
     const localization = await getLocalizationDetailsHandler({ lang });

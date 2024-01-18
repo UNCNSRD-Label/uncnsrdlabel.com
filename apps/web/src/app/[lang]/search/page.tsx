@@ -21,14 +21,18 @@ const path = `/search`;
 export async function generateMetadata({
   params: { lang },
 }: PageProps): Promise<Metadata> {
+  if(!lang) {
+    console.error("No lang in search generateMetadata")
+  }
+
+  const localization = await getLocalizationDetailsHandler({ lang });
+
   const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
 
   const intl = createIntl({
     locale: lang,
     messages,
   });
-
-  const localization = await getLocalizationDetailsHandler({ lang });
 
   return {
     alternates: {

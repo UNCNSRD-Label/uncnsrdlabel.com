@@ -67,8 +67,10 @@ export async function middleware(request: NextRequest) {
 
     const detectedCountryCode = (request.geo?.country ?? defaultCountryCode) as CountryCode;
 
+    const lang = ((detectedLanguageCode && detectedCountryCode) ? `${detectedLanguageCode}-${detectedCountryCode}` : process.env.NEXT_PUBLIC_DEFAULT_LOCALE) as Intl.BCP47LanguageTag;
+
     const localization = await getLocalizationDetailsHandler({
-      lang: `${detectedLanguageCode}-${detectedCountryCode}`,
+      lang,
     });
 
     const matchingCountryCode = localization.availableCountries.find((availableCountry) => availableCountry.isoCode === detectedCountryCode) ?? localization.country;

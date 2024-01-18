@@ -1,7 +1,7 @@
 import { ProductCard } from "@/components/product-card/card";
 import {
   getProductDetailsByHandleQuery,
-  getShopifyGraphQL
+  getShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getInContextVariables } from "@uncnsrdlabel/lib";
 
@@ -12,6 +12,10 @@ export async function AddPremiumPackaging({
   className?: string;
   lang: Intl.BCP47LanguageTag;
 }) {
+  if (!lang) {
+    console.error("No lang in AddPremiumPackaging");
+    return null;
+  }
   const handle = "premium-packaging";
 
   const inContextVariables = getInContextVariables(lang);

@@ -6,6 +6,10 @@ import { deepKeys, getProperty } from 'dot-prop';
 import { type ResolvedIntlConfig } from "react-intl";
 
 export const getDictionary = async ({ lang, namespace }: { lang: Intl.BCP47LanguageTag; namespace?: string }): Promise<ResolvedIntlConfig["messages"]> => {
+  if(!lang) {
+    console.error("No lang in getDictionary")
+  }
+
   const localization = await getLocalizationDetailsHandler({ lang });
 
   let languageFallback = {}

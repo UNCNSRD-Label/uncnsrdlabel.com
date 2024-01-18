@@ -15,7 +15,7 @@ import {
   cn,
   getIETFLanguageTagFromlocaleTag,
   getLocaleObjectFromIETFLanguageTag,
-  PRE_GENERATED_BCP47_LANGUAGE_TAGS
+  PRE_GENERATED_BCP47_LANGUAGE_TAGS,
 } from "@uncnsrdlabel/lib";
 import { AppProviders } from "@uncnsrdlabel/providers";
 import { config } from "@uncnsrdlabel/tailwind-config";
@@ -28,8 +28,12 @@ import { type ResolvedIntlConfig } from "react-intl";
 import "../globals.css";
 
 export async function generateStaticParams({
-  lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE!,
+  lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE ?? "en-AU",
 }) {
+  if (!lang) {
+    console.error("No lang in RootLayout generateStaticParams");
+  }
+
   // We need to get the localization details here to ensure the state is set correctly for the static generation
   // The lang value can be anything as we just want the list of available languages
   const localization = await getLocalizationDetailsHandler({ lang });
@@ -63,8 +67,9 @@ export async function generateStaticParams({
 export async function generateMetadata({
   params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
 }: LayoutProps): Promise<Metadata> {
-  
-  const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
+  const messages: ResolvedIntlConfig["messages"] = await getDictionary({
+    lang,
+  });
 
   const intl = createIntl({
     locale: lang,
