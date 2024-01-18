@@ -874,7 +874,7 @@ importers:
     dependencies:
       '@shopify/hydrogen-react':
         specifier: ^2023.10.1
-        version: 2023.10.1(@types/react@18.2.48)(react-dom@18.2.0)(react@18.2.0)
+        version: 2023.10.1(@types/react@18.2.48)(react-dom@18.2.0)(react@0.0.0-experimental-b30030471-20240117)
       clsx:
         specifier: ^2.1.0
         version: 2.1.0
@@ -883,7 +883,10 @@ importers:
         version: 4.17.21
       next:
         specifier: 14.0.4
-        version: 14.0.4(@babel/core@7.22.11)(react-dom@18.2.0)(react@18.2.0)
+        version: 14.0.4(@babel/core@7.22.11)(react-dom@18.2.0)(react@0.0.0-experimental-b30030471-20240117)
+      react:
+        specifier: experimental
+        version: 0.0.0-experimental-b30030471-20240117
       tailwind-merge:
         specifier: ^2.2.0
         version: 2.2.0
@@ -5300,6 +5303,26 @@ packages:
       - xstate
     dev: false
 
+  /@shopify/hydrogen-react@2023.10.1(@types/react@18.2.48)(react-dom@18.2.0)(react@0.0.0-experimental-b30030471-20240117):
+    resolution: {integrity: sha512-RHyo+Fc1tBUmFTHmKGPFWF2BqDfHHqefv9JHr/j3ovGgJGSefk30zIS1OtQkm6UFj2VPLu3bZJM8chgUQnXJ9w==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      '@google/model-viewer': 1.12.1
+      '@xstate/fsm': 2.1.0
+      '@xstate/react': 3.2.2(@types/react@18.2.48)(@xstate/fsm@2.1.0)(react@0.0.0-experimental-b30030471-20240117)
+      graphql: 16.8.1
+      react: 0.0.0-experimental-b30030471-20240117
+      react-dom: 18.2.0(react@0.0.0-experimental-b30030471-20240117)
+      type-fest: 4.9.0
+      worktop: 0.7.3
+    transitivePeerDependencies:
+      - '@types/react'
+      - xstate
+    dev: false
+
   /@shopify/hydrogen-react@2023.10.1(@types/react@18.2.48)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127):
     resolution: {integrity: sha512-RHyo+Fc1tBUmFTHmKGPFWF2BqDfHHqefv9JHr/j3ovGgJGSefk30zIS1OtQkm6UFj2VPLu3bZJM8chgUQnXJ9w==}
     engines: {node: '>=18.0.0'}
@@ -5318,26 +5341,6 @@ packages:
     transitivePeerDependencies:
       - '@types/react'
       - xstate
-
-  /@shopify/hydrogen-react@2023.10.1(@types/react@18.2.48)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-RHyo+Fc1tBUmFTHmKGPFWF2BqDfHHqefv9JHr/j3ovGgJGSefk30zIS1OtQkm6UFj2VPLu3bZJM8chgUQnXJ9w==}
-    engines: {node: '>=18.0.0'}
-    peerDependencies:
-      react: ^18.0.0
-      react-dom: ^18.0.0
-    dependencies:
-      '@google/model-viewer': 1.12.1
-      '@xstate/fsm': 2.1.0
-      '@xstate/react': 3.2.2(@types/react@18.2.48)(@xstate/fsm@2.1.0)(react@18.2.0)
-      graphql: 16.8.1
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      type-fest: 4.9.0
-      worktop: 0.7.3
-    transitivePeerDependencies:
-      - '@types/react'
-      - xstate
-    dev: false
 
   /@shopify/hydrogen@2023.10.4(@remix-run/react@2.4.1)(@remix-run/server-runtime@2.4.1)(@types/react@18.2.48)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127):
     resolution: {integrity: sha512-yR33VlhjkO1QzpJZFvUXNW4coW3vOJ40ze3kZ5ppeQugwi65NuHOM35W5NTcq3cLiIGNM0ra85/JFWMjdl5qgQ==}
@@ -6009,6 +6012,26 @@ packages:
       - '@types/react'
     dev: false
 
+  /@xstate/react@3.2.2(@types/react@18.2.48)(@xstate/fsm@2.1.0)(react@0.0.0-experimental-b30030471-20240117):
+    resolution: {integrity: sha512-feghXWLedyq8JeL13yda3XnHPZKwYDN5HPBLykpLeuNpr9178tQd2/3d0NrH6gSd0sG5mLuLeuD+ck830fgzLQ==}
+    peerDependencies:
+      '@xstate/fsm': ^2.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      xstate: ^4.37.2
+    peerDependenciesMeta:
+      '@xstate/fsm':
+        optional: true
+      xstate:
+        optional: true
+    dependencies:
+      '@xstate/fsm': 2.1.0
+      react: 0.0.0-experimental-b30030471-20240117
+      use-isomorphic-layout-effect: 1.1.2(@types/react@18.2.48)(react@0.0.0-experimental-b30030471-20240117)
+      use-sync-external-store: 1.2.0(react@0.0.0-experimental-b30030471-20240117)
+    transitivePeerDependencies:
+      - '@types/react'
+    dev: false
+
   /@xstate/react@3.2.2(@types/react@18.2.48)(@xstate/fsm@2.1.0)(react@0.0.0-experimental-c17a27ef4-20231127):
     resolution: {integrity: sha512-feghXWLedyq8JeL13yda3XnHPZKwYDN5HPBLykpLeuNpr9178tQd2/3d0NrH6gSd0sG5mLuLeuD+ck830fgzLQ==}
     peerDependencies:
@@ -6027,26 +6050,6 @@ packages:
       use-sync-external-store: 1.2.0(react@0.0.0-experimental-c17a27ef4-20231127)
     transitivePeerDependencies:
       - '@types/react'
-
-  /@xstate/react@3.2.2(@types/react@18.2.48)(@xstate/fsm@2.1.0)(react@18.2.0):
-    resolution: {integrity: sha512-feghXWLedyq8JeL13yda3XnHPZKwYDN5HPBLykpLeuNpr9178tQd2/3d0NrH6gSd0sG5mLuLeuD+ck830fgzLQ==}
-    peerDependencies:
-      '@xstate/fsm': ^2.0.0
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      xstate: ^4.37.2
-    peerDependenciesMeta:
-      '@xstate/fsm':
-        optional: true
-      xstate:
-        optional: true
-    dependencies:
-      '@xstate/fsm': 2.1.0
-      react: 18.2.0
-      use-isomorphic-layout-effect: 1.1.2(@types/react@18.2.48)(react@18.2.0)
-      use-sync-external-store: 1.2.0(react@18.2.0)
-    transitivePeerDependencies:
-      - '@types/react'
-    dev: false
 
   /@xtuc/ieee754@1.2.0:
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
@@ -9872,6 +9875,46 @@ packages:
     resolution: {integrity: sha512-OjJ+fV15FXO2uQXQagLD4C0abYErBjyjE0I0FHpOEIB8upw0hg1ldFP6cqHTJBH1cZqy96OeR3u1dJ+Ez2D4Bg==}
     dev: false
 
+  /next@14.0.4(@babel/core@7.22.11)(react-dom@18.2.0)(react@0.0.0-experimental-b30030471-20240117):
+    resolution: {integrity: sha512-qbwypnM7327SadwFtxXnQdGiKpkuhaRLE2uq62/nRul9cj9KhQ5LhHmlziTNqUidZotw/Q1I9OjirBROdUJNgA==}
+    engines: {node: '>=18.17.0'}
+    hasBin: true
+    peerDependencies:
+      '@opentelemetry/api': ^1.1.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
+      sass: ^1.3.0
+    peerDependenciesMeta:
+      '@opentelemetry/api':
+        optional: true
+      sass:
+        optional: true
+    dependencies:
+      '@next/env': 14.0.4
+      '@swc/helpers': 0.5.2
+      busboy: 1.6.0
+      caniuse-lite: 1.0.30001571
+      graceful-fs: 4.2.11
+      postcss: 8.4.31
+      react: 0.0.0-experimental-b30030471-20240117
+      react-dom: 18.2.0(react@0.0.0-experimental-b30030471-20240117)
+      styled-jsx: 5.1.1(@babel/core@7.22.11)(react@0.0.0-experimental-b30030471-20240117)
+      watchpack: 2.4.0
+    optionalDependencies:
+      '@next/swc-darwin-arm64': 14.0.4
+      '@next/swc-darwin-x64': 14.0.4
+      '@next/swc-linux-arm64-gnu': 14.0.4
+      '@next/swc-linux-arm64-musl': 14.0.4
+      '@next/swc-linux-x64-gnu': 14.0.4
+      '@next/swc-linux-x64-musl': 14.0.4
+      '@next/swc-win32-arm64-msvc': 14.0.4
+      '@next/swc-win32-ia32-msvc': 14.0.4
+      '@next/swc-win32-x64-msvc': 14.0.4
+    transitivePeerDependencies:
+      - '@babel/core'
+      - babel-plugin-macros
+    dev: false
+
   /next@14.0.4(@babel/core@7.22.11)(react-dom@18.2.0)(react@0.0.0-experimental-c17a27ef4-20231127):
     resolution: {integrity: sha512-qbwypnM7327SadwFtxXnQdGiKpkuhaRLE2uq62/nRul9cj9KhQ5LhHmlziTNqUidZotw/Q1I9OjirBROdUJNgA==}
     engines: {node: '>=18.17.0'}
@@ -11172,6 +11215,16 @@ packages:
       scheduler: 0.23.0
     dev: false
 
+  /react-dom@18.2.0(react@0.0.0-experimental-b30030471-20240117):
+    resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
+    peerDependencies:
+      react: ^18.2.0
+    dependencies:
+      loose-envify: 1.4.0
+      react: 0.0.0-experimental-b30030471-20240117
+      scheduler: 0.23.0
+    dev: false
+
   /react-dom@18.2.0(react@0.0.0-experimental-c17a27ef4-20231127):
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
     peerDependencies:
@@ -11365,6 +11418,13 @@ packages:
 
   /react@0.0.0-experimental-0cdfef19b-20231211:
     resolution: {integrity: sha512-sT7unncEUQcEb90reXMasi8FrJGcUVvEa6qhQWsNQuyKJ2wuvGyc+hNQa/xQnM8XaRXlkq03QZUEvCiyDHVSTg==}
+    engines: {node: '>=0.10.0'}
+    dependencies:
+      loose-envify: 1.4.0
+    dev: false
+
+  /react@0.0.0-experimental-b30030471-20240117:
+    resolution: {integrity: sha512-wqAzmFr89iIKW1HveRTvZOplT+bpMFqeqJ2YbEUnvQxmDrbVY97fqCgFkayczLcT6+9hBaybGWNaQl3GmK773Q==}
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
@@ -12133,6 +12193,24 @@ packages:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
 
+  /styled-jsx@5.1.1(@babel/core@7.22.11)(react@0.0.0-experimental-b30030471-20240117):
+    resolution: {integrity: sha512-pW7uC1l4mBZ8ugbiZrcIsiIvVx1UmTfw7UkC3Um2tmfUq9Bhk8IiyEIPl6F8agHgjzku6j0xQEZbfA5uSgSaCw==}
+    engines: {node: '>= 12.0.0'}
+    peerDependencies:
+      '@babel/core': '*'
+      babel-plugin-macros: '*'
+      react: '>= 16.8.0 || 17.x.x || ^18.0.0-0'
+    peerDependenciesMeta:
+      '@babel/core':
+        optional: true
+      babel-plugin-macros:
+        optional: true
+    dependencies:
+      '@babel/core': 7.22.11
+      client-only: 0.0.1
+      react: 0.0.0-experimental-b30030471-20240117
+    dev: false
+
   /styled-jsx@5.1.1(@babel/core@7.22.11)(react@0.0.0-experimental-c17a27ef4-20231127):
     resolution: {integrity: sha512-pW7uC1l4mBZ8ugbiZrcIsiIvVx1UmTfw7UkC3Um2tmfUq9Bhk8IiyEIPl6F8agHgjzku6j0xQEZbfA5uSgSaCw==}
     engines: {node: '>= 12.0.0'}
@@ -12817,6 +12895,19 @@ packages:
       react: 0.0.0-experimental-0cdfef19b-20231211
     dev: false
 
+  /use-isomorphic-layout-effect@1.1.2(@types/react@18.2.48)(react@0.0.0-experimental-b30030471-20240117):
+    resolution: {integrity: sha512-49L8yCO3iGT/ZF9QttjwLF/ZD9Iwto5LnH5LmEdk/6cFmXddqi2ulF0edxTwjj+7mqvpVVGQWvbXZdn32wRSHA==}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@types/react': 18.2.48
+      react: 0.0.0-experimental-b30030471-20240117
+    dev: false
+
   /use-isomorphic-layout-effect@1.1.2(@types/react@18.2.48)(react@0.0.0-experimental-c17a27ef4-20231127):
     resolution: {integrity: sha512-49L8yCO3iGT/ZF9QttjwLF/ZD9Iwto5LnH5LmEdk/6cFmXddqi2ulF0edxTwjj+7mqvpVVGQWvbXZdn32wRSHA==}
     peerDependencies:
@@ -12828,19 +12919,6 @@ packages:
     dependencies:
       '@types/react': 18.2.48
       react: 0.0.0-experimental-c17a27ef4-20231127
-
-  /use-isomorphic-layout-effect@1.1.2(@types/react@18.2.48)(react@18.2.0):
-    resolution: {integrity: sha512-49L8yCO3iGT/ZF9QttjwLF/ZD9Iwto5LnH5LmEdk/6cFmXddqi2ulF0edxTwjj+7mqvpVVGQWvbXZdn32wRSHA==}
-    peerDependencies:
-      '@types/react': '*'
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-    dependencies:
-      '@types/react': 18.2.48
-      react: 18.2.0
-    dev: false
 
   /use-sidecar@1.1.2(@types/react@18.2.48)(react@0.0.0-experimental-c17a27ef4-20231127):
     resolution: {integrity: sha512-epTbsLuzZ7lPClpz2TyryBfztm7m+28DlEv2ZCQ3MDr5ssiwyOwGH/e5F9CkfWjJ1t4clvI58yF822/GUkjjhw==}
@@ -12866,20 +12944,20 @@ packages:
       react: 0.0.0-experimental-0cdfef19b-20231211
     dev: false
 
+  /use-sync-external-store@1.2.0(react@0.0.0-experimental-b30030471-20240117):
+    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 0.0.0-experimental-b30030471-20240117
+    dev: false
+
   /use-sync-external-store@1.2.0(react@0.0.0-experimental-c17a27ef4-20231127):
     resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       react: 0.0.0-experimental-c17a27ef4-20231127
-
-  /use-sync-external-store@1.2.0(react@18.2.0):
-    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    dependencies:
-      react: 18.2.0
-    dev: false
 
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
