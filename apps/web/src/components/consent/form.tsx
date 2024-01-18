@@ -128,7 +128,7 @@ export function ConsentForm({className, dictionary, lang, ...props}: ConsentDial
             block: optionsOpen,
             hidden: !optionsOpen,
           })}
-          size="base"
+          size="sm"
           variant="default"
         >
           {intl.formatMessage({ id: "component.ConsentForm.accept" })}
@@ -140,7 +140,7 @@ export function ConsentForm({className, dictionary, lang, ...props}: ConsentDial
           })}
           onClick={manageConsents}
           type="button"
-          size="base"
+          size="sm"
           variant="secondary"
         >
           {intl.formatMessage({ id: "component.ConsentForm.manage" })}
@@ -148,7 +148,7 @@ export function ConsentForm({className, dictionary, lang, ...props}: ConsentDial
         <Button
           onClick={acceptAllConsents}
           type="button"
-          size="base"
+          size="sm"
           variant="default"
         >
           {intl.formatMessage({ id: "component.ConsentForm.accept-all" })}
@@ -156,7 +156,7 @@ export function ConsentForm({className, dictionary, lang, ...props}: ConsentDial
         <Button
           onClick={denyAllAdditionalConsents}
           type="button"
-          size="base"
+          size="sm"
           variant="default"
         >
           {intl.formatMessage({ id: "component.ConsentForm.deny-additional" })}
