@@ -275,10 +275,10 @@ const securityHeaders = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // eslint: {
-  //   // Disabling on production builds because we're running checks on PRs via GitHub Actions.
-  //   ignoreDuringBuilds: true,
-  // },
+  eslint: {
+    // Disabling on production builds because we're running checks on PRs via GitHub Actions.
+    ignoreDuringBuilds: true,
+  },
   experimental: {
     // swcPlugins: [
     //   ['@victorandree/graphql-codegen-client-preset-swc-plugin', { artifactDirectory: '@uncnsrdlabel/graphql-shopify-storefront/codegen', gqlTagName: 'graphql' }]
