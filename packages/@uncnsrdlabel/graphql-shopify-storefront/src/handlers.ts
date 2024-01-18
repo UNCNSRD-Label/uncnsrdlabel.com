@@ -394,8 +394,6 @@ export async function getShopDetailsHandler({ lang }: {
 export async function getLocalizationDetailsHandler({ lang }: {
   lang: Intl.BCP47LanguageTag;
 }) {
-  console.debug({ lang }, "getLocalizationDetailsHandler")
-
   if (!lang) {
     console.error("No lang in getLocalizationDetailsHandler")
   }

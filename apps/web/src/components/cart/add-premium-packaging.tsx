@@ -12,11 +12,6 @@ export async function AddPremiumPackaging({
   className?: string;
   lang: Intl.BCP47LanguageTag;
 }) {
-  if (!lang) {
-    console.error("No lang in AddPremiumPackaging");
-    return null;
-  }
-  
   const handle = "premium-packaging";
 
   const inContextVariables = getInContextVariables(lang);

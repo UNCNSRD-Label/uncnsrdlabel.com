@@ -27,8 +27,6 @@ export default async function NotFound() {
     }
   }
 
-  console.log({ lang }, "NotFound");
-
   const messages: ResolvedIntlConfig["messages"] = await getDictionary({
     lang,
   });

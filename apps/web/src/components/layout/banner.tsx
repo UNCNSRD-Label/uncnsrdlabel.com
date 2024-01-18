@@ -8,7 +8,6 @@ import { cn } from "@uncnsrdlabel/lib";
 import { use } from "react";
 
 export const Banner = ({ className, lang }: { className?: string; lang: Intl.BCP47LanguageTag; }) => {
-  console.log({lang})
   const variables = {
     first: 16,
     query: "status:active AND title:Site|*",
