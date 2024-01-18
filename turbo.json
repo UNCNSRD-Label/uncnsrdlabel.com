@@ -13,13 +13,13 @@
       "cache": false
     },
     "dependencies:check": {
-      "cache": false
+      "outputs": []
     },
     "dependencies:graph": {
-      "cache": false
+      "outputs": []
     },
     "dependencies:unused": {
-      "cache": false
+      "outputs": []
     },
     "dev": {
       "cache": false,
@@ -44,6 +44,9 @@
         "SITE_URL_WEB"
       ],
       "outputs": ["dist/**"]
+    },
+    "find:unused": {
+      "outputs": []
     },
     "generate-types": {
       "outputs": []
