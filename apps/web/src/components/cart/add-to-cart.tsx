@@ -23,7 +23,7 @@ import {
   type AddToCartMutationVariables,
   type CreateCartMutationVariables,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { cn, useGetLangProperties } from "@uncnsrdlabel/lib";
+import { cn, getLangProperties } from "@uncnsrdlabel/lib";
 import { useSearchParams } from "next/navigation";
 import { Suspense, Usable, use, useCallback } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
@@ -64,7 +64,7 @@ function SubmitButton({
 
   const cartId = useSelector<string>(() => state$.cartId.get());
 
-  const { country } = useGetLangProperties();
+  const { country } = getLangProperties(lang);
 
   const shopifyQueryClient = useQueryClient();
 
