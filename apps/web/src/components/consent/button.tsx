@@ -1,9 +1,22 @@
-import { getDictionary } from "@/lib/dictionary";
-import { Button } from "@uncnsrdlabel/components/ui/button";
-import { createIntl, type ResolvedIntlConfig } from "react-intl";
+"use client";
 
-export async function ConsentButton({ className, lang, onClick }: { className?: string; lang: Intl.BCP47LanguageTag; onClick?: () => void }) {
-  const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
+import { createIntl } from "@formatjs/intl";
+import { Button } from "@uncnsrdlabel/components/ui/button";
+import { Usable, use } from "react";
+import { type ResolvedIntlConfig } from "react-intl";
+
+export function ConsentButton({
+  className,
+  dictionary,
+  lang,
+  onClick,
+}: {
+  className?: string;
+  dictionary: Usable<ResolvedIntlConfig["messages"]>;
+  lang: Intl.BCP47LanguageTag;
+  onClick?: () => void;
+}) {
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
   const intl = createIntl({
     locale: lang,
