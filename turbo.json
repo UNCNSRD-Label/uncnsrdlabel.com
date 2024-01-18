@@ -6,6 +6,7 @@
       "outputs": ["dist/**"]
     },
     "build": {
+      "cache": false,
       "dependsOn": ["^build"]
     },
     "clean": {
