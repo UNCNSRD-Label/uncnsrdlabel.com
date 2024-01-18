@@ -29,6 +29,7 @@
     "dependencies:graph": "turbo run dependencies:graph",
     "dependencies:unused": "turbo run dependencies:unused",
     "dev": "turbo dev --concurrency=12 --no-cache --continue",
+    "find:unused": "npx next-unused",
     "lint-staged": "lint-staged",
     "lint": "turbo run lint",
     "list:projects": "pnpm m ls --depth -1 --json",
