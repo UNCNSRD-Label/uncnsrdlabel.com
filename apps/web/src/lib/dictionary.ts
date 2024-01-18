@@ -20,21 +20,21 @@ export const getDictionary = async ({ lang, namespace }: { lang: Intl.BCP47Langu
     const { default: languageFallbackDictionary } = await import(`@/dictionaries/en.json`);
     languageFallback = languageFallbackDictionary;
   } catch (error) {
-    console.error(error);
+    console.debug(error);
   }
 
   try {
     const { default: languageGenericDictionary } = await import(`@/dictionaries/${localization.language.isoCode.toLocaleLowerCase()}.json`) ?? {};
     languageGeneric = languageGenericDictionary;
   } catch (error) {
-    console.error(error);
+    console.debug(error);
   }
 
   try {
     const { default: languageLocalisedDictionary } = await import(`@/dictionaries/${localization.language.isoCode.toLocaleLowerCase()}-${localization.country.isoCode}.json`) ?? {};
     languageLocalised = languageLocalisedDictionary;
   } catch (error) {
-    console.error(error);
+    console.debug(error);
   }
 
   const allMessages = merge.all([
