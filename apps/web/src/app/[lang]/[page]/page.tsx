@@ -1,6 +1,9 @@
+import { getAlternativeLanguages } from "@/lib/i18n";
+import { getCanonical } from "@/lib/metadata";
 import { type PageProps } from "@/types/next";
 import {
   getFragmentData,
+  getLocalizationDetailsHandler,
   getPageHandler,
   pageFragment,
   seoFragment,
@@ -16,6 +19,8 @@ export async function generateMetadata({
 }: {
   params: { lang: Intl.BCP47LanguageTag; page: string };
 }): Promise<Metadata> {
+  const localization = await getLocalizationDetailsHandler({ lang });
+
   const variables = {
     handle,
   };
@@ -28,7 +33,13 @@ export async function generateMetadata({
 
   const seo = getFragmentData(seoFragment, page.seo);
 
+  const path = `/${handle}`;
+
   return {
+    alternates: {
+      canonical: getCanonical(path),
+      languages: getAlternativeLanguages({ localization, path }),
+    },
     title: seo?.title || page.title,
     description: seo?.description || page.bodySummary,
     openGraph: {

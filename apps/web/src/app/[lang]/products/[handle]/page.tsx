@@ -1,5 +1,6 @@
 import { Details } from "@/components/product/details";
 import { getAlternativeLanguages } from "@/lib/i18n";
+import { getCanonical } from "@/lib/metadata";
 import { type PageProps } from "@/types/next";
 import {
   getFragmentData,
@@ -39,9 +40,7 @@ export async function generateMetadata({
 
   return {
     alternates: {
-      canonical: `${localization.language.isoCode.toLocaleLowerCase()}-${
-        localization.country.isoCode
-      }/${path}`,
+      canonical: getCanonical(path),
       languages: getAlternativeLanguages({ localization, path }),
     },
     title: seo.title || product.title,

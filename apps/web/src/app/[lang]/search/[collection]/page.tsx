@@ -2,6 +2,7 @@ import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
 import { getDictionary } from "@/lib/dictionary";
 import { getAlternativeLanguages } from "@/lib/i18n";
+import { getCanonical } from "@/lib/metadata";
 import {
   collectionFragment,
   getCollectionHandler,
@@ -38,7 +39,7 @@ export async function generateMetadata({
 
   return {
     alternates: {
-      canonical: `${localization.language.isoCode.toLocaleLowerCase()}-${localization.country.isoCode}/${path}`,
+      canonical: getCanonical(path),
       languages: getAlternativeLanguages({ localization, path }),
     },
     title: seo?.title || collection.title,
