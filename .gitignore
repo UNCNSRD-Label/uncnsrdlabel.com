@@ -53,3 +53,6 @@ next-env.d.ts
 storybook-static
 .vercel
 .turbo
+
+# Madge
+graph.svg
