@@ -3,7 +3,7 @@
 import { SearchButton } from "@/components/search/button";
 import { SearchForm } from "@/components/search/form";
 import { getDictionary } from "@/lib/dictionary";
-import { Suspense, useState } from "react";
+import { useState } from "react";
 
 export function Search({
   dictionary,
@@ -16,14 +16,12 @@ export function Search({
 
   return (
     <div className="relative grid w-full items-center" tabIndex={-1}>
-      <Suspense fallback={null}>
-        <SearchForm
-          dictionary={dictionary}
-          isOpen={searchIsOpen}
-          lang={lang}
-          setSearchIsOpen={setSearchIsOpen}
-        />
-      </Suspense>
+      <SearchForm
+        dictionary={dictionary}
+        isOpen={searchIsOpen}
+        lang={lang}
+        setSearchIsOpen={setSearchIsOpen}
+      />
       <SearchButton isOpen={searchIsOpen} lang={lang} />
     </div>
   );

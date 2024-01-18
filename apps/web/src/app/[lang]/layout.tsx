@@ -59,7 +59,9 @@ export async function generateStaticParams({
     shopifyBCP47LanguageTags,
   );
 
-  return [...languageCodes, ...preGeneratedBCP47LanguageTags].map((lang) => ({
+  const availableBCP47LanguageTags = [...languageCodes, ...preGeneratedBCP47LanguageTags] 
+
+  return availableBCP47LanguageTags.map((lang) => ({
     lang,
   }));
 }
@@ -67,6 +69,10 @@ export async function generateStaticParams({
 export async function generateMetadata({
   params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
 }: LayoutProps): Promise<Metadata> {
+  if (lang === "favicon.ico") {
+    return {};
+  }
+
   const messages: ResolvedIntlConfig["messages"] = await getDictionary({
     lang,
   });
@@ -139,6 +145,10 @@ export default async function RootLayout({
   children,
   params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
 }: PropsWithChildren<LayoutProps>) {
+  if (lang === "favicon.ico") {
+    return null;
+  }
+
   return (
     <html
       className={cn(
