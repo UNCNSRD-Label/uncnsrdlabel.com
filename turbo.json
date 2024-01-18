@@ -11,6 +11,24 @@
     "clean": {
       "cache": false
     },
+    "dependencies:check": {
+      "cache": false
+    },
+    "dependencies:fix": {
+      "cache": false
+    },
+    "dependencies:graph": {
+      "cache": false
+    },
+    "dependencies:stats": {
+      "cache": false
+    },
+    "dependencies:unused:fix": {
+      "cache": false
+    },
+    "dependencies:unused": {
+      "cache": false
+    },
     "dev": {
       "cache": false,
       "dependsOn": ["^build"],

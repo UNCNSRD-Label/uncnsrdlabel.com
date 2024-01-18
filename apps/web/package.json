@@ -113,6 +113,12 @@
   "scripts": {
     "analyze": "cross-env ANALYZE=true next build",
     "build": "next build",
+    "dependencies:check": "madge --circular --extensions ts,tsx --ts-config ./tsconfig.json ../../packages",
+    "dependencies:fix": "madge --circular --extensions ts,tsx --ts-config ./tsconfig.json ../../packages --fix",
+    "dependencies:graph": "madge --circular --extensions ts,tsx --ts-config ./tsconfig.json ../../packages --image graph.svg",
+    "dependencies:stats": "madge --circular --extensions ts,tsx --ts-config ./tsconfig.json ../../packages --stats",
+    "dependencies:unused:fix": "madge --circular --extensions ts,tsx --ts-config ./tsconfig.json ../../packages --warning --fix",
+    "dependencies:unused": "madge --circular --extensions ts,tsx --ts-config ./tsconfig.json ../../packages --warning",
     "dev": "next dev",
     "find:unused": "npx next-unused",
     "lint": "next lint",
