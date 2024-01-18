@@ -3,9 +3,9 @@
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { PropsWithChildren } from "react";
 import { AppAnalyticsProvider } from "./analytics/index";
-import { AppIntlProvider } from "./react-intl";
-import { AppReactQueryProvider } from "./react-query";
-import { AppShopifyProvider } from "./shopify";
+import { AppIntlProvider } from "./app-react-intl";
+import { AppReactQueryProvider } from "./app-react-query";
+import { AppShopifyProvider } from "./app-shopify";
 
 export {
   AppAnalyticsProvider,
