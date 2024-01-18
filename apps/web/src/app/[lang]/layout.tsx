@@ -162,7 +162,7 @@ export default async function RootLayout({
       >
         <AppProviders lang={lang}>
           <SetState lang={lang} />
-          <Banner className={cn("sticky top-0 z-30 w-full")} lang={lang} />
+          <Banner className={cn("sticky top-0 z-30 w-full")} />
           <Progress />
           {children}
           <Footer lang={lang} />
