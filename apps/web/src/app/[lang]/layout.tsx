@@ -30,10 +30,6 @@ import "../globals.css";
 export async function generateStaticParams({
   lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE ?? "en-AU",
 }) {
-  if (!lang) {
-    console.error("No lang in RootLayout generateStaticParams");
-  }
-
   // We need to get the localization details here to ensure the state is set correctly for the static generation
   // The lang value can be anything as we just want the list of available languages
   const localization = await getLocalizationDetailsHandler({ lang });

@@ -17,10 +17,6 @@ import { RelatedProducts } from "./related-products";
 export async function generateMetadata({
   params: { handle, lang },
 }: PageProps): Promise<Metadata> {
-  if(!lang) {
-    console.error("No lang in products generateMetadata")
-  }
-
   const localization = await getLocalizationDetailsHandler({ lang });
 
   const path = `/products/${handle}`;
