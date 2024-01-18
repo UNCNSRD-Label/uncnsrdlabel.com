@@ -80,7 +80,7 @@ export function ConsentDialog({ className, dictionary, lang }: { className?: str
 
   return (
     <>
-      <ConsentButton className={className} lang={lang} onClick={onOpen} />
+      <ConsentButton className={className} dictionary={dictionary} lang={lang} onClick={onOpen} />
       <Dialog.Root onOpenChange={setOpen} open={open}>
         <Dialog.Portal>
           <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0 z-40 bg-black/80" />
