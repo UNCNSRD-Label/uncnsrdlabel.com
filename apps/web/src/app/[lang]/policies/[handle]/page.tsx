@@ -1,5 +1,6 @@
 import { Prose } from "@/components/prose";
 import { getAlternativeLanguages } from "@/lib/i18n";
+import { getCanonical } from "@/lib/metadata";
 import { type PageProps } from "@/types/next";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
@@ -35,9 +36,7 @@ export async function generateMetadata({
 
   return {
     alternates: {
-      canonical: `${localization.language.isoCode.toLocaleLowerCase()}-${
-        localization.country.isoCode
-      }/${path}`,
+      canonical: getCanonical(path),
       languages: getAlternativeLanguages({ localization, path }),
     },
     title: policy.title,

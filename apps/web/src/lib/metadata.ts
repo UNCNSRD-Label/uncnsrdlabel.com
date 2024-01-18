@@ -16,18 +16,28 @@ const {
     TWITTER_SITE,
 } = process.env;
 
+export const getCanonical = (path?: string) => {
+    const { country, language } = getLangProperties(NEXT_PUBLIC_DEFAULT_LOCALE);
+
+    let lang = `${language.toLocaleLowerCase()}-${country}` as Intl.BCP47LanguageTag;
+
+    if (path) {
+        lang = lang.concat(path)
+    }
+
+    return lang
+}
+
 export const getBaseMetadata = async ({ lang, path = "/" }: { lang: Intl.BCP47LanguageTag; path: string }) => {
     if (!lang) {
         console.error("No lang in getBaseMetadata")
     }
 
-    const { country: canonicalCountry, language: canonicalLanguage } = getLangProperties(NEXT_PUBLIC_DEFAULT_LOCALE);
-
     const localization = await getLocalizationDetailsHandler({ lang });
 
     const metadata: Metadata = {
         alternates: {
-            canonical: `${canonicalLanguage.toLocaleLowerCase()}-${canonicalCountry}`,
+            canonical: getCanonical(),
             languages: getAlternativeLanguages({ localization, path }),
         },
         applicationName: NEXT_PUBLIC_SITE_NAME,
