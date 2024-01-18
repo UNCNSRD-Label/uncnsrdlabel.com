@@ -13,7 +13,7 @@ import {
   productDetailsFragment,
   productMetafieldFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { getLangProperties } from "@uncnsrdlabel/lib";
+import { getInContextVariables } from "@uncnsrdlabel/lib";
 import { Fragment, ReactNode } from "react";
 import slugify from "slugify";
 import { JsonValue } from "type-fest";
@@ -143,7 +143,7 @@ export async function MetafieldMapper({
         if (Array.isArray(parsedValue)) {
           value = parsedValue.map(async (id, index) => {
             if (typeof id === "string") {
-              const inContextVariables = getLangProperties(lang);
+              const inContextVariables = getInContextVariables(lang);
 
               const variables = { id };
 

@@ -1,4 +1,4 @@
-import { getLangProperties } from "@uncnsrdlabel/lib";
+import { getInContextVariables } from "@uncnsrdlabel/lib";
 import { CollectionFragment } from "./codegen/graphql";
 import { getFragmentData } from "./codegen/index";
 import { domain } from "./constants";
@@ -133,7 +133,7 @@ export async function getCartHandler({ variables, lang }: {
   variables: GetCartQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
-  const inContextVariables = getLangProperties(lang);
+  const inContextVariables = getInContextVariables(lang);
 
   const { cart: cartFragmentRef } = await getShopifyGraphQL(getCartQuery, {
     ...inContextVariables,
@@ -151,7 +151,7 @@ export async function getCollectionHandler({ variables, lang }: {
   variables: GetCollectionQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
-  const inContextVariables = getLangProperties(lang);
+  const inContextVariables = getInContextVariables(lang);
 
   const { collection: collectionFragmentRef } = await getShopifyGraphQL(
     getCollectionQuery,
@@ -173,7 +173,7 @@ export async function getCollectionProductsHandler({ variables, lang }: {
   variables: GetCollectionProductsQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
-  const inContextVariables = getLangProperties(lang);
+  const inContextVariables = getInContextVariables(lang);
 
   // @ts-expect-error Types of property 'country' are incompatible.
   const { collection } = await getShopifyGraphQL(getCollectionProductsQuery, {
@@ -197,7 +197,7 @@ export async function getCollectionRefsHandler({ variables, lang }: {
   variables: GetCollectionsQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
-  const inContextVariables = getLangProperties(lang);
+  const inContextVariables = getInContextVariables(lang);
 
   const { collections: shopifyCollectionConnection } =
     // @ts-expect-error Types of property 'country' are incompatible.
@@ -246,7 +246,7 @@ export async function getRouteMetaObjectHandler({ variables, lang }: {
   variables: GetRouteMetaObjectQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
-  const inContextVariables = getLangProperties(lang);
+  const inContextVariables = getInContextVariables(lang);
 
   const { metaobject } = await getShopifyGraphQL(
     getRouteMetaObjectQuery,
@@ -268,7 +268,7 @@ export async function getMenuHandler({ variables, lang }: {
   variables: GetMenuQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
-  const inContextVariables = getLangProperties(lang);
+  const inContextVariables = getInContextVariables(lang);
 
   // @ts-expect-error Types of property 'country' are incompatible.
   const { menu } = await getShopifyGraphQL(getMenuQuery, {
@@ -299,7 +299,7 @@ export async function getPageHandler({ variables, lang }: {
   variables: GetPageQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
-  const inContextVariables = getLangProperties(lang);
+  const inContextVariables = getInContextVariables(lang);
 
   const { page: pageFragmentRef } = await getShopifyGraphQL(
     getPageQuery,
@@ -321,7 +321,7 @@ export async function getPagesHandler({ variables, lang }: {
   variables: GetPagesQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
-  const inContextVariables = getLangProperties(lang);
+  const inContextVariables = getInContextVariables(lang);
 
   // @ts-expect-error Types of property 'country' are incompatible.
   const { pages } = await getShopifyGraphQL(getPagesQuery, {
@@ -342,7 +342,7 @@ export async function getPagesHandler({ variables, lang }: {
 export async function getShopDetailsHandler({ lang }: {
   lang: Intl.BCP47LanguageTag,
 }) {
-  const inContextVariables = getLangProperties(lang);
+  const inContextVariables = getInContextVariables(lang);
 
   const { shop } = await getShopifyGraphQL(
     getShopDetailsQuery,
@@ -363,7 +363,7 @@ export async function getShopDetailsHandler({ lang }: {
 export async function getLocalizationDetailsHandler({ lang }: {
   lang: Intl.BCP47LanguageTag;
 }) {
-  const inContextVariables = getLangProperties(lang);
+  const inContextVariables = getInContextVariables(lang);
 
   const { localization } = await getShopifyGraphQL(
     getLocalizationDetailsQuery,
@@ -377,7 +377,7 @@ export async function getLocalizationDetailsHandler({ lang }: {
 export async function getShopPoliciesHandler({ lang }: {
   lang: Intl.BCP47LanguageTag,
 }) {
-  const inContextVariables = getLangProperties(lang);
+  const inContextVariables = getInContextVariables(lang);
 
   const { shop } = await getShopifyGraphQL(
     getShopPoliciesQuery,
@@ -399,7 +399,7 @@ export async function getProductBasicHandler({ variables, lang }: {
   variables: GetProductBasicQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
-  const inContextVariables = getLangProperties(lang);
+  const inContextVariables = getInContextVariables(lang);
 
   const { product: productBasicFragmentRef } = await getShopifyGraphQL(
     getProductBasicQuery,
@@ -421,7 +421,7 @@ export async function getProductDetailsByHandleHandler({ variables, lang }: {
   variables: GetProductDetailsByHandleQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
-  const inContextVariables = getLangProperties(lang);
+  const inContextVariables = getInContextVariables(lang);
 
   const { product: productDetailsFragmentRef } = await getShopifyGraphQL(
     getProductDetailsByHandleQuery,
@@ -443,7 +443,7 @@ export async function getProductDetailsByIdHandler({ variables, lang }: {
   variables: GetProductDetailsByIdQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
-  const inContextVariables = getLangProperties(lang);
+  const inContextVariables = getInContextVariables(lang);
 
   const { product: productDetailsFragmentRef } = await getShopifyGraphQL(
     getProductDetailsByIdQuery,
@@ -465,7 +465,7 @@ export async function getProductRecommendationsHandler({ variables, lang }: {
   variables: GetProductRecommendationsQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
-  const inContextVariables = getLangProperties(lang);
+  const inContextVariables = getInContextVariables(lang);
 
   const { productRecommendations: productRecommendationRefs } =
     await getShopifyGraphQL(
@@ -488,7 +488,7 @@ export async function getProductsHandler({ variables, lang }: {
   variables: GetProductsQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
-  const inContextVariables = getLangProperties(lang);
+  const inContextVariables = getInContextVariables(lang);
 
   const { products } = await getShopifyGraphQL(
     getProductsQuery,
@@ -510,7 +510,7 @@ export async function getProductsWithVariantsHandler({ variables, lang }: {
   variables: GetProductsWithVariantsQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
-  const inContextVariables = getLangProperties(lang);
+  const inContextVariables = getInContextVariables(lang);
 
   const { products } = await getShopifyGraphQL(
     getProductsWithVariantsQuery,
