@@ -61,7 +61,9 @@ export async function NavbarContent({
       </div>
 
       <div className="pointer-events-auto flex items-center justify-end gap-5">
-        <Search dictionary={dictionary} lang={lang} />
+        <Suspense fallback={null}>
+          <Search dictionary={dictionary} lang={lang} />
+        </Suspense>
         <Link
           href="/account"
           aria-label={intl.formatMessage({
