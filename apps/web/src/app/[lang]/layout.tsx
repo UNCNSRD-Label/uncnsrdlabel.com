@@ -27,9 +27,9 @@ import { PropsWithChildren, Suspense } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
 import "../globals.css";
 
-export async function generateStaticParams({
-  lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE ?? "en-AU",
-}) {
+export async function generateStaticParams() {
+  const lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE ?? "en-AU";
+
   // We need to get the localization details here to ensure the state is set correctly for the static generation
   // The lang value can be anything as we just want the list of available languages
   const localization = await getLocalizationDetailsHandler({ lang });
