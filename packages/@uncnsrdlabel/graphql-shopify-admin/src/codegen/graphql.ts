@@ -24932,7 +24932,9 @@ export type Mutation = {
   /** Creates a new marketing engagement for a marketing activity or a marketing channel. */
   marketingEngagementCreate?: Maybe<MarketingEngagementCreatePayload>;
   /**
-   * Creates a metafield definition.
+   * Creates a metafield definition. Any metafields existing under the same owner type, namespace, and key will be
+   * checked against this definition and will have their type updated accordingly. For metafields that are not
+   * valid, they will remain unchanged but any attempts to update them must align with this definition.
    *
    */
   metafieldDefinitionCreate?: Maybe<MetafieldDefinitionCreatePayload>;
