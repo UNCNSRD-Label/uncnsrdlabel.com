@@ -1,7 +1,7 @@
 import { type TypedDocumentNode } from "@graphql-typed-document-node/core";
 import {
-    QueryClient, useSuspenseQuery,
-    type UseSuspenseQueryResult
+  QueryClient, useSuspenseQuery,
+  type UseSuspenseQueryResult
 } from "@tanstack/react-query";
 import { formatErrorMessage, isShopifyError, useGetLangProperties } from "@uncnsrdlabel/lib";
 import { GraphQLClient } from "graphql-request";
@@ -44,7 +44,7 @@ export async function getShopifyGraphQL<TResult, TVariables>(
   ...[variables]: TVariables extends Record<string, never> ? [] : [TVariables]
 ): Promise<TResult> {
   try {
-    const request = graphQLClient.request(document, { ...variables });
+    const request = await graphQLClient.request(document, { ...variables });
 
     return request;
   } catch (error) {
