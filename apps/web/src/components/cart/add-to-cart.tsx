@@ -46,8 +46,8 @@ function SubmitButton({
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
   lang: Intl.BCP47LanguageTag;
   selectedVariantId: string | undefined;
-  size: ButtonProps['size'];
-  variant: ButtonProps['variant'];
+  size: ButtonProps["size"];
+  variant: ButtonProps["variant"];
   view?: "compact" | "standard";
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
@@ -57,25 +57,53 @@ function SubmitButton({
     messages,
   });
 
-  const buttonClasses = cn("flex gap-2 relative w-full", {
-    "justify-center": view === "standard",
-  });
-  const disabledClasses = "cursor-not-allowed opacity-60 hover:opacity-60";
-
   const cartId = useSelector<string>(() => state$.cartId.get());
 
   const { country } = getLangProperties(lang);
 
   const shopifyQueryClient = useQueryClient();
 
+  // const addToCartMutationFn = (variables: AddToCartMutationVariables) =>
+  //   getShopifyGraphQL(addToCartMutation, variables);
+  const addToCartMutationFn = (variables: AddToCartMutationVariables) => {
+    console.log("addToCartMutationFn", { variables });
+
+    return getShopifyGraphQL(addToCartMutation, variables);
+  };
+
+  const createCartMutationFn = (variables: CreateCartMutationVariables) =>
+    getShopifyGraphQL(createCartMutation, variables);
+
+  type AddToCartContext = { id: number };
+
+  type CreateCartContext = { id: number };
+
   const {
     isPending: isPendingAddToCart,
     mutate: mutateAddToCart,
     status: statusAddToCart,
   } = useMutation({
-    mutationFn: (variables: AddToCartMutationVariables) =>
-      getShopifyGraphQL(addToCartMutation, variables),
-    onSuccess: () => {
+    mutationFn: addToCartMutationFn,
+    mutationKey: ['addToCart', cartId],
+    onError: (error, variables, context?: AddToCartContext) => {
+      // An error happened!
+      console.log("onError", { error, variables, context });
+      console.log(`rolling back optimistic update with id ${context?.id}`);
+    },
+    onMutate: (variables): AddToCartContext => {
+      // A mutation is about to happen!
+      console.log("onMutate", { variables });
+
+      // Optionally return a context containing data to use when for example rolling back
+      return { id: 1 };
+    },
+    onSettled: (data, error, variables, context) => {
+      // Error or success... doesn't matter!
+      console.log("onSettled", { data, error, variables, context });
+    },
+    onSuccess: (data, variables, context) => {
+      console.log("onSuccess", { data, variables, context });
+
       const queryKey = getQueryKey(getCartQuery, {
         cartId,
       });
@@ -91,9 +119,48 @@ function SubmitButton({
     mutate: mutateCreateCart,
     status: statusCreateCart,
   } = useMutation({
-    mutationFn: (variables: CreateCartMutationVariables) =>
-      getShopifyGraphQL(createCartMutation, variables),
-    onSuccess: () => {
+    mutationFn: createCartMutationFn,
+    mutationKey: ['createCart', cartId],
+    onError: (error, variables, context?: CreateCartContext) => {
+      // An error happened!
+      console.log("onError", { error, variables, context });
+      console.log(`rolling back optimistic update with id ${context?.id}`);
+    },
+    onMutate: (variables): CreateCartContext => {
+      // A mutation is about to happen!
+      console.log("onMutate", { variables });
+
+      // Optionally return a context containing data to use when for example rolling back
+      return { id: 1 };
+    },
+    onSettled: (data, error, variables, context) => {
+      // Error or success... doesn't matter!
+      console.log("onSettled", { data, error, variables, context });
+    },
+    onSuccess: (data, variables, context) => {
+      console.log("onSuccess", { data, variables, context });
+
+      const { cartCreate } = data;
+
+      if (cartCreate) {
+        const { cart: cartFragmentRef } = cartCreate;
+
+        const cart = getFragmentData(cartFragment, cartFragmentRef);
+
+        if (cart) {
+          // @ts-expect-error Argument of type 'string' is not assignable to parameter of type 'Nullable<never> | ((prev: never) => never) | Promise<never>'
+          state$.cartId.set(cartId);
+
+          const queryKey = getQueryKey(getCartQuery, {
+            cartId,
+          });
+
+          shopifyQueryClient.invalidateQueries({
+            queryKey,
+          });
+        }
+      }
+
       const queryKey = getQueryKey(getCartQuery, {
         cartId,
       });
@@ -117,59 +184,41 @@ function SubmitButton({
     });
   };
 
-  if (!availableForSale) {
-    return (
-      <Button
-        aria-disabled
-        className={cn(buttonClasses, disabledClasses, className)}
-        disabled
-        onClick={useCallback(handleClickTrack, [])}
-        size={size}
-        variant={variant}
-      >
-        {intl.formatMessage({ id: "component.AddToCart.out-of-stock" })}
+  const isPending = isPendingAddToCart || isPendingCreateCart;
 
-        <span aria-live="polite" className="sr-only" role="status">
-          {statusAddToCart}
-        </span>
-      </Button>
-    );
+  const disabled = isPending || !availableForSale || !selectedVariantId;
+  
+  let label = intl.formatMessage({
+    id: "component.AddToCart.add-to-cart-enabled",
+  });
+
+  if (!availableForSale) {
+    label = intl.formatMessage({
+      id: "component.AddToCart.out-of-stock",
+    })
   }
 
   if (!selectedVariantId) {
-    return (
-      <Button
-        aria-label={intl.formatMessage({ id: "component.AddToCart.select-options" })}
-        aria-disabled
-        className={cn(buttonClasses, disabledClasses)}
-        disabled
-        onClick={useCallback(handleClickTrack, [])}
-        size={size}
-        variant={variant}
-      >
-        <PlusIcon className="h-5" />
-
-        {intl.formatMessage({ id: "component.AddToCart.select-options" })}
-
-        <span aria-live="polite" className="sr-only" role="status">
-          {statusAddToCart}
-        </span>
-      </Button>
-    );
+    label = intl.formatMessage({
+      id: "component.AddToCart.select-options",
+    })
   }
 
   return (
     <Button
-      aria-label={intl.formatMessage({ id: "component.AddToCart.add-to-cart-enabled" })}
-      aria-disabled={isPendingAddToCart}
-      className={cn(buttonClasses, {
+      aria-label={label}
+      aria-disabled={disabled}
+      className={cn("flex gap-2 md:gap-4 relative w-full", {
         "hover:opacity-90": true,
-        disabledClasses: isPendingAddToCart,
-      })}
+        "cursor-not-allowed opacity-60 hover:opacity-60": disabled,
+        "justify-center": view === "standard",
+      }, className)}
       onClick={useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
-        handleClickTrack(event);
+        event.preventDefault();
 
-        if (isPendingAddToCart || isPendingCreateCart) event.preventDefault();
+        if (disabled) {
+          return null;
+        }
 
         const payload = {
           merchandiseId: selectedVariantId,
@@ -180,57 +229,58 @@ function SubmitButton({
           mutateAddToCart({
             cartId,
             lines: [payload],
+          }, {
+            onSuccess: (data, variables, context) => {
+              console.log("onSuccess", { data, variables, context });
+              // I will fire second!
+            },
+            onError: (error, variables, context) => {
+              console.log("onError", { error, variables, context });
+              // I will fire second!
+            },
+            onSettled: (data, error, variables, context) => {
+              console.log("onSettled", { data, error, variables, context });
+              // I will fire second!
+            },
           });
         } else {
-          mutateCreateCart(
-            {
-              input: {
-                buyerIdentity: {
-                  // @ts-expect-error Type 'CountryCode' is not assignable to type 'InputMaybe<CountryCode> | undefined'.
-                  countryCode: country,
-                },
-                lines: [payload],
+          mutateCreateCart({
+            input: {
+              buyerIdentity: {
+                // @ts-expect-error Type 'CountryCode' is not assignable to type 'InputMaybe<CountryCode> | undefined'.
+                countryCode: country,
               },
+              lines: [payload],
             },
-            {
-              onSuccess: (data) => {
-                const { cartCreate } = data;
-
-                if (cartCreate) {
-                  const { cart: cartFragmentRef } = cartCreate;
-
-                  const cart = getFragmentData(cartFragment, cartFragmentRef);
-
-                  if (cart) {
-                    // @ts-expect-error Argument of type 'string' is not assignable to parameter of type 'Nullable<never> | ((prev: never) => never) | Promise<never>'
-                    state$.cartId.set(cartId);
-
-                    const queryKey = getQueryKey(getCartQuery, {
-                      cartId,
-                    });
-
-                    shopifyQueryClient.invalidateQueries({
-                      queryKey,
-                    });
-                  }
-                }
-              },
+          }, {
+            onSuccess: (data, variables, context) => {
+              console.log("onSuccess", { data, variables, context });
+              // I will fire second!
             },
-          );
+            onError: (error, variables, context) => {
+              console.log("onError", { error, variables, context });
+              // I will fire second!
+            },
+            onSettled: (data, error, variables, context) => {
+              console.log("onSettled", { data, error, variables, context });
+              // I will fire second!
+            },
+          });
         }
-      }, [])}
+
+        handleClickTrack(event);
+      }, [label, selectedVariantId])}
       size={size}
       variant={variant}
     >
-      {isPendingAddToCart ? (
-        <LoadingDots className="mb-3" />
+      {isPending ? (
+        <LoadingDots className="h-5 w-12" />
       ) : (
-        <PlusIcon className="h-5" />
+        <PlusIcon className="h-5 w-6 ml-6" />
       )}
-      {intl.formatMessage({ id: "component.AddToCart.add-to-cart-enabled" })}
-
+      {label}
       <span aria-live="polite" className="sr-only" role="status">
-        {statusAddToCart || statusCreateCart}
+        {(statusAddToCart || statusCreateCart) && "Adding to cart"}
       </span>
     </Button>
   );
@@ -257,24 +307,23 @@ export function AddToCart({
 }) {
   const searchParams = useSearchParams();
 
-  const selectedVariant = variants.find(
-    (variant) =>
-      variant.selectedOptions?.every((selectedOption) => {
-        const hasNoOptionsOrJustOneOption =
-          !options?.length ||
-          options?.find((option) => option.name === selectedOption.name)?.values
-            .length === 1;
+  const selectedVariant = variants.find((variant) =>
+    variant.selectedOptions?.every((selectedOption) => {
+      const hasNoOptionsOrJustOneOption =
+        !options?.length ||
+        options?.find((option) => option.name === selectedOption.name)?.values
+          .length === 1;
 
-        if (hasNoOptionsOrJustOneOption) {
-          return true;
-        }
+      if (hasNoOptionsOrJustOneOption) {
+        return true;
+      }
 
-        const value =
-          selectedOption?.value ===
-          searchParams.get(selectedOption.name.toLowerCase());
+      const value =
+        selectedOption?.value ===
+        searchParams.get(selectedOption.name.toLowerCase());
 
-        return value;
-      }),
+      return value;
+    }),
   );
 
   const selectedVariantId = selectedVariant?.id;
@@ -282,6 +331,13 @@ export function AddToCart({
   const size = view === "compact" ? undefined : "lg";
 
   const variant = view === "compact" ? "ghost" : undefined;
+
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   return (
     <Suspense
@@ -293,9 +349,9 @@ export function AddToCart({
           size={size}
           variant={variant}
         >
-          <LoadingDots className="mb-3" />
+          <LoadingDots className="h-5 w-12" />
 
-          {/* {intl.formatMessage({ id: "component.AddToCart.add-to-cart-disabled" })} */}
+          {intl.formatMessage({ id: "component.AddToCart.add-to-cart-disabled" })}
         </Button>
       }
     >
