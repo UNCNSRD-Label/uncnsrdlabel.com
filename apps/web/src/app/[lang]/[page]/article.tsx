@@ -40,6 +40,10 @@ export function Article(props: ArticleProps) {
     return <span>Error: {error?.message}</span>;
   }
 
+  if (!data) {
+    return null;
+  }
+
   const { page: pageFragmentRef } = data;
 
   const page = getFragmentData(pageFragment, pageFragmentRef);
