@@ -26,7 +26,7 @@ type MerchandiseSearchParams = {
   [key: string]: string;
 };
 
-export async function CartForm({
+export function CartForm({
   cart,
   cartId,
   container,

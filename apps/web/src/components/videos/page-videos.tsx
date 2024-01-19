@@ -17,9 +17,19 @@ import { Suspense } from "react";
 export function PageVideos({ handle, ...props }: { handle: string }) {
   const variables = { handle };
 
-  const { data } = useGetShopifyGraphQL(getPageQuery, variables);
+  const { data, error, isError, isLoading } = useGetShopifyGraphQL(getPageQuery, variables);
 
-  if (!data) return null;
+  if (isLoading) {
+    return <span>Loading...</span>;
+  }
+
+  if (isError) {
+    return <span>Error: {error?.message}</span>;
+  }
+
+  if (!data) {
+    return null;
+  }
 
   const { page: pageFragmentRef } = data;
 
