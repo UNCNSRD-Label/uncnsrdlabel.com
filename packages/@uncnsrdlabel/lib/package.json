@@ -3,7 +3,7 @@
     "@shopify/hydrogen-react": "^2023.10.1",
     "clsx": "^2.1.0",
     "lodash": "^4.17.21",
-    "next": "14.0.4",
+    "next": "14.1.0",
     "react": "experimental",
     "tailwind-merge": "^2.2.0"
   },
