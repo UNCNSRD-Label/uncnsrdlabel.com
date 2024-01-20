@@ -16,6 +16,8 @@ export const SITE_URL_WEB = `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN
 
 export const COOKIE_CONSENT = "consent";
 
+export const COOKIE_LOCATION = "location";
+
 export const COOKIE_REDEEM_CODE = "redeem-code";
 
 export const PRE_GENERATED_BCP47_LANGUAGE_TAGS: Intl.BCP47LanguageTag[] = [

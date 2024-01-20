@@ -1,46 +1,129 @@
 "use client";
 
-import React, {useEffect, useState} from 'react';
-import * as SelectPrimitive from "@radix-ui/react-select";
+import { createIntl } from "@formatjs/intl";
+import * as Checkbox from "@radix-ui/react-checkbox";
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
-import { cn } from "@uncnsrdlabel/lib";
-import {COOKIE_LANG, LOCALE_LIST} from "@/components/location/constants";
-import {useGetIntl} from "@/lib/i18n/client";
+import * as SelectPrimitive from "@radix-ui/react-select";
+import { Button } from "@uncnsrdlabel/components/ui/button";
+import {
+  COOKIE_LOCATION,
+  cn,
+  cookieOptions,
+  types,
+} from "@uncnsrdlabel/lib";
 import { getCookie, setCookie } from "cookies-next";
-import { state$ } from "@/lib/store";
+import { Usable, use, useState } from "react";
+import { type ResolvedIntlConfig } from "react-intl";
+import { useTrack } from "use-analytics";
 
-
-export function Form({className, onClose}: {
+type LocationDialogProps = {
   className?: string;
-  onClose?: ()=>void
-}) {
-  const intl = useGetIntl("component.LocaleDialog");
+  acceptSelectedLocations: (event: React.FormEvent<HTMLFormElement>) => void;
+  acceptAllLocations: () => void;
+  denyAllAdditionalLocations: () => void;
+  dictionary: Usable<ResolvedIntlConfig["messages"]>;
+  lang: Intl.BCP47LanguageTag;
+  manageLocations: () => void;
+};
 
-  const [locales, setLocales] = useState([]);
-  const [langSettings, setLangSettings] = useState(()=>{
-    const defaultLang = state$.locale.baseName.get();
-    return (getCookie(COOKIE_LANG) as string) ?? defaultLang;
-  })
+export function LocationForm({className, dictionary, lang, ...props}: LocationDialogProps) {
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
-  useEffect(()=>{
-    setLocales(LOCALE_LIST)
-  }, []);
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
+  const track = useTrack();
 
-  const submit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const [optionsOpen, setOptionsOpen] = useState(false);
+  const [locationSettings, setLocationSettings] = useState( ()=>{
+
+    const locationCookieData = (getCookie(COOKIE_LOCATION) as string) ?? "{}";
+    const savedLocationSettings = JSON.parse(locationCookieData) as LocationSettings;
+    return {
+    ...defaultLocationSettings,
+    ...savedLocationSettings,
+    }
+  });
+
+  const acceptSelectedLocations = (event: React.FormEvent<HTMLFormElement>) => {
     const formData = new FormData(event.target as HTMLFormElement);
-    const consentParams = Object.fromEntries(formData.entries());
-    setCookie(COOKIE_LANG, consentParams.lang);
-    setLangSettings(consentParams.lang as string);
+    const locationParams = Object.fromEntries(formData.entries());
+
+    setCookie(COOKIE_LOCATION, locationParams, cookieOptions);
+
+    track("location_accept_selected", locationParams);
+
+    console.info("Granting selected locations");
+    setLocationSettings({...defaultLocationSettings, ...locationParams})
+    props.acceptSelectedLocations(event);
+
+    event.preventDefault();
+  };
+
+  const acceptAllLocations = () => {
+    setCookie(COOKIE_LOCATION, acceptAllLocationSettings, cookieOptions);
+
+    track("location_accept_all", acceptAllLocationSettings);
+
+    console.info("Accepting all locations");
+    setLocationSettings(acceptAllLocationSettings)
+    props.acceptAllLocations();
+  };
+
+  const denyAllAdditionalLocations = () => {
+    setCookie(COOKIE_LOCATION, denyAllAdditionalLocationSettings, cookieOptions);
+
+    track("location_deny_all", denyAllAdditionalLocationSettings);
+
+    console.info("Denying all additional locations");
+    setLocationSettings(denyAllAdditionalLocationSettings)
+    props.denyAllAdditionalLocations();
+  };
+
+  const manageLocations = () => {
+    setOptionsOpen(true);
+    
+    track("location_manage", denyAllAdditionalLocationSettings);
+
+    console.info("Manage locations");
+
+    props.manageLocations();
   };
 
   return (
-      <form
-          onSubmit={submit}
-          className={cn("flex flex-col gap-4 text-xs", className)}
-      >
-        <SelectPrimitive.Root defaultValue={langSettings} name="lang">
+    <form
+      onSubmit={acceptSelectedLocations}
+      className={cn("flex flex-col gap-4 text-xs", className)}
+    >
+      {types.map((location, index) => (
+        <fieldset
+          className={cn("grid-cols-[auto_1fr] items-center gap-4", {
+            grid: optionsOpen,
+            hidden: !optionsOpen,
+          })}
+          key={location.name || index}
+        >
+          <Checkbox.Root
+            className="h-4 w-4 rounded border border-solid border-black/100 bg-white stroke-black"
+            defaultChecked={locationSettings[location.name] === "granted"}
+            checked={locationSettings[location.name] === "granted"}
+            id={location.name}
+            name={location.name}
+            value="granted"
+            onCheckedChange={(isChecked)=>{
+              setLocationSettings({...locationSettings, [location.name]: isChecked? 'granted': 'denied'})
+            }}
+          >
+            <Checkbox.Indicator>
+              <CheckIcon />
+            </Checkbox.Indicator>
+          </Checkbox.Root>
+          <label htmlFor={location.name}>{location.description}</label>
+        </fieldset>
+      ))}
+      <SelectPrimitive.Root defaultValue={langSettings} name="lang">
           <SelectPrimitive.Trigger asChild aria-label="Food">
             <button className="
               flex  items-center justify-between px-4 py-2 text-gray-700 hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-900 hover:bg-gray-50 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75 group radix-state-open:bg-gray-50 dark:radix-state-open:bg-gray-900 radix-state-on:bg-gray-50 dark:radix-state-on:bg-gray-900 radix-state-instant-open:bg-gray-50 radix-state-delayed-open:bg-gray-50
@@ -91,19 +174,46 @@ export function Form({className, onClose}: {
             </SelectPrimitive.ScrollDownButton>
           </SelectPrimitive.Content>
         </SelectPrimitive.Root>
-        <button
-            className={cn("btn btn-xs btn-outline btn-primary btn-bg",)}
+      <div className="mt-2 grid gap-4 sm:grid-flow-col">
+        <Button
+          className={cn({
+            block: optionsOpen,
+            hidden: !optionsOpen,
+          })}
+          size="sm"
+          variant="default"
         >
-          continue
-        </button>
-        <button
-            className={cn("btn btn-xs btn-outline bg-transparent btn-bg",)}
-            onClick={()=>{console.log('Canceling')}}
-            type="button"
+          {intl.formatMessage({ id: "component.LocationForm.accept" })}
+        </Button>
+        <Button
+          className={cn({
+            block: !optionsOpen,
+            hidden: optionsOpen,
+          })}
+          onClick={manageLocations}
+          type="button"
+          size="sm"
+          variant="secondary"
         >
-          Cancel
-        </button>
-      </form>
+          {intl.formatMessage({ id: "component.LocationForm.manage" })}
+        </Button>
+        <Button
+          onClick={acceptAllLocations}
+          type="button"
+          size="sm"
+          variant="default"
+        >
+          {intl.formatMessage({ id: "component.LocationForm.accept-all" })}
+        </Button>
+        <Button
+          onClick={denyAllAdditionalLocations}
+          type="button"
+          size="sm"
+          variant="default"
+        >
+          {intl.formatMessage({ id: "component.LocationForm.deny-additional" })}
+        </Button>
+      </div>
+    </form>
   );
 }
-
