@@ -3,7 +3,7 @@
 import { LoadingDots } from "@/components/loading/dots";
 import { state$ } from "@/lib/store";
 import { createIntl } from "@formatjs/intl";
-import { ClockIcon, PlusIcon } from "@heroicons/react/24/outline";
+import { CheckIcon, ClockIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { useSelector } from "@legendapp/state/react";
 import {
   type CartLineInput,
@@ -65,8 +65,6 @@ function SubmitButton({
 
   const shopifyQueryClient = useQueryClient();
 
-  // const addToCartMutationFn = (variables: AddToCartMutationVariables) =>
-  //   getShopifyGraphQL(addToCartMutation, variables);
   const addToCartMutationFn = (variables: AddToCartMutationVariables) => {
     console.log("addToCartMutationFn", { variables });
 
@@ -81,6 +79,7 @@ function SubmitButton({
   type CreateCartContext = { id: number };
 
   const {
+    data: dataAddToCart = null,
     isPending: isPendingAddToCart,
     mutate: mutateAddToCart,
     status: statusAddToCart,
@@ -117,6 +116,7 @@ function SubmitButton({
   });
 
   const {
+    data: dataCreateCart = null,
     isPending: isPendingCreateCart,
     mutate: mutateCreateCart,
     status: statusCreateCart,
@@ -177,7 +177,10 @@ function SubmitButton({
 
   const isPending = isPendingAddToCart || isPendingCreateCart;
 
-  const disabled = isPending || !availableForSale || !selectedVariantId;
+  const isDisabled = isPending || !availableForSale || !selectedVariantId;
+
+  const isSuccess =
+    statusAddToCart === "success" || statusCreateCart === "success";
 
   let label = intl.formatMessage({
     id: "component.AddToCart.add-to-cart-enabled",
@@ -201,6 +204,18 @@ function SubmitButton({
     });
   }
 
+  if (isPending) {
+    label = intl.formatMessage({
+      id: "component.AddToCart.pending",
+    });
+  }
+
+  if (isSuccess) {
+    label = intl.formatMessage({
+      id: "component.AddToCart.success",
+    });
+  }
+
   const handleClickTrack = (event: React.MouseEvent<HTMLButtonElement>) => {
     const { dataset } = event.currentTarget;
 
@@ -216,7 +231,7 @@ function SubmitButton({
     (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
 
-      if (disabled) {
+      if (isDisabled) {
         return null;
       }
 
@@ -282,12 +297,12 @@ function SubmitButton({
   return (
     <Button
       aria-label={label}
-      aria-disabled={disabled}
+      aria-disabled={isDisabled}
       className={cn(
         "relative flex w-full gap-2 md:gap-4",
         {
           "hover:opacity-90": true,
-          "cursor-not-allowed opacity-60 hover:opacity-60": disabled,
+          "cursor-not-allowed opacity-60 hover:opacity-60": isDisabled,
           "justify-center": view === "standard",
         },
         className,
@@ -296,7 +311,9 @@ function SubmitButton({
       size={size}
       variant={variant}
     >
-      {preOrder ? (
+      {isSuccess ? (
+        <CheckIcon className="ml-6 h-5 w-6" />
+      ) : preOrder ? (
         <ClockIcon className="ml-6 h-5 w-6" />
       ) : isPending ? (
         <LoadingDots className="h-5 w-12" />
@@ -305,7 +322,14 @@ function SubmitButton({
       )}
       {label}
       <span aria-live="polite" className="sr-only" role="status">
-        {(statusAddToCart || statusCreateCart) && "Adding to cart"}
+        {(isPending) &&
+          intl.formatMessage({
+            id: "component.AddToCart.pending",
+          })}
+        {(isSuccess) &&
+          intl.formatMessage({
+            id: "component.AddToCart.success",
+          })}
       </span>
     </Button>
   );
