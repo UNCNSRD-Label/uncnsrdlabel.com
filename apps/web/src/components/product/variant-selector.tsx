@@ -1,14 +1,14 @@
 "use client";
 
 import {
-  type ProductOption,
-  type ProductVariant,
+    type ProductOption,
+    type ProductVariant,
 } from "@shopify/hydrogen/storefront-api-types";
-import { Button } from "@uncnsrdlabel/components/ui/button";
+import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
-  getFragmentData,
-  productDetailsFragment,
-  type FragmentType
+    getFragmentData,
+    productDetailsFragment,
+    type FragmentType
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, createUrl } from "@uncnsrdlabel/lib";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
