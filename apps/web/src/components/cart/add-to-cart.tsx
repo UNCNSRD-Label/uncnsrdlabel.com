@@ -3,7 +3,7 @@
 import { LoadingDots } from "@/components/loading/dots";
 import { state$ } from "@/lib/store";
 import { createIntl } from "@formatjs/intl";
-import { PlusIcon } from "@heroicons/react/24/outline";
+import { ClockIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { useSelector } from "@legendapp/state/react";
 import {
   type CartLineInput,
@@ -35,6 +35,7 @@ function SubmitButton({
   container,
   dictionary,
   lang,
+  preOrder,
   selectedVariantId,
   size,
   variant,
@@ -45,6 +46,7 @@ function SubmitButton({
   container?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
   lang: Intl.BCP47LanguageTag;
+  preOrder: boolean;
   selectedVariantId: string | undefined;
   size: ButtonProps["size"];
   variant: ButtonProps["variant"];
@@ -84,7 +86,7 @@ function SubmitButton({
     status: statusAddToCart,
   } = useMutation({
     mutationFn: addToCartMutationFn,
-    mutationKey: ['addToCart', cartId],
+    mutationKey: ["addToCart", cartId],
     onError: (error, variables, context?: AddToCartContext) => {
       // An error happened!
       console.log("onError", { error, variables, context });
@@ -120,7 +122,7 @@ function SubmitButton({
     status: statusCreateCart,
   } = useMutation({
     mutationFn: createCartMutationFn,
-    mutationKey: ['createCart', cartId],
+    mutationKey: ["createCart", cartId],
     onError: (error, variables, context?: CreateCartContext) => {
       // An error happened!
       console.log("onError", { error, variables, context });
@@ -173,6 +175,32 @@ function SubmitButton({
 
   const track = useTrack();
 
+  const isPending = isPendingAddToCart || isPendingCreateCart;
+
+  const disabled = isPending || !availableForSale || !selectedVariantId;
+
+  let label = intl.formatMessage({
+    id: "component.AddToCart.add-to-cart-enabled",
+  });
+
+  if (!availableForSale) {
+    label = intl.formatMessage({
+      id: "component.AddToCart.out-of-stock",
+    });
+  }
+
+  if (!selectedVariantId) {
+    label = intl.formatMessage({
+      id: "component.AddToCart.select-options",
+    });
+  }
+
+  if (preOrder) {
+    label = intl.formatMessage({
+      id: "component.AddToCart.pre-order",
+    });
+  }
+
   const handleClickTrack = (event: React.MouseEvent<HTMLButtonElement>) => {
     const { dataset } = event.currentTarget;
 
@@ -184,52 +212,26 @@ function SubmitButton({
     });
   };
 
-  const isPending = isPendingAddToCart || isPendingCreateCart;
+  const onClick = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault();
 
-  const disabled = isPending || !availableForSale || !selectedVariantId;
-  
-  let label = intl.formatMessage({
-    id: "component.AddToCart.add-to-cart-enabled",
-  });
+      if (disabled) {
+        return null;
+      }
 
-  if (!availableForSale) {
-    label = intl.formatMessage({
-      id: "component.AddToCart.out-of-stock",
-    })
-  }
+      const payload = {
+        merchandiseId: selectedVariantId,
+        quantity: 1,
+      } satisfies CartLineInput;
 
-  if (!selectedVariantId) {
-    label = intl.formatMessage({
-      id: "component.AddToCart.select-options",
-    })
-  }
-
-  return (
-    <Button
-      aria-label={label}
-      aria-disabled={disabled}
-      className={cn("flex gap-2 md:gap-4 relative w-full", {
-        "hover:opacity-90": true,
-        "cursor-not-allowed opacity-60 hover:opacity-60": disabled,
-        "justify-center": view === "standard",
-      }, className)}
-      onClick={useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
-        event.preventDefault();
-
-        if (disabled) {
-          return null;
-        }
-
-        const payload = {
-          merchandiseId: selectedVariantId,
-          quantity: 1,
-        } satisfies CartLineInput;
-
-        if (cartId) {
-          mutateAddToCart({
+      if (cartId) {
+        mutateAddToCart(
+          {
             cartId,
             lines: [payload],
-          }, {
+          },
+          {
             onSuccess: (data, variables, context) => {
               console.log("onSuccess", { data, variables, context });
               // I will fire second!
@@ -242,9 +244,11 @@ function SubmitButton({
               console.log("onSettled", { data, error, variables, context });
               // I will fire second!
             },
-          });
-        } else {
-          mutateCreateCart({
+          },
+        );
+      } else {
+        mutateCreateCart(
+          {
             input: {
               buyerIdentity: {
                 // @ts-expect-error Type 'CountryCode' is not assignable to type 'InputMaybe<CountryCode> | undefined'.
@@ -252,7 +256,8 @@ function SubmitButton({
               },
               lines: [payload],
             },
-          }, {
+          },
+          {
             onSuccess: (data, variables, context) => {
               console.log("onSuccess", { data, variables, context });
               // I will fire second!
@@ -265,18 +270,38 @@ function SubmitButton({
               console.log("onSettled", { data, error, variables, context });
               // I will fire second!
             },
-          });
-        }
+          },
+        );
+      }
 
-        handleClickTrack(event);
-      }, [label, selectedVariantId])}
+      handleClickTrack(event);
+    },
+    [label, selectedVariantId],
+  );
+
+  return (
+    <Button
+      aria-label={label}
+      aria-disabled={disabled}
+      className={cn(
+        "relative flex w-full gap-2 md:gap-4",
+        {
+          "hover:opacity-90": true,
+          "cursor-not-allowed opacity-60 hover:opacity-60": disabled,
+          "justify-center": view === "standard",
+        },
+        className,
+      )}
+      onClick={onClick}
       size={size}
       variant={variant}
     >
-      {isPending ? (
+      {preOrder ? (
+        <ClockIcon className="ml-6 h-5 w-6" />
+      ) : isPending ? (
         <LoadingDots className="h-5 w-12" />
       ) : (
-        <PlusIcon className="h-5 w-6 ml-6" />
+        <PlusIcon className="ml-6 h-5 w-6" />
       )}
       {label}
       <span aria-live="polite" className="sr-only" role="status">
@@ -293,6 +318,7 @@ export function AddToCart({
   dictionary,
   lang,
   options,
+  preOrder,
   variants,
   view = "standard",
 }: {
@@ -302,6 +328,7 @@ export function AddToCart({
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
   lang: Intl.BCP47LanguageTag;
   options: ProductOption[];
+  preOrder: boolean;
   variants: Pick<ProductVariant, "id" | "selectedOptions">[];
   view?: "compact" | "standard";
 }) {
@@ -351,7 +378,9 @@ export function AddToCart({
         >
           <LoadingDots className="h-5 w-12" />
 
-          {intl.formatMessage({ id: "component.AddToCart.add-to-cart-disabled" })}
+          {intl.formatMessage({
+            id: "component.AddToCart.add-to-cart-disabled",
+          })}
         </Button>
       }
     >
@@ -361,6 +390,7 @@ export function AddToCart({
         container={container}
         dictionary={dictionary}
         lang={lang}
+        preOrder={preOrder}
         selectedVariantId={selectedVariantId}
         size={size}
         variant={variant}
