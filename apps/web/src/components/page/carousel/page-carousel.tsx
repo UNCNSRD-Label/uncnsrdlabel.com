@@ -6,7 +6,7 @@ import {
     CarouselItem,
     CarouselNext,
     CarouselPrevious,
-} from "@uncnsrdlabel/components/ui/carousel";
+} from "@uncnsrdlabel/components/atoms/carousel";
 import {
     getFragmentData,
     getPageQuery,
