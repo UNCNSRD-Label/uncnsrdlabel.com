@@ -20,7 +20,7 @@ export function ProductMedia({
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }) {
   const mediaClassName =
-    "lg:aspect-2/3 min-h-[100dvh] lg:h-[100dvh] overflow-y-clip relative snap-start w-[100dvw] lg:w-auto bg-black/50";
+    "lg:aspect-2/3 min-h-[max(100dvh,_theme(space.96))] overflow-y-clip relative snap-start w-[100dvw] lg:w-auto";
 
   const thumbnailClassName =
     "pointer-events-auto relative my-auto aspect-square w-full overflow-hidden rounded-full shadow bg-black/50";
@@ -84,7 +84,7 @@ export function ProductMedia({
 
   return (
     <div
-      className="ghost-scrollbar relative z-0 col-span-full grid h-fit w-full snap-both snap-mandatory grid-flow-col justify-start overflow-x-scroll scroll-smooth lg:absolute"
+      className="ghost-scrollbar relative z-0 col-span-full grid h-fit w-full snap-both snap-mandatory grid-flow-col justify-start overflow-x-scroll scroll-smooth lg:absolute bg-black/50"
       id="images"
     >
       <Images
