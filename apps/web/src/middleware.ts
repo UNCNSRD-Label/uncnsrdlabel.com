@@ -22,9 +22,13 @@ export const config = {
 };
 
 export async function middleware(request: NextRequest) {
-  const cookie = request.cookies.get('lang');
-
   const { pathname } = request.nextUrl
+
+  if (pathname === "/favicon.ico") {
+    return
+  }
+
+  const cookie = request.cookies.get('lang');
 
   const defaultLanguageTag = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag;
 
