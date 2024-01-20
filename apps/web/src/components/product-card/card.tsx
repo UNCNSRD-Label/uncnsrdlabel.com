@@ -67,6 +67,14 @@ export function ProductCard({
     description: product.description,
   };
 
+  const sellingPlanGroupNodes = product.sellingPlanGroups?.edges?.map(
+    (edge) => edge.node,
+  );
+
+  const preOrder = sellingPlanGroupNodes.find(
+    ({ name }) => name === "Pre-order",
+  );
+
   return (
     <>
       <div
@@ -110,6 +118,7 @@ export function ProductCard({
             dictionary={dictionary}
             lang={lang}
             options={product.options}
+            preOrder={!!preOrder}
             variants={variants}
             view="compact"
           />
