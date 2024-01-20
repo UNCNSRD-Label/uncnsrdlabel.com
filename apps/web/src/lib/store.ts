@@ -11,7 +11,9 @@ const defaultState = {
   cartId,
 };
 
-export const state$ = observable(defaultState);
+export const state$ = observable<{
+  cartId: string | null;
+}>(defaultState);
 
 configureObservablePersistence({
   pluginLocal: ObservablePersistLocalStorage,

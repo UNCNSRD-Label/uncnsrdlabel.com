@@ -66,7 +66,7 @@ function SubmitButton({
   const shopifyQueryClient = useQueryClient();
 
   const addToCartMutationFn = (variables: AddToCartMutationVariables) => {
-    console.log("addToCartMutationFn", { variables });
+    // console.log("addToCartMutationFn", { variables });
 
     return getShopifyGraphQL(addToCartMutation, variables);
   };
@@ -88,30 +88,45 @@ function SubmitButton({
     mutationKey: ["addToCart", cartId],
     onError: (error, variables, context?: AddToCartContext) => {
       // An error happened!
-      console.log("onError", { error, variables, context });
-      console.log(`rolling back optimistic update with id ${context?.id}`);
+      // console.log("onError", { error, variables, context });
+      // console.log(`rolling back optimistic update with id ${context?.id}`);
     },
     onMutate: (variables): AddToCartContext => {
       // A mutation is about to happen!
-      console.log("onMutate", { variables });
+      // console.log("onMutate", { variables });
 
       // Optionally return a context containing data to use when for example rolling back
       return { id: 1 };
     },
     onSettled: (data, error, variables, context) => {
       // Error or success... doesn't matter!
-      console.log("onSettled", { data, error, variables, context });
+      // console.log("onSettled", { data, error, variables, context });
     },
     onSuccess: (data, variables, context) => {
-      console.log("onSuccess", { data, variables, context });
+      // console.log("onSuccess", { data, variables, context });
 
       const queryKey = getQueryKey(getCartQuery, {
         cartId,
       });
 
+      const { cartLinesAdd } = data;
+
+      if (!cartLinesAdd) {
+        console.error("No cartLinesAdd in onSuccess");
+        return;
+      }
+
+      const { cart: cartFragmentRef } = cartLinesAdd;
+
+      const cart = getFragmentData(cartFragment, cartFragmentRef);
+
+      console.log({ cartId, queryKey, cart });
+
       shopifyQueryClient.invalidateQueries({
         queryKey,
       });
+
+      // shopifyQueryClient.setQueryData(queryKey, cart)
     },
   });
 
@@ -125,22 +140,22 @@ function SubmitButton({
     mutationKey: ["createCart", cartId],
     onError: (error, variables, context?: CreateCartContext) => {
       // An error happened!
-      console.log("onError", { error, variables, context });
-      console.log(`rolling back optimistic update with id ${context?.id}`);
+      // console.log("onError", { error, variables, context });
+      // console.log(`rolling back optimistic update with id ${context?.id}`);
     },
     onMutate: (variables): CreateCartContext => {
       // A mutation is about to happen!
-      console.log("onMutate", { variables });
+      // console.log("onMutate", { variables });
 
       // Optionally return a context containing data to use when for example rolling back
       return { id: 1 };
     },
     onSettled: (data, error, variables, context) => {
       // Error or success... doesn't matter!
-      console.log("onSettled", { data, error, variables, context });
+      // console.log("onSettled", { data, error, variables, context });
     },
     onSuccess: (data, variables, context) => {
-      console.log("onSuccess", { data, variables, context });
+      // console.log("onSuccess", { data, variables, context });
 
       const { cartCreate } = data;
 
@@ -150,26 +165,9 @@ function SubmitButton({
         const cart = getFragmentData(cartFragment, cartFragmentRef);
 
         if (cart) {
-          // @ts-expect-error Argument of type 'string' is not assignable to parameter of type 'Nullable<never> | ((prev: never) => never) | Promise<never>'
-          state$.cartId.set(cartId);
-
-          const queryKey = getQueryKey(getCartQuery, {
-            cartId,
-          });
-
-          shopifyQueryClient.invalidateQueries({
-            queryKey,
-          });
+          state$.cartId.set(cart.id);
         }
       }
-
-      const queryKey = getQueryKey(getCartQuery, {
-        cartId,
-      });
-
-      shopifyQueryClient.invalidateQueries({
-        queryKey,
-      });
     },
   });
 
@@ -241,52 +239,20 @@ function SubmitButton({
       } satisfies CartLineInput;
 
       if (cartId) {
-        mutateAddToCart(
-          {
-            cartId,
+        mutateAddToCart({
+          cartId,
+          lines: [payload],
+        });
+      } else {
+        mutateCreateCart({
+          input: {
+            buyerIdentity: {
+              // @ts-expect-error Type 'CountryCode' is not assignable to type 'InputMaybe<CountryCode> | undefined'.
+              countryCode: country,
+            },
             lines: [payload],
           },
-          {
-            onSuccess: (data, variables, context) => {
-              console.log("onSuccess", { data, variables, context });
-              // I will fire second!
-            },
-            onError: (error, variables, context) => {
-              console.log("onError", { error, variables, context });
-              // I will fire second!
-            },
-            onSettled: (data, error, variables, context) => {
-              console.log("onSettled", { data, error, variables, context });
-              // I will fire second!
-            },
-          },
-        );
-      } else {
-        mutateCreateCart(
-          {
-            input: {
-              buyerIdentity: {
-                // @ts-expect-error Type 'CountryCode' is not assignable to type 'InputMaybe<CountryCode> | undefined'.
-                countryCode: country,
-              },
-              lines: [payload],
-            },
-          },
-          {
-            onSuccess: (data, variables, context) => {
-              console.log("onSuccess", { data, variables, context });
-              // I will fire second!
-            },
-            onError: (error, variables, context) => {
-              console.log("onError", { error, variables, context });
-              // I will fire second!
-            },
-            onSettled: (data, error, variables, context) => {
-              console.log("onSettled", { data, error, variables, context });
-              // I will fire second!
-            },
-          },
-        );
+        });
       }
 
       handleClickTrack(event);
@@ -322,11 +288,11 @@ function SubmitButton({
       )}
       {label}
       <span aria-live="polite" className="sr-only" role="status">
-        {(isPending) &&
+        {isPending &&
           intl.formatMessage({
             id: "component.AddToCart.pending",
           })}
-        {(isSuccess) &&
+        {isSuccess &&
           intl.formatMessage({
             id: "component.AddToCart.success",
           })}

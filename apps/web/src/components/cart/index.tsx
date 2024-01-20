@@ -48,13 +48,15 @@ export function Cart({
 
   const variables = { cartId };
 
+  const queryKey = getQueryKey(getCartQuery, variables);
+
   const {
     data = {
       cart: null,
     },
   } = useQuery({
     enabled: !!cartId,
-    queryKey: getQueryKey(getCartQuery, variables),
+    queryKey,
     queryFn: () => getShopifyGraphQL(getCartQuery, variables),
     staleTime: 5 * 1000,
   });
@@ -146,7 +148,7 @@ export function Cart({
                   <CloseCart />
                 </Button>
               </div>
-
+              cart?.totalQuantity: {cart?.totalQuantity}
               <CartForm
                 cart={cart}
                 cartId={cartId}
