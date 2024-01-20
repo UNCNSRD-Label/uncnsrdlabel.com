@@ -5,12 +5,12 @@
 import { LoadingDots } from "@/components/loading/dots";
 import { Videos } from "@/components/media/videos";
 import {
-  getFragmentData,
-  getPageQuery,
-  pageFragment,
-  useGetShopifyGraphQL,
-  videoFragment,
-  type FragmentType,
+    getFragmentData,
+    getPageQuery,
+    pageFragment,
+    useGetShopifyGraphQL,
+    videoFragment,
+    type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Suspense } from "react";
 

@@ -4,18 +4,18 @@ import { LoadingDots } from "@/components/loading/dots";
 import { createIntl } from "@formatjs/intl";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
-  type CartLine,
-  type CartLineCost,
-  type ComponentizableCartLine,
-  type Merchandise,
+    type CartLine,
+    type CartLineCost,
+    type ComponentizableCartLine,
+    type Merchandise,
 } from "@shopify/hydrogen/storefront-api-types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Button } from "@uncnsrdlabel/components/ui/button";
+import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
-  getCartQuery,
-  getQueryKey,
-  getShopifyGraphQL,
-  removeFromCartMutation
+    getCartQuery,
+    getQueryKey,
+    getShopifyGraphQL,
+    removeFromCartMutation
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { Usable, use, useCallback } from "react";
@@ -97,7 +97,7 @@ export function DeleteItemButton({
       variant="ghost"
     >
       {isPending ? (
-        <LoadingDots className="bg-black dark:bg-white" />
+        <LoadingDots />
       ) : (
         <XMarkIcon className="hover:text-accent-3 mx-0.5 h-4 w-4 text-white dark:text-black" />
       )}

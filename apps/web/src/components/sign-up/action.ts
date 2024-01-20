@@ -3,7 +3,7 @@
 import { type KlaviyoResponse } from "@uncnsrdlabel/types";
 
 export async function signUpAction(
-  _prevState: any,
+  _currentState: any,
   formData: FormData,
 ) {
   const email = formData.get("email");
@@ -54,14 +54,18 @@ export async function signUpAction(
 
   let status = 500;
 
+  let ok = false;
+
   try {
     const response = await fetch(url, options);
+
+    ok = response.ok;
 
     status = response.status;
 
     console.info(response.status, response.statusText);
 
-    if (response?.ok) {
+    if (response.ok) {
       message = "Email address submitted successfully!";
 
       if (response.status >= 300) {
@@ -81,7 +85,7 @@ export async function signUpAction(
     } else {
       console.error(response?.status, response?.statusText)
 
-      message = `Email address submittion failed with HTTP Response Code: ${response?.status}`;
+      message = `Email address submission failed with HTTP Response Code: ${response?.status}`;
     }
   } catch (error) {
     console.error(error);
@@ -94,6 +98,7 @@ export async function signUpAction(
   } finally {
     return {
       message,
+      ok,
       status,
     };
   }

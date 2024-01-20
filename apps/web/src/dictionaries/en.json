@@ -73,15 +73,28 @@
       "add-to-cart-disabled": "Unable to add item to bag",
       "add-to-cart-enabled": "Add to bag",
       "out-of-stock": "Out of stock",
+      "pending": "Adding item to bag",
       "pre-order": "Pre-order",
-      "select-options": "Please select options"
+      "select-options": "Please select options",
+      "success": "Item added to bag",
+      "toast": {
+        "close-alt": "Close this message",
+        "close-button": "Close",
+        "error": "Unable to add item to bag",
+        "success": "Item added to bag",
+        "title": "Bag update"
+      }
     },
     "Banner": {
       "link": "Free shipping on eligible orders"
     },
     "CartForm": {
       "empty-cart": "Your bag is empty",
-      "proceed-to-checkout": "Proceed to checkout"
+      "proceed-to-checkout": "Proceed to checkout",
+      "shipping": "Shipping",
+      "taxes": "Taxes",
+      "total-amount": "Total amount",
+      "total-items": "Total items"
     },
     "CartModal": {
       "close": "Close the bag",
@@ -173,6 +186,8 @@
       "toast": {
         "close-alt": "Close this message",
         "close-button": "Close",
+        "error": "Unable to sign up",
+        "success": "You have successfully signed up",
         "title": "Newsletter signup"
       }
     }

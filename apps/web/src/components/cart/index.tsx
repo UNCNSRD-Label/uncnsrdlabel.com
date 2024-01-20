@@ -9,7 +9,7 @@ import { createIntl } from "@formatjs/intl";
 import { Dialog, Transition } from "@headlessui/react";
 import { useSelector } from "@legendapp/state/react";
 import { useQuery } from "@tanstack/react-query";
-import { Button } from "@uncnsrdlabel/components/ui/button";
+import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
   cartFragment,
   getCartQuery,
@@ -48,13 +48,15 @@ export function Cart({
 
   const variables = { cartId };
 
+  const queryKey = getQueryKey(getCartQuery, variables);
+
   const {
     data = {
       cart: null,
     },
   } = useQuery({
     enabled: !!cartId,
-    queryKey: getQueryKey(getCartQuery, variables),
+    queryKey,
     queryFn: () => getShopifyGraphQL(getCartQuery, variables),
     staleTime: 5 * 1000,
   });
@@ -146,7 +148,6 @@ export function Cart({
                   <CloseCart />
                 </Button>
               </div>
-
               <CartForm
                 cart={cart}
                 cartId={cartId}

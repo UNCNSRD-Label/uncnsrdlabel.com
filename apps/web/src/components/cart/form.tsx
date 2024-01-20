@@ -7,13 +7,13 @@ import { Price } from "@/components/price";
 import { createIntl } from "@formatjs/intl";
 import { ResultOf } from "@graphql-typed-document-node/core";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
+import { Button } from "@uncnsrdlabel/components/atoms/button";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
-import { Button } from "@uncnsrdlabel/components/ui/button";
 import {
-  cartFragment,
-  getFragmentData,
-  imageFragment,
-  productBasicFragment,
+    cartFragment,
+    getFragmentData,
+    imageFragment,
+    productBasicFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { DEFAULT_OPTION, cn, createUrl } from "@uncnsrdlabel/lib";
 import Image from "next/image";
@@ -64,9 +64,9 @@ export function CartForm({
       {!cart || lines?.length === 0 ? (
         <div className="mt-20 flex w-full flex-col items-center justify-center overflow-hidden">
           <SlBag className="icon fill h-8 w-8" />
-          <p className="mt-6 text-center text-sm">
+          <span className="mt-6 text-center text-sm">
             {intl.formatMessage({ id: "component.CartForm.empty-cart" })}
-          </p>
+          </span>
         </div>
       ) : (
         <div className="flex h-full flex-col justify-between overflow-hidden p-1">
@@ -154,11 +154,9 @@ export function CartForm({
                           />
                         </Suspense>
                         {/* TODO: Set <span aria-live="polite" className="sr-only" role="status"> for changed quantity */}
-                        <p className="w-6 text-center ">
-                          <span className="w-full text-sm">
-                            {item.quantity}
-                          </span>
-                        </p>
+                        <span className="w-6 text-center text-sm">
+                          {item.quantity}
+                        </span>
                         <Suspense fallback={<Button aria-disabled={true} className={editItemQuantityButtonclassName} disabled variant="ghost"><PlusIcon className="h-4 w-4 dark:text-neutral-500" /></Button>}>
                           <EditItemQuantityButton
                             cartId={cartId}
@@ -184,7 +182,7 @@ export function CartForm({
           <div className="py-4 text-sm text-neutral-500 dark:text-neutral-400">
             {cart.cost.totalTaxAmount && (
               <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 dark:border-neutral-700">
-                <p className="uppercase">Taxes</p>
+                <span className="uppercase">{intl.formatMessage({ id: "component.CartForm.taxes" })}</span>
                 <Price
                   amount={cart.cost.totalTaxAmount.amount}
                   className="text-right text-base text-black dark:text-white"
@@ -194,11 +192,15 @@ export function CartForm({
               </div>
             )}
             <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1 dark:border-neutral-700">
-              <p className="uppercase">Shipping</p>
-              <p className="text-right">Calculated at checkout</p>
+              <span className="uppercase">{intl.formatMessage({ id: "component.CartForm.total-items" })}</span>
+              <span className="text-right">{cart?.totalQuantity}</span>
             </div>
             <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1 dark:border-neutral-700">
-              <p className="uppercase">Total</p>
+              <span className="uppercase">{intl.formatMessage({ id: "component.CartForm.shipping" })}</span>
+              <span className="text-right">Calculated at checkout</span>
+            </div>
+            <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1 dark:border-neutral-700">
+              <span className="uppercase">{intl.formatMessage({ id: "component.CartForm.total-amount" })}</span>
               <Price
                 amount={cart.cost.totalAmount.amount}
                 className="text-right text-base text-black dark:text-white"

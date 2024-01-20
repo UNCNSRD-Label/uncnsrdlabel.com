@@ -1,7 +1,7 @@
 "use client";
 
 import { createIntl } from "@formatjs/intl";
-import { Button } from "@uncnsrdlabel/components/ui/button";
+import { Button } from "@uncnsrdlabel/components/atoms/button";
 import { cn } from "@uncnsrdlabel/lib";
 import { Usable, use } from "react";
 import { SlMagnifier } from "react-icons/sl";

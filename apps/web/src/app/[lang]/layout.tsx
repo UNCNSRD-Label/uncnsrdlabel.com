@@ -9,6 +9,7 @@ import { themeColors } from "@/lib/tailwind";
 import { type LayoutProps } from "@/types/next";
 import { createIntl } from "@formatjs/intl";
 import { type LanguageCode } from "@shopify/hydrogen/storefront-api-types";
+import { Toaster } from "@uncnsrdlabel/components/atoms/sonner";
 import { getLocalizationDetailsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 import {
   cn,
@@ -168,6 +169,7 @@ export default async function RootLayout({
           <Suspense fallback={null}>
             <NavigationEvents />
           </Suspense>
+          <Toaster />
         </AppProviders>
       </body>
     </html>

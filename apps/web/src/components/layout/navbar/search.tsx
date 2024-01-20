@@ -2,7 +2,7 @@
 
 import { SearchIcon } from "@/components/icons/search";
 import { createIntl } from "@formatjs/intl";
-import { Button } from "@uncnsrdlabel/components/ui/button";
+import { Button } from "@uncnsrdlabel/components/atoms/button";
 import { cn, createUrl } from "@uncnsrdlabel/lib";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Usable, use } from "react";
