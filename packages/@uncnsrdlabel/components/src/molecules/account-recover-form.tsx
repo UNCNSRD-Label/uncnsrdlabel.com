@@ -1,4 +1,4 @@
-import { Button } from "../ui/button";
+import { Button } from "../atoms/button";
 import {
     Card,
     CardContent,
@@ -6,9 +6,9 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-} from "../ui/card";
-import { Input } from "../ui/input";
-import { Label } from "../ui/label";
+} from "../atoms/card";
+import { Input } from "../atoms/input";
+import { Label } from "../atoms/label";
 
 export function AccountRecoverForm({
   className,

@@ -3,16 +3,16 @@
 import { createIntl } from "@formatjs/intl";
 import * as Checkbox from "@radix-ui/react-checkbox";
 import { CheckIcon } from "@radix-ui/react-icons";
-import { Button } from "@uncnsrdlabel/components/ui/button";
+import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
-  COOKIE_CONSENT,
-  acceptAllConsentSettings,
-  cn,
-  cookieOptions,
-  defaultConsentSettings,
-  denyAllAdditionalConsentSettings,
-  types,
-  type ConsentSettings,
+    COOKIE_CONSENT,
+    acceptAllConsentSettings,
+    cn,
+    cookieOptions,
+    defaultConsentSettings,
+    denyAllAdditionalConsentSettings,
+    types,
+    type ConsentSettings,
 } from "@uncnsrdlabel/lib";
 import { getCookie, setCookie } from "cookies-next";
 import { Usable, use, useState } from "react";

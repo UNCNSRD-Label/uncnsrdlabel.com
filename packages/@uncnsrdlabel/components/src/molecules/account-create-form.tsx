@@ -1,15 +1,15 @@
 import { ImGithub, ImGoogle } from "react-icons/im";
-import { Button } from "../ui/button";
+import { Button } from "../atoms/button";
 import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "../ui/card";
-import { Input } from "../ui/input";
-import { Label } from "../ui/label";
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "../atoms/card";
+import { Input } from "../atoms/input";
+import { Label } from "../atoms/label";
 
 export function AccountCreateForm({
   className,

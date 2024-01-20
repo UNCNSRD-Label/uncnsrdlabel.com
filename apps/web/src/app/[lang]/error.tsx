@@ -1,7 +1,7 @@
 "use client";
 
 import { LogotypeIcon } from "@/components/icons/logotype";
-import { Button } from "@uncnsrdlabel/components/ui/button";
+import { Button } from "@uncnsrdlabel/components/atoms/button";
 
 export default function Error({ reset }: { reset: () => void; }) {
   return (

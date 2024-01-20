@@ -6,7 +6,7 @@ import { createIntl } from "@formatjs/intl";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { useTimeoutEffect } from "@react-hookz/web";
-import { Button } from "@uncnsrdlabel/components/ui/button";
+import { Button } from "@uncnsrdlabel/components/atoms/button";
 import { COOKIE_CONSENT } from "@uncnsrdlabel/lib";
 import { hasCookie } from "cookies-next";
 import { Suspense, Usable, use, useState } from "react";

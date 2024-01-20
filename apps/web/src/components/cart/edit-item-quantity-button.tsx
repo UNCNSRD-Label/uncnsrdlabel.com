@@ -11,7 +11,7 @@ import {
   type Merchandise,
 } from "@shopify/hydrogen/storefront-api-types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Button } from "@uncnsrdlabel/components/ui/button";
+import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
   editCartItemsMutation,
   getCartQuery,

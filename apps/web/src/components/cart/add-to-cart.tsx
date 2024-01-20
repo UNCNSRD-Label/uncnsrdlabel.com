@@ -11,7 +11,7 @@ import {
   type ProductVariant,
 } from "@shopify/hydrogen/storefront-api-types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Button, type ButtonProps } from "@uncnsrdlabel/components/ui/button";
+import { Button, type ButtonProps } from "@uncnsrdlabel/components/atoms/button";
 import {
   addToCartMutation,
   cartFragment,

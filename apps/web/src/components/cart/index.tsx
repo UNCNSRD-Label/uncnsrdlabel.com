@@ -9,7 +9,7 @@ import { createIntl } from "@formatjs/intl";
 import { Dialog, Transition } from "@headlessui/react";
 import { useSelector } from "@legendapp/state/react";
 import { useQuery } from "@tanstack/react-query";
-import { Button } from "@uncnsrdlabel/components/ui/button";
+import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
   cartFragment,
   getCartQuery,

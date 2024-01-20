@@ -1,9 +1,9 @@
-import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   BreadcrumbItem,
   BreadcrumbLink,
   Breadcrumb as BreadcrumbRoot,
-} from "@uncnsrdlabel/components/ui/breadcrumb";
+} from "@uncnsrdlabel/components/atoms/breadcrumb";
+import { Link } from "@uncnsrdlabel/components/atoms/link";
 
 export function Breadcrumb({ className }: { className?: string }) {
   return (

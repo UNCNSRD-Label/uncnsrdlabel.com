@@ -7,13 +7,13 @@ import { Price } from "@/components/price";
 import { createIntl } from "@formatjs/intl";
 import { ResultOf } from "@graphql-typed-document-node/core";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
+import { Button } from "@uncnsrdlabel/components/atoms/button";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
-import { Button } from "@uncnsrdlabel/components/ui/button";
 import {
-  cartFragment,
-  getFragmentData,
-  imageFragment,
-  productBasicFragment,
+    cartFragment,
+    getFragmentData,
+    imageFragment,
+    productBasicFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { DEFAULT_OPTION, cn, createUrl } from "@uncnsrdlabel/lib";
 import Image from "next/image";
