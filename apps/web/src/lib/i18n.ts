@@ -51,8 +51,6 @@ export async function getIntl(tag: Intl.BCP47LanguageTag, namespace: string) {
 }
 
 export function useGetIntl(namespace: string) {
-  'use client';
-
   let locale: Intl.BCP47LanguageTag = process.env.NEXT_PUBLIC_DEFAULT_LOCALE!;
 
   try {

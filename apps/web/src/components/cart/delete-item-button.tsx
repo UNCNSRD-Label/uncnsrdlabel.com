@@ -18,6 +18,8 @@ import {
   removeFromCartMutation,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
+import { useCallback } from "react";
+import { useTrack } from "use-analytics";
 
 export function DeleteItemButton({
   cartId,
@@ -49,6 +51,25 @@ export function DeleteItemButton({
     },
   });
 
+  const track = useTrack();
+
+  const handleClickTrack = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (isPending) event.preventDefault();
+
+    mutate({
+      cartId,
+      lineIds: [payload],
+    });
+
+    const { dataset } = event.currentTarget;
+
+    track("remove_from_cart", {
+      ...dataset,
+      cartId,
+      lineIds: [payload],
+    });
+  };
+
   return (
     <Button
       aria-label={intl.formatMessage({ id: "remove" })}
@@ -59,14 +80,10 @@ export function DeleteItemButton({
           "cursor-not-allowed": isPending,
         },
       )}
-      onClick={(e: React.FormEvent<HTMLButtonElement>) => {
-        if (isPending) e.preventDefault();
-
-        mutate({
-          cartId,
-          lineIds: [payload],
-        });
-      }}
+      onClick={useCallback(
+        handleClickTrack,
+        [],
+      )}
       variant="ghost"
     >
       {isPending ? (

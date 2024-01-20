@@ -130,11 +130,8 @@ function googleTagManager(
       }
     },
     page: ({ payload, config }) => {
-      console.log({ config });
       if (typeof window[config.dataLayerName] !== "undefined") {
         if (config.pageViewEvent) {
-          console.log("config.pageViewEvent", config.pageViewEvent);
-
           // @ts-expect-error Property 'push' does not exist on type 'Window'.
           window[config.dataLayerName].push({
             event: config.pageViewEvent,
