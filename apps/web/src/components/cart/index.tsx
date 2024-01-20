@@ -148,7 +148,6 @@ export function Cart({
                   <CloseCart />
                 </Button>
               </div>
-              cart?.totalQuantity: {cart?.totalQuantity}
               <CartForm
                 cart={cart}
                 cartId={cartId}

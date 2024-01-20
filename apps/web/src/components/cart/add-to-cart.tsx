@@ -79,7 +79,7 @@ function SubmitButton({
   type CreateCartContext = { id: number };
 
   const {
-    data: dataAddToCart = null,
+    // data: dataAddToCart = null,
     isPending: isPendingAddToCart,
     mutate: mutateAddToCart,
     status: statusAddToCart,
@@ -131,7 +131,7 @@ function SubmitButton({
   });
 
   const {
-    data: dataCreateCart = null,
+    // data: dataCreateCart = null,
     isPending: isPendingCreateCart,
     mutate: mutateCreateCart,
     status: statusCreateCart,

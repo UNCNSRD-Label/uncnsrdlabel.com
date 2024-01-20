@@ -83,7 +83,11 @@
     },
     "CartForm": {
       "empty-cart": "Your bag is empty",
-      "proceed-to-checkout": "Proceed to checkout"
+      "proceed-to-checkout": "Proceed to checkout",
+      "shipping": "Shipping",
+      "taxes": "Taxes",
+      "total-amount": "Total amount",
+      "total-items": "Total items"
     },
     "CartModal": {
       "close": "Close the bag",
