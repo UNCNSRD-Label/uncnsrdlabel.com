@@ -27,6 +27,7 @@ import { cn, getLangProperties } from "@uncnsrdlabel/lib";
 import { useSearchParams } from "next/navigation";
 import { Suspense, Usable, use, useCallback } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
+import { toast } from "sonner";
 import { useTrack } from "use-analytics";
 
 function SubmitButton({
@@ -66,55 +67,64 @@ function SubmitButton({
   const shopifyQueryClient = useQueryClient();
 
   const addToCartMutationFn = (variables: AddToCartMutationVariables) => {
-    // console.log("addToCartMutationFn", { variables });
-
     return getShopifyGraphQL(addToCartMutation, variables);
   };
 
   const createCartMutationFn = (variables: CreateCartMutationVariables) =>
     getShopifyGraphQL(createCartMutation, variables);
 
+  type AddToCartContext = { id: number };
+
+  type CreateCartContext = { id: number };
+
   const {
-    // data: dataAddToCart = null,
     isPending: isPendingAddToCart,
     mutate: mutateAddToCart,
     status: statusAddToCart,
   } = useMutation({
     mutationFn: addToCartMutationFn,
     mutationKey: ["addToCart", cartId],
-    onSuccess: (data) => {
+    onError: (error, variables, context?: AddToCartContext) => {
+      console.error("onError", { error, variables, context });
+      // console.log(`rolling back optimistic update with id ${context?.id}`);
+      toast.error(intl.formatMessage({
+        id: "component.AddToCart.toast.error",
+      }));
+    },
+    onSuccess: (data, variables, context) => {
+      console.log("onSuccess", { data, variables, context });
+
       const queryKey = getQueryKey(getCartQuery, {
         cartId,
       });
 
-      const { cartLinesAdd } = data;
-
-      if (!cartLinesAdd) {
-        console.error("No cartLinesAdd in onSuccess");
-        return;
-      }
-
-      const { cart: cartFragmentRef } = cartLinesAdd;
-
-      const cart = getFragmentData(cartFragment, cartFragmentRef);
-
-      console.log({ cartId, queryKey, cart });
-
       shopifyQueryClient.invalidateQueries({
         queryKey,
       });
+      
+      toast.success(intl.formatMessage({
+        id: "component.AddToCart.toast.success",
+      }));
     },
   });
 
   const {
-    // data: dataCreateCart = null,
     isPending: isPendingCreateCart,
     mutate: mutateCreateCart,
     status: statusCreateCart,
   } = useMutation({
     mutationFn: createCartMutationFn,
     mutationKey: ["createCart", cartId],
-    onSuccess: (data) => {
+    onError: (error, variables, context?: CreateCartContext) => {
+      console.error("onError", { error, variables, context });
+      // console.log(`rolling back optimistic update with id ${context?.id}`);
+      toast.error(intl.formatMessage({
+        id: "component.AddToCart.toast.error",
+      }));
+    },
+    onSuccess: (data, variables, context) => {
+      console.log("onSuccess", { data, variables, context });
+
       const { cartCreate } = data;
 
       if (cartCreate) {
@@ -126,6 +136,10 @@ function SubmitButton({
           state$.cartId.set(cart.id);
         }
       }
+
+      toast.success(intl.formatMessage({
+        id: "component.AddToCart.toast.success",
+      }));
     },
   });
 
@@ -240,7 +254,7 @@ function SubmitButton({
       ) : preOrder ? (
         <ClockIcon className="ml-6 h-5 w-6" />
       ) : isPending ? (
-        <LoadingDots />
+        <LoadingDots className="h-2 w-6" />
       ) : (
         <PlusIcon className="ml-6 h-5 w-6" />
       )}
@@ -324,7 +338,7 @@ export function AddToCart({
           size={size}
           variant={variant}
         >
-          <LoadingDots />
+          <LoadingDots className="h-2 w-6" />
 
           {intl.formatMessage({
             id: "component.AddToCart.add-to-cart-disabled",

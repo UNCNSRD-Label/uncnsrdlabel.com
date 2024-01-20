@@ -76,7 +76,14 @@
       "pending": "Adding item to bag",
       "pre-order": "Pre-order",
       "select-options": "Please select options",
-      "success": "Item added to bag"
+      "success": "Item added to bag",
+      "toast": {
+        "close-alt": "Close this message",
+        "close-button": "Close",
+        "error": "Unable to add item to bag",
+        "success": "Item added to bag",
+        "title": "Bag update"
+      }
     },
     "Banner": {
       "link": "Free shipping on eligible orders"
@@ -179,6 +186,8 @@
       "toast": {
         "close-alt": "Close this message",
         "close-button": "Close",
+        "error": "Unable to sign up",
+        "success": "You have successfully signed up",
         "title": "Newsletter signup"
       }
     }
