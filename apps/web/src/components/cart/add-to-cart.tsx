@@ -107,10 +107,10 @@ function SubmitButton({
       toast.success(intl.formatMessage({
         id: "component.AddToCart.toast.success",
       }), {
-        onDismiss: (t) => {
+        onDismiss: () => {
           invalidateQueries();
         },
-        onAutoClose: (t) => {
+        onAutoClose: () => {
           invalidateQueries();
         },
       });
@@ -145,10 +145,10 @@ function SubmitButton({
           toast.success(intl.formatMessage({
             id: "component.AddToCart.toast.success",
           }), {
-            onDismiss: (t) => {
+            onDismiss: () => {
               state$.cartId.set(cart.id);
             },
-            onAutoClose: (t) => {
+            onAutoClose: () => {
               state$.cartId.set(cart.id);
             },
           });
