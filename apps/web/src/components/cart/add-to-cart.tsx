@@ -77,6 +77,16 @@ function SubmitButton({
 
   type CreateCartContext = { id: number };
 
+  const invalidateQueries = () => {
+    const queryKey = getQueryKey(getCartQuery, {
+      cartId,
+    });
+
+    shopifyQueryClient.invalidateQueries({
+      queryKey,
+    });
+  };
+
   const {
     isPending: isPendingAddToCart,
     mutate: mutateAddToCart,
@@ -93,18 +103,19 @@ function SubmitButton({
     },
     onSuccess: (data, variables, context) => {
       console.log("onSuccess", { data, variables, context });
-
-      const queryKey = getQueryKey(getCartQuery, {
-        cartId,
-      });
-
-      shopifyQueryClient.invalidateQueries({
-        queryKey,
-      });
       
       toast.success(intl.formatMessage({
         id: "component.AddToCart.toast.success",
-      }));
+      }), {
+        onDismiss: (t) => {
+          invalidateQueries();
+          console.log(`Toast with id ${t.id} has been dismissed`)
+        },
+        onAutoClose: (t) => {
+          invalidateQueries();
+          console.log(`Toast with id ${t.id} has been closed automatically`)
+        },
+      });
     },
   });
 
@@ -133,13 +144,20 @@ function SubmitButton({
         const cart = getFragmentData(cartFragment, cartFragmentRef);
 
         if (cart) {
-          state$.cartId.set(cart.id);
+          toast.success(intl.formatMessage({
+            id: "component.AddToCart.toast.success",
+          }), {
+            onDismiss: (t) => {
+              state$.cartId.set(cart.id);
+              console.log(`Toast with id ${t.id} has been dismissed`)
+            },
+            onAutoClose: (t) => {
+              state$.cartId.set(cart.id);
+              console.log(`Toast with id ${t.id} has been closed automatically`)
+            },
+          });
         }
       }
-
-      toast.success(intl.formatMessage({
-        id: "component.AddToCart.toast.success",
-      }));
     },
   });
 
