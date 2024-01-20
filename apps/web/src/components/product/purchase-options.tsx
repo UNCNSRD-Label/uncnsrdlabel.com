@@ -33,6 +33,10 @@ export const PurchaseOptions = ({
   const variants: Pick<ProductVariant, "id" | "selectedOptions">[] =
     variantFragments.edges.map((edge) => edge?.node);
 
+    const sellingPlanGroupNodes = product.sellingPlanGroups?.edges?.map((edge) => edge.node);
+
+    const preOrder = sellingPlanGroupNodes.find(({name}) => name === "Pre-order");
+
   return (
     <>
       <VariantSelector options={product.options} productDetailsFragmentRef={productDetailsFragmentRef} variants={variants} />
@@ -43,6 +47,7 @@ export const PurchaseOptions = ({
         dictionary={dictionary}
         lang={lang}
         options={product.options}
+        preOrder={preOrder}
         variants={variants}
       />
     </>

@@ -95,6 +95,32 @@ export const productDetailsFragment = graphql(/* GraphQL */ `
         currencyCode
       }
     }
+    requiresSellingPlan
+    sellingPlanGroups(first:1) {
+      edges {
+        node {
+          name
+          options {
+            name
+            values
+          }
+          sellingPlans(first: 3) {
+            edges {
+              node {
+                id
+                name
+                description
+                recurringDeliveries
+                options {
+                  name
+                  value
+                }
+              }
+            }
+          }
+        }
+      }
+    }
     seo {
       ...seo
     }
