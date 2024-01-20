@@ -6,22 +6,22 @@ import { createIntl } from "@formatjs/intl";
 import { CheckIcon, ClockIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { useSelector } from "@legendapp/state/react";
 import {
-  type CartLineInput,
-  type ProductOption,
-  type ProductVariant,
+    type CartLineInput,
+    type ProductOption,
+    type ProductVariant,
 } from "@shopify/hydrogen/storefront-api-types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button, type ButtonProps } from "@uncnsrdlabel/components/ui/button";
 import {
-  addToCartMutation,
-  cartFragment,
-  createCartMutation,
-  getCartQuery,
-  getFragmentData,
-  getQueryKey,
-  getShopifyGraphQL,
-  type AddToCartMutationVariables,
-  type CreateCartMutationVariables,
+    addToCartMutation,
+    cartFragment,
+    createCartMutation,
+    getCartQuery,
+    getFragmentData,
+    getQueryKey,
+    getShopifyGraphQL,
+    type AddToCartMutationVariables,
+    type CreateCartMutationVariables,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, getLangProperties } from "@uncnsrdlabel/lib";
 import { useSearchParams } from "next/navigation";
@@ -282,7 +282,7 @@ function SubmitButton({
       ) : preOrder ? (
         <ClockIcon className="ml-6 h-5 w-6" />
       ) : isPending ? (
-        <LoadingDots className="h-5 w-12" />
+        <LoadingDots />
       ) : (
         <PlusIcon className="ml-6 h-5 w-6" />
       )}
@@ -366,7 +366,7 @@ export function AddToCart({
           size={size}
           variant={variant}
         >
-          <LoadingDots className="h-5 w-12" />
+          <LoadingDots />
 
           {intl.formatMessage({
             id: "component.AddToCart.add-to-cart-disabled",

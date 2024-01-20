@@ -92,7 +92,7 @@ export function EditItemQuantityButton({
       variant="ghost"
     >
       {isPending ? (
-        <LoadingDots className="bg-black dark:bg-white" />
+        <LoadingDots />
       ) : type === "plus" ? (
         <PlusIcon className="h-4 w-4 dark:text-neutral-500" />
       ) : (
