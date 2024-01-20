@@ -2,12 +2,14 @@
 
 import { signUpAction } from "@/components/sign-up/action";
 import { createIntl } from "@formatjs/intl";
-import { Button } from "@uncnsrdlabel/components/ui/button";
+import { useDebouncedEffect } from "@react-hookz/web";
+import { Button } from "@uncnsrdlabel/components/atoms/button";
 import { cn } from "@uncnsrdlabel/lib";
 import { Usable, use } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { SlEnvolope } from "react-icons/sl";
 import { type ResolvedIntlConfig } from "react-intl";
+import { toast } from "sonner";
 
 function Submit({
   className,
@@ -25,10 +27,10 @@ function Submit({
     messages,
   });
 
-  const status = useFormStatus();
+  const { pending } = useFormStatus();
 
   return (
-    <Button className={className} disabled={status.pending} variant="ghost">
+    <Button className={className} disabled={pending} variant="ghost">
       {intl.formatMessage({ id: "component.SignUpForm.submit" })}
     </Button>
   );
@@ -50,9 +52,45 @@ export function SignUpForm({
     messages,
   });
 
-  const [output, formAction] = useFormState(signUpAction, null);
+  const [state, formAction] = useFormState(signUpAction, null);
 
-  const hasError = (output && output.status > 299) ?? false;
+  const hasError = (state && state.status > 299) ?? false;
+
+  useDebouncedEffect(
+    () => {
+      if (hasError) {
+        toast.error(
+          intl.formatMessage({
+            id: "component.SignUpForm.toast.error",
+          }),
+          {
+            description: state?.message,
+          },
+        );
+      }
+    },
+    [hasError, state?.message],
+    200,
+    500,
+  );
+
+  useDebouncedEffect(
+    () => {
+      if (state?.ok) {
+        toast.success(
+          intl.formatMessage({
+            id: "component.SignUpForm.toast.success",
+          }),
+          {
+            description: state?.message,
+          },
+        );
+      }
+    },
+    [state?.ok],
+    200,
+    500,
+  );
 
   return (
     <form action={formAction} className={cn("mt-8 grid gap-4", className)}>
@@ -66,6 +104,7 @@ export function SignUpForm({
               "border-red-500": hasError,
             },
           )}
+          name="email"
           placeholder={intl.formatMessage({
             id: "component.SignUpForm.placeholder",
           })}
@@ -84,17 +123,6 @@ export function SignUpForm({
         dictionary={dictionary}
         lang={lang}
       />
-      {output ? (
-        <output
-          className={cn("text-sm", {
-            "text-red-500": hasError,
-            "text-green-500": !hasError,
-          })}
-          role="alert"
-        >
-          {output.message}
-        </output>
-      ) : null}
     </form>
   );
 }

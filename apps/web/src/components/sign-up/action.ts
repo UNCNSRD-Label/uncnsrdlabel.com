@@ -54,14 +54,18 @@ export async function signUpAction(
 
   let status = 500;
 
+  let ok = false;
+
   try {
     const response = await fetch(url, options);
+
+    ok = response.ok;
 
     status = response.status;
 
     console.info(response.status, response.statusText);
 
-    if (response?.ok) {
+    if (response.ok) {
       message = "Email address submitted successfully!";
 
       if (response.status >= 300) {
@@ -94,6 +98,7 @@ export async function signUpAction(
   } finally {
     return {
       message,
+      ok,
       status,
     };
   }
