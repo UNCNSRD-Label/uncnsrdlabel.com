@@ -109,11 +109,9 @@ function SubmitButton({
       }), {
         onDismiss: (t) => {
           invalidateQueries();
-          console.log(`Toast with id ${t.id} has been dismissed`)
         },
         onAutoClose: (t) => {
           invalidateQueries();
-          console.log(`Toast with id ${t.id} has been closed automatically`)
         },
       });
     },
@@ -149,11 +147,9 @@ function SubmitButton({
           }), {
             onDismiss: (t) => {
               state$.cartId.set(cart.id);
-              console.log(`Toast with id ${t.id} has been dismissed`)
             },
             onAutoClose: (t) => {
               state$.cartId.set(cart.id);
-              console.log(`Toast with id ${t.id} has been closed automatically`)
             },
           });
         }
