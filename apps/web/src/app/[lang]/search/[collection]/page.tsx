@@ -90,7 +90,7 @@ export default async function CategoryPage({
         </p>
       ) : (
         <Grid className="grid-cols-2 lg:grid-cols-3 w-full max-w-7xl">
-          <ProductGridItems productFragmentRefs={productFragmentRefs} />
+          <ProductGridItems lang={lang} productFragmentRefs={productFragmentRefs} />
         </Grid>
       )}
     </>
