@@ -1,6 +1,6 @@
 "use client";
 
-import { signUpAction } from "@/components/sign-up/action";
+import { signUpForNotificationsAction } from "@/components/product/sign-up-for-notifications/action";
 import { createIntl } from "@formatjs/intl";
 import { Button } from "@uncnsrdlabel/components/ui/button";
 import { cn } from "@uncnsrdlabel/lib";
@@ -29,12 +29,14 @@ function Submit({
 
   return (
     <Button className={className} disabled={status.pending} variant="ghost">
-      {intl.formatMessage({ id: "component.SignUpForm.submit" })}
+      {intl.formatMessage({
+        id: "component.SignUpForNotificationsForm.submit",
+      })}
     </Button>
   );
 }
 
-export function SignUpForm({
+export function SignUpForNotificationsForm({
   className,
   dictionary,
   lang,
@@ -50,7 +52,7 @@ export function SignUpForm({
     messages,
   });
 
-  const [output, formAction] = useFormState(signUpAction, null);
+  const [output, formAction] = useFormState(signUpForNotificationsAction, null);
 
   const hasError = (output && output.status > 299) ?? false;
 
@@ -67,12 +69,14 @@ export function SignUpForm({
             },
           )}
           placeholder={intl.formatMessage({
-            id: "component.SignUpForm.placeholder",
+            id: "component.SignUpForNotificationsForm.placeholder",
           })}
           type="email"
         />
         <Button
-          aria-label={intl.formatMessage({ id: "component.SignUpForm.submit" })}
+          aria-label={intl.formatMessage({
+            id: "component.SignUpForNotificationsForm.submit",
+          })}
           className="btn absolute right-0 mr-3"
           variant="ghost"
         >

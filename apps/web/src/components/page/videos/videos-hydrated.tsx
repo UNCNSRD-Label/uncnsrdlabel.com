@@ -1,4 +1,3 @@
-import { state$ } from "@/lib/store";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import {
   getPageQuery,
@@ -10,8 +9,11 @@ import { getInContextVariables } from "@uncnsrdlabel/lib";
 import { Videos } from "./videos";
 
 // TODO: Change to videosHydrated and pass query and variables (handle) in props
-export async function VideosHydrated({ handle, ...props }: { handle: string }) {
-  const lang = state$.lang.get();
+export async function VideosHydrated({ handle, lang, ...props }: { handle: string; lang: Intl.BCP47LanguageTag; }) {
+  if (!lang) {
+    console.error("No lang in VideosHydrated");
+    return null;
+  }
 
   const shopifyQueryClient = getShopifyQueryClient();
 

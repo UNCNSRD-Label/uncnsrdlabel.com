@@ -5,49 +5,59 @@ import {
 } from "@shopify/hydrogen-react/storefront-api-types";
 import { useParams } from "next/navigation";
 
-export const getIETFLanguageTagFromlocaleTag = (localeTag: Intl.Locale) =>
-  localeTag?.baseName as Intl.BCP47LanguageTag;
+export function getIETFLanguageTagFromlocaleTag(locale: Intl.Locale) {
+  return locale?.baseName as Intl.BCP47LanguageTag;
+}
 
+export function getLocaleObjectFromIETFLanguageTag(
+  lang: Intl.BCP47LanguageTag = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag,
+) {
+  return new Intl.Locale(lang);
+}
 
-export const getLocaleObjectFromIETFLanguageTag = (
-  tag: Intl.BCP47LanguageTag,
-) => new Intl.Locale(tag);
+export function getLangProperties(lang: Intl.BCP47LanguageTag = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag) {
+  // @ts-expect-error Property 'getCanonicalLocales' does not exist on type 'typeof Intl'.
+  const [canonicalLocale] = Intl.getCanonicalLocales(lang)
 
-export const getInContextVariables = (tag?: Intl.BCP47LanguageTag) => {
-  if (!tag || tag === "favicon.ico") {
-    return null;
-  }
+  const locale = new Intl.Locale(canonicalLocale);
 
-  try {
-    // @ts-expect-error Property 'getCanonicalLocales' does not exist on type 'typeof Intl'.
-    const [canonicalLocale] = Intl.getCanonicalLocales(tag)
+  const country = locale.region as CountryCode;
 
-    const locale = new Intl.Locale(tag);
+  const language =
+    locale.language.toLocaleUpperCase() as LanguageCode;
 
-    const country = locale.region as InputMaybe<CountryCode>;
-
-    const language =
-      locale.language.toLocaleUpperCase() as InputMaybe<LanguageCode>;
-
-    return {
-      country,
-      language,
-    };
-  } catch (error) {
-    console.error({ error });
-
-    return {};
-  }
+  return {
+    country,
+    language,
+  };
 };
 
-export function useGetInContextVariables() {
-  const { lang } = useParams();
+export function getInContextVariables(lang: Intl.BCP47LanguageTag = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag) {
+  // @ts-expect-error Property 'getCanonicalLocales' does not exist on type 'typeof Intl'.
+  const [canonicalLocale] = Intl.getCanonicalLocales(lang)
+
+  const locale = new Intl.Locale(canonicalLocale);
+
+  const country = locale.region as InputMaybe<CountryCode>;
+
+  const language =
+    locale.language.toLocaleUpperCase() as InputMaybe<LanguageCode>;
+
+  return {
+    country,
+    language,
+  };
+};
+
+export function useGetLangProperties() {
+  const { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag } = useParams();
 
   const tag = Array.isArray(lang) ? lang[0] : lang;
 
   const locale = new Intl.Locale(tag);
 
   const country = locale.region as CountryCode;
+  
   const language = locale.language.toLocaleUpperCase() as LanguageCode;
 
   return {

@@ -34,6 +34,11 @@
     "home": {
       "shop-now": "Shop now"
     },
+    "not-found": {
+      "title": "Not found",
+      "message": "Could not find requested resource",
+      "button": "Try again"
+    },
     "products": {
       "add-to-wishlist": "Add to wishlist",
       "all-collections": "All collections",
@@ -57,6 +62,7 @@
       "wishlist": "Wishlist"
     },
     "search": {
+      "reset": "View catalogue",
       "title": "Search",
       "description": "Search for products",
       "results": "{ results, plural, =0 {No search results} =1 {# search result} other {# search results} } found for \"{query}\""
@@ -67,6 +73,7 @@
       "add-to-cart-disabled": "Unable to add item to bag",
       "add-to-cart-enabled": "Add to bag",
       "out-of-stock": "Out of stock",
+      "pre-order": "Pre-order",
       "select-options": "Please select options"
     },
     "Banner": {

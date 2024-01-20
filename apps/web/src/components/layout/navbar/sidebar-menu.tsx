@@ -3,8 +3,8 @@
 import { CloseIcon } from "@/components/icons/close";
 import { LogotypeIcon } from "@/components/icons/logotype";
 import { MenuIcon } from "@/components/icons/menu";
-import { useGetIntl } from "@/lib/i18n";
 import { themeColors } from "@/lib/tailwind";
+import { createIntl } from "@formatjs/intl";
 import { Dialog } from "@headlessui/react";
 import { type Menu } from "@shopify/hydrogen/storefront-api-types";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
@@ -12,13 +12,18 @@ import { Button } from "@uncnsrdlabel/components/ui/button";
 import { cn } from "@uncnsrdlabel/lib";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Usable, use, useEffect, useState } from "react";
+import { type ResolvedIntlConfig } from "react-intl";
 import { type PartialDeep } from "type-fest";
 import { NavbarSearch } from "./search";
 
 export function SidebarMenu({
+  dictionary,
+  lang,
   menu,
 }: {
+  dictionary: Usable<ResolvedIntlConfig["messages"]>;
+  lang: Intl.BCP47LanguageTag;
   menu: PartialDeep<
     Menu,
     {
@@ -26,7 +31,12 @@ export function SidebarMenu({
     }
   >;
 }) {
-  const intl = useGetIntl("component.SidebarMenu");
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -49,7 +59,7 @@ export function SidebarMenu({
   return (
     <>
       <Button
-        aria-label={intl.formatMessage({ id: "open" })}
+        aria-label={intl.formatMessage({ id: "component.SidebarMenu.open" })}
         className="relative"
         data-testid="open-sidebar-menu"
         onClick={() => {
@@ -96,7 +106,7 @@ export function SidebarMenu({
                 className={cn("flex w-full flex-col p-6 pt-safeTop", themeColors)}
               >
                 <Button
-                  aria-label={intl.formatMessage({ id: "close" })}
+                  aria-label={intl.formatMessage({ id: "component.SidebarMenu.close" })}
                   className="mb-4"
                   data-testid="close-sidebar-menu"
                   onClick={() => {
@@ -110,7 +120,7 @@ export function SidebarMenu({
                 </Button>
 
                 <div className="mb-4 w-full">
-                  <NavbarSearch />
+                  <NavbarSearch dictionary={dictionary} lang={lang} />
                 </div>
                 {menu?.items?.length && menu?.items?.length > 0 ? (
                   <ul className="flex flex-1 flex-col gap-2">

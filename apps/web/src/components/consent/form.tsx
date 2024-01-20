@@ -1,6 +1,6 @@
 "use client";
 
-import { useGetIntl } from "@/lib/i18n";
+import { createIntl } from "@formatjs/intl";
 import * as Checkbox from "@radix-ui/react-checkbox";
 import { CheckIcon } from "@radix-ui/react-icons";
 import { Button } from "@uncnsrdlabel/components/ui/button";
@@ -15,20 +15,27 @@ import {
   type ConsentSettings,
 } from "@uncnsrdlabel/lib";
 import { getCookie, setCookie } from "cookies-next";
-import { useState } from "react";
+import { Usable, use, useState } from "react";
+import { type ResolvedIntlConfig } from "react-intl";
 import { useTrack } from "use-analytics";
 
 type ConsentDialogProps = {
   className?: string;
-  // eslint-disable-next-line no-unused-vars
   acceptSelectedConsents: (event: React.FormEvent<HTMLFormElement>) => void;
   acceptAllConsents: () => void;
   denyAllAdditionalConsents: () => void;
+  dictionary: Usable<ResolvedIntlConfig["messages"]>;
+  lang: Intl.BCP47LanguageTag;
   manageConsents: () => void;
 };
 
-export function ConsentForm(props: ConsentDialogProps) {
-  const intl = useGetIntl("component.ConsentForm");
+export function ConsentForm({className, dictionary, lang, ...props}: ConsentDialogProps) {
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   const track = useTrack();
 
@@ -40,7 +47,7 @@ export function ConsentForm(props: ConsentDialogProps) {
 
     setCookie(COOKIE_CONSENT, consentParams, cookieOptions);
 
-    track("Consent - accept selected", consentParams);
+    track("consent_accept_selected", consentParams);
 
     console.info("Granting selected consents");
 
@@ -52,7 +59,7 @@ export function ConsentForm(props: ConsentDialogProps) {
   const acceptAllConsents = () => {
     setCookie(COOKIE_CONSENT, acceptAllConsentSettings, cookieOptions);
 
-    track("Consent - accept all", acceptAllConsentSettings);
+    track("consent_accept_all", acceptAllConsentSettings);
 
     console.info("Accepting all consents");
 
@@ -62,7 +69,7 @@ export function ConsentForm(props: ConsentDialogProps) {
   const denyAllAdditionalConsents = () => {
     setCookie(COOKIE_CONSENT, denyAllAdditionalConsentSettings, cookieOptions);
 
-    track("Consent - deny all", denyAllAdditionalConsentSettings);
+    track("consent_deny_all", denyAllAdditionalConsentSettings);
 
     console.info("Denying all additional consents");
 
@@ -72,7 +79,7 @@ export function ConsentForm(props: ConsentDialogProps) {
   const manageConsents = () => {
     setOptionsOpen(true);
     
-    track("Consent - manage", denyAllAdditionalConsentSettings);
+    track("consent_manage", denyAllAdditionalConsentSettings);
 
     console.info("Manage consents");
 
@@ -91,7 +98,7 @@ export function ConsentForm(props: ConsentDialogProps) {
   return (
     <form
       onSubmit={acceptSelectedConsents}
-      className={cn("flex flex-col gap-4 text-xs", props.className)}
+      className={cn("flex flex-col gap-4 text-xs", className)}
     >
       {types.map((consent, index) => (
         <fieldset
@@ -121,10 +128,10 @@ export function ConsentForm(props: ConsentDialogProps) {
             block: optionsOpen,
             hidden: !optionsOpen,
           })}
-          size="base"
+          size="sm"
           variant="default"
         >
-          {intl.formatMessage({ id: "accept" })}
+          {intl.formatMessage({ id: "component.ConsentForm.accept" })}
         </Button>
         <Button
           className={cn({
@@ -133,26 +140,26 @@ export function ConsentForm(props: ConsentDialogProps) {
           })}
           onClick={manageConsents}
           type="button"
-          size="base"
+          size="sm"
           variant="secondary"
         >
-          {intl.formatMessage({ id: "manage" })}
+          {intl.formatMessage({ id: "component.ConsentForm.manage" })}
         </Button>
         <Button
           onClick={acceptAllConsents}
           type="button"
-          size="base"
+          size="sm"
           variant="default"
         >
-          {intl.formatMessage({ id: "accept-all" })}
+          {intl.formatMessage({ id: "component.ConsentForm.accept-all" })}
         </Button>
         <Button
           onClick={denyAllAdditionalConsents}
           type="button"
-          size="base"
+          size="sm"
           variant="default"
         >
-          {intl.formatMessage({ id: "deny-additional" })}
+          {intl.formatMessage({ id: "component.ConsentForm.deny-additional" })}
         </Button>
       </div>
     </form>

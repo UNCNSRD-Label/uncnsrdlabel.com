@@ -1,20 +1,34 @@
 "use client";
 
-import { useGetIntl } from "@/lib/i18n";
+import { createIntl } from "@formatjs/intl";
 import { cn, createUrl } from "@uncnsrdlabel/lib";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Usable, use } from "react";
+import { type ResolvedIntlConfig } from "react-intl";
 
 export function SearchForm({
+  className,
+  dictionary,
   isOpen,
+  lang,
   setSearchIsOpen,
 }: {
+  className?: string;
+  dictionary: Usable<ResolvedIntlConfig["messages"]>;
   isOpen: boolean;
+  lang: Intl.BCP47LanguageTag;
   setSearchIsOpen: (open: boolean) => void;
 }) {
-  const intl = useGetIntl("component.SearchForm");
-
   const router = useRouter();
+
   const searchParams = useSearchParams();
+
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -36,7 +50,7 @@ export function SearchForm({
 
   return (
     <form
-      className={cn("relative m-0 flex items-center p-0")}
+      className={cn("relative m-0 flex items-center p-0", className)}
       id="search-form"
       onBlur={() => setSearchIsOpen(false)}
       onSubmit={onSubmit}
@@ -51,7 +65,7 @@ export function SearchForm({
         defaultValue={searchParams?.get("q") || ""}
         name="search"
         onFocus={() => setSearchIsOpen(true)}
-        placeholder={intl.formatMessage({ id: "placeholder" })}
+        placeholder={intl.formatMessage({ id: "component.SearchForm.placeholder" })}
         tabIndex={0}
         type="text"
       />

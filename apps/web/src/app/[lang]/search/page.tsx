@@ -1,34 +1,43 @@
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
-import { getAlternativeLanguages, getIntl } from "@/lib/i18n";
-import { state$ } from "@/lib/store";
+import { getDictionary } from "@/lib/dictionary";
+import { getAlternativeLanguages } from "@/lib/i18n";
+import { getCanonical } from "@/lib/metadata";
 import { type PageProps } from "@/types/next";
+import { createIntl } from "@formatjs/intl";
+import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
+  getLocalizationDetailsHandler,
   getProductsHandler,
   productDefaultSort,
-  productSorting,
+  productSorting
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { type Metadata } from "next";
+import { type ResolvedIntlConfig } from "react-intl";
 
 const handle = "search";
 
 const path = `/search`;
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  params: { lang },
+}: PageProps): Promise<Metadata> {
+  const localization = await getLocalizationDetailsHandler({ lang });
 
-  const lang = state$.lang.get();
+  const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
 
-  const localization = state$.localization.get();
-
-  const intl = await getIntl(lang, `page.${handle}`);
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   return {
     alternates: {
-      canonical: `${localization.language.isoCode.toLocaleLowerCase()}-${localization.country.isoCode}/${path}`,
-      languages: await getAlternativeLanguages({ localization, path }),
+      canonical: getCanonical(path),
+      languages: getAlternativeLanguages({ localization, path }),
     },
-    title: intl.formatMessage({ id: "title" }),
-    description: intl.formatMessage({ id: "description" }),
+    title: intl.formatMessage({ id: `page.${handle}.title` }),
+    description: intl.formatMessage({ id: `page.${handle}.description` }),
   };
 }
 
@@ -36,7 +45,12 @@ export default async function SearchPage({
   params: { lang },
   searchParams,
 }: PageProps) {
-  const intl = await getIntl(lang, `page.${handle}`);
+  const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   const { sort, q: query } = searchParams as { [key: string]: string };
   const { sortKey, reverse } =
@@ -58,13 +72,24 @@ export default async function SearchPage({
   return (
     <>
       {query ? (
-        <p>{intl.formatMessage({ id: "results" }, { query, results })}</p>
+        <header className="mb-8">
+          <span>
+            {intl.formatMessage(
+              { id: `page.${handle}.results` },
+              { query, results },
+            )}
+          </span>
+        </header>
       ) : null}
       {productFragmentRefs.length > 0 ? (
-        <Grid className="grid-cols-2 lg:grid-cols-3 w-full max-w-7xl">
-          <ProductGridItems productFragmentRefs={productFragmentRefs} />
+        <Grid className="w-full max-w-7xl grid-cols-2 lg:grid-cols-3">
+          <ProductGridItems lang={lang} productFragmentRefs={productFragmentRefs} />
         </Grid>
-      ) : null}
+      ) : (
+        <Link className="btn" href="/search">
+          {intl.formatMessage({ id: `page.${handle}.results` })}
+        </Link>
+      )}
     </>
   );
 }

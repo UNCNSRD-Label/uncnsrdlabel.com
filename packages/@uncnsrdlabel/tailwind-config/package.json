@@ -1,17 +1,17 @@
 {
   "dependencies": {
-    "tailwindcss": "^3.4.0"
+    "tailwindcss": "^3.4.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.0.0",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.10",
-    "@types/node": "^20.10.5",
+    "@types/node": "^20.11.5",
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "@uncnsrdlabel/tsconfig": "workspace:*",
     "@uncnsrdlabel/types": "workspace:*",
-    "prettier": "^3.1.1",
+    "prettier": "^3.2.4",
     "tailwindcss-animate": "^1.0.7",
     "type-fest": "^4.9.0",
     "typescript": "^5.3.3"

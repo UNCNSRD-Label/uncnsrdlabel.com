@@ -1,4 +1,6 @@
+import { AddToCart } from "@/components/cart/add-to-cart";
 import { Image } from "@/components/media/image";
+import { getDictionary } from "@/lib/dictionary";
 import { type ProductVariant } from "@shopify/hydrogen/storefront-api-types";
 import {
   getFragmentData,
@@ -10,15 +12,18 @@ import {
 import { cn } from "@uncnsrdlabel/lib";
 import { Product as ProductSchema, WithContext } from "schema-dts";
 import { PriceAndCompareAtPrice } from "../price-and-compare-at-price";
-import { AddToCart } from "./add-to-cart";
 
 export function ProductCard({
   className,
+  lang,
   productDetailsFragmentRef,
 }: {
   className?: string;
+  lang: Intl.BCP47LanguageTag;
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }) {
+  const dictionary = getDictionary({ lang });
+
   const product = getFragmentData(
     productDetailsFragment,
     productDetailsFragmentRef,
@@ -62,6 +67,14 @@ export function ProductCard({
     description: product.description,
   };
 
+  const sellingPlanGroupNodes = product.sellingPlanGroups?.edges?.map(
+    (edge) => edge.node,
+  );
+
+  const preOrder = sellingPlanGroupNodes.find(
+    ({ name }) => name === "Pre-order",
+  );
+
   return (
     <>
       <div
@@ -92,7 +105,8 @@ export function ProductCard({
             {product.title}
           </h3>
           <PriceAndCompareAtPrice
-            className="text-xs font-semibold"
+            className="text-xs font-semibold mb-4"
+            lang={lang}
             productDetailsFragmentRef={productDetailsFragmentRef}
           />
           {/* <PurchaseOptions
@@ -100,8 +114,13 @@ export function ProductCard({
           /> */}
           <AddToCart
             availableForSale={product.availableForSale}
+            container="ProductCard"
+            dictionary={dictionary}
+            lang={lang}
             options={product.options}
+            preOrder={!!preOrder}
             variants={variants}
+            view="compact"
           />
         </div>
       </div>

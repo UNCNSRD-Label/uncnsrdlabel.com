@@ -1,10 +1,16 @@
-import { state$ } from "@/lib/store";
+import {
+  getLocalizationDetailsHandler
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import merge from "deepmerge";
-import { getProperty } from "dot-prop";
+import { deepKeys, getProperty } from 'dot-prop';
 import { type ResolvedIntlConfig } from "react-intl";
 
-export const getDictionary = async (namespace: string) => {
-  const localization = state$.localization.get();
+export const getDictionary = async ({ lang, namespace }: { lang: Intl.BCP47LanguageTag; namespace?: string }): Promise<ResolvedIntlConfig["messages"]> => {
+  if(!lang) {
+    console.error("No lang in getDictionary")
+  }
+
+  const localization = await getLocalizationDetailsHandler({ lang });
 
   let languageFallback = {}
   let languageGeneric = {}
@@ -14,28 +20,40 @@ export const getDictionary = async (namespace: string) => {
     const { default: languageFallbackDictionary } = await import(`@/dictionaries/en.json`);
     languageFallback = languageFallbackDictionary;
   } catch (error) {
-    console.error(error);
+    console.debug(error);
   }
 
   try {
     const { default: languageGenericDictionary } = await import(`@/dictionaries/${localization.language.isoCode.toLocaleLowerCase()}.json`) ?? {};
     languageGeneric = languageGenericDictionary;
   } catch (error) {
-    // console.error(error);
+    // console.debug(error);
   }
 
   try {
     const { default: languageLocalisedDictionary } = await import(`@/dictionaries/${localization.language.isoCode.toLocaleLowerCase()}-${localization.country.isoCode}.json`) ?? {};
     languageLocalised = languageLocalisedDictionary;
   } catch (error) {
-    // console.error(error);
+    // console.debug(error);
   }
 
-  const merged = merge.all([
+  const allMessages = merge.all([
     languageFallback,
     languageGeneric,
     languageLocalised,
   ]) as typeof languageFallback;
 
-  return getProperty(merged, namespace) as ResolvedIntlConfig["messages"];
+  const namespaceMessagesFlattened: Record<string, string> = {}
+
+  let messages = allMessages
+
+  if (namespace) {
+    messages = getProperty(allMessages, namespace) as {};
+  }
+
+  for (const property of deepKeys(messages)) {
+    namespaceMessagesFlattened[property] = getProperty(messages, property)
+  }
+
+  return namespaceMessagesFlattened
 };

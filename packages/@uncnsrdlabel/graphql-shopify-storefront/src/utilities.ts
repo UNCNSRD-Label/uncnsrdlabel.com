@@ -3,7 +3,7 @@ import {
   QueryClient, useSuspenseQuery,
   type UseSuspenseQueryResult
 } from "@tanstack/react-query";
-import { formatErrorMessage, isShopifyError, useGetInContextVariables } from "@uncnsrdlabel/lib";
+import { formatErrorMessage, isShopifyError, useGetLangProperties } from "@uncnsrdlabel/lib";
 import { GraphQLClient } from "graphql-request";
 import { cache } from "react";
 import { endpoint } from "./constants";
@@ -44,7 +44,7 @@ export async function getShopifyGraphQL<TResult, TVariables>(
   ...[variables]: TVariables extends Record<string, never> ? [] : [TVariables]
 ): Promise<TResult> {
   try {
-    const request = graphQLClient.request(document, { ...variables });
+    const request = await graphQLClient.request(document, { ...variables });
 
     return request;
   } catch (error) {
@@ -62,7 +62,7 @@ export function useGetShopifyGraphQL<TResult, TVariables>(
   document: TypedDocumentNode<TResult, TVariables>,
   ...[variables]: TVariables extends Record<string, never> ? [] : [TVariables]
 ): UseSuspenseQueryResult<TResult> {
-  const inContextVariables = useGetInContextVariables();
+  const inContextVariables = useGetLangProperties();
 
   type TVariablesWithContext = typeof inContextVariables & TVariables;
 

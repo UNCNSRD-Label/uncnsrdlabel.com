@@ -1,18 +1,18 @@
 import { Image } from "@/components/media/image";
 import { minWidthLg, minWidthSm } from "@/lib/tailwind";
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
 } from "@uncnsrdlabel/components/ui/carousel";
 import {
-  getFragmentData,
-  getPageQuery,
-  getShopifyGraphQL,
-  imageFragment,
-  pageFragment,
+    getFragmentData,
+    getPageQuery,
+    getShopifyGraphQL,
+    imageFragment,
+    pageFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 

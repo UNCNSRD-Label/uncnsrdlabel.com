@@ -6,17 +6,21 @@ import {
   collectionFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
+import { Suspense } from "react";
 
 function FilterItemList({
+  className,
   list,
 }: {
+  className?: string;
   list: (
     | ResultOf<typeof collectionFragment>
     | ProductCollectionSortFilterItem
   )[];
 }) {
+  {list.map(item => item.title).join()}
   return (
-    <div className="hidden md:block">
+    <div className={cn(className)}>
       {list.map(
         (
           item:
@@ -24,7 +28,7 @@ function FilterItemList({
             | ProductCollectionSortFilterItem,
           index,
         ) => (
-          <FilterItem key={item.title || index} item={item} />
+          <FilterItem key={`filter-item-${item.title || index}`} item={item} />
         ),
       )}
     </div>
@@ -51,12 +55,12 @@ export function FilterList({
             {title}
           </h3>
         ) : null}
-        <ul className="hidden md:block">
-          <FilterItemList list={list} />
-        </ul>
-        <ul className="md:hidden">
-          <FilterItemDropdown list={list} />
-        </ul>
+        <Suspense fallback={null}>
+          <FilterItemList className="hidden md:block" list={list} />
+        </Suspense>
+        <Suspense fallback={null}>
+          <FilterItemDropdown className="md:hidden" list={list} />
+        </Suspense>
       </nav>
     </>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import { LoadingDots } from "@/components/loading/dots";
-import { useGetIntl } from "@/lib/i18n";
+import { createIntl } from "@formatjs/intl";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
   type CartLine,
@@ -15,21 +15,33 @@ import {
   getCartQuery,
   getQueryKey,
   getShopifyGraphQL,
-  removeFromCartMutation,
+  removeFromCartMutation
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
+import { Usable, use, useCallback } from "react";
+import { type ResolvedIntlConfig } from "react-intl";
+import { useTrack } from "use-analytics";
 
 export function DeleteItemButton({
   cartId,
+  dictionary,
   item,
+  lang,
 }: {
   cartId: string;
+  dictionary: Usable<ResolvedIntlConfig["messages"]>;
   item: Pick<ComponentizableCartLine | CartLine, "id" | "quantity"> & {
     cost: Pick<CartLineCost, "totalAmount">;
     merchandise: Pick<Merchandise, "id">;
   };
+  lang: Intl.BCP47LanguageTag;
 }) {
-  const intl = useGetIntl("component.DeleteItemButton");
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   const payload = item.id;
 
@@ -49,9 +61,28 @@ export function DeleteItemButton({
     },
   });
 
+  const track = useTrack();
+
+  const handleClickTrack = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (isPending) event.preventDefault();
+
+    mutate({
+      cartId,
+      lineIds: [payload],
+    });
+
+    const { dataset } = event.currentTarget;
+
+    track("remove_from_cart", {
+      ...dataset,
+      cartId,
+      lineIds: [payload],
+    });
+  };
+
   return (
     <Button
-      aria-label={intl.formatMessage({ id: "remove" })}
+      aria-label={intl.formatMessage({ id: "component.DeleteItemButton.remove" })}
       aria-disabled={isPending}
       className={cn(
         "ease flex h-4 w-4 items-center justify-center rounded-full bg-neutral-500 transition-all duration-200",
@@ -59,14 +90,10 @@ export function DeleteItemButton({
           "cursor-not-allowed": isPending,
         },
       )}
-      onClick={(e: React.FormEvent<HTMLButtonElement>) => {
-        if (isPending) e.preventDefault();
-
-        mutate({
-          cartId,
-          lineIds: [payload],
-        });
-      }}
+      onClick={useCallback(
+        handleClickTrack,
+        [],
+      )}
       variant="ghost"
     >
       {isPending ? (

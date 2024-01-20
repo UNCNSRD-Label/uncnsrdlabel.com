@@ -9,9 +9,6 @@ import { type ReactPlayerProps } from "react-player";
 const ReactPlayer = dynamic(() => import("react-player/lazy"), { ssr: false });
 
 export type VideoProps = ReactPlayerProps;
-//  & {
-//   ref?: MutableRefObject<HTMLElement | null>;
-// };
 
 export const Video = forwardRef<HTMLElement, VideoProps>(
   (

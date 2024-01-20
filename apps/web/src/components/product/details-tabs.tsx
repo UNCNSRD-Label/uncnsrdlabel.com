@@ -12,12 +12,14 @@ export function ProductDetailsTabs({
   className,
   excludedKeys,
   includedKeys,
+  lang,
   productDetailsFragmentRef,
 }: {
   className?: string;
   excludedKeys?: string[];
   includedKeys?: string[];
   id?: string;
+  lang: Intl.BCP47LanguageTag;
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }) {
   const product = getFragmentData(
@@ -57,9 +59,6 @@ export function ProductDetailsTabs({
           >
             {metafield?.key
               ?.split("_")
-              .map(
-                (word: string) => word.charAt(0).toLocaleUpperCase() + word.slice(1),
-              )
               .join(" ")}
           </TabsTrigger>
         ))}
@@ -71,9 +70,10 @@ export function ProductDetailsTabs({
           value={metafield.key}
         >
           <MetafieldMapper
-            metafield={metafield}
             excludedKeys={excludedKeys}
             includedKeys={includedKeys}
+            lang={lang}
+            metafield={metafield}
           />
         </TabsContent>
       ))}

@@ -1,7 +1,7 @@
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
-import { getIntl } from "@/lib/i18n";
-import { state$ } from "@/lib/store";
+import { getDictionary } from "@/lib/dictionary";
+import { createIntl } from "@formatjs/intl";
 import {
   getFragmentData,
   getProductRecommendationsHandler,
@@ -9,17 +9,25 @@ import {
   type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
+import { type ResolvedIntlConfig } from "react-intl";
 
 export async function RelatedProducts({
   className,
+  lang,
   productDetailsFragmentRef,
 }: {
   className?: string;
+  lang: Intl.BCP47LanguageTag;
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }) {
-  const lang = state$.lang.get();
+  const messages: ResolvedIntlConfig["messages"] = await getDictionary({
+    lang,
+  });
 
-  const intl = await getIntl(lang, `component.RelatedProducts`);
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   const product = getFragmentData(
     productDetailsFragment,
@@ -40,12 +48,13 @@ export async function RelatedProducts({
   if (!productRecommendationRefs?.length) return null;
 
   return (
-    <aside className={cn("px-2 sm:px-4 pb-48 pt-12", className)}>
+    <aside className={cn("px-2 pb-48 pt-12 sm:px-4", className)}>
       <h2 className="mb-8 text-center text-xl font-bold uppercase">
-        {intl.formatMessage({ id: "title" })}
+        {intl.formatMessage({ id: "component.RelatedProducts.title" })}
       </h2>
       <Grid className="grid-cols-2 lg:grid-cols-5 [&>*:last-child:nth-child(odd)]:hidden [&>*:last-child:nth-child(odd)]:lg:list-item">
         <ProductGridItems
+          lang={lang}
           limit={5}
           productFragmentRefs={productRecommendationRefs}
         />

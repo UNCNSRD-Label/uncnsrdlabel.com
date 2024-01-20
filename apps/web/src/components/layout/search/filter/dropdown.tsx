@@ -6,13 +6,16 @@ import {
   ProductCollectionSortFilterItem,
   collectionFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { cn } from "@uncnsrdlabel/lib";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { FilterItem } from "./item";
 
 export function FilterItemDropdown({
+  className,
   list,
 }: {
+  className?: string;
   list: (
     | ResultOf<typeof collectionFragment>
     | ProductCollectionSortFilterItem
@@ -47,27 +50,27 @@ export function FilterItemDropdown({
   }, [pathname, list, searchParams]);
 
   return (
-    <div className="relative" ref={ref}>
+    <div className={cn("relative", className)} ref={ref}>
       <div
+        className="flex w-full items-center justify-between rounded border border-black/30 px-4 py-2 text-sm dark:border-white/30"
         onClick={() => {
           setOpenSelect(!openSelect);
         }}
-        className="flex w-full items-center justify-between rounded border border-black/30 px-4 py-2 text-sm dark:border-white/30"
       >
         <div>{active}</div>
         <CaretRightIcon className="h-4 rotate-90" />
       </div>
       {openSelect && (
-        <div
+        <ul
           onClick={() => {
             setOpenSelect(false);
           }}
           className="absolute z-40 w-full rounded-b-md bg-white p-4 shadow-md dark:bg-black"
         >
           {list.map((item, index) => (
-            <FilterItem key={item.title || index} item={item} />
+            <FilterItem key={`filter-item-dropdown-${item.title || index}`} item={item} />
           ))}
-        </div>
+        </ul>
       )}
     </div>
   );

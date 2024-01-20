@@ -11,12 +11,13 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 
-export async function Tile({
+export function Tile({
   active = true,
   background,
   className,
   delay = 0,
   image,
+  lang,
   priority,
   productBasicFragmentRef,
   productDetailsFragmentRef,
@@ -37,6 +38,7 @@ export async function Tile({
   delay?: number;
   image?: FragmentType<typeof imageFragment> | null;
   isInteractive?: boolean;
+  lang: Intl.BCP47LanguageTag;
   priority?: boolean;
   productBasicFragmentRef?: FragmentType<typeof productBasicFragment>;
   productDetailsFragmentRef?: FragmentType<typeof productDetailsFragment>;
@@ -138,6 +140,7 @@ export async function Tile({
           </h3>
           <PriceAndCompareAtPrice
             className="text-xs md:grid-flow-col"
+            lang={lang}
             productBasicFragmentRef={productBasicFragmentRef}
           />
         </footer>

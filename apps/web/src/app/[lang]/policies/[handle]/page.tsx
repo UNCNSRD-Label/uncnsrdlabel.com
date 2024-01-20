@@ -1,30 +1,26 @@
 import { Prose } from "@/components/prose";
 import { getAlternativeLanguages } from "@/lib/i18n";
-import { state$ } from "@/lib/store";
+import { getCanonical } from "@/lib/metadata";
 import { type PageProps } from "@/types/next";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   getFragmentData,
+  getLocalizationDetailsHandler,
   getMenuHandler,
   getShopPoliciesHandler,
   shopPolicyFragment,
-  type PolicyName,
+  type PolicyName
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { SITE_DOMAIN_WEB, cn } from "@uncnsrdlabel/lib";
 import { camelCase } from "lodash";
-import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-// export const runtime = "edge";
-
 export async function generateMetadata({
-  params: { handle },
-}: {
-  params: PageProps & { handle: PolicyName };
-}): Promise<Metadata> {
-  const lang = state$.lang.get();
-
-  const localization = state$.localization.get();
+  params: { handle, lang },
+}: PageProps & {
+  params: { handle: PolicyName };
+}) {
+  const localization = await getLocalizationDetailsHandler({ lang });
 
   const path = `/policies/${handle}`;
 
@@ -40,10 +36,8 @@ export async function generateMetadata({
 
   return {
     alternates: {
-      canonical: `${localization.language.isoCode.toLocaleLowerCase()}-${
-        localization.country.isoCode
-      }/${path}`,
-      languages: await getAlternativeLanguages({ localization, path }),
+      canonical: getCanonical(path),
+      languages: getAlternativeLanguages({ localization, path }),
     },
     title: policy.title,
     openGraph: {
@@ -57,14 +51,10 @@ export async function generateMetadata({
 }
 
 export default async function PolicyPage({
-  params,
-}: {
+  params: { handle, lang },
+}: PageProps & {
   params: { handle: PolicyName };
 }) {
-  const lang = state$.lang.get();
-
-  const handle = params.handle as PolicyName;
-
   const customerCareMenu = await getMenuHandler({
     lang,
     variables: {
@@ -95,7 +85,7 @@ export default async function PolicyPage({
                     "sm:text-xxs text-xs uppercase transition duration-150 ease-in-out",
                     {
                       "underline decoration-dotted underline-offset-8":
-                        item.url?.endsWith(params.handle),
+                        item.url?.endsWith(handle),
                     },
                   )}
                   href={item.url ?? "#"}

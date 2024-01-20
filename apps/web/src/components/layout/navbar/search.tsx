@@ -1,26 +1,46 @@
 "use client";
 
 import { SearchIcon } from "@/components/icons/search";
-import { useGetIntl } from "@/lib/i18n";
+import { createIntl } from "@formatjs/intl";
 import { Button } from "@uncnsrdlabel/components/ui/button";
-import { createUrl } from "@uncnsrdlabel/lib";
+import { cn, createUrl } from "@uncnsrdlabel/lib";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Usable, use } from "react";
+import { type ResolvedIntlConfig } from "react-intl";
+import { useTrack } from "use-analytics";
 
-export function NavbarSearch() {
-  const intl = useGetIntl("component.NavbarSearch");
+export function NavbarSearch({ className, dictionary, lang }: { className?: string; dictionary: Usable<ResolvedIntlConfig["messages"]>; lang: Intl.BCP47LanguageTag; }) {
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   const router = useRouter();
+
   const searchParams = useSearchParams();
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  const track = useTrack();
 
-    const val = e.target as HTMLFormElement;
+  function onSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const val = event.target as HTMLFormElement;
     const search = val.search as HTMLInputElement;
     const newParams = new URLSearchParams(searchParams.toString());
 
-    if (search.value) {
-      newParams.set("q", search.value);
+    const { dataset } = event.currentTarget;
+
+    const { value } = search
+
+    track("search", {
+      ...dataset,
+      value,
+    });
+
+    if (value) {
+      newParams.set("q", value);
     } else {
       newParams.delete("q");
     }
@@ -29,13 +49,13 @@ export function NavbarSearch() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="relative">
+    <form onSubmit={onSubmit} className={cn("relative", className)}>
       <input
         autoComplete="on"
         className="focus:inherit w-full bg-gray-800/50 px-4 py-2 placeholder:text-inherit"
         defaultValue={searchParams?.get("q") || ""}
         name="search"
-        placeholder={intl.formatMessage({ id: "placeholder" })}
+        placeholder={intl.formatMessage({ id: "component.NavbarSearch.placeholder" })}
         type="text"
       />
       <Button className="absolute right-0 top-0 mr-3 flex h-full items-center" variant="ghost">

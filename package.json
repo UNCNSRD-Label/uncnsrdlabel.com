@@ -1,16 +1,16 @@
 {
   "devDependencies": {
     "@graphql-eslint/eslint-plugin": "^3.20.1",
-    "@turbo/gen": "^1.11.2",
-    "@types/node": "^20.10.5",
+    "@turbo/gen": "^1.11.3",
+    "@types/node": "^20.11.5",
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "eslint": "^8.56.0",
-    "eslint-config-turbo": "^1.11.2",
+    "eslint-config-turbo": "^1.11.3",
     "husky": "^8.0.3",
     "lint-staged": "^15.2.0",
     "madge": "^6.1.0",
-    "prettier": "^3.1.1",
-    "turbo": "^1.11.2"
+    "prettier": "^3.2.4",
+    "turbo": "^1.11.3"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
@@ -18,20 +18,18 @@
     ]
   },
   "name": "uncnsrdlabel.com",
-  "packageManager": "pnpm@8.13.1",
+  "packageManager": "pnpm@8.14.0",
   "private": true,
   "repository": "https://github.com/UNCNSRD-Label/uncnsrdlabel.com",
   "scripts": {
     "analyze": "turbo run analyze",
     "build": "turbo run build",
     "clean": "turbo run clean",
-    "dependencies:check": "madge --circular --extensions ts,tsx,js,jsx --ts-config ./tsconfig.json ./packages",
-    "dependencies:fix": "madge --circular --extensions ts,tsx,js,jsx --ts-config ./tsconfig.json ./packages --fix",
-    "dependencies:graph": "madge --circular --extensions ts,tsx,js,jsx --ts-config ./tsconfig.json ./packages --image graph.svg",
-    "dependencies:stats": "madge --circular --extensions ts,tsx,js,jsx --ts-config ./tsconfig.json ./packages --stats",
-    "dependencies:unused:fix": "madge --circular --extensions ts,tsx,js,jsx --ts-config ./tsconfig.json ./packages --warning --fix",
-    "dependencies:unused": "madge --circular --extensions ts,tsx,js,jsx --ts-config ./tsconfig.json ./packages --warning",
+    "dependencies:check": "turbo run dependencies:check",
+    "dependencies:graph": "turbo run dependencies:graph",
+    "dependencies:unused": "turbo run dependencies:unused",
     "dev": "turbo dev --concurrency=12 --no-cache --continue",
+    "find:unused": "npx next-unused",
     "lint-staged": "lint-staged",
     "lint": "turbo run lint",
     "list:projects": "pnpm m ls --depth -1 --json",

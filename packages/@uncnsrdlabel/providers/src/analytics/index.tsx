@@ -23,11 +23,13 @@ export function AppAnalyticsProvider({ children }: PropsWithChildren) {
 
   const { storefrontId, countryIsoCode, languageIsoCode } = useShop();
 
-  const locale = new Intl.Locale(`${languageIsoCode}-${countryIsoCode}`);
+  const tag = `${languageIsoCode}-${countryIsoCode}`;
+
+  const locale = new Intl.Locale(tag);
 
   const config = {
     app: process.env.NEXT_PUBLIC_SITE_NAME,
-    debug: true,
+    debug: false,
     plugins: [
       // eventValidation({
       //   // Namespace of current application

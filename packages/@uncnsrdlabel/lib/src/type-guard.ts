@@ -3,7 +3,7 @@ export interface ShopifyErrorLike {
   message: Error;
 }
 
-function findError<T extends object>(error: T): boolean {
+export function findError<T extends object>(error: T): boolean {
   if (Object.prototype.toString.call(error) === "[object Error]") {
     return true;
   }
@@ -13,15 +13,15 @@ function findError<T extends object>(error: T): boolean {
   return prototype === null ? false : findError(prototype);
 }
 
-export const isObject = (
+export function isObject (
   object: unknown,
-): object is Record<string, unknown> => {
+): object is Record<string, unknown> {
   return (
     typeof object === "object" && object !== null && !Array.isArray(object)
   );
 };
 
-export const isShopifyError = (error: unknown): error is ShopifyErrorLike => {
+export function isShopifyError (error: unknown): error is ShopifyErrorLike {
   if (!isObject(error)) return false;
 
   if (error instanceof Error) return true;
@@ -29,4 +29,6 @@ export const isShopifyError = (error: unknown): error is ShopifyErrorLike => {
   return findError(error);
 };
 
-export const formatErrorMessage = (err: Error): string => JSON.stringify(err, Object.getOwnPropertyNames(err))
+export function formatErrorMessage (err: Error): string {
+  return JSON.stringify(err, Object.getOwnPropertyNames(err));
+}

@@ -2,19 +2,21 @@ import { ConsentTrigger } from "@/components/consent/trigger";
 import { LogotypeIcon } from "@/components/icons/logotype";
 import { SignUp } from "@/components/sign-up";
 import { SocialMenu } from "@/components/social-menu";
-import { getIntl } from "@/lib/i18n";
-import { state$ } from "@/lib/store";
+import { getDictionary } from "@/lib/dictionary";
 import { themeColors } from "@/lib/tailwind";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import { getMenuHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { createIntl, type ResolvedIntlConfig } from "react-intl";
 
 const { NEXT_PUBLIC_SITE_NAME } = process.env;
 
-export async function Footer() {
-  const lang = state$.lang.get();
+export async function Footer({ lang }: { lang: Intl.BCP47LanguageTag; }) {
+  const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
 
-  const intl = await getIntl(lang, "global.footer");
-  const intlMenu = await getIntl(lang, "global.footer.menu");
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   const currentYear = new Date().getFullYear();
 
@@ -45,7 +47,7 @@ export async function Footer() {
               {customerCareMenu.items?.length ? (
                 <dl className="grid content-start gap-2 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
                   <dt className="text-sm uppercase">
-                    {intlMenu.formatMessage({ id: "customer-care" })}
+                    {intl.formatMessage({ id: "global.footer.menu.customer-care" })}
                   </dt>
                   {customerCareMenu.items.map((item, index) => (
                     <dd key={item.title || index}>
@@ -55,14 +57,14 @@ export async function Footer() {
                     </dd>
                   ))}
                   <dd>
-                    <ConsentTrigger className={linkClassName} />
+                    <ConsentTrigger className={linkClassName} lang={lang} />
                   </dd>
                 </dl>
               ) : null}
               {informationMenu.items?.length ? (
                 <dl className="grid content-start gap-2 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
                   <dt className="text-sm uppercase">
-                    {intlMenu.formatMessage({ id: "information" })}
+                    {intl.formatMessage({ id: "global.footer.menu.information" })}
                   </dt>
                   {informationMenu.items.map((item, index) => (
                     <dd key={item.title || index}>
@@ -80,7 +82,7 @@ export async function Footer() {
                 {followUsMenu.items?.length ? (
                   <dl className="grid content-start gap-2">
                     <dt className="text-sm uppercase">
-                      {intlMenu.formatMessage({ id: "follow-us" })}
+                      {intl.formatMessage({ id: "global.footer.menu.follow-us" })}
                     </dt>
                     {followUsMenu.items.map((item, index) => (
                       <dd key={item.title || index}>
@@ -98,13 +100,13 @@ export async function Footer() {
                 ) : null}
               </div>
             </nav>
-            <SignUp className="lg:col-start-0 col-span-1 sm:col-span-6 sm:col-start-7 lg:col-span-4" />
+            <SignUp className="lg:col-start-0 col-span-1 sm:col-span-6 sm:col-start-7 lg:col-span-4" lang={lang} />
           </div>
           <div className="flex flex-col items-center justify-between text-xs uppercase sm:flex-row sm:pt-6">
             <SocialMenu className="my-8 h-10 sm:my-0" />
             <span className="sm:order-first">
               {intl.formatMessage(
-                { id: "copyright" },
+                { id: "global.footer.copyright" },
                 { currentYear, siteName: NEXT_PUBLIC_SITE_NAME },
               )}
             </span>

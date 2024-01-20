@@ -1,29 +1,28 @@
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
-import { getAlternativeLanguages, getIntl } from "@/lib/i18n";
-import { state$ } from "@/lib/store";
+import { getDictionary } from "@/lib/dictionary";
+import { getAlternativeLanguages } from "@/lib/i18n";
+import { getCanonical } from "@/lib/metadata";
 import {
   collectionFragment,
   getCollectionHandler,
   getCollectionProductsHandler,
   getFragmentData,
+  getLocalizationDetailsHandler,
   productCollectionDefaultSort,
   productCollectionSorting,
-  seoFragment,
+  seoFragment
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-
-// export const runtime = "edge";
+import { createIntl, type ResolvedIntlConfig } from "react-intl";
 
 export async function generateMetadata({
-  params: { collection: handle },
+  params: { collection: handle, lang },
 }: {
-  params: { collection: string };
+  params: { collection: string; lang: Intl.BCP47LanguageTag; };
 }): Promise<Metadata> {
-  const lang = state$.lang.get();
-
-  const localization = state$.localization.get();
+  const localization = await getLocalizationDetailsHandler({ lang });
 
   const collectionFragmentRef = await getCollectionHandler({
     variables: { handle },
@@ -40,8 +39,8 @@ export async function generateMetadata({
 
   return {
     alternates: {
-      canonical: `${localization.language.isoCode.toLocaleLowerCase()}-${localization.country.isoCode}/${path}`,
-      languages: await getAlternativeLanguages({ localization, path }),
+      canonical: getCanonical(path),
+      languages: getAlternativeLanguages({ localization, path }),
     },
     title: seo?.title || collection.title,
     description:
@@ -52,15 +51,18 @@ export async function generateMetadata({
 }
 
 export default async function CategoryPage({
-  params: { collection: handle },
+  params: { collection: handle, lang },
   searchParams,
 }: {
-  params: { collection: string };
+  params: { collection: string; lang: Intl.BCP47LanguageTag; };
   searchParams?: { [key: string]: string | string[] | undefined };
 }) {
-  const lang = state$.lang.get();
+  const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
 
-  const intl = await getIntl(lang, `page.collection`);
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   const { sort } = searchParams as { [key: string]: string };
   const { sortKey, reverse } =
@@ -84,11 +86,11 @@ export default async function CategoryPage({
     <>
       {results === 0 ? (
         <p className="py-3 text-lg">
-          {intl.formatMessage({ id: "no-products-found" })}
+          {intl.formatMessage({ id: "page.collection.no-products-found" })}
         </p>
       ) : (
         <Grid className="grid-cols-2 lg:grid-cols-3 w-full max-w-7xl">
-          <ProductGridItems productFragmentRefs={productFragmentRefs} />
+          <ProductGridItems lang={lang} productFragmentRefs={productFragmentRefs} />
         </Grid>
       )}
     </>

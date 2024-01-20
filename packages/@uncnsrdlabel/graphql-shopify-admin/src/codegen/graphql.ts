@@ -6705,7 +6705,7 @@ export enum CountryCode {
   Tn = 'TN',
   /** Tonga. */
   To = 'TO',
-  /** Turkey. */
+  /** Türkiye. */
   Tr = 'TR',
   /** Trinidad & Tobago. */
   Tt = 'TT',
@@ -14413,6 +14413,17 @@ export type FilterOption = {
   value: Scalars['String']['output'];
 };
 
+/** Return type for `flowGenerateSignature` mutation. */
+export type FlowGenerateSignaturePayload = {
+  __typename?: 'FlowGenerateSignaturePayload';
+  /** The payload used to generate the signature. */
+  payload?: Maybe<Scalars['String']['output']>;
+  /** The generated signature. */
+  signature?: Maybe<Scalars['String']['output']>;
+  /** The list of errors that occurred from executing the mutation. */
+  userErrors: Array<UserError>;
+};
+
 /** Return type for `flowTriggerReceive` mutation. */
 export type FlowTriggerReceivePayload = {
   __typename?: 'FlowTriggerReceivePayload';
@@ -20709,7 +20720,8 @@ export type MarketCurrencySettings = {
    * Whether or not local currencies are enabled. If enabled, then prices will
    * be converted to give each customer the best experience based on their
    * region. If disabled, then all customers in this market will see prices
-   * in the market's base currency.
+   * in the market's base currency. For single country markets this will be true when
+   * the market's base currency is the same as the default currency for the region.
    *
    */
   localCurrencies: Scalars['Boolean']['output'];
@@ -21109,7 +21121,7 @@ export type MarketWebPresence = Node & {
   /**
    * The ISO code for the default locale. When a domain is used, this is the locale that will
    * be used when the domain root is accessed. For example, if French is the default locale,
-   * and `example.ca` is the market’s domian, then `example.ca` will load in French.
+   * and `example.ca` is the market’s domain, then `example.ca` will load in French.
    *
    */
   defaultLocale: Scalars['String']['output'];
@@ -24695,6 +24707,8 @@ export type Mutation = {
   fileDelete?: Maybe<FileDeletePayload>;
   /** Updates an existing file asset that was uploaded to Shopify. */
   fileUpdate?: Maybe<FileUpdatePayload>;
+  /** Generates a signature for a Flow action payload. */
+  flowGenerateSignature?: Maybe<FlowGenerateSignaturePayload>;
   /** Triggers any workflows that begin with the trigger specified in the request body. To learn more, refer to [_Create Shopify Flow triggers_](https://shopify.dev/apps/flow/triggers). */
   flowTriggerReceive?: Maybe<FlowTriggerReceivePayload>;
   /** Cancels a fulfillment. */
@@ -24918,7 +24932,9 @@ export type Mutation = {
   /** Creates a new marketing engagement for a marketing activity or a marketing channel. */
   marketingEngagementCreate?: Maybe<MarketingEngagementCreatePayload>;
   /**
-   * Creates a metafield definition.
+   * Creates a metafield definition. Any metafields existing under the same owner type, namespace, and key will be
+   * checked against this definition and will have their type updated accordingly. For metafields that are not
+   * valid, they will remain unchanged but any attempts to update them must align with this definition.
    *
    */
   metafieldDefinitionCreate?: Maybe<MetafieldDefinitionCreatePayload>;
@@ -26663,6 +26679,13 @@ export type MutationFileDeleteArgs = {
 /** The schema's entry point for all mutation operations. */
 export type MutationFileUpdateArgs = {
   files: Array<FileUpdateInput>;
+};
+
+
+/** The schema's entry point for all mutation operations. */
+export type MutationFlowGenerateSignatureArgs = {
+  id: Scalars['ID']['input'];
+  payload: Scalars['String']['input'];
 };
 
 
@@ -38474,7 +38497,7 @@ export type Return = Node & {
   status: ReturnStatus;
   /** A suggested refund for the return. */
   suggestedRefund?: Maybe<SuggestedReturnRefund>;
-  /** The sum of all line item quantities for the return. Includes the total quantity of both return line items and exchange line items. */
+  /** The sum of all return line item quantities for the return. */
   totalQuantity: Scalars['Int']['output'];
 };
 
@@ -41310,7 +41333,7 @@ export enum SellingPlanRecurringDeliveryPolicyPreAnchorBehavior {
   Next = 'NEXT'
 }
 
-/** Represents a recurring selling plan pricing policy. */
+/** Represents a recurring selling plan pricing policy. It applies after the fixed pricing policy. By using the afterCycle parameter, you can specify the cycle when the recurring pricing policy comes into effect. Recurring pricing policies are not available for deferred purchase options. */
 export type SellingPlanRecurringPricingPolicy = SellingPlanPricingPolicyBase & {
   __typename?: 'SellingPlanRecurringPricingPolicy';
   /** The price adjustment type. */

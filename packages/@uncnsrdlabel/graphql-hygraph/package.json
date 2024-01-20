@@ -3,7 +3,7 @@
     "@graphql-codegen/cli": "^5.0.0",
     "@graphql-codegen/client-preset": "^4.1.0",
     "@graphql-typed-document-node/core": "^3.2.0",
-    "@tanstack/react-query": "^5.15.0",
+    "@tanstack/react-query": "^5.17.15",
     "@types/node": "^20.5.6",
     "@uncnsrdlabel/lib": "workspace:*",
     "graphql": "^16.8.1",
@@ -24,7 +24,7 @@
     "@uncnsrdlabel/tsconfig": "workspace:*",
     "@uncnsrdlabel/types": "workspace:*",
     "eslint": "^8.56.0",
-    "prettier": "^3.1.1",
+    "prettier": "^3.2.4",
     "type-fest": "^4.9.0",
     "typescript": "^5.3.3",
     "typescript-graphql-request": "^4.4.6"

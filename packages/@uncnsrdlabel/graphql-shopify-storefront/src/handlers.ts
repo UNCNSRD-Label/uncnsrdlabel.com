@@ -37,7 +37,6 @@ import {
 import { collectionFragment } from "./fragments/index";
 import {
   getCartQuery,
-  getLocalizationAvailableBCP47LanguageTagsQuery,
   getLocalizationDetailsQuery,
   getMenuQuery,
   getPageQuery,
@@ -50,7 +49,7 @@ import {
   getProductsWithVariantsQuery,
   getRouteMetaObjectQuery,
   getShopDetailsQuery,
-  getShopPoliciesQuery,
+  getShopPoliciesQuery
 } from "./queries/index";
 import { getShopifyGraphQL } from "./utilities";
 
@@ -66,17 +65,11 @@ export async function createCartHandler({ variables }: {
     return null;
   }
 
-  // console.log({ cartCreate });
-
   const { cart: cartFragmentRef } = cartCreate;
 
   if (!cartFragmentRef) {
     return null;
   }
-
-  // console.log({ cartFragmentRef });
-
-  // const cart = getFragmentData(cartFragment, cartFragmentRef);
 
   return cartFragmentRef;
 }
@@ -84,24 +77,17 @@ export async function createCartHandler({ variables }: {
 export async function addToCartHandler({ variables }: {
   variables: AddToCartMutationVariables,
 }) {
-
   const { cartLinesAdd } = await getShopifyGraphQL(addToCartMutation, variables);
 
   if (!cartLinesAdd) {
     return null;
   }
 
-  // console.log({ cartLinesAdd });
-
   const { cart: cartFragmentRef } = cartLinesAdd;
 
   if (!cartFragmentRef) {
     return null;
   }
-
-  // console.log({ cartFragmentRef });
-
-  // const cart = getFragmentData(cartFragment, cartFragmentRef);
 
   return cartFragmentRef;
 }
@@ -115,17 +101,11 @@ export async function removeFromCartHandler({ variables }: {
     return null;
   }
 
-  // console.log({ cartLinesRemove });
-
   const { cart: cartFragmentRef } = cartLinesRemove;
 
   if (!cartFragmentRef) {
     return null;
   }
-
-  // console.log({ cartFragmentRef });
-
-  // const cart = getFragmentData(cartFragment, cartFragmentRef);
 
   return cartFragmentRef;
 }
@@ -139,17 +119,11 @@ export async function updateCartHandler({ variables }: {
     return null;
   }
 
-  // console.log({ cartLinesUpdate });
-
   const { cart: cartFragmentRef } = cartLinesUpdate;
 
   if (!cartFragmentRef) {
     return null;
   }
-
-  // console.log({ cartFragmentRef });
-
-  // const cart = getFragmentData(cartFragment, cartFragmentRef);
 
   return cartFragmentRef;
 }
@@ -158,6 +132,10 @@ export async function getCartHandler({ variables, lang }: {
   variables: GetCartQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
+  if (!lang) {
+    console.error("No lang in getCartHandler")
+  }
+
   const inContextVariables = getInContextVariables(lang);
 
   const { cart: cartFragmentRef } = await getShopifyGraphQL(getCartQuery, {
@@ -169,10 +147,6 @@ export async function getCartHandler({ variables, lang }: {
     return null;
   }
 
-  // console.log({ cartFragmentRef });
-
-  // const cart = getFragmentData(cartFragment, cartFragmentRef);
-
   return cartFragmentRef;
 }
 
@@ -180,6 +154,10 @@ export async function getCollectionHandler({ variables, lang }: {
   variables: GetCollectionQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
+  if (!lang) {
+    console.error("No lang in getCollectionHandler")
+  }
+
   const inContextVariables = getInContextVariables(lang);
 
   const { collection: collectionFragmentRef } = await getShopifyGraphQL(
@@ -195,13 +173,6 @@ export async function getCollectionHandler({ variables, lang }: {
     };
   }
 
-  // console.log({ collectionFragmentRef });
-
-  // const collection = getFragmentData(
-  //   collectionFragment,
-  //   collectionFragmentRef,
-  // );
-
   return collectionFragmentRef;
 }
 
@@ -209,6 +180,10 @@ export async function getCollectionProductsHandler({ variables, lang }: {
   variables: GetCollectionProductsQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
+  if (!lang) {
+    console.error("No lang in getCollectionProductsHandler")
+  }
+
   const inContextVariables = getInContextVariables(lang);
 
   // @ts-expect-error Types of property 'country' are incompatible.
@@ -224,8 +199,6 @@ export async function getCollectionProductsHandler({ variables, lang }: {
     };
   }
 
-  // console.log({ collection });
-
   const { products } = collection;
 
   return products;
@@ -235,6 +208,10 @@ export async function getCollectionRefsHandler({ variables, lang }: {
   variables: GetCollectionsQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
+  if (!lang) {
+    console.error("No lang in getCollectionRefsHandler")
+  }
+
   const inContextVariables = getInContextVariables(lang);
 
   const { collections: shopifyCollectionConnection } =
@@ -251,25 +228,11 @@ export async function getCollectionRefsHandler({ variables, lang }: {
     };
   }
 
-  // console.log({ shopifyCollectionConnection });
-
   const collectionsRefs = shopifyCollectionConnection.edges.map(
     (edge) => edge?.node,
   );
 
   const collections: CollectionFragment[] = [
-    {
-      __typename: "Collection",
-      handle: "",
-      title: "All",
-      description: "All products",
-      seo: {
-        //   title: "All",
-        //   description: "All products",
-      },
-      // path: "/search",
-      updatedAt: new Date().toISOString(),
-    },
     // Filter out the `hidden` collections.
     // Collections that start with `hidden-*` need to be hidden on the search page.
     ...collectionsRefs
@@ -286,6 +249,10 @@ export async function getRouteMetaObjectHandler({ variables, lang }: {
   variables: GetRouteMetaObjectQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
+  if (!lang) {
+    console.error("No lang in getRouteMetaObjectHandler")
+  }
+
   const inContextVariables = getInContextVariables(lang);
 
   const { metaobject } = await getShopifyGraphQL(
@@ -301,8 +268,6 @@ export async function getRouteMetaObjectHandler({ variables, lang }: {
     };
   }
 
-  // console.log({ metaobject });
-
   return metaobject;
 }
 
@@ -310,6 +275,10 @@ export async function getMenuHandler({ variables, lang }: {
   variables: GetMenuQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
+  if (!lang) {
+    console.error("No lang in getMenuHandler")
+  }
+
   const inContextVariables = getInContextVariables(lang);
 
   // @ts-expect-error Types of property 'country' are incompatible.
@@ -324,8 +293,6 @@ export async function getMenuHandler({ variables, lang }: {
       message: `Menu not found for handle \`${variables.handle}\``,
     };
   }
-
-  // console.log({ menu });
 
   const items = menu.items.map((item) => ({
     ...item,
@@ -343,6 +310,10 @@ export async function getPageHandler({ variables, lang }: {
   variables: GetPageQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
+  if (!lang) {
+    console.error("No lang in getPageHandler")
+  }
+
   const inContextVariables = getInContextVariables(lang);
 
   const { page: pageFragmentRef } = await getShopifyGraphQL(
@@ -358,10 +329,6 @@ export async function getPageHandler({ variables, lang }: {
     };
   }
 
-  // const page = getFragmentData(pageFragment, pageFragmentRef);
-
-  // console.log({ page });
-
   return pageFragmentRef;
 }
 
@@ -369,6 +336,10 @@ export async function getPagesHandler({ variables, lang }: {
   variables: GetPagesQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
+  if (!lang) {
+    console.error("No lang in getPagesHandler")
+  }
+
   const inContextVariables = getInContextVariables(lang);
 
   // @ts-expect-error Types of property 'country' are incompatible.
@@ -388,7 +359,7 @@ export async function getPagesHandler({ variables, lang }: {
 }
 
 export async function getShopDetailsHandler({ lang }: {
-  lang?: Intl.BCP47LanguageTag,
+  lang: Intl.BCP47LanguageTag,
 }) {
   const inContextVariables = getInContextVariables(lang);
 
@@ -405,32 +376,16 @@ export async function getShopDetailsHandler({ lang }: {
     };
   }
 
-  // console.log({ shop });
-
   return shop;
 }
 
-export async function getLocalizationAvailableBCP47LanguageTagsHandler() {
-
-  const { localization } = await getShopifyGraphQL(
-    getLocalizationAvailableBCP47LanguageTagsQuery,
-  );
-
-  if (!localization) {
-    throw {
-      status: 404,
-      message: `Localization not found`,
-    };
+export async function getLocalizationDetailsHandler({ lang }: {
+  lang: Intl.BCP47LanguageTag;
+}) {
+  if (!lang) {
+    console.error("No lang in getLocalizationDetailsHandler")
   }
 
-  // console.log({ localization });
-
-  return localization;
-}
-
-export async function getLocalizationDetailsHandler({ lang }: {
-  lang?: Intl.BCP47LanguageTag,
-}) {
   const inContextVariables = getInContextVariables(lang);
 
   const { localization } = await getShopifyGraphQL(
@@ -439,21 +394,16 @@ export async function getLocalizationDetailsHandler({ lang }: {
     inContextVariables,
   );
 
-  if (!localization) {
-    throw {
-      status: 404,
-      message: `Localization not found`,
-    };
-  }
-
-  // console.log({ localization });
-
   return localization;
 }
 
 export async function getShopPoliciesHandler({ lang }: {
   lang: Intl.BCP47LanguageTag,
 }) {
+  if (!lang) {
+    console.error("No lang in getShopPoliciesHandler")
+  }
+
   const inContextVariables = getInContextVariables(lang);
 
   const { shop } = await getShopifyGraphQL(
@@ -469,8 +419,6 @@ export async function getShopPoliciesHandler({ lang }: {
     };
   }
 
-  // console.log({ shop });
-
   return shop;
 }
 
@@ -478,6 +426,10 @@ export async function getProductBasicHandler({ variables, lang }: {
   variables: GetProductBasicQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
+  if (!lang) {
+    console.error("No lang in getProductBasicHandler")
+  }
+
   const inContextVariables = getInContextVariables(lang);
 
   const { product: productBasicFragmentRef } = await getShopifyGraphQL(
@@ -493,15 +445,6 @@ export async function getProductBasicHandler({ variables, lang }: {
     };
   }
 
-  // console.log({ productBasicFragmentRef });
-
-  // const product = getFragmentData(
-  //   productBasicFragment,
-  //   productBasicFragmentRef,
-  // );
-
-  // console.log({ product });
-
   return productBasicFragmentRef;
 }
 
@@ -509,6 +452,10 @@ export async function getProductDetailsByHandleHandler({ variables, lang }: {
   variables: GetProductDetailsByHandleQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
+  if (!lang) {
+    console.error("No lang in getProductDetailsByHandleHandler")
+  }
+
   const inContextVariables = getInContextVariables(lang);
 
   const { product: productDetailsFragmentRef } = await getShopifyGraphQL(
@@ -524,15 +471,6 @@ export async function getProductDetailsByHandleHandler({ variables, lang }: {
     };
   }
 
-  // console.log({ productDetailsFragmentRef });
-
-  // const product = getFragmentData(
-  //   productDetailsFragment,
-  //   productDetailsFragmentRef,
-  // );
-
-  // console.log({ product });
-
   return productDetailsFragmentRef;
 }
 
@@ -540,6 +478,10 @@ export async function getProductDetailsByIdHandler({ variables, lang }: {
   variables: GetProductDetailsByIdQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
+  if (!lang) {
+    console.error("No lang in getProductDetailsByIdHandler")
+  }
+
   const inContextVariables = getInContextVariables(lang);
 
   const { product: productDetailsFragmentRef } = await getShopifyGraphQL(
@@ -555,15 +497,6 @@ export async function getProductDetailsByIdHandler({ variables, lang }: {
     };
   }
 
-  // console.log({ productDetailsFragmentRef });
-
-  // const product = getFragmentData(
-  //   productDetailsFragment,
-  //   productDetailsFragmentRef,
-  // );
-
-  // console.log({ product });
-
   return productDetailsFragmentRef;
 }
 
@@ -571,6 +504,10 @@ export async function getProductRecommendationsHandler({ variables, lang }: {
   variables: GetProductRecommendationsQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
+  if (!lang) {
+    console.error("No lang in getProductRecommendationsHandler")
+  }
+
   const inContextVariables = getInContextVariables(lang);
 
   const { productRecommendations: productRecommendationRefs } =
@@ -594,6 +531,10 @@ export async function getProductsHandler({ variables, lang }: {
   variables: GetProductsQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
+  if (!lang) {
+    console.error("No lang in getProductsHandler")
+  }
+
   const inContextVariables = getInContextVariables(lang);
 
   const { products } = await getShopifyGraphQL(
@@ -616,6 +557,10 @@ export async function getProductsWithVariantsHandler({ variables, lang }: {
   variables: GetProductsWithVariantsQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
+  if (!lang) {
+    console.error("No lang in getProductsWithVariantsHandler")
+  }
+
   const inContextVariables = getInContextVariables(lang);
 
   const { products } = await getShopifyGraphQL(

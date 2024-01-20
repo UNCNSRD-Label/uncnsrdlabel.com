@@ -12,11 +12,13 @@ export const PriceAndCompareAtPrice = ({
   currencyCodeClassName,
   productBasicFragmentRef,
   productDetailsFragmentRef,
+  lang,
 }: {
   className?: string;
   currencyCodeClassName?: string;
   productBasicFragmentRef?: FragmentType<typeof productBasicFragment>;
   productDetailsFragmentRef?: FragmentType<typeof productDetailsFragment>;
+  lang: Intl.BCP47LanguageTag;
 } & React.ComponentProps<"div">) => {
   let product;
 
@@ -41,22 +43,24 @@ export const PriceAndCompareAtPrice = ({
       className={cn("grid justify-start gap-x-4 gap-y-2", className)}
     >
       <Price
+        amount={product.priceRange.minVariantPrice.amount}
         className={cn("font-semibold", {
           "text-red-600": product.compareAtPriceRange?.minVariantPrice.amount > product.priceRange?.minVariantPrice.amount,
         })}
-        amount={product.priceRange.minVariantPrice.amount}
         currencyCode={product.priceRange.minVariantPrice.currencyCode}
         currencyCodeClassName={currencyCodeClassName}
+        lang={lang}
       />
 
       {(product.compareAtPriceRange?.minVariantPrice.amount > product.priceRange?.minVariantPrice.amount) && (
         <Price
-          className="line-through decoration-red-600"
           amount={product.compareAtPriceRange.minVariantPrice.amount}
+          className="line-through decoration-red-600"
           currencyCode={
             product.compareAtPriceRange.minVariantPrice.currencyCode
           }
           currencyCodeClassName={currencyCodeClassName}
+          lang={lang}
         />
       )}
     </div>

@@ -1,16 +1,17 @@
 "use client";
 
 import { LoadingDots } from "@/components/loading/dots";
-import { useGetIntl } from "@/lib/i18n";
+import { state$ } from "@/lib/store";
 import { createIntl } from "@formatjs/intl";
-import { PlusIcon } from "@heroicons/react/24/outline";
+import { ClockIcon, PlusIcon } from "@heroicons/react/24/outline";
+import { useSelector } from "@legendapp/state/react";
 import {
   type CartLineInput,
   type ProductOption,
   type ProductVariant,
 } from "@shopify/hydrogen/storefront-api-types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Button } from "@uncnsrdlabel/components/ui/button";
+import { Button, type ButtonProps } from "@uncnsrdlabel/components/ui/button";
 import {
   addToCartMutation,
   cartFragment,
@@ -22,43 +23,89 @@ import {
   type AddToCartMutationVariables,
   type CreateCartMutationVariables,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import {
-  cn,
-  cookieOptions,
-  useGetInContextVariables
-} from "@uncnsrdlabel/lib";
-import { getCookie, setCookie } from "cookies-next";
+import { cn, getLangProperties } from "@uncnsrdlabel/lib";
 import { useSearchParams } from "next/navigation";
+import { Suspense, Usable, use, useCallback } from "react";
+import { type ResolvedIntlConfig } from "react-intl";
+import { useTrack } from "use-analytics";
 
 function SubmitButton({
   availableForSale,
   className,
-  intl,
+  container,
+  dictionary,
+  lang,
+  preOrder,
   selectedVariantId,
+  size,
+  variant,
+  view = "standard",
 }: {
   availableForSale: boolean;
   className?: string;
-  intl: ReturnType<typeof createIntl<string>>;
+  container?: string;
+  dictionary: Usable<ResolvedIntlConfig["messages"]>;
+  lang: Intl.BCP47LanguageTag;
+  preOrder: boolean;
   selectedVariantId: string | undefined;
+  size: ButtonProps["size"];
+  variant: ButtonProps["variant"];
+  view?: "compact" | "standard";
 }) {
-  const buttonClasses =
-    "btn btn-bg btn-primary btn-lg relative w-full justify-center";
-  const disabledClasses = "cursor-not-allowed opacity-60 hover:opacity-60";
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
-  let cartId = getCookie("cartId") as string;
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
-  const { country } = useGetInContextVariables();
+  const cartId = useSelector<string>(() => state$.cartId.get());
+
+  const { country } = getLangProperties(lang);
 
   const shopifyQueryClient = useQueryClient();
+
+  // const addToCartMutationFn = (variables: AddToCartMutationVariables) =>
+  //   getShopifyGraphQL(addToCartMutation, variables);
+  const addToCartMutationFn = (variables: AddToCartMutationVariables) => {
+    console.log("addToCartMutationFn", { variables });
+
+    return getShopifyGraphQL(addToCartMutation, variables);
+  };
+
+  const createCartMutationFn = (variables: CreateCartMutationVariables) =>
+    getShopifyGraphQL(createCartMutation, variables);
+
+  type AddToCartContext = { id: number };
+
+  type CreateCartContext = { id: number };
 
   const {
     isPending: isPendingAddToCart,
     mutate: mutateAddToCart,
     status: statusAddToCart,
   } = useMutation({
-    mutationFn: (variables: AddToCartMutationVariables) =>
-      getShopifyGraphQL(addToCartMutation, variables),
-    onSuccess: () => {
+    mutationFn: addToCartMutationFn,
+    mutationKey: ["addToCart", cartId],
+    onError: (error, variables, context?: AddToCartContext) => {
+      // An error happened!
+      console.log("onError", { error, variables, context });
+      console.log(`rolling back optimistic update with id ${context?.id}`);
+    },
+    onMutate: (variables): AddToCartContext => {
+      // A mutation is about to happen!
+      console.log("onMutate", { variables });
+
+      // Optionally return a context containing data to use when for example rolling back
+      return { id: 1 };
+    },
+    onSettled: (data, error, variables, context) => {
+      // Error or success... doesn't matter!
+      console.log("onSettled", { data, error, variables, context });
+    },
+    onSuccess: (data, variables, context) => {
+      console.log("onSuccess", { data, variables, context });
+
       const queryKey = getQueryKey(getCartQuery, {
         cartId,
       });
@@ -74,9 +121,48 @@ function SubmitButton({
     mutate: mutateCreateCart,
     status: statusCreateCart,
   } = useMutation({
-    mutationFn: (variables: CreateCartMutationVariables) =>
-      getShopifyGraphQL(createCartMutation, variables),
-    onSuccess: () => {
+    mutationFn: createCartMutationFn,
+    mutationKey: ["createCart", cartId],
+    onError: (error, variables, context?: CreateCartContext) => {
+      // An error happened!
+      console.log("onError", { error, variables, context });
+      console.log(`rolling back optimistic update with id ${context?.id}`);
+    },
+    onMutate: (variables): CreateCartContext => {
+      // A mutation is about to happen!
+      console.log("onMutate", { variables });
+
+      // Optionally return a context containing data to use when for example rolling back
+      return { id: 1 };
+    },
+    onSettled: (data, error, variables, context) => {
+      // Error or success... doesn't matter!
+      console.log("onSettled", { data, error, variables, context });
+    },
+    onSuccess: (data, variables, context) => {
+      console.log("onSuccess", { data, variables, context });
+
+      const { cartCreate } = data;
+
+      if (cartCreate) {
+        const { cart: cartFragmentRef } = cartCreate;
+
+        const cart = getFragmentData(cartFragment, cartFragmentRef);
+
+        if (cart) {
+          // @ts-expect-error Argument of type 'string' is not assignable to parameter of type 'Nullable<never> | ((prev: never) => never) | Promise<never>'
+          state$.cartId.set(cartId);
+
+          const queryKey = getQueryKey(getCartQuery, {
+            cartId,
+          });
+
+          shopifyQueryClient.invalidateQueries({
+            queryKey,
+          });
+        }
+      }
+
       const queryKey = getQueryKey(getCartQuery, {
         cartId,
       });
@@ -87,121 +173,139 @@ function SubmitButton({
     },
   });
 
-  if (!availableForSale) {
-    return (
-      <Button
-        aria-disabled
-        className={cn(buttonClasses, disabledClasses, className)}
-        disabled
-      >
-        {intl.formatMessage({ id: "out-of-stock" })}
+  const track = useTrack();
 
-        <span aria-live="polite" className="sr-only" role="status">
-          {statusAddToCart}
-        </span>
-      </Button>
-    );
+  const isPending = isPendingAddToCart || isPendingCreateCart;
+
+  const disabled = isPending || !availableForSale || !selectedVariantId;
+
+  let label = intl.formatMessage({
+    id: "component.AddToCart.add-to-cart-enabled",
+  });
+
+  if (!availableForSale) {
+    label = intl.formatMessage({
+      id: "component.AddToCart.out-of-stock",
+    });
   }
 
   if (!selectedVariantId) {
-    return (
-      <Button
-        aria-label={intl.formatMessage({ id: "select-options" })}
-        aria-disabled
-        className={cn(buttonClasses, disabledClasses)}
-        disabled
-      >
-        <div className="absolute left-0 ml-4">
-          <PlusIcon className="h-5" />
-        </div>
-        {intl.formatMessage({ id: "select-options" })}
-
-        <span aria-live="polite" className="sr-only" role="status">
-          {statusAddToCart}
-        </span>
-      </Button>
-    );
+    label = intl.formatMessage({
+      id: "component.AddToCart.select-options",
+    });
   }
+
+  if (preOrder) {
+    label = intl.formatMessage({
+      id: "component.AddToCart.pre-order",
+    });
+  }
+
+  const handleClickTrack = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const { dataset } = event.currentTarget;
+
+    track("add_to_cart", {
+      ...dataset,
+      availableForSale,
+      container,
+      selectedVariantId,
+    });
+  };
+
+  const onClick = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault();
+
+      if (disabled) {
+        return null;
+      }
+
+      const payload = {
+        merchandiseId: selectedVariantId,
+        quantity: 1,
+      } satisfies CartLineInput;
+
+      if (cartId) {
+        mutateAddToCart(
+          {
+            cartId,
+            lines: [payload],
+          },
+          {
+            onSuccess: (data, variables, context) => {
+              console.log("onSuccess", { data, variables, context });
+              // I will fire second!
+            },
+            onError: (error, variables, context) => {
+              console.log("onError", { error, variables, context });
+              // I will fire second!
+            },
+            onSettled: (data, error, variables, context) => {
+              console.log("onSettled", { data, error, variables, context });
+              // I will fire second!
+            },
+          },
+        );
+      } else {
+        mutateCreateCart(
+          {
+            input: {
+              buyerIdentity: {
+                // @ts-expect-error Type 'CountryCode' is not assignable to type 'InputMaybe<CountryCode> | undefined'.
+                countryCode: country,
+              },
+              lines: [payload],
+            },
+          },
+          {
+            onSuccess: (data, variables, context) => {
+              console.log("onSuccess", { data, variables, context });
+              // I will fire second!
+            },
+            onError: (error, variables, context) => {
+              console.log("onError", { error, variables, context });
+              // I will fire second!
+            },
+            onSettled: (data, error, variables, context) => {
+              console.log("onSettled", { data, error, variables, context });
+              // I will fire second!
+            },
+          },
+        );
+      }
+
+      handleClickTrack(event);
+    },
+    [label, selectedVariantId],
+  );
 
   return (
     <Button
-      aria-label={intl.formatMessage({ id: "add-to-cart-enabled" })}
-      aria-disabled={isPendingAddToCart}
-      className={cn(buttonClasses, {
-        "hover:opacity-90": true,
-        disabledClasses: isPendingAddToCart,
-      })}
-      onClick={(e: React.FormEvent<HTMLButtonElement>) => {
-        if (isPendingAddToCart || isPendingCreateCart) e.preventDefault();
-
-        const payload = {
-          merchandiseId: selectedVariantId,
-          quantity: 1,
-        } satisfies CartLineInput;
-
-        if (cartId) {
-          mutateAddToCart(
-            {
-              cartId,
-              lines: [payload],
-            },
-            {
-              onSuccess: (data) => {
-                console.log({ data });
-              },
-            },
-          );
-        } else {
-          mutateCreateCart(
-            {
-              input: {
-                buyerIdentity: {
-                  // @ts-expect-error Type 'CountryCode' is not assignable to type 'InputMaybe<CountryCode> | undefined'.
-                  countryCode: country,
-                },
-                lines: [payload],
-              },
-            },
-            {
-              onSuccess: (data) => {
-                const { cartCreate } = data;
-
-                if (cartCreate) {
-                  const { cart: cartFragmentRef } = cartCreate;
-
-                  const cart = getFragmentData(cartFragment, cartFragmentRef);
-
-                  if (cart) {
-                    cartId = cart.id;
-
-                    setCookie('cartId', cartId, cookieOptions);
-
-                    const queryKey = getQueryKey(getCartQuery, {
-                      cartId,
-                    });
-
-                    shopifyQueryClient.invalidateQueries({
-                      queryKey,
-                    });
-                  }
-                }
-              },
-            },
-          );
-        }
-      }}
+      aria-label={label}
+      aria-disabled={disabled}
+      className={cn(
+        "relative flex w-full gap-2 md:gap-4",
+        {
+          "hover:opacity-90": true,
+          "cursor-not-allowed opacity-60 hover:opacity-60": disabled,
+          "justify-center": view === "standard",
+        },
+        className,
+      )}
+      onClick={onClick}
+      size={size}
+      variant={variant}
     >
-      <div className="absolute left-0 ml-4">
-        {isPendingAddToCart ? (
-          <LoadingDots className="mb-3" />
-        ) : (
-          <PlusIcon className="h-5" />
-        )}
-      </div>
-      {intl.formatMessage({ id: "add-to-cart-enabled" })}
-
+      {preOrder ? (
+        <ClockIcon className="ml-6 h-5 w-6" />
+      ) : isPending ? (
+        <LoadingDots className="h-5 w-12" />
+      ) : (
+        <PlusIcon className="ml-6 h-5 w-6" />
+      )}
+      {label}
       <span aria-live="polite" className="sr-only" role="status">
-        {statusAddToCart || statusCreateCart}
+        {(statusAddToCart || statusCreateCart) && "Adding to cart"}
       </span>
     </Button>
   );
@@ -210,45 +314,88 @@ function SubmitButton({
 export function AddToCart({
   availableForSale,
   className,
+  container,
+  dictionary,
+  lang,
   options,
+  preOrder,
   variants,
+  view = "standard",
 }: {
   availableForSale: boolean;
   className?: string;
+  container?: string;
+  dictionary: Usable<ResolvedIntlConfig["messages"]>;
+  lang: Intl.BCP47LanguageTag;
   options: ProductOption[];
+  preOrder: boolean;
   variants: Pick<ProductVariant, "id" | "selectedOptions">[];
+  view?: "compact" | "standard";
 }) {
-  const intl = useGetIntl("component.AddToCart");
-
   const searchParams = useSearchParams();
 
-  const variant = variants.find(
-    (variant) =>
-      variant.selectedOptions?.every((selectedOption) => {
-        const hasNoOptionsOrJustOneOption =
-          !options?.length ||
-          options?.find((option) => option.name === selectedOption.name)?.values
-            .length === 1;
+  const selectedVariant = variants.find((variant) =>
+    variant.selectedOptions?.every((selectedOption) => {
+      const hasNoOptionsOrJustOneOption =
+        !options?.length ||
+        options?.find((option) => option.name === selectedOption.name)?.values
+          .length === 1;
 
-        if (hasNoOptionsOrJustOneOption) {
-          return true;
-        }
+      if (hasNoOptionsOrJustOneOption) {
+        return true;
+      }
 
-        const value =
-          selectedOption?.value ===
-          searchParams.get(selectedOption.name.toLowerCase());
+      const value =
+        selectedOption?.value ===
+        searchParams.get(selectedOption.name.toLowerCase());
 
-        return value;
-      }),
+      return value;
+    }),
   );
-  const selectedVariantId = variant?.id;
+
+  const selectedVariantId = selectedVariant?.id;
+
+  const size = view === "compact" ? undefined : "lg";
+
+  const variant = view === "compact" ? "ghost" : undefined;
+
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   return (
-    <SubmitButton
-      availableForSale={availableForSale}
-      className={className}
-      intl={intl}
-      selectedVariantId={selectedVariantId}
-    />
+    <Suspense
+      fallback={
+        <Button
+          aria-disabled
+          className={className}
+          disabled
+          size={size}
+          variant={variant}
+        >
+          <LoadingDots className="h-5 w-12" />
+
+          {intl.formatMessage({
+            id: "component.AddToCart.add-to-cart-disabled",
+          })}
+        </Button>
+      }
+    >
+      <SubmitButton
+        availableForSale={availableForSale}
+        className={className}
+        container={container}
+        dictionary={dictionary}
+        lang={lang}
+        preOrder={preOrder}
+        selectedVariantId={selectedVariantId}
+        size={size}
+        variant={variant}
+        view={view}
+      />
+    </Suspense>
   );
 }

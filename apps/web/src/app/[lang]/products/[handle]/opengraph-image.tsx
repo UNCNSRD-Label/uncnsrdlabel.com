@@ -1,5 +1,5 @@
 import { OpengraphImageResponse } from "@/components/opengraph-image-response";
-import { state$ } from "@/lib/store";
+import { type PageProps } from "@/types/next";
 import {
   getFragmentData,
   getProductDetailsByHandleHandler,
@@ -7,8 +7,6 @@ import {
   productDetailsFragment,
   seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-
-// export const runtime = "edge";
 
 export const contentType = "image/png";
 
@@ -18,12 +16,8 @@ export const size = {
 };
 
 export default async function OpenGraphImage({
-  params: { handle },
-}: {
-  params: { handle: string };
-}) {
-  const lang = state$.lang.get();
-
+  params: { handle, lang },
+}: PageProps) {
   const productDetailsFragmentRef = await getProductDetailsByHandleHandler({
     variables: { handle },
     lang,

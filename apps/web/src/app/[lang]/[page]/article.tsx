@@ -14,12 +14,12 @@ import Script from "next/script";
 import { CSSProperties, HTMLProps, useEffect, useState } from "react";
 
 export type ArticleProps = HTMLProps<HTMLElement> & {
-  variables: { handle: string };
+  lang: Intl.BCP47LanguageTag
+  variables: { handle: string; };
 };
 
 function onReadyTailwind() {
-  // @ts-expect-error Property 'tailwind' does not exist on type 'Window & typeof globalThis'.
-  tailwind.config = {
+  window.tailwind.config = {
     presets: [sharedConfig],
   }
 }
@@ -38,6 +38,10 @@ export function Article(props: ArticleProps) {
 
   if (isError) {
     return <span>Error: {error?.message}</span>;
+  }
+
+  if (!data) {
+    return null;
   }
 
   const { page: pageFragmentRef } = data;

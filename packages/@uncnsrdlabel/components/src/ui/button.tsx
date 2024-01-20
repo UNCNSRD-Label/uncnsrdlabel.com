@@ -5,7 +5,7 @@ import * as React from "react";
 import { cn } from "@uncnsrdlabel/lib";
 
 const blockStyles =
-  "font-medium gap-2 inline-flex items-center justify-center text-sm p-2 uppercase";
+  "font-medium gap-2 inline-flex items-center justify-center text-balance text-base p-2 uppercase";
 
 const buttonVariants = cva(
   "ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
@@ -14,7 +14,7 @@ const buttonVariants = cva(
       variant: {
         default: `${blockStyles} bg-primary text-primary-foreground hover:bg-primary/90`,
         destructive: `${blockStyles} bg-destructive text-destructive-foreground hover:bg-destructive/90`,
-        outline: `${blockStyles} border border-input bg-background hover:bg-accent hover:text-accent-foreground`,
+        outline: `${blockStyles} border border-input bg-background hover:bg-accent text-accent-foreground`,
         secondary: `${blockStyles} bg-secondary text-secondary-foreground hover:bg-secondary/80`,
         ghost: `hover:text-accent-foreground`,
         link: `text-primary underline-offset-4 hover:underline`,
@@ -22,8 +22,8 @@ const buttonVariants = cva(
       size: {
         default: "",
         base: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3 py-2",
-        lg: "h-11 rounded-md px-8 py-2",
+        sm: "h-9 px-3 py-2 text-sm",
+        lg: "h-11 px-8 py-2 text-lg",
         icon: "h-10 py-2 w-10",
       },
     },

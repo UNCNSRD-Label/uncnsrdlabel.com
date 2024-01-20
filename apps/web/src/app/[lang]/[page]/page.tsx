@@ -1,6 +1,9 @@
-import { state$ } from "@/lib/store";
+import { getAlternativeLanguages } from "@/lib/i18n";
+import { getCanonical } from "@/lib/metadata";
+import { type PageProps } from "@/types/next";
 import {
   getFragmentData,
+  getLocalizationDetailsHandler,
   getPageHandler,
   pageFragment,
   seoFragment,
@@ -11,14 +14,12 @@ import { notFound } from "next/navigation";
 import { ArticleHydrated as Article } from "./article-hydrated";
 import { PageSectionModule } from "./page-section-module";
 
-// export const runtime = "edge";
-
 export async function generateMetadata({
-  params: { page: handle },
+  params: { lang, page: handle },
 }: {
-  params: { page: string };
+  params: { lang: Intl.BCP47LanguageTag; page: string };
 }): Promise<Metadata> {
-  const lang = state$.lang.get();
+  const localization = await getLocalizationDetailsHandler({ lang });
 
   const variables = {
     handle,
@@ -32,7 +33,13 @@ export async function generateMetadata({
 
   const seo = getFragmentData(seoFragment, page.seo);
 
+  const path = `/${handle}`;
+
   return {
+    alternates: {
+      canonical: getCanonical(path),
+      languages: getAlternativeLanguages({ localization, path }),
+    },
     title: seo?.title || page.title,
     description: seo?.description || page.bodySummary,
     openGraph: {
@@ -47,12 +54,10 @@ export async function generateMetadata({
 }
 
 export default async function PagePage({
-  params: { page: handle },
-}: {
+  params: { lang, page: handle },
+}: PageProps & {
   params: { page: string };
 }) {
-  const lang = state$.lang.get();
-
   const variables = {
     handle,
   };
@@ -64,7 +69,7 @@ export default async function PagePage({
   if (!page) return notFound();
 
   return (
-    <Article key={page.handle} variables={{ handle }}>
+    <Article key={page.handle} lang={lang} variables={{ handle }}>
       {page.sections?.references?.nodes?.map(
         (pageSectionModuleFragmentRef, index) => {
           if (pageSectionModuleFragmentRef.__typename === "Metaobject") {
@@ -80,7 +85,7 @@ export default async function PagePage({
 
       <span className="mb-8 hidden text-sm italic">
         {`This document was last updated on ${new Intl.DateTimeFormat(
-          undefined,
+          lang,
           {
             year: "numeric",
             month: "long",

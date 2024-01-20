@@ -8,6 +8,7 @@ interface MetaFieldsProps {
   excludedKeys?: string[];
   includedKeys?: string[];
   id?: string;
+  lang: Intl.BCP47LanguageTag;
   metafieldFragments: readonly ResultOf<typeof productMetafieldFragment>[];
 }
 
@@ -15,6 +16,7 @@ export function MetaFields({
   className,
   excludedKeys,
   includedKeys,
+  lang,
   metafieldFragments,
   ...props
 }: MetaFieldsProps) {
@@ -37,10 +39,6 @@ export function MetaFields({
             >
               {metafield?.key
                 ?.split("_")
-                .map(
-                  (word: string) =>
-                    word.charAt(0).toLocaleUpperCase() + word.slice(1),
-                )
                 .join(" ")}
             </dt>
 
@@ -52,9 +50,10 @@ export function MetaFields({
               key={`dd.${metafield?.key}`}
             >
               <MetafieldMapper
-                metafield={metafield}
                 excludedKeys={excludedKeys}
                 includedKeys={includedKeys}
+                lang={lang}
+                metafield={metafield}
               />
             </dd>
           </>

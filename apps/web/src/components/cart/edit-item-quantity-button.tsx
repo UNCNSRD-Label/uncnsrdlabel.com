@@ -1,7 +1,7 @@
 "use client";
 
 import { LoadingDots } from "@/components/loading/dots";
-import { useGetIntl } from "@/lib/i18n";
+import { createIntl } from "@formatjs/intl";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import {
   type CartLine,
@@ -19,22 +19,33 @@ import {
   getShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
+import { Usable, use } from "react";
+import { type ResolvedIntlConfig } from "react-intl";
 
 export function EditItemQuantityButton({
   cartId,
   className,
+  dictionary,
   item,
+  lang,
   type,
 }: {
   cartId: string;
   className?: string;
+  dictionary: Usable<ResolvedIntlConfig["messages"]>;
   item: Pick<ComponentizableCartLine | CartLine, "id" | "quantity"> & {
     cost: Pick<CartLineCost, "totalAmount">;
     merchandise: Pick<Merchandise, "id">;
   };
+  lang: Intl.BCP47LanguageTag;
   type: "plus" | "minus";
 }) {
-  const intl = useGetIntl("component.EditItemQuantityButton");
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   const payload = {
     id: item.id,
@@ -62,8 +73,8 @@ export function EditItemQuantityButton({
     <Button
       aria-label={
         type === "plus"
-          ? intl.formatMessage({ id: "increase" })
-          : intl.formatMessage({ id: "decrease" })
+          ? intl.formatMessage({ id: "component.EditItemQuantityButton.increase" })
+          : intl.formatMessage({ id: "component.EditItemQuantityButton.decrease" })
       }
       aria-disabled={isPending}
       className={cn(className, {

@@ -7,14 +7,18 @@ import {
   productVariantConnectionFragment,
   type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { Usable } from "react";
+import { type ResolvedIntlConfig } from "react-intl";
 
-interface PurchaseOptionsProps {
-  className?: string;
-  id?: string;
+export const PurchaseOptions = ({
+  dictionary,
+  lang,
+  productDetailsFragmentRef,
+}: {
+  dictionary: Usable<ResolvedIntlConfig["messages"]>;
+  lang: Intl.BCP47LanguageTag;
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
-}
-
-export const PurchaseOptions = ({ productDetailsFragmentRef }: PurchaseOptionsProps) => {
+}) => {
   const product = getFragmentData(
     productDetailsFragment,
     productDetailsFragmentRef,
@@ -29,17 +33,33 @@ export const PurchaseOptions = ({ productDetailsFragmentRef }: PurchaseOptionsPr
   const variants: Pick<ProductVariant, "id" | "selectedOptions">[] =
     variantFragments.edges.map((edge) => edge?.node);
 
+  const sellingPlanGroupNodes = product.sellingPlanGroups?.edges?.map(
+    (edge) => edge.node,
+  );
+
+  const preOrder = sellingPlanGroupNodes.find(
+    ({ name }) => name === "Pre-order",
+  );
+
   return (
     <>
-      <VariantSelector options={product.options} variants={variants} />
+      <VariantSelector
+        options={product.options}
+        productDetailsFragmentRef={productDetailsFragmentRef}
+        variants={variants}
+      />
 
       <AddToCart
         availableForSale={product.availableForSale}
+        container="PurchaseOptions"
+        dictionary={dictionary}
+        lang={lang}
         options={product.options}
+        preOrder={!!preOrder}
         variants={variants}
       />
     </>
   );
-}
+};
 
 PurchaseOptions.displayName = "PurchaseOptions";

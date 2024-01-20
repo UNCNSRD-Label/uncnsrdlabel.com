@@ -1,17 +1,35 @@
-import { getIntl } from "@/lib/i18n";
-import { state$ } from "@/lib/store";
+"use client";
+
+import { createIntl } from "@formatjs/intl";
 import { Button } from "@uncnsrdlabel/components/ui/button";
 import { cn } from "@uncnsrdlabel/lib";
+import { Usable, use } from "react";
 import { SlMagnifier } from "react-icons/sl";
+import { type ResolvedIntlConfig } from "react-intl";
 
-export async function SearchButton({ isOpen }: { isOpen: boolean }) {
-  const lang = state$.lang.get();
+export function SearchButton({
+  dictionary,
+  isOpen,
+  lang,
+}: {
+  dictionary: Usable<ResolvedIntlConfig["messages"]>;
+  isOpen: boolean;
+  lang: Intl.BCP47LanguageTag;
+}) {
+  if (!lang) {
+    console.error("No lang in SearchButton");
+  }
 
-  const intl = await getIntl(lang, "component.SearchButton");
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   return (
     <Button
-      aria-label={intl.formatMessage({ id: "submit" })}
+      aria-label={intl.formatMessage({ id: "component.SearchButton.submit" })}
       className={cn("btn absolute right-2", isOpen ?? "open")}
       data-testid="submit-search"
       form="search-form"
