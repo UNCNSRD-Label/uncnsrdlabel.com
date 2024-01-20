@@ -37,7 +37,16 @@ export const Banner = ({
       getFragmentData(discountNodeFragment, discountNodeFragmentRef),
     );
 
-  const discountNode = discountNodeList?.find(({discount}) => discount.title.startsWith(bannerPrefixForLang));
+  const discountNode = discountNodeList?.find((discountNode) => {
+    if (
+      discountNode.discount.__typename !==
+      ("DiscountCodeBasic" || "DiscountAutomaticBasic")
+    ) {
+      return null;
+    }
+
+    discountNode.discount.title.startsWith(bannerPrefixForLang);
+  });
 
   if (!discountNode) {
     return null;
@@ -46,22 +55,26 @@ export const Banner = ({
   let markup = null;
 
   switch (discountNode.discount.__typename) {
-      case "DiscountCodeBasic":
-        markup = (
-          <span data-type="DiscountCodeBasic">
-            {discountNode.discount.title.replace(bannerPrefixForLang, "").replace(bannerPrefix, "")} -{" "}
-            {discountNode.discount.shortSummary}
-          </span>
-        );
+    case "DiscountCodeBasic":
+      markup = (
+        <span data-type="DiscountCodeBasic">
+          {discountNode.discount.title
+            .replace(bannerPrefixForLang, "")
+            .replace(bannerPrefix, "")}{" "}
+          - {discountNode.discount.shortSummary}
+        </span>
+      );
 
-      case "DiscountAutomaticBasic":
-        markup = (
-          <span data-type="DiscountAutomaticBasic">
-            {discountNode.discount.title.replace(bannerPrefixForLang, "").replace(bannerPrefix, "")} -{" "}
-            {discountNode.discount.shortSummary}
-          </span>
-        );
-    }
+    case "DiscountAutomaticBasic":
+      markup = (
+        <span data-type="DiscountAutomaticBasic">
+          {discountNode.discount.title
+            .replace(bannerPrefixForLang, "")
+            .replace(bannerPrefix, "")}{" "}
+          - {discountNode.discount.shortSummary}
+        </span>
+      );
+  }
 
   return (
     <article
