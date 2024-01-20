@@ -275,20 +275,15 @@ const securityHeaders = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  compiler: {
-    removeConsole: {
-      exclude: ['error'],
-    },
-  },
   eslint: {
     // Disabling on production builds because we're running checks on PRs via GitHub Actions.
     ignoreDuringBuilds: true,
   },
   experimental: {
-    swcPlugins: [
-      // ['@victorandree/graphql-codegen-client-preset-swc-plugin', { artifactDirectory: '../../packages/@uncnsrdlabel/graphql-shopify-admin/src/codegen', gqlTagName: 'graphql' }],
-      // ['@victorandree/graphql-codegen-client-preset-swc-plugin', { artifactDirectory: '../../packages/@uncnsrdlabel/graphql-shopify-storefront/src/codegen', gqlTagName: 'graphql' }],
-    ],
+    // swcPlugins: [
+    //   ['@victorandree/graphql-codegen-client-preset-swc-plugin', { artifactDirectory: '../../packages/@uncnsrdlabel/graphql-shopify-admin/src/codegen', gqlTagName: 'graphql' }],
+    //   ['@victorandree/graphql-codegen-client-preset-swc-plugin', { artifactDirectory: '../../packages/@uncnsrdlabel/graphql-shopify-storefront/src/codegen', gqlTagName: 'graphql' }],
+    // ],
     webpackBuildWorker: true,
   },
   async headers() {
