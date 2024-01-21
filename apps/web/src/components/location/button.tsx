@@ -3,12 +3,11 @@
 import { createIntl } from "@formatjs/intl";
 import { type ResultOf } from "@graphql-typed-document-node/core";
 import { Button } from "@uncnsrdlabel/components/ui/button";
+import { getLocalizationDetailsQuery } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { cn } from "@uncnsrdlabel/lib";
 import { Usable, use } from "react";
 import ReactCountryFlag from "react-country-flag";
 import { type ResolvedIntlConfig } from "react-intl";
-// import { ScrollArea } from "@uncnsrdlabel/components/atoms/scroll-area";
-import { getLocalizationDetailsQuery } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { cn } from "@uncnsrdlabel/lib";
 
 export function LocationButton({
   className,
@@ -46,25 +45,20 @@ export function LocationButton({
       onClick={onClick}
       variant="ghost"
     >
-      <span className="mb-4">
-        {intl.formatMessage({
-          id: "component.LocationDialog.trigger",
-        })}
-      </span>
-      <div className="flex gap-2">
+      <div className="flex gap-2 items-center">
         <ReactCountryFlag
-          className="border-1 border border-white object-cover"
+          className="border border-white object-cover"
           countryCode={localization.country.isoCode}
           svg
           style={{
             width: "6em",
-            height: "4em",
+            height: "4.5em",
           }}
           title={localization.country.name}
         />
-        <div className="items-center grid gap-2">
-          <span>{localization.country.name}</span>
-          <span>{localization.language.name}</span>
+        <div className="grid gap-2 justify-start items-start">
+          <span className="text-start">{localization.country.name}</span>
+          <span className="text-start">{localization.language.name}</span>
         </div>
       </div>
     </Button>

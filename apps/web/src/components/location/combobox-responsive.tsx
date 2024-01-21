@@ -3,7 +3,6 @@
 import { createIntl } from "@formatjs/intl";
 import { type ResultOf } from "@graphql-typed-document-node/core";
 import { useMediaQuery } from "@react-hookz/web";
-import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
   Command,
   CommandEmpty,
@@ -18,11 +17,16 @@ import {
   DrawerTrigger,
 } from "@uncnsrdlabel/components/atoms/drawer";
 import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@uncnsrdlabel/components/atoms/popover";
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@uncnsrdlabel/components/atoms/select";
 import { getLocalizationDetailsQuery } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { cn } from "@uncnsrdlabel/lib";
 import { useRouter } from "next/navigation";
 import { Usable, use, useState } from "react";
 import ReactCountryFlag from "react-country-flag";
@@ -47,58 +51,131 @@ export function LocationComboBoxResponsive({
   const [open, setOpen] = useState(false);
   const isMd = useMediaQuery("only screen and (min-width : 768px)");
 
+  const router = useRouter();
+
   const localization =
     use<ResultOf<typeof getLocalizationDetailsQuery>["localization"]>(
       localizationDetails,
     );
 
-  if (isMd) {
-    return (
-      <Popover open={open} onOpenChange={setOpen}>
-        <PopoverTrigger asChild>
-          <Button variant="outline" className="cursor-pointer justify-start">
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
+
+  const SelectContentItems = localization.availableCountries
+    .sort((a, b) => a.name.localeCompare(b.name))
+    ?.flatMap((availableCountry) => {
+      return (
+        <SelectGroup key={availableCountry.isoCode}>
+          <SelectLabel className="mt-4 flex gap-4 font-bold uppercase">
             <ReactCountryFlag
-              className="mr-2"
-              countryCode={localization.country.isoCode}
+              className="border border-black object-cover"
+              countryCode={availableCountry.isoCode}
               svg
               style={{
                 width: "2em",
-                height: "2em",
+                height: "1.5em",
               }}
-              title={localization.country.name}
+              title={availableCountry.name}
             />
-            {localization.country.name} ({localization.language.name})
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent className="w-[200px] p-0" align="start">
-          <StatusList
-            className={className}
-            dictionary={dictionary}
-            lang={lang}
-            localizationDetails={localizationDetails}
-            setOpen={setOpen}
+            {availableCountry.name}
+          </SelectLabel>
+          {availableCountry?.availableLanguages.map((availableLanguage) => {
+            const BCP47LanguageTag =
+              `${availableLanguage.isoCode.toLocaleLowerCase()}-${
+                availableCountry.isoCode
+              }` as Intl.BCP47LanguageTag;
+            return (
+              <SelectItem
+                className="cursor-pointer"
+                key={BCP47LanguageTag}
+                value={BCP47LanguageTag}
+              >
+                {availableCountry.name} ({availableLanguage.name})
+              </SelectItem>
+            );
+          })}
+        </SelectGroup>
+      );
+    });
+
+  if (isMd) {
+    return (
+      <>
+        <Select
+          onValueChange={(value) => {
+            setOpen(false);
+
+            // @ts-expect-error Property 'getCanonicalLocales' does not exist on type 'typeof Intl'.
+            const [canonicalLocale] = Intl.getCanonicalLocales(value);
+
+            if (canonicalLocale) {
+              lang = canonicalLocale;
+            }
+
+            router.push(`/${canonicalLocale}`);
+          }}
+        >
+          <SelectTrigger
+              className="border ring-offset-2 ring-black ring-1 focus:ring-1">
+            <SelectValue
+              placeholder={intl.formatMessage({
+                id: "component.LocationComboBox.StatusList.select-locale",
+              })}
+            />
+          </SelectTrigger>
+          <SelectContent className="max-h-[50dvh] pb-4 md:max-h-[75dvh]">
+            {SelectContentItems}
+          </SelectContent>
+        </Select>
+        <div className="flex items-center gap-2">
+          <ReactCountryFlag
+            className="border border-black object-cover"
+            countryCode={localization.country.isoCode}
+            svg
+            style={{
+              width: "6em",
+              height: "4.5em",
+            }}
+            title={localization.country.name}
           />
-        </PopoverContent>
-      </Popover>
+          <div className="grid items-start justify-start gap-2">
+            <span className="text-start">{localization.country.name}</span>
+            <span className="text-start">{localization.language.name}</span>
+          </div>
+        </div>
+      </>
     );
   }
 
   return (
     <Drawer open={open} onOpenChange={setOpen}>
-      <DrawerTrigger asChild>
-        <Button variant="outline" className="justify-start">
+      <DrawerTrigger>
+        <span
+            className="border border-black block mb-4 p-2">
+        {intl.formatMessage({
+            id: "component.LocationComboBox.StatusList.select-locale",
+          })}
+        </span>
+        <div className="flex items-center gap-2">
           <ReactCountryFlag
-            className="mr-2"
+            className="border border-black object-cover"
             countryCode={localization.country.isoCode}
             svg
             style={{
-              width: "2em",
-              height: "2em",
+              width: "6em",
+              height: "4.5em",
             }}
             title={localization.country.name}
           />
-          {localization.country.name} ({localization.language.name})
-        </Button>
+          <div className="grid items-start justify-start gap-2">
+            <span className="text-start">{localization.country.name}</span>
+            <span className="text-start">{localization.language.name}</span>
+          </div>
+        </div>
       </DrawerTrigger>
       <DrawerContent>
         <div className="mt-4 border-t">
@@ -121,10 +198,8 @@ function StatusList({
   lang,
   localizationDetails,
   setOpen,
-  // setSelectedStatus,
 }: LocationComboBoxResponsiveProps & {
   setOpen: (open: boolean) => void;
-  // setSelectedStatus: (status: ResultOf<typeof getLocalizationDetailsQuery>['localization']['country'] | null) => void
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
@@ -142,9 +217,7 @@ function StatusList({
       localizationDetails,
     );
 
-  const availableCountries = localization.availableCountries;
-
-  const BCP47LanguageTagCommandItems = availableCountries?.flatMap(
+  const BCP47LanguageTagCommandItems = localization.availableCountries?.flatMap(
     (availableCountry) =>
       availableCountry?.availableLanguages.map((availableLanguage) => {
         const BCP47LanguageTag =
@@ -175,8 +248,9 @@ function StatusList({
   );
 
   return (
-    <Command className={className}>
+    <Command className={cn(className)}>
       <CommandInput
+        className="border-none focus:ring-0"
         placeholder={intl.formatMessage({
           id: "component.LocationComboBox.StatusList.enter-country-name",
         })}

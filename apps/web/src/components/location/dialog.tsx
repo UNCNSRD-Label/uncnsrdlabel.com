@@ -8,6 +8,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { Button } from "@uncnsrdlabel/components/ui/button";
 import { getLocalizationDetailsQuery } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { cn } from "@uncnsrdlabel/lib";
 import { Suspense, Usable, use, useState } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
 import { useTrack } from "use-analytics";
@@ -51,6 +52,11 @@ export function LocationDialog({
 
   return (
     <>
+      <Button className={cn("mb-4", className)} onClick={onOpen} variant="ghost">
+        {intl.formatMessage({
+          id: "component.LocationDialog.trigger",
+        })}
+      </Button>
       <LocationButton
         className={className}
         dictionary={dictionary}
@@ -62,7 +68,7 @@ export function LocationDialog({
         <Dialog.Portal>
           <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0 z-40 bg-black/80" />
           <Dialog.Content
-            className="data-[state=open]:animate-contentShow fixed inset-x-4 bottom-4 z-50 grid gap-4 overflow-auto rounded border bg-inherit px-8 pb-8 pt-6 sm:left-auto sm:max-h-[calc(85dvh-4rem)] sm:w-[90dvw] sm:max-w-xl"
+            className="data-[state=open]:animate-contentShow fixed inset-x-4 bottom-4 z-50 grid gap-4 overflow-auto rounded border bg-inherit px-4 md:px-8 pb-8 pt-6 sm:left-auto sm:max-h-[calc(85dvh-4rem)] sm:w-[90dvw] sm:max-w-xl"
             forceMount
           >
             <Dialog.Title>

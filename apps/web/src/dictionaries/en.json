@@ -134,7 +134,8 @@
         "enter-country-name": "Enter country name",
         "no-results": "No results found",
         "results": "Results",
-        "searching": "Searching..."
+        "searching": "Searching...",
+        "select-locale": "Select locale"
       }
     },
     "LocationDialog": {

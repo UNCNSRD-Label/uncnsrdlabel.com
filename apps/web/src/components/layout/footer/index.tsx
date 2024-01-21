@@ -39,10 +39,10 @@ export async function Footer({ lang }: { lang: Intl.BCP47LanguageTag }) {
     lang,
   });
 
-  // const followUsMenu = await getMenuHandler({
-  //   variables: { handle: "follow-us" },
-  //   lang,
-  // });
+  const followUsMenu = await getMenuHandler({
+    variables: { handle: "follow-us" },
+    lang,
+  });
 
   const linkClassName =
     "text-xs sm:text-xxs transition uppercase duration-150 ease-in-out text-start";
@@ -62,7 +62,7 @@ export async function Footer({ lang }: { lang: Intl.BCP47LanguageTag }) {
                 <dd className="flex flex-col">
                   <ConsentTrigger className={linkClassName} lang={lang} />
                 </dd>
-                <dt className="mt-6 text-sm uppercase">
+                <dt className="md:mt-4 text-sm uppercase">
                   {intl.formatMessage({
                     id: "global.footer.menu.location-settings",
                   })}
@@ -70,21 +70,6 @@ export async function Footer({ lang }: { lang: Intl.BCP47LanguageTag }) {
                 <dd className="flex flex-col">
                   <LocationTrigger className={linkClassName} lang={lang} />
                 </dd>
-              </dl>
-
-              <dl className="grid content-start gap-4 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
-                <dt className="text-sm uppercase">
-                  {intl.formatMessage({
-                    id: "global.footer.menu.customer-care",
-                  })}
-                </dt>
-                {customerCareMenu.items.map((item, index) => (
-                  <dd className="flex" key={item.title || index}>
-                    <Link href={item.url ?? "#"} className={linkClassName}>
-                      {item.title}
-                    </Link>
-                  </dd>
-                ))}
               </dl>
 
               <dl className="grid content-start gap-4 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
@@ -100,12 +85,12 @@ export async function Footer({ lang }: { lang: Intl.BCP47LanguageTag }) {
                     </Link>
                   </dd>
                 ))}
-                {/* <dt className="text-sm uppercase mt-4">
+                <dt className="text-sm uppercase mt-4">
                     {intl.formatMessage({
                       id: "global.footer.menu.follow-us",
                     })}
-                  </dt> */}
-                {/* {followUsMenu.items.map((item, index) => (
+                  </dt>
+                {followUsMenu.items.map((item, index) => (
                     <dd className="flex" key={item.title || index}>
                       <Link
                         className={linkClassName}
@@ -116,7 +101,22 @@ export async function Footer({ lang }: { lang: Intl.BCP47LanguageTag }) {
                         {item.title}
                       </Link>
                     </dd>
-                  ))} */}
+                  ))}
+              </dl>
+
+              <dl className="grid content-start gap-4 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
+                <dt className="text-sm uppercase">
+                  {intl.formatMessage({
+                    id: "global.footer.menu.customer-care",
+                  })}
+                </dt>
+                {customerCareMenu.items.map((item, index) => (
+                  <dd className="flex" key={item.title || index}>
+                    <Link href={item.url ?? "#"} className={linkClassName}>
+                      {item.title}
+                    </Link>
+                  </dd>
+                ))}
               </dl>
             </nav>
             <SignUp
