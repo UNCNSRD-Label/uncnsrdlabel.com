@@ -6,11 +6,8 @@ import { createIntl } from "@formatjs/intl";
 import { type ResultOf } from "@graphql-typed-document-node/core";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
-import { useTimeoutEffect } from "@react-hookz/web";
 import { Button } from "@uncnsrdlabel/components/ui/button";
 import { getLocalizationDetailsQuery } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { COOKIE_LOCATION } from "@uncnsrdlabel/lib";
-import { hasCookie } from "cookies-next";
 import { Suspense, Usable, use, useState } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
 import { useTrack } from "use-analytics";
@@ -37,13 +34,6 @@ export function LocationDialog({
   const [open, setOpen] = useState(false);
 
   const track = useTrack();
-
-  useTimeoutEffect(
-    () => {
-      setOpen(true);
-    },
-    hasCookie(COOKIE_LOCATION) ? undefined : 5_000,
-  );
 
   const onClose = () => {
     track("location_close");

@@ -25,6 +25,7 @@ import {
 import { getLocalizationDetailsQuery } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { useRouter } from "next/navigation";
 import { Usable, use, useState } from "react";
+import ReactCountryFlag from "react-country-flag";
 import { type ResolvedIntlConfig } from "react-intl";
 import { useTrack } from "use-analytics";
 
@@ -55,7 +56,17 @@ export function LocationComboBoxResponsive({
     return (
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
-          <Button variant="outline" className="justify-start">
+          <Button variant="outline" className="cursor-pointer justify-start">
+            <ReactCountryFlag
+              className="mr-2"
+              countryCode={localization.country.isoCode}
+              svg
+              style={{
+                width: "2em",
+                height: "2em",
+              }}
+              title={localization.country.name}
+            />
             {localization.country.name} ({localization.language.name})
           </Button>
         </PopoverTrigger>
@@ -76,6 +87,16 @@ export function LocationComboBoxResponsive({
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
         <Button variant="outline" className="justify-start">
+          <ReactCountryFlag
+            className="mr-2"
+            countryCode={localization.country.isoCode}
+            svg
+            style={{
+              width: "2em",
+              height: "2em",
+            }}
+            title={localization.country.name}
+          />
           {localization.country.name} ({localization.language.name})
         </Button>
       </DrawerTrigger>
@@ -139,7 +160,7 @@ function StatusList({
 
               // @ts-expect-error Property 'getCanonicalLocales' does not exist on type 'typeof Intl'.
               const [canonicalLocale] = Intl.getCanonicalLocales(value);
-  
+
               if (canonicalLocale) {
                 lang = canonicalLocale;
               }

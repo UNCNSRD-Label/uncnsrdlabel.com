@@ -8,7 +8,7 @@ import { themeColors } from "@/lib/tailwind";
 import { createIntl } from "@formatjs/intl";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
-  getLocalizationDetailsHandler,
+  // getLocalizationDetailsHandler,
   getMenuHandler,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { type ResolvedIntlConfig } from "react-intl";
@@ -16,7 +16,7 @@ import { type ResolvedIntlConfig } from "react-intl";
 const { NEXT_PUBLIC_SITE_NAME } = process.env;
 
 export async function Footer({ lang }: { lang: Intl.BCP47LanguageTag }) {
-  const localization = await getLocalizationDetailsHandler({ lang });
+  // const localization = await getLocalizationDetailsHandler({ lang });
 
   const messages: ResolvedIntlConfig["messages"] = await getDictionary({
     lang,
@@ -39,10 +39,10 @@ export async function Footer({ lang }: { lang: Intl.BCP47LanguageTag }) {
     lang,
   });
 
-  const followUsMenu = await getMenuHandler({
-    variables: { handle: "follow-us" },
-    lang,
-  });
+  // const followUsMenu = await getMenuHandler({
+  //   variables: { handle: "follow-us" },
+  //   lang,
+  // });
 
   const linkClassName =
     "text-xs sm:text-xxs transition uppercase duration-150 ease-in-out text-start";
@@ -53,67 +53,71 @@ export async function Footer({ lang }: { lang: Intl.BCP47LanguageTag }) {
         <div className="mx-auto w-full max-w-7xl px-6 pb-12">
           <div className="grid grid-cols-1 items-start gap-8 border-b border-inherit py-6 transition-colors duration-150 sm:grid-cols-12 sm:py-12">
             <nav className="col-span-1 grid gap-8 sm:col-span-12 sm:grid-cols-12 lg:col-span-8 lg:grid-cols-9">
-              {customerCareMenu.items?.length ? (
-                <dl className="grid content-start gap-4 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
-                  <dt className="text-sm uppercase">
+              <dl className="grid gap-4 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
+                <dt className="text-sm uppercase">
+                  {intl.formatMessage({
+                    id: "global.footer.menu.privacy-and-cookies",
+                  })}
+                </dt>
+                <dd className="flex flex-col">
+                  <ConsentTrigger className={linkClassName} lang={lang} />
+                </dd>
+                <dt className="mt-6 text-sm uppercase">
+                  {intl.formatMessage({
+                    id: "global.footer.menu.location-settings",
+                  })}
+                </dt>
+                <dd className="flex flex-col">
+                  <LocationTrigger className={linkClassName} lang={lang} />
+                </dd>
+              </dl>
+
+              <dl className="grid content-start gap-4 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
+                <dt className="text-sm uppercase">
+                  {intl.formatMessage({
+                    id: "global.footer.menu.customer-care",
+                  })}
+                </dt>
+                {customerCareMenu.items.map((item, index) => (
+                  <dd className="flex" key={item.title || index}>
+                    <Link href={item.url ?? "#"} className={linkClassName}>
+                      {item.title}
+                    </Link>
+                  </dd>
+                ))}
+              </dl>
+
+              <dl className="grid content-start gap-4 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
+                <dt className="text-sm uppercase">
+                  {intl.formatMessage({
+                    id: "global.footer.menu.information",
+                  })}
+                </dt>
+                {informationMenu.items.map((item, index) => (
+                  <dd className="flex" key={item.title || index}>
+                    <Link href={item.url ?? "#"} className={linkClassName}>
+                      {item.title}
+                    </Link>
+                  </dd>
+                ))}
+                {/* <dt className="text-sm uppercase mt-4">
                     {intl.formatMessage({
-                      id: "global.footer.menu.customer-care",
+                      id: "global.footer.menu.follow-us",
                     })}
-                  </dt>
-                  {customerCareMenu.items.map((item, index) => (
+                  </dt> */}
+                {/* {followUsMenu.items.map((item, index) => (
                     <dd className="flex" key={item.title || index}>
-                      <Link href={item.url ?? "#"} className={linkClassName}>
+                      <Link
+                        className={linkClassName}
+                        href={item.url ?? "#"}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
                         {item.title}
                       </Link>
                     </dd>
-                  ))}
-                  <dd className="flex">
-                    <ConsentTrigger className={linkClassName} lang={lang} />
-                  </dd>
-                  <dd className="flex">
-                    <LocationTrigger className={linkClassName} lang={lang} />
-                  </dd>
-                </dl>
-              ) : null}
-              {informationMenu.items?.length ? (
-                <dl className="grid content-start gap-4 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
-                  <dt className="text-sm uppercase">
-                    {intl.formatMessage({
-                      id: "global.footer.menu.information",
-                    })}
-                  </dt>
-                  {informationMenu.items.map((item, index) => (
-                    <dd className="flex" key={item.title || index}>
-                      <Link href={item.url ?? "#"} className={linkClassName}>
-                        {item.title}
-                      </Link>
-                    </dd>
-                  ))}
-                </dl>
-              ) : null}
-              <div className="grid gap-4 sm:col-span-4 sm:grid-flow-row lg:col-span-3">
-                {followUsMenu.items?.length ? (
-                  <dl className="grid content-start gap-4">
-                    <dt className="text-sm uppercase">
-                      {intl.formatMessage({
-                        id: "global.footer.menu.follow-us",
-                      })}
-                    </dt>
-                    {followUsMenu.items.map((item, index) => (
-                      <dd className="flex" key={item.title || index}>
-                        <Link
-                          className={linkClassName}
-                          href={item.url ?? "#"}
-                          rel="noopener noreferrer"
-                          target="_blank"
-                        >
-                          {item.title}
-                        </Link>
-                      </dd>
-                    ))}
-                  </dl>
-                ) : null}
-              </div>
+                  ))} */}
+              </dl>
             </nav>
             <SignUp
               className="lg:col-start-0 col-span-1 sm:col-span-6 sm:col-start-7 lg:col-span-4"

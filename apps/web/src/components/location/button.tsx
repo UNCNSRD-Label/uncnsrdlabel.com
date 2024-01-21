@@ -39,26 +39,34 @@ export function LocationButton({
 
   return (
     <Button
+      aria-label={intl.formatMessage({
+        id: "component.LocationDialog.trigger",
+      })}
       className={cn("flex flex-col gap-4", className)}
       onClick={onClick}
       variant="ghost"
     >
-      <span>
-        {intl.formatMessage({ id: "component.LocationDialog.trigger" })}
+      <span className="mb-4">
+        {intl.formatMessage({
+          id: "component.LocationDialog.trigger",
+        })}
       </span>
-      <span>
+      <div className="flex gap-2">
         <ReactCountryFlag
-          className="mr-2"
+          className="border-1 border border-white object-cover"
           countryCode={localization.country.isoCode}
           svg
           style={{
-            width: "2em",
-            height: "2em",
+            width: "6em",
+            height: "4em",
           }}
           title={localization.country.name}
         />
-        {localization.country.name} ({localization.language.name})
-      </span>
+        <div className="items-center grid gap-2">
+          <span>{localization.country.name}</span>
+          <span>{localization.language.name}</span>
+        </div>
+      </div>
     </Button>
   );
 }
