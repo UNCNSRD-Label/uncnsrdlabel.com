@@ -6,7 +6,7 @@ import { createIntl } from "@formatjs/intl";
 import { type ResultOf } from "@graphql-typed-document-node/core";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
-import { Button } from "@uncnsrdlabel/components/ui/button";
+import { Button } from "@uncnsrdlabel/components/atoms/button";
 import { getLocalizationDetailsQuery } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { Suspense, Usable, use, useState } from "react";

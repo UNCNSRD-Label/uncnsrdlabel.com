@@ -2,7 +2,7 @@
 
 import { createIntl } from "@formatjs/intl";
 import { type ResultOf } from "@graphql-typed-document-node/core";
-import { Button } from "@uncnsrdlabel/components/ui/button";
+import { Button } from "@uncnsrdlabel/components/atoms/button";
 import { getLocalizationDetailsQuery } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { Usable, use } from "react";
