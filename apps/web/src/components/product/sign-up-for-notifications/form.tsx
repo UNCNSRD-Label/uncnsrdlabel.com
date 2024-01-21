@@ -57,7 +57,7 @@ export function SignUpForNotificationsForm({
   const hasError = (output && output.status > 299) ?? false;
 
   return (
-    <form action={formAction} className={cn("mt-8 grid gap-4", className)}>
+    <form action={formAction} className={cn("grid gap-4", className)}>
       <div className="field">
         <input
           aria-invalid={hasError ? "true" : "false"}

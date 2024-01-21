@@ -45,6 +45,8 @@ export function NavbarSearch({ className, dictionary, lang }: { className?: stri
       newParams.delete("q");
     }
 
+    track('search', newParams);
+
     router.push(createUrl("/search", newParams));
   }
 

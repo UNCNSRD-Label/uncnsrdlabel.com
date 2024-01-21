@@ -5,6 +5,7 @@ import { cn, createUrl } from "@uncnsrdlabel/lib";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Usable, use } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
+import { useTrack } from "use-analytics";
 
 export function SearchForm({
   className,
@@ -22,6 +23,8 @@ export function SearchForm({
   const router = useRouter();
 
   const searchParams = useSearchParams();
+
+  const track = useTrack();
 
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
@@ -42,6 +45,8 @@ export function SearchForm({
     } else {
       newParams.delete("q");
     }
+
+    track('search', newParams);
 
     router.push(createUrl("/search", newParams));
 

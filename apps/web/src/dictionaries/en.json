@@ -17,7 +17,10 @@
       "menu": {
         "customer-care": "Customer care",
         "follow-us": "Follow Us",
-        "information": "Information"
+        "information": "Information",
+        "location-settings": "Location settings",
+        "privacy-and-cookies": "Privacy & Cookies",
+        "settings": "Settings"
       }
     }
   },
@@ -106,7 +109,7 @@
     },
     "ConsentDialog": {
       "close": "Close the consent dialog",
-      "description": "UNCNSRD uses cookies that are essential to making this site work and would like to use additional cookies to improve your experience on this site.",
+      "description":"UNCNSRD uses cookies that are essential to making this site work and would like to use additional cookies to improve your experience on this site.",
       "trigger": "Edit consent settings",
       "title": "Consent settings"
     },
@@ -125,6 +128,27 @@
     "EditItemQuantityButton": {
       "decrease": "Decrease item quantity",
       "increase": "Increase item quantity"
+    },
+    "LocationComboBox": {
+      "StatusList": {
+        "enter-country-name": "Enter country name",
+        "no-results": "No results found",
+        "results": "Results",
+        "searching": "Searching...",
+        "select-locale": "Select locale"
+      }
+    },
+    "LocationDialog": {
+      "close": "Close the location dialog",
+      "description": "Choose your location to find products available in your region",
+      "trigger": "Edit location settings",
+      "title": "Location settings"
+    },
+    "LocationForm": {
+      "accept": "Accept selected cookies",
+      "decline": "Decline",
+      "description": "Lorem ipsum",
+      "title": "Locale settings"
     },
     "MobileMenu": {
       "close": "Close the menu",
