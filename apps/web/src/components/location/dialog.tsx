@@ -3,10 +3,12 @@
 import { LoadingDots } from "@/components/loading/dots";
 import { LocationForm } from "@/components/location/form";
 import { createIntl } from "@formatjs/intl";
+import { type ResultOf } from "@graphql-typed-document-node/core";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { useTimeoutEffect } from "@react-hookz/web";
 import { Button } from "@uncnsrdlabel/components/ui/button";
+import { getLocalizationDetailsQuery } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { COOKIE_LOCATION } from "@uncnsrdlabel/lib";
 import { hasCookie } from "cookies-next";
 import { Suspense, Usable, use, useState } from "react";
@@ -15,10 +17,12 @@ import { useTrack } from "use-analytics";
 import { LocationButton } from "./button";
 
 export function LocationDialog({
+  localizationDetails,
   className,
   dictionary,
   lang,
 }: {
+  localizationDetails: Usable<ResultOf<typeof getLocalizationDetailsQuery>['localization']>;
   className?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
   lang: Intl.BCP47LanguageTag;
@@ -98,7 +102,7 @@ export function LocationDialog({
         <Dialog.Portal>
           <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0 z-40 bg-black/80" />
           <Dialog.Content
-            className="data-[state=open]:animate-contentShow fixed inset-x-4 bottom-4 z-50 grid gap-4 overflow-auto rounded border bg-inherit px-8 pb-8 pt-6 sm:left-auto sm:max-h-[calc(85dvh-4rem)] sm:w-[90dvw] sm:max-w-4xl"
+            className="data-[state=open]:animate-contentShow fixed inset-x-4 bottom-4 z-50 grid gap-4 overflow-auto rounded border bg-inherit px-8 pb-8 pt-6 sm:left-auto sm:max-h-[calc(85dvh-4rem)] sm:w-[90dvw] sm:max-w-xl"
             forceMount
           >
             <Dialog.Title>
@@ -115,6 +119,7 @@ export function LocationDialog({
                 acceptAllLocations={acceptAllLocations}
                 denyAllAdditionalLocations={denyAllAdditionalLocations}
                 dictionary={dictionary}
+                localizationDetails={localizationDetails}
                 lang={lang}
                 manageLocations={manageLocations}
               />

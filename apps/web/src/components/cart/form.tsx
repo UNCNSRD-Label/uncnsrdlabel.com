@@ -10,10 +10,10 @@ import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
-    cartFragment,
-    getFragmentData,
-    imageFragment,
-    productBasicFragment,
+  cartFragment,
+  getFragmentData,
+  imageFragment,
+  productBasicFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { DEFAULT_OPTION, cn, createUrl } from "@uncnsrdlabel/lib";
 import Image from "next/image";
@@ -176,7 +176,7 @@ export function CartForm({
           </ul>
 
           <div className="my-4 flex flex-col">
-            <AddPremiumPackaging lang={lang} />
+            <AddPremiumPackaging className="grid-cols-2" lang={lang} />
           </div>
 
           <div className="py-4 text-sm text-neutral-500 dark:text-neutral-400">

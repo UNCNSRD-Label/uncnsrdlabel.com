@@ -106,6 +106,7 @@
     },
     "ConsentDialog": {
       "close": "Close the consent dialog",
+      "description":"UNCNSRD uses cookies that are essential to making this site work and would like to use additional cookies to improve your experience on this site.",
       "trigger": "Edit consent settings",
       "title": "Consent settings"
     },
@@ -125,12 +126,13 @@
       "decrease": "Decrease item quantity",
       "increase": "Increase item quantity"
     },
-    "LocaleDialog": {
-      "close": "Close the locale dialog",
-      "trigger": "Edit locale settings",
-      "title": "Locale settings"
+    "LocationDialog": {
+      "close": "Close the location dialog",
+      "description": "Choose your location to find products available in your region",
+      "trigger": "Edit location settings",
+      "title": "Location settings"
     },
-    "LocaleForm": {
+    "LocationForm": {
       "accept": "Accept selected cookies",
       "decline": "Decline",
       "description": "Lorem ipsum",

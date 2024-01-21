@@ -98,6 +98,9 @@ importers:
       '@radix-ui/react-scroll-area':
         specifier: ^1.0.5
         version: 1.0.5(@types/react-dom@18.2.18)(@types/react@18.2.48)(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)
+      '@radix-ui/react-select':
+        specifier: ^2.0.0
+        version: 2.0.0(@types/react-dom@18.2.18)(@types/react@18.2.48)(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)
       '@radix-ui/react-slider':
         specifier: ^1.1.2
         version: 1.1.2(@types/react-dom@18.2.18)(@types/react@18.2.48)(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)
@@ -4397,7 +4400,7 @@ packages:
       '@types/react-dom':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.5
+      '@babel/runtime': 7.23.8
       '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.2.48)(react@0.0.0-experimental-feed8f3f9-20240118)
       '@radix-ui/react-context': 1.0.1(@types/react@18.2.48)(react@0.0.0-experimental-feed8f3f9-20240118)
       '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.2.18)(@types/react@18.2.48)(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)
@@ -4536,7 +4539,7 @@ packages:
       '@types/react-dom':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.5
+      '@babel/runtime': 7.23.8
       '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.2.48)(react@0.0.0-experimental-feed8f3f9-20240118)
       '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.2.18)(@types/react@18.2.48)(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)
       '@radix-ui/react-use-callback-ref': 1.0.1(@types/react@18.2.48)(react@0.0.0-experimental-feed8f3f9-20240118)
@@ -4563,7 +4566,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.5
+      '@babel/runtime': 7.23.8
       '@radix-ui/react-use-layout-effect': 1.0.1(@types/react@18.2.48)(react@0.0.0-experimental-feed8f3f9-20240118)
       '@types/react': 18.2.48
       react: 0.0.0-experimental-feed8f3f9-20240118
@@ -4637,7 +4640,7 @@ packages:
       '@types/react-dom':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.5
+      '@babel/runtime': 7.23.8
       '@floating-ui/react-dom': 2.0.1(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)
       '@radix-ui/react-arrow': 1.0.3(@types/react-dom@18.2.18)(@types/react@18.2.48)(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)
       '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.2.48)(react@0.0.0-experimental-feed8f3f9-20240118)
@@ -4667,7 +4670,7 @@ packages:
       '@types/react-dom':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.5
+      '@babel/runtime': 7.23.8
       '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.2.18)(@types/react@18.2.48)(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)
       '@types/react': 18.2.48
       '@types/react-dom': 18.2.18
@@ -4688,7 +4691,7 @@ packages:
       '@types/react-dom':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.5
+      '@babel/runtime': 7.23.8
       '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.2.48)(react@0.0.0-experimental-feed8f3f9-20240118)
       '@radix-ui/react-use-layout-effect': 1.0.1(@types/react@18.2.48)(react@0.0.0-experimental-feed8f3f9-20240118)
       '@types/react': 18.2.48
@@ -4710,7 +4713,7 @@ packages:
       '@types/react-dom':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.5
+      '@babel/runtime': 7.23.8
       '@radix-ui/react-slot': 1.0.2(@types/react@18.2.48)(react@0.0.0-experimental-feed8f3f9-20240118)
       '@types/react': 18.2.48
       '@types/react-dom': 18.2.18
@@ -4789,7 +4792,7 @@ packages:
       '@types/react-dom':
         optional: true
     dependencies:
-      '@babel/runtime': 7.22.11
+      '@babel/runtime': 7.23.8
       '@radix-ui/number': 1.0.1
       '@radix-ui/primitive': 1.0.1
       '@radix-ui/react-collection': 1.0.3(@types/react-dom@18.2.18)(@types/react@18.2.48)(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)
@@ -5076,7 +5079,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.5
+      '@babel/runtime': 7.23.8
       '@radix-ui/react-use-callback-ref': 1.0.1(@types/react@18.2.48)(react@0.0.0-experimental-feed8f3f9-20240118)
       '@types/react': 18.2.48
       react: 0.0.0-experimental-feed8f3f9-20240118
@@ -5149,7 +5152,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.5
+      '@babel/runtime': 7.23.8
       '@radix-ui/react-use-layout-effect': 1.0.1(@types/react@18.2.48)(react@0.0.0-experimental-feed8f3f9-20240118)
       '@types/react': 18.2.48
       react: 0.0.0-experimental-feed8f3f9-20240118
@@ -5168,7 +5171,7 @@ packages:
       '@types/react-dom':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.5
+      '@babel/runtime': 7.23.8
       '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.2.18)(@types/react@18.2.48)(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)
       '@types/react': 18.2.48
       '@types/react-dom': 18.2.18
@@ -5233,26 +5236,6 @@ packages:
       react-router: 6.21.1(react@0.0.0-experimental-feed8f3f9-20240118)
       react-router-dom: 6.21.1(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)
       typescript: 5.3.3
-
-  /@remix-run/react@2.4.1(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)(typescript@5.3.3):
-    resolution: {integrity: sha512-6qfLpijD96fKd276/MOtarf/SkFmWDKXTXzpMQzYTiRXofUDezRGG3VqbkopD1O+jl4BjTuKQvI+7YfLcfGx8w==}
-    engines: {node: '>=18.0.0'}
-    peerDependencies:
-      react: ^18.0.0
-      react-dom: ^18.0.0
-      typescript: ^5.1.0
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@remix-run/router': 1.14.1
-      '@remix-run/server-runtime': 2.4.1(typescript@5.3.3)
-      react: 0.0.0-experimental-feed8f3f9-20240118
-      react-dom: 18.2.0(react@0.0.0-experimental-feed8f3f9-20240118)
-      react-router: 6.21.1(react@0.0.0-experimental-feed8f3f9-20240118)
-      react-router-dom: 6.21.1(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)
-      typescript: 5.3.3
-    dev: false
 
   /@remix-run/router@1.14.1:
     resolution: {integrity: sha512-Qg4DMQsfPNAs88rb2xkdk03N3bjK4jgX5fR24eHCTR9q6PrhZQZ4UJBPzCHJkIpTRN1UKxx2DzjZmnC+7Lj0Ow==}
@@ -5553,7 +5536,6 @@ packages:
     transitivePeerDependencies:
       - '@types/react'
       - xstate
-    dev: false
 
   /@shopify/hydrogen@2023.10.4(@remix-run/react@2.4.1)(@remix-run/server-runtime@2.4.1)(@types/react@18.2.48)(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118):
     resolution: {integrity: sha512-yR33VlhjkO1QzpJZFvUXNW4coW3vOJ40ze3kZ5ppeQugwi65NuHOM35W5NTcq3cLiIGNM0ra85/JFWMjdl5qgQ==}
@@ -5572,25 +5554,6 @@ packages:
       - '@types/react'
       - react-dom
       - xstate
-
-  /@shopify/hydrogen@2023.10.4(@remix-run/react@2.4.1)(@remix-run/server-runtime@2.4.1)(@types/react@18.2.48)(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118):
-    resolution: {integrity: sha512-yR33VlhjkO1QzpJZFvUXNW4coW3vOJ40ze3kZ5ppeQugwi65NuHOM35W5NTcq3cLiIGNM0ra85/JFWMjdl5qgQ==}
-    peerDependencies:
-      '@remix-run/react': ^2.1.0
-      '@remix-run/server-runtime': ^2.1.0
-      react: ^18.2.0
-    dependencies:
-      '@remix-run/react': 2.4.1(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)(typescript@5.3.3)
-      '@remix-run/server-runtime': 2.4.1(typescript@5.3.3)
-      '@shopify/hydrogen-react': 2023.10.1(@types/react@18.2.48)(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)
-      content-security-policy-builder: 2.1.1
-      react: 0.0.0-experimental-feed8f3f9-20240118
-      type-fest: 4.9.0
-    transitivePeerDependencies:
-      - '@types/react'
-      - react-dom
-      - xstate
-    dev: false
 
   /@shuding/opentype.js@1.4.0-beta.0:
     resolution: {integrity: sha512-3NgmNyH3l/Hv6EvsWJbsvpcpUba6R8IREQ83nH83cyakCw7uM1arZKNfHwv1Wz6jgqrF/j4x5ELvR6PnK9nTcA==}
@@ -6415,7 +6378,6 @@ packages:
       use-sync-external-store: 1.2.0(react@0.0.0-experimental-feed8f3f9-20240118)
     transitivePeerDependencies:
       - '@types/react'
-    dev: false
 
   /@xtuc/ieee754@1.2.0:
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
@@ -11723,7 +11685,6 @@ packages:
       loose-envify: 1.4.0
       react: 0.0.0-experimental-feed8f3f9-20240118
       scheduler: 0.23.0
-    dev: false
 
   /react-dom@18.2.0(react@18.2.0):
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
@@ -11912,7 +11873,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
-    dev: false
 
   /react@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
@@ -13423,7 +13383,7 @@ packages:
   /use-isomorphic-layout-effect@1.1.2(@types/react@18.2.48)(react@0.0.0-experimental-feed8f3f9-20240118):
     resolution: {integrity: sha512-49L8yCO3iGT/ZF9QttjwLF/ZD9Iwto5LnH5LmEdk/6cFmXddqi2ulF0edxTwjj+7mqvpVVGQWvbXZdn32wRSHA==}
     peerDependencies:
-      '@types/react': ^16.8.0 || ^17.0.0 || ^18.0.0
+      '@types/react': '*'
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     peerDependenciesMeta:
       '@types/react':
@@ -13451,11 +13411,7 @@ packages:
   /use-sync-external-store@1.2.0(react@0.0.0-experimental-feed8f3f9-20240118):
     resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
     peerDependencies:
-      '@types/react': ^16.9.0 || ^17.0.0 || ^18.0.0
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
     dependencies:
       react: 0.0.0-experimental-feed8f3f9-20240118
 

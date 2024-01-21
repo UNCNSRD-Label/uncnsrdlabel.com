@@ -17,8 +17,6 @@ export async function Footer({
 }: {
   lang: Intl.BCP47LanguageTag;
 }) {
-  const dictionary = getDictionary({ lang });
-
   const messages: ResolvedIntlConfig["messages"] = await getDictionary({
     lang,
   });
@@ -74,7 +72,6 @@ export async function Footer({
                   <dd>
                     <LocationTrigger
                       className={linkClassName}
-                      dictionary={dictionary}
                       lang={lang}
                     />
                   </dd>
