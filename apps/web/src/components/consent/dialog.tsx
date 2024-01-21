@@ -30,7 +30,7 @@ export function ConsentDialog({ className, dictionary, lang }: { className?: str
     () => {
       setOpen(true);
     },
-    hasCookie(COOKIE_CONSENT) ? undefined : 10_000,
+    hasCookie(COOKIE_CONSENT) ? undefined : 20_000,
   );
 
   const acceptSelectedConsents = () => {

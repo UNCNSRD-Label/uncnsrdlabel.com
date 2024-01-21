@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { createIntl } from "@formatjs/intl";
 import { type ResultOf } from "@graphql-typed-document-node/core";
@@ -8,11 +8,30 @@ import {
   ChevronUpIcon,
 } from "@radix-ui/react-icons";
 import * as SelectPrimitive from "@radix-ui/react-select";
-import { Button } from "@uncnsrdlabel/components/ui/button";
+import { useMediaQuery } from "@react-hookz/web";
+import { Button } from "@uncnsrdlabel/components/atoms/button";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@uncnsrdlabel/components/atoms/command";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerTrigger,
+} from "@uncnsrdlabel/components/atoms/drawer";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@uncnsrdlabel/components/atoms/popover";
 import { getLocalizationDetailsQuery } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { useRouter } from "next/navigation";
-import { Usable, use } from "react";
+import { Usable, use, useState } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
 import { useTrack } from "use-analytics";
 
@@ -21,13 +40,110 @@ type LocationDialogProps = {
     ResultOf<typeof getLocalizationDetailsQuery>['localization']
   >;
   className?: string;
-  acceptSelectedLocations: (event: React.FormEvent<HTMLFormElement>) => void;
-  acceptAllLocations: () => void;
-  denyAllAdditionalLocations: () => void;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
   lang: Intl.BCP47LanguageTag;
   manageLocations: () => void;
 };
+
+type Status = {
+  value: string
+  label: string
+}
+
+const statuses: Status[] = [
+  {
+    value: "backlog",
+    label: "Backlog",
+  },
+  {
+    value: "todo",
+    label: "Todo",
+  },
+  {
+    value: "in progress",
+    label: "In Progress",
+  },
+  {
+    value: "done",
+    label: "Done",
+  },
+  {
+    value: "canceled",
+    label: "Canceled",
+  },
+]
+
+export function ComboBoxResponsive() {
+  const [open, setOpen] = useState(false)
+  const isMd = useMediaQuery("only screen and (min-width : 768px)");
+
+  const [selectedStatus, setSelectedStatus] = useState<Status | null>(
+    null
+  )
+
+  if (isMd) {
+    return (
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
+          <Button variant="outline" className="w-[150px] justify-start">
+            {selectedStatus ? <>{selectedStatus.label}</> : <>+ Set status</>}
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-[200px] p-0" align="start">
+          <StatusList setOpen={setOpen} setSelectedStatus={setSelectedStatus} />
+        </PopoverContent>
+      </Popover>
+    )
+  }
+
+  return (
+    <Drawer open={open} onOpenChange={setOpen}>
+      <DrawerTrigger asChild>
+        <Button variant="outline" className="w-[150px] justify-start">
+          {selectedStatus ? <>{selectedStatus.label}</> : <>+ Set status</>}
+        </Button>
+      </DrawerTrigger>
+      <DrawerContent>
+        <div className="mt-4 border-t">
+          <StatusList setOpen={setOpen} setSelectedStatus={setSelectedStatus} />
+        </div>
+      </DrawerContent>
+    </Drawer>
+  )
+}
+
+function StatusList({
+  setOpen,
+  setSelectedStatus,
+}: {
+  setOpen: (open: boolean) => void
+  setSelectedStatus: (status: Status | null) => void
+}) {
+  return (
+    <Command>
+      <CommandInput placeholder="Filter status..." />
+      <CommandList>
+        <CommandEmpty>No results found.</CommandEmpty>
+        <CommandGroup>
+          {statuses.map((status) => (
+            <CommandItem
+              key={status.value}
+              value={status.value}
+              onSelect={(value: string) => {
+                setSelectedStatus(
+                  statuses.find((priority) => priority.value === value) || null
+                )
+                setOpen(false)
+              }}
+            >
+              {status.label}
+            </CommandItem>
+          ))}
+        </CommandGroup>
+      </CommandList>
+    </Command>
+  )
+}
 
 export function LocationForm({
   localizationDetails,
@@ -52,7 +168,7 @@ export function LocationForm({
 
   const availableCountries = localization.availableCountries;
 
-  const redirectToCountry = (event: React.FormEvent<HTMLFormElement>) => {
+  const redirectToCountry = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     // track({
@@ -68,7 +184,7 @@ export function LocationForm({
       onSubmit={redirectToCountry}
       className={cn("flex flex-col gap-4 text-xs", className)}
     >
-      <SelectPrimitive.Root name="lang">
+      <SelectPrimitive.Root name="country">
         <SelectPrimitive.Trigger asChild>
           <button className="radix-state-open:bg-gray-50 dark:radix-state-open:bg-gray-900 radix-state-on:bg-gray-50 dark:radix-state-on:bg-gray-900 radix-state-instant-open:bg-gray-50 radix-state-delayed-open:bg-gray-50 group flex items-center justify-between border border-black px-4 py-2 text-gray-700 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-900">
             <SelectPrimitive.Value />

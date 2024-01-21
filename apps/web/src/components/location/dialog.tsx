@@ -1,7 +1,7 @@
 "use client";
 
 import { LoadingDots } from "@/components/loading/dots";
-import { LocationForm } from "@/components/location/form";
+import { LocationComboBoxResponsive } from "@/components/location/combobox-responsive";
 import { createIntl } from "@formatjs/intl";
 import { type ResultOf } from "@graphql-typed-document-node/core";
 import * as Dialog from "@radix-ui/react-dialog";
@@ -42,30 +42,8 @@ export function LocationDialog({
     () => {
       setOpen(true);
     },
-    hasCookie(COOKIE_LOCATION) ? undefined : 10_000,
+    hasCookie(COOKIE_LOCATION) ? undefined : 5_000,
   );
-
-  const acceptSelectedLocations = () => {
-    setOpen(false);
-
-    console.info("Granting selected locations");
-  };
-
-  const acceptAllLocations = () => {
-    setOpen(false);
-
-    console.info("Accepting all locations");
-  };
-
-  const denyAllAdditionalLocations = () => {
-    setOpen(false);
-
-    console.info("Denying all additional locations");
-  };
-
-  const manageLocations = () => {
-    console.info("Manage locations");
-  };
 
   const onClose = () => {
     track("location_close");
@@ -81,21 +59,13 @@ export function LocationDialog({
     console.info("Opening dialog");
   };
 
-  useTimeoutEffect(
-    () => {
-      setOpen(true);
-
-      console.info("Opening LocationDialog toast");
-    },
-    hasCookie(COOKIE_LOCATION) ? undefined : 10_000,
-  );
-
   return (
     <>
       <LocationButton
         className={className}
         dictionary={dictionary}
         lang={lang}
+        localizationDetails={localizationDetails}
         onClick={onOpen}
       />
       <Dialog.Root onOpenChange={setOpen} open={open}>
@@ -114,14 +84,10 @@ export function LocationDialog({
               })}
             </Dialog.Description>
             <Suspense fallback={<LoadingDots />}>
-              <LocationForm
-                acceptSelectedLocations={acceptSelectedLocations}
-                acceptAllLocations={acceptAllLocations}
-                denyAllAdditionalLocations={denyAllAdditionalLocations}
+              <LocationComboBoxResponsive
                 dictionary={dictionary}
-                localizationDetails={localizationDetails}
                 lang={lang}
-                manageLocations={manageLocations}
+                localizationDetails={localizationDetails}
               />
             </Suspense>
             <Dialog.Close asChild>

@@ -126,6 +126,14 @@
       "decrease": "Decrease item quantity",
       "increase": "Increase item quantity"
     },
+    "LocationComboBox": {
+      "StatusList": {
+        "enter-country-name": "Enter country name",
+        "no-results": "No results found",
+        "results": "Results",
+        "searching": "Searching..."
+      }
+    },
     "LocationDialog": {
       "close": "Close the location dialog",
       "description": "Choose your location to find products available in your region",
