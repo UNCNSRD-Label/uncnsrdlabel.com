@@ -53,6 +53,8 @@ export function LocationComboBoxResponsive({
 
   const router = useRouter();
 
+  const track = useTrack();
+
   const localization =
     use<ResultOf<typeof getLocalizationDetailsQuery>["localization"]>(
       localizationDetails,
@@ -112,9 +114,7 @@ export function LocationComboBoxResponsive({
             // @ts-expect-error Property 'getCanonicalLocales' does not exist on type 'typeof Intl'.
             const [canonicalLocale] = Intl.getCanonicalLocales(value);
 
-            if (canonicalLocale) {
-              lang = canonicalLocale;
-            }
+            track('change_locale', { locale: canonicalLocale });
 
             router.push(`/${canonicalLocale}`);
           }}
@@ -234,9 +234,7 @@ function StatusList({
               // @ts-expect-error Property 'getCanonicalLocales' does not exist on type 'typeof Intl'.
               const [canonicalLocale] = Intl.getCanonicalLocales(value);
 
-              if (canonicalLocale) {
-                lang = canonicalLocale;
-              }
+              track('change_locale', { locale: canonicalLocale });
 
               router.push(`/${canonicalLocale}`);
             }}
