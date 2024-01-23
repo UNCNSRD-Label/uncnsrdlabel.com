@@ -21136,7 +21136,7 @@ export type MarketWebPresence = Node & {
   /** The associated market. */
   market: Market;
   /**
-   * The list of root URLs for each of the web presence’s locales.
+   * The list of root URLs for each of the web presence’s locales. As of version `2024-04` this value will no longer have a trailing slash.
    *
    */
   rootUrls: Array<MarketWebPresenceRootUrl>;

@@ -18,7 +18,7 @@ export const cartFragment = graphql(/* GraphQL */ `
         currencyCode
       }
     }
-    lines(first: 100) {
+    lines(first: 64) {
       edges {
         node {
           cost {

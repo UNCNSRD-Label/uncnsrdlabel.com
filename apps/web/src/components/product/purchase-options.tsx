@@ -55,7 +55,7 @@ export const PurchaseOptions = ({
         dictionary={dictionary}
         lang={lang}
         options={product.options}
-        preOrder={!!preOrder}
+        preOrder={preOrder}
         variants={variants}
       />
     </>

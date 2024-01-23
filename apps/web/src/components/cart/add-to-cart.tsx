@@ -22,6 +22,7 @@ import {
   getShopifyGraphQL,
   type AddToCartMutationVariables,
   type CreateCartMutationVariables,
+  type SellingPlanGroup
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, getLangProperties } from "@uncnsrdlabel/lib";
 import { useSearchParams } from "next/navigation";
@@ -29,6 +30,10 @@ import { Suspense, Usable, use, useCallback } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
 import { toast } from "sonner";
 import { useTrack } from "use-analytics";
+
+type AddToCartContext = { id: number };
+
+type CreateCartContext = { id: number };
 
 function SubmitButton({
   availableForSale,
@@ -47,7 +52,7 @@ function SubmitButton({
   container?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
   lang: Intl.BCP47LanguageTag;
-  preOrder: boolean;
+  preOrder?: Partial<SellingPlanGroup>;
   selectedVariantId: string | undefined;
   size: ButtonProps["size"];
   variant: ButtonProps["variant"];
@@ -60,11 +65,15 @@ function SubmitButton({
     messages,
   });
 
+  const shopifyQueryClient = useQueryClient();
+
   const cartId = useSelector<string>(() => state$.cartId.get());
+
+  const track = useTrack();
 
   const { country } = getLangProperties(lang);
 
-  const shopifyQueryClient = useQueryClient();
+  const sellingPlanId = preOrder?.sellingPlans?.edges?.[0]?.node?.id ?? null;
 
   const addToCartMutationFn = (variables: AddToCartMutationVariables) => {
     return getShopifyGraphQL(addToCartMutation, variables);
@@ -72,10 +81,6 @@ function SubmitButton({
 
   const createCartMutationFn = (variables: CreateCartMutationVariables) =>
     getShopifyGraphQL(createCartMutation, variables);
-
-  type AddToCartContext = { id: number };
-
-  type CreateCartContext = { id: number };
 
   const invalidateQueries = () => {
     const queryKey = getQueryKey(getCartQuery, {
@@ -157,8 +162,6 @@ function SubmitButton({
     },
   });
 
-  const track = useTrack();
-
   const isPending = isPendingAddToCart || isPendingCreateCart;
 
   const isDisabled = isPending || !availableForSale || !selectedVariantId;
@@ -208,6 +211,7 @@ function SubmitButton({
       availableForSale,
       container,
       selectedVariantId,
+      sellingPlanId,
     });
   };
 
@@ -222,6 +226,7 @@ function SubmitButton({
       const payload = {
         merchandiseId: selectedVariantId,
         quantity: 1,
+        sellingPlanId
       } satisfies CartLineInput;
 
       if (cartId) {
@@ -304,7 +309,7 @@ export function AddToCart({
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
   lang: Intl.BCP47LanguageTag;
   options: ProductOption[];
-  preOrder: boolean;
+  preOrder?: Partial<SellingPlanGroup>;
   variants: Pick<ProductVariant, "id" | "selectedOptions">[];
   view?: "compact" | "standard";
 }) {
