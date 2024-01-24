@@ -1,5 +1,21 @@
 import { graphql } from "../codegen/index";
 
+export const getMetaObjectsQuery = graphql(/* GraphQL */ `
+query getMetaObjects($country: CountryCode, $type: String!, $language: LanguageCode) @inContext(country: $country, language: $language) {
+  metaobjects(first: 64, type: $type) {
+    edges {
+      node {
+        id
+        fields {
+          key
+          value
+        }
+      }
+    }
+  }
+}
+`);
+
 export const getRouteMetaObjectQuery = graphql(/* GraphQL */ `
   query getRouteMetaObject(
     $country: CountryCode

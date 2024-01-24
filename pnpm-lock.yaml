@@ -143,6 +143,9 @@ importers:
       '@tanstack/react-query-devtools':
         specifier: ^5.17.18
         version: 5.17.18(@tanstack/react-query@5.17.15)(react@0.0.0-experimental-feed8f3f9-20240118)
+      '@thebeyondgroup/shopify-rich-text-renderer':
+        specifier: ^1.0.0
+        version: 1.0.0
       '@uncnsrdlabel/components':
         specifier: workspace:*
         version: link:../../packages/@uncnsrdlabel/components
@@ -5962,6 +5965,10 @@ packages:
 
   /@tanstack/virtual-core@3.0.0:
     resolution: {integrity: sha512-SYXOBTjJb05rXa2vl55TTwO40A6wKu0R5i1qQwhJYNDIqaIGF7D0HsLw+pJAyi2OvntlEIVusx3xtbbgSUi6zg==}
+    dev: false
+
+  /@thebeyondgroup/shopify-rich-text-renderer@1.0.0:
+    resolution: {integrity: sha512-7NChTgzGB4LPf8Gk0RgtGdEr0yuSZ/wfCLHQ9UfIIcL7tcq+Q9joX4GL24RZGEOPNoYVcVtBq6NA77jckYg56g==}
     dev: false
 
   /@tootallnate/quickjs-emscripten@0.23.0:
