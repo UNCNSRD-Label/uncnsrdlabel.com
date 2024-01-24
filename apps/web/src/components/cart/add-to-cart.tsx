@@ -45,7 +45,6 @@ function SubmitButton({
   selectedVariantId,
   size,
   variant,
-  view = "standard",
 }: {
   availableForSale: boolean;
   className?: string;
@@ -56,7 +55,6 @@ function SubmitButton({
   selectedVariantId: string | undefined;
   size: ButtonProps["size"];
   variant: ButtonProps["variant"];
-  view?: "compact" | "standard";
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
@@ -260,7 +258,6 @@ function SubmitButton({
         {
           "hover:opacity-90": true,
           "cursor-not-allowed opacity-60 hover:opacity-60": isDisabled,
-          "justify-center": view === "standard",
         },
         className,
       )}
@@ -269,13 +266,13 @@ function SubmitButton({
       variant={variant}
     >
       {isSuccess ? (
-        <CheckIcon className="ml-6 h-5 w-6" />
+        <CheckIcon className="h-5 w-6" />
       ) : preOrder ? (
-        <ClockIcon className="ml-6 h-5 w-6" />
+        <ClockIcon className="h-5 w-6" />
       ) : isPending ? (
         <LoadingDots className="h-2 w-6" />
       ) : (
-        <PlusIcon className="ml-6 h-5 w-6" />
+        <PlusIcon className="h-5 w-6" />
       )}
       {label}
       <span aria-live="polite" className="sr-only" role="status">
@@ -336,7 +333,7 @@ export function AddToCart({
 
   const selectedVariantId = selectedVariant?.id;
 
-  const size = view === "compact" ? undefined : "lg";
+  const size = view === "compact" ? "sm" : "lg";
 
   const variant = view === "compact" ? "ghost" : undefined;
 
@@ -375,7 +372,6 @@ export function AddToCart({
         selectedVariantId={selectedVariantId}
         size={size}
         variant={variant}
-        view={view}
       />
     </Suspense>
   );
