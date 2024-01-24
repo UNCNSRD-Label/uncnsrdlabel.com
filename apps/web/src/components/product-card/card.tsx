@@ -8,6 +8,7 @@ import {
   productDetailsFragment,
   productVariantConnectionFragment,
   type FragmentType,
+  type SellingPlanGroup,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { Product as ProductSchema, WithContext } from "schema-dts";
@@ -97,7 +98,7 @@ export function ProductCard({
           />
         </figure>
 
-        <div className={className}>
+        <div className="flex flex-col gap-4 justify-end">
           <h3
             data-testid="product-name"
             className="box-decoration-clone text-sm"
@@ -105,7 +106,7 @@ export function ProductCard({
             {product.title}
           </h3>
           <PriceAndCompareAtPrice
-            className="text-xs font-semibold mb-4"
+            className="text-xs font-semibold"
             lang={lang}
             productDetailsFragmentRef={productDetailsFragmentRef}
           />
@@ -114,11 +115,12 @@ export function ProductCard({
           /> */}
           <AddToCart
             availableForSale={product.availableForSale}
+            className="px-0"
             container="ProductCard"
             dictionary={dictionary}
             lang={lang}
             options={product.options}
-            preOrder={!!preOrder}
+            preOrder={preOrder as Partial<SellingPlanGroup> | undefined}
             variants={variants}
             view="compact"
           />

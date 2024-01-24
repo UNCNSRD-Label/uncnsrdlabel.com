@@ -6,6 +6,7 @@ import {
   productDetailsFragment,
   productVariantConnectionFragment,
   type FragmentType,
+  type SellingPlanGroup,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Usable } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
@@ -55,7 +56,7 @@ export const PurchaseOptions = ({
         dictionary={dictionary}
         lang={lang}
         options={product.options}
-        preOrder={!!preOrder}
+        preOrder={preOrder as Partial<SellingPlanGroup> | undefined}
         variants={variants}
       />
     </>

@@ -22,6 +22,7 @@ import {
   getShopifyGraphQL,
   type AddToCartMutationVariables,
   type CreateCartMutationVariables,
+  type SellingPlanGroup
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, getLangProperties } from "@uncnsrdlabel/lib";
 import { useSearchParams } from "next/navigation";
@@ -29,6 +30,10 @@ import { Suspense, Usable, use, useCallback } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
 import { toast } from "sonner";
 import { useTrack } from "use-analytics";
+
+type AddToCartContext = { id: number };
+
+type CreateCartContext = { id: number };
 
 function SubmitButton({
   availableForSale,
@@ -40,18 +45,16 @@ function SubmitButton({
   selectedVariantId,
   size,
   variant,
-  view = "standard",
 }: {
   availableForSale: boolean;
   className?: string;
   container?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
   lang: Intl.BCP47LanguageTag;
-  preOrder: boolean;
+  preOrder?: Partial<SellingPlanGroup>;
   selectedVariantId: string | undefined;
   size: ButtonProps["size"];
   variant: ButtonProps["variant"];
-  view?: "compact" | "standard";
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
@@ -60,11 +63,15 @@ function SubmitButton({
     messages,
   });
 
+  const shopifyQueryClient = useQueryClient();
+
   const cartId = useSelector<string>(() => state$.cartId.get());
+
+  const track = useTrack();
 
   const { country } = getLangProperties(lang);
 
-  const shopifyQueryClient = useQueryClient();
+  const sellingPlanId = preOrder?.sellingPlans?.edges?.[0]?.node?.id ?? null;
 
   const addToCartMutationFn = (variables: AddToCartMutationVariables) => {
     return getShopifyGraphQL(addToCartMutation, variables);
@@ -72,10 +79,6 @@ function SubmitButton({
 
   const createCartMutationFn = (variables: CreateCartMutationVariables) =>
     getShopifyGraphQL(createCartMutation, variables);
-
-  type AddToCartContext = { id: number };
-
-  type CreateCartContext = { id: number };
 
   const invalidateQueries = () => {
     const queryKey = getQueryKey(getCartQuery, {
@@ -157,8 +160,6 @@ function SubmitButton({
     },
   });
 
-  const track = useTrack();
-
   const isPending = isPendingAddToCart || isPendingCreateCart;
 
   const isDisabled = isPending || !availableForSale || !selectedVariantId;
@@ -208,6 +209,7 @@ function SubmitButton({
       availableForSale,
       container,
       selectedVariantId,
+      sellingPlanId,
     });
   };
 
@@ -222,6 +224,7 @@ function SubmitButton({
       const payload = {
         merchandiseId: selectedVariantId,
         quantity: 1,
+        sellingPlanId
       } satisfies CartLineInput;
 
       if (cartId) {
@@ -255,7 +258,6 @@ function SubmitButton({
         {
           "hover:opacity-90": true,
           "cursor-not-allowed opacity-60 hover:opacity-60": isDisabled,
-          "justify-center": view === "standard",
         },
         className,
       )}
@@ -264,13 +266,13 @@ function SubmitButton({
       variant={variant}
     >
       {isSuccess ? (
-        <CheckIcon className="ml-6 h-5 w-6" />
+        <CheckIcon className="h-5 w-6" />
       ) : preOrder ? (
-        <ClockIcon className="ml-6 h-5 w-6" />
+        <ClockIcon className="h-5 w-6" />
       ) : isPending ? (
         <LoadingDots className="h-2 w-6" />
       ) : (
-        <PlusIcon className="ml-6 h-5 w-6" />
+        <PlusIcon className="h-5 w-6" />
       )}
       {label}
       <span aria-live="polite" className="sr-only" role="status">
@@ -304,7 +306,7 @@ export function AddToCart({
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
   lang: Intl.BCP47LanguageTag;
   options: ProductOption[];
-  preOrder: boolean;
+  preOrder?: Partial<SellingPlanGroup>;
   variants: Pick<ProductVariant, "id" | "selectedOptions">[];
   view?: "compact" | "standard";
 }) {
@@ -331,7 +333,7 @@ export function AddToCart({
 
   const selectedVariantId = selectedVariant?.id;
 
-  const size = view === "compact" ? undefined : "lg";
+  const size = view === "compact" ? "sm" : "lg";
 
   const variant = view === "compact" ? "ghost" : undefined;
 
@@ -370,7 +372,6 @@ export function AddToCart({
         selectedVariantId={selectedVariantId}
         size={size}
         variant={variant}
-        view={view}
       />
     </Suspense>
   );
