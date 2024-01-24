@@ -44,7 +44,7 @@ export const PriceAndCompareAtPrice = ({
     >
       <Price
         amount={product.priceRange.minVariantPrice.amount}
-        className={cn("font-semibold", {
+        className={cn({
           "text-red-600": product.compareAtPriceRange?.minVariantPrice.amount > product.priceRange?.minVariantPrice.amount,
         })}
         currencyCode={product.priceRange.minVariantPrice.currencyCode}

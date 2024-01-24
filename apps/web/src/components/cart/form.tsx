@@ -113,7 +113,7 @@ export function CartForm({
                   key={i}
                   className="flex w-full flex-col border-b border-neutral-300 dark:border-neutral-700"
                 >
-                  <div className="relative flex w-full flex-row justify-between px-1 py-4">
+                  <div className="relative flex gap-4 w-full flex-row justify-between px-1 py-4">
                     <div className="absolute z-40 -mt-2 ml-[55px] self-start">
                       <DeleteItemButton
                         cartId={cartId}
@@ -138,13 +138,15 @@ export function CartForm({
                         )}
                       </figure>
 
-                      <div className="flex flex-1 flex-col gap-4 text-sm">
-                        <span className="leading-tight">{product.title}</span>
-                        {item.merchandise.title !== DEFAULT_OPTION ? (
-                          <span className="text-sm">
-                            {item.merchandise.title}
-                          </span>
-                        ) : null}
+                      <div className="flex flex-1 flex-col gap-4 text-sm justify-between">
+                        <div className="flex flex-col gap-2">
+                          <span className="leading-tight">{product.title}</span>
+                          {item.merchandise.title !== DEFAULT_OPTION ? (
+                            <span className="text-xs">
+                              {item.merchandise.title}
+                            </span>
+                          ) : null}
+                        </div>
                         <Price
                           amount={item.cost.totalAmount.amount}
                           className="text-xs"
@@ -214,7 +216,7 @@ export function CartForm({
             })}
           </ul>
 
-          <div className="my-4 flex flex-col">
+          <div className="my-4 flex flex-col border-t border-neutral-200 pb-1 pt-1 dark:border-neutral-700">
             <AddPremiumPackaging className="grid-cols-2" lang={lang} />
           </div>
 

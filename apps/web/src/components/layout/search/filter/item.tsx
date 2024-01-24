@@ -3,8 +3,8 @@
 import { ResultOf } from "@graphql-typed-document-node/core";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
-  ProductCollectionSortFilterItem,
-  collectionFragment,
+    ProductCollectionSortFilterItem,
+    collectionFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, createUrl } from "@uncnsrdlabel/lib";
 import { usePathname, useSearchParams } from "next/navigation";
@@ -32,7 +32,7 @@ function PathFilterItem({
       <Link
         className={cn("w-full hover:text-gray-800 dark:hover:text-gray-100", {
           "text-gray-600 dark:text-gray-400": !active,
-          "text-dark dark:text-light font-semibold": active,
+          "text-dark dark:text-light font-bold": active,
         })}
         href={createUrl(path, newParams)}
       >
@@ -68,7 +68,7 @@ function SortFilterItem({ item }: { item: ProductCollectionSortFilterItem }) {
       <Link
         className={cn("w-full hover:text-gray-800 dark:hover:text-gray-100", {
           "text-gray-600 dark:text-gray-400": !active,
-          "text-dark dark:text-light font-semibold": active,
+          "text-dark dark:text-light font-bold": active,
         })}
         href={href}
         prefetch={false}

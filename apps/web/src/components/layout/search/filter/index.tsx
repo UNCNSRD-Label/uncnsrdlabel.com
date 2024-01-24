@@ -2,8 +2,8 @@ import { FilterItemDropdown } from "@/components/layout/search/filter/dropdown";
 import { FilterItem } from "@/components/layout/search/filter/item";
 import { ResultOf } from "@graphql-typed-document-node/core";
 import {
-  ProductCollectionSortFilterItem,
-  collectionFragment,
+    ProductCollectionSortFilterItem,
+    collectionFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { Suspense } from "react";
@@ -51,7 +51,7 @@ export function FilterList({
     <>
       <nav className={cn("uppercase", className)}>
         {title ? (
-          <h3 className="text-dark dark:text-light hidden font-semibold md:block">
+          <h3 className="text-dark dark:text-light hidden font-bold md:block">
             {title}
           </h3>
         ) : null}
