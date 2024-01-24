@@ -18,7 +18,7 @@ import {
 import { AppProviders } from "@uncnsrdlabel/providers";
 import { config } from "@uncnsrdlabel/tailwind-config";
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Lato, Montserrat } from "next/font/google";
 import localFont from "next/font/local";
 import { PropsWithChildren, Suspense } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
@@ -87,11 +87,18 @@ const bomberEscortOutline = localFont({
   weight: "400",
 });
 
+const lato = Lato({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-lato",
+  weight: ["300", "400", "700"],
+});
+
 const montserrat = Montserrat({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-montserrat",
-  weight: "300",
+  weight: ["300", "400", "600", "700"],
 });
 
 export const viewport = {
@@ -120,6 +127,7 @@ export default async function RootLayout({
       className={cn(
         bomberEscort.variable,
         bomberEscortOutline.variable,
+        lato.variable,
         montserrat.variable,
       )}
       lang={lang}

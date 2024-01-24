@@ -14,7 +14,7 @@ export const Price = ({
   lang: Intl.BCP47LanguageTag;
 } & React.ComponentProps<"p">) => {
   return (
-    <span className={className}>
+    <span className={cn(className)}>
       {`${new Intl.NumberFormat(lang, {
         style: "currency",
         currency: currencyCode,

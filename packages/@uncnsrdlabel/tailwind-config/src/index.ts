@@ -55,6 +55,7 @@ export const config: Config = {
       fontFamily: {
         brand: ["var(--font-bomber-escort)"],
         sans: ["var(--font-montserrat)"],
+        serif: ["var(--font-lato)"],
       },
       fontSize: {
         xxs: [

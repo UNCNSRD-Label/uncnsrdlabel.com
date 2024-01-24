@@ -62,7 +62,7 @@ export async function Footer({ lang }: { lang: Intl.BCP47LanguageTag }) {
                 <dd className="flex flex-col">
                   <ConsentTrigger className={linkClassName} lang={lang} />
                 </dd>
-                <dt className="md:mt-4 text-sm uppercase">
+                <dt className="mt-4 text-sm uppercase">
                   {intl.formatMessage({
                     id: "global.footer.menu.location-settings",
                   })}

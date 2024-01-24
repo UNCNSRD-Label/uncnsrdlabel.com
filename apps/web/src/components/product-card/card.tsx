@@ -98,7 +98,8 @@ export function ProductCard({
           />
         </figure>
 
-        <div className="flex flex-col gap-4 justify-end">
+        <div className="flex flex-col gap-4 pt-4 justify-between">
+        <div className="flex flex-col gap-4">
           <h3
             data-testid="product-name"
             className="box-decoration-clone text-sm"
@@ -106,13 +107,11 @@ export function ProductCard({
             {product.title}
           </h3>
           <PriceAndCompareAtPrice
-            className="text-xs font-semibold"
+            className="text-xs"
             lang={lang}
             productDetailsFragmentRef={productDetailsFragmentRef}
           />
-          {/* <PurchaseOptions
-            product={product}
-          /> */}
+          </div>
           <AddToCart
             availableForSale={product.availableForSale}
             className="px-0"
