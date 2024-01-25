@@ -1,4 +1,3 @@
-import { getInContextVariables } from "@uncnsrdlabel/lib";
 import { CollectionFragment } from "./codegen/graphql";
 import { getFragmentData } from "./codegen/index";
 import { domain } from "./constants";
@@ -13,6 +12,7 @@ import {
   getCollectionQuery,
   getCollectionsQuery,
 } from "./queries/collection";
+import { getInContextVariables } from "./utilities";
 // import { collectionFragment } from "./fragments/collection";
 import {
   AddToCartMutationVariables,
@@ -162,7 +162,6 @@ export async function getCollectionHandler({ variables, lang }: {
 
   const { collection: collectionFragmentRef } = await getShopifyGraphQL(
     getCollectionQuery,
-    // @ts-expect-error Types of property 'country' are incompatible.
     { ...inContextVariables, ...variables },
   );
 
@@ -186,7 +185,6 @@ export async function getCollectionProductsHandler({ variables, lang }: {
 
   const inContextVariables = getInContextVariables(lang);
 
-  // @ts-expect-error Types of property 'country' are incompatible.
   const { collection } = await getShopifyGraphQL(getCollectionProductsQuery, {
     ...inContextVariables,
     ...variables,
@@ -215,7 +213,6 @@ export async function getCollectionRefsHandler({ variables, lang }: {
   const inContextVariables = getInContextVariables(lang);
 
   const { collections: shopifyCollectionConnection } =
-    // @ts-expect-error Types of property 'country' are incompatible.
     await getShopifyGraphQL(getCollectionsQuery, {
       ...inContextVariables,
       ...variables,
@@ -257,7 +254,6 @@ export async function getRouteMetaObjectHandler({ variables, lang }: {
 
   const { metaobject } = await getShopifyGraphQL(
     getRouteMetaObjectQuery,
-    // @ts-expect-error Types of property 'country' are incompatible.
     { ...inContextVariables, ...variables }
   );
 
@@ -281,7 +277,6 @@ export async function getMenuHandler({ variables, lang }: {
 
   const inContextVariables = getInContextVariables(lang);
 
-  // @ts-expect-error Types of property 'country' are incompatible.
   const { menu } = await getShopifyGraphQL(getMenuQuery, {
     ...inContextVariables,
     ...variables,
@@ -318,7 +313,6 @@ export async function getPageHandler({ variables, lang }: {
 
   const { page: pageFragmentRef } = await getShopifyGraphQL(
     getPageQuery,
-    // @ts-expect-error Types of property 'country' are incompatible.
     { ...inContextVariables, ...variables },
   );
 
@@ -342,7 +336,6 @@ export async function getPagesHandler({ variables, lang }: {
 
   const inContextVariables = getInContextVariables(lang);
 
-  // @ts-expect-error Types of property 'country' are incompatible.
   const { pages } = await getShopifyGraphQL(getPagesQuery, {
     ...inContextVariables,
     ...variables,
@@ -365,7 +358,6 @@ export async function getShopDetailsHandler({ lang }: {
 
   const { shop } = await getShopifyGraphQL(
     getShopDetailsQuery,
-    // @ts-expect-error Types of property 'country' are incompatible.
     inContextVariables,
   );
 
@@ -390,7 +382,6 @@ export async function getLocalizationDetailsHandler({ lang }: {
 
   const { localization } = await getShopifyGraphQL(
     getLocalizationDetailsQuery,
-    // @ts-expect-error Types of property 'country' are incompatible.
     inContextVariables,
   );
 
@@ -408,7 +399,6 @@ export async function getShopPoliciesHandler({ lang }: {
 
   const { shop } = await getShopifyGraphQL(
     getShopPoliciesQuery,
-    // @ts-expect-error Types of property 'country' are incompatible.
     inContextVariables,
   );
 
@@ -434,7 +424,6 @@ export async function getProductBasicHandler({ variables, lang }: {
 
   const { product: productBasicFragmentRef } = await getShopifyGraphQL(
     getProductBasicQuery,
-    // @ts-expect-error Types of property 'country' are incompatible.
     { ...inContextVariables, ...variables },
   );
 
@@ -449,7 +438,7 @@ export async function getProductBasicHandler({ variables, lang }: {
 }
 
 export async function getProductDetailsByHandleHandler({ variables, lang }: {
-  variables: GetProductDetailsByHandleQueryVariables,
+  variables: Omit<GetProductDetailsByHandleQueryVariables, "country" | "language">,
   lang: Intl.BCP47LanguageTag,
 }) {
   if (!lang) {
@@ -460,7 +449,6 @@ export async function getProductDetailsByHandleHandler({ variables, lang }: {
 
   const { product: productDetailsFragmentRef } = await getShopifyGraphQL(
     getProductDetailsByHandleQuery,
-    // @ts-expect-error Types of property 'country' are incompatible.
     { ...inContextVariables, ...variables },
   );
 
@@ -486,7 +474,6 @@ export async function getProductDetailsByIdHandler({ variables, lang }: {
 
   const { product: productDetailsFragmentRef } = await getShopifyGraphQL(
     getProductDetailsByIdQuery,
-    // @ts-expect-error Types of property 'country' are incompatible.
     { ...inContextVariables, ...variables },
   );
 
@@ -513,7 +500,6 @@ export async function getProductRecommendationsHandler({ variables, lang }: {
   const { productRecommendations: productRecommendationRefs } =
     await getShopifyGraphQL(
       getProductRecommendationsQuery,
-      // @ts-expect-error Types of property 'country' are incompatible.
       { ...inContextVariables, ...variables },
     );
 
@@ -539,7 +525,6 @@ export async function getProductsHandler({ variables, lang }: {
 
   const { products } = await getShopifyGraphQL(
     getProductsQuery,
-    // @ts-expect-error Types of property 'country' are incompatible.
     { ...inContextVariables, ...variables }
   );
 
@@ -565,7 +550,6 @@ export async function getProductsWithVariantsHandler({ variables, lang }: {
 
   const { products } = await getShopifyGraphQL(
     getProductsWithVariantsQuery,
-    // @ts-expect-error Types of property 'country' are incompatible.
     { ...inContextVariables, ...variables }
   );
 

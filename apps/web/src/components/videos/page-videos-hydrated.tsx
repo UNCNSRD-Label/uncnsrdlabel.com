@@ -5,12 +5,12 @@
 import { VideosHydrated } from "@/components/page/videos/videos-hydrated";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import {
+  getInContextVariables,
   getPageQuery,
   getQueryKey,
   getShopifyGraphQL,
   getShopifyQueryClient,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { getInContextVariables } from "@uncnsrdlabel/lib";
 
 // TODO: Change to videosHydrated and pass query and variables (handle) in props
 export async function PageVideosHydrated({

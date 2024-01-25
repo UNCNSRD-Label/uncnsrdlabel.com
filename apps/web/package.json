@@ -33,6 +33,7 @@
     "@shopify/hydrogen-react": "^2023.10.1",
     "@tanstack/react-query": "^5.17.15",
     "@tanstack/react-query-devtools": "^5.17.18",
+    "@thebeyondgroup/shopify-rich-text-renderer": "^1.0.0",
     "@uncnsrdlabel/components": "workspace:*",
     "@uncnsrdlabel/graphql-hygraph": "workspace:*",
     "@uncnsrdlabel/graphql-shopify-admin": "workspace:*",

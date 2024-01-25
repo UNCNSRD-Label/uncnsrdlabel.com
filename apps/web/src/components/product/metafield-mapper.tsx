@@ -8,12 +8,12 @@ import {
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   getFragmentData,
+  getInContextVariables,
   getProductDetailsByIdQuery,
   getShopifyGraphQL,
   productDetailsFragment,
   productMetafieldFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { getInContextVariables } from "@uncnsrdlabel/lib";
 import { Fragment, ReactNode } from "react";
 import slugify from "slugify";
 import { JsonValue } from "type-fest";
@@ -154,7 +154,6 @@ export async function MetafieldMapper({
               const { product: productDetailsFragmentRef } =
                 await getShopifyGraphQL(
                   getProductDetailsByIdQuery,
-                  // @ts-expect-error Types of property 'country' are incompatible.
                   { ...inContextVariables, ...variables },
                 );
 

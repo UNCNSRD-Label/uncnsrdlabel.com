@@ -111,7 +111,6 @@ export function LocationComboBoxResponsive({
           onValueChange={(value) => {
             setOpen(false);
 
-            // @ts-expect-error Property 'getCanonicalLocales' does not exist on type 'typeof Intl'.
             const [canonicalLocale] = Intl.getCanonicalLocales(value);
 
             track('change_locale', { locale: canonicalLocale });
@@ -231,7 +230,6 @@ function StatusList({
             onSelect={(value) => {
               setOpen(false);
 
-              // @ts-expect-error Property 'getCanonicalLocales' does not exist on type 'typeof Intl'.
               const [canonicalLocale] = Intl.getCanonicalLocales(value);
 
               track('change_locale', { locale: canonicalLocale });

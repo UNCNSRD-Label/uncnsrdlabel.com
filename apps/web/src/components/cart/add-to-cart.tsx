@@ -18,13 +18,14 @@ import {
   createCartMutation,
   getCartQuery,
   getFragmentData,
+  getInContextVariables,
   getQueryKey,
   getShopifyGraphQL,
   type AddToCartMutationVariables,
   type CreateCartMutationVariables,
   type SellingPlanGroup
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { cn, getLangProperties } from "@uncnsrdlabel/lib";
+import { cn } from "@uncnsrdlabel/lib";
 import { useSearchParams } from "next/navigation";
 import { Suspense, Usable, use, useCallback } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
@@ -69,7 +70,7 @@ function SubmitButton({
 
   const track = useTrack();
 
-  const { country } = getLangProperties(lang);
+  const { country } = getInContextVariables(lang);
 
   const sellingPlanId = preOrder?.sellingPlans?.edges?.[0]?.node?.id ?? null;
 
@@ -236,7 +237,6 @@ function SubmitButton({
         mutateCreateCart({
           input: {
             buyerIdentity: {
-              // @ts-expect-error Type 'CountryCode' is not assignable to type 'InputMaybe<CountryCode> | undefined'.
               countryCode: country,
             },
             lines: [payload],

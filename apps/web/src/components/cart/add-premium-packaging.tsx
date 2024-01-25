@@ -2,10 +2,10 @@
 
 import { ProductCard } from "@/components/product-card/card";
 import {
-  getProductDetailsByHandleQuery,
-  useGetShopifyGraphQL,
+    getInContextVariables,
+    getProductDetailsByHandleQuery,
+    useGetShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { getInContextVariables } from "@uncnsrdlabel/lib";
 
 export function AddPremiumPackaging({
   className,
@@ -22,7 +22,6 @@ export function AddPremiumPackaging({
 
   const { data, error, isError, isLoading } = useGetShopifyGraphQL(
     getProductDetailsByHandleQuery,
-    // @ts-expect-error Types of property 'country' are incompatible.
     { ...inContextVariables, ...variables },
   );
 
