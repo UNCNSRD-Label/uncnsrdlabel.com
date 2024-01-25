@@ -18,7 +18,6 @@ export default async function NotFound() {
 
   if (acceptLanguageCodes) {
     for (const acceptLanguageCode of acceptLanguageCodes) {
-      // @ts-expect-error Property 'getCanonicalLocales' does not exist on type 'typeof Intl'.
       const [canonicalLocale] = Intl.getCanonicalLocales(acceptLanguageCode);
   
       if (canonicalLocale) {

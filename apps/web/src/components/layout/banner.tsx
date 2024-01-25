@@ -6,12 +6,13 @@ import {
   getShopifyGraphQL as getShopifyAdminGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-admin";
 import {
+  getInContextVariables,
   // TODO: Implement getFragmentData as a global lib function
   // getFragmentDataStorefront,
   getMetaObjectsQuery,
   getShopifyGraphQL as getShopifyStorefrontGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { cn, getInContextVariables } from "@uncnsrdlabel/lib";
+import { cn } from "@uncnsrdlabel/lib";
 import { use } from "react";
 
 export const Banner = ({
@@ -55,7 +56,6 @@ export const Banner = ({
 
   const { metaobjects } = use(
     getShopifyStorefrontGraphQL(getMetaObjectsQuery, {
-      // @ts-expect-error Types of property 'country' are incompatible.
       ...inContextVariables,
       type: "Banner",
     }),

@@ -1,7 +1,6 @@
 import {
   type CountryCode,
-  type InputMaybe,
-  type LanguageCode,
+  type LanguageCode
 } from "@shopify/hydrogen-react/storefront-api-types";
 import { useParams } from "next/navigation";
 
@@ -15,7 +14,10 @@ export function getLocaleObjectFromIETFLanguageTag(
   return new Intl.Locale(lang);
 }
 
-export function getLangProperties(lang: Intl.BCP47LanguageTag = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag) {
+export function getLangProperties(lang: Intl.BCP47LanguageTag = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag): {
+  country: CountryCode | undefined,
+  language: LanguageCode | undefined,
+} {
   // @ts-expect-error Property 'getCanonicalLocales' does not exist on type 'typeof Intl'.
   const [canonicalLocale] = Intl.getCanonicalLocales(lang)
 
@@ -25,23 +27,6 @@ export function getLangProperties(lang: Intl.BCP47LanguageTag = process.env.NEXT
 
   const language =
     locale.language.toLocaleUpperCase() as LanguageCode;
-
-  return {
-    country,
-    language,
-  };
-};
-
-export function getInContextVariables(lang: Intl.BCP47LanguageTag = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag) {
-  // @ts-expect-error Property 'getCanonicalLocales' does not exist on type 'typeof Intl'.
-  const [canonicalLocale] = Intl.getCanonicalLocales(lang)
-
-  const locale = new Intl.Locale(canonicalLocale);
-
-  const country = locale.region as InputMaybe<CountryCode>;
-
-  const language =
-    locale.language.toLocaleUpperCase() as InputMaybe<LanguageCode>;
 
   return {
     country,

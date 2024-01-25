@@ -236,7 +236,6 @@ function SubmitButton({
         mutateCreateCart({
           input: {
             buyerIdentity: {
-              // @ts-expect-error Type 'CountryCode' is not assignable to type 'InputMaybe<CountryCode> | undefined'.
               countryCode: country,
             },
             lines: [payload],

@@ -1,7 +1,7 @@
 import {
   type CountryCode,
   type LanguageCode,
-} from "@shopify/hydrogen-react/storefront-api-types";
+} from "./codegen/graphql";
 
 export type PolicyName =
   | "privacyPolicy"
