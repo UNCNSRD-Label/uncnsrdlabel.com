@@ -15,18 +15,12 @@ import {
 import { cn } from "@uncnsrdlabel/lib";
 import { use } from "react";
 
-export const Banner = ({
-  className,
-  lang,
-}: {
-  className?: string;
-  lang: Intl.BCP47LanguageTag;
-}) => {
+const getDiscountNode = ({ lang }: { lang: Intl.BCP47LanguageTag }) => {
+  let markup = null;
+
   const bannerPrefix = "Banner|";
 
   const bannerPrefixForLang = `${bannerPrefix}${lang}|`;
-
-  const inContextVariables = getInContextVariables(lang);
 
   const variables = {
     first: 64,
@@ -54,31 +48,6 @@ export const Banner = ({
     discountNode?.discount.title.startsWith(bannerPrefixForLang);
   });
 
-  const { metaobjects } = use(
-    getShopifyStorefrontGraphQL(getMetaObjectsQuery, {
-      ...inContextVariables,
-      type: "Banner",
-    }),
-  );
-
-  const metaobjectList = metaobjects?.edges?.map((edge) => edge.node);
-
-  const metaobject = metaobjectList?.find((metaobject) => {
-    const langField = metaobject?.fields.find(({ key }) => key === "lang");
-
-    if (langField?.value && lang.startsWith(langField?.value)) {
-      return metaobject;
-    }
-
-    return null;
-  });
-
-  if (!discountNode && !metaobject) {
-    return null;
-  }
-
-  let markup = null;
-
   switch (discountNode?.discount.__typename) {
     case "DiscountCodeBasic":
       markup = (
@@ -101,26 +70,79 @@ export const Banner = ({
       );
   }
 
-  if (metaobject) {
-    const richTextSchema = metaobject?.fields.find(
-      ({ key }) => key === "text",
-    )?.value;
+  return markup;
+}
 
-    if (!richTextSchema) {
-      return null;
+const getMetaobject = ({ lang }: { lang: Intl.BCP47LanguageTag }) => {
+  let markup = null;
+
+  const inContextVariables = getInContextVariables(lang);
+
+  const { metaobjects } = use(
+    getShopifyStorefrontGraphQL(getMetaObjectsQuery, {
+      ...inContextVariables,
+      type: "Banner",
+    }),
+  );
+
+  const metaobjectList = metaobjects?.edges?.map((edge) => edge.node);
+
+  const metaobject = metaobjectList?.find((metaobject) => {
+    const langField = metaobject?.fields.find(({ key }) => key === "lang");
+
+    if (langField?.value && lang.startsWith(langField?.value)) {
+      return metaobject;
     }
 
-    const richTextResponse = convertSchemaToHtml(richTextSchema);
+    return null;
+  });
 
-    markup = (
-      <span
-        data-id={metaobject.id}
-        data-type="MetaObject"
-        dangerouslySetInnerHTML={{
-          __html: richTextResponse,
-        }}
-      />
-    );
+  const richTextSchema = metaobject?.fields.find(
+    ({ key }) => key === "text",
+  )?.value;
+
+  if (!richTextSchema) {
+    return null;
+  }
+
+  const richTextResponse = convertSchemaToHtml(richTextSchema);
+
+  markup = (
+    <span
+      data-id={metaobject.id}
+      data-type="MetaObject"
+      dangerouslySetInnerHTML={{
+        __html: richTextResponse,
+      }}
+    />
+  );
+
+  return markup;
+};
+
+export const Banner = ({
+  className,
+  lang,
+}: {
+  className?: string;
+  lang: Intl.BCP47LanguageTag;
+}) => {
+  const discountNode = getDiscountNode({ lang });
+
+  const metaobject = getMetaobject({ lang });
+
+  let markup = null;
+
+  if (discountNode) {
+    markup = discountNode;
+  }
+
+  if (metaobject) {
+    markup = metaobject;
+  }
+
+  if (!markup) {
+    return null;
   }
 
   return (

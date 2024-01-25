@@ -254,9 +254,8 @@ function SubmitButton({
       aria-label={label}
       aria-disabled={isDisabled}
       className={cn(
-        "relative flex w-full gap-2 md:gap-4",
+        "relative flex w-full gap-2 md:gap-4 text-xs sm:text-sm",
         {
-          "hover:opacity-90": true,
           "cursor-not-allowed opacity-60 hover:opacity-60": isDisabled,
         },
         className,

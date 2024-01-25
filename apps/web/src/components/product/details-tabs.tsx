@@ -1,10 +1,10 @@
 import { MetafieldMapper } from "@/components/product/metafield-mapper";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@uncnsrdlabel/components/atoms/tabs";
 import {
-    getFragmentData,
-    productDetailsFragment,
-    productMetafieldFragment,
-    type FragmentType,
+  getFragmentData,
+  productDetailsFragment,
+  productMetafieldFragment,
+  type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 
@@ -50,7 +50,8 @@ export function ProductDetailsTabs({
       className={cn("w-full", className)}
       defaultValue={defaultValue}
     >
-      <TabsList className="">
+      {/* var(--tw-prose-td-borders) #e5e7eb */}
+      <TabsList className="border-b border-neutral-200">
         {metafieldFragmentsFiltered.map((metafield) => (
           <TabsTrigger
             className="data-[state=active]:text-hotPink"
