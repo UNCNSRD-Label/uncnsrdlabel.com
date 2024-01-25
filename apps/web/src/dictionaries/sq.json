@@ -11,6 +11,17 @@
         "scarf": "shall",
         "boots": "çizmet"
       }
+    },
+    "footer": {
+      "copyright": "© {currentYear} {siteName}. ",
+      "menu": {
+        "customer-care": "Kujdesit të konsumatorëve",
+        "follow-us": "Na ndiq",
+        "information": "Informacion",
+        "location-settings": "Cilësimet e vendndodhjes",
+        "privacy-and-cookies": "Privatësia",
+        "settings": "Cilësimet"
+      }
     }
   },
   "page": {
@@ -25,6 +36,11 @@
     },
     "home": {
       "shop-now": "Bli Tani"
+    },
+    "not-found": {
+      "title": "Nuk u gjet",
+      "message": "Burimi i kërkuar nuk u gjet",
+      "button": "Provo përsëri"
     },
     "products": {
       "add-to-wishlist": "Shtoje tek Preferencat Shtoje tek Lista e deshirave",
@@ -49,6 +65,7 @@
       "wishlist": "Lista e dëshirave"
     },
     "search": {
+      "reset": "Shiko katalogun",
       "title": "Kërko",
       "description": "Kërkoni për produkte",
       "results": "{ rezultate, shumës, =0 {Nuk ka rezultate kërkimi} =1 {"
@@ -59,23 +76,102 @@
       "add-to-cart-disabled": "Nuk mund të shtohet artikulli në çantë",
       "add-to-cart-enabled": "Shtoni në qese",
       "out-of-stock": "Jashtë stok",
-      "select-options": "Ju lutemi zgjidhni opsionet"
+      "pending": "Shtimi i artikullit në çantë",
+      "pre-order": "Porosit paraprakisht",
+      "select-options": "Ju lutemi zgjidhni opsionet",
+      "success": "Artikulli u shtua në çantë",
+      "status": {
+        "add-to-cart-disabled": "Nuk mund të shtohet artikulli në çantë",
+        "out-of-stock": "Ky artikull është i mbaruar, <a href=\"mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for {product}\">na kontaktoni për më shumë informacion</a>",
+        "pre-order": "Ky artikull është i disponueshëm për porositje paraprake dhe do të fillojë të dërgohet në {releaseDate}"
+      },
+      "toast": {
+        "close-alt": "Mbyll këtë mesazh",
+        "close-button": "Mbylle",
+        "error": "Nuk mund të shtohet artikulli në çantë",
+        "success": "Artikulli u shtua në çantë",
+        "title": "Përditësimi i çantës"
+      }
     },
     "Banner": {
       "link": "Transporti falas për porositë e pranueshme"
     },
     "CartForm": {
-      "empty-cart": "Çanta juaj është bosh"
+      "empty-cart": "Çanta juaj është bosh",
+      "proceed-to-checkout": "Vazhdoni te arka",
+      "shipping": "Transporti",
+      "taxes": "Taksat",
+      "total-amount": "Shuma totale",
+      "total-items": "Totali i artikujve"
+    },
+    "CartModal": {
+      "close": "Mbyllni çantën",
+      "open": "Hap çantën",
+      "title": "Çanta juaj"
+    },
+    "CollectionList": {
+      "title": "Koleksionet"
     },
     "ConsentDialog": {
+      "close": "Mbyll dialogun e pëlqimit",
       "description": "UNCNSRD përdor cookie që janë thelbësore për funksionimin e kësaj faqeje dhe dëshiron të përdorë skedarë shtesë për të përmirësuar përvojën tuaj në këtë sajt.",
       "trigger": "Modifiko cilësimet e pëlqimit",
       "title": "Cilësimet e pëlqimit"
+    },
+    "ConsentForm": {
+      "accept-all": "Prano të gjitha cookies",
+      "accept": "Prano cookie-t e zgjedhura",
+      "decline": "Rënia",
+      "deny-additional": "Refuzoni kukit shtesë",
+      "description": "UNCNSRD përdor cookie që janë thelbësore për funksionimin e kësaj faqeje dhe dëshiron të përdorë skedarë shtesë për të përmirësuar përvojën tuaj në këtë sajt.",
+      "manage": "Menaxho kukit",
+      "title": "Cilësimet e pëlqimit"
+    },
+    "DeleteItemButton": {
+      "remove": "Hiq artikullin e çantës"
+    },
+    "EditItemQuantityButton": {
+      "decrease": "Zvogëloni sasinë e artikullit",
+      "increase": "Rritja e sasisë së artikullit"
+    },
+    "LocationComboBox": {
+      "StatusList": {
+        "enter-country-name": "Fut emrin e shtetit",
+        "no-results": "Nuk u gjet asnjë rezultat",
+        "results": "Rezultatet",
+        "searching": "Po kërkon...",
+        "select-locale": "Zgjidhni vendndodhjen"
+      }
+    },
+    "LocationDialog": {
+      "close": "Mbyll dialogun e vendndodhjes",
+      "description": "Zgjidhni vendndodhjen tuaj për të gjetur produkte të disponueshme në rajonin tuaj",
+      "trigger": "Redakto cilësimet e vendndodhjes",
+      "title": "Cilësimet e vendndodhjes"
+    },
+    "LocationForm": {
+      "accept": "Prano cookie-t e zgjedhura",
+      "decline": "Rënia",
+      "description": "Lorem ipsum",
+      "title": "Cilësimet lokale"
     },
     "Menu": {
       "categories": "Kategoritë",
       "search": "Kërko",
       "toggle": "Shikoni menunë"
+    },
+    "MobileMenu": {
+      "close": "Mbyllni menunë",
+      "open": "Hapni menunë"
+    },
+    "NavbarContent": {
+      "link-account": "Shikoni llogarinë tuaj",
+      "link-home": "Kthehuni në faqen kryesore",
+      "link-search": "Kërkoni për produkte",
+      "link-wishlist": "Shikoni listën tuaj të dëshirave"
+    },
+    "NavbarSearch": {
+      "placeholder": "Kërkoni për produkte"
     },
     "Newsletter": {
       "description": "Merrni përditësime për produktet dhe ofertat e reja.",
@@ -83,8 +179,53 @@
       "submit": "Paraqisni",
       "title": "Gazete"
     },
+    "ProductDetails": {
+      "size-guide": {
+        "popover": {
+          "trigger": "Shikoni udhëzuesin e madhësisë"
+        }
+      }
+    },
+    "RedeemCode": {
+      "close": "Mbyllni dialogun e formularit të riblerjes së kodit"
+    },
+    "RedeemCodeForm": {
+      "placeholder": "Futni kodin tuaj",
+      "submit": "Shpengoj kodin"
+    },
     "RelatedProducts": {
       "title": "Produkte të ngjashme"
+    },
+    "SearchButton": {
+      "submit": "Paraqisni kërkimin"
+    },
+    "SearchForm": {
+      "placeholder": "Kërkoni për produkte"
+    },
+    "SearchLayout": {
+      "title": "Ndaj sipas"
+    },
+    "SidebarMenu": {
+      "close": "Mbyllni menunë",
+      "open": "Hapni menunë"
+    },
+    "SignUp": {
+      "title": "Regjistrohu në buletinin tonë",
+      "summary": "Regjistrohuni dhe përfitoni 10% ulje në blerjen tuaj të parë"
+    },
+    "SignUpForm": {
+      "message": "Në pritje të konfirmimit të regjistrimit",
+      "pattern": "Vlera e futur nuk përputhet me formatin e emailit",
+      "placeholder": "Regjistrohu në buletinin tonë",
+      "required": "Kërkohet adresa e emailit",
+      "submit": "Regjistrohu",
+      "toast": {
+        "close-alt": "Mbyll këtë mesazh",
+        "close-button": "Mbylle",
+        "error": "Nuk mund të regjistrohet",
+        "success": "Ju jeni regjistruar me sukses",
+        "title": "Regjistrimi i buletinit"
+      }
     }
   }
 }

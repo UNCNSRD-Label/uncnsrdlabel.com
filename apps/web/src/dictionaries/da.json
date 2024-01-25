@@ -11,6 +11,17 @@
         "scarf": "halstørklæde",
         "boots": "støvler"
       }
+    },
+    "footer": {
+      "copyright": "© {currentYear} {siteName}. ",
+      "menu": {
+        "customer-care": "Kundeservice",
+        "follow-us": "Følg os",
+        "information": "Information",
+        "location-settings": "Placeringsindstillinger",
+        "privacy-and-cookies": "Privatliv",
+        "settings": "Indstillinger"
+      }
     }
   },
   "page": {
@@ -25,6 +36,11 @@
     },
     "home": {
       "shop-now": "Køb nu"
+    },
+    "not-found": {
+      "title": "Ikke fundet",
+      "message": "Kunne ikke finde den anmodede ressource",
+      "button": "Prøv igen"
     },
     "products": {
       "add-to-wishlist": "Tilføj til ønskeliste",
@@ -49,6 +65,7 @@
       "wishlist": "Ønskeliste"
     },
     "search": {
+      "reset": "Se katalog",
       "title": "Søg",
       "description": "Søg efter produkter",
       "results": "{ resultater, flertal, =0 {Ingen søgeresultater} =1 {"
@@ -59,23 +76,102 @@
       "add-to-cart-disabled": "Varen kunne ikke tilføjes til tasken",
       "add-to-cart-enabled": "Tilføj til kurv",
       "out-of-stock": "Udsolgt",
-      "select-options": "Vælg venligst muligheder"
+      "pending": "Tilføjelse af vare til taske",
+      "pre-order": "Forudbestille",
+      "select-options": "Vælg venligst muligheder",
+      "success": "Vare tilføjet til taske",
+      "status": {
+        "add-to-cart-disabled": "Varen kunne ikke tilføjes til tasken",
+        "out-of-stock": "Denne vare er udsolgt, <a href=\"mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for {product}\">kontakt os for mere information</a>",
+        "pre-order": "Denne vare er tilgængelig til forudbestilling og vil begynde at sendes den {releaseDate}"
+      },
+      "toast": {
+        "close-alt": "Luk denne besked",
+        "close-button": "Tæt",
+        "error": "Varen kunne ikke tilføjes til tasken",
+        "success": "Vare tilføjet til taske",
+        "title": "Taskeopdatering"
+      }
     },
     "Banner": {
       "link": "Gratis forsendelse på kvalificerede ordrer"
     },
     "CartForm": {
-      "empty-cart": "Din taske er tom"
+      "empty-cart": "Din taske er tom",
+      "proceed-to-checkout": "Gå til kassen",
+      "shipping": "Forsendelse",
+      "taxes": "Skatter",
+      "total-amount": "Total beløb",
+      "total-items": "Samlede varer"
+    },
+    "CartModal": {
+      "close": "Luk posen",
+      "open": "Åbn posen",
+      "title": "Din taske"
+    },
+    "CollectionList": {
+      "title": "Samlinger"
     },
     "ConsentDialog": {
+      "close": "Luk samtykkedialogen",
       "description": "UNCNSRD bruger cookies, der er afgørende for at få denne side til at fungere og vil gerne bruge yderligere cookies til at forbedre din oplevelse på denne side.",
       "trigger": "Rediger samtykkeindstillinger",
       "title": "Indstillinger for samtykke"
+    },
+    "ConsentForm": {
+      "accept-all": "Accepter alle cookies",
+      "accept": "Accepter valgte cookies",
+      "decline": "Nedgang",
+      "deny-additional": "Afvis yderligere cookies",
+      "description": "UNCNSRD bruger cookies, der er afgørende for at få denne side til at fungere og vil gerne bruge yderligere cookies til at forbedre din oplevelse på denne side.",
+      "manage": "Administrer cookies",
+      "title": "Indstillinger for samtykke"
+    },
+    "DeleteItemButton": {
+      "remove": "Fjern posen"
+    },
+    "EditItemQuantityButton": {
+      "decrease": "Reducer varemængden",
+      "increase": "Øg varemængden"
+    },
+    "LocationComboBox": {
+      "StatusList": {
+        "enter-country-name": "Indtast landets navn",
+        "no-results": "Ingen resultater fundet",
+        "results": "Resultater",
+        "searching": "Søger...",
+        "select-locale": "Vælg landestandard"
+      }
+    },
+    "LocationDialog": {
+      "close": "Luk placeringsdialogen",
+      "description": "Vælg din placering for at finde produkter, der er tilgængelige i dit område",
+      "trigger": "Rediger placeringsindstillinger",
+      "title": "Placeringsindstillinger"
+    },
+    "LocationForm": {
+      "accept": "Accepter valgte cookies",
+      "decline": "Nedgang",
+      "description": "Lorem ipsum",
+      "title": "Lokale indstillinger"
     },
     "Menu": {
       "categories": "Kategorier",
       "search": "Søg",
       "toggle": "Se menuen"
+    },
+    "MobileMenu": {
+      "close": "Luk menuen",
+      "open": "Åbn menuen"
+    },
+    "NavbarContent": {
+      "link-account": "Se din konto",
+      "link-home": "Vend tilbage til hjemmesiden",
+      "link-search": "Søg efter produkter",
+      "link-wishlist": "Se din ønskeliste"
+    },
+    "NavbarSearch": {
+      "placeholder": "Søg efter produkter"
     },
     "Newsletter": {
       "description": "Modtag opdateringer om nye produkter og tilbud.",
@@ -83,8 +179,53 @@
       "submit": "Indsend",
       "title": "Nyhedsbrev"
     },
+    "ProductDetails": {
+      "size-guide": {
+        "popover": {
+          "trigger": "Se størrelsesguide"
+        }
+      }
+    },
+    "RedeemCode": {
+      "close": "Luk dialogboksen til kodeindløsningsformularen"
+    },
+    "RedeemCodeForm": {
+      "placeholder": "Skriv din kode",
+      "submit": "Indløs kode"
+    },
     "RelatedProducts": {
       "title": "Relaterede produkter"
+    },
+    "SearchButton": {
+      "submit": "Send søgning"
+    },
+    "SearchForm": {
+      "placeholder": "Søg efter produkter"
+    },
+    "SearchLayout": {
+      "title": "Sorter efter"
+    },
+    "SidebarMenu": {
+      "close": "Luk menuen",
+      "open": "Åbn menuen"
+    },
+    "SignUp": {
+      "title": "Tilmeld dig vores nyhedsbrev",
+      "summary": "Tilmeld dig og få 10% rabat på dit første køb"
+    },
+    "SignUpForm": {
+      "message": "Venter på bekræftelse af tilmelding",
+      "pattern": "Den indtastede værdi matcher ikke e-mail-formatet",
+      "placeholder": "Tilmeld dig vores nyhedsbrev",
+      "required": "E-mailadresse er påkrævet",
+      "submit": "Tilmelde",
+      "toast": {
+        "close-alt": "Luk denne besked",
+        "close-button": "Tæt",
+        "error": "Kan ikke tilmeldes",
+        "success": "Du har tilmeldt dig",
+        "title": "Nyhedsbrev tilmelding"
+      }
     }
   }
 }

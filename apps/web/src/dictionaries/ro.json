@@ -11,6 +11,17 @@
         "scarf": "eșarfă",
         "boots": "cizme"
       }
+    },
+    "footer": {
+      "copyright": "© {currentYear} {siteName}. ",
+      "menu": {
+        "customer-care": "Îngrijirea clienților",
+        "follow-us": "Urmați-ne",
+        "information": "informație",
+        "location-settings": "Setări de locație",
+        "privacy-and-cookies": "Confidențialitate",
+        "settings": "Setări"
+      }
     }
   },
   "page": {
@@ -25,6 +36,11 @@
     },
     "home": {
       "shop-now": "Cumpără acum"
+    },
+    "not-found": {
+      "title": "Nu a fost găsit",
+      "message": "Nu s-a putut găsi resursa solicitată",
+      "button": "Încearcă din nou"
     },
     "products": {
       "add-to-wishlist": "Adaugă la lista de dorințe",
@@ -49,9 +65,10 @@
       "wishlist": "lista de dorințe"
     },
     "search": {
+      "reset": "Vezi catalogul",
       "title": "Căutare",
       "description": "Caută produse",
-      "results": "{ results, plural, =0 {Fără rezultate de căutare} =1 {"
+      "results": "{ results, plural, =0 {Fără rezultate ale căutării} =1 {"
     }
   },
   "component": {
@@ -59,23 +76,102 @@
       "add-to-cart-disabled": "Nu se poate adăuga articolul în geantă",
       "add-to-cart-enabled": "Adăugați în coș",
       "out-of-stock": "Epuizat",
-      "select-options": "Vă rugăm să selectați opțiuni"
+      "pending": "Adăugarea articolului în geantă",
+      "pre-order": "Pre-comanda",
+      "select-options": "Vă rugăm să selectați opțiuni",
+      "success": "Articol adăugat în geantă",
+      "status": {
+        "add-to-cart-disabled": "Nu se poate adăuga articolul în geantă",
+        "out-of-stock": "Acest produs nu mai este disponibil, <a href=\"mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for {product}\">contactați-ne pentru mai multe informații</a>",
+        "pre-order": "Acest articol este disponibil pentru precomandă și va începe livrarea pe {releaseDate}"
+      },
+      "toast": {
+        "close-alt": "Închideți acest mesaj",
+        "close-button": "Închide",
+        "error": "Nu se poate adăuga articolul în geantă",
+        "success": "Articol adăugat în geantă",
+        "title": "Actualizare geantă"
+      }
     },
     "Banner": {
       "link": "Livrare gratuită pentru comenzile eligibile"
     },
     "CartForm": {
-      "empty-cart": "Geanta ta este goală"
+      "empty-cart": "Geanta ta este goală",
+      "proceed-to-checkout": "Finalizează cumpărăturile",
+      "shipping": "Transport",
+      "taxes": "Impozite",
+      "total-amount": "Valoare totală",
+      "total-items": "Total articole"
+    },
+    "CartModal": {
+      "close": "Închide geanta",
+      "open": "Deschide geanta",
+      "title": "Geanta ta"
+    },
+    "CollectionList": {
+      "title": "Colecții"
     },
     "ConsentDialog": {
+      "close": "Închideți dialogul de consimțământ",
       "description": "UNCNSRD folosește cookie-uri care sunt esențiale pentru ca acest site să funcționeze și ar dori să folosească cookie-uri suplimentare pentru a vă îmbunătăți experiența pe acest site.",
       "trigger": "Editați setările de consimțământ",
       "title": "Setări de consimțământ"
+    },
+    "ConsentForm": {
+      "accept-all": "Acceptați toate cookie-urile",
+      "accept": "Acceptați cookie-urile selectate",
+      "decline": "Declin",
+      "deny-additional": "Respinge cookie-urile suplimentare",
+      "description": "UNCNSRD folosește cookie-uri care sunt esențiale pentru ca acest site să funcționeze și ar dori să folosească cookie-uri suplimentare pentru a vă îmbunătăți experiența pe acest site.",
+      "manage": "Gestionați cookie-urile",
+      "title": "Setări de consimțământ"
+    },
+    "DeleteItemButton": {
+      "remove": "Scoateți articolul din geantă"
+    },
+    "EditItemQuantityButton": {
+      "decrease": "Reduceți cantitatea articolului",
+      "increase": "Măriți cantitatea articolului"
+    },
+    "LocationComboBox": {
+      "StatusList": {
+        "enter-country-name": "Introduceți numele țării",
+        "no-results": "Nici un rezultat gasit",
+        "results": "Rezultate",
+        "searching": "In cautarea...",
+        "select-locale": "Selectați localitatea"
+      }
+    },
+    "LocationDialog": {
+      "close": "Închideți caseta de dialog pentru locație",
+      "description": "Alegeți locația dvs. pentru a găsi produse disponibile în regiunea dvs",
+      "trigger": "Editați setările de locație",
+      "title": "Setări de locație"
+    },
+    "LocationForm": {
+      "accept": "Acceptați cookie-urile selectate",
+      "decline": "Declin",
+      "description": "Lorem ipsum",
+      "title": "Setări locale"
     },
     "Menu": {
       "categories": "Categorii",
       "search": "Căutare",
       "toggle": "Vizualizați meniul"
+    },
+    "MobileMenu": {
+      "close": "Închideți meniul",
+      "open": "Deschide meniul"
+    },
+    "NavbarContent": {
+      "link-account": "Vizualizați contul dvs",
+      "link-home": "Reveniți la pagina principală",
+      "link-search": "Caută produse",
+      "link-wishlist": "Vizualizați lista de dorințe"
+    },
+    "NavbarSearch": {
+      "placeholder": "Caută produse"
     },
     "Newsletter": {
       "description": "Primiți actualizări despre produse și oferte noi.",
@@ -83,8 +179,53 @@
       "submit": "Trimite",
       "title": "Buletin informativ"
     },
+    "ProductDetails": {
+      "size-guide": {
+        "popover": {
+          "trigger": "Vezi ghidul de marimi"
+        }
+      }
+    },
+    "RedeemCode": {
+      "close": "Închideți dialogul formularului de valorificare a codului"
+    },
+    "RedeemCodeForm": {
+      "placeholder": "Introdu codul tau",
+      "submit": "Valorificați codul"
+    },
     "RelatedProducts": {
       "title": "Produse asemanatoare"
+    },
+    "SearchButton": {
+      "submit": "Trimiteți căutarea"
+    },
+    "SearchForm": {
+      "placeholder": "Caută produse"
+    },
+    "SearchLayout": {
+      "title": "Filtrează după"
+    },
+    "SidebarMenu": {
+      "close": "Închideți meniul",
+      "open": "Deschide meniul"
+    },
+    "SignUp": {
+      "title": "Abonați-vă la buletinul nostru informativ",
+      "summary": "Înscrie-te și primești 10% reducere la prima achiziție"
+    },
+    "SignUpForm": {
+      "message": "Se așteaptă confirmarea înscrierii",
+      "pattern": "Valoarea introdusă nu se potrivește cu formatul de e-mail",
+      "placeholder": "Abonați-vă la buletinul nostru informativ",
+      "required": "Este necesară adresa de e-mail",
+      "submit": "Inscrie-te",
+      "toast": {
+        "close-alt": "Închideți acest mesaj",
+        "close-button": "Închide",
+        "error": "Nu se poate înscrie",
+        "success": "Te-ai înscris cu succes",
+        "title": "Abonează-te la știri"
+      }
     }
   }
 }

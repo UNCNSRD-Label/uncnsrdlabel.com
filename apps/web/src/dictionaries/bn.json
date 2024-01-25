@@ -11,6 +11,17 @@
         "scarf": "ওড়না",
         "boots": "বুট"
       }
+    },
+    "footer": {
+      "copyright": "© {currentYear} {siteName}। ",
+      "menu": {
+        "customer-care": "গ্রাহক সেবা",
+        "follow-us": "আমাদের অনুসরণ করো",
+        "information": "তথ্য",
+        "location-settings": "অবস্থান সেটিংস",
+        "privacy-and-cookies": "গোপনীয়তা",
+        "settings": "সেটিংস"
+      }
     }
   },
   "page": {
@@ -25,6 +36,11 @@
     },
     "home": {
       "shop-now": "এখনই কিনুন"
+    },
+    "not-found": {
+      "title": "পাওয়া যায়নি",
+      "message": "অনুরোধ করা সম্পদ খুঁজে পাওয়া যায়নি",
+      "button": "আবার চেষ্টা কর"
     },
     "products": {
       "add-to-wishlist": "চাহিদাপত্রে যোগ করা",
@@ -49,6 +65,7 @@
       "wishlist": "ইচ্ছেতালিকা"
     },
     "search": {
+      "reset": "ক্যাটালগ দেখুন",
       "title": "অনুসন্ধান করুন",
       "description": "পণ্য অনুসন্ধান করুন",
       "results": "{ ফলাফল, বহুবচন, =0 {কোন অনুসন্ধান ফলাফল নেই} =1 {"
@@ -59,23 +76,102 @@
       "add-to-cart-disabled": "ব্যাগে আইটেম যোগ করতে অক্ষম",
       "add-to-cart-enabled": "ব্যাগে রাখো",
       "out-of-stock": "স্টক শেষ",
-      "select-options": "বিকল্প নির্বাচন করুন"
+      "pending": "ব্যাগে আইটেম যোগ করা হচ্ছে",
+      "pre-order": "পূর্বাদেশ",
+      "select-options": "বিকল্প নির্বাচন করুন",
+      "success": "আইটেম ব্যাগ যোগ করা হয়েছে",
+      "status": {
+        "add-to-cart-disabled": "ব্যাগে আইটেম যোগ করতে অক্ষম",
+        "out-of-stock": "এই আইটেমটি স্টক বাইরে, <a href=\"mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for {product}\">আরও তথ্যের জন্য আমাদের সাথে যোগাযোগ করুন</a>",
+        "pre-order": "এই আইটেমটি প্রি-অর্ডারের জন্য উপলব্ধ এবং {releaseDate} এ শিপিং শুরু হবে"
+      },
+      "toast": {
+        "close-alt": "এই বার্তাটি বন্ধ করুন",
+        "close-button": "বন্ধ",
+        "error": "ব্যাগে আইটেম যোগ করতে অক্ষম",
+        "success": "আইটেম ব্যাগ যোগ করা হয়েছে",
+        "title": "ব্যাগ আপডেট"
+      }
     },
     "Banner": {
       "link": "যোগ্য অর্ডারে বিনামূল্যে শিপিং"
     },
     "CartForm": {
-      "empty-cart": "তোমার ব্যাগ খালি"
+      "empty-cart": "তোমার ব্যাগ খালি",
+      "proceed-to-checkout": "চেকআউট করতে এগিয়ে যান",
+      "shipping": "পাঠানো",
+      "taxes": "করের",
+      "total-amount": "সর্বমোট পরিমাণ",
+      "total-items": "মোট আইটেম"
+    },
+    "CartModal": {
+      "close": "ব্যাগ বন্ধ করুন",
+      "open": "ব্যাগ খোলো",
+      "title": "তোমার থলে"
+    },
+    "CollectionList": {
+      "title": "সংগ্রহ"
     },
     "ConsentDialog": {
+      "close": "সম্মতি ডায়ালগ বন্ধ করুন",
       "description": "UNCNSRD কুকিজ ব্যবহার করে যা এই সাইটে কাজ করার জন্য অপরিহার্য এবং এই সাইটে আপনার অভিজ্ঞতা উন্নত করতে অতিরিক্ত কুকি ব্যবহার করতে চায়।",
       "trigger": "সম্মতি সেটিংস সম্পাদনা করুন",
       "title": "সম্মতি সেটিংস"
+    },
+    "ConsentForm": {
+      "accept-all": "সব কুকি গ্রহণ করুন",
+      "accept": "নির্বাচিত কুকিজ গ্রহণ করুন",
+      "decline": "প্রত্যাখ্যান",
+      "deny-additional": "অতিরিক্ত কুকিজ অস্বীকার করুন",
+      "description": "UNCNSRD কুকিজ ব্যবহার করে যা এই সাইটে কাজ করার জন্য অপরিহার্য এবং এই সাইটে আপনার অভিজ্ঞতা উন্নত করতে অতিরিক্ত কুকি ব্যবহার করতে চায়।",
+      "manage": "কুকিজ পরিচালনা করুন",
+      "title": "সম্মতি সেটিংস"
+    },
+    "DeleteItemButton": {
+      "remove": "ব্যাগ আইটেম সরান"
+    },
+    "EditItemQuantityButton": {
+      "decrease": "আইটেম পরিমাণ হ্রাস",
+      "increase": "আইটেম পরিমাণ বৃদ্ধি"
+    },
+    "LocationComboBox": {
+      "StatusList": {
+        "enter-country-name": "দেশের নাম লিখুন",
+        "no-results": "কোন ফলাফল পাওয়া যায়নি",
+        "results": "ফলাফল",
+        "searching": "অনুসন্ধান করা হচ্ছে...",
+        "select-locale": "লোকেল নির্বাচন করুন"
+      }
+    },
+    "LocationDialog": {
+      "close": "অবস্থান ডায়ালগ বন্ধ করুন",
+      "description": "আপনার অঞ্চলে উপলব্ধ পণ্য খুঁজে পেতে আপনার অবস্থান চয়ন করুন",
+      "trigger": "অবস্থান সেটিংস সম্পাদনা করুন",
+      "title": "অবস্থান সেটিংস"
+    },
+    "LocationForm": {
+      "accept": "নির্বাচিত কুকিজ গ্রহণ করুন",
+      "decline": "প্রত্যাখ্যান",
+      "description": "Lorem ipsum",
+      "title": "লোকেল সেটিংস"
     },
     "Menu": {
       "categories": "ক্যাটাগরি",
       "search": "অনুসন্ধান করুন",
       "toggle": "মেনু দেখুন"
+    },
+    "MobileMenu": {
+      "close": "মেনু বন্ধ করুন",
+      "open": "মেনু খুলুন"
+    },
+    "NavbarContent": {
+      "link-account": "আপনার অ্যাকাউন্ট দেখুন",
+      "link-home": "হোমপেজে ফিরে যাও",
+      "link-search": "পণ্য অনুসন্ধান করুন",
+      "link-wishlist": "আপনার ইচ্ছা তালিকা দেখুন"
+    },
+    "NavbarSearch": {
+      "placeholder": "পণ্য অনুসন্ধান করুন"
     },
     "Newsletter": {
       "description": "নতুন পণ্য এবং অফার আপডেট পান.",
@@ -83,8 +179,53 @@
       "submit": "জমা দিন",
       "title": "নিউজলেটার"
     },
+    "ProductDetails": {
+      "size-guide": {
+        "popover": {
+          "trigger": "সাইজ গাইড দেখুন"
+        }
+      }
+    },
+    "RedeemCode": {
+      "close": "কোড রিডেম্পশন ফর্ম ডায়ালগ বন্ধ করুন"
+    },
+    "RedeemCodeForm": {
+      "placeholder": "আপনার কোড লিখুন",
+      "submit": "কোড উদ্ধার"
+    },
     "RelatedProducts": {
       "title": "সংশ্লিষ্ট পণ্য"
+    },
+    "SearchButton": {
+      "submit": "অনুসন্ধান জমা দিন"
+    },
+    "SearchForm": {
+      "placeholder": "পণ্য অনুসন্ধান করুন"
+    },
+    "SearchLayout": {
+      "title": "ক্রমানুসার"
+    },
+    "SidebarMenu": {
+      "close": "মেনু বন্ধ করুন",
+      "open": "মেনু খুলুন"
+    },
+    "SignUp": {
+      "title": "আমাদের নিউজলেটার সাইন আপ করুন",
+      "summary": "সাইন আপ করুন এবং আপনার প্রথম কেনাকাটায় 10% ছাড় পান"
+    },
+    "SignUpForm": {
+      "message": "সাইনআপ নিশ্চিতকরণের জন্য অপেক্ষা করা হচ্ছে",
+      "pattern": "প্রবেশ করা মান ইমেল বিন্যাস মেলে না",
+      "placeholder": "আমাদের নিউজলেটার সাইন আপ করুন",
+      "required": "ইমেল ঠিকানা প্রয়োজন",
+      "submit": "নিবন্ধন করুন",
+      "toast": {
+        "close-alt": "এই বার্তাটি বন্ধ করুন",
+        "close-button": "বন্ধ",
+        "error": "সাইন আপ করতে অক্ষম",
+        "success": "আপনি সফলভাবে সাইন আপ করেছেন",
+        "title": "নিউজলেটার সাইন আপ"
+      }
     }
   }
 }

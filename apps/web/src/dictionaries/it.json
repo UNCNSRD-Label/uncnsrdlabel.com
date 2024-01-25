@@ -11,6 +11,17 @@
         "scarf": "sciarpa",
         "boots": "stivali"
       }
+    },
+    "footer": {
+      "copyright": "© {currentYear} {siteName}. ",
+      "menu": {
+        "customer-care": "Servizio Clienti",
+        "follow-us": "Seguici",
+        "information": "Informazione",
+        "location-settings": "Impostazioni della posizione",
+        "privacy-and-cookies": "Privacy",
+        "settings": "Impostazioni"
+      }
     }
   },
   "page": {
@@ -25,6 +36,11 @@
     },
     "home": {
       "shop-now": "Acquistare ora"
+    },
+    "not-found": {
+      "title": "Non trovato",
+      "message": "Impossibile trovare la risorsa richiesta",
+      "button": "Riprova"
     },
     "products": {
       "add-to-wishlist": "Aggiungi alla lista dei desideri",
@@ -49,6 +65,7 @@
       "wishlist": "Lista dei desideri"
     },
     "search": {
+      "reset": "Visualizza il catalogo",
       "title": "Ricerca",
       "description": "Cerca prodotti",
       "results": "{ risultati, plurale, =0 {Nessun risultato di ricerca} =1 {"
@@ -59,23 +76,102 @@
       "add-to-cart-disabled": "Impossibile aggiungere l'articolo al carrello",
       "add-to-cart-enabled": "Aggiungi al carrello",
       "out-of-stock": "Esaurito",
-      "select-options": "Seleziona le opzioni"
+      "pending": "Aggiunta di un articolo al carrello",
+      "pre-order": "Ordine prestabilito",
+      "select-options": "Seleziona le opzioni",
+      "success": "Articolo aggiunto al carrello",
+      "status": {
+        "add-to-cart-disabled": "Impossibile aggiungere l'articolo al carrello",
+        "out-of-stock": "Questo articolo è esaurito, <a href=\"mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for {product}\">Contattateci per maggiori informazioni</a>",
+        "pre-order": "Questo articolo è disponibile per il preordine e la spedizione inizierà il giorno {releaseDate}"
+      },
+      "toast": {
+        "close-alt": "Chiudi questo messaggio",
+        "close-button": "Vicino",
+        "error": "Impossibile aggiungere l'articolo al carrello",
+        "success": "Articolo aggiunto al carrello",
+        "title": "Aggiornamento borsa"
+      }
     },
     "Banner": {
       "link": "Spedizione gratuita sugli ordini idonei"
     },
     "CartForm": {
-      "empty-cart": "La tua borsa è vuota"
+      "empty-cart": "La tua borsa è vuota",
+      "proceed-to-checkout": "Procedere al checkout",
+      "shipping": "Spedizione",
+      "taxes": "Le tasse",
+      "total-amount": "Importo totale",
+      "total-items": "Articoli totali"
+    },
+    "CartModal": {
+      "close": "Chiudi la borsa",
+      "open": "Apri la borsa",
+      "title": "La tua borsa"
+    },
+    "CollectionList": {
+      "title": "Collezioni"
     },
     "ConsentDialog": {
+      "close": "Chiudi la finestra di dialogo del consenso",
       "description": "L'UNCNSRD utilizza cookie essenziali per il funzionamento di questo sito e vorrebbe utilizzare cookie aggiuntivi per migliorare la tua esperienza su questo sito.",
       "trigger": "Modifica le impostazioni del consenso",
       "title": "Impostazioni del consenso"
+    },
+    "ConsentForm": {
+      "accept-all": "Accetta tutti i cookie",
+      "accept": "Accetta i cookie selezionati",
+      "decline": "Declino",
+      "deny-additional": "Nega cookie aggiuntivi",
+      "description": "L'UNCNSRD utilizza cookie essenziali per il funzionamento di questo sito e vorrebbe utilizzare cookie aggiuntivi per migliorare la tua esperienza su questo sito.",
+      "manage": "Gestisci i cookie",
+      "title": "Impostazioni del consenso"
+    },
+    "DeleteItemButton": {
+      "remove": "Rimuovere l'oggetto dalla borsa"
+    },
+    "EditItemQuantityButton": {
+      "decrease": "Diminuire la quantità dell'articolo",
+      "increase": "Aumenta la quantità dell'articolo"
+    },
+    "LocationComboBox": {
+      "StatusList": {
+        "enter-country-name": "Inserisci il nome del paese",
+        "no-results": "nessun risultato trovato",
+        "results": "Risultati",
+        "searching": "Ricerca...",
+        "select-locale": "Seleziona la lingua"
+      }
+    },
+    "LocationDialog": {
+      "close": "Chiudi la finestra di dialogo della posizione",
+      "description": "Scegli la tua posizione per trovare i prodotti disponibili nella tua regione",
+      "trigger": "Modifica le impostazioni di posizione",
+      "title": "Impostazioni della posizione"
+    },
+    "LocationForm": {
+      "accept": "Accetta i cookie selezionati",
+      "decline": "Declino",
+      "description": "Lorem ipsum",
+      "title": "Impostazioni locali"
     },
     "Menu": {
       "categories": "Categorie",
       "search": "Ricerca",
       "toggle": "Visualizza il menù"
+    },
+    "MobileMenu": {
+      "close": "Chiudi il menu",
+      "open": "Apri il menù"
+    },
+    "NavbarContent": {
+      "link-account": "Visualizza il tuo account",
+      "link-home": "Ritorna alla home page",
+      "link-search": "Cerca prodotti",
+      "link-wishlist": "Visualizza la tua lista dei desideri"
+    },
+    "NavbarSearch": {
+      "placeholder": "Cerca prodotti"
     },
     "Newsletter": {
       "description": "Ricevi aggiornamenti su nuovi prodotti e offerte.",
@@ -83,8 +179,53 @@
       "submit": "Invia",
       "title": "Notiziario"
     },
+    "ProductDetails": {
+      "size-guide": {
+        "popover": {
+          "trigger": "Visualizza la guida alle taglie"
+        }
+      }
+    },
+    "RedeemCode": {
+      "close": "Chiudi la finestra di dialogo del modulo di riscatto del codice"
+    },
+    "RedeemCodeForm": {
+      "placeholder": "Inserisci il tuo codice",
+      "submit": "Riscatta il codice"
+    },
     "RelatedProducts": {
       "title": "Prodotti correlati"
+    },
+    "SearchButton": {
+      "submit": "Invia ricerca"
+    },
+    "SearchForm": {
+      "placeholder": "Cerca prodotti"
+    },
+    "SearchLayout": {
+      "title": "Ordina per"
+    },
+    "SidebarMenu": {
+      "close": "Chiudi il menu",
+      "open": "Apri il menù"
+    },
+    "SignUp": {
+      "title": "Iscriviti alla nostra newsletter",
+      "summary": "Iscriviti e ricevi uno sconto del 10% sul tuo primo acquisto"
+    },
+    "SignUpForm": {
+      "message": "In attesa della conferma dell'iscrizione",
+      "pattern": "Il valore inserito non corrisponde al formato email",
+      "placeholder": "Iscriviti alla nostra newsletter",
+      "required": "L'indirizzo e-mail è obbligatorio",
+      "submit": "Iscrizione",
+      "toast": {
+        "close-alt": "Chiudi questo messaggio",
+        "close-button": "Vicino",
+        "error": "Impossibile registrarsi",
+        "success": "Ti sei iscritto con successo",
+        "title": "Iscriviti alla Newsletter"
+      }
     }
   }
 }

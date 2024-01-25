@@ -11,6 +11,17 @@
         "scarf": "skara",
         "boots": "batai"
       }
+    },
+    "footer": {
+      "copyright": "© {currentYear} {siteName}. ",
+      "menu": {
+        "customer-care": "Klientų aptarnavimas",
+        "follow-us": "Sekite mus",
+        "information": "Informacija",
+        "location-settings": "Vietos nustatymai",
+        "privacy-and-cookies": "Privatumas",
+        "settings": "Nustatymai"
+      }
     }
   },
   "page": {
@@ -25,6 +36,11 @@
     },
     "home": {
       "shop-now": "Apsipirk dabar"
+    },
+    "not-found": {
+      "title": "Nerastas",
+      "message": "Nepavyko rasti prašomo šaltinio",
+      "button": "Bandyk iš naujo"
     },
     "products": {
       "add-to-wishlist": "Pridėti į norų sąrašą",
@@ -49,6 +65,7 @@
       "wishlist": "Norų sąrašas"
     },
     "search": {
+      "reset": "Žiūrėti katalogą",
       "title": "Paieška",
       "description": "Ieškoti produktų",
       "results": "{ rezultatai, daugiskaita, =0 {Paieškos rezultatų nėra} =1 {"
@@ -59,23 +76,102 @@
       "add-to-cart-disabled": "Nepavyko pridėti prekės į krepšį",
       "add-to-cart-enabled": "Pridėti į maišelį",
       "out-of-stock": "Išparduota",
-      "select-options": "Prašome pasirinkti parinktis"
+      "pending": "Prekės įtraukimas į krepšį",
+      "pre-order": "Išankstinis užsakymas",
+      "select-options": "Prašome pasirinkti parinktis",
+      "success": "Prekė pridėta prie krepšio",
+      "status": {
+        "add-to-cart-disabled": "Nepavyko pridėti prekės į krepšį",
+        "out-of-stock": "Šios prekės nėra sandėlyje, <a href=\"mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for {product}\">susisiekite su mumis norėdami gauti daugiau informacijos</a>",
+        "pre-order": "Šią prekę galima užsisakyti iš anksto ir ji bus pristatyta {releaseDate}"
+      },
+      "toast": {
+        "close-alt": "Uždarykite šį pranešimą",
+        "close-button": "Uždaryti",
+        "error": "Nepavyko pridėti prekės į krepšį",
+        "success": "Prekė pridėta prie krepšio",
+        "title": "Krepšelio atnaujinimas"
+      }
     },
     "Banner": {
       "link": "Nemokamas tinkamų užsakymų pristatymas"
     },
     "CartForm": {
-      "empty-cart": "Tavo krepšys tuščias"
+      "empty-cart": "Tavo krepšys tuščias",
+      "proceed-to-checkout": "Pereikite prie apmokėjimo",
+      "shipping": "Siuntimas",
+      "taxes": "Mokesčiai",
+      "total-amount": "Visas kiekis",
+      "total-items": "Iš viso prekių"
+    },
+    "CartModal": {
+      "close": "Uždarykite maišelį",
+      "open": "Atidarykite maišelį",
+      "title": "Tavo krepšys"
+    },
+    "CollectionList": {
+      "title": "Kolekcijos"
     },
     "ConsentDialog": {
+      "close": "Uždarykite sutikimo dialogo langą",
       "description": "UNCNSRD naudoja slapukus, kurie yra būtini, kad ši svetainė veiktų, ir norėtų naudoti papildomus slapukus, kad pagerintų jūsų patirtį šioje svetainėje.",
       "trigger": "Redaguoti sutikimo nustatymus",
       "title": "Sutikimo nustatymai"
+    },
+    "ConsentForm": {
+      "accept-all": "Priimti visus slapukus",
+      "accept": "Priimti pasirinktus slapukus",
+      "decline": "Atmesti",
+      "deny-additional": "Atsisakyti papildomų slapukų",
+      "description": "UNCNSRD naudoja slapukus, kurie yra būtini, kad ši svetainė veiktų, ir norėtų naudoti papildomus slapukus, kad pagerintų jūsų patirtį šioje svetainėje.",
+      "manage": "Tvarkyti slapukus",
+      "title": "Sutikimo nustatymai"
+    },
+    "DeleteItemButton": {
+      "remove": "Išimkite maišo elementą"
+    },
+    "EditItemQuantityButton": {
+      "decrease": "Sumažinti prekių kiekį",
+      "increase": "Padidinti prekių kiekį"
+    },
+    "LocationComboBox": {
+      "StatusList": {
+        "enter-country-name": "Įveskite šalies pavadinimą",
+        "no-results": "Nieko nerasta",
+        "results": "Rezultatai",
+        "searching": "Ieškoma...",
+        "select-locale": "Pasirinkite lokalę"
+      }
+    },
+    "LocationDialog": {
+      "close": "Uždarykite vietos dialogo langą",
+      "description": "Pasirinkite savo vietą, kad rastumėte savo regione prieinamus produktus",
+      "trigger": "Redaguoti vietos nustatymus",
+      "title": "Vietos nustatymai"
+    },
+    "LocationForm": {
+      "accept": "Priimti pasirinktus slapukus",
+      "decline": "Atmesti",
+      "description": "Lorem ipsum",
+      "title": "Lokalės nustatymai"
     },
     "Menu": {
       "categories": "Kategorijos",
       "search": "Paieška",
       "toggle": "Peržiūrėkite meniu"
+    },
+    "MobileMenu": {
+      "close": "Uždarykite meniu",
+      "open": "Atidarykite meniu"
+    },
+    "NavbarContent": {
+      "link-account": "Peržiūrėkite savo paskyrą",
+      "link-home": "Grįžti į pagrindinį puslapį",
+      "link-search": "Ieškoti produktų",
+      "link-wishlist": "Peržiūrėkite savo pageidavimų sąrašą"
+    },
+    "NavbarSearch": {
+      "placeholder": "Ieškoti produktų"
     },
     "Newsletter": {
       "description": "Gaukite naujienas apie naujus produktus ir pasiūlymus.",
@@ -83,8 +179,53 @@
       "submit": "Pateikti",
       "title": "Naujienlaiškis"
     },
+    "ProductDetails": {
+      "size-guide": {
+        "popover": {
+          "trigger": "Žiūrėti dydžių vadovą"
+        }
+      }
+    },
+    "RedeemCode": {
+      "close": "Uždarykite kodo išpirkimo formos dialogo langą"
+    },
+    "RedeemCodeForm": {
+      "placeholder": "Įveskite savo kodą",
+      "submit": "Išpirkti kodą"
+    },
     "RelatedProducts": {
       "title": "Susiję produktai"
+    },
+    "SearchButton": {
+      "submit": "Pateikti paiešką"
+    },
+    "SearchForm": {
+      "placeholder": "Ieškoti produktų"
+    },
+    "SearchLayout": {
+      "title": "Rūšiuoti pagal"
+    },
+    "SidebarMenu": {
+      "close": "Uždarykite meniu",
+      "open": "Atidarykite meniu"
+    },
+    "SignUp": {
+      "title": "Prisiregistruokite gauti mūsų naujienlaiškį",
+      "summary": "Užsiregistruokite ir gaukite 10% nuolaidą pirmajam pirkiniui"
+    },
+    "SignUpForm": {
+      "message": "Laukiama registracijos patvirtinimo",
+      "pattern": "Įvesta vertė neatitinka el. pašto formato",
+      "placeholder": "Prisiregistruokite gauti mūsų naujienlaiškį",
+      "required": "Būtinas el. pašto adresas",
+      "submit": "Registruotis",
+      "toast": {
+        "close-alt": "Uždarykite šį pranešimą",
+        "close-button": "Uždaryti",
+        "error": "Nepavyko prisiregistruoti",
+        "success": "Jūs sėkmingai užsiregistravote",
+        "title": "Naujienlaiškio registracija"
+      }
     }
   }
 }

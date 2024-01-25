@@ -13,11 +13,14 @@
       }
     },
     "footer": {
-      "copyright": "© {currentYear} {siteName}. Alle Rechte vorbehalten.",
+      "copyright": "© {currentYear} {siteName}. ",
       "menu": {
         "customer-care": "Kundendienst",
         "follow-us": "Folgen Sie uns",
-        "information": "Information"
+        "information": "Information",
+        "location-settings": "Ortseinstellungen",
+        "privacy-and-cookies": "Privatsphäre",
+        "settings": "Einstellungen"
       }
     }
   },
@@ -33,6 +36,11 @@
     },
     "home": {
       "shop-now": "Jetzt einkaufen"
+    },
+    "not-found": {
+      "title": "Nicht gefunden",
+      "message": "Die angeforderte Ressource konnte nicht gefunden werden",
+      "button": "Versuchen Sie es erneut"
     },
     "products": {
       "add-to-wishlist": "Zur Wunschliste hinzufügen",
@@ -57,6 +65,7 @@
       "wishlist": "Wunschzettel"
     },
     "search": {
+      "reset": "Katalog ansehen",
       "title": "Suchen",
       "description": "Nach Produkten suchen",
       "results": "{ results, plural, =0 {Es wurden keine Suchergebnisse} =1 {# Suchergebnis} other {# Suchergebnisse} } für „{query}“ gefunden"
@@ -67,14 +76,33 @@
       "add-to-cart-disabled": "Artikel konnte nicht zur Tasche hinzugefügt werden",
       "add-to-cart-enabled": "Der Tasche hinzufügen",
       "out-of-stock": "Ausverkauft",
-      "select-options": "Bitte wählen Sie Optionen aus"
+      "pending": "Artikel zur Tasche hinzufügen",
+      "pre-order": "Vorbestellen",
+      "select-options": "Bitte wählen Sie Optionen aus",
+      "success": "Artikel zur Tasche hinzugefügt",
+      "status": {
+        "add-to-cart-disabled": "Artikel konnte nicht zur Tasche hinzugefügt werden",
+        "out-of-stock": "Dieser Artikel ist nicht mehr vorrätig, <a href=\"mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for {product}\">Kontaktieren Sie uns für weitere Informationen</a>",
+        "pre-order": "Dieser Artikel kann vorbestellt werden und wird ab dem {ReleaseDate} versandt."
+      },
+      "toast": {
+        "close-alt": "Schließen Sie diese Nachricht",
+        "close-button": "Schließen",
+        "error": "Artikel konnte nicht zur Tasche hinzugefügt werden",
+        "success": "Artikel zur Tasche hinzugefügt",
+        "title": "Taschen-Update"
+      }
     },
     "Banner": {
       "link": "Kostenloser Versand für berechtigte Bestellungen"
     },
     "CartForm": {
       "empty-cart": "Deine Tasche ist leer",
-      "proceed-to-checkout": "Zur Kasse"
+      "proceed-to-checkout": "Zur Kasse",
+      "shipping": "Versand",
+      "taxes": "Steuern",
+      "total-amount": "Gesamtmenge",
+      "total-items": "Gesamtanzahl"
     },
     "CartModal": {
       "close": "Schließen Sie den Beutel",
@@ -85,18 +113,18 @@
       "title": "Sammlungen"
     },
     "ConsentDialog": {
-      "close": "Schließen Sie den Einwilligungsdialog",
+      "close": "Schließen Sie den Zustimmungsdialog",
       "description": "UNCNSRD verwendet Cookies, die für das Funktionieren dieser Website unerlässlich sind, und möchte zusätzliche Cookies verwenden, um Ihr Erlebnis auf dieser Website zu verbessern.",
       "trigger": "Einwilligungseinstellungen bearbeiten",
       "title": "Einwilligungseinstellungen"
     },
     "ConsentForm": {
-      "accept": "Ausgewählte Cookies akzeptieren",
-      "manage": "Cookies verwalten",
       "accept-all": "Akzeptieren Sie alle Cookies",
-      "deny-additional": "Weitere Cookies ablehnen",
+      "accept": "Ausgewählte Cookies akzeptieren",
       "decline": "Abfall",
+      "deny-additional": "Weitere Cookies ablehnen",
       "description": "UNCNSRD verwendet Cookies, die für das Funktionieren dieser Website unerlässlich sind, und möchte zusätzliche Cookies verwenden, um Ihr Erlebnis auf dieser Website zu verbessern.",
+      "manage": "Cookies verwalten",
       "title": "Einwilligungseinstellungen"
     },
     "DeleteItemButton": {
@@ -106,14 +134,35 @@
       "decrease": "Artikelmenge verringern",
       "increase": "Artikelmenge erhöhen"
     },
-    "MobileMenu": {
-      "close": "Schließen Sie das Menü",
-      "open": "Öffnen Sie das Menü"
+    "LocationComboBox": {
+      "StatusList": {
+        "enter-country-name": "Geben Sie den Ländernamen ein",
+        "no-results": "keine Ergebnisse gefunden",
+        "results": "Ergebnisse",
+        "searching": "Suche...",
+        "select-locale": "Wählen Sie das Gebietsschema aus"
+      }
+    },
+    "LocationDialog": {
+      "close": "Schließen Sie den Standortdialog",
+      "description": "Wählen Sie Ihren Standort, um in Ihrer Region verfügbare Produkte zu finden",
+      "trigger": "Standorteinstellungen bearbeiten",
+      "title": "Ortseinstellungen"
+    },
+    "LocationForm": {
+      "accept": "Ausgewählte Cookies akzeptieren",
+      "decline": "Abfall",
+      "description": "Lorem ipsum",
+      "title": "Gebietsschemaeinstellungen"
     },
     "Menu": {
       "categories": "Kategorien",
       "search": "Suchen",
       "toggle": "Sehen Sie sich das Menü an"
+    },
+    "MobileMenu": {
+      "close": "Schließen Sie das Menü",
+      "open": "Öffnen Sie das Menü"
     },
     "NavbarContent": {
       "link-account": "Sehen Sie sich Ihr Konto an",
@@ -129,6 +178,13 @@
       "placeholder": "Geben sie ihre E-Mailadresse ein",
       "submit": "Einreichen",
       "title": "Newsletter"
+    },
+    "ProductDetails": {
+      "size-guide": {
+        "popover": {
+          "trigger": "Größentabelle ansehen"
+        }
+      }
     },
     "RedeemCode": {
       "close": "Schließen Sie den Dialog zum Einlösen des Codes"
@@ -166,6 +222,8 @@
       "toast": {
         "close-alt": "Schließen Sie diese Nachricht",
         "close-button": "Schließen",
+        "error": "Anmeldung nicht möglich",
+        "success": "Sie haben sich erfolgreich angemeldet",
         "title": "Newsletter abonnieren"
       }
     }

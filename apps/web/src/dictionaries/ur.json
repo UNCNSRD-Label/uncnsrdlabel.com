@@ -6,10 +6,21 @@
         "bikini": "بکنی",
         "swimsuit": "پیراکی کا لباس",
         "swimwear": "تیراکی کے کپڑے",
-        "beachwear": "ساحلی لباس",
+        "beachwear": "ساحل سمندر کے کپڑے",
         "sarong": "سارونگ",
         "scarf": "سکارف",
         "boots": "جوتے"
+      }
+    },
+    "footer": {
+      "copyright": "© {currentYear} {siteName}۔ ",
+      "menu": {
+        "customer-care": "صارفین کی سہولت",
+        "follow-us": "ہمیں فالو کریں",
+        "information": "معلومات",
+        "location-settings": "مقام کی ترتیبات",
+        "privacy-and-cookies": "رازداری",
+        "settings": "ترتیبات"
       }
     }
   },
@@ -25,6 +36,11 @@
     },
     "home": {
       "shop-now": "ابھی خریداری کریں۔"
+    },
+    "not-found": {
+      "title": "نہیں ملا",
+      "message": "مطلوبہ وسیلہ نہیں مل سکا",
+      "button": "دوبارہ کوشش کریں"
     },
     "products": {
       "add-to-wishlist": "خواہشات کی فہرست میں شامل کرنا",
@@ -49,6 +65,7 @@
       "wishlist": "خواہش کی فہرست"
     },
     "search": {
+      "reset": "کیٹلاگ دیکھیں",
       "title": "تلاش کریں۔",
       "description": "مصنوعات کی تلاش کریں۔",
       "results": "{ نتائج، جمع، =0 {کوئی تلاش کا نتیجہ نہیں} =1 {"
@@ -59,23 +76,102 @@
       "add-to-cart-disabled": "بیگ میں آئٹم شامل کرنے سے قاصر",
       "add-to-cart-enabled": "بیگ میں ڈال دو",
       "out-of-stock": "زخیرے سے باہر",
-      "select-options": "براہ کرم اختیارات منتخب کریں۔"
+      "pending": "بیگ میں آئٹم شامل کرنا",
+      "pre-order": "پری آرڈر",
+      "select-options": "براہ کرم اختیارات منتخب کریں۔",
+      "success": "آئٹم بیگ میں شامل کیا گیا۔",
+      "status": {
+        "add-to-cart-disabled": "بیگ میں آئٹم شامل کرنے سے قاصر",
+        "out-of-stock": "یہ آئٹم اسٹاک سے باہر ہے، <a href=\"mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for {product}\">مزید معلومات کے لیے ہم سے رابطہ کریں۔</a>",
+        "pre-order": "یہ آئٹم پری آرڈر کے لیے دستیاب ہے اور {releaseDate} کو ترسیل شروع ہو جائے گی۔"
+      },
+      "toast": {
+        "close-alt": "اس پیغام کو بند کریں۔",
+        "close-button": "بند کریں",
+        "error": "بیگ میں آئٹم شامل کرنے سے قاصر",
+        "success": "آئٹم بیگ میں شامل کیا گیا۔",
+        "title": "بیگ کی تازہ کاری"
+      }
     },
     "Banner": {
       "link": "اہل آرڈرز پر مفت شپنگ"
     },
     "CartForm": {
-      "empty-cart": "آپ کا بیگ خالی ہے۔"
+      "empty-cart": "آپ کا بیگ خالی ہے۔",
+      "proceed-to-checkout": "چیک آؤٹ پر آگے بڑھیں۔",
+      "shipping": "شپنگ",
+      "taxes": "ٹیکس",
+      "total-amount": "کل رقم",
+      "total-items": "کل اشیاء"
+    },
+    "CartModal": {
+      "close": "بیگ بند کرو",
+      "open": "بیگ کھولو",
+      "title": "تمہارا بستہ"
+    },
+    "CollectionList": {
+      "title": "مجموعے"
     },
     "ConsentDialog": {
+      "close": "رضامندی کا ڈائیلاگ بند کریں۔",
       "description": "UNCNSRD کوکیز استعمال کرتا ہے جو اس سائٹ کو کام کرنے کے لیے ضروری ہیں اور اس سائٹ پر آپ کے تجربے کو بہتر بنانے کے لیے اضافی کوکیز استعمال کرنا چاہیں گے۔",
       "trigger": "رضامندی کی ترتیبات میں ترمیم کریں۔",
       "title": "رضامندی کی ترتیبات"
+    },
+    "ConsentForm": {
+      "accept-all": "تمام کوکیز قبول کریں۔",
+      "accept": "منتخب کوکیز کو قبول کریں۔",
+      "decline": "رد کرنا",
+      "deny-additional": "اضافی کوکیز سے انکار کریں۔",
+      "description": "UNCNSRD کوکیز استعمال کرتا ہے جو اس سائٹ کو کام کرنے کے لیے ضروری ہیں اور اس سائٹ پر آپ کے تجربے کو بہتر بنانے کے لیے اضافی کوکیز استعمال کرنا چاہیں گے۔",
+      "manage": "کوکیز کا نظم کریں۔",
+      "title": "رضامندی کی ترتیبات"
+    },
+    "DeleteItemButton": {
+      "remove": "بیگ کی چیز کو ہٹا دیں۔"
+    },
+    "EditItemQuantityButton": {
+      "decrease": "آئٹم کی مقدار کو کم کریں۔",
+      "increase": "اشیاء کی مقدار میں اضافہ کریں۔"
+    },
+    "LocationComboBox": {
+      "StatusList": {
+        "enter-country-name": "ملک کا نام درج کریں۔",
+        "no-results": "کوئی نتیجہ نہیں",
+        "results": "نتائج",
+        "searching": "تلاش کر رہا ہے...",
+        "select-locale": "لوکل منتخب کریں۔"
+      }
+    },
+    "LocationDialog": {
+      "close": "مقام کا ڈائیلاگ بند کریں۔",
+      "description": "اپنے علاقے میں دستیاب پروڈکٹس تلاش کرنے کے لیے اپنا مقام منتخب کریں۔",
+      "trigger": "مقام کی ترتیبات میں ترمیم کریں۔",
+      "title": "مقام کی ترتیبات"
+    },
+    "LocationForm": {
+      "accept": "منتخب کوکیز کو قبول کریں۔",
+      "decline": "رد کرنا",
+      "description": "Lorem ipsum",
+      "title": "مقامی ترتیبات"
     },
     "Menu": {
       "categories": "اقسام",
       "search": "تلاش کریں۔",
       "toggle": "مینو دیکھیں"
+    },
+    "MobileMenu": {
+      "close": "مینو بند کریں۔",
+      "open": "مینو کھولیں۔"
+    },
+    "NavbarContent": {
+      "link-account": "اپنا اکاؤنٹ دیکھیں",
+      "link-home": "ہوم پیج پر واپس جائیں۔",
+      "link-search": "مصنوعات کی تلاش کریں۔",
+      "link-wishlist": "اپنی خواہش کی فہرست دیکھیں"
+    },
+    "NavbarSearch": {
+      "placeholder": "مصنوعات کی تلاش کریں۔"
     },
     "Newsletter": {
       "description": "نئی مصنوعات اور پیشکشوں کے بارے میں اپ ڈیٹس حاصل کریں۔",
@@ -83,8 +179,53 @@
       "submit": "جمع کرائیں",
       "title": "نیوز لیٹر"
     },
+    "ProductDetails": {
+      "size-guide": {
+        "popover": {
+          "trigger": "سائز گائیڈ دیکھیں"
+        }
+      }
+    },
+    "RedeemCode": {
+      "close": "کوڈ ریڈیمپشن فارم ڈائیلاگ کو بند کریں۔"
+    },
+    "RedeemCodeForm": {
+      "placeholder": "اپنا کوڈ درج کریں",
+      "submit": "کوڈ کو چھڑانا"
+    },
     "RelatedProducts": {
       "title": "متعلقہ مصنوعات"
+    },
+    "SearchButton": {
+      "submit": "تلاش جمع کروائیں۔"
+    },
+    "SearchForm": {
+      "placeholder": "مصنوعات کی تلاش کریں۔"
+    },
+    "SearchLayout": {
+      "title": "ترتیب دیں"
+    },
+    "SidebarMenu": {
+      "close": "مینو بند کریں۔",
+      "open": "مینو کھولیں۔"
+    },
+    "SignUp": {
+      "title": "ہمارے نیوز لیٹر میں سائن اپ کریں۔",
+      "summary": "سائن اپ کریں اور اپنی پہلی خریداری پر 10% رعایت حاصل کریں۔"
+    },
+    "SignUpForm": {
+      "message": "سائن اپ کی تصدیق کا انتظار ہے۔",
+      "pattern": "درج کردہ قدر ای میل فارمیٹ سے مماثل نہیں ہے۔",
+      "placeholder": "ہمارے نیوز لیٹر میں سائن اپ کریں۔",
+      "required": "ای میل ایڈریس درکار ہے۔",
+      "submit": "سائن اپ",
+      "toast": {
+        "close-alt": "اس پیغام کو بند کریں۔",
+        "close-button": "بند کریں",
+        "error": "سائن اپ کرنے سے قاصر",
+        "success": "آپ نے کامیابی سے سائن اپ کر لیا ہے۔",
+        "title": "نیوزلیٹر کے لئے سائن اپ کریں"
+      }
     }
   }
 }

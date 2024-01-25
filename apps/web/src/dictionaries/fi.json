@@ -11,6 +11,17 @@
         "scarf": "huivi",
         "boots": "saappaat"
       }
+    },
+    "footer": {
+      "copyright": "© {currentYear} {siteName}. ",
+      "menu": {
+        "customer-care": "Asiakaspalvelu",
+        "follow-us": "Seuraa meitä",
+        "information": "Tiedot",
+        "location-settings": "Sijaintiasetukset",
+        "privacy-and-cookies": "Yksityisyys",
+        "settings": "asetukset"
+      }
     }
   },
   "page": {
@@ -25,6 +36,11 @@
     },
     "home": {
       "shop-now": "Osta nyt"
+    },
+    "not-found": {
+      "title": "Ei löydetty",
+      "message": "Pyydettyä resurssia ei löytynyt",
+      "button": "Yritä uudelleen"
     },
     "products": {
       "add-to-wishlist": "Lisää toivelistaan",
@@ -49,6 +65,7 @@
       "wishlist": "Toivelista"
     },
     "search": {
+      "reset": "Katso luettelo",
       "title": "Hae",
       "description": "Etsi tuotteita",
       "results": "{ tulokset, monikko, =0 {Ei hakutuloksia} =1 {"
@@ -59,23 +76,102 @@
       "add-to-cart-disabled": "Kohdetta ei voi lisätä laukkuun",
       "add-to-cart-enabled": "Lisää kassiin",
       "out-of-stock": "Loppu varastosta",
-      "select-options": "Valitse vaihtoehdot"
+      "pending": "Tuotteen lisääminen laukkuun",
+      "pre-order": "Ennakkotilaus",
+      "select-options": "Valitse vaihtoehdot",
+      "success": "Tuote lisätty laukkuun",
+      "status": {
+        "add-to-cart-disabled": "Kohdetta ei voi lisätä laukkuun",
+        "out-of-stock": "Tämä tuote on loppunut, <a href=\"mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for {product}\">ota yhteyttä saadaksesi lisätietoja</a>",
+        "pre-order": "Tämä tuote on ennakkotilattavissa ja sen toimitus alkaa {releaseDate}"
+      },
+      "toast": {
+        "close-alt": "Sulje tämä viesti",
+        "close-button": "kiinni",
+        "error": "Kohdetta ei voi lisätä laukkuun",
+        "success": "Tuote lisätty laukkuun",
+        "title": "Laukun päivitys"
+      }
     },
     "Banner": {
       "link": "Ilmainen toimitus kelvollisille tilauksille"
     },
     "CartForm": {
-      "empty-cart": "Laukkusi on tyhjä"
+      "empty-cart": "Laukkusi on tyhjä",
+      "proceed-to-checkout": "Siirry maksamaan",
+      "shipping": "laivaus",
+      "taxes": "Verot",
+      "total-amount": "Kokonaismäärä",
+      "total-items": "Kohteita yhteensä"
+    },
+    "CartModal": {
+      "close": "Sulje pussi",
+      "open": "Avaa pussi",
+      "title": "Sinun laukkusi"
+    },
+    "CollectionList": {
+      "title": "Kokoelmat"
     },
     "ConsentDialog": {
+      "close": "Sulje suostumusikkuna",
       "description": "UNCNSRD käyttää evästeitä, jotka ovat välttämättömiä tämän sivuston toiminnan kannalta, ja haluaisivat käyttää lisäevästeitä parantaakseen käyttökokemustasi tällä sivustolla.",
       "trigger": "Muokkaa suostumusasetuksia",
       "title": "Suostumusasetukset"
+    },
+    "ConsentForm": {
+      "accept-all": "Hyväksy kaikki evästeet",
+      "accept": "Hyväksy valitut evästeet",
+      "decline": "Hylkää",
+      "deny-additional": "Estä lisäevästeet",
+      "description": "UNCNSRD käyttää evästeitä, jotka ovat välttämättömiä tämän sivuston toiminnan kannalta, ja haluaisivat käyttää lisäevästeitä parantaakseen käyttökokemustasi tällä sivustolla.",
+      "manage": "Hallinnoi evästeitä",
+      "title": "Suostumusasetukset"
+    },
+    "DeleteItemButton": {
+      "remove": "Poista pussin esine"
+    },
+    "EditItemQuantityButton": {
+      "decrease": "Pienennä tuotteen määrää",
+      "increase": "Lisää tuotteen määrää"
+    },
+    "LocationComboBox": {
+      "StatusList": {
+        "enter-country-name": "Anna maan nimi",
+        "no-results": "Ei tuloksia",
+        "results": "Tulokset",
+        "searching": "Haetaan...",
+        "select-locale": "Valitse alue"
+      }
+    },
+    "LocationDialog": {
+      "close": "Sulje sijaintivalintaikkuna",
+      "description": "Valitse sijaintisi löytääksesi alueellasi saatavilla olevia tuotteita",
+      "trigger": "Muokkaa sijaintiasetuksia",
+      "title": "Sijaintiasetukset"
+    },
+    "LocationForm": {
+      "accept": "Hyväksy valitut evästeet",
+      "decline": "Hylkää",
+      "description": "Lorem ipsum",
+      "title": "Kieliasetukset"
     },
     "Menu": {
       "categories": "Luokat",
       "search": "Hae",
       "toggle": "Näytä valikko"
+    },
+    "MobileMenu": {
+      "close": "Sulje valikko",
+      "open": "Avaa valikko"
+    },
+    "NavbarContent": {
+      "link-account": "Tarkastele tiliäsi",
+      "link-home": "Palaa etusivulle",
+      "link-search": "Etsi tuotteita",
+      "link-wishlist": "Katso toivelistasi"
+    },
+    "NavbarSearch": {
+      "placeholder": "Etsi tuotteita"
     },
     "Newsletter": {
       "description": "Saat päivityksiä uusista tuotteista ja tarjouksista.",
@@ -83,8 +179,53 @@
       "submit": "Lähetä",
       "title": "Uutiskirje"
     },
+    "ProductDetails": {
+      "size-guide": {
+        "popover": {
+          "trigger": "Katso kokoopas"
+        }
+      }
+    },
+    "RedeemCode": {
+      "close": "Sulje koodin lunastuslomakkeen valintaikkuna"
+    },
+    "RedeemCodeForm": {
+      "placeholder": "Anna koodi",
+      "submit": "Lunasta koodi"
+    },
     "RelatedProducts": {
       "title": "Liittyvät tuotteet"
+    },
+    "SearchButton": {
+      "submit": "Lähetä haku"
+    },
+    "SearchForm": {
+      "placeholder": "Etsi tuotteita"
+    },
+    "SearchLayout": {
+      "title": "Järjestä"
+    },
+    "SidebarMenu": {
+      "close": "Sulje valikko",
+      "open": "Avaa valikko"
+    },
+    "SignUp": {
+      "title": "Tilaa uutiskirjeemme",
+      "summary": "Rekisteröidy ja saat 10% alennuksen ensimmäisestä ostoksestasi"
+    },
+    "SignUpForm": {
+      "message": "Odotetaan ilmoittautumisvahvistusta",
+      "pattern": "Syötetty arvo ei vastaa sähköpostin muotoa",
+      "placeholder": "Tilaa uutiskirjeemme",
+      "required": "Sähköpostiosoite vaaditaan",
+      "submit": "Kirjaudu",
+      "toast": {
+        "close-alt": "Sulje tämä viesti",
+        "close-button": "kiinni",
+        "error": "Kirjautuminen ei onnistu",
+        "success": "Olet onnistuneesti rekisteröitynyt",
+        "title": "Uutiskirjeen tilaaminen"
+      }
     }
   }
 }

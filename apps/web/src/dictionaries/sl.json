@@ -11,6 +11,17 @@
         "scarf": "šal",
         "boots": "škornji"
       }
+    },
+    "footer": {
+      "copyright": "© {currentYear} {siteName}. ",
+      "menu": {
+        "customer-care": "Skrb za stranke",
+        "follow-us": "Sledi nam",
+        "information": "Informacije",
+        "location-settings": "Nastavitve lokacije",
+        "privacy-and-cookies": "Zasebnost",
+        "settings": "nastavitve"
+      }
     }
   },
   "page": {
@@ -25,6 +36,11 @@
     },
     "home": {
       "shop-now": "Nakupujte zdaj"
+    },
+    "not-found": {
+      "title": "Ni najdeno",
+      "message": "Ni bilo mogoče najti zahtevanega vira",
+      "button": "Poskusi ponovno"
     },
     "products": {
       "add-to-wishlist": "Dodaj na seznam želja",
@@ -49,6 +65,7 @@
       "wishlist": "Seznam želja"
     },
     "search": {
+      "reset": "Ogled kataloga",
       "title": "Iskanje",
       "description": "Iskanje izdelkov",
       "results": "{ rezultati, množina, =0 {Ni rezultatov iskanja} =1 {"
@@ -59,23 +76,102 @@
       "add-to-cart-disabled": "Predmeta ni mogoče dodati v torbo",
       "add-to-cart-enabled": "Dodaj v torbo",
       "out-of-stock": "Ni na zalogi",
-      "select-options": "Izberite možnosti"
+      "pending": "Dodajanje predmeta v torbo",
+      "pre-order": "Prednaročilo",
+      "select-options": "Izberite možnosti",
+      "success": "Artikel dodan v torbo",
+      "status": {
+        "add-to-cart-disabled": "Predmeta ni mogoče dodati v torbo",
+        "out-of-stock": "Tega artikla ni na zalogi, <a href=\"mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for {product}\">kontaktirajte nas za več informacij</a>",
+        "pre-order": "Ta izdelek je na voljo za prednaročilo in se bo začel pošiljati {releaseDate}"
+      },
+      "toast": {
+        "close-alt": "Zapri to sporočilo",
+        "close-button": "Zapri",
+        "error": "Predmeta ni mogoče dodati v torbo",
+        "success": "Artikel dodan v torbo",
+        "title": "Posodobitev torbe"
+      }
     },
     "Banner": {
       "link": "Brezplačna dostava za primerna naročila"
     },
     "CartForm": {
-      "empty-cart": "Vaša torba je prazna"
+      "empty-cart": "Vaša torba je prazna",
+      "proceed-to-checkout": "Nadaljujte z blagajno",
+      "shipping": "Dostava",
+      "taxes": "Davki",
+      "total-amount": "Skupni znesek",
+      "total-items": "Skupaj predmetov"
+    },
+    "CartModal": {
+      "close": "Zapri vrečko",
+      "open": "Odpri vrečko",
+      "title": "Tvoja torba"
+    },
+    "CollectionList": {
+      "title": "Zbirke"
     },
     "ConsentDialog": {
+      "close": "Zaprite pogovorno okno za soglasje",
       "description": "UNCNSRD uporablja piškotke, ki so bistveni za delovanje te strani, in želi uporabiti dodatne piškotke za izboljšanje vaše izkušnje na tej strani.",
       "trigger": "Uredite nastavitve soglasja",
       "title": "Nastavitve soglasja"
+    },
+    "ConsentForm": {
+      "accept-all": "Sprejmi vse piškotke",
+      "accept": "Sprejmi izbrane piškotke",
+      "decline": "Zavrni",
+      "deny-additional": "Zavrni dodatne piškotke",
+      "description": "UNCNSRD uporablja piškotke, ki so bistveni za delovanje te strani, in želi uporabiti dodatne piškotke za izboljšanje vaše izkušnje na tej strani.",
+      "manage": "Upravljanje piškotkov",
+      "title": "Nastavitve soglasja"
+    },
+    "DeleteItemButton": {
+      "remove": "Odstranite predmet vrečke"
+    },
+    "EditItemQuantityButton": {
+      "decrease": "Zmanjšajte količino artikla",
+      "increase": "Povečajte količino artikla"
+    },
+    "LocationComboBox": {
+      "StatusList": {
+        "enter-country-name": "Vnesite ime države",
+        "no-results": "Ni zadetkov",
+        "results": "Rezultati",
+        "searching": "Iskanje ...",
+        "select-locale": "Izberite jezik"
+      }
+    },
+    "LocationDialog": {
+      "close": "Zaprite pogovorno okno lokacije",
+      "description": "Izberite svojo lokacijo, če želite poiskati izdelke, ki so na voljo v vaši regiji",
+      "trigger": "Uredite nastavitve lokacije",
+      "title": "Nastavitve lokacije"
+    },
+    "LocationForm": {
+      "accept": "Sprejmi izbrane piškotke",
+      "decline": "Zavrni",
+      "description": "Lorem ipsum",
+      "title": "Področne nastavitve"
     },
     "Menu": {
       "categories": "kategorije",
       "search": "Iskanje",
       "toggle": "Oglejte si meni"
+    },
+    "MobileMenu": {
+      "close": "Zaprite meni",
+      "open": "Odprite meni"
+    },
+    "NavbarContent": {
+      "link-account": "Oglejte si svoj račun",
+      "link-home": "Nazaj na domačo stran",
+      "link-search": "Iskanje izdelkov",
+      "link-wishlist": "Oglejte si svoj seznam želja"
+    },
+    "NavbarSearch": {
+      "placeholder": "Iskanje izdelkov"
     },
     "Newsletter": {
       "description": "Prejemajte posodobitve o novih izdelkih in ponudbah.",
@@ -83,8 +179,53 @@
       "submit": "Predloži",
       "title": "Glasilo"
     },
+    "ProductDetails": {
+      "size-guide": {
+        "popover": {
+          "trigger": "Ogled vodnika po velikosti"
+        }
+      }
+    },
+    "RedeemCode": {
+      "close": "Zaprite pogovorno okno obrazca za unovčenje kode"
+    },
+    "RedeemCodeForm": {
+      "placeholder": "Vnesite kodo",
+      "submit": "Unovči kodo"
+    },
     "RelatedProducts": {
       "title": "Podobni izdelki"
+    },
+    "SearchButton": {
+      "submit": "Oddaj iskanje"
+    },
+    "SearchForm": {
+      "placeholder": "Iskanje izdelkov"
+    },
+    "SearchLayout": {
+      "title": "Razvrsti po"
+    },
+    "SidebarMenu": {
+      "close": "Zaprite meni",
+      "open": "Odprite meni"
+    },
+    "SignUp": {
+      "title": "Prijavite se na naše glasilo",
+      "summary": "Prijavite se in prejmite 10% popust na prvi nakup"
+    },
+    "SignUpForm": {
+      "message": "Čakam na potrditev prijave",
+      "pattern": "Vnesena vrednost se ne ujema z obliko elektronske pošte",
+      "placeholder": "Prijavite se na naše glasilo",
+      "required": "E-poštni naslov je obvezen",
+      "submit": "Prijavite se",
+      "toast": {
+        "close-alt": "Zapri to sporočilo",
+        "close-button": "Zapri",
+        "error": "Ne morem se prijaviti",
+        "success": "Uspešno ste se prijavili",
+        "title": "Prijava na glasilo"
+      }
     }
   }
 }

@@ -11,6 +11,17 @@
         "scarf": "スカーフ",
         "boots": "ブーツ"
       }
+    },
+    "footer": {
+      "copyright": "© {現在の年} {サイト名}。",
+      "menu": {
+        "customer-care": "カスタマーケア",
+        "follow-us": "私たちに従ってください",
+        "information": "情報",
+        "location-settings": "位置情報の設定",
+        "privacy-and-cookies": "プライバシー",
+        "settings": "設定"
+      }
     }
   },
   "page": {
@@ -25,6 +36,11 @@
     },
     "home": {
       "shop-now": "今すぐ購入"
+    },
+    "not-found": {
+      "title": "見つかりません",
+      "message": "要求されたリソースが見つかりませんでした",
+      "button": "もう一度やり直してください"
     },
     "products": {
       "add-to-wishlist": "ほしい物リストに追加する",
@@ -49,6 +65,7 @@
       "wishlist": "ウィッシュリスト"
     },
     "search": {
+      "reset": "カタログを見る",
       "title": "検索",
       "description": "製品を探す",
       "results": "{ 結果、複数形、 =0 {検索結果なし} =1 {"
@@ -59,23 +76,102 @@
       "add-to-cart-disabled": "バッグにアイテムを追加できません",
       "add-to-cart-enabled": "かごに入れます",
       "out-of-stock": "在庫切れ",
-      "select-options": "オプションを選択してください"
+      "pending": "バッグにアイテムを追加する",
+      "pre-order": "予約注文",
+      "select-options": "オプションを選択してください",
+      "success": "バッグにアイテムが追加されました",
+      "status": {
+        "add-to-cart-disabled": "バッグにアイテムを追加できません",
+        "out-of-stock": "こちらの商品は在庫がございませんので、 <a href=\"mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for {product}\">詳細についてはお問い合わせください</a>",
+        "pre-order": "この商品は予約注文可能で、{releaseDate} に発送が開始されます。"
+      },
+      "toast": {
+        "close-alt": "このメッセージを閉じてください",
+        "close-button": "近い",
+        "error": "バッグにアイテムを追加できません",
+        "success": "バッグにアイテムが追加されました",
+        "title": "バッグのアップデート"
+      }
     },
     "Banner": {
       "link": "対象注文で送料無料"
     },
     "CartForm": {
-      "empty-cart": "あなたのバッグは空です"
+      "empty-cart": "あなたのバッグは空です",
+      "proceed-to-checkout": "チェックアウトに進む",
+      "shipping": "配送",
+      "taxes": "税金",
+      "total-amount": "合計金額",
+      "total-items": "総項目数"
+    },
+    "CartModal": {
+      "close": "バッグを閉じます",
+      "open": "バッグを開けて",
+      "title": "あなたのバッグ"
+    },
+    "CollectionList": {
+      "title": "コレクション"
     },
     "ConsentDialog": {
+      "close": "同意ダイアログを閉じる",
       "description": "UNCNSRD は、このサイトの動作に不可欠な Cookie を使用しており、このサイトでのエクスペリエンスを向上させるために追加の Cookie を使用したいと考えています。",
       "trigger": "同意設定を編集する",
       "title": "同意設定"
+    },
+    "ConsentForm": {
+      "accept-all": "すべての Cookie を受け入れる",
+      "accept": "選択した Cookie を受け入れる",
+      "decline": "衰退",
+      "deny-additional": "追加の Cookie を拒否する",
+      "description": "UNCNSRD は、このサイトの動作に不可欠な Cookie を使用しており、このサイトでのエクスペリエンスを向上させるために追加の Cookie を使用したいと考えています。",
+      "manage": "Cookieを管理する",
+      "title": "同意設定"
+    },
+    "DeleteItemButton": {
+      "remove": "バッグアイテムを削除する"
+    },
+    "EditItemQuantityButton": {
+      "decrease": "アイテムの数量を減らす",
+      "increase": "アイテムの数量を増やす"
+    },
+    "LocationComboBox": {
+      "StatusList": {
+        "enter-country-name": "国名を入力してください",
+        "no-results": "結果が見つかりません",
+        "results": "結果",
+        "searching": "検索中...",
+        "select-locale": "ロケールの選択"
+      }
+    },
+    "LocationDialog": {
+      "close": "場所ダイアログを閉じます",
+      "description": "お住まいの地域を選択して、お住まいの地域で入手可能な製品を見つけてください",
+      "trigger": "位置情報の設定を編集する",
+      "title": "位置情報の設定"
+    },
+    "LocationForm": {
+      "accept": "選択した Cookie を受け入れる",
+      "decline": "衰退",
+      "description": "ロレム・イプサム",
+      "title": "ロケール設定"
     },
     "Menu": {
       "categories": "カテゴリー",
       "search": "検索",
       "toggle": "メニューを見る"
+    },
+    "MobileMenu": {
+      "close": "メニューを閉じる",
+      "open": "メニューを開く"
+    },
+    "NavbarContent": {
+      "link-account": "自分のアカウントを表示する",
+      "link-home": "ホームページに戻る",
+      "link-search": "製品を探す",
+      "link-wishlist": "ウィッシュリストを見る"
+    },
+    "NavbarSearch": {
+      "placeholder": "製品を探す"
     },
     "Newsletter": {
       "description": "新製品やオファーに関する最新情報を受け取ります。",
@@ -83,8 +179,53 @@
       "submit": "提出する",
       "title": "ニュースレター"
     },
+    "ProductDetails": {
+      "size-guide": {
+        "popover": {
+          "trigger": "サイズガイドを見る"
+        }
+      }
+    },
+    "RedeemCode": {
+      "close": "コード引き換えフォームダイアログを閉じます"
+    },
+    "RedeemCodeForm": {
+      "placeholder": "コードを入力してください",
+      "submit": "コードを引き換える"
+    },
     "RelatedProducts": {
       "title": "関連製品"
+    },
+    "SearchButton": {
+      "submit": "検索を送信"
+    },
+    "SearchForm": {
+      "placeholder": "製品を探す"
+    },
+    "SearchLayout": {
+      "title": "並べ替え"
+    },
+    "SidebarMenu": {
+      "close": "メニューを閉じる",
+      "open": "メニューを開く"
+    },
+    "SignUp": {
+      "title": "ニュースレターに登録する",
+      "summary": "サインアップすると、初回購入時に 10% オフが適用されます"
+    },
+    "SignUpForm": {
+      "message": "サインアップの確認を待っています",
+      "pattern": "入力された値が電子メールの形式と一致しません",
+      "placeholder": "ニュースレターに登録する",
+      "required": "メールアドレスは必須です",
+      "submit": "サインアップ",
+      "toast": {
+        "close-alt": "このメッセージを閉じてください",
+        "close-button": "近い",
+        "error": "サインアップできません",
+        "success": "正常にサインアップしました",
+        "title": "ニュースレターの登録"
+      }
     }
   }
 }

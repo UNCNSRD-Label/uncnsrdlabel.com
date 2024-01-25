@@ -11,6 +11,17 @@
         "scarf": "scarf",
         "boots": "stövlar"
       }
+    },
+    "footer": {
+      "copyright": "© {currentYear} {siteName}. ",
+      "menu": {
+        "customer-care": "Kundvård",
+        "follow-us": "Följ oss",
+        "information": "Information",
+        "location-settings": "Platsinställningar",
+        "privacy-and-cookies": "Integritet",
+        "settings": "inställningar"
+      }
     }
   },
   "page": {
@@ -25,6 +36,11 @@
     },
     "home": {
       "shop-now": "Shoppa nu"
+    },
+    "not-found": {
+      "title": "Hittades inte",
+      "message": "Det gick inte att hitta den begärda resursen",
+      "button": "Försök igen"
     },
     "products": {
       "add-to-wishlist": "Lägg till i önskelista",
@@ -49,6 +65,7 @@
       "wishlist": "önskelista"
     },
     "search": {
+      "reset": "Se katalog",
       "title": "Sök",
       "description": "Sök efter produkter",
       "results": "{ resultat, plural, =0 {Inga sökresultat} =1 {"
@@ -59,23 +76,102 @@
       "add-to-cart-disabled": "Det gick inte att lägga till vara i väskan",
       "add-to-cart-enabled": "Lägg i varukorg",
       "out-of-stock": "Slut i lager",
-      "select-options": "Välj alternativ"
+      "pending": "Lägger till föremål i väskan",
+      "pre-order": "Förboka",
+      "select-options": "Välj alternativ",
+      "success": "Varan läggs till väskan",
+      "status": {
+        "add-to-cart-disabled": "Det gick inte att lägga till vara i väskan",
+        "out-of-stock": "Denna vara är slut i lager, <a href=\"mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for {product}\">kontakta oss för mer information</a>",
+        "pre-order": "Denna vara är tillgänglig för förbeställning och börjar levereras den {releaseDate}"
+      },
+      "toast": {
+        "close-alt": "Stäng detta meddelande",
+        "close-button": "Stänga",
+        "error": "Det gick inte att lägga till vara i väskan",
+        "success": "Varan läggs till väskan",
+        "title": "Väska uppdatering"
+      }
     },
     "Banner": {
       "link": "Fri frakt på kvalificerade beställningar"
     },
     "CartForm": {
-      "empty-cart": "Din väska är tom"
+      "empty-cart": "Din väska är tom",
+      "proceed-to-checkout": "Fortsätt till utcheckningen",
+      "shipping": "Frakt",
+      "taxes": "Skatter",
+      "total-amount": "Totala summan",
+      "total-items": "Totalt antal poster"
+    },
+    "CartModal": {
+      "close": "Stäng påsen",
+      "open": "Öppna påsen",
+      "title": "Din väska"
+    },
+    "CollectionList": {
+      "title": "Samlingar"
     },
     "ConsentDialog": {
+      "close": "Stäng samtyckesdialogrutan",
       "description": "UNCNSRD använder cookies som är nödvändiga för att få den här sidan att fungera och vill använda ytterligare cookies för att förbättra din upplevelse på den här sidan.",
       "trigger": "Redigera samtyckesinställningar",
       "title": "Inställningar för samtycke"
+    },
+    "ConsentForm": {
+      "accept-all": "Acceptera alla cookies",
+      "accept": "Acceptera valda cookies",
+      "decline": "Nedgång",
+      "deny-additional": "Neka ytterligare cookies",
+      "description": "UNCNSRD använder cookies som är nödvändiga för att få den här sidan att fungera och vill använda ytterligare cookies för att förbättra din upplevelse på den här sidan.",
+      "manage": "Hantera cookies",
+      "title": "Inställningar för samtycke"
+    },
+    "DeleteItemButton": {
+      "remove": "Ta bort väskans föremål"
+    },
+    "EditItemQuantityButton": {
+      "decrease": "Minska artikelkvantiteten",
+      "increase": "Öka artikelkvantiteten"
+    },
+    "LocationComboBox": {
+      "StatusList": {
+        "enter-country-name": "Ange landets namn",
+        "no-results": "Inga resultat funna",
+        "results": "Resultat",
+        "searching": "Sökande...",
+        "select-locale": "Välj språk"
+      }
+    },
+    "LocationDialog": {
+      "close": "Stäng platsdialogrutan",
+      "description": "Välj din plats för att hitta tillgängliga produkter i din region",
+      "trigger": "Redigera platsinställningar",
+      "title": "Platsinställningar"
+    },
+    "LocationForm": {
+      "accept": "Acceptera valda cookies",
+      "decline": "Nedgång",
+      "description": "Lorem ipsum",
+      "title": "Lokalinställningar"
     },
     "Menu": {
       "categories": "Kategorier",
       "search": "Sök",
       "toggle": "Se menyn"
+    },
+    "MobileMenu": {
+      "close": "Stäng menyn",
+      "open": "Öppna menyn"
+    },
+    "NavbarContent": {
+      "link-account": "Visa ditt konto",
+      "link-home": "Återgå till hemsidan",
+      "link-search": "Sök efter produkter",
+      "link-wishlist": "Se din önskelista"
+    },
+    "NavbarSearch": {
+      "placeholder": "Sök efter produkter"
     },
     "Newsletter": {
       "description": "Få uppdateringar om nya produkter och erbjudanden.",
@@ -83,8 +179,53 @@
       "submit": "Skicka in",
       "title": "Nyhetsbrev"
     },
+    "ProductDetails": {
+      "size-guide": {
+        "popover": {
+          "trigger": "Se storleksguide"
+        }
+      }
+    },
+    "RedeemCode": {
+      "close": "Stäng dialogrutan för kodinlösenformuläret"
+    },
+    "RedeemCodeForm": {
+      "placeholder": "Ange din kod",
+      "submit": "Inlösningskod"
+    },
     "RelatedProducts": {
       "title": "Relaterade produkter"
+    },
+    "SearchButton": {
+      "submit": "Skicka sökning"
+    },
+    "SearchForm": {
+      "placeholder": "Sök efter produkter"
+    },
+    "SearchLayout": {
+      "title": "Sortera efter"
+    },
+    "SidebarMenu": {
+      "close": "Stäng menyn",
+      "open": "Öppna menyn"
+    },
+    "SignUp": {
+      "title": "Anmäl dig till vårt nyhetsbrev",
+      "summary": "Registrera dig och få 10 % rabatt på ditt första köp"
+    },
+    "SignUpForm": {
+      "message": "Väntar på registreringsbekräftelse",
+      "pattern": "Det angivna värdet matchar inte e-postformatet",
+      "placeholder": "Anmäl dig till vårt nyhetsbrev",
+      "required": "E-postadress krävs",
+      "submit": "Bli Medlem",
+      "toast": {
+        "close-alt": "Stäng detta meddelande",
+        "close-button": "Stänga",
+        "error": "Det gick inte att registrera sig",
+        "success": "Du har registrerat dig",
+        "title": "Nyhetsbrev anmälan"
+      }
     }
   }
 }

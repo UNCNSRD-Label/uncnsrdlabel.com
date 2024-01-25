@@ -11,6 +11,17 @@
         "scarf": "syal",
         "boots": "sepatu bot"
       }
+    },
+    "footer": {
+      "copyright": "© {Tahun Saat Ini} {NamaSitus}. ",
+      "menu": {
+        "customer-care": "Layanan pelanggan",
+        "follow-us": "Ikuti kami",
+        "information": "Informasi",
+        "location-settings": "Pengaturan lokasi",
+        "privacy-and-cookies": "Pribadi",
+        "settings": "Pengaturan"
+      }
     }
   },
   "page": {
@@ -25,6 +36,11 @@
     },
     "home": {
       "shop-now": "Berbelanja sekarang"
+    },
+    "not-found": {
+      "title": "Tidak ditemukan",
+      "message": "Tidak dapat menemukan sumber daya yang diminta",
+      "button": "Coba lagi"
     },
     "products": {
       "add-to-wishlist": "Tambahkan ke Daftar Keinginan b Indonesia",
@@ -49,6 +65,7 @@
       "wishlist": "Daftar Keinginan"
     },
     "search": {
+      "reset": "Lihat katalog",
       "title": "Mencari",
       "description": "Cari produk",
       "results": "{ hasil, jamak, =0 {Tidak ada hasil penelusuran} =1 {"
@@ -59,23 +76,102 @@
       "add-to-cart-disabled": "Tidak dapat menambahkan item ke tas",
       "add-to-cart-enabled": "Tambahkan ke tas",
       "out-of-stock": "Stok Habis",
-      "select-options": "Silakan pilih opsi"
+      "pending": "Menambahkan item ke tas",
+      "pre-order": "Pesan terlebih dahulu",
+      "select-options": "Silakan pilih opsi",
+      "success": "Item ditambahkan ke tas",
+      "status": {
+        "add-to-cart-disabled": "Tidak dapat menambahkan item ke tas",
+        "out-of-stock": "Barang ini sudah habis, <a href=\"mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for {product}\">hubungi kami untuk informasi lebih lanjut</a>",
+        "pre-order": "Item ini tersedia untuk praorder dan akan mulai dikirimkan pada {releaseDate}"
+      },
+      "toast": {
+        "close-alt": "Tutup pesan ini",
+        "close-button": "Menutup",
+        "error": "Tidak dapat menambahkan item ke tas",
+        "success": "Item ditambahkan ke tas",
+        "title": "Pembaruan tas"
+      }
     },
     "Banner": {
       "link": "Pengiriman gratis untuk pesanan yang memenuhi syarat"
     },
     "CartForm": {
-      "empty-cart": "Tasmu kosong"
+      "empty-cart": "Tasmu kosong",
+      "proceed-to-checkout": "Lanjutkan ke pembayaran",
+      "shipping": "Pengiriman",
+      "taxes": "Pajak",
+      "total-amount": "Jumlah total",
+      "total-items": "Jumlah barang"
+    },
+    "CartModal": {
+      "close": "Tutup tasnya",
+      "open": "Buka tasnya",
+      "title": "Tas mu"
+    },
+    "CollectionList": {
+      "title": "Koleksi"
     },
     "ConsentDialog": {
+      "close": "Tutup dialog persetujuan",
       "description": "UNCNSRD menggunakan cookie yang penting untuk membuat situs ini berfungsi dan ingin menggunakan cookie tambahan untuk meningkatkan pengalaman Anda di situs ini.",
       "trigger": "Edit pengaturan persetujuan",
       "title": "Pengaturan persetujuan"
+    },
+    "ConsentForm": {
+      "accept-all": "Terima semua cookie",
+      "accept": "Terima cookie yang dipilih",
+      "decline": "Menolak",
+      "deny-additional": "Tolak cookie tambahan",
+      "description": "UNCNSRD menggunakan cookie yang penting untuk membuat situs ini berfungsi dan ingin menggunakan cookie tambahan untuk meningkatkan pengalaman Anda di situs ini.",
+      "manage": "Kelola cookie",
+      "title": "Pengaturan persetujuan"
+    },
+    "DeleteItemButton": {
+      "remove": "Hapus item tas"
+    },
+    "EditItemQuantityButton": {
+      "decrease": "Kurangi jumlah barang",
+      "increase": "Tingkatkan kuantitas barang"
+    },
+    "LocationComboBox": {
+      "StatusList": {
+        "enter-country-name": "Masukkan nama negara",
+        "no-results": "Tidak ada hasil yang ditemukan",
+        "results": "Hasil",
+        "searching": "Mencari...",
+        "select-locale": "Pilih lokal"
+      }
+    },
+    "LocationDialog": {
+      "close": "Tutup dialog lokasi",
+      "description": "Pilih lokasi Anda untuk menemukan produk yang tersedia di wilayah Anda",
+      "trigger": "Edit pengaturan lokasi",
+      "title": "Pengaturan lokasi"
+    },
+    "LocationForm": {
+      "accept": "Terima cookie yang dipilih",
+      "decline": "Menolak",
+      "description": "Lorem ipsum",
+      "title": "Pengaturan lokal"
     },
     "Menu": {
       "categories": "Kategori",
       "search": "Mencari",
       "toggle": "Lihat menunya"
+    },
+    "MobileMenu": {
+      "close": "Tutup menunya",
+      "open": "Buka menunya"
+    },
+    "NavbarContent": {
+      "link-account": "Lihat akun Anda",
+      "link-home": "Kembali ke beranda",
+      "link-search": "Cari produk",
+      "link-wishlist": "Lihat daftar keinginan Anda"
+    },
+    "NavbarSearch": {
+      "placeholder": "Cari produk"
     },
     "Newsletter": {
       "description": "Terima pembaruan tentang produk dan penawaran baru.",
@@ -83,8 +179,53 @@
       "submit": "Kirim",
       "title": "Buletin"
     },
+    "ProductDetails": {
+      "size-guide": {
+        "popover": {
+          "trigger": "Lihat panduan ukuran"
+        }
+      }
+    },
+    "RedeemCode": {
+      "close": "Tutup dialog formulir penukaran kode"
+    },
+    "RedeemCodeForm": {
+      "placeholder": "Masukkan kode Anda",
+      "submit": "Menebus kode"
+    },
     "RelatedProducts": {
       "title": "Produk-produk terkait"
+    },
+    "SearchButton": {
+      "submit": "Kirim pencarian"
+    },
+    "SearchForm": {
+      "placeholder": "Cari produk"
+    },
+    "SearchLayout": {
+      "title": "Sortir dengan"
+    },
+    "SidebarMenu": {
+      "close": "Tutup menunya",
+      "open": "Buka menunya"
+    },
+    "SignUp": {
+      "title": "Daftar ke buletin kami",
+      "summary": "Daftar dan dapatkan diskon 10% untuk pembelian pertama Anda"
+    },
+    "SignUpForm": {
+      "message": "Menunggu konfirmasi pendaftaran",
+      "pattern": "Nilai yang dimasukkan tidak cocok dengan format email",
+      "placeholder": "Daftar ke buletin kami",
+      "required": "Alamat email diperlukan",
+      "submit": "Mendaftar",
+      "toast": {
+        "close-alt": "Tutup pesan ini",
+        "close-button": "Menutup",
+        "error": "Tidak dapat mendaftar",
+        "success": "Anda telah berhasil mendaftar",
+        "title": "Pendaftaran buletin"
+      }
     }
   }
 }

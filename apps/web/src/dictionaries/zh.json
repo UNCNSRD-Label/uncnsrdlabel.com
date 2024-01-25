@@ -11,6 +11,17 @@
         "scarf": "围巾",
         "boots": "靴子"
       }
+    },
+    "footer": {
+      "copyright": "© {当前年份} {站点名称}。",
+      "menu": {
+        "customer-care": "客户关怀",
+        "follow-us": "跟着我们",
+        "information": "信息",
+        "location-settings": "位置设置",
+        "privacy-and-cookies": "隐私",
+        "settings": "设置"
+      }
     }
   },
   "page": {
@@ -25,6 +36,11 @@
     },
     "home": {
       "shop-now": "现在去购物"
+    },
+    "not-found": {
+      "title": "未找到",
+      "message": "找不到请求的资源",
+      "button": "再试一次"
     },
     "products": {
       "add-to-wishlist": "添加到愿望清单",
@@ -49,6 +65,7 @@
       "wishlist": "愿望清单"
     },
     "search": {
+      "reset": "查看目录",
       "title": "搜索",
       "description": "搜索产品",
       "results": "{ results, 复数, =0 {无搜索结果} =1 {"
@@ -59,23 +76,102 @@
       "add-to-cart-disabled": "无法将商品添加至购物袋",
       "add-to-cart-enabled": "添加至购物袋",
       "out-of-stock": "缺货",
-      "select-options": "请选择选项"
+      "pending": "将物品添加到包中",
+      "pre-order": "预购",
+      "select-options": "请选择选项",
+      "success": "物品已添加至购物袋",
+      "status": {
+        "add-to-cart-disabled": "无法将商品添加至购物袋",
+        "out-of-stock": "此产品缺货， <a href=\"mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for {product}\">联系我们获取更多信息</a>",
+        "pre-order": "该商品可供预订，将于 {releaseDate} 开始发货"
+      },
+      "toast": {
+        "close-alt": "关闭此消息",
+        "close-button": "关闭",
+        "error": "无法将商品添加至购物袋",
+        "success": "物品已添加至购物袋",
+        "title": "包袋更新"
+      }
     },
     "Banner": {
       "link": "符合条件的订单免运费"
     },
     "CartForm": {
-      "empty-cart": "你的包是空的"
+      "empty-cart": "你的包是空的",
+      "proceed-to-checkout": "进行结算",
+      "shipping": "船运",
+      "taxes": "税收",
+      "total-amount": "总金额",
+      "total-items": "总项目"
+    },
+    "CartModal": {
+      "close": "关闭袋子",
+      "open": "打开袋子",
+      "title": "你的包"
+    },
+    "CollectionList": {
+      "title": "收藏"
     },
     "ConsentDialog": {
+      "close": "关闭同意对话框",
       "description": "UNCNSRD 使用对于本网站正常运行至关重要的 cookie，并希望使用其他 cookie 来改善您在本网站上的体验。",
       "trigger": "编辑同意设置",
       "title": "同意设置"
+    },
+    "ConsentForm": {
+      "accept-all": "接受所有cookie",
+      "accept": "接受选定的cookie",
+      "decline": "衰退",
+      "deny-additional": "拒绝额外的cookie",
+      "description": "UNCNSRD 使用对于本网站正常运行至关重要的 cookie，并希望使用其他 cookie 来改善您在本网站上的体验。",
+      "manage": "管理cookies",
+      "title": "同意设置"
+    },
+    "DeleteItemButton": {
+      "remove": "移除包内物品"
+    },
+    "EditItemQuantityButton": {
+      "decrease": "减少物品数量",
+      "increase": "增加物品数量"
+    },
+    "LocationComboBox": {
+      "StatusList": {
+        "enter-country-name": "输入国家名称",
+        "no-results": "未找到结果",
+        "results": "结果",
+        "searching": "正在寻找...",
+        "select-locale": "选择区域设置"
+      }
+    },
+    "LocationDialog": {
+      "close": "关闭位置对话框",
+      "description": "选择您的位置以查找您所在地区提供的产品",
+      "trigger": "编辑位置设置",
+      "title": "位置设置"
+    },
+    "LocationForm": {
+      "accept": "接受选定的cookie",
+      "decline": "衰退",
+      "description": "洛雷姆·伊普苏姆",
+      "title": "区域设置"
     },
     "Menu": {
       "categories": "类别",
       "search": "搜索",
       "toggle": "查看菜单"
+    },
+    "MobileMenu": {
+      "close": "关闭菜单",
+      "open": "打开菜单"
+    },
+    "NavbarContent": {
+      "link-account": "查看您的帐户",
+      "link-home": "返回主页",
+      "link-search": "搜索产品",
+      "link-wishlist": "查看您的愿望清单"
+    },
+    "NavbarSearch": {
+      "placeholder": "搜索产品"
     },
     "Newsletter": {
       "description": "接收新产品和优惠的更新。",
@@ -83,8 +179,53 @@
       "submit": "提交",
       "title": "通讯"
     },
+    "ProductDetails": {
+      "size-guide": {
+        "popover": {
+          "trigger": "查看尺寸指南"
+        }
+      }
+    },
+    "RedeemCode": {
+      "close": "关闭代码兑换表单对话框"
+    },
+    "RedeemCodeForm": {
+      "placeholder": "输入您的代码",
+      "submit": "兑换代码"
+    },
     "RelatedProducts": {
       "title": "相关产品"
+    },
+    "SearchButton": {
+      "submit": "提交搜索"
+    },
+    "SearchForm": {
+      "placeholder": "搜索产品"
+    },
+    "SearchLayout": {
+      "title": "排序方式"
+    },
+    "SidebarMenu": {
+      "close": "关闭菜单",
+      "open": "打开菜单"
+    },
+    "SignUp": {
+      "title": "注册我们的时事通讯",
+      "summary": "注册并享受首次购买 10% 的折扣"
+    },
+    "SignUpForm": {
+      "message": "等待注册确认",
+      "pattern": "输入的值与电子邮件格式不匹配",
+      "placeholder": "注册我们的时事通讯",
+      "required": "电子邮件地址为必填项",
+      "submit": "报名",
+      "toast": {
+        "close-alt": "关闭此消息",
+        "close-button": "关闭",
+        "error": "无法注册",
+        "success": "您已成功注册",
+        "title": "订阅时事通讯"
+      }
     }
   }
 }

@@ -11,6 +11,17 @@
         "scarf": "sál",
         "boots": "csizma"
       }
+    },
+    "footer": {
+      "copyright": "© {currentYear} {siteName}. ",
+      "menu": {
+        "customer-care": "Ügyfélszolgálat",
+        "follow-us": "Kövess minket",
+        "information": "Információ",
+        "location-settings": "Helybeállítások",
+        "privacy-and-cookies": "Magánélet",
+        "settings": "Beállítások"
+      }
     }
   },
   "page": {
@@ -26,6 +37,11 @@
     "home": {
       "shop-now": "Vásárolj most"
     },
+    "not-found": {
+      "title": "Nem található",
+      "message": "Nem található a kért erőforrás",
+      "button": "Próbáld újra"
+    },
     "products": {
       "add-to-wishlist": "Hozzáadni a Kívánságlistához",
       "all-collections": "Minden gyűjtemény",
@@ -38,7 +54,7 @@
       "more": "Több",
       "new": "Új",
       "out-of-stock": "Nincs raktáron",
-      "product-image-loading": "A termék képének betöltése",
+      "product-image-loading": "Termék kép betöltése",
       "quick-view": "Gyors nézet",
       "sale": "Eladás",
       "see-all": "Az összes megtekintése",
@@ -49,6 +65,7 @@
       "wishlist": "Kívánság lista"
     },
     "search": {
+      "reset": "Katalógus megtekintése",
       "title": "Keresés",
       "description": "Termékek keresése",
       "results": "{ eredmények, többes szám, =0 {Nincs keresési eredmény} =1 {"
@@ -59,23 +76,102 @@
       "add-to-cart-disabled": "Nem sikerült hozzáadni az elemet a táskához",
       "add-to-cart-enabled": "Zacskóba tesz",
       "out-of-stock": "Nincs raktáron",
-      "select-options": "Kérjük, válasszon lehetőségeket"
+      "pending": "Elem hozzáadása a táskához",
+      "pre-order": "Előrendelés",
+      "select-options": "Kérjük, válasszon lehetőségeket",
+      "success": "Az elem hozzáadva a táskához",
+      "status": {
+        "add-to-cart-disabled": "Nem sikerült hozzáadni az elemet a táskához",
+        "out-of-stock": "Ez a termék elfogyott, <a href=\"mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for {product}\">további információért lépjen kapcsolatba velünk</a>",
+        "pre-order": "Ez a tétel előrendelhető, és a kiszállítás ekkor kezdődik: {releaseDate}"
+      },
+      "toast": {
+        "close-alt": "Zárja be ezt az üzenetet",
+        "close-button": "Bezárás",
+        "error": "Nem sikerült hozzáadni az elemet a táskához",
+        "success": "Az elem hozzáadva a táskához",
+        "title": "Táska frissítés"
+      }
     },
     "Banner": {
       "link": "Ingyenes szállítás a megfelelő rendelések esetén"
     },
     "CartForm": {
-      "empty-cart": "Üres a táskád"
+      "empty-cart": "Üres a táskád",
+      "proceed-to-checkout": "Tovább a kijelentkezéshez",
+      "shipping": "Szállítás",
+      "taxes": "Adók",
+      "total-amount": "Teljes összeg",
+      "total-items": "Összes tétel"
+    },
+    "CartModal": {
+      "close": "Zárja be a zacskót",
+      "open": "Nyissa ki a zacskót",
+      "title": "A táskád"
+    },
+    "CollectionList": {
+      "title": "Gyűjtemények"
     },
     "ConsentDialog": {
-      "description": "Az UNCNSRD olyan cookie-kat használ, amelyek elengedhetetlenek a webhely működéséhez, és további cookie-kat szeretne használni, hogy javítsa az Ön élményét ezen az oldalon.",
+      "close": "Zárja be a beleegyező párbeszédpanelt",
+      "description": "Az UNCNSRD olyan sütiket használ, amelyek elengedhetetlenek a webhely működéséhez, és további cookie-kat szeretne használni, hogy javítsa az Ön élményét ezen az oldalon.",
       "trigger": "Szerkessze a beleegyezési beállításokat",
       "title": "Hozzájárulás beállításai"
+    },
+    "ConsentForm": {
+      "accept-all": "Minden cookie elfogadása",
+      "accept": "Elfogadja a kiválasztott sütiket",
+      "decline": "Hanyatlás",
+      "deny-additional": "További cookie-k elutasítása",
+      "description": "Az UNCNSRD olyan sütiket használ, amelyek elengedhetetlenek a webhely működéséhez, és további cookie-kat szeretne használni, hogy javítsa az Ön élményét ezen az oldalon.",
+      "manage": "Cookie-k kezelése",
+      "title": "Hozzájárulás beállításai"
+    },
+    "DeleteItemButton": {
+      "remove": "Távolítsa el a táska elemét"
+    },
+    "EditItemQuantityButton": {
+      "decrease": "Csökkentse a cikk mennyiségét",
+      "increase": "A cikk mennyiségének növelése"
+    },
+    "LocationComboBox": {
+      "StatusList": {
+        "enter-country-name": "Írja be az ország nevét",
+        "no-results": "Nincs találat",
+        "results": "Eredmények",
+        "searching": "Keresés...",
+        "select-locale": "Válassza ki a nyelvet"
+      }
+    },
+    "LocationDialog": {
+      "close": "Zárja be a hely párbeszédpanelt",
+      "description": "Válassza ki a helyét, hogy megtalálja az Ön régiójában elérhető termékeket",
+      "trigger": "Szerkessze a helybeállításokat",
+      "title": "Helybeállítások"
+    },
+    "LocationForm": {
+      "accept": "Elfogadja a kiválasztott sütiket",
+      "decline": "Hanyatlás",
+      "description": "Lorem ipsum",
+      "title": "Területi beállítások"
     },
     "Menu": {
       "categories": "Kategóriák",
       "search": "Keresés",
       "toggle": "Nézze meg a menüt"
+    },
+    "MobileMenu": {
+      "close": "Zárja be a menüt",
+      "open": "Nyissa meg a menüt"
+    },
+    "NavbarContent": {
+      "link-account": "Tekintse meg fiókját",
+      "link-home": "Vissza a kezdőlapra",
+      "link-search": "Termékek keresése",
+      "link-wishlist": "Tekintse meg kívánságlistáját"
+    },
+    "NavbarSearch": {
+      "placeholder": "Termékek keresése"
     },
     "Newsletter": {
       "description": "Friss híreket kaphat az új termékekről és ajánlatokról.",
@@ -83,8 +179,53 @@
       "submit": "Beküldés",
       "title": "Hírlevél"
     },
+    "ProductDetails": {
+      "size-guide": {
+        "popover": {
+          "trigger": "Méret útmutató megtekintése"
+        }
+      }
+    },
+    "RedeemCode": {
+      "close": "Zárja be a kódbeváltási űrlap párbeszédablakát"
+    },
+    "RedeemCodeForm": {
+      "placeholder": "írd be a kódodat",
+      "submit": "Kód beváltása"
+    },
     "RelatedProducts": {
       "title": "Kapcsolódó termékek"
+    },
+    "SearchButton": {
+      "submit": "Keresés elküldése"
+    },
+    "SearchForm": {
+      "placeholder": "Termékek keresése"
+    },
+    "SearchLayout": {
+      "title": "Rendezés"
+    },
+    "SidebarMenu": {
+      "close": "Zárja be a menüt",
+      "open": "Nyissa meg a menüt"
+    },
+    "SignUp": {
+      "title": "Iratkozzon fel hírlevelünkre",
+      "summary": "Regisztráljon és 10% kedvezményt kap az első vásárlásból"
+    },
+    "SignUpForm": {
+      "message": "Várakozás a regisztráció megerősítésére",
+      "pattern": "A megadott érték nem egyezik az e-mail formátummal",
+      "placeholder": "Iratkozzon fel hírlevelünkre",
+      "required": "E-mail cím megadása kötelező",
+      "submit": "Regisztrálj",
+      "toast": {
+        "close-alt": "Zárja be ezt az üzenetet",
+        "close-button": "Bezárás",
+        "error": "Nem sikerült regisztrálni",
+        "success": "Sikeresen regisztráltál",
+        "title": "Hírlevél Bejelentkezés"
+      }
     }
   }
 }

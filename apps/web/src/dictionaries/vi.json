@@ -11,6 +11,17 @@
         "scarf": "khăn quàng cổ",
         "boots": "bốt"
       }
+    },
+    "footer": {
+      "copyright": "© {currentYear} {siteName}. ",
+      "menu": {
+        "customer-care": "Chăm sóc khách hàng",
+        "follow-us": "Theo chúng tôi",
+        "information": "Thông tin",
+        "location-settings": "Cài đặt vị trí",
+        "privacy-and-cookies": "Sự riêng tư",
+        "settings": "Cài đặt"
+      }
     }
   },
   "page": {
@@ -25,6 +36,11 @@
     },
     "home": {
       "shop-now": "Mua sắm ngay bây giờ"
+    },
+    "not-found": {
+      "title": "Không tìm thấy",
+      "message": "Không thể tìm thấy tài nguyên được yêu cầu",
+      "button": "Thử lại"
     },
     "products": {
       "add-to-wishlist": "Thêm vào danh sách yêu thích",
@@ -49,6 +65,7 @@
       "wishlist": "Danh sách yêu thích"
     },
     "search": {
+      "reset": "Xem danh mục",
       "title": "Tìm kiếm",
       "description": "tìm kiếm sản phẩm",
       "results": "{ kết quả, số nhiều, =0 {Không có kết quả tìm kiếm} =1 {"
@@ -59,23 +76,102 @@
       "add-to-cart-disabled": "Không thể thêm vật phẩm vào túi",
       "add-to-cart-enabled": "Thêm vào túi",
       "out-of-stock": "Hết hàng",
-      "select-options": "Vui lòng chọn tùy chọn"
+      "pending": "Thêm vật phẩm vào túi",
+      "pre-order": "Đặt hàng trước",
+      "select-options": "Vui lòng chọn tùy chọn",
+      "success": "Vật phẩm được thêm vào túi",
+      "status": {
+        "add-to-cart-disabled": "Không thể thêm vật phẩm vào túi",
+        "out-of-stock": "Mặt hàng này đã hết, <a href=\"mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for {product}\">liên hệ với chúng tôi để biết thêm thông tin</a>",
+        "pre-order": "Mặt hàng này hiện có sẵn để đặt hàng trước và sẽ bắt đầu giao hàng vào {releaseDate}"
+      },
+      "toast": {
+        "close-alt": "Đóng tin nhắn này",
+        "close-button": "Đóng",
+        "error": "Không thể thêm vật phẩm vào túi",
+        "success": "Vật phẩm được thêm vào túi",
+        "title": "Cập nhật túi"
+      }
     },
     "Banner": {
       "link": "Miễn phí vận chuyển cho các đơn hàng đủ điều kiện"
     },
     "CartForm": {
-      "empty-cart": "Túi của bạn trống rỗng"
+      "empty-cart": "Túi của bạn trống rỗng",
+      "proceed-to-checkout": "Tiến hành kiểm tra",
+      "shipping": "Đang chuyển hàng",
+      "taxes": "Thuế",
+      "total-amount": "Tổng cộng",
+      "total-items": "Tổng số mặt hàng"
+    },
+    "CartModal": {
+      "close": "Đóng túi lại",
+      "open": "Mở túi",
+      "title": "Túi của bạn"
+    },
+    "CollectionList": {
+      "title": "Bộ sưu tập"
     },
     "ConsentDialog": {
+      "close": "Đóng hộp thoại đồng ý",
       "description": "UNCNSRD sử dụng các cookie cần thiết để giúp trang web này hoạt động và muốn sử dụng các cookie bổ sung để cải thiện trải nghiệm của bạn trên trang web này.",
-      "trigger": "Chỉnh sửa cài đặt đồng ý",
+      "trigger": "Chỉnh sửa cài đặt chấp thuận",
       "title": "Cài đặt đồng ý"
+    },
+    "ConsentForm": {
+      "accept-all": "Chấp nhận tất cả cookie",
+      "accept": "Chấp nhận cookie đã chọn",
+      "decline": "Sự suy sụp",
+      "deny-additional": "Từ chối cookie bổ sung",
+      "description": "UNCNSRD sử dụng các cookie cần thiết để giúp trang web này hoạt động và muốn sử dụng các cookie bổ sung để cải thiện trải nghiệm của bạn trên trang web này.",
+      "manage": "Quản lý cookie",
+      "title": "Cài đặt đồng ý"
+    },
+    "DeleteItemButton": {
+      "remove": "Loại bỏ vật phẩm trong túi"
+    },
+    "EditItemQuantityButton": {
+      "decrease": "Giảm số lượng mặt hàng",
+      "increase": "Tăng số lượng vật phẩm"
+    },
+    "LocationComboBox": {
+      "StatusList": {
+        "enter-country-name": "Nhập tên quốc gia",
+        "no-results": "không có kết quả nào được tìm thấy",
+        "results": "Kết quả",
+        "searching": "Đang tìm kiếm...",
+        "select-locale": "Chọn ngôn ngữ"
+      }
+    },
+    "LocationDialog": {
+      "close": "Đóng hộp thoại vị trí",
+      "description": "Chọn vị trí của bạn để tìm sản phẩm có sẵn trong khu vực của bạn",
+      "trigger": "Chỉnh sửa cài đặt vị trí",
+      "title": "Cài đặt vị trí"
+    },
+    "LocationForm": {
+      "accept": "Chấp nhận cookie đã chọn",
+      "decline": "Sự suy sụp",
+      "description": "Lorem ipsum",
+      "title": "Cài đặt ngôn ngữ"
     },
     "Menu": {
       "categories": "Thể loại",
       "search": "Tìm kiếm",
       "toggle": "Xem thực đơn"
+    },
+    "MobileMenu": {
+      "close": "Đóng thực đơn",
+      "open": "Mở thực đơn"
+    },
+    "NavbarContent": {
+      "link-account": "Xem tài khoản của bạn",
+      "link-home": "Quay trở lại trang chủ",
+      "link-search": "tìm kiếm sản phẩm",
+      "link-wishlist": "Xem danh sách mong muốn của bạn"
+    },
+    "NavbarSearch": {
+      "placeholder": "tìm kiếm sản phẩm"
     },
     "Newsletter": {
       "description": "Nhận thông tin cập nhật về sản phẩm và ưu đãi mới.",
@@ -83,8 +179,53 @@
       "submit": "Nộp",
       "title": "Bản tin"
     },
+    "ProductDetails": {
+      "size-guide": {
+        "popover": {
+          "trigger": "Xem hướng dẫn kích thước"
+        }
+      }
+    },
+    "RedeemCode": {
+      "close": "Đóng hộp thoại biểu mẫu đổi mã"
+    },
+    "RedeemCodeForm": {
+      "placeholder": "nhập mã của bạn",
+      "submit": "Đổi mã"
+    },
     "RelatedProducts": {
       "title": "Những sảm phẩm tương tự"
+    },
+    "SearchButton": {
+      "submit": "Gửi tìm kiếm"
+    },
+    "SearchForm": {
+      "placeholder": "tìm kiếm sản phẩm"
+    },
+    "SearchLayout": {
+      "title": "Sắp xếp theo"
+    },
+    "SidebarMenu": {
+      "close": "Đóng thực đơn",
+      "open": "Mở thực đơn"
+    },
+    "SignUp": {
+      "title": "Đăng kí tờ báo của chúng tôi",
+      "summary": "Đăng ký và nhận 10% giảm giá cho lần mua hàng đầu tiên của bạn"
+    },
+    "SignUpForm": {
+      "message": "Đang chờ xác nhận đăng ký",
+      "pattern": "Giá trị đã nhập không khớp với định dạng email",
+      "placeholder": "Đăng kí tờ báo của chúng tôi",
+      "required": "Địa chỉ e-mail là bắt buộc",
+      "submit": "Đăng ký",
+      "toast": {
+        "close-alt": "Đóng tin nhắn này",
+        "close-button": "Đóng",
+        "error": "Không thể đăng ký",
+        "success": "Bạn đã đăng ký thành công",
+        "title": "Đăng ký bản tin"
+      }
     }
   }
 }
