@@ -11,6 +11,17 @@
         "scarf": "दुपट्टा",
         "boots": "घुटनों तक पहने जाने वाले जूते"
       }
+    },
+    "footer": {
+      "copyright": "© {currentYear} {siteName}. ",
+      "menu": {
+        "customer-care": "ग्राहक देखभाल",
+        "follow-us": "हमारे पर का पालन करें",
+        "information": "जानकारी",
+        "location-settings": "स्थान सेटिंग्स",
+        "privacy-and-cookies": "गोपनीयता",
+        "settings": "समायोजन"
+      }
     }
   },
   "page": {
@@ -25,6 +36,11 @@
     },
     "home": {
       "shop-now": "अभी खरीदें"
+    },
+    "not-found": {
+      "title": "नहीं मिला",
+      "message": "अनुरोधित संसाधन नहीं मिल सका",
+      "button": "पुनः प्रयास करें"
     },
     "products": {
       "add-to-wishlist": "इच्छा सूची में जोड़ें",
@@ -49,6 +65,7 @@
       "wishlist": "इच्छा-सूची"
     },
     "search": {
+      "reset": "कैटलॉग देखें",
       "title": "खोज",
       "description": "उत्पाद खोजें",
       "results": "{परिणाम, बहुवचन, =0 {कोई खोज परिणाम नहीं} =1 {"
@@ -59,23 +76,102 @@
       "add-to-cart-disabled": "बैग में आइटम जोड़ने में असमर्थ",
       "add-to-cart-enabled": "थैले के साथ जोड़ो",
       "out-of-stock": "स्टॉक ख़त्म",
-      "select-options": "कृपया विकल्प चुनें"
+      "pending": "बैग में आइटम जोड़ना",
+      "pre-order": "पूर्व आदेश",
+      "select-options": "कृपया विकल्प चुनें",
+      "success": "बैग में आइटम जोड़ा गया",
+      "status": {
+        "add-to-cart-disabled": "बैग में आइटम जोड़ने में असमर्थ",
+        "out-of-stock": "यह आइटम स्टॉक में नहीं है, <a href=\"mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for {product}\">ज़्यादा जानकारी के लिए हमें संपर्क करें</a>",
+        "pre-order": "यह आइटम प्री-ऑर्डर के लिए उपलब्ध है और इसकी शिपिंग {releaseDate} से शुरू होगी"
+      },
+      "toast": {
+        "close-alt": "इस संदेश को बंद करें",
+        "close-button": "बंद करना",
+        "error": "बैग में आइटम जोड़ने में असमर्थ",
+        "success": "बैग में आइटम जोड़ा गया",
+        "title": "बैग अद्यतन"
+      }
     },
     "Banner": {
       "link": "योग्य ऑर्डर पर निःशुल्क शिपिंग"
     },
     "CartForm": {
-      "empty-cart": "आपका बैग खाली है"
+      "empty-cart": "आपका बैग खाली है",
+      "proceed-to-checkout": "चेक आउट करने के लिए आगे बढ़ें",
+      "shipping": "शिपिंग",
+      "taxes": "करों",
+      "total-amount": "कुल राशि",
+      "total-items": "कुल सामान"
+    },
+    "CartModal": {
+      "close": "बैग बंद करो",
+      "open": "बैग खोलो",
+      "title": "तुम्हारा थैला"
+    },
+    "CollectionList": {
+      "title": "संग्रह"
     },
     "ConsentDialog": {
+      "close": "सहमति संवाद बंद करें",
       "description": "यूएनसीएनएसआरडी उन कुकीज़ का उपयोग करता है जो इस साइट को काम करने के लिए आवश्यक हैं और इस साइट पर आपके अनुभव को बेहतर बनाने के लिए अतिरिक्त कुकीज़ का उपयोग करना चाहेंगे।",
       "trigger": "सहमति सेटिंग संपादित करें",
       "title": "सहमति सेटिंग्स"
+    },
+    "ConsentForm": {
+      "accept-all": "सभी कुकीज़ स्वीकार करें",
+      "accept": "चयनित कुकीज़ स्वीकार करें",
+      "decline": "गिरावट",
+      "deny-additional": "अतिरिक्त कुकीज़ अस्वीकार करें",
+      "description": "यूएनसीएनएसआरडी उन कुकीज़ का उपयोग करता है जो इस साइट को काम करने के लिए आवश्यक हैं और इस साइट पर आपके अनुभव को बेहतर बनाने के लिए अतिरिक्त कुकीज़ का उपयोग करना चाहेंगे।",
+      "manage": "कुकीज़ प्रबंधित करें",
+      "title": "सहमति सेटिंग्स"
+    },
+    "DeleteItemButton": {
+      "remove": "बैग आइटम निकालें"
+    },
+    "EditItemQuantityButton": {
+      "decrease": "वस्तु की मात्रा कम करें",
+      "increase": "वस्तु की मात्रा बढ़ाएँ"
+    },
+    "LocationComboBox": {
+      "StatusList": {
+        "enter-country-name": "देश का नाम दर्ज करें",
+        "no-results": "कोई परिणाम नहीं मिला",
+        "results": "परिणाम",
+        "searching": "खोज कर...",
+        "select-locale": "स्थान चुनें"
+      }
+    },
+    "LocationDialog": {
+      "close": "स्थान संवाद बंद करें",
+      "description": "अपने क्षेत्र में उपलब्ध उत्पाद ढूंढने के लिए अपना स्थान चुनें",
+      "trigger": "स्थान सेटिंग संपादित करें",
+      "title": "स्थान सेटिंग्स"
+    },
+    "LocationForm": {
+      "accept": "चयनित कुकीज़ स्वीकार करें",
+      "decline": "गिरावट",
+      "description": "लोरेम इप्सम",
+      "title": "स्थानीय सेटिंग"
     },
     "Menu": {
       "categories": "श्रेणियाँ",
       "search": "खोज",
       "toggle": "मेनू देखें"
+    },
+    "MobileMenu": {
+      "close": "मेनू बंद करें",
+      "open": "मेनू खोलें"
+    },
+    "NavbarContent": {
+      "link-account": "अपना खाता देखें",
+      "link-home": "मुख्य पृष्ठ पर वापिस जाएं",
+      "link-search": "उत्पाद खोजें",
+      "link-wishlist": "अपनी इच्छा सूची देखें"
+    },
+    "NavbarSearch": {
+      "placeholder": "उत्पाद खोजें"
     },
     "Newsletter": {
       "description": "नए उत्पादों और ऑफ़र पर अपडेट प्राप्त करें।",
@@ -83,8 +179,53 @@
       "submit": "जमा करना",
       "title": "समाचार पत्रिका"
     },
+    "ProductDetails": {
+      "size-guide": {
+        "popover": {
+          "trigger": "साइज़ गाइड देखें"
+        }
+      }
+    },
+    "RedeemCode": {
+      "close": "कोड रिडेम्पशन फ़ॉर्म संवाद बंद करें"
+    },
+    "RedeemCodeForm": {
+      "placeholder": "अपने कोड दर्ज करें",
+      "submit": "रीडीम कोड"
+    },
     "RelatedProducts": {
       "title": "संबंधित उत्पाद"
+    },
+    "SearchButton": {
+      "submit": "खोज सबमिट करें"
+    },
+    "SearchForm": {
+      "placeholder": "उत्पाद खोजें"
+    },
+    "SearchLayout": {
+      "title": "इसके अनुसार क्रमबद्ध करें"
+    },
+    "SidebarMenu": {
+      "close": "मेनू बंद करें",
+      "open": "मेनू खोलें"
+    },
+    "SignUp": {
+      "title": "हमारे न्यूजलेटर के लिए साइनअप करें",
+      "summary": "साइन अप करें और अपनी पहली खरीदारी पर 10% की छूट प्राप्त करें"
+    },
+    "SignUpForm": {
+      "message": "साइनअप पुष्टिकरण की प्रतीक्षा की जा रही है",
+      "pattern": "दर्ज किया गया मान ईमेल प्रारूप से मेल नहीं खाता",
+      "placeholder": "हमारे न्यूजलेटर के लिए साइनअप करें",
+      "required": "ईमेल पते की ज़रुरत है",
+      "submit": "साइन अप करें",
+      "toast": {
+        "close-alt": "इस संदेश को बंद करें",
+        "close-button": "बंद करना",
+        "error": "साइन अप करने में असमर्थ",
+        "success": "आपने सफलतापूर्वक साइन अप कर लिया है",
+        "title": "वृत्त पत्र शामिल होना"
+      }
     }
   }
 }

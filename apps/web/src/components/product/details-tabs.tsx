@@ -50,7 +50,6 @@ export function ProductDetailsTabs({
       className={cn("w-full", className)}
       defaultValue={defaultValue}
     >
-      {/* var(--tw-prose-td-borders) #e5e7eb */}
       <TabsList className="border-b border-neutral-200">
         {metafieldFragmentsFiltered.map((metafield) => (
           <TabsTrigger

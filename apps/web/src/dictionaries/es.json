@@ -11,6 +11,17 @@
         "scarf": "bufanda",
         "boots": "botas"
       }
+    },
+    "footer": {
+      "copyright": "© {currentYear} {siteName}. ",
+      "menu": {
+        "customer-care": "Atención al cliente",
+        "follow-us": "Síganos",
+        "information": "Información",
+        "location-settings": "Configuración de ubicación",
+        "privacy-and-cookies": "Privacidad",
+        "settings": "Ajustes"
+      }
     }
   },
   "page": {
@@ -25,6 +36,11 @@
     },
     "home": {
       "shop-now": "Compra ahora"
+    },
+    "not-found": {
+      "title": "Extraviado",
+      "message": "No se pudo encontrar el recurso solicitado",
+      "button": "Intentar otra vez"
     },
     "products": {
       "add-to-wishlist": "Añadir a la lista de deseos",
@@ -49,6 +65,7 @@
       "wishlist": "Lista de deseos"
     },
     "search": {
+      "reset": "Ver catálogo",
       "title": "Buscar",
       "description": "Buscar productos",
       "results": "{ resultados, plural, =0 {Sin resultados de búsqueda} =1 {"
@@ -59,23 +76,102 @@
       "add-to-cart-disabled": "No se puede agregar el artículo a la bolsa",
       "add-to-cart-enabled": "Agregar a la bolsa",
       "out-of-stock": "Agotado",
-      "select-options": "Por favor seleccione opciones"
+      "pending": "Agregar artículo a la bolsa",
+      "pre-order": "Hacer un pedido",
+      "select-options": "Por favor seleccione opciones",
+      "success": "Artículo agregado a la bolsa",
+      "status": {
+        "add-to-cart-disabled": "No se puede agregar el artículo a la bolsa",
+        "out-of-stock": "Este artículo no está en inventario, <a href=\"mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for {product}\">contáctenos para más información</a>",
+        "pre-order": "Este artículo está disponible para pedidos anticipados y comenzará a enviarse el {releaseDate}"
+      },
+      "toast": {
+        "close-alt": "Cerrar este mensaje",
+        "close-button": "Cerca",
+        "error": "No se puede agregar el artículo a la bolsa",
+        "success": "Artículo agregado a la bolsa",
+        "title": "Actualización de bolsa"
+      }
     },
     "Banner": {
       "link": "Envío gratuito en pedidos elegibles"
     },
     "CartForm": {
-      "empty-cart": "tu bolso esta vacio"
+      "empty-cart": "tu bolso esta vacio",
+      "proceed-to-checkout": "Pasar por la caja",
+      "shipping": "Envío",
+      "taxes": "Impuestos",
+      "total-amount": "Cantidad total",
+      "total-items": "Articulos totales"
+    },
+    "CartModal": {
+      "close": "cerrar la bolsa",
+      "open": "abre la bolsa",
+      "title": "Tu bolsa"
+    },
+    "CollectionList": {
+      "title": "Colecciones"
     },
     "ConsentDialog": {
+      "close": "Cerrar el cuadro de diálogo de consentimiento",
       "description": "UNCNSRD utiliza cookies que son esenciales para que este sitio funcione y le gustaría utilizar cookies adicionales para mejorar su experiencia en este sitio.",
       "trigger": "Editar la configuración de consentimiento",
       "title": "Configuración de consentimiento"
+    },
+    "ConsentForm": {
+      "accept-all": "Aceptar todas las cookies",
+      "accept": "Aceptar cookies seleccionadas",
+      "decline": "Rechazar",
+      "deny-additional": "Denegar cookies adicionales",
+      "description": "UNCNSRD utiliza cookies que son esenciales para que este sitio funcione y le gustaría utilizar cookies adicionales para mejorar su experiencia en este sitio.",
+      "manage": "Administrar cookies",
+      "title": "Configuración de consentimiento"
+    },
+    "DeleteItemButton": {
+      "remove": "Quitar artículo de la bolsa"
+    },
+    "EditItemQuantityButton": {
+      "decrease": "Disminuir cantidad de artículos",
+      "increase": "Aumentar la cantidad de artículos"
+    },
+    "LocationComboBox": {
+      "StatusList": {
+        "enter-country-name": "Introduzca el nombre del país",
+        "no-results": "No se han encontrado resultados",
+        "results": "Resultados",
+        "searching": "Buscando...",
+        "select-locale": "Seleccionar localidad"
+      }
+    },
+    "LocationDialog": {
+      "close": "Cerrar el cuadro de diálogo de ubicación",
+      "description": "Elija su ubicación para encontrar productos disponibles en su región",
+      "trigger": "Editar configuración de ubicación",
+      "title": "Configuración de ubicación"
+    },
+    "LocationForm": {
+      "accept": "Aceptar cookies seleccionadas",
+      "decline": "Rechazar",
+      "description": "lorem ipsum",
+      "title": "Configuración regional"
     },
     "Menu": {
       "categories": "Categorías",
       "search": "Buscar",
       "toggle": "Ver el menú"
+    },
+    "MobileMenu": {
+      "close": "Cerrar el menú",
+      "open": "abre el menú"
+    },
+    "NavbarContent": {
+      "link-account": "Ver tu cuenta",
+      "link-home": "Regresar a la página de inicio",
+      "link-search": "Buscar productos",
+      "link-wishlist": "Ver tu lista de deseos"
+    },
+    "NavbarSearch": {
+      "placeholder": "Buscar productos"
     },
     "Newsletter": {
       "description": "Reciba actualizaciones sobre nuevos productos y ofertas.",
@@ -83,8 +179,53 @@
       "submit": "Entregar",
       "title": "Boletin informativo"
     },
+    "ProductDetails": {
+      "size-guide": {
+        "popover": {
+          "trigger": "Ver guía de tallas"
+        }
+      }
+    },
+    "RedeemCode": {
+      "close": "Cerrar el cuadro de diálogo del formulario de canje de código"
+    },
+    "RedeemCodeForm": {
+      "placeholder": "Ingrese su código",
+      "submit": "Canjear código"
+    },
     "RelatedProducts": {
       "title": "Productos relacionados"
+    },
+    "SearchButton": {
+      "submit": "Enviar búsqueda"
+    },
+    "SearchForm": {
+      "placeholder": "Buscar productos"
+    },
+    "SearchLayout": {
+      "title": "Ordenar por"
+    },
+    "SidebarMenu": {
+      "close": "Cerrar el menú",
+      "open": "abre el menú"
+    },
+    "SignUp": {
+      "title": "Suscríbase a nuestro boletín de noticias",
+      "summary": "Regístrate y recibe un 10% de descuento en tu primera compra"
+    },
+    "SignUpForm": {
+      "message": "Esperando confirmación de registro",
+      "pattern": "El valor ingresado no coincide con el formato de correo electrónico",
+      "placeholder": "Suscríbase a nuestro boletín de noticias",
+      "required": "Se requiere Dirección de correo electrónico",
+      "submit": "Inscribirse",
+      "toast": {
+        "close-alt": "Cerrar este mensaje",
+        "close-button": "Cerca",
+        "error": "No se puede registrar",
+        "success": "Te has registrado exitosamente",
+        "title": "Inscríbase al boletín"
+      }
     }
   }
 }

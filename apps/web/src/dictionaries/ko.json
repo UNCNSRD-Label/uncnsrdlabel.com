@@ -11,6 +11,17 @@
         "scarf": "스카프",
         "boots": "부츠"
       }
+    },
+    "footer": {
+      "copyright": "© {현재 연도} {siteName}. ",
+      "menu": {
+        "customer-care": "고객 지원",
+        "follow-us": "우리를 팔로우하세요",
+        "information": "정보",
+        "location-settings": "위치 설정",
+        "privacy-and-cookies": "은둔",
+        "settings": "설정"
+      }
     }
   },
   "page": {
@@ -25,6 +36,11 @@
     },
     "home": {
       "shop-now": "지금 쇼핑하세요"
+    },
+    "not-found": {
+      "title": "찾을 수 없음",
+      "message": "요청한 리소스를 찾을 수 없습니다.",
+      "button": "다시 시도하십시오"
     },
     "products": {
       "add-to-wishlist": "위시리스트에 추가",
@@ -49,6 +65,7 @@
       "wishlist": "위시리스트"
     },
     "search": {
+      "reset": "카탈로그 보기",
       "title": "찾다",
       "description": "제품 검색",
       "results": "{ 결과, 복수형, =0 {검색 결과 없음} =1 {"
@@ -59,23 +76,102 @@
       "add-to-cart-disabled": "장바구니에 상품을 추가할 수 없습니다.",
       "add-to-cart-enabled": "가방에 추가하다",
       "out-of-stock": "품절",
-      "select-options": "옵션을 선택해주세요"
+      "pending": "가방에 아이템 추가하기",
+      "pre-order": "선주문",
+      "select-options": "옵션을 선택해주세요",
+      "success": "장바구니에 아이템이 추가되었습니다",
+      "status": {
+        "add-to-cart-disabled": "장바구니에 상품을 추가할 수 없습니다.",
+        "out-of-stock": "해당 상품은 품절 상태이며, <a href=\"mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for {product}\">더 많은 정보를 원하시면 저희에게 연락하세요</a>",
+        "pre-order": "이 상품은 선주문이 가능하며 {releaseDate}에 배송이 시작됩니다."
+      },
+      "toast": {
+        "close-alt": "이 메시지를 닫습니다",
+        "close-button": "닫다",
+        "error": "장바구니에 상품을 추가할 수 없습니다.",
+        "success": "장바구니에 아이템이 추가되었습니다",
+        "title": "가방 업데이트"
+      }
     },
     "Banner": {
       "link": "적격 주문에 대해 무료 배송"
     },
     "CartForm": {
-      "empty-cart": "가방이 비어 있어요"
+      "empty-cart": "가방이 비어 있어요",
+      "proceed-to-checkout": "결제를 진행하세요",
+      "shipping": "배송",
+      "taxes": "구실",
+      "total-amount": "총액",
+      "total-items": "총 품목"
+    },
+    "CartModal": {
+      "close": "가방을 닫아요",
+      "open": "가방을 열어보세요",
+      "title": "당신의 가방"
+    },
+    "CollectionList": {
+      "title": "컬렉션"
     },
     "ConsentDialog": {
+      "close": "동의 대화상자 닫기",
       "description": "UNCNSRD는 이 사이트를 작동하는 데 필수적인 쿠키를 사용하며 이 사이트에서의 사용자 경험을 개선하기 위해 추가 쿠키를 사용하고자 합니다.",
       "trigger": "동의 설정 수정",
       "title": "동의 설정"
+    },
+    "ConsentForm": {
+      "accept-all": "모든 쿠키 허용",
+      "accept": "선택한 쿠키 허용",
+      "decline": "감소",
+      "deny-additional": "추가 쿠키 거부",
+      "description": "UNCNSRD는 이 사이트를 작동하는 데 필수적인 쿠키를 사용하며 이 사이트에서의 사용자 경험을 개선하기 위해 추가 쿠키를 사용하고자 합니다.",
+      "manage": "쿠키 관리",
+      "title": "동의 설정"
+    },
+    "DeleteItemButton": {
+      "remove": "가방 아이템 삭제"
+    },
+    "EditItemQuantityButton": {
+      "decrease": "품목 수량 감소",
+      "increase": "품목 수량 늘리기"
+    },
+    "LocationComboBox": {
+      "StatusList": {
+        "enter-country-name": "국가 이름을 입력하세요",
+        "no-results": "검색 결과가 없습니다",
+        "results": "결과",
+        "searching": "수색...",
+        "select-locale": "로케일 선택"
+      }
+    },
+    "LocationDialog": {
+      "close": "위치 대화상자 닫기",
+      "description": "해당 지역에서 사용 가능한 제품을 찾으려면 위치를 선택하세요.",
+      "trigger": "위치 설정 수정",
+      "title": "위치 설정"
+    },
+    "LocationForm": {
+      "accept": "선택한 쿠키 허용",
+      "decline": "감소",
+      "description": "로렘 입숨",
+      "title": "로케일 설정"
     },
     "Menu": {
       "categories": "카테고리",
       "search": "찾다",
       "toggle": "메뉴 보기"
+    },
+    "MobileMenu": {
+      "close": "메뉴 닫기",
+      "open": "메뉴 열기"
+    },
+    "NavbarContent": {
+      "link-account": "계정 보기",
+      "link-home": "홈페이지로 돌아가기",
+      "link-search": "제품 검색",
+      "link-wishlist": "위시리스트 보기"
+    },
+    "NavbarSearch": {
+      "placeholder": "제품 검색"
     },
     "Newsletter": {
       "description": "새로운 제품과 제안에 대한 업데이트를 받아보세요.",
@@ -83,8 +179,53 @@
       "submit": "제출하다",
       "title": "뉴스 레터"
     },
+    "ProductDetails": {
+      "size-guide": {
+        "popover": {
+          "trigger": "크기 가이드보기"
+        }
+      }
+    },
+    "RedeemCode": {
+      "close": "코드 사용 양식 대화 상자를 닫습니다."
+    },
+    "RedeemCodeForm": {
+      "placeholder": "코드를 입력하세요",
+      "submit": "코드를 사용"
+    },
     "RelatedProducts": {
       "title": "관련 상품"
+    },
+    "SearchButton": {
+      "submit": "검색 제출"
+    },
+    "SearchForm": {
+      "placeholder": "제품 검색"
+    },
+    "SearchLayout": {
+      "title": "정렬 기준"
+    },
+    "SidebarMenu": {
+      "close": "메뉴 닫기",
+      "open": "메뉴 열기"
+    },
+    "SignUp": {
+      "title": "뉴스레터에 가입하세요",
+      "summary": "가입하고 첫 구매 시 10% 할인을 받으세요"
+    },
+    "SignUpForm": {
+      "message": "가입 확인을 기다리는 중",
+      "pattern": "입력한 값이 이메일 형식과 일치하지 않습니다.",
+      "placeholder": "뉴스레터에 가입하세요",
+      "required": "이메일 주소가 필요합니다",
+      "submit": "가입하기",
+      "toast": {
+        "close-alt": "이 메시지를 닫습니다",
+        "close-button": "닫다",
+        "error": "가입할 수 없습니다",
+        "success": "성공적으로 가입했습니다",
+        "title": "뉴스레터 가입"
+      }
     }
   }
 }

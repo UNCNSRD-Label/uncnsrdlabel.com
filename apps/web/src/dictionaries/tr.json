@@ -11,6 +11,17 @@
         "scarf": "atkı",
         "boots": "bot ayakkabı"
       }
+    },
+    "footer": {
+      "copyright": "© {currentYear} {siteName}. ",
+      "menu": {
+        "customer-care": "Müşteri Hizmetleri",
+        "follow-us": "Bizi takip edin",
+        "information": "Bilgi",
+        "location-settings": "Konum ayarları",
+        "privacy-and-cookies": "Mahremiyet",
+        "settings": "Ayarlar"
+      }
     }
   },
   "page": {
@@ -25,6 +36,11 @@
     },
     "home": {
       "shop-now": "Şimdi satın al"
+    },
+    "not-found": {
+      "title": "Bulunamadı",
+      "message": "İstenilen kaynak bulunamadı",
+      "button": "Tekrar deneyin"
     },
     "products": {
       "add-to-wishlist": "İstek listesine ekle",
@@ -49,6 +65,7 @@
       "wishlist": "İstek listesi"
     },
     "search": {
+      "reset": "Kataloğu görüntüle",
       "title": "Aramak",
       "description": "Ürün ara",
       "results": "{ sonuçlar, çoğul, =0 {Arama sonucu yok} =1 {"
@@ -59,23 +76,102 @@
       "add-to-cart-disabled": "Çantaya öğe eklenemiyor",
       "add-to-cart-enabled": "Sepete ekle",
       "out-of-stock": "Stoklar tükendi",
-      "select-options": "Lütfen seçenekleri seçin"
+      "pending": "Çantaya öğe ekleme",
+      "pre-order": "Ön sipariş",
+      "select-options": "Lütfen seçenekleri seçin",
+      "success": "Ürün çantaya eklendi",
+      "status": {
+        "add-to-cart-disabled": "Çantaya öğe eklenemiyor",
+        "out-of-stock": "Bu ürün stokta yok, <a href=\"mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for {product}\">daha fazla bilgi için bizimle iletişime geçin</a>",
+        "pre-order": "Bu öğe için ön sipariş verilebilir ve gönderime {releaseDate} tarihinde başlanacaktır."
+      },
+      "toast": {
+        "close-alt": "Bu mesajı kapat",
+        "close-button": "Kapalı",
+        "error": "Çantaya öğe eklenemiyor",
+        "success": "Ürün çantaya eklendi",
+        "title": "Çanta güncellemesi"
+      }
     },
     "Banner": {
       "link": "Uygun siparişlerde ücretsiz gönderim"
     },
     "CartForm": {
-      "empty-cart": "Çantan boş"
+      "empty-cart": "Çantan boş",
+      "proceed-to-checkout": "Çıkışa doğru devam et",
+      "shipping": "Nakliye",
+      "taxes": "Vergiler",
+      "total-amount": "Toplam tutar",
+      "total-items": "Tüm nesneler"
+    },
+    "CartModal": {
+      "close": "Çantayı kapat",
+      "open": "Çantayı aç",
+      "title": "Senin çantan"
+    },
+    "CollectionList": {
+      "title": "Koleksiyonlar"
     },
     "ConsentDialog": {
+      "close": "İzin iletişim kutusunu kapat",
       "description": "UNCNSRD, bu sitenin çalışması için gerekli olan çerezleri kullanır ve bu sitedeki deneyiminizi geliştirmek için ek çerezler kullanmak ister.",
       "trigger": "İzin ayarlarını düzenleyin",
       "title": "İzin ayarları"
+    },
+    "ConsentForm": {
+      "accept-all": "Tüm çerezleri kabul et",
+      "accept": "Seçilen çerezleri kabul et",
+      "decline": "Reddetmek",
+      "deny-additional": "Ek çerezleri reddet",
+      "description": "UNCNSRD, bu sitenin çalışması için gerekli olan çerezleri kullanır ve bu sitedeki deneyiminizi geliştirmek için ek çerezler kullanmak ister.",
+      "manage": "Çerezleri yönet",
+      "title": "İzin ayarları"
+    },
+    "DeleteItemButton": {
+      "remove": "Çanta öğesini kaldır"
+    },
+    "EditItemQuantityButton": {
+      "decrease": "Öğe miktarını azalt",
+      "increase": "Öğe miktarını artırın"
+    },
+    "LocationComboBox": {
+      "StatusList": {
+        "enter-country-name": "Ülke adını girin",
+        "no-results": "Sonuç bulunamadı",
+        "results": "Sonuçlar",
+        "searching": "Aranıyor...",
+        "select-locale": "Yerel ayarı seçin"
+      }
+    },
+    "LocationDialog": {
+      "close": "Konum iletişim kutusunu kapat",
+      "description": "Bölgenizde mevcut ürünleri bulmak için konumunuzu seçin",
+      "trigger": "Konum ayarlarını düzenleyin",
+      "title": "Konum ayarları"
+    },
+    "LocationForm": {
+      "accept": "Seçilen çerezleri kabul et",
+      "decline": "Reddetmek",
+      "description": "Lorem ipsum",
+      "title": "Yerel ayarlar"
     },
     "Menu": {
       "categories": "Kategoriler",
       "search": "Aramak",
       "toggle": "Menüyü görüntüle"
+    },
+    "MobileMenu": {
+      "close": "Menüyü kapat",
+      "open": "Menüyü aç"
+    },
+    "NavbarContent": {
+      "link-account": "Hesabınızı görüntüleyin",
+      "link-home": "Ana sayfaya dön",
+      "link-search": "Ürün ara",
+      "link-wishlist": "İstek listenizi görüntüleyin"
+    },
+    "NavbarSearch": {
+      "placeholder": "Ürün ara"
     },
     "Newsletter": {
       "description": "Yeni ürünler ve tekliflerle ilgili güncellemeleri alın.",
@@ -83,8 +179,53 @@
       "submit": "Göndermek",
       "title": "Bülten"
     },
+    "ProductDetails": {
+      "size-guide": {
+        "popover": {
+          "trigger": "Boyut kılavuzunu görüntüle"
+        }
+      }
+    },
+    "RedeemCode": {
+      "close": "Kod kullanma formu iletişim kutusunu kapat"
+    },
+    "RedeemCodeForm": {
+      "placeholder": "Kodunuzu girin",
+      "submit": "Kodu kullan"
+    },
     "RelatedProducts": {
       "title": "İlgili ürünler"
+    },
+    "SearchButton": {
+      "submit": "Aramayı gönder"
+    },
+    "SearchForm": {
+      "placeholder": "Ürün ara"
+    },
+    "SearchLayout": {
+      "title": "Göre sırala"
+    },
+    "SidebarMenu": {
+      "close": "Menüyü kapat",
+      "open": "Menüyü aç"
+    },
+    "SignUp": {
+      "title": "Haber bültenimize kaydolun",
+      "summary": "Kaydolun ve ilk satın alma işleminizde %10 indirim kazanın"
+    },
+    "SignUpForm": {
+      "message": "Kayıt onayı bekleniyor",
+      "pattern": "Girilen değer e-posta biçimiyle eşleşmiyor",
+      "placeholder": "Haber bültenimize kaydolun",
+      "required": "E-posta adresi gerekli",
+      "submit": "Üye olmak",
+      "toast": {
+        "close-alt": "Bu mesajı kapat",
+        "close-button": "Kapalı",
+        "error": "Kaydolunamıyor",
+        "success": "Başarılı bir şekilde kaydoldunuz",
+        "title": "Bültene üye ol"
+      }
     }
   }
 }

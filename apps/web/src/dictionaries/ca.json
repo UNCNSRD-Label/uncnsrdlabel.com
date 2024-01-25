@@ -11,6 +11,17 @@
         "scarf": "bufanda",
         "boots": "botes"
       }
+    },
+    "footer": {
+      "copyright": "© {currentYear} {siteName}. ",
+      "menu": {
+        "customer-care": "Atenció al client",
+        "follow-us": "Segueix-nos",
+        "information": "Informació",
+        "location-settings": "Configuració d'ubicació",
+        "privacy-and-cookies": "Privadesa",
+        "settings": "Configuració"
+      }
     }
   },
   "page": {
@@ -25,6 +36,11 @@
     },
     "home": {
       "shop-now": "Compra ara"
+    },
+    "not-found": {
+      "title": "No trobat",
+      "message": "No s'ha pogut trobar el recurs sol·licitat",
+      "button": "Torna-ho a provar"
     },
     "products": {
       "add-to-wishlist": "Afegir a la llista de desitjos",
@@ -49,6 +65,7 @@
       "wishlist": "Llista de desitjos"
     },
     "search": {
+      "reset": "Veure catàleg",
       "title": "Cerca",
       "description": "Cerca de productes",
       "results": "{ resultats, plural, =0 {Sense resultats de cerca} =1 {"
@@ -59,23 +76,102 @@
       "add-to-cart-disabled": "No es pot afegir l'article a la bossa",
       "add-to-cart-enabled": "Afegir a la bossa",
       "out-of-stock": "Esgotat",
-      "select-options": "Seleccioneu opcions"
+      "pending": "Afegeix un article a la bossa",
+      "pre-order": "Comanda prèvia",
+      "select-options": "Seleccioneu opcions",
+      "success": "Article afegit a la bossa",
+      "status": {
+        "add-to-cart-disabled": "No es pot afegir l'article a la bossa",
+        "out-of-stock": "Aquest article està esgotat, <a href=\"mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for {product}\">contacta amb nosaltres per a més informació</a>",
+        "pre-order": "Aquest article està disponible per a la reserva i començarà a enviar-se el {releaseDate}"
+      },
+      "toast": {
+        "close-alt": "Tanca aquest missatge",
+        "close-button": "Tanca",
+        "error": "No es pot afegir l'article a la bossa",
+        "success": "Article afegit a la bossa",
+        "title": "Actualització de la bossa"
+      }
     },
     "Banner": {
       "link": "Enviament gratuït en comandes aptes"
     },
     "CartForm": {
-      "empty-cart": "La teva bossa està buida"
+      "empty-cart": "La teva bossa està buida",
+      "proceed-to-checkout": "Procedir a la compra",
+      "shipping": "Enviament",
+      "taxes": "Impostos",
+      "total-amount": "Quantitat total",
+      "total-items": "Total d'elements"
+    },
+    "CartModal": {
+      "close": "Tanca la bossa",
+      "open": "Obriu la bossa",
+      "title": "La teva bossa"
+    },
+    "CollectionList": {
+      "title": "Col·leccions"
     },
     "ConsentDialog": {
+      "close": "Tanqueu el diàleg de consentiment",
       "description": "UNCNSRD utilitza galetes que són essencials per fer que aquest lloc funcioni i voldria utilitzar galetes addicionals per millorar la vostra experiència en aquest lloc.",
       "trigger": "Editeu la configuració del consentiment",
       "title": "Configuració del consentiment"
+    },
+    "ConsentForm": {
+      "accept-all": "Accepteu totes les cookies",
+      "accept": "Accepta les galetes seleccionades",
+      "decline": "Declinar",
+      "deny-additional": "Denega galetes addicionals",
+      "description": "UNCNSRD utilitza galetes que són essencials per fer que aquest lloc funcioni i voldria utilitzar galetes addicionals per millorar la vostra experiència en aquest lloc.",
+      "manage": "Gestionar les galetes",
+      "title": "Configuració del consentiment"
+    },
+    "DeleteItemButton": {
+      "remove": "Traieu l'element de la bossa"
+    },
+    "EditItemQuantityButton": {
+      "decrease": "Disminueix la quantitat d'articles",
+      "increase": "Augmenta la quantitat d'articles"
+    },
+    "LocationComboBox": {
+      "StatusList": {
+        "enter-country-name": "Introduïu el nom del país",
+        "no-results": "Sense resultats",
+        "results": "Resultats",
+        "searching": "S'està buscant...",
+        "select-locale": "Seleccioneu la configuració regional"
+      }
+    },
+    "LocationDialog": {
+      "close": "Tanqueu el diàleg d'ubicació",
+      "description": "Trieu la vostra ubicació per trobar productes disponibles a la vostra regió",
+      "trigger": "Editeu la configuració d'ubicació",
+      "title": "Configuració d'ubicació"
+    },
+    "LocationForm": {
+      "accept": "Accepta les galetes seleccionades",
+      "decline": "Declinar",
+      "description": "Lorem ipsum",
+      "title": "Configuració de la configuració regional"
     },
     "Menu": {
       "categories": "Categories",
       "search": "Cerca",
       "toggle": "Veure el menú"
+    },
+    "MobileMenu": {
+      "close": "Tanqueu el menú",
+      "open": "Obriu el menú"
+    },
+    "NavbarContent": {
+      "link-account": "Consulta el teu compte",
+      "link-home": "Torna a la pàgina d'inici",
+      "link-search": "Cerca de productes",
+      "link-wishlist": "Consulta la teva llista de desitjos"
+    },
+    "NavbarSearch": {
+      "placeholder": "Cerca de productes"
     },
     "Newsletter": {
       "description": "Rebre actualitzacions de nous productes i ofertes.",
@@ -83,8 +179,53 @@
       "submit": "Presentar",
       "title": "Butlletí informatiu"
     },
+    "ProductDetails": {
+      "size-guide": {
+        "popover": {
+          "trigger": "Veure guia de talles"
+        }
+      }
+    },
+    "RedeemCode": {
+      "close": "Tanqueu el diàleg del formulari de bescanvi de codi"
+    },
+    "RedeemCodeForm": {
+      "placeholder": "Introdueix el teu codi",
+      "submit": "Bescanvia el codi"
+    },
     "RelatedProducts": {
       "title": "Productes relacionats"
+    },
+    "SearchButton": {
+      "submit": "Envia la cerca"
+    },
+    "SearchForm": {
+      "placeholder": "Cerca de productes"
+    },
+    "SearchLayout": {
+      "title": "Ordenar per"
+    },
+    "SidebarMenu": {
+      "close": "Tanqueu el menú",
+      "open": "Obriu el menú"
+    },
+    "SignUp": {
+      "title": "Subscriu-te al nostre butlletí",
+      "summary": "Registra't i rep un 10% de descompte en la teva primera compra"
+    },
+    "SignUpForm": {
+      "message": "Esperant la confirmació de la inscripció",
+      "pattern": "El valor introduït no coincideix amb el format del correu electrònic",
+      "placeholder": "Subscriu-te al nostre butlletí",
+      "required": "L'adreça de correu electrònic és necessària",
+      "submit": "Registra't",
+      "toast": {
+        "close-alt": "Tanca aquest missatge",
+        "close-button": "Tanca",
+        "error": "No es pot registrar",
+        "success": "Us heu registrat correctament",
+        "title": "Inscripció al butlletí"
+      }
     }
   }
 }

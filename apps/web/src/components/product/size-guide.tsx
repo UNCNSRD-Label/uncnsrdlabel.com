@@ -1,10 +1,13 @@
+import { getDictionary } from "@/lib/dictionary";
+import { createIntl } from "@formatjs/intl";
 import { type ResultOf } from "@graphql-typed-document-node/core";
 import {
-    getBlogArticleQuery,
-    getInContextVariables,
-    getShopifyGraphQL,
-    productDetailsFragment,
+  getBlogArticleQuery,
+  getInContextVariables,
+  getShopifyGraphQL,
+  productDetailsFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { type ResolvedIntlConfig } from "react-intl";
 import slugify from "slugify";
 
 export const SizeGuide = async ({
@@ -14,6 +17,15 @@ export const SizeGuide = async ({
   lang: Intl.BCP47LanguageTag;
   productType: ResultOf<typeof productDetailsFragment>["productType"];
 }) => {
+  const dictionary = getDictionary({ lang });
+
+  const messages: ResolvedIntlConfig["messages"] = await dictionary;
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
+
   const inContextVariables = getInContextVariables(lang);
 
   const articleHandle = slugify(productType, { lower: true });
@@ -24,7 +36,9 @@ export const SizeGuide = async ({
     articleHandle,
   });
 
-  const html = blog?.articleByHandle?.contentHtml;
+  const html = blog?.articleByHandle?.contentHtml.replaceAll("{eu-size-shown-on-site}", intl.formatMessage({
+    id: "component.ProductDetails.size-guide.popover.content.eu-size-shown-on-site",
+  }));
 
   if (!html) {
     return null;

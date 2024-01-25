@@ -11,6 +11,17 @@
         "scarf": "sjaal",
         "boots": "laarzen"
       }
+    },
+    "footer": {
+      "copyright": "© {huidigJaar} {sitenaam}. ",
+      "menu": {
+        "customer-care": "Klantenservice",
+        "follow-us": "Volg ons",
+        "information": "Informatie",
+        "location-settings": "Locatie instellingen",
+        "privacy-and-cookies": "Privacy",
+        "settings": "Instellingen"
+      }
     }
   },
   "page": {
@@ -25,6 +36,11 @@
     },
     "home": {
       "shop-now": "Winkel nu"
+    },
+    "not-found": {
+      "title": "Niet gevonden",
+      "message": "Kon de gevraagde bron niet vinden",
+      "button": "Probeer het nog eens"
     },
     "products": {
       "add-to-wishlist": "Voeg toe aan verlanglijst",
@@ -49,6 +65,7 @@
       "wishlist": "Verlanglijst"
     },
     "search": {
+      "reset": "Catalogus bekijken",
       "title": "Zoekopdracht",
       "description": "Zoek naar producten",
       "results": "{ resultaten, meervoud, =0 {Geen zoekresultaten} =1 {"
@@ -59,23 +76,102 @@
       "add-to-cart-disabled": "Kan item niet toevoegen aan tas",
       "add-to-cart-enabled": "Aan tas toevoegen",
       "out-of-stock": "Geen voorraad meer",
-      "select-options": "Selecteer opties"
+      "pending": "Artikel aan tas toevoegen",
+      "pre-order": "Voorafgaande bestelling",
+      "select-options": "Selecteer opties",
+      "success": "Artikel toegevoegd aan tas",
+      "status": {
+        "add-to-cart-disabled": "Kan item niet toevoegen aan tas",
+        "out-of-stock": "Dit product is niet meer op voorraad, <a href=\"mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for {product}\">neem contact met ons op voor meer informatie</a>",
+        "pre-order": "Dit artikel kan worden gereserveerd en wordt verzonden op {releaseDate}"
+      },
+      "toast": {
+        "close-alt": "Sluit dit bericht",
+        "close-button": "Dichtbij",
+        "error": "Kan item niet toevoegen aan tas",
+        "success": "Artikel toegevoegd aan tas",
+        "title": "Tas-update"
+      }
     },
     "Banner": {
       "link": "Gratis verzending voor in aanmerking komende bestellingen"
     },
     "CartForm": {
-      "empty-cart": "Je tas is leeg"
+      "empty-cart": "Je tas is leeg",
+      "proceed-to-checkout": "Ga naar de kassa",
+      "shipping": "Verzenden",
+      "taxes": "Belastingen",
+      "total-amount": "Totaalbedrag",
+      "total-items": "Totaal artikelen"
+    },
+    "CartModal": {
+      "close": "Sluit de zak",
+      "open": "Open de zak",
+      "title": "Jouw tas"
+    },
+    "CollectionList": {
+      "title": "Collecties"
     },
     "ConsentDialog": {
+      "close": "Sluit het toestemmingsdialoogvenster",
       "description": "UNCNSRD gebruikt cookies die essentieel zijn om deze site te laten werken en wil graag aanvullende cookies gebruiken om uw ervaring op deze site te verbeteren.",
       "trigger": "Toestemmingsinstellingen bewerken",
       "title": "Toestemmingsinstellingen"
+    },
+    "ConsentForm": {
+      "accept-all": "Accepteer alle cookies",
+      "accept": "Accepteer geselecteerde cookies",
+      "decline": "Afwijzen",
+      "deny-additional": "Weiger extra cookies",
+      "description": "UNCNSRD gebruikt cookies die essentieel zijn om deze site te laten werken en wil graag aanvullende cookies gebruiken om uw ervaring op deze site te verbeteren.",
+      "manage": "Beheer cookies",
+      "title": "Toestemmingsinstellingen"
+    },
+    "DeleteItemButton": {
+      "remove": "Verwijder het tasitem"
+    },
+    "EditItemQuantityButton": {
+      "decrease": "Artikelhoeveelheid verlagen",
+      "increase": "Verhoog de artikelhoeveelheid"
+    },
+    "LocationComboBox": {
+      "StatusList": {
+        "enter-country-name": "Voer de landnaam in",
+        "no-results": "geen resultaten gevonden",
+        "results": "Resultaten",
+        "searching": "Zoeken...",
+        "select-locale": "Selecteer landinstelling"
+      }
+    },
+    "LocationDialog": {
+      "close": "Sluit het locatiedialoogvenster",
+      "description": "Kies uw locatie om producten te vinden die beschikbaar zijn in uw regio",
+      "trigger": "Locatie-instellingen bewerken",
+      "title": "Locatie instellingen"
+    },
+    "LocationForm": {
+      "accept": "Accepteer geselecteerde cookies",
+      "decline": "Afwijzen",
+      "description": "Lorem ipsum",
+      "title": "Lokale instellingen"
     },
     "Menu": {
       "categories": "Categorieën",
       "search": "Zoekopdracht",
       "toggle": "Bekijk de menukaart"
+    },
+    "MobileMenu": {
+      "close": "Sluit het menu",
+      "open": "Open het menu"
+    },
+    "NavbarContent": {
+      "link-account": "Bekijk uw rekening",
+      "link-home": "Keer terug naar de startpagina",
+      "link-search": "Zoek naar producten",
+      "link-wishlist": "Bekijk uw verlanglijstje"
+    },
+    "NavbarSearch": {
+      "placeholder": "Zoek naar producten"
     },
     "Newsletter": {
       "description": "Ontvang updates over nieuwe producten en aanbiedingen.",
@@ -83,8 +179,53 @@
       "submit": "Indienen",
       "title": "Nieuwsbrief"
     },
+    "ProductDetails": {
+      "size-guide": {
+        "popover": {
+          "trigger": "Bekijk maattabel"
+        }
+      }
+    },
+    "RedeemCode": {
+      "close": "Sluit het dialoogvenster voor het inwisselen van code"
+    },
+    "RedeemCodeForm": {
+      "placeholder": "Voer uw code in",
+      "submit": "Code inwisselen"
+    },
     "RelatedProducts": {
       "title": "Gerelateerde producten"
+    },
+    "SearchButton": {
+      "submit": "Zoekopdracht verzenden"
+    },
+    "SearchForm": {
+      "placeholder": "Zoek naar producten"
+    },
+    "SearchLayout": {
+      "title": "Sorteer op"
+    },
+    "SidebarMenu": {
+      "close": "Sluit het menu",
+      "open": "Open het menu"
+    },
+    "SignUp": {
+      "title": "Schrijf je in voor onze nieuwsbrief",
+      "summary": "Meld u aan en ontvang 10% korting op uw eerste aankoop"
+    },
+    "SignUpForm": {
+      "message": "Wachten op aanmeldingsbevestiging",
+      "pattern": "De ingevoerde waarde komt niet overeen met het e-mailformaat",
+      "placeholder": "Schrijf je in voor onze nieuwsbrief",
+      "required": "E-mailadres is vereist",
+      "submit": "Aanmelden",
+      "toast": {
+        "close-alt": "Sluit dit bericht",
+        "close-button": "Dichtbij",
+        "error": "Kan niet aanmelden",
+        "success": "U bent succesvol aangemeld",
+        "title": "Aanmelding nieuwsbrief"
+      }
     }
   }
 }

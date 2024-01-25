@@ -1,7 +1,7 @@
 {
   "global": {
     "metadata": {
-      "description": "UNCNSRD शोधा, अनादरवादी बंडखोर आत्म्यासाठी एक ब्रँड. ",
+      "description": "UNCNSRD चा शोध घ्या, जो अपात्र बंडखोर आत्म्याचा ब्रँड आहे. ",
       "keywords": {
         "bikini": "बिकिनी",
         "swimsuit": "स्विमसूट",
@@ -10,6 +10,17 @@
         "sarong": "सारोंग",
         "scarf": "स्कार्फ",
         "boots": "बूट"
+      }
+    },
+    "footer": {
+      "copyright": "© {currentYear} {siteName}. ",
+      "menu": {
+        "customer-care": "ग्राहक सेवा",
+        "follow-us": "आमच्या मागे या",
+        "information": "माहिती",
+        "location-settings": "स्थान सेटिंग्ज",
+        "privacy-and-cookies": "गोपनीयता",
+        "settings": "सेटिंग्ज"
       }
     }
   },
@@ -25,6 +36,11 @@
     },
     "home": {
       "shop-now": "आता खरेदी करा"
+    },
+    "not-found": {
+      "title": "सापडले नाही",
+      "message": "विनंती केलेले संसाधन शोधू शकलो नाही",
+      "button": "पुन्हा प्रयत्न करा"
     },
     "products": {
       "add-to-wishlist": "विशलिस्टमध्ये जोडा",
@@ -49,6 +65,7 @@
       "wishlist": "विशलिस्ट"
     },
     "search": {
+      "reset": "कॅटलॉग पहा",
       "title": "शोधा",
       "description": "उत्पादने शोधा",
       "results": "{ परिणाम, अनेकवचनी, =0 {शोध परिणाम नाहीत} =1 {"
@@ -59,23 +76,102 @@
       "add-to-cart-disabled": "बॅगमध्ये आयटम जोडता आला नाही",
       "add-to-cart-enabled": "पिशवीत जोडा",
       "out-of-stock": "स्टॉक संपला",
-      "select-options": "कृपया पर्याय निवडा"
+      "pending": "बॅगमध्ये आयटम जोडत आहे",
+      "pre-order": "प्री-ऑर्डर",
+      "select-options": "कृपया पर्याय निवडा",
+      "success": "बॅगमध्ये आयटम जोडला",
+      "status": {
+        "add-to-cart-disabled": "बॅगमध्ये आयटम जोडता आला नाही",
+        "out-of-stock": "हा आयटम स्टॉक संपला आहे, <a href=\"mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for {product}\">अधिक माहितीसाठी आमच्याशी संपर्क साधा</a>",
+        "pre-order": "हा आयटम प्री-ऑर्डरसाठी उपलब्ध आहे आणि {releaseDate} रोजी शिपिंग सुरू होईल"
+      },
+      "toast": {
+        "close-alt": "हा संदेश बंद करा",
+        "close-button": "बंद",
+        "error": "बॅगमध्ये आयटम जोडता आला नाही",
+        "success": "बॅगमध्ये आयटम जोडला",
+        "title": "बॅग अपडेट"
+      }
     },
     "Banner": {
       "link": "पात्र ऑर्डरवर विनामूल्य शिपिंग"
     },
     "CartForm": {
-      "empty-cart": "तुझी बॅग रिकामी आहे"
+      "empty-cart": "तुझी बॅग रिकामी आहे",
+      "proceed-to-checkout": "चेकआउट करण्यासाठी पुढे जा",
+      "shipping": "शिपिंग",
+      "taxes": "कर",
+      "total-amount": "एकूण रक्कम",
+      "total-items": "एकूण आयटम"
+    },
+    "CartModal": {
+      "close": "बॅग बंद करा",
+      "open": "बॅग उघडा",
+      "title": "तुमची बॅग"
+    },
+    "CollectionList": {
+      "title": "संग्रह"
     },
     "ConsentDialog": {
+      "close": "संमती संवाद बंद करा",
       "description": "UNCNSRD कुकीज वापरते जी ही साइट कार्य करण्यासाठी आवश्यक आहे आणि या साइटवरील तुमचा अनुभव सुधारण्यासाठी अतिरिक्त कुकीज वापरू इच्छिते.",
       "trigger": "संमती सेटिंग्ज संपादित करा",
       "title": "संमती सेटिंग्ज"
+    },
+    "ConsentForm": {
+      "accept-all": "सर्व कुकीज स्वीकारा",
+      "accept": "निवडलेल्या कुकीज स्वीकारा",
+      "decline": "नकार",
+      "deny-additional": "अतिरिक्त कुकीज नाकारा",
+      "description": "UNCNSRD कुकीज वापरते जी ही साइट कार्य करण्यासाठी आवश्यक आहे आणि या साइटवरील तुमचा अनुभव सुधारण्यासाठी अतिरिक्त कुकीज वापरू इच्छिते.",
+      "manage": "कुकीज व्यवस्थापित करा",
+      "title": "संमती सेटिंग्ज"
+    },
+    "DeleteItemButton": {
+      "remove": "बॅग आयटम काढा"
+    },
+    "EditItemQuantityButton": {
+      "decrease": "वस्तूंचे प्रमाण कमी करा",
+      "increase": "वस्तूंचे प्रमाण वाढवा"
+    },
+    "LocationComboBox": {
+      "StatusList": {
+        "enter-country-name": "देशाचे नाव एंटर करा",
+        "no-results": "कोणतेही परिणाम आढळले नाहीत",
+        "results": "परिणाम",
+        "searching": "शोधत आहे...",
+        "select-locale": "लोकॅल निवडा"
+      }
+    },
+    "LocationDialog": {
+      "close": "स्थान संवाद बंद करा",
+      "description": "तुमच्या प्रदेशात उपलब्ध उत्पादने शोधण्यासाठी तुमचे स्थान निवडा",
+      "trigger": "स्थान सेटिंग्ज संपादित करा",
+      "title": "स्थान सेटिंग्ज"
+    },
+    "LocationForm": {
+      "accept": "निवडलेल्या कुकीज स्वीकारा",
+      "decline": "नकार",
+      "description": "Lorem ipsum",
+      "title": "लोकेल सेटिंग्ज"
     },
     "Menu": {
       "categories": "श्रेण्या",
       "search": "शोधा",
       "toggle": "मेनू पहा"
+    },
+    "MobileMenu": {
+      "close": "मेनू बंद करा",
+      "open": "मेनू उघडा"
+    },
+    "NavbarContent": {
+      "link-account": "तुमचे खाते पहा",
+      "link-home": "मुख्यपृष्ठावर परत या",
+      "link-search": "उत्पादने शोधा",
+      "link-wishlist": "तुमची विशलिस्ट पहा"
+    },
+    "NavbarSearch": {
+      "placeholder": "उत्पादने शोधा"
     },
     "Newsletter": {
       "description": "नवीन उत्पादने आणि ऑफरवर अद्यतने प्राप्त करा.",
@@ -83,8 +179,53 @@
       "submit": "प्रस्तुत करणे",
       "title": "वृत्तपत्र"
     },
+    "ProductDetails": {
+      "size-guide": {
+        "popover": {
+          "trigger": "आकार मार्गदर्शक पहा"
+        }
+      }
+    },
+    "RedeemCode": {
+      "close": "कोड रिडेम्प्शन फॉर्म डायलॉग बंद करा"
+    },
+    "RedeemCodeForm": {
+      "placeholder": "तुमचा कोड टाका",
+      "submit": "कोडची पूर्तता"
+    },
     "RelatedProducts": {
       "title": "संबंधित उत्पादने"
+    },
+    "SearchButton": {
+      "submit": "शोध सबमिट करा"
+    },
+    "SearchForm": {
+      "placeholder": "उत्पादने शोधा"
+    },
+    "SearchLayout": {
+      "title": "यानुसार क्रमवारी लावा"
+    },
+    "SidebarMenu": {
+      "close": "मेनू बंद करा",
+      "open": "मेनू उघडा"
+    },
+    "SignUp": {
+      "title": "आमच्या वृत्तपत्रासाठी साइन अप करा",
+      "summary": "साइन अप करा आणि तुमच्या पहिल्या खरेदीवर 10% सूट मिळवा"
+    },
+    "SignUpForm": {
+      "message": "साइनअप पुष्टीकरणाची प्रतीक्षा करत आहे",
+      "pattern": "एंटर केलेले मूल्य ईमेल फॉरमॅटशी जुळत नाही",
+      "placeholder": "आमच्या वृत्तपत्रासाठी साइन अप करा",
+      "required": "ईमेल पत्ता आवश्यक आहे",
+      "submit": "साइन अप करा",
+      "toast": {
+        "close-alt": "हा संदेश बंद करा",
+        "close-button": "बंद",
+        "error": "साइन अप करण्यात अक्षम",
+        "success": "तुम्ही यशस्वीरित्या साइन अप केले आहे",
+        "title": "वृत्तपत्र साइनअप"
+      }
     }
   }
 }

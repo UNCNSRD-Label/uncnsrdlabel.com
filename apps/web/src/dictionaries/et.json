@@ -11,6 +11,17 @@
         "scarf": "sall",
         "boots": "saapad"
       }
+    },
+    "footer": {
+      "copyright": "© {currentYear} {siteName}. ",
+      "menu": {
+        "customer-care": "Klienditeenindus",
+        "follow-us": "Järgne meile",
+        "information": "Teave",
+        "location-settings": "Asukoha seaded",
+        "privacy-and-cookies": "Privaatsus",
+        "settings": "Seaded"
+      }
     }
   },
   "page": {
@@ -25,6 +36,11 @@
     },
     "home": {
       "shop-now": "Osta nüüd"
+    },
+    "not-found": {
+      "title": "Ei leitud",
+      "message": "Soovitud ressurssi ei leitud",
+      "button": "Proovi uuesti"
     },
     "products": {
       "add-to-wishlist": "Soovinimekirja lisama",
@@ -49,6 +65,7 @@
       "wishlist": "Soovinimekiri"
     },
     "search": {
+      "reset": "Vaata kataloogi",
       "title": "Otsing",
       "description": "Otsige tooteid",
       "results": "{ tulemused, mitmus, =0 {Otsingutulemusi pole} =1 {"
@@ -59,23 +76,102 @@
       "add-to-cart-disabled": "Üksust ei saa kotti lisada",
       "add-to-cart-enabled": "Lisa kotti",
       "out-of-stock": "Läbimüüdud",
-      "select-options": "Palun valige valikud"
+      "pending": "Kauba lisamine kotti",
+      "pre-order": "Ettetellimine",
+      "select-options": "Palun valige valikud",
+      "success": "Kaup lisatud kotti",
+      "status": {
+        "add-to-cart-disabled": "Üksust ei saa kotti lisada",
+        "out-of-stock": "See toode on otsas, <a href=\"mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for {product}\">lisateabe saamiseks võtke meiega ühendust</a>",
+        "pre-order": "See toode on ettetellimiseks saadaval ja seda hakatakse tarnima {releaseDate}"
+      },
+      "toast": {
+        "close-alt": "Sulgege see teade",
+        "close-button": "Sulge",
+        "error": "Üksust ei saa kotti lisada",
+        "success": "Kaup lisatud kotti",
+        "title": "Koti värskendus"
+      }
     },
     "Banner": {
-      "link": "Tasuta kohaletoimetamine sobilike tellimuste puhul"
+      "link": "Tasuta kohaletoimetamine sobilike tellimuste korral"
     },
     "CartForm": {
-      "empty-cart": "Teie kott on tühi"
+      "empty-cart": "Teie kott on tühi",
+      "proceed-to-checkout": "Liikuge kassasse",
+      "shipping": "Saatmine",
+      "taxes": "Maksud",
+      "total-amount": "Kogu summa",
+      "total-items": "Üksusi kokku"
+    },
+    "CartModal": {
+      "close": "Sulgege kott",
+      "open": "Ava kott",
+      "title": "Sinu kott"
+    },
+    "CollectionList": {
+      "title": "Kollektsioonid"
     },
     "ConsentDialog": {
+      "close": "Sulgege nõusoleku dialoog",
       "description": "UNCNSRD kasutab küpsiseid, mis on selle saidi toimimiseks hädavajalikud, ja soovib kasutada täiendavaid küpsiseid, et parandada teie kasutuskogemust sellel saidil.",
       "trigger": "Muutke nõusoleku seadeid",
       "title": "Nõusoleku seaded"
+    },
+    "ConsentForm": {
+      "accept-all": "Nõustuge kõigi küpsistega",
+      "accept": "Nõustu valitud küpsistega",
+      "decline": "Keeldumine",
+      "deny-additional": "Keela täiendavad küpsised",
+      "description": "UNCNSRD kasutab küpsiseid, mis on selle saidi toimimiseks hädavajalikud, ja soovib kasutada täiendavaid küpsiseid, et parandada teie kasutuskogemust sellel saidil.",
+      "manage": "Küpsiste haldamine",
+      "title": "Nõusoleku seaded"
+    },
+    "DeleteItemButton": {
+      "remove": "Eemaldage koti ese"
+    },
+    "EditItemQuantityButton": {
+      "decrease": "Vähenda kauba kogust",
+      "increase": "Suurenda kauba kogust"
+    },
+    "LocationComboBox": {
+      "StatusList": {
+        "enter-country-name": "Sisestage riigi nimi",
+        "no-results": "Tulemusi ei leitud",
+        "results": "Tulemused",
+        "searching": "Otsimine...",
+        "select-locale": "Valige lokaat"
+      }
+    },
+    "LocationDialog": {
+      "close": "Sulgege asukohadialoog",
+      "description": "Valige oma asukoht, et leida oma piirkonnas saadaolevaid tooteid",
+      "trigger": "Muutke asukohaseadeid",
+      "title": "Asukoha seaded"
+    },
+    "LocationForm": {
+      "accept": "Nõustu valitud küpsistega",
+      "decline": "Keeldumine",
+      "description": "Lorem ipsum",
+      "title": "Lokaadi seaded"
     },
     "Menu": {
       "categories": "Kategooriad",
       "search": "Otsing",
       "toggle": "Vaadake menüüd"
+    },
+    "MobileMenu": {
+      "close": "Sulgege menüü",
+      "open": "Avage menüü"
+    },
+    "NavbarContent": {
+      "link-account": "Vaadake oma kontot",
+      "link-home": "Tagasi avalehele",
+      "link-search": "Otsige tooteid",
+      "link-wishlist": "Vaadake oma soovinimekirja"
+    },
+    "NavbarSearch": {
+      "placeholder": "Otsige tooteid"
     },
     "Newsletter": {
       "description": "Saate värskendusi uute toodete ja pakkumiste kohta.",
@@ -83,8 +179,53 @@
       "submit": "Esita",
       "title": "Infoleht"
     },
+    "ProductDetails": {
+      "size-guide": {
+        "popover": {
+          "trigger": "Vaata suuruse juhendit"
+        }
+      }
+    },
+    "RedeemCode": {
+      "close": "Sulgege koodi lunastamise vormi dialoog"
+    },
+    "RedeemCodeForm": {
+      "placeholder": "Sisesta oma kood",
+      "submit": "Lunastada koodi"
+    },
     "RelatedProducts": {
       "title": "Seotud tooted"
+    },
+    "SearchButton": {
+      "submit": "Esitage otsing"
+    },
+    "SearchForm": {
+      "placeholder": "Otsige tooteid"
+    },
+    "SearchLayout": {
+      "title": "Sorteerima"
+    },
+    "SidebarMenu": {
+      "close": "Sulgege menüü",
+      "open": "Avage menüü"
+    },
+    "SignUp": {
+      "title": "Liituge meie uudiskirjaga",
+      "summary": "Registreeruge ja saate oma esimesest ostust 10% allahindlust"
+    },
+    "SignUpForm": {
+      "message": "Registreerumise kinnituse ootel",
+      "pattern": "Sisestatud väärtus ei ühti meilivorminguga",
+      "placeholder": "Liituge meie uudiskirjaga",
+      "required": "E-posti aadress on kohustuslik",
+      "submit": "Registreeri",
+      "toast": {
+        "close-alt": "Sulgege see teade",
+        "close-button": "Sulge",
+        "error": "Ei saa registreeruda",
+        "success": "Olete edukalt registreerunud",
+        "title": "Uudiskirjaga liitumine"
+      }
     }
   }
 }

@@ -11,6 +11,17 @@
         "scarf": "وشاح",
         "boots": "أحذية"
       }
+    },
+    "footer": {
+      "copyright": "© {currentYear} {siteName}. ",
+      "menu": {
+        "customer-care": "رعاية العميل",
+        "follow-us": "تابعنا",
+        "information": "معلومة",
+        "location-settings": "إعدادات الموقع",
+        "privacy-and-cookies": "خصوصية",
+        "settings": "إعدادات"
+      }
     }
   },
   "page": {
@@ -25,6 +36,11 @@
     },
     "home": {
       "shop-now": "تسوق الآن"
+    },
+    "not-found": {
+      "title": "غير معثور عليه",
+      "message": "تعذر العثور على المورد المطلوب",
+      "button": "حاول ثانية"
     },
     "products": {
       "add-to-wishlist": "أضف إلى قائمة الامنيات",
@@ -49,6 +65,7 @@
       "wishlist": "قائمة الرغبات"
     },
     "search": {
+      "reset": "عرض الكتالوج",
       "title": "يبحث",
       "description": "البحث عن المنتجات",
       "results": "{ النتائج، الجمع، =0 {لا توجد نتائج بحث} =1 {"
@@ -59,23 +76,102 @@
       "add-to-cart-disabled": "غير قادر على إضافة عنصر إلى الحقيبة",
       "add-to-cart-enabled": "أضف الى الحقيبة",
       "out-of-stock": "إنتهى من المخزن",
-      "select-options": "الرجاء تحديد الخيارات"
+      "pending": "إضافة عنصر إلى الحقيبة",
+      "pre-order": "النظام السابق",
+      "select-options": "الرجاء تحديد الخيارات",
+      "success": "تمت إضافة السلعة إلى الحقيبة",
+      "status": {
+        "add-to-cart-disabled": "غير قادر على إضافة عنصر إلى الحقيبة",
+        "out-of-stock": "هذا البند هو من المخزون، <a href=\"mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for {product}\">اتصل بنا للحصول على مزيد من المعلومات</a>",
+        "pre-order": "هذا العنصر متاح للطلب المسبق وسيبدأ الشحن في {releaseDate}"
+      },
+      "toast": {
+        "close-alt": "أغلق هذه الرسالة",
+        "close-button": "يغلق",
+        "error": "غير قادر على إضافة عنصر إلى الحقيبة",
+        "success": "تمت إضافة السلعة إلى الحقيبة",
+        "title": "تحديث الحقيبة"
+      }
     },
     "Banner": {
       "link": "شحن مجاني للطلبات المؤهلة"
     },
     "CartForm": {
-      "empty-cart": "حقيبتك فارغة"
+      "empty-cart": "حقيبتك فارغة",
+      "proceed-to-checkout": "الشروع في الخروج",
+      "shipping": "شحن",
+      "taxes": "الضرائب",
+      "total-amount": "المبلغ الإجمالي",
+      "total-items": "إجمالي العناصر"
+    },
+    "CartModal": {
+      "close": "أغلق الحقيبة",
+      "open": "افتح الحقيبة",
+      "title": "حقيبتك"
+    },
+    "CollectionList": {
+      "title": "المجموعات"
     },
     "ConsentDialog": {
+      "close": "أغلق مربع حوار الموافقة",
       "description": "يستخدم UNCNSRD ملفات تعريف الارتباط الضرورية لتشغيل هذا الموقع ويرغب في استخدام ملفات تعريف ارتباط إضافية لتحسين تجربتك على هذا الموقع.",
       "trigger": "تعديل إعدادات الموافقة",
       "title": "إعدادات الموافقة"
+    },
+    "ConsentForm": {
+      "accept-all": "قبول جميع ملفات تعريف الارتباط",
+      "accept": "قبول ملفات تعريف الارتباط المحددة",
+      "decline": "انخفاض",
+      "deny-additional": "رفض ملفات تعريف الارتباط الإضافية",
+      "description": "يستخدم UNCNSRD ملفات تعريف الارتباط الضرورية لتشغيل هذا الموقع ويرغب في استخدام ملفات تعريف ارتباط إضافية لتحسين تجربتك على هذا الموقع.",
+      "manage": "إدارة ملفات تعريف الارتباط",
+      "title": "إعدادات الموافقة"
+    },
+    "DeleteItemButton": {
+      "remove": "قم بإزالة عنصر الحقيبة"
+    },
+    "EditItemQuantityButton": {
+      "decrease": "تقليل كمية البند",
+      "increase": "زيادة كمية البند"
+    },
+    "LocationComboBox": {
+      "StatusList": {
+        "enter-country-name": "أدخل اسم البلد",
+        "no-results": "لم يتم العثور على نتائج",
+        "results": "نتائج",
+        "searching": "يبحث...",
+        "select-locale": "حدد اللغة"
+      }
+    },
+    "LocationDialog": {
+      "close": "أغلق مربع حوار الموقع",
+      "description": "اختر موقعك للعثور على المنتجات المتوفرة في منطقتك",
+      "trigger": "تحرير إعدادات الموقع",
+      "title": "إعدادات الموقع"
+    },
+    "LocationForm": {
+      "accept": "قبول ملفات تعريف الارتباط المحددة",
+      "decline": "انخفاض",
+      "description": "لوريم إيبسوم",
+      "title": "الإعدادات المحلية"
     },
     "Menu": {
       "categories": "فئات",
       "search": "يبحث",
       "toggle": "عرض القائمة"
+    },
+    "MobileMenu": {
+      "close": "أغلق القائمة",
+      "open": "افتح القائمة"
+    },
+    "NavbarContent": {
+      "link-account": "عرض حسابك",
+      "link-home": "العودة إلى الصفحة الرئيسية",
+      "link-search": "البحث عن المنتجات",
+      "link-wishlist": "عرض قائمة الرغبات الخاصة بك"
+    },
+    "NavbarSearch": {
+      "placeholder": "البحث عن المنتجات"
     },
     "Newsletter": {
       "description": "تلقي التحديثات على المنتجات والعروض الجديدة.",
@@ -83,8 +179,53 @@
       "submit": "يُقدِّم",
       "title": "النشرة الإخبارية"
     },
+    "ProductDetails": {
+      "size-guide": {
+        "popover": {
+          "trigger": "عرض دليل الحجم"
+        }
+      }
+    },
+    "RedeemCode": {
+      "close": "أغلق مربع حوار نموذج استرداد الرمز"
+    },
+    "RedeemCodeForm": {
+      "placeholder": "ادخل رمزك",
+      "submit": "استرداد الرمز"
+    },
     "RelatedProducts": {
       "title": "منتجات ذات صله"
+    },
+    "SearchButton": {
+      "submit": "إرسال البحث"
+    },
+    "SearchForm": {
+      "placeholder": "البحث عن المنتجات"
+    },
+    "SearchLayout": {
+      "title": "ترتيب حسب"
+    },
+    "SidebarMenu": {
+      "close": "أغلق القائمة",
+      "open": "افتح القائمة"
+    },
+    "SignUp": {
+      "title": "الاشتراك في النشرة الإخبارية",
+      "summary": "قم بالتسجيل واحصل على خصم 10% على عملية الشراء الأولى"
+    },
+    "SignUpForm": {
+      "message": "في انتظار تأكيد الاشتراك",
+      "pattern": "القيمة المدخلة لا تتطابق مع تنسيق البريد الإلكتروني",
+      "placeholder": "الاشتراك في النشرة الإخبارية",
+      "required": "عنوان البريد الإلكتروني مطلوب",
+      "submit": "اشتراك",
+      "toast": {
+        "close-alt": "أغلق هذه الرسالة",
+        "close-button": "يغلق",
+        "error": "غير قادر على الاشتراك",
+        "success": "لقد سجلت بنجاح",
+        "title": "الاشتراك في الرسائل الإخبارية"
+      }
     }
   }
 }

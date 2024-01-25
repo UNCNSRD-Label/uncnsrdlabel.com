@@ -11,6 +11,17 @@
         "scarf": "šátek",
         "boots": "boty"
       }
+    },
+    "footer": {
+      "copyright": "© {currentYear} {siteName}. ",
+      "menu": {
+        "customer-care": "Péče o zákazníky",
+        "follow-us": "Následuj nás",
+        "information": "Informace",
+        "location-settings": "Nastavení polohy",
+        "privacy-and-cookies": "Soukromí",
+        "settings": "Nastavení"
+      }
     }
   },
   "page": {
@@ -25,6 +36,11 @@
     },
     "home": {
       "shop-now": "Kupuj teď"
+    },
+    "not-found": {
+      "title": "Nenalezeno",
+      "message": "Požadovaný zdroj nelze najít",
+      "button": "Zkus to znovu"
     },
     "products": {
       "add-to-wishlist": "Přidat do seznamu přání",
@@ -49,6 +65,7 @@
       "wishlist": "Seznam přání"
     },
     "search": {
+      "reset": "Zobrazit katalog",
       "title": "Vyhledávání",
       "description": "Hledat produkty",
       "results": "{ výsledky, množné číslo, =0 {Žádné výsledky vyhledávání} =1 {"
@@ -59,23 +76,102 @@
       "add-to-cart-disabled": "Nelze přidat položku do tašky",
       "add-to-cart-enabled": "Přidat do batohu",
       "out-of-stock": "Vyprodáno",
-      "select-options": "Vyberte možnosti"
+      "pending": "Přidání položky do tašky",
+      "pre-order": "Předobjednávka",
+      "select-options": "Vyberte možnosti",
+      "success": "Položka přidána do tašky",
+      "status": {
+        "add-to-cart-disabled": "Nelze přidat položku do tašky",
+        "out-of-stock": "Tato položka není skladem, <a href=\"mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for {product}\">kontaktujte nás pro více informací</a>",
+        "pre-order": "Tato položka je k dispozici pro předobjednávku a začne se dodávat {releaseDate}"
+      },
+      "toast": {
+        "close-alt": "Zavřete tuto zprávu",
+        "close-button": "Zavřít",
+        "error": "Nelze přidat položku do tašky",
+        "success": "Položka přidána do tašky",
+        "title": "Aktualizace tašky"
+      }
     },
     "Banner": {
       "link": "Doprava zdarma u způsobilých objednávek"
     },
     "CartForm": {
-      "empty-cart": "Vaše taška je prázdná"
+      "empty-cart": "Vaše taška je prázdná",
+      "proceed-to-checkout": "Pokračujte k pokladně",
+      "shipping": "Lodní doprava",
+      "taxes": "Daně",
+      "total-amount": "Celková částka",
+      "total-items": "Celkem položek"
+    },
+    "CartModal": {
+      "close": "Zavřete sáček",
+      "open": "Otevřete sáček",
+      "title": "Tvoje taška"
+    },
+    "CollectionList": {
+      "title": "Sbírky"
     },
     "ConsentDialog": {
+      "close": "Zavřete dialogové okno souhlasu",
       "description": "UNCNSRD používá soubory cookie, které jsou nezbytné pro fungování tohoto webu, a rád by používal další soubory cookie ke zlepšení vaší zkušenosti na tomto webu.",
       "trigger": "Upravit nastavení souhlasu",
       "title": "Nastavení souhlasu"
+    },
+    "ConsentForm": {
+      "accept-all": "Přijmout všechny soubory cookie",
+      "accept": "Přijmout vybrané soubory cookie",
+      "decline": "Pokles",
+      "deny-additional": "Odmítnout další soubory cookie",
+      "description": "UNCNSRD používá soubory cookie, které jsou nezbytné pro fungování tohoto webu, a rád by používal další soubory cookie ke zlepšení vaší zkušenosti na tomto webu.",
+      "manage": "Spravovat soubory cookie",
+      "title": "Nastavení souhlasu"
+    },
+    "DeleteItemButton": {
+      "remove": "Odstraňte položku sáčku"
+    },
+    "EditItemQuantityButton": {
+      "decrease": "Snížit množství položky",
+      "increase": "Zvyšte množství položky"
+    },
+    "LocationComboBox": {
+      "StatusList": {
+        "enter-country-name": "Zadejte název země",
+        "no-results": "Nebyly nalezeny žádné výsledky",
+        "results": "Výsledek",
+        "searching": "Hledání...",
+        "select-locale": "Vyberte národní prostředí"
+      }
+    },
+    "LocationDialog": {
+      "close": "Zavřete dialogové okno umístění",
+      "description": "Vyberte svou polohu a najděte produkty dostupné ve vašem regionu",
+      "trigger": "Upravit nastavení polohy",
+      "title": "Nastavení polohy"
+    },
+    "LocationForm": {
+      "accept": "Přijmout vybrané soubory cookie",
+      "decline": "Pokles",
+      "description": "Lorem ipsum",
+      "title": "Nastavení národního prostředí"
     },
     "Menu": {
       "categories": "Kategorie",
       "search": "Vyhledávání",
       "toggle": "Zobrazit nabídku"
+    },
+    "MobileMenu": {
+      "close": "Zavřete nabídku",
+      "open": "Otevřete nabídku"
+    },
+    "NavbarContent": {
+      "link-account": "Zobrazit svůj účet",
+      "link-home": "Návrat na domovskou stránku",
+      "link-search": "Hledat produkty",
+      "link-wishlist": "Prohlédněte si svůj seznam přání"
+    },
+    "NavbarSearch": {
+      "placeholder": "Hledat produkty"
     },
     "Newsletter": {
       "description": "Získejte aktualizace o nových produktech a nabídkách.",
@@ -83,8 +179,53 @@
       "submit": "Předložit",
       "title": "Zpravodaj"
     },
+    "ProductDetails": {
+      "size-guide": {
+        "popover": {
+          "trigger": "Zobrazit průvodce velikostí"
+        }
+      }
+    },
+    "RedeemCode": {
+      "close": "Zavřete dialogové okno formuláře pro uplatnění kódu"
+    },
+    "RedeemCodeForm": {
+      "placeholder": "vložte svůj kód",
+      "submit": "Použít kód"
+    },
     "RelatedProducts": {
       "title": "Související produkty"
+    },
+    "SearchButton": {
+      "submit": "Odeslat vyhledávání"
+    },
+    "SearchForm": {
+      "placeholder": "Hledat produkty"
+    },
+    "SearchLayout": {
+      "title": "Seřazeno podle"
+    },
+    "SidebarMenu": {
+      "close": "Zavřete nabídku",
+      "open": "Otevřete nabídku"
+    },
+    "SignUp": {
+      "title": "Přihlaste se k odběru našeho newsletteru",
+      "summary": "Zaregistrujte se a získejte 10% slevu na svůj první nákup"
+    },
+    "SignUpForm": {
+      "message": "Čekání na potvrzení registrace",
+      "pattern": "Zadaná hodnota neodpovídá formátu e-mailu",
+      "placeholder": "Přihlaste se k odběru našeho newsletteru",
+      "required": "E-mailová adresa je povinná",
+      "submit": "Přihlásit se",
+      "toast": {
+        "close-alt": "Zavřete tuto zprávu",
+        "close-button": "Zavřít",
+        "error": "Nelze se zaregistrovat",
+        "success": "Úspěšně jste se zaregistrovali",
+        "title": "Přihlásit se k odběru novinek"
+      }
     }
   }
 }

@@ -119,12 +119,12 @@
       "title": "Consent settings"
     },
     "ConsentForm": {
-      "accept": "Accept selected cookies",
-      "manage": "Manage cookies",
       "accept-all": "Accept all cookies",
-      "deny-additional": "Deny additional cookies",
+      "accept": "Accept selected cookies",
       "decline": "Decline",
+      "deny-additional": "Deny additional cookies",
       "description": "UNCNSRD uses cookies that are essential to making this site work and would like to use additional cookies to improve your experience on this site.",
+      "manage": "Manage cookies",
       "title": "Consent settings"
     },
     "DeleteItemButton": {
@@ -155,14 +155,14 @@
       "description": "Lorem ipsum",
       "title": "Locale settings"
     },
-    "MobileMenu": {
-      "close": "Close the menu",
-      "open": "Open the menu"
-    },
     "Menu": {
       "categories": "Categories",
       "search": "Search",
       "toggle": "View the menu"
+    },
+    "MobileMenu": {
+      "close": "Close the menu",
+      "open": "Open the menu"
     },
     "NavbarContent": {
       "link-account": "View your account",
@@ -182,6 +182,10 @@
     "ProductDetails": {
       "size-guide": {
         "popover": {
+          "content": {
+            "eu-size-shown-on-site": "EU size shown on site",
+            "title": "Size guide"
+          },
           "trigger": "View size guide"
         }
       }
