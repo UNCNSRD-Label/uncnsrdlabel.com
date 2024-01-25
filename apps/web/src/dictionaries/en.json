@@ -182,6 +182,10 @@
     "ProductDetails": {
       "size-guide": {
         "popover": {
+          "content": {
+            "eu-size-shown-on-site": "EU size shown on site",
+            "title": "Size guide"
+          },
           "trigger": "View size guide"
         }
       }
