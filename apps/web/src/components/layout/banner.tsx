@@ -60,8 +60,6 @@ export const Banner = ({
       type: "Banner",
     }),
   );
-  // getFragmentDataStorefront
-  console.log({ metaobjects });
 
   const metaobjectList = metaobjects?.edges?.map((edge) => edge.node);
 
@@ -75,11 +73,11 @@ export const Banner = ({
     return null;
   });
 
-  let markup = null;
-
   if (!discountNode && !metaobject) {
     return null;
   }
+
+  let markup = null;
 
   switch (discountNode?.discount.__typename) {
     case "DiscountCodeBasic":

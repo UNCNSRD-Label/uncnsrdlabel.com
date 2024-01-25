@@ -335,7 +335,7 @@ export function AddToCart({
 
   const size = view === "compact" ? "sm" : "lg";
 
-  const variant = view === "compact" ? "secondary" : "ghost";
+  const variant = view === "compact" ? "secondary" : "default";
 
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
