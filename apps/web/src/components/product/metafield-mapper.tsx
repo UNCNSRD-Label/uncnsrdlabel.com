@@ -51,7 +51,7 @@ export type MetafieldMapperProps = {
   metafield: ResultOf<typeof productMetafieldFragment> | MetaobjectField;
 };
 
-export async function MetafieldMapper({
+export function MetafieldMapper({
   excludedKeys,
   includedKeys,
   lang,

@@ -95,6 +95,10 @@ export const productDetailsFragment = graphql(/* GraphQL */ `
         currencyCode
       }
     }
+    productType
+    release_date: metafield(namespace: "custom", key: "release_date") {
+      ...productMetafield
+    }
     requiresSellingPlan
     sellingPlanGroups(first:1) {
       edges {

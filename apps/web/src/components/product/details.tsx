@@ -1,19 +1,28 @@
 import { PriceAndCompareAtPrice } from "@/components/price-and-compare-at-price";
 import { ProductDetailsTabs } from "@/components/product/details-tabs";
 import { PurchaseOptions } from "@/components/product/purchase-options";
+import { SizeGuide } from "@/components/product/size-guide";
+import { Tracking } from "@/components/product/tracking";
 import { Prose } from "@/components/prose";
 import { getDictionary } from "@/lib/dictionary";
+import { createIntl } from "@formatjs/intl";
+import { RulerSquareIcon } from "@radix-ui/react-icons";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@uncnsrdlabel/components/atoms/popover";
 import {
   getFragmentData,
   imageFragment,
   productDetailsFragment,
-  type FragmentType,
+  type FragmentType
 } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { type ResolvedIntlConfig } from "react-intl";
 import { Product as ProductSchema, WithContext } from "schema-dts";
 import { ProductMedia } from "./media";
-import { Tracking } from "./tracking";
 
-export function Details({
+export async function ProductDetails({
   productDetailsFragmentRef,
   lang,
 }: {
@@ -21,6 +30,13 @@ export function Details({
   lang: Intl.BCP47LanguageTag;
 }) {
   const dictionary = getDictionary({ lang });
+
+  const messages: ResolvedIntlConfig["messages"] = await dictionary;
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   const product = getFragmentData(
     productDetailsFragment,
@@ -72,10 +88,21 @@ export function Details({
         ) : null}
 
         <PurchaseOptions
-          dictionary={dictionary}
           lang={lang}
           productDetailsFragmentRef={productDetailsFragmentRef}
         />
+
+        {product.productType && <Popover>
+          <PopoverTrigger className="flex gap-4 content-center items-center btn btn-xs justify-center">
+            <RulerSquareIcon />
+            {intl.formatMessage({
+              id: "component.ProductDetails.size-guide.popover.trigger",
+            })}
+          </PopoverTrigger>
+          <PopoverContent>
+            <SizeGuide lang={lang} productType={product.productType} />
+          </PopoverContent>
+        </Popover>}
 
         <ProductDetailsTabs
           className=""

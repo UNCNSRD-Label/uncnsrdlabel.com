@@ -1,25 +1,34 @@
 import { AddToCart } from "@/components/cart/add-to-cart";
 import { VariantSelector } from "@/components/product/variant-selector";
+import { getDictionary } from "@/lib/dictionary";
+import { createIntl } from "@formatjs/intl";
 import { type ProductVariant } from "@shopify/hydrogen/storefront-api-types";
 import {
   getFragmentData,
   productDetailsFragment,
+  productMetafieldFragment,
   productVariantConnectionFragment,
   type FragmentType,
   type SellingPlanGroup,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { Usable } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
 
-export const PurchaseOptions = ({
-  dictionary,
+export const PurchaseOptions = async ({
   lang,
   productDetailsFragmentRef,
 }: {
-  dictionary: Usable<ResolvedIntlConfig["messages"]>;
   lang: Intl.BCP47LanguageTag;
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }) => {
+  const dictionary = getDictionary({ lang });
+
+  const messages: ResolvedIntlConfig["messages"] = await dictionary;
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
+
   const product = getFragmentData(
     productDetailsFragment,
     productDetailsFragmentRef,
@@ -42,6 +51,13 @@ export const PurchaseOptions = ({
     ({ name }) => name === "Pre-order",
   );
 
+  const releaseDateTime = getFragmentData(
+    productMetafieldFragment,
+    product.release_date,
+  )?.value;
+
+  const releaseDate = releaseDateTime?.split("T")[0];
+
   return (
     <>
       <VariantSelector
@@ -59,6 +75,36 @@ export const PurchaseOptions = ({
         preOrder={preOrder as Partial<SellingPlanGroup> | undefined}
         variants={variants}
       />
+
+      {!product.availableForSale && (
+        <span
+          className="text-xs"
+          dangerouslySetInnerHTML={{
+            __html: intl.formatMessage({
+              id: "component.AddToCart.status.out-of-stock",
+            }),
+          }}
+        />
+      )}
+
+      {preOrder && releaseDate && (
+        <span
+          itemProp="releaseDate"
+          content={releaseDateTime}
+          className="text-xs"
+        >
+          {intl.formatMessage(
+            {
+              id: "component.AddToCart.status.pre-order",
+            },
+            {
+              releaseDate: new Date(releaseDate).toLocaleDateString(
+                lang,
+              ),
+            },
+          )}
+        </span>
+      )}
     </>
   );
 };

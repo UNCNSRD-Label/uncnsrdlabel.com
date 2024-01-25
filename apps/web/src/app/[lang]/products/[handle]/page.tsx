@@ -1,4 +1,4 @@
-import { Details } from "@/components/product/details";
+import { ProductDetails } from "@/components/product/details";
 import { getAlternativeLanguages } from "@/lib/i18n";
 import { getCanonical } from "@/lib/metadata";
 import { type PageProps } from "@/types/next";
@@ -83,7 +83,7 @@ export default async function ProductPage({
         productDetailsFragmentRef={productDetailsFragmentRef}
       />
       <main className="mb-16 grid grid-cols-12 content-center bg-inherit min-h-[max(100dvh,_theme(space.96))] lg:overflow-y-hidden [&:has(+_aside)]:mb-0 lg:sticky top-0">
-        <Details lang={lang} productDetailsFragmentRef={productDetailsFragmentRef} />
+        <ProductDetails lang={lang} productDetailsFragmentRef={productDetailsFragmentRef} />
         {/* <ProductAdditionalDetails productDetailsFragmentRef={productDetailsFragmentRef} /> */}
       </main>
       <RelatedProducts

@@ -80,6 +80,11 @@
       "pre-order": "Pre-order",
       "select-options": "Please select options",
       "success": "Item added to bag",
+      "status": {
+        "add-to-cart-disabled": "Unable to add item to bag",
+        "out-of-stock": "This item is out of stock, <a href=\"mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for {product}\">contact us for more information</a>",
+        "pre-order": "This item is available for pre-order and will start shipping on {releaseDate}"
+      },
       "toast": {
         "close-alt": "Close this message",
         "close-button": "Close",
@@ -173,6 +178,13 @@
       "placeholder": "Enter your email address",
       "submit": "Submit",
       "title": "Newsletter"
+    },
+    "ProductDetails": {
+      "size-guide": {
+        "popover": {
+          "trigger": "View size guide"
+        }
+      }
     },
     "RedeemCode": {
       "close": "Close the code redemption form dialog"
