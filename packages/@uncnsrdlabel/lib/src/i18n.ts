@@ -14,10 +14,7 @@ export function getLocaleObjectFromIETFLanguageTag(
   return new Intl.Locale(lang);
 }
 
-export function getLangProperties(lang: Intl.BCP47LanguageTag = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag): {
-  country: CountryCode | undefined,
-  language: LanguageCode | undefined,
-} {
+export function getLangProperties(lang: Intl.BCP47LanguageTag = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag) {
   // @ts-expect-error Property 'getCanonicalLocales' does not exist on type 'typeof Intl'.
   const [canonicalLocale] = Intl.getCanonicalLocales(lang)
 
