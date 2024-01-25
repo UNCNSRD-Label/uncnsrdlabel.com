@@ -58,10 +58,6 @@ export const PurchaseOptions = async ({
 
   const releaseDate = releaseDateTime?.split("T")[0];
 
-  const releaseDateLocalised = new Date(releaseDateTime).toLocaleDateString(
-    lang,
-  );
-
   return (
     <>
       <VariantSelector
@@ -102,7 +98,9 @@ export const PurchaseOptions = async ({
               id: "component.AddToCart.status.pre-order",
             },
             {
-              releaseDate: releaseDateLocalised,
+              releaseDate: new Date(releaseDate).toLocaleDateString(
+                lang,
+              ),
             },
           )}
         </span>
