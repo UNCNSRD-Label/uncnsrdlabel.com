@@ -148,7 +148,7 @@ export const Banner = ({
   return (
     <article
       className={cn(
-        "bg-hotPink text-light pt-safeTop grid snap-start place-content-center p-6 text-xs uppercase sm:text-base",
+        "bg-hotPink text-light pt-[max(theme.safeTop,_theme.spacing.6)] grid snap-start place-content-center p-6 text-xs uppercase sm:text-base",
         className,
       )}
     >

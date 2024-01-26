@@ -141,7 +141,7 @@ export const config: Config = {
         },
       },
       spacing: {
-        safeTop: "calc(1rem + env(safe-area-inset-top, 1.5rem))",
+        safeTop: "env(safe-area-inset-top, 1.5rem)",
       },
       typography: ({
         theme,
