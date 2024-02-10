@@ -13,7 +13,7 @@ export default function PoliciesLayout({
       <Navbar sticky>
         <NavbarContent lang={lang} />
       </Navbar>
-      <main className="min-h-fullMinusNavbar mt-12 grid max-w-[100dvw] gap-16 px-8 md:grid-cols-[2fr_3fr] md:px-0 bg-light">
+      <main className="min-h-fullMinusNavbar pt-12 grid max-w-[100dvw] gap-16 px-8 md:grid-cols-[2fr_3fr] md:px-0">
         {children}
       </main>
       <Logo />
