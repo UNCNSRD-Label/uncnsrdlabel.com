@@ -76,7 +76,7 @@
 
   html {
     scroll-behavior: smooth;
-
+/*
     &::before,
     &::after {
       content: "";
@@ -89,16 +89,15 @@
     &::before {
       top: 0;
       height: 4.5rem;
-      /* background: linear-gradient(180deg, theme('colors.hotPink') 0%, theme('colors.black') 50%); */
       background-color: theme(colors.hotPink);
     }
 
     &::after {
       bottom: 0;
       height: calc(100dvh - 4.5rem);
-      /* background: linear-gradient(180deg, theme('colors.hotPink') 0%, theme('colors.black') 50%); */
       background-color: theme(colors.black);
     }
+*/
   }
 
   @supports (font: -apple-system-body) and (-webkit-appearance: none) {
