@@ -2015,7 +2015,7 @@ export type CalculatedDraftOrder = {
   lineItemsSubtotalPrice: MoneyBag;
   /** The name of the selected market. */
   marketName: Scalars['String']['output'];
-  /** The selected market region country code for the draft order. */
+  /** The selected country code that determines the pricing of the draft order. */
   marketRegionCountryCode: CountryCode;
   /** Phone number assigned to draft order. */
   phone?: Maybe<Scalars['String']['output']>;
@@ -3358,36 +3358,67 @@ export type CheckoutBrandingControlInput = {
   labelPosition?: InputMaybe<CheckoutBrandingLabelPosition>;
 };
 
-/** Possible values for the corner radius. */
+/**
+ * The options for customizing the corner radius of checkout-related objects. Examples include the primary
+ * button, the name text fields and the sections within the main area (if they have borders).
+ * Refer to this complete [list](https://shopify.dev/docs/api/admin-graphql/latest/enums/CheckoutBrandingCornerRadius#fieldswith)
+ * for objects with customizable corner radii.
+ *
+ * The design system defines the corner radius pixel size for each option. Modify the defaults by setting the
+ * [designSystem.cornerRadius](https://shopify.dev/docs/api/admin-graphql/latest/input-objects/CheckoutBrandingDesignSystemInput#field-checkoutbrandingdesignsysteminput-cornerradius)
+ * input fields.
+ *
+ */
 export enum CheckoutBrandingCornerRadius {
-  /** The Base corner radius. */
+  /**
+   * The corner radius with a pixel value defined by designSystem.cornerRadius.base.
+   *
+   */
   Base = 'BASE',
-  /** The Large corner radius. */
+  /**
+   * The corner radius with a pixel value defined by designSystem.cornerRadius.large.
+   *
+   */
   Large = 'LARGE',
-  /** The None corner radius. */
+  /** The 0px corner radius (square corners). */
   None = 'NONE',
-  /** The Small corner radius. */
+  /**
+   * The corner radius with a pixel value defined by designSystem.cornerRadius.small.
+   *
+   */
   Small = 'SMALL'
 }
 
-/** The corner radius variables. */
+/**
+ * Define the pixel size of corner radius options.
+ *
+ */
 export type CheckoutBrandingCornerRadiusVariables = {
   __typename?: 'CheckoutBrandingCornerRadiusVariables';
-  /** The pixel value for base corner radiuses. */
+  /** The value in pixels for base corner radii. Example: 5. */
   base?: Maybe<Scalars['Int']['output']>;
-  /** The pixel value for large corner radiuses. */
+  /** The value in pixels for large corner radii. Example: 10. */
   large?: Maybe<Scalars['Int']['output']>;
-  /** The pixel value for small corner radiuses. */
+  /** The value in pixels for small corner radii. Example: 3. */
   small?: Maybe<Scalars['Int']['output']>;
 };
 
 /** The input fields used to update the corner radius variables. */
 export type CheckoutBrandingCornerRadiusVariablesInput = {
-  /** The pixel value for base corner radiuses. It should be strictly positive. */
+  /**
+   * The value in pixels for base corner radii. It should be greater than zero. Example: 5.
+   *
+   */
   base?: InputMaybe<Scalars['Int']['input']>;
-  /** The pixel value for large corner radiuses. It should be strictly positive. */
+  /**
+   * The value in pixels for large corner radii. It should be greater than zero. Example: 10.
+   *
+   */
   large?: InputMaybe<Scalars['Int']['input']>;
-  /** The pixel value for small corner radiuses. It should be strictly positive. */
+  /**
+   * The value in pixels for small corner radii. It should be greater than zero. Example: 3.
+   *
+   */
   small?: InputMaybe<Scalars['Int']['input']>;
 };
 
@@ -3527,7 +3558,12 @@ export type CheckoutBrandingFont = {
   weight?: Maybe<Scalars['Int']['output']>;
 };
 
-/** A font group. */
+/**
+ * A font group. To learn more about updating fonts, refer to the
+ * [checkoutBrandingUpsert](https://shopify.dev/api/admin-graphql/unstable/mutations/checkoutBrandingUpsert)
+ * mutation and the checkout branding [tutorial](https://shopify.dev/docs/apps/checkout/styling).
+ *
+ */
 export type CheckoutBrandingFontGroup = {
   __typename?: 'CheckoutBrandingFontGroup';
   /** The base font. */
@@ -3540,7 +3576,12 @@ export type CheckoutBrandingFontGroup = {
   name?: Maybe<Scalars['String']['output']>;
 };
 
-/** The input fields used to update a font group. */
+/**
+ * The input fields used to update a font group. To learn more about updating fonts, refer to the
+ * [checkoutBrandingUpsert](https://shopify.dev/api/admin-graphql/unstable/mutations/checkoutBrandingUpsert)
+ * mutation and the checkout branding [tutorial](https://shopify.dev/docs/apps/checkout/styling).
+ *
+ */
 export type CheckoutBrandingFontGroupInput = {
   /** A custom font group. */
   customFontGroup?: InputMaybe<CheckoutBrandingCustomFontGroupInput>;
@@ -3586,21 +3627,36 @@ export type CheckoutBrandingFontSizeInput = {
 /** The global customizations. */
 export type CheckoutBrandingGlobal = {
   __typename?: 'CheckoutBrandingGlobal';
-  /** The global corner radius. */
+  /**
+   * The global corner radius setting that overrides all other [corner radius](https://shopify.dev/docs/api/admin-graphql/latest/enums/CheckoutBrandingCornerRadius)
+   * customizations.
+   *
+   */
   cornerRadius?: Maybe<CheckoutBrandingGlobalCornerRadius>;
   /** The global typography customizations. */
   typography?: Maybe<CheckoutBrandingTypographyStyleGlobal>;
 };
 
-/** Possible values for the corner radius. */
+/**
+ * Possible choices to override corner radius customizations on all applicable objects. Note that this selection
+ * can only be used to set the override to `NONE` (0px).
+ *
+ * For more customizations options, set the [corner radius](https://shopify.dev/docs/api/admin-graphql/latest/enums/CheckoutBrandingCornerRadius)
+ * selection on specific objects while leaving the global corner radius unset.
+ *
+ */
 export enum CheckoutBrandingGlobalCornerRadius {
-  /** The None corner radius. */
+  /** Set the global corner radius override to 0px (square corners). */
   None = 'NONE'
 }
 
 /** The input fields used to update the global customizations. */
 export type CheckoutBrandingGlobalInput = {
-  /** The global corner radius. */
+  /**
+   * Select a global corner radius setting that overrides all other [corner radii](https://shopify.dev/docs/api/admin-graphql/latest/enums/CheckoutBrandingCornerRadius)
+   * customizations.
+   *
+   */
   cornerRadius?: InputMaybe<CheckoutBrandingGlobalCornerRadius>;
   /** The global typography customizations. */
   typography?: InputMaybe<CheckoutBrandingTypographyStyleGlobalInput>;
@@ -3752,17 +3808,17 @@ export type CheckoutBrandingMerchandiseThumbnailInput = {
 /** The order summary customizations. */
 export type CheckoutBrandingOrderSummary = {
   __typename?: 'CheckoutBrandingOrderSummary';
-  /** The background image of the order summary. */
+  /** The background image of the order summary container. */
   backgroundImage?: Maybe<CheckoutBrandingImage>;
-  /** The selected color scheme. */
+  /** The selected color scheme of the order summary container. */
   colorScheme?: Maybe<CheckoutBrandingColorSchemeSelection>;
 };
 
-/** The input fields used to update the order summary customizations. */
+/** The input fields used to update the order summary container customizations. */
 export type CheckoutBrandingOrderSummaryInput = {
-  /** The background image of the order summary (must not be of SVG format). */
+  /** The background image of the order summary container (must not be of SVG format). */
   backgroundImage?: InputMaybe<CheckoutBrandingImageInput>;
-  /** The selected color scheme for the order summary area of the checkout. */
+  /** The selected color scheme for the order summary container of the checkout. */
   colorScheme?: InputMaybe<CheckoutBrandingColorSchemeSelection>;
 };
 
@@ -3845,14 +3901,21 @@ export type CheckoutBrandingTextFieldInput = {
   typography?: InputMaybe<CheckoutBrandingTypographyStyleInput>;
 };
 
-/** The typography settings. */
+/**
+ * The typography settings used for checkout-related text. Use these settings to customize the
+ * font family and size for primary and secondary text elements.
+ *
+ * Refer to the [typography tutorial](https://shopify.dev/docs/apps/checkout/styling/customize-typography)
+ * for further information on typography customization.
+ *
+ */
 export type CheckoutBrandingTypography = {
   __typename?: 'CheckoutBrandingTypography';
   /** A font group used for most components such as text, buttons and form controls. */
   primary?: Maybe<CheckoutBrandingFontGroup>;
   /** A font group used for heading components by default. */
   secondary?: Maybe<CheckoutBrandingFontGroup>;
-  /** The font size. */
+  /** The font size design system (base size in pixels and scaling between different sizes). */
   size?: Maybe<CheckoutBrandingFontSize>;
 };
 
@@ -3864,7 +3927,11 @@ export enum CheckoutBrandingTypographyFont {
   Secondary = 'SECONDARY'
 }
 
-/** The input fields used to update the typography. */
+/**
+ * The input fields used to update the typography. Refer to the [typography tutorial](https://shopify.dev/docs/apps/checkout/styling/customize-typography)
+ * for more information on how to set these fields.
+ *
+ */
 export type CheckoutBrandingTypographyInput = {
   /** A font group used for most components such as text, buttons and form controls. */
   primary?: InputMaybe<CheckoutBrandingFontGroupInput>;
@@ -3896,21 +3963,29 @@ export enum CheckoutBrandingTypographyLetterCase {
   Upper = 'UPPER'
 }
 
-/** Possible values for the font size. */
+/**
+ * Possible choices for the font size.
+ *
+ * Note that the value in pixels of these settings can be customized with the
+ * [typography size](https://shopify.dev/docs/api/admin-graphql/latest/input-objects/CheckoutBrandingFontSizeInput)
+ * object. Refer to the [typography tutorial](https://shopify.dev/docs/apps/checkout/styling/customize-typography)
+ * for more information.
+ *
+ */
 export enum CheckoutBrandingTypographySize {
-  /** The base font size. */
+  /** The base font size. Example: 14px. */
   Base = 'BASE',
-  /** The extra extra large font size. */
+  /** The extra extra large font size. Example: 24px. */
   ExtraExtraLarge = 'EXTRA_EXTRA_LARGE',
-  /** The extra large font size. */
+  /** The extra large font size. Example: 21px. */
   ExtraLarge = 'EXTRA_LARGE',
-  /** The extra small font size. */
+  /** The extra small font size. Example: 10px. */
   ExtraSmall = 'EXTRA_SMALL',
-  /** The large font size. */
+  /** The large font size. Example: 17px. */
   Large = 'LARGE',
-  /** The medium font size. */
+  /** The medium font size. Example: 15px. */
   Medium = 'MEDIUM',
-  /** The small font size. */
+  /** The small font size. Example: 12px. */
   Small = 'SMALL'
 }
 
@@ -12841,7 +12916,7 @@ export type DraftOrder = CommentEventSubject & HasEvents & HasLocalizationExtens
   localizationExtensions: LocalizationExtensionConnection;
   /** The name of the selected market. */
   marketName: Scalars['String']['output'];
-  /** The selected market region country code for the draft order. */
+  /** The selected country code that determines the pricing of the draft order. */
   marketRegionCountryCode: CountryCode;
   /** Returns a metafield by namespace and key that belongs to the resource. */
   metafield?: Maybe<Metafield>;
@@ -13342,7 +13417,7 @@ export type DraftOrderInput = {
   lineItems?: InputMaybe<Array<DraftOrderLineItemInput>>;
   /** The localization extensions attached to the draft order. For example, Tax IDs. */
   localizationExtensions?: InputMaybe<Array<LocalizationExtensionInput>>;
-  /** The selected market region country code for the draft order. */
+  /** The selected country code that determines the pricing of the draft order. */
   marketRegionCountryCode?: InputMaybe<CountryCode>;
   /**
    * Metafields attached to the draft order.
@@ -16971,6 +17046,11 @@ export type FulfillmentService = {
   /**
    * Whether the fulfillment service uses the [fulfillment order based workflow](https://shopify.dev/apps/fulfillment/fulfillment-service-apps/manage-fulfillments) for managing fulfillments.
    *
+   * As the migration is now finished, the `fulfillmentOrdersOptIn` property is [deprecated](
+   * https://shopify.dev/changelog/deprecation-of-the-fulfillmentservice-fulfillmentordersoptin-field)
+   * and is always set to `true` on correctly functioning fulfillment services.
+   *
+   * @deprecated Migration period ended. All correctly functioning fulfillment services have `fulfillmentOrdersOptIn` set to `true`.
    */
   fulfillmentOrdersOptIn: Scalars['Boolean']['output'];
   /** Human-readable unique identifier for this fulfillment service. */
@@ -19187,7 +19267,7 @@ export type LineItem = Node & {
   product?: Maybe<Product>;
   /** The number of variant units ordered. */
   quantity: Scalars['Int']['output'];
-  /** The line item's quantity, minus the removed quantity. */
+  /** The line item's quantity, minus the refunded quantity. */
   refundableQuantity: Scalars['Int']['output'];
   /** Whether physical shipping is required for the variant. */
   requiresShipping: Scalars['Boolean']['output'];
@@ -19353,7 +19433,7 @@ export type LineItemMutable = Node & {
   product?: Maybe<Product>;
   /** The number of variant units ordered. */
   quantity: Scalars['Int']['output'];
-  /** The line item's quantity, minus the removed quantity. */
+  /** The line item's quantity, minus the refunded quantity. */
   refundableQuantity: Scalars['Int']['output'];
   /** Whether physical shipping is required for the variant. */
   requiresShipping: Scalars['Boolean']['output'];
@@ -24362,7 +24442,18 @@ export type Mutation = {
   catalogDelete?: Maybe<CatalogDeletePayload>;
   /** Updates an existing catalog. */
   catalogUpdate?: Maybe<CatalogUpdatePayload>;
-  /** Updates the checkout branding settings for a [checkout profile](https://shopify.dev/api/admin-graphql/unstable/queries/checkoutProfile). If the settings don't exist, then new settings are created. The checkout branding settings applied to a published checkout profile will be immediately visible within the store's checkout. The checkout branding settings applied to a draft checkout profile could be previewed within the admin checkout editor. */
+  /**
+   * Updates the checkout branding settings for a
+   * [checkout profile](https://shopify.dev/api/admin-graphql/unstable/queries/checkoutProfile).
+   *
+   * If the settings don't exist, then new settings are created. The checkout branding settings applied to a
+   * published checkout profile will be immediately visible within the store's checkout. The checkout branding
+   * settings applied to a draft checkout profile could be previewed within the admin checkout editor.
+   *
+   * To learn more about updating checkout branding settings, refer to the checkout branding
+   * [tutorial](https://shopify.dev/docs/apps/checkout/styling).
+   *
+   */
   checkoutBrandingUpsert?: Maybe<CheckoutBrandingUpsertPayload>;
   /** Adds products to a collection. */
   collectionAddProducts?: Maybe<CollectionAddProductsPayload>;
@@ -26876,7 +26967,6 @@ export type MutationFulfillmentServiceDeleteArgs = {
 /** The schema's entry point for all mutation operations. */
 export type MutationFulfillmentServiceUpdateArgs = {
   callbackUrl?: InputMaybe<Scalars['URL']['input']>;
-  fulfillmentOrdersOptIn?: InputMaybe<Scalars['Boolean']['input']>;
   id: Scalars['ID']['input'];
   name?: InputMaybe<Scalars['String']['input']>;
   permitsSkuSharing?: InputMaybe<Scalars['Boolean']['input']>;
@@ -28883,6 +28973,7 @@ export type Order = CommentEventSubject & HasEvents & HasLocalizationExtensions 
    * Use the [`FulfillmentOrder`](https://shopify.dev/api/admin-graphql/latest/objects/fulfillmentorder)
    * object for up to date fulfillment location information.
    *
+   * @deprecated Use `fulfillmentOrders` to get the fulfillment location for the order
    */
   physicalLocation?: Maybe<Location>;
   /** The PO number associated with the order. */
@@ -28958,9 +29049,15 @@ export type Order = CommentEventSubject & HasEvents & HasLocalizationExtensions 
   returnStatus: OrderReturnStatus;
   /** A list of returns for the order. */
   returns: ReturnConnection;
-  /** The fraud risk level of the order. */
+  /**
+   * The fraud risk level of the order.
+   * @deprecated This field is deprecated in version 2024-04. Please use OrderRiskAssessment.riskLevel
+   */
   riskLevel: OrderRiskLevel;
-  /** A list of risks associated with the order. */
+  /**
+   * A list of risks associated with the order.
+   * @deprecated This field is deprecated in version 2024-04. Please use OrderRiskAssessment
+   */
   risks: Array<OrderRisk>;
   /** The mailing address of the customer. */
   shippingAddress?: Maybe<MailingAddress>;
@@ -30063,19 +30160,31 @@ export enum OrderReturnStatus {
   ReturnRequested = 'RETURN_REQUESTED'
 }
 
-/** Represents a fraud check on an order. */
+/**
+ * Represents a fraud check on an order.
+ * As of version 2024-04 this resource is deprecated. Risk Assessments can be queried via the
+ * [OrderRisk Assessments API](https://shopify.dev/api/admin-graphql/2024-04/objects/OrderRiskAssessment).
+ *
+ */
 export type OrderRisk = {
   __typename?: 'OrderRisk';
-  /** Whether the risk level is shown in the Shopify admin. If false, then this order risk is ignored when Shopify determines the overall risk level for the order. */
+  /**
+   * Whether the risk level is shown in the Shopify admin. If false, then this order risk is ignored when Shopify determines the overall risk level for the order.
+   * @deprecated This field is deprecated in version 2024-04
+   */
   display: Scalars['Boolean']['output'];
   /**
    * The likelihood that an order is fraudulent, based on this order risk.
    *
    * The level can be set by Shopify risk analysis or by an app.
    *
+   * @deprecated This field is deprecated in version 2024-04. Please use OrderRiskAssessment.riskLevel
    */
   level?: Maybe<OrderRiskLevel>;
-  /** The risk message that's shown to the merchant in the Shopify admin. */
+  /**
+   * The risk message that's shown to the merchant in the Shopify admin.
+   * @deprecated This field is deprecated in version 2024-04
+   */
   message?: Maybe<Scalars['String']['output']>;
 };
 
@@ -36052,7 +36161,14 @@ export type QueryRoot = {
    * @deprecated Use `publications` instead.
    */
   channels: ChannelConnection;
-  /** Returns the checkout branding settings for a checkout profile. */
+  /**
+   * Returns the visual customizations for checkout for a given checkout profile.
+   *
+   * To learn more about updating checkout branding settings, refer to the
+   * [checkoutBrandingUpsert](https://shopify.dev/api/admin-graphql/unstable/mutations/checkoutBrandingUpsert)
+   * mutation and the checkout branding [tutorial](https://shopify.dev/docs/apps/checkout/styling).
+   *
+   */
   checkoutBranding?: Maybe<CheckoutBranding>;
   /** A checkout profile on a shop. */
   checkoutProfile?: Maybe<CheckoutProfile>;
@@ -41446,7 +41562,10 @@ export type ShippingLine = {
    * @deprecated Use `discountedPriceSet` instead.
    */
   discountedPrice: MoneyV2;
-  /** The pre-tax shipping price with discounts applied. */
+  /**
+   * The shipping price after applying discounts. If the parent order.taxesIncluded field is true, then this price includes taxes. If not, it's the pre-tax price.
+   *
+   */
   discountedPriceSet: MoneyBag;
   /** A globally-unique ID. */
   id?: Maybe<Scalars['ID']['output']>;
@@ -47743,9 +47862,10 @@ export enum WebhookSubscriptionSortKeys {
  * The supported topics for webhook subscriptions. You can use webhook subscriptions to receive
  * notifications about particular events in a shop.
  *
- * You don't create webhook subscriptions to
- * [mandatory webhooks](https://shopify.dev/apps/webhooks/configuration/mandatory-webhooks).
- * Instead, you configure mandatory webhooks in your Partner Dashboard as part of your app setup.
+ * You create mandatory webhooks either via the
+ * [Partner Dashboard](https://shopify.dev/apps/webhooks/configuration/mandatory-webhooks#subscribe-to-privacy-webhooks)
+ * or by updating the
+ * [app configuration TOML](https://shopify.dev/apps/tools/cli/configuration#app-configuration-file-example).
  *
  */
 export enum WebhookSubscriptionTopic {
