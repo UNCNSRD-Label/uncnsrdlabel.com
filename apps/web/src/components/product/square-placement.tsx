@@ -25,10 +25,6 @@ export function SquarePlacement({ handle, lang }: { handle: string; lang: Intl.B
     selectedOptions.push({ name: "size", value: size });
   }
 
-  if (!handle || Array.isArray(handle)) {
-    throw new Error("Invalid handle");
-  }
-
   const variables = { handle, selectedOptions };
 
   const queryKey = getQueryKey(
@@ -50,15 +46,7 @@ export function SquarePlacement({ handle, lang }: { handle: string; lang: Intl.B
 
   const product = data.product;
 
-  if (!product) {
-    throw new Error("Product not found");
-  }
-
-  const { variantBySelectedOptions } = product;
-
-  if (!variantBySelectedOptions?.sku) {
-    throw new Error("Variant SKU not found");
-  }
+  const variantBySelectedOptions = product?.variantBySelectedOptions;
 
   return (
     <square-placement
@@ -69,7 +57,7 @@ export function SquarePlacement({ handle, lang }: { handle: string; lang: Intl.B
       data-currency={variantBySelectedOptions?.price.currencyCode}
       data-consumer-locale={lang}
       data-item-skus={variantBySelectedOptions?.sku}
-      data-item-categories={product.productType}
+      data-item-categories={product?.productType}
       data-is-eligible="true"
     ></square-placement>
   );
