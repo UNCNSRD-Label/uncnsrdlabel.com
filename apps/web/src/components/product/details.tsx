@@ -1,12 +1,15 @@
+import { AddToCart } from "@/components/cart/add-to-cart";
 import { PriceAndCompareAtPrice } from "@/components/price-and-compare-at-price";
 import { ProductDetailsTabs } from "@/components/product/details-tabs";
-import { PurchaseOptions } from "@/components/product/purchase-options";
 import { SizeGuide } from "@/components/product/size-guide";
+import { SquarePlacement } from "@/components/product/square-placement";
 import { Tracking } from "@/components/product/tracking";
+import { VariantSelector } from "@/components/product/variant-selector";
 import { Prose } from "@/components/prose";
 import { getDictionary } from "@/lib/dictionary";
 import { createIntl } from "@formatjs/intl";
 import { RulerSquareIcon } from "@radix-ui/react-icons";
+import { type ProductVariant } from "@shopify/hydrogen/storefront-api-types";
 import {
   Popover,
   PopoverContent,
@@ -16,7 +19,10 @@ import {
   getFragmentData,
   imageFragment,
   productDetailsFragment,
-  type FragmentType
+  productMetafieldFragment,
+  productVariantConnectionFragment,
+  type FragmentType,
+  type SellingPlanGroup,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { type ResolvedIntlConfig } from "react-intl";
 import { Product as ProductSchema, WithContext } from "schema-dts";
@@ -60,6 +66,31 @@ export async function ProductDetails({
     description: product.description,
   };
 
+  const variantsFragmentRefs = product.variants;
+
+  const variantFragments = getFragmentData(
+    productVariantConnectionFragment,
+    variantsFragmentRefs,
+  );
+
+  const variants: Pick<ProductVariant, "id" | "selectedOptions">[] =
+    variantFragments.edges.map((edge) => edge?.node);
+
+  const sellingPlanGroupNodes = product.sellingPlanGroups?.edges?.map(
+    (edge) => edge.node,
+  );
+
+  const preOrder = sellingPlanGroupNodes.find(
+    ({ name }) => name === "Pre-order",
+  );
+
+  const releaseDateTime = getFragmentData(
+    productMetafieldFragment,
+    product.release_date,
+  )?.value;
+
+  const releaseDate = releaseDateTime?.split("T")[0];
+
   return (
     <>
       <Tracking productDetailsFragmentRef={productDetailsFragmentRef} />
@@ -80,6 +111,8 @@ export async function ProductDetails({
           productDetailsFragmentRef={productDetailsFragmentRef}
         />
 
+        <SquarePlacement handle={product.handle} lang={lang} />
+
         {product.descriptionHtml ? (
           <Prose
             className="prose-thead:border-hotPink prose-tr:border-hotPink text-xs leading-tight"
@@ -87,22 +120,63 @@ export async function ProductDetails({
           />
         ) : null}
 
-        <PurchaseOptions
-          lang={lang}
+        <VariantSelector
+          options={product.options}
           productDetailsFragmentRef={productDetailsFragmentRef}
+          variants={variants}
         />
 
-        {product.productType && <Popover>
-          <PopoverTrigger className="flex gap-4 content-center items-center btn btn-xs justify-center">
-            <RulerSquareIcon />
-            {intl.formatMessage({
-              id: "component.ProductDetails.size-guide.popover.trigger",
-            })}
-          </PopoverTrigger>
-          <PopoverContent>
-            <SizeGuide lang={lang} productType={product.productType} />
-          </PopoverContent>
-        </Popover>}
+        <AddToCart
+          availableForSale={product.availableForSale}
+          container="PurchaseOptions"
+          dictionary={dictionary}
+          lang={lang}
+          options={product.options}
+          preOrder={preOrder as Partial<SellingPlanGroup> | undefined}
+          variants={variants}
+        />
+
+        {!product.availableForSale && (
+          <span
+            className="text-xs"
+            dangerouslySetInnerHTML={{
+              __html: intl.formatMessage({
+                id: "component.AddToCart.status.out-of-stock",
+              }),
+            }}
+          />
+        )}
+
+        {preOrder && releaseDate && (
+          <span
+            itemProp="releaseDate"
+            content={releaseDateTime}
+            className="text-xs"
+          >
+            {intl.formatMessage(
+              {
+                id: "component.AddToCart.status.pre-order",
+              },
+              {
+                releaseDate: new Date(releaseDate).toLocaleDateString(lang),
+              },
+            )}
+          </span>
+        )}
+
+        {product.productType && (
+          <Popover>
+            <PopoverTrigger className="btn btn-xs flex content-center items-center justify-center gap-4">
+              <RulerSquareIcon />
+              {intl.formatMessage({
+                id: "component.ProductDetails.size-guide.popover.trigger",
+              })}
+            </PopoverTrigger>
+            <PopoverContent>
+              <SizeGuide lang={lang} productType={product.productType} />
+            </PopoverContent>
+          </Popover>
+        )}
 
         <ProductDetailsTabs
           className=""
