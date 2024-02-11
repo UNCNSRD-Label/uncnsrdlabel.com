@@ -92,7 +92,7 @@ export function SquarePlacement({
     [product?.variantBySelectedOptions]
   );
 
-  if (!placement || !placement.currency || !["AUD", "USD", "CAD", "GBP", "NZD"].includes(placement.currency)) {
+  if (!lang || !placement || !placement.currency || !["AUD", "USD", "CAD", "GBP", "NZD"].includes(placement.currency)) {
     return null;
   }
 
@@ -100,6 +100,7 @@ export function SquarePlacement({
 
   return (
     <square-placement
+      class="stroke-none"
       data-mpid={process.env.NEXT_PUBLIC_SQUARE_PLACEMENT_MPID}
       data-placement-id={process.env.NEXT_PUBLIC_SQUARE_PLACEMENT_ID}
       data-page-type="product"

@@ -1,4 +1,5 @@
 interface SquarePlacementProps {
+  class?: string;
   'data-mpid'?: string;
   'data-placement-id'?: string;
   'data-page-type'?: string;
