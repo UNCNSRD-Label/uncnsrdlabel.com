@@ -9,9 +9,7 @@ import {
 import { useSearchParams } from "next/navigation";
 
 export function SquarePlacement({ handle, lang }: { handle: string; lang: Intl.BCP47LanguageTag }) {
-//   const { handle } = useParams();
-
-  const searchParams = useSearchParams();
+    const searchParams = useSearchParams();
 
   const colour = searchParams.get("colour") ?? "";
 
