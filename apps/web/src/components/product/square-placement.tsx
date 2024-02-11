@@ -1,28 +1,50 @@
 "use client";
 
+import {
+  type ProductOption
+} from "@shopify/hydrogen/storefront-api-types";
 import { useQuery } from "@tanstack/react-query";
 import {
-    getProductVariantBySelectedOptionsQuery,
-    getQueryKey,
-    getShopifyGraphQL,
+  getProductVariantBySelectedOptionsQuery,
+  getQueryKey,
+  getShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { startCase } from "lodash";
 import { useSearchParams } from "next/navigation";
 
-export function SquarePlacement({ handle, lang }: { handle: string; lang: Intl.BCP47LanguageTag }) {
+export function SquarePlacement({ handle, lang, options }: { handle: string; lang: Intl.BCP47LanguageTag; options: ProductOption[]; }) {
     const searchParams = useSearchParams();
 
-  const colour = searchParams.get("colour") ?? "";
+  const color = searchParams.get("color") ?? "";
 
   const size = searchParams.get("size") ?? "";
 
-  const selectedOptions = [];
+  const selectedOptions = options.map((option) => ({ name: option.name, value: option.values[0] }));
 
-  if (colour) {
-    selectedOptions.push({ name: "colour", value: colour });
+  if (color) {
+    const name = "Color";
+    const value = startCase(color);
+
+    const existing = selectedOptions.find((option) => option.name === name)
+
+    if (existing) {
+      existing.value = value;
+    } else {
+      selectedOptions.push({ name, value });
+    }
   }
 
   if (size) {
-    selectedOptions.push({ name: "size", value: size });
+    const name = "Size";
+    const value = size.toUpperCase();
+
+    const existing = selectedOptions.find((option) => option.name === name)
+
+    if (existing) {
+      existing.value = value;
+    } else {
+      selectedOptions.push({ name, value });
+    }
   }
 
   const variables = { handle, selectedOptions };
@@ -37,11 +59,9 @@ export function SquarePlacement({ handle, lang }: { handle: string; lang: Intl.B
       product: null,
     },
   } = useQuery({
-    enabled: !!colour || !!size,
     queryKey,
     queryFn: () =>
       getShopifyGraphQL(getProductVariantBySelectedOptionsQuery, variables),
-    staleTime: 5 * 1000,
   });
 
   const product = data.product;

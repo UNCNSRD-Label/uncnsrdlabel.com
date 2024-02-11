@@ -111,7 +111,7 @@ export async function ProductDetails({
           productDetailsFragmentRef={productDetailsFragmentRef}
         />
 
-        <SquarePlacement handle={product.handle} lang={lang} />
+        <SquarePlacement handle={product.handle} lang={lang} options={product.options} />
 
         {product.descriptionHtml ? (
           <Prose
