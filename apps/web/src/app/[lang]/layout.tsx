@@ -3,6 +3,7 @@ import { Footer } from "@/components/layout/footer/index";
 import { Progress } from "@/components/layout/progress/index";
 import { NavigationEvents } from "@/components/navigation-events";
 import { Organization } from "@/components/schema.org/organization";
+import { ShopifyCookies } from "@/components/shopify-cookies";
 import { getDictionary } from "@/lib/dictionary";
 import { getAvailableBCP47LanguageTags } from "@/lib/i18n";
 import { getBaseMetadata } from "@/lib/metadata";
@@ -139,13 +140,14 @@ export default async function RootLayout({
         )}
       >
         <AppProviders lang={lang}>
-          <Banner className={cn("sticky top-0 z-30 w-full")} lang={lang} />
+          <Banner className={cn("sticky top-0 w-full z-30")} lang={lang} />
           <Progress />
           {children}
           <Footer lang={lang} />
           <Organization />
           <Suspense fallback={null}>
             <NavigationEvents />
+            <ShopifyCookies />
           </Suspense>
           <Toaster />
         </AppProviders>

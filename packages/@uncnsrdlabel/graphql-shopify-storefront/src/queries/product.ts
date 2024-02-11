@@ -36,14 +36,32 @@ export const getProductDetailsByIdQuery = graphql(/* GraphQL */ `
   }
 `);
 
-export const getProductRecommendationsQuery = graphql(/* GraphQL */ `
-  query getProductRecommendations(
+export const getProductVariantBySelectedOptionsQuery = graphql(/* GraphQL */ `
+query getProductVariantBySelectedOptions(
     $country: CountryCode
-    $productId: ID!
+    $handle: String!
     $language: LanguageCode
+    $selectedOptions: [SelectedOptionInput!]!
   ) @inContext(country: $country, language: $language) {
-    productRecommendations(productId: $productId) {
-      ...productBasic
+    product(handle: $handle) {
+      productType
+      variantBySelectedOptions(selectedOptions: $selectedOptions) {
+        availableForSale
+        id
+        image {
+          ...image
+        }
+        price {
+          amount
+          currencyCode
+        }
+        title
+        selectedOptions {
+          name
+          value
+        }
+        sku
+      }
     }
   }
 `);

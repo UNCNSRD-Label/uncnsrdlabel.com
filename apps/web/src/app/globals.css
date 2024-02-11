@@ -33,6 +33,11 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
+
+    --logo-badge-width: theme(size[20]);
+    --messaging-font-size: theme(fontSize.xs);
+    --messaging-margin-block-end: 0;
+    --messaging-margin-block-start: 0;
   }
 
   .dark {
