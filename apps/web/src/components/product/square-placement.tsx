@@ -1,31 +1,42 @@
 "use client";
 
-import {
-  type ProductOption
-} from "@shopify/hydrogen/storefront-api-types";
+import { type ProductOption } from "@shopify/hydrogen/storefront-api-types";
 import { useQuery } from "@tanstack/react-query";
 import {
+  getInContextVariables,
   getProductVariantBySelectedOptionsQuery,
   getQueryKey,
   getShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { startCase } from "lodash";
 import { useSearchParams } from "next/navigation";
+import { useMemo } from 'react';
 
-export function SquarePlacement({ handle, lang, options }: { handle: string; lang: Intl.BCP47LanguageTag; options: ProductOption[]; }) {
-    const searchParams = useSearchParams();
+export function SquarePlacement({
+  handle,
+  lang,
+  options,
+}: {
+  handle: string;
+  lang: Intl.BCP47LanguageTag;
+  options: ProductOption[];
+}) {
+  const searchParams = useSearchParams();
 
   const color = searchParams.get("color") ?? "";
 
   const size = searchParams.get("size") ?? "";
 
-  const selectedOptions = options.map((option) => ({ name: option.name, value: option.values[0] }));
+  const selectedOptions = options.map((option) => ({
+    name: option.name,
+    value: option.values[0],
+  }));
 
   if (color) {
     const name = "Color";
     const value = startCase(color);
 
-    const existing = selectedOptions.find((option) => option.name === name)
+    const existing = selectedOptions.find((option) => option.name === name);
 
     if (existing) {
       existing.value = value;
@@ -38,7 +49,7 @@ export function SquarePlacement({ handle, lang, options }: { handle: string; lan
     const name = "Size";
     const value = size.toUpperCase();
 
-    const existing = selectedOptions.find((option) => option.name === name)
+    const existing = selectedOptions.find((option) => option.name === name);
 
     if (existing) {
       existing.value = value;
@@ -49,10 +60,12 @@ export function SquarePlacement({ handle, lang, options }: { handle: string; lan
 
   const variables = { handle, selectedOptions };
 
-  const queryKey = getQueryKey(
-    getProductVariantBySelectedOptionsQuery,
-    variables,
-  );
+  const inContextVariables = getInContextVariables(lang);
+
+  const queryKey = getQueryKey(getProductVariantBySelectedOptionsQuery, {
+    ...inContextVariables,
+    ...variables,
+  });
 
   const {
     data = {
@@ -61,23 +74,40 @@ export function SquarePlacement({ handle, lang, options }: { handle: string; lan
   } = useQuery({
     queryKey,
     queryFn: () =>
-      getShopifyGraphQL(getProductVariantBySelectedOptionsQuery, variables),
+      getShopifyGraphQL(getProductVariantBySelectedOptionsQuery, {
+        ...inContextVariables,
+        ...variables,
+      }),
   });
 
   const product = data.product;
 
-  const variantBySelectedOptions = product?.variantBySelectedOptions;
+  const placement = useMemo(
+    () => ({
+      amount: product?.variantBySelectedOptions?.price.amount,
+      currency: product?.variantBySelectedOptions?.price.currencyCode,
+      skus: product?.variantBySelectedOptions?.sku,
+      categories: product?.productType,
+    }),
+    [product?.variantBySelectedOptions]
+  );
+
+  if (!placement || !placement.currency || !["AUD", "USD", "CAD", "GBP", "NZD"].includes(placement.currency)) {
+    return null;
+  }
+
+  console.log({placement});
 
   return (
     <square-placement
-      data-mpid="431290fa-f5e4-4ef9-af3f-544f94344bf7"
-      data-placement-id="7faaa495-136c-429e-9afe-28dfdaeee4b3"
+      data-mpid={process.env.NEXT_PUBLIC_SQUARE_PLACEMENT_MPID}
+      data-placement-id={process.env.NEXT_PUBLIC_SQUARE_PLACEMENT_ID}
       data-page-type="product"
-      data-amount={variantBySelectedOptions?.price.amount.toString()}
-      data-currency={variantBySelectedOptions?.price.currencyCode}
+      data-amount={placement.amount}
+      data-currency={placement.currency}
       data-consumer-locale={lang}
-      data-item-skus={variantBySelectedOptions?.sku}
-      data-item-categories={product?.productType}
+      data-item-skus={placement.skus}
+      data-item-categories={placement.categories}
       data-is-eligible="true"
     ></square-placement>
   );
