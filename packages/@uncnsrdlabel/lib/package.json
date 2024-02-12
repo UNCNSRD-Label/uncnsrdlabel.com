@@ -1,25 +1,25 @@
 {
   "dependencies": {
-    "@shopify/hydrogen-react": "^2023.10.1",
+    "@shopify/hydrogen-react": "^2024.1.0",
     "clsx": "^2.1.0",
     "lodash": "^4.17.21",
     "next": "14.1.0",
     "react": "experimental",
-    "tailwind-merge": "^2.2.0"
+    "tailwind-merge": "^2.2.1"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.0.0",
+    "@eslint/eslintrc": "^3.0.1",
     "@types/lodash": "^4.14.202",
     "@types/negotiator": "^0.6.3",
-    "@types/node": "^20.11.5",
-    "@types/react": "18.2.48",
-    "@types/react-dom": "18.2.18",
+    "@types/node": "^20.11.17",
+    "@types/react": "18.2.55",
+    "@types/react-dom": "18.2.19",
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "@uncnsrdlabel/tailwind-config": "workspace:*",
     "@uncnsrdlabel/tsconfig": "workspace:*",
     "@uncnsrdlabel/types": "workspace:*",
-    "prettier": "^3.2.4",
-    "type-fest": "^4.9.0",
+    "prettier": "^3.2.5",
+    "type-fest": "^4.10.2",
     "typescript": "^5.3.3"
   },
   "exports": {

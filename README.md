@@ -48,7 +48,10 @@ Running this command will create a new `.env.local` file in your project folder.
 
 ##### Removing TURBO
 
-**Important:** Remove the `TURBO_REMOTE_ONLY` environment variable from the file in order to be able to run the development server or to build the code locally.
+**Important:** There is a workaround for the Turbo remote-only environment variable that is set in the `.env.local` file that results in the following error when running the development server or building the code locally:
+`ERROR a value is required for '--remote-only [<BOOL>]' but none was supplied`
+
+Remove the `TURBO_REMOTE_ONLY` environment variable from the file in order to be able to run the development server or to build the code locally.
 
 ### Configure manually
 
