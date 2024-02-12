@@ -96,8 +96,6 @@ export function SquarePlacement({
     return null;
   }
 
-  console.log({placement});
-
   return (
     <square-placement
       class="stroke-none"

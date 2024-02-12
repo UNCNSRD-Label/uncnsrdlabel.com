@@ -540,6 +540,9 @@ importers:
       tailwind-merge:
         specifier: ^2.2.1
         version: 2.2.1
+      tailwindcss:
+        specifier: ^3.4.1
+        version: 3.4.1
       use-analytics:
         specifier: ^1.1.0
         version: 1.1.0(react@0.0.0-experimental-feed8f3f9-20240118)
@@ -598,9 +601,6 @@ importers:
       postcss:
         specifier: ^8.4.35
         version: 8.4.35
-      tailwindcss:
-        specifier: ^3.4.1
-        version: 3.4.1
       type-fest:
         specifier: ^4.10.2
         version: 4.10.2
