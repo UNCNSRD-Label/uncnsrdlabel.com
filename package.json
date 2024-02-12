@@ -29,7 +29,7 @@
     "dependencies:check": "turbo run dependencies:check",
     "dependencies:graph": "turbo run dependencies:graph",
     "dependencies:unused": "turbo run dependencies:unused",
-    "dev": "dotenv -c -- turbo dev --concurrency=12 --no-cache --continue",
+    "dev": "dotenv -c -- turbo dev --concurrency=12",
     "find:unused": "npx next-unused",
     "lint-staged": "lint-staged",
     "lint": "turbo run lint",
