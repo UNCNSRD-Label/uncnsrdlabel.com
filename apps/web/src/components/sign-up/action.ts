@@ -1,6 +1,7 @@
 "use server";
 
 import { getDictionary } from "@/lib/dictionary";
+import { headers } from "@/lib/klaviyo";
 import { type KlaviyoResponse } from "@uncnsrdlabel/types";
 import { createIntl, type ResolvedIntlConfig } from "react-intl";
 
@@ -30,43 +31,43 @@ export async function signUpAction(
     console.error("phone_number not set");
   }
 
-  const url =
-    "https://a.klaviyo.com/api/profile-subscription-bulk-create-jobs/";
+  let message = intl.formatMessage({ id: "actions.signUpAction.error" });
+
+  let ok = false;
+
+  let status = 500;
+
+  const url = "https://a.klaviyo.com/api/profile-subscription-bulk-create-jobs/";
+
   const options = {
     method: "POST",
-    headers: {
-      accept: "application/json",
-      revision: "2023-02-22",
-      "content-type": "application/json",
-      Authorization: `Klaviyo-API-Key ${process.env.KLAVIYO_PRIVATE_KEY}`,
-    },
+    headers,
     body: JSON.stringify({
       data: {
         type: "profile-subscription-bulk-create-job",
         attributes: {
-          list_id: process.env.KLAVIYO_LIST_ID_NEWSLETTER,
           custom_source,
-          subscriptions: [
-            {
-              channels: {
-                email: ["MARKETING"],
-                // sms: ['MARKETING']
-              },
-              email,
-              // phone_number
-              // profile_id: '01GDDKASAP8TKDDA2GRZDSVP4H'
-            },
-          ],
+          profiles: {
+            data: [
+              {
+                type: 'profile',
+                // id: '01GDDKASAP8TKDDA2GRZDSVP4H',
+                attributes: {
+                  email,
+                  // phone_number: '+15005550006',
+                  subscriptions: {
+                    email: {marketing: {consent: 'SUBSCRIBED', consented_at: new Date().toISOString()}},
+                    // sms: {marketing: {consent: 'SUBSCRIBED', consented_at: new Date().toISOString()}}
+                  }
+                }
+              }
+            ]
+          },
         },
+        relationships: { list: { data: { type: 'list', id: process.env.KLAVIYO_LIST_ID_NEWSLETTER } } }
       },
     }),
   };
-
-  let message = intl.formatMessage({ id: "actions.signUpAction.error" });
-
-  let status = 500;
-
-  let ok = false;
 
   try {
     const response = await fetch(url, options);
@@ -75,9 +76,17 @@ export async function signUpAction(
 
     status = response.status;
 
-    console.info(response.status, response.statusText);
+    console.info(response.status, response.statusText, response.ok);
 
     if (response.ok) {
+      if (response.status === 202) {
+        message = intl.formatMessage({ id: "actions.signUpAction.success" });
+      }
+    } else {
+      console.error(response.status, response.statusText)
+
+      message = intl.formatMessage({ id: "actions.signUpAction.failed" }, { status: response.status });
+
       if (response.status >= 300) {
         const json = (await response.json()) as KlaviyoResponse;
 
@@ -88,14 +97,6 @@ export async function signUpAction(
 
         message = response.statusText ?? json.errors?.[0];
       }
-
-      if (response.status === 202) {
-        message = intl.formatMessage({ id: "actions.signUpAction.success" });
-      }
-    } else {
-      console.error(response?.status, response?.statusText)
-
-      message = intl.formatMessage({ id: "actions.signUpAction.failed" }, { status: response?.status });
     }
   } catch (error) {
     console.error(error);

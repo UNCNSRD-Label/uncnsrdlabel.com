@@ -1,6 +1,7 @@
 import { AddToCart } from "@/components/cart/add-to-cart";
 import { PriceAndCompareAtPrice } from "@/components/price-and-compare-at-price";
 import { ProductDetailsTabs } from "@/components/product/details-tabs";
+import { SignUpForNotifications } from "@/components/product/sign-up-for-notifications";
 import { SizeGuide } from "@/components/product/size-guide";
 import { SquarePlacement } from "@/components/product/square-placement";
 import { Tracking } from "@/components/product/tracking";
@@ -144,6 +145,7 @@ export async function ProductDetails({
         />
 
         {!product.availableForSale && (
+          <>
             <span
               className="mx-auto text-xs"
               dangerouslySetInnerHTML={{
@@ -152,12 +154,21 @@ export async function ProductDetails({
                     id: "component.AddToCart.status.out-of-stock",
                   },
                   {
-                    a: (chunks) => `<a href="mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for ${product.title} (${product.id})">${chunks}</a>`,
+                    a: (chunks) =>
+                      `<a href="mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for ${product.title} (${product.id})">${chunks}</a>`,
                     product: `${product.title} (${product.id})`,
                   },
                 ),
               }}
             />
+            <SignUpForNotifications
+              className="mx-auto border p-4 md:w-2/3"
+              handle={product.handle}
+              lang={lang}
+              options={product.options}
+              productDetailsFragmentRef={productDetailsFragmentRef}
+            />
+          </>
         )}
 
         {preOrder && releaseDate && (
