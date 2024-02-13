@@ -24,6 +24,7 @@ export default {
       "2xl": "1400px",
     },
   },
+  content: ["../../*/dist/**/*.{js,ts,jsx,tsx}",],
   darkMode: ["class"],
   keyframes: {
     "accordion-down": {
@@ -195,4 +196,4 @@ export default {
       );
     }),
   ],
-} satisfies Omit<Config, "content">;
+} satisfies Config;

@@ -15,7 +15,6 @@ export async function SignUpForNotifications({
   handle,
   lang,
   options,
-  productDetailsFragmentRef,
 }: {
   className?: string;
   handle: string;
@@ -46,7 +45,6 @@ export async function SignUpForNotifications({
           handle={handle}
           lang={lang}
           options={options}
-          productDetailsFragmentRef={productDetailsFragmentRef}
         />
       </Suspense>
     </section>
