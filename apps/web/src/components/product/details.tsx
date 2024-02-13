@@ -134,6 +134,7 @@ export async function ProductDetails({
 
         <AddToCart
           availableForSale={product.availableForSale}
+          className="py-4"
           container="PurchaseOptions"
           dictionary={dictionary}
           lang={lang}
