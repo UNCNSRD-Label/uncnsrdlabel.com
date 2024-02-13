@@ -11,7 +11,10 @@ import {
   type ProductVariant,
 } from "@shopify/hydrogen/storefront-api-types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Button, type ButtonProps } from "@uncnsrdlabel/components/atoms/button";
+import {
+  Button,
+  type ButtonProps,
+} from "@uncnsrdlabel/components/atoms/button";
 import {
   addToCartMutation,
   cartFragment,
@@ -23,7 +26,7 @@ import {
   getShopifyGraphQL,
   type AddToCartMutationVariables,
   type CreateCartMutationVariables,
-  type SellingPlanGroup
+  type SellingPlanGroup,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { useSearchParams } from "next/navigation";
@@ -101,23 +104,28 @@ function SubmitButton({
     onError: (error, variables, context?: AddToCartContext) => {
       console.error("onError", { error, variables, context });
       // console.log(`rolling back optimistic update with id ${context?.id}`);
-      toast.error(intl.formatMessage({
-        id: "component.AddToCart.toast.error",
-      }));
+      toast.error(
+        intl.formatMessage({
+          id: "component.AddToCart.toast.error",
+        }),
+      );
     },
     onSuccess: (data, variables, context) => {
       console.log("onSuccess", { data, variables, context });
-      
-      toast.success(intl.formatMessage({
-        id: "component.AddToCart.toast.success",
-      }), {
-        onDismiss: () => {
-          invalidateQueries();
+
+      toast.success(
+        intl.formatMessage({
+          id: "component.AddToCart.toast.success",
+        }),
+        {
+          onDismiss: () => {
+            invalidateQueries();
+          },
+          onAutoClose: () => {
+            invalidateQueries();
+          },
         },
-        onAutoClose: () => {
-          invalidateQueries();
-        },
-      });
+      );
     },
   });
 
@@ -131,9 +139,11 @@ function SubmitButton({
     onError: (error, variables, context?: CreateCartContext) => {
       console.error("onError", { error, variables, context });
       // console.log(`rolling back optimistic update with id ${context?.id}`);
-      toast.error(intl.formatMessage({
-        id: "component.AddToCart.toast.error",
-      }));
+      toast.error(
+        intl.formatMessage({
+          id: "component.AddToCart.toast.error",
+        }),
+      );
     },
     onSuccess: (data, variables, context) => {
       console.log("onSuccess", { data, variables, context });
@@ -146,16 +156,19 @@ function SubmitButton({
         const cart = getFragmentData(cartFragment, cartFragmentRef);
 
         if (cart) {
-          toast.success(intl.formatMessage({
-            id: "component.AddToCart.toast.success",
-          }), {
-            onDismiss: () => {
-              state$.cartId.set(cart.id);
+          toast.success(
+            intl.formatMessage({
+              id: "component.AddToCart.toast.success",
+            }),
+            {
+              onDismiss: () => {
+                state$.cartId.set(cart.id);
+              },
+              onAutoClose: () => {
+                state$.cartId.set(cart.id);
+              },
             },
-            onAutoClose: () => {
-              state$.cartId.set(cart.id);
-            },
-          });
+          );
         }
       }
     },
@@ -225,7 +238,7 @@ function SubmitButton({
       const payload = {
         merchandiseId: selectedVariantId,
         quantity: 1,
-        sellingPlanId
+        sellingPlanId,
       } satisfies CartLineInput;
 
       if (cartId) {
@@ -254,7 +267,7 @@ function SubmitButton({
       aria-label={label}
       aria-disabled={isDisabled}
       className={cn(
-        "relative flex w-full gap-2 md:gap-4 text-xs sm:text-sm",
+        "relative flex w-full gap-2 text-xs sm:text-sm md:gap-4",
         {
           "cursor-not-allowed opacity-60 hover:opacity-60": isDisabled,
         },

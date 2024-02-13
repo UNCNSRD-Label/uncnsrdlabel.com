@@ -118,6 +118,7 @@ export function SignUpForm({
           <SlEnvolope />
         </Button>
       </div>
+      <input type="hidden" name="lang" value={lang} />
       <Submit
         className="btn btn-primary btn-solid btn-sm justify-self-end !no-underline"
         dictionary={dictionary}

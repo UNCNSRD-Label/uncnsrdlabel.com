@@ -1,14 +1,26 @@
 "use server";
 
+import { getDictionary } from "@/lib/dictionary";
 import { type KlaviyoResponse } from "@uncnsrdlabel/types";
+import { createIntl, type ResolvedIntlConfig } from "react-intl";
 
 export async function signUpForNotificationsAction(
   _currentState: any,
   formData: FormData,
 ) {
-  const email = formData.get("email");
-  const phone_number = formData.get("phone_number");
   const custom_source = formData.get("custom_source") ?? "Website";
+  const email = formData.get("email");
+  const lang = formData.get("lang") as Intl.BCP47LanguageTag;
+  const phone_number = formData.get("phone_number");
+
+  const dictionary = getDictionary({ lang });
+
+  const messages: ResolvedIntlConfig["messages"] = await dictionary;
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   if (!email) {
     console.error("email not set");
@@ -32,7 +44,7 @@ export async function signUpForNotificationsAction(
       data: {
         type: "profile-subscription-bulk-create-job",
         attributes: {
-          list_id: process.env.KLAVIYO_LIST_ID,
+          list_id: process.env.KLAVIYO_LIST_ID_OUT_OF_STOCK_NOTIFICATIONS,
           custom_source,
           subscriptions: [
             {
@@ -50,7 +62,7 @@ export async function signUpForNotificationsAction(
     }),
   };
 
-  let message = "Something went wrong. Please try again.";
+  let message = intl.formatMessage({ id: "actions.signUpForNotificationsAction.error" });
 
   let status = 500;
 
@@ -62,8 +74,6 @@ export async function signUpForNotificationsAction(
     console.info(response.status, response.statusText);
 
     if (response?.ok) {
-      message = "Email address submitted successfully!";
-
       if (response.status >= 300) {
         const json = (await response.json()) as KlaviyoResponse;
 
@@ -76,12 +86,12 @@ export async function signUpForNotificationsAction(
       }
 
       if (response.status === 202) {
-        message = "You have successfully signed up to our mailing list!";
+        message = intl.formatMessage({ id: "actions.signUpForNotificationsAction.success" });
       }
     } else {
       console.error(response?.status, response?.statusText)
 
-      message = `Email address submission failed with HTTP Response Code: ${response?.status}`;
+      message = intl.formatMessage({ id: "actions.signUpForNotificationsAction.failed" }, { status: response?.status });
     }
   } catch (error) {
     console.error(error);

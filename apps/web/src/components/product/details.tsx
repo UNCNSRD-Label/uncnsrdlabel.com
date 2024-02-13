@@ -105,14 +105,18 @@ export async function ProductDetails({
           {product.title}
         </h3>
 
-        <div className="gap-2 grid">
+        <div className="grid gap-2">
           <PriceAndCompareAtPrice
             className="grid-flow-col text-sm"
             lang={lang}
             productDetailsFragmentRef={productDetailsFragmentRef}
           />
 
-          <SquarePlacement handle={product.handle} lang={lang} options={product.options} />
+          <SquarePlacement
+            handle={product.handle}
+            lang={lang}
+            options={product.options}
+          />
         </div>
 
         {product.descriptionHtml ? (

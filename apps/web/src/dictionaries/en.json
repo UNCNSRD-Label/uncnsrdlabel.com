@@ -1,4 +1,16 @@
 {
+  "actions": {
+    "signUpAction": {
+      "error": "An error occurred while processing your request.",
+      "failed": "Email address submission failed with HTTP Response Code: {code}",
+      "success": "You have successfully signed up to our mailing list"
+    },
+    "signUpForNotificationsAction": {
+      "error": "An error occurred while processing your request.",
+      "failed": "Email address submission failed with HTTP Response Code: {code}",
+      "success": "You have successfully signed up for notifications"
+    }
+  },
   "global": {
     "metadata": {
       "description": "Discover UNCNSRD, a brand for the unapologetic rebellious soul. Explore our latest swimwear collection drawing inspiration from timeless cuts & nostalgic eras.",
@@ -227,8 +239,23 @@
         "close-alt": "Close this message",
         "close-button": "Close",
         "error": "Unable to sign up",
-        "success": "You have successfully signed up",
+        "success": "You have successfully signed up to our newsletter",
         "title": "Newsletter signup"
+      }
+    },
+    "SignUpForNotifications": {
+      "summary": "Sign up to be notified when this product is back in stock",
+      "title": "Sign up for notifications"
+    },
+    "SignUpForNotificationsForm": {
+      "placeholder":"Enter your email address",
+      "submit": "Sign up",
+      "toast": {
+        "close-alt": "Close this message",
+        "close-button": "Close",
+        "error": "Unable to sign up",
+        "success": "You have successfully signed up for notifications",
+        "title": "Product in-stock notification signup"
       }
     }
   }

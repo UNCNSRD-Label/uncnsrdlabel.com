@@ -5,7 +5,7 @@
     "build": {
       "env": [
         "ANALYZE",
-        "KLAVIYO_LIST_ID",
+        "KLAVIYO_LIST_ID_NEWSLETTER",
         "KLAVIYO_PRIVATE_KEY",
         "NEXT_PUBLIC_DEFAULT_LOCALE",
         "NEXT_PUBLIC_FEATURE_FLAG_HOLDING_REDIRECT_ENABLE",
