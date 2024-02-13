@@ -185,15 +185,15 @@ function SubmitButton({
     id: "component.AddToCart.add-to-cart-enabled",
   });
 
-  if (!availableForSale) {
-    label = intl.formatMessage({
-      id: "component.AddToCart.out-of-stock",
-    });
-  }
-
   if (!selectedVariantId) {
     label = intl.formatMessage({
       id: "component.AddToCart.select-options",
+    });
+  }
+
+  if (!availableForSale) {
+    label = intl.formatMessage({
+      id: "component.AddToCart.out-of-stock",
     });
   }
 
