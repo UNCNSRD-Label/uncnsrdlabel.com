@@ -143,14 +143,20 @@ export async function ProductDetails({
         />
 
         {!product.availableForSale && (
-          <span
-            className="text-xs"
-            dangerouslySetInnerHTML={{
-              __html: intl.formatMessage({
-                id: "component.AddToCart.status.out-of-stock",
-              }),
-            }}
-          />
+            <span
+              className="mx-auto text-xs"
+              dangerouslySetInnerHTML={{
+                __html: intl.formatMessage(
+                  {
+                    id: "component.AddToCart.status.out-of-stock",
+                  },
+                  {
+                    a: (chunks) => `<a href="mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for ${product.title} (${product.id})">${chunks}</a>`,
+                    product: `${product.title} (${product.id})`,
+                  },
+                ),
+              }}
+            />
         )}
 
         {preOrder && releaseDate && (
