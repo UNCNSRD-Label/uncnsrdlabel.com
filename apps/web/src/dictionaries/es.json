@@ -1,4 +1,16 @@
 {
+  "actions": {
+    "signUpAction": {
+      "error": "Se produjo un error al procesar su solicitud.",
+      "failed": "Error al enviar la dirección de correo electrónico con el código de respuesta HTTP: {código}",
+      "success": "Te has registrado exitosamente en nuestra lista de correo"
+    },
+    "signUpForNotificationsAction": {
+      "error": "Se produjo un error al procesar su solicitud.",
+      "failed": "Error al enviar la dirección de correo electrónico con el código de respuesta HTTP: {código}",
+      "success": "Te has registrado exitosamente para recibir notificaciones"
+    }
+  },
   "global": {
     "metadata": {
       "description": "Descubra UNCNSRD, una marca para el alma rebelde sin remordimientos. ",

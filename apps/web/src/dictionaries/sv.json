@@ -1,4 +1,39 @@
 {
+  "actions": {
+    "SignUp": {
+      "title": "Anmäl dig till vårt nyhetsbrev",
+      "summary": "Registrera dig och få 10 % rabatt på ditt första köp"
+    },
+    "SignUpForm": {
+      "message": "Väntar på registreringsbekräftelse",
+      "pattern": "Det angivna värdet matchar inte e-postformatet",
+      "placeholder": "Anmäl dig till vårt nyhetsbrev",
+      "required": "E-postadress krävs",
+      "submit": "Bli Medlem",
+      "toast": {
+        "close-alt": "Stäng detta meddelande",
+        "close-button": "Stänga",
+        "error": "Det gick inte att registrera sig",
+        "success": "Du har framgångsrikt anmält dig till vårt nyhetsbrev",
+        "title": "Nyhetsbrev anmälan"
+      }
+    },
+    "SignUpForNotifications": {
+      "summary": "Registrera dig för att bli meddelad när denna produkt åter finns i lager",
+      "title": "Registrera dig för aviseringar"
+    },
+    "SignUpForNotificationsForm": {
+      "placeholder": "Skriv in din mailadress",
+      "submit": "Bli Medlem",
+      "toast": {
+        "close-alt": "Stäng detta meddelande",
+        "close-button": "Stänga",
+        "error": "Det gick inte att registrera sig",
+        "success": "Du har registrerat dig för aviseringar",
+        "title": "Registrering för produkt i lager"
+      }
+    }
+  },
   "global": {
     "metadata": {
       "description": "Upptäck UNCNSRD, ett varumärke för den obotligt upproriska själen. ",

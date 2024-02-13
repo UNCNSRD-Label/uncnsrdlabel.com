@@ -1,4 +1,39 @@
 {
+  "actions": {
+    "SignUp": {
+      "title": "ニュースレターに登録する",
+      "summary": "サインアップすると、初回購入時に 10% オフが適用されます"
+    },
+    "SignUpForm": {
+      "message": "サインアップの確認を待っています",
+      "pattern": "入力された値が電子メールの形式と一致しません",
+      "placeholder": "ニュースレターに登録する",
+      "required": "メールアドレスは必須です",
+      "submit": "サインアップ",
+      "toast": {
+        "close-alt": "このメッセージを閉じてください",
+        "close-button": "近い",
+        "error": "サインアップできません",
+        "success": "ニュースレターへの登録が完了しました",
+        "title": "ニュースレターの登録"
+      }
+    },
+    "SignUpForNotifications": {
+      "summary": "この商品の再入荷時に通知を受け取るには登録してください",
+      "title": "通知に登録する"
+    },
+    "SignUpForNotificationsForm": {
+      "placeholder": "メールアドレスを入力してください",
+      "submit": "サインアップ",
+      "toast": {
+        "close-alt": "このメッセージを閉じてください",
+        "close-button": "近い",
+        "error": "サインアップできません",
+        "success": "通知への登録が完了しました",
+        "title": "商品入荷通知登録"
+      }
+    }
+  },
   "global": {
     "metadata": {
       "description": "UNCNSRD は、悪びれない反逆的な魂のためのブランドです。",

@@ -2,12 +2,12 @@
   "actions": {
     "signUpAction": {
       "error": "An error occurred while processing your request.",
-      "failed": "Email address submission failed with HTTP Response Code: {code}",
+      "failed": "Email address submission failed with HTTP Response Code: {status}",
       "success": "You have successfully signed up to our mailing list"
     },
     "signUpForNotificationsAction": {
       "error": "An error occurred while processing your request.",
-      "failed": "Email address submission failed with HTTP Response Code: {code}",
+      "failed": "Email address submission failed with HTTP Response Code: {status}",
       "success": "You have successfully signed up for notifications"
     }
   },
@@ -94,7 +94,7 @@
       "success": "Item added to bag",
       "status": {
         "add-to-cart-disabled": "Unable to add item to bag",
-        "out-of-stock": "This item is out of stock, <a href=\"mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for {product}\">contact us for more information</a>",
+        "out-of-stock": "This item is out of stock, <a>contact us for more information</a>",
         "pre-order": "This item is available for pre-order and will start shipping on {releaseDate}"
       },
       "toast": {

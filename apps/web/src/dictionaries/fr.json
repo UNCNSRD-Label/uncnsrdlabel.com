@@ -1,4 +1,16 @@
 {
+  "actions": {
+    "signUpAction": {
+      "error": "Une erreur s'est produite lors du traitement de votre demande.",
+      "failed": "Échec de l'envoi de l'adresse e-mail avec le code de réponse HTTP : {status}",
+      "success": "Vous vous êtes inscrit avec succès à notre liste de diffusion"
+    },
+    "signUpForNotificationsAction": {
+      "error": "Une erreur s'est produite lors du traitement de votre demande.",
+      "failed": "Échec de l'envoi de l'adresse e-mail avec le code de réponse HTTP : {status}",
+      "success": "Vous vous êtes inscrit avec succès aux notifications"
+    }
+  },
   "global": {
     "metadata": {
       "description": "Découvrez UNCNSRD, une marque pour l'âme rebelle et sans vergogne. ",
@@ -215,7 +227,7 @@
     },
     "SignUp": {
       "title": "Abonnez-vous à notre lettre d'information",
-      "summary": "Inscrivez-vous et recevez 10 % de réduction sur votre premier achat"
+      "summary": "Inscrivez-vous et recevez 10% de réduction sur votre premier achat"
     },
     "SignUpForm": {
       "message": "En attente de confirmation d'inscription",
@@ -227,8 +239,23 @@
         "close-alt": "Fermez ce message",
         "close-button": "Fermer",
         "error": "Impossible de s'inscrire",
-        "success": "Vous vous êtes inscrit avec succès",
+        "success": "Vous vous êtes inscrit avec succès à notre newsletter",
         "title": "Inscription à la newsletter"
+      }
+    },
+    "SignUpForNotifications": {
+      "summary": "Inscrivez-vous pour être averti lorsque ce produit sera de nouveau en stock",
+      "title": "Inscrivez-vous aux notifications"
+    },
+    "SignUpForNotificationsForm": {
+      "placeholder": "Entrez votre adresse email",
+      "submit": "S'inscrire",
+      "toast": {
+        "close-alt": "Fermez ce message",
+        "close-button": "Fermer",
+        "error": "Impossible de s'inscrire",
+        "success": "Vous vous êtes inscrit avec succès aux notifications",
+        "title": "Inscription aux notifications de produits en stock"
       }
     }
   }

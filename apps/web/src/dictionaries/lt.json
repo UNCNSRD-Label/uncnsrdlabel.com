@@ -1,4 +1,39 @@
 {
+  "actions": {
+    "SignUp": {
+      "title": "Iscriviti alla nostra newsletter",
+      "summary": "Iscriviti e ricevi uno sconto del 10% sul tuo primo acquisto"
+    },
+    "SignUpForm": {
+      "message": "In attesa della conferma dell'iscrizione",
+      "pattern": "Il valore inserito non corrisponde al formato email",
+      "placeholder": "Iscriviti alla nostra newsletter",
+      "required": "L'indirizzo e-mail è obbligatorio",
+      "submit": "Iscrizione",
+      "toast": {
+        "close-alt": "Chiudi questo messaggio",
+        "close-button": "Vicino",
+        "error": "Impossibile registrarsi",
+        "success": "Ti sei iscritto con successo alla nostra newsletter",
+        "title": "Iscriviti alla Newsletter"
+      }
+    },
+    "SignUpForNotifications": {
+      "summary": "Iscriviti per ricevere una notifica quando il prodotto sarà di nuovo disponibile",
+      "title": "Iscriviti per ricevere notifiche"
+    },
+    "SignUpForNotificationsForm": {
+      "placeholder": "Inserisci il tuo indirizzo email",
+      "submit": "Iscrizione",
+      "toast": {
+        "close-alt": "Chiudi questo messaggio",
+        "close-button": "Vicino",
+        "error": "Impossibile registrarsi",
+        "success": "Ti sei registrato con successo per le notifiche",
+        "title": "Iscrizione alla notifica di disponibilità del prodotto"
+      }
+    }
+  },
   "global": {
     "metadata": {
       "description": "Atraskite UNCNSRD – prekės ženklą, skirtą neatsiprašančiai maištaujančiai sielai. ",

@@ -1,4 +1,16 @@
 {
+  "actions": {
+    "signUpAction": {
+      "error": "Při zpracování vašeho požadavku nastala chyba.",
+      "failed": "Odeslání e-mailové adresy se nezdařilo s kódem odpovědi HTTP: {status}",
+      "success": "Úspěšně jste se zaregistrovali do našeho mailing listu"
+    },
+    "signUpForNotificationsAction": {
+      "error": "Při zpracování vašeho požadavku nastala chyba.",
+      "failed": "Odeslání e-mailové adresy se nezdařilo s kódem odpovědi HTTP: {status}",
+      "success": "Úspěšně jste se zaregistrovali k odběru oznámení"
+    }
+  },
   "global": {
     "metadata": {
       "description": "Objevte UNCNSRD, značku pro neomluvitelné rebelské duše. ",
