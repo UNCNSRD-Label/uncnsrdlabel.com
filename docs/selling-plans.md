@@ -76,3 +76,28 @@ mutation SellingPlanGroupAddProducts($id: ID!, $productIds: [ID!]!) {
   "productIds": ["gid://shopify/Product/8665771639106"]
 }
 ```
+
+## Remove products from a selling plan group
+
+### Mutation
+
+```graphql
+mutation mutateSellingPlanGroupRemoveProducts($id: ID!, $productIds: [ID!]!) {
+  sellingPlanGroupRemoveProducts(id: $id, productIds: $productIds) {
+    removedProductIds
+    userErrors {
+      field
+      message
+    }
+  }
+}
+```
+
+### Variables
+
+```json
+{
+  "id": "gid://shopify/SellingPlanGroup/78011924802",
+  "productIds": ["gid://shopify/Product/8665771639106"]
+}
+```
