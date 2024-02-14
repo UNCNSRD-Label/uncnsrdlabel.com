@@ -30,8 +30,8 @@ importers:
         specifier: ^1.12.3
         version: 1.12.3(eslint@8.56.0)
       husky:
-        specifier: ^9.0.10
-        version: 9.0.10
+        specifier: ^9.0.11
+        version: 9.0.11
       lint-staged:
         specifier: ^15.2.2
         version: 15.2.2
@@ -141,11 +141,11 @@ importers:
         specifier: ^2024.1.0
         version: 2024.1.0(@types/react@18.2.55)(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)
       '@tanstack/react-query':
-        specifier: ^5.20.1
-        version: 5.20.1(react@0.0.0-experimental-feed8f3f9-20240118)
+        specifier: ^5.20.5
+        version: 5.20.5(react@0.0.0-experimental-feed8f3f9-20240118)
       '@tanstack/react-query-devtools':
-        specifier: ^5.20.1
-        version: 5.20.1(@tanstack/react-query@5.20.1)(react@0.0.0-experimental-feed8f3f9-20240118)
+        specifier: ^5.20.5
+        version: 5.20.5(@tanstack/react-query@5.20.5)(react@0.0.0-experimental-feed8f3f9-20240118)
       '@thebeyondgroup/shopify-rich-text-renderer':
         specifier: ^1.0.0
         version: 1.0.0
@@ -204,8 +204,8 @@ importers:
         specifier: ^0.1.13
         version: 0.1.13
       framer-motion:
-        specifier: ^11.0.3
-        version: 11.0.3(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)
+        specifier: ^11.0.5
+        version: 11.0.5(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)
       language-tags:
         specifier: ^1.0.9
         version: 1.0.9
@@ -255,8 +255,8 @@ importers:
         specifier: ^2.0.12
         version: 2.0.12(react@0.0.0-experimental-feed8f3f9-20240118)
       react-social-icons:
-        specifier: ^6.10.0
-        version: 6.10.0(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)
+        specifier: ^6.12.0
+        version: 6.12.0(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)
       react-use-scrollspy:
         specifier: ^3.1.1
         version: 3.1.1(react@0.0.0-experimental-feed8f3f9-20240118)
@@ -451,8 +451,8 @@ importers:
         specifier: ^2024.1.0
         version: 2024.1.0(@types/react@18.2.55)(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)
       '@tanstack/react-query':
-        specifier: ^5.20.1
-        version: 5.20.1(react@0.0.0-experimental-feed8f3f9-20240118)
+        specifier: ^5.20.5
+        version: 5.20.5(react@0.0.0-experimental-feed8f3f9-20240118)
       '@uncnsrdlabel/graphql-shopify-storefront':
         specifier: workspace:*
         version: link:../graphql-shopify-storefront
@@ -481,11 +481,11 @@ importers:
         specifier: ^4.1.1
         version: 4.1.1
       embla-carousel-react:
-        specifier: 8.0.0-rc17
-        version: 8.0.0-rc17(react@0.0.0-experimental-feed8f3f9-20240118)
+        specifier: 8.0.0-rc22
+        version: 8.0.0-rc22(react@0.0.0-experimental-feed8f3f9-20240118)
       framer-motion:
-        specifier: ^11.0.3
-        version: 11.0.3(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)
+        specifier: ^11.0.5
+        version: 11.0.5(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
@@ -526,8 +526,8 @@ importers:
         specifier: ^2.0.12
         version: 2.0.12(react@0.0.0-experimental-feed8f3f9-20240118)
       react-social-icons:
-        specifier: ^6.10.0
-        version: 6.10.0(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)
+        specifier: ^6.12.0
+        version: 6.12.0(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)
       react-use-scrollspy:
         specifier: ^3.1.1
         version: 3.1.1(react@0.0.0-experimental-feed8f3f9-20240118)
@@ -648,8 +648,8 @@ importers:
         specifier: ^2.2.0
         version: 2.2.0
       '@tanstack/react-query':
-        specifier: ^5.20.1
-        version: 5.20.1(react@18.2.0)
+        specifier: ^5.20.5
+        version: 5.20.5(react@18.2.0)
       '@types/node':
         specifier: ^20.5.6
         version: 20.5.6
@@ -733,8 +733,8 @@ importers:
         specifier: ^2024.1.0
         version: 2024.1.0(@types/react@18.2.55)(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)
       '@tanstack/react-query':
-        specifier: ^5.20.1
-        version: 5.20.1(react@0.0.0-experimental-feed8f3f9-20240118)
+        specifier: ^5.20.5
+        version: 5.20.5(react@0.0.0-experimental-feed8f3f9-20240118)
       '@types/node':
         specifier: ^20.5.6
         version: 20.10.2
@@ -824,8 +824,8 @@ importers:
         specifier: ^2024.1.0
         version: 2024.1.0(@types/react@18.2.55)(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)
       '@tanstack/react-query':
-        specifier: ^5.20.1
-        version: 5.20.1(react@0.0.0-experimental-feed8f3f9-20240118)
+        specifier: ^5.20.5
+        version: 5.20.5(react@0.0.0-experimental-feed8f3f9-20240118)
       '@types/node':
         specifier: ^20.5.6
         version: 20.5.6
@@ -973,14 +973,14 @@ importers:
         specifier: ^2024.1.0
         version: 2024.1.0(@types/react@18.2.55)(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)
       '@tanstack/react-query':
-        specifier: ^5.20.1
-        version: 5.20.1(react@0.0.0-experimental-feed8f3f9-20240118)
+        specifier: ^5.20.5
+        version: 5.20.5(react@0.0.0-experimental-feed8f3f9-20240118)
       '@tanstack/react-query-devtools':
-        specifier: ^5.20.1
-        version: 5.20.1(@tanstack/react-query@5.20.1)(react@0.0.0-experimental-feed8f3f9-20240118)
+        specifier: ^5.20.5
+        version: 5.20.5(@tanstack/react-query@5.20.5)(react@0.0.0-experimental-feed8f3f9-20240118)
       '@tanstack/react-query-next-experimental':
-        specifier: ^5.20.1
-        version: 5.20.1(@tanstack/react-query@5.20.1)(next@14.1.0)(react@0.0.0-experimental-feed8f3f9-20240118)
+        specifier: ^5.20.5
+        version: 5.20.5(@tanstack/react-query@5.20.5)(next@14.1.0)(react@0.0.0-experimental-feed8f3f9-20240118)
       '@uncnsrdlabel/graphql-shopify-storefront':
         specifier: workspace:*
         version: link:../graphql-shopify-storefront
@@ -5633,52 +5633,52 @@ packages:
       tailwindcss: 3.4.1
     dev: true
 
-  /@tanstack/query-core@5.20.1:
-    resolution: {integrity: sha512-OONHHYG5vzjob4An+EfzbW7TRyb+sCA0AEgHzUIMlV9NYlF7wIwbla3PUfB3ocnaK1gZyROf0Lux/CBSu0exBQ==}
+  /@tanstack/query-core@5.20.5:
+    resolution: {integrity: sha512-T1W28gGgWn0A++tH3lxj3ZuUVZZorsiKcv+R50RwmPYz62YoDEkG4/aXHZELGkRp4DfrW07dyq2K5dvJ4Wl1aA==}
     dev: false
 
-  /@tanstack/query-devtools@5.20.1:
-    resolution: {integrity: sha512-sSYo+GW7tx28M6FpcGqzo/zblbTEKrCG8THXOPoNy+EL1Z7kX4JXhRcihyKu3mY8MS/wsGghrZ/R0VTt6JXmBA==}
+  /@tanstack/query-devtools@5.20.2:
+    resolution: {integrity: sha512-BZfSjhk/NGPbqte5E3Vc1Zbj28uWt///4I0DgzAdWrOtMVvdl0WlUXK23K2daLsbcyfoDR4jRI4f2Z5z/mMzuw==}
     dev: false
 
-  /@tanstack/react-query-devtools@5.20.1(@tanstack/react-query@5.20.1)(react@0.0.0-experimental-feed8f3f9-20240118):
-    resolution: {integrity: sha512-VMjNjWLTu4+k0pGAhcsI8igtUI93ksrn4QDruaxbXdvLE3Yvfj8eaDVCemkmAySk7pCQJf4hhdByB/yOKSmIsg==}
+  /@tanstack/react-query-devtools@5.20.5(@tanstack/react-query@5.20.5)(react@0.0.0-experimental-feed8f3f9-20240118):
+    resolution: {integrity: sha512-Wl7IzNuKCb4h41a5iH/YXNwalHItqJPCAr4r8+0iUYOLHNOf3E9P0G4kzZ9sqDoWKxY04qst6Vrij9bwPzLQRQ==}
     peerDependencies:
-      '@tanstack/react-query': ^5.20.1
+      '@tanstack/react-query': ^5.20.5
       react: ^18.0.0
     dependencies:
-      '@tanstack/query-devtools': 5.20.1
-      '@tanstack/react-query': 5.20.1(react@0.0.0-experimental-feed8f3f9-20240118)
+      '@tanstack/query-devtools': 5.20.2
+      '@tanstack/react-query': 5.20.5(react@0.0.0-experimental-feed8f3f9-20240118)
       react: 0.0.0-experimental-feed8f3f9-20240118
     dev: false
 
-  /@tanstack/react-query-next-experimental@5.20.1(@tanstack/react-query@5.20.1)(next@14.1.0)(react@0.0.0-experimental-feed8f3f9-20240118):
-    resolution: {integrity: sha512-S3cfhxZOaf/l4H0Xgg5dZ8zTvZko0Z+rHrt6V81/mQHAzdMBklw8O7nxd46NQjKOjS5Mb4E1WxmjWipVrs2usw==}
+  /@tanstack/react-query-next-experimental@5.20.5(@tanstack/react-query@5.20.5)(next@14.1.0)(react@0.0.0-experimental-feed8f3f9-20240118):
+    resolution: {integrity: sha512-P4r357MckowLGUAeQJ9UWTBK4i/JS/G4alBuXkNNyDp8md/pzk/VXG4y+c6/kJWOoi/Qtawz122l4oMJFp3MHA==}
     peerDependencies:
-      '@tanstack/react-query': ^5.20.1
+      '@tanstack/react-query': ^5.20.5
       next: ^13 || ^14
       react: ^18.0.0
     dependencies:
-      '@tanstack/react-query': 5.20.1(react@0.0.0-experimental-feed8f3f9-20240118)
+      '@tanstack/react-query': 5.20.5(react@0.0.0-experimental-feed8f3f9-20240118)
       next: 14.1.0(@babel/core@7.22.11)(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)
       react: 0.0.0-experimental-feed8f3f9-20240118
     dev: false
 
-  /@tanstack/react-query@5.20.1(react@0.0.0-experimental-feed8f3f9-20240118):
-    resolution: {integrity: sha512-KRkOtJ47tv9B3EXfjHkbPkiFzOzYCOid8BrYBozk0rm9JpDB2xSf71q8w1PRudlQW6QUQIEDI9E6NIMh6AlLUw==}
+  /@tanstack/react-query@5.20.5(react@0.0.0-experimental-feed8f3f9-20240118):
+    resolution: {integrity: sha512-6MHwJ8G9cnOC/XKrwt56QMc91vN7hLlAQNUA0ubP7h9Jj3a/CmkUwT6ALdFbnVP+PsYdhW3WONa8WQ4VcTaSLQ==}
     peerDependencies:
       react: ^18.0.0
     dependencies:
-      '@tanstack/query-core': 5.20.1
+      '@tanstack/query-core': 5.20.5
       react: 0.0.0-experimental-feed8f3f9-20240118
     dev: false
 
-  /@tanstack/react-query@5.20.1(react@18.2.0):
-    resolution: {integrity: sha512-KRkOtJ47tv9B3EXfjHkbPkiFzOzYCOid8BrYBozk0rm9JpDB2xSf71q8w1PRudlQW6QUQIEDI9E6NIMh6AlLUw==}
+  /@tanstack/react-query@5.20.5(react@18.2.0):
+    resolution: {integrity: sha512-6MHwJ8G9cnOC/XKrwt56QMc91vN7hLlAQNUA0ubP7h9Jj3a/CmkUwT6ALdFbnVP+PsYdhW3WONa8WQ4VcTaSLQ==}
     peerDependencies:
       react: ^18.0.0
     dependencies:
-      '@tanstack/query-core': 5.20.1
+      '@tanstack/query-core': 5.20.5
       react: 18.2.0
     dev: false
 
@@ -7691,26 +7691,26 @@ packages:
   /electron-to-chromium@1.4.616:
     resolution: {integrity: sha512-1n7zWYh8eS0L9Uy+GskE0lkBUNK83cXTVJI0pU3mGprFsbfSdAc15VTFbo+A+Bq4pwstmL30AVcEU3Fo463lNg==}
 
-  /embla-carousel-react@8.0.0-rc17(react@0.0.0-experimental-feed8f3f9-20240118):
-    resolution: {integrity: sha512-x4aFprwFB+PQO9EsHHZsrDxARb0uYNBYn9mr5oDFdBdPez4M8G1r5yidWbUcT9pNUc8AQXC9sGzlfauBfBxVOw==}
+  /embla-carousel-react@8.0.0-rc22(react@0.0.0-experimental-feed8f3f9-20240118):
+    resolution: {integrity: sha512-NwmISV0Cw9XVo76Vquz3hJaeZe7qoCRtrzStxlEY7qfZD8WR/f4JlQAso35URTs1BeYVhcuClflelioo+Zmidg==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.1 || ^18.0.0
     dependencies:
-      embla-carousel: 8.0.0-rc17
-      embla-carousel-reactive-utils: 8.0.0-rc17(embla-carousel@8.0.0-rc17)
+      embla-carousel: 8.0.0-rc22
+      embla-carousel-reactive-utils: 8.0.0-rc22(embla-carousel@8.0.0-rc22)
       react: 0.0.0-experimental-feed8f3f9-20240118
     dev: false
 
-  /embla-carousel-reactive-utils@8.0.0-rc17(embla-carousel@8.0.0-rc17):
-    resolution: {integrity: sha512-eluEOK/u5HdjYaTLC4bUG3iTCnyX7RsYix3il0aH4ZECOKa5fS+pVK2vrM17Mgw6C5Hyjcr3r3lfJtGerVzVsQ==}
+  /embla-carousel-reactive-utils@8.0.0-rc22(embla-carousel@8.0.0-rc22):
+    resolution: {integrity: sha512-K4b8QhQGXYW5wr4l+U6XryhafsFV5c/IyohDnZN3MGoYIB9xY7qpjUWAcs5bTDjAD+qCZPOuXre0D3IVa28mqw==}
     peerDependencies:
-      embla-carousel: 8.0.0-rc17
+      embla-carousel: 8.0.0-rc22
     dependencies:
-      embla-carousel: 8.0.0-rc17
+      embla-carousel: 8.0.0-rc22
     dev: false
 
-  /embla-carousel@8.0.0-rc17:
-    resolution: {integrity: sha512-evF49b88VOitvqFtlvhvKVSu96Y8A+QSFdhok87Bfm8R7OYuk95FT+o8+M1GQLi/EhGDUlT193HTVAR0Wt2neQ==}
+  /embla-carousel@8.0.0-rc22:
+    resolution: {integrity: sha512-MeXnPT1LShfgAu8qXj3CskayV0R6OkHx7w3cPTx+Q5ZWKyShKpIuu7qVQJ5BoFegalE4n6yxqoQaRuGFbK9pYw==}
     dev: false
 
   /emoji-regex@10.3.0:
@@ -8431,8 +8431,8 @@ packages:
     resolution: {integrity: sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==}
     dev: true
 
-  /framer-motion@11.0.3(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118):
-    resolution: {integrity: sha512-6x2poQpIWBdbZwLd73w6cKZ1I9IEPIU94C6/Swp1Zt3LJ+sB5bPe1E2wC6EH5hSISXNkMJ4afH7AdwS7MrtkWw==}
+  /framer-motion@11.0.5(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118):
+    resolution: {integrity: sha512-Lb0EYbQcSK/pgyQUJm+KzsQrKrJRX9sFRyzl9hSr9gFG4Mk8yP7BjhuxvRXzblOM/+JxycrJdCDVmOQBsjpYlw==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
@@ -8982,8 +8982,8 @@ packages:
     engines: {node: '>=16.17.0'}
     dev: true
 
-  /husky@9.0.10:
-    resolution: {integrity: sha512-TQGNknoiy6bURzIO77pPRu+XHi6zI7T93rX+QnJsoYFf3xdjKOur+IlfqzJGMHIK/wXrLg+GsvMs8Op7vI2jVA==}
+  /husky@9.0.11:
+    resolution: {integrity: sha512-AB6lFlbwwyIqMdHYhwPe+kjOC3Oc5P3nThEoW/AaO2BX3vJDjWPFxYLxokUZOo6RNX20He3AaT8sESs9NJcmEw==}
     engines: {node: '>=18'}
     hasBin: true
     dev: true
@@ -11607,8 +11607,8 @@ packages:
       '@remix-run/router': 1.14.1
       react: 0.0.0-experimental-feed8f3f9-20240118
 
-  /react-social-icons@6.10.0(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118):
-    resolution: {integrity: sha512-b4sbTE7vZBYF2yIa/ObMb6ZfMexnMF+OnciLv1ujzaioiBabZjSMeYS9Pp4Kh6BAeYejF/QByctns4abqy37rA==}
+  /react-social-icons@6.12.0(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118):
+    resolution: {integrity: sha512-XiiWlN4F7srBy0VDDwbYip5l2UA5ttQqQIsY3tZ2ouqdyN9NDZ5ZMKBLjNPM0pNF0qjosRaP/LqgHtmUK2TFRA==}
     peerDependencies:
       react: 15.x.x || 16.x.x || 17.x.x || 18.x.x
       react-dom: 15.x.x || 16.x.x || 17.x.x || 18.x.x
