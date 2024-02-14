@@ -6,9 +6,6 @@ import { parseGid } from "@shopify/hydrogen";
 import { type KlaviyoResponse } from "@uncnsrdlabel/types";
 import { createIntl, type ResolvedIntlConfig } from "react-intl";
 
-
-export const runtime = 'nodejs'
-
 export async function signUpForNotificationsAction(
   _currentState: any,
   formData: FormData,

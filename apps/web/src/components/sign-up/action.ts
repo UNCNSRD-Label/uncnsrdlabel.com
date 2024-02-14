@@ -5,9 +5,6 @@ import { headers } from "@/lib/klaviyo";
 import { type KlaviyoResponse } from "@uncnsrdlabel/types";
 import { createIntl, type ResolvedIntlConfig } from "react-intl";
 
-
-export const runtime = 'nodejs'
-
 export async function signUpAction(
   _currentState: any,
   formData: FormData,
