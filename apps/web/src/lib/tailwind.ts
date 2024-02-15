@@ -1,9 +1,8 @@
 import { cn } from "@uncnsrdlabel/lib";
-import tailwindConfig from "@uncnsrdlabel/tailwind-config";
+import baseConfig from "@uncnsrdlabel/tailwind-config";
 import resolveConfig from "tailwindcss/resolveConfig";
 
-/** @type {import('tailwindcss').Config} */
-export const config = resolveConfig(tailwindConfig);
+export const config = resolveConfig(baseConfig);
 
 export const minWidthSm =
   (!Array.isArray(config.theme?.screens) && config.theme?.screens?.sm) ?? "0px";

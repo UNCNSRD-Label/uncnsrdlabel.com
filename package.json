@@ -1,16 +1,17 @@
 {
   "devDependencies": {
     "@graphql-eslint/eslint-plugin": "^3.20.1",
-    "@turbo/gen": "^1.11.3",
-    "@types/node": "^20.11.5",
+    "@turbo/gen": "^1.12.3",
+    "@types/node": "^20.11.17",
     "@uncnsrdlabel/eslint-config-custom": "workspace:*",
+    "dotenv-cli": "^7.3.0",
     "eslint": "^8.56.0",
-    "eslint-config-turbo": "^1.11.3",
-    "husky": "^8.0.3",
-    "lint-staged": "^15.2.0",
+    "eslint-config-turbo": "^1.12.3",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
     "madge": "^6.1.0",
-    "prettier": "^3.2.4",
-    "turbo": "^1.11.3"
+    "prettier": "^3.2.5",
+    "turbo": "^1.12.3"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
@@ -22,13 +23,13 @@
   "private": true,
   "repository": "https://github.com/UNCNSRD-Label/uncnsrdlabel.com",
   "scripts": {
-    "analyze": "turbo run analyze",
-    "build": "turbo run build",
+    "analyze": "dotenv -c -- turbo run analyze",
+    "build": "dotenv -c -- turbo run build",
     "clean": "turbo run clean",
     "dependencies:check": "turbo run dependencies:check",
     "dependencies:graph": "turbo run dependencies:graph",
     "dependencies:unused": "turbo run dependencies:unused",
-    "dev": "turbo dev --concurrency=12 --no-cache --continue",
+    "dev": "dotenv -c -- turbo dev --concurrency=12",
     "find:unused": "npx next-unused",
     "lint-staged": "lint-staged",
     "lint": "turbo run lint",

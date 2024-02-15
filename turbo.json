@@ -6,7 +6,7 @@
       "outputs": ["dist/**"]
     },
     "build": {
-      "cache": false,
+      "cache": true,
       "dependsOn": ["^build"]
     },
     "clean": {
@@ -22,7 +22,7 @@
       "outputs": []
     },
     "dev": {
-      "cache": false,
+      "cache": true,
       "dependsOn": ["^build"],
       "env": [
         "ANALYZE",

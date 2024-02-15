@@ -1,4 +1,39 @@
 {
+  "actions": {
+    "SignUp": {
+      "title": "Prijavite se na naše glasilo",
+      "summary": "Prijavite se in prejmite 10% popust na prvi nakup"
+    },
+    "SignUpForm": {
+      "message": "Čakam na potrditev prijave",
+      "pattern": "Vnesena vrednost se ne ujema z obliko elektronske pošte",
+      "placeholder": "Prijavite se na naše glasilo",
+      "required": "E-poštni naslov je obvezen",
+      "submit": "Prijavite se",
+      "toast": {
+        "close-alt": "Zapri to sporočilo",
+        "close-button": "Zapri",
+        "error": "Ne morem se prijaviti",
+        "success": "Uspešno ste se prijavili na naše glasilo",
+        "title": "Prijava na glasilo"
+      }
+    },
+    "SignUpForNotifications": {
+      "summary": "Prijavite se za obvestilo, ko bo ta izdelek spet na zalogi",
+      "title": "Prijavite se na obvestila"
+    },
+    "SignUpForNotificationsForm": {
+      "placeholder": "Vnesi svoj elektronski naslov",
+      "submit": "Prijavite se",
+      "toast": {
+        "close-alt": "Zapri to sporočilo",
+        "close-button": "Zapri",
+        "error": "Ne morem se prijaviti",
+        "success": "Uspešno ste se prijavili na obvestila",
+        "title": "Prijava na obvestilo o izdelku na zalogi"
+      }
+    }
+  },
   "global": {
     "metadata": {
       "description": "Odkrijte UNCNSRD, blagovno znamko za neprizanesljivo uporniško dušo. ",

@@ -2,13 +2,13 @@
   "dependencies": {
     "eslint-config-next": "^14.1.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-config-turbo": "^1.11.3",
+    "eslint-config-turbo": "^1.12.3",
     "eslint-plugin-react": "7.33.2",
-    "eslint-plugin-unicorn": "^50.0.1",
+    "eslint-plugin-unicorn": "^51.0.1",
     "next": "14.1.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.0.0"
+    "@eslint/eslintrc": "^3.0.1"
   },
   "main": "eslint.config.js",
   "name": "@uncnsrdlabel/eslint-config-custom",

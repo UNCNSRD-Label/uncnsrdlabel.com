@@ -1,14 +1,15 @@
 "use server";
 
+import { headers } from "@/lib/klaviyo";
 import { type KlaviyoResponse } from "@uncnsrdlabel/types";
 
 export async function signUpAction(
   _currentState: any,
   formData: FormData,
 ) {
+  const custom_source = formData.get("custom_source") ?? "Website";
   const email = formData.get("email");
   const phone_number = formData.get("phone_number");
-  const custom_source = formData.get("custom_source") ?? "Website";
 
   if (!email) {
     console.error("email not set");
@@ -18,43 +19,43 @@ export async function signUpAction(
     console.error("phone_number not set");
   }
 
-  const url =
-    "https://a.klaviyo.com/api/profile-subscription-bulk-create-jobs/";
+  let messageKey = "actions.signUpAction.error";
+
+  let ok = false;
+
+  let status = 500;
+
+  const url = "https://a.klaviyo.com/api/profile-subscription-bulk-create-jobs/";
+
   const options = {
     method: "POST",
-    headers: {
-      accept: "application/json",
-      revision: "2023-02-22",
-      "content-type": "application/json",
-      Authorization: `Klaviyo-API-Key ${process.env.KLAVIYO_PRIVATE_KEY}`,
-    },
+    headers,
     body: JSON.stringify({
       data: {
         type: "profile-subscription-bulk-create-job",
         attributes: {
-          list_id: process.env.KLAVIYO_LIST_ID,
           custom_source,
-          subscriptions: [
-            {
-              channels: {
-                email: ["MARKETING"],
-                // sms: ['MARKETING']
-              },
-              email,
-              // phone_number
-              // profile_id: '01GDDKASAP8TKDDA2GRZDSVP4H'
-            },
-          ],
+          profiles: {
+            data: [
+              {
+                type: 'profile',
+                // id: '01GDDKASAP8TKDDA2GRZDSVP4H',
+                attributes: {
+                  email,
+                  // phone_number: '+15005550006',
+                  subscriptions: {
+                    email: {marketing: {consent: 'SUBSCRIBED', consented_at: new Date().toISOString()}},
+                    // sms: {marketing: {consent: 'SUBSCRIBED', consented_at: new Date().toISOString()}}
+                  }
+                }
+              }
+            ]
+          },
         },
+        relationships: { list: { data: { type: 'list', id: process.env.KLAVIYO_LIST_ID_NEWSLETTER } } }
       },
     }),
   };
-
-  let message = "Something went wrong. Please try again.";
-
-  let status = 500;
-
-  let ok = false;
 
   try {
     const response = await fetch(url, options);
@@ -63,10 +64,16 @@ export async function signUpAction(
 
     status = response.status;
 
-    console.info(response.status, response.statusText);
+    console.info(response.status, response.statusText, response.ok);
 
     if (response.ok) {
-      message = "Email address submitted successfully!";
+      if (response.status === 202) {
+        messageKey = "actions.signUpAction.success";
+      }
+    } else {
+      console.error(response.status, response.statusText)
+
+      messageKey = "actions.signUpAction.failed";
 
       if (response.status >= 300) {
         const json = (await response.json()) as KlaviyoResponse;
@@ -76,28 +83,20 @@ export async function signUpAction(
           console.error(json.errors);
         }
 
-        message = response.statusText ?? json.errors?.[0];
+        messageKey = response.statusText ?? json.errors?.[0];
       }
-
-      if (response.status === 202) {
-        message = "You have successfully signed up to our mailing list!";
-      }
-    } else {
-      console.error(response?.status, response?.statusText)
-
-      message = `Email address submission failed with HTTP Response Code: ${response?.status}`;
     }
   } catch (error) {
     console.error(error);
 
     if (error instanceof Error) {
-      message = error.message;
+      messageKey = error.message;
     } else if (typeof error === "string") {
-      message = error;
+      messageKey = error;
     }
   } finally {
     return {
-      message,
+      messageKey,
       ok,
       status,
     };

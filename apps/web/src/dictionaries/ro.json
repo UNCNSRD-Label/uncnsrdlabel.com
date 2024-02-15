@@ -1,4 +1,39 @@
 {
+  "actions": {
+    "SignUp": {
+      "title": "Abonați-vă la buletinul nostru informativ",
+      "summary": "Înscrie-te și primești 10% reducere la prima achiziție"
+    },
+    "SignUpForm": {
+      "message": "Se așteaptă confirmarea înscrierii",
+      "pattern": "Valoarea introdusă nu se potrivește cu formatul de e-mail",
+      "placeholder": "Abonați-vă la buletinul nostru informativ",
+      "required": "Este necesară adresa de e-mail",
+      "submit": "Inscrie-te",
+      "toast": {
+        "close-alt": "Închideți acest mesaj",
+        "close-button": "Închide",
+        "error": "Nu se poate înscrie",
+        "success": "Te-ai înscris cu succes la buletinul nostru informativ",
+        "title": "Abonează-te la știri"
+      }
+    },
+    "SignUpForNotifications": {
+      "summary": "Înscrieți-vă pentru a fi anunțat când acest produs este din nou în stoc",
+      "title": "Înscrieți-vă pentru notificări"
+    },
+    "SignUpForNotificationsForm": {
+      "placeholder": "Introdu adresa ta de e-mail",
+      "submit": "Inscrie-te",
+      "toast": {
+        "close-alt": "Închideți acest mesaj",
+        "close-button": "Închide",
+        "error": "Nu se poate înscrie",
+        "success": "V-ați înscris cu succes pentru notificări",
+        "title": "Înregistrare pentru notificarea produsului în stoc"
+      }
+    }
+  },
   "global": {
     "metadata": {
       "description": "Descoperiți UNCNSRD, un brand pentru sufletul rebel fără scuze. ",

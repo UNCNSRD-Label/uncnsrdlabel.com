@@ -17,7 +17,7 @@ import {
   getLocaleObjectFromIETFLanguageTag
 } from "@uncnsrdlabel/lib";
 import { AppProviders } from "@uncnsrdlabel/providers";
-import { config } from "@uncnsrdlabel/tailwind-config";
+import config from "@uncnsrdlabel/tailwind-config";
 import type { Metadata } from "next";
 import { Lato, Montserrat } from "next/font/google";
 import localFont from "next/font/local";
@@ -103,16 +103,12 @@ const montserrat = Montserrat({
 });
 
 export const viewport = {
-  minimumScale: 1,
   initialScale: 1,
-  width: "device-width",
+  minimumScale: 1,
   shrinkToFit: "no",
+  themeColor: config.theme.extend.colors.hotPink,
   viewportFit: "cover",
-  // @ts-expect-error Property 'hotPink' does not exist on type 'ResolvableTo<RecursiveKeyValuePair<string, string>>'.
-  ...(config.theme?.extend?.colors?.hotPink && {
-    // @ts-expect-error Property 'hotPink' does not exist on type 'ResolvableTo<RecursiveKeyValuePair<string, string>>'.
-    themeColor: config.theme.extend.colors.hotPink,
-  }),
+  width: "device-width",
 };
 
 export default async function RootLayout({

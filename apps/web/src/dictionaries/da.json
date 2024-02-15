@@ -1,4 +1,16 @@
 {
+  "actions": {
+    "signUpAction": {
+      "error": "En fejl opstod under behandlingen af ​​din anmodning.",
+      "failed": "Indsendelse af e-mailadresse mislykkedes med HTTP-svarkode: {status}",
+      "success": "Du har tilmeldt dig vores mailingliste"
+    },
+    "signUpForNotificationsAction": {
+      "error": "En fejl opstod under behandlingen af ​​din anmodning.",
+      "failed": "Indsendelse af e-mailadresse mislykkedes med HTTP-svarkode: {status}",
+      "success": "Du har tilmeldt dig meddelelser"
+    }
+  },
   "global": {
     "metadata": {
       "description": "Oplev UNCNSRD, et mærke for den uundskyldende oprørske sjæl. ",

@@ -1,4 +1,16 @@
 {
+  "actions": {
+    "signUpAction": {
+      "error": "Während Ihrer Anfrage ist ein Fehler aufgetreten.",
+      "failed": "Übermittlung der E-Mail-Adresse mit HTTP-Antwortcode fehlgeschlagen: {status}",
+      "success": "Sie haben sich erfolgreich in unsere Mailingliste eingetragen"
+    },
+    "signUpForNotificationsAction": {
+      "error": "Während Ihrer Anfrage ist ein Fehler aufgetreten.",
+      "failed": "Übermittlung der E-Mail-Adresse mit HTTP-Antwortcode fehlgeschlagen: {status}",
+      "success": "Sie haben sich erfolgreich für Benachrichtigungen angemeldet"
+    }
+  },
   "global": {
     "metadata": {
       "description": "Entdecken Sie UNCNSRD, eine Marke für die kompromisslose rebellische Seele. ",

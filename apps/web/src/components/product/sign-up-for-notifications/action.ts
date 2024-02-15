@@ -1,68 +1,108 @@
 "use server";
 
+import { headers } from "@/lib/klaviyo";
+import { parseGid } from "@shopify/hydrogen";
 import { type KlaviyoResponse } from "@uncnsrdlabel/types";
 
 export async function signUpForNotificationsAction(
   _currentState: any,
   formData: FormData,
 ) {
+  const _shopify_y = formData.get("_shopify_y");
   const email = formData.get("email");
   const phone_number = formData.get("phone_number");
-  const custom_source = formData.get("custom_source") ?? "Website";
+  const variant_id = formData.get("variant_id");
 
   if (!email) {
     console.error("email not set");
+    return {
+      message: "email not set",
+      ok: false,
+      status: 400,
+    };
   }
 
   if (!phone_number) {
     console.error("phone_number not set");
   }
 
-  const url =
-    "https://a.klaviyo.com/api/profile-subscription-bulk-create-jobs/";
+  if (!variant_id) {
+    console.error("variant_id not set");
+    return {
+      message: "variant_id not set",
+      ok: false,
+      status: 400,
+    };
+  }
+
+  if (typeof variant_id !== "string") {
+    console.error("variant_id should be a string");
+    return {
+      message: "variant_id should be a string",
+      ok: false,
+      status: 400,
+    };
+  }
+
+  let messageKey = "actions.signUpForNotificationsAction.error";
+
+  let ok = false;
+
+  let status = 500;
+
+  const url = "https://a.klaviyo.com/api/back-in-stock-subscriptions/";
+
+  const { id: shopify_id } = parseGid(variant_id);
+
   const options = {
     method: "POST",
-    headers: {
-      accept: "application/json",
-      revision: "2023-02-22",
-      "content-type": "application/json",
-      Authorization: `Klaviyo-API-Key ${process.env.KLAVIYO_PRIVATE_KEY}`,
-    },
+    headers,
     body: JSON.stringify({
       data: {
-        type: "profile-subscription-bulk-create-job",
+        type: 'back-in-stock-subscription',
         attributes: {
-          list_id: process.env.KLAVIYO_LIST_ID,
-          custom_source,
-          subscriptions: [
-            {
-              channels: {
-                email: ["MARKETING"],
-                // sms: ['MARKETING']
-              },
-              email,
-              // phone_number
-              // profile_id: '01GDDKASAP8TKDDA2GRZDSVP4H'
-            },
-          ],
+          channels: ['EMAIL'],
+          profile: {
+            data: {
+              type: 'profile',
+              // id: '01GDDKASAP8TKDDA2GRZDSVP4H',
+              attributes: {
+                email,
+                // phone_number: '+15005550006',
+                external_id: _shopify_y,
+              }
+            }
+          }
+        },
+        relationships: {
+          variant: {
+            data: {
+              type: 'catalog-variant',
+              id: `$shopify:::$default:::${shopify_id}`
+            }
+          }
         },
       },
     }),
   };
 
-  let message = "Something went wrong. Please try again.";
-
-  let status = 500;
-
   try {
     const response = await fetch(url, options);
 
+    ok = response.ok;
+
     status = response.status;
 
-    console.info(response.status, response.statusText);
+    console.info(response.status, response.statusText, response.ok);
 
-    if (response?.ok) {
-      message = "Email address submitted successfully!";
+    if (response.ok) {
+      if (response.status === 202) {
+        messageKey = "actions.signUpForNotificationsAction.success";
+      }
+    } else {
+      console.error(response.status, response.statusText)
+
+      messageKey = "actions.signUpForNotificationsAction.failed";
 
       if (response.status >= 300) {
         const json = (await response.json()) as KlaviyoResponse;
@@ -72,28 +112,21 @@ export async function signUpForNotificationsAction(
           console.error(json.errors);
         }
 
-        message = response.statusText ?? json.errors?.[0];
+        messageKey = response.statusText ?? json.errors?.[0];
       }
-
-      if (response.status === 202) {
-        message = "You have successfully signed up to our mailing list!";
-      }
-    } else {
-      console.error(response?.status, response?.statusText)
-
-      message = `Email address submission failed with HTTP Response Code: ${response?.status}`;
     }
   } catch (error) {
     console.error(error);
 
     if (error instanceof Error) {
-      message = error.message;
+      messageKey = error.message;
     } else if (typeof error === "string") {
-      message = error;
+      messageKey = error;
     }
   } finally {
     return {
-      message,
+      messageKey,
+      ok,
       status,
     };
   }

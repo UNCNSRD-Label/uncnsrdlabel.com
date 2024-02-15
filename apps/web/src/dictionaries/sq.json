@@ -1,4 +1,39 @@
 {
+  "actions": {
+    "SignUp": {
+      "title": "Regjistrohu në buletinin tonë",
+      "summary": "Regjistrohuni dhe përfitoni 10% ulje në blerjen tuaj të parë"
+    },
+    "SignUpForm": {
+      "message": "Në pritje të konfirmimit të regjistrimit",
+      "pattern": "Vlera e futur nuk përputhet me formatin e emailit",
+      "placeholder": "Regjistrohu në buletinin tonë",
+      "required": "Kërkohet adresa e emailit",
+      "submit": "Regjistrohu",
+      "toast": {
+        "close-alt": "Mbyll këtë mesazh",
+        "close-button": "Mbylle",
+        "error": "Nuk mund të regjistrohet",
+        "success": "Ju jeni regjistruar me sukses në buletinin tonë",
+        "title": "Regjistrimi në buletin"
+      }
+    },
+    "SignUpForNotifications": {
+      "summary": "Regjistrohu për t'u njoftuar kur ky produkt të kthehet në magazinë",
+      "title": "Regjistrohu për njoftime"
+    },
+    "SignUpForNotificationsForm": {
+      "placeholder": "Shkruani adresën tuaj të emailit",
+      "submit": "Regjistrohu",
+      "toast": {
+        "close-alt": "Mbyll këtë mesazh",
+        "close-button": "Mbylle",
+        "error": "Nuk mund të regjistrohet",
+        "success": "Ju jeni regjistruar me sukses për njoftime",
+        "title": "Regjistrimi i njoftimit për produktin në magazinë"
+      }
+    }
+  },
   "global": {
     "metadata": {
       "description": "Zbuloni UNCNSRD, një markë për shpirtin rebel të pafalshëm. ",

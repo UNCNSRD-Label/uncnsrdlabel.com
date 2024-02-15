@@ -1,4 +1,39 @@
 {
+  "actions": {
+    "SignUp": {
+      "title": "注册我们的时事通讯",
+      "summary": "注册并享受首次购买 10% 的折扣"
+    },
+    "SignUpForm": {
+      "message": "等待注册确认",
+      "pattern": "输入的值与电子邮件格式不匹配",
+      "placeholder": "注册我们的时事通讯",
+      "required": "电子邮件地址为必填项",
+      "submit": "报名",
+      "toast": {
+        "close-alt": "关闭此消息",
+        "close-button": "关闭",
+        "error": "无法注册",
+        "success": "您已成功订阅我们的时事通讯",
+        "title": "订阅时事通讯"
+      }
+    },
+    "SignUpForNotifications": {
+      "summary": "注册以在该产品有货时收到通知",
+      "title": "注册接收通知"
+    },
+    "SignUpForNotificationsForm": {
+      "placeholder": "输入你的电子邮箱地址",
+      "submit": "报名",
+      "toast": {
+        "close-alt": "关闭此消息",
+        "close-button": "关闭",
+        "error": "无法注册",
+        "success": "您已成功注册通知",
+        "title": "产品库存通知注册"
+      }
+    }
+  },
   "global": {
     "metadata": {
       "description": "探索 UNCNSRD，一个专为毫无歉意的叛逆灵魂打造的品牌。",

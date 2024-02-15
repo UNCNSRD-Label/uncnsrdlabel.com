@@ -1,4 +1,39 @@
 {
+  "actions": {
+    "SignUp": {
+      "title": "Đăng kí tờ báo của chúng tôi",
+      "summary": "Đăng ký và nhận 10% giảm giá cho lần mua hàng đầu tiên của bạn"
+    },
+    "SignUpForm": {
+      "message": "Đang chờ xác nhận đăng ký",
+      "pattern": "Giá trị đã nhập không khớp với định dạng email",
+      "placeholder": "Đăng kí tờ báo của chúng tôi",
+      "required": "Địa chỉ e-mail là bắt buộc",
+      "submit": "Đăng ký",
+      "toast": {
+        "close-alt": "Đóng tin nhắn này",
+        "close-button": "Đóng",
+        "error": "Không thể đăng ký",
+        "success": "Bạn đã đăng ký thành công nhận bản tin của chúng tôi",
+        "title": "Đăng ký bản tin"
+      }
+    },
+    "SignUpForNotifications": {
+      "summary": "Đăng ký để nhận thông báo khi sản phẩm này có hàng lại",
+      "title": "Đăng ký nhận thông báo"
+    },
+    "SignUpForNotificationsForm": {
+      "placeholder": "nhập địa chỉ email của bạn",
+      "submit": "Đăng ký",
+      "toast": {
+        "close-alt": "Đóng tin nhắn này",
+        "close-button": "Đóng",
+        "error": "Không thể đăng ký",
+        "success": "Bạn đã đăng ký nhận thông báo thành công",
+        "title": "Đăng ký thông báo còn hàng"
+      }
+    }
+  },
   "global": {
     "metadata": {
       "description": "Khám phá UNCNSRD, thương hiệu dành cho tâm hồn nổi loạn không hối lỗi. ",

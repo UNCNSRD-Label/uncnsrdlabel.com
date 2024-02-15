@@ -1,4 +1,39 @@
 {
+  "actions": {
+    "SignUp": {
+      "title": "Zapisz się do naszego biuletynu",
+      "summary": "Zarejestruj się i otrzymaj 10% rabatu na pierwsze zakupy"
+    },
+    "SignUpForm": {
+      "message": "Czekam na potwierdzenie rejestracji",
+      "pattern": "Wprowadzona wartość nie jest zgodna z formatem wiadomości e-mail",
+      "placeholder": "Zapisz się do naszego biuletynu",
+      "required": "Adres e-mail jest wymagany",
+      "submit": "Zapisać się",
+      "toast": {
+        "close-alt": "Zamknij tę wiadomość",
+        "close-button": "Zamknąć",
+        "error": "Nie można się zarejestrować",
+        "success": "Pomyślnie zapisałeś się do naszego newslettera",
+        "title": "Zapisz się do newslettera"
+      }
+    },
+    "SignUpForNotifications": {
+      "summary": "Zarejestruj się, aby otrzymać powiadomienie, gdy produkt będzie ponownie dostępny",
+      "title": "Zarejestruj się, aby otrzymywać powiadomienia"
+    },
+    "SignUpForNotificationsForm": {
+      "placeholder": "Wpisz swój adres e-mail",
+      "submit": "Zapisać się",
+      "toast": {
+        "close-alt": "Zamknij tę wiadomość",
+        "close-button": "Zamknąć",
+        "error": "Nie można się zarejestrować",
+        "success": "Pomyślnie zapisałeś się na powiadomienia",
+        "title": "Rejestracja powiadomienia o dostępności produktu"
+      }
+    }
+  },
   "global": {
     "metadata": {
       "description": "Odkryj UNCNSRD, markę dla niepokornych, buntowniczych dusz. ",

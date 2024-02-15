@@ -1,4 +1,39 @@
 {
+  "actions": {
+    "SignUp": {
+      "title": "Inscreva-se no nosso boletim",
+      "summary": "Cadastre-se e receba 10% de desconto na sua primeira compra"
+    },
+    "SignUpForm": {
+      "message": "Aguardando confirmação de inscrição",
+      "pattern": "O valor inserido não corresponde ao formato do e-mail",
+      "placeholder": "Inscreva-se no nosso boletim",
+      "required": "É necessário um endereço de e-mail",
+      "submit": "Inscrever-se",
+      "toast": {
+        "close-alt": "Fechar esta mensagem",
+        "close-button": "Fechar",
+        "error": "Não é possível se inscrever",
+        "success": "Você se inscreveu com sucesso em nossa newsletter",
+        "title": "Inscrição no boletim informativo"
+      }
+    },
+    "SignUpForNotifications": {
+      "summary": "Inscreva-se para ser notificado quando este produto estiver novamente em estoque",
+      "title": "Inscreva-se para receber notificações"
+    },
+    "SignUpForNotificationsForm": {
+      "placeholder": "Insira o seu endereço de email",
+      "submit": "Inscrever-se",
+      "toast": {
+        "close-alt": "Fechar esta mensagem",
+        "close-button": "Fechar",
+        "error": "Não é possível se inscrever",
+        "success": "Você se inscreveu com sucesso para receber notificações",
+        "title": "Inscrição de notificação de produto em estoque"
+      }
+    }
+  },
   "global": {
     "metadata": {
       "description": "Descubra a UNCNSRD, uma marca para a alma rebelde e sem remorso. ",

@@ -1,4 +1,39 @@
 {
+  "actions": {
+    "SignUp": {
+      "title": "Haber bültenimize kaydolun",
+      "summary": "Kaydolun ve ilk satın alma işleminizde %10 indirim kazanın"
+    },
+    "SignUpForm": {
+      "message": "Kayıt onayı bekleniyor",
+      "pattern": "Girilen değer e-posta biçimiyle eşleşmiyor",
+      "placeholder": "Haber bültenimize kaydolun",
+      "required": "E-posta adresi gerekli",
+      "submit": "Üye olmak",
+      "toast": {
+        "close-alt": "Bu mesajı kapat",
+        "close-button": "Kapalı",
+        "error": "Kaydolunamıyor",
+        "success": "Bültenimize başarıyla kaydoldunuz",
+        "title": "Bültene üye ol"
+      }
+    },
+    "SignUpForNotifications": {
+      "summary": "Bu ürün stoğa tekrar girdiğinde haberdar olmak için kaydolun",
+      "title": "Bildirimler için kaydolun"
+    },
+    "SignUpForNotificationsForm": {
+      "placeholder": "E-posta adresinizi giriniz",
+      "submit": "Üye olmak",
+      "toast": {
+        "close-alt": "Bu mesajı kapat",
+        "close-button": "Kapalı",
+        "error": "Kaydolunamıyor",
+        "success": "Bildirimlere başarıyla kaydoldunuz",
+        "title": "Ürün stokta bildirimi kaydı"
+      }
+    }
+  },
   "global": {
     "metadata": {
       "description": "Pişmanlık duymayan asi ruha yönelik bir marka olan UNCNSRD'yi keşfedin. ",

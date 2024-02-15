@@ -1,4 +1,39 @@
 {
+  "actions": {
+    "SignUp": {
+      "title": "Iratkozzon fel hírlevelünkre",
+      "summary": "Regisztráljon és 10% kedvezményt kap az első vásárlásból"
+    },
+    "SignUpForm": {
+      "message": "Várakozás a regisztráció megerősítésére",
+      "pattern": "A megadott érték nem egyezik az e-mail formátummal",
+      "placeholder": "Iratkozzon fel hírlevelünkre",
+      "required": "E-mail cím megadása kötelező",
+      "submit": "Regisztrálj",
+      "toast": {
+        "close-alt": "Zárja be ezt az üzenetet",
+        "close-button": "Bezárás",
+        "error": "Nem sikerült regisztrálni",
+        "success": "Sikeresen feliratkozott hírlevelünkre",
+        "title": "Hírlevél Bejelentkezés"
+      }
+    },
+    "SignUpForNotifications": {
+      "summary": "Iratkozzon fel, hogy értesítést kapjon, ha a termék újra raktáron lesz",
+      "title": "Iratkozzon fel az értesítésekre"
+    },
+    "SignUpForNotificationsForm": {
+      "placeholder": "írd be az email címed",
+      "submit": "Regisztrálj",
+      "toast": {
+        "close-alt": "Zárja be ezt az üzenetet",
+        "close-button": "Bezárás",
+        "error": "Nem sikerült regisztrálni",
+        "success": "Sikeresen feliratkozott az értesítésekre",
+        "title": "Jelentkezés a termék készletről értesítésére"
+      }
+    }
+  },
   "global": {
     "metadata": {
       "description": "Fedezze fel az UNCNSRD-t, a nem bocsánatkérő lázadó lélek márkáját. ",

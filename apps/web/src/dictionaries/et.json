@@ -1,4 +1,16 @@
 {
+  "actions": {
+    "signUpAction": {
+      "error": "Teie taotluse töötlemisel ilmnes viga.",
+      "failed": "E-posti aadressi esitamine ebaõnnestus HTTP vastuse koodiga: {status}",
+      "success": "Olete edukalt registreerunud meie meililisti"
+    },
+    "signUpForNotificationsAction": {
+      "error": "Teie taotluse töötlemisel ilmnes viga.",
+      "failed": "E-posti aadressi esitamine ebaõnnestus HTTP vastuse koodiga: {status}",
+      "success": "Olete edukalt registreerunud märguannete saamiseks"
+    }
+  },
   "global": {
     "metadata": {
       "description": "Avastage UNCNSRD, bränd vabandamata mässumeelsele hingele. ",

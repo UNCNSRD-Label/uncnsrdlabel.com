@@ -1,6 +1,7 @@
 import { AddToCart } from "@/components/cart/add-to-cart";
 import { PriceAndCompareAtPrice } from "@/components/price-and-compare-at-price";
 import { ProductDetailsTabs } from "@/components/product/details-tabs";
+import { SignUpForNotifications } from "@/components/product/sign-up-for-notifications";
 import { SizeGuide } from "@/components/product/size-guide";
 import { SquarePlacement } from "@/components/product/square-placement";
 import { Tracking } from "@/components/product/tracking";
@@ -105,14 +106,18 @@ export async function ProductDetails({
           {product.title}
         </h3>
 
-        <div className="gap-2 grid">
+        <div className="grid gap-2">
           <PriceAndCompareAtPrice
             className="grid-flow-col text-sm"
             lang={lang}
             productDetailsFragmentRef={productDetailsFragmentRef}
           />
 
-          <SquarePlacement handle={product.handle} lang={lang} options={product.options} />
+          <SquarePlacement
+            handle={product.handle}
+            lang={lang}
+            options={product.options}
+          />
         </div>
 
         {product.descriptionHtml ? (
@@ -130,6 +135,7 @@ export async function ProductDetails({
 
         <AddToCart
           availableForSale={product.availableForSale}
+          className="py-4"
           container="PurchaseOptions"
           dictionary={dictionary}
           lang={lang}
@@ -139,14 +145,30 @@ export async function ProductDetails({
         />
 
         {!product.availableForSale && (
-          <span
-            className="text-xs"
-            dangerouslySetInnerHTML={{
-              __html: intl.formatMessage({
-                id: "component.AddToCart.status.out-of-stock",
-              }),
-            }}
-          />
+          <>
+            <span
+              className="mx-auto text-xs"
+              dangerouslySetInnerHTML={{
+                __html: intl.formatMessage(
+                  {
+                    id: "component.AddToCart.status.out-of-stock",
+                  },
+                  {
+                    a: (chunks) =>
+                      `<a href="mailto:hello@uncnsrdlabel.com?subject=Out of stock enquiry for ${product.title} (${product.id})">${chunks}</a>`,
+                    product: `${product.title} (${product.id})`,
+                  },
+                ),
+              }}
+            />
+            <SignUpForNotifications
+              className="mx-auto border p-4 md:w-2/3"
+              handle={product.handle}
+              lang={lang}
+              options={product.options}
+              productDetailsFragmentRef={productDetailsFragmentRef}
+            />
+          </>
         )}
 
         {preOrder && releaseDate && (

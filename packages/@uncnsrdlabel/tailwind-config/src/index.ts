@@ -5,8 +5,9 @@ import animate from "tailwindcss-animate";
 import colors from "tailwindcss/colors";
 import plugin from "tailwindcss/plugin";
 
-/** @type {import('tailwindcss').Config} */
-export const config: Config = {
+type Configuration = { theme: (property: string, defaultValue?: unknown) => {} }
+
+export default {
   animation: {
     "accordion-down": "accordion-down 0.2s ease-out",
     "accordion-up": "accordion-up 0.2s ease-out",
@@ -23,7 +24,7 @@ export const config: Config = {
       "2xl": "1400px",
     },
   },
-  content: [],
+  content: ["../../*/dist/**/*.{js,ts,jsx,tsx}",],
   darkMode: ["class"],
   keyframes: {
     "accordion-down": {
@@ -111,10 +112,10 @@ export const config: Config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
-      backgroundColor: ({ theme }) => ({
+      backgroundColor: ({ theme }: Configuration) => ({
         ...theme("colors"),
       }),
-      borderColor: ({ theme }) => ({
+      borderColor: ({ theme }: Configuration) => ({
         ...theme("colors"),
       }),
       keyframes: {
@@ -145,9 +146,7 @@ export const config: Config = {
       },
       typography: ({
         theme,
-      }: {
-        theme: (path: string, defaultValue?: unknown) => any;
-      }) => ({
+      }: Configuration) => ({
         hotGreen: {
           css: {
             "--tw-prose-body": theme("colors.hotGreen"),
@@ -197,6 +196,4 @@ export const config: Config = {
       );
     }),
   ],
-};
-
-export default config;
+} satisfies Config;

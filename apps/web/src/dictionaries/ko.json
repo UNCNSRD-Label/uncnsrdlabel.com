@@ -1,4 +1,39 @@
 {
+  "actions": {
+    "SignUp": {
+      "title": "뉴스레터에 가입하세요",
+      "summary": "가입하고 첫 구매 시 10% 할인을 받으세요"
+    },
+    "SignUpForm": {
+      "message": "가입 확인을 기다리는 중",
+      "pattern": "입력한 값이 이메일 형식과 일치하지 않습니다.",
+      "placeholder": "뉴스레터에 가입하세요",
+      "required": "이메일 주소가 필요합니다",
+      "submit": "가입하기",
+      "toast": {
+        "close-alt": "이 메시지를 닫습니다",
+        "close-button": "닫다",
+        "error": "가입할 수 없습니다",
+        "success": "뉴스레터에 성공적으로 가입하셨습니다.",
+        "title": "뉴스레터 가입"
+      }
+    },
+    "SignUpForNotifications": {
+      "summary": "이 제품이 재입고되면 알림을 받으려면 등록하세요",
+      "title": "알림을 받으려면 등록하세요"
+    },
+    "SignUpForNotificationsForm": {
+      "placeholder": "당신의 이메일 주소를 입력 해주세요",
+      "submit": "가입하기",
+      "toast": {
+        "close-alt": "이 메시지를 닫습니다",
+        "close-button": "닫다",
+        "error": "가입할 수 없습니다",
+        "success": "알림 신청이 완료되었습니다.",
+        "title": "상품재고 알림 가입"
+      }
+    }
+  },
   "global": {
     "metadata": {
       "description": "당당하고 반항적인 영혼을 위한 브랜드 UNCNSRD를 만나보세요. ",

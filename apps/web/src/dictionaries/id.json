@@ -1,4 +1,39 @@
 {
+  "actions": {
+    "SignUp": {
+      "title": "Daftar ke buletin kami",
+      "summary": "Daftar dan dapatkan diskon 10% untuk pembelian pertama Anda"
+    },
+    "SignUpForm": {
+      "message": "Menunggu konfirmasi pendaftaran",
+      "pattern": "Nilai yang dimasukkan tidak cocok dengan format email",
+      "placeholder": "Daftar ke buletin kami",
+      "required": "Alamat email diperlukan",
+      "submit": "Mendaftar",
+      "toast": {
+        "close-alt": "Tutup pesan ini",
+        "close-button": "Menutup",
+        "error": "Tidak dapat mendaftar",
+        "success": "Anda telah berhasil mendaftar ke buletin kami",
+        "title": "Pendaftaran buletin"
+      }
+    },
+    "SignUpForNotifications": {
+      "summary": "Daftar untuk mendapat pemberitahuan bila produk ini tersedia kembali",
+      "title": "Mendaftarlah untuk mendapatkan notifikasi"
+    },
+    "SignUpForNotificationsForm": {
+      "placeholder": "Masukkan alamat email Anda",
+      "submit": "Mendaftar",
+      "toast": {
+        "close-alt": "Tutup pesan ini",
+        "close-button": "Menutup",
+        "error": "Tidak dapat mendaftar",
+        "success": "Anda telah berhasil mendaftar untuk menerima notifikasi",
+        "title": "Pendaftaran pemberitahuan stok produk"
+      }
+    }
+  },
   "global": {
     "metadata": {
       "description": "Temukan UNCNSRD, sebuah merek untuk jiwa pemberontak yang tidak menyesal. ",
