@@ -64,12 +64,12 @@ export function SignUpForm({
             id: "component.SignUpForm.toast.error",
           }),
           {
-            description: state?.message,
+            description: intl.formatMessage({ id: state?.messageKey }),
           },
         );
       }
     },
-    [hasError, state?.message],
+    [hasError, state?.messageKey],
     200,
     500,
   );
@@ -82,7 +82,9 @@ export function SignUpForm({
             id: "component.SignUpForm.toast.success",
           }),
           {
-            description: state?.message,
+            description: intl.formatMessage({
+              id: state?.messageKey,
+            }),
           },
         );
       }

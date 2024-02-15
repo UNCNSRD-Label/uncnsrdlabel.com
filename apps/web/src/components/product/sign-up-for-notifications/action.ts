@@ -1,10 +1,8 @@
 "use server";
 
-import { getDictionary } from "@/lib/dictionary";
 import { headers } from "@/lib/klaviyo";
 import { parseGid } from "@shopify/hydrogen";
 import { type KlaviyoResponse } from "@uncnsrdlabel/types";
-import { createIntl, type ResolvedIntlConfig } from "react-intl";
 
 export async function signUpForNotificationsAction(
   _currentState: any,
@@ -12,18 +10,8 @@ export async function signUpForNotificationsAction(
 ) {
   const _shopify_y = formData.get("_shopify_y");
   const email = formData.get("email");
-  const lang = formData.get("lang") as Intl.BCP47LanguageTag;
   const phone_number = formData.get("phone_number");
   const variant_id = formData.get("variant_id");
-
-  const dictionary = getDictionary({ lang });
-
-  const messages: ResolvedIntlConfig["messages"] = await dictionary;
-
-  const intl = createIntl({
-    locale: lang,
-    messages,
-  });
 
   if (!email) {
     console.error("email not set");
@@ -56,7 +44,7 @@ export async function signUpForNotificationsAction(
     };
   }
 
-  let message = intl.formatMessage({ id: "actions.signUpForNotificationsAction.error" });
+  let messageKey = "actions.signUpForNotificationsAction.error";
 
   let ok = false;
 
@@ -109,12 +97,12 @@ export async function signUpForNotificationsAction(
 
     if (response.ok) {
       if (response.status === 202) {
-        message = intl.formatMessage({ id: "actions.signUpForNotificationsAction.success" });
+        messageKey = "actions.signUpForNotificationsAction.success";
       }
     } else {
       console.error(response.status, response.statusText)
 
-      message = intl.formatMessage({ id: "actions.signUpForNotificationsAction.failed" }, { status: response.status });
+      messageKey = "actions.signUpForNotificationsAction.failed";
 
       if (response.status >= 300) {
         const json = (await response.json()) as KlaviyoResponse;
@@ -124,20 +112,20 @@ export async function signUpForNotificationsAction(
           console.error(json.errors);
         }
 
-        message = response.statusText ?? json.errors?.[0];
+        messageKey = response.statusText ?? json.errors?.[0];
       }
     }
   } catch (error) {
     console.error(error);
 
     if (error instanceof Error) {
-      message = error.message;
+      messageKey = error.message;
     } else if (typeof error === "string") {
-      message = error;
+      messageKey = error;
     }
   } finally {
     return {
-      message,
+      messageKey,
       ok,
       status,
     };

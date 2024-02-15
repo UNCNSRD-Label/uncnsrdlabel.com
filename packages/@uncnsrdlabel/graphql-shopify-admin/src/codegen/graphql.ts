@@ -24045,6 +24045,8 @@ export enum MetafieldOwnerType {
   Article = 'ARTICLE',
   /** The Blog metafield owner type. */
   Blog = 'BLOG',
+  /** The Cart Transform metafield owner type. */
+  Carttransform = 'CARTTRANSFORM',
   /** The Collection metafield owner type. */
   Collection = 'COLLECTION',
   /** The Company metafield owner type. */
@@ -26085,7 +26087,10 @@ export type Mutation = {
   orderEditCommit?: Maybe<OrderEditCommitPayload>;
   /** Removes a discount on the current order edit. For more information on how to use the GraphQL Admin API to edit an existing order, refer to [Edit existing orders](https://shopify.dev/apps/fulfillment/order-management-apps/order-editing). */
   orderEditRemoveDiscount?: Maybe<OrderEditRemoveDiscountPayload>;
-  /** Removes a line item discount that was applied as part of an order edit. */
+  /**
+   * Removes a line item discount that was applied as part of an order edit.
+   * @deprecated Use generic OrderEditRemoveDiscount mutation instead.
+   */
   orderEditRemoveLineItemDiscount?: Maybe<OrderEditRemoveLineItemDiscountPayload>;
   /** Sets the quantity of a line item on an order that is being edited. For more information on how to use the GraphQL Admin API to edit an existing order, refer to [Edit existing orders](https://shopify.dev/apps/fulfillment/order-management-apps/order-editing). */
   orderEditSetQuantity?: Maybe<OrderEditSetQuantityPayload>;
