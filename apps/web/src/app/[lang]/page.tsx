@@ -25,14 +25,16 @@ export default async function RootPage({ params: { lang } }: PageProps) {
         <NavbarContent lang={lang} />
       </Navbar>
       <main className="dark relative z-40 grid grid-rows-[1fr_auto] gap-2 bg-black pb-48">
+        <h1 className="sr-only">{intl.formatMessage({ id: "global.metadata.title" })}</h1>
         <section className="relative grid h-[100dvh] items-center overflow-hidden sm:snap-start">
+          <h2 className="sr-only">{intl.formatMessage({ id: `page.${handle}.campaign-video.title` })}</h2>
           <VideosHydrated handle={handle} lang={lang} />
           <Link
-            aria-label={intl.formatMessage({ id: `page.${handle}.shop-now` })}
+            aria-label={intl.formatMessage({ id: `page.${handle}.campaign-video.shop-now` })}
             className="btn btn-outline btn-primary btn-base absolute z-20 justify-self-center whitespace-nowrap uppercase"
             href="/search/all"
           >
-            {intl.formatMessage({ id: `page.${handle}.shop-now` })}
+            {intl.formatMessage({ id: `page.${handle}.campaign-video.shop-now` })}
           </Link>
         </section>
         <PageCarousel

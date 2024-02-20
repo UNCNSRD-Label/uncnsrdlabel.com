@@ -22,7 +22,8 @@
         "sarong": "pareo de malasia",
         "scarf": "bufanda",
         "boots": "botas"
-      }
+      },
+      "title": "CNUDMI | Trajes de baño inspirados en cortes atemporales y nostálgicos."
     },
     "footer": {
       "copyright": "© {currentYear} {siteName}. ",
@@ -47,7 +48,9 @@
       "button": "Intentar otra vez"
     },
     "home": {
-      "shop-now": "Compra ahora"
+      "campaign-video": {
+        "shop-now": "Compra ahora"
+      }
     },
     "not-found": {
       "title": "Extraviado",

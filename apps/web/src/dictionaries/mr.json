@@ -45,7 +45,8 @@
         "sarong": "सारोंग",
         "scarf": "स्कार्फ",
         "boots": "बूट"
-      }
+      },
+      "title": "UNCNSRD | कालातीत आणि नॉस्टॅल्जिक कट्सद्वारे प्रेरित स्विमवेअर"
     },
     "footer": {
       "copyright": "© {currentYear} {siteName}. ",
@@ -70,7 +71,9 @@
       "button": "पुन्हा प्रयत्न करा"
     },
     "home": {
-      "shop-now": "आता खरेदी करा"
+      "campaign-video": {
+        "shop-now": "आता खरेदी करा"
+      }
     },
     "not-found": {
       "title": "सापडले नाही",

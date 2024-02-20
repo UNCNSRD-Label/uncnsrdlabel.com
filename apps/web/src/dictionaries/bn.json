@@ -22,7 +22,8 @@
         "sarong": "সারং",
         "scarf": "ওড়না",
         "boots": "বুট"
-      }
+      },
+      "title": "UNCNSRD | নিরবধি এবং নস্টালজিক কাট দ্বারা অনুপ্রাণিত সাঁতারের পোশাক"
     },
     "footer": {
       "copyright": "© {currentYear} {siteName}। ",
@@ -47,7 +48,9 @@
       "button": "আবার চেষ্টা কর"
     },
     "home": {
-      "shop-now": "এখনই কিনুন"
+      "campaign-video": {
+        "shop-now": "এখনই কিনুন"
+      }
     },
     "not-found": {
       "title": "পাওয়া যায়নি",

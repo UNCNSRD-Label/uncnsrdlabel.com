@@ -22,7 +22,8 @@
         "sarong": "Sarong",
         "scarf": "Schal",
         "boots": "Stiefel"
-      }
+      },
+      "title": "UNCNSRD | Bademode inspiriert von zeitlosen und nostalgischen Schnitten"
     },
     "footer": {
       "copyright": "© {currentYear} {siteName}. ",
@@ -47,7 +48,9 @@
       "button": "Versuchen Sie es erneut"
     },
     "home": {
-      "shop-now": "Jetzt einkaufen"
+      "campaign-video": {
+        "shop-now": "Jetzt einkaufen"
+      }
     },
     "not-found": {
       "title": "Nicht gefunden",

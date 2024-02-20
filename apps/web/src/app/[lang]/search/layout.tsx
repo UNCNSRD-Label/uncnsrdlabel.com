@@ -29,7 +29,7 @@ export default async function SearchLayout({
       </Navbar>
       <div className="relative z-40 mx-auto flex min-h-[100dvh] w-full flex-col justify-center bg-white px-2 pb-48 pt-20 sm:px-4 md:flex-row">
         <Collections
-          className={cn("flex-none md:w-1/6", {
+          className={cn("flex-none md:w-1/6 order-1", {
             hidden:
               process.env.NEXT_PUBLIC_FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE !==
               "true",
@@ -37,7 +37,7 @@ export default async function SearchLayout({
           lang={lang}
         />
         <FilterList
-          className={cn("flex-none md:w-1/6", {
+          className={cn("flex-none md:w-1/6 order-3", {
             hidden:
               process.env.NEXT_PUBLIC_FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE !==
               "true",

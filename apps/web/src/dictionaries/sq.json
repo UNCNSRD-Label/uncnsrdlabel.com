@@ -45,7 +45,8 @@
         "sarong": "sarong",
         "scarf": "shall",
         "boots": "çizmet"
-      }
+      },
+      "title": "UNCNSRD | Rroba banje të frymëzuara nga prerje të përjetshme dhe nostalgjike"
     },
     "footer": {
       "copyright": "© {currentYear} {siteName}. ",
@@ -70,7 +71,9 @@
       "button": "Provo përsëri"
     },
     "home": {
-      "shop-now": "Bli Tani"
+      "campaign-video": {
+        "shop-now": "Bli Tani"
+      }
     },
     "not-found": {
       "title": "Nuk u gjet",

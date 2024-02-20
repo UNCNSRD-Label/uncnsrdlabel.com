@@ -22,7 +22,8 @@
         "sarong": "саронг",
         "scarf": "шал",
         "boots": "ботуши"
-      }
+      },
+      "title": "UNCNSRD | Бански костюми, вдъхновени от вечни и носталгични кройки"
     },
     "footer": {
       "copyright": "© {currentYear} {siteName}. ",
@@ -47,7 +48,9 @@
       "button": "Опитай пак"
     },
     "home": {
-      "shop-now": "Пазарувай сега"
+      "campaign-video": {
+        "shop-now": "Пазарувай сега"
+      }
     },
     "not-found": {
       "title": "Не е намерено",

@@ -70,6 +70,7 @@ export default async function PagePage({
 
   return (
     <Article key={page.handle} lang={lang} variables={{ handle }}>
+      <h1 className="sr-only">{page.title}</h1>
       {page.sections?.references?.nodes?.map(
         (pageSectionModuleFragmentRef, index) => {
           if (pageSectionModuleFragmentRef.__typename === "Metaobject") {

@@ -2,11 +2,9 @@
 
 import { Image } from "@/components/media/image";
 import { cn } from "@uncnsrdlabel/lib";
-import dynamic from "next/dynamic";
 import { forwardRef } from "react";
 import { type ReactPlayerProps } from "react-player";
-
-const ReactPlayer = dynamic(() => import("react-player/lazy"), { ssr: false });
+import ReactPlayer from 'react-player/file';
 
 export type VideoProps = ReactPlayerProps;
 

@@ -45,7 +45,8 @@
         "sarong": "سارونگ",
         "scarf": "سکارف",
         "boots": "جوتے"
-      }
+      },
+      "title": "UNCNSRD | بے وقت اور پرانی یادوں سے متاثر تیراکی کا لباس"
     },
     "footer": {
       "copyright": "© {currentYear} {siteName}۔ ",
@@ -70,7 +71,9 @@
       "button": "دوبارہ کوشش کریں"
     },
     "home": {
-      "shop-now": "ابھی خریداری کریں۔"
+      "campaign-video": {
+        "shop-now": "ابھی خریداری کریں۔"
+      }
     },
     "not-found": {
       "title": "نہیں ملا",

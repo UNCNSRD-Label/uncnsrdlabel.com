@@ -22,7 +22,8 @@
         "sarong": "sarong",
         "scarf": "scarf",
         "boots": "boots"
-      }
+      },
+      "title": "UNCNSRD | Swimwear inspired by timeless & nostalgic cuts"
     },
     "footer": {
       "copyright": "© {currentYear} {siteName}. All rights reserved.",
@@ -38,7 +39,7 @@
   },
   "page": {
     "collection": {
-      "title": "Collection",
+      "title": "Collection listings for {title}",
       "no-products-found": "No products found in this collection"
     },
     "error": {
@@ -47,7 +48,10 @@
       "button": "Try again"
     },
     "home": {
-      "shop-now": "Shop now"
+      "campaign-video": {
+        "shop-now": "Shop now",
+        "title": "Campaign Video"
+      }
     },
     "not-found": {
       "title": "Not found",
@@ -72,6 +76,7 @@
       "see-all": "See all",
       "see-details": "See details",
       "select-options": "Select options",
+      "title": "{title} product details",
       "view-all": "View all",
       "view-details": "View the details",
       "wishlist": "Wishlist"

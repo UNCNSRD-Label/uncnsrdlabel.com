@@ -73,12 +73,12 @@ export default async function SearchPage({
     <>
       {query ? (
         <header className="mb-8">
-          <span>
+          <h1>
             {intl.formatMessage(
               { id: `page.${handle}.results` },
               { query, results },
             )}
-          </span>
+          </h1>
         </header>
       ) : null}
       {productFragmentRefs.length > 0 ? (

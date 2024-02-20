@@ -51,22 +51,22 @@ const getDiscountNode = ({ lang }: { lang: Intl.BCP47LanguageTag }) => {
   switch (discountNode?.discount.__typename) {
     case "DiscountCodeBasic":
       markup = (
-        <span data-type="DiscountCodeBasic">
+        <div data-type="DiscountCodeBasic">
           {discountNode?.discount.title
             .replace(bannerPrefixForLang, "")
             .replace(bannerPrefix, "")}{" "}
           - {discountNode?.discount.shortSummary}
-        </span>
+        </div>
       );
 
     case "DiscountAutomaticBasic":
       markup = (
-        <span data-type="DiscountAutomaticBasic">
+        <div data-type="DiscountAutomaticBasic">
           {discountNode?.discount.title
             .replace(bannerPrefixForLang, "")
             .replace(bannerPrefix, "")}{" "}
           - {discountNode?.discount.shortSummary}
-        </span>
+        </div>
       );
   }
 
@@ -108,7 +108,7 @@ const getMetaobject = ({ lang }: { lang: Intl.BCP47LanguageTag }) => {
   const richTextResponse = convertSchemaToHtml(richTextSchema);
 
   markup = (
-    <span
+    <div
       data-id={metaobject.id}
       data-type="MetaObject"
       dangerouslySetInnerHTML={{
@@ -148,7 +148,7 @@ export const Banner = ({
   return (
     <article
       className={cn(
-        "bg-hotPink text-light pt-[min(theme(spacing.safeTop),_theme(spacing.6))] grid snap-start place-content-center p-6 text-xs uppercase sm:text-base",
+        "bg-hotPink text-dark pt-[min(theme(spacing.safeTop),_theme(spacing.6))] grid snap-start place-content-center p-6 text-xs uppercase sm:text-base",
         className,
       )}
     >

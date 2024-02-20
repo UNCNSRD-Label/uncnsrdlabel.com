@@ -45,7 +45,8 @@
         "sarong": "纱笼",
         "scarf": "围巾",
         "boots": "靴子"
-      }
+      },
+      "title": "UNCNSRD |泳装灵感源自永恒和怀旧的剪裁"
     },
     "footer": {
       "copyright": "© {当前年份} {站点名称}。",
@@ -70,7 +71,9 @@
       "button": "再试一次"
     },
     "home": {
-      "shop-now": "现在去购物"
+      "campaign-video": {
+        "shop-now": "现在去购物"
+      }
     },
     "not-found": {
       "title": "未找到",

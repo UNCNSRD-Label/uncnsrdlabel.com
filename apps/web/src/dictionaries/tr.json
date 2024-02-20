@@ -45,7 +45,8 @@
         "sarong": "Malaya peştemâli",
         "scarf": "atkı",
         "boots": "bot ayakkabı"
-      }
+      },
+      "title": "UNCNSRD | Zamansız ve nostaljik kesimlerden ilham alan mayolar"
     },
     "footer": {
       "copyright": "© {currentYear} {siteName}. ",
@@ -70,7 +71,9 @@
       "button": "Tekrar deneyin"
     },
     "home": {
-      "shop-now": "Şimdi satın al"
+      "campaign-video": {
+        "shop-now": "Şimdi satın al"
+      }
     },
     "not-found": {
       "title": "Bulunamadı",

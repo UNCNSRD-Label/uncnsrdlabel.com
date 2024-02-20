@@ -11,7 +11,7 @@ import {
   getLocalizationDetailsHandler,
   productCollectionDefaultSort,
   productCollectionSorting,
-  seoFragment
+  seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -20,9 +20,18 @@ import { createIntl, type ResolvedIntlConfig } from "react-intl";
 export async function generateMetadata({
   params: { collection: handle, lang },
 }: {
-  params: { collection: string; lang: Intl.BCP47LanguageTag; };
+  params: { collection: string; lang: Intl.BCP47LanguageTag };
 }): Promise<Metadata> {
   const localization = await getLocalizationDetailsHandler({ lang });
+
+  const messages: ResolvedIntlConfig["messages"] = await getDictionary({
+    lang,
+  });
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   const collectionFragmentRef = await getCollectionHandler({
     variables: { handle },
@@ -42,11 +51,13 @@ export async function generateMetadata({
       canonical: getCanonical(path),
       languages: getAlternativeLanguages({ localization, path }),
     },
-    title: seo?.title || collection.title,
+    title: seo?.title || intl.formatMessage(
+      { id: "page.collection.title" },
+      { title: collection.title },
+    ),
     description:
       seo?.description ||
-      collection.description ||
-      `${collection.title} products`,
+      collection.description,
   };
 }
 
@@ -54,10 +65,12 @@ export default async function CategoryPage({
   params: { collection: handle, lang },
   searchParams,
 }: {
-  params: { collection: string; lang: Intl.BCP47LanguageTag; };
+  params: { collection: string; lang: Intl.BCP47LanguageTag };
   searchParams?: { [key: string]: string | string[] | undefined };
 }) {
-  const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
+  const messages: ResolvedIntlConfig["messages"] = await getDictionary({
+    lang,
+  });
 
   const intl = createIntl({
     locale: lang,
@@ -65,9 +78,19 @@ export default async function CategoryPage({
   });
 
   const { sort } = searchParams as { [key: string]: string };
+
   const { sortKey, reverse } =
     productCollectionSorting.find((item) => item.slug === sort) ||
     productCollectionDefaultSort;
+
+  const collectionFragmentRef = await getCollectionHandler({
+    variables: { handle },
+    lang,
+  });
+
+  const collection = getFragmentData(collectionFragment, collectionFragmentRef);
+
+  if (!collection) return notFound();
 
   const collectionConnection = await getCollectionProductsHandler({
     variables: {
@@ -78,19 +101,39 @@ export default async function CategoryPage({
     lang,
   });
 
-  const productFragmentRefs = collectionConnection.edges.map((edge) => edge?.node);
+  const productFragmentRefs = collectionConnection.edges.map(
+    (edge) => edge?.node,
+  );
 
   const results = collectionConnection.edges.length;
 
   return (
     <>
+      <h1 className="sr-only">
+        {intl.formatMessage(
+          { id: "page.collection.title" },
+          { title: collection.title },
+        )}
+      </h1>
+      <h2 className="sr-only">
+        {intl.formatMessage(
+          { id: "page.search.results" },
+          { query: collection.title, results },
+        )}
+      </h2>
+      {collection.description && (
+        <div className="sr-only">{collection.description}</div>
+      )}
       {results === 0 ? (
         <p className="py-3 text-lg">
           {intl.formatMessage({ id: "page.collection.no-products-found" })}
         </p>
       ) : (
-        <Grid className="grid-cols-2 lg:grid-cols-3 w-full max-w-7xl">
-          <ProductGridItems lang={lang} productFragmentRefs={productFragmentRefs} />
+        <Grid className="w-full max-w-7xl grid-cols-2 lg:grid-cols-3 order-2">
+          <ProductGridItems
+            lang={lang}
+            productFragmentRefs={productFragmentRefs}
+          />
         </Grid>
       )}
     </>

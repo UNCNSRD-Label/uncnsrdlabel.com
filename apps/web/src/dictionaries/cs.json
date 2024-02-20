@@ -22,7 +22,8 @@
         "sarong": "sarong",
         "scarf": "šátek",
         "boots": "boty"
-      }
+      },
+      "title": "UNCNSRD | Plavky inspirované nadčasovými a nostalgickými střihy"
     },
     "footer": {
       "copyright": "© {currentYear} {siteName}. ",
@@ -47,7 +48,9 @@
       "button": "Zkus to znovu"
     },
     "home": {
-      "shop-now": "Kupuj teď"
+      "campaign-video": {
+        "shop-now": "Kupuj teď"
+      }
     },
     "not-found": {
       "title": "Nenalezeno",

@@ -45,7 +45,8 @@
         "sarong": "sarongas",
         "scarf": "skara",
         "boots": "batai"
-      }
+      },
+      "title": "UNCNSRD | Maudymosi kostiumėliai, įkvėpti nesenstančio ir nostalgiško kirpimo"
     },
     "footer": {
       "copyright": "© {currentYear} {siteName}. ",
@@ -70,7 +71,9 @@
       "button": "Bandyk iš naujo"
     },
     "home": {
-      "shop-now": "Apsipirk dabar"
+      "campaign-video": {
+        "shop-now": "Apsipirk dabar"
+      }
     },
     "not-found": {
       "title": "Nerastas",

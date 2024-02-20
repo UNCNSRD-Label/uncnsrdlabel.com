@@ -45,7 +45,8 @@
         "sarong": "sarong",
         "scarf": "eșarfă",
         "boots": "cizme"
-      }
+      },
+      "title": "UNCNSRD | Costume de baie inspirate din croieli atemporale și nostalgice"
     },
     "footer": {
       "copyright": "© {currentYear} {siteName}. ",
@@ -70,7 +71,9 @@
       "button": "Încearcă din nou"
     },
     "home": {
-      "shop-now": "Cumpără acum"
+      "campaign-video": {
+        "shop-now": "Cumpără acum"
+      }
     },
     "not-found": {
       "title": "Nu a fost găsit",
