@@ -89,8 +89,11 @@ export default async function CategoryPage({
           {intl.formatMessage({ id: "page.collection.no-products-found" })}
         </p>
       ) : (
-        <Grid className="grid-cols-2 lg:grid-cols-3 w-full max-w-7xl">
-          <ProductGridItems lang={lang} productFragmentRefs={productFragmentRefs} />
+        <Grid className="w-full max-w-7xl grid-cols-2 lg:grid-cols-3 order-2">
+          <ProductGridItems
+            lang={lang}
+            productFragmentRefs={productFragmentRefs}
+          />
         </Grid>
       )}
     </>
