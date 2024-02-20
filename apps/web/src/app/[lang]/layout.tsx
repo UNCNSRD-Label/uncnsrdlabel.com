@@ -71,6 +71,7 @@ export async function generateMetadata({
         getLocaleObjectFromIETFLanguageTag(lang),
       ),
     },
+    title: intl.formatMessage({ id: "global.metadata.title" }),
   };
 }
 

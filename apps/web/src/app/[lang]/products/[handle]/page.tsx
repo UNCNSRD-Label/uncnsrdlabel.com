@@ -1,7 +1,9 @@
 import { ProductDetails } from "@/components/product/details";
+import { getDictionary } from "@/lib/dictionary";
 import { getAlternativeLanguages } from "@/lib/i18n";
 import { getCanonical } from "@/lib/metadata";
 import { type PageProps } from "@/types/next";
+import { createIntl } from "@formatjs/intl";
 import {
   getFragmentData,
   getLocalizationDetailsHandler,
@@ -12,6 +14,7 @@ import {
 import { HIDDEN_PRODUCT_TAG, SITE_DOMAIN_WEB } from "@uncnsrdlabel/lib";
 import { type Metadata } from "next";
 import { notFound } from "next/navigation";
+import { type ResolvedIntlConfig } from "react-intl";
 import { Breadcrumb } from "./breadcrumb";
 import { RelatedProducts } from "./related-products";
 
@@ -19,6 +22,13 @@ export async function generateMetadata({
   params: { handle, lang },
 }: PageProps): Promise<Metadata> {
   const localization = await getLocalizationDetailsHandler({ lang });
+
+  const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   const path = `/products/${handle}`;
 
@@ -43,7 +53,7 @@ export async function generateMetadata({
       canonical: getCanonical(path),
       languages: getAlternativeLanguages({ localization, path }),
     },
-    title: seo.title || product.title,
+    title: seo.title || intl.formatMessage({ id: "page.products.title" }, { title: product.title }),
     description: seo.description || product.description,
     openGraph: {
       description: seo.description || product.description,
@@ -67,6 +77,13 @@ export async function generateMetadata({
 export default async function ProductPage({
   params: { handle, lang },
 }: PageProps) {
+  const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
+
   const productDetailsFragmentRef = await getProductDetailsByHandleHandler({
     variables: {
       handle,
@@ -76,6 +93,13 @@ export default async function ProductPage({
 
   if (!productDetailsFragmentRef) return notFound();
 
+  const product = getFragmentData(
+    productDetailsFragment,
+    productDetailsFragmentRef,
+  );
+
+  if (!product) return notFound();
+
   return (
     <div className="grid grid-rows-[1fr_auto] relative top-0 z-40">
       <Breadcrumb
@@ -83,6 +107,7 @@ export default async function ProductPage({
         productDetailsFragmentRef={productDetailsFragmentRef}
       />
       <main className="mb-16 grid grid-cols-12 content-center bg-inherit min-h-[max(100dvh,_theme(space.96))] lg:overflow-y-hidden [&:has(+_aside)]:mb-0 lg:sticky top-0">
+        <h1 className="sr-only">{intl.formatMessage({ id: "page.products.title" }, { title: product.title })}</h1>
         <ProductDetails lang={lang} productDetailsFragmentRef={productDetailsFragmentRef} />
         {/* <ProductAdditionalDetails productDetailsFragmentRef={productDetailsFragmentRef} /> */}
       </main>
