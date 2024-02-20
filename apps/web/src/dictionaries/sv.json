@@ -45,7 +45,8 @@
         "sarong": "sarong",
         "scarf": "scarf",
         "boots": "stövlar"
-      }
+      },
+      "title": "UNCNSRD | Badkläder inspirerade av tidlösa & nostalgiska snitt"
     },
     "footer": {
       "copyright": "© {currentYear} {siteName}. ",
@@ -70,7 +71,9 @@
       "button": "Försök igen"
     },
     "home": {
-      "shop-now": "Shoppa nu"
+      "campaign-video": {
+        "shop-now": "Shoppa nu"
+      }
     },
     "not-found": {
       "title": "Hittades inte",

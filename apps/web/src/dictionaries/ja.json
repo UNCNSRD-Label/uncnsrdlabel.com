@@ -45,7 +45,8 @@
         "sarong": "サロン",
         "scarf": "スカーフ",
         "boots": "ブーツ"
-      }
+      },
+      "title": "UNCNSRD |タイムレスでノスタルジックなカットからインスピレーションを得た水着"
     },
     "footer": {
       "copyright": "© {現在の年} {サイト名}。",
@@ -70,7 +71,9 @@
       "button": "もう一度やり直してください"
     },
     "home": {
-      "shop-now": "今すぐ購入"
+      "campaign-video": {
+        "shop-now": "今すぐ購入"
+      }
     },
     "not-found": {
       "title": "見つかりません",

@@ -22,7 +22,8 @@
         "sarong": "sarong",
         "scarf": "sall",
         "boots": "saapad"
-      }
+      },
+      "title": "UNCNSRD | Ajatutest ja nostalgilistest lõigetest inspireeritud ujumisriided"
     },
     "footer": {
       "copyright": "© {currentYear} {siteName}. ",
@@ -47,7 +48,9 @@
       "button": "Proovi uuesti"
     },
     "home": {
-      "shop-now": "Osta nüüd"
+      "campaign-video": {
+        "shop-now": "Osta nüüd"
+      }
     },
     "not-found": {
       "title": "Ei leitud",

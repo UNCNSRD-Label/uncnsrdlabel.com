@@ -45,7 +45,8 @@
         "sarong": "చీరకట్టు",
         "scarf": "కండువా",
         "boots": "బూట్లు"
-      }
+      },
+      "title": "UNCNSRD | టైమ్‌లెస్ & నోస్టాల్జిక్ కట్‌లచే స్ఫూర్తి పొందిన ఈత దుస్తుల"
     },
     "footer": {
       "copyright": "© {currentYear} {siteName}. ",
@@ -70,7 +71,9 @@
       "button": "మళ్లీ ప్రయత్నించండి"
     },
     "home": {
-      "shop-now": "ఇప్పుడు కొను"
+      "campaign-video": {
+        "shop-now": "ఇప్పుడు కొను"
+      }
     },
     "not-found": {
       "title": "దొరకలేదు",

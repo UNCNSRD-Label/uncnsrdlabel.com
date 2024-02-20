@@ -22,7 +22,8 @@
         "sarong": "sarong",
         "scarf": "foulard",
         "boots": "bottes"
-      }
+      },
+      "title": "UNCNRSRD | Des maillots de bain inspirés de coupes intemporelles et nostalgiques"
     },
     "footer": {
       "copyright": "© {currentYear} {siteName}. Tous droits réservés.",
@@ -47,7 +48,9 @@
       "button": "Essayer à nouveau"
     },
     "home": {
-      "shop-now": "Achetez maintenant"
+      "campaign-video": {
+        "shop-now": "Achetez maintenant"
+      }
     },
     "not-found": {
       "title": "Non fondé",

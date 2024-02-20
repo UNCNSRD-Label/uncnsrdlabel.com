@@ -45,7 +45,8 @@
         "sarong": "sarong",
         "scarf": "sciarpa",
         "boots": "stivali"
-      }
+      },
+      "title": "UNCNSRD | Costumi da bagno ispirati a tagli senza tempo e nostalgici"
     },
     "footer": {
       "copyright": "© {currentYear} {siteName}. ",
@@ -70,7 +71,9 @@
       "button": "Riprova"
     },
     "home": {
-      "shop-now": "Acquistare ora"
+      "campaign-video": {
+        "shop-now": "Acquistare ora"
+      }
     },
     "not-found": {
       "title": "Non trovato",

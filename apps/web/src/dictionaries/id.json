@@ -45,7 +45,8 @@
         "sarong": "sarung",
         "scarf": "syal",
         "boots": "sepatu bot"
-      }
+      },
+      "title": "UNCNSRD | Pakaian renang yang terinspirasi dari potongan yang abadi & penuh nostalgia"
     },
     "footer": {
       "copyright": "© {Tahun Saat Ini} {NamaSitus}. ",
@@ -70,7 +71,9 @@
       "button": "Coba lagi"
     },
     "home": {
-      "shop-now": "Berbelanja sekarang"
+      "campaign-video": {
+        "shop-now": "Berbelanja sekarang"
+      }
     },
     "not-found": {
       "title": "Tidak ditemukan",

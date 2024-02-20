@@ -45,7 +45,8 @@
         "sarong": "sarong",
         "scarf": "sjaal",
         "boots": "laarzen"
-      }
+      },
+      "title": "UNCNSRD | Badmode geïnspireerd op tijdloze en nostalgische snitten"
     },
     "footer": {
       "copyright": "© {huidigJaar} {sitenaam}. ",
@@ -70,7 +71,9 @@
       "button": "Probeer het nog eens"
     },
     "home": {
-      "shop-now": "Winkel nu"
+      "campaign-video": {
+        "shop-now": "Winkel nu"
+      }
     },
     "not-found": {
       "title": "Niet gevonden",

@@ -45,7 +45,8 @@
         "sarong": "maláji szoknya",
         "scarf": "sál",
         "boots": "csizma"
-      }
+      },
+      "title": "UNCNSRD | Időtlen és nosztalgikus szabások ihlette fürdőruhák"
     },
     "footer": {
       "copyright": "© {currentYear} {siteName}. ",
@@ -70,7 +71,9 @@
       "button": "Próbáld újra"
     },
     "home": {
-      "shop-now": "Vásárolj most"
+      "campaign-video": {
+        "shop-now": "Vásárolj most"
+      }
     },
     "not-found": {
       "title": "Nem található",

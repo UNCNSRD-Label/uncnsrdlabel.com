@@ -22,7 +22,8 @@
         "sarong": "σαρόνγκ",
         "scarf": "κασκόλ",
         "boots": "μπότες"
-      }
+      },
+      "title": "UNCNSRD | Μαγιό εμπνευσμένα από διαχρονικά & νοσταλγικά κοψίματα"
     },
     "footer": {
       "copyright": "© {currentYear} {siteName}. ",
@@ -47,7 +48,9 @@
       "button": "Προσπάθησε ξανά"
     },
     "home": {
-      "shop-now": "Ψώνισε τώρα"
+      "campaign-video": {
+        "shop-now": "Ψώνισε τώρα"
+      }
     },
     "not-found": {
       "title": "Δεν βρέθηκε",

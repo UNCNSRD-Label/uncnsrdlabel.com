@@ -28,11 +28,11 @@ export default async function RootPage({ params: { lang } }: PageProps) {
         <section className="relative grid h-[100dvh] items-center overflow-hidden sm:snap-start">
           <VideosHydrated handle={handle} lang={lang} />
           <Link
-            aria-label={intl.formatMessage({ id: `page.${handle}.shop-now` })}
+            aria-label={intl.formatMessage({ id: `page.${handle}.campaign-video.shop-now` })}
             className="btn btn-outline btn-primary btn-base absolute z-20 justify-self-center whitespace-nowrap uppercase"
             href="/search/all"
           >
-            {intl.formatMessage({ id: `page.${handle}.shop-now` })}
+            {intl.formatMessage({ id: `page.${handle}.campaign-video.shop-now` })}
           </Link>
         </section>
         <PageCarousel

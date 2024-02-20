@@ -45,7 +45,8 @@
         "sarong": "sarong",
         "scarf": "šal",
         "boots": "škornji"
-      }
+      },
+      "title": "UNCNSRD | Kopalke po navdihu brezčasnih in nostalgičnih krojev"
     },
     "footer": {
       "copyright": "© {currentYear} {siteName}. ",
@@ -70,7 +71,9 @@
       "button": "Poskusi ponovno"
     },
     "home": {
-      "shop-now": "Nakupujte zdaj"
+      "campaign-video": {
+        "shop-now": "Nakupujte zdaj"
+      }
     },
     "not-found": {
       "title": "Ni najdeno",

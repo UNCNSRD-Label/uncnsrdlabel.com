@@ -45,7 +45,8 @@
         "sarong": "sarong",
         "scarf": "szalik",
         "boots": "buty"
-      }
+      },
+      "title": "UNCNSRD | Stroje kąpielowe inspirowane ponadczasowymi i nostalgicznymi krojami"
     },
     "footer": {
       "copyright": "© {currentYear} {siteName}. ",
@@ -70,7 +71,9 @@
       "button": "Spróbuj ponownie"
     },
     "home": {
-      "shop-now": "Kupuj teraz"
+      "campaign-video": {
+        "shop-now": "Kupuj teraz"
+      }
     },
     "not-found": {
       "title": "Nie znaleziono",

@@ -22,7 +22,8 @@
         "sarong": "sarong",
         "scarf": "huivi",
         "boots": "saappaat"
-      }
+      },
+      "title": "UNCNSRD | Ajattomien ja nostalgisten leikkausten inspiroimat uimapuvut"
     },
     "footer": {
       "copyright": "© {currentYear} {siteName}. ",
@@ -47,7 +48,9 @@
       "button": "Yritä uudelleen"
     },
     "home": {
-      "shop-now": "Osta nyt"
+      "campaign-video": {
+        "shop-now": "Osta nyt"
+      }
     },
     "not-found": {
       "title": "Ei löydetty",

@@ -22,7 +22,8 @@
         "sarong": "ردائه",
         "scarf": "وشاح",
         "boots": "أحذية"
-      }
+      },
+      "title": "UNCNSRD | ملابس السباحة مستوحاة من الخالدة"
     },
     "footer": {
       "copyright": "© {currentYear} {siteName}. ",
@@ -47,7 +48,9 @@
       "button": "حاول ثانية"
     },
     "home": {
-      "shop-now": "تسوق الآن"
+      "campaign-video": {
+        "shop-now": "تسوق الآن"
+      }
     },
     "not-found": {
       "title": "غير معثور عليه",

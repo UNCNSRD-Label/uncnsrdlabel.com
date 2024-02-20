@@ -45,7 +45,8 @@
         "sarong": "саронг",
         "scarf": "шарф",
         "boots": "сапоги"
-      }
+      },
+      "title": "UNCNSRD | Купальники, вдохновленные вечными и ностальгическими фасонами"
     },
     "footer": {
       "copyright": "© {currentYear} {siteName}. ",
@@ -70,7 +71,9 @@
       "button": "Попробуйте еще раз"
     },
     "home": {
-      "shop-now": "Купить сейчас"
+      "campaign-video": {
+        "shop-now": "Купить сейчас"
+      }
     },
     "not-found": {
       "title": "Не найдено",

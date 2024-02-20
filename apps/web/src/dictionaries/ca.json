@@ -22,7 +22,8 @@
         "sarong": "sarong",
         "scarf": "bufanda",
         "boots": "botes"
-      }
+      },
+      "title": "UNCNSRD | Vestits de bany inspirats en talls atemporals i nostàlgics"
     },
     "footer": {
       "copyright": "© {currentYear} {siteName}. ",
@@ -47,7 +48,9 @@
       "button": "Torna-ho a provar"
     },
     "home": {
-      "shop-now": "Compra ara"
+      "campaign-video": {
+        "shop-now": "Compra ara"
+      }
     },
     "not-found": {
       "title": "No trobat",

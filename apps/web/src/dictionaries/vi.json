@@ -45,7 +45,8 @@
         "sarong": "xà rông",
         "scarf": "khăn quàng cổ",
         "boots": "bốt"
-      }
+      },
+      "title": "UNCNSRD | Đồ bơi lấy cảm hứng từ những đường cắt vượt thời gian và hoài cổ"
     },
     "footer": {
       "copyright": "© {currentYear} {siteName}. ",
@@ -70,7 +71,9 @@
       "button": "Thử lại"
     },
     "home": {
-      "shop-now": "Mua sắm ngay bây giờ"
+      "campaign-video": {
+        "shop-now": "Mua sắm ngay bây giờ"
+      }
     },
     "not-found": {
       "title": "Không tìm thấy",

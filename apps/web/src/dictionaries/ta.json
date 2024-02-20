@@ -45,7 +45,8 @@
         "sarong": "சேலை",
         "scarf": "தாவணி",
         "boots": "பூட்ஸ்"
-      }
+      },
+      "title": "UNCNSRD | காலமற்ற & ஏக்கமான வெட்டுக்களால் ஈர்க்கப்பட்ட நீச்சல் உடைகள்"
     },
     "footer": {
       "copyright": "© {currentYear} {siteName}. ",
@@ -70,7 +71,9 @@
       "button": "மீண்டும் முயற்சி செய்"
     },
     "home": {
-      "shop-now": "இப்பொழுது வாங்கு"
+      "campaign-video": {
+        "shop-now": "இப்பொழுது வாங்கு"
+      }
     },
     "not-found": {
       "title": "கிடைக்கவில்லை",

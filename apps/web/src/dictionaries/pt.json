@@ -45,7 +45,8 @@
         "sarong": "sarongue",
         "scarf": "lenço",
         "boots": "botas"
-      }
+      },
+      "title": "UNCNSRD | Trajes de banho inspirados em cortes atemporais e nostálgicos"
     },
     "footer": {
       "copyright": "© {atualano} {siteName}. ",
@@ -70,7 +71,9 @@
       "button": "Tente novamente"
     },
     "home": {
-      "shop-now": "Compre agora"
+      "campaign-video": {
+        "shop-now": "Compre agora"
+      }
     },
     "not-found": {
       "title": "Não encontrado",

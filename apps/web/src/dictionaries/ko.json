@@ -45,7 +45,8 @@
         "sarong": "사롱",
         "scarf": "스카프",
         "boots": "부츠"
-      }
+      },
+      "title": "UNCNSRD | 시대를 초월하고 향수를 불러일으키는 컷에서 영감을 받은 수영복"
     },
     "footer": {
       "copyright": "© {현재 연도} {siteName}. ",
@@ -70,7 +71,9 @@
       "button": "다시 시도하십시오"
     },
     "home": {
-      "shop-now": "지금 쇼핑하세요"
+      "campaign-video": {
+        "shop-now": "지금 쇼핑하세요"
+      }
     },
     "not-found": {
       "title": "찾을 수 없음",
