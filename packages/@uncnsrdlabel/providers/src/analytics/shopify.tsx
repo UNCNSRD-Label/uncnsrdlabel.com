@@ -66,25 +66,31 @@ export function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
     page: ({ payload }) => {
       // console.debug("shopify:page", { payload, config });
 
+      if (!payload.properties?.product) {
+        console.error("Product payload is missing properties");
+        return;
+      }
+
       const shopifyPageViewPayload: ShopifyPageViewPayload = {
         ...getClientBrowserParameters(),
         ...sendShopifyAnalyticsPayloadBase,
         /** Currency code. */
-        currency: payload.properties.product?.priceRange.minVariantPrice
+        currency: payload.properties.product.priceRange.minVariantPrice
           .currencyCode as CurrencyCode,
         /** Total value of products. */
-        totalValue: Number.parseInt(
-          payload.properties.product?.priceRange.minVariantPrice.amount,
-        ),
+        ...(payload.properties.product.priceRange.minVariantPrice?.amount && {
+          totalValue: Number.parseInt(
+            payload.properties.product.priceRange.minVariantPrice.amount,
+          ),
+        }),
         /** Product list. */
         products: [
           {
             ...payload.properties.product,
-            productGid: payload.properties.product?.id,
-            name: payload.properties.product?.title,
-            brand: payload.properties.product?.vendor,
-            price:
-              payload.properties.product?.priceRange.minVariantPrice.amount,
+            productGid: payload.properties.product.id,
+            name: payload.properties.product.title,
+            brand: payload.properties.product.vendor,
+            price: payload.properties.product.priceRange.minVariantPrice.amount,
           },
         ],
         /** Canonical url. */
@@ -110,26 +116,31 @@ export function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
       // Fire custom logic after analytics.track() calls
       // console.debug("shopify:trackEnd", { payload, config });
 
+      if (!payload.properties?.product) {
+        console.error("Product payload is missing properties");
+        return;
+      }
+
       if (payload.event === "product") {
         const shopifyPageViewPayload: ShopifyPageViewPayload = {
           ...getClientBrowserParameters(),
           ...sendShopifyAnalyticsPayloadBase,
           /** Currency code. */
-          currency: payload.properties.product?.priceRange.minVariantPrice
+          currency: payload.properties.product.priceRange.minVariantPrice
             .currencyCode as CurrencyCode,
           /** Total value of products. */
           totalValue: Number.parseInt(
-            payload.properties.product?.priceRange.minVariantPrice.amount,
+            payload.properties.product.priceRange.minVariantPrice.amount,
           ),
           /** Product list. */
           products: [
             {
               ...payload.properties.product,
-              productGid: payload.properties.product?.id,
-              name: payload.properties.product?.title,
-              brand: payload.properties.product?.vendor,
+              productGid: payload.properties.product.id,
+              name: payload.properties.product.title,
+              brand: payload.properties.product.vendor,
               price:
-                payload.properties.product?.priceRange.minVariantPrice.amount,
+                payload.properties.product.priceRange.minVariantPrice.amount,
             },
           ],
           /** Canonical url. */
@@ -160,21 +171,21 @@ export function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
             ...getClientBrowserParameters(),
             ...sendShopifyAnalyticsPayloadBase,
             /** Currency code. */
-            currency: payload.properties.product?.priceRange.minVariantPrice
+            currency: payload.properties.product.priceRange.minVariantPrice
               .currencyCode as CurrencyCode,
             /** Total value of products. */
             totalValue: Number.parseInt(
-              payload.properties.product?.priceRange.minVariantPrice.amount,
+              payload.properties.product.priceRange.minVariantPrice.amount,
             ),
             /** Product list. */
             products: [
               {
                 ...payload.properties.product,
-                productGid: payload.properties.product?.id,
-                name: payload.properties.product?.title,
-                brand: payload.properties.product?.vendor,
+                productGid: payload.properties.product.id,
+                name: payload.properties.product.title,
+                brand: payload.properties.product.vendor,
                 price:
-                  payload.properties.product?.priceRange.minVariantPrice.amount,
+                  payload.properties.product.priceRange.minVariantPrice.amount,
               },
             ],
             /** Shopify cart id in the form of `gid://shopify/Cart/<id>`. */
