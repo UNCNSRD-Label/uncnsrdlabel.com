@@ -1,11 +1,11 @@
 {
   "actions": {
-    "signUpAction": {
+    "signUpForNewsletterAction": {
       "error": "Während Ihrer Anfrage ist ein Fehler aufgetreten.",
       "failed": "Übermittlung der E-Mail-Adresse mit HTTP-Antwortcode fehlgeschlagen: {status}",
       "success": "Sie haben sich erfolgreich in unsere Mailingliste eingetragen"
     },
-    "signUpForNotificationsAction": {
+    "signUpForBackInStockSubscriptionAction": {
       "error": "Während Ihrer Anfrage ist ein Fehler aufgetreten.",
       "failed": "Übermittlung der E-Mail-Adresse mit HTTP-Antwortcode fehlgeschlagen: {status}",
       "success": "Sie haben sich erfolgreich für Benachrichtigungen angemeldet"
@@ -224,11 +224,11 @@
       "close": "Schließen Sie das Menü",
       "open": "Öffnen Sie das Menü"
     },
-    "SignUp": {
+    "SignUpForNewsletter": {
       "title": "Registriere dich für unseren Newsletter",
       "summary": "Melden Sie sich an und erhalten Sie 10 % Rabatt auf Ihren ersten Einkauf"
     },
-    "SignUpForm": {
+    "SignUpForNewsletterForm": {
       "message": "Warten auf Anmeldebestätigung",
       "pattern": "Der eingegebene Wert stimmt nicht mit dem E-Mail-Format überein",
       "placeholder": "Registriere dich für unseren Newsletter",

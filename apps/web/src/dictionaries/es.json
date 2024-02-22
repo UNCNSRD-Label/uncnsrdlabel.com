@@ -1,11 +1,11 @@
 {
   "actions": {
-    "signUpAction": {
+    "signUpForNewsletterAction": {
       "error": "Se produjo un error al procesar su solicitud.",
       "failed": "Error al enviar la dirección de correo electrónico con el código de respuesta HTTP: {código}",
       "success": "Te has registrado exitosamente en nuestra lista de correo"
     },
-    "signUpForNotificationsAction": {
+    "signUpForBackInStockSubscriptionAction": {
       "error": "Se produjo un error al procesar su solicitud.",
       "failed": "Error al enviar la dirección de correo electrónico con el código de respuesta HTTP: {código}",
       "success": "Te has registrado exitosamente para recibir notificaciones"
@@ -224,11 +224,11 @@
       "close": "Cerrar el menú",
       "open": "abre el menú"
     },
-    "SignUp": {
+    "SignUpForNewsletter": {
       "title": "Suscríbase a nuestro boletín de noticias",
       "summary": "Regístrate y recibe un 10% de descuento en tu primera compra"
     },
-    "SignUpForm": {
+    "SignUpForNewsletterForm": {
       "message": "Esperando confirmación de registro",
       "pattern": "El valor ingresado no coincide con el formato de correo electrónico",
       "placeholder": "Suscríbase a nuestro boletín de noticias",

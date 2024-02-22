@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUp": {
+    "SignUpForNewsletter": {
       "title": "Iscriviti alla nostra newsletter",
       "summary": "Iscriviti e ricevi uno sconto del 10% sul tuo primo acquisto"
     },
-    "SignUpForm": {
+    "SignUpForNewsletterForm": {
       "message": "In attesa della conferma dell'iscrizione",
       "pattern": "Il valore inserito non corrisponde al formato email",
       "placeholder": "Iscriviti alla nostra newsletter",
@@ -18,11 +18,11 @@
         "title": "Iscriviti alla Newsletter"
       }
     },
-    "SignUpForNotifications": {
+    "SignUpForBackInStockSubscription": {
       "summary": "Iscriviti per ricevere una notifica quando il prodotto sarà di nuovo disponibile",
       "title": "Iscriviti per ricevere notifiche"
     },
-    "SignUpForNotificationsForm": {
+    "SignUpForBackInStockSubscriptionForm": {
       "placeholder": "Inserisci il tuo indirizzo email",
       "submit": "Iscrizione",
       "toast": {
@@ -247,11 +247,11 @@
       "close": "Chiudi il menu",
       "open": "Apri il menù"
     },
-    "SignUp": {
+    "SignUpForNewsletter": {
       "title": "Iscriviti alla nostra newsletter",
       "summary": "Iscriviti e ricevi uno sconto del 10% sul tuo primo acquisto"
     },
-    "SignUpForm": {
+    "SignUpForNewsletterForm": {
       "message": "In attesa della conferma dell'iscrizione",
       "pattern": "Il valore inserito non corrisponde al formato email",
       "placeholder": "Iscriviti alla nostra newsletter",

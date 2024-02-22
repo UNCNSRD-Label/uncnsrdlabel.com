@@ -1,7 +1,7 @@
 import { AddToCart } from "@/components/cart/add-to-cart";
 import { PriceAndCompareAtPrice } from "@/components/price-and-compare-at-price";
 import { ProductDetailsTabs } from "@/components/product/details-tabs";
-import { SignUpForNotifications } from "@/components/product/sign-up-for-notifications";
+import { SignUpForBackInStockSubscription } from "@/components/product/sign-up-for-back-in-stock-subscription";
 import { SizeGuide } from "@/components/product/size-guide";
 import { SquarePlacement } from "@/components/product/square-placement";
 import { Tracking } from "@/components/product/tracking";
@@ -161,7 +161,7 @@ export async function ProductDetails({
                 ),
               }}
             />
-            <SignUpForNotifications
+            <SignUpForBackInStockSubscription
               className="mx-auto border p-4 md:w-2/3"
               handle={product.handle}
               lang={lang}

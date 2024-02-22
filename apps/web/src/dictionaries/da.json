@@ -1,11 +1,11 @@
 {
   "actions": {
-    "signUpAction": {
+    "signUpForNewsletterAction": {
       "error": "En fejl opstod under behandlingen af ​​din anmodning.",
       "failed": "Indsendelse af e-mailadresse mislykkedes med HTTP-svarkode: {status}",
       "success": "Du har tilmeldt dig vores mailingliste"
     },
-    "signUpForNotificationsAction": {
+    "signUpForBackInStockSubscriptionAction": {
       "error": "En fejl opstod under behandlingen af ​​din anmodning.",
       "failed": "Indsendelse af e-mailadresse mislykkedes med HTTP-svarkode: {status}",
       "success": "Du har tilmeldt dig meddelelser"
@@ -224,11 +224,11 @@
       "close": "Luk menuen",
       "open": "Åbn menuen"
     },
-    "SignUp": {
+    "SignUpForNewsletter": {
       "title": "Tilmeld dig vores nyhedsbrev",
       "summary": "Tilmeld dig og få 10% rabat på dit første køb"
     },
-    "SignUpForm": {
+    "SignUpForNewsletterForm": {
       "message": "Venter på bekræftelse af tilmelding",
       "pattern": "Den indtastede værdi matcher ikke e-mail-formatet",
       "placeholder": "Tilmeld dig vores nyhedsbrev",

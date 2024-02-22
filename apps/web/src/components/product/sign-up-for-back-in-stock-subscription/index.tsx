@@ -1,5 +1,5 @@
 import { LoadingDots } from "@/components/loading/dots";
-import { SignUpForNotificationsForm } from "@/components/product/sign-up-for-notifications/form";
+import { SignUpForBackInStockSubscriptionForm } from "@/components/product/sign-up-for-back-in-stock-subscription/form";
 import { getDictionary } from "@/lib/dictionary";
 import { type ProductOption } from "@shopify/hydrogen/storefront-api-types";
 import {
@@ -10,7 +10,7 @@ import { cn } from "@uncnsrdlabel/lib";
 import { Suspense } from "react";
 import { createIntl, type ResolvedIntlConfig } from "react-intl";
 
-export async function SignUpForNotifications({
+export async function SignUpForBackInStockSubscription({
   className,
   handle,
   lang,
@@ -34,13 +34,13 @@ export async function SignUpForNotifications({
   return (
     <section className={cn("grid gap-4", className)}>
       <h3 className="text-sm uppercase">
-        {intl.formatMessage({ id: "component.SignUpForNotifications.title" })}
+        {intl.formatMessage({ id: "component.SignUpForBackInStockSubscription.title" })}
       </h3>
       <span className="text-xs">
-        {intl.formatMessage({ id: "component.SignUpForNotifications.summary" })}
+        {intl.formatMessage({ id: "component.SignUpForBackInStockSubscription.summary" })}
       </span>
       <Suspense fallback={<LoadingDots />}>
-        <SignUpForNotificationsForm
+        <SignUpForBackInStockSubscriptionForm
           dictionary={dictionary}
           handle={handle}
           lang={lang}

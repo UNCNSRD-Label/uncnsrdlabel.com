@@ -4,7 +4,7 @@ import { headers } from "@/lib/klaviyo";
 import { parseGid } from "@shopify/hydrogen";
 import { type KlaviyoResponse } from "@uncnsrdlabel/types";
 
-export async function signUpForNotificationsAction(
+export async function signUpForBackInStockSubscriptionAction(
   _currentState: any,
   formData: FormData,
 ) {
@@ -44,7 +44,7 @@ export async function signUpForNotificationsAction(
     };
   }
 
-  let messageKey = "actions.signUpForNotificationsAction.error";
+  let messageKey = "actions.signUpForBackInStockSubscriptionAction.error";
 
   let ok = false;
 
@@ -97,12 +97,12 @@ export async function signUpForNotificationsAction(
 
     if (response.ok) {
       if (response.status === 202) {
-        messageKey = "actions.signUpForNotificationsAction.success";
+        messageKey = "actions.signUpForBackInStockSubscriptionAction.success";
       }
     } else {
       console.error(response.status, response.statusText)
 
-      messageKey = "actions.signUpForNotificationsAction.failed";
+      messageKey = "actions.signUpForBackInStockSubscriptionAction.failed";
 
       if (response.status >= 300) {
         const json = (await response.json()) as KlaviyoResponse;

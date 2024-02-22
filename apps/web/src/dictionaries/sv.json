@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUp": {
+    "SignUpForNewsletter": {
       "title": "Anmäl dig till vårt nyhetsbrev",
       "summary": "Registrera dig och få 10 % rabatt på ditt första köp"
     },
-    "SignUpForm": {
+    "SignUpForNewsletterForm": {
       "message": "Väntar på registreringsbekräftelse",
       "pattern": "Det angivna värdet matchar inte e-postformatet",
       "placeholder": "Anmäl dig till vårt nyhetsbrev",
@@ -18,11 +18,11 @@
         "title": "Nyhetsbrev anmälan"
       }
     },
-    "SignUpForNotifications": {
+    "SignUpForBackInStockSubscription": {
       "summary": "Registrera dig för att bli meddelad när denna produkt åter finns i lager",
       "title": "Registrera dig för aviseringar"
     },
-    "SignUpForNotificationsForm": {
+    "SignUpForBackInStockSubscriptionForm": {
       "placeholder": "Skriv in din mailadress",
       "submit": "Bli Medlem",
       "toast": {
@@ -247,11 +247,11 @@
       "close": "Stäng menyn",
       "open": "Öppna menyn"
     },
-    "SignUp": {
+    "SignUpForNewsletter": {
       "title": "Anmäl dig till vårt nyhetsbrev",
       "summary": "Registrera dig och få 10 % rabatt på ditt första köp"
     },
-    "SignUpForm": {
+    "SignUpForNewsletterForm": {
       "message": "Väntar på registreringsbekräftelse",
       "pattern": "Det angivna värdet matchar inte e-postformatet",
       "placeholder": "Anmäl dig till vårt nyhetsbrev",

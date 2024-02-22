@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUp": {
+    "SignUpForNewsletter": {
       "title": "Inscreva-se no nosso boletim",
       "summary": "Cadastre-se e receba 10% de desconto na sua primeira compra"
     },
-    "SignUpForm": {
+    "SignUpForNewsletterForm": {
       "message": "Aguardando confirmação de inscrição",
       "pattern": "O valor inserido não corresponde ao formato do e-mail",
       "placeholder": "Inscreva-se no nosso boletim",
@@ -18,11 +18,11 @@
         "title": "Inscrição no boletim informativo"
       }
     },
-    "SignUpForNotifications": {
+    "SignUpForBackInStockSubscription": {
       "summary": "Inscreva-se para ser notificado quando este produto estiver novamente em estoque",
       "title": "Inscreva-se para receber notificações"
     },
-    "SignUpForNotificationsForm": {
+    "SignUpForBackInStockSubscriptionForm": {
       "placeholder": "Insira o seu endereço de email",
       "submit": "Inscrever-se",
       "toast": {
@@ -247,11 +247,11 @@
       "close": "Fechar o cardápio",
       "open": "Abra o cardápio"
     },
-    "SignUp": {
+    "SignUpForNewsletter": {
       "title": "Inscreva-se no nosso boletim",
       "summary": "Cadastre-se e receba 10% de desconto na sua primeira compra"
     },
-    "SignUpForm": {
+    "SignUpForNewsletterForm": {
       "message": "Aguardando confirmação de inscrição",
       "pattern": "O valor inserido não corresponde ao formato do e-mail",
       "placeholder": "Inscreva-se no nosso boletim",

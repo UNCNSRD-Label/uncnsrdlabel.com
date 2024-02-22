@@ -1,5 +1,4 @@
-import { ImGithub, ImGoogle } from "react-icons/im";
-import { Button } from "../atoms/button";
+import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
   Card,
   CardContent,
@@ -7,9 +6,10 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "../atoms/card";
-import { Input } from "../atoms/input";
-import { Label } from "../atoms/label";
+} from "@uncnsrdlabel/components/atoms/card";
+import { Input } from "@uncnsrdlabel/components/atoms/input";
+import { Label } from "@uncnsrdlabel/components/atoms/label";
+import { ImGithub, ImGoogle } from "react-icons/im";
 
 export function AccountCreateForm({
   className,
