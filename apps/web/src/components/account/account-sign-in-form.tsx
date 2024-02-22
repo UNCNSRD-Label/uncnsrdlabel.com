@@ -110,7 +110,6 @@ export function SignInToAccountForm({
 
   return (
     <form action={signInToAccount} className={cn("grid gap-4", className)}>
-      <h2 className="text-xl">Sign in to your account</h2>
       <div>
         <Label htmlFor="email">
           {intl.formatMessage({
@@ -138,7 +137,7 @@ export function SignInToAccountForm({
         />
       </div>
       <div>
-        <Checkbox id="remember" />
+        <Checkbox id="remember" name="remember" />
         <Label className="ml-2" htmlFor="remember">
           Remember me
         </Label>

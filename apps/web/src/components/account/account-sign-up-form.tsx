@@ -109,7 +109,6 @@ export function SignUpForAccountForm({
 
   return (
     <form action={signUpForAccount} className={cn("grid gap-4", className)}>
-      <h2 className="text-xl">Create an account</h2>
       <div>
         <Label htmlFor="email">
           {intl.formatMessage({

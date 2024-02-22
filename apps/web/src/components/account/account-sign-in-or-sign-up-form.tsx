@@ -1,5 +1,7 @@
 "use client";
 
+import { SignInToAccountForm } from "@/components/account/account-sign-in-form";
+import { SignUpForAccountForm } from "@/components/account/account-sign-up-form";
 import { createIntl } from "@formatjs/intl";
 import {
   Tabs,
@@ -9,8 +11,6 @@ import {
 } from "@uncnsrdlabel/components/atoms/tabs";
 import { Usable, use, useState } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
-import { SignInToAccountForm } from "./account-sign-in-form";
-import { SignUpForAccountForm } from "./account-sign-up-form";
 
 export function SignInOrSignUpForAccountForm({
   dictionary,
@@ -50,6 +50,7 @@ export function SignInOrSignUpForAccountForm({
           </TabsTrigger>
         </TabsList>
         <TabsContent value="sign-in">
+          <h2 className="text-xl">Sign in to your account</h2>
           <SignInToAccountForm
             dictionary={dictionary}
             lang={lang}
@@ -57,6 +58,7 @@ export function SignInOrSignUpForAccountForm({
           />
         </TabsContent>
         <TabsContent value="sign-up">
+          <h2 className="text-xl">Sign up for an account</h2>
           <SignUpForAccountForm
             dictionary={dictionary}
             lang={lang}

@@ -1,7 +1,7 @@
 "use server";
 
 import { signInToAccountHandler, signUpForAccountHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { parseISO } from "date-fns";
+import { add, parseISO } from "date-fns";
 import { cookies } from 'next/headers';
 
 export async function signInToAccountAction(
@@ -10,6 +10,7 @@ export async function signInToAccountAction(
 ) {
   const email = formData.get("email");
   const password = formData.get("password");
+  const remember = formData.get("remember");
 
   if (!email) {
     throw new Error("email not set");
@@ -28,16 +29,24 @@ export async function signInToAccountAction(
   let status = 500;
 
   const variables = { input: { email: email as string, password: password as string } }
-
+console.log('variables', variables)
   try {
     const signInToAccountResponse = await signInToAccountHandler({ variables });
 
-    if (signInToAccountResponse.customerAccessTokenCreate?.customerAccessToken) {
+    const customerAccessToken = signInToAccountResponse.customerAccessTokenCreate?.customerAccessToken;
+
+    if (customerAccessToken) {
       ok = true;
 
       status = 202;
 
       messageKey = "actions.signInToAccountAction.success";
+
+      const expires = remember === 'on' ? parseISO(customerAccessToken.expiresAt) : add(new Date(), {
+        hours: 1,
+      });
+
+      cookies().set('accessToken', customerAccessToken.accessToken, { expires })
     } else {
       console.error(signInToAccountResponse.customerAccessTokenCreate?.customerUserErrors);
 

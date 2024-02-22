@@ -3,6 +3,7 @@ import { getDictionary } from "@/lib/dictionary";
 import { type PageProps } from "@/types/next";
 import { Metadata } from "next";
 // import { redirect } from 'next/navigation';
+import { cookies } from 'next/headers';
 
 export const metadata: Metadata = {
   title: "Account",
@@ -12,13 +13,19 @@ export const metadata: Metadata = {
 export default function AccountPage({
   params: { lang },
 }: PageProps) {
-  // const account = false;
-  
-  // if (account) {
-  //   redirect('/account/details')
-  // }
-
   const dictionary = getDictionary({ lang });
 
-  return <SignInOrSignUpForAccountForm className="max-w-lg" dictionary={dictionary} lang={lang} />;
+  const accessToken = cookies().get('accessToken');
+  
+  if (!accessToken) {
+    // redirect('/account/details')
+    return <SignInOrSignUpForAccountForm dictionary={dictionary} lang={lang} />;
+  }
+
+  return (
+    <div>
+      <h1>Account</h1>
+      <p>Sign up or sign in to your account</p>
+    </div>
+  );
 }
