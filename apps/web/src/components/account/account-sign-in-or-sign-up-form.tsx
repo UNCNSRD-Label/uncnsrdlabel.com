@@ -9,8 +9,8 @@ import {
 } from "@uncnsrdlabel/components/atoms/tabs";
 import { Usable, use, useState } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
-// import { SignInToAccountForm } from "./account-sign-in-form";
-// import { SignUpForAccountForm } from "./account-sign-up-form";
+import { SignInToAccountForm } from "./account-sign-in-form";
+import { SignUpForAccountForm } from "./account-sign-up-form";
 
 export function SignInOrSignUpForAccountForm({
   dictionary,
@@ -50,18 +50,18 @@ export function SignInOrSignUpForAccountForm({
           </TabsTrigger>
         </TabsList>
         <TabsContent value="sign-in">
-          {/* <SignInToAccountForm
+          <SignInToAccountForm
             dictionary={dictionary}
             lang={lang}
             setActiveTab={setActiveTab}
-          /> */}
+          />
         </TabsContent>
         <TabsContent value="sign-up">
-          {/* <SignUpForAccountForm
+          <SignUpForAccountForm
             dictionary={dictionary}
             lang={lang}
             setActiveTab={setActiveTab}
-          /> */}
+          />
         </TabsContent>
       </Tabs>
     </>
