@@ -1,11 +1,11 @@
 {
   "actions": {
-    "signUpAction": {
+    "signUpForNewsletterAction": {
       "error": "Une erreur s'est produite lors du traitement de votre demande.",
       "failed": "Échec de l'envoi de l'adresse e-mail avec le code de réponse HTTP : {status}",
       "success": "Vous vous êtes inscrit avec succès à notre liste de diffusion"
     },
-    "signUpForNotificationsAction": {
+    "signUpForBackInStockSubscriptionAction": {
       "error": "Une erreur s'est produite lors du traitement de votre demande.",
       "failed": "Échec de l'envoi de l'adresse e-mail avec le code de réponse HTTP : {status}",
       "success": "Vous vous êtes inscrit avec succès aux notifications"
@@ -228,11 +228,11 @@
       "close": "Fermer le menu",
       "open": "Ouvrir le menu"
     },
-    "SignUp": {
+    "SignUpForNewsletter": {
       "title": "Abonnez-vous à notre lettre d'information",
       "summary": "Inscrivez-vous et recevez 10% de réduction sur votre premier achat"
     },
-    "SignUpForm": {
+    "SignUpForNewsletterForm": {
       "message": "En attente de confirmation d'inscription",
       "pattern": "La valeur saisie ne correspond pas au format de l'e-mail",
       "placeholder": "Abonnez-vous à notre lettre d'information",
@@ -246,11 +246,11 @@
         "title": "Inscription à la newsletter"
       }
     },
-    "SignUpForNotifications": {
+    "SignUpForBackInStockSubscription": {
       "summary": "Inscrivez-vous pour être averti lorsque ce produit sera de nouveau en stock",
       "title": "Inscrivez-vous aux notifications"
     },
-    "SignUpForNotificationsForm": {
+    "SignUpForBackInStockSubscriptionForm": {
       "placeholder": "Entrez votre adresse email",
       "submit": "S'inscrire",
       "toast": {

@@ -324,15 +324,6 @@ const nextConfig = {
   },
   poweredByHeader: false,
   reactStrictMode: true,
-  async redirects() {
-    return [
-      {
-        source: "/account",
-        destination: "https://account.uncnsrdlabel.com",
-        permanent: true,
-      },
-    ];
-  },
   transpilePackages: [
     "@uncnsrdlabel/graphql-shopify-admin",
     "@uncnsrdlabel/graphql-shopify-storefront",

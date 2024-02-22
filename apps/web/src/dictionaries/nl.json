@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUp": {
+    "SignUpForNewsletter": {
       "title": "Schrijf je in voor onze nieuwsbrief",
       "summary": "Meld u aan en ontvang 10% korting op uw eerste aankoop"
     },
-    "SignUpForm": {
+    "SignUpForNewsletterForm": {
       "message": "Wachten op aanmeldingsbevestiging",
       "pattern": "De ingevoerde waarde komt niet overeen met het e-mailformaat",
       "placeholder": "Schrijf je in voor onze nieuwsbrief",
@@ -18,11 +18,11 @@
         "title": "Aanmelding nieuwsbrief"
       }
     },
-    "SignUpForNotifications": {
+    "SignUpForBackInStockSubscription": {
       "summary": "Meld u aan om op de hoogte te worden gesteld wanneer dit product weer op voorraad is",
       "title": "Meld u aan voor meldingen"
     },
-    "SignUpForNotificationsForm": {
+    "SignUpForBackInStockSubscriptionForm": {
       "placeholder": "Vul je e-mailadres in",
       "submit": "Aanmelden",
       "toast": {
@@ -247,11 +247,11 @@
       "close": "Sluit het menu",
       "open": "Open het menu"
     },
-    "SignUp": {
+    "SignUpForNewsletter": {
       "title": "Schrijf je in voor onze nieuwsbrief",
       "summary": "Meld u aan en ontvang 10% korting op uw eerste aankoop"
     },
-    "SignUpForm": {
+    "SignUpForNewsletterForm": {
       "message": "Wachten op aanmeldingsbevestiging",
       "pattern": "De ingevoerde waarde komt niet overeen met het e-mailformaat",
       "placeholder": "Schrijf je in voor onze nieuwsbrief",

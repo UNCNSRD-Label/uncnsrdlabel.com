@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUp": {
+    "SignUpForNewsletter": {
       "title": "మా వార్తాలేఖకు సైన్ అప్ చేయండి",
       "summary": "సైన్ అప్ చేయండి మరియు మీ మొదటి కొనుగోలుపై 10% తగ్గింపు పొందండి"
     },
-    "SignUpForm": {
+    "SignUpForNewsletterForm": {
       "message": "సైన్అప్ నిర్ధారణ కోసం వేచి ఉంది",
       "pattern": "నమోదు చేసిన విలువ ఇమెయిల్ ఆకృతికి సరిపోలలేదు",
       "placeholder": "మా వార్తాలేఖకు సైన్ అప్ చేయండి",
@@ -18,11 +18,11 @@
         "title": "వార్తాలేఖ సైన్అప్"
       }
     },
-    "SignUpForNotifications": {
+    "SignUpForBackInStockSubscription": {
       "summary": "ఈ ఉత్పత్తి తిరిగి స్టాక్‌లో ఉన్నప్పుడు తెలియజేయడానికి సైన్ అప్ చేయండి",
       "title": "నోటిఫికేషన్‌ల కోసం సైన్ అప్ చేయండి"
     },
-    "SignUpForNotificationsForm": {
+    "SignUpForBackInStockSubscriptionForm": {
       "placeholder": "మీ ఈ మెయిల్ వివరాలని నమోదు చేయండి",
       "submit": "చేరడం",
       "toast": {
@@ -247,11 +247,11 @@
       "close": "మెనుని మూసివేయండి",
       "open": "మెనుని తెరవండి"
     },
-    "SignUp": {
+    "SignUpForNewsletter": {
       "title": "మా వార్తాలేఖకు సైన్ అప్ చేయండి",
       "summary": "సైన్ అప్ చేయండి మరియు మీ మొదటి కొనుగోలుపై 10% తగ్గింపు పొందండి"
     },
-    "SignUpForm": {
+    "SignUpForNewsletterForm": {
       "message": "సైన్అప్ నిర్ధారణ కోసం వేచి ఉంది",
       "pattern": "నమోదు చేసిన విలువ ఇమెయిల్ ఆకృతికి సరిపోలలేదు",
       "placeholder": "మా వార్తాలేఖకు సైన్ అప్ చేయండి",

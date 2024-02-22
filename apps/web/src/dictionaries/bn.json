@@ -1,11 +1,11 @@
 {
   "actions": {
-    "signUpAction": {
+    "signUpForNewsletterAction": {
       "error": "আপনার অনুরোধ প্রক্রিয়াকরণের সময় একটি ত্রুটি ঘটেছে।",
       "failed": "HTTP প্রতিক্রিয়া কোড সহ ইমেল ঠিকানা জমা দেওয়া ব্যর্থ হয়েছে: {status}",
       "success": "আপনি সফলভাবে আমাদের মেইলিং তালিকায় সাইন আপ করেছেন"
     },
-    "signUpForNotificationsAction": {
+    "signUpForBackInStockSubscriptionAction": {
       "error": "আপনার অনুরোধ প্রক্রিয়াকরণের সময় একটি ত্রুটি ঘটেছে।",
       "failed": "HTTP প্রতিক্রিয়া কোড সহ ইমেল ঠিকানা জমা দেওয়া ব্যর্থ হয়েছে: {status}",
       "success": "আপনি সফলভাবে বিজ্ঞপ্তিগুলির জন্য সাইন আপ করেছেন৷"
@@ -224,11 +224,11 @@
       "close": "মেনু বন্ধ করুন",
       "open": "মেনু খুলুন"
     },
-    "SignUp": {
+    "SignUpForNewsletter": {
       "title": "আমাদের নিউজলেটার সাইন আপ করুন",
       "summary": "সাইন আপ করুন এবং আপনার প্রথম কেনাকাটায় 10% ছাড় পান"
     },
-    "SignUpForm": {
+    "SignUpForNewsletterForm": {
       "message": "সাইনআপ নিশ্চিতকরণের জন্য অপেক্ষা করা হচ্ছে",
       "pattern": "প্রবেশ করা মান ইমেল বিন্যাস মেলে না",
       "placeholder": "আমাদের নিউজলেটার সাইন আপ করুন",

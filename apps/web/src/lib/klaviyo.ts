@@ -33,7 +33,7 @@ export async function findUserByEmail(formData: FormData) {
         console.error("phone_number not set");
     }
 
-    let message = intl.formatMessage({ id: "actions.signUpForNotificationsAction.error" });
+    let message = intl.formatMessage({ id: "actions.signUpForBackInStockSubscriptionAction.error" });
 
     let ok = false;
 
@@ -90,12 +90,12 @@ export async function findUserByEmail(formData: FormData) {
             }
 
             if (response.status === 202) {
-                message = intl.formatMessage({ id: "actions.signUpForNotificationsAction.success" });
+                message = intl.formatMessage({ id: "actions.signUpForBackInStockSubscriptionAction.success" });
             }
         } else {
             console.error(response?.status, response?.statusText)
 
-            message = intl.formatMessage({ id: "actions.signUpForNotificationsAction.failed" }, { status: response?.status });
+            message = intl.formatMessage({ id: "actions.signUpForBackInStockSubscriptionAction.failed" }, { status: response?.status });
         }
     } catch (error) {
         console.error(error);

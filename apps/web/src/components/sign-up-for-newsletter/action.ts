@@ -3,7 +3,7 @@
 import { headers } from "@/lib/klaviyo";
 import { type KlaviyoResponse } from "@uncnsrdlabel/types";
 
-export async function signUpAction(
+export async function signUpForNewsletterAction(
   _currentState: any,
   formData: FormData,
 ) {
@@ -19,7 +19,7 @@ export async function signUpAction(
     console.error("phone_number not set");
   }
 
-  let messageKey = "actions.signUpAction.error";
+  let messageKey = "actions.signUpForNewsletterAction.error";
 
   let ok = false;
 
@@ -68,12 +68,12 @@ export async function signUpAction(
 
     if (response.ok) {
       if (response.status === 202) {
-        messageKey = "actions.signUpAction.success";
+        messageKey = "actions.signUpForNewsletterAction.success";
       }
     } else {
       console.error(response.status, response.statusText)
 
-      messageKey = "actions.signUpAction.failed";
+      messageKey = "actions.signUpForNewsletterAction.failed";
 
       if (response.status >= 300) {
         const json = (await response.json()) as KlaviyoResponse;

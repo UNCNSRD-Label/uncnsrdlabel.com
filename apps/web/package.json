@@ -49,6 +49,7 @@
     "bcp-47": "^2.1.0",
     "cookies-next": "^4.1.1",
     "cross-env": "^7.0.3",
+    "date-fns": "^3.3.1",
     "deepmerge": "^4.3.1",
     "dot-prop": "^8.0.2",
     "framer-motion": "^11.0.5",

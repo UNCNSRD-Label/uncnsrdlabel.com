@@ -1,22 +1,7 @@
-import { CollectionFragment } from "./codegen/graphql";
-import { getFragmentData } from "./codegen/index";
-import { domain } from "./constants";
 import {
-  addToCartMutation,
-  createCartMutation,
-  editCartItemsMutation,
-  removeFromCartMutation,
-} from "./mutations/cart";
-import {
-  getCollectionProductsQuery,
-  getCollectionQuery,
-  getCollectionsQuery,
-} from "./queries/collection";
-import { getInContextVariables } from "./utilities";
-// import { collectionFragment } from "./fragments/collection";
-import {
-  AddToCartMutationVariables,
-  CreateCartMutationVariables,
+  AddToCartMutationVariables, CollectionFragment, CreateCartMutationVariables,
+  CustomerAccessTokenCreateMutationVariables,
+  CustomerCreateMutationVariables,
   EditCartItemsMutationVariables,
   GetCartQueryVariables,
   GetCollectionProductsQueryVariables,
@@ -34,7 +19,21 @@ import {
   GetRouteMetaObjectQueryVariables,
   RemoveFromCartMutationVariables
 } from "./codegen/graphql";
+import { getFragmentData } from "./codegen/index";
+import { domain } from "./constants";
 import { collectionFragment } from "./fragments/index";
+import {
+  addToCartMutation,
+  createCartMutation,
+  editCartItemsMutation,
+  removeFromCartMutation,
+} from "./mutations/cart";
+import { customerAccessTokenCreateMutation, customerCreateMutation } from "./mutations/customer";
+import {
+  getCollectionProductsQuery,
+  getCollectionQuery,
+  getCollectionsQuery,
+} from "./queries/collection";
 import {
   getCartQuery,
   getLocalizationDetailsQuery,
@@ -51,7 +50,7 @@ import {
   getShopDetailsQuery,
   getShopPoliciesQuery
 } from "./queries/index";
-import { getShopifyGraphQL } from "./utilities";
+import { getInContextVariables, getShopifyGraphQL } from "./utilities";
 
 export async function createCartHandler({ variables }: {
   variables: CreateCartMutationVariables,
@@ -108,6 +107,22 @@ export async function removeFromCartHandler({ variables }: {
   }
 
   return cartFragmentRef;
+}
+
+export async function signInToAccountHandler({ variables }: {
+  variables: CustomerAccessTokenCreateMutationVariables,
+}) {
+  const customerAccessTokenCreatePayload = await getShopifyGraphQL(customerAccessTokenCreateMutation, variables);
+
+  return customerAccessTokenCreatePayload;
+}
+
+export async function signUpForAccountHandler({ variables }: {
+  variables: CustomerCreateMutationVariables,
+}) {
+  const customerCreatePayload = await getShopifyGraphQL(customerCreateMutation, variables);
+
+  return customerCreatePayload;
 }
 
 export async function updateCartHandler({ variables }: {

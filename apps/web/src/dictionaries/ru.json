@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUp": {
+    "SignUpForNewsletter": {
       "title": "Подписаться на нашу рассылку",
       "summary": "Зарегистрируйтесь и получите скидку 10% на первую покупку"
     },
-    "SignUpForm": {
+    "SignUpForNewsletterForm": {
       "message": "Ожидание подтверждения регистрации",
       "pattern": "Введенное значение не соответствует формату электронной почты.",
       "placeholder": "Подписаться на нашу рассылку",
@@ -18,11 +18,11 @@
         "title": "Подписаться на новости"
       }
     },
-    "SignUpForNotifications": {
+    "SignUpForBackInStockSubscription": {
       "summary": "Подпишитесь, чтобы получить уведомление, когда этот товар снова появится на складе",
       "title": "Подпишитесь на уведомления"
     },
-    "SignUpForNotificationsForm": {
+    "SignUpForBackInStockSubscriptionForm": {
       "placeholder": "Введите ваш адрес электронной почты",
       "submit": "Зарегистрироваться",
       "toast": {
@@ -247,11 +247,11 @@
       "close": "Закрыть меню",
       "open": "Открыть меню"
     },
-    "SignUp": {
+    "SignUpForNewsletter": {
       "title": "Подписаться на нашу рассылку",
       "summary": "Зарегистрируйтесь и получите скидку 10% на первую покупку"
     },
-    "SignUpForm": {
+    "SignUpForNewsletterForm": {
       "message": "Ожидание подтверждения регистрации",
       "pattern": "Введенное значение не соответствует формату электронной почты.",
       "placeholder": "Подписаться на нашу рассылку",

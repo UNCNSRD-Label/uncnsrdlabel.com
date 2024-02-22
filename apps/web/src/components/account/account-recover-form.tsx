@@ -1,14 +1,14 @@
-import { Button } from "../atoms/button";
+import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "../atoms/card";
-import { Input } from "../atoms/input";
-import { Label } from "../atoms/label";
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@uncnsrdlabel/components/atoms/card";
+import { Input } from "@uncnsrdlabel/components/atoms/input";
+import { Label } from "@uncnsrdlabel/components/atoms/label";
 
 export function AccountRecoverForm({
   className,

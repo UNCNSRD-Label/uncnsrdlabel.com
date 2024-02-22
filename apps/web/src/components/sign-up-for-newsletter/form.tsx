@@ -1,6 +1,6 @@
 "use client";
 
-import { signUpAction } from "@/components/sign-up/action";
+import { signUpForNewsletterAction } from "@/components/sign-up-for-newsletter/action";
 import { createIntl } from "@formatjs/intl";
 import { useDebouncedEffect } from "@react-hookz/web";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
@@ -31,12 +31,12 @@ function Submit({
 
   return (
     <Button className={className} disabled={pending} variant="ghost">
-      {intl.formatMessage({ id: "component.SignUpForm.submit" })}
+      {intl.formatMessage({ id: "component.SignUpForNewsletterForm.submit" })}
     </Button>
   );
 }
 
-export function SignUpForm({
+export function SignUpForNewsletterForm({
   className,
   dictionary,
   lang,
@@ -52,7 +52,7 @@ export function SignUpForm({
     messages,
   });
 
-  const [state, formAction] = useFormState(signUpAction, null);
+  const [state, formAction] = useFormState(signUpForNewsletterAction, null);
 
   const hasError = (state && state.status > 299) ?? false;
 
@@ -61,7 +61,7 @@ export function SignUpForm({
       if (hasError) {
         toast.error(
           intl.formatMessage({
-            id: "component.SignUpForm.toast.error",
+            id: "component.SignUpForNewsletterForm.toast.error",
           }),
           {
             description: intl.formatMessage({ id: state?.messageKey }),
@@ -79,7 +79,7 @@ export function SignUpForm({
       if (state?.ok) {
         toast.success(
           intl.formatMessage({
-            id: "component.SignUpForm.toast.success",
+            id: "component.SignUpForNewsletterForm.toast.success",
           }),
           {
             description: intl.formatMessage({
@@ -108,12 +108,12 @@ export function SignUpForm({
           )}
           name="email"
           placeholder={intl.formatMessage({
-            id: "component.SignUpForm.placeholder",
+            id: "component.SignUpForNewsletterForm.placeholder",
           })}
           type="email"
         />
         <Button
-          aria-label={intl.formatMessage({ id: "component.SignUpForm.submit" })}
+          aria-label={intl.formatMessage({ id: "component.SignUpForNewsletterForm.submit" })}
           className="btn absolute right-0 mr-3"
           variant="ghost"
         >

@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUp": {
+    "SignUpForNewsletter": {
       "title": "ลงทะเบียนเพื่อรับจดหมายข่าวของเรา",
       "summary": "ลงทะเบียนและรับส่วนลด 10% สำหรับการซื้อครั้งแรกของคุณ"
     },
-    "SignUpForm": {
+    "SignUpForNewsletterForm": {
       "message": "กำลังรอการยืนยันการสมัคร",
       "pattern": "ค่าที่ป้อนไม่ตรงกับรูปแบบอีเมล",
       "placeholder": "ลงทะเบียนเพื่อรับจดหมายข่าวของเรา",
@@ -18,11 +18,11 @@
         "title": "การสมัครรับจดหมายข่าว"
       }
     },
-    "SignUpForNotifications": {
+    "SignUpForBackInStockSubscription": {
       "summary": "ลงทะเบียนเพื่อรับการแจ้งเตือนเมื่อสินค้านี้มีในสต็อกอีกครั้ง",
       "title": "ลงทะเบียนเพื่อรับการแจ้งเตือน"
     },
-    "SignUpForNotificationsForm": {
+    "SignUpForBackInStockSubscriptionForm": {
       "placeholder": "กรอกที่อยู่อีเมล์ของคุณ",
       "submit": "ลงชื่อ",
       "toast": {
@@ -247,11 +247,11 @@
       "close": "ปิดเมนู",
       "open": "เปิดเมนู"
     },
-    "SignUp": {
+    "SignUpForNewsletter": {
       "title": "ลงทะเบียนเพื่อรับจดหมายข่าวของเรา",
       "summary": "ลงทะเบียนและรับส่วนลด 10% สำหรับการซื้อครั้งแรกของคุณ"
     },
-    "SignUpForm": {
+    "SignUpForNewsletterForm": {
       "message": "กำลังรอการยืนยันการสมัคร",
       "pattern": "ค่าที่ป้อนไม่ตรงกับรูปแบบอีเมล",
       "placeholder": "ลงทะเบียนเพื่อรับจดหมายข่าวของเรา",

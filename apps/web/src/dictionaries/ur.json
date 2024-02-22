@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUp": {
+    "SignUpForNewsletter": {
       "title": "ہمارے نیوز لیٹر میں سائن اپ کریں۔",
       "summary": "سائن اپ کریں اور اپنی پہلی خریداری پر 10% رعایت حاصل کریں۔"
     },
-    "SignUpForm": {
+    "SignUpForNewsletterForm": {
       "message": "سائن اپ کی تصدیق کا انتظار ہے۔",
       "pattern": "درج کردہ قدر ای میل فارمیٹ سے مماثل نہیں ہے۔",
       "placeholder": "ہمارے نیوز لیٹر میں سائن اپ کریں۔",
@@ -18,11 +18,11 @@
         "title": "نیوزلیٹر کے لئے سائن اپ کریں"
       }
     },
-    "SignUpForNotifications": {
+    "SignUpForBackInStockSubscription": {
       "summary": "اس پروڈکٹ کے دوبارہ اسٹاک میں آنے پر مطلع کرنے کے لیے سائن اپ کریں۔",
       "title": "اطلاعات کے لیے سائن اپ کریں۔"
     },
-    "SignUpForNotificationsForm": {
+    "SignUpForBackInStockSubscriptionForm": {
       "placeholder": "اپنا ای میل کا پتا لکھو",
       "submit": "سائن اپ",
       "toast": {
@@ -247,11 +247,11 @@
       "close": "مینو بند کریں۔",
       "open": "مینو کھولیں۔"
     },
-    "SignUp": {
+    "SignUpForNewsletter": {
       "title": "ہمارے نیوز لیٹر میں سائن اپ کریں۔",
       "summary": "سائن اپ کریں اور اپنی پہلی خریداری پر 10% رعایت حاصل کریں۔"
     },
-    "SignUpForm": {
+    "SignUpForNewsletterForm": {
       "message": "سائن اپ کی تصدیق کا انتظار ہے۔",
       "pattern": "درج کردہ قدر ای میل فارمیٹ سے مماثل نہیں ہے۔",
       "placeholder": "ہمارے نیوز لیٹر میں سائن اپ کریں۔",

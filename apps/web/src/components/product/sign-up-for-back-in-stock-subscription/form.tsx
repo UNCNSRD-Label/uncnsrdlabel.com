@@ -1,6 +1,6 @@
 "use client";
 
-import { signUpForNotificationsAction } from "@/components/product/sign-up-for-notifications/action";
+import { signUpForBackInStockSubscriptionAction } from "@/components/product/sign-up-for-back-in-stock-subscription/action";
 import { getProductVariantBySelectedOptionsUtility } from "@/lib/shopify";
 import { createIntl } from "@formatjs/intl";
 import { useDebouncedEffect } from "@react-hookz/web";
@@ -35,13 +35,13 @@ function Submit({
   return (
     <Button className={className} disabled={pending} variant="ghost">
       {intl.formatMessage({
-        id: "component.SignUpForNotificationsForm.submit",
+        id: "component.SignUpForBackInStockSubscriptionForm.submit",
       })}
     </Button>
   );
 }
 
-export function SignUpForNotificationsForm({
+export function SignUpForBackInStockSubscriptionForm({
   className,
   dictionary,
   handle,
@@ -61,7 +61,7 @@ export function SignUpForNotificationsForm({
     messages,
   });
 
-  const [state, formAction] = useFormState(signUpForNotificationsAction, null);
+  const [state, signUpForBackInStockSubscription] = useFormState(signUpForBackInStockSubscriptionAction, null);
 
   const hasError = (state && state.status > 299) ?? false;
 
@@ -70,7 +70,7 @@ export function SignUpForNotificationsForm({
       if (hasError) {
         toast.error(
           intl.formatMessage({
-            id: "component.SignUpForNotificationsForm.toast.error",
+            id: "component.SignUpForBackInStockSubscriptionForm.toast.error",
           }),
           {
             description: intl.formatMessage({ id: state?.messageKey }),
@@ -88,7 +88,7 @@ export function SignUpForNotificationsForm({
       if (state?.ok) {
         toast.success(
           intl.formatMessage({
-            id: "component.SignUpForNotificationsForm.toast.success",
+            id: "component.SignUpForBackInStockSubscriptionForm.toast.success",
           }),
           {
             description: intl.formatMessage({ id: state?.messageKey }),
@@ -118,7 +118,7 @@ export function SignUpForNotificationsForm({
   }
 
   return (
-    <form action={formAction} className={cn("grid gap-4", className)}>
+    <form action={signUpForBackInStockSubscription} className={cn("grid gap-4", className)}>
       <div className="field">
         <input
           aria-invalid={hasError ? "true" : "false"}
@@ -128,13 +128,13 @@ export function SignUpForNotificationsForm({
           })}
           name="email"
           placeholder={intl.formatMessage({
-            id: "component.SignUpForNotificationsForm.placeholder",
+            id: "component.SignUpForBackInStockSubscriptionForm.placeholder",
           })}
           type="email"
         />
         <Button
           aria-label={intl.formatMessage({
-            id: "component.SignUpForNotificationsForm.submit",
+            id: "component.SignUpForBackInStockSubscriptionForm.submit",
           })}
           className="btn absolute right-0 mr-3"
           variant="ghost"

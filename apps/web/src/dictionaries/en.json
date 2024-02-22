@@ -1,11 +1,21 @@
 {
   "actions": {
-    "signUpAction": {
+    "signInToAccountAction": {
+      "error": "An error occurred while processing your request.",
+      "failed": "Sign in failed",
+      "success": "You have successfully signed in to your account"
+    },
+    "signUpForAccountAction": {
+      "error": "An error occurred while processing your request.",
+      "failed": "Sign up failed",
+      "success": "You have successfully signed up for an account"
+    },
+    "signUpForNewsletterAction": {
       "error": "An error occurred while processing your request.",
       "failed": "Email address submission failed with HTTP Response Code: {status}",
       "success": "You have successfully signed up to our mailing list"
     },
-    "signUpForNotificationsAction": {
+    "signUpForBackInStockSubscriptionAction": {
       "error": "An error occurred while processing your request.",
       "failed": "Email address submission failed with HTTP Response Code: {status}",
       "success": "You have successfully signed up for notifications"
@@ -230,11 +240,50 @@
       "close": "Close the menu",
       "open": "Open the menu"
     },
-    "SignUp": {
+    "SignInOrSignUpForAccountForm": {
+      "title": "Sign up or sign in to your account",
+      "tabs": {
+        "sign-in": "Sign in",
+        "sign-up": "Sign up"
+      }
+    },
+    "SignInToAccountForm": {
+      "email": "Email",
+      "forgot-password": "Forgot your password?",
+      "password": "Password",
+      "pattern": "Entered value does not match email format",
+      "required": "Email address is required",
+      "submit": "Sign in",
+      "title": "Sign in to your account",
+      "toast": {
+        "close-alt": "Close this message",
+        "close-button": "Close",
+        "error": "Unable to sign in",
+        "success": "You have successfully signed in to your account",
+        "title": "Account sign in"
+      }
+    },
+    "SignUpForAccountForm": {
+      "email": "Email",
+      "forgot-password": "Forgot your password?",
+      "password": "Password",
+      "pattern": "Entered value does not match email format",
+      "required": "Email address is required",
+      "submit": "Sign up",
+      "title": "Sign up for an account",
+      "toast": {
+        "close-alt": "Close this message",
+        "close-button": "Close",
+        "error": "Unable to sign up",
+        "success": "You have successfully signed up for an account",
+        "title": "Account sign up"
+      }
+    },
+    "SignUpForNewsletter": {
       "title": "Sign up to our newsletter",
       "summary": "Sign up and receive 10% off your first purchase"
     },
-    "SignUpForm": {
+    "SignUpForNewsletterForm": {
       "message": "Waiting for signup confirmation",
       "pattern": "Entered value does not match email format",
       "placeholder": "Sign up to our newsletter",
@@ -248,11 +297,11 @@
         "title": "Newsletter signup"
       }
     },
-    "SignUpForNotifications": {
+    "SignUpForBackInStockSubscription": {
       "summary": "Sign up to be notified when this product is back in stock",
       "title": "Sign up for notifications"
     },
-    "SignUpForNotificationsForm": {
+    "SignUpForBackInStockSubscriptionForm": {
       "placeholder":"Enter your email address",
       "submit": "Sign up",
       "toast": {
