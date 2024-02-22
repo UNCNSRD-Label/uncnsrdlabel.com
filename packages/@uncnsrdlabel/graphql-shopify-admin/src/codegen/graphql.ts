@@ -36995,8 +36995,6 @@ export type QuantityPriceBreakConnection = {
   nodes: Array<QuantityPriceBreak>;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
-  /** The total count of QuantityPriceBreaks. */
-  totalCount: Scalars['UnsignedInt64']['output'];
 };
 
 /**
@@ -37192,8 +37190,6 @@ export type QuantityRuleConnection = {
   nodes: Array<QuantityRule>;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
-  /** The total count of QuantityRules. */
-  totalCount: Scalars['UnsignedInt64']['output'];
 };
 
 /**
