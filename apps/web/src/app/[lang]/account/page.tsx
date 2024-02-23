@@ -1,31 +1,31 @@
-import { SignInOrSignUpForAccountForm } from "@/components/account/account-sign-in-or-sign-up-form";
+import {
+  SignInOrSignUpForAccountForm,
+} from "@/components/account/account-sign-in-or-sign-up-form";
+import {
+  UpdateAccountForm,
+} from "@/components/account/account-update-form";
 import { getDictionary } from "@/lib/dictionary";
 import { type PageProps } from "@/types/next";
 import { Metadata } from "next";
 // import { redirect } from 'next/navigation';
-import { cookies } from 'next/headers';
+import { cookies } from "next/headers";
 
 export const metadata: Metadata = {
   title: "Account",
   description: "Sign up or sign in to your account",
 };
 
-export default function AccountPage({
-  params: { lang },
-}: PageProps) {
+export default function AccountPage({ params: { lang } }: PageProps) {
   const dictionary = getDictionary({ lang });
 
-  const accessToken = cookies().get('accessToken');
-  
-  if (!accessToken) {
+  const customerAccessTokenCookie = cookies().get("customerAccessToken");
+
+  const customerAccessToken = customerAccessTokenCookie?.value;
+
+  if (!customerAccessToken) {
     // redirect('/account/details')
     return <SignInOrSignUpForAccountForm dictionary={dictionary} lang={lang} />;
   }
 
-  return (
-    <div>
-      <h1>Account</h1>
-      <p>Sign up or sign in to your account</p>
-    </div>
-  );
+  return <UpdateAccountForm dictionary={dictionary} lang={lang} />;
 }

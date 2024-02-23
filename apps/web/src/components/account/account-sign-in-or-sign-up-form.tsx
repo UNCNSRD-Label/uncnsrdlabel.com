@@ -50,16 +50,16 @@ export function SignInOrSignUpForAccountForm({
           </TabsTrigger>
         </TabsList>
         <TabsContent value="sign-in">
-          <h2 className="text-xl">Sign in to your account</h2>
           <SignInToAccountForm
+            className="sm:min-w-[36rem]"
             dictionary={dictionary}
             lang={lang}
             setActiveTab={setActiveTab}
           />
         </TabsContent>
         <TabsContent value="sign-up">
-          <h2 className="text-xl">Sign up for an account</h2>
           <SignUpForAccountForm
+            className="sm:min-w-[36rem]"
             dictionary={dictionary}
             lang={lang}
             setActiveTab={setActiveTab}

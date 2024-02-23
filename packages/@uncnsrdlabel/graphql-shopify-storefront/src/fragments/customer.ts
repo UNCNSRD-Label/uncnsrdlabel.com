@@ -3,7 +3,7 @@ import { graphql } from "../codegen/index";
 export const customerFragment = graphql(/* GraphQL */ `
   fragment customer on Customer {
     acceptsMarketing
-    addresses(first: 10) {
+    addresses(first: 16) {
       nodes {
         ...customerAddress
       }

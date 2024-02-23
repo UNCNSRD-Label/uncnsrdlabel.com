@@ -106,8 +106,8 @@ export const customerDefaultAddressUpdateMutation = graphql(/* GraphQL */ `
   }
 `);
 
-export const customerRecoverPasswordMutation = graphql(/* GraphQL */ `
-  mutation CustomerRecoverPassword($email: String!) {
+export const customerRecoverMutation = graphql(/* GraphQL */ `
+  mutation CustomerRecover($email: String!) {
     customerRecover(email: $email) {
       customerUserErrors {
         code
@@ -118,7 +118,7 @@ export const customerRecoverPasswordMutation = graphql(/* GraphQL */ `
   }
 `);
 
-export const customerResetPasswordMutation = graphql(/* GraphQL */ `
+export const customerResetMutation = graphql(/* GraphQL */ `
   mutation CustomerResetPassword($id: ID!, $input: CustomerResetInput!) {
     customerReset(id: $id, input: $input) {
       customerAccessToken {
@@ -134,7 +134,7 @@ export const customerResetPasswordMutation = graphql(/* GraphQL */ `
   }
 `);
 
-export const customerResetPasswordByUrlMutation = graphql(/* GraphQL */ `
+export const customerResetByUrlMutation = graphql(/* GraphQL */ `
   mutation CustomerResetPasswordByUrl($password: String!, $resetUrl: URL!) {
     customerResetByUrl(password: $password, resetUrl: $resetUrl) {
       customerAccessToken {

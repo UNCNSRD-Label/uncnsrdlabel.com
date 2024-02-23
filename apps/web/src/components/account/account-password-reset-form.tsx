@@ -1,3 +1,8 @@
+"use client";
+
+import { createIntl } from "@formatjs/intl";
+import { useDebouncedEffect } from "@react-hookz/web";
+import { getShopifyCookies } from "@shopify/hydrogen-react";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
   Card,
@@ -9,27 +14,130 @@ import {
 } from "@uncnsrdlabel/components/atoms/card";
 import { Input } from "@uncnsrdlabel/components/atoms/input";
 import { Label } from "@uncnsrdlabel/components/atoms/label";
+import { Usable, use } from "react";
+import { useFormState, useFormStatus } from "react-dom";
+import { type ResolvedIntlConfig } from "react-intl";
+import { toast } from "sonner";
+import { resetAccountAction } from "./action";
 
-export function AccountPasswordResetForm({
+function Submit({
   className,
-}: React.HTMLAttributes<typeof Card>) {
+  dictionary,
+  lang,
+}: {
+  className?: string;
+  dictionary: Usable<ResolvedIntlConfig["messages"]>;
+  lang: Intl.BCP47LanguageTag;
+}) {
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
+
+  const { pending } = useFormStatus();
+
+  return (
+    <Button className={className} disabled={pending} variant="default">
+      {intl.formatMessage({
+        id: "component.ResetAccountForm.submit",
+      })}
+    </Button>
+  );
+}
+
+export function ResetAccountForm({
+  className,
+  dictionary,
+  lang,
+}: {
+  className?: string;
+  dictionary: Usable<ResolvedIntlConfig["messages"]>;
+  lang: Intl.BCP47LanguageTag;
+}) {
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
+
+  const [state, resetAccount] = useFormState(resetAccountAction, null);
+
+  const hasError = (state && state.status > 299) ?? false;
+
+  useDebouncedEffect(
+    () => {
+      if (hasError) {
+        toast.error(
+          intl.formatMessage({
+            id: "component.ResetAccountForm.toast.error",
+          }),
+          {
+            description: intl.formatMessage({ id: state?.messageKey }),
+          },
+        );
+      }
+    },
+    [hasError, state?.messageKey],
+    200,
+    500,
+  );
+
+  useDebouncedEffect(
+    () => {
+      if (state?.ok) {
+        toast.success(
+          intl.formatMessage({
+            id: "component.ResetAccountForm.toast.success",
+          }),
+          {
+            description: intl.formatMessage({ id: state?.messageKey }),
+          },
+        );
+      }
+    },
+    [state?.ok],
+    200,
+    500,
+  );
+
+  let _shopify_y = undefined;
+
+  if (typeof window !== "undefined") {
+    const shopifyCookies = getShopifyCookies(document.cookie);
+
+    _shopify_y = shopifyCookies._shopify_y;
+  }
+
   return (
     <Card className={className}>
-      <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl">Reset your password</CardTitle>
-        <CardDescription>
-          Enter your email below to reset your password
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="grid gap-4">
-        <div className="grid gap-2">
-          <Label htmlFor="email">Email</Label>
-          <Input id="email" type="email" placeholder="me@example.com" />
-        </div>
-      </CardContent>
-      <CardFooter>
-        <Button className="w-full">Reset password</Button>
-      </CardFooter>
+      <form action={resetAccount} className="grid gap-4">
+        <CardHeader className="space-y-1">
+          <CardTitle className="text-2xl">
+            {intl.formatMessage({
+              id: "component.ResetAccountForm.submit",
+            })}
+          </CardTitle>
+          <CardDescription>
+            {intl.formatMessage({
+              id: "component.ResetAccountForm.description",
+            })}
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="grid gap-4">
+          <div className="grid gap-2">
+            <Label htmlFor="email">Email</Label>
+            <Input autoComplete="email" id="email" name="email" type="email" placeholder="me@example.com" />
+          </div>
+          <Submit className="mt-4 w-full" dictionary={dictionary} lang={lang} />
+        </CardContent>
+        <CardFooter className="text-xs">
+          Enter the details above to reset your account
+        </CardFooter>
+        <input type="hidden" name="_shopify_y" value={_shopify_y} />
+      </form>
     </Card>
   );
 }

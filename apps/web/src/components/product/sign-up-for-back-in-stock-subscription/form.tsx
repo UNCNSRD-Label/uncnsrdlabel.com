@@ -122,7 +122,7 @@ export function SignUpForBackInStockSubscriptionForm({
       <div className="field">
         <input
           aria-invalid={hasError ? "true" : "false"}
-          autoComplete="on"
+          autoComplete="email"
           className={cn("w-full px-4 py-2 placeholder:text-inherit", {
             "border-red-500": hasError,
           })}

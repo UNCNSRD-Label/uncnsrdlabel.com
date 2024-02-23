@@ -18,7 +18,7 @@ export default function AccountSignUpPage({
   return (
     <>
       <h1 className="text-3xl">Sign up for an account</h1>
-      <SignUpForAccountForm dictionary={dictionary} lang={lang} />
+      <SignUpForAccountForm className="sm:min-w-[36rem]" dictionary={dictionary} lang={lang} />
     </>
   );
 }

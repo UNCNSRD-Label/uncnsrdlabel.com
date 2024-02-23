@@ -3,6 +3,7 @@
 import { createIntl } from "@formatjs/intl";
 import { useDebouncedEffect } from "@react-hookz/web";
 import { getShopifyCookies } from "@shopify/hydrogen-react";
+import { useQuery } from "@tanstack/react-query";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
   Card,
@@ -15,12 +16,19 @@ import {
 import { Checkbox } from "@uncnsrdlabel/components/atoms/checkbox";
 import { Input } from "@uncnsrdlabel/components/atoms/input";
 import { Label } from "@uncnsrdlabel/components/atoms/label";
-import Link from "next/link";
+import {
+  customerFragment,
+  getCustomerQuery,
+  getFragmentData,
+  getQueryKey,
+  getShopifyGraphQL
+} from "@uncnsrdlabel/graphql-shopify-storefront";
+import { getCookie } from "cookies-next";
 import { Usable, use } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { type ResolvedIntlConfig } from "react-intl";
 import { toast } from "sonner";
-import { signInToAccountAction } from "./action";
+import { updateAccountAction } from "./action";
 
 function Submit({
   className,
@@ -43,22 +51,20 @@ function Submit({
   return (
     <Button className={className} disabled={pending} variant="default">
       {intl.formatMessage({
-        id: "component.SignInToAccountForm.submit",
+        id: "component.UpdateAccountForm.submit",
       })}
     </Button>
   );
 }
 
-export function SignInToAccountForm({
+export function UpdateAccountForm({
   className,
   dictionary,
   lang,
-  setActiveTab,
 }: {
   className?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
   lang: Intl.BCP47LanguageTag;
-  setActiveTab?: (value: string) => void;
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
@@ -67,7 +73,7 @@ export function SignInToAccountForm({
     messages,
   });
 
-  const [state, signInToAccount] = useFormState(signInToAccountAction, null);
+  const [state, updateAccount] = useFormState(updateAccountAction, null);
 
   const hasError = (state && state.status > 299) ?? false;
 
@@ -76,7 +82,7 @@ export function SignInToAccountForm({
       if (hasError) {
         toast.error(
           intl.formatMessage({
-            id: "component.SignInToAccountForm.toast.error",
+            id: "component.UpdateAccountForm.toast.error",
           }),
           {
             description: intl.formatMessage({ id: state?.messageKey }),
@@ -94,7 +100,7 @@ export function SignInToAccountForm({
       if (state?.ok) {
         toast.success(
           intl.formatMessage({
-            id: "component.SignInToAccountForm.toast.success",
+            id: "component.UpdateAccountForm.toast.success",
           }),
           {
             description: intl.formatMessage({ id: state?.messageKey }),
@@ -109,24 +115,49 @@ export function SignInToAccountForm({
 
   let _shopify_y = undefined;
 
+  let customerAccessToken = undefined;
+
   if (typeof window !== "undefined") {
     const shopifyCookies = getShopifyCookies(document.cookie);
 
     _shopify_y = shopifyCookies._shopify_y;
+
+    customerAccessToken = getCookie("customerAccessToken");
   }
+
+  const variables = {
+    customerAccessToken,
+  } as { customerAccessToken: string };
+
+  const queryKey = getQueryKey(getCustomerQuery, variables);
+
+  const {
+    data, error, isError, isLoading
+  } = useQuery({
+    enabled: !!customerAccessToken,
+    queryKey,
+    queryFn: () => getShopifyGraphQL(getCustomerQuery, variables),
+    // staleTime: 5 * 1000,
+  });
+
+  console.log(data, error, isError, isLoading);
+
+  const customer = getFragmentData(customerFragment, data?.customer);
+
+  console.log({customer})
 
   return (
     <Card className={className}>
-      <form action={signInToAccount} className="grid gap-4">
+      <form action={updateAccount} className="grid gap-4">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl">
             {intl.formatMessage({
-              id: "component.SignInToAccountForm.submit",
+              id: "component.UpdateAccountForm.submit",
             })}
           </CardTitle>
           <CardDescription>
             {intl.formatMessage({
-              id: "component.SignInToAccountForm.description",
+              id: "component.UpdateAccountForm.description",
             })}
           </CardDescription>
         </CardHeader>
@@ -134,54 +165,97 @@ export function SignInToAccountForm({
           <div>
             <Label htmlFor="email">
               {intl.formatMessage({
-                id: "component.SignInToAccountForm.email",
+                id: "component.UpdateAccountForm.email",
               })}
             </Label>
             <Input
               autoComplete="email"
+              defaultValue={customer?.email}
               id="email"
-              placeholder="me@example.com"
-              type="email"
               name="email"
+              placeholder="me@example.com"
+              required
+              type="email"
             />
           </div>
           <div>
             <Label htmlFor="password">
               {intl.formatMessage({
-                id: "component.SignInToAccountForm.password",
+                id: "component.UpdateAccountForm.password",
               })}
             </Label>
             <Input
+              autoComplete="new-password"
               id="password"
-              type="password"
               name="password"
-              autoComplete="current-password"
+              required
+              type="password"
             />
           </div>
           <div>
-            <Checkbox id="remember" name="remember" />
-            <Label className="ml-2" htmlFor="remember">
-              Remember me
+            <Label htmlFor="confirm-password">Confirm Password</Label>
+            <Input
+              autoComplete="new-password"
+              id="confirm-password"
+              name="confirm-password"
+              required
+              type="password"
+            />
+          </div>
+          <div>
+            <Label htmlFor="firstName">
+              {intl.formatMessage({
+                id: "component.UpdateAccountForm.firstName",
+              })}
+            </Label>
+            <Input
+              autoComplete="given-name"
+              id="firstName"
+              name="firstName"
+              type="text"
+            />
+          </div>
+          <div>
+            <Label htmlFor="lastName">
+              {intl.formatMessage({
+                id: "component.UpdateAccountForm.lastName",
+              })}
+            </Label>
+            <Input
+              autoComplete="family-name"
+              id="lastName"
+              name="lastName"
+              type="text"
+            />
+          </div>
+          <div>
+            <Label htmlFor="phone">
+              {intl.formatMessage({
+                id: "component.UpdateAccountForm.phone",
+              })}
+            </Label>
+            <Input
+              autoComplete="phone"
+              id="phone"
+              name="phone"
+              required
+              type="text"
+            />
+          </div>
+          <div>
+            <Checkbox id="acceptsMarketing" name="acceptsMarketing" />
+            <Label htmlFor="acceptsMarketing">
+              {intl.formatMessage({
+                id: "component.UpdateAccountForm.acceptsMarketing",
+              })}
             </Label>
           </div>
           <Submit className="mt-4 w-full" dictionary={dictionary} lang={lang} />
-          <div className="flex justify-center gap-2 text-sm">
-            <span>Don't have an account?</span>
-            {setActiveTab ? (
-              <Button onClick={() => setActiveTab("sign-up")} variant="link">
-                Sign up
-              </Button>
-            ) : (
-              <Link className="underline" href="/account/sign-up">
-                Sign up
-              </Link>
-            )}
-          </div>
         </CardContent>
         <CardFooter className="flex justify-center text-sm">
-          <Link className="underline" href="/account/recover">
-            Forgot your password?
-          </Link>
+          <div className="flex justify-center gap-2 text-sm">
+            <span>Already have an account?</span>
+          </div>
         </CardFooter>
         <input type="hidden" name="_shopify_y" value={_shopify_y} />
       </form>

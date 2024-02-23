@@ -1,5 +1,10 @@
 {
   "actions": {
+    "recoverAccountAction": {
+      "error": "An error occurred while processing your request.",
+      "failed": "Account recovery failed",
+      "success": "You should receive an email with instructions to recover your account shortly"
+    },
     "signInToAccountAction": {
       "error": "An error occurred while processing your request.",
       "failed": "Sign in failed",
@@ -240,6 +245,37 @@
       "close": "Close the menu",
       "open": "Open the menu"
     },
+    "RecoverAccountForm": {
+      "description": "Enter your email address to recover your account",
+      "email": "Email",
+      "footer": "You will receive an email with a link to recover your password",
+      "pattern": "Entered value does not match email format",
+      "required": "Email address is required",
+      "submit": "Recover account",
+      "title": "Recover your account",
+      "toast": {
+        "close-alt": "Close this message",
+        "close-button": "Close",
+        "error": "Unable to recover account",
+        "success": "We have received your request to recover your account",
+        "title": "Account recovery"
+      }
+    },
+    "ResetAccountForm": {
+      "description": "Enter your email address to reset your password",
+      "email": "Email",
+      "pattern": "Entered value does not match email format",
+      "required": "Email address is required",
+      "submit": "Reset password",
+      "title": "Reset your password",
+      "toast": {
+        "close-alt": "Close this message",
+        "close-button": "Close",
+        "error": "Unable to reset password",
+        "success": "You have successfully reset your password",
+        "title": "Password reset"
+      }
+    },
     "SignInOrSignUpForAccountForm": {
       "title": "Sign up or sign in to your account",
       "tabs": {
@@ -248,6 +284,7 @@
       }
     },
     "SignInToAccountForm": {
+      "description": "Sign in to access your order history, wishlist, and more",
       "email": "Email",
       "forgot-password": "Forgot your password?",
       "password": "Password",
@@ -264,6 +301,7 @@
       }
     },
     "SignUpForAccountForm": {
+      "description": "Sign up to track your orders, wishlist, and more",
       "email": "Email",
       "forgot-password": "Forgot your password?",
       "password": "Password",
@@ -310,6 +348,28 @@
         "error": "Unable to sign up",
         "success": "You have successfully signed up for notifications",
         "title": "Product in-stock notification signup"
+      }
+    },
+    "UpdateAccountForm": {
+      "description": "Update your account details",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Update account",
+      "title": "Update your account",
+      "message": "Waiting for signup confirmation",
+      "pattern": "Entered value does not match email format",
+      "placeholder": "Sign up to our newsletter",
+      "required": "Email address is required",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "phone": "Phone",
+      "acceptsMarketing": "I would like to receive marketing emails from UNCNSRD",
+      "toast": {
+        "close-alt": "Close this message",
+        "close-button": "Close",
+        "error": "Unable to sign up",
+        "success": "You have successfully signed up to our newsletter",
+        "title": "Newsletter signup"
       }
     }
   }
