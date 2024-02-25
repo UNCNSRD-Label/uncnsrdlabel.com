@@ -20,9 +20,9 @@ import {
   customerFragment,
   getCustomerQuery,
   getFragmentData,
-  getQueryKey,
-  getShopifyGraphQL
+  getShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { getQueryKey } from "@uncnsrdlabel/lib";
 import { getCookie } from "cookies-next";
 import { Usable, use } from "react";
 import { useFormState, useFormStatus } from "react-dom";

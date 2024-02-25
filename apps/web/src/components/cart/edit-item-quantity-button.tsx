@@ -15,10 +15,9 @@ import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
   editCartItemsMutation,
   getCartQuery,
-  getQueryKey,
   getShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { cn } from "@uncnsrdlabel/lib";
+import { cn, getQueryKey } from "@uncnsrdlabel/lib";
 import { Usable, use } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
 

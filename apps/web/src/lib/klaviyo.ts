@@ -106,7 +106,7 @@ export async function findUserByEmail(formData: FormData) {
             message = error;
         }
     } finally {
-        console.log({ message, ok, status })
+        console.debug({ message, ok, status })
         return {
             message,
             ok,

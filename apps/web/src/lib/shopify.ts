@@ -3,11 +3,11 @@
 import { type ProductOption } from "@shopify/hydrogen/storefront-api-types";
 import { useQuery } from "@tanstack/react-query";
 import {
-    getInContextVariables,
-    getProductVariantBySelectedOptionsQuery,
-    getQueryKey,
-    getShopifyGraphQL,
+  getInContextVariables,
+  getProductVariantBySelectedOptionsQuery,
+  getShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { getQueryKey } from "@uncnsrdlabel/lib";
 import { startCase } from "lodash";
 import { useSearchParams } from "next/navigation";
 

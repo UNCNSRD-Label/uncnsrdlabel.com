@@ -22,13 +22,12 @@ import {
   getCartQuery,
   getFragmentData,
   getInContextVariables,
-  getQueryKey,
   getShopifyGraphQL,
   type AddToCartMutationVariables,
   type CreateCartMutationVariables,
   type SellingPlanGroup,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { cn } from "@uncnsrdlabel/lib";
+import { cn, getQueryKey } from "@uncnsrdlabel/lib";
 import { useSearchParams } from "next/navigation";
 import { Suspense, Usable, use, useCallback } from "react";
 import { type ResolvedIntlConfig } from "react-intl";

@@ -14,10 +14,9 @@ import {
   cartFragment,
   getCartQuery,
   getFragmentData,
-  getQueryKey,
   getShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { cn } from "@uncnsrdlabel/lib";
+import { cn, getQueryKey } from "@uncnsrdlabel/lib";
 import {
   Fragment,
   Usable,
