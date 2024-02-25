@@ -1,13 +1,10 @@
-import {
-  SignInOrSignUpForAccountForm,
-} from "@/components/account/account-sign-in-or-sign-up-form";
-import {
-  UpdateAccountForm,
-} from "@/components/account/account-update-form";
+import { SignInOrSignUpForAccountForm } from "@/components/account/account-sign-in-or-sign-up-form";
 import { getDictionary } from "@/lib/dictionary";
 import { type PageProps } from "@/types/next";
-import { getCookie } from "cookies-next";
 import { Metadata } from "next";
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
+import { Breadcrumb } from "./breadcrumb";
 
 export const metadata: Metadata = {
   title: "Account",
@@ -17,11 +14,16 @@ export const metadata: Metadata = {
 export default function AccountPage({ params: { lang } }: PageProps) {
   const dictionary = getDictionary({ lang });
 
-  const customerAccessToken = getCookie("customerAccessToken");
+  const customerAccessToken = cookies().get('customerAccessToken')?.value;
 
-  if (!customerAccessToken) {
-    return <SignInOrSignUpForAccountForm dictionary={dictionary} lang={lang} />;
+  if (customerAccessToken) {
+    redirect('/account/update-details')
   }
 
-  return <UpdateAccountForm dictionary={dictionary} lang={lang} />;
+  return (
+    <>
+      <Breadcrumb />
+      <SignInOrSignUpForAccountForm dictionary={dictionary} lang={lang} />
+    </>
+  );
 }

@@ -1,6 +1,5 @@
 "use client";
 
-import { LoadingDots } from "@/components/loading/dots";
 import { createIntl } from "@formatjs/intl";
 import { useDebouncedEffect } from "@react-hookz/web";
 import { getShopifyCookies } from "@shopify/hydrogen-react";
@@ -24,8 +23,9 @@ import {
   getShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getQueryKey } from "@uncnsrdlabel/lib";
-import { getCookie } from "cookies-next";
+import { deleteCookie, getCookie } from "cookies-next";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Usable, use, useEffect, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { type ResolvedIntlConfig } from "react-intl";
@@ -74,6 +74,8 @@ export function UpdateAccountForm({
     locale: lang,
     messages,
   });
+
+  const router = useRouter();
 
   const [state, updateAccount] = useFormState(updateAccountAction, null);
 
@@ -133,7 +135,7 @@ export function UpdateAccountForm({
 
   const queryKey = getQueryKey(getCustomerQuery, variables);
 
-  const { data, error, isError, isLoading } = useQuery({
+  const { data } = useQuery({
     enabled: !!customerAccessToken,
     queryKey,
     queryFn: () => getShopifyGraphQL(getCustomerQuery, variables),
@@ -151,105 +153,118 @@ export function UpdateAccountForm({
 
   return (
     <Card className={className}>
-      {isLoading ? (
-        <LoadingDots />
-      ) : (
-        <form action={updateAccount} className="grid gap-4">
-          <CardHeader className="space-y-1">
-            <CardTitle className="text-2xl">
+      <form action={updateAccount} className="grid gap-4">
+        <CardHeader className="space-y-1">
+          <CardTitle className="text-2xl">
+            {intl.formatMessage({
+              id: "component.UpdateAccountForm.title",
+            })}
+          </CardTitle>
+          <CardDescription>
+            {intl.formatMessage({
+              id: "component.UpdateAccountForm.description",
+            })}
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="grid gap-4">
+          <div>
+            <Label htmlFor="email">
               {intl.formatMessage({
-                id: "component.UpdateAccountForm.title",
+                id: "component.UpdateAccountForm.email",
               })}
-            </CardTitle>
-            <CardDescription>
+            </Label>
+            <Input
+              autoComplete="email"
+              defaultValue={customer?.email ?? undefined}
+              id="email"
+              name="email"
+              placeholder="me@example.com"
+              required
+              type="email"
+            />
+          </div>
+          <div>
+            <Label htmlFor="firstName">
               {intl.formatMessage({
-                id: "component.UpdateAccountForm.description",
+                id: "component.UpdateAccountForm.firstName",
               })}
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="grid gap-4">
-            <div>
-              <Label htmlFor="email">
-                {intl.formatMessage({
-                  id: "component.UpdateAccountForm.email",
-                })}
-              </Label>
-              <Input
-                autoComplete="email"
-                defaultValue={customer?.email ?? undefined}
-                id="email"
-                name="email"
-                placeholder="me@example.com"
-                required
-                type="email"
-              />
-            </div>
-            <div>
-              <Label htmlFor="firstName">
-                {intl.formatMessage({
-                  id: "component.UpdateAccountForm.firstName",
-                })}
-              </Label>
-              <Input
-                autoComplete="given-name"
-                defaultValue={customer?.firstName ?? undefined}
-                id="firstName"
-                name="firstName"
-                type="text"
-              />
-            </div>
-            <div>
-              <Label htmlFor="lastName">
-                {intl.formatMessage({
-                  id: "component.UpdateAccountForm.lastName",
-                })}
-              </Label>
-              <Input
-                autoComplete="family-name"
-                defaultValue={customer?.lastName ?? undefined}
-                id="lastName"
-                name="lastName"
-                type="text"
-              />
-            </div>
-            <div>
-              <Label htmlFor="phone">
-                {intl.formatMessage({
-                  id: "component.UpdateAccountForm.phone",
-                })}
-              </Label>
-              <Input
-                autoComplete="phone"
-                defaultValue={customer?.phone ?? undefined}
-                id="phone"
-                name="phone"
-                required
-                type="text"
-              />
-            </div>
-            <div>
-              <Checkbox
-                checked={acceptsMarketing}
-                onCheckedChange={(checked) => setAcceptsMarketing(checked)}
-                id="acceptsMarketing"
-                name="acceptsMarketing"
-              />
-              <Label className="ml-2" htmlFor="acceptsMarketing">
-                {intl.formatMessage({
-                  id: "component.UpdateAccountForm.acceptsMarketing",
-                })}
-              </Label>
-            </div>
-            <Submit className="w-full" dictionary={dictionary} lang={lang} />
-          </CardContent>
-          <CardFooter>
-            <Link className="underline" href="/account/addresses">
-              Edit addresses
-            </Link>
-          </CardFooter>
-          <input type="hidden" name="_shopify_y" value={_shopify_y} />
-        </form>
-      )}
+            </Label>
+            <Input
+              autoComplete="given-name"
+              defaultValue={customer?.firstName ?? undefined}
+              id="firstName"
+              name="firstName"
+              type="text"
+            />
+          </div>
+          <div>
+            <Label htmlFor="lastName">
+              {intl.formatMessage({
+                id: "component.UpdateAccountForm.lastName",
+              })}
+            </Label>
+            <Input
+              autoComplete="family-name"
+              defaultValue={customer?.lastName ?? undefined}
+              id="lastName"
+              name="lastName"
+              type="text"
+            />
+          </div>
+          <div>
+            <Label htmlFor="phone">
+              {intl.formatMessage({
+                id: "component.UpdateAccountForm.phone",
+              })}
+            </Label>
+            <Input
+              autoComplete="phone"
+              defaultValue={customer?.phone ?? undefined}
+              id="phone"
+              name="phone"
+              required
+              type="text"
+            />
+          </div>
+          <div className="flex content-center">
+            <Checkbox
+              checked={acceptsMarketing}
+              onCheckedChange={(checked) => setAcceptsMarketing(checked)}
+              id="acceptsMarketing"
+              name="acceptsMarketing"
+            />
+            <Label className="ml-2 text-xs" htmlFor="acceptsMarketing">
+              {intl.formatMessage({
+                id: "component.UpdateAccountForm.acceptsMarketing",
+              })}
+            </Label>
+          </div>
+          <Submit className="w-full" dictionary={dictionary} lang={lang} />
+        </CardContent>
+        <CardFooter className="grid grid-flow-col justify-start gap-4 text-sm">
+          <Button
+            className="underline"
+            onClick={() => {
+              deleteCookie("customerAccessToken");
+
+              router.push("/account/sign-in");
+
+              toast.success(
+                intl.formatMessage({
+                  id: "component.UpdateAccountForm.toast.sign-out",
+                }),
+              );
+            }}
+            variant="ghost"
+          >
+            Sign out
+          </Button>
+          <Link className="underline" href="/account/addresses">
+            Edit addresses
+          </Link>
+        </CardFooter>
+        <input type="hidden" name="_shopify_y" value={_shopify_y} />
+      </form>
     </Card>
   );
 }

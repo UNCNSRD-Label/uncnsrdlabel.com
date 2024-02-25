@@ -65,6 +65,7 @@ export async function NavbarContent({
           <Search dictionary={dictionary} lang={lang} />
         </Suspense>
         <Link
+          className="flex items-center gap-2 whitespace-nowrap"
           href="/account"
           aria-label={intl.formatMessage({
             id: "component.NavbarContent.link-account",
@@ -72,6 +73,7 @@ export async function NavbarContent({
           prefetch={false}
         >
           <SlUser className="icon fill h-5 w-5 drop-shadow" />
+          <span>Hi Bill</span>
         </Link>
         {process.env.NEXT_PUBLIC_FEATURE_FLAG_WISHLIST_ENABLE === "true" && (
           <Link

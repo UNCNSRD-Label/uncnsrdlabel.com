@@ -99,7 +99,7 @@ export async function ProductDetails({
       <ProductMedia productDetailsFragmentRef={productDetailsFragmentRef} />
 
       <section
-        className="relative z-10 col-span-full grid h-full min-h-[100dvh] content-start gap-6 overflow-hidden overflow-y-auto bg-white p-6 sm:col-start-3 sm:col-end-11 sm:min-h-fit lg:col-start-7 lg:col-end-13 lg:mr-8 lg:h-[calc(85dvh-4rem)] lg:bg-white/90 lg:shadow lg:backdrop-blur lg:backdrop-saturate-50 xl:col-start-9"
+        className="relative z-10 col-span-full grid h-full min-h-[100dvh] content-start gap-6 overflow-hidden overflow-y-auto bg-opaque-white p-6 sm:col-start-3 sm:col-end-11 sm:min-h-fit lg:col-start-7 lg:col-end-13 lg:mr-8 lg:h-[calc(85dvh-4rem)] lg:shadow xl:col-start-9"
         id="details"
       >
         <h2 data-testid="product-name" className="box-decoration-clone text-xl">

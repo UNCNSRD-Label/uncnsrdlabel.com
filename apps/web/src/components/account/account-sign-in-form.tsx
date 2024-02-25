@@ -16,6 +16,7 @@ import { Checkbox } from "@uncnsrdlabel/components/atoms/checkbox";
 import { Input } from "@uncnsrdlabel/components/atoms/input";
 import { Label } from "@uncnsrdlabel/components/atoms/label";
 import Link from "next/link";
+import { useRouter } from 'next/navigation';
 import { Usable, use } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { type ResolvedIntlConfig } from "react-intl";
@@ -69,6 +70,8 @@ export function SignInToAccountForm({
 
   const [state, signInToAccount] = useFormState(signInToAccountAction, null);
 
+  const router = useRouter();
+
   const hasError = (state && state.status > 299) ?? false;
 
   useDebouncedEffect(
@@ -92,12 +95,20 @@ export function SignInToAccountForm({
   useDebouncedEffect(
     () => {
       if (state?.ok) {
+        router.push('/account/update-details')
+
         toast.success(
           intl.formatMessage({
             id: "component.SignInToAccountForm.toast.success",
           }),
           {
             description: intl.formatMessage({ id: state?.messageKey }),
+            // onDismiss: () => {
+            //   router.push('/account/update-details')
+            // },
+            // onAutoClose: () => {
+            //   router.push('/account/update-details')
+            // },
           },
         );
       }

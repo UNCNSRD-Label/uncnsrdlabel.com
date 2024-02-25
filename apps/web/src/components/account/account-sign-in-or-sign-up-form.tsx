@@ -30,7 +30,7 @@ export function SignInOrSignUpForAccountForm({
   const [activeTab, setActiveTab] = useState("sign-in");
 
   return (
-    <>
+    <div className="grid gap-8 p-8 lg:shadow bg-opaque-white">
       <h1 className="text-3xl">
         {intl.formatMessage({
           id: "component.SignInOrSignUpForAccountForm.title",
@@ -51,7 +51,7 @@ export function SignInOrSignUpForAccountForm({
         </TabsList>
         <TabsContent value="sign-in">
           <SignInToAccountForm
-            className="sm:min-w-[36rem]"
+            className="bg-transparent sm:min-w-[36rem]"
             dictionary={dictionary}
             lang={lang}
             setActiveTab={setActiveTab}
@@ -59,13 +59,13 @@ export function SignInOrSignUpForAccountForm({
         </TabsContent>
         <TabsContent value="sign-up">
           <SignUpForAccountForm
-            className="sm:min-w-[36rem]"
+            className="bg-transparent sm:min-w-[36rem]"
             dictionary={dictionary}
             lang={lang}
             setActiveTab={setActiveTab}
           />
         </TabsContent>
       </Tabs>
-    </>
+    </div>
   );
 }
