@@ -1,6 +1,9 @@
 "use server";
 
-import { recoverAccountHandler, resetAccountHandler, signInToAccountHandler, signUpForAccountHandler, updateAccountHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
+import {
+  cartBuyerIdentityUpdateMutation,
+  getShopifyGraphQL, recoverAccountHandler, resetAccountHandler, signInToAccountHandler, signUpForAccountHandler, updateAccountHandler
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { add, parseISO } from "date-fns";
 import { cookies } from 'next/headers';
 
@@ -45,7 +48,7 @@ export async function recoverAccountAction(
 
     status = 202;
 
-    messageKey = "actions.recoverAccountAction.success";    
+    messageKey = "actions.recoverAccountAction.success";
   } catch (error) {
     console.error(error);
 
@@ -195,6 +198,26 @@ export async function signInToAccountAction(
       });
 
       cookies().set('customerAccessToken', customerAccessToken.accessToken, { expires })
+
+      const cartId = cookies().get('cartId')?.value;
+
+      if (cartId) {
+        const variables = { buyerIdentity: { customerAccessToken: customerAccessToken.accessToken }, cartId }
+
+        const { cartBuyerIdentityUpdate } = await getShopifyGraphQL(cartBuyerIdentityUpdateMutation, variables);
+
+        if (
+          Array.isArray(cartBuyerIdentityUpdate?.userErrors) && cartBuyerIdentityUpdate?.userErrors.length > 0
+        ) {
+          throw new Error(
+            cartBuyerIdentityUpdate?.userErrors[0].message,
+            {
+              cause:
+                cartBuyerIdentityUpdate?.userErrors[0].code,
+            },
+          )
+        }
+      }
     } else {
       messageKey = "actions.signInToAccountAction.failed";
     }
@@ -326,88 +349,78 @@ export async function signUpForAccountAction(
   }
 }
 
-  export async function updateAccountAction(
-    _currentState: any,
-    formData: FormData,
-  ) {
-    const email = formData.get("email");
-    const password = formData.get("password");
-    const firstName = formData.get("firstName");
-  
-    if (!email) {
-      throw new Error("email not set");
-    }
-  
-    if (!password) {
-      throw new Error("password not set");
-    }
-  
-    let message;
-  
-    let messageKey = "actions.updateAccountAction.error";
-  
-    let ok = false;
-  
-    let status = 500;
+export async function updateAccountAction(
+  _currentState: any,
+  formData: FormData,
+) {
+  const acceptsMarketing = formData.get("acceptsMarketing") as 'on' | 'off';
+  const email = formData.get("email") as string;
+  const firstName = formData.get("firstName") as string;
+  const lastName = formData.get("lastName") as string;
+  const phone = formData.get("phone") as string;
 
-    const customerAccessTokenCookie = cookies().get('customerAccessToken');
+  let message;
 
-    if(!customerAccessTokenCookie) {
-      throw new Error("customerAccessToken not set");
-    }
+  let messageKey = "actions.updateAccountAction.error";
 
-    const customerAccessToken = customerAccessTokenCookie.value;
-  
-    const variables = { customerAccessToken, input: { email: email as string, firstName: firstName as string, password: password as string } }
-  
-    try {
-      const updateAccountResponse = await updateAccountHandler({ variables });
-  
-      const errors = updateAccountResponse.customerUpdate?.customerUserErrors;
-  
-      if (
-        Array.isArray(errors) && errors.length > 0
-      ) {
-        throw new Error(
-          errors[0].message,
-          {
-            cause:
-              errors[0].code,
-          },
-        )
-      }
-  
-      const id = updateAccountResponse.customerUpdate?.customer?.id;
-  
-      if (id) {
-        ok = true;
-  
-        status = 202;
-  
-        messageKey = "actions.updateAccountAction.success";
-  
-        // const expires = remember === 'on' ? parseISO(id.expiresAt) : add(new Date(), {
-        //   hours: 1,
-        // });
-  
-        // cookies().set('accessToken', id.accessToken, { expires })
-      } else {
-        messageKey = "actions.updateAccountAction.failed";
-      }
-    } catch (error) {
-      console.error(error);
-  
-      if (error instanceof Error) {
-        messageKey = error.message;
-      } else if (typeof error === "string") {
-        messageKey = error;
-      }
-    } finally {
-      return {
-        message,
-        messageKey,
-        ok,
-        status,
-      };
-    }
+  let ok = false;
+
+  let status = 500;
+
+  const customerAccessTokenCookie = cookies().get('customerAccessToken');
+
+  if (!customerAccessTokenCookie) {
+    throw new Error("customerAccessToken not set");
   }
+
+  const customerAccessToken = customerAccessTokenCookie.value;
+
+  const input = {
+    acceptsMarketing: acceptsMarketing === "on" ? true : false,
+    email,
+    firstName,
+    lastName,
+    phone,
+  };
+
+  const variables = { customerAccessToken, input }
+
+  try {
+    const updateAccountResponse = await updateAccountHandler({ variables });
+
+    const errors = updateAccountResponse.customerUpdate?.customerUserErrors;
+
+    if (
+      Array.isArray(errors) && errors.length > 0
+    ) {
+      throw new Error(
+        errors[0].message,
+        {
+          cause:
+            errors[0].code,
+        },
+      )
+    }
+
+    ok = true;
+
+    status = 202;
+
+    messageKey = "actions.updateAccountAction.success";
+  } catch (error) {
+    console.error(error);
+
+    if (error instanceof Error) {
+      messageKey = error.message;
+    } else if (typeof error === "string") {
+      messageKey = error;
+    }
+  } finally {
+    return {
+      message,
+      messageKey,
+      ok,
+      status,
+    };
+  }
+}

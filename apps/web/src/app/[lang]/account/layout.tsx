@@ -1,4 +1,4 @@
-// import { Logo } from "@/components/layout/logo/index";
+import { LogotypeIcon } from "@/components/icons/logotype";
 import { NavbarContent } from "@/components/layout/navbar/content";
 import { Navbar } from "@/components/layout/navbar/index";
 import { type LayoutProps } from "@/types/next";
@@ -10,13 +10,13 @@ export default function AccountLayout({
 }: PropsWithChildren<LayoutProps>) {
   return (
     <>
-      <Navbar sticky>
+      <Navbar>
         <NavbarContent lang={lang} />
       </Navbar>
-      <main className="min-h-fullMinusNavbar pt-12 grid max-w-[100dvw] gap-16 p-8 justify-center content-start">
+      <main className="min-h-fullMinusNavbar grid max-w-[100dvw] content-start justify-center gap-16 bg-black p-8 pt-12 fill-light">
+        <LogotypeIcon className="h-8 fill-inherit drop-shadow transition duration-300 ease-in-out hover:scale-110 sm:h-10 justify-self-center" />
         {children}
       </main>
-      {/* <Logo /> */}
     </>
   );
 }

@@ -3,20 +3,20 @@
 import { CloseCart } from "@/components/cart/close-cart";
 import { CartForm } from "@/components/cart/form";
 import { OpenCart } from "@/components/cart/open-cart";
-import { state$ } from "@/lib/store";
 import { themeColors } from "@/lib/tailwind";
 import { createIntl } from "@formatjs/intl";
 import { Dialog, Transition } from "@headlessui/react";
-import { useSelector } from "@legendapp/state/react";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
+  CartFragment,
   cartFragment,
   getCartQuery,
   getFragmentData,
   getShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, getQueryKey } from "@uncnsrdlabel/lib";
+import { getCookie } from "cookies-next";
 import {
   Fragment,
   Usable,
@@ -43,9 +43,17 @@ export function Cart({
     messages,
   });
 
-  const cartId = useSelector<string>(() => state$.cartId.get());
+  const {
+    data: cartCookieData = "{}",
+  } = useQuery({
+    queryKey: ['cart'],
+    queryFn: () => getCookie("cart") ?? "{}",
+    refetchInterval: 5_000,
+  });
 
-  const variables = { cartId };
+  const cartCookie = JSON.parse(cartCookieData as string) as CartFragment;
+
+  const variables = { cartId: cartCookie?.id };
 
   const queryKey = getQueryKey(getCartQuery, variables);
 
@@ -54,7 +62,7 @@ export function Cart({
       cart: null,
     },
   } = useQuery({
-    enabled: !!cartId,
+    enabled: !!cartCookie?.id,
     queryKey,
     queryFn: () => getShopifyGraphQL(getCartQuery, variables),
     staleTime: 5 * 1000,
@@ -127,8 +135,7 @@ export function Cart({
           >
             <Dialog.Panel
               className={cn(
-                "pt-safeTop flex-col p-6",
-                "fixed bottom-0 right-0 top-0 flex h-full w-full flex-col border-l border-neutral-200 bg-white/80 p-6 text-black backdrop-blur-xl md:w-[420px] dark:border-neutral-700 dark:bg-black/80 dark:text-white",
+                "fixed bottom-0 right-0 top-0 flex h-full w-full flex-col border-l border-neutral-200 bg-white/80 p-4 pt-[max(theme(spacing.safeTop),_theme(spacing.3))] text-black backdrop-blur-xl md:w-[420px] dark:border-neutral-700 dark:bg-black/80 dark:text-white",
                 themeColors,
               )}
             >
@@ -149,7 +156,6 @@ export function Cart({
               </div>
               <CartForm
                 cart={cart}
-                cartId={cartId}
                 container="Cart"
                 dictionary={dictionary}
                 lang={lang}

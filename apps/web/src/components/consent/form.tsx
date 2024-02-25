@@ -5,14 +5,14 @@ import * as Checkbox from "@radix-ui/react-checkbox";
 import { CheckIcon } from "@radix-ui/react-icons";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
-    COOKIE_CONSENT,
-    acceptAllConsentSettings,
-    cn,
-    cookieOptions,
-    defaultConsentSettings,
-    denyAllAdditionalConsentSettings,
-    types,
-    type ConsentSettings,
+  COOKIE_CONSENT,
+  acceptAllConsentSettings,
+  cn,
+  cookieOptions,
+  defaultConsentSettings,
+  denyAllAdditionalConsentSettings,
+  types,
+  type ConsentSettings,
 } from "@uncnsrdlabel/lib";
 import { getCookie, setCookie } from "cookies-next";
 import { Usable, use, useState } from "react";
@@ -40,9 +40,9 @@ export function ConsentForm({className, dictionary, lang, ...props}: ConsentDial
   const track = useTrack();
 
   const [optionsOpen, setOptionsOpen] = useState(false);
-  const [consentSettings, setConsentSettings] = useState( ()=>{
-
+  const [consentSettings, setConsentSettings] = useState(()=>{
     const consentCookieData = (getCookie(COOKIE_CONSENT) as string) ?? "{}";
+
     const savedConsentSettings = JSON.parse(consentCookieData) as ConsentSettings;
     return {
     ...defaultConsentSettings,

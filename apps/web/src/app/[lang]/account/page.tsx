@@ -6,9 +6,8 @@ import {
 } from "@/components/account/account-update-form";
 import { getDictionary } from "@/lib/dictionary";
 import { type PageProps } from "@/types/next";
+import { getCookie } from "cookies-next";
 import { Metadata } from "next";
-// import { redirect } from 'next/navigation';
-import { cookies } from "next/headers";
 
 export const metadata: Metadata = {
   title: "Account",
@@ -18,12 +17,9 @@ export const metadata: Metadata = {
 export default function AccountPage({ params: { lang } }: PageProps) {
   const dictionary = getDictionary({ lang });
 
-  const customerAccessTokenCookie = cookies().get("customerAccessToken");
-
-  const customerAccessToken = customerAccessTokenCookie?.value;
+  const customerAccessToken = getCookie("customerAccessToken");
 
   if (!customerAccessToken) {
-    // redirect('/account/details')
     return <SignInOrSignUpForAccountForm dictionary={dictionary} lang={lang} />;
   }
 

@@ -1,12 +1,12 @@
 import {
-  AddToCartMutationVariables, CollectionFragment, CreateCartMutationVariables,
+  CartBuyerIdentityUpdateMutationVariables,
+  CollectionFragment,
   CustomerAccessTokenCreateMutationVariables,
   CustomerCreateMutationVariables,
   CustomerRecoverMutationVariables,
   CustomerResetPasswordMutationVariables,
   CustomerUpdateMutationVariables,
   EditCartItemsMutationVariables,
-  GetCartQueryVariables,
   GetCollectionProductsQueryVariables,
   GetCollectionQueryVariables,
   GetCollectionsQueryVariables,
@@ -19,17 +19,14 @@ import {
   GetProductRecommendationsQueryVariables,
   GetProductsQueryVariables,
   GetProductsWithVariantsQueryVariables,
-  GetRouteMetaObjectQueryVariables,
-  RemoveFromCartMutationVariables,
+  GetRouteMetaObjectQueryVariables
 } from "./codegen/graphql";
 import { getFragmentData } from "./codegen/index";
 import { domain } from "./constants";
 import { collectionFragment } from "./fragments/index";
 import {
-  addToCartMutation,
-  createCartMutation,
-  editCartItemsMutation,
-  removeFromCartMutation,
+  cartBuyerIdentityUpdateMutation,
+  editCartItemsMutation
 } from "./mutations/cart";
 import {
   customerAccessTokenCreateMutation,
@@ -44,7 +41,6 @@ import {
   getCollectionsQuery,
 } from "./queries/collection";
 import {
-  getCartQuery,
   getLocalizationDetailsQuery,
   getMenuQuery,
   getPageQuery,
@@ -61,59 +57,23 @@ import {
 } from "./queries/index";
 import { getInContextVariables, getShopifyGraphQL } from "./utilities";
 
-export async function createCartHandler({ variables }: {
-  variables: CreateCartMutationVariables,
+export async function cartBuyerIdentityUpdateHandler({ variables }: {
+  variables: CartBuyerIdentityUpdateMutationVariables,
 }) {
-  const { cartCreate } = await getShopifyGraphQL(
-    createCartMutation,
-    variables,
-  );
+  const { cartBuyerIdentityUpdate } = await getShopifyGraphQL(cartBuyerIdentityUpdateMutation, variables);
 
-  if (!cartCreate) {
+  if (!cartBuyerIdentityUpdate) {
     return null;
   }
 
-  const { cart: cartFragmentRef } = cartCreate;
+  const { cart: cartFragmentRef, userErrors } = cartBuyerIdentityUpdate;
 
   if (!cartFragmentRef) {
     return null;
   }
 
-  return cartFragmentRef;
-}
-
-export async function addToCartHandler({ variables }: {
-  variables: AddToCartMutationVariables,
-}) {
-  const { cartLinesAdd } = await getShopifyGraphQL(addToCartMutation, variables);
-
-  if (!cartLinesAdd) {
-    return null;
-  }
-
-  const { cart: cartFragmentRef } = cartLinesAdd;
-
-  if (!cartFragmentRef) {
-    return null;
-  }
-
-  return cartFragmentRef;
-}
-
-export async function removeFromCartHandler({ variables }: {
-  variables: RemoveFromCartMutationVariables,
-}) {
-  const { cartLinesRemove } = await getShopifyGraphQL(removeFromCartMutation, variables);
-
-  if (!cartLinesRemove) {
-    return null;
-  }
-
-  const { cart: cartFragmentRef } = cartLinesRemove;
-
-  if (!cartFragmentRef) {
-    return null;
-  }
+  // TODO: Handle userErrors
+  console.error({ userErrors })
 
   return cartFragmentRef;
 }
@@ -168,28 +128,6 @@ export async function updateCartHandler({ variables }: {
   }
 
   const { cart: cartFragmentRef } = cartLinesUpdate;
-
-  if (!cartFragmentRef) {
-    return null;
-  }
-
-  return cartFragmentRef;
-}
-
-export async function getCartHandler({ variables, lang }: {
-  variables: GetCartQueryVariables,
-  lang: Intl.BCP47LanguageTag,
-}) {
-  if (!lang) {
-    console.error("No lang in getCartHandler")
-  }
-
-  const inContextVariables = getInContextVariables(lang);
-
-  const { cart: cartFragmentRef } = await getShopifyGraphQL(getCartQuery, {
-    ...inContextVariables,
-    ...variables,
-  });
 
   if (!cartFragmentRef) {
     return null;
