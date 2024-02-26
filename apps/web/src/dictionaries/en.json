@@ -292,6 +292,16 @@
       "required": "Email address is required",
       "submit": "Sign in",
       "title": "Sign in to your account",
+      "action": {
+        "forgot-password": "Forgot your password?",
+        "no-account": "Don't have an account?",
+        "sign-up": "Sign up"
+      },
+      "field": {
+        "email": "Email",
+        "password": "Password",
+        "rememberMe": "Remember me"
+      },
       "toast": {
         "close-alt": "Close this message",
         "close-button": "Close",
@@ -302,13 +312,25 @@
     },
     "SignUpForAccountForm": {
       "description": "Sign up to track your orders, wishlist, and more",
-      "email": "Email",
       "forgot-password": "Forgot your password?",
-      "password": "Password",
       "pattern": "Entered value does not match email format",
       "required": "Email address is required",
       "submit": "Sign up",
       "title": "Sign up for an account",
+      "action": {
+        "already-have-an-account": "Already have an account?",
+        "forgot-password": "Forgot your password?",
+        "sign-in": "Sign in"
+      },
+      "field": {
+        "acceptsMarketing": "I would like to receive marketing emails from UNCNSRD",
+        "confirmPassword": "Confirm password",
+        "email": "Email",  
+        "firstName": "First name",
+        "lastName": "Last name",
+        "password": "Password",
+        "phone": "Phone"
+      },
       "toast": {
         "close-alt": "Close this message",
         "close-button": "Close",
@@ -351,19 +373,33 @@
       }
     },
     "UpdateAccountForm": {
-      "description": "Update your account details",
-      "email": "Email",
-      "password": "Password",
       "submit": "Update account",
-      "title": "Update your account",
       "message": "Waiting for signup confirmation",
       "pattern": "Entered value does not match email format",
       "placeholder": "Sign up to our newsletter",
       "required": "Email address is required",
-      "firstName": "First name",
-      "lastName": "Last name",
-      "phone": "Phone",
-      "acceptsMarketing": "I would like to receive marketing emails from UNCNSRD",
+      "card": {
+        "description": "Update your account details",
+        "title": "Update your account"
+      },
+      "field": {
+        "acceptsMarketing": "I would like to receive marketing emails from UNCNSRD",
+        "email": "Email",  
+        "firstName": "First name",
+        "lastName": "Last name",
+        "phone": "Phone"
+      },
+      "action": {
+        "edit-addresses": {
+          "button": "Edit addresses"
+        },
+        "sign-out": {
+          "button": "Sign out",
+          "toast": {
+            "success": "You have successfully signed out"
+          }
+        }
+      },
       "toast": {
         "close-alt": "Close this message",
         "close-button": "Close",

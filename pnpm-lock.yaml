@@ -905,6 +905,9 @@ importers:
 
   packages/@uncnsrdlabel/lib:
     dependencies:
+      '@graphql-typed-document-node/core':
+        specifier: ^3.2.0
+        version: 3.2.0(graphql@16.8.1)
       '@shopify/hydrogen-react':
         specifier: ^2024.1.0
         version: 2024.1.0(@types/react@18.2.57)(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)

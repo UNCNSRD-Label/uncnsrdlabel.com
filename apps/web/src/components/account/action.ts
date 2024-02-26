@@ -1,8 +1,8 @@
 "use server";
 
 import {
-  cartBuyerIdentityUpdateMutation,
-  getShopifyGraphQL, recoverAccountHandler, resetAccountHandler, signInToAccountHandler, signUpForAccountHandler, updateAccountHandler
+    cartBuyerIdentityUpdateMutation,
+    getShopifyGraphQL, recoverAccountHandler, resetAccountHandler, signInToAccountHandler, signUpForAccountHandler, updateAccountHandler
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { add, parseISO } from "date-fns";
 import { cookies } from 'next/headers';
@@ -245,7 +245,7 @@ export async function signUpForAccountAction(
 ) {
   const email = formData.get("email");
   const password = formData.get("password");
-  const confirmPassword = formData.get("confirm-password");
+  const confirmPassword = formData.get("confirmPassword");
 
   if (!email) {
     throw new Error("email not set");

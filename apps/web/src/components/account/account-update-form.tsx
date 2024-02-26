@@ -158,12 +158,12 @@ export function UpdateAccountForm({
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl">
             {intl.formatMessage({
-              id: "component.UpdateAccountForm.title",
+              id: "component.UpdateAccountForm.card.title",
             })}
           </CardTitle>
           <CardDescription>
             {intl.formatMessage({
-              id: "component.UpdateAccountForm.description",
+              id: "component.UpdateAccountForm.card.description",
             })}
           </CardDescription>
         </CardHeader>
@@ -171,7 +171,7 @@ export function UpdateAccountForm({
           <div>
             <Label htmlFor="email">
               {intl.formatMessage({
-                id: "component.UpdateAccountForm.email",
+                id: "component.UpdateAccountForm.field.email",
               })}
             </Label>
             <Input
@@ -187,7 +187,7 @@ export function UpdateAccountForm({
           <div>
             <Label htmlFor="firstName">
               {intl.formatMessage({
-                id: "component.UpdateAccountForm.firstName",
+                id: "component.UpdateAccountForm.field.firstName",
               })}
             </Label>
             <Input
@@ -201,7 +201,7 @@ export function UpdateAccountForm({
           <div>
             <Label htmlFor="lastName">
               {intl.formatMessage({
-                id: "component.UpdateAccountForm.lastName",
+                id: "component.UpdateAccountForm.field.lastName",
               })}
             </Label>
             <Input
@@ -215,7 +215,7 @@ export function UpdateAccountForm({
           <div>
             <Label htmlFor="phone">
               {intl.formatMessage({
-                id: "component.UpdateAccountForm.phone",
+                id: "component.UpdateAccountForm.field.phone",
               })}
             </Label>
             <Input
@@ -236,7 +236,7 @@ export function UpdateAccountForm({
             />
             <Label className="ml-2 text-xs" htmlFor="acceptsMarketing">
               {intl.formatMessage({
-                id: "component.UpdateAccountForm.acceptsMarketing",
+                id: "component.UpdateAccountForm.field.acceptsMarketing",
               })}
             </Label>
           </div>
@@ -249,19 +249,19 @@ export function UpdateAccountForm({
               signOutOfUserAccount({
                 router,
                 successMessage: intl.formatMessage({
-                  id: "component.NavbarContent.account.sign-out",
+                  id: "component.UpdateAccountForm.action.sign-out.toast.success",
                 }),
               })
             }
             variant="ghost"
           >
             {intl.formatMessage({
-              id: "component.UpdateAccountForm.sign-out",
+              id: "component.UpdateAccountForm.action.sign-out.button",
             })}
           </Button>
           <Link className="underline" href="/account/addresses">
             {intl.formatMessage({
-              id: "component.UpdateAccountForm.edit-addresses",
+              id: "component.UpdateAccountForm.action.edit-addresses.button",
             })}
           </Link>
         </CardFooter>

@@ -134,7 +134,7 @@ export function SignUpForAccountForm({
           <div>
             <Label htmlFor="email">
               {intl.formatMessage({
-                id: "component.SignUpForAccountForm.email",
+                id: "component.SignUpForAccountForm.field.email",
               })}
             </Label>
             <Input
@@ -149,7 +149,7 @@ export function SignUpForAccountForm({
           <div>
             <Label htmlFor="password">
               {intl.formatMessage({
-                id: "component.SignUpForAccountForm.password",
+                id: "component.SignUpForAccountForm.field.password",
               })}
             </Label>
             <Input
@@ -161,11 +161,15 @@ export function SignUpForAccountForm({
             />
           </div>
           <div>
-            <Label htmlFor="confirm-password">Confirm Password</Label>
+            <Label htmlFor="confirmPassword">
+              {intl.formatMessage({
+                id: "component.SignUpForAccountForm.field.confirmPassword",
+              })}
+            </Label>
             <Input
               autoComplete="new-password"
-              id="confirm-password"
-              name="confirm-password"
+              id="confirmPassword"
+              name="confirmPassword"
               required
               type="password"
             />
@@ -173,7 +177,7 @@ export function SignUpForAccountForm({
           <div>
             <Label htmlFor="firstName">
               {intl.formatMessage({
-                id: "component.SignUpForAccountForm.firstName",
+                id: "component.SignUpForAccountForm.field.firstName",
               })}
             </Label>
             <Input
@@ -186,7 +190,7 @@ export function SignUpForAccountForm({
           <div>
             <Label htmlFor="lastName">
               {intl.formatMessage({
-                id: "component.SignUpForAccountForm.lastName",
+                id: "component.SignUpForAccountForm.field.lastName",
               })}
             </Label>
             <Input
@@ -199,7 +203,7 @@ export function SignUpForAccountForm({
           <div>
             <Label htmlFor="phone">
               {intl.formatMessage({
-                id: "component.SignUpForAccountForm.phone",
+                id: "component.SignUpForAccountForm.field.phone",
               })}
             </Label>
             <Input
@@ -212,9 +216,9 @@ export function SignUpForAccountForm({
           </div>
           <div>
             <Checkbox id="acceptsMarketing" name="acceptsMarketing" />
-            <Label htmlFor="acceptsMarketing">
+            <Label className="ml-2" htmlFor="acceptsMarketing">
               {intl.formatMessage({
-                id: "component.SignUpForAccountForm.acceptsMarketing",
+                id: "component.SignUpForAccountForm.field.acceptsMarketing",
               })}
             </Label>
           </div>
@@ -222,14 +226,22 @@ export function SignUpForAccountForm({
         </CardContent>
         <CardFooter className="flex justify-center text-sm">
           <div className="flex justify-center gap-2 text-sm">
-            <span>Already have an account?</span>
+            <span>
+              {intl.formatMessage({
+                id: "component.SignUpForAccountForm.action.already-have-an-account",
+              })}
+            </span>
             {setActiveTab ? (
               <Button onClick={() => setActiveTab("sign-in")} variant="link">
-                Sign in
+                {intl.formatMessage({
+                  id: "component.SignUpForAccountForm.action.sign-in",
+                })}
               </Button>
             ) : (
               <Link className="underline" href="/account/sign-in">
-                Sign in
+                {intl.formatMessage({
+                  id: "component.SignUpForAccountForm.action.sign-in",
+                })}
               </Link>
             )}
           </div>

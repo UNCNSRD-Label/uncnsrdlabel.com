@@ -16,7 +16,7 @@ import { Checkbox } from "@uncnsrdlabel/components/atoms/checkbox";
 import { Input } from "@uncnsrdlabel/components/atoms/input";
 import { Label } from "@uncnsrdlabel/components/atoms/label";
 import Link from "next/link";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 import { Usable, use } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { type ResolvedIntlConfig } from "react-intl";
@@ -95,7 +95,7 @@ export function SignInToAccountForm({
   useDebouncedEffect(
     () => {
       if (state?.ok) {
-        router.push('/account/update-details')
+        router.push("/account/update-details");
 
         toast.success(
           intl.formatMessage({
@@ -145,7 +145,7 @@ export function SignInToAccountForm({
           <div>
             <Label htmlFor="email">
               {intl.formatMessage({
-                id: "component.SignInToAccountForm.email",
+                id: "component.SignInToAccountForm.field.email",
               })}
             </Label>
             <Input
@@ -159,7 +159,7 @@ export function SignInToAccountForm({
           <div>
             <Label htmlFor="password">
               {intl.formatMessage({
-                id: "component.SignInToAccountForm.password",
+                id: "component.SignInToAccountForm.field.password",
               })}
             </Label>
             <Input
@@ -172,26 +172,38 @@ export function SignInToAccountForm({
           <div>
             <Checkbox id="remember" name="remember" />
             <Label className="ml-2" htmlFor="remember">
-              Remember me
+              {intl.formatMessage({
+                id: "component.SignInToAccountForm.field.rememberMe",
+              })}
             </Label>
           </div>
           <Submit className="mt-4 w-full" dictionary={dictionary} lang={lang} />
           <div className="flex justify-center gap-2 text-sm">
-            <span>Don't have an account?</span>
+            <span>
+              {intl.formatMessage({
+                id: "component.SignInToAccountForm.action.no-account",
+              })}
+            </span>
             {setActiveTab ? (
               <Button onClick={() => setActiveTab("sign-up")} variant="link">
-                Sign up
+                {intl.formatMessage({
+                  id: "component.SignInToAccountForm.action.sign-up",
+                })}
               </Button>
             ) : (
               <Link className="underline" href="/account/sign-up">
-                Sign up
+                {intl.formatMessage({
+                  id: "component.SignInToAccountForm.action.sign-up",
+                })}
               </Link>
             )}
           </div>
         </CardContent>
         <CardFooter className="flex justify-center text-sm">
           <Link className="underline" href="/account/recover">
-            Forgot your password?
+            {intl.formatMessage({
+              id: "component.SignInToAccountForm.action.forgot-password",
+            })}
           </Link>
         </CardFooter>
         <input type="hidden" name="_shopify_y" value={_shopify_y} />
