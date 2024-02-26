@@ -1,5 +1,6 @@
 "use client";
 
+import { signOutOfUserAccount } from "@/lib/shopify";
 import { createIntl } from "@formatjs/intl";
 import { useDebouncedEffect } from "@react-hookz/web";
 import { getShopifyCookies } from "@shopify/hydrogen-react";
@@ -23,9 +24,9 @@ import {
   getShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getQueryKey } from "@uncnsrdlabel/lib";
-import { deleteCookie, getCookie } from "cookies-next";
+import { getCookie } from "cookies-next";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next/navigation';
 import { Usable, use, useEffect, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { type ResolvedIntlConfig } from "react-intl";
@@ -244,23 +245,24 @@ export function UpdateAccountForm({
         <CardFooter className="grid grid-flow-col justify-start gap-4 text-sm">
           <Button
             className="underline"
-            onClick={() => {
-              deleteCookie("customerAccessToken");
-
-              router.push("/account/sign-in");
-
-              toast.success(
-                intl.formatMessage({
-                  id: "component.UpdateAccountForm.toast.sign-out",
+            onClick={() =>
+              signOutOfUserAccount({
+                router,
+                successMessage: intl.formatMessage({
+                  id: "component.NavbarContent.account.sign-out",
                 }),
-              );
-            }}
+              })
+            }
             variant="ghost"
           >
-            Sign out
+            {intl.formatMessage({
+              id: "component.UpdateAccountForm.sign-out",
+            })}
           </Button>
           <Link className="underline" href="/account/addresses">
-            Edit addresses
+            {intl.formatMessage({
+              id: "component.UpdateAccountForm.edit-addresses",
+            })}
           </Link>
         </CardFooter>
         <input type="hidden" name="_shopify_y" value={_shopify_y} />

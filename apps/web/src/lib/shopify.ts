@@ -8,8 +8,25 @@ import {
   getShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getQueryKey } from "@uncnsrdlabel/lib";
+import { deleteCookie } from "cookies-next";
 import { startCase } from "lodash";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { useSearchParams } from "next/navigation";
+import { toast } from "sonner";
+
+export const signOutOfUserAccount = ({
+  router,
+  successMessage,
+}: {
+  router: AppRouterInstance;
+  successMessage: string;
+}) => {
+  router.push("/account");
+
+  deleteCookie("customerAccessToken");
+
+  toast.success(successMessage);
+};
 
 export const getProductVariantBySelectedOptionsUtility = ({
     handle,

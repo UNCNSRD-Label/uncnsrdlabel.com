@@ -17,7 +17,7 @@ export default function AccountPage({ params: { lang } }: PageProps) {
   const customerAccessToken = cookies().get('customerAccessToken')?.value;
 
   if (!customerAccessToken) {
-    redirect('/account/sign-in')
+    redirect('/account')
   }
 
   return (
