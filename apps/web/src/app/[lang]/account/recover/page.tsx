@@ -25,7 +25,7 @@ export default function AccountRecoverPage({
         }}
       />
       <div className="bg-opaque-white grid gap-8 p-8">
-        <h1 className="text-3xl">Recover your account</h1>
+        <h1 className="text-lg sm:text-xl md:text-3xl">Recover your account</h1>
         <RecoverAccountForm
           className="bg-transparent sm:min-w-[36rem]"
           dictionary={dictionary}

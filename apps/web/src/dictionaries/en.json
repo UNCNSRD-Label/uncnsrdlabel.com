@@ -52,6 +52,19 @@
       }
     }
   },
+  "layout": {
+    "account": {
+      "nav": {
+        "title": "Account",
+        "sign-out": {
+          "button": "Sign out",
+          "toast": {
+            "success": "You have successfully signed out"
+          }
+        }
+      }
+    }
+  },
   "page": {
     "collection": {
       "title": "Collection listings for {title}",
@@ -72,6 +85,11 @@
       "title": "Not found",
       "message": "Could not find requested resource",
       "button": "Try again"
+    },
+    "policy": {
+      "nav": {
+        "title": "Customer Care"
+      }
     },
     "products": {
       "add-to-wishlist": "Add to wishlist",
@@ -388,17 +406,6 @@
         "firstName": "First name",
         "lastName": "Last name",
         "phone": "Phone"
-      },
-      "action": {
-        "edit-addresses": {
-          "button": "Edit addresses"
-        },
-        "sign-out": {
-          "button": "Sign out",
-          "toast": {
-            "success": "You have successfully signed out"
-          }
-        }
       },
       "toast": {
         "close-alt": "Close this message",

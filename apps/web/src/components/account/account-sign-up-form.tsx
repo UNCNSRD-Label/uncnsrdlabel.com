@@ -224,27 +224,29 @@ export function SignUpForAccountForm({
           </div>
           <Submit className="mt-4 w-full" dictionary={dictionary} lang={lang} />
         </CardContent>
-        <CardFooter className="flex justify-center text-sm">
-          <div className="flex justify-center gap-2 text-sm">
-            <span>
+        <CardFooter className="grid grid-flow-row justify-center gap-2 text-sm sm:grid-flow-col">
+          <span>
+            {intl.formatMessage({
+              id: "component.SignUpForAccountForm.action.already-have-an-account",
+            })}
+          </span>
+          {setActiveTab ? (
+            <Button
+              className="underline"
+              onClick={() => setActiveTab("sign-in")}
+              variant="link"
+            >
               {intl.formatMessage({
-                id: "component.SignUpForAccountForm.action.already-have-an-account",
+                id: "component.SignUpForAccountForm.action.sign-in",
               })}
-            </span>
-            {setActiveTab ? (
-              <Button onClick={() => setActiveTab("sign-in")} variant="link">
-                {intl.formatMessage({
-                  id: "component.SignUpForAccountForm.action.sign-in",
-                })}
-              </Button>
-            ) : (
-              <Link className="underline" href="/account/sign-in">
-                {intl.formatMessage({
-                  id: "component.SignUpForAccountForm.action.sign-in",
-                })}
-              </Link>
-            )}
-          </div>
+            </Button>
+          ) : (
+            <Link className="underline" href="/account/sign-in">
+              {intl.formatMessage({
+                id: "component.SignUpForAccountForm.action.sign-in",
+              })}
+            </Link>
+          )}
         </CardFooter>
         <input type="hidden" name="_shopify_y" value={_shopify_y} />
       </form>

@@ -1,6 +1,5 @@
 "use client";
 
-import { signOutOfUserAccount } from "@/lib/shopify";
 import { createIntl } from "@formatjs/intl";
 import { useDebouncedEffect } from "@react-hookz/web";
 import { getShopifyCookies } from "@shopify/hydrogen-react";
@@ -25,8 +24,7 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getQueryKey } from "@uncnsrdlabel/lib";
 import { getCookie } from "cookies-next";
-import Link from "next/link";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 import { Usable, use, useEffect, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { type ResolvedIntlConfig } from "react-intl";
@@ -243,27 +241,7 @@ export function UpdateAccountForm({
           <Submit className="w-full" dictionary={dictionary} lang={lang} />
         </CardContent>
         <CardFooter className="grid grid-flow-col justify-start gap-4 text-sm">
-          <Button
-            className="underline"
-            onClick={() =>
-              signOutOfUserAccount({
-                router,
-                successMessage: intl.formatMessage({
-                  id: "component.UpdateAccountForm.action.sign-out.toast.success",
-                }),
-              })
-            }
-            variant="ghost"
-          >
-            {intl.formatMessage({
-              id: "component.UpdateAccountForm.action.sign-out.button",
-            })}
-          </Button>
-          <Link className="underline" href="/account/addresses">
-            {intl.formatMessage({
-              id: "component.UpdateAccountForm.action.edit-addresses.button",
-            })}
-          </Link>
+          
         </CardFooter>
         <input type="hidden" name="_shopify_y" value={_shopify_y} />
       </form>

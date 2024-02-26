@@ -178,14 +178,14 @@ export function SignInToAccountForm({
             </Label>
           </div>
           <Submit className="mt-4 w-full" dictionary={dictionary} lang={lang} />
-          <div className="flex justify-center gap-2 text-sm">
+          <div className="grid grid-flow-row sm:grid-flow-col justify-center gap-2 text-sm">
             <span>
               {intl.formatMessage({
                 id: "component.SignInToAccountForm.action.no-account",
               })}
             </span>
             {setActiveTab ? (
-              <Button onClick={() => setActiveTab("sign-up")} variant="link">
+              <Button className="underline" onClick={() => setActiveTab("sign-up")} variant="link">
                 {intl.formatMessage({
                   id: "component.SignInToAccountForm.action.sign-up",
                 })}
@@ -199,7 +199,7 @@ export function SignInToAccountForm({
             )}
           </div>
         </CardContent>
-        <CardFooter className="flex justify-center text-sm">
+        <CardFooter className="grid grid-flow-row justify-center gap-2 text-sm sm:grid-flow-col">
           <Link className="underline" href="/account/recover">
             {intl.formatMessage({
               id: "component.SignInToAccountForm.action.forgot-password",

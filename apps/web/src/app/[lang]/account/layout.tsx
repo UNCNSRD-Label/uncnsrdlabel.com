@@ -1,38 +1,34 @@
 import { LogotypeIcon } from "@/components/icons/logotype";
 import { NavbarContent } from "@/components/layout/navbar/content";
 import { Navbar } from "@/components/layout/navbar/index";
+import { getDictionary } from "@/lib/dictionary";
 import { type LayoutProps } from "@/types/next";
-// import Image from "next/image";
 import { PropsWithChildren } from "react";
+import { Nav } from "./nav";
 
-export default function AccountLayout({
+export default async function AccountLayout({
   children,
   params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
 }: PropsWithChildren<LayoutProps>) {
+  const dictionary = getDictionary({ lang });
+
   return (
-    <div
-      // className="relative z-40"
-      className="bg-cover bg-fixed z-40 relative"
-      style={{
-        backgroundImage: "url('/images/backgrounds/MAV7957-Edit.jpg')",
-      }}
-    >
+    <div className="min-h-fullMinusNavbar relative z-40">
       <Navbar offset sticky>
         <NavbarContent lang={lang} />
       </Navbar>
-      {/* <div className="absolute h-[100dvh] w-[100dvw] z-0">
-        <Image
-          alt="Model in an Arizona print bikini on her hands and knees on a mirror"
-          className="absolute inset-0"
-          layout="fill"
-          objectFit="cover"
-          src="/images/backgrounds/MAV7957-Edit.jpg"
-        />
-      </div> */}
-      <main className="min-h-fullMinusNavbar fill-light relative grid max-w-[100dvw] content-start justify-center gap-16 px-8 py-12">
-        <LogotypeIcon className="h-8 justify-self-center fill-inherit drop-shadow transition duration-300 ease-in-out hover:scale-110 sm:h-10" />
-        {children}
-      </main>
+      <div
+        className="grid max-w-[100dvw] gap-y-4 bg-cover bg-fixed px-8 pt-16 sm:pt-12 md:grid-cols-[1fr_3fr_1fr] md:gap-8"
+        style={{
+          backgroundImage: "url('/images/backgrounds/MAV7957-Edit.jpg')",
+        }}
+      >
+        <LogotypeIcon className="col-span-3 h-8 justify-self-center fill-inherit drop-shadow transition duration-300 ease-in-out hover:scale-110 sm:h-10" />
+        <Nav dictionary={dictionary} lang={lang} />
+        <main className="min-h-fullMinusNavbar fill-light relative grid max-w-[100dvw] content-start justify-center gap-16 pb-12">
+          {children}
+        </main>
+      </div>
     </div>
   );
 }

@@ -31,7 +31,7 @@ export function SignInOrSignUpForAccountForm({
 
   return (
     <div className="grid gap-8 p-8 lg:shadow bg-opaque-white">
-      <h1 className="text-3xl">
+      <h1 className="text-lg sm:text-xl md:text-3xl">
         {intl.formatMessage({
           id: "component.SignInOrSignUpForAccountForm.title",
         })}

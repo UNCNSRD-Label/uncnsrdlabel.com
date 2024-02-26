@@ -4,7 +4,7 @@ import { type PageProps } from "@/types/next";
 import { Metadata } from "next";
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { Breadcrumb } from "./breadcrumb";
+// import { Breadcrumb } from "./breadcrumb";
 
 export const metadata: Metadata = {
   title: "Account",
@@ -22,7 +22,7 @@ export default function AccountPage({ params: { lang } }: PageProps) {
 
   return (
     <>
-      <Breadcrumb />
+      {/* <Breadcrumb /> */}
       <SignInOrSignUpForAccountForm dictionary={dictionary} lang={lang} />
     </>
   );

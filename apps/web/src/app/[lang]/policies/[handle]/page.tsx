@@ -1,7 +1,9 @@
 import { Prose } from "@/components/prose";
+import { getDictionary } from "@/lib/dictionary";
 import { getAlternativeLanguages } from "@/lib/i18n";
 import { getCanonical } from "@/lib/metadata";
 import { type PageProps } from "@/types/next";
+import { createIntl } from "@formatjs/intl";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   getFragmentData,
@@ -14,6 +16,7 @@ import {
 import { SITE_DOMAIN_WEB, cn } from "@uncnsrdlabel/lib";
 import { camelCase } from "lodash";
 import { notFound } from "next/navigation";
+import { type ResolvedIntlConfig } from "react-intl";
 
 export async function generateMetadata({
   params: { handle, lang },
@@ -55,6 +58,13 @@ export default async function PolicyPage({
 }: PageProps & {
   params: { handle: PolicyName };
 }) {
+  const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
+
   const customerCareMenu = await getMenuHandler({
     lang,
     variables: {
@@ -77,7 +87,9 @@ export default async function PolicyPage({
       <nav className="md:min-h-fullMinusNavbar relative hidden content-start md:grid md:justify-center">
         {customerCareMenu.items?.length ? (
           <dl className="grid content-start gap-4 md:sticky md:top-64 md:mb-64">
-            <dt className="text-sm uppercase">Customer Care</dt>
+            <dt className="text-sm uppercase">{intl.formatMessage({
+              id: "page.policy.nav.title",
+            })}</dt>
             {customerCareMenu.items.map((item, index) => (
               <dd key={item.title || index}>
                 <Link
@@ -96,30 +108,6 @@ export default async function PolicyPage({
             ))}
           </dl>
         ) : null}
-
-        {/* {customerCare.fields.map((field) => {
-          if (field.__typename === "MetaobjectField") {
-            if (field.reference?.__typename === "MediaImage") {
-              const image = getFragmentData(
-                imageFragment,
-                field.reference.image,
-              );
-
-              if (!image?.url) {
-                return null;
-              }
-
-              return (
-                <figure className="aspect-square w-full relative">
-                  <Image
-                    alt={field.reference.alt ?? image.altText ?? policy.title}
-                    fill
-                    src={image?.url}
-                  />
-                </figure>
-              );
-            }
-          } */}
       </nav>
       <article className="mb-48">
         <Prose
