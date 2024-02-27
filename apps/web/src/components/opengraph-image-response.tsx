@@ -3,8 +3,6 @@ import { type MoneyV2 } from "@shopify/hydrogen/storefront-api-types";
 import { imageFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { ImageResponse } from "next/og";
 
-export const alt = "UNCNSRD logo";
-
 export type Props = {
   description?: string;
   image?: ResultOf<typeof imageFragment> | null;

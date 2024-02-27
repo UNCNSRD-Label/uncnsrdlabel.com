@@ -24,7 +24,6 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getQueryKey } from "@uncnsrdlabel/lib";
 import { getCookie } from "cookies-next";
-import { useRouter } from "next/navigation";
 import { Usable, use, useEffect, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { type ResolvedIntlConfig } from "react-intl";
@@ -73,8 +72,6 @@ export function UpdateAccountForm({
     locale: lang,
     messages,
   });
-
-  const router = useRouter();
 
   const [state, updateAccount] = useFormState(updateAccountAction, null);
 
