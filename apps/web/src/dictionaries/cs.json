@@ -224,11 +224,11 @@
       "close": "Zavřete nabídku",
       "open": "Otevřete nabídku"
     },
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "Přihlaste se k odběru našeho newsletteru",
       "summary": "Zaregistrujte se a získejte 10% slevu na svůj první nákup"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "Čekání na potvrzení registrace",
       "pattern": "Zadaná hodnota neodpovídá formátu e-mailu",
       "placeholder": "Přihlaste se k odběru našeho newsletteru",

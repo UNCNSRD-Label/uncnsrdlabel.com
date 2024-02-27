@@ -42,9 +42,9 @@ export async function generateMetadata({
     productDetailsFragmentRef,
   );
 
-  const seo = getFragmentData(seoFragment, product.seo);
-
   if (!product) return notFound();
+
+  const seo = getFragmentData(seoFragment, product.seo);
 
   const hide = !product.tags.includes(HIDDEN_PRODUCT_TAG);
 
@@ -74,7 +74,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function ProductPage({
+export default async function ProductsPage({
   params: { handle, lang },
 }: PageProps) {
   const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });

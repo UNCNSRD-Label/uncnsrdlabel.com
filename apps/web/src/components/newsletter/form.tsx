@@ -1,6 +1,6 @@
 "use client";
 
-import { signUpForNewsletterAction } from "@/components/sign-up-for-newsletter/action";
+import { signUpForNewsletterAction } from "@/components/newsletter/action";
 import { createIntl } from "@formatjs/intl";
 import { useDebouncedEffect } from "@react-hookz/web";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
@@ -31,12 +31,12 @@ function Submit({
 
   return (
     <Button className={className} disabled={pending} variant="ghost">
-      {intl.formatMessage({ id: "component.SignUpForNewsletterForm.submit" })}
+      {intl.formatMessage({ id: "component.NewsletterSignUpForm.submit" })}
     </Button>
   );
 }
 
-export function SignUpForNewsletterForm({
+export function NewsletterSignUpForm({
   className,
   dictionary,
   lang,
@@ -61,7 +61,7 @@ export function SignUpForNewsletterForm({
       if (hasError) {
         toast.error(
           intl.formatMessage({
-            id: "component.SignUpForNewsletterForm.toast.error",
+            id: "component.NewsletterSignUpForm.toast.error",
           }),
           {
             description: intl.formatMessage({ id: state?.messageKey }),
@@ -79,7 +79,7 @@ export function SignUpForNewsletterForm({
       if (state?.ok) {
         toast.success(
           intl.formatMessage({
-            id: "component.SignUpForNewsletterForm.toast.success",
+            id: "component.NewsletterSignUpForm.toast.success",
           }),
           {
             description: intl.formatMessage({
@@ -108,12 +108,12 @@ export function SignUpForNewsletterForm({
           )}
           name="email"
           placeholder={intl.formatMessage({
-            id: "component.SignUpForNewsletterForm.placeholder",
+            id: "component.NewsletterSignUpForm.placeholder",
           })}
           type="email"
         />
         <Button
-          aria-label={intl.formatMessage({ id: "component.SignUpForNewsletterForm.submit" })}
+          aria-label={intl.formatMessage({ id: "component.NewsletterSignUpForm.submit" })}
           className="btn absolute right-0 mr-3"
           variant="ghost"
         >

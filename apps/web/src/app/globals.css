@@ -151,7 +151,7 @@
   }
 
   .bg-opaque-white {
-    @apply bg-white p-8 lg:bg-white/95 lg:backdrop-blur lg:backdrop-saturate-200;
+    @apply bg-white lg:bg-white/95 lg:backdrop-blur lg:backdrop-saturate-200;
   }
 }
 

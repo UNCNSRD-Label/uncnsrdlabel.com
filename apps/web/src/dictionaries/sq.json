@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "Regjistrohu në buletinin tonë",
       "summary": "Regjistrohuni dhe përfitoni 10% ulje në blerjen tuaj të parë"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "Në pritje të konfirmimit të regjistrimit",
       "pattern": "Vlera e futur nuk përputhet me formatin e emailit",
       "placeholder": "Regjistrohu në buletinin tonë",
@@ -247,11 +247,11 @@
       "close": "Mbyllni menunë",
       "open": "Hapni menunë"
     },
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "Regjistrohu në buletinin tonë",
       "summary": "Regjistrohuni dhe përfitoni 10% ulje në blerjen tuaj të parë"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "Në pritje të konfirmimit të regjistrimit",
       "pattern": "Vlera e futur nuk përputhet me formatin e emailit",
       "placeholder": "Regjistrohu në buletinin tonë",

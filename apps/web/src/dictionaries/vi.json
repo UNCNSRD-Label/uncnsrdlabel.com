@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "Đăng kí tờ báo của chúng tôi",
       "summary": "Đăng ký và nhận 10% giảm giá cho lần mua hàng đầu tiên của bạn"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "Đang chờ xác nhận đăng ký",
       "pattern": "Giá trị đã nhập không khớp với định dạng email",
       "placeholder": "Đăng kí tờ báo của chúng tôi",
@@ -247,11 +247,11 @@
       "close": "Đóng thực đơn",
       "open": "Mở thực đơn"
     },
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "Đăng kí tờ báo của chúng tôi",
       "summary": "Đăng ký và nhận 10% giảm giá cho lần mua hàng đầu tiên của bạn"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "Đang chờ xác nhận đăng ký",
       "pattern": "Giá trị đã nhập không khớp với định dạng email",
       "placeholder": "Đăng kí tờ báo của chúng tôi",

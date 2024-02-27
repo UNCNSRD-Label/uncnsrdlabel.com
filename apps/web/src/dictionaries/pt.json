@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "Inscreva-se no nosso boletim",
       "summary": "Cadastre-se e receba 10% de desconto na sua primeira compra"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "Aguardando confirmação de inscrição",
       "pattern": "O valor inserido não corresponde ao formato do e-mail",
       "placeholder": "Inscreva-se no nosso boletim",
@@ -247,11 +247,11 @@
       "close": "Fechar o cardápio",
       "open": "Abra o cardápio"
     },
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "Inscreva-se no nosso boletim",
       "summary": "Cadastre-se e receba 10% de desconto na sua primeira compra"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "Aguardando confirmação de inscrição",
       "pattern": "O valor inserido não corresponde ao formato do e-mail",
       "placeholder": "Inscreva-se no nosso boletim",

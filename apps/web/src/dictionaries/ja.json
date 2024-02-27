@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "ニュースレターに登録する",
       "summary": "サインアップすると、初回購入時に 10% オフが適用されます"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "サインアップの確認を待っています",
       "pattern": "入力された値が電子メールの形式と一致しません",
       "placeholder": "ニュースレターに登録する",
@@ -247,11 +247,11 @@
       "close": "メニューを閉じる",
       "open": "メニューを開く"
     },
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "ニュースレターに登録する",
       "summary": "サインアップすると、初回購入時に 10% オフが適用されます"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "サインアップの確認を待っています",
       "pattern": "入力された値が電子メールの形式と一致しません",
       "placeholder": "ニュースレターに登録する",

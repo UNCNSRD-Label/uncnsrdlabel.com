@@ -224,11 +224,11 @@
       "close": "Cerrar el menú",
       "open": "abre el menú"
     },
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "Suscríbase a nuestro boletín de noticias",
       "summary": "Regístrate y recibe un 10% de descuento en tu primera compra"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "Esperando confirmación de registro",
       "pattern": "El valor ingresado no coincide con el formato de correo electrónico",
       "placeholder": "Suscríbase a nuestro boletín de noticias",

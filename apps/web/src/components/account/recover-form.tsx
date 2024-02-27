@@ -18,7 +18,7 @@ import { Usable, use } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { type ResolvedIntlConfig } from "react-intl";
 import { toast } from "sonner";
-import { resetAccountAction } from "./action";
+import { recoverAccountAction } from "./action";
 
 function Submit({
   className,
@@ -41,13 +41,13 @@ function Submit({
   return (
     <Button className={className} disabled={pending} variant="default">
       {intl.formatMessage({
-        id: "component.ResetAccountForm.submit",
+        id: "component.AccountRecoverForm.submit",
       })}
     </Button>
   );
 }
 
-export function ResetAccountForm({
+export function AccountRecoverForm({
   className,
   dictionary,
   lang,
@@ -63,7 +63,7 @@ export function ResetAccountForm({
     messages,
   });
 
-  const [state, resetAccount] = useFormState(resetAccountAction, null);
+  const [state, recoverAccount] = useFormState(recoverAccountAction, null);
 
   const hasError = (state && state.status > 299) ?? false;
 
@@ -72,7 +72,7 @@ export function ResetAccountForm({
       if (hasError) {
         toast.error(
           intl.formatMessage({
-            id: "component.ResetAccountForm.toast.error",
+            id: "component.AccountRecoverForm.toast.error",
           }),
           {
             description: intl.formatMessage({ id: state?.messageKey }),
@@ -90,7 +90,7 @@ export function ResetAccountForm({
       if (state?.ok) {
         toast.success(
           intl.formatMessage({
-            id: "component.ResetAccountForm.toast.success",
+            id: "component.AccountRecoverForm.toast.success",
           }),
           {
             description: intl.formatMessage({ id: state?.messageKey }),
@@ -113,28 +113,36 @@ export function ResetAccountForm({
 
   return (
     <Card className={className}>
-      <form action={resetAccount} className="grid gap-4">
+      <form action={recoverAccount} className="grid gap-4">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl">
-            {intl.formatMessage({
-              id: "component.ResetAccountForm.submit",
-            })}
-          </CardTitle>
+          <CardTitle className="text-2xl">Recover your account</CardTitle>
           <CardDescription>
             {intl.formatMessage({
-              id: "component.ResetAccountForm.description",
+              id: "component.AccountRecoverForm.description",
             })}
           </CardDescription>
         </CardHeader>
         <CardContent className="grid gap-4">
           <div className="grid gap-2">
-            <Label htmlFor="email">Email</Label>
-            <Input autoComplete="email" id="email" name="email" type="email" placeholder="me@example.com" />
+            <Label htmlFor="email">
+              {intl.formatMessage({
+                id: "component.AccountRecoverForm.email",
+              })}
+            </Label>
+            <Input
+              autoComplete="email"
+              id="email"
+              name="email"
+              type="email"
+              placeholder="me@example.com"
+            />
           </div>
           <Submit className="mt-4 w-full" dictionary={dictionary} lang={lang} />
         </CardContent>
         <CardFooter className="text-xs">
-          Enter the details above to reset your account
+          {intl.formatMessage({
+            id: "component.AccountRecoverForm.footer",
+          })}
         </CardFooter>
         <input type="hidden" name="_shopify_y" value={_shopify_y} />
       </form>

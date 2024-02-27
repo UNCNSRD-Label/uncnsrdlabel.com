@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "Iratkozzon fel hírlevelünkre",
       "summary": "Regisztráljon és 10% kedvezményt kap az első vásárlásból"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "Várakozás a regisztráció megerősítésére",
       "pattern": "A megadott érték nem egyezik az e-mail formátummal",
       "placeholder": "Iratkozzon fel hírlevelünkre",
@@ -247,11 +247,11 @@
       "close": "Zárja be a menüt",
       "open": "Nyissa meg a menüt"
     },
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "Iratkozzon fel hírlevelünkre",
       "summary": "Regisztráljon és 10% kedvezményt kap az első vásárlásból"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "Várakozás a regisztráció megerősítésére",
       "pattern": "A megadott érték nem egyezik az e-mail formátummal",
       "placeholder": "Iratkozzon fel hírlevelünkre",

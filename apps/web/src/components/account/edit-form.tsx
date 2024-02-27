@@ -51,13 +51,13 @@ function Submit({
   return (
     <Button className={className} disabled={pending} variant="default">
       {intl.formatMessage({
-        id: "component.AddressAddForm.submit",
+        id: "component.AccountEditForm.submit",
       })}
     </Button>
   );
 }
 
-export function AddressAddForm({
+export function AccountEditForm({
   className,
   dictionary,
   lang,
@@ -82,7 +82,7 @@ export function AddressAddForm({
       if (hasError) {
         toast.error(
           intl.formatMessage({
-            id: "component.AddressAddForm.toast.error",
+            id: "component.AccountEditForm.toast.error",
           }),
           {
             description: intl.formatMessage({ id: state?.messageKey }),
@@ -100,7 +100,7 @@ export function AddressAddForm({
       if (state?.ok) {
         toast.success(
           intl.formatMessage({
-            id: "component.AddressAddForm.toast.success",
+            id: "component.AccountEditForm.toast.success",
           }),
           {
             description: intl.formatMessage({ id: state?.messageKey }),
@@ -153,12 +153,12 @@ export function AddressAddForm({
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl">
             {intl.formatMessage({
-              id: "component.AddressAddForm.card.title",
+              id: "component.AccountEditForm.card.title",
             })}
           </CardTitle>
           <CardDescription>
             {intl.formatMessage({
-              id: "component.AddressAddForm.card.description",
+              id: "component.AccountEditForm.card.description",
             })}
           </CardDescription>
         </CardHeader>
@@ -166,7 +166,7 @@ export function AddressAddForm({
           <div>
             <Label htmlFor="email">
               {intl.formatMessage({
-                id: "component.AddressAddForm.field.email",
+                id: "component.AccountEditForm.field.email",
               })}
             </Label>
             <Input
@@ -182,7 +182,7 @@ export function AddressAddForm({
           <div>
             <Label htmlFor="firstName">
               {intl.formatMessage({
-                id: "component.AddressAddForm.field.firstName",
+                id: "component.AccountEditForm.field.firstName",
               })}
             </Label>
             <Input
@@ -196,7 +196,7 @@ export function AddressAddForm({
           <div>
             <Label htmlFor="lastName">
               {intl.formatMessage({
-                id: "component.AddressAddForm.field.lastName",
+                id: "component.AccountEditForm.field.lastName",
               })}
             </Label>
             <Input
@@ -210,7 +210,7 @@ export function AddressAddForm({
           <div>
             <Label htmlFor="phone">
               {intl.formatMessage({
-                id: "component.AddressAddForm.field.phone",
+                id: "component.AccountEditForm.field.phone",
               })}
             </Label>
             <Input
@@ -231,7 +231,7 @@ export function AddressAddForm({
             />
             <Label className="ml-2 text-xs" htmlFor="acceptsMarketing">
               {intl.formatMessage({
-                id: "component.AddressAddForm.field.acceptsMarketing",
+                id: "component.AccountEditForm.field.acceptsMarketing",
               })}
             </Label>
           </div>

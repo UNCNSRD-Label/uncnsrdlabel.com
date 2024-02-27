@@ -5,7 +5,6 @@ import { createIntl, type ResolvedIntlConfig } from "react-intl";
 export const headers = {
     accept: "application/json",
     revision: "2023-12-15",
-    // revision: "2023-02-22",
     "content-type": "application/json",
     Authorization: `Klaviyo-API-Key ${process.env.KLAVIYO_PRIVATE_KEY}`,
 };
@@ -39,7 +38,6 @@ export async function findUserByEmail(formData: FormData) {
 
     let status = 500;
 
-    // const url = `https://a.klaviyo.com/api/v2/people/search?api_key={key}&email=${email}`;
     const url = `https://a.klaviyo.com/api/v2/people/search?email=${email}`;
 
     const options = {

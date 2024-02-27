@@ -82,7 +82,7 @@ export function Addresses({
             );
             return (
               <li>
-                <Link href={`/account/address/${customerAddress.id}`}>
+                <Link href={`/account/addresses/${customerAddress.id}`}>
                   {customerAddress.formatted}
                 </Link>
               </li>
@@ -91,7 +91,7 @@ export function Addresses({
         </menu>
       </CardContent>
       <CardFooter className="grid grid-flow-col justify-start gap-4 text-sm">
-        <Link className="btn btn-bg btn-primary btn-base" href="/account/address/new">
+        <Link className="btn btn-bg btn-primary btn-base" href="/account/addresses/add">
           {intl.formatMessage({
             id: "component.Addresses.actions.add",
           })}

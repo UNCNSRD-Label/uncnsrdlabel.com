@@ -224,11 +224,11 @@
       "close": "Tanqueu el menú",
       "open": "Obriu el menú"
     },
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "Subscriu-te al nostre butlletí",
       "summary": "Registra't i rep un 10% de descompte en la teva primera compra"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "Esperant la confirmació de la inscripció",
       "pattern": "El valor introduït no coincideix amb el format del correu electrònic",
       "placeholder": "Subscriu-te al nostre butlletí",

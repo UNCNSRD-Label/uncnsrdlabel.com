@@ -1,7 +1,7 @@
 import { ConsentTrigger } from "@/components/consent/trigger";
 import { LogotypeIcon } from "@/components/icons/logotype";
 import { LocationTrigger } from "@/components/location/trigger";
-import { SignUpForNewsletter } from "@/components/sign-up-for-newsletter";
+import { NewsletterSignUp } from "@/components/newsletter";
 import { SocialMenu } from "@/components/social-menu";
 import { getDictionary } from "@/lib/dictionary";
 import { themeColors } from "@/lib/tailwind";
@@ -116,7 +116,7 @@ export async function Footer({ lang }: { lang: Intl.BCP47LanguageTag }) {
                 ))}
               </dl>
             </nav>
-            <SignUpForNewsletter
+            <NewsletterSignUp
               className="lg:col-start-0 col-span-1 sm:col-span-6 sm:col-start-7 lg:col-span-4"
               lang={lang}
             />

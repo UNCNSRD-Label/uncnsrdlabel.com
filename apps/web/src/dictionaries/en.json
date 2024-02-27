@@ -133,6 +133,28 @@
         "title": "Addresses"
       }
     },
+    "AddressesEditForm": {
+      "action": {
+        "cancel": "Cancel",
+        "submit": "Save"
+      },
+      "card": {
+        "description": "Details for this address",
+        "title": "Address"
+      },
+      "field": {
+        "address1": "Street address 1",
+        "address2": "Street address 2",
+        "city": "City",
+        "company": "Company",
+        "country": "Country",
+        "firstName": "First name",
+        "lastName": "Last name",
+        "phone": "Phone",
+        "province": "Province / State / County",
+        "zip": "Zip/Postal code"
+      }
+    },
     "AddToCart": {
       "add-to-cart-disabled": "Unable to add item to bag",
       "add-to-cart-enabled": "Add to bag",
@@ -274,7 +296,7 @@
       "close": "Close the menu",
       "open": "Open the menu"
     },
-    "RecoverAccountForm": {
+    "AccountRecoverForm": {
       "description": "Enter your email address to recover your account",
       "email": "Email",
       "footer": "You will receive an email with a link to recover your password",
@@ -290,7 +312,7 @@
         "title": "Account recovery"
       }
     },
-    "ResetAccountForm": {
+    "AccountResetForm": {
       "description": "Enter your email address to reset your password",
       "email": "Email",
       "pattern": "Entered value does not match email format",
@@ -305,7 +327,7 @@
         "title": "Password reset"
       }
     },
-    "SignInOrSignUpForAccountForm": {
+    "AccountSignInOrSignUpForm": {
       "title": "Sign up or sign in to your account",
       "tabs": {
         "sign-in": "Sign in",
@@ -368,11 +390,11 @@
         "title": "Account sign up"
       }
     },
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "Sign up to our newsletter",
       "summary": "Sign up and receive 10% off your first purchase"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "Waiting for signup confirmation",
       "pattern": "Entered value does not match email format",
       "placeholder": "Sign up to our newsletter",
@@ -401,7 +423,7 @@
         "title": "Product in-stock notification signup"
       }
     },
-    "UpdateAccountForm": {
+    "AccountEditForm": {
       "submit": "Update account",
       "message": "Waiting for signup confirmation",
       "pattern": "Entered value does not match email format",

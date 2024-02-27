@@ -224,11 +224,11 @@
       "close": "মেনু বন্ধ করুন",
       "open": "মেনু খুলুন"
     },
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "আমাদের নিউজলেটার সাইন আপ করুন",
       "summary": "সাইন আপ করুন এবং আপনার প্রথম কেনাকাটায় 10% ছাড় পান"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "সাইনআপ নিশ্চিতকরণের জন্য অপেক্ষা করা হচ্ছে",
       "pattern": "প্রবেশ করা মান ইমেল বিন্যাস মেলে না",
       "placeholder": "আমাদের নিউজলেটার সাইন আপ করুন",

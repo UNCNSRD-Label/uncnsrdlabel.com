@@ -1,4 +1,5 @@
-import { Addresses } from "@/components/account/addresses/page";
+import { addAddressAction } from "@/components/account/addresses/action";
+import { AddressesEditForm } from "@/components/account/addresses/edit-form";
 import { getDictionary } from "@/lib/dictionary";
 import { type PageProps } from "@/types/next";
 import { Metadata } from "next";
@@ -6,11 +7,11 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
-  title: "Addresses",
-  description: "Edit your addresses",
+  title: "Add address",
+  description: "Add new address",
 };
 
-export default function AccountAddressesPage({ params: { lang } }: PageProps) {
+export default function AddressAddPage({ params: { id, lang } }: PageProps) {
   const dictionary = getDictionary({ lang });
 
   const customerAccessToken = cookies().get("customerAccessToken")?.value;
@@ -20,10 +21,12 @@ export default function AccountAddressesPage({ params: { lang } }: PageProps) {
   }
 
   return (
-    <div className="bg-opaque-white grid gap-8 p-4 sm:p-8">
-      <Addresses
+    <div className="bg-opaque-white grid gap-8 p-4 sm:p-8 min-w-full">
+      <AddressesEditForm
+        action={addAddressAction}
         className="sm:bg-transparent p-0 sm:p-4 md:p-8"
         dictionary={dictionary}
+        id={id}
         lang={lang}
       />
     </div>

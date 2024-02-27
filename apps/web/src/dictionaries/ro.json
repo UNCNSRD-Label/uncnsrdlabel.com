@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "Abonați-vă la buletinul nostru informativ",
       "summary": "Înscrie-te și primești 10% reducere la prima achiziție"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "Se așteaptă confirmarea înscrierii",
       "pattern": "Valoarea introdusă nu se potrivește cu formatul de e-mail",
       "placeholder": "Abonați-vă la buletinul nostru informativ",
@@ -247,11 +247,11 @@
       "close": "Închideți meniul",
       "open": "Deschide meniul"
     },
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "Abonați-vă la buletinul nostru informativ",
       "summary": "Înscrie-te și primești 10% reducere la prima achiziție"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "Se așteaptă confirmarea înscrierii",
       "pattern": "Valoarea introdusă nu se potrivește cu formatul de e-mail",
       "placeholder": "Abonați-vă la buletinul nostru informativ",

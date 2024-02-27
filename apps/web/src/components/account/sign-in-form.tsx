@@ -95,7 +95,7 @@ export function SignInToAccountForm({
   useDebouncedEffect(
     () => {
       if (state?.ok) {
-        router.push("/account/update-details");
+        router.push("/account/details");
 
         toast.success(
           intl.formatMessage({
@@ -104,10 +104,10 @@ export function SignInToAccountForm({
           {
             description: intl.formatMessage({ id: state?.messageKey }),
             // onDismiss: () => {
-            //   router.push('/account/update-details')
+            //   router.push('/account/details')
             // },
             // onAutoClose: () => {
-            //   router.push('/account/update-details')
+            //   router.push('/account/details')
             // },
           },
         );

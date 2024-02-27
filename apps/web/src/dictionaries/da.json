@@ -224,11 +224,11 @@
       "close": "Luk menuen",
       "open": "Åbn menuen"
     },
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "Tilmeld dig vores nyhedsbrev",
       "summary": "Tilmeld dig og få 10% rabat på dit første køb"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "Venter på bekræftelse af tilmelding",
       "pattern": "Den indtastede værdi matcher ikke e-mail-formatet",
       "placeholder": "Tilmeld dig vores nyhedsbrev",

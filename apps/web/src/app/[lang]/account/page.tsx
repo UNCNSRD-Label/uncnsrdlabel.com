@@ -1,10 +1,9 @@
-import { SignInOrSignUpForAccountForm } from "@/components/account/account-sign-in-or-sign-up-form";
+import { AccountSignInOrSignUpForm } from "@/components/account/sign-in-or-sign-up-form";
 import { getDictionary } from "@/lib/dictionary";
 import { type PageProps } from "@/types/next";
 import { Metadata } from "next";
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-// import { Breadcrumb } from "./breadcrumb";
 
 export const metadata: Metadata = {
   title: "Account",
@@ -17,13 +16,8 @@ export default function AccountPage({ params: { lang } }: PageProps) {
   const customerAccessToken = cookies().get('customerAccessToken')?.value;
 
   if (customerAccessToken) {
-    redirect('/account/update-details')
+    redirect('/account/details')
   }
 
-  return (
-    <>
-      {/* <Breadcrumb /> */}
-      <SignInOrSignUpForAccountForm dictionary={dictionary} lang={lang} />
-    </>
-  );
+  return <AccountSignInOrSignUpForm dictionary={dictionary} lang={lang} />;
 }

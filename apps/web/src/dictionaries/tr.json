@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "Haber bültenimize kaydolun",
       "summary": "Kaydolun ve ilk satın alma işleminizde %10 indirim kazanın"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "Kayıt onayı bekleniyor",
       "pattern": "Girilen değer e-posta biçimiyle eşleşmiyor",
       "placeholder": "Haber bültenimize kaydolun",
@@ -247,11 +247,11 @@
       "close": "Menüyü kapat",
       "open": "Menüyü aç"
     },
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "Haber bültenimize kaydolun",
       "summary": "Kaydolun ve ilk satın alma işleminizde %10 indirim kazanın"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "Kayıt onayı bekleniyor",
       "pattern": "Girilen değer e-posta biçimiyle eşleşmiyor",
       "placeholder": "Haber bültenimize kaydolun",

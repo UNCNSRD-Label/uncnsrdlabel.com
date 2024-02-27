@@ -224,11 +224,11 @@
       "close": "أغلق القائمة",
       "open": "افتح القائمة"
     },
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "الاشتراك في النشرة الإخبارية",
       "summary": "قم بالتسجيل واحصل على خصم 10% على عملية الشراء الأولى"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "في انتظار تأكيد الاشتراك",
       "pattern": "القيمة المدخلة لا تتطابق مع تنسيق البريد الإلكتروني",
       "placeholder": "الاشتراك في النشرة الإخبارية",

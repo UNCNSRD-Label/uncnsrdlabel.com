@@ -1,8 +1,8 @@
 "use server";
 
 import {
-    cartBuyerIdentityUpdateMutation,
-    getShopifyGraphQL, recoverAccountHandler, resetAccountHandler, signInToAccountHandler, signUpForAccountHandler, updateAccountHandler
+  cartBuyerIdentityUpdateMutation,
+  getShopifyGraphQL, recoverAccountHandler, resetAccountHandler, signInToAccountHandler, signUpForAccountHandler, updateAccountHandler
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { add, parseISO } from "date-fns";
 import { cookies } from 'next/headers';
@@ -367,13 +367,11 @@ export async function updateAccountAction(
 
   let status = 500;
 
-  const customerAccessTokenCookie = cookies().get('customerAccessToken');
+  const customerAccessToken = cookies().get('customerAccessToken')?.value;
 
-  if (!customerAccessTokenCookie) {
+  if (!customerAccessToken) {
     throw new Error("customerAccessToken not set");
   }
-
-  const customerAccessToken = customerAccessTokenCookie.value;
 
   const input = {
     acceptsMarketing: acceptsMarketing === "on" ? true : false,

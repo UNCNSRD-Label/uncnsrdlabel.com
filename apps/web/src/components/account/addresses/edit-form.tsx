@@ -9,14 +9,13 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@uncnsrdlabel/components/atoms/card";
-import { Checkbox } from "@uncnsrdlabel/components/atoms/checkbox";
 import { Input } from "@uncnsrdlabel/components/atoms/input";
 import { Label } from "@uncnsrdlabel/components/atoms/label";
 import {
+  customerAddressFragment,
   customerFragment,
   getCustomerQuery,
   getFragmentData,
@@ -24,11 +23,10 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getQueryKey } from "@uncnsrdlabel/lib";
 import { getCookie } from "cookies-next";
-import { Usable, use, useEffect, useState } from "react";
+import { Usable, use } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { type ResolvedIntlConfig } from "react-intl";
 import { toast } from "sonner";
-import { updateAccountAction } from "./action";
 
 function Submit({
   className,
@@ -51,19 +49,23 @@ function Submit({
   return (
     <Button className={className} disabled={pending} variant="default">
       {intl.formatMessage({
-        id: "component.UpdateAccountForm.submit",
+        id: "component.AddressesEditForm.action.submit",
       })}
     </Button>
   );
 }
 
-export function UpdateAccountForm({
+export function AddressesEditForm({
+  action,
   className,
   dictionary,
+  id,
   lang,
 }: {
+  action: FormAction;
   className?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
+  id: string;
   lang: Intl.BCP47LanguageTag;
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
@@ -73,7 +75,7 @@ export function UpdateAccountForm({
     messages,
   });
 
-  const [state, updateAccount] = useFormState(updateAccountAction, null);
+  const [state, payload] = useFormState(action, null);
 
   const hasError = (state && state.status > 299) ?? false;
 
@@ -82,7 +84,7 @@ export function UpdateAccountForm({
       if (hasError) {
         toast.error(
           intl.formatMessage({
-            id: "component.UpdateAccountForm.toast.error",
+            id: "component.AddressesEditForm.toast.error",
           }),
           {
             description: intl.formatMessage({ id: state?.messageKey }),
@@ -100,7 +102,7 @@ export function UpdateAccountForm({
       if (state?.ok) {
         toast.success(
           intl.formatMessage({
-            id: "component.UpdateAccountForm.toast.success",
+            id: "component.AddressesEditForm.toast.success",
           }),
           {
             description: intl.formatMessage({ id: state?.messageKey }),
@@ -139,55 +141,33 @@ export function UpdateAccountForm({
 
   const customer = getFragmentData(customerFragment, data?.customer);
 
-  const [acceptsMarketing, setAcceptsMarketing] = useState<
-    boolean | "indeterminate"
-  >(customer?.acceptsMarketing ?? false);
-
-  useEffect(() => {
-    setAcceptsMarketing(customer?.acceptsMarketing ?? false);
-  }, [customer?.acceptsMarketing]);
+  const address = customer?.addresses.nodes.map(node => getFragmentData(customerAddressFragment, node)).find((address) => address.id === id);
 
   return (
     <Card className={className}>
-      <form action={updateAccount} className="grid gap-4">
+      <form action={payload} className="grid gap-4">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl">
             {intl.formatMessage({
-              id: "component.UpdateAccountForm.card.title",
+              id: "component.AddressesEditForm.card.title",
             })}
           </CardTitle>
           <CardDescription>
             {intl.formatMessage({
-              id: "component.UpdateAccountForm.card.description",
+              id: "component.AddressesEditForm.card.description",
             })}
           </CardDescription>
         </CardHeader>
         <CardContent className="grid gap-4">
           <div>
-            <Label htmlFor="email">
-              {intl.formatMessage({
-                id: "component.UpdateAccountForm.field.email",
-              })}
-            </Label>
-            <Input
-              autoComplete="email"
-              defaultValue={customer?.email ?? undefined}
-              id="email"
-              name="email"
-              placeholder="me@example.com"
-              required
-              type="email"
-            />
-          </div>
-          <div>
             <Label htmlFor="firstName">
               {intl.formatMessage({
-                id: "component.UpdateAccountForm.field.firstName",
+                id: "component.AddressesEditForm.field.firstName",
               })}
             </Label>
             <Input
-              autoComplete="given-name"
-              defaultValue={customer?.firstName ?? undefined}
+              autoComplete="shipping given-name"
+              defaultValue={address?.firstName ?? undefined}
               id="firstName"
               name="firstName"
               type="text"
@@ -196,12 +176,12 @@ export function UpdateAccountForm({
           <div>
             <Label htmlFor="lastName">
               {intl.formatMessage({
-                id: "component.UpdateAccountForm.field.lastName",
+                id: "component.AddressesEditForm.field.lastName",
               })}
             </Label>
             <Input
-              autoComplete="family-name"
-              defaultValue={customer?.lastName ?? undefined}
+              autoComplete="shipping family-name"
+              defaultValue={address?.lastName ?? undefined}
               id="lastName"
               name="lastName"
               type="text"
@@ -210,36 +190,119 @@ export function UpdateAccountForm({
           <div>
             <Label htmlFor="phone">
               {intl.formatMessage({
-                id: "component.UpdateAccountForm.field.phone",
+                id: "component.AddressesEditForm.field.phone",
               })}
             </Label>
             <Input
-              autoComplete="phone"
-              defaultValue={customer?.phone ?? undefined}
+              autoComplete="shipping phone"
+              defaultValue={address?.phone ?? undefined}
               id="phone"
               name="phone"
               required
               type="text"
             />
           </div>
-          <div className="flex content-center">
-            <Checkbox
-              checked={acceptsMarketing}
-              onCheckedChange={(checked) => setAcceptsMarketing(checked)}
-              id="acceptsMarketing"
-              name="acceptsMarketing"
-            />
-            <Label className="ml-2 text-xs" htmlFor="acceptsMarketing">
+          <hr />
+          <div>
+            <Label htmlFor="address1">
               {intl.formatMessage({
-                id: "component.UpdateAccountForm.field.acceptsMarketing",
+                id: "component.AddressesEditForm.field.address1",
               })}
             </Label>
+            <Input
+              autoComplete="shipping address-line1"
+              defaultValue={address?.address1 ?? undefined}
+              id="address1"
+              name="address1"
+              type="text"
+            />
+          </div>
+          <div>
+            <Label htmlFor="address2">
+              {intl.formatMessage({
+                id: "component.AddressesEditForm.field.address2",
+              })}
+            </Label>
+            <Input
+              autoComplete="shipping address-line2"
+              defaultValue={address?.address2 ?? undefined}
+              id="address2"
+              name="address2"
+              type="text"
+            />
+          </div>
+          <div>
+            <Label htmlFor="city">
+              {intl.formatMessage({
+                id: "component.AddressesEditForm.field.city",
+              })}
+            </Label>
+            <Input
+              autoComplete="shipping address-level2"
+              defaultValue={address?.city ?? undefined}
+              id="city"
+              name="city"
+              type="text"
+            />
+          </div>
+          <div>
+            <Label htmlFor="company">
+              {intl.formatMessage({
+                id: "component.AddressesEditForm.field.company",
+              })}
+            </Label>
+            <Input
+              autoComplete="shipping organization"
+              defaultValue={address?.company ?? undefined}
+              id="company"
+              name="company"
+              type="text"
+            />
+          </div>
+          <div>
+            <Label htmlFor="province">
+              {intl.formatMessage({
+                id: "component.AddressesEditForm.field.province",
+              })}
+            </Label>
+            <Input
+              autoComplete="shipping address-level1"
+              defaultValue={address?.province ?? undefined}
+              id="province"
+              name="province"
+              type="text"
+            />
+          </div>
+          <div>
+            <Label htmlFor="zip">
+              {intl.formatMessage({
+                id: "component.AddressesEditForm.field.zip",
+              })}
+            </Label>
+            <Input
+              autoComplete="shipping postal-code"
+              defaultValue={address?.zip ?? undefined}
+              id="zip"
+              name="zip"
+              type="text"
+            />
+          </div>
+          <div>
+            <Label htmlFor="country">
+              {intl.formatMessage({
+                id: "component.AddressesEditForm.field.country",
+              })}
+            </Label>
+            <Input
+              autoComplete="shipping country"
+              defaultValue={address?.country ?? undefined}
+              id="country"
+              name="country"
+              type="text"
+            />
           </div>
           <Submit className="w-full" dictionary={dictionary} lang={lang} />
         </CardContent>
-        <CardFooter className="grid grid-flow-col justify-start gap-4 text-sm">
-          
-        </CardFooter>
         <input type="hidden" name="_shopify_y" value={_shopify_y} />
       </form>
     </Card>

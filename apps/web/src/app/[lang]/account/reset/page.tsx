@@ -1,13 +1,13 @@
-import { SignInToAccountForm } from "@/components/account/sign-in-form";
+import { AccountResetForm } from "@/components/account/password-reset-form";
 import { getDictionary } from "@/lib/dictionary";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Account sign up",
-  description: "Sign in to your account",
+  title: "Account password reset",
+  description: "Reset the password for your account",
 };
 
-export default function AccountSignUpPage({
+export default function AccountResetPage({
   lang,
 }: {
   className?: string;
@@ -18,9 +18,9 @@ export default function AccountSignUpPage({
   return (
     <div className="bg-opaque-white grid gap-8 p-4 sm:p-8">
       <h1 className="text-lg sm:text-xl md:text-3xl">
-        Sign in to your account
+        Reset the password for your account
       </h1>
-      <SignInToAccountForm
+      <AccountResetForm
         className="sm:bg-transparent p-0 sm:p-4 md:p-8 sm:min-w-[36rem]"
         dictionary={dictionary}
         lang={lang}

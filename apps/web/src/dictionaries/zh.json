@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "注册我们的时事通讯",
       "summary": "注册并享受首次购买 10% 的折扣"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "等待注册确认",
       "pattern": "输入的值与电子邮件格式不匹配",
       "placeholder": "注册我们的时事通讯",
@@ -247,11 +247,11 @@
       "close": "关闭菜单",
       "open": "打开菜单"
     },
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "注册我们的时事通讯",
       "summary": "注册并享受首次购买 10% 的折扣"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "等待注册确认",
       "pattern": "输入的值与电子邮件格式不匹配",
       "placeholder": "注册我们的时事通讯",

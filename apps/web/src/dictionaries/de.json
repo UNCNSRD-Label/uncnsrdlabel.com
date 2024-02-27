@@ -224,11 +224,11 @@
       "close": "Schließen Sie das Menü",
       "open": "Öffnen Sie das Menü"
     },
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "Registriere dich für unseren Newsletter",
       "summary": "Melden Sie sich an und erhalten Sie 10 % Rabatt auf Ihren ersten Einkauf"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "Warten auf Anmeldebestätigung",
       "pattern": "Der eingegebene Wert stimmt nicht mit dem E-Mail-Format überein",
       "placeholder": "Registriere dich für unseren Newsletter",

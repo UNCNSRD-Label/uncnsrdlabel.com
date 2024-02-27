@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "뉴스레터에 가입하세요",
       "summary": "가입하고 첫 구매 시 10% 할인을 받으세요"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "가입 확인을 기다리는 중",
       "pattern": "입력한 값이 이메일 형식과 일치하지 않습니다.",
       "placeholder": "뉴스레터에 가입하세요",
@@ -247,11 +247,11 @@
       "close": "메뉴 닫기",
       "open": "메뉴 열기"
     },
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "뉴스레터에 가입하세요",
       "summary": "가입하고 첫 구매 시 10% 할인을 받으세요"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "가입 확인을 기다리는 중",
       "pattern": "입력한 값이 이메일 형식과 일치하지 않습니다.",
       "placeholder": "뉴스레터에 가입하세요",

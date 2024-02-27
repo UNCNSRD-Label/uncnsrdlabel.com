@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "మా వార్తాలేఖకు సైన్ అప్ చేయండి",
       "summary": "సైన్ అప్ చేయండి మరియు మీ మొదటి కొనుగోలుపై 10% తగ్గింపు పొందండి"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "సైన్అప్ నిర్ధారణ కోసం వేచి ఉంది",
       "pattern": "నమోదు చేసిన విలువ ఇమెయిల్ ఆకృతికి సరిపోలలేదు",
       "placeholder": "మా వార్తాలేఖకు సైన్ అప్ చేయండి",
@@ -247,11 +247,11 @@
       "close": "మెనుని మూసివేయండి",
       "open": "మెనుని తెరవండి"
     },
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "మా వార్తాలేఖకు సైన్ అప్ చేయండి",
       "summary": "సైన్ అప్ చేయండి మరియు మీ మొదటి కొనుగోలుపై 10% తగ్గింపు పొందండి"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "సైన్అప్ నిర్ధారణ కోసం వేచి ఉంది",
       "pattern": "నమోదు చేసిన విలువ ఇమెయిల్ ఆకృతికి సరిపోలలేదు",
       "placeholder": "మా వార్తాలేఖకు సైన్ అప్ చేయండి",

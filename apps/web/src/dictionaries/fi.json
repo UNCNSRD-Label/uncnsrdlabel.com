@@ -224,11 +224,11 @@
       "close": "Sulje valikko",
       "open": "Avaa valikko"
     },
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "Tilaa uutiskirjeemme",
       "summary": "Rekisteröidy ja saat 10% alennuksen ensimmäisestä ostoksestasi"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "Odotetaan ilmoittautumisvahvistusta",
       "pattern": "Syötetty arvo ei vastaa sähköpostin muotoa",
       "placeholder": "Tilaa uutiskirjeemme",

@@ -108,7 +108,7 @@ export function NavbarAccount({
         <DropdownMenuItem>
           <Link
             className="flex items-center gap-2 whitespace-nowrap"
-            href="/account/update-details"
+            href="/account/details"
             aria-label={intl.formatMessage({
               id: "component.NavbarContent.account.update",
             })}

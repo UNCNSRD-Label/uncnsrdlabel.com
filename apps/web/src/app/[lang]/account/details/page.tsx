@@ -1,4 +1,4 @@
-import { AddressAddForm } from "@/components/account/address-update-form";
+import { AccountEditForm } from "@/components/account/edit-form";
 import { getDictionary } from "@/lib/dictionary";
 import { type PageProps } from "@/types/next";
 import { Metadata } from "next";
@@ -6,11 +6,13 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
-  title: "Add address",
-  description: "Add new address",
+  title: "Account details",
+  description: "Edit your account details",
 };
 
-export default function AddressAddPage({ params: { lang } }: PageProps) {
+export default function AccountUpdateDetailsPage({
+  params: { lang },
+}: PageProps) {
   const dictionary = getDictionary({ lang });
 
   const customerAccessToken = cookies().get("customerAccessToken")?.value;
@@ -20,14 +22,12 @@ export default function AddressAddPage({ params: { lang } }: PageProps) {
   }
 
   return (
-    <>
-      <div className="bg-opaque-white grid gap-8 p-8">
-        <AddressAddForm
-          className="bg-transparent"
-          dictionary={dictionary}
-          lang={lang}
-        />
-      </div>
-    </>
+    <div className="bg-opaque-white grid gap-8 p-4 sm:p-8">
+      <AccountEditForm
+        className="sm:bg-transparent p-0 sm:p-4 md:p-8"
+        dictionary={dictionary}
+        lang={lang}
+      />
+    </div>
   );
 }

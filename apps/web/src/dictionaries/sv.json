@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "Anmäl dig till vårt nyhetsbrev",
       "summary": "Registrera dig och få 10 % rabatt på ditt första köp"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "Väntar på registreringsbekräftelse",
       "pattern": "Det angivna värdet matchar inte e-postformatet",
       "placeholder": "Anmäl dig till vårt nyhetsbrev",
@@ -247,11 +247,11 @@
       "close": "Stäng menyn",
       "open": "Öppna menyn"
     },
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "Anmäl dig till vårt nyhetsbrev",
       "summary": "Registrera dig och få 10 % rabatt på ditt första köp"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "Väntar på registreringsbekräftelse",
       "pattern": "Det angivna värdet matchar inte e-postformatet",
       "placeholder": "Anmäl dig till vårt nyhetsbrev",

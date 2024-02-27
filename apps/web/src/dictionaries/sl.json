@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "Prijavite se na naše glasilo",
       "summary": "Prijavite se in prejmite 10% popust na prvi nakup"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "Čakam na potrditev prijave",
       "pattern": "Vnesena vrednost se ne ujema z obliko elektronske pošte",
       "placeholder": "Prijavite se na naše glasilo",
@@ -247,11 +247,11 @@
       "close": "Zaprite meni",
       "open": "Odprite meni"
     },
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "Prijavite se na naše glasilo",
       "summary": "Prijavite se in prejmite 10% popust na prvi nakup"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "Čakam na potrditev prijave",
       "pattern": "Vnesena vrednost se ne ujema z obliko elektronske pošte",
       "placeholder": "Prijavite se na naše glasilo",

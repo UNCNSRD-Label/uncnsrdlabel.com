@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "Daftar ke buletin kami",
       "summary": "Daftar dan dapatkan diskon 10% untuk pembelian pertama Anda"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "Menunggu konfirmasi pendaftaran",
       "pattern": "Nilai yang dimasukkan tidak cocok dengan format email",
       "placeholder": "Daftar ke buletin kami",
@@ -247,11 +247,11 @@
       "close": "Tutup menunya",
       "open": "Buka menunya"
     },
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "Daftar ke buletin kami",
       "summary": "Daftar dan dapatkan diskon 10% untuk pembelian pertama Anda"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "Menunggu konfirmasi pendaftaran",
       "pattern": "Nilai yang dimasukkan tidak cocok dengan format email",
       "placeholder": "Daftar ke buletin kami",

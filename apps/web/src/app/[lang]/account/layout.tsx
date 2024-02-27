@@ -18,16 +18,16 @@ export default async function AccountLayout({
         <NavbarContent lang={lang} />
       </Navbar>
       <div
-        className="grid max-w-[100dvw] gap-y-4 bg-cover bg-fixed px-8 pt-16 sm:pt-12 md:grid-cols-[1fr_3fr_1fr] md:gap-8"
+        className="grid max-w-[100dvw] gap-x-8 gap-y-4 bg-cover bg-fixed px-8 pt-16 sm:grid-cols-[1fr_3fr] lg:grid-cols-[1fr_48rem_1fr]"
         style={{
           backgroundImage: "url('/images/backgrounds/MAV7957-Edit.jpg')",
         }}
       >
-        <LogotypeIcon className="col-span-3 h-8 justify-self-center fill-inherit drop-shadow transition duration-300 ease-in-out hover:scale-110 sm:h-10" />
-        <Nav dictionary={dictionary} lang={lang} />
-        <main className="min-h-fullMinusNavbar fill-light relative grid max-w-[100dvw] content-start justify-center gap-16 pb-12">
+        <LogotypeIcon className="col-span-full h-8 justify-self-center fill-inherit drop-shadow transition duration-300 ease-in-out hover:scale-110 sm:h-10 mb-8" />
+        <main className="min-h-fullMinusNavbar sm:fill-light relative grid sm:max-w-[48rem] content-start sm:mb-8 sm:order-2">
           {children}
         </main>
+        <Nav className="lg:justify-self-end sm:order-1 mb-8 sm:mb-0" dictionary={dictionary} lang={lang} />
       </div>
     </div>
   );

@@ -224,11 +224,11 @@
       "close": "Sulgege menüü",
       "open": "Avage menüü"
     },
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "Liituge meie uudiskirjaga",
       "summary": "Registreeruge ja saate oma esimesest ostust 10% allahindlust"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "Registreerumise kinnituse ootel",
       "pattern": "Sisestatud väärtus ei ühti meilivorminguga",
       "placeholder": "Liituge meie uudiskirjaga",

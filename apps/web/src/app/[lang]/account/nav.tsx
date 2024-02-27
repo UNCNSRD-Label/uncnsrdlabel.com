@@ -30,11 +30,11 @@ export function Nav({
   return (
     <nav
       className={cn(
-        "md:min-h-fullMinusNavbar relative hidden content-start md:grid md:justify-center",
+        "bg-opaque-white relative content-start md:grid p-4 sm:p-8 h-fit",
         className,
       )}
     >
-      <dl className="bg-opaque-white grid content-start gap-4 md:sticky md:mb-64 lg:shadow">
+      <dl className="grid content-start gap-4 md:sticky md:mb-64 lg:shadow">
         <dt className="text-sm uppercase">
           {intl.formatMessage({
             id: "layout.account.nav.title",
@@ -77,13 +77,13 @@ export function Nav({
               //     item.url?.endsWith(handle),
               // },
             )}
-            href="/account/update-details"
+            href="/account/details"
           >
             My details
           </Link>
         </dd>
         <dd>
-        <hr />
+          <hr />
         </dd>
         <dd>
           <Button

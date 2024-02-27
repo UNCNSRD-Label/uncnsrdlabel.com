@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "ہمارے نیوز لیٹر میں سائن اپ کریں۔",
       "summary": "سائن اپ کریں اور اپنی پہلی خریداری پر 10% رعایت حاصل کریں۔"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "سائن اپ کی تصدیق کا انتظار ہے۔",
       "pattern": "درج کردہ قدر ای میل فارمیٹ سے مماثل نہیں ہے۔",
       "placeholder": "ہمارے نیوز لیٹر میں سائن اپ کریں۔",
@@ -247,11 +247,11 @@
       "close": "مینو بند کریں۔",
       "open": "مینو کھولیں۔"
     },
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "ہمارے نیوز لیٹر میں سائن اپ کریں۔",
       "summary": "سائن اپ کریں اور اپنی پہلی خریداری پر 10% رعایت حاصل کریں۔"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "سائن اپ کی تصدیق کا انتظار ہے۔",
       "pattern": "درج کردہ قدر ای میل فارمیٹ سے مماثل نہیں ہے۔",
       "placeholder": "ہمارے نیوز لیٹر میں سائن اپ کریں۔",

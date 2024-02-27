@@ -224,11 +224,11 @@
       "close": "Κλείστε το μενού",
       "open": "Ανοίξτε το μενού"
     },
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "Εγγραφείτε στο ενημερωτικό μας δελτίο",
       "summary": "Εγγραφείτε και κερδίστε έκπτωση 10% στην πρώτη σας αγορά"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "Αναμονή για επιβεβαίωση εγγραφής",
       "pattern": "Η τιμή που εισαγάγατε δεν ταιριάζει με τη μορφή email",
       "placeholder": "Εγγραφείτε στο ενημερωτικό μας δελτίο",

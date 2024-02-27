@@ -50,7 +50,6 @@ export const getBaseMetadata = async ({ lang, path = "/" }: { lang: Intl.BCP47La
         appleWebApp: {
             capable: true,
             title: NEXT_PUBLIC_SITE_NAME,
-            // statusBarStyle: "default",
             statusBarStyle: "black-translucent",
             startupImage: [
                 {

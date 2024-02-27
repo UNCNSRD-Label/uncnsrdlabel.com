@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "ลงทะเบียนเพื่อรับจดหมายข่าวของเรา",
       "summary": "ลงทะเบียนและรับส่วนลด 10% สำหรับการซื้อครั้งแรกของคุณ"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "กำลังรอการยืนยันการสมัคร",
       "pattern": "ค่าที่ป้อนไม่ตรงกับรูปแบบอีเมล",
       "placeholder": "ลงทะเบียนเพื่อรับจดหมายข่าวของเรา",
@@ -247,11 +247,11 @@
       "close": "ปิดเมนู",
       "open": "เปิดเมนู"
     },
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "ลงทะเบียนเพื่อรับจดหมายข่าวของเรา",
       "summary": "ลงทะเบียนและรับส่วนลด 10% สำหรับการซื้อครั้งแรกของคุณ"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "กำลังรอการยืนยันการสมัคร",
       "pattern": "ค่าที่ป้อนไม่ตรงกับรูปแบบอีเมล",
       "placeholder": "ลงทะเบียนเพื่อรับจดหมายข่าวของเรา",

@@ -53,7 +53,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function PolicyPage({
+export default async function PoliciesPage({
   params: { handle, lang },
 }: PageProps & {
   params: { handle: PolicyName };

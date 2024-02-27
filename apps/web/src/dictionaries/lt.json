@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "Iscriviti alla nostra newsletter",
       "summary": "Iscriviti e ricevi uno sconto del 10% sul tuo primo acquisto"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "In attesa della conferma dell'iscrizione",
       "pattern": "Il valore inserito non corrisponde al formato email",
       "placeholder": "Iscriviti alla nostra newsletter",
@@ -247,11 +247,11 @@
       "close": "Uždarykite meniu",
       "open": "Atidarykite meniu"
     },
-    "SignUpForNewsletter": {
+    "NewsletterSignUp": {
       "title": "Prisiregistruokite gauti mūsų naujienlaiškį",
       "summary": "Užsiregistruokite ir gaukite 10% nuolaidą pirmajam pirkiniui"
     },
-    "SignUpForNewsletterForm": {
+    "NewsletterSignUpForm": {
       "message": "Laukiama registracijos patvirtinimo",
       "pattern": "Įvesta vertė neatitinka el. pašto formato",
       "placeholder": "Prisiregistruokite gauti mūsų naujienlaiškį",
