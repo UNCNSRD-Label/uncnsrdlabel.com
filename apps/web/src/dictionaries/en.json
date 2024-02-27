@@ -122,6 +122,17 @@
     }
   },
   "component": {
+    "Addresses": {
+      "actions": {
+        "add": "Add new address",
+        "edit": "Edit",
+        "remove": "Remove"
+      },
+      "card": {
+        "description": "Update the saved addresses on your account",
+        "title": "Addresses"
+      }
+    },
     "AddToCart": {
       "add-to-cart-disabled": "Unable to add item to bag",
       "add-to-cart-enabled": "Add to bag",

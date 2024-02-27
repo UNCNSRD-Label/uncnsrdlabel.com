@@ -87,7 +87,7 @@ export function Nav({
         </dd>
         <dd>
           <Button
-            className="p-0"
+            className="p-0 uppercase"
             onClick={() =>
               signOutOfUserAccount({
                 router,

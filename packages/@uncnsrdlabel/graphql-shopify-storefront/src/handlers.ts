@@ -7,8 +7,8 @@ import {
   CustomerResetPasswordMutationVariables,
   CustomerUpdateMutationVariables,
   EditCartItemsMutationVariables,
-  GetCollectionProductsQueryVariables,
   GetCollectionQueryVariables,
+  GetCollectionWithProductsQueryVariables,
   GetCollectionsQueryVariables,
   GetMenuQueryVariables,
   GetPageQueryVariables,
@@ -36,8 +36,8 @@ import {
   customerUpdateMutation,
 } from "./mutations/customer";
 import {
-  getCollectionProductsQuery,
   getCollectionQuery,
+  getCollectionWithProductsQuery,
   getCollectionsQuery,
 } from "./queries/collection";
 import {
@@ -151,41 +151,25 @@ export async function getCollectionHandler({ variables, lang }: {
     { ...inContextVariables, ...variables },
   );
 
-  if (!collectionFragmentRef) {
-    throw {
-      status: 404,
-      message: `Collection not found for handle \`${variables.handle}\``,
-    };
-  }
-
   return collectionFragmentRef;
 }
 
-export async function getCollectionProductsHandler({ variables, lang }: {
-  variables: GetCollectionProductsQueryVariables,
+export async function getCollectionWithProductsHandler({ variables, lang }: {
+  variables: GetCollectionWithProductsQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
   if (!lang) {
-    console.error("No lang in getCollectionProductsHandler")
+    console.error("No lang in getCollectionWithProductsHandler")
   }
 
   const inContextVariables = getInContextVariables(lang);
 
-  const { collection } = await getShopifyGraphQL(getCollectionProductsQuery, {
+  const { collection } = await getShopifyGraphQL(getCollectionWithProductsQuery, {
     ...inContextVariables,
     ...variables,
   });
 
-  if (!collection) {
-    throw {
-      status: 404,
-      message: `Collection not found for handle \`${variables.handle}\``,
-    };
-  }
-
-  const { products } = collection;
-
-  return products;
+  return collection;
 }
 
 export async function getCollectionRefsHandler({ variables, lang }: {
@@ -203,13 +187,6 @@ export async function getCollectionRefsHandler({ variables, lang }: {
       ...inContextVariables,
       ...variables,
     });
-
-  if (!shopifyCollectionConnection) {
-    throw {
-      status: 404,
-      message: `Collections not found`,
-    };
-  }
 
   const collectionsRefs = shopifyCollectionConnection.edges.map(
     (edge) => edge?.node,
@@ -243,13 +220,6 @@ export async function getRouteMetaObjectHandler({ variables, lang }: {
     { ...inContextVariables, ...variables }
   );
 
-  if (!metaobject) {
-    throw {
-      status: 404,
-      message: `Metaobject not found for handle \`${variables.handle}\``,
-    };
-  }
-
   return metaobject;
 }
 
@@ -268,14 +238,7 @@ export async function getMenuHandler({ variables, lang }: {
     ...variables,
   });
 
-  if (!menu) {
-    throw {
-      status: 404,
-      message: `Menu not found for handle \`${variables.handle}\``,
-    };
-  }
-
-  const items = menu.items.map((item) => ({
+  const items = menu?.items.map((item) => ({
     ...item,
     url: item.url
       ?.replace(domain, "")
@@ -302,13 +265,6 @@ export async function getPageHandler({ variables, lang }: {
     { ...inContextVariables, ...variables },
   );
 
-  if (!pageFragmentRef) {
-    throw {
-      status: 404,
-      message: `Page not found for handle \`${variables.handle}\``,
-    };
-  }
-
   return pageFragmentRef;
 }
 
@@ -327,13 +283,6 @@ export async function getPagesHandler({ variables, lang }: {
     ...variables,
   });
 
-  if (!pages) {
-    throw {
-      status: 404,
-      message: `Pages not found`,
-    };
-  }
-
   return pages;
 }
 
@@ -346,13 +295,6 @@ export async function getShopDetailsHandler({ lang }: {
     getShopDetailsQuery,
     inContextVariables,
   );
-
-  if (!shop) {
-    throw {
-      status: 404,
-      message: `Shop not found`,
-    };
-  }
 
   return shop;
 }
@@ -388,13 +330,6 @@ export async function getShopPoliciesHandler({ lang }: {
     inContextVariables,
   );
 
-  if (!shop) {
-    throw {
-      status: 404,
-      message: `Shop not found`,
-    };
-  }
-
   return shop;
 }
 
@@ -412,13 +347,6 @@ export async function getProductBasicHandler({ variables, lang }: {
     getProductBasicQuery,
     { ...inContextVariables, ...variables },
   );
-
-  if (!productBasicFragmentRef) {
-    throw {
-      status: 404,
-      message: `Product not found for handle \`${variables.handle}\``,
-    };
-  }
 
   return productBasicFragmentRef;
 }
@@ -438,13 +366,6 @@ export async function getProductDetailsByHandleHandler({ variables, lang }: {
     { ...inContextVariables, ...variables },
   );
 
-  if (!productDetailsFragmentRef) {
-    throw {
-      status: 404,
-      message: `Product not found for handle \`${variables.handle}\``,
-    };
-  }
-
   return productDetailsFragmentRef;
 }
 
@@ -462,13 +383,6 @@ export async function getProductDetailsByIdHandler({ variables, lang }: {
     getProductDetailsByIdQuery,
     { ...inContextVariables, ...variables },
   );
-
-  if (!productDetailsFragmentRef) {
-    throw {
-      status: 404,
-      message: `Product not found for id \`${variables.id}\``,
-    };
-  }
 
   return productDetailsFragmentRef;
 }
@@ -489,13 +403,6 @@ export async function getProductRecommendationsHandler({ variables, lang }: {
       { ...inContextVariables, ...variables },
     );
 
-  if (!productRecommendationRefs) {
-    throw {
-      status: 404,
-      message: `Products not found`,
-    };
-  }
-
   return productRecommendationRefs;
 }
 
@@ -514,13 +421,6 @@ export async function getProductsHandler({ variables, lang }: {
     { ...inContextVariables, ...variables }
   );
 
-  if (!products) {
-    throw {
-      status: 404,
-      message: `Products not found`,
-    };
-  }
-
   return products;
 }
 
@@ -538,13 +438,6 @@ export async function getProductsWithVariantsHandler({ variables, lang }: {
     getProductsWithVariantsQuery,
     { ...inContextVariables, ...variables }
   );
-
-  if (!products) {
-    throw {
-      status: 404,
-      message: `Products not found`,
-    };
-  }
 
   return products;
 }

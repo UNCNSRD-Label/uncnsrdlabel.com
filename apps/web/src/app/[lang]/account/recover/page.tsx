@@ -1,7 +1,7 @@
 import { RecoverAccountForm } from "@/components/account/account-recover-form";
 import { getDictionary } from "@/lib/dictionary";
 import { Metadata } from "next";
-import { Breadcrumb } from "../breadcrumb";
+// import { Breadcrumb } from "../breadcrumb";
 
 export const metadata: Metadata = {
   title: "Account recovery",
@@ -11,19 +11,18 @@ export const metadata: Metadata = {
 export default function AccountRecoverPage({
   lang,
 }: {
-  className?: string;
   lang: Intl.BCP47LanguageTag;
 }) {
   const dictionary = getDictionary({ lang });
 
   return (
     <>
-      <Breadcrumb
+      {/* <Breadcrumb
         currentPage={{
           handle: "recover",
           title: "Recover account",
         }}
-      />
+      /> */}
       <div className="bg-opaque-white grid gap-8 p-8">
         <h1 className="text-lg sm:text-xl md:text-3xl">Recover your account</h1>
         <RecoverAccountForm

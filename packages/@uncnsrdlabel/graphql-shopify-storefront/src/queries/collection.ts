@@ -29,8 +29,8 @@ export const getCollectionsQuery = graphql(/* GraphQL */ `
   }
 `);
 
-export const getCollectionProductsQuery = graphql(/* GraphQL */ `
-  query getCollectionProducts(
+export const getCollectionWithProductsQuery = graphql(/* GraphQL */ `
+  query getCollectionWithProducts(
     $country: CountryCode
     $first: Int = 100
     $handle: String!

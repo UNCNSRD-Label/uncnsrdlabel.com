@@ -24,7 +24,6 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getQueryKey } from "@uncnsrdlabel/lib";
 import { getCookie } from "cookies-next";
-import Link from "next/link";
 import { Usable, use, useEffect, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { type ResolvedIntlConfig } from "react-intl";
@@ -52,13 +51,13 @@ function Submit({
   return (
     <Button className={className} disabled={pending} variant="default">
       {intl.formatMessage({
-        id: "component.UpdateAccountForm.submit",
+        id: "component.AddressAddForm.submit",
       })}
     </Button>
   );
 }
 
-export function UpdateAddressesForm({
+export function AddressAddForm({
   className,
   dictionary,
   lang,
@@ -83,7 +82,7 @@ export function UpdateAddressesForm({
       if (hasError) {
         toast.error(
           intl.formatMessage({
-            id: "component.UpdateAccountForm.toast.error",
+            id: "component.AddressAddForm.toast.error",
           }),
           {
             description: intl.formatMessage({ id: state?.messageKey }),
@@ -101,7 +100,7 @@ export function UpdateAddressesForm({
       if (state?.ok) {
         toast.success(
           intl.formatMessage({
-            id: "component.UpdateAccountForm.toast.success",
+            id: "component.AddressAddForm.toast.success",
           }),
           {
             description: intl.formatMessage({ id: state?.messageKey }),
@@ -154,12 +153,12 @@ export function UpdateAddressesForm({
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl">
             {intl.formatMessage({
-              id: "component.UpdateAccountForm.title",
+              id: "component.AddressAddForm.card.title",
             })}
           </CardTitle>
           <CardDescription>
             {intl.formatMessage({
-              id: "component.UpdateAccountForm.description",
+              id: "component.AddressAddForm.card.description",
             })}
           </CardDescription>
         </CardHeader>
@@ -167,7 +166,7 @@ export function UpdateAddressesForm({
           <div>
             <Label htmlFor="email">
               {intl.formatMessage({
-                id: "component.UpdateAccountForm.email",
+                id: "component.AddressAddForm.field.email",
               })}
             </Label>
             <Input
@@ -183,7 +182,7 @@ export function UpdateAddressesForm({
           <div>
             <Label htmlFor="firstName">
               {intl.formatMessage({
-                id: "component.UpdateAccountForm.firstName",
+                id: "component.AddressAddForm.field.firstName",
               })}
             </Label>
             <Input
@@ -197,7 +196,7 @@ export function UpdateAddressesForm({
           <div>
             <Label htmlFor="lastName">
               {intl.formatMessage({
-                id: "component.UpdateAccountForm.lastName",
+                id: "component.AddressAddForm.field.lastName",
               })}
             </Label>
             <Input
@@ -211,7 +210,7 @@ export function UpdateAddressesForm({
           <div>
             <Label htmlFor="phone">
               {intl.formatMessage({
-                id: "component.UpdateAccountForm.phone",
+                id: "component.AddressAddForm.field.phone",
               })}
             </Label>
             <Input
@@ -223,25 +222,23 @@ export function UpdateAddressesForm({
               type="text"
             />
           </div>
-          <div>
+          <div className="flex content-center">
             <Checkbox
               checked={acceptsMarketing}
               onCheckedChange={(checked) => setAcceptsMarketing(checked)}
               id="acceptsMarketing"
               name="acceptsMarketing"
             />
-            <Label className="ml-2" htmlFor="acceptsMarketing">
+            <Label className="ml-2 text-xs" htmlFor="acceptsMarketing">
               {intl.formatMessage({
-                id: "component.UpdateAccountForm.acceptsMarketing",
+                id: "component.AddressAddForm.field.acceptsMarketing",
               })}
             </Label>
           </div>
           <Submit className="w-full" dictionary={dictionary} lang={lang} />
         </CardContent>
-        <CardFooter>
-          <Link className="underline" href="/account/addresses">
-            Edit addresses
-          </Link>
+        <CardFooter className="grid grid-flow-col justify-start gap-4 text-sm">
+          
         </CardFooter>
         <input type="hidden" name="_shopify_y" value={_shopify_y} />
       </form>
