@@ -27,7 +27,7 @@ export default async function AccountLayout({
         <main className="min-h-fullMinusNavbar sm:fill-light relative grid sm:max-w-[48rem] content-start sm:mb-8 sm:order-2">
           {children}
         </main>
-        <Nav className="lg:justify-self-end sm:order-1 mb-8 sm:mb-0" dictionary={dictionary} lang={lang} />
+        <Nav className="lg:justify-self-end sm:order-1 mb-8 sm:mb-0 lg:min-w-96" dictionary={dictionary} lang={lang} />
       </div>
     </div>
   );

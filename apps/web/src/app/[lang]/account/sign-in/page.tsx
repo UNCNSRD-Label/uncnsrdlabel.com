@@ -21,7 +21,7 @@ export default function AccountSignUpPage({
         Sign in to your account
       </h1>
       <SignInToAccountForm
-        className="sm:bg-transparent p-0 sm:p-4 md:p-8 sm:min-w-[36rem]"
+        className="bg-transparent sm:min-w-[36rem]"
         dictionary={dictionary}
         lang={lang}
       />

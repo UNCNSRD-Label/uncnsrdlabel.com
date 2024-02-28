@@ -126,7 +126,8 @@
       "actions": {
         "add": "Add new address",
         "edit": "Edit",
-        "remove": "Remove"
+        "remove": "Remove",
+        "editAddress": "Edit address"
       },
       "card": {
         "description": "Update the saved addresses on your account",

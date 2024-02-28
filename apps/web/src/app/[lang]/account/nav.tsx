@@ -3,6 +3,7 @@
 import { signOutOfUserAccount } from "@/lib/shopify";
 import { createIntl } from "@formatjs/intl";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
+import { Card, CardContent, CardHeader } from "@uncnsrdlabel/components/atoms/card";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import { cn } from "@uncnsrdlabel/lib";
 import { useRouter } from "next/navigation";
@@ -28,83 +29,89 @@ export function Nav({
   const router = useRouter();
 
   return (
-    <nav
+    <div
       className={cn(
-        "bg-opaque-white relative content-start md:grid p-4 sm:p-8 h-fit",
+        "bg-opaque-white relative h-fit content-start p-10 sm:p-8 md:grid",
         className,
       )}
     >
-      <dl className="grid content-start gap-4 md:sticky md:mb-64 lg:shadow">
-        <dt className="text-sm uppercase">
-          {intl.formatMessage({
-            id: "layout.account.nav.title",
-          })}
-        </dt>
-        <dd>
-          <Link
-            className={cn(
-              "sm:text-xxs text-xs uppercase transition duration-150 ease-in-out",
-              // {
-              //   "underline decoration-dotted underline-offset-8":
-              //     item.url?.endsWith(handle),
-              // },
-            )}
-            href="/account/addresses"
-          >
-            Addresses
-          </Link>
-        </dd>
-        <dd>
-          <Link
-            className={cn(
-              "sm:text-xxs text-xs uppercase transition duration-150 ease-in-out",
-              // {
-              //   "underline decoration-dotted underline-offset-8":
-              //     item.url?.endsWith(handle),
-              // },
-            )}
-            href="/account/orders"
-          >
-            Orders
-          </Link>
-        </dd>
-        <dd>
-          <Link
-            className={cn(
-              "sm:text-xxs text-xs uppercase transition duration-150 ease-in-out",
-              // {
-              //   "underline decoration-dotted underline-offset-8":
-              //     item.url?.endsWith(handle),
-              // },
-            )}
-            href="/account/details"
-          >
-            My details
-          </Link>
-        </dd>
-        <dd>
-          <hr />
-        </dd>
-        <dd>
-          <Button
-            className="p-0 uppercase"
-            onClick={() =>
-              signOutOfUserAccount({
-                router,
-                successMessage: intl.formatMessage({
-                  id: "layout.account.nav.sign-out.toast.success",
-                }),
-              })
-            }
-            size="xs"
-            variant="ghost"
-          >
+      <Card className="bg-transparent p-4">
+        <CardHeader className="grid gap-4">
+          <h2 className="text-sm uppercase">
             {intl.formatMessage({
-              id: "layout.account.nav.sign-out.button",
+              id: "layout.account.nav.title",
             })}
-          </Button>
-        </dd>
-      </dl>
-    </nav>
+          </h2>
+        </CardHeader>
+        <CardContent className="grid content-start gap-4">
+          <nav className="list-none grid gap-4">
+            <li>
+              <Link
+                className={cn(
+                  "text-xs uppercase transition duration-150 ease-in-out",
+                  // {
+                  //   "underline decoration-dotted underline-offset-8":
+                  //     item.url?.endsWith(handle),
+                  // },
+                )}
+                href="/account/addresses"
+              >
+                Addresses
+              </Link>
+            </li>
+            <li>
+              <Link
+                className={cn(
+                  "text-xs uppercase transition duration-150 ease-in-out",
+                  // {
+                  //   "underline decoration-dotted underline-offset-8":
+                  //     item.url?.endsWith(handle),
+                  // },
+                )}
+                href="/account/orders"
+              >
+                Orders
+              </Link>
+            </li>
+            <li>
+              <Link
+                className={cn(
+                  "text-xs uppercase transition duration-150 ease-in-out",
+                  // {
+                  //   "underline decoration-dotted underline-offset-8":
+                  //     item.url?.endsWith(handle),
+                  // },
+                )}
+                href="/account/details"
+              >
+                My details
+              </Link>
+            </li>
+            <li>
+              <hr />
+            </li>
+            <li>
+              <Button
+                className="p-0 uppercase"
+                onClick={() =>
+                  signOutOfUserAccount({
+                    router,
+                    successMessage: intl.formatMessage({
+                      id: "layout.account.nav.sign-out.toast.success",
+                    }),
+                  })
+                }
+                size="xs"
+                variant="ghost"
+              >
+                {intl.formatMessage({
+                  id: "layout.account.nav.sign-out.button",
+                })}
+              </Button>
+            </li>
+          </nav>
+        </CardContent>
+      </Card>
+    </div>
   );
 }

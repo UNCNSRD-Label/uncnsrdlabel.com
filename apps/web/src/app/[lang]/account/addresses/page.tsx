@@ -22,7 +22,7 @@ export default function AccountAddressesPage({ params: { lang } }: PageProps) {
   return (
     <div className="bg-opaque-white grid gap-8 p-4 sm:p-8">
       <Addresses
-        className="sm:bg-transparent p-0 sm:p-4 md:p-8"
+        className="bg-transparent"
         dictionary={dictionary}
         lang={lang}
       />

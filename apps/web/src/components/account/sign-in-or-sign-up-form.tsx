@@ -51,7 +51,7 @@ export function AccountSignInOrSignUpForm({
         </TabsList>
         <TabsContent value="sign-in">
           <SignInToAccountForm
-            className="sm:bg-transparent p-0 sm:p-4 md:p-8 sm:min-w-[36rem]"
+            className="bg-transparent sm:min-w-[36rem]"
             dictionary={dictionary}
             lang={lang}
             setActiveTab={setActiveTab}
@@ -59,7 +59,7 @@ export function AccountSignInOrSignUpForm({
         </TabsContent>
         <TabsContent value="sign-up">
           <SignUpForAccountForm
-            className="sm:bg-transparent p-0 sm:p-4 md:p-8 sm:min-w-[36rem]"
+            className="bg-transparent sm:min-w-[36rem]"
             dictionary={dictionary}
             lang={lang}
             setActiveTab={setActiveTab}
