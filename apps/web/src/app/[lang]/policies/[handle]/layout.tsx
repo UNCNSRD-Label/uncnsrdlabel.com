@@ -9,14 +9,19 @@ export default function PoliciesLayout({
   params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
 }: PropsWithChildren<LayoutProps>) {
   return (
-    <>
-      <Navbar sticky>
+    <div className="min-h-fullMinusNavbar relative z-40">
+      <Navbar offset sticky>
         <NavbarContent lang={lang} />
       </Navbar>
-      <main className="min-h-fullMinusNavbar pt-12 grid max-w-[100dvw] gap-16 px-8 md:grid-cols-[2fr_3fr] md:px-0">
+      <main
+        className="grid max-w-[100dvw] gap-x-8 gap-y-4 bg-cover bg-fixed px-8 pt-16 sm:grid-cols-[1fr_3fr] lg:grid-cols-[1fr_48rem_1fr]"
+        style={{
+          backgroundImage: "url('/images/backgrounds/MAV7957-Edit.jpg')",
+        }}
+      >
         {children}
       </main>
       <Logo />
-    </>
+    </div>
   );
 }

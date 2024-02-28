@@ -107,12 +107,19 @@ const getMetaobject = ({ lang }: { lang: Intl.BCP47LanguageTag }) => {
 
   const richTextResponse = convertSchemaToHtml(richTextSchema);
 
+  let formattedMarkup = richTextResponse;
+
+  if(richTextResponse.startsWith("<p>") && richTextResponse.endsWith("</p>") && richTextResponse.includes(" | ")) {
+    formattedMarkup = `<ul>${richTextResponse.replaceAll("<p>", "<li>").replaceAll("</p>", "</li>").replaceAll(" | ", "</li><li class='hidden md:block'>|</li><li>")}</ul>`;
+  }
+
   markup = (
     <div
+      className="text-center [&>ul]:flex [&>ul]:gap-x-4 [&>ul]:gap-y-2 [&>ul]:flex-col md:[&>ul]:flex-row"
       data-id={metaobject.id}
       data-type="MetaObject"
       dangerouslySetInnerHTML={{
-        __html: richTextResponse,
+        __html: formattedMarkup,
       }}
     />
   );

@@ -1,22 +1,18 @@
 import { Prose } from "@/components/prose";
-import { getDictionary } from "@/lib/dictionary";
 import { getAlternativeLanguages } from "@/lib/i18n";
 import { getCanonical } from "@/lib/metadata";
 import { type PageProps } from "@/types/next";
-import { createIntl } from "@formatjs/intl";
-import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   getFragmentData,
   getLocalizationDetailsHandler,
-  getMenuHandler,
   getShopPoliciesHandler,
   shopPolicyFragment,
   type PolicyName
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { SITE_DOMAIN_WEB, cn } from "@uncnsrdlabel/lib";
+import { SITE_DOMAIN_WEB } from "@uncnsrdlabel/lib";
 import { camelCase } from "lodash";
 import { notFound } from "next/navigation";
-import { type ResolvedIntlConfig } from "react-intl";
+import { Nav } from "./nav";
 
 export async function generateMetadata({
   params: { handle, lang },
@@ -58,20 +54,6 @@ export default async function PoliciesPage({
 }: PageProps & {
   params: { handle: PolicyName };
 }) {
-  const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
-
-  const intl = createIntl({
-    locale: lang,
-    messages,
-  });
-
-  const customerCareMenu = await getMenuHandler({
-    lang,
-    variables: {
-      handle: "customer-care",
-    },
-  });
-
   const policies = await getShopPoliciesHandler({ lang });
 
   const policyName = camelCase(handle) as PolicyName;
@@ -84,37 +66,13 @@ export default async function PoliciesPage({
 
   return (
     <>
-      <nav className="md:min-h-fullMinusNavbar relative hidden content-start md:grid md:justify-center">
-        {customerCareMenu.items?.length ? (
-          <dl className="grid content-start gap-4 md:sticky md:top-64 md:mb-64">
-            <dt className="text-sm uppercase">{intl.formatMessage({
-              id: "page.policy.nav.title",
-            })}</dt>
-            {customerCareMenu.items.map((item, index) => (
-              <dd key={item.title || index}>
-                <Link
-                  className={cn(
-                    "sm:text-xxs text-xs uppercase transition duration-150 ease-in-out",
-                    {
-                      "underline decoration-dotted underline-offset-8":
-                        item.url?.endsWith(handle),
-                    },
-                  )}
-                  href={item.url ?? "#"}
-                >
-                  {item.title}
-                </Link>
-              </dd>
-            ))}
-          </dl>
-        ) : null}
-      </nav>
-      <article className="mb-48">
+      <article className="bg-opaque-white p-8 min-w-full min-h-fullMinusNavbar sm:fill-light sm:max-w-[48rem] sm:order-2 mb-48 overflow-x-auto">
         <Prose
-          className="prose-sm prose-thead:border-hotPink prose-tr:border-hotPink mb-8 grid"
+          className="prose-sm prose-thead:border-hotPink prose-tr:border-hotPink mb-8"
           html={policy.body as string}
         />
       </article>
+      <Nav className="lg:justify-self-end sm:order-1 mb-8 sm:mb-0 lg:min-w-96" handle={handle} lang={lang} />
     </>
   );
 }

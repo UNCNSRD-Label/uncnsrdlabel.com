@@ -127,7 +127,8 @@
         "add": "Add new address",
         "edit": "Edit",
         "remove": "Remove",
-        "editAddress": "Edit address"
+        "deleteAddress": "Delete address",
+        "updateAddress": "Edit address"
       },
       "card": {
         "description": "Update the saved addresses on your account",
@@ -252,7 +253,12 @@
       "link-account": "View your account",
       "link-home": "Return to the homepage",
       "link-search": "Search for products",
-      "link-wishlist": "View your wishlist"
+      "link-wishlist": "View your wishlist",
+      "account": {
+        "addresses": "Addresses",
+        "sign-out": "Sign out",
+        "update": "Update your account"
+      }
     },
     "NavbarSearch": {
       "placeholder": "Search for products"

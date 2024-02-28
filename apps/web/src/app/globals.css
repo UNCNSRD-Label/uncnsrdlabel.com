@@ -151,7 +151,7 @@
   }
 
   .bg-opaque-white {
-    @apply bg-white lg:bg-white/95 lg:backdrop-blur lg:backdrop-saturate-200;
+    @apply bg-white/95 lg:backdrop-blur lg:backdrop-saturate-200;
   }
 }
 
@@ -453,7 +453,6 @@
     @apply break-words md:break-normal;
 
     & table {
-      @apply w-full overflow-x-auto;
 
       & tr {
         & td,
