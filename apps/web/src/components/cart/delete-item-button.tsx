@@ -12,7 +12,7 @@ import {
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
-  getCartQuery,
+  cartQuery,
   getShopifyGraphQL,
   removeFromCartMutation
 } from "@uncnsrdlabel/graphql-shopify-storefront";
@@ -50,7 +50,7 @@ export function DeleteItemButton({
     mutationFn: (variables: { cartId: string; lineIds: string[] }) =>
       getShopifyGraphQL(removeFromCartMutation, variables),
     onSuccess: () => {
-      const queryKey = getQueryKey(getCartQuery, {
+      const queryKey = getQueryKey(cartQuery, {
         cartId,
       });
 

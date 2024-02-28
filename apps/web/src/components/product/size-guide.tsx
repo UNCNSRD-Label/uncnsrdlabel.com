@@ -2,7 +2,7 @@ import { getDictionary } from "@/lib/dictionary";
 import { createIntl } from "@formatjs/intl";
 import { type ResultOf } from "@graphql-typed-document-node/core";
 import {
-  getBlogArticleQuery,
+  blogArticleQuery,
   getInContextVariables,
   getShopifyGraphQL,
   productDetailsFragment,
@@ -30,7 +30,7 @@ export const SizeGuide = async ({
 
   const articleHandle = slugify(productType, { lower: true });
 
-  const { blog } = await getShopifyGraphQL(getBlogArticleQuery, {
+  const { blog } = await getShopifyGraphQL(blogArticleQuery, {
     ...inContextVariables,
     blogHandle: "size-guide",
     articleHandle,

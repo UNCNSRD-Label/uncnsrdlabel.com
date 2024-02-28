@@ -1,6 +1,6 @@
 import { graphql } from "../codegen/index";
 
-export const getPageQuery = graphql(/* GraphQL */ `
+export const pageQuery = graphql(/* GraphQL */ `
   query getPage(
     $country: CountryCode
     $handle: String!
@@ -12,7 +12,7 @@ export const getPageQuery = graphql(/* GraphQL */ `
   }
 `);
 
-export const getPagesQuery = graphql(/* GraphQL */ `
+export const pagesQuery = graphql(/* GraphQL */ `
   query getPages(
     $country: CountryCode
     $first: Int! = 250

@@ -1,6 +1,6 @@
 import { graphql } from "../codegen/index";
 
-export const getMenuQuery = graphql(/* GraphQL */ `
+export const menuQuery = graphql(/* GraphQL */ `
   query getMenu(
     $country: CountryCode
     $handle: String!

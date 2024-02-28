@@ -2,9 +2,9 @@
 
 import { ProductCard } from "@/components/product-card/card";
 import {
-    getInContextVariables,
-    getProductDetailsByHandleQuery,
-    useGetShopifyGraphQL,
+  getInContextVariables,
+  productDetailsByHandleQuery,
+  useGetShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 
 export function AddPremiumPackaging({
@@ -21,7 +21,7 @@ export function AddPremiumPackaging({
   const variables = { handle };
 
   const { data, error, isError, isLoading } = useGetShopifyGraphQL(
-    getProductDetailsByHandleQuery,
+    productDetailsByHandleQuery,
     { ...inContextVariables, ...variables },
   );
 

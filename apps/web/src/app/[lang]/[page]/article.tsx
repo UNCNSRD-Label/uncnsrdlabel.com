@@ -4,8 +4,8 @@ import { Prose } from "@/components/prose";
 import { useMediaQuery } from "@react-hookz/web";
 import {
   getFragmentData,
-  getPageQuery,
   pageFragment,
+  pageQuery,
   useGetShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, type ClassValue } from "@uncnsrdlabel/lib";
@@ -28,7 +28,7 @@ export function Article(props: ArticleProps) {
   const { children, className, variables } = props;
 
   const { data, error, isError, isLoading } = useGetShopifyGraphQL(
-    getPageQuery,
+    pageQuery,
     variables,
   );
 

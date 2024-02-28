@@ -4,8 +4,8 @@ import { type ProductOption } from "@shopify/hydrogen/storefront-api-types";
 import { useQuery } from "@tanstack/react-query";
 import {
   getInContextVariables,
-  getProductVariantBySelectedOptionsQuery,
   getShopifyGraphQL,
+  productVariantBySelectedOptionsQuery,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getQueryKey } from "@uncnsrdlabel/lib";
 import { deleteCookie } from "cookies-next";
@@ -78,7 +78,7 @@ export const getProductVariantBySelectedOptionsUtility = ({
   
     const inContextVariables = getInContextVariables(lang);
   
-    const queryKey = getQueryKey(getProductVariantBySelectedOptionsQuery, {
+    const queryKey = getQueryKey(productVariantBySelectedOptionsQuery, {
       ...inContextVariables,
       ...variables,
     });
@@ -90,7 +90,7 @@ export const getProductVariantBySelectedOptionsUtility = ({
     } = useQuery({
       queryKey,
       queryFn: () =>
-        getShopifyGraphQL(getProductVariantBySelectedOptionsQuery, {
+        getShopifyGraphQL(productVariantBySelectedOptionsQuery, {
           ...inContextVariables,
           ...variables,
         }),

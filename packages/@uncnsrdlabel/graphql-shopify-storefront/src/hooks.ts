@@ -1,4 +1,4 @@
-// import { getCustomerQuery } from "./queries";
+// import { customerQuery } from "./queries";
 // import { useGetShopifyGraphQL } from "./utilities";
 
 // export const useUser = (customerAccessToken: string) => {
@@ -7,7 +7,7 @@
 //     };
     
 //     const { data, error, isError, isLoading } = useGetShopifyGraphQL(
-//         getCustomerQuery,
+//         customerQuery,
 //         variables,
 //       );
     

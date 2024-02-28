@@ -1,6 +1,6 @@
 import { graphql } from "../codegen/index";
 
-export const getShopDetailsQuery = graphql(/* GraphQL */ `
+export const shopDetailsQuery = graphql(/* GraphQL */ `
   query getShopDetails($country: CountryCode, $language: LanguageCode)
   @inContext(country: $country, language: $language) {
     shop {
@@ -59,7 +59,7 @@ export const getShopDetailsQuery = graphql(/* GraphQL */ `
   }
 `);
 
-export const getShopPoliciesQuery = graphql(/* GraphQL */ `
+export const shopPoliciesQuery = graphql(/* GraphQL */ `
   query getShopPolicies($country: CountryCode, $language: LanguageCode)
   @inContext(country: $country, language: $language) {
     shop {

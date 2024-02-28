@@ -7,10 +7,10 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-admin";
 import {
   getInContextVariables,
+  getShopifyGraphQL as getShopifyStorefrontGraphQL,
   // TODO: Implement getFragmentData as a global lib function
   // getFragmentDataStorefront,
-  getMetaObjectsQuery,
-  getShopifyGraphQL as getShopifyStorefrontGraphQL,
+  metaObjectsQuery,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { use } from "react";
@@ -79,7 +79,7 @@ const getMetaobject = ({ lang }: { lang: Intl.BCP47LanguageTag }) => {
   const inContextVariables = getInContextVariables(lang);
 
   const { metaobjects } = use(
-    getShopifyStorefrontGraphQL(getMetaObjectsQuery, {
+    getShopifyStorefrontGraphQL(metaObjectsQuery, {
       ...inContextVariables,
       type: "Banner",
     }),

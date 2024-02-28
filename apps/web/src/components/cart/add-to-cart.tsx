@@ -16,8 +16,8 @@ import {
 import {
   addToCartMutation,
   cartFragment,
+  cartQuery,
   createCartMutation,
-  getCartQuery,
   getFragmentData,
   getInContextVariables,
   getShopifyGraphQL,
@@ -87,7 +87,7 @@ function SubmitButton({
     getShopifyGraphQL(createCartMutation, variables);
 
   const invalidateQueries = () => {
-    const queryKey = getQueryKey(getCartQuery, {
+    const queryKey = getQueryKey(cartQuery, {
       cartId: cartId as string,
     });
 

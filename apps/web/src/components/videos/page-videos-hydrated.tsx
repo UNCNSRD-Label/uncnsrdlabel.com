@@ -6,9 +6,9 @@ import { VideosHydrated } from "@/components/page/videos/videos-hydrated";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import {
   getInContextVariables,
-  getPageQuery,
   getShopifyGraphQL,
   getShopifyQueryClient,
+  pageQuery,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getQueryKey } from "@uncnsrdlabel/lib";
 
@@ -36,11 +36,11 @@ export async function PageVideosHydrated({
 
   await shopifyQueryClient.prefetchQuery({
     // @ts-ignore
-    queryKey: getQueryKey(getPageQuery, variablesWithContext),
+    queryKey: getQueryKey(pageQuery, variablesWithContext),
     queryFn: () =>
       getShopifyGraphQL(
         // TODO: Change to getPageImagesQuery to retrieve smaller data response
-        getPageQuery,
+        pageQuery,
         variables,
       ),
   });

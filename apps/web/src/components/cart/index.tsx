@@ -11,7 +11,7 @@ import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
   CartFragment,
   cartFragment,
-  getCartQuery,
+  cartQuery,
   getFragmentData,
   getShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
@@ -55,7 +55,7 @@ export function Cart({
 
   const variables = { cartId: cartCookie?.id };
 
-  const queryKey = getQueryKey(getCartQuery, variables);
+  const queryKey = getQueryKey(cartQuery, variables);
 
   const {
     data = {
@@ -64,7 +64,7 @@ export function Cart({
   } = useQuery({
     enabled: !!cartCookie?.id,
     queryKey,
-    queryFn: () => getShopifyGraphQL(getCartQuery, variables),
+    queryFn: () => getShopifyGraphQL(cartQuery, variables),
     staleTime: 5 * 1000,
   });
 

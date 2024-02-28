@@ -18,7 +18,7 @@ import { Input } from "@uncnsrdlabel/components/atoms/input";
 import { Label } from "@uncnsrdlabel/components/atoms/label";
 import {
   customerFragment,
-  getCustomerQuery,
+  customerQuery,
   getFragmentData,
   getShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
@@ -129,12 +129,12 @@ export function AccountEditForm({
     customerAccessToken,
   } as { customerAccessToken: string };
 
-  const queryKey = getQueryKey(getCustomerQuery, variables);
+  const queryKey = getQueryKey(customerQuery, variables);
 
   const { data } = useQuery({
     enabled: !!customerAccessToken,
     queryKey,
-    queryFn: () => getShopifyGraphQL(getCustomerQuery, variables),
+    queryFn: () => getShopifyGraphQL(customerQuery, variables),
   });
 
   const customer = getFragmentData(customerFragment, data?.customer);

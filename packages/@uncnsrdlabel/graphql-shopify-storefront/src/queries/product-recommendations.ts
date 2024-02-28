@@ -1,6 +1,6 @@
 import { graphql } from "../codegen/index";
 
-export const getProductRecommendationsQuery = graphql(/* GraphQL */ `
+export const productRecommendationsQuery = graphql(/* GraphQL */ `
   query getProductRecommendations(
     $country: CountryCode
     $productId: ID!

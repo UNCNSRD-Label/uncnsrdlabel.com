@@ -3,7 +3,7 @@
 import { createIntl } from "@formatjs/intl";
 import { type ResultOf } from "@graphql-typed-document-node/core";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
-import { getLocalizationDetailsQuery } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { localizationDetailsQuery } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { Usable, use } from "react";
 import ReactCountryFlag from "react-country-flag";
@@ -20,12 +20,12 @@ export function LocationButton({
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
   lang: Intl.BCP47LanguageTag;
   localizationDetails: Usable<
-    ResultOf<typeof getLocalizationDetailsQuery>["localization"]
+    ResultOf<typeof localizationDetailsQuery>["localization"]
   >;
   onClick?: () => void;
 }) {
   const localization =
-    use<ResultOf<typeof getLocalizationDetailsQuery>["localization"]>(
+    use<ResultOf<typeof localizationDetailsQuery>["localization"]>(
       localizationDetails,
     );
 

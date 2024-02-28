@@ -13,8 +13,8 @@ import {
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
+  cartQuery,
   editCartItemsMutation,
-  getCartQuery,
   getShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, getQueryKey } from "@uncnsrdlabel/lib";
@@ -58,7 +58,7 @@ export function EditItemQuantityButton({
     mutationFn: (variables: { cartId: string; lines: CartLineUpdateInput[] }) =>
       getShopifyGraphQL(editCartItemsMutation, variables),
     onSuccess: () => {
-      const queryKey = getQueryKey(getCartQuery, {
+      const queryKey = getQueryKey(cartQuery, {
         cartId,
       });
 

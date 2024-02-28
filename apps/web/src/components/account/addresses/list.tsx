@@ -17,7 +17,7 @@ import {
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   customerFragment,
-  getCustomerQuery,
+  customerQuery,
   getFragmentData,
   getShopifyGraphQL,
   mailingAddressFragment,
@@ -58,12 +58,12 @@ export function Addresses({
 
   const shopifyQueryClient = useQueryClient();
 
-  const queryKey = getQueryKey(getCustomerQuery, variables);
+  const queryKey = getQueryKey(customerQuery, variables);
 
   const { data } = useQuery({
     enabled: !!customerAccessToken,
     queryKey,
-    queryFn: () => getShopifyGraphQL(getCustomerQuery, variables),
+    queryFn: () => getShopifyGraphQL(customerQuery, variables),
   });
 
   const customer = getFragmentData(customerFragment, data?.customer);
