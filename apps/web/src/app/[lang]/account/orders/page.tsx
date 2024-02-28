@@ -1,4 +1,4 @@
-import { Addresses } from "@/components/account/addresses/list";
+import { Orders } from "@/components/account/orders/list";
 import { getDictionary } from "@/lib/dictionary";
 import { type PageProps } from "@/types/next";
 import { Metadata } from "next";
@@ -6,11 +6,11 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
-  title: "Addresses",
-  description: "Edit your addresses",
+  title: "Orders",
+  description: "Edit your orders",
 };
 
-export default function AccountAddressesPage({ params: { lang } }: PageProps) {
+export default function AccountOrdersPage({ params: { lang } }: PageProps) {
   const dictionary = getDictionary({ lang });
 
   const customerAccessToken = cookies().get("customerAccessToken")?.value;
@@ -21,7 +21,7 @@ export default function AccountAddressesPage({ params: { lang } }: PageProps) {
 
   return (
     <div className="bg-opaque-white grid gap-8 p-4 sm:p-8">
-      <Addresses
+      <Orders
         className="bg-transparent"
         dictionary={dictionary}
         lang={lang}

@@ -1,7 +1,7 @@
 import { graphql } from "../codegen/index";
 
-export const customerAddressFragment = graphql(/* GraphQL */ `
-  fragment customerAddress on MailingAddress {
+export const mailingAddressFragment = graphql(/* GraphQL */ `
+  fragment mailingAddress on MailingAddress {
     address1
     address2
     city

@@ -110,11 +110,13 @@ export function NavbarAccount({
             className="flex items-center gap-2 whitespace-nowrap"
             href="/account/details"
             aria-label={intl.formatMessage({
-              id: "component.NavbarContent.account.update",
+              id: "component.NavbarContent.account.profile",
             })}
             prefetch={false}
           >
-            Profile
+            {intl.formatMessage({
+              id: "component.NavbarContent.account.profile",
+            })}
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
@@ -126,7 +128,23 @@ export function NavbarAccount({
             })}
             prefetch={false}
           >
-            Addresses
+            {intl.formatMessage({
+              id: "component.NavbarContent.account.addresses",
+            })}
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link
+            className="flex items-center gap-2 whitespace-nowrap"
+            href="/account/orders"
+            aria-label={intl.formatMessage({
+              id: "component.NavbarContent.account.orders",
+            })}
+            prefetch={false}
+          >
+            {intl.formatMessage({
+              id: "component.NavbarContent.account.orders",
+            })}
           </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator className="bg-gray-300 mx-2" />

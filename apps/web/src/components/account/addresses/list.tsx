@@ -16,11 +16,11 @@ import {
 } from "@uncnsrdlabel/components/atoms/card";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
-  customerAddressFragment,
   customerFragment,
   getCustomerQuery,
   getFragmentData,
   getShopifyGraphQL,
+  mailingAddressFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, getQueryKey } from "@uncnsrdlabel/lib";
 import { getCookie } from "cookies-next";
@@ -173,7 +173,7 @@ export function Addresses({
   );
 
   const defaultAddress = customer?.defaultAddress ? getFragmentData(
-    customerAddressFragment,
+    mailingAddressFragment,
     customer.defaultAddress,
   ) : null;
 
@@ -194,21 +194,21 @@ export function Addresses({
       <CardContent className="grid gap-4">
         <menu>
           {customer?.addresses?.nodes.map((address) => {
-            const customerAddress = getFragmentData(
-              customerAddressFragment,
+            const mailingAddress = getFragmentData(
+              mailingAddressFragment,
               address,
             );
 
-            const customerAddressId = customerAddress.id.split("?").shift();
+            const mailingAddressId = mailingAddress.id.split("?").shift();
 
-            const { id } = parseGid(customerAddressId);
+            const { id } = parseGid(mailingAddressId);
 
             return (
               <li className="grid gap-4 border-b py-8" key={id}>
                 <form>
                   <ul>
-                    {customerAddress?.id === defaultAddress?.id && <li className="underline">Default</li>}
-                    {customerAddress.formatted.map((line, index) => (
+                    {mailingAddress?.id === defaultAddress?.id && <li className="underline">Default</li>}
+                    {mailingAddress.formatted.map((line, index) => (
                       <li key={index}>{line}</li>
                     ))}
                   </ul>
@@ -216,20 +216,20 @@ export function Addresses({
                     <Button
                       formAction={setDefaultAddress}
                       className={cn("text-sm flex gap-2", {
-                        "underline": customerAddress?.id === defaultAddress?.id
+                        "underline": mailingAddress?.id === defaultAddress?.id
                       })}
                       variant="link"
                       value="setDefault"
                       disabled={pending}
-                      aria-description={`Set ${customerAddress.formatted} as default address`}
+                      aria-description={`Set ${mailingAddress.formatted} as default address`}
                     >
-                      {customerAddress?.id === defaultAddress?.id && <CheckCircleIcon className="h-5 w-5" />}
+                      {mailingAddress?.id === defaultAddress?.id && <CheckCircleIcon className="h-5 w-5" />}
                       {intl.formatMessage({
                         id: "component.Addresses.actions.setDefaultAddress",
                       })}
                     </Button>
                     <Link
-                      aria-description={`Update ${customerAddress}`}
+                      aria-description={`Update ${mailingAddress}`}
                       className="text-sm"
                       href={`/account/addresses/${id}/update`}
                     >
@@ -243,14 +243,14 @@ export function Addresses({
                       variant="link"
                       value="delete"
                       disabled={pending}
-                      aria-description={`Delete ${customerAddress.formatted}`}
+                      aria-description={`Delete ${mailingAddress.formatted}`}
                     >
                       {intl.formatMessage({
                         id: "component.Addresses.actions.deleteAddress",
                       })}
                     </Button>
                   </div>
-                  <input type="hidden" name="id" value={customerAddress.id} />
+                  <input type="hidden" name="id" value={mailingAddress.id} />
                 </form>
               </li>
             );

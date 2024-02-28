@@ -3,7 +3,11 @@
 import { signOutOfUserAccount } from "@/lib/shopify";
 import { createIntl } from "@formatjs/intl";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
-import { Card, CardContent, CardHeader } from "@uncnsrdlabel/components/atoms/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+} from "@uncnsrdlabel/components/atoms/card";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import { cn } from "@uncnsrdlabel/lib";
 import { useRouter } from "next/navigation";
@@ -44,7 +48,7 @@ export function Nav({
           </h2>
         </CardHeader>
         <CardContent className="grid content-start gap-4">
-          <nav className="list-none grid gap-4">
+          <nav className="grid list-none gap-4">
             <li>
               <Link
                 className={cn(
@@ -56,7 +60,9 @@ export function Nav({
                 )}
                 href="/account/addresses"
               >
-                Addresses
+                {intl.formatMessage({
+                  id: "layout.account.nav.addresses",
+                })}
               </Link>
             </li>
             <li>
@@ -70,7 +76,9 @@ export function Nav({
                 )}
                 href="/account/orders"
               >
-                Orders
+                {intl.formatMessage({
+                  id: "layout.account.nav.orders",
+                })}
               </Link>
             </li>
             <li>
@@ -84,7 +92,9 @@ export function Nav({
                 )}
                 href="/account/details"
               >
-                My details
+                {intl.formatMessage({
+                  id: "layout.account.nav.profile",
+                })}
               </Link>
             </li>
             <li>

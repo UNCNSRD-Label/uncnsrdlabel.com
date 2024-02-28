@@ -56,6 +56,9 @@
     "account": {
       "nav": {
         "title": "Account",
+        "addresses": "Addresses",
+        "orders": "Orders",
+        "profile": "Profile",
         "sign-out": {
           "button": "Sign out",
           "toast": {
@@ -257,8 +260,9 @@
       "link-wishlist": "View your wishlist",
       "account": {
         "addresses": "Addresses",
-        "sign-out": "Sign out",
-        "update": "Update your account"
+        "orders": "Orders",
+        "profile": "Profile",
+        "sign-out": "Sign out"
       }
     },
     "NavbarSearch": {
@@ -269,6 +273,18 @@
       "placeholder": "Enter your email address",
       "submit": "Submit",
       "title": "Newsletter"
+    },
+    "Orders": {
+      "actions": {
+        "add": "Add new order",
+        "cancelOrder": "Cancel order",
+        "deleteOrder": "Delete order",
+        "updateOrder": "Edit order"
+      },
+      "card": {
+        "description": "View your order history",
+        "title": "Orders"
+      }
     },
     "ProductDetails": {
       "size-guide": {

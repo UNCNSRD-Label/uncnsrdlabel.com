@@ -5,7 +5,7 @@ export const customerFragment = graphql(/* GraphQL */ `
     acceptsMarketing
     addresses(first: 16) {
       nodes {
-        ...customerAddress
+        ...mailingAddress
       }
     }
     createdAt
@@ -13,7 +13,7 @@ export const customerFragment = graphql(/* GraphQL */ `
       ...metafield
     }
     defaultAddress {
-      ...customerAddress
+      ...mailingAddress
     }
     displayName
     email
@@ -24,6 +24,11 @@ export const customerFragment = graphql(/* GraphQL */ `
     }
     lastName
     numberOfOrders
+    orders(first: 16) {
+      nodes {
+        ...order
+      }
+    }
     phone
     tags
     updatedAt

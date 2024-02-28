@@ -20,7 +20,7 @@ import {
   getCustomerQuery,
   getFragmentData,
   getShopifyGraphQL,
-  mailingAddressFragment,
+  mailingOrderFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getQueryKey } from "@uncnsrdlabel/lib";
 import { getCookie } from "cookies-next";
@@ -51,13 +51,13 @@ function Submit({
   return (
     <Button className={className} disabled={pending} variant="default">
       {intl.formatMessage({
-        id: "component.AddressesEditForm.action.submit",
+        id: "component.OrdersEditForm.action.submit",
       })}
     </Button>
   );
 }
 
-export function AddressesEditForm({
+export function OrdersEditForm({
   action,
   className,
   dictionary,
@@ -86,11 +86,11 @@ export function AddressesEditForm({
   useDebouncedEffect(
     () => {
       if (hasError) {
-        router.push("/account/addresses");
+        router.push("/account/orders");
 
         toast.error(
           intl.formatMessage({
-            id: "component.AddressesEditForm.toast.error",
+            id: "component.OrdersEditForm.toast.error",
           }),
           {
             description: intl.formatMessage({ id: state?.messageKey }),
@@ -106,11 +106,11 @@ export function AddressesEditForm({
   useDebouncedEffect(
     () => {
       if (state?.ok) {
-        router.push("/account/addresses");
+        router.push("/account/orders");
 
         toast.success(
           intl.formatMessage({
-            id: "component.AddressesEditForm.toast.success",
+            id: "component.OrdersEditForm.toast.success",
           }),
           {
             description: intl.formatMessage({ id: state?.messageKey }),
@@ -149,9 +149,9 @@ export function AddressesEditForm({
 
   const customer = getFragmentData(customerFragment, data?.customer);
 
-  const address = customer?.addresses.nodes
-    .map((node) => getFragmentData(mailingAddressFragment, node))
-    .find((address) => parseGid(address.id.split("?").shift()).id === id);
+  const order = customer?.orders.nodes
+    .map((node) => getFragmentData(mailingOrderFragment, node))
+    .find((order) => parseGid(order.id.split("?").shift()).id === id);
 
   return (
     <Card className={className}>
@@ -159,12 +159,12 @@ export function AddressesEditForm({
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl">
             {intl.formatMessage({
-              id: "component.AddressesEditForm.card.title",
+              id: "component.OrdersEditForm.card.title",
             })}
           </CardTitle>
           <CardDescription>
             {intl.formatMessage({
-              id: "component.AddressesEditForm.card.description",
+              id: "component.OrdersEditForm.card.description",
             })}
           </CardDescription>
         </CardHeader>
@@ -173,12 +173,12 @@ export function AddressesEditForm({
             <div>
               <Label htmlFor="firstName">
                 {intl.formatMessage({
-                  id: "component.AddressesEditForm.field.firstName",
+                  id: "component.OrdersEditForm.field.firstName",
                 })}
               </Label>
               <Input
                 autoComplete="shipping given-name"
-                defaultValue={address?.firstName ?? undefined}
+                defaultValue={order?.firstName ?? undefined}
                 id="firstName"
                 name="firstName"
                 type="text"
@@ -187,12 +187,12 @@ export function AddressesEditForm({
             <div>
               <Label htmlFor="lastName">
                 {intl.formatMessage({
-                  id: "component.AddressesEditForm.field.lastName",
+                  id: "component.OrdersEditForm.field.lastName",
                 })}
               </Label>
               <Input
                 autoComplete="shipping family-name"
-                defaultValue={address?.lastName ?? undefined}
+                defaultValue={order?.lastName ?? undefined}
                 id="lastName"
                 name="lastName"
                 type="text"
@@ -201,12 +201,12 @@ export function AddressesEditForm({
             <div>
               <Label htmlFor="phone">
                 {intl.formatMessage({
-                  id: "component.AddressesEditForm.field.phone",
+                  id: "component.OrdersEditForm.field.phone",
                 })}
               </Label>
               <Input
                 autoComplete="shipping phone"
-                defaultValue={address?.phone ?? undefined}
+                defaultValue={order?.phone ?? undefined}
                 id="phone"
                 name="phone"
                 required
@@ -216,42 +216,42 @@ export function AddressesEditForm({
           </fieldset>
           <fieldset>
             <div>
-              <Label htmlFor="address1">
+              <Label htmlFor="order1">
                 {intl.formatMessage({
-                  id: "component.AddressesEditForm.field.address1",
+                  id: "component.OrdersEditForm.field.order1",
                 })}
               </Label>
               <Input
-                autoComplete="shipping address-line1"
-                defaultValue={address?.address1 ?? undefined}
-                id="address1"
-                name="address1"
+                autoComplete="shipping order-line1"
+                defaultValue={order?.order1 ?? undefined}
+                id="order1"
+                name="order1"
                 type="text"
               />
             </div>
             <div>
-              <Label htmlFor="address2">
+              <Label htmlFor="order2">
                 {intl.formatMessage({
-                  id: "component.AddressesEditForm.field.address2",
+                  id: "component.OrdersEditForm.field.order2",
                 })}
               </Label>
               <Input
-                autoComplete="shipping address-line2"
-                defaultValue={address?.address2 ?? undefined}
-                id="address2"
-                name="address2"
+                autoComplete="shipping order-line2"
+                defaultValue={order?.order2 ?? undefined}
+                id="order2"
+                name="order2"
                 type="text"
               />
             </div>
             <div>
               <Label htmlFor="city">
                 {intl.formatMessage({
-                  id: "component.AddressesEditForm.field.city",
+                  id: "component.OrdersEditForm.field.city",
                 })}
               </Label>
               <Input
-                autoComplete="shipping address-level2"
-                defaultValue={address?.city ?? undefined}
+                autoComplete="shipping order-level2"
+                defaultValue={order?.city ?? undefined}
                 id="city"
                 name="city"
                 type="text"
@@ -260,12 +260,12 @@ export function AddressesEditForm({
             <div>
               <Label htmlFor="company">
                 {intl.formatMessage({
-                  id: "component.AddressesEditForm.field.company",
+                  id: "component.OrdersEditForm.field.company",
                 })}
               </Label>
               <Input
                 autoComplete="shipping organization"
-                defaultValue={address?.company ?? undefined}
+                defaultValue={order?.company ?? undefined}
                 id="company"
                 name="company"
                 type="text"
@@ -274,12 +274,12 @@ export function AddressesEditForm({
             <div>
               <Label htmlFor="province">
                 {intl.formatMessage({
-                  id: "component.AddressesEditForm.field.province",
+                  id: "component.OrdersEditForm.field.province",
                 })}
               </Label>
               <Input
-                autoComplete="shipping address-level1"
-                defaultValue={address?.province ?? undefined}
+                autoComplete="shipping order-level1"
+                defaultValue={order?.province ?? undefined}
                 id="province"
                 name="province"
                 type="text"
@@ -288,12 +288,12 @@ export function AddressesEditForm({
             <div>
               <Label htmlFor="zip">
                 {intl.formatMessage({
-                  id: "component.AddressesEditForm.field.zip",
+                  id: "component.OrdersEditForm.field.zip",
                 })}
               </Label>
               <Input
                 autoComplete="shipping postal-code"
-                defaultValue={address?.zip ?? undefined}
+                defaultValue={order?.zip ?? undefined}
                 id="zip"
                 name="zip"
                 type="text"
@@ -302,12 +302,12 @@ export function AddressesEditForm({
             <div>
               <Label htmlFor="country">
                 {intl.formatMessage({
-                  id: "component.AddressesEditForm.field.country",
+                  id: "component.OrdersEditForm.field.country",
                 })}
               </Label>
               <Input
                 autoComplete="shipping country"
-                defaultValue={address?.country ?? undefined}
+                defaultValue={order?.country ?? undefined}
                 id="country"
                 name="country"
                 type="text"
@@ -317,7 +317,7 @@ export function AddressesEditForm({
           <Submit className="w-full" dictionary={dictionary} lang={lang} />
         </CardContent>
         <input type="hidden" name="_shopify_y" value={_shopify_y} />
-        <input type="hidden" name="id" value={address?.id} />
+        <input type="hidden" name="id" value={order?.id} />
       </form>
     </Card>
   );

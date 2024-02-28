@@ -1,11 +1,11 @@
 "use server";
 
 import {
-    customerAddressCreateMutation,
-    customerAddressDeleteMutation,
-    customerAddressUpdateMutation,
     customerDefaultAddressUpdateMutation,
-    getShopifyGraphQL
+    getShopifyGraphQL,
+    mailingAddressCreateMutation,
+    mailingAddressDeleteMutation,
+    mailingAddressUpdateMutation
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cookies } from 'next/headers';
 
@@ -54,9 +54,9 @@ export async function addAddressAction(
     const variables = { customerAccessToken, input }
 
     try {
-        const customerAddressCreateMutationResponse = await getShopifyGraphQL(customerAddressCreateMutation, variables);
+        const mailingAddressCreateMutationResponse = await getShopifyGraphQL(mailingAddressCreateMutation, variables);
 
-        const errors = customerAddressCreateMutationResponse.customerAddressCreate?.customerUserErrors;
+        const errors = mailingAddressCreateMutationResponse.mailingAddressCreate?.customerUserErrors;
 
         if (
             Array.isArray(errors) && errors.length > 0
@@ -116,9 +116,9 @@ export async function deleteAddressAction(
     const variables = { customerAccessToken, id }
 
     try {
-        const customerAddressDeleteMutationResponse = await getShopifyGraphQL(customerAddressDeleteMutation, variables);
+        const mailingAddressDeleteMutationResponse = await getShopifyGraphQL(mailingAddressDeleteMutation, variables);
 
-        const errors = customerAddressDeleteMutationResponse.customerAddressDelete?.customerUserErrors;
+        const errors = mailingAddressDeleteMutationResponse.mailingAddressDelete?.customerUserErrors;
 
         if (
             Array.isArray(errors) && errors.length > 0
@@ -202,9 +202,9 @@ export async function updateAddressAction(
     const variables = { customerAccessToken, id, input }
 
     try {
-        const customerAddressUpdateMutationResponse = await getShopifyGraphQL(customerAddressUpdateMutation, variables);
+        const mailingAddressUpdateMutationResponse = await getShopifyGraphQL(mailingAddressUpdateMutation, variables);
 
-        const errors = customerAddressUpdateMutationResponse.customerAddressUpdate?.customerUserErrors;
+        const errors = mailingAddressUpdateMutationResponse.mailingAddressUpdate?.customerUserErrors;
 
         if (
             Array.isArray(errors) && errors.length > 0
