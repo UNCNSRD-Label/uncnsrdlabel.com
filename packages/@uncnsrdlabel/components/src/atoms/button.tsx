@@ -5,7 +5,7 @@ import * as React from "react";
 import { cn } from "@uncnsrdlabel/lib";
 
 const blockStyles =
-  "font-medium gap-2 inline-flex items-center justify-center text-balance text-base p-2 uppercase btn";
+  "font-medium gap-2 inline-flex items-center justify-center text-balance text-base uppercase btn";
 
 const buttonVariants = cva(
   "ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
@@ -17,7 +17,7 @@ const buttonVariants = cva(
         outline: `${blockStyles} border border-input bg-background hover:bg-accent text-accent-foreground`,
         secondary: `${blockStyles} bg-secondary text-secondary-foreground hover:bg-secondary/80`,
         ghost: `hover:text-accent-foreground`,
-        link: `text-primary underline-offset-4 hover:underline`,
+        link: ``,
       },
       size: {
         default: "",

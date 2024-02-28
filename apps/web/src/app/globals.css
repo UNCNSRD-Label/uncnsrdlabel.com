@@ -123,6 +123,10 @@
     &.icon-container {
       @apply focus-visible:fill-stateFocus focus-visible:stroke-stateFocus focus-visible:text-stateFocus;
     }
+
+    &:hover {
+      @apply !text-stateHover;
+    }
   }
 
   a {
