@@ -1,6 +1,7 @@
 "use client";
 
 import { createIntl } from "@formatjs/intl";
+import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import { useDebouncedEffect } from "@react-hookz/web";
 import { parseGid } from "@shopify/hydrogen";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
@@ -21,13 +22,13 @@ import {
   getFragmentData,
   getShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { getQueryKey } from "@uncnsrdlabel/lib";
+import { cn, getQueryKey } from "@uncnsrdlabel/lib";
 import { getCookie } from "cookies-next";
 import { Usable, use } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { type ResolvedIntlConfig } from "react-intl";
 import { toast } from "sonner";
-import { deleteAddressAction } from "./action";
+import { deleteAddressAction, setDefaultAddressAction } from "./action";
 
 export function Addresses({
   className,
@@ -69,31 +70,43 @@ export function Addresses({
 
   const { pending } = useFormStatus();
 
-  const [state, deleteAddress] = useFormState(deleteAddressAction, null);
+  const [deleteAddressState, deleteAddress] = useFormState(
+    deleteAddressAction,
+    null,
+  );
+  const [setDefaultAddressState, setDefaultAddress] = useFormState(
+    setDefaultAddressAction,
+    null,
+  );
 
-  const hasError = (state && state.status > 299) ?? false;
+  const deleteAddressHasError =
+    (deleteAddressState && deleteAddressState.status > 299) ?? false;
+  const setDefaultAddressHasError =
+    (setDefaultAddressState && setDefaultAddressState.status > 299) ?? false;
 
   useDebouncedEffect(
     () => {
-      if (hasError) {
+      if (deleteAddressHasError) {
         toast.error(
           intl.formatMessage({
             id: "component.AccountEditForm.toast.error",
           }),
           {
-            description: intl.formatMessage({ id: state?.messageKey }),
+            description: intl.formatMessage({
+              id: deleteAddressState?.messageKey,
+            }),
           },
         );
       }
     },
-    [hasError, state?.messageKey],
+    [deleteAddressHasError, deleteAddressState?.messageKey],
     200,
     500,
   );
 
   useDebouncedEffect(
     () => {
-      if (state?.ok) {
+      if (deleteAddressState?.ok) {
         shopifyQueryClient.invalidateQueries({
           queryKey,
         });
@@ -103,15 +116,66 @@ export function Addresses({
             id: "component.AccountEditForm.toast.success",
           }),
           {
-            description: intl.formatMessage({ id: state?.messageKey }),
+            description: intl.formatMessage({
+              id: deleteAddressState?.messageKey,
+            }),
           },
         );
       }
     },
-    [state?.ok],
+    [deleteAddressState?.ok],
     200,
     500,
   );
+
+  useDebouncedEffect(
+    () => {
+      if (setDefaultAddressHasError) {
+        toast.error(
+          intl.formatMessage({
+            id: "component.AccountEditForm.toast.error",
+          }),
+          {
+            description: intl.formatMessage({
+              id: setDefaultAddressState?.messageKey,
+            }),
+          },
+        );
+      }
+    },
+    [setDefaultAddressHasError, setDefaultAddressState?.messageKey],
+    200,
+    500,
+  );
+
+  useDebouncedEffect(
+    () => {
+      if (setDefaultAddressState?.ok) {
+        shopifyQueryClient.invalidateQueries({
+          queryKey,
+        });
+
+        toast.success(
+          intl.formatMessage({
+            id: "component.AccountEditForm.toast.success",
+          }),
+          {
+            description: intl.formatMessage({
+              id: setDefaultAddressState?.messageKey,
+            }),
+          },
+        );
+      }
+    },
+    [setDefaultAddressState?.ok],
+    200,
+    500,
+  );
+
+  const defaultAddress = customer?.defaultAddress ? getFragmentData(
+    customerAddressFragment,
+    customer.defaultAddress,
+  ) : null;
 
   return (
     <Card className={className}>
@@ -141,22 +205,46 @@ export function Addresses({
 
             return (
               <li className="grid gap-4 border-b py-8" key={id}>
-                <form action={deleteAddress}>
+                <form>
                   <ul>
+                    {customerAddress?.id === defaultAddress?.id && <li className="underline">Default</li>}
                     {customerAddress.formatted.map((line, index) => (
                       <li key={index}>{line}</li>
                     ))}
                   </ul>
-                  <div className="grid gap-4 grid-flow-col justify-end">
+                  <div className="mt-8 grid grid-flow-col justify-end gap-4">
+                    <Button
+                      formAction={setDefaultAddress}
+                      className={cn("text-sm flex gap-2", {
+                        "underline": customerAddress?.id === defaultAddress?.id
+                      })}
+                      variant="link"
+                      value="setDefault"
+                      disabled={pending}
+                      aria-description={`Set ${customerAddress.formatted} as default address`}
+                    >
+                      {customerAddress?.id === defaultAddress?.id && <CheckCircleIcon className="h-5 w-5" />}
+                      {intl.formatMessage({
+                        id: "component.Addresses.actions.setDefaultAddress",
+                      })}
+                    </Button>
                     <Link
-                      className="btn btn-bg btn-primary btn-sm"
+                      aria-description={`Update ${customerAddress}`}
+                      className="text-sm"
                       href={`/account/addresses/${id}/update`}
                     >
                       {intl.formatMessage({
                         id: "component.Addresses.actions.updateAddress",
                       })}
                     </Link>
-                    <Button variant="destructive" size="sm" value="delete" disabled={pending}>
+                    <Button
+                      formAction={deleteAddress}
+                      className="text-sm"
+                      variant="link"
+                      value="delete"
+                      disabled={pending}
+                      aria-description={`Delete ${customerAddress.formatted}`}
+                    >
                       {intl.formatMessage({
                         id: "component.Addresses.actions.deleteAddress",
                       })}

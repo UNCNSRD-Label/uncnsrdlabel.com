@@ -4,6 +4,7 @@ import {
     customerAddressCreateMutation,
     customerAddressDeleteMutation,
     customerAddressUpdateMutation,
+    customerDefaultAddressUpdateMutation,
     getShopifyGraphQL
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cookies } from 'next/headers';
@@ -222,6 +223,68 @@ export async function updateAddressAction(
         status = 202;
 
         messageKey = "actions.updateAccountAction.success";
+    } catch (error) {
+        console.error(error);
+
+        if (error instanceof Error) {
+            messageKey = error.message;
+        } else if (typeof error === "string") {
+            messageKey = error;
+        }
+    } finally {
+        return {
+            message,
+            messageKey,
+            ok,
+            status,
+        };
+    }
+}
+
+export async function setDefaultAddressAction(
+    _currentState: any,
+    formData: FormData,
+) {
+    const id = formData.get("id") as string;
+
+    let message;
+
+    let messageKey = "actions.setDefaultAddressAction.error";
+
+    let ok = false;
+
+    let status = 500;
+
+    const customerAccessToken = cookies().get('customerAccessToken')?.value;
+
+    if (!customerAccessToken) {
+        throw new Error("customerAccessToken not set");
+    }
+
+    const variables = { customerAccessToken, id }
+
+    try {
+        const customerDefaultAddressUpdateMutationResponse = await getShopifyGraphQL(customerDefaultAddressUpdateMutation, variables);
+
+        const errors = customerDefaultAddressUpdateMutationResponse.customerDefaultAddressUpdate?.customerUserErrors;
+
+        if (
+            Array.isArray(errors) && errors.length > 0
+        ) {
+            throw new Error(
+                errors[0].message,
+                {
+                    cause:
+                        errors[0].code,
+                },
+            )
+        }
+
+        ok = true;
+
+        status = 202;
+
+        messageKey = "actions.setDefaultAddressAction.success";
     } catch (error) {
         console.error(error);
 

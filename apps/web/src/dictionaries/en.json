@@ -127,6 +127,7 @@
         "add": "Add new address",
         "edit": "Edit",
         "remove": "Remove",
+        "setDefaultAddress": "Set as default",
         "deleteAddress": "Delete address",
         "updateAddress": "Edit address"
       },
