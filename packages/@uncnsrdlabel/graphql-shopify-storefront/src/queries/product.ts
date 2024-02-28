@@ -1,7 +1,7 @@
 import { graphql } from "../codegen/index";
 
 export const productBasicQuery = graphql(/* GraphQL */ `
-  query getProductBasic(
+  query productBasic(
     $country: CountryCode
     $handle: String!
     $language: LanguageCode
@@ -13,7 +13,7 @@ export const productBasicQuery = graphql(/* GraphQL */ `
 `);
 
 export const productDetailsByHandleQuery = graphql(/* GraphQL */ `
-  query getProductDetailsByHandle(
+  query productDetailsByHandle(
     $country: CountryCode
     $handle: String!
     $language: LanguageCode
@@ -25,7 +25,7 @@ export const productDetailsByHandleQuery = graphql(/* GraphQL */ `
 `);
 
 export const productDetailsByIdQuery = graphql(/* GraphQL */ `
-  query getProductDetailsById(
+  query productDetailsById(
     $country: CountryCode
     $id: ID!
     $language: LanguageCode
@@ -37,7 +37,7 @@ export const productDetailsByIdQuery = graphql(/* GraphQL */ `
 `);
 
 export const productVariantBySelectedOptionsQuery = graphql(/* GraphQL */ `
-query getProductVariantBySelectedOptions(
+query productVariantBySelectedOptions(
     $country: CountryCode
     $handle: String!
     $language: LanguageCode
@@ -67,7 +67,7 @@ query getProductVariantBySelectedOptions(
 `);
 
 export const productsQuery = graphql(/* GraphQL */ `
-  query getProducts(
+  query products(
     $country: CountryCode
     $language: LanguageCode
     $query: String
@@ -85,7 +85,7 @@ export const productsQuery = graphql(/* GraphQL */ `
 `);
 
 export const productsWithVariantsQuery = graphql(/* GraphQL */ `
-  query getProductsWithVariants(
+  query productsWithVariants(
     $country: CountryCode
     $language: LanguageCode
     $query: String

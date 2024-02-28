@@ -60,7 +60,7 @@ export const shopDetailsQuery = graphql(/* GraphQL */ `
 `);
 
 export const shopPoliciesQuery = graphql(/* GraphQL */ `
-  query getShopPolicies($country: CountryCode, $language: LanguageCode)
+  query shopPolicies($country: CountryCode, $language: LanguageCode)
   @inContext(country: $country, language: $language) {
     shop {
       privacyPolicy {

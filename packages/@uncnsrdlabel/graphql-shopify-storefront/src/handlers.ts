@@ -1,24 +1,25 @@
 import {
   CartBuyerIdentityUpdateMutationVariables,
   CollectionFragment,
+  CollectionQueryVariables,
+  CollectionWithProductsQueryVariables,
+  CollectionsQueryVariables,
   CustomerAccessTokenCreateMutationVariables,
   CustomerCreateMutationVariables,
   CustomerRecoverMutationVariables,
   CustomerResetPasswordMutationVariables,
   CustomerUpdateMutationVariables,
   EditCartItemsMutationVariables,
-  collectionQueryVariables,
-  collectionWithProductsQueryVariables,
-  menuQueryVariables,
-  pageQueryVariables,
-  pagesQueryVariables,
-  productBasicQueryVariables,
-  productDetailsByHandleQueryVariables,
-  productDetailsByIdQueryVariables,
-  productRecommendationsQueryVariables,
-  productsQueryVariables,
-  productsWithVariantsQueryVariables,
-  routeMetaObjectQueryVariables
+  MenuQueryVariables,
+  PageQueryVariables,
+  PagesQueryVariables,
+  ProductBasicQueryVariables,
+  ProductDetailsByHandleQueryVariables,
+  ProductDetailsByIdQueryVariables,
+  ProductRecommendationsQueryVariables,
+  ProductsQueryVariables,
+  ProductsWithVariantsQueryVariables,
+  RouteMetaObjectQueryVariables
 } from "./codegen/graphql";
 import { getFragmentData } from "./codegen/index";
 import { domain } from "./constants";
@@ -36,7 +37,8 @@ import {
 } from "./mutations/customer";
 import {
   collectionQuery,
-  collectionWithProductsQuery
+  collectionWithProductsQuery,
+  collectionsQuery
 } from "./queries/collection";
 import {
   localizationDetailsQuery,
@@ -135,7 +137,7 @@ export async function updateCartHandler({ variables }: {
 }
 
 export async function getCollectionHandler({ variables, lang }: {
-  variables: collectionQueryVariables,
+  variables: CollectionQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
   if (!lang) {
@@ -153,7 +155,7 @@ export async function getCollectionHandler({ variables, lang }: {
 }
 
 export async function getCollectionWithProductsHandler({ variables, lang }: {
-  variables: collectionWithProductsQueryVariables,
+  variables: CollectionWithProductsQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
   if (!lang) {
@@ -171,7 +173,7 @@ export async function getCollectionWithProductsHandler({ variables, lang }: {
 }
 
 export async function getCollectionRefsHandler({ variables, lang }: {
-  variables: collectionsQueryVariables,
+  variables: CollectionsQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
   if (!lang) {
@@ -204,7 +206,7 @@ export async function getCollectionRefsHandler({ variables, lang }: {
 }
 
 export async function getRouteMetaObjectHandler({ variables, lang }: {
-  variables: routeMetaObjectQueryVariables,
+  variables: RouteMetaObjectQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
   if (!lang) {
@@ -222,7 +224,7 @@ export async function getRouteMetaObjectHandler({ variables, lang }: {
 }
 
 export async function getMenuHandler({ variables, lang }: {
-  variables: menuQueryVariables,
+  variables: MenuQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
   if (!lang) {
@@ -249,7 +251,7 @@ export async function getMenuHandler({ variables, lang }: {
 }
 
 export async function getPageHandler({ variables, lang }: {
-  variables: pageQueryVariables,
+  variables: PageQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
   if (!lang) {
@@ -267,7 +269,7 @@ export async function getPageHandler({ variables, lang }: {
 }
 
 export async function getPagesHandler({ variables, lang }: {
-  variables: pagesQueryVariables,
+  variables: PagesQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
   if (!lang) {
@@ -332,7 +334,7 @@ export async function getShopPoliciesHandler({ lang }: {
 }
 
 export async function getProductBasicHandler({ variables, lang }: {
-  variables: productBasicQueryVariables,
+  variables: ProductBasicQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
   if (!lang) {
@@ -350,7 +352,7 @@ export async function getProductBasicHandler({ variables, lang }: {
 }
 
 export async function getProductDetailsByHandleHandler({ variables, lang }: {
-  variables: Omit<productDetailsByHandleQueryVariables, "country" | "language">,
+  variables: Omit<ProductDetailsByHandleQueryVariables, "country" | "language">,
   lang: Intl.BCP47LanguageTag,
 }) {
   if (!lang) {
@@ -368,7 +370,7 @@ export async function getProductDetailsByHandleHandler({ variables, lang }: {
 }
 
 export async function getProductDetailsByIdHandler({ variables, lang }: {
-  variables: productDetailsByIdQueryVariables,
+  variables: ProductDetailsByIdQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
   if (!lang) {
@@ -386,7 +388,7 @@ export async function getProductDetailsByIdHandler({ variables, lang }: {
 }
 
 export async function getProductRecommendationsHandler({ variables, lang }: {
-  variables: productRecommendationsQueryVariables,
+  variables: ProductRecommendationsQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
   if (!lang) {
@@ -405,7 +407,7 @@ export async function getProductRecommendationsHandler({ variables, lang }: {
 }
 
 export async function getProductsHandler({ variables, lang }: {
-  variables: productsQueryVariables,
+  variables: ProductsQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
   if (!lang) {
@@ -423,7 +425,7 @@ export async function getProductsHandler({ variables, lang }: {
 }
 
 export async function getProductsWithVariantsHandler({ variables, lang }: {
-  variables: productsWithVariantsQueryVariables,
+  variables: ProductsWithVariantsQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
   if (!lang) {

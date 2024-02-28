@@ -1,7 +1,7 @@
 import { graphql } from "../codegen/index";
 
 export const productRecommendationsQuery = graphql(/* GraphQL */ `
-  query getProductRecommendations(
+  query productRecommendations(
     $country: CountryCode
     $productId: ID!
     $language: LanguageCode

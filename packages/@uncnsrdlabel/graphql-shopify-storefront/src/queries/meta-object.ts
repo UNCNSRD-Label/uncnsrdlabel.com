@@ -17,7 +17,7 @@ query metaObjects($country: CountryCode, $type: String!, $language: LanguageCode
 `);
 
 export const routeMetaObjectQuery = graphql(/* GraphQL */ `
-  query getRouteMetaObject(
+  query routeMetaObject(
     $country: CountryCode
     $handle: String!
     $language: LanguageCode
