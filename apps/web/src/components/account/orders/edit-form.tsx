@@ -20,7 +20,7 @@ import {
   customerQuery,
   getFragmentData,
   getShopifyGraphQL,
-  mailingOrderFragment,
+  mailingAddressFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getQueryKey } from "@uncnsrdlabel/lib";
 import { getCookie } from "cookies-next";
@@ -150,7 +150,7 @@ export function OrdersEditForm({
   const customer = getFragmentData(customerFragment, data?.customer);
 
   const order = customer?.orders.nodes
-    .map((node) => getFragmentData(mailingOrderFragment, node))
+    .map((node) => getFragmentData(mailingAddressFragment, node))
     .find((order) => parseGid(order.id.split("?").shift()).id === id);
 
   return (

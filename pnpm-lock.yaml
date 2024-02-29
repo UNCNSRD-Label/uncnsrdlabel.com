@@ -143,6 +143,9 @@ importers:
       '@tanstack/react-query-devtools':
         specifier: ^5.24.0
         version: 5.24.0(@tanstack/react-query@5.22.2)(react@0.0.0-experimental-feed8f3f9-20240118)
+      '@tanstack/react-table':
+        specifier: ^8.13.2
+        version: 8.13.2(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118)
       '@thebeyondgroup/shopify-rich-text-renderer':
         specifier: ^1.0.0
         version: 1.0.0
@@ -5795,6 +5798,18 @@ packages:
       react: 18.2.0
     dev: false
 
+  /@tanstack/react-table@8.13.2(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118):
+    resolution: {integrity: sha512-b6mR3mYkjRtJ443QZh9sc7CvGTce81J35F/XMr0OoWbx0KIM7TTTdyNP2XKObvkLpYnLpCrYDwI3CZnLezWvpg==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      '@tanstack/table-core': 8.13.2
+      react: 0.0.0-experimental-feed8f3f9-20240118
+      react-dom: 18.2.0(react@0.0.0-experimental-feed8f3f9-20240118)
+    dev: false
+
   /@tanstack/react-virtual@3.0.2(react-dom@18.2.0)(react@0.0.0-experimental-feed8f3f9-20240118):
     resolution: {integrity: sha512-9XbRLPKgnhMwwmuQMnJMv+5a9sitGNCSEtf/AZXzmJdesYk7XsjYHaEDny+IrJzvPNwZliIIDwCRiaUqR3zzCA==}
     peerDependencies:
@@ -5804,6 +5819,11 @@ packages:
       '@tanstack/virtual-core': 3.0.0
       react: 0.0.0-experimental-feed8f3f9-20240118
       react-dom: 18.2.0(react@0.0.0-experimental-feed8f3f9-20240118)
+    dev: false
+
+  /@tanstack/table-core@8.13.2:
+    resolution: {integrity: sha512-/2saD1lWBUV6/uNAwrsg2tw58uvMJ07bO2F1IWMxjFRkJiXKQRuc3Oq2aufeobD3873+4oIM/DRySIw7+QsPPw==}
+    engines: {node: '>=12'}
     dev: false
 
   /@tanstack/virtual-core@3.0.0:

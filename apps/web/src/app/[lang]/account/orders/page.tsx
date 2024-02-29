@@ -22,7 +22,6 @@ export default function AccountOrdersPage({ params: { lang } }: PageProps) {
   return (
     <div className="bg-opaque-white grid gap-8 p-4 sm:p-8">
       <Orders
-        className="bg-transparent"
         dictionary={dictionary}
         lang={lang}
       />

@@ -284,6 +284,20 @@
         "title": "Orders"
       }
     },
+    "OrderSummary": {
+      "shipping": "Shipping",
+      "taxes": "Taxes",
+      "total": "Total",
+      "payment": "Payment",
+      "address": "Address",
+      "status": "Status",
+      "delivery": "Delivery",
+      "summary": "Order summary",
+      "actions": {
+        "viewOrder": "View order",
+        "trackOrderStatus": "Track order status"
+      }
+    },
     "ProductDetails": {
       "size-guide": {
         "popover": {
