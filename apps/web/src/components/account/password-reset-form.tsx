@@ -5,12 +5,12 @@ import { useDebouncedEffect } from "@react-hookz/web";
 import { getShopifyCookies } from "@shopify/hydrogen-react";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
 } from "@uncnsrdlabel/components/atoms/card";
 import { Input } from "@uncnsrdlabel/components/atoms/input";
 import { Label } from "@uncnsrdlabel/components/atoms/label";
@@ -39,7 +39,7 @@ function Submit({
   const { pending } = useFormStatus();
 
   return (
-    <Button className={className} disabled={pending} variant="default">
+    <Button className={className} disabled={pending} size="base" variant="default">
       {intl.formatMessage({
         id: "component.AccountResetForm.submit",
       })}

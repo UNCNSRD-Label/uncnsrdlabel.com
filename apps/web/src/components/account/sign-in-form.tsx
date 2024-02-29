@@ -42,7 +42,7 @@ function Submit({
   const { pending } = useFormStatus();
 
   return (
-    <Button className={className} disabled={pending} variant="default">
+    <Button className={className} disabled={pending} size="base" variant="default">
       {intl.formatMessage({
         id: "component.SignInToAccountForm.submit",
       })}

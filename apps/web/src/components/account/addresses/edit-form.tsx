@@ -7,20 +7,20 @@ import { getShopifyCookies } from "@shopify/hydrogen-react";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
 } from "@uncnsrdlabel/components/atoms/card";
 import { Input } from "@uncnsrdlabel/components/atoms/input";
 import { Label } from "@uncnsrdlabel/components/atoms/label";
 import {
-  customerFragment,
-  customerQuery,
-  getFragmentData,
-  getShopifyGraphQL,
-  mailingAddressFragment,
+    customerFragment,
+    customerQuery,
+    getFragmentData,
+    getShopifyGraphQL,
+    mailingAddressFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getQueryKey } from "@uncnsrdlabel/lib";
 import { getCookie } from "cookies-next";
@@ -49,7 +49,7 @@ function Submit({
   const { pending } = useFormStatus();
 
   return (
-    <Button className={className} disabled={pending} variant="default">
+    <Button className={className} disabled={pending} size="base" variant="default">
       {intl.formatMessage({
         id: "component.AddressesEditForm.action.submit",
       })}
