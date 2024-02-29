@@ -16,13 +16,23 @@ export const customerAccessTokenCreateMutation = graphql(/* GraphQL */ `
   }
 `);
 
+export const customerAccessTokenDeleteMutation = graphql(/* GraphQL */ `
+  mutation CustomerAccessTokenDelete($customerAccessToken: String!) {
+    customerAccessTokenDelete(customerAccessToken: $customerAccessToken) {
+      deletedAccessToken
+      deletedCustomerAccessTokenId
+      userErrors {
+        field
+        message
+      }
+    }
+  }
+`);
+
 export const customerAddressCreateMutation = graphql(/* GraphQL */ `
-  mutation CustomerAddressCreate(
-    $input: MailingAddressInput!
-    $customerAccessToken: String!
-  ) {
+  mutation CustomerAddressCreate($address: MailingAddressInput!, $customerAccessToken: String!) {
     customerAddressCreate(
-      address: $input
+      address: $address
       customerAccessToken: $customerAccessToken
     ) {
       customerAddress {
@@ -51,16 +61,8 @@ export const customerAddressDeleteMutation = graphql(/* GraphQL */ `
 `);
 
 export const customerAddressUpdateMutation = graphql(/* GraphQL */ `
-  mutation CustomerAddressUpdate(
-    $input: MailingAddressInput!
-    $customerAccessToken: String!
-    $id: ID!
-  ) {
-    customerAddressUpdate(
-      address: $input
-      customerAccessToken: $customerAccessToken
-      id: $id
-    ) {
+  mutation CustomerAddressUpdate($address: MailingAddressInput!, $customerAccessToken: String!, $id: ID!) {
+    customerAddressUpdate(address: $address, customerAccessToken: $customerAccessToken, id: $id) {
       customerAddress {
         id
       }

@@ -101,11 +101,13 @@ export default async function CategoryPage({
     lang,
   });
 
-  const productFragmentRefs = collectionWithProducts.products.edges.map(
+  if (!collectionWithProducts) return notFound();
+
+  const productFragmentRefs = collectionWithProducts?.products.edges.map(
     (edge) => edge?.node,
   );
 
-  const results = collectionWithProducts.products.edges.length;
+  const results = collectionWithProducts?.products.edges.length;
 
   return (
     <>

@@ -1,11 +1,11 @@
 "use server";
 
 import {
+    customerAddressCreateMutation,
+    customerAddressDeleteMutation,
+    customerAddressUpdateMutation,
     customerDefaultAddressUpdateMutation,
-    getShopifyGraphQL,
-    mailingAddressCreateMutation,
-    mailingAddressDeleteMutation,
-    mailingAddressUpdateMutation
+    getShopifyGraphQL
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cookies } from 'next/headers';
 
@@ -38,7 +38,7 @@ export async function addAddressAction(
         throw new Error("customerAccessToken not set");
     }
 
-    const input = {
+    const address = {
         address1,
         address2,
         city,
@@ -51,12 +51,12 @@ export async function addAddressAction(
         zip,
     };
 
-    const variables = { customerAccessToken, input }
+    const variables = { customerAccessToken, address }
 
     try {
-        const mailingAddressCreateMutationResponse = await getShopifyGraphQL(mailingAddressCreateMutation, variables);
+        const customerAddressCreateMutationResponse = await getShopifyGraphQL(customerAddressCreateMutation, variables);
 
-        const errors = mailingAddressCreateMutationResponse.mailingAddressCreate?.customerUserErrors;
+        const errors = customerAddressCreateMutationResponse.customerAddressCreate?.customerUserErrors;
 
         if (
             Array.isArray(errors) && errors.length > 0
@@ -116,9 +116,9 @@ export async function deleteAddressAction(
     const variables = { customerAccessToken, id }
 
     try {
-        const mailingAddressDeleteMutationResponse = await getShopifyGraphQL(mailingAddressDeleteMutation, variables);
+        const customerAddressDeleteMutationResponse = await getShopifyGraphQL(customerAddressDeleteMutation, variables);
 
-        const errors = mailingAddressDeleteMutationResponse.mailingAddressDelete?.customerUserErrors;
+        const errors = customerAddressDeleteMutationResponse.customerAddressDelete?.customerUserErrors;
 
         if (
             Array.isArray(errors) && errors.length > 0
@@ -186,7 +186,7 @@ export async function updateAddressAction(
         throw new Error("customerAccessToken not set");
     }
 
-    const input = {
+    const address = {
         address1,
         address2,
         city,
@@ -199,12 +199,12 @@ export async function updateAddressAction(
         zip,
     };
 
-    const variables = { customerAccessToken, id, input }
+    const variables = { customerAccessToken, id, address }
 
     try {
-        const mailingAddressUpdateMutationResponse = await getShopifyGraphQL(mailingAddressUpdateMutation, variables);
+        const customerAddressUpdateMutationResponse = await getShopifyGraphQL(customerAddressUpdateMutation, variables);
 
-        const errors = mailingAddressUpdateMutationResponse.mailingAddressUpdate?.customerUserErrors;
+        const errors = customerAddressUpdateMutationResponse.customerAddressUpdate?.customerUserErrors;
 
         if (
             Array.isArray(errors) && errors.length > 0

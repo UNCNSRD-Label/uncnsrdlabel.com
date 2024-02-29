@@ -113,7 +113,7 @@ function SubmitButton({
       );
     },
     onSuccess: (data, variables, context) => {
-      // console.debug("onSuccess", { data, variables, context });
+      console.debug("onSuccess", { data, variables, context });
 
       const { cartLinesAdd } = data;
 
@@ -168,7 +168,7 @@ function SubmitButton({
       );
     },
     onSuccess: (data, variables, context) => {
-      // console.debug("onSuccess", { data, variables, context });
+      console.debug("onSuccess", { data, variables, context });
 
       const { cartCreate } = data;
 

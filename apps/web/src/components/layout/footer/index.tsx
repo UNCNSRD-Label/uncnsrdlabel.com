@@ -75,7 +75,7 @@ export async function Footer({ lang }: { lang: Intl.BCP47LanguageTag }) {
                     id: "global.footer.menu.information",
                   })}
                 </dt>
-                {informationMenu.items.map((item, index) => (
+                {informationMenu?.items?.map((item, index) => (
                   <dd className="flex" key={item.title || index}>
                     <Link href={item.url ?? "#"} className={linkClassName}>
                       {item.title}
@@ -87,7 +87,7 @@ export async function Footer({ lang }: { lang: Intl.BCP47LanguageTag }) {
                       id: "global.footer.menu.follow-us",
                     })}
                   </dt>
-                {followUsMenu.items.map((item, index) => (
+                {followUsMenu?.items?.map((item, index) => (
                     <dd className="flex" key={item.title || index}>
                       <Link
                         className={linkClassName}
@@ -107,7 +107,7 @@ export async function Footer({ lang }: { lang: Intl.BCP47LanguageTag }) {
                     id: "global.footer.menu.customer-care",
                   })}
                 </dt>
-                {customerCareMenu.items.map((item, index) => (
+                {customerCareMenu?.items?.map((item, index) => (
                   <dd className="flex" key={item.title || index}>
                     <Link href={item.url ?? "#"} className={linkClassName}>
                       {item.title}
