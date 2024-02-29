@@ -16020,7 +16020,6 @@ export type QueryCompanyVersionArgs = {
 
 
 export type QueryEntitiesArgs = {
-  locales?: InputMaybe<Array<Locale>>;
   where: Array<EntityWhereInput>;
 };
 

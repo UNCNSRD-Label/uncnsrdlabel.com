@@ -1,5 +1,6 @@
 import { SignInToAccountForm } from "@/components/account/sign-in-form";
 import { getDictionary } from "@/lib/dictionary";
+import { type PageProps } from "@/types/next";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,11 +9,8 @@ export const metadata: Metadata = {
 };
 
 export default function AccountSignUpPage({
-  lang,
-}: {
-  className?: string;
-  lang: Intl.BCP47LanguageTag;
-}) {
+  params: { lang },
+}: PageProps) {
   const dictionary = getDictionary({ lang });
 
   return (

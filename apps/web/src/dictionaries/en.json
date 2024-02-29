@@ -276,9 +276,7 @@
     },
     "Orders": {
       "actions": {
-        "add": "Add new order",
         "cancelOrder": "Cancel order",
-        "deleteOrder": "Delete order",
         "updateOrder": "Edit order"
       },
       "card": {

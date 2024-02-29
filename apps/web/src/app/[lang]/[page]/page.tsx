@@ -16,8 +16,8 @@ import { PageSectionModule } from "./page-section-module";
 
 export async function generateMetadata({
   params: { lang, page: handle },
-}: {
-  params: { lang: Intl.BCP47LanguageTag; page: string };
+}: PageProps & {
+  params: { page: string };
 }): Promise<Metadata> {
   const localization = await getLocalizationDetailsHandler({ lang });
 

@@ -21,7 +21,7 @@ export default async function AccountLayout({
         <NavbarContent lang={lang} />
       </Navbar>
       <div
-        className="grid max-w-[100dvw] gap-x-8 gap-y-4 bg-cover bg-fixed px-8 pt-16 sm:grid-cols-[1fr_3fr] lg:grid-cols-[1fr_48rem_1fr] sm:[grid-template-areas:'start_main'] lg:[grid-template-areas:'start_main_end']"
+        className="bg-dark grid max-w-[100dvw] gap-x-8 gap-y-4 bg-cover bg-fixed px-8 pt-16 sm:grid-cols-[1fr_3fr] lg:grid-cols-[1fr_48rem_1fr] sm:[grid-template-areas:'start_main'] lg:[grid-template-areas:'start_main_end']"
         style={{
           backgroundImage: "url('/images/backgrounds/MAV7957-Edit.jpg')",
         }}

@@ -172,10 +172,9 @@ export function Addresses({
     500,
   );
 
-  const defaultAddress = customer?.defaultAddress ? getFragmentData(
-    mailingAddressFragment,
-    customer.defaultAddress,
-  ) : null;
+  const defaultAddress = customer?.defaultAddress
+    ? getFragmentData(mailingAddressFragment, customer.defaultAddress)
+    : null;
 
   return (
     <Card className={className}>
@@ -206,24 +205,30 @@ export function Addresses({
             return (
               <li className="grid gap-4 border-b py-8" key={id}>
                 <form>
-                  <ul>
-                    {mailingAddress?.id === defaultAddress?.id && <li className="underline">Default</li>}
-                    {mailingAddress.formatted.map((line, index) => (
-                      <li key={index}>{line}</li>
-                    ))}
-                  </ul>
+                  <address className="text-sm">
+                    <ul>
+                      {mailingAddress?.id === defaultAddress?.id && (
+                        <li className="underline">Default</li>
+                      )}
+                      {mailingAddress.formatted.map((line, index) => (
+                        <li key={index}>{line}</li>
+                      ))}
+                    </ul>
+                  </address>
                   <div className="mt-8 grid grid-flow-col justify-end gap-4">
                     <Button
                       formAction={setDefaultAddress}
-                      className={cn("text-sm flex gap-2", {
-                        "underline": mailingAddress?.id === defaultAddress?.id
+                      className={cn("flex gap-2 text-sm", {
+                        underline: mailingAddress?.id === defaultAddress?.id,
                       })}
                       variant="link"
                       value="setDefault"
                       disabled={pending}
                       aria-description={`Set ${mailingAddress.formatted} as default address`}
                     >
-                      {mailingAddress?.id === defaultAddress?.id && <CheckCircleIcon className="h-5 w-5" />}
+                      {mailingAddress?.id === defaultAddress?.id && (
+                        <CheckCircleIcon className="h-5 w-5" />
+                      )}
                       {intl.formatMessage({
                         id: "component.Addresses.actions.setDefaultAddress",
                       })}
