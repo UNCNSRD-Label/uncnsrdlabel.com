@@ -6,6 +6,25 @@ export const addToCartMutation = graphql(/* GraphQL */ `
       cart {
         ...cart
       }
+      userErrors {
+        field
+        message
+      }
+    }
+  }
+`);
+
+export const cartBuyerIdentityUpdateMutation = graphql(/* GraphQL */ `
+  mutation cartBuyerIdentityUpdate($buyerIdentity: CartBuyerIdentityInput!, $cartId: ID!) {
+    cartBuyerIdentityUpdate(buyerIdentity: $buyerIdentity, cartId: $cartId) {
+      cart {
+        ...cart
+      }
+      userErrors {
+        code
+        field
+        message
+      }
     }
   }
 `);
@@ -15,6 +34,10 @@ export const createCartMutation = graphql(/* GraphQL */ `
     cartCreate(input: $input) {
       cart {
         ...cart
+      }
+      userErrors {
+        field
+        message
       }
     }
   }
@@ -26,6 +49,10 @@ export const editCartItemsMutation = graphql(/* GraphQL */ `
       cart {
         ...cart
       }
+      userErrors {
+        field
+        message
+      }
     }
   }
 `);
@@ -35,6 +62,10 @@ export const removeFromCartMutation = graphql(/* GraphQL */ `
     cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
       cart {
         ...cart
+      }
+      userErrors {
+        field
+        message
       }
     }
   }

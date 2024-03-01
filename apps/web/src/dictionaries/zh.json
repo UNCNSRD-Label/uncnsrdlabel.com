@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUp": {
+    "NewsletterSignUp": {
       "title": "注册我们的时事通讯",
       "summary": "注册并享受首次购买 10% 的折扣"
     },
-    "SignUpForm": {
+    "NewsletterSignUpForm": {
       "message": "等待注册确认",
       "pattern": "输入的值与电子邮件格式不匹配",
       "placeholder": "注册我们的时事通讯",
@@ -18,11 +18,11 @@
         "title": "订阅时事通讯"
       }
     },
-    "SignUpForNotifications": {
+    "SignUpForBackInStockSubscription": {
       "summary": "注册以在该产品有货时收到通知",
       "title": "注册接收通知"
     },
-    "SignUpForNotificationsForm": {
+    "SignUpForBackInStockSubscriptionForm": {
       "placeholder": "输入你的电子邮箱地址",
       "submit": "报名",
       "toast": {
@@ -247,11 +247,11 @@
       "close": "关闭菜单",
       "open": "打开菜单"
     },
-    "SignUp": {
+    "NewsletterSignUp": {
       "title": "注册我们的时事通讯",
       "summary": "注册并享受首次购买 10% 的折扣"
     },
-    "SignUpForm": {
+    "NewsletterSignUpForm": {
       "message": "等待注册确认",
       "pattern": "输入的值与电子邮件格式不匹配",
       "placeholder": "注册我们的时事通讯",

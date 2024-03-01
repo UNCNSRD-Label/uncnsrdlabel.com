@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUp": {
+    "NewsletterSignUp": {
       "title": "हमारे न्यूजलेटर के लिए साइनअप करें",
       "summary": "साइन अप करें और अपनी पहली खरीदारी पर 10% की छूट प्राप्त करें"
     },
-    "SignUpForm": {
+    "NewsletterSignUpForm": {
       "message": "साइनअप पुष्टिकरण की प्रतीक्षा की जा रही है",
       "pattern": "दर्ज किया गया मान ईमेल प्रारूप से मेल नहीं खाता",
       "placeholder": "हमारे न्यूजलेटर के लिए साइनअप करें",
@@ -18,11 +18,11 @@
         "title": "वृत्त पत्र शामिल होना"
       }
     },
-    "SignUpForNotifications": {
+    "SignUpForBackInStockSubscription": {
       "summary": "इस उत्पाद के स्टॉक में वापस आने पर सूचित होने के लिए साइन अप करें",
       "title": "सूचनाओं के लिए साइन अप करें"
     },
-    "SignUpForNotificationsForm": {
+    "SignUpForBackInStockSubscriptionForm": {
       "placeholder": "अपना ईमेल पता दर्ज करें",
       "submit": "साइन अप करें",
       "toast": {
@@ -247,11 +247,11 @@
       "close": "मेनू बंद करें",
       "open": "मेनू खोलें"
     },
-    "SignUp": {
+    "NewsletterSignUp": {
       "title": "हमारे न्यूजलेटर के लिए साइनअप करें",
       "summary": "साइन अप करें और अपनी पहली खरीदारी पर 10% की छूट प्राप्त करें"
     },
-    "SignUpForm": {
+    "NewsletterSignUpForm": {
       "message": "साइनअप पुष्टिकरण की प्रतीक्षा की जा रही है",
       "pattern": "दर्ज किया गया मान ईमेल प्रारूप से मेल नहीं खाता",
       "placeholder": "हमारे न्यूजलेटर के लिए साइनअप करें",

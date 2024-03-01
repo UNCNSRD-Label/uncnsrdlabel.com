@@ -1,11 +1,11 @@
 {
   "actions": {
-    "signUpAction": {
+    "signUpForNewsletterAction": {
       "error": "Teie taotluse töötlemisel ilmnes viga.",
       "failed": "E-posti aadressi esitamine ebaõnnestus HTTP vastuse koodiga: {status}",
       "success": "Olete edukalt registreerunud meie meililisti"
     },
-    "signUpForNotificationsAction": {
+    "signUpForBackInStockSubscriptionAction": {
       "error": "Teie taotluse töötlemisel ilmnes viga.",
       "failed": "E-posti aadressi esitamine ebaõnnestus HTTP vastuse koodiga: {status}",
       "success": "Olete edukalt registreerunud märguannete saamiseks"
@@ -224,11 +224,11 @@
       "close": "Sulgege menüü",
       "open": "Avage menüü"
     },
-    "SignUp": {
+    "NewsletterSignUp": {
       "title": "Liituge meie uudiskirjaga",
       "summary": "Registreeruge ja saate oma esimesest ostust 10% allahindlust"
     },
-    "SignUpForm": {
+    "NewsletterSignUpForm": {
       "message": "Registreerumise kinnituse ootel",
       "pattern": "Sisestatud väärtus ei ühti meilivorminguga",
       "placeholder": "Liituge meie uudiskirjaga",

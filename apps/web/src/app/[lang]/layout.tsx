@@ -112,7 +112,7 @@ export const viewport = {
   width: "device-width",
 };
 
-export default async function RootLayout({
+export default async function Layout({
   children,
   params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
 }: PropsWithChildren<LayoutProps>) {

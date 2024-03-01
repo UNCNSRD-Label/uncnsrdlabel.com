@@ -114,7 +114,7 @@ export function ProductCard({
           </div>
           <AddToCart
             availableForSale={product.availableForSale}
-            className="px-0"
+            // className="px-0"
             container="ProductCard"
             dictionary={dictionary}
             lang={lang}

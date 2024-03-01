@@ -1,18 +1,18 @@
 import { Image } from "@/components/media/image";
 import { minWidthLg, minWidthSm } from "@/lib/tailwind";
 import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@uncnsrdlabel/components/atoms/carousel";
 import {
-    getFragmentData,
-    getPageQuery,
-    getShopifyGraphQL,
-    imageFragment,
-    pageFragment,
+  getFragmentData,
+  getShopifyGraphQL,
+  imageFragment,
+  pageFragment,
+  pageQuery,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 
@@ -26,7 +26,7 @@ export async function PageCarousel({
   const variables = { handle };
 
   const { page: pageFragmentRef } = await getShopifyGraphQL(
-    getPageQuery,
+    pageQuery,
     variables,
   );
 

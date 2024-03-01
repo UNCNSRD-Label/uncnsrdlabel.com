@@ -1,10 +1,8 @@
 "use client";
 
 import { LoadingDots } from "@/components/loading/dots";
-import { state$ } from "@/lib/store";
 import { createIntl } from "@formatjs/intl";
 import { CheckIcon, ClockIcon, PlusIcon } from "@heroicons/react/24/outline";
-import { useSelector } from "@legendapp/state/react";
 import {
   type CartLineInput,
   type ProductOption,
@@ -18,17 +16,17 @@ import {
 import {
   addToCartMutation,
   cartFragment,
+  cartQuery,
   createCartMutation,
-  getCartQuery,
   getFragmentData,
   getInContextVariables,
-  getQueryKey,
   getShopifyGraphQL,
   type AddToCartMutationVariables,
   type CreateCartMutationVariables,
   type SellingPlanGroup,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { cn } from "@uncnsrdlabel/lib";
+import { cn, getQueryKey } from "@uncnsrdlabel/lib";
+import { getCookie, setCookie } from "cookies-next";
 import { useSearchParams } from "next/navigation";
 import { Suspense, Usable, use, useCallback } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
@@ -69,7 +67,11 @@ function SubmitButton({
 
   const shopifyQueryClient = useQueryClient();
 
-  const cartId = useSelector<string>(() => state$.cartId.get());
+  const cartId = getCookie("cartId");
+
+  const customerAccessToken = getCookie("customerAccessToken");
+
+  const email = getCookie("email");
 
   const track = useTrack();
 
@@ -85,8 +87,8 @@ function SubmitButton({
     getShopifyGraphQL(createCartMutation, variables);
 
   const invalidateQueries = () => {
-    const queryKey = getQueryKey(getCartQuery, {
-      cartId,
+    const queryKey = getQueryKey(cartQuery, {
+      cartId: cartId as string,
     });
 
     shopifyQueryClient.invalidateQueries({
@@ -103,7 +105,7 @@ function SubmitButton({
     mutationKey: ["addToCart", cartId],
     onError: (error, variables, context?: AddToCartContext) => {
       console.error("onError", { error, variables, context });
-      // console.log(`rolling back optimistic update with id ${context?.id}`);
+
       toast.error(
         intl.formatMessage({
           id: "component.AddToCart.toast.error",
@@ -111,7 +113,27 @@ function SubmitButton({
       );
     },
     onSuccess: (data, variables, context) => {
-      console.log("onSuccess", { data, variables, context });
+      console.debug("onSuccess", { data, variables, context });
+
+      const { cartLinesAdd } = data;
+
+      if (cartLinesAdd) {
+        const { cart: cartFragmentRef } = cartLinesAdd;
+
+        const cart = getFragmentData(cartFragment, cartFragmentRef);
+
+        if (cart?.id) {
+          console.debug("cart", { cart });
+          setCookie("cart", { cost: cart.cost, id: cart.id, totalQuantity: cart.totalQuantity });
+          setCookie("cartId", cart.id);
+
+          toast.success(
+            intl.formatMessage({
+              id: "component.AddToCart.toast.success",
+            }),
+          );
+        }
+      }
 
       toast.success(
         intl.formatMessage({
@@ -138,7 +160,7 @@ function SubmitButton({
     mutationKey: ["createCart", cartId],
     onError: (error, variables, context?: CreateCartContext) => {
       console.error("onError", { error, variables, context });
-      // console.log(`rolling back optimistic update with id ${context?.id}`);
+
       toast.error(
         intl.formatMessage({
           id: "component.AddToCart.toast.error",
@@ -146,7 +168,7 @@ function SubmitButton({
       );
     },
     onSuccess: (data, variables, context) => {
-      console.log("onSuccess", { data, variables, context });
+      console.debug("onSuccess", { data, variables, context });
 
       const { cartCreate } = data;
 
@@ -155,19 +177,15 @@ function SubmitButton({
 
         const cart = getFragmentData(cartFragment, cartFragmentRef);
 
-        if (cart) {
+        if (cart?.id) {
+          console.debug("cart", { cart });
+          setCookie("cart", { cost: cart.cost, id: cart.id, totalQuantity: cart.totalQuantity });
+          setCookie("cartId", cart.id);
+
           toast.success(
             intl.formatMessage({
               id: "component.AddToCart.toast.success",
             }),
-            {
-              onDismiss: () => {
-                state$.cartId.set(cart.id);
-              },
-              onAutoClose: () => {
-                state$.cartId.set(cart.id);
-              },
-            },
           );
         }
       }
@@ -216,10 +234,9 @@ function SubmitButton({
   }
 
   const handleClickTrack = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const { dataset } = event.currentTarget;
+    if (isPending) event.preventDefault();
 
     track("add_to_cart", {
-      ...dataset,
       availableForSale,
       container,
       selectedVariantId,
@@ -251,6 +268,8 @@ function SubmitButton({
           input: {
             buyerIdentity: {
               countryCode: country,
+              customerAccessToken,
+              email,
             },
             lines: [payload],
           },
@@ -267,7 +286,7 @@ function SubmitButton({
       aria-label={label}
       aria-disabled={isDisabled}
       className={cn(
-        "relative flex w-full gap-2 text-xs sm:text-sm md:gap-4",
+        "relative flex w-full gap-2 md:gap-4",
         {
           "cursor-not-allowed opacity-60 hover:opacity-60": isDisabled,
         },
@@ -345,7 +364,7 @@ export function AddToCart({
 
   const selectedVariantId = selectedVariant?.id;
 
-  const size = view === "compact" ? "sm" : "lg";
+  const size = view === "compact" ? "xs" : "lg";
 
   const variant = view === "compact" ? "secondary" : "default";
 

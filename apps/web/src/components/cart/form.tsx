@@ -28,13 +28,11 @@ type MerchandiseSearchParams = {
 
 export function CartForm({
   cart,
-  cartId,
   container,
   dictionary,
   lang,
 }: {
   cart?: ResultOf<typeof cartFragment> | null;
-  cartId: string;
   container?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
   lang: Intl.BCP47LanguageTag;
@@ -48,16 +46,13 @@ export function CartForm({
 
   const track = useTrack();
 
-  const handleClickTrack = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    const { dataset } = event.currentTarget;
-
+  const handleClickTrack = () => {
     track("begin_checkout", {
-      ...dataset,
       container,
     });
   };
 
-  const lines = cart?.lines.edges.map((edge) => edge?.node);
+  const lines = cart?.lines?.edges.map((edge) => edge?.node);
 
   return (
     <>
@@ -116,7 +111,7 @@ export function CartForm({
                   <div className="relative flex gap-4 w-full flex-row justify-between px-1 py-4">
                     <div className="absolute z-40 -mt-2 ml-[55px] self-start">
                       <DeleteItemButton
-                        cartId={cartId}
+                        cartId={cart.id}
                         dictionary={dictionary}
                         item={item}
                         lang={lang}
@@ -170,7 +165,7 @@ export function CartForm({
                           }
                         >
                           <EditItemQuantityButton
-                            cartId={cartId}
+                            cartId={cart.id}
                             className={editItemQuantityButtonclassName}
                             dictionary={dictionary}
                             item={item}
@@ -195,7 +190,7 @@ export function CartForm({
                           }
                         >
                           <EditItemQuantityButton
-                            cartId={cartId}
+                            cartId={cart.id}
                             className={editItemQuantityButtonclassName}
                             dictionary={dictionary}
                             item={item}

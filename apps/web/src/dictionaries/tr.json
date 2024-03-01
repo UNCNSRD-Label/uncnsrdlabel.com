@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUp": {
+    "NewsletterSignUp": {
       "title": "Haber bültenimize kaydolun",
       "summary": "Kaydolun ve ilk satın alma işleminizde %10 indirim kazanın"
     },
-    "SignUpForm": {
+    "NewsletterSignUpForm": {
       "message": "Kayıt onayı bekleniyor",
       "pattern": "Girilen değer e-posta biçimiyle eşleşmiyor",
       "placeholder": "Haber bültenimize kaydolun",
@@ -18,11 +18,11 @@
         "title": "Bültene üye ol"
       }
     },
-    "SignUpForNotifications": {
+    "SignUpForBackInStockSubscription": {
       "summary": "Bu ürün stoğa tekrar girdiğinde haberdar olmak için kaydolun",
       "title": "Bildirimler için kaydolun"
     },
-    "SignUpForNotificationsForm": {
+    "SignUpForBackInStockSubscriptionForm": {
       "placeholder": "E-posta adresinizi giriniz",
       "submit": "Üye olmak",
       "toast": {
@@ -247,11 +247,11 @@
       "close": "Menüyü kapat",
       "open": "Menüyü aç"
     },
-    "SignUp": {
+    "NewsletterSignUp": {
       "title": "Haber bültenimize kaydolun",
       "summary": "Kaydolun ve ilk satın alma işleminizde %10 indirim kazanın"
     },
-    "SignUpForm": {
+    "NewsletterSignUpForm": {
       "message": "Kayıt onayı bekleniyor",
       "pattern": "Girilen değer e-posta biçimiyle eşleşmiyor",
       "placeholder": "Haber bültenimize kaydolun",

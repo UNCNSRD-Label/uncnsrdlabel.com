@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUp": {
+    "NewsletterSignUp": {
       "title": "Abonați-vă la buletinul nostru informativ",
       "summary": "Înscrie-te și primești 10% reducere la prima achiziție"
     },
-    "SignUpForm": {
+    "NewsletterSignUpForm": {
       "message": "Se așteaptă confirmarea înscrierii",
       "pattern": "Valoarea introdusă nu se potrivește cu formatul de e-mail",
       "placeholder": "Abonați-vă la buletinul nostru informativ",
@@ -18,11 +18,11 @@
         "title": "Abonează-te la știri"
       }
     },
-    "SignUpForNotifications": {
+    "SignUpForBackInStockSubscription": {
       "summary": "Înscrieți-vă pentru a fi anunțat când acest produs este din nou în stoc",
       "title": "Înscrieți-vă pentru notificări"
     },
-    "SignUpForNotificationsForm": {
+    "SignUpForBackInStockSubscriptionForm": {
       "placeholder": "Introdu adresa ta de e-mail",
       "submit": "Inscrie-te",
       "toast": {
@@ -247,11 +247,11 @@
       "close": "Închideți meniul",
       "open": "Deschide meniul"
     },
-    "SignUp": {
+    "NewsletterSignUp": {
       "title": "Abonați-vă la buletinul nostru informativ",
       "summary": "Înscrie-te și primești 10% reducere la prima achiziție"
     },
-    "SignUpForm": {
+    "NewsletterSignUpForm": {
       "message": "Se așteaptă confirmarea înscrierii",
       "pattern": "Valoarea introdusă nu se potrivește cu formatul de e-mail",
       "placeholder": "Abonați-vă la buletinul nostru informativ",

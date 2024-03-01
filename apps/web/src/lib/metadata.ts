@@ -9,9 +9,9 @@ import {
 import type { Metadata } from "next";
 
 const {
-    NEXT_PUBLIC_DEFAULT_LOCALE = "en-AU",
+    NEXT_PUBLIC_DEFAULT_LOCALE,
     NEXT_PUBLIC_PROTOCOL,
-    NEXT_PUBLIC_SITE_NAME = "UNCNSRD",
+    NEXT_PUBLIC_SITE_NAME,
     TWITTER_CREATOR,
     TWITTER_SITE,
 } = process.env;
@@ -50,7 +50,6 @@ export const getBaseMetadata = async ({ lang, path = "/" }: { lang: Intl.BCP47La
         appleWebApp: {
             capable: true,
             title: NEXT_PUBLIC_SITE_NAME,
-            // statusBarStyle: "default",
             statusBarStyle: "black-translucent",
             startupImage: [
                 {
@@ -247,7 +246,7 @@ export const getBaseMetadata = async ({ lang, path = "/" }: { lang: Intl.BCP47La
             index: true,
         },
         title: {
-            default: NEXT_PUBLIC_SITE_NAME,
+            default: NEXT_PUBLIC_SITE_NAME!,
             template: `%s | ${NEXT_PUBLIC_SITE_NAME}`,
         },
         ...(TWITTER_CREATOR &&

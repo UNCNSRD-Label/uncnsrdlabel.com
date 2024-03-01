@@ -7,7 +7,7 @@ import { type ResultOf } from "@graphql-typed-document-node/core";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
-import { getLocalizationDetailsQuery } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { localizationDetailsQuery } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { Suspense, Usable, use, useState } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
@@ -20,7 +20,7 @@ export function LocationDialog({
   dictionary,
   lang,
 }: {
-  localizationDetails: Usable<ResultOf<typeof getLocalizationDetailsQuery>['localization']>;
+  localizationDetails: Usable<ResultOf<typeof localizationDetailsQuery>['localization']>;
   className?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
   lang: Intl.BCP47LanguageTag;

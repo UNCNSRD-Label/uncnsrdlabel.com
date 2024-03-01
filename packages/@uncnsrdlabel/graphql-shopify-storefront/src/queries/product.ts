@@ -1,7 +1,7 @@
 import { graphql } from "../codegen/index";
 
-export const getProductBasicQuery = graphql(/* GraphQL */ `
-  query getProductBasic(
+export const productBasicQuery = graphql(/* GraphQL */ `
+  query productBasic(
     $country: CountryCode
     $handle: String!
     $language: LanguageCode
@@ -12,8 +12,8 @@ export const getProductBasicQuery = graphql(/* GraphQL */ `
   }
 `);
 
-export const getProductDetailsByHandleQuery = graphql(/* GraphQL */ `
-  query getProductDetailsByHandle(
+export const productDetailsByHandleQuery = graphql(/* GraphQL */ `
+  query productDetailsByHandle(
     $country: CountryCode
     $handle: String!
     $language: LanguageCode
@@ -24,8 +24,8 @@ export const getProductDetailsByHandleQuery = graphql(/* GraphQL */ `
   }
 `);
 
-export const getProductDetailsByIdQuery = graphql(/* GraphQL */ `
-  query getProductDetailsById(
+export const productDetailsByIdQuery = graphql(/* GraphQL */ `
+  query productDetailsById(
     $country: CountryCode
     $id: ID!
     $language: LanguageCode
@@ -36,8 +36,8 @@ export const getProductDetailsByIdQuery = graphql(/* GraphQL */ `
   }
 `);
 
-export const getProductVariantBySelectedOptionsQuery = graphql(/* GraphQL */ `
-query getProductVariantBySelectedOptions(
+export const productVariantBySelectedOptionsQuery = graphql(/* GraphQL */ `
+query productVariantBySelectedOptions(
     $country: CountryCode
     $handle: String!
     $language: LanguageCode
@@ -66,8 +66,8 @@ query getProductVariantBySelectedOptions(
   }
 `);
 
-export const getProductsQuery = graphql(/* GraphQL */ `
-  query getProducts(
+export const productsQuery = graphql(/* GraphQL */ `
+  query products(
     $country: CountryCode
     $language: LanguageCode
     $query: String
@@ -84,8 +84,8 @@ export const getProductsQuery = graphql(/* GraphQL */ `
   }
 `);
 
-export const getProductsWithVariantsQuery = graphql(/* GraphQL */ `
-  query getProductsWithVariants(
+export const productsWithVariantsQuery = graphql(/* GraphQL */ `
+  query productsWithVariants(
     $country: CountryCode
     $language: LanguageCode
     $query: String

@@ -1,11 +1,11 @@
 {
   "actions": {
-    "signUpAction": {
+    "signUpForNewsletterAction": {
       "error": "Při zpracování vašeho požadavku nastala chyba.",
       "failed": "Odeslání e-mailové adresy se nezdařilo s kódem odpovědi HTTP: {status}",
       "success": "Úspěšně jste se zaregistrovali do našeho mailing listu"
     },
-    "signUpForNotificationsAction": {
+    "signUpForBackInStockSubscriptionAction": {
       "error": "Při zpracování vašeho požadavku nastala chyba.",
       "failed": "Odeslání e-mailové adresy se nezdařilo s kódem odpovědi HTTP: {status}",
       "success": "Úspěšně jste se zaregistrovali k odběru oznámení"
@@ -224,11 +224,11 @@
       "close": "Zavřete nabídku",
       "open": "Otevřete nabídku"
     },
-    "SignUp": {
+    "NewsletterSignUp": {
       "title": "Přihlaste se k odběru našeho newsletteru",
       "summary": "Zaregistrujte se a získejte 10% slevu na svůj první nákup"
     },
-    "SignUpForm": {
+    "NewsletterSignUpForm": {
       "message": "Čekání na potvrzení registrace",
       "pattern": "Zadaná hodnota neodpovídá formátu e-mailu",
       "placeholder": "Přihlaste se k odběru našeho newsletteru",

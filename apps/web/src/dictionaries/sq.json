@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUp": {
+    "NewsletterSignUp": {
       "title": "Regjistrohu në buletinin tonë",
       "summary": "Regjistrohuni dhe përfitoni 10% ulje në blerjen tuaj të parë"
     },
-    "SignUpForm": {
+    "NewsletterSignUpForm": {
       "message": "Në pritje të konfirmimit të regjistrimit",
       "pattern": "Vlera e futur nuk përputhet me formatin e emailit",
       "placeholder": "Regjistrohu në buletinin tonë",
@@ -18,11 +18,11 @@
         "title": "Regjistrimi në buletin"
       }
     },
-    "SignUpForNotifications": {
+    "SignUpForBackInStockSubscription": {
       "summary": "Regjistrohu për t'u njoftuar kur ky produkt të kthehet në magazinë",
       "title": "Regjistrohu për njoftime"
     },
-    "SignUpForNotificationsForm": {
+    "SignUpForBackInStockSubscriptionForm": {
       "placeholder": "Shkruani adresën tuaj të emailit",
       "submit": "Regjistrohu",
       "toast": {
@@ -247,11 +247,11 @@
       "close": "Mbyllni menunë",
       "open": "Hapni menunë"
     },
-    "SignUp": {
+    "NewsletterSignUp": {
       "title": "Regjistrohu në buletinin tonë",
       "summary": "Regjistrohuni dhe përfitoni 10% ulje në blerjen tuaj të parë"
     },
-    "SignUpForm": {
+    "NewsletterSignUpForm": {
       "message": "Në pritje të konfirmimit të regjistrimit",
       "pattern": "Vlera e futur nuk përputhet me formatin e emailit",
       "placeholder": "Regjistrohu në buletinin tonë",

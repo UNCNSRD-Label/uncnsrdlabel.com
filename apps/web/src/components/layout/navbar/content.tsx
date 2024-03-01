@@ -9,8 +9,9 @@ import { Link } from "@uncnsrdlabel/components/atoms/link";
 import { getMenuHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { Suspense } from "react";
-import { SlHeart, SlUser } from "react-icons/sl";
+import { SlHeart } from "react-icons/sl";
 import { type ResolvedIntlConfig } from "react-intl";
+import { NavbarAccount } from "./account";
 import { SidebarMenu } from "./sidebar-menu";
 
 export async function NavbarContent({
@@ -64,15 +65,9 @@ export async function NavbarContent({
         <Suspense fallback={null}>
           <Search dictionary={dictionary} lang={lang} />
         </Suspense>
-        <Link
-          href="/account"
-          aria-label={intl.formatMessage({
-            id: "component.NavbarContent.link-account",
-          })}
-          prefetch={false}
-        >
-          <SlUser className="icon fill h-5 w-5 drop-shadow" />
-        </Link>
+        <Suspense fallback={null}>
+          <NavbarAccount dictionary={dictionary} lang={lang} />
+        </Suspense>
         {process.env.NEXT_PUBLIC_FEATURE_FLAG_WISHLIST_ENABLE === "true" && (
           <Link
             href="#"

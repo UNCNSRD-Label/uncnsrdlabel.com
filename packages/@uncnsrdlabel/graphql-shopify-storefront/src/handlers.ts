@@ -1,113 +1,121 @@
-import { CollectionFragment } from "./codegen/graphql";
+import {
+  CartBuyerIdentityUpdateMutationVariables,
+  CollectionFragment,
+  CollectionQueryVariables,
+  CollectionWithProductsQueryVariables,
+  CollectionsQueryVariables,
+  CustomerAccessTokenCreateMutationVariables,
+  CustomerCreateMutationVariables,
+  CustomerRecoverMutationVariables,
+  CustomerResetPasswordMutationVariables,
+  CustomerUpdateMutationVariables,
+  EditCartItemsMutationVariables,
+  MenuQueryVariables,
+  PageQueryVariables,
+  PagesQueryVariables,
+  ProductBasicQueryVariables,
+  ProductDetailsByHandleQueryVariables,
+  ProductDetailsByIdQueryVariables,
+  ProductRecommendationsQueryVariables,
+  ProductsQueryVariables,
+  ProductsWithVariantsQueryVariables,
+  RouteMetaObjectQueryVariables
+} from "./codegen/graphql";
 import { getFragmentData } from "./codegen/index";
 import { domain } from "./constants";
-import {
-  addToCartMutation,
-  createCartMutation,
-  editCartItemsMutation,
-  removeFromCartMutation,
-} from "./mutations/cart";
-import {
-  getCollectionProductsQuery,
-  getCollectionQuery,
-  getCollectionsQuery,
-} from "./queries/collection";
-import { getInContextVariables } from "./utilities";
-// import { collectionFragment } from "./fragments/collection";
-import {
-  AddToCartMutationVariables,
-  CreateCartMutationVariables,
-  EditCartItemsMutationVariables,
-  GetCartQueryVariables,
-  GetCollectionProductsQueryVariables,
-  GetCollectionQueryVariables,
-  GetCollectionsQueryVariables,
-  GetMenuQueryVariables,
-  GetPageQueryVariables,
-  GetPagesQueryVariables,
-  GetProductBasicQueryVariables,
-  GetProductDetailsByHandleQueryVariables,
-  GetProductDetailsByIdQueryVariables,
-  GetProductRecommendationsQueryVariables,
-  GetProductsQueryVariables,
-  GetProductsWithVariantsQueryVariables,
-  GetRouteMetaObjectQueryVariables,
-  RemoveFromCartMutationVariables
-} from "./codegen/graphql";
 import { collectionFragment } from "./fragments/index";
 import {
-  getCartQuery,
-  getLocalizationDetailsQuery,
-  getMenuQuery,
-  getPageQuery,
-  getPagesQuery,
-  getProductBasicQuery,
-  getProductDetailsByHandleQuery,
-  getProductDetailsByIdQuery,
-  getProductRecommendationsQuery,
-  getProductsQuery,
-  getProductsWithVariantsQuery,
-  getRouteMetaObjectQuery,
-  getShopDetailsQuery,
-  getShopPoliciesQuery
+  cartBuyerIdentityUpdateMutation,
+  editCartItemsMutation
+} from "./mutations/cart";
+import {
+  customerAccessTokenCreateMutation,
+  customerCreateMutation,
+  customerRecoverMutation,
+  customerResetMutation,
+  customerUpdateMutation,
+} from "./mutations/customer";
+import {
+  collectionQuery,
+  collectionWithProductsQuery,
+  collectionsQuery
+} from "./queries/collection";
+import {
+  localizationDetailsQuery,
+  menuQuery,
+  pageQuery,
+  pagesQuery,
+  productBasicQuery,
+  productDetailsByHandleQuery,
+  productDetailsByIdQuery,
+  productRecommendationsQuery,
+  productsQuery,
+  productsWithVariantsQuery,
+  routeMetaObjectQuery,
+  shopDetailsQuery,
+  shopPoliciesQuery
 } from "./queries/index";
-import { getShopifyGraphQL } from "./utilities";
+import { getInContextVariables, getShopifyGraphQL } from "./utilities";
 
-export async function createCartHandler({ variables }: {
-  variables: CreateCartMutationVariables,
+export async function cartBuyerIdentityUpdateHandler({ variables }: {
+  variables: CartBuyerIdentityUpdateMutationVariables,
 }) {
-  const { cartCreate } = await getShopifyGraphQL(
-    createCartMutation,
-    variables,
-  );
+  const { cartBuyerIdentityUpdate } = await getShopifyGraphQL(cartBuyerIdentityUpdateMutation, variables);
 
-  if (!cartCreate) {
+  if (!cartBuyerIdentityUpdate) {
     return null;
   }
 
-  const { cart: cartFragmentRef } = cartCreate;
+  const { cart: cartFragmentRef, userErrors } = cartBuyerIdentityUpdate;
 
   if (!cartFragmentRef) {
     return null;
   }
+
+  // TODO: Handle userErrors
+  console.error({ userErrors })
 
   return cartFragmentRef;
 }
 
-export async function addToCartHandler({ variables }: {
-  variables: AddToCartMutationVariables,
+export async function recoverAccountHandler({ variables }: {
+  variables: CustomerRecoverMutationVariables,
 }) {
-  const { cartLinesAdd } = await getShopifyGraphQL(addToCartMutation, variables);
+  const customerRecoverPayload = await getShopifyGraphQL(customerRecoverMutation, variables);
 
-  if (!cartLinesAdd) {
-    return null;
-  }
-
-  const { cart: cartFragmentRef } = cartLinesAdd;
-
-  if (!cartFragmentRef) {
-    return null;
-  }
-
-  return cartFragmentRef;
+  return customerRecoverPayload;
 }
 
-export async function removeFromCartHandler({ variables }: {
-  variables: RemoveFromCartMutationVariables,
+export async function resetAccountHandler({ variables }: {
+  variables: CustomerResetPasswordMutationVariables,
 }) {
-  const { cartLinesRemove } = await getShopifyGraphQL(removeFromCartMutation, variables);
+  const customerResetPayload = await getShopifyGraphQL(customerResetMutation, variables);
 
-  if (!cartLinesRemove) {
-    return null;
-  }
+  return customerResetPayload;
+}
 
-  const { cart: cartFragmentRef } = cartLinesRemove;
+export async function signInToAccountHandler({ variables }: {
+  variables: CustomerAccessTokenCreateMutationVariables,
+}) {
+  const customerAccessTokenCreatePayload = await getShopifyGraphQL(customerAccessTokenCreateMutation, variables);
 
-  if (!cartFragmentRef) {
-    return null;
-  }
+  return customerAccessTokenCreatePayload;
+}
 
-  return cartFragmentRef;
+export async function signUpForAccountHandler({ variables }: {
+  variables: CustomerCreateMutationVariables,
+}) {
+  const customerCreatePayload = await getShopifyGraphQL(customerCreateMutation, variables);
+
+  return customerCreatePayload;
+}
+
+export async function updateAccountHandler({ variables }: {
+  variables: CustomerUpdateMutationVariables,
+}) {
+  const updateAccountPayload = await getShopifyGraphQL(customerUpdateMutation, variables);
+
+  return updateAccountPayload;
 }
 
 export async function updateCartHandler({ variables }: {
@@ -128,30 +136,8 @@ export async function updateCartHandler({ variables }: {
   return cartFragmentRef;
 }
 
-export async function getCartHandler({ variables, lang }: {
-  variables: GetCartQueryVariables,
-  lang: Intl.BCP47LanguageTag,
-}) {
-  if (!lang) {
-    console.error("No lang in getCartHandler")
-  }
-
-  const inContextVariables = getInContextVariables(lang);
-
-  const { cart: cartFragmentRef } = await getShopifyGraphQL(getCartQuery, {
-    ...inContextVariables,
-    ...variables,
-  });
-
-  if (!cartFragmentRef) {
-    return null;
-  }
-
-  return cartFragmentRef;
-}
-
 export async function getCollectionHandler({ variables, lang }: {
-  variables: GetCollectionQueryVariables,
+  variables: CollectionQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
   if (!lang) {
@@ -161,49 +147,33 @@ export async function getCollectionHandler({ variables, lang }: {
   const inContextVariables = getInContextVariables(lang);
 
   const { collection: collectionFragmentRef } = await getShopifyGraphQL(
-    getCollectionQuery,
+    collectionQuery,
     { ...inContextVariables, ...variables },
   );
-
-  if (!collectionFragmentRef) {
-    throw {
-      status: 404,
-      message: `Collection not found for handle \`${variables.handle}\``,
-    };
-  }
 
   return collectionFragmentRef;
 }
 
-export async function getCollectionProductsHandler({ variables, lang }: {
-  variables: GetCollectionProductsQueryVariables,
+export async function getCollectionWithProductsHandler({ variables, lang }: {
+  variables: CollectionWithProductsQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
   if (!lang) {
-    console.error("No lang in getCollectionProductsHandler")
+    console.error("No lang in getCollectionWithProductsHandler")
   }
 
   const inContextVariables = getInContextVariables(lang);
 
-  const { collection } = await getShopifyGraphQL(getCollectionProductsQuery, {
+  const { collection } = await getShopifyGraphQL(collectionWithProductsQuery, {
     ...inContextVariables,
     ...variables,
   });
 
-  if (!collection) {
-    throw {
-      status: 404,
-      message: `Collection not found for handle \`${variables.handle}\``,
-    };
-  }
-
-  const { products } = collection;
-
-  return products;
+  return collection;
 }
 
 export async function getCollectionRefsHandler({ variables, lang }: {
-  variables: GetCollectionsQueryVariables,
+  variables: CollectionsQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
   if (!lang) {
@@ -213,17 +183,10 @@ export async function getCollectionRefsHandler({ variables, lang }: {
   const inContextVariables = getInContextVariables(lang);
 
   const { collections: shopifyCollectionConnection } =
-    await getShopifyGraphQL(getCollectionsQuery, {
+    await getShopifyGraphQL(collectionsQuery, {
       ...inContextVariables,
       ...variables,
     });
-
-  if (!shopifyCollectionConnection) {
-    throw {
-      status: 404,
-      message: `Collections not found`,
-    };
-  }
 
   const collectionsRefs = shopifyCollectionConnection.edges.map(
     (edge) => edge?.node,
@@ -243,7 +206,7 @@ export async function getCollectionRefsHandler({ variables, lang }: {
 }
 
 export async function getRouteMetaObjectHandler({ variables, lang }: {
-  variables: GetRouteMetaObjectQueryVariables,
+  variables: RouteMetaObjectQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
   if (!lang) {
@@ -253,22 +216,15 @@ export async function getRouteMetaObjectHandler({ variables, lang }: {
   const inContextVariables = getInContextVariables(lang);
 
   const { metaobject } = await getShopifyGraphQL(
-    getRouteMetaObjectQuery,
+    routeMetaObjectQuery,
     { ...inContextVariables, ...variables }
   );
-
-  if (!metaobject) {
-    throw {
-      status: 404,
-      message: `Metaobject not found for handle \`${variables.handle}\``,
-    };
-  }
 
   return metaobject;
 }
 
 export async function getMenuHandler({ variables, lang }: {
-  variables: GetMenuQueryVariables,
+  variables: MenuQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
   if (!lang) {
@@ -277,19 +233,12 @@ export async function getMenuHandler({ variables, lang }: {
 
   const inContextVariables = getInContextVariables(lang);
 
-  const { menu } = await getShopifyGraphQL(getMenuQuery, {
+  const { menu } = await getShopifyGraphQL(menuQuery, {
     ...inContextVariables,
     ...variables,
   });
 
-  if (!menu) {
-    throw {
-      status: 404,
-      message: `Menu not found for handle \`${variables.handle}\``,
-    };
-  }
-
-  const items = menu.items.map((item) => ({
+  const items = menu?.items.map((item) => ({
     ...item,
     url: item.url
       ?.replace(domain, "")
@@ -302,7 +251,7 @@ export async function getMenuHandler({ variables, lang }: {
 }
 
 export async function getPageHandler({ variables, lang }: {
-  variables: GetPageQueryVariables,
+  variables: PageQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
   if (!lang) {
@@ -312,22 +261,15 @@ export async function getPageHandler({ variables, lang }: {
   const inContextVariables = getInContextVariables(lang);
 
   const { page: pageFragmentRef } = await getShopifyGraphQL(
-    getPageQuery,
+    pageQuery,
     { ...inContextVariables, ...variables },
   );
-
-  if (!pageFragmentRef) {
-    throw {
-      status: 404,
-      message: `Page not found for handle \`${variables.handle}\``,
-    };
-  }
 
   return pageFragmentRef;
 }
 
 export async function getPagesHandler({ variables, lang }: {
-  variables: GetPagesQueryVariables,
+  variables: PagesQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
   if (!lang) {
@@ -336,17 +278,10 @@ export async function getPagesHandler({ variables, lang }: {
 
   const inContextVariables = getInContextVariables(lang);
 
-  const { pages } = await getShopifyGraphQL(getPagesQuery, {
+  const { pages } = await getShopifyGraphQL(pagesQuery, {
     ...inContextVariables,
     ...variables,
   });
-
-  if (!pages) {
-    throw {
-      status: 404,
-      message: `Pages not found`,
-    };
-  }
 
   return pages;
 }
@@ -357,16 +292,9 @@ export async function getShopDetailsHandler({ lang }: {
   const inContextVariables = getInContextVariables(lang);
 
   const { shop } = await getShopifyGraphQL(
-    getShopDetailsQuery,
+    shopDetailsQuery,
     inContextVariables,
   );
-
-  if (!shop) {
-    throw {
-      status: 404,
-      message: `Shop not found`,
-    };
-  }
 
   return shop;
 }
@@ -381,7 +309,7 @@ export async function getLocalizationDetailsHandler({ lang }: {
   const inContextVariables = getInContextVariables(lang);
 
   const { localization } = await getShopifyGraphQL(
-    getLocalizationDetailsQuery,
+    localizationDetailsQuery,
     inContextVariables,
   );
 
@@ -398,22 +326,15 @@ export async function getShopPoliciesHandler({ lang }: {
   const inContextVariables = getInContextVariables(lang);
 
   const { shop } = await getShopifyGraphQL(
-    getShopPoliciesQuery,
+    shopPoliciesQuery,
     inContextVariables,
   );
-
-  if (!shop) {
-    throw {
-      status: 404,
-      message: `Shop not found`,
-    };
-  }
 
   return shop;
 }
 
 export async function getProductBasicHandler({ variables, lang }: {
-  variables: GetProductBasicQueryVariables,
+  variables: ProductBasicQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
   if (!lang) {
@@ -423,22 +344,15 @@ export async function getProductBasicHandler({ variables, lang }: {
   const inContextVariables = getInContextVariables(lang);
 
   const { product: productBasicFragmentRef } = await getShopifyGraphQL(
-    getProductBasicQuery,
+    productBasicQuery,
     { ...inContextVariables, ...variables },
   );
-
-  if (!productBasicFragmentRef) {
-    throw {
-      status: 404,
-      message: `Product not found for handle \`${variables.handle}\``,
-    };
-  }
 
   return productBasicFragmentRef;
 }
 
 export async function getProductDetailsByHandleHandler({ variables, lang }: {
-  variables: Omit<GetProductDetailsByHandleQueryVariables, "country" | "language">,
+  variables: Omit<ProductDetailsByHandleQueryVariables, "country" | "language">,
   lang: Intl.BCP47LanguageTag,
 }) {
   if (!lang) {
@@ -448,22 +362,15 @@ export async function getProductDetailsByHandleHandler({ variables, lang }: {
   const inContextVariables = getInContextVariables(lang);
 
   const { product: productDetailsFragmentRef } = await getShopifyGraphQL(
-    getProductDetailsByHandleQuery,
+    productDetailsByHandleQuery,
     { ...inContextVariables, ...variables },
   );
-
-  if (!productDetailsFragmentRef) {
-    throw {
-      status: 404,
-      message: `Product not found for handle \`${variables.handle}\``,
-    };
-  }
 
   return productDetailsFragmentRef;
 }
 
 export async function getProductDetailsByIdHandler({ variables, lang }: {
-  variables: GetProductDetailsByIdQueryVariables,
+  variables: ProductDetailsByIdQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
   if (!lang) {
@@ -473,22 +380,15 @@ export async function getProductDetailsByIdHandler({ variables, lang }: {
   const inContextVariables = getInContextVariables(lang);
 
   const { product: productDetailsFragmentRef } = await getShopifyGraphQL(
-    getProductDetailsByIdQuery,
+    productDetailsByIdQuery,
     { ...inContextVariables, ...variables },
   );
-
-  if (!productDetailsFragmentRef) {
-    throw {
-      status: 404,
-      message: `Product not found for id \`${variables.id}\``,
-    };
-  }
 
   return productDetailsFragmentRef;
 }
 
 export async function getProductRecommendationsHandler({ variables, lang }: {
-  variables: GetProductRecommendationsQueryVariables,
+  variables: ProductRecommendationsQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
   if (!lang) {
@@ -499,22 +399,15 @@ export async function getProductRecommendationsHandler({ variables, lang }: {
 
   const { productRecommendations: productRecommendationRefs } =
     await getShopifyGraphQL(
-      getProductRecommendationsQuery,
+      productRecommendationsQuery,
       { ...inContextVariables, ...variables },
     );
-
-  if (!productRecommendationRefs) {
-    throw {
-      status: 404,
-      message: `Products not found`,
-    };
-  }
 
   return productRecommendationRefs;
 }
 
 export async function getProductsHandler({ variables, lang }: {
-  variables: GetProductsQueryVariables,
+  variables: ProductsQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
   if (!lang) {
@@ -524,22 +417,15 @@ export async function getProductsHandler({ variables, lang }: {
   const inContextVariables = getInContextVariables(lang);
 
   const { products } = await getShopifyGraphQL(
-    getProductsQuery,
+    productsQuery,
     { ...inContextVariables, ...variables }
   );
-
-  if (!products) {
-    throw {
-      status: 404,
-      message: `Products not found`,
-    };
-  }
 
   return products;
 }
 
 export async function getProductsWithVariantsHandler({ variables, lang }: {
-  variables: GetProductsWithVariantsQueryVariables,
+  variables: ProductsWithVariantsQueryVariables,
   lang: Intl.BCP47LanguageTag,
 }) {
   if (!lang) {
@@ -549,16 +435,9 @@ export async function getProductsWithVariantsHandler({ variables, lang }: {
   const inContextVariables = getInContextVariables(lang);
 
   const { products } = await getShopifyGraphQL(
-    getProductsWithVariantsQuery,
+    productsWithVariantsQuery,
     { ...inContextVariables, ...variables }
   );
-
-  if (!products) {
-    throw {
-      status: 404,
-      message: `Products not found`,
-    };
-  }
 
   return products;
 }

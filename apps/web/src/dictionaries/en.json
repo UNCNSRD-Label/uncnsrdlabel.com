@@ -1,11 +1,26 @@
 {
   "actions": {
-    "signUpAction": {
+    "recoverAccountAction": {
+      "error": "An error occurred while processing your request.",
+      "failed": "Account recovery failed",
+      "success": "You should receive an email with instructions to recover your account shortly"
+    },
+    "signInToAccountAction": {
+      "error": "An error occurred while processing your request.",
+      "failed": "Sign in failed",
+      "success": "You have successfully signed in to your account"
+    },
+    "signUpForAccountAction": {
+      "error": "An error occurred while processing your request.",
+      "failed": "Sign up failed",
+      "success": "You have successfully signed up for an account"
+    },
+    "signUpForNewsletterAction": {
       "error": "An error occurred while processing your request.",
       "failed": "Email address submission failed with HTTP Response Code: {status}",
       "success": "You have successfully signed up to our mailing list"
     },
-    "signUpForNotificationsAction": {
+    "signUpForBackInStockSubscriptionAction": {
       "error": "An error occurred while processing your request.",
       "failed": "Email address submission failed with HTTP Response Code: {status}",
       "success": "You have successfully signed up for notifications"
@@ -37,6 +52,22 @@
       }
     }
   },
+  "layout": {
+    "account": {
+      "nav": {
+        "title": "Account",
+        "addresses": "Addresses",
+        "orders": "Orders",
+        "profile": "Profile",
+        "sign-out": {
+          "button": "Sign out",
+          "toast": {
+            "success": "You have successfully signed out"
+          }
+        }
+      }
+    }
+  },
   "page": {
     "collection": {
       "title": "Collection listings for {title}",
@@ -57,6 +88,11 @@
       "title": "Not found",
       "message": "Could not find requested resource",
       "button": "Try again"
+    },
+    "policy": {
+      "nav": {
+        "title": "Customer Care"
+      }
     },
     "products": {
       "add-to-wishlist": "Add to wishlist",
@@ -89,6 +125,42 @@
     }
   },
   "component": {
+    "Addresses": {
+      "actions": {
+        "add": "Add new address",
+        "edit": "Edit",
+        "remove": "Remove",
+        "setDefaultAddress": "Set as default",
+        "deleteAddress": "Delete address",
+        "updateAddress": "Edit address"
+      },
+      "card": {
+        "description": "Update the saved addresses on your account",
+        "title": "Addresses"
+      }
+    },
+    "AddressesEditForm": {
+      "action": {
+        "cancel": "Cancel",
+        "submit": "Save"
+      },
+      "card": {
+        "description": "Details for this address",
+        "title": "Address"
+      },
+      "field": {
+        "address1": "Street address 1",
+        "address2": "Street address 2",
+        "city": "City",
+        "company": "Company",
+        "country": "Country",
+        "firstName": "First name",
+        "lastName": "Last name",
+        "phone": "Phone",
+        "province": "Province / State / County",
+        "zip": "Zip/Postal code"
+      }
+    },
     "AddToCart": {
       "add-to-cart-disabled": "Unable to add item to bag",
       "add-to-cart-enabled": "Add to bag",
@@ -96,7 +168,7 @@
       "pending": "Adding item to bag",
       "pre-order": "Pre-order",
       "select-options": "Please select options",
-      "success": "Item added to bag",
+      "success": "Added to bag",
       "status": {
         "add-to-cart-disabled": "Unable to add item to bag",
         "out-of-stock": "This item is out of stock, <a>contact us for more information</a>",
@@ -185,7 +257,13 @@
       "link-account": "View your account",
       "link-home": "Return to the homepage",
       "link-search": "Search for products",
-      "link-wishlist": "View your wishlist"
+      "link-wishlist": "View your wishlist",
+      "account": {
+        "addresses": "Addresses",
+        "orders": "Orders",
+        "profile": "Profile",
+        "sign-out": "Sign out"
+      }
     },
     "NavbarSearch": {
       "placeholder": "Search for products"
@@ -195,6 +273,30 @@
       "placeholder": "Enter your email address",
       "submit": "Submit",
       "title": "Newsletter"
+    },
+    "Orders": {
+      "actions": {
+        "cancelOrder": "Cancel order",
+        "updateOrder": "Edit order"
+      },
+      "card": {
+        "description": "View your order history",
+        "title": "Orders"
+      }
+    },
+    "OrderSummary": {
+      "shipping": "Shipping",
+      "taxes": "Taxes",
+      "total": "Total",
+      "payment": "Payment",
+      "address": "Address",
+      "status": "Status",
+      "delivery": "Delivery",
+      "summary": "Order summary",
+      "actions": {
+        "viewOrder": "View order",
+        "trackOrderStatus": "Track order status"
+      }
     },
     "ProductDetails": {
       "size-guide": {
@@ -230,11 +332,105 @@
       "close": "Close the menu",
       "open": "Open the menu"
     },
-    "SignUp": {
+    "AccountRecoverForm": {
+      "description": "Enter your email address to recover your account",
+      "email": "Email",
+      "footer": "You will receive an email with a link to recover your password",
+      "pattern": "Entered value does not match email format",
+      "required": "Email address is required",
+      "submit": "Recover account",
+      "title": "Recover your account",
+      "toast": {
+        "close-alt": "Close this message",
+        "close-button": "Close",
+        "error": "Unable to recover account",
+        "success": "We have received your request to recover your account",
+        "title": "Account recovery"
+      }
+    },
+    "AccountResetForm": {
+      "description": "Enter your email address to reset your password",
+      "email": "Email",
+      "pattern": "Entered value does not match email format",
+      "required": "Email address is required",
+      "submit": "Reset password",
+      "title": "Reset your password",
+      "toast": {
+        "close-alt": "Close this message",
+        "close-button": "Close",
+        "error": "Unable to reset password",
+        "success": "You have successfully reset your password",
+        "title": "Password reset"
+      }
+    },
+    "AccountSignInOrSignUpForm": {
+      "title": "Sign up or sign in to your account",
+      "tabs": {
+        "sign-in": "Sign in",
+        "sign-up": "Sign up"
+      }
+    },
+    "SignInToAccountForm": {
+      "description": "Sign in to access your order history, wishlist, and more",
+      "email": "Email",
+      "forgot-password": "Forgot your password?",
+      "password": "Password",
+      "pattern": "Entered value does not match email format",
+      "required": "Email address is required",
+      "submit": "Sign in",
+      "title": "Sign in to your account",
+      "action": {
+        "forgot-password": "Forgot your password?",
+        "no-account": "Don't have an account?",
+        "sign-up": "Sign up"
+      },
+      "field": {
+        "email": "Email",
+        "password": "Password",
+        "rememberMe": "Remember me"
+      },
+      "toast": {
+        "close-alt": "Close this message",
+        "close-button": "Close",
+        "error": "Unable to sign in",
+        "success": "You have successfully signed in to your account",
+        "title": "Account sign in"
+      }
+    },
+    "SignUpForAccountForm": {
+      "description": "Sign up to track your orders, wishlist, and more",
+      "forgot-password": "Forgot your password?",
+      "pattern": "Entered value does not match email format",
+      "required": "Email address is required",
+      "submit": "Sign up",
+      "title": "Sign up for an account",
+      "action": {
+        "already-have-an-account": "Already have an account?",
+        "forgot-password": "Forgot your password?",
+        "sign-in": "Sign in"
+      },
+      "field": {
+        "acceptsMarketing": "I would like to receive marketing emails from UNCNSRD",
+        "confirmPassword": "Confirm password",
+        "email": "Email",  
+        "firstName": "First name",
+        "lastName": "Last name",
+        "password": "Password",
+        "phone": "Phone"
+      },
+      "toast": {
+        "close-alt": "Close this message",
+        "close-button": "Close",
+        "error": "Unable to sign up",
+        "success": "You have successfully signed up for an account",
+        "title": "Account sign up"
+      }
+    },
+    "NewsletterSignUp": {
       "title": "Sign up to our newsletter",
       "summary": "Sign up and receive 10% off your first purchase"
     },
-    "SignUpForm": {
+    "NewsletterSignUpForm": {
       "message": "Waiting for signup confirmation",
       "pattern": "Entered value does not match email format",
       "placeholder": "Sign up to our newsletter",
@@ -248,11 +444,11 @@
         "title": "Newsletter signup"
       }
     },
-    "SignUpForNotifications": {
+    "SignUpForBackInStockSubscription": {
       "summary": "Sign up to be notified when this product is back in stock",
       "title": "Sign up for notifications"
     },
-    "SignUpForNotificationsForm": {
+    "SignUpForBackInStockSubscriptionForm": {
       "placeholder":"Enter your email address",
       "submit": "Sign up",
       "toast": {
@@ -261,6 +457,31 @@
         "error": "Unable to sign up",
         "success": "You have successfully signed up for notifications",
         "title": "Product in-stock notification signup"
+      }
+    },
+    "AccountEditForm": {
+      "submit": "Update account",
+      "message": "Waiting for signup confirmation",
+      "pattern": "Entered value does not match email format",
+      "placeholder": "Sign up to our newsletter",
+      "required": "Email address is required",
+      "card": {
+        "description": "Update your account details",
+        "title": "Update your account"
+      },
+      "field": {
+        "acceptsMarketing": "I would like to receive marketing emails from UNCNSRD",
+        "email": "Email",  
+        "firstName": "First name",
+        "lastName": "Last name",
+        "phone": "Phone"
+      },
+      "toast": {
+        "close-alt": "Close this message",
+        "close-button": "Close",
+        "error": "Unable to sign up",
+        "success": "You have successfully signed up to our newsletter",
+        "title": "Newsletter signup"
       }
     }
   }

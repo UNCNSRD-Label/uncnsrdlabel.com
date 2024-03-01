@@ -1,7 +1,7 @@
 import { SITE_DOMAIN_WEB } from "@uncnsrdlabel/lib";
 import Script from "next/script";
 
-const { NEXT_PUBLIC_SITE_NAME = "UNCNSRD" } = process.env;
+const { NEXT_PUBLIC_SITE_NAME } = process.env;
 
 export const Organization = () => {
   return (

@@ -16,13 +16,23 @@ export const customerAccessTokenCreateMutation = graphql(/* GraphQL */ `
   }
 `);
 
+export const customerAccessTokenDeleteMutation = graphql(/* GraphQL */ `
+  mutation CustomerAccessTokenDelete($customerAccessToken: String!) {
+    customerAccessTokenDelete(customerAccessToken: $customerAccessToken) {
+      deletedAccessToken
+      deletedCustomerAccessTokenId
+      userErrors {
+        field
+        message
+      }
+    }
+  }
+`);
+
 export const customerAddressCreateMutation = graphql(/* GraphQL */ `
-  mutation CustomerAddressCreate(
-    $input: MailingAddressInput!
-    $customerAccessToken: String!
-  ) {
+  mutation CustomerAddressCreate($address: MailingAddressInput!, $customerAccessToken: String!) {
     customerAddressCreate(
-      address: $input
+      address: $address
       customerAccessToken: $customerAccessToken
     ) {
       customerAddress {
@@ -51,16 +61,8 @@ export const customerAddressDeleteMutation = graphql(/* GraphQL */ `
 `);
 
 export const customerAddressUpdateMutation = graphql(/* GraphQL */ `
-  mutation CustomerAddressUpdate(
-    $input: MailingAddressInput!
-    $customerAccessToken: String!
-    $id: ID!
-  ) {
-    customerAddressUpdate(
-      address: $input
-      customerAccessToken: $customerAccessToken
-      id: $id
-    ) {
+  mutation CustomerAddressUpdate($address: MailingAddressInput!, $customerAccessToken: String!, $id: ID!) {
+    customerAddressUpdate(address: $address, customerAccessToken: $customerAccessToken, id: $id) {
       customerAddress {
         id
       }
@@ -106,8 +108,8 @@ export const customerDefaultAddressUpdateMutation = graphql(/* GraphQL */ `
   }
 `);
 
-export const customerRecoverPasswordMutation = graphql(/* GraphQL */ `
-  mutation CustomerRecoverPassword($email: String!) {
+export const customerRecoverMutation = graphql(/* GraphQL */ `
+  mutation CustomerRecover($email: String!) {
     customerRecover(email: $email) {
       customerUserErrors {
         code
@@ -118,7 +120,7 @@ export const customerRecoverPasswordMutation = graphql(/* GraphQL */ `
   }
 `);
 
-export const customerResetPasswordMutation = graphql(/* GraphQL */ `
+export const customerResetMutation = graphql(/* GraphQL */ `
   mutation CustomerResetPassword($id: ID!, $input: CustomerResetInput!) {
     customerReset(id: $id, input: $input) {
       customerAccessToken {
@@ -134,7 +136,7 @@ export const customerResetPasswordMutation = graphql(/* GraphQL */ `
   }
 `);
 
-export const customerResetPasswordByUrlMutation = graphql(/* GraphQL */ `
+export const customerResetByUrlMutation = graphql(/* GraphQL */ `
   mutation CustomerResetPasswordByUrl($password: String!, $resetUrl: URL!) {
     customerResetByUrl(password: $password, resetUrl: $resetUrl) {
       customerAccessToken {

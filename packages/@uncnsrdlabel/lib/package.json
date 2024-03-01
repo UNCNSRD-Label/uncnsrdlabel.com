@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@graphql-typed-document-node/core": "^3.2.0",
     "@shopify/hydrogen-react": "^2024.1.0",
     "clsx": "^2.1.0",
     "lodash": "^4.17.21",

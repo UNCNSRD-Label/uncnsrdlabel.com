@@ -25,7 +25,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@uncnsrdlabel/components/atoms/select";
-import { getLocalizationDetailsQuery } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { localizationDetailsQuery } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { useRouter } from "next/navigation";
 import { Usable, use, useState } from "react";
@@ -38,7 +38,7 @@ type LocationComboBoxResponsiveProps = {
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
   lang: Intl.BCP47LanguageTag;
   localizationDetails: Usable<
-    ResultOf<typeof getLocalizationDetailsQuery>["localization"]
+    ResultOf<typeof localizationDetailsQuery>["localization"]
   >;
 };
 
@@ -56,7 +56,7 @@ export function LocationComboBoxResponsive({
   const track = useTrack();
 
   const localization =
-    use<ResultOf<typeof getLocalizationDetailsQuery>["localization"]>(
+    use<ResultOf<typeof localizationDetailsQuery>["localization"]>(
       localizationDetails,
     );
 
@@ -212,7 +212,7 @@ function StatusList({
   const track = useTrack();
 
   const localization =
-    use<ResultOf<typeof getLocalizationDetailsQuery>["localization"]>(
+    use<ResultOf<typeof localizationDetailsQuery>["localization"]>(
       localizationDetails,
     );
 
