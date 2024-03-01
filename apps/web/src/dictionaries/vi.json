@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUp": {
+    "NewsletterSignUp": {
       "title": "Đăng kí tờ báo của chúng tôi",
       "summary": "Đăng ký và nhận 10% giảm giá cho lần mua hàng đầu tiên của bạn"
     },
-    "SignUpForm": {
+    "NewsletterSignUpForm": {
       "message": "Đang chờ xác nhận đăng ký",
       "pattern": "Giá trị đã nhập không khớp với định dạng email",
       "placeholder": "Đăng kí tờ báo của chúng tôi",
@@ -18,11 +18,11 @@
         "title": "Đăng ký bản tin"
       }
     },
-    "SignUpForNotifications": {
+    "SignUpForBackInStockSubscription": {
       "summary": "Đăng ký để nhận thông báo khi sản phẩm này có hàng lại",
       "title": "Đăng ký nhận thông báo"
     },
-    "SignUpForNotificationsForm": {
+    "SignUpForBackInStockSubscriptionForm": {
       "placeholder": "nhập địa chỉ email của bạn",
       "submit": "Đăng ký",
       "toast": {
@@ -247,11 +247,11 @@
       "close": "Đóng thực đơn",
       "open": "Mở thực đơn"
     },
-    "SignUp": {
+    "NewsletterSignUp": {
       "title": "Đăng kí tờ báo của chúng tôi",
       "summary": "Đăng ký và nhận 10% giảm giá cho lần mua hàng đầu tiên của bạn"
     },
-    "SignUpForm": {
+    "NewsletterSignUpForm": {
       "message": "Đang chờ xác nhận đăng ký",
       "pattern": "Giá trị đã nhập không khớp với định dạng email",
       "placeholder": "Đăng kí tờ báo của chúng tôi",

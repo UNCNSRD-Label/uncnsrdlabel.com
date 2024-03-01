@@ -6,7 +6,7 @@ import { getCanonical } from "@/lib/metadata";
 import {
   collectionFragment,
   getCollectionHandler,
-  getCollectionProductsHandler,
+  getCollectionWithProductsHandler,
   getFragmentData,
   getLocalizationDetailsHandler,
   productCollectionDefaultSort,
@@ -92,7 +92,7 @@ export default async function CategoryPage({
 
   if (!collection) return notFound();
 
-  const collectionConnection = await getCollectionProductsHandler({
+  const collectionWithProducts = await getCollectionWithProductsHandler({
     variables: {
       handle,
       sortKey,
@@ -101,11 +101,13 @@ export default async function CategoryPage({
     lang,
   });
 
-  const productFragmentRefs = collectionConnection.edges.map(
+  if (!collectionWithProducts) return notFound();
+
+  const productFragmentRefs = collectionWithProducts?.products.edges.map(
     (edge) => edge?.node,
   );
 
-  const results = collectionConnection.edges.length;
+  const results = collectionWithProducts?.products.edges.length;
 
   return (
     <>

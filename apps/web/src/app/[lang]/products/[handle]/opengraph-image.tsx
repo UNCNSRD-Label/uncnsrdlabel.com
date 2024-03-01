@@ -28,6 +28,10 @@ export default async function OpenGraphImage({
     productDetailsFragmentRef,
   );
 
+  if (!product) {
+    return null;
+  }
+
   const seo = getFragmentData(seoFragment, product.seo);
 
   const title = seo?.title || product.title;

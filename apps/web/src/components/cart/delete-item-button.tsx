@@ -4,20 +4,19 @@ import { LoadingDots } from "@/components/loading/dots";
 import { createIntl } from "@formatjs/intl";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
-    type CartLine,
-    type CartLineCost,
-    type ComponentizableCartLine,
-    type Merchandise,
+  type CartLine,
+  type CartLineCost,
+  type ComponentizableCartLine,
+  type Merchandise,
 } from "@shopify/hydrogen/storefront-api-types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
-    getCartQuery,
-    getQueryKey,
-    getShopifyGraphQL,
-    removeFromCartMutation
+  cartQuery,
+  getShopifyGraphQL,
+  removeFromCartMutation
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { cn } from "@uncnsrdlabel/lib";
+import { cn, getQueryKey } from "@uncnsrdlabel/lib";
 import { Usable, use, useCallback } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
 import { useTrack } from "use-analytics";
@@ -51,7 +50,7 @@ export function DeleteItemButton({
     mutationFn: (variables: { cartId: string; lineIds: string[] }) =>
       getShopifyGraphQL(removeFromCartMutation, variables),
     onSuccess: () => {
-      const queryKey = getQueryKey(getCartQuery, {
+      const queryKey = getQueryKey(cartQuery, {
         cartId,
       });
 

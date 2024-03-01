@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUp": {
+    "NewsletterSignUp": {
       "title": "Prijavite se na naše glasilo",
       "summary": "Prijavite se in prejmite 10% popust na prvi nakup"
     },
-    "SignUpForm": {
+    "NewsletterSignUpForm": {
       "message": "Čakam na potrditev prijave",
       "pattern": "Vnesena vrednost se ne ujema z obliko elektronske pošte",
       "placeholder": "Prijavite se na naše glasilo",
@@ -18,11 +18,11 @@
         "title": "Prijava na glasilo"
       }
     },
-    "SignUpForNotifications": {
+    "SignUpForBackInStockSubscription": {
       "summary": "Prijavite se za obvestilo, ko bo ta izdelek spet na zalogi",
       "title": "Prijavite se na obvestila"
     },
-    "SignUpForNotificationsForm": {
+    "SignUpForBackInStockSubscriptionForm": {
       "placeholder": "Vnesi svoj elektronski naslov",
       "submit": "Prijavite se",
       "toast": {
@@ -247,11 +247,11 @@
       "close": "Zaprite meni",
       "open": "Odprite meni"
     },
-    "SignUp": {
+    "NewsletterSignUp": {
       "title": "Prijavite se na naše glasilo",
       "summary": "Prijavite se in prejmite 10% popust na prvi nakup"
     },
-    "SignUpForm": {
+    "NewsletterSignUpForm": {
       "message": "Čakam na potrditev prijave",
       "pattern": "Vnesena vrednost se ne ujema z obliko elektronske pošte",
       "placeholder": "Prijavite se na naše glasilo",

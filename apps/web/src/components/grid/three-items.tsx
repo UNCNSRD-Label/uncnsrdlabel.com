@@ -1,7 +1,7 @@
 import { Tile } from "@/components/grid/tile";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
-  getCollectionProductsHandler,
+  getCollectionWithProductsHandler,
   getFragmentData,
   productBasicFragment,
   type FragmentType,
@@ -52,16 +52,28 @@ function ThreeItemGridItem({
   );
 }
 
-export async function ThreeItemGrid({ className, lang }: { className?: string; lang: Intl.BCP47LanguageTag; }) {
+export async function ThreeItemGrid({
+  className,
+  lang,
+}: {
+  className?: string;
+  lang: Intl.BCP47LanguageTag;
+}) {
   // Collections that start with `hidden-*` are hidden from the search page.
-  const homepageItems = await getCollectionProductsHandler({
+  const collectionWithProducts = await getCollectionWithProductsHandler({
     variables: {
       handle: "hidden-homepage-featured-items",
     },
     lang,
   });
 
-  const products = homepageItems.edges.map((edge) => edge?.node);
+  const products = collectionWithProducts?.products.edges.map(
+    (edge) => edge?.node,
+  );
+
+  if (!products) {
+    return null;
+  }
 
   const [firstProduct, secondProduct, thirdProduct] = products;
 

@@ -7,10 +7,10 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-admin";
 import {
   getInContextVariables,
+  getShopifyGraphQL as getShopifyStorefrontGraphQL,
   // TODO: Implement getFragmentData as a global lib function
   // getFragmentDataStorefront,
-  getMetaObjectsQuery,
-  getShopifyGraphQL as getShopifyStorefrontGraphQL,
+  metaObjectsQuery,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { use } from "react";
@@ -79,7 +79,7 @@ const getMetaobject = ({ lang }: { lang: Intl.BCP47LanguageTag }) => {
   const inContextVariables = getInContextVariables(lang);
 
   const { metaobjects } = use(
-    getShopifyStorefrontGraphQL(getMetaObjectsQuery, {
+    getShopifyStorefrontGraphQL(metaObjectsQuery, {
       ...inContextVariables,
       type: "Banner",
     }),
@@ -107,12 +107,19 @@ const getMetaobject = ({ lang }: { lang: Intl.BCP47LanguageTag }) => {
 
   const richTextResponse = convertSchemaToHtml(richTextSchema);
 
+  let formattedMarkup = richTextResponse;
+
+  if(richTextResponse.startsWith("<p>") && richTextResponse.endsWith("</p>") && richTextResponse.includes(" | ")) {
+    formattedMarkup = `<ul>${richTextResponse.replaceAll("<p>", "<li>").replaceAll("</p>", "</li>").replaceAll(" | ", "</li><li class='hidden md:block'>|</li><li>")}</ul>`;
+  }
+
   markup = (
     <div
+      className="text-center [&>ul]:flex [&>ul]:gap-x-4 [&>ul]:gap-y-2 [&>ul]:flex-col md:[&>ul]:flex-row"
       data-id={metaobject.id}
       data-type="MetaObject"
       dangerouslySetInnerHTML={{
-        __html: richTextResponse,
+        __html: formattedMarkup,
       }}
     />
   );
@@ -148,7 +155,7 @@ export const Banner = ({
   return (
     <article
       className={cn(
-        "bg-hotPink text-dark pt-[min(theme(spacing.safeTop),_theme(spacing.6))] grid snap-start place-content-center p-6 text-xs uppercase sm:text-base",
+        "bg-hotPink text-dark pt-[max(theme(spacing.safeTop),_theme(spacing.3))] grid snap-start place-content-center p-6 text-xs uppercase sm:text-base",
         className,
       )}
     >

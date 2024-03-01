@@ -1,14 +1,13 @@
 import { ConsentTrigger } from "@/components/consent/trigger";
 import { LogotypeIcon } from "@/components/icons/logotype";
 import { LocationTrigger } from "@/components/location/trigger";
-import { SignUp } from "@/components/sign-up";
+import { NewsletterSignUp } from "@/components/newsletter";
 import { SocialMenu } from "@/components/social-menu";
 import { getDictionary } from "@/lib/dictionary";
 import { themeColors } from "@/lib/tailwind";
 import { createIntl } from "@formatjs/intl";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
-  // getLocalizationDetailsHandler,
   getMenuHandler,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { type ResolvedIntlConfig } from "react-intl";
@@ -16,8 +15,6 @@ import { type ResolvedIntlConfig } from "react-intl";
 const { NEXT_PUBLIC_SITE_NAME } = process.env;
 
 export async function Footer({ lang }: { lang: Intl.BCP47LanguageTag }) {
-  // const localization = await getLocalizationDetailsHandler({ lang });
-
   const messages: ResolvedIntlConfig["messages"] = await getDictionary({
     lang,
   });
@@ -78,7 +75,7 @@ export async function Footer({ lang }: { lang: Intl.BCP47LanguageTag }) {
                     id: "global.footer.menu.information",
                   })}
                 </dt>
-                {informationMenu.items.map((item, index) => (
+                {informationMenu?.items?.map((item, index) => (
                   <dd className="flex" key={item.title || index}>
                     <Link href={item.url ?? "#"} className={linkClassName}>
                       {item.title}
@@ -90,7 +87,7 @@ export async function Footer({ lang }: { lang: Intl.BCP47LanguageTag }) {
                       id: "global.footer.menu.follow-us",
                     })}
                   </dt>
-                {followUsMenu.items.map((item, index) => (
+                {followUsMenu?.items?.map((item, index) => (
                     <dd className="flex" key={item.title || index}>
                       <Link
                         className={linkClassName}
@@ -110,7 +107,7 @@ export async function Footer({ lang }: { lang: Intl.BCP47LanguageTag }) {
                     id: "global.footer.menu.customer-care",
                   })}
                 </dt>
-                {customerCareMenu.items.map((item, index) => (
+                {customerCareMenu?.items?.map((item, index) => (
                   <dd className="flex" key={item.title || index}>
                     <Link href={item.url ?? "#"} className={linkClassName}>
                       {item.title}
@@ -119,7 +116,7 @@ export async function Footer({ lang }: { lang: Intl.BCP47LanguageTag }) {
                 ))}
               </dl>
             </nav>
-            <SignUp
+            <NewsletterSignUp
               className="lg:col-start-0 col-span-1 sm:col-span-6 sm:col-start-7 lg:col-span-4"
               lang={lang}
             />

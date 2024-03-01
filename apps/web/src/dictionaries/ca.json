@@ -1,11 +1,11 @@
 {
   "actions": {
-    "signUpAction": {
+    "signUpForNewsletterAction": {
       "error": "S'ha produït un error en processar la seva sol · licitud.",
       "failed": "No s'ha pogut enviar l'adreça electrònica amb el codi de resposta HTTP: {status}",
       "success": "Us heu registrat correctament a la nostra llista de correu"
     },
-    "signUpForNotificationsAction": {
+    "signUpForBackInStockSubscriptionAction": {
       "error": "S'ha produït un error en processar la seva sol · licitud.",
       "failed": "No s'ha pogut enviar l'adreça electrònica amb el codi de resposta HTTP: {status}",
       "success": "Us heu registrat correctament per rebre les notificacions"
@@ -224,11 +224,11 @@
       "close": "Tanqueu el menú",
       "open": "Obriu el menú"
     },
-    "SignUp": {
+    "NewsletterSignUp": {
       "title": "Subscriu-te al nostre butlletí",
       "summary": "Registra't i rep un 10% de descompte en la teva primera compra"
     },
-    "SignUpForm": {
+    "NewsletterSignUpForm": {
       "message": "Esperant la confirmació de la inscripció",
       "pattern": "El valor introduït no coincideix amb el format del correu electrònic",
       "placeholder": "Subscriu-te al nostre butlletí",

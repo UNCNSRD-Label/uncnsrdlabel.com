@@ -1,11 +1,11 @@
 {
   "actions": {
-    "signUpAction": {
+    "signUpForNewsletterAction": {
       "error": "حدث خطأ أثناء معالجة طلبك.",
       "failed": "فشل إرسال عنوان البريد الإلكتروني مع رمز استجابة HTTP: {status}",
       "success": "لقد قمت بالتسجيل بنجاح في قائمتنا البريدية"
     },
-    "signUpForNotificationsAction": {
+    "signUpForBackInStockSubscriptionAction": {
       "error": "حدث خطأ أثناء معالجة طلبك.",
       "failed": "فشل إرسال عنوان البريد الإلكتروني مع رمز استجابة HTTP: {status}",
       "success": "لقد قمت بالتسجيل بنجاح للحصول على الإخطارات"
@@ -224,11 +224,11 @@
       "close": "أغلق القائمة",
       "open": "افتح القائمة"
     },
-    "SignUp": {
+    "NewsletterSignUp": {
       "title": "الاشتراك في النشرة الإخبارية",
       "summary": "قم بالتسجيل واحصل على خصم 10% على عملية الشراء الأولى"
     },
-    "SignUpForm": {
+    "NewsletterSignUpForm": {
       "message": "في انتظار تأكيد الاشتراك",
       "pattern": "القيمة المدخلة لا تتطابق مع تنسيق البريد الإلكتروني",
       "placeholder": "الاشتراك في النشرة الإخبارية",

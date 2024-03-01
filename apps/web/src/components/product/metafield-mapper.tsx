@@ -9,8 +9,8 @@ import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   getFragmentData,
   getInContextVariables,
-  getProductDetailsByIdQuery,
   getShopifyGraphQL,
+  productDetailsByIdQuery,
   productDetailsFragment,
   productMetafieldFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
@@ -153,7 +153,7 @@ export function MetafieldMapper({
 
               const { product: productDetailsFragmentRef } =
                 await getShopifyGraphQL(
-                  getProductDetailsByIdQuery,
+                  productDetailsByIdQuery,
                   { ...inContextVariables, ...variables },
                 );
 

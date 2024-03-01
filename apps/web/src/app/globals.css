@@ -123,6 +123,10 @@
     &.icon-container {
       @apply focus-visible:fill-stateFocus focus-visible:stroke-stateFocus focus-visible:text-stateFocus;
     }
+
+    &:hover {
+      @apply !text-stateHover;
+    }
   }
 
   a {
@@ -148,6 +152,10 @@
     &:hover {
       @apply !border-stateHover;
     }
+  }
+
+  .bg-opaque-white {
+    @apply bg-white/95 lg:backdrop-blur lg:backdrop-saturate-200;
   }
 }
 
@@ -449,7 +457,6 @@
     @apply break-words md:break-normal;
 
     & table {
-      @apply w-full overflow-x-auto;
 
       & tr {
         & td,

@@ -42,9 +42,9 @@ export async function generateMetadata({
     productDetailsFragmentRef,
   );
 
-  const seo = getFragmentData(seoFragment, product.seo);
-
   if (!product) return notFound();
+
+  const seo = getFragmentData(seoFragment, product.seo);
 
   const hide = !product.tags.includes(HIDDEN_PRODUCT_TAG);
 
@@ -74,7 +74,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function ProductPage({
+export default async function ProductsPage({
   params: { handle, lang },
 }: PageProps) {
   const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
@@ -103,7 +103,7 @@ export default async function ProductPage({
   return (
     <div className="grid grid-rows-[1fr_auto] relative top-0 z-40">
       <Breadcrumb
-        className="absolute left-12 top-6 z-20 hidden lg:grid lg:grid-cols-12 [&>*]:lg:col-start-2 [&>*]:lg:col-end-10"
+        className="absolute left-12 top-5 z-20 hidden lg:grid lg:grid-cols-12 [&>*]:lg:col-start-2 [&>*]:lg:col-end-10"
         productDetailsFragmentRef={productDetailsFragmentRef}
       />
       <main className="mb-16 grid grid-cols-12 content-center bg-inherit min-h-[max(100dvh,_theme(space.96))] lg:overflow-y-hidden [&:has(+_aside)]:mb-0 lg:sticky top-0">

@@ -1,7 +1,7 @@
 import { graphql } from "../codegen/index";
 
-export const getCustomerCareQuery = graphql(/* GraphQL */ `
-  query getCustomerCare(
+export const customerCareQuery = graphql(/* GraphQL */ `
+  query customerCare(
     $country: CountryCode
     $handle: String!
     $language: LanguageCode

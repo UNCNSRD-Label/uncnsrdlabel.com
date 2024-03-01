@@ -1,0 +1,82 @@
+"use client";
+
+import { OrderSummary } from "@/components/account/orders/summary";
+import { createIntl } from "@formatjs/intl";
+import { useQuery } from "@tanstack/react-query";
+import {
+  customerFragment,
+  customerQuery,
+  getFragmentData,
+  getShopifyGraphQL,
+  orderFragment,
+} from "@uncnsrdlabel/graphql-shopify-storefront";
+import { getQueryKey } from "@uncnsrdlabel/lib";
+import { getCookie } from "cookies-next";
+import { Usable, use } from "react";
+import { type ResolvedIntlConfig } from "react-intl";
+
+export function Orders({
+  dictionary,
+  lang,
+}: {
+  dictionary: Usable<ResolvedIntlConfig["messages"]>;
+  lang: Intl.BCP47LanguageTag;
+}) {
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
+
+  let customerAccessToken = undefined;
+
+  if (typeof window !== "undefined") {
+    customerAccessToken = getCookie("customerAccessToken");
+  }
+
+  const variables = {
+    customerAccessToken,
+  } as { customerAccessToken: string };
+
+  const queryKey = getQueryKey(customerQuery, variables);
+
+  const { data } = useQuery({
+    enabled: !!customerAccessToken,
+    queryKey,
+    queryFn: () => getShopifyGraphQL(customerQuery, variables),
+  });
+
+  const customer = getFragmentData(customerFragment, data?.customer);
+
+  return (
+    <>
+      <header>
+        <h1 className="text-2xl">
+          {intl.formatMessage({
+            id: "component.Orders.card.title",
+          })}
+        </h1>
+        <span>
+          {intl.formatMessage({
+            id: "component.Orders.card.description",
+          })}
+        </span>
+      </header>
+
+      {customer?.orders?.nodes.map((order) => {
+        const customerOrder = getFragmentData(orderFragment, order);
+
+        return (
+          <OrderSummary
+            className="border p-4 sm:p-8"
+            dictionary={dictionary}
+            customerOrder={customerOrder}
+            key={customerOrder.id}
+            lang={lang}
+          />
+        );
+      })}
+    </>
+  );
+}

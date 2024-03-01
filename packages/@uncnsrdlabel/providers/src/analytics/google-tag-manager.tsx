@@ -154,7 +154,7 @@ function googleTagManager(
           formattedPayload.category = "All";
         }
         if (config.debug) {
-          console.log("dataLayer push", {
+          console.debug("dataLayer push", {
             event: payload.event,
             ...formattedPayload,
           });

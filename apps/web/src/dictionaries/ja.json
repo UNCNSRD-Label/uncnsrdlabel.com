@@ -1,10 +1,10 @@
 {
   "actions": {
-    "SignUp": {
+    "NewsletterSignUp": {
       "title": "ニュースレターに登録する",
       "summary": "サインアップすると、初回購入時に 10% オフが適用されます"
     },
-    "SignUpForm": {
+    "NewsletterSignUpForm": {
       "message": "サインアップの確認を待っています",
       "pattern": "入力された値が電子メールの形式と一致しません",
       "placeholder": "ニュースレターに登録する",
@@ -18,11 +18,11 @@
         "title": "ニュースレターの登録"
       }
     },
-    "SignUpForNotifications": {
+    "SignUpForBackInStockSubscription": {
       "summary": "この商品の再入荷時に通知を受け取るには登録してください",
       "title": "通知に登録する"
     },
-    "SignUpForNotificationsForm": {
+    "SignUpForBackInStockSubscriptionForm": {
       "placeholder": "メールアドレスを入力してください",
       "submit": "サインアップ",
       "toast": {
@@ -247,11 +247,11 @@
       "close": "メニューを閉じる",
       "open": "メニューを開く"
     },
-    "SignUp": {
+    "NewsletterSignUp": {
       "title": "ニュースレターに登録する",
       "summary": "サインアップすると、初回購入時に 10% オフが適用されます"
     },
-    "SignUpForm": {
+    "NewsletterSignUpForm": {
       "message": "サインアップの確認を待っています",
       "pattern": "入力された値が電子メールの形式と一致しません",
       "placeholder": "ニュースレターに登録する",

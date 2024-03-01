@@ -3,19 +3,19 @@
 import { LoadingDots } from "@/components/loading/dots";
 import { Videos as MediaVideos } from "@/components/media/videos";
 import {
-    getFragmentData,
-    getPageQuery,
-    pageFragment,
-    useGetShopifyGraphQL,
-    videoFragment,
-    type FragmentType,
+  getFragmentData,
+  pageFragment,
+  pageQuery,
+  useGetShopifyGraphQL,
+  videoFragment,
+  type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Suspense } from "react";
 
 export function Videos({ handle, ...props }: { handle: string }) {
   const variables = { handle };
 
-  const { data, error, isError, isLoading } = useGetShopifyGraphQL(getPageQuery, variables);
+  const { data, error, isError, isLoading } = useGetShopifyGraphQL(pageQuery, variables);
 
   if (isLoading) {
     return <span>Loading...</span>;

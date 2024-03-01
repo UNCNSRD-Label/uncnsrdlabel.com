@@ -9,6 +9,7 @@ import { getCookie } from "cookies-next";
 
 export function ShopifyCookies() {
   const consentCookieData = (getCookie(COOKIE_CONSENT) as string) ?? "{}";
+
   const savedConsentSettings = JSON.parse(consentCookieData) as ConsentSettings;
 
   const hasUserConsent = savedConsentSettings.analytics_storage === "granted";

@@ -82,7 +82,6 @@ export function AppAnalyticsProvider({ children }: PropsWithChildren) {
   return (
     <AnalyticsProvider instance={analytics}>
       {children}
-
       <VercelAnalytics />
     </AnalyticsProvider>
   );

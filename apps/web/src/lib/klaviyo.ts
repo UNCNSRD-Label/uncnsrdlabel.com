@@ -5,7 +5,6 @@ import { createIntl, type ResolvedIntlConfig } from "react-intl";
 export const headers = {
     accept: "application/json",
     revision: "2023-12-15",
-    // revision: "2023-02-22",
     "content-type": "application/json",
     Authorization: `Klaviyo-API-Key ${process.env.KLAVIYO_PRIVATE_KEY}`,
 };
@@ -33,13 +32,12 @@ export async function findUserByEmail(formData: FormData) {
         console.error("phone_number not set");
     }
 
-    let message = intl.formatMessage({ id: "actions.signUpForNotificationsAction.error" });
+    let message = intl.formatMessage({ id: "actions.signUpForBackInStockSubscriptionAction.error" });
 
     let ok = false;
 
     let status = 500;
 
-    // const url = `https://a.klaviyo.com/api/v2/people/search?api_key={key}&email=${email}`;
     const url = `https://a.klaviyo.com/api/v2/people/search?email=${email}`;
 
     const options = {
@@ -90,12 +88,12 @@ export async function findUserByEmail(formData: FormData) {
             }
 
             if (response.status === 202) {
-                message = intl.formatMessage({ id: "actions.signUpForNotificationsAction.success" });
+                message = intl.formatMessage({ id: "actions.signUpForBackInStockSubscriptionAction.success" });
             }
         } else {
             console.error(response?.status, response?.statusText)
 
-            message = intl.formatMessage({ id: "actions.signUpForNotificationsAction.failed" }, { status: response?.status });
+            message = intl.formatMessage({ id: "actions.signUpForBackInStockSubscriptionAction.failed" }, { status: response?.status });
         }
     } catch (error) {
         console.error(error);
@@ -106,7 +104,7 @@ export async function findUserByEmail(formData: FormData) {
             message = error;
         }
     } finally {
-        console.log({ message, ok, status })
+        console.debug({ message, ok, status })
         return {
             message,
             ok,

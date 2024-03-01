@@ -1,11 +1,11 @@
 {
   "actions": {
-    "signUpAction": {
+    "signUpForNewsletterAction": {
       "error": "Virhe pyynnön käsittelyn yhteydessä.",
       "failed": "Sähköpostiosoitteen lähetys epäonnistui HTTP-vastauskoodilla: {status}",
       "success": "Olet onnistuneesti liittynyt postituslistallemme"
     },
-    "signUpForNotificationsAction": {
+    "signUpForBackInStockSubscriptionAction": {
       "error": "Virhe pyynnön käsittelyn yhteydessä.",
       "failed": "Sähköpostiosoitteen lähetys epäonnistui HTTP-vastauskoodilla: {status}",
       "success": "Olet onnistuneesti rekisteröitynyt ilmoituksiin"
@@ -224,11 +224,11 @@
       "close": "Sulje valikko",
       "open": "Avaa valikko"
     },
-    "SignUp": {
+    "NewsletterSignUp": {
       "title": "Tilaa uutiskirjeemme",
       "summary": "Rekisteröidy ja saat 10% alennuksen ensimmäisestä ostoksestasi"
     },
-    "SignUpForm": {
+    "NewsletterSignUpForm": {
       "message": "Odotetaan ilmoittautumisvahvistusta",
       "pattern": "Syötetty arvo ei vastaa sähköpostin muotoa",
       "placeholder": "Tilaa uutiskirjeemme",

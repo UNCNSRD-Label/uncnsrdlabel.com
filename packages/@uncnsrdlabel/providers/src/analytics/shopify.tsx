@@ -64,7 +64,7 @@ export function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
     /* Name is a required field for plugins */
     name: "shopify-plugin",
     page: ({ payload }) => {
-      // console.log("shopify:page", { payload, config });
+      // console.debug("shopify:page", { payload, config });
 
       const shopifyPageViewPayload: ShopifyPageViewPayload = {
         ...getClientBrowserParameters(),
@@ -108,7 +108,7 @@ export function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
     },
     track: ({ payload, config }) => {
       // Fire custom logic after analytics.track() calls
-      // console.log("shopify:trackEnd", { payload, config });
+      // console.debug("shopify:trackEnd", { payload, config });
 
       if (payload.event === "product") {
         const shopifyPageViewPayload: ShopifyPageViewPayload = {

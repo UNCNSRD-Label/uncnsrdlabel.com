@@ -12987,7 +12987,7 @@ export enum DiscountStatus {
   Active = 'ACTIVE',
   /** The discount is expired. */
   Expired = 'EXPIRED',
-  /** The discount is scheduled. */
+  /** The discount is scheduled when it has a start date in the future. */
   Scheduled = 'SCHEDULED'
 }
 
@@ -19875,27 +19875,27 @@ export type LineItem = Node & {
   canRestock: Scalars['Boolean']['output'];
   /** The subscription contract associated with this line item. */
   contract?: Maybe<SubscriptionContract>;
-  /** The line item's quantity, minus the removed quantity. */
+  /** The number of units ordered, excluding refunded and removed units. */
   currentQuantity: Scalars['Int']['output'];
   /** A list of attributes that represent custom features or special requests. */
   customAttributes: Array<Attribute>;
-  /** The discounts that have been allocated onto the line item by discount applications, not including order edits and refunds. */
+  /** The discounts that have been allocated to the line item by discount applications, including discounts allocated to refunded and removed quantities. */
   discountAllocations: Array<DiscountAllocation>;
   /**
-   * The total line price after discounts are applied, in shop currency.
+   * The total discounted price of the line item in shop currency, including refunded and removed quantities. This value doesn't include order-level discounts.
    * @deprecated Use `discountedTotalSet` instead.
    */
   discountedTotal: Scalars['Money']['output'];
-  /** The total line price after discounts are applied, in shop and presentment currencies. */
+  /** The total discounted price of the line item in shop and presentment currencies, including refunded and removed quantities. This value doesn't include order-level discounts. Code-based discounts aren't included by default. */
   discountedTotalSet: MoneyBag;
   /**
-   * The approximate split price of a line item unit, in shop currency. This value doesn't include discounts applied to the entire order.
+   * The approximate unit price of the line item in shop currency. This value includes line-level discounts and discounts applied to refunded and removed quantities. It doesn't include order-level discounts.
    * @deprecated Use `discountedUnitPriceSet` instead.
    */
   discountedUnitPrice: Scalars['Money']['output'];
-  /** The approximate split price of the line item, including any discounts that apply to the entire order. */
+  /** The approximate unit price of the line item in shop and presentment currencies. This value includes discounts applied to refunded and removed quantities. */
   discountedUnitPriceAfterAllDiscountsSet: MoneyBag;
-  /** The approximate split price of a line item unit, in shop and presentment currencies. This value doesn't include discounts applied to the entire order. */
+  /** The approximate unit price of the line item in shop and presentment currencies. This value includes line-level discounts and discounts applied to refunded and removed quantities. It doesn't include order-level discounts. */
   discountedUnitPriceSet: MoneyBag;
   /** The duties associated with the line item. */
   duties: Array<Duty>;
@@ -19950,26 +19950,30 @@ export type LineItem = Node & {
   /** The total number of units that can't be fulfilled. For example, if items have been refunded, or the item is not something that can be fulfilled, like a tip. Please see the [FulfillmentOrder](https://shopify.dev/api/admin-graphql/latest/objects/FulfillmentOrder) object for more fulfillment details. */
   nonFulfillableQuantity: Scalars['Int']['output'];
   /**
-   * The total price without discounts applied, in shop currency.
-   * This value is based on the unit price of the variant x quantity.
+   * In shop currency, the total price of the line item when the order was created.
+   * This value doesn't include discounts.
    *
    * @deprecated Use `originalTotalSet` instead.
    */
   originalTotal: Scalars['Money']['output'];
-  /** The total price in shop and presentment currencies, without discounts applied. This value is based on the unit price of the variant x quantity. */
+  /**
+   * In shop and presentment currencies, the total price of the line item when the order was created.
+   * This value doesn't include discounts.
+   *
+   */
   originalTotalSet: MoneyBag;
   /**
-   * The variant unit price without discounts applied, in shop currency.
+   * In shop currency, the unit price of the line item when the order was created. This value doesn't include discounts.
    * @deprecated Use `originalUnitPriceSet` instead.
    */
   originalUnitPrice: Scalars['Money']['output'];
-  /** The variant unit price without discounts applied, in shop and presentment currencies. */
+  /** In shop and presentment currencies, the unit price of the line item when the order was created. This value doesn't include discounts. */
   originalUnitPriceSet: MoneyBag;
   /** The Product object associated with this line item's variant. */
   product?: Maybe<Product>;
-  /** The number of variant units ordered. */
+  /** The number of units ordered, including refunded and removed units. */
   quantity: Scalars['Int']['output'];
-  /** The line item's quantity, minus the refunded quantity. */
+  /** The number of units ordered, excluding refunded units. */
   refundableQuantity: Scalars['Int']['output'];
   /** Whether physical shipping is required for the variant. */
   requiresShipping: Scalars['Boolean']['output'];
@@ -19981,32 +19985,32 @@ export type LineItem = Node & {
   sku?: Maybe<Scalars['String']['output']>;
   /** Staff attributed to the line item. */
   staffMember?: Maybe<StaffMember>;
-  /** The taxes charged for this line item. */
+  /** The taxes charged for the line item, including taxes charged for refunded and removed quantities. */
   taxLines: Array<TaxLine>;
   /** Whether the variant is taxable. */
   taxable: Scalars['Boolean']['output'];
   /** The title of the product at time of order creation. */
   title: Scalars['String']['output'];
   /**
-   * The total amount of the discount allocated to the line item in the shop currency.
+   * The total discount allocated to the line item in shop currency, including the total allocated to refunded and removed quantities. This value doesn't include order-level discounts.
    * @deprecated Use `totalDiscountSet` instead.
    */
   totalDiscount: Scalars['Money']['output'];
-  /** The total amount of the discount that's allocated to the line item, in the shop and presentment currencies. This field must be explicitly set using draft orders, Shopify scripts, or the API. */
+  /** The total discount allocated to the line item in shop and presentment currencies, including the total allocated to refunded and removed quantities. This value doesn't include order-level discounts. */
   totalDiscountSet: MoneyBag;
   /**
-   * The total discounted value of unfulfilled units, in shop currency.
+   * In shop currency, the total discounted price of the unfulfilled quantity for the line item.
    * @deprecated Use `unfulfilledDiscountedTotalSet` instead.
    */
   unfulfilledDiscountedTotal: Scalars['Money']['output'];
-  /** The total discounted value of unfulfilled units, in shop and presentment currencies. */
+  /** In shop and presentment currencies, the total discounted price of the unfulfilled quantity for the line item. */
   unfulfilledDiscountedTotalSet: MoneyBag;
   /**
-   * The total price, without any discounts applied. This value is based on the unit price of the variant x quantity of all unfulfilled units, in shop currency.
+   * In shop currency, the total price of the unfulfilled quantity for the line item. This value doesn't include discounts.
    * @deprecated Use `unfulfilledOriginalTotalSet` instead.
    */
   unfulfilledOriginalTotal: Scalars['Money']['output'];
-  /** The total price, without any discounts applied. This value is based on the unit price of the variant x quantity of all unfulfilled units, in shop and presentment currencies. */
+  /** In shop and presentment currencies, the total price of the unfulfilled quantity for the line item. This value doesn't include discounts. */
   unfulfilledOriginalTotalSet: MoneyBag;
   /** The number of units not yet fulfilled. */
   unfulfilledQuantity: Scalars['Int']['output'];
@@ -43233,7 +43237,10 @@ export type Shop = HasMetafields & HasPublishedTranslations & Node & {
    * @deprecated Use `QueryRoot.productByHandle` instead.
    */
   productByHandle?: Maybe<Product>;
-  /** The list of all images of all products for the shop. */
+  /**
+   * The list of all images of all products for the shop.
+   * @deprecated Use `files` instead. See [filesQuery](https://shopify.dev/docs/api/admin-graphql/latest/queries/files) and its [query](https://shopify.dev/docs/api/admin-graphql/2024-01/queries/files#argument-query) argument for more information.
+   */
   productImages: ImageConnection;
   /**
    * List of the shop's product saved searches.

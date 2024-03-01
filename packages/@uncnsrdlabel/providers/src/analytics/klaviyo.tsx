@@ -51,7 +51,7 @@ export function klaviyo(config: KlaviyoConfig): KlaviyoAnalyticsPlugin {
     /* Name is a required field for plugins */
     name: "klaviyo-plugin",
     identify: async ({ payload, config, instance }) => {
-      console.log("klaviyo:identify", {
+      console.debug("klaviyo:identify", {
         payload,
         config,
         instance,
@@ -81,11 +81,11 @@ export function klaviyo(config: KlaviyoConfig): KlaviyoAnalyticsPlugin {
       // sendKlaviyoAnalytics(data, "identify");
     },
     // page: ({ payload, config, instance }) => {
-    //   console.log("klaviyo:page", { payload, config, instance });
+    //   console.debug("klaviyo:page", { payload, config, instance });
     // },
     track: async ({ payload }) => {
       // Fire custom logic after analytics.track() calls
-      // console.log("klaviyo:trackEnd", { payload, config, instance });
+      // console.debug("klaviyo:trackEnd", { payload, config, instance });
 
       const customer_properties = {
         $email: "abraham.lincoln@klaviyo.com",
