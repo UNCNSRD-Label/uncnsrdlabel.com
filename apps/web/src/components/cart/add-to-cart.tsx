@@ -286,7 +286,7 @@ function SubmitButton({
       aria-label={label}
       aria-disabled={isDisabled}
       className={cn(
-        "relative flex w-full gap-2 text-xs sm:text-sm md:gap-4",
+        "relative flex w-full gap-2 md:gap-4",
         {
           "cursor-not-allowed opacity-60 hover:opacity-60": isDisabled,
         },
@@ -364,7 +364,7 @@ export function AddToCart({
 
   const selectedVariantId = selectedVariant?.id;
 
-  const size = view === "compact" ? "sm" : "lg";
+  const size = view === "compact" ? "xs" : "lg";
 
   const variant = view === "compact" ? "secondary" : "default";
 

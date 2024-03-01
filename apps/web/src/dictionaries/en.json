@@ -168,7 +168,7 @@
       "pending": "Adding item to bag",
       "pre-order": "Pre-order",
       "select-options": "Please select options",
-      "success": "Item added to bag",
+      "success": "Added to bag",
       "status": {
         "add-to-cart-disabled": "Unable to add item to bag",
         "out-of-stock": "This item is out of stock, <a>contact us for more information</a>",
