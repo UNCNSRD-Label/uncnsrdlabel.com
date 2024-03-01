@@ -65,7 +65,7 @@ export function ProductDetailsTabs({
       </TabsList>
       {metafieldFragmentsFiltered.map((metafield) => (
         <TabsContent
-          className="text-xs"
+          className="text-xs mt-4"
           key={`Content.${metafield.key}`}
           value={metafield.key}
         >
