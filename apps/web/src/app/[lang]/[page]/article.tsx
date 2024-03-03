@@ -5,8 +5,7 @@ import { useMediaQuery } from "@react-hookz/web";
 import {
   getFragmentData,
   pageFragment,
-  pageQuery,
-  useGetShopifyGraphQL,
+  type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, type ClassValue } from "@uncnsrdlabel/lib";
 import sharedConfig from "@uncnsrdlabel/tailwind-config";
@@ -14,37 +13,18 @@ import Script from "next/script";
 import { CSSProperties, HTMLProps, useEffect, useState } from "react";
 
 export type ArticleProps = HTMLProps<HTMLElement> & {
-  lang: Intl.BCP47LanguageTag
-  variables: { handle: string; };
+  lang: Intl.BCP47LanguageTag;
+  pageFragmentRef: FragmentType<typeof pageFragment>;
 };
 
 function onReadyTailwind() {
   window.tailwind.config = {
     presets: [sharedConfig],
-  }
+  };
 }
 
 export function Article(props: ArticleProps) {
-  const { children, className, variables } = props;
-
-  const { data, error, isError, isLoading } = useGetShopifyGraphQL(
-    pageQuery,
-    variables,
-  );
-
-  if (isLoading) {
-    return <span>Loading...</span>;
-  }
-
-  if (isError) {
-    return <span>Error: {error?.message}</span>;
-  }
-
-  if (!data) {
-    return null;
-  }
-
-  const { page: pageFragmentRef } = data;
+  const { children, className, pageFragmentRef } = props;
 
   const page = getFragmentData(pageFragment, pageFragmentRef);
 
@@ -111,7 +91,7 @@ export function Article(props: ArticleProps) {
 
   return (
     <>
-      <article
+      <div
         className={cn(
           "grid snap-y snap-start",
           page?.classes?.value &&
@@ -130,8 +110,12 @@ export function Article(props: ArticleProps) {
           />
         )}
         {children}
-      </article>
-      <Script id="tailwind" src="https://cdn.tailwindcss.com" onReady={onReadyTailwind} />
+      </div>
+      <Script
+        id="tailwind"
+        src="https://cdn.tailwindcss.com"
+        onReady={onReadyTailwind}
+      />
     </>
   );
 }

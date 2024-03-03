@@ -11,7 +11,7 @@ import {
 import { SITE_DOMAIN_WEB } from "@uncnsrdlabel/lib";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ArticleHydrated as Article } from "./article-hydrated";
+import { Article } from "./article";
 import { PageSectionModule } from "./page-section-module";
 
 export async function generateMetadata({
@@ -66,10 +66,10 @@ export default async function PagePage({
 
   const page = getFragmentData(pageFragment, pageFragmentRef);
 
-  if (!page) return notFound();
+  if (!pageFragmentRef || !page) return notFound();
 
   return (
-    <Article key={page.handle} lang={lang} variables={{ handle }}>
+    <Article key={page.handle} lang={lang} pageFragmentRef={pageFragmentRef}>
       <h1 className="sr-only">{page.title}</h1>
       {page.sections?.references?.nodes?.map(
         (pageSectionModuleFragmentRef, index) => {
