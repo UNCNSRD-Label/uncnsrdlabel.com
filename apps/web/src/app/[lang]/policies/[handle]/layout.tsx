@@ -9,16 +9,11 @@ export default function PoliciesLayout({
   params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
 }: PropsWithChildren<LayoutProps>) {
   return (
-    <div className="min-h-fullMinusNavbar relative z-40">
+    <div className="relative z-40">
       <Navbar offset sticky>
         <NavbarContent lang={lang} />
       </Navbar>
-      <main
-        className="grid max-w-[100dvw] gap-x-8 gap-y-4 bg-cover bg-fixed px-8 pt-16 sm:grid-cols-[1fr_3fr] lg:grid-cols-[1fr_48rem_1fr]"
-        style={{
-          backgroundImage: "url('/images/backgrounds/MAV7957-Edit.jpg')",
-        }}
-      >
+      <main className="grid max-w-[100dvw] gap-x-8 gap-y-4 bg-cover bg-fixed py-16 sm:grid-cols-[1fr_3fr] sm:bg-[url('/images/backgrounds/MAV7957-Edit.jpg')] sm:px-8 lg:grid-cols-[1fr_48rem_1fr]">
         {children}
       </main>
       <Logo />

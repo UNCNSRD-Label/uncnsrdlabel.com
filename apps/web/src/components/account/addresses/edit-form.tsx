@@ -169,7 +169,7 @@ export function AddressesEditForm({
           </CardDescription>
         </CardHeader>
         <CardContent className="grid gap-8">
-          <fieldset>
+          <fieldset className="grid gap-4">
             <div>
               <Label htmlFor="firstName">
                 {intl.formatMessage({
@@ -214,7 +214,7 @@ export function AddressesEditForm({
               />
             </div>
           </fieldset>
-          <fieldset>
+          <fieldset className="grid gap-4">
             <div>
               <Label htmlFor="address1">
                 {intl.formatMessage({

@@ -102,7 +102,7 @@ export function ConsentForm({className, dictionary, lang, ...props}: ConsentDial
     >
       {types.map((consent, index) => (
         <fieldset
-          className={cn("grid-cols-[auto_1fr] items-center gap-4", {
+          className={cn("grid grid-cols-[auto_1fr] items-center gap-4", {
             grid: optionsOpen,
             hidden: !optionsOpen,
           })}

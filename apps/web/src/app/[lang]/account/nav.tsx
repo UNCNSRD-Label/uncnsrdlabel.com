@@ -54,7 +54,7 @@ export function Nav({
   return (
     <div
       className={cn(
-        "bg-opaque-white relative h-fit content-start p-10 sm:p-8 md:grid",
+        "bg-opaque-white relative h-fit content-start px-4 sm:p-8 md:grid",
         className,
       )}
     >
