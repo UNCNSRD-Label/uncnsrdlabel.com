@@ -5,6 +5,7 @@ import { createIntl } from "@formatjs/intl";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { type ResolvedIntlConfig } from "react-intl";
 
 export const metadata: Metadata = {
   title: "Orders",
@@ -13,6 +14,8 @@ export const metadata: Metadata = {
 
 export default async function AccountOrdersPage({ params: { lang } }: PageProps) {
   const dictionary = getDictionary({ lang });
+
+  const messages: ResolvedIntlConfig["messages"] = await dictionary;
 
   const intl = createIntl({
     locale: lang,
