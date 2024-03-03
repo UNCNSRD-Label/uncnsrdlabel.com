@@ -5,19 +5,19 @@ import { createIntl } from "@formatjs/intl";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
 } from "@uncnsrdlabel/components/atoms/dropdown-menu";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
-  customerFragment,
-  customerQuery,
-  getFragmentData,
-  getShopifyGraphQL,
+    customerFragment,
+    customerQuery,
+    getFragmentData,
+    getShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getQueryKey } from "@uncnsrdlabel/lib";
 import { getCookie } from "cookies-next";
@@ -108,7 +108,7 @@ export function NavbarAccount({
         <DropdownMenuItem>
           <Link
             className="flex items-center gap-2 whitespace-nowrap"
-            href="/account/details"
+            href="/account/profile"
             aria-label={intl.formatMessage({
               id: "component.NavbarContent.account.profile",
             })}

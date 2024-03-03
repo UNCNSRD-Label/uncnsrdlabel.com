@@ -5,12 +5,12 @@ import { useDebouncedEffect } from "@react-hookz/web";
 import { getShopifyCookies } from "@shopify/hydrogen-react";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
 } from "@uncnsrdlabel/components/atoms/card";
 import { Checkbox } from "@uncnsrdlabel/components/atoms/checkbox";
 import { Input } from "@uncnsrdlabel/components/atoms/input";
@@ -95,7 +95,7 @@ export function SignInToAccountForm({
   useDebouncedEffect(
     () => {
       if (state?.ok) {
-        router.push("/account/details");
+        router.push("/account/profile");
 
         toast.success(
           intl.formatMessage({
@@ -104,10 +104,10 @@ export function SignInToAccountForm({
           {
             description: intl.formatMessage({ id: state?.messageKey }),
             // onDismiss: () => {
-            //   router.push('/account/details')
+            //   router.push('/account/profile')
             // },
             // onAutoClose: () => {
-            //   router.push('/account/details')
+            //   router.push('/account/profile')
             // },
           },
         );

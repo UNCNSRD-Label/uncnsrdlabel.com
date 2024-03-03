@@ -25,7 +25,7 @@ export default async function AccountPage({ params: { lang } }: PageProps) {
   const customerAccessToken = cookies().get("customerAccessToken")?.value;
 
   if (customerAccessToken) {
-    redirect("/account/details");
+    redirect("/account/profile");
   }
 
   return (
