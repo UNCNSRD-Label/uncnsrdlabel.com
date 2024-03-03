@@ -30,42 +30,40 @@ export function AccountSignInOrSignUpForm({
   const [activeTab, setActiveTab] = useState("sign-in");
 
   return (
-    <div className="grid gap-8 p-8 lg:shadow bg-opaque-white">
-      <h1 className="text-lg sm:text-xl md:text-3xl">
-        {intl.formatMessage({
-          id: "component.AccountSignInOrSignUpForm.title",
-        })}
-      </h1>
-      <Tabs className="w-full" defaultValue="sign-in" onValueChange={setActiveTab} value={activeTab}>
-        <TabsList className="mb-4 grid grid-cols-2">
-          <TabsTrigger value="sign-in">
-            {intl.formatMessage({
-              id: "component.AccountSignInOrSignUpForm.tabs.sign-in",
-            })}
-          </TabsTrigger>
-          <TabsTrigger value="sign-up">
-            {intl.formatMessage({
-              id: "component.AccountSignInOrSignUpForm.tabs.sign-up",
-            })}
-          </TabsTrigger>
-        </TabsList>
-        <TabsContent value="sign-in">
-          <SignInToAccountForm
-            className="bg-transparent sm:min-w-[36rem]"
-            dictionary={dictionary}
-            lang={lang}
-            setActiveTab={setActiveTab}
-          />
-        </TabsContent>
-        <TabsContent value="sign-up">
-          <SignUpForAccountForm
-            className="bg-transparent sm:min-w-[36rem]"
-            dictionary={dictionary}
-            lang={lang}
-            setActiveTab={setActiveTab}
-          />
-        </TabsContent>
-      </Tabs>
-    </div>
+    <Tabs
+      className="w-full"
+      defaultValue="sign-in"
+      onValueChange={setActiveTab}
+      value={activeTab}
+    >
+      <TabsList className="mb-4 grid grid-cols-2">
+        <TabsTrigger value="sign-in">
+          {intl.formatMessage({
+            id: "component.AccountSignInOrSignUpForm.tabs.sign-in",
+          })}
+        </TabsTrigger>
+        <TabsTrigger value="sign-up">
+          {intl.formatMessage({
+            id: "component.AccountSignInOrSignUpForm.tabs.sign-up",
+          })}
+        </TabsTrigger>
+      </TabsList>
+      <TabsContent value="sign-in">
+        <SignInToAccountForm
+          className="bg-transparent sm:min-w-[36rem]"
+          dictionary={dictionary}
+          lang={lang}
+          setActiveTab={setActiveTab}
+        />
+      </TabsContent>
+      <TabsContent value="sign-up">
+        <SignUpForAccountForm
+          className="bg-transparent sm:min-w-[36rem]"
+          dictionary={dictionary}
+          lang={lang}
+          setActiveTab={setActiveTab}
+        />
+      </TabsContent>
+    </Tabs>
   );
 }

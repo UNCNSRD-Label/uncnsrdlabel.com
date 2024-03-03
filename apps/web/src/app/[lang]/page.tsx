@@ -12,7 +12,9 @@ import { type ResolvedIntlConfig } from "react-intl";
 const handle = "home";
 
 export default async function Page({ params: { lang } }: PageProps) {
-  const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
+  const dictionary = getDictionary({ lang });
+
+  const messages: ResolvedIntlConfig["messages"] = await dictionary;
 
   const intl = createIntl({
     locale: lang,

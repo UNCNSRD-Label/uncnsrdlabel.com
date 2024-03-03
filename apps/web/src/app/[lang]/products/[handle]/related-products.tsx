@@ -20,9 +20,9 @@ export async function RelatedProducts({
   lang: Intl.BCP47LanguageTag;
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }) {
-  const messages: ResolvedIntlConfig["messages"] = await getDictionary({
-    lang,
-  });
+  const dictionary = getDictionary({ lang });
+
+  const messages: ResolvedIntlConfig["messages"] = await dictionary;
 
   const intl = createIntl({
     locale: lang,
