@@ -13,7 +13,7 @@ export default function PoliciesLayout({
       <Navbar offset sticky>
         <NavbarContent lang={lang} />
       </Navbar>
-      <main className="grid max-w-[100dvw] gap-x-8 gap-y-4 bg-cover bg-fixed py-16 sm:grid-cols-[1fr_3fr] sm:bg-dark sm:bg-[url('/images/backgrounds/MAV7957-Edit.jpg')] sm:px-8 lg:grid-cols-[1fr_48rem_1fr]">
+      <main className="bg-white relative pt-20 mb-16 grid max-w-[100dvw] gap-x-8 gap-y-4 bg-cover bg-fixed sm:grid-cols-[1fr_3fr] sm:bg-dark sm:bg-[url('/images/backgrounds/MAV7957-Edit.jpg')] sm:px-8 lg:grid-cols-[1fr_48rem_1fr]">
         {children}
       </main>
       <Logo />

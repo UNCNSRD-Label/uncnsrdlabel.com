@@ -13,7 +13,7 @@ export default function PageLayout({
       <Navbar offset sticky>
         <NavbarContent lang={lang} />
       </Navbar>
-      <main className="page mb-48 bg-white">{children}</main>
+      <main className="page mb-48 bg-white relative pt-20">{children}</main>
       <Logo />
     </div>
   );

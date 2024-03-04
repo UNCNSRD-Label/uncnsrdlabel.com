@@ -93,7 +93,7 @@ export function SidebarMenu({
               aria-hidden="true"
             />
             <div
-              className="fixed inset-y-0 start-0 flex w-full max-w-sm justify-end"
+              className="fixed inset-y-0 start-0 flex w-full max-w-sm justify-end pt-safeTop"
               data-testid="sidebar-menu"
             >
               <Dialog.Panel
@@ -103,18 +103,18 @@ export function SidebarMenu({
                   closed: { translateX: "-100%" },
                 }}
                 transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-                className={cn("flex w-full flex-col p-6 pt-safeTop", themeColors)}
+                className={cn("flex w-full flex-col p-6", themeColors)}
               >
                 <Button
                   aria-label={intl.formatMessage({ id: "component.SidebarMenu.close" })}
-                  className="mb-4"
+                  className="mb-4 w-fit"
                   data-testid="close-sidebar-menu"
                   onClick={() => {
                     setSidebarMenuIsOpen(false);
                   }}
                   variant="ghost"
                 >
-                  <div className="relative flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors dark:border-neutral-700 dark:text-white">
+                  <div className="relative flex h-11 w-11 items-center justify-center border border-neutral-200 text-black transition-colors dark:border-neutral-700 dark:text-white">
                     <CloseIcon className="icon h-5 stroke-inherit drop-shadow" />
                   </div>
                 </Button>
