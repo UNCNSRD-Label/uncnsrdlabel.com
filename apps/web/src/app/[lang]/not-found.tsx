@@ -38,9 +38,9 @@ export default async function NotFound() {
   return (
     <Boundary labels={["not-found.tsx"]} color="pink">
       <div className="text-vercel-pink space-y-4">
-        <h2 className="text-lg font-bold">
+        <h1 className="text-lg">
           {intl.formatMessage({ id: `page.${handle}.title` })}
-        </h2>
+        </h1>
         <span className="text-sm">
           {intl.formatMessage({ id: `page.${handle}.message` })}
         </span>
