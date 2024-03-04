@@ -364,7 +364,7 @@ export function AddToCart({
 
   const selectedVariantId = selectedVariant?.id;
 
-  const size = view === "compact" ? "xs" : "lg";
+  const size = view === "compact" ? "xs" : "base";
 
   const variant = view === "compact" ? "secondary" : "default";
 
