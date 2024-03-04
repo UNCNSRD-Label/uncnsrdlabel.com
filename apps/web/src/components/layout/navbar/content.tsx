@@ -36,38 +36,32 @@ export async function NavbarContent({
   });
 
   return (
-    <div className="grid w-full grid-flow-col items-center justify-between gap-20 px-6 py-1 sm:auto-cols-fr">
-      <div className="flex md:justify-self-start">
-        <div className="pointer-events-auto flex place-content-center">
-          <Suspense
-            fallback={
-              <MenuIcon className="icon h-5 stroke-inherit" />
-            }
-          >
-            <SidebarMenu dictionary={dictionary} lang={lang} menu={menu} />
-          </Suspense>
-        </div>
-      </div>
+    <>
+      <Suspense fallback={<MenuIcon className="icon h-5 stroke-inherit" />}>
+        <SidebarMenu dictionary={dictionary} lang={lang} menu={menu} />
+      </Suspense>
 
-      <div className={cn("hidden", showLogo && "md:block")} tabIndex={-1}>
-        <Link
-          aria-label={intl.formatMessage({
-            id: "component.NavbarContent.link-home",
-          })}
-          className="pointer-events-auto justify-center md:flex"
-          href="/"
-        >
-          <LogotypeIcon className="h-10 transition duration-300 ease-in-out hover:scale-110" />
-        </Link>
-      </div>
+      <Link
+        aria-label={intl.formatMessage({
+          id: "component.NavbarContent.link-home",
+        })}
+        className={cn("pointer-events-auto hidden justify-center md:flex", {
+          "md:block": showLogo,
+        })}
+        href="/"
+      >
+        <LogotypeIcon className="h-10 transition duration-300 ease-in-out hover:scale-110" />
+      </Link>
 
-      <div className="pointer-events-auto flex items-center justify-end gap-5">
+      <div className="pointer-events-auto flex items-center justify-end gap-4">
         <Suspense fallback={null}>
           <Search dictionary={dictionary} lang={lang} />
         </Suspense>
+
         <Suspense fallback={null}>
           <NavbarAccount dictionary={dictionary} lang={lang} />
         </Suspense>
+
         {process.env.NEXT_PUBLIC_FEATURE_FLAG_WISHLIST_ENABLE === "true" && (
           <Link
             href="#"
@@ -78,10 +72,11 @@ export async function NavbarContent({
             <SlHeart className="icon fill h-5 w-5" />
           </Link>
         )}
+
         <Suspense fallback={<OpenCart />}>
           <Cart dictionary={dictionary} lang={lang} />
         </Suspense>
       </div>
-    </div>
+    </>
   );
 }
