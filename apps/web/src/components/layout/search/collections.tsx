@@ -6,7 +6,9 @@ import { createIntl, type ResolvedIntlConfig } from "react-intl";
 import { FilterList } from "./filter";
 
 async function CollectionList({ className, lang }: { className?: string; lang: Intl.BCP47LanguageTag; }) {
-  const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
+  const dictionary = getDictionary({ lang });
+
+  const messages: ResolvedIntlConfig["messages"] = await dictionary;
 
   const intl = createIntl({
     locale: lang,

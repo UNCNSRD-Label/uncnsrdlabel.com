@@ -13,7 +13,7 @@ export default function PageLayout({
       <Navbar sticky>
         <NavbarContent lang={lang} />
       </Navbar>
-      <main className="page min-h-fullMinusNavbar mb-48">{children}</main>
+      <main className="page mb-48">{children}</main>
       <Logo />
     </>
   );

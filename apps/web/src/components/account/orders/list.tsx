@@ -1,7 +1,6 @@
 "use client";
 
 import { OrderSummary } from "@/components/account/orders/summary";
-import { createIntl } from "@formatjs/intl";
 import { useQuery } from "@tanstack/react-query";
 import {
   customerFragment,
@@ -12,7 +11,7 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getQueryKey } from "@uncnsrdlabel/lib";
 import { getCookie } from "cookies-next";
-import { Usable, use } from "react";
+import { Usable } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
 
 export function Orders({
@@ -22,13 +21,6 @@ export function Orders({
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
   lang: Intl.BCP47LanguageTag;
 }) {
-  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
-
-  const intl = createIntl({
-    locale: lang,
-    messages,
-  });
-
   let customerAccessToken = undefined;
 
   if (typeof window !== "undefined") {
@@ -51,19 +43,6 @@ export function Orders({
 
   return (
     <>
-      <header>
-        <h1 className="text-2xl">
-          {intl.formatMessage({
-            id: "component.Orders.card.title",
-          })}
-        </h1>
-        <span>
-          {intl.formatMessage({
-            id: "component.Orders.card.description",
-          })}
-        </span>
-      </header>
-
       {customer?.orders?.nodes.map((order) => {
         const customerOrder = getFragmentData(orderFragment, order);
 

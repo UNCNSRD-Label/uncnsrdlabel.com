@@ -10,7 +10,7 @@ import {
 } from "@uncnsrdlabel/components/atoms/card";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import { cn } from "@uncnsrdlabel/lib";
-import { useRouter } from "next/navigation";
+import { useRouter, useSelectedLayoutSegments } from "next/navigation";
 import { Usable, use } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
 
@@ -23,6 +23,8 @@ export function Nav({
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
   lang: Intl.BCP47LanguageTag;
 }) {
+  const segments = useSelectedLayoutSegments();
+
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
   const intl = createIntl({
@@ -32,10 +34,27 @@ export function Nav({
 
   const router = useRouter();
 
+  const listItems = [
+    {
+      href: "/account/addresses",
+      id: "layout.account.nav.addresses",
+    },
+    {
+      href: "/account/orders",
+      id: "layout.account.nav.orders",
+    },
+    {
+      href: "/account/profile",
+      id: "layout.account.nav.profile",
+    },
+  ];
+
+  const [handle] = segments;
+
   return (
     <div
       className={cn(
-        "bg-opaque-white relative h-fit content-start p-10 sm:p-8 md:grid",
+        "bg-opaque-white relative h-fit content-start px-4 sm:p-8 md:grid",
         className,
       )}
     >
@@ -49,54 +68,24 @@ export function Nav({
         </CardHeader>
         <CardContent className="grid content-start gap-4">
           <nav className="grid list-none gap-4">
-            <li>
-              <Link
-                className={cn(
-                  "text-xs uppercase transition duration-150 ease-in-out",
-                  // {
-                  //   "underline decoration-dotted underline-offset-8":
-                  //     item.url?.endsWith(handle),
-                  // },
-                )}
-                href="/account/addresses"
-              >
-                {intl.formatMessage({
-                  id: "layout.account.nav.addresses",
-                })}
-              </Link>
-            </li>
-            <li>
-              <Link
-                className={cn(
-                  "text-xs uppercase transition duration-150 ease-in-out",
-                  // {
-                  //   "underline decoration-dotted underline-offset-8":
-                  //     item.url?.endsWith(handle),
-                  // },
-                )}
-                href="/account/orders"
-              >
-                {intl.formatMessage({
-                  id: "layout.account.nav.orders",
-                })}
-              </Link>
-            </li>
-            <li>
-              <Link
-                className={cn(
-                  "text-xs uppercase transition duration-150 ease-in-out",
-                  // {
-                  //   "underline decoration-dotted underline-offset-8":
-                  //     item.url?.endsWith(handle),
-                  // },
-                )}
-                href="/account/details"
-              >
-                {intl.formatMessage({
-                  id: "layout.account.nav.profile",
-                })}
-              </Link>
-            </li>
+            {listItems.map((listItem) => (
+              <li key={listItem.href}>
+                <Link
+                  className={cn(
+                    "text-xs uppercase transition duration-150 ease-in-out",
+                    {
+                      "underline decoration-dotted underline-offset-8":
+                        listItem.href.endsWith(handle),
+                    },
+                  )}
+                  href={listItem.href}
+                >
+                  {intl.formatMessage({
+                    id: listItem.id,
+                  })}
+                </Link>
+              </li>
+            ))}
             <li>
               <hr />
             </li>

@@ -15,7 +15,7 @@ export default function AccountResetPage({
 
   return (
     <div className="bg-opaque-white grid gap-8 p-4 sm:p-8">
-      <h1 className="text-lg sm:text-xl md:text-3xl">
+      <h1 className="text-center text-lg sm:text-xl md:text-3xl">
         Reset the password for your account
       </h1>
       <AccountResetForm

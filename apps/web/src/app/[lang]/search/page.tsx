@@ -24,7 +24,9 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const localization = await getLocalizationDetailsHandler({ lang });
 
-  const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
+  const dictionary = getDictionary({ lang });
+
+  const messages: ResolvedIntlConfig["messages"] = await dictionary;
 
   const intl = createIntl({
     locale: lang,
@@ -45,7 +47,9 @@ export default async function SearchPage({
   params: { lang },
   searchParams,
 }: PageProps) {
-  const messages: ResolvedIntlConfig["messages"] = await getDictionary({ lang });
+  const dictionary = getDictionary({ lang });
+
+  const messages: ResolvedIntlConfig["messages"] = await dictionary;
 
   const intl = createIntl({
     locale: lang,

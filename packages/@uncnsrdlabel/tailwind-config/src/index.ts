@@ -147,6 +147,28 @@ export default {
       typography: ({
         theme,
       }: Configuration) => ({
+        DEFAULT: {
+          css: {
+            h1: {
+              fontWeight: theme("fontWeight.normal"),
+            },
+            h2: {
+              fontWeight: theme("fontWeight.normal"),
+            },
+            h3: {
+              fontWeight: theme("fontWeight.normal"),
+            },
+            h4: {
+              fontWeight: theme("fontWeight.normal"),
+            },
+            h5: {
+              fontWeight: theme("fontWeight.normal"),
+            },
+            h6: {
+              fontWeight: theme("fontWeight.normal"),
+            },
+          },
+        },
         hotGreen: {
           css: {
             "--tw-prose-body": theme("colors.hotGreen"),

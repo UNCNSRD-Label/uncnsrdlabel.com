@@ -12,7 +12,7 @@ export const Prose: FunctionComponent<TextProps> = ({
   style,
 }) => {
   return (
-    <div
+    <article
       className={cn("prose", className)}
       dangerouslySetInnerHTML={{ __html: html }}
       style={style}

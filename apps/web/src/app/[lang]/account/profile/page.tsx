@@ -7,10 +7,10 @@ import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Account details",
-  description: "Edit your account details",
+  description: "Edit your user profile details",
 };
 
-export default function AccountUpdateDetailsPage({
+export default function AccountProfilePage({
   params: { lang },
 }: PageProps) {
   const dictionary = getDictionary({ lang });

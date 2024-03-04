@@ -52,19 +52,6 @@ export function Addresses({
 
   return (
     <>
-      <header>
-        <h1 className="text-2xl">
-          {intl.formatMessage({
-            id: "component.Addresses.card.title",
-          })}
-        </h1>
-        <span>
-          {intl.formatMessage({
-            id: "component.Addresses.card.description",
-          })}
-        </span>
-      </header>
-
       {customer?.addresses?.nodes.map((address) => {
         const mailingAddress = getFragmentData(mailingAddressFragment, address);
 

@@ -69,6 +69,9 @@
     }
   },
   "page": {
+    "AccountPage": {
+      "title": "Sign up or sign in to your account"
+    },
     "collection": {
       "title": "Collection listings for {title}",
       "no-products-found": "No products found in this collection"
@@ -203,7 +206,7 @@
     },
     "ConsentDialog": {
       "close": "Close the consent dialog",
-      "description":"UNCNSRD uses cookies that are essential to making this site work and would like to use additional cookies to improve your experience on this site.",
+      "description": "UNCNSRD uses cookies that are essential to making this site work and would like to use additional cookies to improve your experience on this site.",
       "trigger": "Edit consent settings",
       "title": "Consent settings"
     },
@@ -364,7 +367,6 @@
       }
     },
     "AccountSignInOrSignUpForm": {
-      "title": "Sign up or sign in to your account",
       "tabs": {
         "sign-in": "Sign in",
         "sign-up": "Sign up"
@@ -412,7 +414,7 @@
       "field": {
         "acceptsMarketing": "I would like to receive marketing emails from UNCNSRD",
         "confirmPassword": "Confirm password",
-        "email": "Email",  
+        "email": "Email",
         "firstName": "First name",
         "lastName": "Last name",
         "password": "Password",
@@ -449,7 +451,7 @@
       "title": "Sign up for notifications"
     },
     "SignUpForBackInStockSubscriptionForm": {
-      "placeholder":"Enter your email address",
+      "placeholder": "Enter your email address",
       "submit": "Sign up",
       "toast": {
         "close-alt": "Close this message",
@@ -471,7 +473,7 @@
       },
       "field": {
         "acceptsMarketing": "I would like to receive marketing emails from UNCNSRD",
-        "email": "Email",  
+        "email": "Email",
         "firstName": "First name",
         "lastName": "Last name",
         "phone": "Phone"

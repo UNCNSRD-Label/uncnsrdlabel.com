@@ -13069,6 +13069,10 @@ export enum DisputeEvidenceUpdateUserErrorCode {
 /** The possible statuses of a dispute. */
 export enum DisputeStatus {
   Accepted = 'ACCEPTED',
+  /**
+   * Status previously used by Stripe to indicate that a dispute led to a refund.
+   * @deprecated CHARGE_REFUNDED is no longer supported.
+   */
   ChargeRefunded = 'CHARGE_REFUNDED',
   Lost = 'LOST',
   NeedsResponse = 'NEEDS_RESPONSE',
