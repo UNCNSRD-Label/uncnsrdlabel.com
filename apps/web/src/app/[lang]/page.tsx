@@ -30,7 +30,7 @@ export default async function Page({ params: { lang } }: PageProps) {
           <VideosHydrated handle={handle} lang={lang} />
           <Link
             aria-label={intl.formatMessage({ id: `page.${handle}.campaign-video.shop-now` })}
-            className="btn btn-outline btn-primary btn-base absolute z-20 justify-self-center whitespace-nowrap uppercase"
+            className="btn btn-outline btn-primary btn-base absolute justify-self-center whitespace-nowrap uppercase"
             href="/search/all"
           >
             {intl.formatMessage({ id: `page.${handle}.campaign-video.shop-now` })}
