@@ -160,10 +160,6 @@
 }
 
 @layer components {
-  .navbar-global {
-    min-height: var(--Navbar-height);
-  }
-
   .field {
     @apply relative grid items-center;
   }

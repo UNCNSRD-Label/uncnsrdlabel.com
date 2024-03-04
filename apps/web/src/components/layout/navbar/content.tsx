@@ -36,12 +36,12 @@ export async function NavbarContent({
   });
 
   return (
-    <div className="grid w-full grid-flow-col items-center justify-between gap-20 px-6 py-3 sm:auto-cols-fr">
+    <div className="grid w-full grid-flow-col items-center justify-between gap-20 px-6 py-1 sm:auto-cols-fr">
       <div className="flex md:justify-self-start">
         <div className="pointer-events-auto flex place-content-center">
           <Suspense
             fallback={
-              <MenuIcon className="icon h-5 stroke-inherit drop-shadow" />
+              <MenuIcon className="icon h-5 stroke-inherit" />
             }
           >
             <SidebarMenu dictionary={dictionary} lang={lang} menu={menu} />
@@ -57,7 +57,7 @@ export async function NavbarContent({
           className="pointer-events-auto justify-center md:flex"
           href="/"
         >
-          <LogotypeIcon className="h-10 drop-shadow transition duration-300 ease-in-out hover:scale-110" />
+          <LogotypeIcon className="h-10 transition duration-300 ease-in-out hover:scale-110" />
         </Link>
       </div>
 
@@ -75,7 +75,7 @@ export async function NavbarContent({
               id: "component.NavbarContent.link-wishlist",
             })}
           >
-            <SlHeart className="icon fill h-5 w-5 drop-shadow" />
+            <SlHeart className="icon fill h-5 w-5" />
           </Link>
         )}
         <Suspense fallback={<OpenCart />}>

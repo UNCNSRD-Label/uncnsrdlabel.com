@@ -1,5 +1,4 @@
 import { Logo } from "@/components/layout/logo/index";
-import { Navbar } from "@/components/layout/navbar/index";
 import { Collections } from "@/components/layout/search/collections";
 import { FilterList } from "@/components/layout/search/filter/index";
 import { getDictionary } from "@/lib/dictionary";
@@ -25,8 +24,7 @@ export default async function SearchLayout({
 
   return (
     <>
-      <Navbar lang={lang} />
-      <div className="relative z-40 mx-auto flex min-h-[100dvh] w-full flex-col justify-center bg-white px-2 pb-40 pt-16 sm:px-4 md:flex-row">
+      <div className="bg-light relative mx-auto flex min-h-[100dvh] w-full flex-col justify-center pb-32 pt-12 px-2 sm:px-4 sm:pt-12 md:flex-row">
         <Collections
           className={cn("order-1 flex-none md:w-1/6", {
             hidden:

@@ -22,8 +22,8 @@ export default async function Page({ params: { lang } }: PageProps) {
 
   return (
     <>
-      <Navbar className="z-50" lang={lang} />
-      <main className="dark relative z-40 grid grid-rows-[1fr_auto] gap-2 bg-black pb-40">
+      <Navbar className="sticky left-0 z-10 top-safeTop fill-light stroke-light text-light" lang={lang} />
+      <main className="dark relative grid grid-rows-[1fr_auto] gap-2 bg-black pb-32">
         <h1 className="sr-only">{intl.formatMessage({ id: "global.metadata.title" })}</h1>
         <section className="relative grid h-[100dvh] items-center overflow-hidden sm:snap-start">
           <h2 className="sr-only">{intl.formatMessage({ id: `page.${handle}.campaign-video.title` })}</h2>

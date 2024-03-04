@@ -12,7 +12,7 @@ export function Navbar({ className, blend, lang, showLogo }: Props) {
   return (
     <nav
       className={cn(
-        "navbar-global pointer-events-none sticky left-0 top-0 z-30 h-0 min-h-0 [&_>_*]:pointer-events-auto [&_>_*]:relative",
+        "pointer-events-none h-0 [&_>_*]:pointer-events-auto [&_>_*]:relative",
         {
           "text-light fill-white stroke-white mix-blend-difference": blend,
         },

@@ -45,7 +45,7 @@ export function Logo({ blend, className, fill }: Props) {
           >
             <LogotypeIcon
               className={cn(
-                "h-8 fill-inherit drop-shadow transition duration-300 ease-in-out hover:scale-110 sm:h-10",
+                "h-8 fill-inherit transition duration-300 ease-in-out hover:scale-110 sm:h-10",
                 {
                   "fill-white": fill === "light" || blend,
                   "fill-black": fill === "dark",

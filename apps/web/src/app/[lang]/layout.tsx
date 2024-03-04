@@ -1,5 +1,6 @@
 import { Banner } from "@/components/layout/banner";
 import { Footer } from "@/components/layout/footer/index";
+import { Navbar } from "@/components/layout/navbar/index";
 import { Progress } from "@/components/layout/progress/index";
 import { NavigationEvents } from "@/components/navigation-events";
 import { Organization } from "@/components/schema.org/organization";
@@ -14,7 +15,7 @@ import { Toaster } from "@uncnsrdlabel/components/atoms/sonner";
 import {
   cn,
   getIETFLanguageTagFromlocaleTag,
-  getLocaleObjectFromIETFLanguageTag
+  getLocaleObjectFromIETFLanguageTag,
 } from "@uncnsrdlabel/lib";
 import { AppProviders } from "@uncnsrdlabel/providers";
 import config from "@uncnsrdlabel/tailwind-config";
@@ -137,8 +138,15 @@ export default async function Layout({
         )}
       >
         <AppProviders lang={lang}>
-          <Banner className={cn("sticky top-0 w-full z-30 pt-safeTop")} lang={lang} />
+          <Banner
+            className={cn("pt-safeTop sticky top-0 w-full")}
+            lang={lang}
+          />
           <Progress />
+          <Navbar
+            className="top-safeTop sticky left-0 z-10 drop-shadow"
+            lang={lang}
+          />
           {children}
           <Footer lang={lang} />
           <Organization />

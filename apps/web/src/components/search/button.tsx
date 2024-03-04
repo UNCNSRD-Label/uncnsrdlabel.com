@@ -35,7 +35,7 @@ export function SearchButton({
       form="search-form"
       variant="ghost"
     >
-      <SlMagnifier className="icon fill h-5 w-5 drop-shadow" />
+      <SlMagnifier className="icon fill h-5 w-5" />
     </Button>
   );
 }

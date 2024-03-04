@@ -113,7 +113,7 @@ const getMetaobject = ({ lang }: { lang: Intl.BCP47LanguageTag }) => {
 
   markup = (
     <div
-      className="text-center [&>ul]:flex [&>ul]:gap-x-4 [&>ul]:gap-y-2 [&>ul]:flex-col md:[&>ul]:flex-row"
+      className="text-center [&>ul]:flex [&>ul]:gap-x-4 [&>ul]:gap-y-1 sm:[&>ul]:gap-y-2 [&>ul]:flex-col md:[&>ul]:flex-row"
       data-id={metaobject.id}
       data-type="MetaObject"
       dangerouslySetInnerHTML={{
@@ -157,7 +157,7 @@ export const Banner = ({
         className,
       )}
     >
-      <div className="p-2 sm:p-4 grid snap-start place-content-center text-xs uppercase sm:text-base">
+      <div className="p-2 sm:p-4 grid snap-start place-content-center text-xs uppercase md:text-sm">
         {markup}
       </div>
     </article>
