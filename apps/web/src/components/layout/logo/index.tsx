@@ -26,14 +26,12 @@ export function Logo({ blend, className, fill }: Props) {
       className={cn(
         "pointer-events-none relative inset-0 z-50 grid",
         blend && "mix-blend-difference",
+        className,
       )}
       ref={rootRef}
     >
       <div
-        className={cn(
-          "bottom-12 grid w-full justify-items-center justify-self-center",
-          className,
-        )}
+        className="bottom-12 grid w-full justify-items-center justify-self-center"
         ref={rootRef}
         style={{
           position

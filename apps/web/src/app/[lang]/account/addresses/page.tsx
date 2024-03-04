@@ -29,7 +29,7 @@ export default async function AccountAddressesPage({ params: { lang } }: PagePro
   }
 
   return (
-    <div className="bg-opaque-white grid gap-8 p-4 sm:p-8">
+    <div className="bg-opaque-white grid gap-8 px-4 sm:p-8">
       <header>
         <h1 className="text-2xl">
           {intl.formatMessage({

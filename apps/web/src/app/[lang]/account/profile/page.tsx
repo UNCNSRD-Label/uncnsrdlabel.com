@@ -22,7 +22,7 @@ export default function AccountProfilePage({
   }
 
   return (
-    <div className="bg-opaque-white grid gap-8 p-4 sm:p-8">
+    <div className="bg-opaque-white grid gap-8 px-4 sm:p-8">
       <AccountEditForm
         className="bg-transparent"
         dictionary={dictionary}

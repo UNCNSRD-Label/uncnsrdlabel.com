@@ -22,7 +22,7 @@ export default function AddressUpdatePage({ params: { id, lang } }: PageProps) {
 
   return (
     <>
-      <div className="bg-opaque-white grid gap-8 p-4 sm:p-8">
+      <div className="bg-opaque-white grid gap-8 px-4 sm:p-8">
         <AddressesEditForm
           action={updateAddressAction}
           className="bg-transparent"
