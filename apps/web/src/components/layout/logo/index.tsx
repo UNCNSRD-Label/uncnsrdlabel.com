@@ -31,7 +31,7 @@ export function Logo({ blend, className, fill }: Props) {
     >
       <div
         className={cn(
-          "bottom-12 grid w-full justify-items-center justify-self-center sm:bottom-20",
+          "bottom-12 grid w-full justify-items-center justify-self-center",
           className,
         )}
         ref={rootRef}

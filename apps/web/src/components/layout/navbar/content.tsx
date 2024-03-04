@@ -36,9 +36,9 @@ export async function NavbarContent({
   });
 
   return (
-    <>
+    <div className="grid w-full grid-flow-col items-center justify-between gap-20 px-6 py-3 sm:auto-cols-fr">
       <div className="flex md:justify-self-start">
-        <div className="pointer-events-auto md:mr-4">
+        <div className="pointer-events-auto flex place-content-center">
           <Suspense
             fallback={
               <MenuIcon className="icon h-5 stroke-inherit drop-shadow" />
@@ -82,6 +82,6 @@ export async function NavbarContent({
           <Cart dictionary={dictionary} lang={lang} />
         </Suspense>
       </div>
-    </>
+    </div>
   );
 }

@@ -8,8 +8,6 @@ import {
 import {
   getInContextVariables,
   getShopifyGraphQL as getShopifyStorefrontGraphQL,
-  // TODO: Implement getFragmentData as a global lib function
-  // getFragmentDataStorefront,
   metaObjectsQuery,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
@@ -155,11 +153,13 @@ export const Banner = ({
   return (
     <article
       className={cn(
-        "bg-hotPink text-dark pt-[max(theme(spacing.safeTop),_theme(spacing.3))] grid snap-start place-content-center p-6 text-xs uppercase sm:text-base",
+        "bg-hotPink text-dark",
         className,
       )}
     >
-      {markup}
+      <div className="p-2 sm:p-4 grid snap-start place-content-center text-xs uppercase sm:text-base">
+        {markup}
+      </div>
     </article>
   );
 };

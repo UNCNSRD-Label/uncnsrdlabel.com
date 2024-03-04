@@ -1,5 +1,4 @@
 import { Logo } from "@/components/layout/logo/index";
-import { NavbarContent } from "@/components/layout/navbar/content";
 import { Navbar } from "@/components/layout/navbar/index";
 import { type LayoutProps } from "@/types/next";
 import { PropsWithChildren } from "react";
@@ -10,10 +9,8 @@ export default function PageLayout({
 }: PropsWithChildren<LayoutProps>) {
   return (
     <div className="relative z-40">
-      <Navbar offset sticky>
-        <NavbarContent lang={lang} />
-      </Navbar>
-      <main className="page mb-48 bg-white relative pt-20">{children}</main>
+      <Navbar lang={lang} />
+      <main className="page relative pb-40 bg-white pt-20">{children}</main>
       <Logo />
     </div>
   );

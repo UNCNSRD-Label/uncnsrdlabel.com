@@ -1,28 +1,25 @@
 import { cn } from "@uncnsrdlabel/lib";
+import { NavbarContent } from "./content";
 
 type Props = {
-  children: React.ReactNode;
   className?: string;
   blend?: boolean;
-  offset?: boolean;
-  sticky?: boolean;
+  lang: Intl.BCP47LanguageTag;
+  showLogo?: boolean;
 };
 
-export function Navbar(props: Props) {
+export function Navbar({ className, blend, lang, showLogo }: Props) {
   return (
     <nav
       className={cn(
-        "navbar-global pointer-events-none left-0 top-0 z-30 grid w-full grid-flow-col items-center justify-between gap-20 px-6 sm:auto-cols-fr",
+        "navbar-global pointer-events-none sticky left-0 top-0 z-30 h-0 min-h-0 [&_>_*]:pointer-events-auto [&_>_*]:relative",
         {
-          "text-light fill-white stroke-white mix-blend-difference":
-            props.blend,
+          "text-light fill-white stroke-white mix-blend-difference": blend,
         },
-        props.offset ? "pointer-events-none min-h-0 h-0 py-0 [&_>_*]:pointer-events-auto [&_>_*]:relative [&_>_*]:top-[max(theme(spacing.safeTop),_theme(spacing.3))]" : null,
-        props.sticky ? "sticky" : "fixed",
-        props.className,
+        className,
       )}
     >
-      {props.children}
+      <NavbarContent lang={lang} showLogo={showLogo} />
     </nav>
   );
 }

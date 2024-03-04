@@ -137,7 +137,7 @@ export default async function Layout({
         )}
       >
         <AppProviders lang={lang}>
-          <Banner className={cn("sticky top-0 w-full z-30")} lang={lang} />
+          <Banner className={cn("sticky top-0 w-full z-30 pt-safeTop")} lang={lang} />
           <Progress />
           {children}
           <Footer lang={lang} />
