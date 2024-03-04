@@ -109,7 +109,7 @@ export function CartForm({
                   className="flex w-full flex-col border-b border-neutral-300 dark:border-neutral-700"
                 >
                   <div className="relative flex gap-4 w-full flex-row justify-between px-1 py-4">
-                    <div className="absolute z-40 -mt-2 ml-[55px] self-start">
+                    <div className="absolute -mt-2 ml-[55px] self-start">
                       <DeleteItemButton
                         cartId={cart.id}
                         dictionary={dictionary}
@@ -118,7 +118,7 @@ export function CartForm({
                       />
                     </div>
                     <Link
-                      className="z-30 flex flex-row space-x-4"
+                      className="flex flex-row space-x-4"
                       href={merchandiseUrl}
                     >
                       <figure className="aspect-2/3 relative w-16 cursor-pointer overflow-hidden rounded-md border border-neutral-300 bg-neutral-300 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:bg-neutral-800">

@@ -67,7 +67,7 @@ export default async function PoliciesPage({
   return (
     <>
       <Prose
-        className="prose-sm prose-thead:border-hotPink prose-tr:border-hotPink [&_table_tr]:grid sm:[&_table_tr]:table-row bg-opaque-white px-6 sm:p-8 min-w-full sm:fill-light sm:max-w-[48rem] md:order-2 overflow-x-auto"
+        className="prose-sm prose-thead:border-hotPink prose-tr:border-hotPink [&_table_tr]:grid sm:[&_table_tr]:table-row sm:bg-opaque-white px-6 sm:p-8 min-w-full sm:fill-light sm:max-w-[48rem] md:order-2 overflow-x-auto"
         html={policy.body as string}
       />
       <Nav className="lg:justify-self-end md:order-1 lg:min-w-96" handle={handle} lang={lang} />
