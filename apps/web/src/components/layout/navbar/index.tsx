@@ -15,7 +15,7 @@ export function Navbar({ className, blend, lang, showLogo = false }: Props) {
     <nav
       className={cn(
         "[&_>_*]:pointer-events-auto [&_>_*]:relative",
-        "grid w-full grid-flow-col items-center justify-between gap-20 px-2 sm:px-4 py-2 sm:auto-cols-fr",
+        "grid w-full grid-flow-col items-center justify-between gap-20 px-2 sm:px-4 py-1 sm:auto-cols-fr",
         {
           "text-light fill-white stroke-white mix-blend-difference": blend,
         },
