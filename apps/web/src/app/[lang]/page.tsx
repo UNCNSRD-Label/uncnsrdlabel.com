@@ -1,5 +1,4 @@
 import { Logo } from "@/components/layout/logo/index";
-import { NavbarContent } from "@/components/layout/navbar/content";
 import { Navbar } from "@/components/layout/navbar/index";
 import { PageCarousel } from "@/components/page/carousel/page-carousel";
 import { VideosHydrated } from "@/components/page/videos/videos-hydrated";
@@ -23,17 +22,15 @@ export default async function Page({ params: { lang } }: PageProps) {
 
   return (
     <>
-      <Navbar className="z-50" offset sticky>
-        <NavbarContent lang={lang} />
-      </Navbar>
-      <main className="dark relative z-40 grid grid-rows-[1fr_auto] gap-2 bg-black pb-48">
+      <Navbar className="sticky left-0 z-10 top-safeTop fill-light stroke-light text-light" lang={lang} />
+      <main className="dark relative grid grid-rows-[1fr_auto] gap-2 bg-black pb-32">
         <h1 className="sr-only">{intl.formatMessage({ id: "global.metadata.title" })}</h1>
         <section className="relative grid h-[100dvh] items-center overflow-hidden sm:snap-start">
           <h2 className="sr-only">{intl.formatMessage({ id: `page.${handle}.campaign-video.title` })}</h2>
           <VideosHydrated handle={handle} lang={lang} />
           <Link
             aria-label={intl.formatMessage({ id: `page.${handle}.campaign-video.shop-now` })}
-            className="btn btn-outline btn-primary btn-base absolute z-20 justify-self-center whitespace-nowrap uppercase"
+            className="btn btn-outline btn-primary btn-base absolute justify-self-center whitespace-nowrap uppercase"
             href="/search/all"
           >
             {intl.formatMessage({ id: `page.${handle}.campaign-video.shop-now` })}

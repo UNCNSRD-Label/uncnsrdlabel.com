@@ -38,11 +38,11 @@ export async function Nav({
   return (
     <div
       className={cn(
-        "bg-opaque-white relative h-fit content-start p-10 sm:p-8 md:grid",
+        "sm:bg-opaque-white relative h-fit content-start p-4 sm:p-8 md:grid",
         className,
       )}
     >
-      <Card className="bg-transparent p-4">
+      <Card className="bg-transparent">
         <CardHeader className="grid gap-4">
           <h2 className="text-sm uppercase">
             {intl.formatMessage({

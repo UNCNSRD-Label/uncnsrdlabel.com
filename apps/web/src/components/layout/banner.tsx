@@ -8,8 +8,6 @@ import {
 import {
   getInContextVariables,
   getShopifyGraphQL as getShopifyStorefrontGraphQL,
-  // TODO: Implement getFragmentData as a global lib function
-  // getFragmentDataStorefront,
   metaObjectsQuery,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
@@ -115,7 +113,7 @@ const getMetaobject = ({ lang }: { lang: Intl.BCP47LanguageTag }) => {
 
   markup = (
     <div
-      className="text-center [&>ul]:flex [&>ul]:gap-x-4 [&>ul]:gap-y-2 [&>ul]:flex-col md:[&>ul]:flex-row"
+      className="text-center [&>ul]:flex [&>ul]:gap-x-4 [&>ul]:gap-y-1 sm:[&>ul]:gap-y-2 [&>ul]:flex-col md:[&>ul]:flex-row"
       data-id={metaobject.id}
       data-type="MetaObject"
       dangerouslySetInnerHTML={{
@@ -155,11 +153,13 @@ export const Banner = ({
   return (
     <article
       className={cn(
-        "bg-hotPink text-dark pt-[max(theme(spacing.safeTop),_theme(spacing.3))] grid snap-start place-content-center p-6 text-xs uppercase sm:text-base",
+        "bg-hotPink text-dark",
         className,
       )}
     >
-      {markup}
+      <div className="p-2 sm:p-4 grid snap-start place-content-center text-xs uppercase md:text-sm">
+        {markup}
+      </div>
     </article>
   );
 };

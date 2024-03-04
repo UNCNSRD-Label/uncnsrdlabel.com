@@ -15,7 +15,7 @@ export function Search({
   const [searchIsOpen, setSearchIsOpen] = useState(false);
 
   return (
-    <div className="relative grid w-full items-center" tabIndex={-1}>
+    <>
       <SearchForm
         dictionary={dictionary}
         isOpen={searchIsOpen}
@@ -23,6 +23,6 @@ export function Search({
         setSearchIsOpen={setSearchIsOpen}
       />
       <SearchButton dictionary={dictionary} isOpen={searchIsOpen} lang={lang} />
-    </div>
+    </>
   );
 }

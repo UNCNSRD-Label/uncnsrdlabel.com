@@ -1,6 +1,4 @@
 import { Logo } from "@/components/layout/logo/index";
-import { NavbarContent } from "@/components/layout/navbar/content";
-import { Navbar } from "@/components/layout/navbar/index";
 import { Collections } from "@/components/layout/search/collections";
 import { FilterList } from "@/components/layout/search/filter/index";
 import { getDictionary } from "@/lib/dictionary";
@@ -26,12 +24,9 @@ export default async function SearchLayout({
 
   return (
     <>
-      <Navbar className="z-50" offset sticky>
-        <NavbarContent lang={lang} />
-      </Navbar>
-      <div className="relative z-40 mx-auto flex min-h-[100dvh] w-full flex-col justify-center bg-white px-2 pb-48 pt-20 sm:px-4 md:flex-row">
+      <div className="bg-light relative mx-auto flex min-h-[100dvh] w-full flex-col justify-center pb-32 pt-12 px-4 sm:pt-12 md:flex-row">
         <Collections
-          className={cn("flex-none md:w-1/6 order-1", {
+          className={cn("order-1 flex-none md:w-1/6", {
             hidden:
               process.env.NEXT_PUBLIC_FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE !==
               "true",
@@ -39,7 +34,7 @@ export default async function SearchLayout({
           lang={lang}
         />
         <FilterList
-          className={cn("flex-none md:w-1/6 order-3", {
+          className={cn("order-3 flex-none md:w-1/6", {
             hidden:
               process.env.NEXT_PUBLIC_FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE !==
               "true",
@@ -49,7 +44,7 @@ export default async function SearchLayout({
         />
         {children}
       </div>
-      <Logo className="bottom-20" />
+      <Logo />
     </>
   );
 }

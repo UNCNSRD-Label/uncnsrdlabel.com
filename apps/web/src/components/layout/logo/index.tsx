@@ -26,14 +26,12 @@ export function Logo({ blend, className, fill }: Props) {
       className={cn(
         "pointer-events-none relative inset-0 z-50 grid",
         blend && "mix-blend-difference",
+        className,
       )}
       ref={rootRef}
     >
       <div
-        className={cn(
-          "bottom-12 grid w-full justify-items-center justify-self-center sm:bottom-20",
-          className,
-        )}
+        className="bottom-12 grid w-full justify-items-center justify-self-center"
         ref={rootRef}
         style={{
           position
@@ -45,7 +43,7 @@ export function Logo({ blend, className, fill }: Props) {
           >
             <LogotypeIcon
               className={cn(
-                "h-8 fill-inherit drop-shadow transition duration-300 ease-in-out hover:scale-110 sm:h-10",
+                "h-8 fill-inherit transition duration-300 ease-in-out hover:scale-110 sm:h-10",
                 {
                   "fill-white": fill === "light" || blend,
                   "fill-black": fill === "dark",

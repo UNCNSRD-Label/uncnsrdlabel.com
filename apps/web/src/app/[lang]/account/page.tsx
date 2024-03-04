@@ -29,7 +29,7 @@ export default async function AccountPage({ params: { lang } }: PageProps) {
   }
 
   return (
-    <div className="bg-opaque-white grid gap-8 px-8 pb-8 sm:pt-8 lg:shadow">
+    <div className="sm:bg-opaque-white grid gap-8 px-8 pb-8 sm:pt-8 lg:shadow">
       <h1 className="text-center text-lg sm:text-xl md:text-3xl hidden sm:block">
         {intl.formatMessage({
           id: "page.AccountPage.title",

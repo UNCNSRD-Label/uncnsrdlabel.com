@@ -37,37 +37,31 @@ export async function NavbarContent({
 
   return (
     <>
-      <div className="flex md:justify-self-start">
-        <div className="pointer-events-auto md:mr-4">
-          <Suspense
-            fallback={
-              <MenuIcon className="icon h-5 stroke-inherit drop-shadow" />
-            }
-          >
-            <SidebarMenu dictionary={dictionary} lang={lang} menu={menu} />
-          </Suspense>
-        </div>
-      </div>
+      <Suspense fallback={<MenuIcon className="icon h-5 stroke-inherit" />}>
+        <SidebarMenu dictionary={dictionary} lang={lang} menu={menu} />
+      </Suspense>
 
-      <div className={cn("hidden", showLogo && "md:block")} tabIndex={-1}>
-        <Link
-          aria-label={intl.formatMessage({
-            id: "component.NavbarContent.link-home",
-          })}
-          className="pointer-events-auto justify-center md:flex"
-          href="/"
-        >
-          <LogotypeIcon className="h-10 drop-shadow transition duration-300 ease-in-out hover:scale-110" />
-        </Link>
-      </div>
+      <Link
+        aria-label={intl.formatMessage({
+          id: "component.NavbarContent.link-home",
+        })}
+        className={cn("pointer-events-auto hidden justify-center", {
+          "md:block": showLogo,
+        })}
+        href="/"
+      >
+        <LogotypeIcon className="h-8 transition duration-300 ease-in-out hover:scale-110" />
+      </Link>
 
-      <div className="pointer-events-auto flex items-center justify-end gap-5">
+      <div className="pointer-events-auto flex items-center justify-end gap-4">
         <Suspense fallback={null}>
           <Search dictionary={dictionary} lang={lang} />
         </Suspense>
+
         <Suspense fallback={null}>
           <NavbarAccount dictionary={dictionary} lang={lang} />
         </Suspense>
+
         {process.env.NEXT_PUBLIC_FEATURE_FLAG_WISHLIST_ENABLE === "true" && (
           <Link
             href="#"
@@ -75,9 +69,10 @@ export async function NavbarContent({
               id: "component.NavbarContent.link-wishlist",
             })}
           >
-            <SlHeart className="icon fill h-5 w-5 drop-shadow" />
+            <SlHeart className="icon fill h-5 w-5" />
           </Link>
         )}
+
         <Suspense fallback={<OpenCart />}>
           <Cart dictionary={dictionary} lang={lang} />
         </Suspense>

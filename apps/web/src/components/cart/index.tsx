@@ -112,7 +112,7 @@ export function Cart({
         <OpenCart quantity={cart?.totalQuantity} />
       </Button>
       <Transition show={isOpen}>
-        <Dialog onClose={closeCart} className="dark relative z-50">
+        <Dialog onClose={closeCart} className="dark relative z-10">
           <Transition.Child
             as={Fragment}
             enter="transition-all ease-in-out duration-300"

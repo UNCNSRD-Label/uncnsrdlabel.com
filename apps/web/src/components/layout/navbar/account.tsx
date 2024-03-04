@@ -5,19 +5,19 @@ import { createIntl } from "@formatjs/intl";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
 } from "@uncnsrdlabel/components/atoms/dropdown-menu";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
-    customerFragment,
-    customerQuery,
-    getFragmentData,
-    getShopifyGraphQL,
+  customerFragment,
+  customerQuery,
+  getFragmentData,
+  getShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getQueryKey } from "@uncnsrdlabel/lib";
 import { getCookie } from "cookies-next";
@@ -75,7 +75,7 @@ export function NavbarAccount({
         })}
         prefetch={false}
       >
-        <SlUser className="icon fill h-5 w-5 drop-shadow" />
+        <SlUser className="icon fill h-5 w-5" />
       </Link>
     );
   }
@@ -87,12 +87,12 @@ export function NavbarAccount({
       }
     >
       <DropdownMenuTrigger>
-        <SlUser className="icon fill h-5 w-5 drop-shadow" />
+        <SlUser className="icon fill h-5 w-5" />
       </DropdownMenuTrigger>
       <DropdownMenuContent
         collisionPadding={32}
         sideOffset={16}
-        className="bg-opaque-white rounded-none border-none p-4"
+        className="sm:bg-opaque-white rounded-none border-none p-4"
       >
         <DropdownMenuLabel>
           <div className="flex flex-col space-y-1">

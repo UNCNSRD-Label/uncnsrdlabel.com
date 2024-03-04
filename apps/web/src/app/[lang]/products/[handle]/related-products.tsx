@@ -48,7 +48,7 @@ export async function RelatedProducts({
   if (!productRecommendationRefs?.length) return null;
 
   return (
-    <aside className={cn("px-2 pb-48 pt-12 sm:px-4", className)}>
+    <aside className={cn("px-2 pb-40 pt-12 sm:px-4", className)}>
       <h2 className="mb-8 text-center text-xl uppercase">
         {intl.formatMessage({ id: "component.RelatedProducts.title" })}
       </h2>

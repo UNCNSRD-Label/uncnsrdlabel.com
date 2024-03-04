@@ -105,18 +105,18 @@ export default async function ProductsPage({
   if (!product) return notFound();
 
   return (
-    <div className="grid grid-rows-[1fr_auto] relative top-0 z-40">
+    <div className="grid grid-rows-[1fr_auto] relative">
       <Breadcrumb
-        className="absolute left-12 top-5 z-20 hidden lg:grid lg:grid-cols-12 [&>*]:lg:col-start-2 [&>*]:lg:col-end-10"
+        className="relative h-0 top-3.5 left-12 hidden lg:grid lg:grid-cols-12 [&>*]:lg:col-start-2 [&>*]:lg:col-end-10"
         productDetailsFragmentRef={productDetailsFragmentRef}
       />
-      <main className="mb-16 grid grid-cols-12 content-center bg-inherit min-h-[max(100dvh,_theme(space.96))] lg:overflow-y-hidden [&:has(+_aside)]:mb-0 lg:sticky top-0">
+      <main className="mb-16 grid grid-cols-12 bg-inherit min-h-[max(100dvh,_theme(space.96))] lg:overflow-y-hidden [&:has(+_aside)]:mb-0 lg:sticky top-0">
         <h1 className="sr-only">{intl.formatMessage({ id: "page.products.title" }, { title: product.title })}</h1>
         <ProductDetails lang={lang} productDetailsFragmentRef={productDetailsFragmentRef} />
         {/* <ProductAdditionalDetails productDetailsFragmentRef={productDetailsFragmentRef} /> */}
       </main>
       <RelatedProducts
-        className="text-dark relative bg-white z-50 [contain:layout_style]"
+        className="text-dark relative bg-light [contain:layout_style]"
         lang={lang}
         productDetailsFragmentRef={productDetailsFragmentRef}
       />
