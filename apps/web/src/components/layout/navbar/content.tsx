@@ -45,12 +45,12 @@ export async function NavbarContent({
         aria-label={intl.formatMessage({
           id: "component.NavbarContent.link-home",
         })}
-        className={cn("pointer-events-auto hidden justify-center md:flex", {
+        className={cn("pointer-events-auto hidden justify-center", {
           "md:block": showLogo,
         })}
         href="/"
       >
-        <LogotypeIcon className="h-10 transition duration-300 ease-in-out hover:scale-110" />
+        <LogotypeIcon className="h-8 transition duration-300 ease-in-out hover:scale-110" />
       </Link>
 
       <div className="pointer-events-auto flex items-center justify-end gap-4">

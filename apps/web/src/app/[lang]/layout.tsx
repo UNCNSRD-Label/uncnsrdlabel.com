@@ -144,7 +144,7 @@ export default async function Layout({
           />
           <Progress />
           <Navbar
-            className="top-safeTop sticky left-0 z-10 drop-shadow"
+            className="top-safeTop sticky left-0 z-10 drop-shadow w-full"
             lang={lang}
           />
           {children}
