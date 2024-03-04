@@ -7,7 +7,7 @@ export default function PageLayout({
 }: PropsWithChildren<LayoutProps>) {
   return (
     <>
-      <main className="bg-light relative grid max-w-[100dvw] gap-x-8 gap-y-4 pb-32 pt-16 sm:px-8">
+      <main className="bg-light relative grid max-w-[100dvw] gap-x-8 gap-y-4 pb-32 pt-[calc(theme(spacing.safeTop)_+_theme(spacing.16))] sm:px-8">
         {children}
       </main>
       <Logo />

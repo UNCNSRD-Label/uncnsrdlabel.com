@@ -15,7 +15,7 @@ export default async function AccountLayout({
   const customerAccessToken = cookies().get("customerAccessToken")?.value;
 
   return (
-    <div className="sm:bg-dark bg-light relative grid max-w-[100dvw] gap-x-8 gap-y-4 pt-16 sm:bg-[url('/images/backgrounds/MAV7957-Edit.jpg')] sm:bg-cover sm:bg-fixed sm:px-8 md:grid-cols-[1fr_3fr] lg:grid-cols-[1fr_fit-content(48rem)_1fr] md:[grid-template-areas:'start_main_end']">
+    <div className="sm:bg-dark bg-light relative grid max-w-[100dvw] gap-x-8 gap-y-4 pt-[calc(theme(spacing.safeTop)_+_theme(spacing.16))] sm:bg-[url('/images/backgrounds/MAV7957-Edit.jpg')] sm:bg-cover sm:bg-fixed sm:px-8 md:grid-cols-[1fr_3fr] lg:grid-cols-[1fr_fit-content(48rem)_1fr] md:[grid-template-areas:'start_main_end']">
       <main
         className={cn(
           "sm:fill-light relative grid content-start sm:order-2 sm:mb-0 pb-24 sm:pb-32 md:[grid-area:main]",
