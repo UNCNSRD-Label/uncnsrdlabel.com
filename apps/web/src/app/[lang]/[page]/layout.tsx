@@ -9,12 +9,12 @@ export default function PageLayout({
   params: { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE! },
 }: PropsWithChildren<LayoutProps>) {
   return (
-    <>
-      <Navbar sticky>
+    <div className="relative z-40">
+      <Navbar offset sticky>
         <NavbarContent lang={lang} />
       </Navbar>
-      <main className="page mb-48">{children}</main>
+      <main className="page mb-48 bg-white">{children}</main>
       <Logo />
-    </>
+    </div>
   );
 }
