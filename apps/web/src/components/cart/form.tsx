@@ -64,7 +64,7 @@ export function CartForm({
           </span>
         </div>
       ) : (
-        <div className="flex h-full flex-col justify-between overflow-hidden p-1">
+        <div className="flex h-full flex-col justify-between overflow-hidden">
           <ul className="flex-grow overflow-auto py-4">
             {lines?.map((item, i) => {
               const merchandiseSearchParams = {} as MerchandiseSearchParams;

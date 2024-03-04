@@ -38,7 +38,7 @@ export async function Nav({
   return (
     <div
       className={cn(
-        "sm:bg-opaque-white relative h-fit content-start p-6 sm:p-8 md:grid",
+        "sm:bg-opaque-white relative h-fit content-start p-4 sm:p-8 md:grid",
         className,
       )}
     >

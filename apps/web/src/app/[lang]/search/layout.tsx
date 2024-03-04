@@ -24,7 +24,7 @@ export default async function SearchLayout({
 
   return (
     <>
-      <div className="bg-light relative mx-auto flex min-h-[100dvh] w-full flex-col justify-center pb-32 pt-12 px-2 sm:px-4 sm:pt-12 md:flex-row">
+      <div className="bg-light relative mx-auto flex min-h-[100dvh] w-full flex-col justify-center pb-32 pt-12 px-4 sm:pt-12 md:flex-row">
         <Collections
           className={cn("order-1 flex-none md:w-1/6", {
             hidden:

@@ -73,7 +73,7 @@ export function SidebarMenu({
         {sidebarMenuIsOpen && (
           <Dialog
             as={motion.div}
-            className="dark relative z-50"
+            className="dark relative z-10"
             initial="closed"
             animate="open"
             exit="closed"
@@ -103,7 +103,7 @@ export function SidebarMenu({
                   closed: { translateX: "-100%" },
                 }}
                 transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-                className={cn("flex w-full flex-col p-6", themeColors)}
+                className={cn("flex w-full flex-col p-4", themeColors)}
               >
                 <Button
                   aria-label={intl.formatMessage({ id: "component.SidebarMenu.close" })}
