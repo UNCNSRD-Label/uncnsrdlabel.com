@@ -23,13 +23,13 @@ export default async function SearchCollectionLayout({
   return (
     <>
       <CollectionsNav
-        className="grid flex-none content-start sm:mt-8 md:order-1 md:w-1/6"
+        className="flex-none sm:mt-8 md:order-1 md:w-1/6"
         collections={collections}
         dictionary={dictionary}
         lang={lang}
       />
       <SortBy
-        className="grid flex-none content-start sm:mt-8 md:order-3 md:w-1/6"
+        className="flex-none sm:mt-8 md:order-3 md:w-1/6"
         defaultSort={productCollectionSortItemDefault}
         dictionary={dictionary}
         lang={lang}

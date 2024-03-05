@@ -53,9 +53,7 @@ export function SortBy({
       active={active}
       className={cn(
         {
-          hidden:
-            process.env.NEXT_PUBLIC_FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE !==
-            "true",
+          "hidden": process.env.NEXT_PUBLIC_FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE !== "true",
         },
         className,
       )}
