@@ -1,57 +1,67 @@
-import { getDictionary } from "@/lib/dictionary";
-import { getCollectionRefsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
+"use client";
+
+import { createIntl } from "@formatjs/intl";
+import { ResultOf } from "@graphql-typed-document-node/core";
+import { collectionFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
-import { Suspense } from "react";
-import { createIntl, type ResolvedIntlConfig } from "react-intl";
-import { FilterList } from "./filter";
+import { useParams, usePathname, useSearchParams } from "next/navigation";
+import { Usable, use, useEffect, useState } from "react";
+import { type ResolvedIntlConfig } from "react-intl";
+import { RefineBy } from "./refine";
+import { PathRefineItem } from "./refine/item";
 
-async function CollectionList({ className, lang }: { className?: string; lang: Intl.BCP47LanguageTag; }) {
-  const dictionary = getDictionary({ lang });
-
-  const messages: ResolvedIntlConfig["messages"] = await dictionary;
+export function CollectionsNav({
+  className,
+  collections,
+  dictionary,
+  lang,
+  title,
+}: {
+  className?: string;
+  collections: ResultOf<typeof collectionFragment>[];
+  dictionary: Usable<ResolvedIntlConfig["messages"]>;
+  lang: Intl.BCP47LanguageTag;
+  title?: string;
+}) {
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
   const intl = createIntl({
     locale: lang,
     messages,
   });
 
-  const collections = await getCollectionRefsHandler({
-    lang,
-    variables: { first: 100 },
-  });
+  const params = useParams();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const [active, setActive] = useState("all");
+
+  useEffect(() => {
+    collections.forEach((collection) => {
+      if (params.collection === collection.handle) {
+        setActive(params.collection);
+      }
+    });
+  }, [pathname, collections, searchParams]);
 
   return (
-    <FilterList
-      className={className}
-      list={collections}
-      title={intl.formatMessage({ id: "component.CollectionList.title" })}
-    />
-  );
-}
-
-const skeleton = "mb-3 h-4 w-5/6 animate-pulse rounded";
-const activeAndTitles = "bg-gray-800 dark:bg-gray-300";
-const items = "bg-gray-400 dark:bg-gray-700";
-
-export async function Collections({ className, lang, }: { className?: string; lang: Intl.BCP47LanguageTag; }) {
-  return (
-    <Suspense
-      fallback={
-        <div className={className}>
-          <div className={cn(skeleton, activeAndTitles)} />
-          <div className={cn(skeleton, activeAndTitles)} />
-          <div className={cn(skeleton, items)} />
-          <div className={cn(skeleton, items)} />
-          <div className={cn(skeleton, items)} />
-          <div className={cn(skeleton, items)} />
-          <div className={cn(skeleton, items)} />
-          <div className={cn(skeleton, items)} />
-          <div className={cn(skeleton, items)} />
-          <div className={cn(skeleton, items)} />
-        </div>
+    <RefineBy
+      active={active}
+      className={cn(
+        {
+          hidden:
+            process.env.NEXT_PUBLIC_FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE !==
+            "true",
+        },
+        className,
+      )}
+      title={
+        title ?? intl.formatMessage({ id: "component.CollectionsNav.title" })
       }
     >
-      <CollectionList className={className} lang={lang} />
-    </Suspense>
+      {collections.map((item) => (
+        <PathRefineItem key={item.title} item={item} />
+      ))}
+    </RefineBy>
   );
 }

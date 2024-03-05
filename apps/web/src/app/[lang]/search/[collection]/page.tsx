@@ -1,18 +1,22 @@
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
+import { CollectionsNav } from "@/components/layout/search/collections";
+import { SortBy } from "@/components/layout/search/sort";
 import { getDictionary } from "@/lib/dictionary";
 import { getAlternativeLanguages } from "@/lib/i18n";
 import { getCanonical } from "@/lib/metadata";
 import {
   collectionFragment,
   getCollectionHandler,
+  getCollectionRefsHandler,
   getCollectionWithProductsHandler,
   getFragmentData,
   getLocalizationDetailsHandler,
   productCollectionDefaultSort,
   productCollectionSorting,
-  seoFragment,
+  seoFragment
 } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { cn } from "@uncnsrdlabel/lib";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { createIntl, type ResolvedIntlConfig } from "react-intl";
@@ -51,13 +55,13 @@ export async function generateMetadata({
       canonical: getCanonical(path),
       languages: getAlternativeLanguages({ localization, path }),
     },
-    title: seo?.title || intl.formatMessage(
-      { id: "page.collection.title" },
-      { title: collection.title },
-    ),
-    description:
-      seo?.description ||
-      collection.description,
+    title:
+      seo?.title ||
+      intl.formatMessage(
+        { id: "page.collection.title" },
+        { title: collection.title },
+      ),
+    description: seo?.description || collection.description,
   };
 }
 
@@ -109,6 +113,11 @@ export default async function CategoryPage({
 
   const results = collectionWithProducts?.products.edges.length;
 
+  const collections = await getCollectionRefsHandler({
+    lang,
+    variables: { first: 128 },
+  });
+
   return (
     <>
       <h1 className="sr-only">
@@ -131,12 +140,36 @@ export default async function CategoryPage({
           {intl.formatMessage({ id: "page.collection.no-products-found" })}
         </p>
       ) : (
-        <Grid className="order-2 w-full max-w-7xl grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          <ProductGridItems
+        <>
+          <CollectionsNav
+            className="grid flex-none content-start sm:mt-8 md:order-1 md:w-1/6"
+            collections={collections}
+            dictionary={dictionary}
             lang={lang}
-            productFragmentRefs={productFragmentRefs}
           />
-        </Grid>
+          <SortBy
+            className="grid flex-none content-start sm:mt-8 md:order-3 md:w-1/6"
+            defaultSort={productCollectionDefaultSort}
+            dictionary={dictionary}
+            lang={lang}
+          />
+          <Grid
+            className={cn(
+              "order-2 w-full max-w-screen-2xl grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
+              {
+                "xl:grid-cols-3":
+                  process.env
+                    .NEXT_PUBLIC_FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE ===
+                  "true",
+              },
+            )}
+          >
+            <ProductGridItems
+              lang={lang}
+              productFragmentRefs={productFragmentRefs}
+            />
+          </Grid>
+        </>
       )}
     </>
   );
