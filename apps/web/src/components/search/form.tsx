@@ -56,7 +56,6 @@ export function SearchForm({
   return (
     <form
       className={cn("relative m-0 flex items-center p-0", className)}
-      id="search-form"
       onBlur={() => setSearchIsOpen(false)}
       onSubmit={onSubmit}
       tabIndex={-1}

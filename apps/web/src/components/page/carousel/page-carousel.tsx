@@ -55,10 +55,10 @@ export async function PageCarousel({
           return (
             <CarouselItem
               className="sm:basis-1/2 lg:basis-1/3 relative"
-              key={image.url || index}
+              key={image.url ?? index}
             >
               <Image
-                alt={image.altText || page.title}
+                alt={image.altText ?? page.title}
                 blurDataURL={image.blurDataURL}
                 className="h-full object-cover"
                 fill
