@@ -1,5 +1,6 @@
 "use client";
 
+import { breakpoints } from "@/lib/tailwind";
 import { createIntl } from "@formatjs/intl";
 import { type ResultOf } from "@graphql-typed-document-node/core";
 import { useMediaQuery } from "@react-hookz/web";
@@ -49,7 +50,11 @@ export function LocationComboBoxResponsive({
   lang,
 }: LocationComboBoxResponsiveProps) {
   const [open, setOpen] = useState(false);
-  const isMd = useMediaQuery("only screen and (min-width : 768px)");
+
+  const mediaQueries = Object.fromEntries(
+    Object.entries(breakpoints).map(([key, values]) => [key, useMediaQuery(`only screen and (min-width : ${values.min.toString()})`)]),
+  );
+
 
   const router = useRouter();
 
@@ -104,7 +109,7 @@ export function LocationComboBoxResponsive({
       );
     });
 
-  if (isMd) {
+  if (mediaQueries.md) {
     return (
       <>
         <Select

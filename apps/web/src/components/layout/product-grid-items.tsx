@@ -1,10 +1,8 @@
 import { Grid } from "@/components/grid";
 import { Tile } from "@/components/grid/tile";
 import {
-  minWidthLg,
-  minWidthSm,
-  minWidthXl,
-  transitionDelays,
+  breakpoints,
+  transitionDelays
 } from "@/lib/tailwind";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
@@ -58,7 +56,7 @@ export function ProductGridItems({
                   lang={lang}
                   priority={index <= 4}
                   productBasicFragmentRef={productBasicFragmentRef}
-                  sizes={`100vw, (min-width: ${minWidthSm}) 50vw, (min-width: ${minWidthLg}) 33vw, (min-width: ${minWidthXl}) 25vw`}
+                  sizes={`(max-width: ${breakpoints.sm.max.toString()}) 100vw, (max-width: ${breakpoints.md.max.toString()}) 50vw, (max-width: ${breakpoints.lg.max.toString()}) 33vw, 25vw`}
                   video={video}
                 />
               </Link>

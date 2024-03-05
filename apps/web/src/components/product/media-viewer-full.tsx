@@ -3,6 +3,7 @@
 import { Image } from "@/components/media/image";
 import { Images } from "@/components/media/images";
 import { Videos } from "@/components/media/videos";
+import { breakpoints } from "@/lib/tailwind";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   getFragmentData,
@@ -97,7 +98,8 @@ export function MediaViewerFull({
         images={images}
         imageElementRefs={imageElementRefs}
         instance={0}
-        sizes="(max-width: 639px) 100vw, 50vw"
+        sizes={`(max-width: ${breakpoints.sm.max.toString()}) 100vw, (max-width: ${breakpoints.md.max.toString()}) 50vw, (max-width: ${breakpoints.lg.max.toString()}) 33vw, 25vw`}
+        
       />
 
       <Videos
@@ -112,7 +114,7 @@ export function MediaViewerFull({
         idPrefix="suffix"
         images={images}
         instance={1}
-        sizes="(max-width: 639px) 100vw, 50vw"
+        sizes={`(max-width: ${breakpoints.sm.max.toString()}) 100vw, (max-width: ${breakpoints.md.max.toString()}) 50vw, (max-width: ${breakpoints.lg.max.toString()}) 33vw, 25vw`}
       />
 
       <nav className="pointer-events-none fixed left-8 top-0 z-30 hidden h-full w-16 grid-flow-row content-center gap-4 lg:grid">

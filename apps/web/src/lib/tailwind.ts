@@ -4,25 +4,18 @@ import resolveConfig from "tailwindcss/resolveConfig";
 
 export const config = resolveConfig(baseConfig);
 
-export const minWidthSm =
-  (!Array.isArray(config.theme?.screens) && config.theme?.screens?.sm) ?? "0px";
-
-export const minWidthMd =
-  (!Array.isArray(config.theme?.screens) && config.theme?.screens?.md) ?? "0px";
-
-export const minWidthLg =
-  (!Array.isArray(config.theme?.screens) && config.theme?.screens?.lg) ?? "0px";
-
-export const minWidthXl =
-  (!Array.isArray(config.theme?.screens) && config.theme?.screens?.xl) ?? "0px";
+export const breakpoints = {
+  'sm': { 'min': new CSSUnitValue(640, 'px'), 'max': new CSSUnitValue(767, 'px') },
+  'md': { 'min': new CSSUnitValue(768, 'px'), 'max': new CSSUnitValue(1023, 'px') },
+  'lg': { 'min': new CSSUnitValue(1024, 'px'), 'max': new CSSUnitValue(1279, 'px') },
+  'xl': { 'min': new CSSUnitValue(1280, 'px'), 'max': new CSSUnitValue(1535, 'px') },
+  '2xl': { 'min': new CSSUnitValue(1536, 'px'), 'max': new CSSUnitValue(Infinity, 'px') },
+} as const;
 
 export const themeColors = cn(
   "fill-black stroke-black text-black bg-white",
   "dark:fill-white dark:stroke-white dark:text-white dark:bg-black",
   "selection:bg-gray-500/50",
-  // "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))]",
-  // "from-gray-50 to-white",
-  // "dark:from-gray-950 dark:to-gray-900",
 );
 
 export const animationDelays = [
