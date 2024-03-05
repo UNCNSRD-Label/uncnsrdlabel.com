@@ -10,7 +10,7 @@ import {
   getLocalizationDetailsHandler,
   getProductsHandler,
   productDefaultSort,
-  productSorting
+  productSorting,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { type Metadata } from "next";
 import { type ResolvedIntlConfig } from "react-intl";
@@ -86,8 +86,11 @@ export default async function SearchPage({
         </header>
       ) : null}
       {productFragmentRefs.length > 0 ? (
-        <Grid className="w-full max-w-7xl grid-cols-2 lg:grid-cols-3">
-          <ProductGridItems lang={lang} productFragmentRefs={productFragmentRefs} />
+        <Grid className="w-full max-w-7xl grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <ProductGridItems
+            lang={lang}
+            productFragmentRefs={productFragmentRefs}
+          />
         </Grid>
       ) : (
         <Link className="btn" href="/search">
