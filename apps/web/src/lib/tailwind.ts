@@ -1,15 +1,19 @@
-import { cn } from "@uncnsrdlabel/lib";
+import { cn, CSSUnitValuePonyfill } from "@uncnsrdlabel/lib";
 import baseConfig from "@uncnsrdlabel/tailwind-config";
 import resolveConfig from "tailwindcss/resolveConfig";
 
 export const config = resolveConfig(baseConfig);
+
+if (!globalThis.CSSUnitValue) {
+  globalThis.CSSUnitValue = CSSUnitValuePonyfill;
+}
 
 export const breakpoints = {
   'sm': { 'min': new CSSUnitValue(640, 'px'), 'max': new CSSUnitValue(767, 'px') },
   'md': { 'min': new CSSUnitValue(768, 'px'), 'max': new CSSUnitValue(1023, 'px') },
   'lg': { 'min': new CSSUnitValue(1024, 'px'), 'max': new CSSUnitValue(1279, 'px') },
   'xl': { 'min': new CSSUnitValue(1280, 'px'), 'max': new CSSUnitValue(1535, 'px') },
-  '2xl': { 'min': new CSSUnitValue(1536, 'px'), 'max': new CSSUnitValue(Infinity, 'px') },
+  '2xl': { 'min': new CSSUnitValue(1536, 'px'), 'max': null },
 } as const;
 
 export const themeColors = cn(
