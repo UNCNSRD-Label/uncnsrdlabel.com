@@ -83,7 +83,6 @@ export function ProductCard({
       >
         <figure
           className="relative grid aspect-square gap-8 overflow-hidden"
-          id="image"
         >
           <Image
             alt={image[0].altText}

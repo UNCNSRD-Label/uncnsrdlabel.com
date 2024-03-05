@@ -1,5 +1,6 @@
 "use client";
 
+import { Image } from "@/components/media/image";
 import { Images } from "@/components/media/images";
 import { Videos } from "@/components/media/videos";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
@@ -11,12 +12,13 @@ import {
   type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
-import Image from "next/image";
 import { useRef, type MutableRefObject } from "react";
 
-export function ProductMedia({
+export function MediaViewerFull({
+  className,
   productDetailsFragmentRef,
 }: {
+  className?: string;
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }) {
   const mediaClassName =
@@ -84,8 +86,10 @@ export function ProductMedia({
 
   return (
     <div
-      className="ghost-scrollbar relative z-0 col-span-full grid h-fit w-full snap-both snap-mandatory grid-flow-col justify-start overflow-x-scroll scroll-smooth lg:absolute"
-      id="images"
+      className={cn(
+        "ghost-scrollbar grid snap-both snap-mandatory grid-flow-col justify-start overflow-x-scroll scroll-smooth",
+        className,
+      )}
     >
       <Images
         className={mediaClassName}

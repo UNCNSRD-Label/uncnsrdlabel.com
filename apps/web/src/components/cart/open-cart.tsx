@@ -17,7 +17,7 @@ export function OpenCart({
         )}
       />
 
-      <span aria-live="polite" className={cn("bg-hotPink absolute right-0 top-0 -mr-1.5 sm:-mr-2 -mt-2 h-4 w-4 rounded text-[11px] font-medium text-white", {
+      <span aria-live="polite" className={cn("bg-hotPink absolute right-0 top-0 -mr-1.5 sm:-mr-2 -mt-2 h-4 w-4 rounded text-[11px] font-medium text-inherit", {
         "opacity-0": !quantity,
       })} role="status">
         {quantity}
