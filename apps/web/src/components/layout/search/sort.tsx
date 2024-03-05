@@ -2,12 +2,12 @@
 
 import { createIntl } from "@formatjs/intl";
 import {
-  productCollectionSorting,
   type ProductCollectionSortItem,
   type ProductSortItem,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
-import { Usable, use } from "react";
+import { useSearchParams } from "next/navigation";
+import { Usable, use, useEffect, useState } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
 import { RefineBy } from "./refine";
 import { SortRefineItem } from "./refine/item";
@@ -17,12 +17,14 @@ export function SortBy({
   defaultSort,
   dictionary,
   lang,
+  sortItems,
   title,
 }: {
   className?: string;
   defaultSort: ProductCollectionSortItem | ProductSortItem;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
   lang: Intl.BCP47LanguageTag;
+  sortItems: ProductCollectionSortItem[] | ProductSortItem[];
   title?: string;
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
@@ -32,8 +34,23 @@ export function SortBy({
     messages,
   });
 
+  const searchParams = useSearchParams();
+
+  const [active, setActive] = useState<string>(
+    sortItems.find((sortItem) => sortItem.slug === searchParams.get("sort"))
+      ?.title ?? defaultSort.title,
+  );
+
+  useEffect(() => {
+    const matchedSortItem =
+      sortItems.find((sortItem) => sortItem.slug === searchParams.get("sort"))
+        ?.title ?? defaultSort.title;
+    setActive(matchedSortItem);
+  }, [searchParams]);
+
   return (
     <RefineBy
+      active={active}
       className={cn(
         {
           hidden:
@@ -44,7 +61,7 @@ export function SortBy({
       )}
       title={title ?? intl.formatMessage({ id: "component.SortBy.title" })}
     >
-      {productCollectionSorting.map((item) => (
+      {sortItems.map((item) => (
         <SortRefineItem key={item.title} item={item} />
       ))}
     </RefineBy>

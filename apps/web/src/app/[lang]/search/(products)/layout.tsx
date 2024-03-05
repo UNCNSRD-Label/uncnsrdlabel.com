@@ -4,12 +4,12 @@ import { getDictionary } from "@/lib/dictionary";
 import { type LayoutProps } from "@/types/next";
 import {
   getCollectionRefsHandler,
-  productCollectionSortItemDefault,
-  productCollectionSortItems,
+  productSortItemDefault,
+  productSortItems,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { PropsWithChildren } from "react";
 
-export default async function SearchCollectionLayout({
+export default async function SearchProductsLayout({
   children,
   params: { lang },
 }: PropsWithChildren<LayoutProps>) {
@@ -30,10 +30,10 @@ export default async function SearchCollectionLayout({
       />
       <SortBy
         className="grid flex-none content-start sm:mt-8 md:order-3 md:w-1/6"
-        defaultSort={productCollectionSortItemDefault}
+        defaultSort={productSortItemDefault}
         dictionary={dictionary}
         lang={lang}
-        sortItems={productCollectionSortItems}
+        sortItems={productSortItems}
       />
       {children}
     </>

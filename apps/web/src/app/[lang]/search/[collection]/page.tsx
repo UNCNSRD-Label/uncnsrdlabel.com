@@ -1,22 +1,18 @@
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
-import { CollectionsNav } from "@/components/layout/search/collections";
-import { SortBy } from "@/components/layout/search/sort";
 import { getDictionary } from "@/lib/dictionary";
 import { getAlternativeLanguages } from "@/lib/i18n";
 import { getCanonical } from "@/lib/metadata";
 import {
   collectionFragment,
   getCollectionHandler,
-  getCollectionRefsHandler,
   getCollectionWithProductsHandler,
   getFragmentData,
   getLocalizationDetailsHandler,
-  productCollectionDefaultSort,
-  productCollectionSorting,
-  seoFragment
+  productCollectionSortItemDefault,
+  productCollectionSortItems,
+  seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { cn } from "@uncnsrdlabel/lib";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { createIntl, type ResolvedIntlConfig } from "react-intl";
@@ -65,7 +61,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function CategoryPage({
+export default async function SearchCollectionPage({
   params: { collection: handle, lang },
   searchParams,
 }: {
@@ -84,8 +80,8 @@ export default async function CategoryPage({
   const { sort } = searchParams as { [key: string]: string };
 
   const { sortKey, reverse } =
-    productCollectionSorting.find((item) => item.slug === sort) ||
-    productCollectionDefaultSort;
+    productCollectionSortItems.find((item) => item.slug === sort) ||
+    productCollectionSortItemDefault;
 
   const collectionFragmentRef = await getCollectionHandler({
     variables: { handle },
@@ -113,11 +109,6 @@ export default async function CategoryPage({
 
   const results = collectionWithProducts?.products.edges.length;
 
-  const collections = await getCollectionRefsHandler({
-    lang,
-    variables: { first: 128 },
-  });
-
   return (
     <>
       <h1 className="sr-only">
@@ -140,36 +131,12 @@ export default async function CategoryPage({
           {intl.formatMessage({ id: "page.collection.no-products-found" })}
         </p>
       ) : (
-        <>
-          <CollectionsNav
-            className="grid flex-none content-start sm:mt-8 md:order-1 md:w-1/6"
-            collections={collections}
-            dictionary={dictionary}
+        <Grid className="order-2">
+          <ProductGridItems
             lang={lang}
+            productFragmentRefs={productFragmentRefs}
           />
-          <SortBy
-            className="grid flex-none content-start sm:mt-8 md:order-3 md:w-1/6"
-            defaultSort={productCollectionDefaultSort}
-            dictionary={dictionary}
-            lang={lang}
-          />
-          <Grid
-            className={cn(
-              "order-2 w-full max-w-screen-2xl grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
-              {
-                "xl:grid-cols-3":
-                  process.env
-                    .NEXT_PUBLIC_FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE ===
-                  "true",
-              },
-            )}
-          >
-            <ProductGridItems
-              lang={lang}
-              productFragmentRefs={productFragmentRefs}
-            />
-          </Grid>
-        </>
+        </Grid>
       )}
     </>
   );

@@ -4,6 +4,7 @@ import { ResultOf } from "@graphql-typed-document-node/core";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   ProductCollectionSortItem,
+  ProductSortItem,
   collectionFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, createUrl } from "@uncnsrdlabel/lib";
@@ -66,7 +67,7 @@ export function PathRefineItem({
 export function SortRefineItem({
   item,
 }: {
-  item: ProductCollectionSortItem;
+  item: ProductCollectionSortItem | ProductSortItem;
 }) {
   const pathname = usePathname();
 

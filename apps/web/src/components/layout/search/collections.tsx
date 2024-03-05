@@ -4,7 +4,7 @@ import { createIntl } from "@formatjs/intl";
 import { ResultOf } from "@graphql-typed-document-node/core";
 import { collectionFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
-import { useParams, usePathname, useSearchParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import { Usable, use, useEffect, useState } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
 import { RefineBy } from "./refine";
@@ -31,18 +31,16 @@ export function CollectionsNav({
   });
 
   const params = useParams();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
 
-  const [active, setActive] = useState("all");
+  const [active, setActive] = useState("All");
 
   useEffect(() => {
     collections.forEach((collection) => {
       if (params.collection === collection.handle) {
-        setActive(params.collection);
+        setActive(collection.title);
       }
     });
-  }, [pathname, collections, searchParams]);
+  }, [params.collection, collections]);
 
   return (
     <RefineBy

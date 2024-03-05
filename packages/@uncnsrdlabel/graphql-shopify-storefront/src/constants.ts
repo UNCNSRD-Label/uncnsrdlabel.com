@@ -14,22 +14,22 @@ export type ProductSortItem = SortItem & {
   sortKey: ProductSortKeys;
 };
 
-export const productCollectionDefaultSort: ProductCollectionSortItem = {
+export const productCollectionSortItemDefault: ProductCollectionSortItem = {
   title: "Relevance",
   slug: null,
   sortKey: ProductCollectionSortKeys.Relevance,
   reverse: false,
 };
 
-export const productDefaultSort: ProductSortItem = {
+export const productSortItemDefault: ProductSortItem = {
   title: "Relevance",
   slug: null,
   sortKey: ProductSortKeys.Relevance,
   reverse: false,
 };
 
-export const productCollectionSorting: ProductCollectionSortItem[] = [
-  productCollectionDefaultSort,
+export const productCollectionSortItems: ProductCollectionSortItem[] = [
+  productCollectionSortItemDefault,
   {
     title: "Trending",
     slug: "trending-desc",
@@ -56,8 +56,8 @@ export const productCollectionSorting: ProductCollectionSortItem[] = [
   },
 ];
 
-export const productSorting: ProductSortItem[] = [
-  productDefaultSort,
+export const productSortItems: ProductSortItem[] = [
+  productSortItemDefault,
   {
     title: "Trending",
     slug: "trending-desc",

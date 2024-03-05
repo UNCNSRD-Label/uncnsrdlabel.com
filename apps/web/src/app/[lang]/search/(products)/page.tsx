@@ -9,8 +9,8 @@ import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   getLocalizationDetailsHandler,
   getProductsHandler,
-  productDefaultSort,
-  productSorting,
+  productSortItemDefault,
+  productSortItems,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { type Metadata } from "next";
 import { type ResolvedIntlConfig } from "react-intl";
@@ -43,7 +43,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function SearchPage({
+export default async function SearchProductsPage({
   params: { lang },
   searchParams,
 }: PageProps) {
@@ -58,7 +58,7 @@ export default async function SearchPage({
 
   const { sort, q: query } = searchParams as { [key: string]: string };
   const { sortKey, reverse } =
-    productSorting.find((item) => item.slug === sort) || productDefaultSort;
+    productSortItems.find((item) => item.slug === sort) || productSortItemDefault;
 
   const productConnection = await getProductsHandler({
     variables: {
@@ -86,7 +86,7 @@ export default async function SearchPage({
         </header>
       ) : null}
       {productFragmentRefs.length > 0 ? (
-        <Grid className="w-full max-w-screen-2xl grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <Grid className="order-2">
           <ProductGridItems
             lang={lang}
             productFragmentRefs={productFragmentRefs}
