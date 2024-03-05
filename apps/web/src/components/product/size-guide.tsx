@@ -36,9 +36,12 @@ export const SizeGuide = async ({
     articleHandle,
   });
 
-  const html = blog?.articleByHandle?.contentHtml.replaceAll("{eu-size-shown-on-site}", intl.formatMessage({
-    id: "component.ProductDetails.size-guide.popover.content.eu-size-shown-on-site",
-  }));
+  const html = blog?.articleByHandle?.contentHtml.replaceAll(
+    "{eu-size-shown-on-site}",
+    intl.formatMessage({
+      id: "component.ProductDetails.size-guide.popover.content.eu-size-shown-on-site",
+    }),
+  );
 
   if (!html) {
     return null;

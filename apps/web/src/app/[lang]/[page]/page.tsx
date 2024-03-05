@@ -85,14 +85,11 @@ export default async function PagePage({
       )}
 
       <span className="mb-8 hidden text-sm italic">
-        {`This document was last updated on ${new Intl.DateTimeFormat(
-          lang,
-          {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          },
-        ).format(new Date(page.updatedAt))}.`}
+        {`This document was last updated on ${new Intl.DateTimeFormat(lang, {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        }).format(new Date(page.updatedAt))}.`}
       </span>
     </Article>
   );

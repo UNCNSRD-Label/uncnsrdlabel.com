@@ -2,7 +2,7 @@
 
 import { getProductVariantBySelectedOptionsUtility } from "@/lib/shopify";
 import { type ProductOption } from "@shopify/hydrogen/storefront-api-types";
-import { useMemo } from 'react';
+import { useMemo } from "react";
 
 export function SquarePlacement({
   handle,
@@ -28,10 +28,15 @@ export function SquarePlacement({
       skus: product?.variantBySelectedOptions?.sku,
       categories: product?.productType,
     }),
-    [product?.variantBySelectedOptions]
+    [product?.variantBySelectedOptions],
   );
 
-  if (!lang || !placement || !placement.currency || !["AUD", "USD", "CAD", "GBP", "NZD"].includes(placement.currency)) {
+  if (
+    !lang ||
+    !placement ||
+    !placement.currency ||
+    !["AUD", "USD", "CAD", "GBP", "NZD"].includes(placement.currency)
+  ) {
     return null;
   }
 

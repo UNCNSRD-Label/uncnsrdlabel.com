@@ -24,7 +24,15 @@ export async function OpengraphImageResponse({
   return new ImageResponse(
     (
       <div tw="bg-black flex relative h-full w-full">
-        {image && <img tw="absolute inset-0 h-full w-full object-cover" alt={image.altText ?? title ?? description ?? "Product image"} height={size?.height} width={size?.width} src={image.url} />}
+        {image && (
+          <img
+            tw="absolute inset-0 h-full w-full object-cover"
+            alt={image.altText ?? title ?? description ?? "Product image"}
+            height={size?.height}
+            width={size?.width}
+            src={image.url}
+          />
+        )}
         <div tw="flex flex-col relative h-full w-full items-start justify-end p-8 text-white">
           {title && <h1 tw="mb-0">{title}</h1>}
           {description && <p tw="mb-0 text-sm">{description}</p>}

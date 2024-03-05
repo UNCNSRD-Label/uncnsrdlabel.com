@@ -1,6 +1,6 @@
 import NextLink, { LinkProps as NextLinkProps } from "next/link";
 import { AnchorHTMLAttributes, PropsWithChildren, forwardRef } from "react";
- 
+
 export type LinkProps = PropsWithChildren<
   {
     className?: string;

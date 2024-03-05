@@ -60,7 +60,7 @@ export const productWithVariantsFragment = graphql(/* GraphQL */ `
       }
     }
     requiresSellingPlan
-    sellingPlanGroups(first:1) {
+    sellingPlanGroups(first: 1) {
       edges {
         node {
           name

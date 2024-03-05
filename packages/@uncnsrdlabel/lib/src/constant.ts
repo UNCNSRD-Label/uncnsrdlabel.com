@@ -1,5 +1,5 @@
 export const TAGS = {
-  cart: 'cart',
+  cart: "cart",
   collections: "collections",
   products: "products",
 };
@@ -74,4 +74,4 @@ export const PRE_GENERATED_BCP47_LANGUAGE_TAGS: Intl.BCP47LanguageTag[] = [
   "zh-CN",
   "zh-HK",
   "zh-TW",
-]
+];

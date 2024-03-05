@@ -124,7 +124,11 @@ function SubmitButton({
 
         if (cart?.id) {
           console.debug("cart", { cart });
-          setCookie("cart", { cost: cart.cost, id: cart.id, totalQuantity: cart.totalQuantity });
+          setCookie("cart", {
+            cost: cart.cost,
+            id: cart.id,
+            totalQuantity: cart.totalQuantity,
+          });
           setCookie("cartId", cart.id);
 
           toast.success(
@@ -179,7 +183,11 @@ function SubmitButton({
 
         if (cart?.id) {
           console.debug("cart", { cart });
-          setCookie("cart", { cost: cart.cost, id: cart.id, totalQuantity: cart.totalQuantity });
+          setCookie("cart", {
+            cost: cart.cost,
+            id: cart.id,
+            totalQuantity: cart.totalQuantity,
+          });
           setCookie("cartId", cart.id);
 
           toast.success(

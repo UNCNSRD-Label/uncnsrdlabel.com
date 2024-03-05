@@ -10,4 +10,3 @@ export * from "./page";
 export * from "./product";
 export * from "./product-recommendations";
 export * from "./shop";
-

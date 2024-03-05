@@ -1,9 +1,9 @@
 type FormAction = (
-    _currentState: any,
-    formData: FormData,
+  _currentState: any,
+  formData: FormData,
 ) => Promise<{
-    message?: string;
-    messageKey?: string;
-    ok: boolean;
-    status: number;
-}>
+  message?: string;
+  messageKey?: string;
+  ok: boolean;
+  status: number;
+}>;

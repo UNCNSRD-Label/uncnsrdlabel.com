@@ -10,9 +10,7 @@ export const metadata: Metadata = {
   description: "Edit your user profile details",
 };
 
-export default function AccountProfilePage({
-  params: { lang },
-}: PageProps) {
+export default function AccountProfilePage({ params: { lang } }: PageProps) {
   const dictionary = getDictionary({ lang });
 
   const customerAccessToken = cookies().get("customerAccessToken")?.value;

@@ -37,9 +37,7 @@ export function MetaFields({
               data-type={metafield.type}
               key={`dt.${metafield?.key}`}
             >
-              {metafield?.key
-                ?.split("_")
-                .join(" ")}
+              {metafield?.key?.split("_").join(" ")}
             </dt>
 
             <dd

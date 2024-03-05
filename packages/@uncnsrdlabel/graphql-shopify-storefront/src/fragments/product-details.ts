@@ -100,7 +100,7 @@ export const productDetailsFragment = graphql(/* GraphQL */ `
       ...productMetafield
     }
     requiresSellingPlan
-    sellingPlanGroups(first:1) {
+    sellingPlanGroups(first: 1) {
       edges {
         node {
           name

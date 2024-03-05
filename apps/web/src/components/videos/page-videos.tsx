@@ -17,7 +17,10 @@ import { Suspense } from "react";
 export function PageVideos({ handle, ...props }: { handle: string }) {
   const variables = { handle };
 
-  const { data, error, isError, isLoading } = useGetShopifyGraphQL(pageQuery, variables);
+  const { data, error, isError, isLoading } = useGetShopifyGraphQL(
+    pageQuery,
+    variables,
+  );
 
   if (isLoading) {
     return <span>Loading...</span>;

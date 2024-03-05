@@ -57,7 +57,7 @@ export function Addresses({
 
         return (
           <AddressSummary
-            className="p-4 sm:p-8 border"
+            className="border p-4 sm:p-8"
             customer={customer}
             dictionary={dictionary}
             key={mailingAddress.id}

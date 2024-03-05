@@ -74,7 +74,7 @@ function googleTagManager(
       if (typeof window === "undefined") {
         return;
       }
-    
+
       const {
         containerId,
         dataLayerName,
@@ -176,9 +176,11 @@ function googleTagManager(
         !!initializedDataLayerName &&
         !!(
           // @ts-expect-error Element implicitly has an 'any' type because index expression is not of type 'number'
-          window[initializedDataLayerName] &&
-          // @ts-expect-error Property 'push' does not exist on type 'never'.
-          Array.prototype.push !== window[initializedDataLayerName].push
+          (
+            window[initializedDataLayerName] &&
+            // @ts-expect-error Property 'push' does not exist on type 'never'.
+            Array.prototype.push !== window[initializedDataLayerName].push
+          )
         );
       return (
         scriptLoaded(
@@ -206,7 +208,7 @@ function scriptLoaded(
   if (typeof window === "undefined") {
     return;
   }
-  
+
   let regex = regexCache[containerId];
 
   if (!regex) {

@@ -49,7 +49,12 @@ function Submit({
   const { pending } = useFormStatus();
 
   return (
-    <Button className={className} disabled={pending} size="base" variant="default">
+    <Button
+      className={className}
+      disabled={pending}
+      size="base"
+      variant="default"
+    >
       {intl.formatMessage({
         id: "component.AccountEditForm.submit",
       })}
@@ -237,9 +242,7 @@ export function AccountEditForm({
           </div>
           <Submit className="w-full" dictionary={dictionary} lang={lang} />
         </CardContent>
-        <CardFooter className="grid grid-flow-col justify-start gap-4 text-sm">
-          
-        </CardFooter>
+        <CardFooter className="grid grid-flow-col justify-start gap-4 text-sm"></CardFooter>
         <input type="hidden" name="_shopify_y" value={_shopify_y} />
       </form>
     </Card>

@@ -1,5 +1,10 @@
 import { MetafieldMapper } from "@/components/product/metafield-mapper";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@uncnsrdlabel/components/atoms/tabs";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@uncnsrdlabel/components/atoms/tabs";
 import {
   getFragmentData,
   productDetailsFragment,
@@ -46,10 +51,7 @@ export function ProductDetailsTabs({
   const defaultValue = metafieldFragmentsFiltered[0]?.key;
 
   return (
-    <Tabs
-      className={cn("w-full", className)}
-      defaultValue={defaultValue}
-    >
+    <Tabs className={cn("w-full", className)} defaultValue={defaultValue}>
       <TabsList className="border-b border-neutral-200">
         {metafieldFragmentsFiltered.map((metafield) => (
           <TabsTrigger
@@ -57,15 +59,13 @@ export function ProductDetailsTabs({
             key={`Trigger.${metafield.key}`}
             value={metafield.key}
           >
-            {metafield?.key
-              ?.split("_")
-              .join(" ")}
+            {metafield?.key?.split("_").join(" ")}
           </TabsTrigger>
         ))}
       </TabsList>
       {metafieldFragmentsFiltered.map((metafield) => (
         <TabsContent
-          className="text-xs mt-4"
+          className="mt-4 text-xs"
           key={`Content.${metafield.key}`}
           value={metafield.key}
         >

@@ -5,12 +5,12 @@ import { useDebouncedEffect } from "@react-hookz/web";
 import { getShopifyCookies } from "@shopify/hydrogen-react";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
 } from "@uncnsrdlabel/components/atoms/card";
 import { Input } from "@uncnsrdlabel/components/atoms/input";
 import { Label } from "@uncnsrdlabel/components/atoms/label";
@@ -39,7 +39,12 @@ function Submit({
   const { pending } = useFormStatus();
 
   return (
-    <Button className={className} disabled={pending} size="base" variant="default">
+    <Button
+      className={className}
+      disabled={pending}
+      size="base"
+      variant="default"
+    >
       {intl.formatMessage({
         id: "component.AccountResetForm.submit",
       })}
@@ -129,7 +134,13 @@ export function AccountResetForm({
         <CardContent className="grid gap-4">
           <div className="grid gap-2">
             <Label htmlFor="email">Email</Label>
-            <Input autoComplete="email" id="email" name="email" type="email" placeholder="me@example.com" />
+            <Input
+              autoComplete="email"
+              id="email"
+              name="email"
+              type="email"
+              placeholder="me@example.com"
+            />
           </div>
           <Submit className="mt-4 w-full" dictionary={dictionary} lang={lang} />
         </CardContent>

@@ -12,7 +12,9 @@ export const metadata: Metadata = {
   description: "Edit your orders",
 };
 
-export default async function AccountOrdersPage({ params: { lang } }: PageProps) {
+export default async function AccountOrdersPage({
+  params: { lang },
+}: PageProps) {
   const dictionary = getDictionary({ lang });
 
   const messages: ResolvedIntlConfig["messages"] = await dictionary;
@@ -42,7 +44,7 @@ export default async function AccountOrdersPage({ params: { lang } }: PageProps)
           })}
         </span>
       </header>
- 
+
       <Orders dictionary={dictionary} lang={lang} />
     </div>
   );

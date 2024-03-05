@@ -16,8 +16,9 @@ export function Logo({ blend, className, fill }: Props) {
     threshold: [0, 0.5],
   });
 
-  const intersecting = (((rootIntersection?.intersectionRatio ?? 0) > 0) ||
-  ((rootIntersection?.boundingClientRect?.top ?? 0) < 0))
+  const intersecting =
+    (rootIntersection?.intersectionRatio ?? 0) > 0 ||
+    (rootIntersection?.boundingClientRect?.top ?? 0) < 0;
 
   const position = intersecting ? "absolute" : "fixed";
 
@@ -34,7 +35,7 @@ export function Logo({ blend, className, fill }: Props) {
         className="bottom-12 grid w-full justify-items-center justify-self-center"
         ref={rootRef}
         style={{
-          position
+          position,
         }}
       >
         <Link className={cn("pointer-events-auto", className)} href="/">

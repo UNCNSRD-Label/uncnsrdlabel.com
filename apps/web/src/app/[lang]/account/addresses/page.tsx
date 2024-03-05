@@ -12,7 +12,9 @@ export const metadata: Metadata = {
   description: "Edit your addresses",
 };
 
-export default async function AccountAddressesPage({ params: { lang } }: PageProps) {
+export default async function AccountAddressesPage({
+  params: { lang },
+}: PageProps) {
   const dictionary = getDictionary({ lang });
 
   const messages: ResolvedIntlConfig["messages"] = await dictionary;

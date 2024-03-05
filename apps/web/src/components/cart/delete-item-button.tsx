@@ -14,7 +14,7 @@ import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
   cartQuery,
   getShopifyGraphQL,
-  removeFromCartMutation
+  removeFromCartMutation,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, getQueryKey } from "@uncnsrdlabel/lib";
 import { Usable, use, useCallback } from "react";
@@ -81,7 +81,9 @@ export function DeleteItemButton({
 
   return (
     <Button
-      aria-label={intl.formatMessage({ id: "component.DeleteItemButton.remove" })}
+      aria-label={intl.formatMessage({
+        id: "component.DeleteItemButton.remove",
+      })}
       aria-disabled={isPending}
       className={cn(
         "ease flex h-4 w-4 items-center justify-center rounded-full bg-neutral-500 transition-all duration-200",
@@ -89,10 +91,7 @@ export function DeleteItemButton({
           "cursor-not-allowed": isPending,
         },
       )}
-      onClick={useCallback(
-        handleClickTrack,
-        [],
-      )}
+      onClick={useCallback(handleClickTrack, [])}
       variant="ghost"
     >
       {isPending ? (

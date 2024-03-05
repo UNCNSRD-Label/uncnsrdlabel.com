@@ -1,6 +1,6 @@
 import { type ReadonlyURLSearchParams } from "next/navigation";
 
-export function createUrl (
+export function createUrl(
   pathname: string,
   params: URLSearchParams | ReadonlyURLSearchParams,
 ) {
@@ -9,4 +9,4 @@ export function createUrl (
   const queryString = `${paramsString.length ? "?" : ""}${paramsString}`;
 
   return `${pathname}${queryString}`;
-};
+}

@@ -108,7 +108,7 @@ export function CartForm({
                   key={i}
                   className="flex w-full flex-col border-b border-neutral-300 dark:border-neutral-700"
                 >
-                  <div className="relative flex gap-4 w-full flex-row justify-between px-1 py-4">
+                  <div className="relative flex w-full flex-row justify-between gap-4 px-1 py-4">
                     <div className="absolute -mt-2 ml-[55px] self-start">
                       <DeleteItemButton
                         cartId={cart.id}
@@ -133,7 +133,7 @@ export function CartForm({
                         )}
                       </figure>
 
-                      <div className="flex flex-1 flex-col gap-4 text-sm justify-between">
+                      <div className="flex flex-1 flex-col justify-between gap-4 text-sm">
                         <div className="flex flex-col gap-2">
                           <span className="leading-tight">{product.title}</span>
                           {item.merchandise.title !== DEFAULT_OPTION ? (
@@ -200,7 +200,7 @@ export function CartForm({
                         </Suspense>
                       </div>
                       {preOrder && (
-                        <span className="text-xs text-center">
+                        <span className="text-center text-xs">
                           {preOrder.name}
                         </span>
                       )}

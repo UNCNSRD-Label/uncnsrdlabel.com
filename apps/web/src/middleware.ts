@@ -5,7 +5,7 @@ import {
 } from "@shopify/hydrogen/storefront-api-types";
 import { getLocalizationDetailsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getLangProperties } from "@uncnsrdlabel/lib";
-import { check } from 'language-tags';
+import { check } from "language-tags";
 import Negotiator from "negotiator";
 import { NextResponse, type NextRequest } from "next/server";
 
@@ -22,17 +22,20 @@ export const config = {
 };
 
 export async function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl
+  const { pathname } = request.nextUrl;
 
   if (pathname === "/favicon.ico") {
-    return
+    return;
   }
 
-  const cookie = request.cookies.get('lang');
+  const cookie = request.cookies.get("lang");
 
-  const defaultLanguageTag = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag;
+  const defaultLanguageTag = process.env
+    .NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag;
 
-  const defaultLanguageCode = defaultLanguageTag.split("-")?.[0] as LanguageCode;
+  const defaultLanguageCode = defaultLanguageTag.split(
+    "-",
+  )?.[0] as LanguageCode;
 
   const defaultCountryCode = defaultLanguageTag.split("-")?.[1] as CountryCode;
 
@@ -41,22 +44,22 @@ export async function middleware(request: NextRequest) {
   if (detectedLanguageTagInPathname && check(detectedLanguageTagInPathname)) {
     const response = NextResponse.next();
 
-    response.cookies.set('lang', detectedLanguageTagInPathname)
+    response.cookies.set("lang", detectedLanguageTagInPathname);
 
     return response;
   }
 
   if (cookie?.value) {
-    const pathnameHasLangCookieValue = pathname.startsWith(`/${cookie.value}`)
+    const pathnameHasLangCookieValue = pathname.startsWith(`/${cookie.value}`);
 
     if (pathnameHasLangCookieValue) {
-      return
+      return;
     } else if (check(cookie?.value)) {
       const lang = cookie.value as Intl.BCP47LanguageTag;
 
       // Redirect if there is no BCP47LanguageTag in the pathname
       // e.g. incoming request is /products, new URL is now /en-AU/products
-      request.nextUrl.pathname = `/${lang}${pathname}`
+      request.nextUrl.pathname = `/${lang}${pathname}`;
 
       const response = NextResponse.redirect(request.nextUrl);
 
@@ -65,24 +68,35 @@ export async function middleware(request: NextRequest) {
   }
 
   {
-    const detectedLang = request.headers.get("Accept-Language")?.split(",")?.[0] ?? process.env.NEXT_PUBLIC_DEFAULT_LOCALE!;
+    const detectedLang =
+      request.headers.get("Accept-Language")?.split(",")?.[0] ??
+      process.env.NEXT_PUBLIC_DEFAULT_LOCALE!;
 
     const { language: detectedLanguageCode } = getLangProperties(detectedLang);
 
-    const detectedCountryCode = (request.geo?.country ?? defaultCountryCode) as CountryCode;
+    const detectedCountryCode = (request.geo?.country ??
+      defaultCountryCode) as CountryCode;
 
-    const lang = ((detectedLanguageCode && detectedCountryCode) ? `${detectedLanguageCode}-${detectedCountryCode}` : process.env.NEXT_PUBLIC_DEFAULT_LOCALE) as Intl.BCP47LanguageTag;
+    const lang = (
+      detectedLanguageCode && detectedCountryCode
+        ? `${detectedLanguageCode}-${detectedCountryCode}`
+        : process.env.NEXT_PUBLIC_DEFAULT_LOCALE
+    ) as Intl.BCP47LanguageTag;
 
     const localization = await getLocalizationDetailsHandler({
       lang,
     });
 
-    const matchingCountryCode = localization.availableCountries.find((availableCountry) => availableCountry.isoCode === detectedCountryCode) ?? localization.country;
+    const matchingCountryCode =
+      localization.availableCountries.find(
+        (availableCountry) => availableCountry.isoCode === detectedCountryCode,
+      ) ?? localization.country;
 
-    const BCP47LanguageTags: Intl.BCP47LanguageTag[] = matchingCountryCode?.availableLanguages.flatMap((availableLanguage) => [
-      availableLanguage.isoCode.toLocaleLowerCase() as LanguageCode,
-      `${availableLanguage.isoCode.toLocaleLowerCase()}-${matchingCountryCode.isoCode}` as Intl.BCP47LanguageTag
-    ]);
+    const BCP47LanguageTags: Intl.BCP47LanguageTag[] =
+      matchingCountryCode?.availableLanguages.flatMap((availableLanguage) => [
+        availableLanguage.isoCode.toLocaleLowerCase() as LanguageCode,
+        `${availableLanguage.isoCode.toLocaleLowerCase()}-${matchingCountryCode.isoCode}` as Intl.BCP47LanguageTag,
+      ]);
 
     const headers: Negotiator.Headers = {
       "accept-language": `${detectedLanguageCode}-${detectedCountryCode},en;q=0.5`,
@@ -90,26 +104,30 @@ export async function middleware(request: NextRequest) {
 
     const languages = new Negotiator({ headers }).languages();
 
-    const availableLocales = BCP47LanguageTags
+    const availableLocales = BCP47LanguageTags;
 
-    const detectedLanguageTag = match(languages, availableLocales, defaultLanguageCode);
+    const detectedLanguageTag = match(
+      languages,
+      availableLocales,
+      defaultLanguageCode,
+    );
 
     // Check if there is any supported BCP47LanguageTag in the pathname
     const pathnameHasSupportedBCP47LanguageTag = BCP47LanguageTags?.some(
-      (BCP47LanguageTag) => pathname.startsWith(`/${BCP47LanguageTag}`)
-    )
+      (BCP47LanguageTag) => pathname.startsWith(`/${BCP47LanguageTag}`),
+    );
 
     if (pathnameHasSupportedBCP47LanguageTag) {
-      return
+      return;
     }
 
     // Redirect if there is no BCP47LanguageTag in the pathname
     // e.g. incoming request is /products, new URL is now /en-AU/products
-    request.nextUrl.pathname = `/${detectedLanguageTag}${pathname}`
+    request.nextUrl.pathname = `/${detectedLanguageTag}${pathname}`;
 
     const response = NextResponse.redirect(request.nextUrl);
 
-    response.cookies.set('lang', detectedLanguageTag)
+    response.cookies.set("lang", detectedLanguageTag);
 
     return response;
   }

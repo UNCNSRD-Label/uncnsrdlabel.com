@@ -46,7 +46,7 @@ export function SearchForm({
       newParams.delete("q");
     }
 
-    track('search', newParams);
+    track("search", newParams);
 
     router.push(createUrl("/search", newParams));
 
@@ -69,7 +69,9 @@ export function SearchForm({
         defaultValue={searchParams?.get("q") || ""}
         name="search"
         onFocus={() => setSearchIsOpen(true)}
-        placeholder={intl.formatMessage({ id: "component.SearchForm.placeholder" })}
+        placeholder={intl.formatMessage({
+          id: "component.SearchForm.placeholder",
+        })}
         tabIndex={0}
         type="text"
       />

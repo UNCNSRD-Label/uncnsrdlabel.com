@@ -13,22 +13,20 @@ export function findError<T extends object>(error: T): boolean {
   return prototype === null ? false : findError(prototype);
 }
 
-export function isObject (
-  object: unknown,
-): object is Record<string, unknown> {
+export function isObject(object: unknown): object is Record<string, unknown> {
   return (
     typeof object === "object" && object !== null && !Array.isArray(object)
   );
-};
+}
 
-export function isShopifyError (error: unknown): error is ShopifyErrorLike {
+export function isShopifyError(error: unknown): error is ShopifyErrorLike {
   if (!isObject(error)) return false;
 
   if (error instanceof Error) return true;
 
   return findError(error);
-};
+}
 
-export function formatErrorMessage (err: Error): string {
+export function formatErrorMessage(err: Error): string {
   return JSON.stringify(err, Object.getOwnPropertyNames(err));
 }

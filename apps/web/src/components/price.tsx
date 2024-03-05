@@ -5,7 +5,7 @@ export const Price = ({
   className,
   currencyCode = "USD",
   currencyCodeClassName,
-  lang
+  lang,
 }: {
   amount: string;
   className?: string;

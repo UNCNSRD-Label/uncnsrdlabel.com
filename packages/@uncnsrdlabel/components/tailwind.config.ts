@@ -1,5 +1,5 @@
 import sharedConfig from "@uncnsrdlabel/tailwind-config";
-import type { Config } from 'tailwindcss';
+import type { Config } from "tailwindcss";
 
 export default {
   // prefix ui lib classes to avoid conflicting with the app

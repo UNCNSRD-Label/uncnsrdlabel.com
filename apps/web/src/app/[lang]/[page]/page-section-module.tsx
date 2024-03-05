@@ -24,8 +24,9 @@ export function PageSectionModule({
     (field) => field.key === "classes",
   )?.value;
 
-  const style = pageSectionModule.fields?.find((field) => field.key === "style")
-    ?.value;
+  const style = pageSectionModule.fields?.find(
+    (field) => field.key === "style",
+  )?.value;
 
   const backgroundColor = pageSectionModule.fields?.find(
     (field) => field.key === "background_color",
@@ -135,21 +136,25 @@ export function PageSectionModule({
                   (field) => field.key === "text_size",
                 )?.value ?? "default";
 
-              const hashtag_regexp = /(^|\s)(#[a-z\d-]+)/ig
+              const hashtag_regexp = /(^|\s)(#[a-z\d-]+)/gi;
 
               const value = field.value.replaceAll(
                 hashtag_regexp,
-                "<span class=\"hashtag text-hotPink\">$2</span>"
+                '<span class="hashtag text-hotPink">$2</span>',
               );
 
               element = (
                 <Prose
-                  className={cn("max-w-full prose-thead:border-hotPink prose-tr:border-hotPink whitespace-pre-line", `prose-${textSize}`, {
-                    "prose-hotGreen": textColor === "hotGreen",
-                    "prose-hotOrange": textColor === "hotOrange",
-                    "prose-hotPink": textColor === "hotPink",
-                    "prose-white": textColor === "white",
-                  })}
+                  className={cn(
+                    "prose-thead:border-hotPink prose-tr:border-hotPink max-w-full whitespace-pre-line",
+                    `prose-${textSize}`,
+                    {
+                      "prose-hotGreen": textColor === "hotGreen",
+                      "prose-hotOrange": textColor === "hotOrange",
+                      "prose-hotPink": textColor === "hotPink",
+                      "prose-white": textColor === "white",
+                    },
+                  )}
                   html={value}
                   key={field.key}
                 />

@@ -21,7 +21,7 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getQueryKey } from "@uncnsrdlabel/lib";
 import { getCookie } from "cookies-next";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 import { Usable, use } from "react";
 import { SlUser } from "react-icons/sl";
 import { type ResolvedIntlConfig } from "react-intl";
@@ -104,7 +104,7 @@ export function NavbarAccount({
             </p>
           </div>
         </DropdownMenuLabel>
-        <DropdownMenuSeparator className="bg-gray-300 mx-2" />
+        <DropdownMenuSeparator className="mx-2 bg-gray-300" />
         <DropdownMenuItem>
           <Link
             className="flex items-center gap-2 whitespace-nowrap"
@@ -147,7 +147,7 @@ export function NavbarAccount({
             })}
           </Link>
         </DropdownMenuItem>
-        <DropdownMenuSeparator className="bg-gray-300 mx-2" />
+        <DropdownMenuSeparator className="mx-2 bg-gray-300" />
         <DropdownMenuItem>
           <Button
             className="hover:no-underline"

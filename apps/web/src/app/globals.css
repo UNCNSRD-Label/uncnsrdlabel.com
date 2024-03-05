@@ -81,7 +81,7 @@
 
   html {
     scroll-behavior: smooth;
-/*
+    /*
     &::before,
     &::after {
       content: "";
@@ -319,7 +319,6 @@
     @apply break-words md:break-normal;
 
     & table {
-
       & tr {
         & td,
         & th {

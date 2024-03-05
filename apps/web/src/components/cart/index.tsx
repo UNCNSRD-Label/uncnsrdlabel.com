@@ -43,10 +43,8 @@ export function Cart({
     messages,
   });
 
-  const {
-    data: cartCookieData = "{}",
-  } = useQuery({
-    queryKey: ['cart'],
+  const { data: cartCookieData = "{}" } = useQuery({
+    queryKey: ["cart"],
     queryFn: () => getCookie("cart") ?? "{}",
     refetchInterval: 5_000,
   });

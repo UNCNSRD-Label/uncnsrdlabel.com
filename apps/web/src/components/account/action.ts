@@ -2,10 +2,15 @@
 
 import {
   cartBuyerIdentityUpdateMutation,
-  getShopifyGraphQL, recoverAccountHandler, resetAccountHandler, signInToAccountHandler, signUpForAccountHandler, updateAccountHandler
+  getShopifyGraphQL,
+  recoverAccountHandler,
+  resetAccountHandler,
+  signInToAccountHandler,
+  signUpForAccountHandler,
+  updateAccountHandler,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { add, parseISO } from "date-fns";
-import { cookies } from 'next/headers';
+import { cookies } from "next/headers";
 
 export async function recoverAccountAction(
   _currentState: any,
@@ -25,23 +30,17 @@ export async function recoverAccountAction(
 
   let status = 500;
 
-  const variables = { email: email as string }
+  const variables = { email: email as string };
 
   try {
     const recoverAccountResponse = await recoverAccountHandler({ variables });
 
     const errors = recoverAccountResponse.customerRecover?.customerUserErrors;
 
-    if (
-      Array.isArray(errors) && errors.length > 0
-    ) {
-      throw new Error(
-        errors[0].message,
-        {
-          cause:
-            errors[0].code,
-        },
-      )
+    if (Array.isArray(errors) && errors.length > 0) {
+      throw new Error(errors[0].message, {
+        cause: errors[0].code,
+      });
     }
 
     ok = true;
@@ -95,23 +94,24 @@ export async function resetAccountAction(
 
   let status = 500;
 
-  const variables = { id: '', input: { email: email as string, password: password as string, resetToken: resetToken as string } }
+  const variables = {
+    id: "",
+    input: {
+      email: email as string,
+      password: password as string,
+      resetToken: resetToken as string,
+    },
+  };
 
   try {
     const resetAccountResponse = await resetAccountHandler({ variables });
 
     const errors = resetAccountResponse.customerReset?.customerUserErrors;
 
-    if (
-      Array.isArray(errors) && errors.length > 0
-    ) {
-      throw new Error(
-        errors[0].message,
-        {
-          cause:
-            errors[0].code,
-        },
-      )
+    if (Array.isArray(errors) && errors.length > 0) {
+      throw new Error(errors[0].message, {
+        cause: errors[0].code,
+      });
     }
 
     if (resetAccountResponse.customerReset?.customerAccessToken?.accessToken) {
@@ -165,26 +165,24 @@ export async function signInToAccountAction(
 
   let status = 500;
 
-  const variables = { input: { email: email as string, password: password as string } }
+  const variables = {
+    input: { email: email as string, password: password as string },
+  };
 
   try {
     const signInToAccountResponse = await signInToAccountHandler({ variables });
 
-    const errors = signInToAccountResponse.customerAccessTokenCreate?.customerUserErrors;
+    const errors =
+      signInToAccountResponse.customerAccessTokenCreate?.customerUserErrors;
 
-    if (
-      Array.isArray(errors) && errors.length > 0
-    ) {
-      throw new Error(
-        errors[0].message,
-        {
-          cause:
-            errors[0].code,
-        },
-      )
+    if (Array.isArray(errors) && errors.length > 0) {
+      throw new Error(errors[0].message, {
+        cause: errors[0].code,
+      });
     }
 
-    const customerAccessToken = signInToAccountResponse.customerAccessTokenCreate?.customerAccessToken;
+    const customerAccessToken =
+      signInToAccountResponse.customerAccessTokenCreate?.customerAccessToken;
 
     if (customerAccessToken) {
       ok = true;
@@ -193,29 +191,39 @@ export async function signInToAccountAction(
 
       messageKey = "actions.signInToAccountAction.success";
 
-      const expires = remember === 'on' ? parseISO(customerAccessToken.expiresAt) : add(new Date(), {
-        hours: 1,
+      const expires =
+        remember === "on"
+          ? parseISO(customerAccessToken.expiresAt)
+          : add(new Date(), {
+              hours: 1,
+            });
+
+      cookies().set("customerAccessToken", customerAccessToken.accessToken, {
+        expires,
       });
 
-      cookies().set('customerAccessToken', customerAccessToken.accessToken, { expires })
-
-      const cartId = cookies().get('cartId')?.value;
+      const cartId = cookies().get("cartId")?.value;
 
       if (cartId) {
-        const variables = { buyerIdentity: { customerAccessToken: customerAccessToken.accessToken }, cartId }
+        const variables = {
+          buyerIdentity: {
+            customerAccessToken: customerAccessToken.accessToken,
+          },
+          cartId,
+        };
 
-        const { cartBuyerIdentityUpdate } = await getShopifyGraphQL(cartBuyerIdentityUpdateMutation, variables);
+        const { cartBuyerIdentityUpdate } = await getShopifyGraphQL(
+          cartBuyerIdentityUpdateMutation,
+          variables,
+        );
 
         if (
-          Array.isArray(cartBuyerIdentityUpdate?.userErrors) && cartBuyerIdentityUpdate?.userErrors.length > 0
+          Array.isArray(cartBuyerIdentityUpdate?.userErrors) &&
+          cartBuyerIdentityUpdate?.userErrors.length > 0
         ) {
-          throw new Error(
-            cartBuyerIdentityUpdate?.userErrors[0].message,
-            {
-              cause:
-                cartBuyerIdentityUpdate?.userErrors[0].code,
-            },
-          )
+          throw new Error(cartBuyerIdentityUpdate?.userErrors[0].message, {
+            cause: cartBuyerIdentityUpdate?.userErrors[0].code,
+          });
         }
       }
     } else {
@@ -271,23 +279,25 @@ export async function signUpForAccountAction(
 
   let status = 500;
 
-  const variables = { input: { email: email as string, password: password as string } }
+  const variables = {
+    input: { email: email as string, password: password as string },
+  };
 
   try {
-    const signUpForAccountResponse = await signUpForAccountHandler({ variables });
+    const signUpForAccountResponse = await signUpForAccountHandler({
+      variables,
+    });
 
-    const signUpForAccountErrors = signUpForAccountResponse.customerCreate?.customerUserErrors;
+    const signUpForAccountErrors =
+      signUpForAccountResponse.customerCreate?.customerUserErrors;
 
     if (
-      Array.isArray(signUpForAccountErrors) && signUpForAccountErrors.length > 0
+      Array.isArray(signUpForAccountErrors) &&
+      signUpForAccountErrors.length > 0
     ) {
-      throw new Error(
-        signUpForAccountErrors[0].message,
-        {
-          cause:
-            signUpForAccountErrors[0].code,
-        },
-      )
+      throw new Error(signUpForAccountErrors[0].message, {
+        cause: signUpForAccountErrors[0].code,
+      });
     }
 
     if (signUpForAccountResponse.customerCreate?.customer?.id) {
@@ -302,21 +312,20 @@ export async function signUpForAccountAction(
 
     const signInToAccountResponse = await signInToAccountHandler({ variables });
 
-    const signInToAccountErrors = signInToAccountResponse.customerAccessTokenCreate?.customerUserErrors;
+    const signInToAccountErrors =
+      signInToAccountResponse.customerAccessTokenCreate?.customerUserErrors;
 
     if (
-      Array.isArray(signInToAccountErrors) && signInToAccountErrors.length > 0
+      Array.isArray(signInToAccountErrors) &&
+      signInToAccountErrors.length > 0
     ) {
-      throw new Error(
-        signInToAccountErrors[0].message,
-        {
-          cause:
-            signInToAccountErrors[0].code,
-        },
-      )
+      throw new Error(signInToAccountErrors[0].message, {
+        cause: signInToAccountErrors[0].code,
+      });
     }
 
-    const customerAccessToken = signInToAccountResponse.customerAccessTokenCreate?.customerAccessToken;
+    const customerAccessToken =
+      signInToAccountResponse.customerAccessTokenCreate?.customerAccessToken;
 
     if (customerAccessToken) {
       ok = true;
@@ -327,7 +336,9 @@ export async function signUpForAccountAction(
 
       const expires = parseISO(customerAccessToken.expiresAt);
 
-      cookies().set('customerAccessToken', customerAccessToken.accessToken, { expires })
+      cookies().set("customerAccessToken", customerAccessToken.accessToken, {
+        expires,
+      });
     } else {
       messageKey = "actions.signInToAccountAction.failed";
     }
@@ -353,7 +364,7 @@ export async function updateAccountAction(
   _currentState: any,
   formData: FormData,
 ) {
-  const acceptsMarketing = formData.get("acceptsMarketing") as 'on' | 'off';
+  const acceptsMarketing = formData.get("acceptsMarketing") as "on" | "off";
   const email = formData.get("email") as string;
   const firstName = formData.get("firstName") as string;
   const lastName = formData.get("lastName") as string;
@@ -367,7 +378,7 @@ export async function updateAccountAction(
 
   let status = 500;
 
-  const customerAccessToken = cookies().get('customerAccessToken')?.value;
+  const customerAccessToken = cookies().get("customerAccessToken")?.value;
 
   if (!customerAccessToken) {
     throw new Error("customerAccessToken not set");
@@ -381,23 +392,17 @@ export async function updateAccountAction(
     phone,
   };
 
-  const variables = { customerAccessToken, input }
+  const variables = { customerAccessToken, input };
 
   try {
     const updateAccountResponse = await updateAccountHandler({ variables });
 
     const errors = updateAccountResponse.customerUpdate?.customerUserErrors;
 
-    if (
-      Array.isArray(errors) && errors.length > 0
-    ) {
-      throw new Error(
-        errors[0].message,
-        {
-          cause:
-            errors[0].code,
-        },
-      )
+    if (Array.isArray(errors) && errors.length > 0) {
+      throw new Error(errors[0].message, {
+        cause: errors[0].code,
+      });
     }
 
     ok = true;

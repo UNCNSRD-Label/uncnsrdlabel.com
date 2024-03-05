@@ -4,9 +4,9 @@ import { Price } from "@/components/price";
 import { createIntl } from "@formatjs/intl";
 import { type ResultOf } from "@graphql-typed-document-node/core";
 import {
-    getFragmentData,
-    mailingAddressFragment,
-    orderFragment,
+  getFragmentData,
+  mailingAddressFragment,
+  orderFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { Usable, use } from "react";

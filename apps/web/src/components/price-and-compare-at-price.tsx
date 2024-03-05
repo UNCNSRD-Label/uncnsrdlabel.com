@@ -35,24 +35,25 @@ export const PriceAndCompareAtPrice = ({
 
   if (!product) {
     console.error("No product data found");
-    return null
-  };
+    return null;
+  }
 
   return (
-    <div
-      className={cn("grid justify-start gap-x-4 gap-y-2", className)}
-    >
+    <div className={cn("grid justify-start gap-x-4 gap-y-2", className)}>
       <Price
         amount={product.priceRange.minVariantPrice.amount}
         className={cn({
-          "text-red-600": product.compareAtPriceRange?.minVariantPrice.amount > product.priceRange?.minVariantPrice.amount,
+          "text-red-600":
+            product.compareAtPriceRange?.minVariantPrice.amount >
+            product.priceRange?.minVariantPrice.amount,
         })}
         currencyCode={product.priceRange.minVariantPrice.currencyCode}
         currencyCodeClassName={currencyCodeClassName}
         lang={lang}
       />
 
-      {(product.compareAtPriceRange?.minVariantPrice.amount > product.priceRange?.minVariantPrice.amount) && (
+      {product.compareAtPriceRange?.minVariantPrice.amount >
+        product.priceRange?.minVariantPrice.amount && (
         <Price
           amount={product.compareAtPriceRange.minVariantPrice.amount}
           className="line-through decoration-red-600"

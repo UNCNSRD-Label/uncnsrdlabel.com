@@ -113,7 +113,9 @@ export function NewsletterSignUpForm({
           type="email"
         />
         <Button
-          aria-label={intl.formatMessage({ id: "component.NewsletterSignUpForm.submit" })}
+          aria-label={intl.formatMessage({
+            id: "component.NewsletterSignUpForm.submit",
+          })}
           className="btn absolute right-0 mr-3"
           variant="ghost"
         >

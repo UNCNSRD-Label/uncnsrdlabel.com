@@ -5,12 +5,12 @@ const config: CodegenConfig = {
   ignoreNoDocuments: true, // for better experience with the watcher
   overwrite: true,
   schema: {
-    [endpoint]:
-      {
-        headers: {
-          'X-Shopify-Access-Token': process.env.SHOPIFY_PRIVATE_ACCESS_TOKEN || '',
-        },
+    [endpoint]: {
+      headers: {
+        "X-Shopify-Access-Token":
+          process.env.SHOPIFY_PRIVATE_ACCESS_TOKEN || "",
       },
+    },
   },
   documents: [
     "./src/fragments/**/*.{graphql,ts,tsx}",
