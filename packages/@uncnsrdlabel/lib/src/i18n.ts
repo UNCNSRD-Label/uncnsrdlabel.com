@@ -1,54 +1,54 @@
 import {
-  type CountryCode,
-  type LanguageCode,
-} from "@shopify/hydrogen-react/storefront-api-types";
-import { useParams } from "next/navigation";
+	type CountryCode,
+	type LanguageCode,
+} from '@shopify/hydrogen-react/storefront-api-types';
+import {useParams} from 'next/navigation';
 
 export function getIETFLanguageTagFromlocaleTag(locale: Intl.Locale) {
-  return locale?.baseName as Intl.BCP47LanguageTag;
+	return locale?.baseName;
 }
 
 export function getLocaleObjectFromIETFLanguageTag(
-  lang: Intl.BCP47LanguageTag = process.env
-    .NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag,
+	lang: Intl.BCP47LanguageTag = process.env
+		.NEXT_PUBLIC_DEFAULT_LOCALE!,
 ) {
-  return new Intl.Locale(lang);
+	return new Intl.Locale(lang);
 }
 
 export function getLangProperties(
-  lang: Intl.BCP47LanguageTag = process.env
-    .NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag,
+	lang: Intl.BCP47LanguageTag = process.env
+		.NEXT_PUBLIC_DEFAULT_LOCALE!,
 ) {
-  // @ts-expect-error Property 'getCanonicalLocales' does not exist on type 'typeof Intl'.
-  const [canonicalLocale] = Intl.getCanonicalLocales(lang);
+	// @ts-expect-error Property 'getCanonicalLocales' does not exist on type 'typeof Intl'.
+	const [canonicalLocale] = Intl.getCanonicalLocales(lang);
 
-  const locale = new Intl.Locale(canonicalLocale);
+	const locale = new Intl.Locale(canonicalLocale);
 
-  const country = locale.region as CountryCode;
+	const country = locale.region as CountryCode;
 
-  const language = locale.language.toLocaleUpperCase() as LanguageCode;
+	const language = locale.language.toLocaleUpperCase() as LanguageCode;
 
-  return {
-    country,
-    language,
-  };
+	return {
+		country,
+		language,
+	};
 }
 
 export function useGetLangProperties() {
-  const {
-    lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag,
-  } = useParams();
+	const {
+		lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE!,
+	} = useParams();
 
-  const tag = Array.isArray(lang) ? lang[0] : lang;
+	const tag = Array.isArray(lang) ? lang[0] : lang;
 
-  const locale = new Intl.Locale(tag);
+	const locale = new Intl.Locale(tag);
 
-  const country = locale.region as CountryCode;
+	const country = locale.region as CountryCode;
 
-  const language = locale.language.toLocaleUpperCase() as LanguageCode;
+	const language = locale.language.toLocaleUpperCase() as LanguageCode;
 
-  return {
-    country,
-    language,
-  };
+	return {
+		country,
+		language,
+	};
 }
