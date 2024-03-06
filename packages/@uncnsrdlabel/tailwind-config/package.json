@@ -1,14 +1,13 @@
 {
   "dependencies": {
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^3.4.1",
+    "xo": "^0.57.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.0.1",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.10",
     "@types/node": "^20.11.20",
-    "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "@uncnsrdlabel/tsconfig": "workspace:*",
     "@uncnsrdlabel/types": "workspace:*",
     "prettier": "^3.2.5",
@@ -30,7 +29,8 @@
     "clean": "rm -rf dist",
     "dev": "tsc --project ./tsconfig.json --watch",
     "generate:component": "turbo gen react-component",
-    "lint": "eslint",
+    "lint": "xo",
+    "lint:fix": "xo --fix",
     "types:check": "tsc --noEmit"
   },
   "sideEffects": false,

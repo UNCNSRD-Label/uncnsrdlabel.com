@@ -6,16 +6,15 @@
     "lodash": "^4.17.21",
     "next": "14.1.0",
     "react": "experimental",
-    "tailwind-merge": "^2.2.1"
+    "tailwind-merge": "^2.2.1",
+    "xo": "^0.57.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.0.1",
     "@types/lodash": "^4.14.202",
     "@types/negotiator": "^0.6.3",
     "@types/node": "^20.11.20",
     "@types/react": "18.2.57",
     "@types/react-dom": "18.2.19",
-    "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "@uncnsrdlabel/tailwind-config": "workspace:*",
     "@uncnsrdlabel/tsconfig": "workspace:*",
     "@uncnsrdlabel/types": "workspace:*",
@@ -37,7 +36,8 @@
     "build": "tsc --project ./tsconfig.json",
     "clean": "rm -rf dist",
     "dev": "tsc --project ./tsconfig.json --watch",
-    "lint": "eslint",
+    "lint": "xo",
+    "lint:fix": "xo --fix",
     "types:check": "tsc --noEmit"
   },
   "sideEffects": false,

@@ -1,8 +1,6 @@
 {
   "devDependencies": {
-    "@eslint/eslintrc": "^3.0.1",
     "@types/node": "^20.11.20",
-    "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "prettier": "^3.2.5",
     "type-fest": "^4.10.3",
     "typescript": "^5.3.3"
@@ -17,5 +15,8 @@
   "private": true,
   "sideEffects": false,
   "type": "module",
-  "version": "0.0.0"
+  "version": "0.0.0",
+  "dependencies": {
+    "xo": "^0.57.0"
+  }
 }
