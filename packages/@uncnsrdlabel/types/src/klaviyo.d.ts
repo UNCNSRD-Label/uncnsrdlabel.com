@@ -1,3 +1,3 @@
 export type KlaviyoResponse = {
-  errors?: string[];
+	errors?: string[];
 };
