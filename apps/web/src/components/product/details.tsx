@@ -106,7 +106,7 @@ export async function ProductDetails({
         <section className="sm:p4 absolute mb-8 grid justify-items-end gap-3 self-end justify-self-end p-2 lg:max-h-[calc(100dvh-theme(height.64))]">
           <h2
             data-testid="product-name"
-            className="bg-hotPink w-fit max-w-[32ch] text-balance box-decoration-clone p-0.5 text-xs sm:text-sm rotate-1"
+            className="bg-hotPink w-fit max-w-[64ch] text-balance box-decoration-clone p-0.5 text-xs sm:text-sm rotate-1"
           >
             {product.title}
           </h2>
