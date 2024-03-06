@@ -38,7 +38,7 @@ export function SearchForm({
 
     const val = event.target as HTMLFormElement;
     const search = val.search as HTMLInputElement;
-    const newParams = new URLSearchParams(searchParams.toString());
+    const newParams = new URLSearchParams(searchParams?.toString());
 
     if (search.value) {
       newParams.set("q", search.value);

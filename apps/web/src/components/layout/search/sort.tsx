@@ -37,13 +37,13 @@ export function SortBy({
   const searchParams = useSearchParams();
 
   const [active, setActive] = useState<string>(
-    sortItems.find((sortItem) => sortItem.slug === searchParams.get("sort"))
+    sortItems.find((sortItem) => sortItem.slug === searchParams?.get("sort"))
       ?.title ?? defaultSort.title,
   );
 
   useEffect(() => {
     const matchedSortItem =
-      sortItems.find((sortItem) => sortItem.slug === searchParams.get("sort"))
+      sortItems.find((sortItem) => sortItem.slug === searchParams?.get("sort"))
         ?.title ?? defaultSort.title;
     setActive(matchedSortItem);
   }, [defaultSort.title, searchParams, sortItems]);

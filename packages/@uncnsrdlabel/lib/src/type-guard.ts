@@ -8,7 +8,7 @@ export function findError<T extends Record<string, unknown>>(error: T): boolean 
 		return true;
 	}
 
-	const prototype = Object.getPrototypeOf(error) as T | undefined;
+	const prototype = Object.getPrototypeOf(error) as T;
 
 	return prototype === null ? false : findError(prototype);
 }

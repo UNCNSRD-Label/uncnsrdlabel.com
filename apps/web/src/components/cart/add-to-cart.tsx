@@ -378,7 +378,7 @@ export function AddToCart({
 
       const value =
         selectedOption?.value ===
-        searchParams.get(selectedOption.name.toLowerCase());
+        searchParams?.get(selectedOption.name.toLowerCase());
 
       return value;
     }),

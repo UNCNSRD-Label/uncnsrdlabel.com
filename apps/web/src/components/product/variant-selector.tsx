@@ -87,11 +87,15 @@ export function VariantSelector({
             <dt className="text-sm uppercase">{option.name}</dt>
             <dd className="mb-2 flex flex-wrap gap-3">
               {option.values.map((value) => {
+                if (!pathname) {
+                  return null;
+                }
+
                 const optionNameLowerCase = option.name.toLowerCase();
 
                 // Base option params on current params so we can preserve any other param state in the url.
                 const optionSearchParams = new URLSearchParams(
-                  searchParams.toString(),
+                  searchParams?.toString(),
                 );
 
                 // Update the option params using the current option to reflect how the url *would* change,
@@ -127,7 +131,7 @@ export function VariantSelector({
 
                 // The option is active if it's in the url params.
                 const isActive =
-                  searchParams.get(optionNameLowerCase) === value ||
+                  searchParams?.get(optionNameLowerCase) === value ||
                   option.values.length === 1;
 
                 return (

@@ -36,7 +36,7 @@ export function NavbarSearch({
 
     const val = event.target as HTMLFormElement;
     const search = val.search as HTMLInputElement;
-    const newParams = new URLSearchParams(searchParams.toString());
+    const newParams = new URLSearchParams(searchParams?.toString());
 
     const { dataset } = event.currentTarget;
 

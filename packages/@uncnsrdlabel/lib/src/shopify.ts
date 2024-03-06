@@ -18,7 +18,7 @@ export async function revalidate(request: NextRequest): Promise<NextResponse> {
 		'products/update',
 	];
 	const topic = headers().get('x-shopify-topic') || 'unknown';
-	const secret = request.nextUrl.searchParams.get('secret');
+	const secret = request.nextUrl.searchParams?.get('secret');
 	const isCollectionUpdate = collectionWebhooks.includes(topic);
 	const isProductUpdate = productWebhooks.includes(topic);
 
