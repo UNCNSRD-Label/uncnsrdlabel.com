@@ -1,6 +1,7 @@
 "use client";
 
 import { Prose } from "@/components/prose";
+import { breakpoints } from "@/lib/tailwind";
 import { useMediaQuery } from "@react-hookz/web";
 import {
   getFragmentData,
@@ -28,10 +29,9 @@ export function Article(props: ArticleProps) {
 
   const page = getFragmentData(pageFragment, pageFragmentRef);
 
-  const isSm = useMediaQuery("only screen and (min-width : 640px)");
-  const isMd = useMediaQuery("only screen and (min-width : 768px)");
-  const isLg = useMediaQuery("only screen and (min-width : 1024px)");
-  const isXl = useMediaQuery("only screen and (min-width : 1280px)");
+  const mediaQueries = Object.fromEntries(
+    Object.entries(breakpoints).map(([key, values]) => [key, useMediaQuery(`only screen and (min-width : ${values.min.toString()})`)]),
+  );
 
   const [style, setStyle] = useState<CSSProperties>(
     page?.style?.value
@@ -40,7 +40,7 @@ export function Article(props: ArticleProps) {
   );
 
   useEffect(() => {
-    if (isSm) {
+    if (mediaQueries.sm) {
       setStyle(() => ({
         ...(page?.style?.value &&
           (JSON.parse(page?.style?.value ?? "") as CSSProperties)),
@@ -49,7 +49,7 @@ export function Article(props: ArticleProps) {
       }));
     }
 
-    if (isMd) {
+    if (mediaQueries.md) {
       setStyle(() => ({
         ...(page?.style?.value &&
           (JSON.parse(page?.style?.value ?? "") as CSSProperties)),
@@ -60,7 +60,7 @@ export function Article(props: ArticleProps) {
       }));
     }
 
-    if (isLg) {
+    if (mediaQueries.lg) {
       setStyle(() => ({
         ...(page?.style?.value &&
           (JSON.parse(page?.style?.value ?? "") as CSSProperties)),
@@ -73,7 +73,7 @@ export function Article(props: ArticleProps) {
       }));
     }
 
-    if (isXl) {
+    if (mediaQueries.xl) {
       setStyle(() => ({
         ...(page?.style?.value &&
           (JSON.parse(page?.style?.value ?? "") as CSSProperties)),
@@ -87,7 +87,7 @@ export function Article(props: ArticleProps) {
           (JSON.parse(page?.styleXl?.value ?? "") as CSSProperties)),
       }));
     }
-  }, [isSm, isMd, isLg, isXl]);
+  }, [mediaQueries]);
 
   return (
     <>

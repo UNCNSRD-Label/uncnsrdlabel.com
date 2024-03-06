@@ -45,7 +45,7 @@ export async function Footer({ lang }: { lang: Intl.BCP47LanguageTag }) {
   return (
     <footer className="dark relative self-end border-t border-inherit contain sm:snap-start">
       <div className={themeColors}>
-        <div className="mx-auto w-full max-w-7xl px-4 pb-12">
+        <div className="mx-auto w-full max-w-screen-2xl px-4 pb-12">
           <div className="grid grid-cols-1 items-start gap-8 border-b border-inherit py-6 transition-colors duration-150 sm:grid-cols-12 sm:py-12">
             <nav className="col-span-1 grid gap-8 sm:col-span-12 sm:grid-cols-12 lg:col-span-8 lg:grid-cols-9">
               <dl className="grid gap-4 sm:col-span-4 sm:grid-flow-row lg:col-span-3">

@@ -1,35 +1,35 @@
 import { ProductCollectionSortKeys, ProductSortKeys } from "./codegen/graphql";
 
-export type SortFilterItem = {
+export type SortItem = {
   title: string;
   slug: string | null;
   reverse: boolean;
 };
 
-export type ProductCollectionSortFilterItem = SortFilterItem & {
+export type ProductCollectionSortItem = SortItem & {
   sortKey: ProductCollectionSortKeys;
 };
 
-export type ProductSortFilterItem = SortFilterItem & {
+export type ProductSortItem = SortItem & {
   sortKey: ProductSortKeys;
 };
 
-export const productCollectionDefaultSort: ProductCollectionSortFilterItem = {
+export const productCollectionSortItemDefault: ProductCollectionSortItem = {
   title: "Relevance",
   slug: null,
   sortKey: ProductCollectionSortKeys.Relevance,
   reverse: false,
 };
 
-export const productDefaultSort: ProductSortFilterItem = {
+export const productSortItemDefault: ProductSortItem = {
   title: "Relevance",
   slug: null,
   sortKey: ProductSortKeys.Relevance,
   reverse: false,
 };
 
-export const productCollectionSorting: ProductCollectionSortFilterItem[] = [
-  productCollectionDefaultSort,
+export const productCollectionSortItems: ProductCollectionSortItem[] = [
+  productCollectionSortItemDefault,
   {
     title: "Trending",
     slug: "trending-desc",
@@ -56,8 +56,8 @@ export const productCollectionSorting: ProductCollectionSortFilterItem[] = [
   },
 ];
 
-export const productSorting: ProductSortFilterItem[] = [
-  productDefaultSort,
+export const productSortItems: ProductSortItem[] = [
+  productSortItemDefault,
   {
     title: "Trending",
     slug: "trending-desc",

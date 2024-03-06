@@ -3,6 +3,7 @@
 import { Image } from "@/components/media/image";
 import { Images } from "@/components/media/images";
 import { Videos } from "@/components/media/videos";
+import { breakpoints } from "@/lib/tailwind";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   getFragmentData,
@@ -21,8 +22,7 @@ export function MediaViewerFull({
   className?: string;
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }) {
-  const mediaClassName =
-    "lg:aspect-2/3 min-h-[max(100dvh,_theme(space.96))] overflow-y-clip relative snap-start w-[100dvw] lg:w-auto";
+  const mediaClassName = "relative snap-start grid aspect-2/3";
 
   const thumbnailClassName =
     "pointer-events-auto relative my-auto aspect-square w-full overflow-hidden rounded-full shadow bg-black/50";
@@ -85,37 +85,34 @@ export function MediaViewerFull({
   const videos = media.filter((node) => node.__typename === "Video");
 
   return (
-    <div
-      className={cn(
-        "ghost-scrollbar grid snap-both snap-mandatory grid-flow-col justify-start overflow-x-scroll scroll-smooth",
-        className,
-      )}
-    >
-      <Images
-        className={mediaClassName}
-        idPrefix="image"
-        images={images}
-        imageElementRefs={imageElementRefs}
-        instance={0}
-        sizes="(max-width: 639px) 100vw, 50vw"
-      />
+    <div className={cn("relative", className)}>
+      <div className="ghost-scrollbar absolute inset-0 inline-flex h-full w-full snap-both  snap-mandatory grid-flow-col content-stretch items-stretch justify-start overflow-x-scroll scroll-smooth">
+        <Images
+          className={mediaClassName}
+          idPrefix="image"
+          images={images}
+          imageElementRefs={imageElementRefs}
+          instance={0}
+          sizes={`(max-width: ${breakpoints.sm.max.toString()}) 100vw, (max-width: ${breakpoints.md.max.toString()}) 50vw, (max-width: ${breakpoints.lg.max.toString()}) 33vw, 25vw`}
+        />
 
-      <Videos
-        className={mediaClassName}
-        idPrefix="video"
-        videoElementRefs={videoElementRefs}
-        videos={videos}
-      />
+        <Videos
+          className={mediaClassName}
+          idPrefix="video"
+          videoElementRefs={videoElementRefs}
+          videos={videos}
+        />
 
-      <Images
-        className={cn(mediaClassName, "hidden lg:grid")}
-        idPrefix="suffix"
-        images={images}
-        instance={1}
-        sizes="(max-width: 639px) 100vw, 50vw"
-      />
+        <Images
+          className={cn(mediaClassName, "hidden lg:inline-grid")}
+          idPrefix="suffix"
+          images={images}
+          instance={1}
+          sizes={`(max-width: ${breakpoints.sm.max.toString()}) 100vw, (max-width: ${breakpoints.md.max.toString()}) 50vw, (max-width: ${breakpoints.lg.max.toString()}) 33vw, 25vw`}
+        />
+      </div>
 
-      <nav className="pointer-events-none fixed left-8 top-0 z-30 hidden h-full w-16 grid-flow-row content-center gap-4 lg:grid">
+      <nav className="pointer-events-none absolute left-8 top-0 z-30 hidden h-full w-16 grid-flow-row content-center gap-4 lg:grid">
         {images.map((image, index) => (
           <Link
             className={thumbnailClassName}

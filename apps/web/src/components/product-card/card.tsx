@@ -18,10 +18,12 @@ export function ProductCard({
   className,
   lang,
   productDetailsFragmentRef,
+  sizes,
 }: {
   className?: string;
   lang: Intl.BCP47LanguageTag;
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
+  sizes: string;
 }) {
   const dictionary = getDictionary({ lang });
 
@@ -88,7 +90,7 @@ export function ProductCard({
             alt={image[0].altText}
             className="aspect-2/3 snap snap-x-mandatory snap-align-start relative w-full overflow-y-hidden object-contain"
             fill
-            sizes="(max-width: 639px) 100vw, 33vw"
+            sizes={sizes}
             src={image[0].src}
             style={{
               filter:

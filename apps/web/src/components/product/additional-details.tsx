@@ -26,15 +26,15 @@ export function ProductAdditionalDetails({
   );
 
   return (
-    <section className="relative z-10 grid h-fit grid-cols-12 gap-4 bg-black pb-4 pt-12 text-white sm:pb-12 lg:gap-32">
+    <section className="relative z-10 grid h-fit gap-4 bg-black pb-4 pt-12 text-white sm:pb-12 lg:gap-32">
       <MetaFields
-        className="col-start-2 col-end-12 lg:col-end-7"
+        className=""
         excludedKeys={["complementary_products"]}
         lang={lang}
         metafieldFragments={metafieldFragments}
       />
       <MetaFields
-        className="col-start-2 col-end-12 lg:col-start-7"
+        className=""
         includedKeys={["complementary_products"]}
         lang={lang}
         metafieldFragments={metafieldFragments}

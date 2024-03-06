@@ -9,8 +9,8 @@ import {
   getCollectionWithProductsHandler,
   getFragmentData,
   getLocalizationDetailsHandler,
-  productCollectionDefaultSort,
-  productCollectionSorting,
+  productCollectionSortItemDefault,
+  productCollectionSortItems,
   seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Metadata } from "next";
@@ -51,17 +51,17 @@ export async function generateMetadata({
       canonical: getCanonical(path),
       languages: getAlternativeLanguages({ localization, path }),
     },
-    title: seo?.title || intl.formatMessage(
-      { id: "page.collection.title" },
-      { title: collection.title },
-    ),
-    description:
-      seo?.description ||
-      collection.description,
+    title:
+      seo?.title ||
+      intl.formatMessage(
+        { id: "page.collection.title" },
+        { title: collection.title },
+      ),
+    description: seo?.description || collection.description,
   };
 }
 
-export default async function CategoryPage({
+export default async function SearchCollectionPage({
   params: { collection: handle, lang },
   searchParams,
 }: {
@@ -80,8 +80,8 @@ export default async function CategoryPage({
   const { sort } = searchParams as { [key: string]: string };
 
   const { sortKey, reverse } =
-    productCollectionSorting.find((item) => item.slug === sort) ||
-    productCollectionDefaultSort;
+    productCollectionSortItems.find((item) => item.slug === sort) ||
+    productCollectionSortItemDefault;
 
   const collectionFragmentRef = await getCollectionHandler({
     variables: { handle },
@@ -131,7 +131,7 @@ export default async function CategoryPage({
           {intl.formatMessage({ id: "page.collection.no-products-found" })}
         </p>
       ) : (
-        <Grid className="w-full max-w-7xl grid-cols-2 lg:grid-cols-3 order-2">
+        <Grid className="order-2">
           <ProductGridItems
             lang={lang}
             productFragmentRefs={productFragmentRefs}

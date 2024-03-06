@@ -98,43 +98,42 @@ export async function ProductDetails({
     <>
       <Tracking productDetailsFragmentRef={productDetailsFragmentRef} />
 
-      <div className="relative col-span-full mb-2 grid md:hidden">
+      <div className="relative mb-2 grid lg:hidden portrait:aspect-2/3 portrait:sm:aspect-4/3 portrait:col-span-full landscape:col-span-6 landscape:md:col-span-full landscape:h-[100dvh] landscape:lg:h-auto">
         <MediaViewerCompact
-          className="aspect-2/3"
           productDetailsFragmentRef={productDetailsFragmentRef}
         />
 
-        <section className="sm:p4 absolute col-span-full mb-8 grid justify-items-end gap-3 self-end justify-self-end p-2 lg:max-h-[calc(100dvh-theme(height.64))]">
+        <section className="sm:p4 absolute mb-8 grid justify-items-end gap-3 self-end justify-self-end p-2 lg:max-h-[calc(100dvh-theme(height.64))]">
           <h2
             data-testid="product-name"
-            className="bg-hotPink w-fit max-w-[32ch] text-balance box-decoration-clone p-0.5 text-xs"
+            className="bg-hotPink w-fit max-w-[32ch] text-balance box-decoration-clone p-0.5 text-xs sm:text-sm rotate-1"
           >
             {product.title}
           </h2>
           <PriceAndCompareAtPrice
-            className="bg-hotPink text-xxs w-fit grid-flow-col p-0.5"
+            className="bg-hotPink text-xxs w-fit grid-flow-col p-0.5 sm:text-xs -rotate-1"
             lang={lang}
             productDetailsFragmentRef={productDetailsFragmentRef}
           />
         </section>
 
-        <GiCupidonArrow className="text-hotPink absolute -bottom-2 h-8 w-8 rotate-45 justify-self-end right-2" />
+        <GiCupidonArrow className="text-hotPink absolute -bottom-2 right-2 h-8 w-8 rotate-45 justify-self-end" />
       </div>
 
       <MediaViewerFull
-        className="relative z-0 col-span-full hidden h-fit w-full md:grid lg:absolute"
+        className="z-0 hidden lg:block col-span-full"
         productDetailsFragmentRef={productDetailsFragmentRef}
       />
 
-      <section className="sm:bg-opaque-white lg:p-6 relative col-span-full grid content-start gap-6 self-start overflow-hidden overflow-y-auto p-4 sm:p-0 sm:col-start-3 sm:col-end-11 lg:col-start-7 lg:col-end-13 lg:mr-8 md:mt-8 lg:mt-16 lg:max-h-[calc(100dvh-theme(height.64))] lg:shadow xl:col-start-9">
+      <section className="sm:bg-light lg:bg-opaque-white portrait:col-span-full landscape:col-span-6 landscape:md:col-span-full landscape:pt-16 landscape:md:pt-4 grid w-full content-start gap-6 self-start justify-self-end overflow-hidden overflow-y-auto p-4 lg:absolute lg:mr-8 lg:mt-16 lg:max-h-[calc(100dvh-theme(height.48))] lg:w-fit lg:max-w-md lg:shadow">
         <h2
           data-testid="product-name"
-          className="hidden box-decoration-clone text-xl sm:block"
+          className="hidden box-decoration-clone text-xl lg:block"
         >
           {product.title}
         </h2>
 
-        <div className="hidden gap-2 sm:grid">
+        <div className="hidden gap-2 lg:grid">
           <PriceAndCompareAtPrice
             className="grid-flow-col text-sm"
             lang={lang}

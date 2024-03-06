@@ -52,10 +52,10 @@ export async function RelatedProducts({
       <h2 className="mb-8 text-center text-xl uppercase">
         {intl.formatMessage({ id: "component.RelatedProducts.title" })}
       </h2>
-      <Grid className="grid-cols-2 lg:grid-cols-5 [&>*:last-child:nth-child(odd)]:hidden [&>*:last-child:nth-child(odd)]:lg:list-item">
+      <Grid className="grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 [&>*:nth-of-type(3)]:hidden [&>*:nth-of-type(4)]:hidden [&>*:nth-of-type(5)]:hidden [&>*:nth-of-type(3)]:lg:list-item [&>*:nth-of-type(4)]:xl:list-item">
         <ProductGridItems
           lang={lang}
-          limit={5}
+          limit={4}
           productFragmentRefs={productRecommendationRefs}
         />
       </Grid>

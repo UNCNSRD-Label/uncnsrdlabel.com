@@ -1,6 +1,7 @@
 'use client';
 
 import { ProductCard } from "@/components/product-card/card";
+import { breakpoints } from "@/lib/tailwind";
 import {
   getInContextVariables,
   productDetailsByHandleQuery,
@@ -49,6 +50,7 @@ export function AddPremiumPackaging({
       className={className}
       lang={lang}
       productDetailsFragmentRef={productDetailsFragmentRef}
+      sizes={`(max-width: ${breakpoints.sm.max.toString()}) 33vw, (max-width: ${breakpoints.md.max.toString()}) 25vw, (max-width: ${breakpoints.lg.max.toString()}) 20vw, 15vw`}
     />
   );
 }

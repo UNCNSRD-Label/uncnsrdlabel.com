@@ -21,6 +21,7 @@ export function Tile({
   priority,
   productBasicFragmentRef,
   productDetailsFragmentRef,
+  sizes,
   video,
 }: {
   active?: boolean;
@@ -42,6 +43,7 @@ export function Tile({
   priority?: boolean;
   productBasicFragmentRef?: FragmentType<typeof productBasicFragment>;
   productDetailsFragmentRef?: FragmentType<typeof productDetailsFragment>;
+  sizes?: string;
   video?: FragmentType<typeof videoFragment>;
 }) {
   if (!active) {
@@ -124,7 +126,7 @@ export function Tile({
             placeholder="blur"
             priority={priority}
             revealEffect={false}
-            sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+            sizes={sizes}
             src={tileImage.url}
             width={undefined}
           />

@@ -1,4 +1,5 @@
 import { Prose } from "@/components/prose";
+import { breakpoints } from "@/lib/tailwind";
 import {
   getFragmentData,
   imageFragment,
@@ -106,12 +107,11 @@ export function PageSectionModule({
                         return (
                           <figure className="absolute inset-0" key={image?.id}>
                             <Image
-                              // TODO: Add image alt fallback
                               alt={image?.altText || ""}
                               className="h-full object-contain"
                               fill
                               key={medium?.id}
-                              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                              sizes={`(max-width: ${breakpoints.sm.max.toString()}) 100vw, (max-width: ${breakpoints.md.max.toString()}) 50vw, (max-width: ${breakpoints.lg.max.toString()}) 33vw, 25vw`}
                               src={image?.url}
                             />
                           </figure>

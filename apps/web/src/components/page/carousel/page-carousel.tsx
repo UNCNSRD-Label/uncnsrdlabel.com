@@ -1,5 +1,5 @@
 import { Image } from "@/components/media/image";
-import { minWidthLg, minWidthSm } from "@/lib/tailwind";
+import { breakpoints } from "@/lib/tailwind";
 import {
   Carousel,
   CarouselContent,
@@ -54,7 +54,7 @@ export async function PageCarousel({
 
           return (
             <CarouselItem
-              className="sm:basis-1/2 lg:basis-1/3 relative"
+              className="relative sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
               key={image.url ?? index}
             >
               <Image
@@ -64,7 +64,7 @@ export async function PageCarousel({
                 fill
                 placeholder="blur"
                 revealEffect={false}
-                sizes={`100vw, (min-width: ${minWidthSm}) 50vw, (min-width: ${minWidthLg}) 33vw`}
+                sizes={`(max-width: ${breakpoints.sm.max.toString()}) 100vw, (max-width: ${breakpoints.md.max.toString()}) 50vw, (max-width: ${breakpoints.lg.max.toString()}) 33vw, 25vw`}
                 src={image.url}
               />
             </CarouselItem>

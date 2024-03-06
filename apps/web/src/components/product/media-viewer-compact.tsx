@@ -1,6 +1,6 @@
 import { Image } from "@/components/media/image";
 import { Video } from "@/components/media/video";
-import { minWidthLg, minWidthSm } from "@/lib/tailwind";
+import { breakpoints } from "@/lib/tailwind";
 import {
   Carousel,
   CarouselContent,
@@ -59,7 +59,7 @@ export function MediaViewerCompact({
                 fill
                 placeholder="blur"
                 revealEffect={false}
-                sizes={`100vw, (min-width: ${minWidthSm}) 50vw, (min-width: ${minWidthLg}) 33vw`}
+                sizes={`(max-width: ${breakpoints.sm.max.toString()}) 100vw, (max-width: ${breakpoints.md.max.toString()}) 50vw, (max-width: ${breakpoints.lg.max.toString()}) 33vw, 25vw`}
                 src={image.url}
               />
             </CarouselItem>
