@@ -9,7 +9,7 @@ import {
   getLocalizationDetailsHandler,
   getProductDetailsByHandleHandler,
   productDetailsFragment,
-  seoFragment
+  seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { HIDDEN_PRODUCT_TAG, SITE_DOMAIN_WEB } from "@uncnsrdlabel/lib";
 import { type Metadata } from "next";
@@ -55,7 +55,12 @@ export async function generateMetadata({
       canonical: getCanonical(path),
       languages: getAlternativeLanguages({ localization, path }),
     },
-    title: seo.title || intl.formatMessage({ id: "page.products.title" }, { title: product.title }),
+    title:
+      seo.title ||
+      intl.formatMessage(
+        { id: "page.products.title" },
+        { title: product.title },
+      ),
     description: seo.description || product.description,
     openGraph: {
       description: seo.description || product.description,
@@ -105,18 +110,26 @@ export default async function ProductsPage({
   if (!product) return notFound();
 
   return (
-    <div className="grid grid-rows-[1fr_auto] relative">
+    <div className="relative grid grid-rows-[1fr_auto]">
       <Breadcrumb
-        className="sticky h-0 top-0 left-0 hidden lg:grid z-10 px-16 overflow-y-visible translate-y-3.5"
+        className="sticky left-0 top-0 z-10 hidden h-0 translate-y-3.5 overflow-y-visible px-16 lg:grid"
         productDetailsFragmentRef={productDetailsFragmentRef}
       />
-      <main className="mb-16 grid grid-cols-12 bg-inherit portrait:lg:h-[85dvw] landscape:h-[100dvh] lg:overflow-y-hidden [&:has(+_aside)]:mb-0 lg:sticky top-0">
-        <h1 className="sr-only">{intl.formatMessage({ id: "page.products.title" }, { title: product.title })}</h1>
-        <ProductDetails lang={lang} productDetailsFragmentRef={productDetailsFragmentRef} />
+      <main className="top-0 mb-16 grid grid-cols-12 bg-inherit lg:sticky lg:overflow-y-hidden portrait:lg:h-[85dvw] landscape:h-[100dvh] [&:has(+_aside)]:mb-0">
+        <h1 className="sr-only">
+          {intl.formatMessage(
+            { id: "page.products.title" },
+            { title: product.title },
+          )}
+        </h1>
+        <ProductDetails
+          lang={lang}
+          productDetailsFragmentRef={productDetailsFragmentRef}
+        />
         {/* <ProductAdditionalDetails productDetailsFragmentRef={productDetailsFragmentRef} /> */}
       </main>
       <RelatedProducts
-        className="text-dark relative bg-light [contain:layout_style]"
+        className="text-dark bg-light relative [contain:layout_style]"
         lang={lang}
         productDetailsFragmentRef={productDetailsFragmentRef}
       />

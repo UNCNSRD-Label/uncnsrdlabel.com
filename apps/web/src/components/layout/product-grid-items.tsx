@@ -1,9 +1,6 @@
 import { Grid } from "@/components/grid";
 import { Tile } from "@/components/grid/tile";
-import {
-  breakpoints,
-  transitionDelays
-} from "@/lib/tailwind";
+import { breakpoints, transitionDelays } from "@/lib/tailwind";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
   getFragmentData,

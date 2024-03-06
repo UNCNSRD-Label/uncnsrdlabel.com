@@ -44,9 +44,9 @@ export function PathRefineItem({
   const params = useParams();
 
   const searchParams = useSearchParams();
-  
+
   const path = `/search/${item.handle}`;
-  
+
   const newParams = new URLSearchParams(searchParams.toString());
 
   newParams.delete("q");

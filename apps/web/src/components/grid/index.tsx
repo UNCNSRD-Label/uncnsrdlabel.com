@@ -7,7 +7,9 @@ export function Grid(props: React.ComponentProps<"ul">) {
       className={cn(
         "grid w-full max-w-screen-2xl grid-flow-row grid-cols-2 gap-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4",
         {
-          "xl:grid-cols-3": process.env.NEXT_PUBLIC_FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE === "true",
+          "xl:grid-cols-3":
+            process.env.NEXT_PUBLIC_FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE ===
+            "true",
         },
         props.className,
       )}

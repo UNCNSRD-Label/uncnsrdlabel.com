@@ -9,4 +9,3 @@ export * from "./image";
 export * from "./ponyfills";
 export * from "./type-guard";
 export * from "./url";
-

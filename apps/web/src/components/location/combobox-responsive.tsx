@@ -52,9 +52,11 @@ export function LocationComboBoxResponsive({
   const [open, setOpen] = useState(false);
 
   const mediaQueries = Object.fromEntries(
-    Object.entries(breakpoints).map(([key, values]) => [key, useMediaQuery(`only screen and (min-width : ${values.min.toString()})`)]),
+    Object.entries(breakpoints).map(([key, values]) => [
+      key,
+      useMediaQuery(`only screen and (min-width : ${values.min.toString()})`),
+    ]),
   );
-
 
   const router = useRouter();
 

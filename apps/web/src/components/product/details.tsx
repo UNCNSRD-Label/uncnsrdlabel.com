@@ -98,7 +98,7 @@ export async function ProductDetails({
     <>
       <Tracking productDetailsFragmentRef={productDetailsFragmentRef} />
 
-      <div className="relative mb-2 grid lg:hidden portrait:aspect-2/3 portrait:sm:aspect-4/3 portrait:col-span-full landscape:col-span-6 landscape:md:col-span-full landscape:h-[100dvh] landscape:lg:h-auto">
+      <div className="portrait:aspect-2/3 portrait:sm:aspect-4/3 relative mb-2 grid lg:hidden portrait:col-span-full landscape:col-span-6 landscape:h-[100dvh] landscape:md:col-span-full landscape:lg:h-auto">
         <MediaViewerCompact
           productDetailsFragmentRef={productDetailsFragmentRef}
         />
@@ -106,12 +106,12 @@ export async function ProductDetails({
         <section className="sm:p4 absolute mb-8 grid justify-items-end gap-3 self-end justify-self-end p-2 lg:max-h-[calc(100dvh-theme(height.64))]">
           <h2
             data-testid="product-name"
-            className="bg-hotPink w-fit max-w-[64ch] text-balance box-decoration-clone p-0.5 text-xs sm:text-sm rotate-1"
+            className="bg-hotPink w-fit max-w-[64ch] rotate-1 text-balance box-decoration-clone p-0.5 text-xs sm:text-sm"
           >
             {product.title}
           </h2>
           <PriceAndCompareAtPrice
-            className="bg-hotPink text-xxs w-fit grid-flow-col p-0.5 sm:text-xs -rotate-1"
+            className="bg-hotPink text-xxs w-fit -rotate-1 grid-flow-col p-0.5 sm:text-xs"
             lang={lang}
             productDetailsFragmentRef={productDetailsFragmentRef}
           />
@@ -121,11 +121,11 @@ export async function ProductDetails({
       </div>
 
       <MediaViewerFull
-        className="z-0 hidden lg:block col-span-full"
+        className="z-0 col-span-full hidden lg:block"
         productDetailsFragmentRef={productDetailsFragmentRef}
       />
 
-      <section className="sm:bg-light lg:bg-opaque-white portrait:col-span-full landscape:col-span-6 landscape:md:col-span-full landscape:pt-16 landscape:md:pt-4 grid w-full content-start gap-6 self-start justify-self-end overflow-hidden overflow-y-auto p-4 lg:absolute lg:mr-8 lg:mt-16 lg:max-h-[calc(100dvh-theme(height.48))] lg:w-fit lg:max-w-md lg:shadow">
+      <section className="sm:bg-light lg:bg-opaque-white grid w-full content-start gap-6 self-start justify-self-end overflow-hidden overflow-y-auto p-4 lg:absolute lg:mr-8 lg:mt-16 lg:max-h-[calc(100dvh-theme(height.48))] lg:w-fit lg:max-w-md lg:shadow portrait:col-span-full landscape:col-span-6 landscape:pt-16 landscape:md:col-span-full landscape:md:pt-4">
         <h2
           data-testid="product-name"
           className="hidden box-decoration-clone text-xl lg:block"
