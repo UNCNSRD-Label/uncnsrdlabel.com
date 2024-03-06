@@ -27,7 +27,7 @@ export function Images({
       {images.map((image, index) => {
         return (
           <figure
-            className={cn("w-[100dvw]", className)}
+            className={cn(className)}
             key={image.id}
             ref={imageElementRefs?.[index]}
           >

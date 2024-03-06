@@ -107,10 +107,10 @@ export default async function ProductsPage({
   return (
     <div className="grid grid-rows-[1fr_auto] relative">
       <Breadcrumb
-        className="relative h-0 top-3.5 left-0 hidden lg:grid"
+        className="sticky h-0 top-0 left-0 hidden lg:grid z-10 px-16 overflow-y-visible translate-y-3.5"
         productDetailsFragmentRef={productDetailsFragmentRef}
       />
-      <main className="mb-16 grid grid-cols-12 bg-inherit min-h-[max(100dvh,_theme(space.96))] lg:overflow-y-hidden [&:has(+_aside)]:mb-0 lg:sticky top-0">
+      <main className="mb-16 grid grid-cols-12 bg-inherit portrait:lg:h-[85dvw] landscape:h-[100dvh] lg:overflow-y-hidden [&:has(+_aside)]:mb-0 lg:sticky top-0">
         <h1 className="sr-only">{intl.formatMessage({ id: "page.products.title" }, { title: product.title })}</h1>
         <ProductDetails lang={lang} productDetailsFragmentRef={productDetailsFragmentRef} />
         {/* <ProductAdditionalDetails productDetailsFragmentRef={productDetailsFragmentRef} /> */}
