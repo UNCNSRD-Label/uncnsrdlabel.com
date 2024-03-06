@@ -90,7 +90,7 @@ export function Article(props: ArticleProps) {
           (JSON.parse(page?.styleXl?.value ?? "") as CSSProperties)),
       }));
     }
-  }, [mediaQueries]);
+  }, [mediaQueries, page?.style?.value, page?.styleSm?.value, page?.styleMd?.value, page?.styleLg?.value, page?.styleXl?.value]);
 
   return (
     <>

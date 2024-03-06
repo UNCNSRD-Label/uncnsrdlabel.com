@@ -65,3 +65,5 @@ export const Video = forwardRef<HTMLElement, VideoProps>(
     </figure>
   ),
 );
+
+Video.displayName = "Video";

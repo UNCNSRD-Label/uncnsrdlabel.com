@@ -14,7 +14,7 @@ export function NavigationEvents() {
     // const url = `${pathname}?${searchParams}`;
 
     page();
-  }, [pathname, searchParams]);
+  }, [page, pathname, searchParams]);
 
   return null;
 }

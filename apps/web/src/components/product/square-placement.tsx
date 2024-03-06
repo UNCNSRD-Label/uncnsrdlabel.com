@@ -28,7 +28,7 @@ export function SquarePlacement({
       skus: product?.variantBySelectedOptions?.sku,
       categories: product?.productType,
     }),
-    [product?.variantBySelectedOptions],
+    [product?.productType, product?.variantBySelectedOptions],
   );
 
   if (

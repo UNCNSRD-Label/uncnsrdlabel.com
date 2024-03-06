@@ -91,7 +91,7 @@ export function DeleteItemButton({
           "cursor-not-allowed": isPending,
         },
       )}
-      onClick={useCallback(handleClickTrack, [])}
+      onClick={useCallback(handleClickTrack, [cartId, isPending, mutate, payload, track])}
       variant="ghost"
     >
       {isPending ? (

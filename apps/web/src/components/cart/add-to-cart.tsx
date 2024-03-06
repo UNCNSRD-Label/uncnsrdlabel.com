@@ -241,16 +241,19 @@ function SubmitButton({
     });
   }
 
-  const handleClickTrack = (event: React.MouseEvent<HTMLButtonElement>) => {
-    if (isPending) event.preventDefault();
+  const handleClickTrack = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>) => {
+      if (isPending) event.preventDefault();
 
-    track("add_to_cart", {
-      availableForSale,
-      container,
-      selectedVariantId,
-      sellingPlanId,
-    });
-  };
+      track("add_to_cart", {
+        availableForSale,
+        container,
+        selectedVariantId,
+        sellingPlanId,
+      });
+    },
+    [availableForSale, container, isPending, selectedVariantId, sellingPlanId, track],
+  );
 
   const onClick = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -286,7 +289,18 @@ function SubmitButton({
 
       handleClickTrack(event);
     },
-    [label, selectedVariantId],
+    [
+      cartId,
+      country,
+      customerAccessToken,
+      email,
+      handleClickTrack,
+      isDisabled,
+      mutateAddToCart,
+      mutateCreateCart,
+      selectedVariantId,
+      sellingPlanId,
+    ],
   );
 
   return (

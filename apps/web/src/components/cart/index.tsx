@@ -104,7 +104,7 @@ export function Cart({
     <>
       <Button
         aria-label={intl.formatMessage({ id: "component.CartModal.open" })}
-        onClick={useCallback(handleClickTrack, [])}
+        onClick={useCallback(handleClickTrack, [track])}
         variant="ghost"
       >
         <OpenCart quantity={cart?.totalQuantity} />

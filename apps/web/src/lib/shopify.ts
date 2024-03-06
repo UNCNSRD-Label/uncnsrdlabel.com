@@ -59,9 +59,9 @@ export const getProductVariantBySelectedOptionsUtility = ({
 }) => {
   const searchParams = useSearchParams();
 
-  const color = searchParams.get("color") ?? "";
+  const color = searchParams?.get("color");
 
-  const size = searchParams.get("size") ?? "";
+  const size = searchParams?.get("size");
 
   const selectedOptions = options.map((option) => ({
     name: option.name,

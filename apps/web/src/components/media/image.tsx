@@ -54,7 +54,7 @@ export function Image({
     if (rootRef.current) {
       onLoading(rootRef.current);
     }
-  }, [rootRef.current]);
+  }, []);
 
   return (
     <NextImage

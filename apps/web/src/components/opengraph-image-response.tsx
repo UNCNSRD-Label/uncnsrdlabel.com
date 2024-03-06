@@ -1,6 +1,7 @@
 import { type ResultOf } from "@graphql-typed-document-node/core";
 import { type MoneyV2 } from "@shopify/hydrogen/storefront-api-types";
 import { imageFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
+import Image from "next/image";
 import { ImageResponse } from "next/og";
 
 export type Props = {
@@ -25,7 +26,7 @@ export async function OpengraphImageResponse({
     (
       <div tw="bg-black flex relative h-full w-full">
         {image && (
-          <img
+          <Image
             tw="absolute inset-0 h-full w-full object-cover"
             alt={image.altText ?? title ?? description ?? "Product image"}
             height={size?.height}

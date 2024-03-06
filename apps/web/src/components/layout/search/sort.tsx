@@ -46,7 +46,7 @@ export function SortBy({
       sortItems.find((sortItem) => sortItem.slug === searchParams.get("sort"))
         ?.title ?? defaultSort.title;
     setActive(matchedSortItem);
-  }, [searchParams]);
+  }, [defaultSort.title, searchParams, sortItems]);
 
   return (
     <RefineBy
