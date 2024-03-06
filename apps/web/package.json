@@ -130,5 +130,8 @@
     "start": "next start",
     "types:check": "tsc --noEmit"
   },
-  "type": "module"
+  "type": "module",
+  "xo": {
+		"extends": ["plugin:@next/next/core-web-vitals"]
+	}
 }
