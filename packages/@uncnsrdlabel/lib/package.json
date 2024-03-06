@@ -6,8 +6,7 @@
     "lodash": "^4.17.21",
     "next": "14.1.0",
     "react": "experimental",
-    "tailwind-merge": "^2.2.1",
-    "xo": "^0.57.0"
+    "tailwind-merge": "^2.2.1"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.202",
@@ -18,9 +17,9 @@
     "@uncnsrdlabel/tailwind-config": "workspace:*",
     "@uncnsrdlabel/tsconfig": "workspace:*",
     "@uncnsrdlabel/types": "workspace:*",
-    "prettier": "^3.2.5",
     "type-fest": "^4.10.3",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "xo": "^0.57.0"
   },
   "exports": {
     ".": "./dist/index.js",

@@ -15,7 +15,6 @@
     "npm-run-all": "^4.1.5",
     "react": "experimental",
     "slugify": "^1.6.6",
-    "xo": "^0.57.0",
     "zod": "^3.22.4",
     "zod-fetch": "^0.1.1"
   },
@@ -26,10 +25,10 @@
     "@types/react": "18.2.57",
     "@uncnsrdlabel/tsconfig": "workspace:*",
     "@uncnsrdlabel/types": "workspace:*",
-    "prettier": "^3.2.5",
     "type-fest": "^4.10.3",
     "typescript": "^5.3.3",
-    "typescript-graphql-request": "^4.4.6"
+    "typescript-graphql-request": "^4.4.6",
+    "xo": "^0.57.0"
   },
   "exports": {
     ".": "./dist/index.js",
