@@ -52,9 +52,11 @@ export function LocationComboBoxResponsive({
   const [open, setOpen] = useState(false);
 
   const mediaQueries = Object.fromEntries(
-    Object.entries(breakpoints).map(([key, values]) => [key, useMediaQuery(`only screen and (min-width : ${values.min.toString()})`)]),
+    Object.entries(breakpoints).map(([key, values]) => [
+      key,
+      useMediaQuery(`only screen and (min-width : ${values.min.toString()})`),
+    ]),
   );
-
 
   const router = useRouter();
 
@@ -118,13 +120,12 @@ export function LocationComboBoxResponsive({
 
             const [canonicalLocale] = Intl.getCanonicalLocales(value);
 
-            track('change_locale', { locale: canonicalLocale });
+            track("change_locale", { locale: canonicalLocale });
 
             router.push(`/${canonicalLocale}`);
           }}
         >
-          <SelectTrigger
-              className="border ring-offset-2 ring-black ring-1 focus:ring-1">
+          <SelectTrigger className="border ring-1 ring-black ring-offset-2 focus:ring-1">
             <SelectValue
               placeholder={intl.formatMessage({
                 id: "component.LocationComboBox.StatusList.select-locale",
@@ -158,9 +159,8 @@ export function LocationComboBoxResponsive({
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger>
-        <span
-            className="border border-black block mb-4 p-2">
-        {intl.formatMessage({
+        <span className="mb-4 block border border-black p-2">
+          {intl.formatMessage({
             id: "component.LocationComboBox.StatusList.select-locale",
           })}
         </span>
@@ -237,7 +237,7 @@ function StatusList({
 
               const [canonicalLocale] = Intl.getCanonicalLocales(value);
 
-              track('change_locale', { locale: canonicalLocale });
+              track("change_locale", { locale: canonicalLocale });
 
               router.push(`/${canonicalLocale}`);
             }}

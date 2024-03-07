@@ -8,9 +8,7 @@ export const metadata: Metadata = {
   description: "Sign in to your account",
 };
 
-export default function AccountSignUpPage({
-  params: { lang },
-}: PageProps) {
+export default function AccountSignUpPage({ params: { lang } }: PageProps) {
   const dictionary = getDictionary({ lang });
 
   return (

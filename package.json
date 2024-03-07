@@ -1,21 +1,17 @@
 {
   "devDependencies": {
-    "@graphql-eslint/eslint-plugin": "^3.20.1",
     "@turbo/gen": "^1.12.4",
     "@types/node": "^20.11.20",
-    "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "dotenv-cli": "^7.3.0",
-    "eslint": "^8.56.0",
     "eslint-config-turbo": "^1.12.4",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "madge": "^6.1.0",
-    "prettier": "^3.2.5",
     "turbo": "^1.12.4"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
-      "lint"
+      "npm lint"
     ]
   },
   "name": "uncnsrdlabel.com",
@@ -33,15 +29,13 @@
     "find:unused": "npx next-unused",
     "lint-staged": "lint-staged",
     "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
     "list:projects": "pnpm m ls --depth -1 --json",
     "list:projects:dependencies": "pnpm recursive list --only-projects",
     "packages:versions:check": "npx npm-check-updates -u --deep",
     "packages:versions:update": "npx npm-check-updates -u --deep",
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky install",
-    "prettier:check": "prettier --check --ignore-unknown .",
-    "prettier:fix": "prettier --write --ignore-unknown .",
-    "prettier:list-different": "npx prettier . --list-different",
     "shadcn:add": "pnpm dlx shadcn-ui@latest add --cwd packages/@uncnsrdlabel/components --path src/atoms",
     "start": "turbo run start",
     "test:e2e": "playwright test",

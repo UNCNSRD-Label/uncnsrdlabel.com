@@ -5,7 +5,7 @@ declare global {
     tailwind: {
       config: {
         presets: Config[];
-      }
+      };
     };
   }
 }

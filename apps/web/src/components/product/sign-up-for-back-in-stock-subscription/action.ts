@@ -59,28 +59,28 @@ export async function signUpForBackInStockSubscriptionAction(
     headers,
     body: JSON.stringify({
       data: {
-        type: 'back-in-stock-subscription',
+        type: "back-in-stock-subscription",
         attributes: {
-          channels: ['EMAIL'],
+          channels: ["EMAIL"],
           profile: {
             data: {
-              type: 'profile',
+              type: "profile",
               // id: '01GDDKASAP8TKDDA2GRZDSVP4H',
               attributes: {
                 email,
                 // phone_number: '+15005550006',
                 external_id: _shopify_y,
-              }
-            }
-          }
+              },
+            },
+          },
         },
         relationships: {
           variant: {
             data: {
-              type: 'catalog-variant',
-              id: `$shopify:::$default:::${shopify_id}`
-            }
-          }
+              type: "catalog-variant",
+              id: `$shopify:::$default:::${shopify_id}`,
+            },
+          },
         },
       },
     }),
@@ -100,7 +100,7 @@ export async function signUpForBackInStockSubscriptionAction(
         messageKey = "actions.signUpForBackInStockSubscriptionAction.success";
       }
     } else {
-      console.error(response.status, response.statusText)
+      console.error(response.status, response.statusText);
 
       messageKey = "actions.signUpForBackInStockSubscriptionAction.failed";
 

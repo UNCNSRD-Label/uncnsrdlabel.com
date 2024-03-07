@@ -29,7 +29,12 @@ type ConsentDialogProps = {
   manageConsents: () => void;
 };
 
-export function ConsentForm({className, dictionary, lang, ...props}: ConsentDialogProps) {
+export function ConsentForm({
+  className,
+  dictionary,
+  lang,
+  ...props
+}: ConsentDialogProps) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
   const intl = createIntl({
@@ -40,14 +45,16 @@ export function ConsentForm({className, dictionary, lang, ...props}: ConsentDial
   const track = useTrack();
 
   const [optionsOpen, setOptionsOpen] = useState(false);
-  const [consentSettings, setConsentSettings] = useState(()=>{
+  const [consentSettings, setConsentSettings] = useState(() => {
     const consentCookieData = (getCookie(COOKIE_CONSENT) as string) ?? "{}";
 
-    const savedConsentSettings = JSON.parse(consentCookieData) as ConsentSettings;
+    const savedConsentSettings = JSON.parse(
+      consentCookieData,
+    ) as ConsentSettings;
     return {
-    ...defaultConsentSettings,
-    ...savedConsentSettings,
-    }
+      ...defaultConsentSettings,
+      ...savedConsentSettings,
+    };
   });
 
   const acceptSelectedConsents = (event: React.FormEvent<HTMLFormElement>) => {
@@ -59,7 +66,7 @@ export function ConsentForm({className, dictionary, lang, ...props}: ConsentDial
     track("consent_accept_selected", consentParams);
 
     console.info("Granting selected consents");
-    setConsentSettings({...defaultConsentSettings, ...consentParams})
+    setConsentSettings({ ...defaultConsentSettings, ...consentParams });
     props.acceptSelectedConsents(event);
 
     event.preventDefault();
@@ -71,7 +78,7 @@ export function ConsentForm({className, dictionary, lang, ...props}: ConsentDial
     track("consent_accept_all", acceptAllConsentSettings);
 
     console.info("Accepting all consents");
-    setConsentSettings(acceptAllConsentSettings)
+    setConsentSettings(acceptAllConsentSettings);
     props.acceptAllConsents();
   };
 
@@ -81,13 +88,13 @@ export function ConsentForm({className, dictionary, lang, ...props}: ConsentDial
     track("consent_deny_all", denyAllAdditionalConsentSettings);
 
     console.info("Denying all additional consents");
-    setConsentSettings(denyAllAdditionalConsentSettings)
+    setConsentSettings(denyAllAdditionalConsentSettings);
     props.denyAllAdditionalConsents();
   };
 
   const manageConsents = () => {
     setOptionsOpen(true);
-    
+
     track("consent_manage", denyAllAdditionalConsentSettings);
 
     console.info("Manage consents");
@@ -115,8 +122,11 @@ export function ConsentForm({className, dictionary, lang, ...props}: ConsentDial
             id={consent.name}
             name={consent.name}
             value="granted"
-            onCheckedChange={(isChecked)=>{
-              setConsentSettings({...consentSettings, [consent.name]: isChecked? 'granted': 'denied'})
+            onCheckedChange={(isChecked) => {
+              setConsentSettings({
+                ...consentSettings,
+                [consent.name]: isChecked ? "granted" : "denied",
+              });
             }}
           >
             <Checkbox.Indicator>

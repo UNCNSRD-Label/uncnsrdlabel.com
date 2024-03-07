@@ -25,7 +25,8 @@ export async function signUpForNewsletterAction(
 
   let status = 500;
 
-  const url = "https://a.klaviyo.com/api/profile-subscription-bulk-create-jobs/";
+  const url =
+    "https://a.klaviyo.com/api/profile-subscription-bulk-create-jobs/";
 
   const options = {
     method: "POST",
@@ -38,21 +39,30 @@ export async function signUpForNewsletterAction(
           profiles: {
             data: [
               {
-                type: 'profile',
+                type: "profile",
                 // id: '01GDDKASAP8TKDDA2GRZDSVP4H',
                 attributes: {
                   email,
                   // phone_number: '+15005550006',
                   subscriptions: {
-                    email: {marketing: {consent: 'SUBSCRIBED', consented_at: new Date().toISOString()}},
+                    email: {
+                      marketing: {
+                        consent: "SUBSCRIBED",
+                        consented_at: new Date().toISOString(),
+                      },
+                    },
                     // sms: {marketing: {consent: 'SUBSCRIBED', consented_at: new Date().toISOString()}}
-                  }
-                }
-              }
-            ]
+                  },
+                },
+              },
+            ],
           },
         },
-        relationships: { list: { data: { type: 'list', id: process.env.KLAVIYO_LIST_ID_NEWSLETTER } } }
+        relationships: {
+          list: {
+            data: { type: "list", id: process.env.KLAVIYO_LIST_ID_NEWSLETTER },
+          },
+        },
       },
     }),
   };
@@ -71,7 +81,7 @@ export async function signUpForNewsletterAction(
         messageKey = "actions.signUpForNewsletterAction.success";
       }
     } else {
-      console.error(response.status, response.statusText)
+      console.error(response.status, response.statusText);
 
       messageKey = "actions.signUpForNewsletterAction.failed";
 

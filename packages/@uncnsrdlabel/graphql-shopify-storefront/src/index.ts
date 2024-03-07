@@ -7,4 +7,3 @@ export * from "./mutations/index";
 export * from "./queries/index";
 export * from "./types";
 export * from "./utilities";
-

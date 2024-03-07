@@ -34,10 +34,14 @@ export async function SignUpForBackInStockSubscription({
   return (
     <section className={cn("grid gap-4", className)}>
       <h3 className="text-sm uppercase">
-        {intl.formatMessage({ id: "component.SignUpForBackInStockSubscription.title" })}
+        {intl.formatMessage({
+          id: "component.SignUpForBackInStockSubscription.title",
+        })}
       </h3>
       <span className="text-xs">
-        {intl.formatMessage({ id: "component.SignUpForBackInStockSubscription.summary" })}
+        {intl.formatMessage({
+          id: "component.SignUpForBackInStockSubscription.summary",
+        })}
       </span>
       <Suspense fallback={<LoadingDots />}>
         <SignUpForBackInStockSubscriptionForm

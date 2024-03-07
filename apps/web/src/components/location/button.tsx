@@ -45,7 +45,7 @@ export function LocationButton({
       onClick={onClick}
       variant="ghost"
     >
-      <div className="flex gap-2 items-center">
+      <div className="flex items-center gap-2">
         <ReactCountryFlag
           className="border border-white object-cover"
           countryCode={localization.country.isoCode}
@@ -56,7 +56,7 @@ export function LocationButton({
           }}
           title={localization.country.name}
         />
-        <div className="grid gap-2 justify-start items-start">
+        <div className="grid items-start justify-start gap-2">
           <span className="text-start">{localization.country.name}</span>
           <span className="text-start">{localization.language.name}</span>
         </div>

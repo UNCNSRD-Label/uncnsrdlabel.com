@@ -1,5 +1,5 @@
 import componentConfig from "@uncnsrdlabel/components/tailwind.config";
-import type { Config } from 'tailwindcss';
+import type { Config } from "tailwindcss";
 
 export default {
   content: [

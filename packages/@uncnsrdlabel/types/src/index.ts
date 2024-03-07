@@ -1,3 +1,2 @@
-export * from "./klaviyo";
-// export * from "./next";
-export * from "./ts-reset";
+export * from './klaviyo.js';
+export * from './ts-reset.js';

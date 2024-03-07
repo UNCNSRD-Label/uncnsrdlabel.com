@@ -1,11 +1,8 @@
 import { graphql } from "../codegen/index";
 
 export const pageQuery = graphql(/* GraphQL */ `
-  query page(
-    $country: CountryCode
-    $handle: String!
-    $language: LanguageCode
-  ) @inContext(country: $country, language: $language) {
+  query page($country: CountryCode, $handle: String!, $language: LanguageCode)
+  @inContext(country: $country, language: $language) {
     page(handle: $handle) {
       ...page
     }

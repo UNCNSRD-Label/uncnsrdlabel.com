@@ -20,16 +20,18 @@ export const Tracking = ({
     productDetailsFragmentRef,
   );
 
-  const item = {
-    discount: Number.parseInt(product.priceRange.minVariantPrice.amount) - Number.parseInt(product.compareAtPriceRange.minVariantPrice.amount),
-    item_brand: product.vendor,
-    item_category: product.collections.edges[0].node.title,
-    item_id: product.id,
-    item_name: product.title,
-    price: product.priceRange.minVariantPrice.amount,
-  }
-
   useEffect(() => {
+    const item = {
+      discount:
+        Number.parseInt(product.priceRange.minVariantPrice.amount) -
+        Number.parseInt(product.compareAtPriceRange.minVariantPrice.amount),
+      item_brand: product.vendor,
+      item_category: product.collections.edges[0].node.title,
+      item_id: product.id,
+      item_name: product.title,
+      price: product.priceRange.minVariantPrice.amount,
+    };
+
     track("view_item", {
       currency: product.compareAtPriceRange.minVariantPrice.currencyCode,
       value: product.priceRange.minVariantPrice.amount,

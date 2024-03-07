@@ -52,7 +52,12 @@
       "outputs": []
     },
     "lint": {
-      "dependsOn": ["^build"]
+      "cache": false,
+      "outputs": []
+    },
+    "lint:fix": {
+      "cache": false,
+      "outputs": []
     },
     "start": {
       "cache": false,

@@ -19,18 +19,16 @@
     "use-analytics": "^1.1.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.0.1",
     "@types/gtag.js": "^0.0.19",
     "@types/lodash": "^4.14.202",
     "@types/node": "^20.11.20",
     "@types/react": "18.2.57",
     "@types/use-analytics": "^0.0.3",
-    "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "@uncnsrdlabel/tsconfig": "workspace:*",
     "@uncnsrdlabel/types": "workspace:*",
-    "prettier": "^3.2.5",
     "type-fest": "^4.10.3",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "xo": "^0.57.0"
   },
   "files": [
     "dist/**"
@@ -42,7 +40,8 @@
     "build": "tsc --project ./tsconfig.json",
     "clean": "rm -rf dist",
     "dev": "tsc --project ./tsconfig.json --watch",
-    "lint": "eslint",
+    "lint": "xo",
+    "lint:fix": "xo --fix",
     "types:check": "tsc --noEmit"
   },
   "sideEffects": false,

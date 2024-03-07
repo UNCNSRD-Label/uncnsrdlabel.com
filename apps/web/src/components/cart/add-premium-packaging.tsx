@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { ProductCard } from "@/components/product-card/card";
 import { breakpoints } from "@/lib/tailwind";

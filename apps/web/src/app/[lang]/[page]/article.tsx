@@ -30,7 +30,10 @@ export function Article(props: ArticleProps) {
   const page = getFragmentData(pageFragment, pageFragmentRef);
 
   const mediaQueries = Object.fromEntries(
-    Object.entries(breakpoints).map(([key, values]) => [key, useMediaQuery(`only screen and (min-width : ${values.min.toString()})`)]),
+    Object.entries(breakpoints).map(([key, values]) => [
+      key,
+      useMediaQuery(`only screen and (min-width : ${values.min.toString()})`),
+    ]),
   );
 
   const [style, setStyle] = useState<CSSProperties>(
@@ -87,7 +90,7 @@ export function Article(props: ArticleProps) {
           (JSON.parse(page?.styleXl?.value ?? "") as CSSProperties)),
       }));
     }
-  }, [mediaQueries]);
+  }, [mediaQueries, page?.style?.value, page?.styleSm?.value, page?.styleMd?.value, page?.styleLg?.value, page?.styleXl?.value]);
 
   return (
     <>

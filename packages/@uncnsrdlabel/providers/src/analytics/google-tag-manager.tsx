@@ -1,24 +1,25 @@
-"use client";
+'use client';
 
-import { AnalyticsPlugin } from "analytics";
-import type { SetOptional } from "type-fest";
-import { Payload, PluginConfig, PluginEventFunctions } from "./types";
+import {type AnalyticsPlugin} from 'analytics';
+import type {SetOptional} from 'type-fest';
+import {type Payload, type PluginConfig, type PluginEventFunctions} from './types';
 
-export interface GoogleTagManagerConfig extends PluginConfig {
-  auth: string | undefined;
-  collectionHandle?: string;
-  containerId: string;
-  customScriptSrc?: string;
-  dataLayer: Pick<Payload, "event">[];
-  dataLayerName: string;
-  execution: "async" | "defer";
-  pageViewEvent: string;
-  preview: string | undefined;
-  storefrontId?: string;
-}
+type Window = Record<string, any>;
+
+export type GoogleTagManagerConfig = {
+	auth: string | undefined;
+	collectionHandle?: string;
+	containerId: string;
+	customScriptSrc?: string;
+	dataLayer: Array<Pick<Payload, 'event'>>;
+	execution: 'async' | 'defer';
+	pageViewEvent: string;
+	preview: string | undefined;
+	storefrontId?: string;
+} & PluginConfig;
 
 export type GoogleTagManagerAnalyticsPlugin = AnalyticsPlugin &
-  PluginEventFunctions;
+PluginEventFunctions;
 
 /**
  * Google tag manager plugin
@@ -27,7 +28,6 @@ export type GoogleTagManagerAnalyticsPlugin = AnalyticsPlugin &
  * @link https://github.com/DavidWells/analytics/pull/349/files
  * @param {object} pluginConfig - Plugin settings
  * @param {string} pluginConfig.containerId - The Container ID uniquely identifies the GTM Container.
- * @param {string} [pluginConfig.dataLayerName=dataLayer] - The optional name for dataLayer-object. Defaults to dataLayer.
  * @param {string} [pluginConfig.customScriptSrc] - Load Google Tag Manager script from a custom source
  * @param {string} [pluginConfig.preview] - The preview-mode environment
  * @param {string} [pluginConfig.auth] - The preview-mode authentication credentials
@@ -39,65 +39,61 @@ export type GoogleTagManagerAnalyticsPlugin = AnalyticsPlugin &
  *   containerId: 'GTM-123xyz'
  * })
  */
-export const config: Omit<GoogleTagManagerConfig, "containerId"> = {
-  auth: undefined,
-  dataLayer: [],
-  dataLayerName: "dataLayer",
-  debug: false,
-  execution: "async",
-  hasUserConsent: false,
-  pageViewEvent: "page_view",
-  preview: undefined,
+export const config: Omit<GoogleTagManagerConfig, 'containerId'> = {
+	auth: undefined,
+	dataLayer: [],
+	debug: false,
+	execution: 'async',
+	hasUserConsent: false,
+	pageViewEvent: 'page_view',
+	preview: undefined,
 };
 
-let initializedDataLayerName: string | undefined;
-
 function googleTagManager(
-  pluginConfig: SetOptional<
-    Pick<
-      GoogleTagManagerConfig,
-      "containerId" | "customScriptSrc" | "dataLayerName" | "pageViewEvent"
-    >,
-    "dataLayerName" | "pageViewEvent"
-  >,
+	pluginConfig: SetOptional<
+	Pick<
+	GoogleTagManagerConfig,
+	'containerId' | 'customScriptSrc' | 'pageViewEvent'
+	>,
+	'pageViewEvent'
+	>,
 ): GoogleTagManagerAnalyticsPlugin {
-  const defaultScriptSrc = "https://www.googletagmanager.com/gtm.js";
+	const defaultScriptSource = 'https://www.googletagmanager.com/gtm.js';
 
-  // Allow for userland overides of base methods
-  return {
-    name: "google-tag-manager",
-    config: {
-      ...config,
-      ...pluginConfig,
-    },
-    initialize: ({ config }: { config: GoogleTagManagerConfig }) => {
-      if (typeof window === "undefined") {
-        return;
-      }
-    
-      const {
-        containerId,
-        dataLayerName,
-        customScriptSrc,
-        preview,
-        auth,
-        execution,
-      } = config;
+	// Allow for userland overides of base methods
+	return {
+		name: 'google-tag-manager',
+		config: {
+			...config,
+			...pluginConfig,
+		},
+		initialize({config}: {config: GoogleTagManagerConfig}) {
+			if (typeof window === 'undefined') {
+				return;
+			}
 
-      if (!containerId) {
-        throw new Error("No google tag manager containerId defined");
-      }
+			const {
+				containerId,
+				customScriptSrc,
+				preview,
+				auth,
+				execution,
+			} = config;
 
-      if (preview && !auth) {
-        throw new Error(
-          "When enabling preview mode, both preview and auth parameters must be defined",
-        );
-      }
+			if (!containerId) {
+				throw new Error('No google tag manager containerId defined');
+			}
 
-      const scriptSrc = customScriptSrc || defaultScriptSrc;
+			if (preview && !auth) {
+				throw new Error(
+					'When enabling preview mode, both preview and auth parameters must be defined',
+				);
+			}
 
-      if (!scriptLoaded(containerId, scriptSrc)) {
-        /* eslint-disable */
+			const scriptSource = customScriptSrc || defaultScriptSource;
+
+			if (!scriptLoaded(containerId, scriptSource)) {
+				/* eslint-disable */
         (function (
           w: Window & typeof globalThis,
           d: Document,
@@ -105,9 +101,7 @@ function googleTagManager(
           l: string,
           i: string,
         ) {
-          // @ts-expect-error Element implicitly has an 'any' type because index expression is not of type 'number'
           w[l] = w[l] || [];
-          // @ts-expect-error Element implicitly has an 'any' type because index expression is not of type 'number'
           w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
           var f = d.getElementsByTagName(s)[0],
             j = d.createElement(s),
@@ -122,72 +116,62 @@ function googleTagManager(
           if (execution) {
             j[execution] = true;
           }
-          j.src = `${scriptSrc}?id=` + i + dl + p;
+          j.src = `${scriptSource}?id=` + i + dl + p;
           f.parentNode?.insertBefore(j, f);
-        })(window, document, "script", dataLayerName, containerId);
-        /* eslint-enable */
-        initializedDataLayerName = dataLayerName;
-      }
-    },
-    page: ({ payload, config }) => {
-      if (typeof window[config.dataLayerName] !== "undefined") {
-        if (config.pageViewEvent) {
-          // @ts-expect-error Property 'push' does not exist on type 'Window'.
-          window[config.dataLayerName].push({
-            event: config.pageViewEvent,
-            ...payload.properties,
-          });
-        }
-      }
-    },
-    track: ({ payload, config }) => {
-      if (typeof window[config.dataLayerName] !== "undefined") {
-        const { anonymousId, userId, properties } = payload;
-        const formattedPayload = properties;
-        if (userId) {
-          formattedPayload.userId = userId;
-        }
-        if (anonymousId) {
-          formattedPayload.anonymousId = anonymousId;
-        }
-        if (!properties.category) {
-          formattedPayload.category = "All";
-        }
-        if (config.debug) {
-          console.debug("dataLayer push", {
-            event: payload.event,
-            ...formattedPayload,
-          });
-        }
+        })(window, document, "script", "dataLayer", containerId);
+			}
+		},
+		page({payload, config}) {
+			if (window.dataLayer !== undefined && config.pageViewEvent) {
+				window.dataLayer.push({
+					event: config.pageViewEvent,
+					...payload.properties,
+				});
+			}
+		},
+		track({payload, config}) {
+			if (window.dataLayer !== undefined) {
+				const {anonymousId, userId, properties} = payload;
+				const formattedPayload = properties;
+				if (userId) {
+					formattedPayload.userId = userId;
+				}
 
-        // @ts-expect-error Property 'push' does not exist on type 'Window'.
-        window[config.dataLayerName].push({
-          event: payload.event,
-          ...formattedPayload,
-        });
-      }
-    },
-    loaded: () => {
-      if (typeof window === "undefined") {
-        return;
-      }
+				if (anonymousId) {
+					formattedPayload.anonymousId = anonymousId;
+				}
 
-      const hasDataLayer =
-        !!initializedDataLayerName &&
-        !!(
-          // @ts-expect-error Element implicitly has an 'any' type because index expression is not of type 'number'
-          window[initializedDataLayerName] &&
-          // @ts-expect-error Property 'push' does not exist on type 'never'.
-          Array.prototype.push !== window[initializedDataLayerName].push
-        );
-      return (
-        scriptLoaded(
-          pluginConfig.containerId,
-          pluginConfig.customScriptSrc || defaultScriptSrc,
-        ) && hasDataLayer
-      );
-    },
-  };
+				if (!properties.category) {
+					formattedPayload.category = 'All';
+				}
+
+				if (config.debug) {
+					console.debug('dataLayer push', {
+						event: payload.event,
+						...formattedPayload,
+					});
+				}
+
+				window.dataLayer.push({
+					event: payload.event,
+					...formattedPayload,
+				});
+			}
+		},
+		loaded() {
+			if (typeof window === 'undefined') {
+				return;
+			}
+
+			const hasDataLayer = Array.isArray(window.dataLayer);
+			return (
+				scriptLoaded(
+					pluginConfig.containerId,
+					pluginConfig.customScriptSrc || defaultScriptSource,
+				) && hasDataLayer
+			);
+		},
+	};
 }
 
 export default googleTagManager;
@@ -200,28 +184,28 @@ const regexCache: Record<string, RegExp> = {};
   */
 
 function scriptLoaded(
-  containerId: GoogleTagManagerConfig["containerId"],
-  scriptSrc: string,
+	containerId: GoogleTagManagerConfig['containerId'],
+	scriptSource: string,
 ) {
-  if (typeof window === "undefined") {
-    return;
-  }
-  
-  let regex = regexCache[containerId];
+	if (typeof window === 'undefined') {
+		return;
+	}
 
-  if (!regex) {
-    const scriptSrcEscaped = scriptSrc
-      .replace(/^https?:\/\//, "")
-      .replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+	let regex = regexCache[containerId];
 
-    regex = new RegExp(scriptSrcEscaped + ".*[?&]id=" + containerId);
-    regexCache[containerId] = regex;
-  }
+	if (!regex) {
+		const scriptSourceEscaped = scriptSource
+			.replace(/^https?:\/\//, '')
+			.replaceAll(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
-  const scripts = document.querySelectorAll("script[src]");
+		regex = new RegExp(scriptSourceEscaped + '.*[?&]id=' + containerId);
+		regexCache[containerId] = regex;
+	}
 
-  return !!Object.keys(scripts).filter((key) =>
-    // @ts-expect-error Element implicitly has an 'any' type because index expression is not of type 'number'
-    (scripts[key].src || "").match(regex),
-  ).length;
+	const scripts = document.querySelectorAll('script[src]');
+
+	return Object.keys(scripts).some(key =>
+	// @ts-expect-error Element implicitly has an 'any' type because index expression is not of type 'number'
+		(scripts[key].src || '').match(regex),
+	);
 }

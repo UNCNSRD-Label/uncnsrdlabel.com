@@ -14,7 +14,15 @@ import { type ResolvedIntlConfig } from "react-intl";
 import { useTrack } from "use-analytics";
 import { ConsentButton } from "./button";
 
-export function ConsentDialog({ className, dictionary, lang }: { className?: string; dictionary: Usable<ResolvedIntlConfig["messages"]>; lang: Intl.BCP47LanguageTag; }) {
+export function ConsentDialog({
+  className,
+  dictionary,
+  lang,
+}: {
+  className?: string;
+  dictionary: Usable<ResolvedIntlConfig["messages"]>;
+  lang: Intl.BCP47LanguageTag;
+}) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
   const intl = createIntl({
@@ -23,7 +31,7 @@ export function ConsentDialog({ className, dictionary, lang }: { className?: str
   });
 
   const [open, setOpen] = useState(false);
-  
+
   const track = useTrack();
 
   useTimeoutEffect(
@@ -80,7 +88,12 @@ export function ConsentDialog({ className, dictionary, lang }: { className?: str
 
   return (
     <>
-      <ConsentButton className={className} dictionary={dictionary} lang={lang} onClick={onOpen} />
+      <ConsentButton
+        className={className}
+        dictionary={dictionary}
+        lang={lang}
+        onClick={onOpen}
+      />
       <Dialog.Root onOpenChange={setOpen} open={open}>
         <Dialog.Portal>
           <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0 z-40 bg-black/80" />
@@ -88,9 +101,13 @@ export function ConsentDialog({ className, dictionary, lang }: { className?: str
             className="data-[state=open]:animate-contentShow fixed inset-x-4 bottom-4 z-50 grid gap-4 overflow-auto rounded border bg-inherit px-8 pb-8 pt-6 sm:left-auto sm:max-h-[calc(85dvh-4rem)] sm:w-[90dvw] sm:max-w-4xl"
             forceMount
           >
-            <Dialog.Title>{intl.formatMessage({ id: "component.ConsentDialog.title" })}</Dialog.Title>
+            <Dialog.Title>
+              {intl.formatMessage({ id: "component.ConsentDialog.title" })}
+            </Dialog.Title>
             <Dialog.Description className="text-sm">
-              {intl.formatMessage({ id: "component.ConsentDialog.description" })}
+              {intl.formatMessage({
+                id: "component.ConsentDialog.description",
+              })}
             </Dialog.Description>
             <Suspense fallback={<LoadingDots />}>
               <ConsentForm
@@ -104,7 +121,9 @@ export function ConsentDialog({ className, dictionary, lang }: { className?: str
             </Suspense>
             <Dialog.Close asChild>
               <Button
-                aria-label={intl.formatMessage({ id: "component.ConsentDialog.close" })}
+                aria-label={intl.formatMessage({
+                  id: "component.ConsentDialog.close",
+                })}
                 className="absolute right-6 top-6 inline-flex"
                 onClick={onClose}
                 variant="ghost"

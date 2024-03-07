@@ -37,7 +37,7 @@ export const productDetailsByIdQuery = graphql(/* GraphQL */ `
 `);
 
 export const productVariantBySelectedOptionsQuery = graphql(/* GraphQL */ `
-query productVariantBySelectedOptions(
+  query productVariantBySelectedOptions(
     $country: CountryCode
     $handle: String!
     $language: LanguageCode

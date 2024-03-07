@@ -167,7 +167,7 @@ export function AddressSummary({
             </span>
           </div>
         </header>
-        <section className="grid justify-between gap-x-4 border-b pb-8 sm:grid-cols-[2fr_1fr] content-start pt-4">
+        <section className="grid content-start justify-between gap-x-4 border-b pb-8 pt-4 sm:grid-cols-[2fr_1fr]">
           <address className="text-sm">
             <ul>
               {mailingAddress.formatted.map((line, index) => (
@@ -176,7 +176,9 @@ export function AddressSummary({
             </ul>
           </address>
           {mailingAddress?.id === defaultAddress?.id && (
-            <span className="content-center justify-self-end flex gap-2"><CheckCircleIcon className="stroke-hotPink h-5 w-5" /> Default</span>
+            <span className="flex content-center gap-2 justify-self-end">
+              <CheckCircleIcon className="stroke-hotPink h-5 w-5" /> Default
+            </span>
           )}
         </section>
 
@@ -184,7 +186,8 @@ export function AddressSummary({
           <Button
             formAction={setDefaultAddress}
             className={cn("flex gap-2 text-sm", {
-              "underline decoration-hotPink": mailingAddress?.id === defaultAddress?.id,
+              "decoration-hotPink underline":
+                mailingAddress?.id === defaultAddress?.id,
             })}
             variant="link"
             value="setDefault"

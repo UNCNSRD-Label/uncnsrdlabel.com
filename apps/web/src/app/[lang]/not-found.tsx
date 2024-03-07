@@ -19,7 +19,7 @@ export default async function NotFound() {
   if (acceptLanguageCodes) {
     for (const acceptLanguageCode of acceptLanguageCodes) {
       const [canonicalLocale] = Intl.getCanonicalLocales(acceptLanguageCode);
-  
+
       if (canonicalLocale) {
         lang = canonicalLocale;
       }

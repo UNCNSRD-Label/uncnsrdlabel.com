@@ -43,10 +43,8 @@ export function Cart({
     messages,
   });
 
-  const {
-    data: cartCookieData = "{}",
-  } = useQuery({
-    queryKey: ['cart'],
+  const { data: cartCookieData = "{}" } = useQuery({
+    queryKey: ["cart"],
     queryFn: () => getCookie("cart") ?? "{}",
     refetchInterval: 5_000,
   });
@@ -106,7 +104,7 @@ export function Cart({
     <>
       <Button
         aria-label={intl.formatMessage({ id: "component.CartModal.open" })}
-        onClick={useCallback(handleClickTrack, [])}
+        onClick={useCallback(handleClickTrack, [track])}
         variant="ghost"
       >
         <OpenCart quantity={cart?.totalQuantity} />

@@ -11,7 +11,7 @@ export {
   AppAnalyticsProvider,
   AppIntlProvider,
   AppReactQueryProvider,
-  AppShopifyProvider
+  AppShopifyProvider,
 };
 
 export function AppProviders({

@@ -34,10 +34,8 @@ export function Images({
             <Image
               alt={image.altText ?? "Product image"}
               blurDataURL={image.blurDataURL}
-              className={cn(
-                "absolute inset-0 object-center object-cover",
-              )}
-              delay={delayOffset + (index * 100)}
+              className={cn("absolute inset-0 object-cover object-center")}
+              delay={delayOffset + index * 100}
               fill
               id={`${idPrefix}-${index}`}
               key={image.id}

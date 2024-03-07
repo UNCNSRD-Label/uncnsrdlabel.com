@@ -4,16 +4,19 @@ import {
   type InputMaybe,
 } from "@shopify/hydrogen-react/storefront-api-types";
 import {
-  QueryClient, useSuspenseQuery,
-  type UseSuspenseQueryResult
+  QueryClient,
+  useSuspenseQuery,
+  type UseSuspenseQueryResult,
 } from "@tanstack/react-query";
-import { formatErrorMessage, getQueryKey, isShopifyError, useGetLangProperties } from "@uncnsrdlabel/lib";
+import {
+  formatErrorMessage,
+  getQueryKey,
+  isShopifyError,
+  useGetLangProperties,
+} from "@uncnsrdlabel/lib";
 import { GraphQLClient } from "graphql-request";
 import { cache } from "react";
-import {
-  type CountryCode,
-  type LanguageCode,
-} from "./codegen/graphql";
+import { type CountryCode, type LanguageCode } from "./codegen/graphql";
 import { endpoint } from "./constants";
 
 export { graphql } from "./codegen/index";
@@ -24,29 +27,32 @@ const headers = new Headers({
 });
 
 export const graphQLClient = new GraphQLClient(endpoint, {
-  fetch: cache(async (url: RequestInfo | URL, params: RequestInit | undefined) => 
-    fetch(url, {
-      ...params,
-      // @ts-expect-error Object literal may only specify known properties, and 'next' does not exist in type 'RequestConfig'.
-      next: { revalidate: 60 }
-    })
+  fetch: cache(
+    async (url: RequestInfo | URL, params: RequestInit | undefined) =>
+      fetch(url, {
+        ...params,
+        // @ts-expect-error Object literal may only specify known properties, and 'next' does not exist in type 'RequestConfig'.
+        next: { revalidate: 60 },
+      }),
   ),
   headers,
 });
 
-export function getInContextVariables(lang: Intl.BCP47LanguageTag = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag): Exact<{
-  country?: InputMaybe<CountryCode> | undefined,
-  language?: InputMaybe<LanguageCode> | undefined,
+export function getInContextVariables(
+  lang: Intl.BCP47LanguageTag = process.env
+    .NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag,
+): Exact<{
+  country?: InputMaybe<CountryCode> | undefined;
+  language?: InputMaybe<LanguageCode> | undefined;
 }> {
   // @ts-expect-error Property 'getCanonicalLocales' does not exist on type 'typeof Intl'.
-  const [canonicalLocale] = Intl.getCanonicalLocales(lang)
+  const [canonicalLocale] = Intl.getCanonicalLocales(lang);
 
   const locale = new Intl.Locale(canonicalLocale);
 
   const country = locale.region as CountryCode;
 
-  const language =
-    locale.language.toLocaleUpperCase() as LanguageCode;
+  const language = locale.language.toLocaleUpperCase() as LanguageCode;
 
   return {
     country,

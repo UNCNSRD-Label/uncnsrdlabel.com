@@ -5,12 +5,12 @@ import { useDebouncedEffect } from "@react-hookz/web";
 import { getShopifyCookies } from "@shopify/hydrogen-react";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
 } from "@uncnsrdlabel/components/atoms/card";
 import { Checkbox } from "@uncnsrdlabel/components/atoms/checkbox";
 import { Input } from "@uncnsrdlabel/components/atoms/input";
@@ -42,7 +42,12 @@ function Submit({
   const { pending } = useFormStatus();
 
   return (
-    <Button className={className} disabled={pending} size="base" variant="default">
+    <Button
+      className={className}
+      disabled={pending}
+      size="base"
+      variant="default"
+    >
       {intl.formatMessage({
         id: "component.SignInToAccountForm.submit",
       })}
@@ -178,14 +183,18 @@ export function SignInToAccountForm({
             </Label>
           </div>
           <Submit className="mt-4 w-full" dictionary={dictionary} lang={lang} />
-          <div className="grid grid-flow-row sm:grid-flow-col justify-center gap-2 text-sm">
+          <div className="grid grid-flow-row justify-center gap-2 text-sm sm:grid-flow-col">
             <span>
               {intl.formatMessage({
                 id: "component.SignInToAccountForm.action.no-account",
               })}
             </span>
             {setActiveTab ? (
-              <Button className="underline" onClick={() => setActiveTab("sign-up")} variant="link">
+              <Button
+                className="underline"
+                onClick={() => setActiveTab("sign-up")}
+                variant="link"
+              >
                 {intl.formatMessage({
                   id: "component.SignInToAccountForm.action.sign-up",
                 })}

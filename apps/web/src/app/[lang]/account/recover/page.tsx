@@ -8,14 +8,14 @@ export const metadata: Metadata = {
   description: "Recover your account",
 };
 
-export default function AccountRecoverPage({
-  params: { lang },
-}: PageProps) {
+export default function AccountRecoverPage({ params: { lang } }: PageProps) {
   const dictionary = getDictionary({ lang });
 
   return (
     <div className="sm:bg-opaque-white grid gap-8 px-4 sm:p-8">
-      <h1 className="text-center text-lg sm:text-xl md:text-3xl">Recover your account</h1>
+      <h1 className="text-center text-lg sm:text-xl md:text-3xl">
+        Recover your account
+      </h1>
       <AccountRecoverForm
         className="bg-transparent sm:min-w-[36rem]"
         dictionary={dictionary}

@@ -72,8 +72,12 @@ export function EditItemQuantityButton({
     <Button
       aria-label={
         type === "plus"
-          ? intl.formatMessage({ id: "component.EditItemQuantityButton.increase" })
-          : intl.formatMessage({ id: "component.EditItemQuantityButton.decrease" })
+          ? intl.formatMessage({
+              id: "component.EditItemQuantityButton.increase",
+            })
+          : intl.formatMessage({
+              id: "component.EditItemQuantityButton.decrease",
+            })
       }
       aria-disabled={isPending}
       className={cn(className, {

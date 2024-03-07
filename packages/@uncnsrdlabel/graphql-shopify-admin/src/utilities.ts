@@ -1,9 +1,15 @@
 import { type TypedDocumentNode } from "@graphql-typed-document-node/core";
 import {
-  QueryClient, useSuspenseQuery,
-  type UseSuspenseQueryResult
+  QueryClient,
+  useSuspenseQuery,
+  type UseSuspenseQueryResult,
 } from "@tanstack/react-query";
-import { formatErrorMessage, getQueryKey, isShopifyError, useGetLangProperties } from "@uncnsrdlabel/lib";
+import {
+  formatErrorMessage,
+  getQueryKey,
+  isShopifyError,
+  useGetLangProperties,
+} from "@uncnsrdlabel/lib";
 import { GraphQLClient } from "graphql-request";
 import { cache } from "react";
 import { endpoint } from "./constants";
@@ -11,17 +17,17 @@ import { endpoint } from "./constants";
 export { graphql } from "./codegen/index";
 
 const headers = new Headers({
-  "X-Shopify-Access-Token":
-    process.env.SHOPIFY_PRIVATE_ACCESS_TOKEN!,
+  "X-Shopify-Access-Token": process.env.SHOPIFY_PRIVATE_ACCESS_TOKEN!,
 });
 
 export const graphQLClient = new GraphQLClient(endpoint, {
-  fetch: cache(async (url: RequestInfo | URL, params: RequestInit | undefined) => 
-    fetch(url, {
-      ...params,
-      // @ts-expect-error Object literal may only specify known properties, and 'next' does not exist in type 'RequestConfig'.
-      next: { revalidate: 60 }
-    })
+  fetch: cache(
+    async (url: RequestInfo | URL, params: RequestInit | undefined) =>
+      fetch(url, {
+        ...params,
+        // @ts-expect-error Object literal may only specify known properties, and 'next' does not exist in type 'RequestConfig'.
+        next: { revalidate: 60 },
+      }),
   ),
   headers,
 });

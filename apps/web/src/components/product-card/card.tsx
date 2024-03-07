@@ -83,9 +83,7 @@ export function ProductCard({
       <div
         className={cn("card col-gap-4 grid w-full grid-flow-col", className)}
       >
-        <figure
-          className="relative grid aspect-square gap-8 overflow-hidden"
-        >
+        <figure className="relative grid aspect-square gap-8 overflow-hidden">
           <Image
             alt={image[0].altText}
             className="aspect-2/3 snap snap-x-mandatory snap-align-start relative w-full overflow-y-hidden object-contain"
@@ -99,19 +97,19 @@ export function ProductCard({
           />
         </figure>
 
-        <div className="flex flex-col gap-4 pt-4 justify-between">
-        <div className="flex flex-col gap-4">
-          <h3
-            data-testid="product-name"
-            className="box-decoration-clone text-sm"
-          >
-            {product.title}
-          </h3>
-          <PriceAndCompareAtPrice
-            className="text-xs"
-            lang={lang}
-            productDetailsFragmentRef={productDetailsFragmentRef}
-          />
+        <div className="flex flex-col justify-between gap-4 pt-4">
+          <div className="flex flex-col gap-4">
+            <h3
+              data-testid="product-name"
+              className="box-decoration-clone text-sm"
+            >
+              {product.title}
+            </h3>
+            <PriceAndCompareAtPrice
+              className="text-xs"
+              lang={lang}
+              productDetailsFragmentRef={productDetailsFragmentRef}
+            />
           </div>
           <AddToCart
             availableForSale={product.availableForSale}

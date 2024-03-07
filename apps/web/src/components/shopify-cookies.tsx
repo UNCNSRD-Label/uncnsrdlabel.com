@@ -1,10 +1,7 @@
 "use client";
 
-import { useShopifyCookies } from '@shopify/hydrogen-react';
-import {
-  COOKIE_CONSENT,
-  type ConsentSettings
-} from "@uncnsrdlabel/lib";
+import { useShopifyCookies } from "@shopify/hydrogen-react";
+import { COOKIE_CONSENT, type ConsentSettings } from "@uncnsrdlabel/lib";
 import { getCookie } from "cookies-next";
 
 export function ShopifyCookies() {
@@ -14,7 +11,7 @@ export function ShopifyCookies() {
 
   const hasUserConsent = savedConsentSettings.analytics_storage === "granted";
 
-  useShopifyCookies({hasUserConsent});
-  
+  useShopifyCookies({ hasUserConsent });
+
   return null;
 }

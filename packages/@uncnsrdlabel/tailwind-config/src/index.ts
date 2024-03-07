@@ -5,10 +5,12 @@ import animate from "tailwindcss-animate";
 import colors from "tailwindcss/colors";
 import plugin from "tailwindcss/plugin";
 
-type Configuration = { theme: (property: string, defaultValue?: unknown) => {} }
+type Configuration = {
+  theme: (property: string, defaultValue?: unknown) => {};
+};
 
 export default {
-  content: ["../../*/dist/**/*.{js,ts,jsx,tsx}",],
+  content: ["../../*/dist/**/*.{js,ts,jsx,tsx}"],
   darkMode: ["class"],
   theme: {
     extend: {
@@ -118,9 +120,7 @@ export default {
       spacing: {
         safeTop: "env(safe-area-inset-top, 1.5rem)",
       },
-      typography: ({
-        theme,
-      }: Configuration) => ({
+      typography: ({ theme }: Configuration) => ({
         DEFAULT: {
           css: {
             h1: {

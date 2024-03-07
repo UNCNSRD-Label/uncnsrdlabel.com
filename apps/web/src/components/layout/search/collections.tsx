@@ -36,18 +36,20 @@ export function CollectionsNav({
 
   useEffect(() => {
     collections.forEach((collection) => {
-      if (params.collection === collection.handle) {
+      if (params?.collection === collection.handle) {
         setActive(collection.title);
       }
     });
-  }, [params.collection, collections]);
+  }, [params?.collection, collections]);
 
   return (
     <RefineBy
       active={active}
       className={cn(
         {
-          "hidden": process.env.NEXT_PUBLIC_FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE === "false",
+          hidden:
+            process.env.NEXT_PUBLIC_FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE ===
+            "false",
         },
         className,
       )}

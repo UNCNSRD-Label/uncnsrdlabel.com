@@ -8,9 +8,7 @@ export const metadata: Metadata = {
   description: "Reset the password for your account",
 };
 
-export default function AccountResetPage({
-  params: { lang },
-}: PageProps) {
+export default function AccountResetPage({ params: { lang } }: PageProps) {
   const dictionary = getDictionary({ lang });
 
   return (

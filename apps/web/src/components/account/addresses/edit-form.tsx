@@ -49,7 +49,12 @@ function Submit({
   const { pending } = useFormStatus();
 
   return (
-    <Button className={className} disabled={pending} size="base" variant="default">
+    <Button
+      className={className}
+      disabled={pending}
+      size="base"
+      variant="default"
+    >
       {intl.formatMessage({
         id: "component.AddressesEditForm.action.submit",
       })}

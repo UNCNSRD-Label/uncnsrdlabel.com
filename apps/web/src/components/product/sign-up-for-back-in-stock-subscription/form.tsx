@@ -61,7 +61,10 @@ export function SignUpForBackInStockSubscriptionForm({
     messages,
   });
 
-  const [state, signUpForBackInStockSubscription] = useFormState(signUpForBackInStockSubscriptionAction, null);
+  const [state, signUpForBackInStockSubscription] = useFormState(
+    signUpForBackInStockSubscriptionAction,
+    null,
+  );
 
   const hasError = (state && state.status > 299) ?? false;
 
@@ -118,7 +121,10 @@ export function SignUpForBackInStockSubscriptionForm({
   }
 
   return (
-    <form action={signUpForBackInStockSubscription} className={cn("grid gap-4", className)}>
+    <form
+      action={signUpForBackInStockSubscription}
+      className={cn("grid gap-4", className)}
+    >
       <div className="field">
         <input
           aria-invalid={hasError ? "true" : "false"}

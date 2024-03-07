@@ -36,7 +36,7 @@ const ParagraphB = () => {
 
 export const LoadingSkeleton = () => {
   return (
-    <div className="mx-auto flex max-w-2xl animate-pulse flex-col p-6 space-y-4 w-full">
+    <div className="mx-auto flex w-full max-w-2xl animate-pulse flex-col space-y-4 p-6">
       <ParagraphA />
       <ParagraphB />
       <ParagraphA />

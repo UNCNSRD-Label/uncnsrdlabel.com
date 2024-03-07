@@ -88,8 +88,9 @@ export function MetafieldMapper({
       {
         const reference = metafield.reference as Metaobject;
 
-        const name = reference?.fields?.find((field) => field.key === "name")
-          ?.value;
+        const name = reference?.fields?.find(
+          (field) => field.key === "name",
+        )?.value;
 
         if (typeof name === "string") {
           value = <span key={`${metafield.key}.name`}>❤ {name}</span>;
@@ -152,10 +153,10 @@ export function MetafieldMapper({
               const variables = { id };
 
               const { product: productDetailsFragmentRef } =
-                await getShopifyGraphQL(
-                  productDetailsByIdQuery,
-                  { ...inContextVariables, ...variables },
-                );
+                await getShopifyGraphQL(productDetailsByIdQuery, {
+                  ...inContextVariables,
+                  ...variables,
+                });
 
               if (!productDetailsFragmentRef) {
                 return null;

@@ -15,7 +15,10 @@ export const addToCartMutation = graphql(/* GraphQL */ `
 `);
 
 export const cartBuyerIdentityUpdateMutation = graphql(/* GraphQL */ `
-  mutation cartBuyerIdentityUpdate($buyerIdentity: CartBuyerIdentityInput!, $cartId: ID!) {
+  mutation cartBuyerIdentityUpdate(
+    $buyerIdentity: CartBuyerIdentityInput!
+    $cartId: ID!
+  ) {
     cartBuyerIdentityUpdate(buyerIdentity: $buyerIdentity, cartId: $cartId) {
       cart {
         ...cart

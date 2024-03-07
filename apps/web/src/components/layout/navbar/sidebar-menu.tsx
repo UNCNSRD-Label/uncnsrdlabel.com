@@ -67,7 +67,7 @@ export function SidebarMenu({
         }}
         variant="ghost"
       >
-        <MenuIcon className="h-5 icon stroke-inherit drop-shadow" />
+        <MenuIcon className="icon h-5 stroke-inherit drop-shadow" />
       </Button>
       <AnimatePresence initial={false}>
         {sidebarMenuIsOpen && (
@@ -93,7 +93,7 @@ export function SidebarMenu({
               aria-hidden="true"
             />
             <div
-              className="fixed inset-y-0 start-0 flex w-full max-w-sm justify-end pt-safeTop"
+              className="pt-safeTop fixed inset-y-0 start-0 flex w-full max-w-sm justify-end"
               data-testid="sidebar-menu"
             >
               <Dialog.Panel
@@ -106,7 +106,9 @@ export function SidebarMenu({
                 className={cn("flex w-full flex-col p-4", themeColors)}
               >
                 <Button
-                  aria-label={intl.formatMessage({ id: "component.SidebarMenu.close" })}
+                  aria-label={intl.formatMessage({
+                    id: "component.SidebarMenu.close",
+                  })}
                   className="mb-4 w-fit"
                   data-testid="close-sidebar-menu"
                   onClick={() => {

@@ -37,23 +37,25 @@ export function SortBy({
   const searchParams = useSearchParams();
 
   const [active, setActive] = useState<string>(
-    sortItems.find((sortItem) => sortItem.slug === searchParams.get("sort"))
+    sortItems.find((sortItem) => sortItem.slug === searchParams?.get("sort"))
       ?.title ?? defaultSort.title,
   );
 
   useEffect(() => {
     const matchedSortItem =
-      sortItems.find((sortItem) => sortItem.slug === searchParams.get("sort"))
+      sortItems.find((sortItem) => sortItem.slug === searchParams?.get("sort"))
         ?.title ?? defaultSort.title;
     setActive(matchedSortItem);
-  }, [searchParams]);
+  }, [defaultSort.title, searchParams, sortItems]);
 
   return (
     <RefineBy
       active={active}
       className={cn(
         {
-          "hidden": process.env.NEXT_PUBLIC_FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE !== "true",
+          hidden:
+            process.env.NEXT_PUBLIC_FEATURE_FLAG_SEARCH_COLLECTIONS_ENABLE !==
+            "true",
         },
         className,
       )}

@@ -14,7 +14,7 @@ export const SocialMenu: FunctionComponent<SocialMenuProps> = ({
   return (
     <menu
       className={cn(
-        "min-h-8 grid grid-flow-col content-center justify-center gap-4",
+        "grid min-h-8 grid-flow-col content-center justify-center gap-4",
         className,
       )}
     >

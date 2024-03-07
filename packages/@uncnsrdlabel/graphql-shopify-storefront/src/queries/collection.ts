@@ -17,8 +17,7 @@ export const collectionsQuery = graphql(/* GraphQL */ `
     $country: CountryCode
     $first: Int = 100
     $language: LanguageCode
-  )
-  @inContext(country: $country, language: $language) {
+  ) @inContext(country: $country, language: $language) {
     collections(first: $first, sortKey: TITLE) {
       edges {
         node {

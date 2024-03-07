@@ -7,7 +7,7 @@ import {
   customerAccessTokenDeleteMutation,
   getInContextVariables,
   getShopifyGraphQL,
-  productVariantBySelectedOptionsQuery
+  productVariantBySelectedOptionsQuery,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getQueryKey } from "@uncnsrdlabel/lib";
 import { deleteCookie, getCookie } from "cookies-next";
@@ -31,8 +31,9 @@ export const signOutOfUserAccount = ({
 
   const variables = { customerAccessToken };
 
-  const customerAccessTokenDeleteMutationFn = (variables: CustomerAccessTokenDeleteMutationVariables) =>
-    getShopifyGraphQL(customerAccessTokenDeleteMutation, variables);
+  const customerAccessTokenDeleteMutationFn = (
+    variables: CustomerAccessTokenDeleteMutationVariables,
+  ) => getShopifyGraphQL(customerAccessTokenDeleteMutation, variables);
 
   useMutation({
     mutationFn: customerAccessTokenDeleteMutationFn,
@@ -58,9 +59,9 @@ export const getProductVariantBySelectedOptionsUtility = ({
 }) => {
   const searchParams = useSearchParams();
 
-  const color = searchParams.get("color") ?? "";
+  const color = searchParams?.get("color");
 
-  const size = searchParams.get("size") ?? "";
+  const size = searchParams?.get("size");
 
   const selectedOptions = options.map((option) => ({
     name: option.name,
@@ -116,4 +117,4 @@ export const getProductVariantBySelectedOptionsUtility = ({
   });
 
   return data;
-}
+};

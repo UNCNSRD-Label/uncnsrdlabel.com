@@ -9,7 +9,15 @@ import { Usable, use } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
 import { useTrack } from "use-analytics";
 
-export function NavbarSearch({ className, dictionary, lang }: { className?: string; dictionary: Usable<ResolvedIntlConfig["messages"]>; lang: Intl.BCP47LanguageTag; }) {
+export function NavbarSearch({
+  className,
+  dictionary,
+  lang,
+}: {
+  className?: string;
+  dictionary: Usable<ResolvedIntlConfig["messages"]>;
+  lang: Intl.BCP47LanguageTag;
+}) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
   const intl = createIntl({
@@ -28,11 +36,11 @@ export function NavbarSearch({ className, dictionary, lang }: { className?: stri
 
     const val = event.target as HTMLFormElement;
     const search = val.search as HTMLInputElement;
-    const newParams = new URLSearchParams(searchParams.toString());
+    const newParams = new URLSearchParams(searchParams?.toString());
 
     const { dataset } = event.currentTarget;
 
-    const { value } = search
+    const { value } = search;
 
     track("search", {
       ...dataset,
@@ -45,7 +53,7 @@ export function NavbarSearch({ className, dictionary, lang }: { className?: stri
       newParams.delete("q");
     }
 
-    track('search', newParams);
+    track("search", newParams);
 
     router.push(createUrl("/search", newParams));
   }
@@ -57,10 +65,15 @@ export function NavbarSearch({ className, dictionary, lang }: { className?: stri
         className="focus:inherit w-full bg-gray-800/50 px-4 py-2 placeholder:text-inherit"
         defaultValue={searchParams?.get("q") || ""}
         name="search"
-        placeholder={intl.formatMessage({ id: "component.NavbarSearch.placeholder" })}
+        placeholder={intl.formatMessage({
+          id: "component.NavbarSearch.placeholder",
+        })}
         type="text"
       />
-      <Button className="absolute right-0 top-0 mr-3 flex h-full items-center" variant="ghost">
+      <Button
+        className="absolute right-0 top-0 mr-3 flex h-full items-center"
+        variant="ghost"
+      >
         <SearchIcon className="h-5" />
       </Button>
     </form>

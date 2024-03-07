@@ -1,19 +1,42 @@
 {
-  "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit",
-    "source.organizeImports": "explicit",
-    "source.sortMembers": "explicit"
-  },
-  "eslint.workingDirectories": [{ "mode": "auto" }],
-  "json.schemas": [
-    {
-      "url": "https://cdn.jsdelivr.net/npm/tsup/schema.json",
-      "fileMatch": ["package.json", "tsup.config.json"]
-    }
-  ],
-  "tailwindCSS.experimental.classRegex": [
-    ["clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
-  ],
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+	"[javascript]": {
+		"editor.defaultFormatter": "samverschueren.linter-xo"
+	},
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "samverschueren.linter-xo"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "samverschueren.linter-xo"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "samverschueren.linter-xo"
+	},
+	"editor.codeActionsOnSave": {
+		"source.fixAll": "explicit"
+	},
+	"editor.formatOnSave": false,
+	"eslint.workingDirectories": [
+		{
+			"mode": "auto"
+		}
+	],
+	"json.schemas": [
+		{
+			"url": "https://cdn.jsdelivr.net/npm/tsup/schema.json",
+			"fileMatch": [
+				"package.json",
+				"tsup.config.json"
+			]
+		}
+	],
+	"tailwindCSS.experimental.classRegex": [
+		[
+			"clsx\\(([^)]*)\\)",
+			"(?:'|\"|`)([^']*)(?:'|\"|`)"
+		]
+	],
+	"typescript.enablePromptUseWorkspaceTsdk": true,
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"xo.enable": true,
+	"xo.format.enable": true
 }

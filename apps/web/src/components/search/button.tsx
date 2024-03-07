@@ -31,7 +31,7 @@ export function SearchButton({
     <Button
       aria-label={intl.formatMessage({ id: "component.SearchButton.submit" })}
       className={cn("btn", {
-        "open": isOpen
+        open: isOpen,
       })}
       data-testid="submit-search"
       form="search-form"

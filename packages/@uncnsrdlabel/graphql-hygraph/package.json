@@ -17,17 +17,15 @@
     "zod-fetch": "^0.1.1"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.0.1",
+    "@graphql-eslint/eslint-plugin": "^3.20.1",
     "@types/lodash": "^4.14.202",
     "@types/node": "latest",
-    "@uncnsrdlabel/eslint-config-custom": "workspace:*",
     "@uncnsrdlabel/tsconfig": "workspace:*",
     "@uncnsrdlabel/types": "workspace:*",
-    "eslint": "^8.56.0",
-    "prettier": "^3.2.5",
     "type-fest": "^4.10.3",
     "typescript": "^5.3.3",
-    "typescript-graphql-request": "^4.4.6"
+    "typescript-graphql-request": "^4.4.6",
+    "xo": "^0.57.0"
   },
   "files": [
     "dist/**"
@@ -45,7 +43,8 @@
     "dev:ts": "tsc --project ./tsconfig.json --watch",
     "dev": "npm-run-all dev:graphql-codegen dev:ts",
     "generate:component": "turbo gen react-component",
-    "lint": "eslint",
+    "lint": "xo",
+    "lint:fix": "xo --fix",
     "types:check": "tsc --noEmit"
   },
   "sideEffects": false,
