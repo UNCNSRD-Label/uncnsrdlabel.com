@@ -29,7 +29,7 @@
     "find:unused": "npx next-unused",
     "lint-staged": "lint-staged",
     "lint": "turbo run lint",
-    "lint:fix": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
     "list:projects": "pnpm m ls --depth -1 --json",
     "list:projects:dependencies": "pnpm recursive list --only-projects",
     "packages:versions:check": "npx npm-check-updates -u --deep",
