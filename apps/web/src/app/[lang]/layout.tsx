@@ -2,8 +2,8 @@ import { Banner } from "@/components/layout/banner";
 import { Footer } from "@/components/layout/footer/index";
 import { Navbar } from "@/components/layout/navbar/index";
 import { Progress } from "@/components/layout/progress/index";
+import { LinkedDataOrganization } from "@/components/linked-data/organization";
 import { NavigationEvents } from "@/components/navigation-events";
-import { Organization } from "@/components/schema.org/organization";
 import { ShopifyCookies } from "@/components/shopify-cookies";
 import { getDictionary } from "@/lib/dictionary";
 import { getAvailableBCP47LanguageTags } from "@/lib/i18n";
@@ -149,7 +149,7 @@ export default async function Layout({
           />
           {children}
           <Footer lang={lang} />
-          <Organization />
+          <LinkedDataOrganization lang={lang} />
           <Suspense fallback={null}>
             <NavigationEvents />
             <ShopifyCookies />
