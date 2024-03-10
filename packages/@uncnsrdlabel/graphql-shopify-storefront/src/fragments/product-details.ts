@@ -96,7 +96,7 @@ export const productDetailsFragment = graphql(/* GraphQL */ `
       }
     }
     productType
-    release_date: metafield(namespace: "custom", key: "release_date") {
+    releaseDate: metafield(namespace: "custom", key: "release_date") {
       ...productMetafield
     }
     requiresSellingPlan
