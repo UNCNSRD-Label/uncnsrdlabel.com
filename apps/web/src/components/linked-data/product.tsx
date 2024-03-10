@@ -6,20 +6,26 @@ import {
   imageFragment,
   productDetailsFragment,
   productMetafieldFragment,
-  productVariantConnectionFragment,
   type FragmentType,
-  type ProductVariant,
+  type ProductVariant
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { toLower, upperFirst } from "lodash/fp";
 import Script from "next/script";
-import { ImageObject as ImageObjectSchema, PaymentMethod as PaymentMethodSchema, ProductGroup as ProductGroupSchema, WithContext } from "schema-dts";
+import {
+  ImageObject as ImageObjectSchema,
+  PaymentMethod as PaymentMethodSchema,
+  Product as ProductSchema,
+  WithContext,
+} from "schema-dts";
 
-export async function LinkedDataProductGroup({
+export async function LinkedDataProduct({
   lang,
   productDetailsFragmentRef,
+  variant,
 }: {
   lang: Intl.BCP47LanguageTag;
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
+  variant: Pick<ProductVariant, "availableForSale" | "compareAtPrice" | "id" | "barcode" | "currentlyNotInStock" | "image" | "price" | "quantityAvailable" | "requiresShipping" | "selectedOptions" | "sku" | "taxable" | "title" | "weight">;
 }) {
   const localization = await getLocalizationDetailsHandler({
     lang,
@@ -43,9 +49,14 @@ export async function LinkedDataProductGroup({
     width: image?.width?.toString() ?? undefined,
   });
 
-  const acceptedPaymentMethod = shopDetails.paymentSettings.acceptedCardBrands.map(
-    (acceptedCardBrand) => `http://purl.org/goodrelations/v1#${acceptedCardBrand.split("_").map(word => upperFirst(toLower(word))).join("")}` as unknown as PaymentMethodSchema,
-  );
+  const acceptedPaymentMethod =
+    shopDetails.paymentSettings.acceptedCardBrands.map(
+      (acceptedCardBrand) =>
+        `http://purl.org/goodrelations/v1#${acceptedCardBrand
+          .split("_")
+          .map((word) => upperFirst(toLower(word)))
+          .join("")}` as unknown as PaymentMethodSchema,
+    );
 
   const associatedMedia = product.images?.edges
     .map(({ node }) => getFragmentData(imageFragment, node))
@@ -60,68 +71,61 @@ export async function LinkedDataProductGroup({
 
   const releaseDate = releaseDateTime?.split("T")[0];
 
-  const variantsFragmentRefs = product.variants;
-
-  const variantFragments = getFragmentData(
-    productVariantConnectionFragment,
-    variantsFragmentRefs,
-  );
-
-  const variants: Pick<ProductVariant, "availableForSale" | "compareAtPrice" | "id" | "barcode" | "price" | "quantityAvailable" | "selectedOptions" | "sku" | "title" | "weight">[] =
-    variantFragments.edges.map((edge) => edge?.node);
-
-  const jsonLd: WithContext<ProductGroupSchema> = {
+  const jsonLd: WithContext<ProductSchema> = {
     "@context": "https://schema.org",
-    "@type": "ProductGroup",
+    "@type": "Product",
     description: product.description,
-    hasVariant: variants.map((variant) => ({
-      "@type": "Product",
-      identifier: variant.id,
-      name: variant.title,
-      productID: variant.id,
-      url: `/products/${product.handle}?${variant.selectedOptions.map((selectedOption) => `${selectedOption.name}=${selectedOption.value}`).join("&")}`,
-    })),
-    identifier: product.id,
+    identifier: variant.id,
     ...(featuredImage && {
       image: { ...shopifyImageToImageObject(featuredImage), associatedMedia },
     }),
+    isVariantOf: {
+      "@type": "ProductGroup",
+      identifier: product.id,
+      name: product.title,
+      productID: product.id,
+      url: `/products/${product.handle}`,
+    },
     keywords: product.tags,
     name: product.title,
     offers: {
-      "@type": "AggregateOffer",
-      acceptedPaymentMethod: [{
-        "@type": "LoanOrCredit",
-        amount: {
-          "@type": "MonetaryAmount",
+      "@type": "Offer",
+      acceptedPaymentMethod: [
+        {
+          "@type": "LoanOrCredit",
+          amount: {
+            "@type": "MonetaryAmount",
+            currency: localization.country.currency.isoCode,
+            value: product.priceRange.minVariantPrice.amount,
+          },
           currency: localization.country.currency.isoCode,
-          value: product.priceRange.minVariantPrice.amount,
+          loanTerm: {
+            "@type": "QuantitativeValue",
+            maxValue: 4,
+            minValue: 1,
+            unitCode: "MON",
+            unitText: "month",
+          },
         },
-        currency: localization.country.currency.isoCode,
-        loanTerm: {
-          "@type": "QuantitativeValue",
-          maxValue: 4,
-          minValue: 1,
-          unitCode: "MON",
-          unitText: "month",
-        },
-      }, ...acceptedPaymentMethod],
+        ...acceptedPaymentMethod,
+      ],
       areaServed: localization.country.name,
       availability: product.availableForSale ? "InStock" : "OutOfStock",
-      ...(releaseDate && { availabilityStarts: new Date(releaseDate).toISOString() }),
+      ...(releaseDate && {
+        availabilityStarts: new Date(releaseDate).toISOString(),
+      }),
       category: product.productType,
-      highPrice: product.priceRange.maxVariantPrice.amount,
-      lowPrice: product.priceRange.minVariantPrice.amount,
+      price: product.priceRange.minVariantPrice.amount,
       priceCurrency: product.priceRange.minVariantPrice.currencyCode,
       url: `/products/${product.handle}`,
     },
-    productGroupID: product.id,
-    variesBy: product.options.map((option) => option.name),
+    productID: product.id,
   };
 
   return (
     <Script
-      id="LinkedDataProductGroup"
-      key="LinkedDataProductGroup"
+      id="LinkedDataProduct"
+      key="LinkedDataProduct"
       type="application/ld+json"
     >
       {JSON.stringify(jsonLd)}
