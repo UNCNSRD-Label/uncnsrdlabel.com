@@ -17,7 +17,6 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, getQueryKey } from "@uncnsrdlabel/lib";
 import { getCookie } from "cookies-next";
-import { usePathname, useSearchParams } from "next/navigation";
 import {
   Fragment,
   Usable,
@@ -43,9 +42,6 @@ export function Cart({
     locale: lang,
     messages,
   });
-
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
 
   const page = usePage();
 
@@ -89,7 +85,7 @@ export function Cart({
     page({
       pageType: "cart",
     });
-  }, [isOpen, pathname, searchParams]);
+  }, [isOpen]);
 
   useEffect(() => {
     // Open cart modal when quantity changes.
