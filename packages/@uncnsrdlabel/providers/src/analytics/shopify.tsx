@@ -116,12 +116,12 @@ export function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
       // Fire custom logic after analytics.track() calls
       // console.debug("shopify:trackEnd", { payload, config });
 
-      if (!payload.properties?.product) {
-        console.error("Product payload is missing properties");
-        return;
-      }
-
       if (payload.event === "product") {
+        if (!payload.properties?.product) {
+          console.error("Product payload is missing properties");
+          return;
+        }
+  
         const shopifyPageViewPayload: ShopifyPageViewPayload = {
           ...getClientBrowserParameters(),
           ...sendShopifyAnalyticsPayloadBase,
@@ -166,6 +166,11 @@ export function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
       if (payload.event === "addToCart") {
         const { cartId } = config.options;
 
+        if (!payload.properties?.product) {
+          console.error("Product payload is missing properties");
+          return;
+        }
+  
         if (cartId) {
           const shopifyAddToCartPayload: ShopifyAddToCartPayload = {
             ...getClientBrowserParameters(),
