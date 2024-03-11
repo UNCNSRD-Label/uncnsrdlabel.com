@@ -40,19 +40,14 @@ const sendKlaviyoAnalytics = async (
 
 // eslint-disable-next-line no-unused-vars
 export function klaviyo(config: KlaviyoConfig): KlaviyoAnalyticsPlugin {
-  console.debug("klaviyo:root", {
-    config,
-  });
-
   return {
     /* Name is a required field for plugins */
     name: "klaviyo-plugin",
-    identify: async ({ payload, config, instance }) => {
-      console.debug("klaviyo:identify", {
-        payload,
-        config,
-        instance,
-      });
+    config: {
+      ...config,
+    },
+    identify: async ({ payload }) => {
+      console.debug("klaviyo:identify", { payload });
 
       const data = {
         properties: {
@@ -74,9 +69,11 @@ export function klaviyo(config: KlaviyoConfig): KlaviyoAnalyticsPlugin {
     },
     loaded: () => {
       console.debug("klaviyo:loaded");
+
+      return !!sendKlaviyoAnalytics
     },
     page: ({ payload }) => {
-      console.debug("klaviyo:page", { payload, config });
+      console.debug("klaviyo:page", { payload });
 
       if (!payload.properties) {
         console.error("Page payload is missing properties");
@@ -135,8 +132,11 @@ export function klaviyo(config: KlaviyoConfig): KlaviyoAnalyticsPlugin {
 
       sendKlaviyoAnalytics(data);
     },
+    ready: () => {
+      console.debug("gtm:ready");
+    },
     track: async ({ payload }) => {
-      console.debug("klaviyo:track", { payload, config });
+      console.debug("klaviyo:track", { payload });
 
       const customer_properties = {
         $email: "abraham.lincoln@klaviyo.com",

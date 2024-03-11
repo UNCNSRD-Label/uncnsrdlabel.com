@@ -1,3 +1,4 @@
+import { NavigationEvents } from "@/components/navigation-events";
 import { getAlternativeLanguages } from "@/lib/i18n";
 import { getCanonical } from "@/lib/metadata";
 import { type PageProps } from "@/types/next";
@@ -69,31 +70,31 @@ export default async function PagePage({
   if (!pageFragmentRef || !page) return notFound();
 
   return (
-    <Article key={page.handle} lang={lang} pageFragmentRef={pageFragmentRef}>
-      <h1 className="sr-only">{page.title}</h1>
-      {page.sections?.references?.nodes?.map(
-        (pageSectionModuleFragmentRef, index) => {
-          if (pageSectionModuleFragmentRef.__typename === "Metaobject") {
-            return (
-              <PageSectionModule
-                key={index}
-                pageSectionModuleFragmentRef={pageSectionModuleFragmentRef}
-              />
-            );
-          }
-        },
-      )}
+    <>
+      <Article key={page.handle} lang={lang} pageFragmentRef={pageFragmentRef}>
+        <h1 className="sr-only">{page.title}</h1>
+        {page.sections?.references?.nodes?.map(
+          (pageSectionModuleFragmentRef, index) => {
+            if (pageSectionModuleFragmentRef.__typename === "Metaobject") {
+              return (
+                <PageSectionModule
+                  key={index}
+                  pageSectionModuleFragmentRef={pageSectionModuleFragmentRef}
+                />
+              );
+            }
+          },
+        )}
 
-      <span className="mb-8 hidden text-sm italic">
-        {`This document was last updated on ${new Intl.DateTimeFormat(
-          lang,
-          {
+        <span className="mb-8 hidden text-sm italic">
+          {`This document was last updated on ${new Intl.DateTimeFormat(lang, {
             year: "numeric",
             month: "long",
             day: "numeric",
-          },
-        ).format(new Date(page.updatedAt))}.`}
-      </span>
-    </Article>
+          }).format(new Date(page.updatedAt))}.`}
+        </span>
+      </Article>
+      <NavigationEvents pageType="page" />
+    </>
   );
 }

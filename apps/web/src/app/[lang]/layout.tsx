@@ -3,7 +3,6 @@ import { Footer } from "@/components/layout/footer/index";
 import { Navbar } from "@/components/layout/navbar/index";
 import { Progress } from "@/components/layout/progress/index";
 import { LinkedDataOrganization } from "@/components/linked-data/organization";
-import { NavigationEvents } from "@/components/navigation-events";
 import { ShopifyCookies } from "@/components/shopify-cookies";
 import { getDictionary } from "@/lib/dictionary";
 import { getAvailableBCP47LanguageTags } from "@/lib/i18n";
@@ -22,7 +21,7 @@ import config from "@uncnsrdlabel/tailwind-config";
 import type { Metadata } from "next";
 import { Lato, Montserrat } from "next/font/google";
 import localFont from "next/font/local";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, Suspense } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
 import "../globals.css";
 
@@ -144,14 +143,15 @@ export default async function Layout({
           />
           <Progress />
           <Navbar
-            className="top-safeTop sticky left-0 z-10 drop-shadow w-full"
+            className="top-safeTop sticky left-0 z-10 w-full drop-shadow"
             lang={lang}
           />
           {children}
           <Footer lang={lang} />
           <LinkedDataOrganization lang={lang} />
-          <NavigationEvents />
-          <ShopifyCookies />
+          <Suspense fallback={null}>
+            <ShopifyCookies />
+          </Suspense>
           <Toaster />
         </AppProviders>
       </body>

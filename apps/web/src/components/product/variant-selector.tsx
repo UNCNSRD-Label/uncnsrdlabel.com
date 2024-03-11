@@ -105,7 +105,7 @@ export function VariantSelector({
                   option.values.length === 1;
 
                 return (
-                  <>
+                  <Fragment key={`fragment-${optionValue}-${option.id}`}>
                     <Button
                       aria-disabled={current?.availableForSale === false}
                       className={cn(
@@ -121,7 +121,6 @@ export function VariantSelector({
                         },
                       )}
                       disabled={current?.availableForSale === false}
-                      key={`button-${name}-${value}`}
                       onClick={(event) => {
                         const { dataset } = event.currentTarget;
 
@@ -148,13 +147,12 @@ export function VariantSelector({
                     </Button>
                     {current?.id && (
                       <LinkedDataProduct
-                        key={`LinkedDataProduct-${name}-${value}`}
                         lang={lang}
                         product={product}
                         variant={current}
                       />
                     )}
-                  </>
+                  </Fragment>
                 );
               })}
             </dd>

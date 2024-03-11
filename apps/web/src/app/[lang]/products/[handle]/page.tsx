@@ -1,3 +1,4 @@
+import { NavigationEvents } from "@/components/navigation-events";
 import { ProductDetails } from "@/components/product/details";
 import { getDictionary } from "@/lib/dictionary";
 import { getAlternativeLanguages } from "@/lib/i18n";
@@ -120,6 +121,7 @@ export default async function ProductsPage({
         lang={lang}
         productDetailsFragmentRef={productDetailsFragmentRef}
       />
+      <NavigationEvents pageType="product" />
     </div>
   );
 }

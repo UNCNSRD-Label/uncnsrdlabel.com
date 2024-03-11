@@ -1,4 +1,5 @@
 import { Boundary } from "@/components/boundary";
+import { NavigationEvents } from "@/components/navigation-events";
 import { getDictionary } from "@/lib/dictionary";
 import { createIntl } from "@formatjs/intl";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
@@ -19,7 +20,7 @@ export default async function NotFound() {
   if (acceptLanguageCodes) {
     for (const acceptLanguageCode of acceptLanguageCodes) {
       const [canonicalLocale] = Intl.getCanonicalLocales(acceptLanguageCode);
-  
+
       if (canonicalLocale) {
         lang = canonicalLocale;
       }
@@ -52,6 +53,7 @@ export default async function NotFound() {
           {intl.formatMessage({ id: `page.${handle}.button` })}
         </Link>
       </div>
+      <NavigationEvents pageType="notFound" />
     </Boundary>
   );
 }

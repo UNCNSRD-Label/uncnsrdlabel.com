@@ -5,12 +5,12 @@ import { useDebouncedEffect } from "@react-hookz/web";
 import { getShopifyCookies } from "@shopify/hydrogen-react";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
 } from "@uncnsrdlabel/components/atoms/card";
 import { Input } from "@uncnsrdlabel/components/atoms/input";
 import { Label } from "@uncnsrdlabel/components/atoms/label";
@@ -18,6 +18,7 @@ import { Usable, use } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { type ResolvedIntlConfig } from "react-intl";
 import { toast } from "sonner";
+import { usePage } from "use-analytics";
 import { resetAccountAction } from "./action";
 
 function Submit({
@@ -67,6 +68,8 @@ export function AccountResetForm({
 
   const hasError = (state && state.status > 299) ?? false;
 
+  const page = usePage();
+
   useDebouncedEffect(
     () => {
       if (hasError) {
@@ -96,6 +99,10 @@ export function AccountResetForm({
             description: intl.formatMessage({ id: state?.messageKey }),
           },
         );
+
+        page({
+          pageType: "customersResetPassword"
+        });
       }
     },
     [state?.ok],

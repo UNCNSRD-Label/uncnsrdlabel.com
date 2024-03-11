@@ -1,15 +1,14 @@
 "use client";
 
-import { Analytics } from "analytics";
-import googleTagManager from "./google-tag-manager";
-// import { eventValidation } from "analytics-plugin-event-validation";
-import { GoogleTagManager } from '@next/third-parties/google';
+import { GoogleTagManager } from "@next/third-parties/google";
 import { getShopifyCookies, useShop } from "@shopify/hydrogen-react";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
+import { Analytics } from "analytics";
 import { getCookie } from "cookies-next";
 import { PropsWithChildren } from "react";
 import { AnalyticsProvider } from "use-analytics";
-import { klaviyo } from "./klaviyo";
+import { googleTagManager } from "./google-tag-manager";
+// import { klaviyo } from "./klaviyo";
 import { shopify } from "./shopify";
 
 import { COOKIE_CONSENT, type ConsentSettings } from "@uncnsrdlabel/lib";
@@ -27,50 +26,44 @@ export function AppAnalyticsProvider({ children }: PropsWithChildren) {
 
   const locale = new Intl.Locale(tag);
 
+  let cartId = undefined;
   let _shopify_y = undefined;
 
   if (typeof window !== "undefined") {
     const shopifyCookies = getShopifyCookies(document.cookie);
 
     _shopify_y = shopifyCookies._shopify_y;
+
+    cartId = getCookie('cartId');
   }
 
   // console.debug({ cookies, _shopify_y, consentCookieData, savedConsentSettings, hasUserConsent, locale, storefrontId, countryIsoCode, languageIsoCode })
 
   const config = {
     app: process.env.NEXT_PUBLIC_SITE_NAME,
-    debug: true,
+    debug: false,
     plugins: [
-      // eventValidation({
-      //   // Namespace of current application
-      //   context: "app",
-      //   // Allowed objects
-      //   objects: [
-      //     "document",
-      //     "sites", // example app:sites_cdConfigured
-      //     "user", // example app:user_signup
-      //     "widget", // example app:widget_created
-      //   ],
-      // }),
       googleTagManager({
         hasUserConsent,
         locale,
         preview: process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_PREVIEW,
       }),
-      klaviyo({
-        ...(_shopify_y && {
-          userToken: _shopify_y,
-        }),
-        hasUserConsent,
-        locale,
-      }),
+      // klaviyo({
+      //   ...(_shopify_y && {
+      //     userToken: _shopify_y,
+      //   }),
+      //   hasUserConsent,
+      //   locale,
+      // }),
       shopify({
         ...(_shopify_y && {
           userToken: _shopify_y,
         }),
+        cartId,
         hasUserConsent,
         locale,
         shopId: `gid://shopify/Shop/${process.env.NEXT_PUBLIC_SHOPIFY_SHOP_ID}`,
+        shopDomain: process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!,
         storefrontId,
       }),
     ],
@@ -88,7 +81,9 @@ export function AppAnalyticsProvider({ children }: PropsWithChildren) {
   return (
     <AnalyticsProvider instance={analytics}>
       {children}
-      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID!} />
+      <GoogleTagManager
+        gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID!}
+      />
       <VercelAnalytics />
     </AnalyticsProvider>
   );

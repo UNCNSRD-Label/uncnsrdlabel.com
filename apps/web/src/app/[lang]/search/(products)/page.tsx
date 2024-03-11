@@ -1,5 +1,6 @@
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
+import { NavigationEvents } from "@/components/navigation-events";
 import { getDictionary } from "@/lib/dictionary";
 import { getAlternativeLanguages } from "@/lib/i18n";
 import { getCanonical } from "@/lib/metadata";
@@ -97,6 +98,7 @@ export default async function SearchProductsPage({
           {intl.formatMessage({ id: `page.${handle}.results` })}
         </Link>
       )}
+      <NavigationEvents pageType="search" />
     </>
   );
 }

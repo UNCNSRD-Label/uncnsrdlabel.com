@@ -1,6 +1,7 @@
 "use client";
 
 import { AddressSummary } from "@/components/account/addresses/summary";
+import { NavigationEvents } from "@/components/navigation-events";
 import { createIntl } from "@formatjs/intl";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
@@ -77,6 +78,7 @@ export function Addresses({
           })}
         </Link>
       </footer>
+      <NavigationEvents pageType="customersAddresses" />
     </>
   );
 }

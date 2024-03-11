@@ -1,3 +1,6 @@
+import {
+  AnalyticsPageType
+} from "@shopify/hydrogen";
 import { type Product } from "@shopify/hydrogen/storefront-api-types";
 
 export type PluginConfig = {
@@ -22,6 +25,7 @@ export type Payload = {
     category: string;
     hash: string;
     height: number;
+    pageType: keyof typeof AnalyticsPageType;
     path: string;
     product: Product;
     search: string;

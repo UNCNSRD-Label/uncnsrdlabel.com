@@ -1,5 +1,6 @@
 import { Logo } from "@/components/layout/logo/index";
 import { Navbar } from "@/components/layout/navbar/index";
+import { NavigationEvents } from "@/components/navigation-events";
 import { PageCarousel } from "@/components/page/carousel/page-carousel";
 import { VideosHydrated } from "@/components/page/videos/videos-hydrated";
 import { getDictionary } from "@/lib/dictionary";
@@ -42,6 +43,7 @@ export default async function Page({ params: { lang } }: PageProps) {
         />
       </main>
       <Logo className="fill-white" />
+      <NavigationEvents pageType="home" />
     </>
   );
 }

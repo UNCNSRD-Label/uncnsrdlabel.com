@@ -29,42 +29,36 @@ export type GoogleTagManagerAnalyticsPlugin = AnalyticsPlugin &
  *   containerId: 'GTM-123xyz'
  * })
  */
-export const config: GoogleTagManagerConfig = {
-  debug: false,
-  hasUserConsent: false,
-  preview: undefined,
-};
 
-function googleTagManager(
-  pluginConfig: GoogleTagManagerConfig,
+export function googleTagManager(
+  config: GoogleTagManagerConfig,
 ): GoogleTagManagerAnalyticsPlugin {
-  // Allow for userland overides of base methods
   return {
     name: "google-tag-manager",
     config: {
       ...config,
-      ...pluginConfig,
     },
-    identify: async ({ payload, config, instance }) => {
-      console.debug("gtm:identify", {
-        payload,
-        config,
-        instance,
-      });
+    identify: async ({ payload }) => {
+      console.debug("gtm:identify", { payload });
     },
     initialize: ({ config }: { config: GoogleTagManagerConfig }) => {
       console.debug("gtm:initialize", { config });
     },
     loaded: () => {
       console.debug("gtm:loaded");
-    },
-    page: ({ payload, config }) => {
-      console.debug("gtm:page", { payload, config });
 
-      sendGTMEvent({ event: config.pageViewEvent, ...payload.properties });
+      return !!sendGTMEvent
     },
-    track: ({ payload, config }) => {
-      console.debug("gtm:track", { payload, config });
+    page: ({ payload }) => {
+      console.debug("gtm:page", { payload });
+
+      sendGTMEvent({ event: payload.event, ...payload.properties });
+    },
+    ready: () => {
+      console.debug("gtm:ready");
+    },
+    track: ({ payload }) => {
+      console.debug("gtm:track", { payload });
 
       const { anonymousId, properties, userId } = payload;
 
@@ -94,5 +88,3 @@ function googleTagManager(
     },
   };
 }
-
-export default googleTagManager;
