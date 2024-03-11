@@ -26,6 +26,7 @@ export type Payload = {
     product: Product;
     search: string;
     title: string;
+    type: "product" | "collection" | "search" | "variant";
     url: string;
     userId: string;
     width: number;

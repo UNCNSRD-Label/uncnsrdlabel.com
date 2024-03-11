@@ -140,7 +140,7 @@ export function klaviyo(config: KlaviyoConfig): KlaviyoAnalyticsPlugin {
         // Include SKU, colour, size, etc.
       }
 
-      if (payload.event === "product") {
+      if (payload.event === "view_item") {
         const properties = {
           ProductName: payload.properties?.product.title ?? null,
           ProductID: payload.properties?.product.id ?? null,
@@ -173,7 +173,7 @@ export function klaviyo(config: KlaviyoConfig): KlaviyoAnalyticsPlugin {
         sendKlaviyoAnalytics(data);
       }
 
-      // if (payload.event === "addToCart") {
+      // if (payload.event === "add_to_cart") {
       //   const { cartId } = config.options;
       // }
     },

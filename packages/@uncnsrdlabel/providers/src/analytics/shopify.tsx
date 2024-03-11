@@ -115,7 +115,9 @@ export function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
     track: ({ payload, config }) => {
       console.debug("shopify:track", { payload, config });
 
-      if (payload.event === "product") {
+      if (payload.event === "view_item") {
+        console.log("view_item", payload.properties?.type, "expecting product or variant");
+
         if (!payload.properties?.product) {
           console.error("Product payload is missing properties");
           return;
@@ -162,7 +164,7 @@ export function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
         });
       }
 
-      if (payload.event === "addToCart") {
+      if (payload.event === "add_to_cart") {
         const { cartId } = config.options;
 
         if (!payload.properties?.product) {

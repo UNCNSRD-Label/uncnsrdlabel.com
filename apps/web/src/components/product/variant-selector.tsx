@@ -118,6 +118,7 @@ export function VariantSelector({
                           currency:
                             product.compareAtPriceRange.minVariantPrice
                               .currencyCode,
+                          type: "variant",
                           value: product.priceRange.minVariantPrice.amount,
                           items: [{ ...item, item_variant: value }],
                         });

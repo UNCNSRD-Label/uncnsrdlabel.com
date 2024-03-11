@@ -32,6 +32,7 @@ export const Tracking = ({
   useEffect(() => {
     track("view_item", {
       currency: product.compareAtPriceRange.minVariantPrice.currencyCode,
+      type: "product",
       value: product.priceRange.minVariantPrice.amount,
       items: [item],
     });
