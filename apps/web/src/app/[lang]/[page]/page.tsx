@@ -12,6 +12,7 @@ import {
 import { SITE_DOMAIN_WEB } from "@uncnsrdlabel/lib";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { Article } from "./article";
 import { PageSectionModule } from "./page-section-module";
 
@@ -94,7 +95,9 @@ export default async function PagePage({
           }).format(new Date(page.updatedAt))}.`}
         </span>
       </Article>
-      <NavigationEvents pageType="page" />
+      <Suspense fallback={null}>
+        <NavigationEvents pageType="page" />
+      </Suspense>
     </>
   );
 }

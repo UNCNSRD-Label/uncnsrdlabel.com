@@ -13,6 +13,7 @@ import {
 import { SITE_DOMAIN_WEB } from "@uncnsrdlabel/lib";
 import { camelCase } from "lodash";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { Nav } from "./nav";
 
 export async function generateMetadata({
@@ -76,7 +77,9 @@ export default async function PoliciesPage({
         handle={handle}
         lang={lang}
       />
-      <NavigationEvents pageType="policy" />
+      <Suspense fallback={null}>
+        <NavigationEvents pageType="policy" />
+      </Suspense>
     </>
   );
 }

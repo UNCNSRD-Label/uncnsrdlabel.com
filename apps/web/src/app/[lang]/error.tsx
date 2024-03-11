@@ -3,6 +3,7 @@
 import { LogotypeIcon } from "@/components/icons/logotype";
 import { NavigationEvents } from "@/components/navigation-events";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
+import { Suspense } from "react";
 
 export default function Error({ reset }: { reset: () => void }) {
   return (
@@ -15,7 +16,9 @@ export default function Error({ reset }: { reset: () => void }) {
           Try again
         </Button>
       </div>
-      <NavigationEvents pageType="forbidden" />
+      <Suspense fallback={null}>
+        <NavigationEvents pageType="forbidden" />
+      </Suspense>
     </>
   );
 }

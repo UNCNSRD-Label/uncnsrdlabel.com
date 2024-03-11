@@ -7,8 +7,8 @@ import { getDictionary } from "@/lib/dictionary";
 import { type PageProps } from "@/types/next";
 import { createIntl } from "@formatjs/intl";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
+import { Suspense } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
-
 const handle = "home";
 
 export default async function Page({ params: { lang } }: PageProps) {
@@ -23,18 +23,29 @@ export default async function Page({ params: { lang } }: PageProps) {
 
   return (
     <>
-      <Navbar className="sticky left-0 z-10 top-safeTop fill-light stroke-light text-light" lang={lang} />
+      <Navbar
+        className="top-safeTop fill-light stroke-light text-light sticky left-0 z-10"
+        lang={lang}
+      />
       <main className="dark relative grid grid-rows-[1fr_auto] gap-2 bg-black pb-32">
-        <h1 className="sr-only">{intl.formatMessage({ id: "global.metadata.title" })}</h1>
+        <h1 className="sr-only">
+          {intl.formatMessage({ id: "global.metadata.title" })}
+        </h1>
         <section className="relative grid h-[100dvh] items-center overflow-hidden sm:snap-start">
-          <h2 className="sr-only">{intl.formatMessage({ id: `page.${handle}.campaign-video.title` })}</h2>
+          <h2 className="sr-only">
+            {intl.formatMessage({ id: `page.${handle}.campaign-video.title` })}
+          </h2>
           <VideosHydrated handle={handle} lang={lang} />
           <Link
-            aria-label={intl.formatMessage({ id: `page.${handle}.campaign-video.shop-now` })}
+            aria-label={intl.formatMessage({
+              id: `page.${handle}.campaign-video.shop-now`,
+            })}
             className="btn btn-outline btn-primary btn-base absolute justify-self-center whitespace-nowrap uppercase"
             href="/search/all"
           >
-            {intl.formatMessage({ id: `page.${handle}.campaign-video.shop-now` })}
+            {intl.formatMessage({
+              id: `page.${handle}.campaign-video.shop-now`,
+            })}
           </Link>
         </section>
         <PageCarousel
@@ -43,7 +54,9 @@ export default async function Page({ params: { lang } }: PageProps) {
         />
       </main>
       <Logo className="fill-white" />
-      <NavigationEvents pageType="home" />
+      <Suspense fallback={null}>
+        <NavigationEvents pageType="home" />
+      </Suspense>
     </>
   );
 }

@@ -4,6 +4,7 @@ import { getDictionary } from "@/lib/dictionary";
 import { createIntl } from "@formatjs/intl";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import { headers } from "next/headers";
+import { Suspense } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
 
 const handle = "not-found";
@@ -53,7 +54,9 @@ export default async function NotFound() {
           {intl.formatMessage({ id: `page.${handle}.button` })}
         </Link>
       </div>
-      <NavigationEvents pageType="notFound" />
+      <Suspense fallback={null}>
+        <NavigationEvents pageType="notFound" />
+      </Suspense>
     </Boundary>
   );
 }

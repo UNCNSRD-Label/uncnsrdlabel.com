@@ -5,6 +5,7 @@ import { type PageProps } from "@/types/next";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Account details",
@@ -29,7 +30,9 @@ export default function AccountProfilePage({ params: { lang } }: PageProps) {
           lang={lang}
         />
       </div>
-      <NavigationEvents pageType="customersAccount" />
+      <Suspense fallback={null}>
+        <NavigationEvents pageType="customersAccount" />
+      </Suspense>
     </>
   );
 }

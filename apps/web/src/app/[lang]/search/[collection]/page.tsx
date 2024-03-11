@@ -16,6 +16,7 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { createIntl, type ResolvedIntlConfig } from "react-intl";
 
 export async function generateMetadata({
@@ -139,7 +140,9 @@ export default async function SearchCollectionPage({
           />
         </Grid>
       )}
-      <NavigationEvents pageType="collection" />
+      <Suspense fallback={null}>
+        <NavigationEvents pageType="collection" />
+      </Suspense>
     </>
   );
 }

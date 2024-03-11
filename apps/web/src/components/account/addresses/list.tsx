@@ -14,7 +14,7 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getQueryKey } from "@uncnsrdlabel/lib";
 import { getCookie } from "cookies-next";
-import { Usable, use } from "react";
+import { Suspense, Usable, use } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
 
 export function Addresses({
@@ -58,7 +58,7 @@ export function Addresses({
 
         return (
           <AddressSummary
-            className="p-4 sm:p-8 border"
+            className="border p-4 sm:p-8"
             customer={customer}
             dictionary={dictionary}
             key={mailingAddress.id}
@@ -78,7 +78,9 @@ export function Addresses({
           })}
         </Link>
       </footer>
-      <NavigationEvents pageType="customersAddresses" />
+      <Suspense fallback={null}>
+        <NavigationEvents pageType="customersAddresses" />
+      </Suspense>
     </>
   );
 }
