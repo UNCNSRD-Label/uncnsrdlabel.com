@@ -4,6 +4,15 @@ export const productBasicFragment = graphql(/* GraphQL */ `
   fragment productBasic on Product {
     __typename
     availableForSale
+    collections(first: 128) {
+      edges {
+        node {
+          id
+          handle
+          title
+        }
+      }
+    }
     compareAtPriceRange {
       maxVariantPrice {
         amount
@@ -63,7 +72,7 @@ export const productBasicFragment = graphql(/* GraphQL */ `
             name
             values
           }
-          sellingPlans(first: 3) {
+          sellingPlans(first: 4) {
             edges {
               node {
                 id
@@ -83,7 +92,7 @@ export const productBasicFragment = graphql(/* GraphQL */ `
     tags
     title
     updatedAt
-    variants(first: 16) {
+    variants(first: 64) {
       ...productVariantConnection
     }
   }

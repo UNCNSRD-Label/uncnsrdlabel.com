@@ -3,7 +3,7 @@ import { graphql } from "../codegen/index";
 export const productWithVariantsFragment = graphql(/* GraphQL */ `
   fragment productWithVariants on Product {
     availableForSale
-    collections(first: 250) {
+    collections(first: 128) {
       edges {
         node {
           id
@@ -29,14 +29,14 @@ export const productWithVariantsFragment = graphql(/* GraphQL */ `
     }
     handle
     id
-    images(first: 20) {
+    images(first: 16) {
       edges {
         node {
           ...image
         }
       }
     }
-    media(first: 10) {
+    media(first: 8) {
       edges {
         node {
           __typename
@@ -68,7 +68,7 @@ export const productWithVariantsFragment = graphql(/* GraphQL */ `
             name
             values
           }
-          sellingPlans(first: 3) {
+          sellingPlans(first: 4) {
             edges {
               node {
                 id
@@ -91,7 +91,7 @@ export const productWithVariantsFragment = graphql(/* GraphQL */ `
     tags
     title
     updatedAt
-    variants(first: 250) {
+    variants(first: 64) {
       ...productVariantConnection
     }
     vendor
