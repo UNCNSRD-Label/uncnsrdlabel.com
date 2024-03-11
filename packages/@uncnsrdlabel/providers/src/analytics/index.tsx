@@ -1,8 +1,6 @@
 "use client";
 
-import { GoogleTagManager } from "@next/third-parties/google";
 import { getShopifyCookies, useShop } from "@shopify/hydrogen-react";
-import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 import { Analytics } from "analytics";
 import { getCookie } from "cookies-next";
 import { PropsWithChildren } from "react";
@@ -81,10 +79,6 @@ export function AppAnalyticsProvider({ children }: PropsWithChildren) {
   return (
     <AnalyticsProvider instance={analytics}>
       {children}
-      <GoogleTagManager
-        gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID!}
-      />
-      <VercelAnalytics />
     </AnalyticsProvider>
   );
 }

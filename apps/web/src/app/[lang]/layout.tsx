@@ -10,6 +10,7 @@ import { getBaseMetadata } from "@/lib/metadata";
 import { themeColors } from "@/lib/tailwind";
 import { type LayoutProps } from "@/types/next";
 import { createIntl } from "@formatjs/intl";
+import { GoogleTagManager } from "@next/third-parties/google";
 import { Toaster } from "@uncnsrdlabel/components/atoms/sonner";
 import {
   cn,
@@ -18,6 +19,7 @@ import {
 } from "@uncnsrdlabel/lib";
 import { AppProviders } from "@uncnsrdlabel/providers";
 import config from "@uncnsrdlabel/tailwind-config";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { Lato, Montserrat } from "next/font/google";
 import localFont from "next/font/local";
@@ -148,11 +150,13 @@ export default async function Layout({
           />
           {children}
           <Footer lang={lang} />
+          <Toaster />
           <LinkedDataOrganization lang={lang} />
           <Suspense fallback={null}>
             <ShopifyCookies />
           </Suspense>
-          <Toaster />
+          <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID!} />
+          <VercelAnalytics />
         </AppProviders>
       </body>
     </html>

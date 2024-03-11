@@ -53,7 +53,7 @@ export function googleTagManager(
         console.debug("gtm:loaded");
       }
 
-      return !!sendGTMEvent
+      return !!window.dataLayer;
     },
     page: ({ payload }) => {
       if (config.debug) {
