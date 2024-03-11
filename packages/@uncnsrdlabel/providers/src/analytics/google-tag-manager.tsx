@@ -81,9 +81,13 @@ function googleTagManager(
       }
     },
     page: ({ payload, config }) => {
+      console.debug("gtm:page", { payload, config });
+
       sendGTMEvent({ event: config.pageViewEvent, ...payload.properties });
     },
     track: ({ payload, config }) => {
+      console.debug("gtm:track", { payload, config });
+
       const { anonymousId, properties, userId } = payload;
 
       const formattedPayload = properties ?? {} as NonNullable<Payload["properties"]>;
@@ -110,9 +114,7 @@ function googleTagManager(
       sendGTMEvent({ event: payload.event, ...formattedPayload });
     },
     loaded: () => {
-      // if (typeof window === "undefined") {
-      //   return;
-      // }
+      console.debug("gtm:loaded");
     },
   };
 }

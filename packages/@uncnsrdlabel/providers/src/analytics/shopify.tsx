@@ -64,7 +64,7 @@ export function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
     /* Name is a required field for plugins */
     name: "shopify-plugin",
     page: ({ payload }) => {
-      // console.debug("shopify:page", { payload, config });
+      console.debug("shopify:page", { payload, config });
 
       if (!payload.properties?.product) {
         console.error("Product payload is missing properties");
@@ -113,8 +113,7 @@ export function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
       });
     },
     track: ({ payload, config }) => {
-      // Fire custom logic after analytics.track() calls
-      // console.debug("shopify:trackEnd", { payload, config });
+      console.debug("shopify:track", { payload, config });
 
       if (payload.event === "product") {
         if (!payload.properties?.product) {
@@ -203,6 +202,9 @@ export function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
           });
         }
       }
+    },
+    loaded: () => {
+      console.debug("shopify:loaded");
     },
   };
 }

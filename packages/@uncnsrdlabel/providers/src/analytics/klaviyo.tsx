@@ -70,7 +70,7 @@ export function klaviyo(config: KlaviyoConfig): KlaviyoAnalyticsPlugin {
       sendKlaviyoAnalytics(data);
     },
     page: ({ payload }) => {
-      console.debug("klaviyo:page", { payload });
+      console.debug("klaviyo:page", { payload, config });
 
       if (!payload.properties) {
         console.error("Page payload is missing properties");
@@ -130,8 +130,7 @@ export function klaviyo(config: KlaviyoConfig): KlaviyoAnalyticsPlugin {
       sendKlaviyoAnalytics(data);
     },
     track: async ({ payload }) => {
-      // Fire custom logic after analytics.track() calls
-      // console.debug("klaviyo:trackEnd", { payload, config, instance });
+      console.debug("klaviyo:track", { payload, config });
 
       const customer_properties = {
         $email: "abraham.lincoln@klaviyo.com",
@@ -177,6 +176,9 @@ export function klaviyo(config: KlaviyoConfig): KlaviyoAnalyticsPlugin {
       // if (payload.event === "addToCart") {
       //   const { cartId } = config.options;
       // }
+    },
+    loaded: () => {
+      console.debug("klaviyo:loaded");
     },
   };
 }
