@@ -1,6 +1,5 @@
 "use client";
 
-// import googleAnalytics from "@analytics/google-analytics";
 import { Analytics } from "analytics";
 import googleTagManager from "./google-tag-manager";
 // import { eventValidation } from "analytics-plugin-event-validation";
@@ -11,6 +10,7 @@ import { PropsWithChildren } from "react";
 import { AnalyticsProvider } from "use-analytics";
 import { klaviyo } from "./klaviyo";
 import { shopify } from "./shopify";
+ 
 
 import { COOKIE_CONSENT, type ConsentSettings } from "@uncnsrdlabel/lib";
 
@@ -91,6 +91,7 @@ export function AppAnalyticsProvider({ children }: PropsWithChildren) {
   return (
     <AnalyticsProvider instance={analytics}>
       {children}
+      {/* <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID!} /> */}
       <VercelAnalytics />
     </AnalyticsProvider>
   );
