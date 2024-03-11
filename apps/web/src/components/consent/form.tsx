@@ -52,6 +52,7 @@ export function ConsentForm({className, dictionary, lang, ...props}: ConsentDial
 
   const acceptSelectedConsents = (event: React.FormEvent<HTMLFormElement>) => {
     const formData = new FormData(event.target as HTMLFormElement);
+
     const consentParams = Object.fromEntries(formData.entries());
 
     setCookie(COOKIE_CONSENT, consentParams, cookieOptions);
@@ -59,7 +60,9 @@ export function ConsentForm({className, dictionary, lang, ...props}: ConsentDial
     track("consent_accept_selected", consentParams);
 
     console.info("Granting selected consents");
+
     setConsentSettings({...defaultConsentSettings, ...consentParams})
+
     props.acceptSelectedConsents(event);
 
     event.preventDefault();
@@ -71,7 +74,9 @@ export function ConsentForm({className, dictionary, lang, ...props}: ConsentDial
     track("consent_accept_all", acceptAllConsentSettings);
 
     console.info("Accepting all consents");
+
     setConsentSettings(acceptAllConsentSettings)
+
     props.acceptAllConsents();
   };
 
@@ -81,7 +86,9 @@ export function ConsentForm({className, dictionary, lang, ...props}: ConsentDial
     track("consent_deny_all", denyAllAdditionalConsentSettings);
 
     console.info("Denying all additional consents");
+
     setConsentSettings(denyAllAdditionalConsentSettings)
+
     props.denyAllAdditionalConsents();
   };
 
@@ -153,7 +160,7 @@ export function ConsentForm({className, dictionary, lang, ...props}: ConsentDial
           onClick={acceptAllConsents}
           type="button"
           size="sm"
-          variant="default"
+          variant={optionsOpen ? "secondary" : "default"}
         >
           {intl.formatMessage({ id: "component.ConsentForm.accept-all" })}
         </Button>
@@ -161,7 +168,7 @@ export function ConsentForm({className, dictionary, lang, ...props}: ConsentDial
           onClick={denyAllAdditionalConsents}
           type="button"
           size="sm"
-          variant="default"
+          variant={optionsOpen ? "secondary" : "default"}
         >
           {intl.formatMessage({ id: "component.ConsentForm.deny-additional" })}
         </Button>
