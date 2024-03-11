@@ -15,7 +15,7 @@ export const pageQuery = graphql(/* GraphQL */ `
 export const pagesQuery = graphql(/* GraphQL */ `
   query pages(
     $country: CountryCode
-    $first: Int! = 250
+    $first: Int! = 128
     $language: LanguageCode
   ) @inContext(country: $country, language: $language) {
     pages(first: $first) {

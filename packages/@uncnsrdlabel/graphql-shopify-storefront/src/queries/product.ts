@@ -74,7 +74,7 @@ export const productsQuery = graphql(/* GraphQL */ `
     $reverse: Boolean
     $sortKey: ProductSortKeys
   ) @inContext(country: $country, language: $language) {
-    products(sortKey: $sortKey, reverse: $reverse, query: $query, first: 96) {
+    products(sortKey: $sortKey, reverse: $reverse, query: $query, first: 128) {
       edges {
         node {
           ...productBasic
@@ -92,7 +92,7 @@ export const productsWithVariantsQuery = graphql(/* GraphQL */ `
     $reverse: Boolean
     $sortKey: ProductSortKeys
   ) @inContext(country: $country, language: $language) {
-    products(sortKey: $sortKey, reverse: $reverse, query: $query, first: 96) {
+    products(sortKey: $sortKey, reverse: $reverse, query: $query, first: 128) {
       edges {
         node {
           ...productWithVariants

@@ -4,7 +4,7 @@ export const productBasicFragment = graphql(/* GraphQL */ `
   fragment productBasic on Product {
     __typename
     availableForSale
-    collections(first: 250) {
+    collections(first: 128) {
       edges {
         node {
           id
@@ -27,17 +27,16 @@ export const productBasicFragment = graphql(/* GraphQL */ `
       ...image
     }
     description
-    descriptionHtml
     handle
     id
-    images(first: 1) {
+    images(first: 2) {
       edges {
         node {
           ...image
         }
       }
     }
-    media(first: 10) {
+    media(first: 1) {
       edges {
         node {
           __typename
@@ -60,6 +59,10 @@ export const productBasicFragment = graphql(/* GraphQL */ `
         currencyCode
       }
     }
+    productType
+    releaseDate: metafield(namespace: "custom", key: "release_date") {
+      value
+    }
     requiresSellingPlan
     sellingPlanGroups(first:1) {
       edges {
@@ -69,7 +72,7 @@ export const productBasicFragment = graphql(/* GraphQL */ `
             name
             values
           }
-          sellingPlans(first: 3) {
+          sellingPlans(first: 4) {
             edges {
               node {
                 id
@@ -88,11 +91,8 @@ export const productBasicFragment = graphql(/* GraphQL */ `
     }
     tags
     title
-    seo {
-      ...seo
-    }
     updatedAt
-    variants(first: 250) {
+    variants(first: 64) {
       ...productVariantConnection
     }
     vendor

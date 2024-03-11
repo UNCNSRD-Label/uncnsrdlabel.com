@@ -1,3 +1,4 @@
+import { LinkedDataProductGroup } from "@/components/linked-data/product-group";
 import { Image } from "@/components/media/image";
 import { Video } from "@/components/media/video";
 import { PriceAndCompareAtPrice } from "@/components/price-and-compare-at-price";
@@ -147,6 +148,7 @@ export function Tile({
           />
         </footer>
       ) : null}
+      <LinkedDataProductGroup lang={lang} product={product} />
     </>
   );
 }

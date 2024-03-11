@@ -5,6 +5,7 @@ export const productVariantConnectionFragment = graphql(/* GraphQL */ `
     edges {
       node {
         availableForSale
+        barcode
         id
         image {
           ...image

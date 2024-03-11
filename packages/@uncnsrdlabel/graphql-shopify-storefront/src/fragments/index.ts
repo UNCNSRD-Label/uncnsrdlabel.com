@@ -8,7 +8,7 @@ export * from "./page";
 export * from "./page_section_module";
 export * from "./product-basic";
 export * from "./product-details";
-export * from "./product-metafields";
+export * from "./product-metafield";
 export * from "./product-variant-connection";
 export * from "./product-with-variants";
 export * from "./seo";
