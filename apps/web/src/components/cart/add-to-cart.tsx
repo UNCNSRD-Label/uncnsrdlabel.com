@@ -354,11 +354,11 @@ export function AddToCart({
         return true;
       }
 
-      const value =
-        selectedOption?.value ===
-        searchParams.get(selectedOption.name.toLowerCase());
+      const equality =
+        selectedOption?.value?.toLowerCase() ===
+        searchParams?.get(selectedOption.name.toLowerCase())?.toLowerCase();
 
-      return value;
+      return equality;
     }),
   );
 
