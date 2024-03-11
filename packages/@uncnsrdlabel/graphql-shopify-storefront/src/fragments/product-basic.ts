@@ -55,16 +55,34 @@ export const productBasicFragment = graphql(/* GraphQL */ `
       value
     }
     requiresSellingPlan
-    # sellingPlanGroups(first:1) {
-    #   edges {
-    #     node {
-    #       name
-    #     }
-    #   }
-    # }
+    sellingPlanGroups(first:1) {
+      edges {
+        node {
+          name
+          options {
+            name
+            values
+          }
+          sellingPlans(first: 3) {
+            edges {
+              node {
+                id
+                name
+                description
+                recurringDeliveries
+                options {
+                  name
+                  value
+                }
+              }
+            }
+          }
+        }
+      }
+    }
     tags
     title
-    # updatedAt
+    updatedAt
     variants(first: 16) {
       ...productVariantConnection
     }
