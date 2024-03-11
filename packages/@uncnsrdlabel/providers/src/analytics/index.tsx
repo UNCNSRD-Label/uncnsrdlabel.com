@@ -3,6 +3,7 @@
 import { Analytics } from "analytics";
 import googleTagManager from "./google-tag-manager";
 // import { eventValidation } from "analytics-plugin-event-validation";
+import { GoogleTagManager } from '@next/third-parties/google';
 import { getShopifyCookies, useShop } from "@shopify/hydrogen-react";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 import { getCookie, getCookies } from "cookies-next";
@@ -91,7 +92,7 @@ export function AppAnalyticsProvider({ children }: PropsWithChildren) {
   return (
     <AnalyticsProvider instance={analytics}>
       {children}
-      {/* <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID!} /> */}
+      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID!} />
       <VercelAnalytics />
     </AnalyticsProvider>
   );
