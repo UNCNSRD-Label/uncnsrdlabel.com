@@ -20,7 +20,6 @@ import {
 import {
   getFragmentData,
   productDetailsFragment,
-  productMetafieldFragment,
   productVariantConnectionFragment,
   type FragmentType,
   type SellingPlanGroup
@@ -68,12 +67,7 @@ export async function ProductDetails({
     ({ name }) => name === "Pre-order",
   );
 
-  const releaseDateTime = getFragmentData(
-    productMetafieldFragment,
-    product.releaseDate,
-  )?.value;
-
-  const releaseDate = releaseDateTime?.split("T")[0];
+  const releaseDate = product.releaseDate?.value?.split("T")[0];
 
   return (
     <>
@@ -183,7 +177,7 @@ export async function ProductDetails({
         {preOrder && releaseDate && (
           <span
             itemProp="releaseDate"
-            content={releaseDateTime}
+            content={releaseDate}
             className="text-xs"
           >
             {intl.formatMessage(
