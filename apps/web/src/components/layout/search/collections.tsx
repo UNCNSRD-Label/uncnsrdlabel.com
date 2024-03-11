@@ -36,11 +36,11 @@ export function CollectionsNav({
 
   useEffect(() => {
     collections.forEach((collection) => {
-      if (params.collection === collection.handle) {
+      if (params?.collection === collection.handle) {
         setActive(collection.title);
       }
     });
-  }, [params.collection, collections]);
+  }, [params?.collection, collections]);
 
   return (
     <RefineBy

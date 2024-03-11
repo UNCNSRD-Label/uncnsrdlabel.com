@@ -47,14 +47,14 @@ export function PathRefineItem({
   
   const path = `/search/${item.handle}`;
   
-  const newParams = new URLSearchParams(searchParams.toString());
+  const newParams = new URLSearchParams(searchParams?.toString());
 
   newParams.delete("q");
 
-  const [active, setActive] = useState(params.collection === item.handle);
+  const [active, setActive] = useState(params?.collection === item.handle);
 
   useEffect(() => {
-    setActive(params.collection === item.handle);
+    setActive(params?.collection === item.handle);
   }, [item.handle, params]);
 
   const href = createUrl(path, newParams);
@@ -73,13 +73,17 @@ export function SortRefineItem({
 
   const searchParams = useSearchParams();
 
-  const [active, setActive] = useState(searchParams.get("sort") === item.slug);
+  const [active, setActive] = useState(searchParams?.get("sort") === item.slug);
 
-  const q = searchParams.get("q");
+  const q = searchParams?.get("q");
 
   useEffect(() => {
-    setActive(searchParams.get("sort") === item.slug);
+    setActive(searchParams?.get("sort") === item.slug);
   }, [searchParams, item.slug]);
+
+  if (!pathname) {
+    return null;
+  }
 
   const href =
     item.slug && item.slug.length
