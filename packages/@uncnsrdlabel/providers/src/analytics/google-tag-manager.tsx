@@ -39,26 +39,38 @@ export function googleTagManager(
       ...config,
     },
     identify: async ({ payload }) => {
-      console.debug("gtm:identify", { payload });
+      if (config.debug) {
+        console.debug("gtm:identify", { payload });
+      }
     },
     initialize: ({ config }: { config: GoogleTagManagerConfig }) => {
-      console.debug("gtm:initialize", { config });
+      if (config.debug) {
+        console.debug("gtm:initialize", { config });
+      }
     },
     loaded: () => {
-      console.debug("gtm:loaded");
+      if (config.debug) {
+        console.debug("gtm:loaded");
+      }
 
       return !!sendGTMEvent
     },
     page: ({ payload }) => {
-      console.debug("gtm:page", { payload });
+      if (config.debug) {
+        console.debug("gtm:page", { payload });
+      }
 
       sendGTMEvent({ event: payload.event, ...payload.properties });
     },
     ready: () => {
-      console.debug("gtm:ready");
+      if (config.debug) {
+        console.debug("gtm:ready");
+      }
     },
     track: ({ payload }) => {
-      console.debug("gtm:track", { payload });
+      if (config.debug) {
+        console.debug("gtm:track", { payload });
+      }
 
       const { anonymousId, properties, userId } = payload;
 

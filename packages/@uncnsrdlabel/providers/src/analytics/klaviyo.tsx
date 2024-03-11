@@ -47,7 +47,9 @@ export function klaviyo(config: KlaviyoConfig): KlaviyoAnalyticsPlugin {
       ...config,
     },
     identify: async ({ payload }) => {
-      console.debug("klaviyo:identify", { payload });
+      if (config.debug) {
+        console.debug("klaviyo:identify", { payload });
+      }
 
       const data = {
         properties: {
@@ -65,15 +67,21 @@ export function klaviyo(config: KlaviyoConfig): KlaviyoAnalyticsPlugin {
       sendKlaviyoAnalytics(data);
     },
     initialize: ({ config }: { config: KlaviyoConfig }) => {
-      console.debug("klaviyo:initialize", { config });
+      if (config.debug) {
+        console.debug("klaviyo:initialize", { config });
+      }
     },
     loaded: () => {
-      console.debug("klaviyo:loaded");
+      if (config.debug) {
+        console.debug("klaviyo:loaded");
+      }
 
       return !!sendKlaviyoAnalytics
     },
     page: ({ payload }) => {
-      console.debug("klaviyo:page", { payload });
+      if (config.debug) {
+        console.debug("klaviyo:page", { payload });
+      }
 
       if (!payload.properties) {
         console.error("Page payload is missing properties");
@@ -133,10 +141,14 @@ export function klaviyo(config: KlaviyoConfig): KlaviyoAnalyticsPlugin {
       sendKlaviyoAnalytics(data);
     },
     ready: () => {
-      console.debug("gtm:ready");
+      if (config.debug) {
+        console.debug("gtm:ready");
+      }
     },
     track: async ({ payload }) => {
-      console.debug("klaviyo:track", { payload });
+      if (config.debug) {
+        console.debug("klaviyo:track", { payload });
+      }
 
       const customer_properties = {
         $email: "abraham.lincoln@klaviyo.com",

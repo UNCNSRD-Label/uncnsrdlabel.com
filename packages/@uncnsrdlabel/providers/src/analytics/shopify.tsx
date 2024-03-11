@@ -72,18 +72,26 @@ export function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
     /* Name is a required field for plugins */
     name: "shopify-plugin",
     identify: async ({ payload }) => {
-      console.debug("klaviyo:identify", { payload });
+      if (config.debug) {
+        console.debug("klaviyo:identify", { payload });
+      }
     },
     initialize: ({ config }: { config: ShopifyConfig }) => {
-      console.debug("shopify:initialize", { config });
+      if (config.debug) {
+        console.debug("shopify:initialize", { config });
+      }
     },
     loaded: () => {
-      console.debug("shopify:loaded");
+      if (config.debug) {
+        console.debug("shopify:loaded");
+      }
 
       return !!sendShopifyAnalytics;
     },
     page: ({ payload }) => {
-      console.debug("shopify:page", { payload });
+      if (config.debug) {
+        console.debug("shopify:page", { payload });
+      }
 
       const pageType = payload.properties
         ?.pageType as keyof typeof AnalyticsPageType;
@@ -140,10 +148,14 @@ export function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
       });
     },
     ready: () => {
-      console.debug("gtm:ready");
+      if (config.debug) {
+        console.debug("gtm:ready");
+      }
     },
     track: ({ payload }) => {
-      console.debug("shopify:track", { payload });
+      if (config.debug) {
+        console.debug("shopify:track", { payload });
+      }
 
       if (payload.event === "view_item") {
         console.log(
