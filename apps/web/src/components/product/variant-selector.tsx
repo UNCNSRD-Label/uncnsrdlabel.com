@@ -107,9 +107,21 @@ export function VariantSelector({
                 return (
                   <>
                     <Button
-                      key={value}
                       aria-disabled={current?.availableForSale === false}
+                      className={cn(
+                        "focus-visible:bg-hotPink/20 focus-visible:ring-hotPink flex h-8 min-w-[48px] items-center justify-center px-2 text-sm",
+                        "hover:text-dark focus-visible:text-dark",
+                        {
+                          "text-hotPink ring-hotPink cursor-default ring-1":
+                            isActive,
+                          "hover:bg-hotPink/20 hover:ring-hotPink ring-1 ring-gray-500 transition duration-300 ease-in-out":
+                            !isActive && current?.availableForSale === true,
+                          "relative z-10 cursor-not-allowed overflow-hidden before:absolute before:inset-x-0 before:-z-10 before:h-px before:-rotate-45 before:bg-gray-500 before:transition-transform":
+                            current?.availableForSale === false,
+                        },
+                      )}
                       disabled={current?.availableForSale === false}
+                      key={`button-${name}-${value}`}
                       onClick={(event) => {
                         const { dataset } = event.currentTarget;
 
@@ -130,24 +142,13 @@ export function VariantSelector({
                           ? " (Out of Stock)"
                           : ""
                       }`}
-                      className={cn(
-                        "focus-visible:bg-hotPink/20 focus-visible:ring-hotPink flex h-8 min-w-[48px] items-center justify-center px-2 text-sm",
-                        "hover:text-dark focus-visible:text-dark",
-                        {
-                          "text-hotPink ring-hotPink cursor-default ring-1":
-                            isActive,
-                          "hover:bg-hotPink/20 hover:ring-hotPink ring-1 ring-gray-500 transition duration-300 ease-in-out":
-                            !isActive && current?.availableForSale === true,
-                          "relative z-10 cursor-not-allowed overflow-hidden before:absolute before:inset-x-0 before:-z-10 before:h-px before:-rotate-45 before:bg-gray-500 before:transition-transform":
-                            current?.availableForSale === false,
-                        },
-                      )}
                       variant="ghost"
                     >
                       {optionValue}
                     </Button>
                     {current?.id && (
                       <LinkedDataProduct
+                        key={`LinkedDataProduct-${name}-${value}`}
                         lang={lang}
                         product={product}
                         variant={current}
