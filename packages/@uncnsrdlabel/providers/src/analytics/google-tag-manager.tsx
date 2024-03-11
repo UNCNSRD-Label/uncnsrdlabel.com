@@ -1,6 +1,6 @@
 "use client";
 
-import { sendGAEvent } from '@next/third-parties/google';
+import { sendGTMEvent } from '@next/third-parties/google';
 import { AnalyticsPlugin } from "analytics";
 import type { SetOptional } from "type-fest";
 import { Payload, PluginConfig, PluginEventFunctions } from "./types";
@@ -81,7 +81,7 @@ function googleTagManager(
       }
     },
     page: ({ payload, config }) => {
-      sendGAEvent({ event: config.pageViewEvent, ...payload.properties });
+      sendGTMEvent({ event: config.pageViewEvent, ...payload.properties });
     },
     track: ({ payload, config }) => {
       const { anonymousId, properties, userId } = payload;
@@ -107,7 +107,7 @@ function googleTagManager(
         });
       }
 
-      sendGAEvent({ event: payload.event, ...formattedPayload });
+      sendGTMEvent({ event: payload.event, ...formattedPayload });
     },
     loaded: () => {
       // if (typeof window === "undefined") {
