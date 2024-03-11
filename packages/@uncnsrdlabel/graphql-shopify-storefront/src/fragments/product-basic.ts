@@ -4,15 +4,6 @@ export const productBasicFragment = graphql(/* GraphQL */ `
   fragment productBasic on Product {
     __typename
     availableForSale
-    collections(first: 250) {
-      edges {
-        node {
-          id
-          handle
-          title
-        }
-      }
-    }
     compareAtPriceRange {
       maxVariantPrice {
         amount
@@ -27,17 +18,16 @@ export const productBasicFragment = graphql(/* GraphQL */ `
       ...image
     }
     description
-    descriptionHtml
     handle
     id
-    images(first: 1) {
+    images(first: 2) {
       edges {
         node {
           ...image
         }
       }
     }
-    media(first: 10) {
+    media(first: 1) {
       edges {
         node {
           __typename
@@ -60,41 +50,23 @@ export const productBasicFragment = graphql(/* GraphQL */ `
         currencyCode
       }
     }
-    requiresSellingPlan
-    sellingPlanGroups(first:1) {
-      edges {
-        node {
-          name
-          options {
-            name
-            values
-          }
-          sellingPlans(first: 3) {
-            edges {
-              node {
-                id
-                name
-                description
-                recurringDeliveries
-                options {
-                  name
-                  value
-                }
-              }
-            }
-          }
-        }
-      }
+    productType
+    releaseDate: metafield(namespace: "custom", key: "release_date") {
+      value
     }
+    requiresSellingPlan
+    # sellingPlanGroups(first:1) {
+    #   edges {
+    #     node {
+    #       name
+    #     }
+    #   }
+    # }
     tags
     title
-    seo {
-      ...seo
-    }
-    updatedAt
-    variants(first: 250) {
+    # updatedAt
+    variants(first: 16) {
       ...productVariantConnection
     }
-    vendor
   }
 `);

@@ -97,7 +97,7 @@ export const productDetailsFragment = graphql(/* GraphQL */ `
     }
     productType
     releaseDate: metafield(namespace: "custom", key: "release_date") {
-      ...productMetafield
+      value
     }
     requiresSellingPlan
     sellingPlanGroups(first:1) {
@@ -131,9 +131,8 @@ export const productDetailsFragment = graphql(/* GraphQL */ `
     tags
     title
     updatedAt
-    variants(first: 250) {
+    variants(first: 64) {
       ...productVariantConnection
     }
-    vendor
   }
 `);

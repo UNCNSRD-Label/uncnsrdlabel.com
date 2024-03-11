@@ -15,7 +15,7 @@ export const collectionQuery = graphql(/* GraphQL */ `
 export const collectionsQuery = graphql(/* GraphQL */ `
   query collections(
     $country: CountryCode
-    $first: Int = 100
+    $first: Int = 64
     $language: LanguageCode
   )
   @inContext(country: $country, language: $language) {
@@ -32,7 +32,7 @@ export const collectionsQuery = graphql(/* GraphQL */ `
 export const collectionWithProductsQuery = graphql(/* GraphQL */ `
   query collectionWithProducts(
     $country: CountryCode
-    $first: Int = 100
+    $first: Int = 64
     $handle: String!
     $language: LanguageCode
     $reverse: Boolean

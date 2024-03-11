@@ -1,36 +1,33 @@
 import { type ResultOf } from "@graphql-typed-document-node/core";
+import { parseGid } from "@shopify/hydrogen";
 import {
   getFragmentData,
   getLocalizationDetailsHandler,
   getShopDetailsHandler,
   imageFragment,
+  productBasicFragment,
   productDetailsFragment,
-  productMetafieldFragment,
   productVariantConnectionFragment,
-  type FragmentType,
-  type ProductVariant,
+  type ProductVariant
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { toLower, upperFirst } from "lodash/fp";
 import Script from "next/script";
 import { ImageObject as ImageObjectSchema, PaymentMethod as PaymentMethodSchema, ProductGroup as ProductGroupSchema, WithContext } from "schema-dts";
 
 export async function LinkedDataProductGroup({
+  id,
   lang,
-  productDetailsFragmentRef,
+  product,
 }: {
+  id?: string;
   lang: Intl.BCP47LanguageTag;
-  productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
+  product: ResultOf<typeof productBasicFragment | typeof productDetailsFragment>;
 }) {
   const localization = await getLocalizationDetailsHandler({
     lang,
   });
 
   const shopDetails = await getShopDetailsHandler({ lang });
-
-  const product = getFragmentData(
-    productDetailsFragment,
-    productDetailsFragmentRef,
-  );
 
   const shopifyImageToImageObject = (
     image: ResultOf<typeof imageFragment>,
@@ -53,12 +50,7 @@ export async function LinkedDataProductGroup({
 
   const featuredImage = getFragmentData(imageFragment, product.featuredImage);
 
-  const releaseDateTime = getFragmentData(
-    productMetafieldFragment,
-    product.releaseDate,
-  )?.value;
-
-  const releaseDate = releaseDateTime?.split("T")[0];
+  const releaseDate = product.releaseDate?.value?.split("T")[0];
 
   const variantsFragmentRefs = product.variants;
 
@@ -79,13 +71,14 @@ export async function LinkedDataProductGroup({
       identifier: variant.id,
       name: variant.title,
       productID: variant.id,
-      url: `/products/${product.handle}?${variant.selectedOptions.map((selectedOption) => `${selectedOption.name}=${selectedOption.value}`).join("&")}`,
+      url: `/products/${product.handle}?${variant.selectedOptions.map((selectedOption) => `${selectedOption.name.toLowerCase()}=${selectedOption.value.toLowerCase()}`).join("&")}`,
     })),
     identifier: product.id,
     ...(featuredImage && {
       image: { ...shopifyImageToImageObject(featuredImage), associatedMedia },
     }),
     keywords: product.tags,
+    mainEntityOfPage: `/products/${product.handle}`,
     name: product.title,
     offers: {
       "@type": "AggregateOffer",
@@ -120,8 +113,8 @@ export async function LinkedDataProductGroup({
 
   return (
     <Script
-      id="LinkedDataProductGroup"
-      key="LinkedDataProductGroup"
+      id={id ?? `LinkedDataProductGroup-${parseGid(product.id).id}`}
+      key={id ?? `LinkedDataProductGroup-${parseGid(product.id).id}`}
       type="application/ld+json"
     >
       {JSON.stringify(jsonLd)}

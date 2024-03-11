@@ -1,14 +1,17 @@
 import { type ResultOf } from "@graphql-typed-document-node/core";
+import { parseGid } from "@shopify/hydrogen";
+import { useQuery } from "@tanstack/react-query";
 import {
   getFragmentData,
-  getLocalizationDetailsHandler,
-  getShopDetailsHandler,
+  getInContextVariables,
+  getShopifyGraphQL,
   imageFragment,
+  localizationDetailsQuery,
   productDetailsFragment,
-  productMetafieldFragment,
-  type FragmentType,
+  shopDetailsQuery,
   type ProductVariant
 } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { getQueryKey } from "@uncnsrdlabel/lib";
 import { toLower, upperFirst } from "lodash/fp";
 import Script from "next/script";
 import {
@@ -18,25 +21,33 @@ import {
   WithContext,
 } from "schema-dts";
 
-export async function LinkedDataProduct({
+export function LinkedDataProduct({
+  id,
   lang,
-  productDetailsFragmentRef,
+  product,
   variant,
 }: {
+  id?: string;
   lang: Intl.BCP47LanguageTag;
-  productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
+  product: ResultOf<typeof productDetailsFragment | typeof productDetailsFragment>;
   variant: Pick<ProductVariant, "availableForSale" | "compareAtPrice" | "id" | "barcode" | "currentlyNotInStock" | "image" | "price" | "quantityAvailable" | "requiresShipping" | "selectedOptions" | "sku" | "taxable" | "title" | "weight">;
 }) {
-  const localization = await getLocalizationDetailsHandler({
+  const inContextVariables = getInContextVariables(lang);
+
+  const variables = {
     lang,
+    ...inContextVariables,
+  };
+
+  const { data: localizationDetails } = useQuery({
+    queryKey: getQueryKey(localizationDetailsQuery, variables),
+    queryFn: () => getShopifyGraphQL(localizationDetailsQuery, variables),
   });
 
-  const shopDetails = await getShopDetailsHandler({ lang });
-
-  const product = getFragmentData(
-    productDetailsFragment,
-    productDetailsFragmentRef,
-  );
+  const { data: shopDetails } = useQuery({
+    queryKey: getQueryKey(shopDetailsQuery, variables),
+    queryFn: () => getShopifyGraphQL(shopDetailsQuery, variables),
+  });
 
   const shopifyImageToImageObject = (
     image: ResultOf<typeof imageFragment>,
@@ -50,13 +61,13 @@ export async function LinkedDataProduct({
   });
 
   const acceptedPaymentMethod =
-    shopDetails.paymentSettings.acceptedCardBrands.map(
+    shopDetails?.shop.paymentSettings.acceptedCardBrands.map(
       (acceptedCardBrand) =>
         `http://purl.org/goodrelations/v1#${acceptedCardBrand
           .split("_")
           .map((word) => upperFirst(toLower(word)))
           .join("")}` as unknown as PaymentMethodSchema,
-    );
+    ) ?? [];
 
   const associatedMedia = product.images?.edges
     .map(({ node }) => getFragmentData(imageFragment, node))
@@ -64,12 +75,7 @@ export async function LinkedDataProduct({
 
   const featuredImage = getFragmentData(imageFragment, product.featuredImage);
 
-  const releaseDateTime = getFragmentData(
-    productMetafieldFragment,
-    product.releaseDate,
-  )?.value;
-
-  const releaseDate = releaseDateTime?.split("T")[0];
+  const releaseDate = product.releaseDate?.value?.split("T")[0];
 
   const jsonLd: WithContext<ProductSchema> = {
     "@context": "https://schema.org",
@@ -87,6 +93,7 @@ export async function LinkedDataProduct({
       url: `/products/${product.handle}`,
     },
     keywords: product.tags,
+    mainEntityOfPage: `/products/${product.handle}`,
     name: product.title,
     offers: {
       "@type": "Offer",
@@ -95,10 +102,10 @@ export async function LinkedDataProduct({
           "@type": "LoanOrCredit",
           amount: {
             "@type": "MonetaryAmount",
-            currency: localization.country.currency.isoCode,
+            currency: localizationDetails?.localization.country.currency.isoCode,
             value: product.priceRange.minVariantPrice.amount,
           },
-          currency: localization.country.currency.isoCode,
+          currency: localizationDetails?.localization.country.currency.isoCode,
           loanTerm: {
             "@type": "QuantitativeValue",
             maxValue: 4,
@@ -109,7 +116,7 @@ export async function LinkedDataProduct({
         },
         ...acceptedPaymentMethod,
       ],
-      areaServed: localization.country.name,
+      areaServed: localizationDetails?.localization.country.name,
       availability: product.availableForSale ? "InStock" : "OutOfStock",
       ...(releaseDate && {
         availabilityStarts: new Date(releaseDate).toISOString(),
@@ -117,15 +124,16 @@ export async function LinkedDataProduct({
       category: product.productType,
       price: product.priceRange.minVariantPrice.amount,
       priceCurrency: product.priceRange.minVariantPrice.currencyCode,
-      url: `/products/${product.handle}`,
+      url: `/products/${product.handle}?${variant.selectedOptions.map((selectedOption) => `${selectedOption.name.toLowerCase()}=${selectedOption.value.toLowerCase()}`).join("&")}`,
     },
     productID: product.id,
+    url: `/products/${product.handle}`,
   };
 
   return (
     <Script
-      id="LinkedDataProduct"
-      key="LinkedDataProduct"
+      id={id ?? `LinkedDataProduct-${parseGid(variant.id).id}`}
+      key={id ?? `LinkedDataProduct-${parseGid(variant.id).id}`}
       type="application/ld+json"
     >
       {JSON.stringify(jsonLd)}

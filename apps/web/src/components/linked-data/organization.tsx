@@ -3,7 +3,7 @@ import { SITE_DOMAIN_WEB } from "@uncnsrdlabel/lib";
 import Script from "next/script";
 import { Organization as OrganizationSchema, WithContext } from "schema-dts";
 
-export async function LinkedDataOrganization({ lang }: { lang: Intl.BCP47LanguageTag }) {
+export async function LinkedDataOrganization({ id, lang }: { id?: string; lang: Intl.BCP47LanguageTag }) {
   const shopDetails = await getShopDetailsHandler({ lang });
 
   const description = shopDetails.brand?.shortDescription ?? shopDetails.description;
@@ -55,7 +55,7 @@ export async function LinkedDataOrganization({ lang }: { lang: Intl.BCP47Languag
   };
 
   return (
-    <Script id="LinkedDataOrganization" key="LinkedDataOrganization" type="application/ld+json">
+    <Script id={id ?? "LinkedDataOrganization"} key={id ?? "LinkedDataOrganization"} type="application/ld+json">
       {JSON.stringify(jsonLd)}
     </Script>
   );

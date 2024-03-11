@@ -58,8 +58,7 @@ export async function ProductDetails({
     variantsFragmentRefs,
   );
 
-  const variants: Pick<ProductVariant, "id" | "selectedOptions">[] =
-    variantFragments.edges.map((edge) => edge?.node);
+  const variants = variantFragments.edges.map((edge) => edge?.node) as ProductVariant[];
 
   const sellingPlanGroupNodes = product.sellingPlanGroups?.edges?.map(
     (edge) => edge.node,
@@ -225,7 +224,7 @@ export async function ProductDetails({
         />
       </section>
 
-      <LinkedDataProductGroup lang={lang} productDetailsFragmentRef={productDetailsFragmentRef} />
+      <LinkedDataProductGroup lang={lang} product={product} />
     </>
   );
 }

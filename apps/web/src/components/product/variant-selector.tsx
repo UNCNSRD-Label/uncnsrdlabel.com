@@ -1,6 +1,6 @@
 "use client";
 
-// import { LinkedDataProduct } from "@/components/linked-data/product";
+import { LinkedDataProduct } from "@/components/linked-data/product";
 import {
   type ProductOption,
   type ProductVariant,
@@ -95,8 +95,6 @@ export function VariantSelector({
                   searchParams?.get(name) === value ||
                   option.values.length === 1;
 
-                console.log(current, isActive);
-
                 return (
                   <>
                     <Button
@@ -136,13 +134,13 @@ export function VariantSelector({
                     >
                       {optionValue}
                     </Button>
-                    {/* {current?.id && (
+                    {current?.id && (
                       <LinkedDataProduct
                         lang={lang}
                         productDetailsFragmentRef={productDetailsFragmentRef}
                         variant={current}
                       />
-                    )} */}
+                    )}
                   </>
                 );
               })}

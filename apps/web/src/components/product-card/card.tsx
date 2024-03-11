@@ -1,4 +1,5 @@
 import { AddToCart } from "@/components/cart/add-to-cart";
+import { LinkedDataProductGroup } from "@/components/linked-data/product-group";
 import { Image } from "@/components/media/image";
 import { getDictionary } from "@/lib/dictionary";
 import { type ProductVariant } from "@shopify/hydrogen/storefront-api-types";
@@ -11,7 +12,6 @@ import {
   type SellingPlanGroup,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
-import { Product as ProductSchema, WithContext } from "schema-dts";
 import { PriceAndCompareAtPrice } from "../price-and-compare-at-price";
 
 export function ProductCard({
@@ -34,8 +34,6 @@ export function ProductCard({
 
   const images = product.images.edges.map((edge) => edge?.node);
 
-  const featuredImage = getFragmentData(imageFragment, product.featuredImage);
-
   const image = images
     .map((imageFragmentRef) => getFragmentData(imageFragment, imageFragmentRef))
     .map((image, index) => ({
@@ -54,21 +52,6 @@ export function ProductCard({
 
   const variants: Pick<ProductVariant, "id" | "selectedOptions">[] =
     variantFragments.edges.map((edge) => edge?.node);
-
-  const jsonLd: WithContext<ProductSchema> = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    identifier: product.id,
-    name: product.title,
-    image: {
-      "@type": "ImageObject",
-      about: featuredImage?.altText || product.title,
-      height: featuredImage?.height?.toString() ?? undefined,
-      url: featuredImage?.url,
-      width: featuredImage?.width?.toString() ?? undefined,
-    },
-    description: product.description,
-  };
 
   const sellingPlanGroupNodes = product.sellingPlanGroups?.edges?.map(
     (edge) => edge.node,
@@ -115,7 +98,6 @@ export function ProductCard({
           </div>
           <AddToCart
             availableForSale={product.availableForSale}
-            // className="px-0"
             container="ProductCard"
             dictionary={dictionary}
             lang={lang}
@@ -126,11 +108,7 @@ export function ProductCard({
           />
         </div>
       </div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        key="product-jsonld"
-      />
+      <LinkedDataProductGroup lang={lang} product={product} />
     </>
   );
 }
