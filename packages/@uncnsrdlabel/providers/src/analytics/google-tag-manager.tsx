@@ -67,11 +67,16 @@ function googleTagManager(
       ...config,
       ...pluginConfig,
     },
+    identify: async ({ payload, config, instance }) => {
+      console.debug("gtm:identify", {
+        payload,
+        config,
+        instance,
+      });
+    },
     initialize: ({ config }: { config: GoogleTagManagerConfig }) => {
-      // if (typeof window === "undefined") {
-      //   return;
-      // }
-    
+      console.debug("gtm:initialize", { config });
+
       const {
         containerId,
       } = config;
@@ -79,6 +84,9 @@ function googleTagManager(
       if (!containerId) {
         throw new Error("No google tag manager containerId defined");
       }
+    },
+    loaded: () => {
+      console.debug("gtm:loaded");
     },
     page: ({ payload, config }) => {
       console.debug("gtm:page", { payload, config });
@@ -112,9 +120,6 @@ function googleTagManager(
       }
 
       sendGTMEvent({ event: payload.event, ...formattedPayload });
-    },
-    loaded: () => {
-      console.debug("gtm:loaded");
     },
   };
 }

@@ -69,6 +69,12 @@ export function klaviyo(config: KlaviyoConfig): KlaviyoAnalyticsPlugin {
 
       sendKlaviyoAnalytics(data);
     },
+    initialize: ({ config }: { config: KlaviyoConfig }) => {
+      console.debug("klaviyo:initialize", { config });
+    },
+    loaded: () => {
+      console.debug("klaviyo:loaded");
+    },
     page: ({ payload }) => {
       console.debug("klaviyo:page", { payload, config });
 
@@ -176,9 +182,6 @@ export function klaviyo(config: KlaviyoConfig): KlaviyoAnalyticsPlugin {
       // if (payload.event === "add_to_cart") {
       //   const { cartId } = config.options;
       // }
-    },
-    loaded: () => {
-      console.debug("klaviyo:loaded");
     },
   };
 }

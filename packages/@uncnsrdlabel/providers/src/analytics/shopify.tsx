@@ -63,6 +63,19 @@ export function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
   return {
     /* Name is a required field for plugins */
     name: "shopify-plugin",
+    identify: async ({ payload, config, instance }) => {
+      console.debug("klaviyo:identify", {
+        payload,
+        config,
+        instance,
+      });
+    },
+    initialize: ({ config }: { config: ShopifyConfig }) => {
+      console.debug("shopify:initialize", { config });
+    },
+    loaded: () => {
+      console.debug("shopify:loaded");
+    },
     page: ({ payload }) => {
       console.debug("shopify:page", { payload, config });
 
@@ -204,9 +217,6 @@ export function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
           });
         }
       }
-    },
-    loaded: () => {
-      console.debug("shopify:loaded");
     },
   };
 }
