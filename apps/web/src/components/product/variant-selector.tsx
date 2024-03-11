@@ -83,7 +83,16 @@ export function VariantSelector({
                 optionSearchParams.set(name, value);
                 const optionUrl = createUrl(pathname, optionSearchParams);
 
-                const current = variants.find(variant => variant.selectedOptions?.every(selectedOption => selectedOption?.name && optionSearchParams.has(selectedOption.name.toLowerCase(), selectedOption.value.toLowerCase()))) as Omit<ProductVariant, "compareAtPrice" | "price"> & {
+                const current = variants.find((variant) =>
+                  variant.selectedOptions?.every(
+                    (selectedOption) =>
+                      selectedOption?.name &&
+                      optionSearchParams.has(
+                        selectedOption.name.toLowerCase(),
+                        selectedOption.value.toLowerCase(),
+                      ),
+                  ),
+                ) as Omit<ProductVariant, "compareAtPrice" | "price"> & {
                   compareAtPrice: MoneyV2;
                   price: MoneyV2;
                   unitPriceMeasurement?: UnitPriceMeasurement;
@@ -116,7 +125,9 @@ export function VariantSelector({
                         router.replace(optionUrl, { scroll: false });
                       }}
                       title={`${option.name} ${optionValue}${
-                        current?.availableForSale === false ? " (Out of Stock)" : ""
+                        current?.availableForSale === false
+                          ? " (Out of Stock)"
+                          : ""
                       }`}
                       className={cn(
                         "focus-visible:bg-hotPink/20 focus-visible:ring-hotPink flex h-8 min-w-[48px] items-center justify-center px-2 text-sm",
@@ -127,7 +138,7 @@ export function VariantSelector({
                           "hover:bg-hotPink/20 hover:ring-hotPink ring-1 ring-gray-500 transition duration-300 ease-in-out":
                             !isActive && current?.availableForSale === true,
                           "relative z-10 cursor-not-allowed overflow-hidden before:absolute before:inset-x-0 before:-z-10 before:h-px before:-rotate-45 before:bg-gray-500 before:transition-transform":
-                          current?.availableForSale === false,
+                            current?.availableForSale === false,
                         },
                       )}
                       variant="ghost"
@@ -137,7 +148,7 @@ export function VariantSelector({
                     {current?.id && (
                       <LinkedDataProduct
                         lang={lang}
-                        productDetailsFragmentRef={productDetailsFragmentRef}
+                        product={product}
                         variant={current}
                       />
                     )}
