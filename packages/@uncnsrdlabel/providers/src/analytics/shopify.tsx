@@ -18,8 +18,10 @@ import { getCookie } from "cookies-next";
 import { PluginConfig, PluginEventFunctions } from "./types";
 
 export interface ShopifyConfig extends PluginConfig {
+  cartId?: string;
   collectionHandle?: string;
   locale: Intl.Locale;
+  shopDomain: string;
   shopId: string;
   storefrontId?: string;
 }
@@ -28,8 +30,14 @@ export type ShopifyAnalyticsPlugin = AnalyticsPlugin & PluginEventFunctions;
 
 // eslint-disable-next-line no-unused-vars
 export function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
-  const { collectionHandle, hasUserConsent, locale, shopId, storefrontId } =
-    config;
+  const {
+    collectionHandle,
+    hasUserConsent,
+    locale,
+    shopDomain,
+    shopId,
+    storefrontId,
+  } = config;
 
   const customerId = getCookie("customerId");
 
@@ -57,48 +65,81 @@ export function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
   const sendShopifyAnalyticsPayloadBase = {
     ...analyticsShopData,
     hasUserConsent,
-    shopDomain: process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN,
+    shopDomain,
   };
 
   return {
     /* Name is a required field for plugins */
     name: "shopify-plugin",
+    identify: async ({ payload }) => {
+      if (config.debug) {
+        console.debug("klaviyo:identify", { payload });
+      }
+    },
+    initialize: ({ config }: { config: ShopifyConfig }) => {
+      if (config.debug) {
+        console.debug("shopify:initialize", { config });
+      }
+    },
+    loaded: () => {
+      if (config.debug) {
+        console.debug("shopify:loaded");
+      }
+
+      return !!sendShopifyAnalytics;
+    },
     page: ({ payload }) => {
-      // console.debug("shopify:page", { payload, config });
+      if (config.debug) {
+        console.debug("shopify:page", { payload });
+      }
+
+      const pageType = payload.properties
+        ?.pageType as keyof typeof AnalyticsPageType;
+
+      const product = payload.properties?.product
+        ? {
+            products: [
+              {
+                ...payload.properties?.product,
+                productGid: payload.properties?.product?.id,
+                name: payload.properties?.product?.title,
+                brand: payload.properties?.product?.vendor,
+                price:
+                  payload.properties?.product?.priceRange.minVariantPrice
+                    .amount,
+              },
+            ],
+          }
+        : undefined;
 
       const shopifyPageViewPayload: ShopifyPageViewPayload = {
         ...getClientBrowserParameters(),
         ...sendShopifyAnalyticsPayloadBase,
         /** Currency code. */
-        currency: payload.properties.product?.priceRange.minVariantPrice
+        currency: payload.properties?.product?.priceRange.minVariantPrice
           .currencyCode as CurrencyCode,
         /** Total value of products. */
-        totalValue: Number.parseInt(
-          payload.properties.product?.priceRange.minVariantPrice.amount,
-        ),
+        ...(payload.properties?.product?.priceRange.minVariantPrice?.amount && {
+          totalValue: Number.parseInt(
+            payload.properties?.product?.priceRange.minVariantPrice.amount,
+          ),
+        }),
         /** Product list. */
-        products: [
-          {
-            ...payload.properties.product,
-            productGid: payload.properties.product?.id,
-            name: payload.properties.product?.title,
-            brand: payload.properties.product?.vendor,
-            price:
-              payload.properties.product?.priceRange.minVariantPrice.amount,
-          },
-        ],
+        ...(product && { ...product }),
         /** Canonical url. */
-        canonicalUrl: payload.properties.url,
+        ...(payload.properties?.url && {
+          canonicalUrl: payload.properties?.url,
+        }),
         /** Shopify page type. */
-        pageType: AnalyticsPageType.page,
+        pageType,
         /** Shopify resource id in the form of `gid://shopify/<type>/<id>`. */
-        ...(payload.properties.product && {
-          resourceId: `gid://shopify/${AnalyticsPageType.product}>/${payload.properties.product.id}`,
+        ...(payload.properties?.product && {
+          resourceId: `gid://shopify/${AnalyticsPageType.product}>/${payload.properties?.product?.id}`,
         }),
         /** Shopify collection handle. */
         collectionHandle,
         /** Search term used on a search results page. */
-        searchString: payload.properties.search,
+        searchString: payload.properties?.search,
       };
 
       sendShopifyAnalytics({
@@ -106,44 +147,64 @@ export function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
         payload: shopifyPageViewPayload,
       });
     },
-    track: ({ payload, config }) => {
-      // Fire custom logic after analytics.track() calls
-      // console.debug("shopify:trackEnd", { payload, config });
+    ready: () => {
+      if (config.debug) {
+        console.debug("gtm:ready");
+      }
+    },
+    track: ({ payload }) => {
+      if (config.debug) {
+        console.debug("shopify:track", { payload });
+      }
 
-      if (payload.event === "product") {
+      if (payload.event === "view_item") {
+        console.log(
+          "view_item",
+          payload.properties?.type,
+          "expecting product or variant",
+        );
+
+        const product = payload.properties?.product
+          ? {
+              /** Total value of products. */
+              totalValue: Number.parseInt(
+                payload.properties?.product?.priceRange.minVariantPrice.amount,
+              ),
+              products: [
+                {
+                  ...payload.properties?.product,
+                  productGid: payload.properties?.product?.id,
+                  name: payload.properties?.product?.title,
+                  brand: payload.properties?.product?.vendor,
+                  price:
+                    payload.properties?.product?.priceRange.minVariantPrice
+                      .amount,
+                },
+              ],
+            }
+          : undefined;
+
         const shopifyPageViewPayload: ShopifyPageViewPayload = {
           ...getClientBrowserParameters(),
           ...sendShopifyAnalyticsPayloadBase,
           /** Currency code. */
-          currency: payload.properties.product?.priceRange.minVariantPrice
+          currency: payload.properties?.product?.priceRange.minVariantPrice
             .currencyCode as CurrencyCode,
-          /** Total value of products. */
-          totalValue: Number.parseInt(
-            payload.properties.product?.priceRange.minVariantPrice.amount,
-          ),
           /** Product list. */
-          products: [
-            {
-              ...payload.properties.product,
-              productGid: payload.properties.product?.id,
-              name: payload.properties.product?.title,
-              brand: payload.properties.product?.vendor,
-              price:
-                payload.properties.product?.priceRange.minVariantPrice.amount,
-            },
-          ],
+          ...(product && { ...product }),
           /** Canonical url. */
-          canonicalUrl: payload.properties.url,
+          canonicalUrl: payload.properties?.url,
           /** Shopify page type. */
           pageType: AnalyticsPageType.product,
           /** Shopify resource id in the form of `gid://shopify/<type>/<id>`. */
-          ...(payload.properties.product && {
-            resourceId: `gid://shopify/${AnalyticsPageType.product}>/${payload.properties.product.id}`,
+          ...(payload.properties?.product && {
+            resourceId: `gid://shopify/${AnalyticsPageType.product}>/${payload.properties?.product?.id}`,
           }),
           /** Shopify collection handle. */
           collectionHandle,
           /** Search term used on a search results page. */
-          searchString: payload.properties.search,
+          searchString: payload.properties?.search,
+          ...(product && { product }),
         };
 
         sendShopifyAnalytics({
@@ -152,31 +213,38 @@ export function shopify(config: ShopifyConfig): ShopifyAnalyticsPlugin {
         });
       }
 
-      if (payload.event === "addToCart") {
-        const { cartId } = config.options;
+      if (payload.event === "add_to_cart") {
+        const { cartId } = config;
+
+        const product = payload.properties?.product
+        ? {
+            /** Total value of products. */
+            totalValue: Number.parseInt(
+              payload.properties?.product?.priceRange.minVariantPrice.amount,
+            ),
+            products: [
+              {
+                ...payload.properties?.product,
+                productGid: payload.properties?.product?.id,
+                name: payload.properties?.product?.title,
+                brand: payload.properties?.product?.vendor,
+                price:
+                  payload.properties?.product?.priceRange.minVariantPrice
+                    .amount,
+              },
+            ],
+          }
+        : undefined;
 
         if (cartId) {
           const shopifyAddToCartPayload: ShopifyAddToCartPayload = {
             ...getClientBrowserParameters(),
             ...sendShopifyAnalyticsPayloadBase,
             /** Currency code. */
-            currency: payload.properties.product?.priceRange.minVariantPrice
+            currency: payload.properties?.product?.priceRange.minVariantPrice
               .currencyCode as CurrencyCode,
-            /** Total value of products. */
-            totalValue: Number.parseInt(
-              payload.properties.product?.priceRange.minVariantPrice.amount,
-            ),
             /** Product list. */
-            products: [
-              {
-                ...payload.properties.product,
-                productGid: payload.properties.product?.id,
-                name: payload.properties.product?.title,
-                brand: payload.properties.product?.vendor,
-                price:
-                  payload.properties.product?.priceRange.minVariantPrice.amount,
-              },
-            ],
+            ...(product && { ...product }),
             /** Shopify cart id in the form of `gid://shopify/Cart/<id>`. */
             cartId,
           };

@@ -1,3 +1,6 @@
+import {
+  AnalyticsPageType
+} from "@shopify/hydrogen";
 import { type Product } from "@shopify/hydrogen/storefront-api-types";
 
 export type PluginConfig = {
@@ -6,32 +9,46 @@ export type PluginConfig = {
 }
 
 export type Payload = {
-  event?: string;
-  type: string;
-  properties: {
-    title: string;
-    url: string;
-    path: string;
-    hash: string;
-    search: string;
-    width: number;
-    height: number;
-    product: Product;
-    userId: string;
-    anonymousId: string;
-    category: string;
+  anonymousId: string;
+  meta: {
+    hasCallback: boolean;
+    rid: string;
+    ts: number;
   };
+  event?: string;
   options: {
     cartId: string;
     [key: string]: any;
   };
-  userId: string;
-  anonymousId: string;
-  meta: {
-    rid: string;
-    ts: number;
-    hasCallback: boolean;
+  properties?: {
+    anonymousId: string;
+    category: string;
+    hash: string;
+    height: number;
+    pageType: keyof typeof AnalyticsPageType;
+    path: string;
+    product: Product;
+    search: string;
+    title: string;
+    type: "product" | "collection" | "search" | "variant";
+    url: string;
+    userId: string;
+    width: number;
   };
+  traits?: {
+    defaultAddress?: {
+      city: string;
+      country: string;
+      province: string;
+      zip: string;
+    };
+    email?: string;
+    firstName?: string;
+    lastName?: string;
+    phone: string;
+  };
+  type: string;
+  userId: string;
 };
 
 // eslint-disable-next-line no-unused-vars

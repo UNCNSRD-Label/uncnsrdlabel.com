@@ -27,7 +27,7 @@ import {
   useState,
 } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
-import { useTrack } from "use-analytics";
+import { usePage, useTrack } from "use-analytics";
 
 export function Cart({
   dictionary,
@@ -42,6 +42,8 @@ export function Cart({
     locale: lang,
     messages,
   });
+
+  const page = usePage();
 
   const {
     data: cartCookieData = "{}",
@@ -78,6 +80,12 @@ export function Cart({
   const closeCart = () => setIsOpen(false);
 
   const track = useTrack();
+  
+  useEffect(() => {
+    page({
+      pageType: "cart",
+    });
+  }, [isOpen]);
 
   useEffect(() => {
     // Open cart modal when quantity changes.

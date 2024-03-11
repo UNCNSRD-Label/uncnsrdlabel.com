@@ -2,8 +2,8 @@
 
 import { createIntl } from "@formatjs/intl";
 import {
-  type ProductCollectionSortItem,
-  type ProductSortItem,
+    type ProductCollectionSortItem,
+    type ProductSortItem,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { useSearchParams } from "next/navigation";
@@ -37,13 +37,13 @@ export function SortBy({
   const searchParams = useSearchParams();
 
   const [active, setActive] = useState<string>(
-    sortItems.find((sortItem) => sortItem.slug === searchParams.get("sort"))
+    sortItems.find((sortItem) => sortItem.slug === searchParams?.get("sort"))
       ?.title ?? defaultSort.title,
   );
 
   useEffect(() => {
     const matchedSortItem =
-      sortItems.find((sortItem) => sortItem.slug === searchParams.get("sort"))
+      sortItems.find((sortItem) => sortItem.slug === searchParams?.get("sort"))
         ?.title ?? defaultSort.title;
     setActive(matchedSortItem);
   }, [searchParams]);

@@ -1,5 +1,6 @@
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
+import { NavigationEvents } from "@/components/navigation-events";
 import { getDictionary } from "@/lib/dictionary";
 import { getAlternativeLanguages } from "@/lib/i18n";
 import { getCanonical } from "@/lib/metadata";
@@ -15,6 +16,7 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { createIntl, type ResolvedIntlConfig } from "react-intl";
 
 export async function generateMetadata({
@@ -138,6 +140,9 @@ export default async function SearchCollectionPage({
           />
         </Grid>
       )}
+      <Suspense fallback={null}>
+        <NavigationEvents pageType="collection" />
+      </Suspense>
     </>
   );
 }

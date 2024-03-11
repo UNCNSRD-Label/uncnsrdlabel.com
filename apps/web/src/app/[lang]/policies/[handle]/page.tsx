@@ -1,3 +1,4 @@
+import { NavigationEvents } from "@/components/navigation-events";
 import { Prose } from "@/components/prose";
 import { getAlternativeLanguages } from "@/lib/i18n";
 import { getCanonical } from "@/lib/metadata";
@@ -7,11 +8,12 @@ import {
   getLocalizationDetailsHandler,
   getShopPoliciesHandler,
   shopPolicyFragment,
-  type PolicyName
+  type PolicyName,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { SITE_DOMAIN_WEB } from "@uncnsrdlabel/lib";
 import { camelCase } from "lodash";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { Nav } from "./nav";
 
 export async function generateMetadata({
@@ -67,10 +69,17 @@ export default async function PoliciesPage({
   return (
     <>
       <Prose
-        className="prose-sm prose-thead:border-hotPink prose-tr:border-hotPink [&_table_tr]:grid sm:[&_table_tr]:table-row sm:bg-opaque-white px-4 sm:p-8 min-w-full sm:fill-light sm:max-w-[48rem] md:order-2 overflow-x-auto"
+        className="prose-sm prose-thead:border-hotPink prose-tr:border-hotPink sm:bg-opaque-white sm:fill-light min-w-full overflow-x-auto px-4 sm:max-w-[48rem] sm:p-8 md:order-2 [&_table_tr]:grid sm:[&_table_tr]:table-row"
         html={policy.body as string}
       />
-      <Nav className="lg:justify-self-end md:order-1 lg:min-w-96" handle={handle} lang={lang} />
+      <Nav
+        className="md:order-1 lg:min-w-96 lg:justify-self-end"
+        handle={handle}
+        lang={lang}
+      />
+      <Suspense fallback={null}>
+        <NavigationEvents pageType="policy" />
+      </Suspense>
     </>
   );
 }

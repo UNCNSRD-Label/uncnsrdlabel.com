@@ -1,5 +1,6 @@
 import { Grid } from "@/components/grid";
 import { ProductGridItems } from "@/components/layout/product-grid-items";
+import { NavigationEvents } from "@/components/navigation-events";
 import { getDictionary } from "@/lib/dictionary";
 import { getAlternativeLanguages } from "@/lib/i18n";
 import { getCanonical } from "@/lib/metadata";
@@ -13,6 +14,7 @@ import {
   productSortItems,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { type Metadata } from "next";
+import { Suspense } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
 
 const handle = "search";
@@ -58,7 +60,8 @@ export default async function SearchProductsPage({
 
   const { sort, q: query } = searchParams as { [key: string]: string };
   const { sortKey, reverse } =
-    productSortItems.find((item) => item.slug === sort) || productSortItemDefault;
+    productSortItems.find((item) => item.slug === sort) ||
+    productSortItemDefault;
 
   const productConnection = await getProductsHandler({
     variables: {
@@ -97,6 +100,9 @@ export default async function SearchProductsPage({
           {intl.formatMessage({ id: `page.${handle}.results` })}
         </Link>
       )}
+      <Suspense fallback={null}>
+        <NavigationEvents pageType="search" />
+      </Suspense>
     </>
   );
 }

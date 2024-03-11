@@ -1,5 +1,3 @@
-"use client";
-
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { PropsWithChildren } from "react";
 import { AppAnalyticsProvider } from "./analytics/index";

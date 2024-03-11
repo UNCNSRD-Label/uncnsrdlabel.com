@@ -3,11 +3,11 @@
 import { type ProductOption } from "@shopify/hydrogen/storefront-api-types";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import {
-  CustomerAccessTokenDeleteMutationVariables,
-  customerAccessTokenDeleteMutation,
-  getInContextVariables,
-  getShopifyGraphQL,
-  productVariantBySelectedOptionsQuery
+    CustomerAccessTokenDeleteMutationVariables,
+    customerAccessTokenDeleteMutation,
+    getInContextVariables,
+    getShopifyGraphQL,
+    productVariantBySelectedOptionsQuery
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getQueryKey } from "@uncnsrdlabel/lib";
 import { deleteCookie, getCookie } from "cookies-next";
@@ -58,9 +58,9 @@ export const getProductVariantBySelectedOptionsUtility = ({
 }) => {
   const searchParams = useSearchParams();
 
-  const color = searchParams.get("color") ?? "";
+  const color = searchParams?.get("color") ?? "";
 
-  const size = searchParams.get("size") ?? "";
+  const size = searchParams?.get("size") ?? "";
 
   const selectedOptions = options.map((option) => ({
     name: option.name,

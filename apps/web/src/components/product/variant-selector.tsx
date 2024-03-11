@@ -105,30 +105,9 @@ export function VariantSelector({
                   option.values.length === 1;
 
                 return (
-                  <>
+                  <Fragment key={`fragment-${optionValue}-${option.id}`}>
                     <Button
-                      key={value}
                       aria-disabled={current?.availableForSale === false}
-                      disabled={current?.availableForSale === false}
-                      onClick={(event) => {
-                        const { dataset } = event.currentTarget;
-
-                        track("view_item", {
-                          ...dataset,
-                          currency:
-                            product.compareAtPriceRange.minVariantPrice
-                              .currencyCode,
-                          value: product.priceRange.minVariantPrice.amount,
-                          items: [{ ...item, item_variant: value }],
-                        });
-
-                        router.replace(optionUrl, { scroll: false });
-                      }}
-                      title={`${option.name} ${optionValue}${
-                        current?.availableForSale === false
-                          ? " (Out of Stock)"
-                          : ""
-                      }`}
                       className={cn(
                         "focus-visible:bg-hotPink/20 focus-visible:ring-hotPink flex h-8 min-w-[48px] items-center justify-center px-2 text-sm",
                         "hover:text-dark focus-visible:text-dark",
@@ -141,6 +120,27 @@ export function VariantSelector({
                             current?.availableForSale === false,
                         },
                       )}
+                      disabled={current?.availableForSale === false}
+                      onClick={(event) => {
+                        const { dataset } = event.currentTarget;
+
+                        track("view_item", {
+                          ...dataset,
+                          currency:
+                            product.compareAtPriceRange.minVariantPrice
+                              .currencyCode,
+                          type: "variant",
+                          value: product.priceRange.minVariantPrice.amount,
+                          items: [{ ...item, item_variant: value }],
+                        });
+
+                        router.replace(optionUrl, { scroll: false });
+                      }}
+                      title={`${option.name} ${optionValue}${
+                        current?.availableForSale === false
+                          ? " (Out of Stock)"
+                          : ""
+                      }`}
                       variant="ghost"
                     >
                       {optionValue}
@@ -152,7 +152,7 @@ export function VariantSelector({
                         variant={current}
                       />
                     )}
-                  </>
+                  </Fragment>
                 );
               })}
             </dd>
