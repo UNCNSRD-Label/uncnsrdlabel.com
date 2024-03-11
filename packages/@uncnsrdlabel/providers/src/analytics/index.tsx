@@ -11,7 +11,6 @@ import { PropsWithChildren } from "react";
 import { AnalyticsProvider } from "use-analytics";
 import { klaviyo } from "./klaviyo";
 import { shopify } from "./shopify";
- 
 
 import { COOKIE_CONSENT, type ConsentSettings } from "@uncnsrdlabel/lib";
 
@@ -54,10 +53,9 @@ export function AppAnalyticsProvider({ children }: PropsWithChildren) {
       //   ],
       // }),
       googleTagManager({
-        ...(_shopify_y && {
-          userToken: _shopify_y,
-        }),
-        containerId: process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID!,
+        hasUserConsent,
+        locale,
+        preview: process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_PREVIEW,
       }),
       klaviyo({
         ...(_shopify_y && {

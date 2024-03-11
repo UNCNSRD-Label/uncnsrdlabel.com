@@ -22,7 +22,7 @@ import config from "@uncnsrdlabel/tailwind-config";
 import type { Metadata } from "next";
 import { Lato, Montserrat } from "next/font/google";
 import localFont from "next/font/local";
-import { PropsWithChildren, Suspense } from "react";
+import { PropsWithChildren } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
 import "../globals.css";
 
@@ -150,10 +150,8 @@ export default async function Layout({
           {children}
           <Footer lang={lang} />
           <LinkedDataOrganization lang={lang} />
-          <Suspense fallback={null}>
-            <NavigationEvents />
-            <ShopifyCookies />
-          </Suspense>
+          <NavigationEvents />
+          <ShopifyCookies />
           <Toaster />
         </AppProviders>
       </body>

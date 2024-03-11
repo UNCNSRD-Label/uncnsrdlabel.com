@@ -1,21 +1,10 @@
-"use client";
-
-import { sendGTMEvent } from '@next/third-parties/google';
+import { sendGTMEvent } from "@next/third-parties/google";
 import { AnalyticsPlugin } from "analytics";
-import type { SetOptional } from "type-fest";
 import { Payload, PluginConfig, PluginEventFunctions } from "./types";
- 
+
 export interface GoogleTagManagerConfig extends PluginConfig {
-  auth: string | undefined;
-  collectionHandle?: string;
-  containerId: string;
-  customScriptSrc?: string;
-  dataLayer: Pick<Payload, "event">[];
-  dataLayerName: string;
-  execution: "async" | "defer";
-  pageViewEvent: string;
+  locale: Intl.Locale;
   preview: string | undefined;
-  storefrontId?: string;
 }
 
 export type GoogleTagManagerAnalyticsPlugin = AnalyticsPlugin &
@@ -40,25 +29,14 @@ export type GoogleTagManagerAnalyticsPlugin = AnalyticsPlugin &
  *   containerId: 'GTM-123xyz'
  * })
  */
-export const config: Omit<GoogleTagManagerConfig, "containerId"> = {
-  auth: undefined,
-  dataLayer: [],
-  dataLayerName: "dataLayer",
+export const config: GoogleTagManagerConfig = {
   debug: false,
-  execution: "async",
   hasUserConsent: false,
-  pageViewEvent: "page_view",
   preview: undefined,
 };
 
 function googleTagManager(
-  pluginConfig: SetOptional<
-    Pick<
-      GoogleTagManagerConfig,
-      "containerId" | "customScriptSrc" | "dataLayerName" | "pageViewEvent"
-    >,
-    "dataLayerName" | "pageViewEvent"
-  >,
+  pluginConfig: GoogleTagManagerConfig,
 ): GoogleTagManagerAnalyticsPlugin {
   // Allow for userland overides of base methods
   return {
@@ -76,14 +54,6 @@ function googleTagManager(
     },
     initialize: ({ config }: { config: GoogleTagManagerConfig }) => {
       console.debug("gtm:initialize", { config });
-
-      const {
-        containerId,
-      } = config;
-
-      if (!containerId) {
-        throw new Error("No google tag manager containerId defined");
-      }
     },
     loaded: () => {
       console.debug("gtm:loaded");
@@ -98,7 +68,8 @@ function googleTagManager(
 
       const { anonymousId, properties, userId } = payload;
 
-      const formattedPayload = properties ?? {} as NonNullable<Payload["properties"]>;
+      const formattedPayload =
+        properties ?? ({} as NonNullable<Payload["properties"]>);
 
       if (userId) {
         formattedPayload.userId = userId;
