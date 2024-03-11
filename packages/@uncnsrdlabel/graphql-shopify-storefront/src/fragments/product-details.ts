@@ -134,5 +134,6 @@ export const productDetailsFragment = graphql(/* GraphQL */ `
     variants(first: 64) {
       ...productVariantConnection
     }
+    vendor
   }
 `);
