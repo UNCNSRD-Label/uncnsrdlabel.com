@@ -6,7 +6,7 @@ import googleTagManager from "./google-tag-manager";
 import { GoogleTagManager } from '@next/third-parties/google';
 import { getShopifyCookies, useShop } from "@shopify/hydrogen-react";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
-import { getCookie, getCookies } from "cookies-next";
+import { getCookie } from "cookies-next";
 import { PropsWithChildren } from "react";
 import { AnalyticsProvider } from "use-analytics";
 import { klaviyo } from "./klaviyo";
@@ -16,8 +16,6 @@ import { shopify } from "./shopify";
 import { COOKIE_CONSENT, type ConsentSettings } from "@uncnsrdlabel/lib";
 
 export function AppAnalyticsProvider({ children }: PropsWithChildren) {
-  const cookies = getCookies();
-  
   const consentCookieData = (getCookie(COOKIE_CONSENT) as string) ?? "{}";
 
   const savedConsentSettings = JSON.parse(consentCookieData) as ConsentSettings;

@@ -40,9 +40,9 @@ const sendKlaviyoAnalytics = async (
 
 // eslint-disable-next-line no-unused-vars
 export function klaviyo(config: KlaviyoConfig): KlaviyoAnalyticsPlugin {
-  // console.debug("klaviyo:root", {
-  //   config,
-  // });
+  console.debug("klaviyo:root", {
+    config,
+  });
 
   return {
     /* Name is a required field for plugins */
@@ -143,24 +143,24 @@ export function klaviyo(config: KlaviyoConfig): KlaviyoAnalyticsPlugin {
 
       if (payload.event === "product") {
         const properties = {
-          ProductName: payload.properties.product.title ?? null,
-          ProductID: payload.properties.product.id ?? null,
+          ProductName: payload.properties?.product.title ?? null,
+          ProductID: payload.properties?.product.id ?? null,
           Categories:
-            payload.properties.product.collections.edges?.map(
+            payload.properties?.product.collections.edges?.map(
               ({ node }) => node?.title,
             ) ?? null,
-          ImageURL: payload.properties.product?.featuredImage?.url ?? null,
-          URL: payload.properties.url ?? getClientBrowserParameters().url,
-          Brand: payload.properties.product.vendor ?? null,
+          ImageURL: payload.properties?.product?.featuredImage?.url ?? null,
+          URL: payload.properties?.url ?? getClientBrowserParameters().url,
+          Brand: payload.properties?.product.vendor ?? null,
           Price:
             Number.parseInt(
               payload.options.selectedVariant?.price?.amount ||
-                payload.properties.product?.priceRange?.minVariantPrice?.amount,
+                payload.properties?.product?.priceRange?.minVariantPrice?.amount,
             ) ?? null,
           CompareAtPrice:
             Number.parseInt(
               payload.options.selectedVariant?.compareAtPrice?.amount ||
-                payload.properties.product?.compareAtPriceRange?.minVariantPrice
+                payload.properties?.product?.compareAtPriceRange?.minVariantPrice
                   ?.amount,
             ) ?? null,
         };
