@@ -70,8 +70,16 @@ export async function PageCarousel({
           );
         })}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
+      <CarouselPrevious className={cn({
+        "md:hidden": mediaImages?.length && mediaImages.length >= 2,
+        "lg:hidden": mediaImages?.length && mediaImages.length >= 3,
+        "xl:hidden": mediaImages?.length && mediaImages.length >= 4
+      })} />
+      <CarouselNext className={cn({
+        "md:hidden": mediaImages?.length && mediaImages.length >= 2,
+        "lg:hidden": mediaImages?.length && mediaImages.length >= 3,
+        "xl:hidden": mediaImages?.length && mediaImages.length >= 4
+      })} />
     </Carousel>
   );
 }
