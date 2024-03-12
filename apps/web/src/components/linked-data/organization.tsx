@@ -1,18 +1,33 @@
-import { getShopDetailsHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
+import {
+  getFragmentData,
+  getInContextVariables,
+  getShopifyGraphQL,
+  imageFragment,
+  shopDetailsQuery
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { SITE_DOMAIN_WEB } from "@uncnsrdlabel/lib";
 import Script from "next/script";
 import { Organization as OrganizationSchema, WithContext } from "schema-dts";
 
 export async function LinkedDataOrganization({ id, lang }: { id?: string; lang: Intl.BCP47LanguageTag }) {
-  const shopDetails = await getShopDetailsHandler({ lang });
+  const inContextVariables = getInContextVariables(lang);
 
-  const description = shopDetails.brand?.shortDescription ?? shopDetails.description;
+  const { shop } = await getShopifyGraphQL(
+    shopDetailsQuery,
+    inContextVariables,
+  );
 
-  const image = shopDetails.brand?.coverImage?.image?.url ?? `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}/opengraph-image.jpg`;
+  const description = shop.brand?.shortDescription ?? shop.description;
 
-  const logo = shopDetails.brand?.logo?.image?.url;
+  const coverImage = getFragmentData(imageFragment, shop.brand?.coverImage?.image);
 
-  const name = shopDetails.name;
+  const logoImage = getFragmentData(imageFragment, shop.brand?.logo?.image);
+
+  const image = coverImage?.url ?? `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}/opengraph-image.jpg`;
+
+  const logo = logoImage?.url;
+
+  const name = shop.name;
 
   const sameAs = [
     "https://tiktok.com/@uncnsrdlabel/",
@@ -20,7 +35,7 @@ export async function LinkedDataOrganization({ id, lang }: { id?: string; lang: 
     "https://www.facebook.com/uncnsrdlabel/",
   ]
 
-  const slogan = shopDetails.brand?.slogan;
+  const slogan = shop.brand?.slogan;
 
   const url = `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}`;
 
