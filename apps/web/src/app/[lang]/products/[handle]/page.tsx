@@ -6,11 +6,11 @@ import { getCanonical } from "@/lib/metadata";
 import { type PageProps } from "@/types/next";
 import { createIntl } from "@formatjs/intl";
 import {
-  getFragmentData,
-  getLocalizationDetailsHandler,
-  getProductDetailsByHandleHandler,
-  productDetailsFragment,
-  seoFragment,
+    getFragmentData,
+    getLocalizationDetailsHandler,
+    getProductDetailsByHandleHandler,
+    productDetailsFragment,
+    seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { HIDDEN_PRODUCT_TAG, SITE_DOMAIN_WEB } from "@uncnsrdlabel/lib";
 import { type Metadata } from "next";
@@ -54,7 +54,10 @@ export async function generateMetadata({
 
   return {
     alternates: {
-      canonical: getCanonical(path),
+      canonical: getCanonical({
+        lang,
+        path
+      }),
       languages: getAlternativeLanguages({ localization, path }),
     },
     title:

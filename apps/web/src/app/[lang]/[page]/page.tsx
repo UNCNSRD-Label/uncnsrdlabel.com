@@ -39,7 +39,10 @@ export async function generateMetadata({
 
   return {
     alternates: {
-      canonical: getCanonical(path),
+      canonical: getCanonical({
+        lang,
+        path
+      }),
       languages: getAlternativeLanguages({ localization, path }),
     },
     title: seo?.title || page.title,
