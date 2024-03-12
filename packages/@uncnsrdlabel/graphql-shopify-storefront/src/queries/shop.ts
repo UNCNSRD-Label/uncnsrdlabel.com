@@ -18,28 +18,19 @@ export const shopDetailsQuery = graphql(/* GraphQL */ `
         coverImage {
           alt
           image {
-            altText
-            height
-            url
-            width
+            ...image
           }
         }
         logo {
           alt
           image {
-            altText
-            height
-            url
-            width
+            ...image
           }
         }
         squareLogo {
           alt
           image {
-            altText
-            height
-            url
-            width
+            ...image
           }
         }
         shortDescription

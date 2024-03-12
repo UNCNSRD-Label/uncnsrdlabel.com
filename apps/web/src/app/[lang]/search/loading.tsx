@@ -9,7 +9,7 @@ export default function Loading() {
           return (
             <Grid.Item
               key={index}
-              className="animate-pulse bg-gray-100 dark:bg-gray-900"
+              className="animate-pulse bg-gray-100 dark:bg-gray-900 aspect-2/3"
             />
           );
         })}

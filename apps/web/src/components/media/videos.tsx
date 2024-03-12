@@ -1,9 +1,7 @@
-"use client";
-
 import { Video } from "@/components/media/video";
-// import { WithVideo } from "@/types/shopify";
 import {
   getFragmentData,
+  imageFragment,
   videoFragment,
   type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
@@ -25,7 +23,16 @@ export function Videos({
       {videos?.map((videoFragmentRef, index) => {
         const video = getFragmentData(videoFragment, videoFragmentRef);
 
-        return video.__typename === "Video" ? (
+        if (video.__typename !== "Video") {
+          return null;
+        }
+
+        const previewImage = getFragmentData(
+          imageFragment,
+          video.previewImage,
+        );
+
+        return (
           <Video
             alt={video?.alt}
             autoPlay={index === 0 ? true : false}
@@ -33,7 +40,7 @@ export function Videos({
             id={`${idPrefix}-${index}`}
             loop={true}
             key={video.id}
-            poster={video.previewImage?.url}
+            poster={previewImage}
             ref={videoElementRefs?.[index]}
             url={video.sources
               .filter((source) => source.format !== "m3u8")
@@ -42,7 +49,7 @@ export function Videos({
                 type: `video/${source.format}`,
               }))}
           />
-        ) : null;
+        );
       })}
     </>
   ) : null;
