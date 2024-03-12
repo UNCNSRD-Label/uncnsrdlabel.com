@@ -80,12 +80,6 @@ export function Cart({
   const closeCart = () => setIsOpen(false);
 
   const track = useTrack();
-  
-  useEffect(() => {
-    page({
-      pageType: "cart",
-    });
-  }, [isOpen]);
 
   useEffect(() => {
     // Open cart modal when quantity changes.
