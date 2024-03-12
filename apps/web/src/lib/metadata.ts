@@ -8,7 +8,6 @@ import {
 import type { Metadata } from "next";
 
 const {
-    NEXT_PUBLIC_DEFAULT_LOCALE,
     NEXT_PUBLIC_PROTOCOL,
     NEXT_PUBLIC_SITE_NAME,
     TWITTER_CREATOR,
