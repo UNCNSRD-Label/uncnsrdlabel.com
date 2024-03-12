@@ -24,7 +24,7 @@ export async function Image({
     <NextImage
       {...props}
       blurDataURL={await getBase64EncodedPlaceholder(props.blurDataURL)}
-      className="transition duration-500 ease-in-out"
+      className={props.className}
       // onLoad={(event) => {
       //   const img = event.currentTarget as HTMLImageElement;
 

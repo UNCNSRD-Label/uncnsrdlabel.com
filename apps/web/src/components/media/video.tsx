@@ -38,7 +38,7 @@ export const Video = forwardRef<HTMLElement, VideoProps>(
         <Image
           alt={alt}
           blurDataURL={poster.blurDataURL}
-          className="absolute h-full object-cover"
+          className="absolute inset-0 object-cover"
           fill
           priority={priority}
           revealEffect={false}
