@@ -233,7 +233,7 @@ const contentSecurityPolicyComponents = [
   `media-src 'self' cdn.shopify.com videos.ctfassets.net widget-v4.tidiochat.com`,
   `object-src 'self'`,
   `script-src 'self' 'unsafe-eval' *.clarity.ms *.facebook.net *.klaviyo.com *.skimresources.com heapanalytics.com vitals.vercel-insights.com`,
-  `script-src-elem 'self' 'unsafe-eval' 'unsafe-inline' data: *.clarity.ms *.facebook.com *.facebook.net *.klaviyo.com *.skimresources.com analytics.tiktok.com cdn.heapanalytics.com cdn.shopify.com cdn.tailwindcss.com cdn.vercel-insights.com code.tidio.co js.squarecdn.com va.vercel-scripts.com vercel.live vitals.vercel-insights.com www.google-analytics.com www.googletagmanager.com sc-static.net script.hotjar.com static.hotjar.com widget-v4.tidiochat.com www.googleadservices.com`,
+  `script-src-elem 'self' 'unsafe-eval' 'unsafe-inline' data: *.clarity.ms *.facebook.com *.facebook.net *.klaviyo.com *.skimresources.com analytics.tiktok.com cdn.heapanalytics.com cdn.shopify.com cdn.tailwindcss.com cdn.vercel-insights.com code.tidio.co googleads.g.doubleclick.net js.squarecdn.com va.vercel-scripts.com vercel.live vitals.vercel-insights.com www.google-analytics.com www.googletagmanager.com sc-static.net script.hotjar.com static.hotjar.com widget-v4.tidiochat.com www.googleadservices.com`,
   `style-src 'self' 'unsafe-inline' fonts.googleapis.com static.klaviyo.com`,
   `style-src-elem 'self' 'unsafe-inline' fonts.googleapis.com static.klaviyo.com vercel.live/fonts www.googletagmanager.com`,
 ];
