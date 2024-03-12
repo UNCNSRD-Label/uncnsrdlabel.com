@@ -165,7 +165,7 @@ export async function ProductDetails({
               }}
             />
             <SignUpForBackInStockSubscription
-              className="mx-auto border p-4 md:w-2/3"
+              className="mx-auto border p-4"
               handle={product.handle}
               lang={lang}
               options={product.options}
