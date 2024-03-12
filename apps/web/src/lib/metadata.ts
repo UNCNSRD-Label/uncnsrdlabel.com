@@ -3,7 +3,6 @@ import {
     getLocalizationDetailsHandler
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import {
-    getLangProperties,
     SITE_DOMAIN_WEB
 } from "@uncnsrdlabel/lib";
 import type { Metadata } from "next";
@@ -16,16 +15,10 @@ const {
     TWITTER_SITE,
 } = process.env;
 
-export const getCanonical = (path?: string) => {
-    const { country, language } = getLangProperties(NEXT_PUBLIC_DEFAULT_LOCALE);
+export const getCanonical = ({ lang, path }: { lang: Intl.BCP47LanguageTag; path: string}) => {
+    const canonical = path.replace(`/${lang}`, "");
 
-    let lang = `${language.toLocaleLowerCase()}-${country}` as Intl.BCP47LanguageTag;
-
-    if (path) {
-        lang = lang.concat(path)
-    }
-
-    return lang
+    return canonical;
 }
 
 export const getBaseMetadata = async ({ lang, path = "/" }: { lang: Intl.BCP47LanguageTag; path: string }) => {
@@ -37,7 +30,10 @@ export const getBaseMetadata = async ({ lang, path = "/" }: { lang: Intl.BCP47La
 
     const metadata: Metadata = {
         alternates: {
-            canonical: getCanonical(),
+            canonical: getCanonical({
+                lang,
+                path
+            }),
             languages: getAlternativeLanguages({ localization, path }),
         },
         applicationName: NEXT_PUBLIC_SITE_NAME,
