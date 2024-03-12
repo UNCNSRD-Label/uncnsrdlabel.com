@@ -8,10 +8,10 @@ import { type PageProps } from "@/types/next";
 import { createIntl } from "@formatjs/intl";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
-  getLocalizationDetailsHandler,
-  getProductsHandler,
-  productSortItemDefault,
-  productSortItems,
+    getLocalizationDetailsHandler,
+    getProductsHandler,
+    productSortItemDefault,
+    productSortItems,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { type Metadata } from "next";
 import { Suspense } from "react";
@@ -37,7 +37,10 @@ export async function generateMetadata({
 
   return {
     alternates: {
-      canonical: getCanonical(path),
+      canonical: getCanonical({
+        lang,
+        path
+      }),
       languages: getAlternativeLanguages({ localization, path }),
     },
     title: intl.formatMessage({ id: `page.${handle}.title` }),
