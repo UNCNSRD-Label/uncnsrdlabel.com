@@ -1,3 +1,4 @@
+import { GTMConsent } from "@/components/consent/gtm-consent";
 import { Banner } from "@/components/layout/banner";
 import { Footer } from "@/components/layout/footer/index";
 import { Navbar } from "@/components/layout/navbar/index";
@@ -157,6 +158,7 @@ export default async function Layout({
           </Suspense>
           <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID!} />
           <VercelAnalytics />
+          <GTMConsent />
         </AppProviders>
       </body>
     </html>
