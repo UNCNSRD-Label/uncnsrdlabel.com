@@ -57,7 +57,6 @@ export function MediaViewerCompact({
                 blurDataURL={image.blurDataURL}
                 className="h-full object-cover"
                 fill
-                placeholder="blur"
                 revealEffect={false}
                 sizes={`(max-width: ${breakpoints.sm.max.toString()}) 100vw, (max-width: ${breakpoints.md.max.toString()}) 50vw, (max-width: ${breakpoints.lg.max.toString()}) 33vw, 25vw`}
                 src={image.url}
@@ -70,6 +69,11 @@ export function MediaViewerCompact({
             return null;
           }
 
+          const previewImage = getFragmentData(
+            imageFragment,
+            video.previewImage,
+          );
+
           return (
             <CarouselItem
               className="relative sm:basis-1/2 lg:basis-1/3"
@@ -81,7 +85,7 @@ export function MediaViewerCompact({
                 className={className}
                 loop={true}
                 key={video.id}
-                poster={video.previewImage?.url}
+                poster={previewImage}
                 url={video.sources
                   .filter((source) => source.format !== "m3u8")
                   .map((source) => ({
