@@ -53,7 +53,9 @@ export function googleTagManager(
         console.debug("gtm:loaded");
       }
 
-      return !!sendGTMEvent
+      if (typeof window !== "undefined") {
+        return !!sendGTMEvent
+      }
     },
     page: ({ payload }) => {
       if (config.debug) {

@@ -2,12 +2,14 @@ import { type ResultOf } from "@graphql-typed-document-node/core";
 import { parseGid } from "@shopify/hydrogen";
 import {
   getFragmentData,
+  getInContextVariables,
   getLocalizationDetailsHandler,
-  getShopDetailsHandler,
+  getShopifyGraphQL,
   imageFragment,
   productBasicFragment,
   productDetailsFragment,
   productVariantConnectionFragment,
+  shopDetailsQuery,
   type ProductVariant
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { toLower, upperFirst } from "lodash/fp";
@@ -27,7 +29,12 @@ export async function LinkedDataProductGroup({
     lang,
   });
 
-  const shopDetails = await getShopDetailsHandler({ lang });
+  const inContextVariables = getInContextVariables(lang);
+
+  const { shop } = await getShopifyGraphQL(
+    shopDetailsQuery,
+    inContextVariables,
+  );
 
   const shopifyImageToImageObject = (
     image: ResultOf<typeof imageFragment>,
@@ -40,7 +47,7 @@ export async function LinkedDataProductGroup({
     width: image?.width?.toString() ?? undefined,
   });
 
-  const acceptedPaymentMethod = shopDetails.paymentSettings.acceptedCardBrands.map(
+  const acceptedPaymentMethod = shop.paymentSettings.acceptedCardBrands.map(
     (acceptedCardBrand) => `http://purl.org/goodrelations/v1#${acceptedCardBrand.split("_").map(word => upperFirst(toLower(word))).join("")}` as unknown as PaymentMethodSchema,
   );
 

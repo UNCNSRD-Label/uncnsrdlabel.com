@@ -7,9 +7,7 @@ export const videoFragment = graphql(/* GraphQL */ `
       id
       mediaContentType
       previewImage {
-        altText
-        id
-        url
+        ...image
       }
       sources {
         format

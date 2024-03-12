@@ -44,14 +44,14 @@ export function ProductGridItems({
           const video = videos?.[0];
 
           return (
-            <Grid.Item key={product.id || index} className="animate-fadeIn">
+            <Grid.Item key={product.id}>
               <Link
                 className="block h-full w-full"
                 href={`/products/${product.handle}`}
               >
                 <Tile
                   className={transitionDelays[index]}
-                  delay={index * 100}
+                  delay={(index + 0.1) * 100}
                   image={product.featuredImage}
                   lang={lang}
                   priority={index <= 4}
