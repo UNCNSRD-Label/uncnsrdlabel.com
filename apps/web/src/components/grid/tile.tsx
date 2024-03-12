@@ -12,7 +12,7 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 
-export function Tile({
+export async function Tile({
   active = true,
   background,
   className,
@@ -124,7 +124,6 @@ export function Tile({
             delay={delay}
             fill
             height={undefined}
-            placeholder="blur"
             priority={priority}
             revealEffect={false}
             sizes={sizes}

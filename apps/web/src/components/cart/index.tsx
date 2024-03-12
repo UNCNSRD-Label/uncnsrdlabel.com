@@ -27,7 +27,7 @@ import {
   useState,
 } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
-import { usePage, useTrack } from "use-analytics";
+import { useTrack } from "use-analytics";
 
 export function Cart({
   dictionary,
@@ -42,8 +42,6 @@ export function Cart({
     locale: lang,
     messages,
   });
-
-  const page = usePage();
 
   const {
     data: cartCookieData = "{}",

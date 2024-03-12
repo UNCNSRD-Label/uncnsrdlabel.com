@@ -141,7 +141,20 @@ export function MediaViewerFull({
         {videos.map((videoFragmentRef, index) => {
           const video = getFragmentData(videoFragment, videoFragmentRef);
 
-          return video.__typename === "Video" ? (
+          if (video.__typename !== "Video") {
+            return null;
+          }
+  
+          const previewImage = getFragmentData(
+            imageFragment,
+            video.previewImage,
+          );
+
+          if (!previewImage) {
+            return null;
+          }
+
+          return (
             <Link
               className={thumbnailClassName}
               href={`#video-${index}`}
@@ -155,19 +168,18 @@ export function MediaViewerFull({
                 });
               }}
             >
-              {video.previewImage?.url && (
-                <Image
-                  alt={video?.previewImage?.altText ?? product.title}
-                  fill
-                  sizes="5vw"
-                  src={video.previewImage?.url}
-                  style={{
-                    objectFit: "cover",
-                  }}
-                />
-              )}
+              <Image
+                alt={previewImage?.altText ?? product.title}
+                blurDataURL={previewImage.blurDataURL}
+                fill
+                sizes="5vw"
+                src={previewImage.url}
+                style={{
+                  objectFit: "cover",
+                }}
+              />
             </Link>
-          ) : null;
+          );
         })}
       </nav>
     </div>

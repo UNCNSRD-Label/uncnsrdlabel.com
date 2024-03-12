@@ -1,5 +1,3 @@
-"use client";
-
 import { Image } from "@/components/media/image";
 import { ImageFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
@@ -41,7 +39,6 @@ export function Images({
               fill
               id={`${idPrefix}-${index}`}
               key={image.id}
-              placeholder="blur"
               priority={index <= 1}
               quality={100}
               revealEffect={false}

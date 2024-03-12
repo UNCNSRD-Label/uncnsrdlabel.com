@@ -62,7 +62,6 @@ export async function PageCarousel({
                 blurDataURL={image.blurDataURL}
                 className="h-full object-cover"
                 fill
-                placeholder="blur"
                 revealEffect={false}
                 sizes={`(max-width: ${breakpoints.sm.max.toString()}) 100vw, (max-width: ${breakpoints.md.max.toString()}) 50vw, (max-width: ${breakpoints.lg.max.toString()}) 33vw, 25vw`}
                 src={image.url}
