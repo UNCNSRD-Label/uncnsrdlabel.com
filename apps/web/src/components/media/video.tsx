@@ -1,12 +1,8 @@
-"use client";
-
 import { Image } from "@/components/media/image";
 import { cn } from "@uncnsrdlabel/lib";
-import dynamic from "next/dynamic";
 import { forwardRef } from "react";
 import { type ReactPlayerProps } from "react-player";
-
-const ReactPlayer = dynamic(() => import("react-player/file"), { ssr: false });
+import { VideoClient } from "./video-client";
 
 export type VideoProps = ReactPlayerProps;
 
@@ -47,7 +43,7 @@ export const Video = forwardRef<HTMLElement, VideoProps>(
           title={title}
         />
       )}
-      <ReactPlayer
+      <VideoClient
         autoPlay={autoPlay}
         className="absolute inset-0 w-full [&>video]:object-cover"
         fallback={fallback}

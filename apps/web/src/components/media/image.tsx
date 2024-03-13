@@ -18,12 +18,15 @@ async function getBase64EncodedPlaceholder(url?: string) {
 }
 
 export async function Image({
+  revealEffect = false,
   ...props
 }: ImageProps & { delay?: number; revealEffect?: boolean }) {
+  const blurDataURL = await getBase64EncodedPlaceholder(props.blurDataURL);
+
   return (
     <NextImage
       {...props}
-      blurDataURL={await getBase64EncodedPlaceholder(props.blurDataURL)}
+      blurDataURL={blurDataURL}
       className={props.className}
       // onLoad={(event) => {
       //   const img = event.currentTarget as HTMLImageElement;

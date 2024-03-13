@@ -2,6 +2,7 @@ import { graphql } from "../codegen/index";
 
 export const pageFragment = graphql(/* GraphQL */ `
   fragment page on Page {
+    __typename
     id
     title
     handle

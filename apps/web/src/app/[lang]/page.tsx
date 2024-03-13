@@ -2,13 +2,18 @@ import { Logo } from "@/components/layout/logo/index";
 import { Navbar } from "@/components/layout/navbar/index";
 import { NavigationEvents } from "@/components/navigation-events";
 import { PageCarousel } from "@/components/page/carousel/page-carousel";
-import { VideosHydrated } from "@/components/page/videos/videos-hydrated";
+import { Videos } from "@/components/page/videos/videos";
 import { getDictionary } from "@/lib/dictionary";
 import { type PageProps } from "@/types/next";
 import { createIntl } from "@formatjs/intl";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
+import {
+  getShopifyGraphQL,
+  pageQuery
+} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Suspense } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
+
 const handle = "home";
 
 export default async function Page({ params: { lang } }: PageProps) {
@@ -20,6 +25,14 @@ export default async function Page({ params: { lang } }: PageProps) {
     locale: lang,
     messages,
   });
+
+  const variables = { handle };
+
+  const { page: pageFragmentRef } = await getShopifyGraphQL(pageQuery, variables);
+
+  if (pageFragmentRef?.__typename !== "Page") {
+    throw new Error("Page query is not a page type.");
+  }
 
   return (
     <>
@@ -35,7 +48,7 @@ export default async function Page({ params: { lang } }: PageProps) {
           <h2 className="sr-only">
             {intl.formatMessage({ id: `page.${handle}.campaign-video.title` })}
           </h2>
-          <VideosHydrated handle={handle} lang={lang} />
+          <Videos pageFragmentRef={pageFragmentRef} />
           <Link
             aria-label={intl.formatMessage({
               id: `page.${handle}.campaign-video.shop-now`,
