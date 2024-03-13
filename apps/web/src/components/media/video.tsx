@@ -34,22 +34,9 @@ export const Video = forwardRef<HTMLElement, VideoProps>(
       id={id}
       ref={forwardedRef}
     >
-      {poster && (
-        <Image
-          alt={alt}
-          blurDataURL={poster.blurDataURL}
-          className="absolute inset-0 object-cover"
-          fill
-          priority={priority}
-          revealEffect={false}
-          sizes="100vw"
-          src={poster.url}
-          title={title}
-        />
-      )}
       <ReactPlayer
         autoPlay={autoPlay}
-        className="absolute inset-0 w-full [&>video]:object-cover"
+        className="absolute inset-0 z-10 w-full [&>video]:object-cover"
         fallback={fallback}
         height="100%"
         light={!autoPlay && poster}
@@ -62,6 +49,19 @@ export const Video = forwardRef<HTMLElement, VideoProps>(
         url={url}
         width="100%"
       />
+      {poster && (
+        <Image
+          alt={alt}
+          blurDataURL={poster.blurDataURL}
+          className="absolute h-full object-cover"
+          fill
+          priority={priority}
+          revealEffect={false}
+          sizes="100vw"
+          src={poster.url}
+          title={title}
+        />
+      )}
       {props.title && <figcaption>{props.title}</figcaption>}
     </figure>
   ),
