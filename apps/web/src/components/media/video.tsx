@@ -36,7 +36,7 @@ export const Video = forwardRef<HTMLElement, VideoProps>(
     >
       <ReactPlayer
         autoPlay={autoPlay}
-        className="absolute inset-0 w-full [&>video]:object-cover"
+        className="absolute inset-0 z-10 w-full [&>video]:object-cover"
         fallback={fallback}
         height="100%"
         light={!autoPlay && poster}
