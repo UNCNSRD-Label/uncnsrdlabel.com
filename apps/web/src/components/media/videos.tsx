@@ -7,6 +7,29 @@ import {
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { type MutableRefObject } from "react";
 
+function getMediaQueryForURL(url: string) {
+  let match: number | undefined = undefined;
+
+  // Do not match 1080 to ensure there is always a source from Shopify on larger screens
+  // if(url.includes('-1080p-')) {
+  //   match = 1080;
+  // }
+
+  if(url.includes('-720p-')) {
+    match = 720;
+  }
+
+  if(url.includes('-480p-')) {
+    match = 480;
+  }
+
+  if (match) {
+    return `(max-width: ${match}px)`;
+  }
+
+  return undefined;
+}
+
 export function Videos({
   className,
   idPrefix,
@@ -37,7 +60,7 @@ export function Videos({
             alt={video?.alt}
             autoPlay={index === 0 ? true : false}
             className={className}
-            id={`${idPrefix}-${index}`}
+            id={idPrefix ? `${idPrefix}-${index}` : video.id}
             loop={true}
             key={video.id}
             poster={previewImage}
@@ -45,6 +68,7 @@ export function Videos({
             url={video.sources
               .filter((source) => source.format !== "m3u8")
               .map((source) => ({
+                media: getMediaQueryForURL(source.url),
                 src: source.url,
                 type: `video/${source.format}`,
               }))}
