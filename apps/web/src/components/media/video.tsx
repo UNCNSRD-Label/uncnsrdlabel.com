@@ -34,21 +34,6 @@ export const Video = forwardRef<HTMLElement, VideoProps>(
       id={id}
       ref={forwardedRef}
     >
-      <ReactPlayer
-        autoPlay={autoPlay}
-        className="absolute inset-0 z-10 w-full [&>video]:object-cover"
-        fallback={fallback}
-        height="100%"
-        light={!autoPlay && poster}
-        loop={loop}
-        muted={autoPlay}
-        playing={autoPlay}
-        playsinline
-        pip
-        stopOnUnmount={false}
-        url={url}
-        width="100%"
-      />
       {poster && (
         <Image
           alt={alt}
@@ -62,6 +47,21 @@ export const Video = forwardRef<HTMLElement, VideoProps>(
           title={title}
         />
       )}
+      <ReactPlayer
+        autoPlay={autoPlay}
+        className="absolute inset-0 w-full [&>video]:object-cover"
+        fallback={fallback}
+        height="100%"
+        light={!autoPlay && poster}
+        loop={loop}
+        muted={autoPlay}
+        playing={autoPlay}
+        playsinline
+        pip
+        stopOnUnmount={false}
+        url={url}
+        width="100%"
+      />
       {props.title && <figcaption>{props.title}</figcaption>}
     </figure>
   ),
