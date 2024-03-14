@@ -8,14 +8,16 @@ import { type PageProps } from "@/types/next";
 import { createIntl } from "@formatjs/intl";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
-    getLocalizationDetailsHandler,
-    getProductsHandler,
-    productSortItemDefault,
-    productSortItems,
+  getLocalizationDetailsHandler,
+  getProductsHandler,
+  productSortItemDefault,
+  productSortItems,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { type Metadata } from "next";
 import { Suspense } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
+
+export const revalidate = 300;
 
 const handle = "search";
 

@@ -6,11 +6,11 @@ import { getCanonical } from "@/lib/metadata";
 import { type PageProps } from "@/types/next";
 import { createIntl } from "@formatjs/intl";
 import {
-    getFragmentData,
-    getLocalizationDetailsHandler,
-    getProductDetailsByHandleHandler,
-    productDetailsFragment,
-    seoFragment,
+  getFragmentData,
+  getLocalizationDetailsHandler,
+  getProductDetailsByHandleHandler,
+  productDetailsFragment,
+  seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { HIDDEN_PRODUCT_TAG, SITE_DOMAIN_WEB } from "@uncnsrdlabel/lib";
 import { type Metadata } from "next";
@@ -19,6 +19,8 @@ import { Suspense } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
 import { Breadcrumb } from "./breadcrumb";
 import { RelatedProducts } from "./related-products";
+
+export const revalidate = 300;
 
 export async function generateMetadata({
   params: { handle, lang },

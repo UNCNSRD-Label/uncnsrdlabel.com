@@ -19,6 +19,8 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { createIntl, type ResolvedIntlConfig } from "react-intl";
 
+export const revalidate = 300;
+
 export async function generateMetadata({
   params: { collection: handle, lang },
 }: {

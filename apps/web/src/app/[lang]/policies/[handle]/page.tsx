@@ -16,6 +16,8 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { Nav } from "./nav";
 
+export const revalidate = 900;
+
 export async function generateMetadata({
   params: { handle, lang },
 }: PageProps & {

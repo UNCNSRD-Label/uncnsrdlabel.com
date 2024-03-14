@@ -14,6 +14,8 @@ import {
 import { Suspense } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
 
+export const revalidate = 900;
+
 const handle = "home";
 
 export default async function Page({ params: { lang } }: PageProps) {
