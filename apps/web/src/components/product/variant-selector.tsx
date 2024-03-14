@@ -81,16 +81,12 @@ export function VariantSelector({
                 // Update the option params using the current option to reflect how the url *would* change,
                 // if the option was clicked.
                 optionSearchParams.set(name, value);
+
                 const optionUrl = createUrl(pathname, optionSearchParams);
 
                 const current = variants.find((variant) =>
                   variant.selectedOptions?.every(
-                    (selectedOption) =>
-                      selectedOption?.name &&
-                      optionSearchParams.has(
-                        selectedOption.name.toLowerCase(),
-                        selectedOption.value.toLowerCase(),
-                      ),
+                    (selectedOption) => options.find(option => option.name === selectedOption.name && option.values.find(value => value === selectedOption.value))
                   ),
                 ) as Omit<ProductVariant, "compareAtPrice" | "price"> & {
                   compareAtPrice: MoneyV2;
@@ -107,7 +103,7 @@ export function VariantSelector({
                 return (
                   <Fragment key={`fragment-${optionValue}-${option.id}`}>
                     <Button
-                      aria-disabled={current?.availableForSale === false}
+                      aria-disabled={current?.availableForSale !== true}
                       className={cn(
                         "focus-visible:bg-hotPink/20 focus-visible:ring-hotPink flex h-8 min-w-[48px] items-center justify-center px-2 text-sm",
                         "hover:text-dark focus-visible:text-dark",
@@ -117,10 +113,10 @@ export function VariantSelector({
                           "hover:bg-hotPink/20 hover:ring-hotPink ring-1 ring-gray-500 transition duration-300 ease-in-out":
                             !isActive && current?.availableForSale === true,
                           "relative z-10 cursor-not-allowed overflow-hidden before:absolute before:inset-x-0 before:-z-10 before:h-px before:-rotate-45 before:bg-gray-500 before:transition-transform":
-                            current?.availableForSale === false,
+                            current?.availableForSale !== true,
                         },
                       )}
-                      disabled={current?.availableForSale === false}
+                      disabled={current?.availableForSale !== true}
                       onClick={(event) => {
                         const { dataset } = event.currentTarget;
 
@@ -137,7 +133,7 @@ export function VariantSelector({
                         router.replace(optionUrl, { scroll: false });
                       }}
                       title={`${option.name} ${optionValue}${
-                        current?.availableForSale === false
+                        current?.availableForSale !== true
                           ? " (Out of Stock)"
                           : ""
                       }`}
