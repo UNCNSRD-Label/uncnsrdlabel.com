@@ -129,7 +129,7 @@ export function MediaViewer({
             className={thumbnailClassName}
             key={image.id}
             onClick={() => {
-              api.scrollTo(index);
+              api?.scrollTo(index);
             }}
           >
             <Image
@@ -163,7 +163,7 @@ export function MediaViewer({
               className={thumbnailClassName}
               key={video.id}
               onClick={() => {
-                api.scrollTo(index + images.length);
+                api?.scrollTo(index + images.length);
               }}
             >
               <Image
