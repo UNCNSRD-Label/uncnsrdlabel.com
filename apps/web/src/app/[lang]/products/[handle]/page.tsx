@@ -6,11 +6,11 @@ import { getCanonical } from "@/lib/metadata";
 import { type PageProps } from "@/types/next";
 import { createIntl } from "@formatjs/intl";
 import {
-    getFragmentData,
-    getLocalizationDetailsHandler,
-    getProductDetailsByHandleHandler,
-    productDetailsFragment,
-    seoFragment,
+  getFragmentData,
+  getLocalizationDetailsHandler,
+  getProductDetailsByHandleHandler,
+  productDetailsFragment,
+  seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { HIDDEN_PRODUCT_TAG, SITE_DOMAIN_WEB } from "@uncnsrdlabel/lib";
 import { type Metadata } from "next";
@@ -117,7 +117,7 @@ export default async function ProductsPage({
   return (
     <div className="relative grid grid-rows-[1fr_auto]">
       <Breadcrumb
-        className="sticky left-0 top-0 z-10 hidden h-0 translate-y-3.5 overflow-y-visible px-16 lg:grid"
+        className="sticky left-0 top-0 z-10 hidden h-0 translate-y-6 overflow-y-visible sm:flex px-16"
         productDetailsFragmentRef={productDetailsFragmentRef}
       />
       <main className="top-0 mb-16 grid grid-cols-12 bg-inherit lg:sticky lg:overflow-y-hidden portrait:lg:h-[85dvw] landscape:h-[100dvh] [&:has(+_aside)]:mb-0">

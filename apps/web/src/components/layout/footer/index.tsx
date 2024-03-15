@@ -8,6 +8,7 @@ import { themeColors } from "@/lib/tailwind";
 import { createIntl } from "@formatjs/intl";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import { getMenuHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { cn } from "@uncnsrdlabel/lib";
 import { type ResolvedIntlConfig } from "react-intl";
 
 const { NEXT_PUBLIC_SITE_NAME } = process.env;
@@ -44,8 +45,8 @@ export async function Footer({ lang }: { lang: Intl.BCP47LanguageTag }) {
 
   return (
     <footer className="dark relative self-end border-t border-inherit contain sm:snap-start">
-      <div className={themeColors}>
-        <div className="mx-auto w-full max-w-screen-2xl px-4 pb-12">
+      <div className={cn(themeColors, "px-4 pb-12")}>
+        <div className="mx-auto w-full max-w-screen-2xl">
           <div className="grid grid-cols-1 items-start gap-8 border-b border-inherit py-6 transition-colors duration-150 sm:grid-cols-12 sm:py-12">
             <nav className="col-span-1 grid gap-8 sm:col-span-12 sm:grid-cols-12 lg:col-span-8 lg:grid-cols-9">
               <dl className="grid gap-4 sm:col-span-4 sm:grid-flow-row lg:col-span-3">

@@ -12,12 +12,6 @@ export default {
   darkMode: ["class"],
   theme: {
     extend: {
-      animation: {
-        blink: "blink 1.4s both infinite",
-        carousel: "marquee 60s linear infinite",
-        fadein: "fadein .3s ease-in-out",
-        "grow-progress": "linear growProgress forwards",
-      },
       aspectRatio: {
         "13/21": "13 / 21",
         "16/9": "16 / 9",
@@ -102,18 +96,6 @@ export default {
           from: { opacity: "0" },
           to: { opacity: "1" },
         },
-        growProgress: {
-          from: {
-            transform: "scaleX(0)",
-          },
-          to: {
-            transform: "scaleX(1)",
-          },
-        },
-        marquee: {
-          "0%": { transform: "translateX(0%)" },
-          "100%": { transform: "translateX(-100%)" },
-        },
       },
       spacing: {
         safeTop: "env(safe-area-inset-top, 1.5rem)",
@@ -169,9 +151,6 @@ export default {
         },
       }),
     },
-  },
-  future: {
-    hoverOnlyWhenSupported: true,
   },
   plugins: [
     animate,

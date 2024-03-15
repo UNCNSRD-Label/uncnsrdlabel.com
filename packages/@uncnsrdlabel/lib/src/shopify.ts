@@ -1,36 +1,22 @@
-import { revalidateTag } from 'next/cache';
-import { headers } from 'next/headers';
-import { NextRequest, NextResponse } from 'next/server';
-import { TAGS } from './constant';
+export function getMediaQueryForURL(url: string) {
+  let match: number | undefined = undefined;
 
-// This is called from `app/api/revalidate.ts` so providers can control revalidation logic.
-export async function revalidate(req: NextRequest): Promise<NextResponse> {
-    // We always need to respond with a 200 status code to Shopify,
-    // otherwise it will continue to retry the request.
-    const collectionWebhooks = ['collections/create', 'collections/delete', 'collections/update'];
-    const productWebhooks = ['products/create', 'products/delete', 'products/update'];
-    const topic = headers().get('x-shopify-topic') || 'unknown';
-    const secret = req.nextUrl.searchParams?.get('secret');
-    const isCollectionUpdate = collectionWebhooks.includes(topic);
-    const isProductUpdate = productWebhooks.includes(topic);
-  
-    if (!secret || secret !== process.env.SHOPIFY_REVALIDATION_SECRET) {
-      console.error('Invalid revalidation secret.');
-      return NextResponse.json({ status: 200 });
-    }
-  
-    if (!isCollectionUpdate && !isProductUpdate) {
-      // We don't need to revalidate anything for any other topics.
-      return NextResponse.json({ status: 200 });
-    }
-  
-    if (isCollectionUpdate) {
-      revalidateTag(TAGS.collections);
-    }
-  
-    if (isProductUpdate) {
-      revalidateTag(TAGS.products);
-    }
-  
-    return NextResponse.json({ status: 200, revalidated: true, now: Date.now() });
+  if(url.includes('-1080p-')) {
+    match = 1080;
   }
+
+  if(url.includes('-720p-')) {
+    match = 720;
+  }
+
+  // Do not match 480 to ensure there is always a source from Shopify on smaller screens
+  // if(url.includes('-480p-')) {
+  //   match = 480;
+  // }
+
+  if (match) {
+    return `(min-width: ${match}px)`;
+  }
+
+  return undefined;
+}

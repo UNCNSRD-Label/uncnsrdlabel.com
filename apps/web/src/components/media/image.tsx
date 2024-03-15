@@ -23,11 +23,14 @@ export async function Image({
 }: ImageProps & { delay?: number; revealEffect?: boolean }) {
   const blurDataURL = await getBase64EncodedPlaceholder(props.blurDataURL);
 
+  if (blurDataURL) {
+    props.placeholder = "blur"
+  }
+
   return (
     <NextImage
       {...props}
       blurDataURL={blurDataURL}
-      className={props.className}
       // onLoad={(event) => {
       //   const img = event.currentTarget as HTMLImageElement;
 
@@ -39,7 +42,6 @@ export async function Image({
       //     props.onLoad(event);
       //   }
       // }}
-      placeholder="blur"
     />
   );
 }
