@@ -1,4 +1,4 @@
-import { Boundary } from "@/components/boundary";
+import { Logo } from "@/components/layout/logo/index";
 import { NavigationEvents } from "@/components/navigation-events";
 import { getDictionary } from "@/lib/dictionary";
 import { createIntl } from "@formatjs/intl";
@@ -38,25 +38,26 @@ export default async function NotFound() {
   });
 
   return (
-    <Boundary labels={["not-found.tsx"]} color="pink">
-      <div className="text-vercel-pink space-y-4">
+    <>
+      <div className="min-h-[50dvh] grid place-content-center place-items-center gap-4 pb-32">
         <h1 className="text-lg">
           {intl.formatMessage({ id: `page.${handle}.title` })}
         </h1>
-        <span className="text-sm">
+        <span className="text-sm mb-12">
           {intl.formatMessage({ id: `page.${handle}.message` })}
         </span>
         <Link
           aria-label={intl.formatMessage({ id: `page.${handle}.button` })}
-          className="btn btn-outline btn-primary btn-base absolute justify-self-center whitespace-nowrap uppercase"
+          className="btn btn-outline btn-primary btn-base uppercase"
           href="/collections/all"
         >
-          {intl.formatMessage({ id: `page.${handle}.button` })}
+          {intl.formatMessage({ id: `page.${handle}.link` })}
         </Link>
       </div>
+      <Logo />
       <Suspense fallback={null}>
         <NavigationEvents pageType="notFound" />
       </Suspense>
-    </Boundary>
+    </>
   );
 }
