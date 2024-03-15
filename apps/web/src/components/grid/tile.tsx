@@ -10,7 +10,7 @@ import {
   videoFragment,
   type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { cn } from "@uncnsrdlabel/lib";
+import { cn, getMediaQueryForURL } from "@uncnsrdlabel/lib";
 
 export async function Tile({
   active = true,
@@ -86,17 +86,6 @@ export async function Tile({
           "mb-0 mt-0 overflow-hidden [contain:inline-size_layout_style]",
           "aspect-2/3 relative mb-4 w-full overflow-hidden",
           "[&:has(.video)_.image]:hover:opacity-0 [&:has(.video)_.image]:focus:opacity-0",
-          {
-            "bg-hotPink dark:bg-hotPink": background === "hotPink",
-            "bg-white dark:bg-white": background === "white",
-            "bg-[#ff0080] dark:bg-[#ff0080]": background === "pink",
-            "bg-[#7928ca] dark:bg-[#7928ca]": background === "purple",
-            "bg-gray-900 dark:bg-gray-900": background === "black",
-            "bg-violetDark dark:bg-violetDark": background === "purple-dark",
-            "bg-blue-500 dark:bg-blue-500": background === "blue",
-            "bg-cyan-500 dark:bg-cyan-500": background === "cyan",
-            "bg-gray-100 dark:bg-gray-100": background === "gray",
-          },
         )}
       >
         {/* TODO: Only play video on hover */}
@@ -111,6 +100,7 @@ export async function Tile({
             url={tileVideo?.sources
               ?.filter((source) => source.format !== "m3u8")
               .map((source) => ({
+                media: getMediaQueryForURL(source.url),
                 src: source.url,
                 type: `video/${source.format}`,
               }))}

@@ -7,6 +7,7 @@ export * from "./graphql";
 export * from "./i18n";
 export * from "./image";
 export * from "./ponyfills";
+export * from "./shopify";
 export * from "./type-guard";
 export * from "./url";
 

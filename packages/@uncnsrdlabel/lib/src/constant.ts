@@ -1,9 +1,3 @@
-export const TAGS = {
-  cart: 'cart',
-  collections: "collections",
-  products: "products",
-};
-
 export const HIDDEN_PRODUCT_TAG = "web-frontend-hidden";
 export const DEFAULT_OPTION = "Default Title";
 
