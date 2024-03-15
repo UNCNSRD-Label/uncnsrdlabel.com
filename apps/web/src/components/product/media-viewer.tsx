@@ -79,6 +79,7 @@ export function MediaViewer({
                   // blurDataURL={image.blurDataURL}
                   className="h-full w-auto object-cover"
                   height={image.height ?? 1}
+                  priority={index <= 1}
                   sizes={`(max-width: ${breakpoints.sm.max.toString()}) 100vw, (max-width: ${breakpoints.md.max.toString()}) 50vw, (max-width: ${breakpoints.lg.max.toString()}) 33vw, 25vw`}
                   src={image.url}
                   width={image.width ?? 1}
@@ -98,7 +99,7 @@ export function MediaViewer({
 
             return (
               <CarouselItem
-                className="relative sm:basis-1/2 lg:basis-1/3"
+                className="shrink-1 grow-1 relative h-full basis-auto"
                 key={video.id || index}
               >
                 <Video
@@ -115,6 +116,24 @@ export function MediaViewer({
                       src: source.url,
                       type: `video/${source.format}`,
                     }))}
+                />
+              </CarouselItem>
+            );
+          })}
+          {images?.map((image, index) => {
+            return (
+              <CarouselItem
+                className="shrink-1 grow-1 relative h-full basis-auto"
+                key={image.url || index}
+              >
+                <Image
+                  alt={image.altText ?? product.title}
+                  // blurDataURL={image.blurDataURL}
+                  className="h-full w-auto object-cover"
+                  height={image.height ?? 1}
+                  sizes={`(max-width: ${breakpoints.sm.max.toString()}) 100vw, (max-width: ${breakpoints.md.max.toString()}) 50vw, (max-width: ${breakpoints.lg.max.toString()}) 33vw, 25vw`}
+                  src={image.url}
+                  width={image.width ?? 1}
                 />
               </CarouselItem>
             );
