@@ -14,7 +14,6 @@ import { cn, getMediaQueryForURL } from "@uncnsrdlabel/lib";
 
 export async function Tile({
   active = true,
-  background,
   className,
   delay = 0,
   image,
@@ -26,16 +25,6 @@ export async function Tile({
   video,
 }: {
   active?: boolean;
-  background?:
-    | "hotPink"
-    | "white"
-    | "pink"
-    | "purple"
-    | "black"
-    | "purple-dark"
-    | "blue"
-    | "cyan"
-    | "gray";
   className?: string;
   delay?: number;
   image?: FragmentType<typeof imageFragment> | null;
