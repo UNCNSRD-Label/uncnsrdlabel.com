@@ -1,3 +1,4 @@
+import { Image } from "@/components/media/image";
 import { Prose } from "@/components/prose";
 import { breakpoints } from "@/lib/tailwind";
 import {
@@ -7,7 +8,6 @@ import {
   type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, type ClassValue } from "@uncnsrdlabel/lib";
-import Image from "next/image";
 import { CSSProperties } from "react";
 
 export function PageSectionModule({
