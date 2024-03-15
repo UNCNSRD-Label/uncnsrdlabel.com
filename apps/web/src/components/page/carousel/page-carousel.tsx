@@ -38,8 +38,13 @@ export async function PageCarousel({
     (edge) => edge?.node,
   );
 
+  const opts = {
+    dragFree: true,
+    loop: true,
+  };
+
   return (
-    <Carousel className={cn("items-stretch", className)}>
+    <Carousel className={cn("items-stretch", className)} opts={opts}>
       <CarouselContent className="items-stretch">
         {mediaImages?.map((mediaImage, index) => {
           if (mediaImage.__typename !== "MediaImage") {
@@ -70,16 +75,20 @@ export async function PageCarousel({
           );
         })}
       </CarouselContent>
-      <CarouselPrevious className={cn({
-        "md:hidden": mediaImages?.length && mediaImages.length >= 2,
-        "lg:hidden": mediaImages?.length && mediaImages.length >= 3,
-        "xl:hidden": mediaImages?.length && mediaImages.length >= 4
-      })} />
-      <CarouselNext className={cn({
-        "md:hidden": mediaImages?.length && mediaImages.length >= 2,
-        "lg:hidden": mediaImages?.length && mediaImages.length >= 3,
-        "xl:hidden": mediaImages?.length && mediaImages.length >= 4
-      })} />
+      <CarouselPrevious
+        className={cn({
+          "md:hidden": mediaImages?.length && mediaImages.length >= 2,
+          "lg:hidden": mediaImages?.length && mediaImages.length >= 3,
+          "xl:hidden": mediaImages?.length && mediaImages.length >= 4,
+        })}
+      />
+      <CarouselNext
+        className={cn({
+          "md:hidden": mediaImages?.length && mediaImages.length >= 2,
+          "lg:hidden": mediaImages?.length && mediaImages.length >= 3,
+          "xl:hidden": mediaImages?.length && mediaImages.length >= 4,
+        })}
+      />
     </Carousel>
   );
 }

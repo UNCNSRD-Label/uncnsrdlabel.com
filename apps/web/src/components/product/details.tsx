@@ -22,12 +22,11 @@ import {
   productDetailsFragment,
   productVariantConnectionFragment,
   type FragmentType,
-  type SellingPlanGroup
+  type SellingPlanGroup,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { GiCupidonArrow } from "react-icons/gi";
 import { type ResolvedIntlConfig } from "react-intl";
-import { MediaViewerCompact } from "./media-viewer-compact";
-import { MediaViewerFull } from "./media-viewer-full";
+import { MediaViewer } from "./media-viewer";
 
 export async function ProductDetails({
   productDetailsFragmentRef,
@@ -57,7 +56,9 @@ export async function ProductDetails({
     variantsFragmentRefs,
   );
 
-  const variants = variantFragments.edges.map((edge) => edge?.node) as ProductVariant[];
+  const variants = variantFragments.edges.map(
+    (edge) => edge?.node,
+  ) as ProductVariant[];
 
   const sellingPlanGroupNodes = product.sellingPlanGroups?.edges?.map(
     (edge) => edge.node,
@@ -73,12 +74,13 @@ export async function ProductDetails({
     <>
       <Tracking productDetailsFragmentRef={productDetailsFragmentRef} />
 
-      <div className="portrait:aspect-2/3 portrait:sm:aspect-4/3 relative mb-2 grid lg:hidden portrait:col-span-full landscape:col-span-6 landscape:h-[100dvh] landscape:md:col-span-full landscape:lg:h-auto">
-        <MediaViewerCompact
+      <div className="portrait:aspect-2/3 portrait:sm:aspect-4/3 relative mb-2 grid portrait:col-span-full landscape:col-span-6 landscape:md:col-span-full">
+        <MediaViewer
+          className="col-span-full"
           productDetailsFragmentRef={productDetailsFragmentRef}
         />
 
-        <section className="sm:p4 absolute mb-8 grid justify-items-end gap-3 self-end justify-self-end p-2 lg:max-h-[calc(100dvh-theme(height.64))]">
+        <section className="sm:p4 absolute mb-8 grid justify-items-end gap-3 self-end justify-self-end p-2 lg:hidden">
           <h2
             data-testid="product-name"
             className="bg-hotPink w-fit max-w-[64ch] rotate-1 text-balance box-decoration-clone p-0.5 text-xs sm:text-sm"
@@ -94,11 +96,6 @@ export async function ProductDetails({
 
         <GiCupidonArrow className="text-hotPink absolute -bottom-2 right-2 h-8 w-8 rotate-45 justify-self-end" />
       </div>
-
-      <MediaViewerFull
-        className="z-0 col-span-full hidden lg:block"
-        productDetailsFragmentRef={productDetailsFragmentRef}
-      />
 
       <section className="sm:bg-light lg:bg-opaque-white grid w-full content-start gap-6 self-start justify-self-end overflow-hidden overflow-y-auto p-4 lg:absolute lg:mr-8 lg:mt-16 lg:max-h-[calc(100dvh-theme(height.48))] lg:w-fit lg:max-w-md lg:shadow portrait:col-span-full landscape:col-span-6 landscape:pt-16 landscape:md:col-span-full landscape:md:pt-4">
         <h2
