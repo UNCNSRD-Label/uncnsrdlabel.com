@@ -47,7 +47,7 @@ export default async function NotFound() {
           {intl.formatMessage({ id: `page.${handle}.message` })}
         </span>
         <Link
-          aria-label={intl.formatMessage({ id: `page.${handle}.button` })}
+          aria-label={intl.formatMessage({ id: `page.${handle}.link` })}
           className="btn btn-outline btn-primary btn-base uppercase"
           href="/collections/all"
         >
