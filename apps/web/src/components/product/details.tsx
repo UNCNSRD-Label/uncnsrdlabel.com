@@ -97,7 +97,7 @@ export async function ProductDetails({
         <GiCupidonArrow className="text-hotPink absolute -bottom-2 right-2 h-8 w-8 rotate-45 justify-self-end" />
       </div>
 
-      <section className="sm:bg-light lg:bg-opaque-white grid w-full content-start gap-6 self-start justify-self-end overflow-hidden overflow-y-auto p-4 lg:absolute lg:mr-8 lg:mt-16 lg:max-h-[calc(100dvh-theme(height.48))] lg:w-fit lg:max-w-md lg:shadow portrait:col-span-full landscape:col-span-6 landscape:pt-16 landscape:md:col-span-full landscape:md:pt-4">
+      <section className="sm:bg-light lg:bg-opaque-white grid w-full content-start gap-6 self-start justify-self-end overflow-hidden overflow-y-auto p-4 lg:absolute lg:mr-8 lg:mt-16 lg:max-h-[calc(100dvh-theme(height.48))] lg:w-fit lg:max-w-lg lg:shadow portrait:col-span-full landscape:col-span-6 landscape:pt-16 landscape:md:col-span-full landscape:md:pt-4">
         <h2
           data-testid="product-name"
           className="hidden box-decoration-clone text-xl lg:block"
