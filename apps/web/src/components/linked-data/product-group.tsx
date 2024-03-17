@@ -3,11 +3,15 @@ import { type ResultOf } from "@graphql-typed-document-node/core";
 import { parseGid } from "@shopify/hydrogen";
 import {
   getFragmentData,
+  getInContextVariables,
+  getShopifyGraphQL,
   imageFragment,
+  localizationDetailsQuery,
   productBasicFragment,
   productDetailsFragment,
   productVariantConnectionFragment,
-  productVariantFragment
+  productVariantFragment,
+  shopDetailsQuery,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import Script from "next/script";
 import {
@@ -44,7 +48,19 @@ export async function LinkedDataProductGroup({
 
   const featuredImage = getFragmentData(imageFragment, product.featuredImage);
 
-  const offers = getAggregateOffer({ lang, product });
+  const inContextVariables = getInContextVariables(lang);
+
+  const variables = {
+    lang,
+    ...inContextVariables,
+  };
+
+  const localizationDetails = await getShopifyGraphQL(
+    localizationDetailsQuery,
+    variables,
+  );
+
+  const shopDetails = await getShopifyGraphQL(shopDetailsQuery, variables);
 
   const productVariantConnectionFragmentRef = product.variants;
 
@@ -62,18 +78,14 @@ export async function LinkedDataProductGroup({
     "@context": "https://schema.org",
     "@type": "ProductGroup",
     description: product.description,
-    hasVariant: productVariants.map((variant) => {
-      const offers = getOffer({ lang, product, variant });
-
-      return {
-        "@type": "Product",
-        identifier: variant.id,
-        name: variant.title,
-        offers,
-        productID: variant.id,
-        url: `/products/${product.handle}?${variant.selectedOptions.map((selectedOption) => `${selectedOption.name.toLowerCase()}=${selectedOption.value.toLowerCase()}`).join("&")}`,
-      };
-    }),
+    hasVariant: productVariants.map((variant) => ({
+      "@type": "Product",
+      identifier: variant.id,
+      name: variant.title,
+      offers: getOffer({ product, variant }),
+      productID: variant.id,
+      url: `/products/${product.handle}?${variant.selectedOptions.map((selectedOption) => `${selectedOption.name.toLowerCase()}=${selectedOption.value.toLowerCase()}`).join("&")}`,
+    })),
     identifier: product.id,
     ...(featuredImage && {
       image: { ...shopifyImageToImageObject(featuredImage), associatedMedia },
@@ -81,7 +93,7 @@ export async function LinkedDataProductGroup({
     keywords: product.tags,
     mainEntityOfPage: `/products/${product.handle}`,
     name: product.title,
-    offers,
+    offers: getAggregateOffer({ localizationDetails, product, shopDetails }),
     productGroupID: product.id,
     variesBy: product.options.map((option) => option.name),
   };

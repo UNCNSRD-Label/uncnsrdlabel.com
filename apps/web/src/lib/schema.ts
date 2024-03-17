@@ -1,15 +1,11 @@
 import { type ResultOf } from "@graphql-typed-document-node/core";
-import { useQuery } from "@tanstack/react-query";
 import {
-    getInContextVariables,
-    getShopifyGraphQL,
     localizationDetailsQuery,
     productBasicFragment,
     productDetailsFragment,
     productVariantFragment,
     shopDetailsQuery
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { getQueryKey } from "@uncnsrdlabel/lib";
 import { toLower, upperFirst } from "lodash/fp";
 import {
     Offer as OfferSchema,
@@ -31,29 +27,14 @@ export const getAcceptedPaymentMethod = (shopDetails?: ResultOf<typeof shopDetai
 };
 
 export function getAggregateOffer({
-    lang,
+    localizationDetails,
     product,
+    shopDetails,
 }: {
-    lang: Intl.BCP47LanguageTag;
+    localizationDetails?: ResultOf<typeof localizationDetailsQuery>;
     product: ResultOf<typeof productBasicFragment | typeof productDetailsFragment>;
+    shopDetails?: ResultOf<typeof shopDetailsQuery>;
 }): WithContext<OfferSchema> {
-    const inContextVariables = getInContextVariables(lang);
-
-    const variables = {
-        lang,
-        ...inContextVariables,
-    };
-
-    const { data: localizationDetails } = useQuery({
-        queryKey: getQueryKey(localizationDetailsQuery, variables),
-        queryFn: () => getShopifyGraphQL(localizationDetailsQuery, variables),
-    });
-
-    const { data: shopDetails } = useQuery({
-        queryKey: getQueryKey(shopDetailsQuery, variables),
-        queryFn: () => getShopifyGraphQL(shopDetailsQuery, variables),
-    });
-
     const acceptedPaymentMethod = getAcceptedPaymentMethod(shopDetails);
 
     const releaseDate = product.releaseDate?.value?.split("T")[0];
@@ -89,31 +70,16 @@ export function getAggregateOffer({
 }
 
 export function getOffer({
-    lang,
+    localizationDetails,
     product,
+    shopDetails,
     variant
 }: {
-    lang: Intl.BCP47LanguageTag;
+    localizationDetails?: ResultOf<typeof localizationDetailsQuery>;
     product: ResultOf<typeof productBasicFragment | typeof productDetailsFragment>;
+    shopDetails?: ResultOf<typeof shopDetailsQuery>;
     variant: ResultOf<typeof productVariantFragment>;
 }): WithContext<OfferSchema> {
-    const inContextVariables = getInContextVariables(lang);
-
-    const variables = {
-        lang,
-        ...inContextVariables,
-    };
-
-    const { data: localizationDetails } = useQuery({
-        queryKey: getQueryKey(localizationDetailsQuery, variables),
-        queryFn: () => getShopifyGraphQL(localizationDetailsQuery, variables),
-    });
-
-    const { data: shopDetails } = useQuery({
-        queryKey: getQueryKey(shopDetailsQuery, variables),
-        queryFn: () => getShopifyGraphQL(shopDetailsQuery, variables),
-    });
-
     const acceptedPaymentMethod = getAcceptedPaymentMethod(shopDetails);
 
     const releaseDate = product.releaseDate?.value?.split("T")[0];

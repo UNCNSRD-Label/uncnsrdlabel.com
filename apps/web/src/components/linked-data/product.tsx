@@ -1,11 +1,13 @@
-import { getOffer } from "@/lib/schema";
+import { getAggregateOffer, getOffer } from "@/lib/schema";
 import { type ResultOf } from "@graphql-typed-document-node/core";
 import { parseGid } from "@shopify/hydrogen";
 import {
   getFragmentData,
   imageFragment,
+  localizationDetailsQuery,
   productDetailsFragment,
-  productVariantFragment
+  productVariantFragment,
+  shopDetailsQuery,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import Script from "next/script";
 import {
@@ -16,15 +18,17 @@ import {
 
 export function LinkedDataProduct({
   id,
-  lang,
+  localizationDetails,
   product,
+  shopDetails,
   variant,
 }: {
   id?: string;
-  lang: Intl.BCP47LanguageTag;
+  localizationDetails?: ResultOf<typeof localizationDetailsQuery>;
   product: ResultOf<
     typeof productDetailsFragment | typeof productDetailsFragment
   >;
+  shopDetails?: ResultOf<typeof shopDetailsQuery>;
   variant: ResultOf<typeof productVariantFragment>;
 }) {
   const shopifyImageToImageObject = (
@@ -44,8 +48,6 @@ export function LinkedDataProduct({
 
   const featuredImage = getFragmentData(imageFragment, product.featuredImage);
 
-  const offers = getOffer({ lang, product, variant });
-
   const jsonLd: WithContext<ProductSchema> = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -58,13 +60,14 @@ export function LinkedDataProduct({
       "@type": "ProductGroup",
       identifier: product.id,
       name: product.title,
+      offers: getAggregateOffer({ localizationDetails, product, shopDetails }),
       productID: product.id,
       url: `/products/${product.handle}`,
     },
     keywords: product.tags,
     mainEntityOfPage: `/products/${product.handle}`,
     name: product.title,
-    offers,
+    offers: getOffer({ localizationDetails, product, shopDetails, variant }),
     productID: product.id,
     url: `/products/${product.handle}`,
   };
