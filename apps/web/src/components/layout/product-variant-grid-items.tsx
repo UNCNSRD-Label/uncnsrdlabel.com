@@ -7,6 +7,7 @@ import {
   imageFragment,
   productBasicFragment,
   productVariantConnectionFragment,
+  productVariantFragment,
   type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 
@@ -36,7 +37,7 @@ export function ProductVariantGridItems({
           product.variants,
         );
 
-        const variants = variantsConnection.edges.map((edge) => edge?.node);
+        const variants = variantsConnection.edges.map(({node}) => getFragmentData(productVariantFragment, node));
 
         const colorVariants = variants.map((variant) => {
           const key = variant.selectedOptions?.find(

@@ -5,7 +5,7 @@ import {
   getFragmentData,
   imageFragment,
   productDetailsFragment,
-  type ProductVariant,
+  productVariantFragment
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import Script from "next/script";
 import {
@@ -25,23 +25,7 @@ export function LinkedDataProduct({
   product: ResultOf<
     typeof productDetailsFragment | typeof productDetailsFragment
   >;
-  variant: Pick<
-    ProductVariant,
-    | "availableForSale"
-    | "compareAtPrice"
-    | "id"
-    | "barcode"
-    | "currentlyNotInStock"
-    | "image"
-    | "price"
-    | "quantityAvailable"
-    | "requiresShipping"
-    | "selectedOptions"
-    | "sku"
-    | "taxable"
-    | "title"
-    | "weight"
-  >;
+  variant: ResultOf<typeof productVariantFragment>;
 }) {
   const shopifyImageToImageObject = (
     image: ResultOf<typeof imageFragment>,

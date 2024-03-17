@@ -6,8 +6,8 @@ import {
     localizationDetailsQuery,
     productBasicFragment,
     productDetailsFragment,
-    shopDetailsQuery,
-    type ProductVariant,
+    productVariantFragment,
+    shopDetailsQuery
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getQueryKey } from "@uncnsrdlabel/lib";
 import { toLower, upperFirst } from "lodash/fp";
@@ -95,23 +95,7 @@ export function getOffer({
 }: {
     lang: Intl.BCP47LanguageTag;
     product: ResultOf<typeof productBasicFragment | typeof productDetailsFragment>;
-    variant: Pick<ProductVariant,
-        // | "currentlyNotInStock"
-        | "image"
-        // | "requiresShipping"
-        | "taxable"
-
-        | "availableForSale"
-        | "barcode"
-        | "compareAtPrice"
-        | "id"
-        | "price"
-        | "quantityAvailable"
-        | "selectedOptions"
-        | "sku"
-        | "title"
-        | "weight"
-    >;
+    variant: ResultOf<typeof productVariantFragment>;
 }): WithContext<OfferSchema> {
     const inContextVariables = getInContextVariables(lang);
 

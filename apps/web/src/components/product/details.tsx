@@ -10,8 +10,8 @@ import { VariantSelector } from "@/components/product/variant-selector";
 import { Prose } from "@/components/prose";
 import { getDictionary } from "@/lib/dictionary";
 import { createIntl } from "@formatjs/intl";
+import { type ResultOf } from "@graphql-typed-document-node/core";
 import { RulerSquareIcon } from "@radix-ui/react-icons";
-import { type ProductVariant } from "@shopify/hydrogen/storefront-api-types";
 import {
   Popover,
   PopoverContent,
@@ -21,8 +21,9 @@ import {
   getFragmentData,
   productDetailsFragment,
   productVariantConnectionFragment,
+  productVariantFragment,
   type FragmentType,
-  type SellingPlanGroup,
+  type SellingPlanGroup
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { GiCupidonArrow } from "react-icons/gi";
 import { type ResolvedIntlConfig } from "react-intl";
@@ -49,16 +50,17 @@ export async function ProductDetails({
     productDetailsFragmentRef,
   );
 
-  const variantsFragmentRefs = product.variants;
+  const productVariantConnectionFragmentRef = product.variants;
 
-  const variantFragments = getFragmentData(
+  const productVariantFragments = getFragmentData(
     productVariantConnectionFragment,
-    variantsFragmentRefs,
+    productVariantConnectionFragmentRef,
   );
 
-  const variants = variantFragments.edges.map(
-    (edge) => edge?.node,
-  ) as ProductVariant[];
+  const productVariants: ResultOf<typeof productVariantFragment>[] =
+    productVariantFragments.edges.map(({ node }) =>
+      getFragmentData(productVariantFragment, node),
+    );
 
   const sellingPlanGroupNodes = product.sellingPlanGroups?.edges?.map(
     (edge) => edge.node,
@@ -130,7 +132,7 @@ export async function ProductDetails({
           lang={lang}
           options={product.options}
           productDetailsFragmentRef={productDetailsFragmentRef}
-          variants={variants}
+          variants={productVariants}
         />
 
         <AddToCart
@@ -141,7 +143,7 @@ export async function ProductDetails({
           lang={lang}
           options={product.options}
           preOrder={preOrder as Partial<SellingPlanGroup> | undefined}
-          variants={variants}
+          variants={productVariants}
         />
 
         {!product.availableForSale && (

@@ -7,13 +7,13 @@ import {
   productBasicFragment,
   productDetailsFragment,
   productVariantConnectionFragment,
-  type ProductVariant
+  productVariantFragment
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import Script from "next/script";
 import {
   ImageObject as ImageObjectSchema,
   ProductGroup as ProductGroupSchema,
-  WithContext
+  WithContext,
 } from "schema-dts";
 
 export async function LinkedDataProductGroup({
@@ -46,46 +46,34 @@ export async function LinkedDataProductGroup({
 
   const offers = getAggregateOffer({ lang, product });
 
-  const variantsFragmentRefs = product.variants;
+  const productVariantConnectionFragmentRef = product.variants;
 
-  const variantFragments = getFragmentData(
+  const productVariantFragments = getFragmentData(
     productVariantConnectionFragment,
-    variantsFragmentRefs,
+    productVariantConnectionFragmentRef,
   );
 
-  const variants: Pick<
-    ProductVariant,
-    | "availableForSale"
-    | "barcode"
-    | "compareAtPrice"
-    | "id"
-    | "price"
-    | "quantityAvailable"
-    | "selectedOptions"
-    | "sku"
-    | "title"
-    | "weight"
-    // | "currentlyNotInStock"
-    // | "image"
-    // | "requiresShipping"
-    // | "taxable"
-  >[] = variantFragments.edges.map((edge) => edge?.node);
+  const productVariants: ResultOf<typeof productVariantFragment>[] =
+    productVariantFragments.edges.map(({ node }) =>
+      getFragmentData(productVariantFragment, node),
+    );
 
   const jsonLd: WithContext<ProductGroupSchema> = {
     "@context": "https://schema.org",
     "@type": "ProductGroup",
     description: product.description,
-    hasVariant: variants.map((variant) => {
+    hasVariant: productVariants.map((variant) => {
       const offers = getOffer({ lang, product, variant });
 
       return {
-      "@type": "Product",
-      identifier: variant.id,
-      name: variant.title,
-      offers,
-      productID: variant.id,
-      url: `/products/${product.handle}?${variant.selectedOptions.map((selectedOption) => `${selectedOption.name.toLowerCase()}=${selectedOption.value.toLowerCase()}`).join("&")}`,
-    }}),
+        "@type": "Product",
+        identifier: variant.id,
+        name: variant.title,
+        offers,
+        productID: variant.id,
+        url: `/products/${product.handle}?${variant.selectedOptions.map((selectedOption) => `${selectedOption.name.toLowerCase()}=${selectedOption.value.toLowerCase()}`).join("&")}`,
+      };
+    }),
     identifier: product.id,
     ...(featuredImage && {
       image: { ...shopifyImageToImageObject(featuredImage), associatedMedia },

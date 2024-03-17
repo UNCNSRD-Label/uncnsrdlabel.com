@@ -1,6 +1,7 @@
 "use client";
 
 import { LinkedDataProduct } from "@/components/linked-data/product";
+import { type ResultOf } from "@graphql-typed-document-node/core";
 import {
   type ProductOption,
   type ProductVariant,
@@ -9,6 +10,7 @@ import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
   getFragmentData,
   productDetailsFragment,
+  productVariantFragment,
   type FragmentType,
   type MoneyV2,
   type UnitPriceMeasurement,
@@ -27,7 +29,7 @@ export function VariantSelector({
   lang: Intl.BCP47LanguageTag;
   options: ProductOption[];
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
-  variants: ProductVariant[];
+  variants: ResultOf<typeof productVariantFragment>[];
 }) {
   const router = useRouter();
   const pathname = usePathname();
