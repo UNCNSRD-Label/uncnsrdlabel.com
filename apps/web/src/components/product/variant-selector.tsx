@@ -1,19 +1,26 @@
 "use client";
 
 import { LinkedDataProduct } from "@/components/linked-data/product";
+import { type ResultOf } from "@graphql-typed-document-node/core";
 import {
   type ProductOption,
   type ProductVariant,
 } from "@shopify/hydrogen/storefront-api-types";
+import { useQuery } from "@tanstack/react-query";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
   getFragmentData,
+  getInContextVariables,
+  getShopifyGraphQL,
+  localizationDetailsQuery,
   productDetailsFragment,
+  productVariantFragment,
+  shopDetailsQuery,
   type FragmentType,
   type MoneyV2,
-  type UnitPriceMeasurement,
+  type UnitPriceMeasurement
 } from "@uncnsrdlabel/graphql-shopify-storefront";
-import { cn, createUrl } from "@uncnsrdlabel/lib";
+import { cn, createUrl, getQueryKey } from "@uncnsrdlabel/lib";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Fragment } from "react";
 import { useTrack } from "use-analytics";
@@ -27,12 +34,29 @@ export function VariantSelector({
   lang: Intl.BCP47LanguageTag;
   options: ProductOption[];
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
-  variants: ProductVariant[];
+  variants: ResultOf<typeof productVariantFragment>[];
 }) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const track = useTrack();
+
+  const inContextVariables = getInContextVariables(lang);
+
+  const variables = {
+      lang,
+      ...inContextVariables,
+  };
+
+  const { data: localizationDetails } = useQuery({
+    queryKey: getQueryKey(localizationDetailsQuery, variables),
+    queryFn: () => getShopifyGraphQL(localizationDetailsQuery, variables),
+});
+
+const { data: shopDetails } = useQuery({
+    queryKey: getQueryKey(shopDetailsQuery, variables),
+    queryFn: () => getShopifyGraphQL(shopDetailsQuery, variables),
+});
 
   const product = getFragmentData(
     productDetailsFragment,
@@ -143,8 +167,9 @@ export function VariantSelector({
                     </Button>
                     {current?.id && (
                       <LinkedDataProduct
-                        lang={lang}
+                        localizationDetails={localizationDetails}
                         product={product}
+                        shopDetails={shopDetails}
                         variant={current}
                       />
                     )}

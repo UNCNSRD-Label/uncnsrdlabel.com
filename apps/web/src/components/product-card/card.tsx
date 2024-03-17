@@ -2,12 +2,13 @@ import { AddToCart } from "@/components/cart/add-to-cart";
 import { LinkedDataProductGroup } from "@/components/linked-data/product-group";
 import { Image } from "@/components/media/image";
 import { getDictionary } from "@/lib/dictionary";
-import { type ProductVariant } from "@shopify/hydrogen/storefront-api-types";
+import { type ResultOf } from "@graphql-typed-document-node/core";
 import {
   getFragmentData,
   imageFragment,
   productDetailsFragment,
   productVariantConnectionFragment,
+  productVariantFragment,
   type FragmentType,
   type SellingPlanGroup,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
@@ -43,15 +44,17 @@ export function ProductCard({
     }))
     .slice(0, 1);
 
-  const variantsFragmentRefs = product.variants;
+  const productVariantConnectionFragmentRef = product.variants;
 
-  const variantFragments = getFragmentData(
+  const productVariantFragments = getFragmentData(
     productVariantConnectionFragment,
-    variantsFragmentRefs,
+    productVariantConnectionFragmentRef,
   );
 
-  const variants: Pick<ProductVariant, "id" | "selectedOptions">[] =
-    variantFragments.edges.map((edge) => edge?.node);
+  const productVariants: ResultOf<typeof productVariantFragment>[] =
+    productVariantFragments.edges.map(({ node }) =>
+      getFragmentData(productVariantFragment, node),
+    );
 
   const sellingPlanGroupNodes = product.sellingPlanGroups?.edges?.map(
     (edge) => edge.node,
@@ -66,9 +69,7 @@ export function ProductCard({
       <div
         className={cn("card col-gap-4 grid w-full grid-flow-col", className)}
       >
-        <figure
-          className="relative grid aspect-square gap-8 overflow-hidden"
-        >
+        <figure className="relative grid aspect-square gap-8 overflow-hidden">
           <Image
             alt={image[0].altText}
             className="aspect-2/3 snap snap-x-mandatory snap-align-start relative w-full overflow-y-hidden object-contain"
@@ -82,19 +83,19 @@ export function ProductCard({
           />
         </figure>
 
-        <div className="flex flex-col gap-4 pt-4 justify-between">
-        <div className="flex flex-col gap-4">
-          <h3
-            data-testid="product-name"
-            className="box-decoration-clone text-sm"
-          >
-            {product.title}
-          </h3>
-          <PriceAndCompareAtPrice
-            className="text-xs"
-            lang={lang}
-            productDetailsFragmentRef={productDetailsFragmentRef}
-          />
+        <div className="flex flex-col justify-between gap-4 pt-4">
+          <div className="flex flex-col gap-4">
+            <h3
+              data-testid="product-name"
+              className="box-decoration-clone text-sm"
+            >
+              {product.title}
+            </h3>
+            <PriceAndCompareAtPrice
+              className="text-xs"
+              lang={lang}
+              productDetailsFragmentRef={productDetailsFragmentRef}
+            />
           </div>
           <AddToCart
             availableForSale={product.availableForSale}
@@ -103,7 +104,7 @@ export function ProductCard({
             lang={lang}
             options={product.options}
             preOrder={preOrder as Partial<SellingPlanGroup> | undefined}
-            variants={variants}
+            variants={productVariants}
             view="compact"
           />
         </div>
