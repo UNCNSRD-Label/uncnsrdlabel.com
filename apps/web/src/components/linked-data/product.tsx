@@ -90,7 +90,6 @@ export function LinkedDataProduct({
     ...(variant.weight && {
       weight: {
         "@type": "QuantitativeValue",
-        valueReference: "https://schema.org/WearableMeasurementChestOrBust",
         unitCode: "KGM",
         value: variant.weight,
       },
