@@ -2,10 +2,6 @@ import { graphql } from "../codegen/index";
 
 export const pageSectionModuleFragment = graphql(/* GraphQL */ `
   fragment pageSectionModule on Metaobject {
-    handle
-    id
-    type
-    updatedAt
     fields {
       __typename
       key
@@ -14,7 +10,6 @@ export const pageSectionModuleFragment = graphql(/* GraphQL */ `
       reference {
         __typename
         ... on MediaImage {
-          id
           image {
             ...image
           }
@@ -31,7 +26,6 @@ export const pageSectionModuleFragment = graphql(/* GraphQL */ `
           node {
             __typename
             ... on MediaImage {
-              id
               image {
                 ...image
               }
@@ -40,5 +34,9 @@ export const pageSectionModuleFragment = graphql(/* GraphQL */ `
         }
       }
     }
+    handle
+    id
+    type
+    updatedAt
   }
 `);
