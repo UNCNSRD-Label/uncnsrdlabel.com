@@ -23,6 +23,7 @@ const envVariables = z.object({
     NEXT_PUBLIC_SITE_DOMAIN_WEB: z.string(),
     NEXT_PUBLIC_SITE_NAME: z.string(),
     NEXT_PUBLIC_VERCEL_URL: z.string(),
+    SHOPIFY_PRIVATE_ACCESS_TOKEN: z.string(),
     SHOPIFY_REVALIDATION_SECRET: z.string(),
     SHOPIFY_STOREFRONT_TOKEN: z.string(),
     SITE_NAME: z.string(),
