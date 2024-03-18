@@ -3,13 +3,19 @@ import {
   getInContextVariables,
   getShopifyGraphQL,
   imageFragment,
-  shopDetailsQuery
+  shopDetailsQuery,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { SITE_DOMAIN_WEB } from "@uncnsrdlabel/lib";
 import Script from "next/script";
 import { Organization as OrganizationSchema, WithContext } from "schema-dts";
 
-export async function LinkedDataOrganization({ id, lang }: { id?: string; lang: Intl.BCP47LanguageTag }) {
+export async function LinkedDataOrganization({
+  id,
+  lang,
+}: {
+  id?: string;
+  lang: Intl.BCP47LanguageTag;
+}) {
   const inContextVariables = getInContextVariables(lang);
 
   const { shop } = await getShopifyGraphQL(
@@ -19,11 +25,16 @@ export async function LinkedDataOrganization({ id, lang }: { id?: string; lang: 
 
   const description = shop.brand?.shortDescription ?? shop.description;
 
-  const coverImage = getFragmentData(imageFragment, shop.brand?.coverImage?.image);
+  const coverImage = getFragmentData(
+    imageFragment,
+    shop.brand?.coverImage?.image,
+  );
 
   const logoImage = getFragmentData(imageFragment, shop.brand?.logo?.image);
 
-  const image = coverImage?.url ?? `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}/opengraph-image.jpg`;
+  const image =
+    coverImage?.url ??
+    `${process.env.NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}/opengraph-image.jpg`;
 
   const logo = logoImage?.url;
 
@@ -33,7 +44,7 @@ export async function LinkedDataOrganization({ id, lang }: { id?: string; lang: 
     "https://tiktok.com/@uncnsrdlabel/",
     "https://www.instagram.com/uncnsrdlabel/",
     "https://www.facebook.com/uncnsrdlabel/",
-  ]
+  ];
 
   const slogan = shop.brand?.slogan;
 
@@ -70,8 +81,13 @@ export async function LinkedDataOrganization({ id, lang }: { id?: string; lang: 
   };
 
   return (
-    <Script id={id ?? "LinkedDataOrganization"} key={id ?? "LinkedDataOrganization"} type="application/ld+json">
+    <Script
+      id={id ?? "LinkedDataOrganization"}
+      key={id ?? "LinkedDataOrganization"}
+      strategy="lazyOnload"
+      type="application/ld+json"
+    >
       {JSON.stringify(jsonLd)}
     </Script>
   );
-};
+}

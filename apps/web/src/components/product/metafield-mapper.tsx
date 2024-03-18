@@ -178,7 +178,6 @@ export function MetafieldMapper({
                 >
                   <Tile
                     className={transitionDelays[index]}
-                    image={product.featuredImage}
                     lang={lang}
                     productDetailsFragmentRef={productDetailsFragmentRef}
                   />

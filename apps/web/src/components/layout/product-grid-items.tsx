@@ -37,12 +37,6 @@ export function ProductGridItems({
 
           if (hide) return null;
 
-          const media = product.media.edges.map((edge) => edge?.node);
-
-          const videos = media.filter((node) => node.__typename === "Video");
-
-          const video = videos?.[0];
-
           return (
             <Grid.Item key={product.id}>
               <Link
@@ -52,12 +46,10 @@ export function ProductGridItems({
                 <Tile
                   className={transitionDelays[index]}
                   delay={(index + 0.1) * 100}
-                  image={product.featuredImage}
                   lang={lang}
                   priority={index <= 4}
                   productBasicFragmentRef={productBasicFragmentRef}
                   sizes={`(max-width: ${breakpoints.sm.max.toString()}) 100vw, (max-width: ${breakpoints.md.max.toString()}) 50vw, (max-width: ${breakpoints.lg.max.toString()}) 33vw, 25vw`}
-                  video={video}
                 />
               </Link>
             </Grid.Item>

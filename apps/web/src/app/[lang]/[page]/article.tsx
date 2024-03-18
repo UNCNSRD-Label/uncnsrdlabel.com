@@ -9,8 +9,6 @@ import {
   type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, type ClassValue } from "@uncnsrdlabel/lib";
-import sharedConfig from "@uncnsrdlabel/tailwind-config";
-import Script from "next/script";
 import { CSSProperties, HTMLProps, useEffect, useState } from "react";
 
 export type ArticleProps = HTMLProps<HTMLElement> & {
@@ -18,20 +16,18 @@ export type ArticleProps = HTMLProps<HTMLElement> & {
   pageFragmentRef: FragmentType<typeof pageFragment>;
 };
 
-function onReadyTailwind() {
-  window.tailwind.config = {
-    presets: [sharedConfig],
-  };
-}
-
 export function Article(props: ArticleProps) {
   const { children, className, pageFragmentRef } = props;
 
   const page = getFragmentData(pageFragment, pageFragmentRef);
 
-  const mediaQueries = Object.fromEntries(
-    Object.entries(breakpoints).map(([key, values]) => [key, useMediaQuery(`only screen and (min-width : ${values.min.toString()})`)]),
-  );
+  const mediaQueries = {
+    "sm": useMediaQuery(`only screen and (min-width : ${breakpoints["sm"].min.toString()})`),
+    "md": useMediaQuery(`only screen and (min-width : ${breakpoints["md"].min.toString()})`),
+    "lg": useMediaQuery(`only screen and (min-width : ${breakpoints["lg"].min.toString()})`),
+    "xl": useMediaQuery(`only screen and (min-width : ${breakpoints["xl"].min.toString()})`),
+    "2xl": useMediaQuery(`only screen and (min-width : ${breakpoints["2xl"].min.toString()})`),
+  }
 
   const [style, setStyle] = useState<CSSProperties>(
     page?.style?.value
@@ -87,7 +83,7 @@ export function Article(props: ArticleProps) {
           (JSON.parse(page?.styleXl?.value ?? "") as CSSProperties)),
       }));
     }
-  }, [mediaQueries]);
+  }, [mediaQueries["sm"], mediaQueries["md"], mediaQueries["lg"], mediaQueries["xl"], mediaQueries["2xl"], setStyle, page?.style?.value, page?.styleSm?.value, page?.styleMd?.value, page?.styleLg?.value, page?.styleXl?.value]);
 
   return (
     <>
@@ -111,11 +107,6 @@ export function Article(props: ArticleProps) {
         )}
         {children}
       </div>
-      <Script
-        id="tailwind"
-        src="https://cdn.tailwindcss.com"
-        onReady={onReadyTailwind}
-      />
     </>
   );
 }

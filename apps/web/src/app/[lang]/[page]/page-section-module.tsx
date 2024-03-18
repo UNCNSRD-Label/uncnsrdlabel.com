@@ -107,12 +107,13 @@ export function PageSectionModule({
                         return (
                           <figure className="absolute inset-0" key={image?.id}>
                             <Image
-                              alt={image?.altText || ""}
+                              alt={image.altText || ""}
+                              blurDataURL={image.blurDataURL}
                               className="h-full object-contain"
                               fill
-                              key={medium?.id}
+                              key={image.id}
                               sizes={`(max-width: ${breakpoints.sm.max.toString()}) 100vw, (max-width: ${breakpoints.md.max.toString()}) 50vw, (max-width: ${breakpoints.lg.max.toString()}) 33vw, 25vw`}
-                              src={image?.url}
+                              src={image.url}
                             />
                           </figure>
                         );
@@ -130,11 +131,6 @@ export function PageSectionModule({
                   (field) => field.key === "text_color",
                 )?.value ?? "default";
 
-              const textSize =
-                pageSectionModule.fields?.find(
-                  (field) => field.key === "text_size",
-                )?.value ?? "default";
-
               const hashtag_regexp = /(^|\s)(#[a-z\d-]+)/ig
 
               const value = field.value.replaceAll(
@@ -144,7 +140,7 @@ export function PageSectionModule({
 
               element = (
                 <Prose
-                  className={cn("max-w-full prose-thead:border-hotPink prose-tr:border-hotPink whitespace-pre-line", `prose-${textSize}`, {
+                  className={cn("max-w-full prose-thead:border-hotPink prose-tr:border-hotPink whitespace-pre-line", {
                     "prose-hotGreen": textColor === "hotGreen",
                     "prose-hotOrange": textColor === "hotOrange",
                     "prose-hotPink": textColor === "hotPink",

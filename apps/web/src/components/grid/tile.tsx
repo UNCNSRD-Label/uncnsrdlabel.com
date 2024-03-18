@@ -16,25 +16,21 @@ export async function Tile({
   active = true,
   className,
   delay = 0,
-  image,
   lang,
   priority,
   productBasicFragmentRef,
   productDetailsFragmentRef,
   sizes,
-  video,
 }: {
   active?: boolean;
   className?: string;
   delay?: number;
-  image?: FragmentType<typeof imageFragment> | null;
   isInteractive?: boolean;
   lang: Intl.BCP47LanguageTag;
   priority?: boolean;
   productBasicFragmentRef?: FragmentType<typeof productBasicFragment>;
   productDetailsFragmentRef?: FragmentType<typeof productDetailsFragment>;
   sizes?: string;
-  video?: FragmentType<typeof videoFragment>;
 }) {
   if (!active) {
     return null;
@@ -57,16 +53,17 @@ export async function Tile({
     return null;
   }
 
-  let tileImage = null;
-  let tileVideo = null;
+  const images = product.images.edges.map((edge) => edge?.node);
 
-  if (image) {
-    tileImage = getFragmentData(imageFragment, image);
-  }
+  const videos = product.media.edges.map((edge) => edge?.node).filter((node) => node.__typename === "Video");
 
-  if (video) {
-    tileVideo = getFragmentData(videoFragment, video);
-  }
+  // const primaryImage = getFragmentData(imageFragment, product.featuredImage);
+
+  const primaryImage = getFragmentData(imageFragment, images?.[0]);
+
+  const secondaryImage = getFragmentData(imageFragment, images?.[1]);
+
+  const video = getFragmentData(videoFragment, videos?.[0]);
 
   return (
     <>
@@ -75,18 +72,19 @@ export async function Tile({
           "mb-0 mt-0 overflow-hidden [contain:inline-size_layout_style]",
           "aspect-2/3 relative mb-4 w-full overflow-hidden",
           "[&:has(.video)_.image]:hover:opacity-0 [&:has(.video)_.image]:focus:opacity-0",
+          "[&:has(.secondary)_.primary]:hover:opacity-0 [&:has(.secondary)_.primary]:focus:opacity-0",
         )}
       >
         {/* TODO: Only play video on hover */}
-        {tileVideo?.__typename === "Video" && (
+        {video?.__typename === "Video" && (
           <Video
-            {...tileVideo}
+            {...video}
             className="video absolute inset-0"
             autoPlay
             loop
             muted
             playsInline
-            url={tileVideo?.sources
+            url={video?.sources
               ?.filter((source) => source.format !== "m3u8")
               .map((source) => ({
                 media: getMediaQueryForURL(source.url),
@@ -95,21 +93,36 @@ export async function Tile({
               }))}
           />
         )}
-        {tileImage?.url ? (
+        {!!secondaryImage?.url && (
           <Image
-            className={cn("relative h-full w-full object-cover", className)}
-            alt={tileImage.altText ?? product?.title ?? ""}
-            blurDataURL={tileImage.blurDataURL}
+            className={cn("absolute h-full w-full object-cover secondary", className)}
+            alt={secondaryImage.altText ?? product?.title ?? ""}
+            blurDataURL={secondaryImage.blurDataURL}
+            delay={delay}
+            fill
+            height={undefined}
+            loading="lazy"
+            revealEffect={false}
+            sizes={sizes}
+            src={secondaryImage.url}
+            width={undefined}
+          />
+        )}
+        {!!primaryImage?.url && (
+          <Image
+            className={cn("absolute h-full w-full object-cover primary", className)}
+            alt={primaryImage.altText ?? product?.title ?? ""}
+            blurDataURL={primaryImage.blurDataURL}
             delay={delay}
             fill
             height={undefined}
             priority={priority}
             revealEffect={false}
             sizes={sizes}
-            src={tileImage.url}
+            src={primaryImage.url}
             width={undefined}
           />
-        ) : null}
+        )}
       </figure>
       {product?.priceRange.minVariantPrice ? (
         <footer>

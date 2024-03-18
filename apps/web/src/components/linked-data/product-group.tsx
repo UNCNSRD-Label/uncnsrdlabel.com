@@ -1,4 +1,4 @@
-import { getAggregateOffer, getOffer } from "@/lib/schema";
+import { getAggregateOffer, getOffer, getSize } from "@/lib/schema";
 import { type ResultOf } from "@graphql-typed-document-node/core";
 import { parseGid } from "@shopify/hydrogen";
 import {
@@ -77,14 +77,35 @@ export async function LinkedDataProductGroup({
   const jsonLd: WithContext<ProductGroupSchema> = {
     "@context": "https://schema.org",
     "@type": "ProductGroup",
+    brand: product.vendor,
     description: product.description,
     hasVariant: productVariants.map((variant) => ({
       "@type": "Product",
+      brand: product.vendor,
+      ...(variant.barcode && {
+        gtin: variant.barcode,
+      }),
+      color: variant.selectedOptions.find(
+        (selectedOption) => selectedOption.name === "Color",
+      )?.value,
+      description: product.description,
       identifier: variant.id,
-      name: variant.title,
+      ...(featuredImage && {
+        image: { ...shopifyImageToImageObject(featuredImage), associatedMedia },
+      }),
+      name: variant.title ?? variant.title,
       offers: getOffer({ product, variant }),
       productID: variant.id,
+      // size: variant.selectedOptions.find(selectedOption => selectedOption.name === "Size")?.value,
+      size: getSize({ variant }),
       url: `/products/${product.handle}?${variant.selectedOptions.map((selectedOption) => `${selectedOption.name.toLowerCase()}=${selectedOption.value.toLowerCase()}`).join("&")}`,
+      ...(variant.weight && {
+        weight: {
+          "@type": "QuantitativeValue",
+          unitCode: "KGM",
+          value: variant.weight,
+        },
+      }),
     })),
     identifier: product.id,
     ...(featuredImage && {
@@ -95,6 +116,7 @@ export async function LinkedDataProductGroup({
     name: product.title,
     offers: getAggregateOffer({ localizationDetails, product, shopDetails }),
     productGroupID: product.id,
+    url: `/products/${product.handle}`,
     variesBy: product.options.map((option) => option.name),
   };
 
@@ -102,6 +124,7 @@ export async function LinkedDataProductGroup({
     <Script
       id={id ?? `LinkedDataProductGroup-${parseGid(product.id).id}`}
       key={id ?? `LinkedDataProductGroup-${parseGid(product.id).id}`}
+      strategy="lazyOnload"
       type="application/ld+json"
     >
       {JSON.stringify(jsonLd)}

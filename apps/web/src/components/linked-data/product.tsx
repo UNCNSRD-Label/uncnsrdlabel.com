@@ -1,4 +1,4 @@
-import { getAggregateOffer, getOffer } from "@/lib/schema";
+import { getAggregateOffer, getOffer, getSize } from "@/lib/schema";
 import { type ResultOf } from "@graphql-typed-document-node/core";
 import { parseGid } from "@shopify/hydrogen";
 import {
@@ -51,25 +51,49 @@ export function LinkedDataProduct({
   const jsonLd: WithContext<ProductSchema> = {
     "@context": "https://schema.org",
     "@type": "Product",
+    brand: product.vendor,
+    color: variant.selectedOptions.find(
+      (selectedOption) => selectedOption.name === "Color",
+    )?.value,
     description: product.description,
+    ...(variant.barcode && {
+      gtin: variant.barcode,
+    }),
     identifier: variant.id,
     ...(featuredImage && {
       image: { ...shopifyImageToImageObject(featuredImage), associatedMedia },
     }),
     isVariantOf: {
       "@type": "ProductGroup",
+      brand: {
+        "@type": "Brand",
+        name: product.vendor,
+      },
+      description: product.description,
       identifier: product.id,
       name: product.title,
       offers: getAggregateOffer({ localizationDetails, product, shopDetails }),
-      productID: product.id,
+      productGroupID: product.id,
       url: `/products/${product.handle}`,
+      variesBy: product.options.map((option) => option.name),
     },
     keywords: product.tags,
-    mainEntityOfPage: `/products/${product.handle}`,
-    name: product.title,
+    mainEntityOfPage: `/products/${product.handle}?${variant.selectedOptions.map((selectedOption) => `${selectedOption.name.toLowerCase()}=${selectedOption.value.toLowerCase()}`).join("&")}`,
+    name: variant.title ?? variant.title,
     offers: getOffer({ localizationDetails, product, shopDetails, variant }),
     productID: product.id,
-    url: `/products/${product.handle}`,
+    // size: variant.selectedOptions.find(
+    //   (selectedOption) => selectedOption.name === "Size",
+    // )?.value,
+    size: getSize({ variant }),
+    url: `/products/${product.handle}?${variant.selectedOptions.map((selectedOption) => `${selectedOption.name.toLowerCase()}=${selectedOption.value.toLowerCase()}`).join("&")}`,
+    ...(variant.weight && {
+      weight: {
+        "@type": "QuantitativeValue",
+        unitCode: "KGM",
+        value: variant.weight,
+      },
+    }),
   };
 
   return (

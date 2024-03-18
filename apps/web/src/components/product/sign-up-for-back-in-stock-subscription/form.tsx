@@ -7,6 +7,7 @@ import { useDebouncedEffect } from "@react-hookz/web";
 import { getShopifyCookies } from "@shopify/hydrogen-react";
 import { type ProductOption } from "@shopify/hydrogen/storefront-api-types";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
+import { getFragmentData, productVariantFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { Usable, use } from "react";
 import { useFormState, useFormStatus } from "react-dom";
@@ -107,7 +108,9 @@ export function SignUpForBackInStockSubscriptionForm({
     options,
   });
 
-  const variantId = data.product?.variantBySelectedOptions?.id;
+  const variantBySelectedOptions = getFragmentData(productVariantFragment, data.product?.variantBySelectedOptions);
+
+  const variantId = variantBySelectedOptions?.id;
 
   let _shopify_y = undefined;
 

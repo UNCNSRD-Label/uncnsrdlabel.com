@@ -2,6 +2,7 @@
 
 import { getProductVariantBySelectedOptionsUtility } from "@/lib/shopify";
 import { type ProductOption } from "@shopify/hydrogen/storefront-api-types";
+import { getFragmentData, productVariantFragment } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { useMemo } from 'react';
 
 export function SquarePlacement({
@@ -21,14 +22,16 @@ export function SquarePlacement({
 
   const product = data.product;
 
+  const variantBySelectedOptions = getFragmentData(productVariantFragment, product?.variantBySelectedOptions);
+
   const placement = useMemo(
     () => ({
-      amount: product?.variantBySelectedOptions?.price.amount,
-      currency: product?.variantBySelectedOptions?.price.currencyCode,
-      skus: product?.variantBySelectedOptions?.sku,
+      amount: variantBySelectedOptions?.price.amount,
+      currency: variantBySelectedOptions?.price.currencyCode,
+      skus: variantBySelectedOptions?.sku,
       categories: product?.productType,
     }),
-    [product?.variantBySelectedOptions]
+    [variantBySelectedOptions]
   );
 
   if (!lang || !placement || !placement.currency || !["AUD", "USD", "CAD", "GBP", "NZD"].includes(placement.currency)) {
