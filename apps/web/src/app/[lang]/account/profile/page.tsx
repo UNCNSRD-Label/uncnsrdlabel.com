@@ -23,7 +23,7 @@ export default function AccountProfilePage({ params: { lang } }: PageProps) {
 
   return (
     <>
-      <div className="sm:bg-opaque-white grid gap-8 px-4 sm:p-8">
+      <div className="sm:bg-light grid gap-8 px-4 sm:p-8">
         <AccountEditForm
           className="bg-transparent"
           dictionary={dictionary}

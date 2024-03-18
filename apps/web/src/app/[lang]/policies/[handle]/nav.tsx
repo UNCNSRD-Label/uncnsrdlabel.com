@@ -1,9 +1,9 @@
 import { getDictionary } from "@/lib/dictionary";
 import { createIntl } from "@formatjs/intl";
 import {
-  Card,
-  CardContent,
-  CardHeader,
+    Card,
+    CardContent,
+    CardHeader,
 } from "@uncnsrdlabel/components/atoms/card";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import { getMenuHandler } from "@uncnsrdlabel/graphql-shopify-storefront";
@@ -38,7 +38,7 @@ export async function Nav({
   return (
     <div
       className={cn(
-        "sm:bg-opaque-white relative h-fit content-start p-4 sm:p-8 md:grid",
+        "sm:bg-light relative h-fit content-start p-4 sm:p-8 md:grid",
         className,
       )}
     >

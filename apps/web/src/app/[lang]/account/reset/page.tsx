@@ -13,7 +13,7 @@ export default function AccountResetPage({ params: { lang } }: PageProps) {
 
   return (
     <>
-      <div className="sm:bg-opaque-white grid gap-8 px-4 sm:p-8">
+      <div className="sm:bg-light grid gap-8 px-4 sm:p-8">
         <h1 className="text-center text-lg sm:text-xl md:text-3xl">
           Reset the password for your account
         </h1>

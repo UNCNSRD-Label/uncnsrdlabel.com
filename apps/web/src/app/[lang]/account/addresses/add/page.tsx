@@ -21,7 +21,7 @@ export default function AddressAddPage({ params: { id, lang } }: PageProps) {
   }
 
   return (
-    <div className="sm:bg-opaque-white grid gap-8 px-4 sm:p-8">
+    <div className="sm:bg-light grid gap-8 px-4 sm:p-8">
       <AddressesEditForm
         action={addAddressAction}
         className="bg-transparent"

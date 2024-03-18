@@ -4,11 +4,11 @@ import { getAlternativeLanguages } from "@/lib/i18n";
 import { getCanonical } from "@/lib/metadata";
 import { type PageProps } from "@/types/next";
 import {
-  getFragmentData,
-  getLocalizationDetailsHandler,
-  getShopPoliciesHandler,
-  shopPolicyFragment,
-  type PolicyName,
+    getFragmentData,
+    getLocalizationDetailsHandler,
+    getShopPoliciesHandler,
+    shopPolicyFragment,
+    type PolicyName,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { SITE_DOMAIN_WEB } from "@uncnsrdlabel/lib";
 import { camelCase } from "lodash";
@@ -72,7 +72,7 @@ export default async function PoliciesPage({
   return (
     <>
       <Prose
-        className="prose-sm prose-thead:border-hotPink prose-tr:border-hotPink sm:bg-opaque-white sm:fill-light min-w-full overflow-x-auto px-4 sm:max-w-[48rem] sm:p-8 md:order-2 [&_table_tr]:grid sm:[&_table_tr]:table-row"
+        className="prose-sm prose-thead:border-hotPink prose-tr:border-hotPink sm:bg-light sm:fill-light min-w-full overflow-x-auto px-4 sm:max-w-[48rem] sm:p-8 md:order-2 [&_table_tr]:grid sm:[&_table_tr]:table-row"
         html={policy.body as string}
       />
       <Nav
