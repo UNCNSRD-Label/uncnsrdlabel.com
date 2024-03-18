@@ -4,9 +4,9 @@ import { signOutOfUserAccount } from "@/lib/shopify";
 import { createIntl } from "@formatjs/intl";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
-  Card,
-  CardContent,
-  CardHeader,
+    Card,
+    CardContent,
+    CardHeader,
 } from "@uncnsrdlabel/components/atoms/card";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import { cn } from "@uncnsrdlabel/lib";
@@ -54,7 +54,7 @@ export function Nav({
   return (
     <div
       className={cn(
-        "sm:bg-opaque-white relative h-fit content-start px-4 sm:p-8 md:grid",
+        "sm:bg-light relative h-fit content-start px-4 sm:p-8 md:grid",
         className,
       )}
     >

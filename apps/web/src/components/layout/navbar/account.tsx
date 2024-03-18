@@ -92,7 +92,7 @@ export function NavbarAccount({
       <DropdownMenuContent
         collisionPadding={32}
         sideOffset={16}
-        className="sm:bg-opaque-white rounded-none border-none p-4"
+        className="sm:bg-light rounded-none border-none p-4"
       >
         <DropdownMenuLabel>
           <div className="flex flex-col space-y-1">
