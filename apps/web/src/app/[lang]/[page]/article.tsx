@@ -114,6 +114,7 @@ export function Article(props: ArticleProps) {
       <Script
         id="tailwind"
         src="https://cdn.tailwindcss.com"
+        strategy="beforeInteractive"
         onReady={onReadyTailwind}
       />
     </>
