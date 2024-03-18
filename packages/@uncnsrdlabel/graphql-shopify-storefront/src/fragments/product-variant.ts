@@ -20,5 +20,7 @@ export const productVariantFragment = graphql(/* GraphQL */ `
       name
       value
     }
+    sku
+    weight
   }
 `);

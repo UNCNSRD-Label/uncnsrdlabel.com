@@ -10,6 +10,7 @@ import { toLower, upperFirst } from "lodash/fp";
 import {
     Offer as OfferSchema,
     PaymentMethod as PaymentMethodSchema,
+    SizeSpecification,
     WithContext
 } from "schema-dts";
 
@@ -117,3 +118,46 @@ export function getOffer({
         url: `/products/${product.handle}?${variant.selectedOptions.map((selectedOption) => `${selectedOption.name.toLowerCase()}=${selectedOption.value.toLowerCase()}`).join("&")}`,
     }
 };
+
+export function getSize({
+    variant,
+}: {
+    variant: ResultOf<typeof productVariantFragment>;
+}): WithContext<SizeSpecification> {
+    return {
+        "@context": "https://schema.org",
+        "@type": "SizeSpecification",
+        sizeSystem: "https://schema.org/WearableSizeSystemEurope",
+        sizeGroup: [
+            "https://schema.org/WearableSizeGroupWomens",
+            "https://schema.org/WearableSizeGroupRegular",
+        ],
+        name: variant.selectedOptions.find(
+            (selectedOption) => selectedOption.name === "Size",
+        )?.value,
+        // hasMeasurement: [
+        //   {
+        //     "@type": "QuantitativeValue",
+        //     valueReference: "https://schema.org/WearableMeasurementChestOrBust",
+        //     unitCode: "CMT",
+        //     value: 52,
+        //   },
+        // ],
+        suggestedGender: "female",
+        suggestedAge: {
+            "@type": "QuantitativeValue",
+            name: "adult",
+            unitCode: "ANN",
+            minValue: 16,
+        },
+        // suggestedMeasurement: [
+        //   {
+        //     "@type": "QuantitativeValue",
+        //     valueReference: "https://schema.org/BodyMeasurementChest",
+        //     unitCode: "CMT",
+        //     minValue: 51,
+        //     maxValue: 54,
+        //   },
+        // ],
+    };
+}

@@ -26,12 +26,6 @@ export function ProductVariantGridItems({
           productBasicFragmentRef,
         );
 
-        const media = product.media.edges.map((edge) => edge?.node);
-
-        const videos = media.filter((node) => node.__typename === "Video");
-
-        const video = videos?.[0];
-
         const variantsConnection = getFragmentData(
           productVariantConnectionFragment,
           product.variants,
@@ -70,11 +64,9 @@ export function ProductVariantGridItems({
                 {image?.url && (
                   <Tile
                     className={transitionDelays[productIndex]}
-                    image={product.featuredImage}
                     lang={lang}
                     priority={productIndex <= 1}
                     productBasicFragmentRef={productBasicFragmentRef}
-                    video={video}
                   />
                 )}
               </Link>

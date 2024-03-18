@@ -46,21 +46,7 @@ query productVariantBySelectedOptions(
     product(handle: $handle) {
       productType
       variantBySelectedOptions(selectedOptions: $selectedOptions) {
-        availableForSale
-        id
-        image {
-          ...image
-        }
-        price {
-          amount
-          currencyCode
-        }
-        title
-        selectedOptions {
-          name
-          value
-        }
-        sku
+        ...productVariant
       }
     }
   }
