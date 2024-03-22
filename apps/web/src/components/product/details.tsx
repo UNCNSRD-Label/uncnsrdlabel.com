@@ -1,5 +1,7 @@
 import { AddToCart } from "@/components/cart/add-to-cart";
 import { LinkedDataProductGroup } from "@/components/linked-data/product-group";
+import { Image } from "@/components/media/image";
+import { Video } from "@/components/media/video";
 import { PriceAndCompareAtPrice } from "@/components/price-and-compare-at-price";
 import { ProductDetailsTabs } from "@/components/product/details-tabs";
 import { SignUpForBackInStockSubscription } from "@/components/product/sign-up-for-back-in-stock-subscription";
@@ -9,22 +11,27 @@ import { Tracking } from "@/components/product/tracking";
 import { VariantSelector } from "@/components/product/variant-selector";
 import { Prose } from "@/components/prose";
 import { getDictionary } from "@/lib/dictionary";
+import { breakpoints } from "@/lib/tailwind";
 import { createIntl } from "@formatjs/intl";
 import { type ResultOf } from "@graphql-typed-document-node/core";
 import { RulerSquareIcon } from "@radix-ui/react-icons";
+import { CarouselItem } from "@uncnsrdlabel/components/atoms/carousel";
 import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
 } from "@uncnsrdlabel/components/atoms/popover";
 import {
-    getFragmentData,
-    productDetailsFragment,
-    productVariantConnectionFragment,
-    productVariantFragment,
-    type FragmentType,
-    type SellingPlanGroup
+  getFragmentData,
+  imageFragment,
+  productDetailsFragment,
+  productVariantConnectionFragment,
+  productVariantFragment,
+  videoFragment,
+  type FragmentType,
+  type SellingPlanGroup,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
+import { getMediaQueryForURL } from "@uncnsrdlabel/lib";
 import { GiCupidonArrow } from "react-icons/gi";
 import { type ResolvedIntlConfig } from "react-intl";
 import { MediaViewer } from "./media-viewer";
@@ -34,7 +41,7 @@ export async function ProductDetails({
   lang,
 }: {
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
-  lang: Navigator['language'];
+  lang: Navigator["language"];
 }) {
   const dictionary = getDictionary({ lang });
 
@@ -72,6 +79,23 @@ export async function ProductDetails({
 
   const releaseDate = product.releaseDate?.value?.split("T")[0];
 
+  const CarouselItemClassName =
+    "shrink-1 grow-1 relative h-full basis-auto pl-0";
+
+  const imagesNodes = product.images.edges.map((edge) => edge?.node);
+
+  const images = imagesNodes.map((imageFragmentRef) =>
+    getFragmentData(imageFragment, imageFragmentRef),
+  );
+
+  const media = product.media.edges.map((edge) => edge?.node);
+
+  const videoNodes = media.filter((node) => node.__typename === "Video");
+
+  const videos = videoNodes.map((videoFragmentRef) =>
+    getFragmentData(videoFragment, videoFragmentRef),
+  );
+
   return (
     <>
       <Tracking productDetailsFragmentRef={productDetailsFragmentRef} />
@@ -80,7 +104,86 @@ export async function ProductDetails({
         <MediaViewer
           className="col-span-full"
           productDetailsFragmentRef={productDetailsFragmentRef}
-        />
+        >
+          {images?.map((image) => (
+            <CarouselItem
+              className={CarouselItemClassName}
+              data-thumbnail-blur-data-url={image.blurDataURL}
+              data-thumbnail-enabled={true}
+              data-thumbnail-id={image.id}
+              data-thumbnail-src={image.url}
+              key={`${image.id}-1`}
+            >
+              <Image
+                alt={image.altText ?? product.title}
+                blurDataURL={image.blurDataURL}
+                className="h-full w-auto object-cover"
+                height={image.height ?? 1}
+                priority={true}
+                sizes={`(max-width: ${breakpoints.sm.max.toString()}) 100vw, (max-width: ${breakpoints.md.max.toString()}) 50vw, (max-width: ${breakpoints.lg.max.toString()}) 33vw, 25vw`}
+                src={image.url}
+                width={image.width ?? 1}
+              />
+            </CarouselItem>
+          ))}
+          {videos?.map((video, index) => {
+            if (video.__typename !== "Video") {
+              return null;
+            }
+
+            const previewImage = getFragmentData(
+              imageFragment,
+              video.previewImage,
+            );
+
+            return (
+              <CarouselItem
+                className={CarouselItemClassName}
+                data-thumbnail-blur-data-url={previewImage?.blurDataURL}
+                data-thumbnail-enabled={true}
+                data-thumbnail-id={video.id}
+                data-thumbnail-src={previewImage?.url}
+                key={video.id}
+              >
+                <Video
+                  alt={video?.alt ?? product.title}
+                  autoPlay={index === 0 ? true : false}
+                  className="h-full w-auto object-cover"
+                  loop={true}
+                  key={video.id}
+                  poster={previewImage}
+                  url={video.sources
+                    .filter((source) => source.format !== "m3u8")
+                    .map((source) => ({
+                      media: getMediaQueryForURL(source.url),
+                      src: source.url,
+                      type: `video/${source.format}`,
+                    }))}
+                />
+              </CarouselItem>
+            );
+          })}
+          {images?.map((image) => (
+            <CarouselItem
+              className={CarouselItemClassName}
+              data-thumbnail-blur-data-url={image.blurDataURL}
+              data-thumbnail-enabled={false}
+              data-thumbnail-id={image.id}
+              data-thumbnail-src={image.url}
+              key={`${image.id}-2`}
+            >
+              <Image
+                alt={image.altText ?? product.title}
+                blurDataURL={image.blurDataURL}
+                className="h-full w-auto object-cover"
+                height={image.height ?? 1}
+                sizes={`(max-width: ${breakpoints.sm.max.toString()}) 100vw, (max-width: ${breakpoints.md.max.toString()}) 50vw, (max-width: ${breakpoints.lg.max.toString()}) 33vw, 25vw`}
+                src={image.url}
+                width={image.width ?? 1}
+              />
+            </CarouselItem>
+          ))}
+        </MediaViewer>
 
         <section className="sm:p4 absolute mb-8 grid justify-items-end gap-3 self-end justify-self-end p-2 lg:hidden">
           <h2

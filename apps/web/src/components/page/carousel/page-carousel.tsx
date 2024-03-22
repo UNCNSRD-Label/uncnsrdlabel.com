@@ -44,8 +44,8 @@ export async function PageCarousel({
   };
 
   return (
-    <Carousel className={cn("items-stretch", className)} opts={opts}>
-      <CarouselContent className="items-stretch">
+    <Carousel className={cn("[&_>_div]:h-full", className)} opts={opts}>
+      <CarouselContent className="items-stretch h-full">
         {mediaImages?.map((mediaImage, index) => {
           if (mediaImage.__typename !== "MediaImage") {
             return null;
