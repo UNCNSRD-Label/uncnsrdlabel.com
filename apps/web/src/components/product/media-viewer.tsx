@@ -1,5 +1,6 @@
 "use client";
 
+import { createIntl } from "@formatjs/intl";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
   Carousel,
@@ -9,44 +10,23 @@ import {
   type CarouselApi,
   type CarouselOptions,
 } from "@uncnsrdlabel/components/atoms/carousel";
-import {
-  getFragmentData,
-  imageFragment,
-  productDetailsFragment,
-  videoFragment,
-  type FragmentType,
-} from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import Image from "next/image";
-import { Children, PropsWithChildren, isValidElement, useState } from "react";
+import { Children, PropsWithChildren, Usable, isValidElement, use, useState } from "react";
+import { type ResolvedIntlConfig } from "react-intl";
 
 export function MediaViewer({
   children,
   className,
-  productDetailsFragmentRef,
+  dictionary,
+  lang,
+  title,
 }: PropsWithChildren<{
   className?: string;
-  productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
+  dictionary: Usable<ResolvedIntlConfig["messages"]>;
+  lang: Navigator['language'];
+  title: string;
 }>) {
-  const product = getFragmentData(
-    productDetailsFragment,
-    productDetailsFragmentRef,
-  );
-
-  const imagesNodes = product.images.edges.map((edge) => edge?.node);
-
-  const images = imagesNodes.map((imageFragmentRef) =>
-    getFragmentData(imageFragment, imageFragmentRef),
-  );
-
-  const media = product.media.edges.map((edge) => edge?.node);
-
-  const videoNodes = media.filter((node) => node.__typename === "Video");
-
-  const videos = videoNodes.map((videoFragmentRef) =>
-    getFragmentData(videoFragment, videoFragmentRef),
-  );
-
   const opts = {
     align: "start",
     dragFree: true,
@@ -54,6 +34,13 @@ export function MediaViewer({
   } satisfies CarouselOptions;
 
   const [api, setApi] = useState<CarouselApi>();
+
+  const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   const thumbnailClassName =
     "pointer-events-auto relative my-auto aspect-square w-full overflow-hidden rounded-full shadow bg-black/50";
@@ -68,8 +55,8 @@ export function MediaViewer({
         setApi={setApi}
       >
         <CarouselContent className="ml-0 h-full">{children}</CarouselContent>
-        <CarouselPrevious className="lg:hidden" />
-        <CarouselNext className="lg:hidden" />
+        <CarouselPrevious className="lg:hidden left-4" title={intl.formatMessage({ id: "component.MediaViewer.CarouselPrevious" }, { title })} />
+        <CarouselNext className="lg:hidden right-4" title={intl.formatMessage({ id: "component.MediaViewer.CarouselNext" }, { title })} />
       </Carousel>
       <nav className="pointer-events-none absolute left-8 top-0 z-30 hidden h-full w-16 grid-flow-row content-center gap-4 lg:grid">
         {arrayChildren.map((child, index) => {
@@ -84,9 +71,10 @@ export function MediaViewer({
               onClick={() => {
                 api?.scrollTo(index);
               }}
+              title={intl.formatMessage({ id: "component.MediaViewer.title" }, { index: index + 1, title })}
             >
               <Image
-                alt={`Scroll to media item ${index + 1} of ${product.title}`}
+                alt={intl.formatMessage({ id: "component.MediaViewer.alt" }, { index: index + 1, title })}
                 blurDataURL={child.props["data-thumbnail-blur-data-url"]}
                 fill
                 sizes="5vw"

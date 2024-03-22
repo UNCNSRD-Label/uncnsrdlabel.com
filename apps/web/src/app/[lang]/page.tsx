@@ -63,7 +63,8 @@ export default async function Page({ params: { lang } }: PageProps) {
         </section>
         <PageCarousel
           className="h-[calc(100dvw_*_1.5)] sm:h-[calc(50dvw_*_1.5)] lg:h-[calc(33.33dvw_*_1.5)] xl:h-[calc(25vw_*_1.5)]"
-          handle={handle}
+          lang={lang}
+          pageFragmentRef={pageFragmentRef}
         />
       </main>
       <Logo className="fill-white" />

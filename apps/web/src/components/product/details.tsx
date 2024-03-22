@@ -103,7 +103,9 @@ export async function ProductDetails({
       <div className="portrait:aspect-2/3 portrait:sm:aspect-4/3 relative mb-2 grid portrait:col-span-full landscape:col-span-6 landscape:md:col-span-full">
         <MediaViewer
           className="col-span-full"
-          productDetailsFragmentRef={productDetailsFragmentRef}
+          dictionary={dictionary}
+          lang={lang}
+          title={product.title}
         >
           {images?.map((image) => (
             <CarouselItem

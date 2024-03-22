@@ -1,5 +1,7 @@
 import { Image } from "@/components/media/image";
+import { getDictionary } from "@/lib/dictionary";
 import { breakpoints } from "@/lib/tailwind";
+import { createIntl } from "@formatjs/intl";
 import {
   Carousel,
   CarouselContent,
@@ -9,30 +11,36 @@ import {
 } from "@uncnsrdlabel/components/atoms/carousel";
 import {
   getFragmentData,
-  getShopifyGraphQL,
   imageFragment,
   pageFragment,
-  pageQuery,
+  type FragmentType
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
+import { type ResolvedIntlConfig } from "react-intl";
 
 export async function PageCarousel({
   className,
-  handle,
+  lang,
+  pageFragmentRef,
 }: {
   className?: string;
-  handle: string;
+  lang: Navigator['language'];
+  pageFragmentRef: FragmentType<typeof pageFragment>;
 }) {
-  const variables = { handle };
+  const dictionary = getDictionary({ lang });
 
-  const { page: pageFragmentRef } = await getShopifyGraphQL(
-    pageQuery,
-    variables,
-  );
+  const messages: ResolvedIntlConfig["messages"] = await dictionary;
+
+  const intl = createIntl({
+    locale: lang,
+    messages,
+  });
 
   const page = getFragmentData(pageFragment, pageFragmentRef);
 
   if (!page) return null;
+
+  const title = page.title;
 
   const mediaImages = page.mediaImages?.references?.edges.map(
     (edge) => edge?.node,
@@ -45,7 +53,7 @@ export async function PageCarousel({
 
   return (
     <Carousel className={cn("[&_>_div]:h-full", className)} opts={opts}>
-      <CarouselContent className="items-stretch h-full">
+      <CarouselContent className="h-full items-stretch">
         {mediaImages?.map((mediaImage, index) => {
           if (mediaImage.__typename !== "MediaImage") {
             return null;
@@ -76,18 +84,26 @@ export async function PageCarousel({
         })}
       </CarouselContent>
       <CarouselPrevious
-        className={cn({
+        className={cn("left-4", {
           "md:hidden": mediaImages?.length && mediaImages.length >= 2,
           "lg:hidden": mediaImages?.length && mediaImages.length >= 3,
           "xl:hidden": mediaImages?.length && mediaImages.length >= 4,
         })}
+        title={intl.formatMessage(
+          { id: "component.MediaViewer.CarouselPrevious" },
+          { title },
+        )}
       />
       <CarouselNext
-        className={cn({
+        className={cn("right-4", {
           "md:hidden": mediaImages?.length && mediaImages.length >= 2,
           "lg:hidden": mediaImages?.length && mediaImages.length >= 3,
           "xl:hidden": mediaImages?.length && mediaImages.length >= 4,
         })}
+        title={intl.formatMessage(
+          { id: "component.MediaViewer.CarouselNext" },
+          { title },
+        )}
       />
     </Carousel>
   );
