@@ -1,3 +1,5 @@
+import { type Schema } from 'bcp-47';
+
 declare namespace Intl {
     function getCanonicalLocales(locales: string | string[]): string[];
 
@@ -14,4 +16,6 @@ declare namespace Intl {
         // TODO Add other properties/methods
     }
     // const ListFormat: any; // Use this instead of the class if you don't want to declare all properties/methods
+
+    type BCP47LanguageTag = Schema['languageTag'];
 }
