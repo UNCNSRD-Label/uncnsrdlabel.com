@@ -10,7 +10,7 @@ export function Search({
   lang,
 }: {
   dictionary: ReturnType<typeof getDictionary>;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
 }) {
   const [searchIsOpen, setSearchIsOpen] = useState(false);
 

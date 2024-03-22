@@ -6,17 +6,17 @@ import { AppReactQueryProvider } from "./app-react-query";
 import { AppShopifyProvider } from "./app-shopify";
 
 export {
-  AppAnalyticsProvider,
-  AppIntlProvider,
-  AppReactQueryProvider,
-  AppShopifyProvider
+    AppAnalyticsProvider,
+    AppIntlProvider,
+    AppReactQueryProvider,
+    AppShopifyProvider
 };
 
 export function AppProviders({
   children,
   lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE!,
 }: PropsWithChildren<{
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
 }>) {
   return (
     <AppReactQueryProvider>

@@ -57,7 +57,9 @@ export function googleTagManager(
         console.debug("gtm:page", { payload });
       }
 
-      sendGTMEvent({ event: payload.event, ...payload.properties });
+      if (typeof window !== "undefined") {
+        sendGTMEvent({ event: payload.event, ...payload.properties });
+      }
     },
     ready: () => {
       if (config.debug) {
@@ -93,7 +95,9 @@ export function googleTagManager(
         });
       }
 
-      sendGTMEvent({ event: payload.event, ...formattedPayload });
+      if (typeof window !== "undefined") {
+        sendGTMEvent({ event: payload.event, ...formattedPayload });
+      }
     },
   };
 }

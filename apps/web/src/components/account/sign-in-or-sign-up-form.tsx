@@ -4,10 +4,10 @@ import { SignInToAccountForm } from "@/components/account/sign-in-form";
 import { SignUpForAccountForm } from "@/components/account/sign-up-form";
 import { createIntl } from "@formatjs/intl";
 import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
+    Tabs,
+    TabsContent,
+    TabsList,
+    TabsTrigger,
 } from "@uncnsrdlabel/components/atoms/tabs";
 import { Usable, use, useState } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
@@ -18,7 +18,7 @@ export function AccountSignInOrSignUpForm({
 }: {
   className?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 

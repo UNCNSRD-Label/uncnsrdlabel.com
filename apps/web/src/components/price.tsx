@@ -11,7 +11,7 @@ export const Price = ({
   className?: string;
   currencyCode: string;
   currencyCodeClassName?: string;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
 } & React.ComponentProps<"p">) => {
   return (
     <span className={cn(className)}>

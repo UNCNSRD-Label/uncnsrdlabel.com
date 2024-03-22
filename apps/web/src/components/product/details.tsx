@@ -13,17 +13,17 @@ import { createIntl } from "@formatjs/intl";
 import { type ResultOf } from "@graphql-typed-document-node/core";
 import { RulerSquareIcon } from "@radix-ui/react-icons";
 import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
 } from "@uncnsrdlabel/components/atoms/popover";
 import {
-  getFragmentData,
-  productDetailsFragment,
-  productVariantConnectionFragment,
-  productVariantFragment,
-  type FragmentType,
-  type SellingPlanGroup
+    getFragmentData,
+    productDetailsFragment,
+    productVariantConnectionFragment,
+    productVariantFragment,
+    type FragmentType,
+    type SellingPlanGroup
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { GiCupidonArrow } from "react-icons/gi";
 import { type ResolvedIntlConfig } from "react-intl";
@@ -34,7 +34,7 @@ export async function ProductDetails({
   lang,
 }: {
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
 }) {
   const dictionary = getDictionary({ lang });
 

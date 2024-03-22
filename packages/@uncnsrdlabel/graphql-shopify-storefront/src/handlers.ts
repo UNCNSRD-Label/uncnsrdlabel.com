@@ -1,59 +1,59 @@
 import {
-  CartBuyerIdentityUpdateMutationVariables,
-  CollectionFragment,
-  CollectionQueryVariables,
-  CollectionWithProductsQueryVariables,
-  CollectionsQueryVariables,
-  CustomerAccessTokenCreateMutationVariables,
-  CustomerCreateMutationVariables,
-  CustomerRecoverMutationVariables,
-  CustomerResetPasswordMutationVariables,
-  CustomerUpdateMutationVariables,
-  EditCartItemsMutationVariables,
-  MenuQueryVariables,
-  PageQueryVariables,
-  PagesQueryVariables,
-  ProductBasicQueryVariables,
-  ProductDetailsByHandleQueryVariables,
-  ProductDetailsByIdQueryVariables,
-  ProductRecommendationsQueryVariables,
-  ProductsQueryVariables,
-  ProductsWithVariantsQueryVariables,
-  RouteMetaObjectQueryVariables
+    CartBuyerIdentityUpdateMutationVariables,
+    CollectionFragment,
+    CollectionQueryVariables,
+    CollectionWithProductsQueryVariables,
+    CollectionsQueryVariables,
+    CustomerAccessTokenCreateMutationVariables,
+    CustomerCreateMutationVariables,
+    CustomerRecoverMutationVariables,
+    CustomerResetPasswordMutationVariables,
+    CustomerUpdateMutationVariables,
+    EditCartItemsMutationVariables,
+    MenuQueryVariables,
+    PageQueryVariables,
+    PagesQueryVariables,
+    ProductBasicQueryVariables,
+    ProductDetailsByHandleQueryVariables,
+    ProductDetailsByIdQueryVariables,
+    ProductRecommendationsQueryVariables,
+    ProductsQueryVariables,
+    ProductsWithVariantsQueryVariables,
+    RouteMetaObjectQueryVariables
 } from "./codegen/graphql";
 import { getFragmentData } from "./codegen/index";
 import { domain } from "./constants";
 import { collectionFragment } from "./fragments/index";
 import {
-  cartBuyerIdentityUpdateMutation,
-  editCartItemsMutation
+    cartBuyerIdentityUpdateMutation,
+    editCartItemsMutation
 } from "./mutations/cart";
 import {
-  customerAccessTokenCreateMutation,
-  customerCreateMutation,
-  customerRecoverMutation,
-  customerResetMutation,
-  customerUpdateMutation,
+    customerAccessTokenCreateMutation,
+    customerCreateMutation,
+    customerRecoverMutation,
+    customerResetMutation,
+    customerUpdateMutation,
 } from "./mutations/customer";
 import {
-  collectionQuery,
-  collectionWithProductsQuery,
-  collectionsQuery
+    collectionQuery,
+    collectionWithProductsQuery,
+    collectionsQuery
 } from "./queries/collection";
 import {
-  localizationDetailsQuery,
-  menuQuery,
-  pageQuery,
-  pagesQuery,
-  productBasicQuery,
-  productDetailsByHandleQuery,
-  productDetailsByIdQuery,
-  productRecommendationsQuery,
-  productsQuery,
-  productsWithVariantsQuery,
-  routeMetaObjectQuery,
-  shopDetailsQuery,
-  shopPoliciesQuery
+    localizationDetailsQuery,
+    menuQuery,
+    pageQuery,
+    pagesQuery,
+    productBasicQuery,
+    productDetailsByHandleQuery,
+    productDetailsByIdQuery,
+    productRecommendationsQuery,
+    productsQuery,
+    productsWithVariantsQuery,
+    routeMetaObjectQuery,
+    shopDetailsQuery,
+    shopPoliciesQuery
 } from "./queries/index";
 import { getInContextVariables, getShopifyGraphQL } from "./utilities";
 
@@ -138,7 +138,7 @@ export async function updateCartHandler({ variables }: {
 
 export async function getCollectionHandler({ variables, lang }: {
   variables: CollectionQueryVariables,
-  lang: Intl.BCP47LanguageTag,
+  lang: Navigator['language'],
 }) {
   if (!lang) {
     console.error("No lang in getCollectionHandler")
@@ -156,7 +156,7 @@ export async function getCollectionHandler({ variables, lang }: {
 
 export async function getCollectionWithProductsHandler({ variables, lang }: {
   variables: CollectionWithProductsQueryVariables,
-  lang: Intl.BCP47LanguageTag,
+  lang: Navigator['language'],
 }) {
   if (!lang) {
     console.error("No lang in getCollectionWithProductsHandler")
@@ -174,7 +174,7 @@ export async function getCollectionWithProductsHandler({ variables, lang }: {
 
 export async function getCollectionRefsHandler({ variables, lang }: {
   variables: CollectionsQueryVariables,
-  lang: Intl.BCP47LanguageTag,
+  lang: Navigator['language'],
 }) {
   if (!lang) {
     console.error("No lang in getCollectionRefsHandler")
@@ -207,7 +207,7 @@ export async function getCollectionRefsHandler({ variables, lang }: {
 
 export async function getRouteMetaObjectHandler({ variables, lang }: {
   variables: RouteMetaObjectQueryVariables,
-  lang: Intl.BCP47LanguageTag,
+  lang: Navigator['language'],
 }) {
   if (!lang) {
     console.error("No lang in getRouteMetaObjectHandler")
@@ -225,7 +225,7 @@ export async function getRouteMetaObjectHandler({ variables, lang }: {
 
 export async function getMenuHandler({ variables, lang }: {
   variables: MenuQueryVariables,
-  lang: Intl.BCP47LanguageTag,
+  lang: Navigator['language'],
 }) {
   if (!lang) {
     console.error("No lang in getMenuHandler")
@@ -252,7 +252,7 @@ export async function getMenuHandler({ variables, lang }: {
 
 export async function getPageHandler({ variables, lang }: {
   variables: PageQueryVariables,
-  lang: Intl.BCP47LanguageTag,
+  lang: Navigator['language'],
 }) {
   if (!lang) {
     console.error("No lang in getPageHandler")
@@ -270,7 +270,7 @@ export async function getPageHandler({ variables, lang }: {
 
 export async function getPagesHandler({ variables, lang }: {
   variables: PagesQueryVariables,
-  lang: Intl.BCP47LanguageTag,
+  lang: Navigator['language'],
 }) {
   if (!lang) {
     console.error("No lang in getPagesHandler")
@@ -287,7 +287,7 @@ export async function getPagesHandler({ variables, lang }: {
 }
 
 export async function getShopDetailsHandler({ lang }: {
-  lang: Intl.BCP47LanguageTag,
+  lang: Navigator['language'],
 }) {
   const inContextVariables = getInContextVariables(lang);
 
@@ -300,7 +300,7 @@ export async function getShopDetailsHandler({ lang }: {
 }
 
 export async function getLocalizationDetailsHandler({ lang }: {
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
 }) {
   if (!lang) {
     console.error("No lang in getLocalizationDetailsHandler")
@@ -317,7 +317,7 @@ export async function getLocalizationDetailsHandler({ lang }: {
 }
 
 export async function getShopPoliciesHandler({ lang }: {
-  lang: Intl.BCP47LanguageTag,
+  lang: Navigator['language'],
 }) {
   if (!lang) {
     console.error("No lang in getShopPoliciesHandler")
@@ -335,7 +335,7 @@ export async function getShopPoliciesHandler({ lang }: {
 
 export async function getProductBasicHandler({ variables, lang }: {
   variables: ProductBasicQueryVariables,
-  lang: Intl.BCP47LanguageTag,
+  lang: Navigator['language'],
 }) {
   if (!lang) {
     console.error("No lang in getProductBasicHandler")
@@ -353,7 +353,7 @@ export async function getProductBasicHandler({ variables, lang }: {
 
 export async function getProductDetailsByHandleHandler({ variables, lang }: {
   variables: Omit<ProductDetailsByHandleQueryVariables, "country" | "language">,
-  lang: Intl.BCP47LanguageTag,
+  lang: Navigator['language'],
 }) {
   if (!lang) {
     console.error("No lang in getProductDetailsByHandleHandler")
@@ -371,7 +371,7 @@ export async function getProductDetailsByHandleHandler({ variables, lang }: {
 
 export async function getProductDetailsByIdHandler({ variables, lang }: {
   variables: ProductDetailsByIdQueryVariables,
-  lang: Intl.BCP47LanguageTag,
+  lang: Navigator['language'],
 }) {
   if (!lang) {
     console.error("No lang in getProductDetailsByIdHandler")
@@ -389,7 +389,7 @@ export async function getProductDetailsByIdHandler({ variables, lang }: {
 
 export async function getProductRecommendationsHandler({ variables, lang }: {
   variables: ProductRecommendationsQueryVariables,
-  lang: Intl.BCP47LanguageTag,
+  lang: Navigator['language'],
 }) {
   if (!lang) {
     console.error("No lang in getProductRecommendationsHandler")
@@ -408,7 +408,7 @@ export async function getProductRecommendationsHandler({ variables, lang }: {
 
 export async function getProductsHandler({ variables, lang }: {
   variables: ProductsQueryVariables,
-  lang: Intl.BCP47LanguageTag,
+  lang: Navigator['language'],
 }) {
   if (!lang) {
     console.error("No lang in getProductsHandler")
@@ -426,7 +426,7 @@ export async function getProductsHandler({ variables, lang }: {
 
 export async function getProductsWithVariantsHandler({ variables, lang }: {
   variables: ProductsWithVariantsQueryVariables,
-  lang: Intl.BCP47LanguageTag,
+  lang: Navigator['language'],
 }) {
   if (!lang) {
     console.error("No lang in getProductsWithVariantsHandler")

@@ -5,26 +5,26 @@ import { createIntl } from "@formatjs/intl";
 import { type ResultOf } from "@graphql-typed-document-node/core";
 import { CheckIcon, ClockIcon, PlusIcon } from "@heroicons/react/24/outline";
 import {
-  type CartLineInput,
-  type ProductOption
+    type CartLineInput,
+    type ProductOption
 } from "@shopify/hydrogen/storefront-api-types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import {
-  Button,
-  type ButtonProps,
+    Button,
+    type ButtonProps,
 } from "@uncnsrdlabel/components/atoms/button";
 import {
-  addToCartMutation,
-  cartFragment,
-  cartQuery,
-  createCartMutation,
-  getFragmentData,
-  getInContextVariables,
-  getShopifyGraphQL,
-  productVariantFragment,
-  type AddToCartMutationVariables,
-  type CreateCartMutationVariables,
-  type SellingPlanGroup
+    addToCartMutation,
+    cartFragment,
+    cartQuery,
+    createCartMutation,
+    getFragmentData,
+    getInContextVariables,
+    getShopifyGraphQL,
+    productVariantFragment,
+    type AddToCartMutationVariables,
+    type CreateCartMutationVariables,
+    type SellingPlanGroup
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, getQueryKey } from "@uncnsrdlabel/lib";
 import { getCookie, setCookie } from "cookies-next";
@@ -53,7 +53,7 @@ function SubmitButton({
   className?: string;
   container?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   preOrder?: Partial<SellingPlanGroup>;
   selectedVariantId: string | undefined;
   size: ButtonProps["size"];
@@ -336,7 +336,7 @@ export function AddToCart({
   className?: string;
   container?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   options: ProductOption[];
   preOrder?: Partial<SellingPlanGroup>;
   variants: ResultOf<typeof productVariantFragment>[];

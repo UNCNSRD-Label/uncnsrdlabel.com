@@ -20,7 +20,7 @@ export function OrderSummary({
 }: {
   className?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   customerOrder: ResultOf<typeof orderFragment>;
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);

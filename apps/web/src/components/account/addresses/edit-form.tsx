@@ -7,20 +7,20 @@ import { getShopifyCookies } from "@shopify/hydrogen-react";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
 } from "@uncnsrdlabel/components/atoms/card";
 import { Input } from "@uncnsrdlabel/components/atoms/input";
 import { Label } from "@uncnsrdlabel/components/atoms/label";
 import {
-  customerFragment,
-  customerQuery,
-  getFragmentData,
-  getShopifyGraphQL,
-  mailingAddressFragment,
+    customerFragment,
+    customerQuery,
+    getFragmentData,
+    getShopifyGraphQL,
+    mailingAddressFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getQueryKey } from "@uncnsrdlabel/lib";
 import { getCookie } from "cookies-next";
@@ -37,7 +37,7 @@ function Submit({
 }: {
   className?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
@@ -68,7 +68,7 @@ export function AddressesEditForm({
   className?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
   id: string;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 

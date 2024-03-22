@@ -20,7 +20,7 @@ export function CollectionsNav({
   className?: string;
   collections: ResultOf<typeof collectionFragment>[];
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   title?: string;
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);

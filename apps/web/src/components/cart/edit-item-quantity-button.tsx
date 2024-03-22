@@ -4,18 +4,18 @@ import { LoadingDots } from "@/components/loading/dots";
 import { createIntl } from "@formatjs/intl";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import {
-  type CartLine,
-  type CartLineCost,
-  type CartLineUpdateInput,
-  type ComponentizableCartLine,
-  type Merchandise,
+    type CartLine,
+    type CartLineCost,
+    type CartLineUpdateInput,
+    type ComponentizableCartLine,
+    type Merchandise,
 } from "@shopify/hydrogen/storefront-api-types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
-  cartQuery,
-  editCartItemsMutation,
-  getShopifyGraphQL,
+    cartQuery,
+    editCartItemsMutation,
+    getShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, getQueryKey } from "@uncnsrdlabel/lib";
 import { Usable, use } from "react";
@@ -36,7 +36,7 @@ export function EditItemQuantityButton({
     cost: Pick<CartLineCost, "totalAmount">;
     merchandise: Pick<Merchandise, "id">;
   };
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   type: "plus" | "minus";
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);

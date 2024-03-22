@@ -5,17 +5,16 @@ import {
 import { useParams } from "next/navigation";
 
 export function getIETFLanguageTagFromlocaleTag(locale: Intl.Locale) {
-  return locale?.baseName as Intl.BCP47LanguageTag;
+  return locale?.baseName as Navigator['language'];
 }
 
 export function getLocaleObjectFromIETFLanguageTag(
-  lang: Intl.BCP47LanguageTag = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag,
+  lang: Navigator['language'] = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Navigator['language'],
 ) {
   return new Intl.Locale(lang);
 }
 
-export function getLangProperties(lang: Intl.BCP47LanguageTag = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag) {
-  // @ts-expect-error Property 'getCanonicalLocales' does not exist on type 'typeof Intl'.
+export function getLangProperties(lang: Navigator['language'] = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Navigator['language']) {
   const [canonicalLocale] = Intl.getCanonicalLocales(lang)
 
   const locale = new Intl.Locale(canonicalLocale);
@@ -32,7 +31,7 @@ export function getLangProperties(lang: Intl.BCP47LanguageTag = process.env.NEXT
 };
 
 export function useGetLangProperties() {
-  const { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag } = useParams();
+  const { lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Navigator['language'] } = useParams();
 
   const tag = Array.isArray(lang) ? lang[0] : lang;
 

@@ -5,14 +5,14 @@ import { getDictionary } from "@/lib/dictionary";
 import { getAlternativeLanguages } from "@/lib/i18n";
 import { getCanonical } from "@/lib/metadata";
 import {
-  collectionFragment,
-  getCollectionHandler,
-  getCollectionWithProductsHandler,
-  getFragmentData,
-  getLocalizationDetailsHandler,
-  productCollectionSortItemDefault,
-  productCollectionSortItems,
-  seoFragment,
+    collectionFragment,
+    getCollectionHandler,
+    getCollectionWithProductsHandler,
+    getFragmentData,
+    getLocalizationDetailsHandler,
+    productCollectionSortItemDefault,
+    productCollectionSortItems,
+    seoFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -22,7 +22,7 @@ import { createIntl, type ResolvedIntlConfig } from "react-intl";
 export async function generateMetadata({
   params: { collection: handle, lang },
 }: {
-  params: { collection: string; lang: Intl.BCP47LanguageTag };
+  params: { collection: string; lang: Navigator['language'] };
 }): Promise<Metadata> {
   const localization = await getLocalizationDetailsHandler({ lang });
 
@@ -70,7 +70,7 @@ export default async function SearchCollectionPage({
   params: { collection: handle, lang },
   searchParams,
 }: {
-  params: { collection: string; lang: Intl.BCP47LanguageTag };
+  params: { collection: string; lang: Navigator['language'] };
   searchParams?: { [key: string]: string | string[] | undefined };
 }) {
   const dictionary = getDictionary({ lang });

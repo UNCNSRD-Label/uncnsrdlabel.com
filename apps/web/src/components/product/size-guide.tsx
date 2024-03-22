@@ -2,10 +2,10 @@ import { getDictionary } from "@/lib/dictionary";
 import { createIntl } from "@formatjs/intl";
 import { type ResultOf } from "@graphql-typed-document-node/core";
 import {
-  blogArticleQuery,
-  getInContextVariables,
-  getShopifyGraphQL,
-  productDetailsFragment,
+    blogArticleQuery,
+    getInContextVariables,
+    getShopifyGraphQL,
+    productDetailsFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { type ResolvedIntlConfig } from "react-intl";
 import slugify from "slugify";
@@ -14,7 +14,7 @@ export const SizeGuide = async ({
   lang,
   productType,
 }: {
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   productType: ResultOf<typeof productDetailsFragment>["productType"];
 }) => {
   const dictionary = getDictionary({ lang });

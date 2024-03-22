@@ -1,16 +1,16 @@
 import { MetaFields } from "@/components/product/metafields";
 import {
-  getFragmentData,
-  productDetailsFragment,
-  productMetafieldFragment,
-  type FragmentType,
+    getFragmentData,
+    productDetailsFragment,
+    productMetafieldFragment,
+    type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 
 export function ProductAdditionalDetails({
   lang,
   productDetailsFragmentRef,
 }: {
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }) {
   const product = getFragmentData(

@@ -5,26 +5,26 @@ import { createIntl } from "@formatjs/intl";
 import { type ResultOf } from "@graphql-typed-document-node/core";
 import { useMediaQuery } from "@react-hookz/web";
 import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
+    Command,
+    CommandEmpty,
+    CommandGroup,
+    CommandInput,
+    CommandItem,
+    CommandList,
 } from "@uncnsrdlabel/components/atoms/command";
 import {
-  Drawer,
-  DrawerContent,
-  DrawerTrigger,
+    Drawer,
+    DrawerContent,
+    DrawerTrigger,
 } from "@uncnsrdlabel/components/atoms/drawer";
 import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectLabel,
+    SelectTrigger,
+    SelectValue,
 } from "@uncnsrdlabel/components/atoms/select";
 import { localizationDetailsQuery } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
@@ -37,7 +37,7 @@ import { useTrack } from "use-analytics";
 type LocationComboBoxResponsiveProps = {
   className?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   localizationDetails: Usable<
     ResultOf<typeof localizationDetailsQuery>["localization"]
   >;
@@ -94,7 +94,7 @@ export function LocationComboBoxResponsive({
             const BCP47LanguageTag =
               `${availableLanguage.isoCode.toLocaleLowerCase()}-${
                 availableCountry.isoCode
-              }` as Intl.BCP47LanguageTag;
+              }` as Navigator['language'];
             return (
               <SelectItem
                 className="cursor-pointer"
@@ -227,7 +227,7 @@ function StatusList({
         const BCP47LanguageTag =
           `${availableLanguage.isoCode.toLocaleLowerCase()}-${
             availableCountry.isoCode
-          }` as Intl.BCP47LanguageTag;
+          }` as Navigator['language'];
         return (
           <CommandItem
             key={BCP47LanguageTag}

@@ -3,10 +3,10 @@ import { ProductGridItems } from "@/components/layout/product-grid-items";
 import { getDictionary } from "@/lib/dictionary";
 import { createIntl } from "@formatjs/intl";
 import {
-  getFragmentData,
-  getProductRecommendationsHandler,
-  productDetailsFragment,
-  type FragmentType,
+    getFragmentData,
+    getProductRecommendationsHandler,
+    productDetailsFragment,
+    type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { type ResolvedIntlConfig } from "react-intl";
@@ -17,7 +17,7 @@ export async function RelatedProducts({
   productDetailsFragmentRef,
 }: {
   className?: string;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }) {
   const dictionary = getDictionary({ lang });

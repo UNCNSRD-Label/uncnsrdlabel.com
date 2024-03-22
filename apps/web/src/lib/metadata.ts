@@ -14,13 +14,13 @@ const {
     TWITTER_SITE,
 } = process.env;
 
-export const getCanonical = ({ lang, path }: { lang: Intl.BCP47LanguageTag; path: string}) => {
+export const getCanonical = ({ lang, path }: { lang: Navigator['language']; path: string}) => {
     const canonical = path.replace(`/${lang}`, "");
 
     return canonical;
 }
 
-export const getBaseMetadata = async ({ lang, path = "/" }: { lang: Intl.BCP47LanguageTag; path: string }) => {
+export const getBaseMetadata = async ({ lang, path = "/" }: { lang: Navigator['language']; path: string }) => {
     if (!lang) {
         console.error("No lang in getBaseMetadata")
     }

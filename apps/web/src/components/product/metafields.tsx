@@ -8,7 +8,7 @@ interface MetaFieldsProps {
   excludedKeys?: string[];
   includedKeys?: string[];
   id?: string;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   metafieldFragments: readonly ResultOf<typeof productMetafieldFragment>[];
 }
 

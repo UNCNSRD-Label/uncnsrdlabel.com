@@ -17,7 +17,7 @@ export async function Nav({
 }: {
   className?: string;
   handle: string;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
 }) {
   const dictionary = getDictionary({ lang });
 

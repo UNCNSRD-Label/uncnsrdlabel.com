@@ -30,7 +30,7 @@ export async function middleware(request: NextRequest) {
 
   const cookie = request.cookies.get('lang');
 
-  const defaultLanguageTag = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag;
+  const defaultLanguageTag = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Navigator['language'];
 
   const defaultLanguageCode = defaultLanguageTag.split("-")?.[0] as LanguageCode;
 
@@ -52,7 +52,7 @@ export async function middleware(request: NextRequest) {
     if (pathnameHasLangCookieValue) {
       return
     } else if (check(cookie?.value)) {
-      const lang = cookie.value as Intl.BCP47LanguageTag;
+      const lang = cookie.value as Navigator['language'];
 
       // Redirect if there is no BCP47LanguageTag in the pathname
       // e.g. incoming request is /products, new URL is now /en-AU/products
@@ -71,7 +71,7 @@ export async function middleware(request: NextRequest) {
 
     const detectedCountryCode = (request.geo?.country ?? defaultCountryCode) as CountryCode;
 
-    const lang = ((detectedLanguageCode && detectedCountryCode) ? `${detectedLanguageCode}-${detectedCountryCode}` : process.env.NEXT_PUBLIC_DEFAULT_LOCALE) as Intl.BCP47LanguageTag;
+    const lang = ((detectedLanguageCode && detectedCountryCode) ? `${detectedLanguageCode}-${detectedCountryCode}` : process.env.NEXT_PUBLIC_DEFAULT_LOCALE) as Navigator['language'];
 
     const localization = await getLocalizationDetailsHandler({
       lang,
@@ -79,9 +79,9 @@ export async function middleware(request: NextRequest) {
 
     const matchingCountryCode = localization.availableCountries.find((availableCountry) => availableCountry.isoCode === detectedCountryCode) ?? localization.country;
 
-    const BCP47LanguageTags: Intl.BCP47LanguageTag[] = matchingCountryCode?.availableLanguages.flatMap((availableLanguage) => [
+    const BCP47LanguageTags: Navigator['language'][] = matchingCountryCode?.availableLanguages.flatMap((availableLanguage) => [
       availableLanguage.isoCode.toLocaleLowerCase() as LanguageCode,
-      `${availableLanguage.isoCode.toLocaleLowerCase()}-${matchingCountryCode.isoCode}` as Intl.BCP47LanguageTag
+      `${availableLanguage.isoCode.toLocaleLowerCase()}-${matchingCountryCode.isoCode}` as Navigator['language']
     ]);
 
     const headers: Negotiator.Headers = {

@@ -3,8 +3,8 @@ import { SignUpForBackInStockSubscriptionForm } from "@/components/product/sign-
 import { getDictionary } from "@/lib/dictionary";
 import { type ProductOption } from "@shopify/hydrogen/storefront-api-types";
 import {
-  productDetailsFragment,
-  type FragmentType,
+    productDetailsFragment,
+    type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { Suspense } from "react";
@@ -18,7 +18,7 @@ export async function SignUpForBackInStockSubscription({
 }: {
   className?: string;
   handle: string;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   options: ProductOption[];
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }) {

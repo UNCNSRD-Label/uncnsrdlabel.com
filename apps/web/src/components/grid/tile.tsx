@@ -3,12 +3,12 @@ import { Image } from "@/components/media/image";
 import { Video } from "@/components/media/video";
 import { PriceAndCompareAtPrice } from "@/components/price-and-compare-at-price";
 import {
-  getFragmentData,
-  imageFragment,
-  productBasicFragment,
-  productDetailsFragment,
-  videoFragment,
-  type FragmentType,
+    getFragmentData,
+    imageFragment,
+    productBasicFragment,
+    productDetailsFragment,
+    videoFragment,
+    type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, getMediaQueryForURL } from "@uncnsrdlabel/lib";
 
@@ -26,7 +26,7 @@ export async function Tile({
   className?: string;
   delay?: number;
   isInteractive?: boolean;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   priority?: boolean;
   productBasicFragmentRef?: FragmentType<typeof productBasicFragment>;
   productDetailsFragmentRef?: FragmentType<typeof productDetailsFragment>;

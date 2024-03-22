@@ -21,7 +21,7 @@ export function Nav({
 }: {
   className?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
 }) {
   const segments = useSelectedLayoutSegments();
 

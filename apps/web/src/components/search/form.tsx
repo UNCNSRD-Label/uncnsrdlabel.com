@@ -17,7 +17,7 @@ export function SearchForm({
   className?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
   isOpen: boolean;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   setSearchIsOpen: (open: boolean) => void;
 }) {
   const router = useRouter();

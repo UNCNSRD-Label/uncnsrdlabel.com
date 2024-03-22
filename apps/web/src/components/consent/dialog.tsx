@@ -14,7 +14,7 @@ import { type ResolvedIntlConfig } from "react-intl";
 import { useTrack } from "use-analytics";
 import { ConsentButton } from "./button";
 
-export function ConsentDialog({ className, dictionary, lang }: { className?: string; dictionary: Usable<ResolvedIntlConfig["messages"]>; lang: Intl.BCP47LanguageTag; }) {
+export function ConsentDialog({ className, dictionary, lang }: { className?: string; dictionary: Usable<ResolvedIntlConfig["messages"]>; lang: Navigator['language']; }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
   const intl = createIntl({

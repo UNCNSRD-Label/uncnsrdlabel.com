@@ -5,7 +5,7 @@ import { cn } from "@uncnsrdlabel/lib";
 import { Suspense } from "react";
 import { createIntl, type ResolvedIntlConfig } from "react-intl";
 
-export async function NewsletterSignUp({ className, lang, }: { className?: string; lang: Intl.BCP47LanguageTag; }) {
+export async function NewsletterSignUp({ className, lang, }: { className?: string; lang: Navigator['language']; }) {
   const dictionary = getDictionary({ lang });
 
   const messages: ResolvedIntlConfig["messages"] = await dictionary;

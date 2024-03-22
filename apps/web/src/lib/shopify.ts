@@ -53,7 +53,7 @@ export const getProductVariantBySelectedOptionsUtility = ({
   options,
 }: {
   handle: string;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   options: ProductOption[];
 }) => {
   const searchParams = useSearchParams();

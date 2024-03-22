@@ -6,21 +6,21 @@ import { getShopifyCookies } from "@shopify/hydrogen-react";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
 } from "@uncnsrdlabel/components/atoms/card";
 import { Checkbox } from "@uncnsrdlabel/components/atoms/checkbox";
 import { Input } from "@uncnsrdlabel/components/atoms/input";
 import { Label } from "@uncnsrdlabel/components/atoms/label";
 import {
-  customerFragment,
-  customerQuery,
-  getFragmentData,
-  getShopifyGraphQL,
+    customerFragment,
+    customerQuery,
+    getFragmentData,
+    getShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getQueryKey } from "@uncnsrdlabel/lib";
 import { getCookie } from "cookies-next";
@@ -37,7 +37,7 @@ function Submit({
 }: {
   className?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
@@ -64,7 +64,7 @@ export function AccountEditForm({
 }: {
   className?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 

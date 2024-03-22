@@ -1,9 +1,9 @@
 import { Price } from "@/components/price";
 import {
-  getFragmentData,
-  productBasicFragment,
-  productDetailsFragment,
-  type FragmentType,
+    getFragmentData,
+    productBasicFragment,
+    productDetailsFragment,
+    type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 
@@ -18,7 +18,7 @@ export const PriceAndCompareAtPrice = ({
   currencyCodeClassName?: string;
   productBasicFragmentRef?: FragmentType<typeof productBasicFragment>;
   productDetailsFragmentRef?: FragmentType<typeof productDetailsFragment>;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
 } & React.ComponentProps<"div">) => {
   let product;
 

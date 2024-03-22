@@ -2,17 +2,17 @@ import { Tile } from "@/components/grid/tile";
 import { transitionDelays } from "@/lib/tailwind";
 import { ResultOf } from "@graphql-typed-document-node/core";
 import {
-  type Metaobject,
-  type MetaobjectField,
+    type Metaobject,
+    type MetaobjectField,
 } from "@shopify/hydrogen/storefront-api-types";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
-  getFragmentData,
-  getInContextVariables,
-  getShopifyGraphQL,
-  productDetailsByIdQuery,
-  productDetailsFragment,
-  productMetafieldFragment,
+    getFragmentData,
+    getInContextVariables,
+    getShopifyGraphQL,
+    productDetailsByIdQuery,
+    productDetailsFragment,
+    productMetafieldFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { Fragment, ReactNode } from "react";
 import slugify from "slugify";
@@ -47,7 +47,7 @@ const getTextFieldValueList = (parsedValue: JsonValue) => {
 export type MetafieldMapperProps = {
   excludedKeys?: string[];
   includedKeys?: string[];
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   metafield: ResultOf<typeof productMetafieldFragment> | MetaobjectField;
 };
 
