@@ -155,8 +155,8 @@ export const Banner = ({
   }
 
   return (
-      <div className="p-2 sm:p-4 grid snap-start place-content-center text-xs uppercase md:text-sm">
     <article className={cn("bg-hotPink text-dark", className)}>
+      <div className="text-xxs grid snap-start place-content-center p-2 uppercase sm:p-4 sm:text-xs md:text-sm">
         {markup}
       </div>
     </article>
