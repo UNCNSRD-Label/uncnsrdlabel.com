@@ -20,7 +20,7 @@ export const SocialMenu: FunctionComponent<SocialMenuProps> = ({
     >
       <SocialIcon
         className={cn(
-          "group aspect-square stroke-black [&_.social-svg-icon]:!fill-black [&_.social-svg-mask]:!fill-white",
+          "group aspect-square stroke-dark [&_.social-svg-icon]:!fill-dark [&_.social-svg-mask]:!fill-light",
           iconClassName,
         )}
         target="_blank"
@@ -29,7 +29,7 @@ export const SocialMenu: FunctionComponent<SocialMenuProps> = ({
       />
       <SocialIcon
         className={cn(
-          "group aspect-square stroke-black [&_.social-svg-icon]:!fill-black [&_.social-svg-mask]:!fill-white",
+          "group aspect-square stroke-dark [&_.social-svg-icon]:!fill-dark [&_.social-svg-mask]:!fill-light",
           iconClassName,
         )}
         target="_blank"
@@ -37,12 +37,12 @@ export const SocialMenu: FunctionComponent<SocialMenuProps> = ({
         style={{ height: "inherit", width: "auto" }}
       />
       {/* <SocialIcon
-              className="group [&_.social-svg-mask]:!fill-black dark:[&_.social-svg-mask]:!fill-white focus-visible:!fill-stateFocus hover:!fill-stateHover !h-12 !w-12"
+              className="group [&_.social-svg-mask]:!fill-dark dark:[&_.social-svg-mask]:!fill-light focus-visible:!fill-stateFocus hover:!fill-stateHover !h-12 !w-12"
               target="_blank"
               url="https://twitter.com/uncnsrdlabel/"
             /> */}
       {/* <SocialIcon
-              className="group [&_.social-svg-mask]:!fill-black dark:[&_.social-svg-mask]:!fill-white focus-visible:!fill-stateFocus hover:!fill-stateHover !h-12 !w-12"
+              className="group [&_.social-svg-mask]:!fill-dark dark:[&_.social-svg-mask]:!fill-light focus-visible:!fill-stateFocus hover:!fill-stateHover !h-12 !w-12"
               target="_blank"
               url="https://www.facebook.com/uncnsrdlabel/"
             /> */}

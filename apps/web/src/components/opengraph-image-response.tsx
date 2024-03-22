@@ -23,9 +23,9 @@ export async function OpengraphImageResponse({
 }: Props): Promise<ImageResponse> {
   return new ImageResponse(
     (
-      <div tw="bg-black flex relative h-full w-full">
+      <div tw="bg-dark flex relative h-full w-full">
         {image && <img tw="absolute inset-0 h-full w-full object-cover" alt={image.altText ?? title ?? description ?? "Product image"} height={size?.height} width={size?.width} src={image.url} />}
-        <div tw="flex flex-col relative h-full w-full items-start justify-end p-8 text-white">
+        <div tw="flex flex-col relative h-full w-full items-start justify-end p-8 text-light">
           {title && <h1 tw="mb-0">{title}</h1>}
           {description && <p tw="mb-0 text-sm">{description}</p>}
           {price && (

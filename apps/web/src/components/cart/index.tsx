@@ -122,7 +122,7 @@ export function Cart({
             leaveFrom="opacity-100 backdrop-blur-[.5px]"
             leaveTo="opacity-0 backdrop-blur-none"
           >
-            <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+            <div className="fixed inset-0 bg-dark/30" aria-hidden="true" />
           </Transition.Child>
           <Transition.Child
             as={Fragment}
@@ -135,7 +135,7 @@ export function Cart({
           >
             <Dialog.Panel
               className={cn(
-                "fixed bottom-0 right-0 top-0 flex h-full w-full flex-col border-l border-neutral-200 bg-white/80 p-4 pt-[max(theme(spacing.safeTop),_theme(spacing.3))] text-black backdrop-blur-xl md:w-[420px] dark:border-neutral-700 dark:bg-black/80 dark:text-white",
+                "fixed bottom-0 right-0 top-0 flex h-full w-full flex-col border-l border-neutral-200 bg-light/80 p-4 pt-[max(theme(spacing.safeTop),_theme(spacing.3))] text-dark backdrop-blur-xl md:w-[420px] dark:border-neutral-700 dark:bg-dark/80 dark:text-light",
                 themeColors,
               )}
             >

@@ -47,7 +47,7 @@ export function LocationButton({
     >
       <div className="flex gap-2 items-center">
         <ReactCountryFlag
-          className="border border-white object-cover"
+          className="border border-light object-cover"
           countryCode={localization.country.isoCode}
           svg
           style={{

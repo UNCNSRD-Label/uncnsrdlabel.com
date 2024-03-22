@@ -223,7 +223,7 @@ export function CartForm({
                 </span>
                 <Price
                   amount={cart.cost.totalTaxAmount.amount}
-                  className="text-right text-base text-black dark:text-white"
+                  className="text-right text-base text-dark dark:text-light"
                   currencyCode={cart.cost.totalTaxAmount.currencyCode}
                   lang={lang}
                 />
@@ -247,7 +247,7 @@ export function CartForm({
               </span>
               <Price
                 amount={cart.cost.totalAmount.amount}
-                className="text-right text-base text-black dark:text-white"
+                className="text-right text-base text-dark dark:text-light"
                 currencyCode={cart.cost.totalAmount.currencyCode}
                 lang={lang}
               />
@@ -255,7 +255,7 @@ export function CartForm({
           </div>
           <a
             href={cart.checkoutUrl}
-            className="text-light dark:text-dark flex w-full items-center justify-center bg-black p-3 text-sm font-medium uppercase opacity-90 hover:opacity-100 dark:bg-white"
+            className="text-light dark:text-dark flex w-full items-center justify-center bg-dark p-3 text-sm font-medium uppercase opacity-90 hover:opacity-100 dark:bg-light"
             onClick={handleClickTrack}
           >
             {intl.formatMessage({

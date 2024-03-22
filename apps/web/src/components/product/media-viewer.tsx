@@ -43,7 +43,7 @@ export function MediaViewer({
   });
 
   const thumbnailClassName =
-    "pointer-events-auto relative my-auto aspect-square w-full overflow-hidden rounded-full shadow bg-black/50";
+    "pointer-events-auto relative my-auto aspect-square w-full overflow-hidden rounded-full shadow bg-dark/50";
 
   const arrayChildren = Children.toArray(children);
 

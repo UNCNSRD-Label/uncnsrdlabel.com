@@ -40,7 +40,7 @@ export default async function Page({ params: { lang } }: PageProps) {
         className="top-safeTop fill-light stroke-light text-light sticky left-0 z-10"
         lang={lang}
       />
-      <main className="dark relative grid grid-rows-[1fr_auto] gap-2 bg-black pb-32">
+      <main className="dark relative grid grid-rows-[1fr_auto] gap-2 bg-dark pb-32">
         <h1 className="sr-only">
           {intl.formatMessage({ id: "global.metadata.title" })}
         </h1>
@@ -67,7 +67,7 @@ export default async function Page({ params: { lang } }: PageProps) {
           pageFragmentRef={pageFragmentRef}
         />
       </main>
-      <Logo className="fill-white" />
+      <Logo className="fill-light" />
       <Suspense fallback={null}>
         <NavigationEvents pageType="home" />
       </Suspense>

@@ -79,7 +79,7 @@ export function LocationComboBoxResponsive({
         <SelectGroup key={availableCountry.isoCode}>
           <SelectLabel className="mt-4 flex gap-4 font-bold uppercase">
             <ReactCountryFlag
-              className="border border-black object-cover"
+              className="border border-dark object-cover"
               countryCode={availableCountry.isoCode}
               svg
               style={{
@@ -137,7 +137,7 @@ export function LocationComboBoxResponsive({
         </Select>
         <div className="flex items-center gap-2">
           <ReactCountryFlag
-            className="border border-black object-cover"
+            className="border border-dark object-cover"
             countryCode={localization.country.isoCode}
             svg
             style={{
@@ -159,14 +159,14 @@ export function LocationComboBoxResponsive({
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger>
         <span
-            className="border border-black block mb-4 p-2">
+            className="border border-dark block mb-4 p-2">
         {intl.formatMessage({
             id: "component.LocationComboBox.StatusList.select-locale",
           })}
         </span>
         <div className="flex items-center gap-2">
           <ReactCountryFlag
-            className="border border-black object-cover"
+            className="border border-dark object-cover"
             countryCode={localization.country.isoCode}
             svg
             style={{

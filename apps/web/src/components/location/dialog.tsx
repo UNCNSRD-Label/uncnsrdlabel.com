@@ -66,7 +66,7 @@ export function LocationDialog({
       />
       <Dialog.Root onOpenChange={setOpen} open={open}>
         <Dialog.Portal>
-          <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0 z-40 bg-black/80" />
+          <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0 z-40 bg-dark/80" />
           <Dialog.Content
             className="data-[state=open]:animate-contentShow fixed inset-x-4 bottom-4 z-50 grid gap-4 overflow-auto rounded border bg-inherit px-4 md:px-8 pb-8 pt-6 sm:left-auto sm:max-h-[calc(85dvh-4rem)] sm:w-[90dvw] sm:max-w-xl"
             forceMount

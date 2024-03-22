@@ -26,7 +26,7 @@ export function ProductAdditionalDetails({
   );
 
   return (
-    <section className="relative z-10 grid h-fit gap-4 bg-black pb-4 pt-12 text-white sm:pb-12 lg:gap-32">
+    <section className="relative z-10 grid h-fit gap-4 bg-dark pb-4 pt-12 text-light sm:pb-12 lg:gap-32">
       <MetaFields
         className=""
         excludedKeys={["complementary_products"]}

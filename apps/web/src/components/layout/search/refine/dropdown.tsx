@@ -31,7 +31,7 @@ export function RefineItemDropdown({
   return (
     <nav className={cn("relative", className)} ref={ref}>
       <div
-        className="flex w-full items-center justify-between rounded border border-black/30 px-4 py-2 text-sm dark:border-white/30"
+        className="flex w-full items-center justify-between rounded border border-dark/30 px-4 py-2 text-sm dark:border-light/30"
         onClick={() => {
           setOpenSelect(!openSelect);
         }}
@@ -44,7 +44,7 @@ export function RefineItemDropdown({
           onClick={() => {
             setOpenSelect(false);
           }}
-          className="absolute z-40 w-full rounded-b-md bg-white p-4 shadow-md dark:bg-black"
+          className="absolute z-40 w-full rounded-b-md bg-light p-4 shadow-md dark:bg-dark"
         >
           {children}
         </ul>
