@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-// import { Image } from "@/components/media/image";
 import { Video } from "@/components/media/video";
 import { breakpoints } from "@/lib/tailwind";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
@@ -12,6 +10,7 @@ import {
   CarouselNext,
   CarouselPrevious,
   type CarouselApi,
+  type CarouselOptions,
 } from "@uncnsrdlabel/components/atoms/carousel";
 import {
   getFragmentData,
@@ -21,6 +20,7 @@ import {
   type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, getMediaQueryForURL } from "@uncnsrdlabel/lib";
+import Image from "next/image";
 import { useState } from "react";
 
 export function MediaViewer({
@@ -53,7 +53,7 @@ export function MediaViewer({
     align: "start",
     dragFree: true,
     loop: true,
-  };
+  } satisfies CarouselOptions;
 
   const [api, setApi] = useState<CarouselApi>();
 

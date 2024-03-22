@@ -3423,11 +3423,11 @@ export type CheckoutBrandingColorSchemeInput = {
 
 /** The possible color schemes. */
 export enum CheckoutBrandingColorSchemeSelection {
-  /** Color Scheme1 color scheme selection. */
+  /** The COLOR_SCHEME1 color scheme selection. */
   ColorScheme1 = 'COLOR_SCHEME1',
-  /** Color Scheme2 color scheme selection. */
+  /** The COLOR_SCHEME2 color scheme selection. */
   ColorScheme2 = 'COLOR_SCHEME2',
-  /** Transparent color scheme selection. */
+  /** The TRANSPARENT color scheme selection. */
   Transparent = 'TRANSPARENT'
 }
 
@@ -4201,9 +4201,9 @@ export enum CheckoutBrandingTypographySize {
   ExtraLarge = 'EXTRA_LARGE',
   /** The extra small font size. Example: 10px. */
   ExtraSmall = 'EXTRA_SMALL',
-  /** The large font size. Example: 17px. */
+  /** The large font size. Example: 19px. */
   Large = 'LARGE',
-  /** The medium font size. Example: 15px. */
+  /** The medium font size. Example: 16px. */
   Medium = 'MEDIUM',
   /** The small font size. Example: 12px. */
   Small = 'SMALL'
@@ -13696,7 +13696,7 @@ export type DraftOrderInput = {
   /** The selected country code that determines the pricing of the draft order. */
   marketRegionCountryCode?: InputMaybe<CountryCode>;
   /**
-   * Metafields attached to the draft order.
+   * Metafields attached to the draft order. An existing metafield can not be used when creating a draft order.
    *
    */
   metafields?: InputMaybe<Array<MetafieldInput>>;
@@ -17121,15 +17121,8 @@ export type FulfillmentOrderMovePayload = {
   /**
    * The fulfillment order which now contains the moved line items and is assigned to the destination location.
    *
-   * **First scenario:** All line items belonging to the original fulfillment order are re-assigned.
-   *
-   * In this case, this will be the original fulfillment order.
-   *
-   * **Second scenario:** A subset of the line items belonging to the original fulfillment order are re-assigned.
-   *
-   * If the new location is already assigned to fulfill line items on the order, then
-   * this will be an existing active fulfillment order.
-   * Otherwise, this will be a new fulfillment order with the moved line items assigned.
+   * If the original fulfillment order doesn't have any line items which are fully or partially fulfilled, the original fulfillment order will be moved to the new location.
+   * However if this isn't the case, the moved fulfillment order will differ from the original one.
    *
    */
   movedFulfillmentOrder?: Maybe<FulfillmentOrder>;
@@ -22798,7 +22791,7 @@ export enum MarketingEventSortKeys {
   StartedAt = 'STARTED_AT'
 }
 
-/** The available types of marketing event. */
+/** The available types of tactics for a marketing activity. */
 export enum MarketingTactic {
   /** An abandoned cart recovery email. */
   AbandonedCart = 'ABANDONED_CART',
@@ -22806,7 +22799,10 @@ export enum MarketingTactic {
   Ad = 'AD',
   /** An affiliate link. */
   Affiliate = 'AFFILIATE',
-  /** A direct visit to the online store. */
+  /**
+   * A direct visit to the online store.
+   * @deprecated `DIRECT` is deprecated. Use `LINK` instead.
+   */
   Direct = 'DIRECT',
   /**
    * A display ad.
@@ -22842,7 +22838,10 @@ export enum MarketingTactic {
    * @deprecated `SEARCH` is deprecated. Use `AD` instead.
    */
   Search = 'SEARCH',
-  /** Search engine optimization. */
+  /**
+   * Search engine optimization.
+   * @deprecated `SEO` is deprecated. Use `AD` instead.
+   */
   Seo = 'SEO',
   /** A popup on the online store. */
   StorefrontApp = 'STOREFRONT_APP',
@@ -26134,7 +26133,7 @@ export type Mutation = {
   paymentTermsDelete?: Maybe<PaymentTermsDeletePayload>;
   /** Update payment terms on an order. To update payment terms on a draft order, use a draft order mutation and include the request with the `DraftOrderInput`. */
   paymentTermsUpdate?: Maybe<PaymentTermsUpdatePayload>;
-  /** Creates a price list. You can use the `priceListCreate` mutation to create a new price list for a country. This enables you to sell your products with international pricing. */
+  /** Creates a price list. You can use the `priceListCreate` mutation to create a new price list and associate it with a catalog. This enables you to sell your products with contextual pricing. */
   priceListCreate?: Maybe<PriceListCreatePayload>;
   /** Deletes a price list. For example, you can delete a price list so that it no longer applies for products in the associated market. */
   priceListDelete?: Maybe<PriceListDeletePayload>;
@@ -35102,8 +35101,6 @@ export type ProductInput = {
   id?: InputMaybe<Scalars['ID']['input']>;
   /** The metafields to associate with this product. */
   metafields?: InputMaybe<Array<MetafieldInput>>;
-  /** List of custom product options (maximum of 3 per product). */
-  options?: InputMaybe<Array<Scalars['String']['input']>>;
   /** The product category in the Shopify product taxonomy. */
   productCategory?: InputMaybe<ProductCategoryInput>;
   /** The product type specified by the merchant. */
@@ -35128,11 +35125,6 @@ export type ProductInput = {
   templateSuffix?: InputMaybe<Scalars['String']['input']>;
   /** The title of the product. */
   title?: InputMaybe<Scalars['String']['input']>;
-  /**
-   * A list of variants associated with the product.
-   *
-   */
-  variants?: InputMaybe<Array<ProductVariantInput>>;
   /** The name of the product's vendor. */
   vendor?: InputMaybe<Scalars['String']['input']>;
 };
@@ -36293,8 +36285,6 @@ export type ProductVariantsBulkInput = {
   mediaSrc?: InputMaybe<Array<Scalars['String']['input']>>;
   /** The additional customizable information about the product variant. */
   metafields?: InputMaybe<Array<MetafieldInput>>;
-  /** The custom properties that a shop owner uses to define product variants. */
-  options?: InputMaybe<Array<Scalars['String']['input']>>;
   /** The price of the variant. */
   price?: InputMaybe<Scalars['Money']['input']>;
   /** The SKU for the variant. */
@@ -42872,7 +42862,13 @@ export type ShippingLineEdge = {
   node: ShippingLine;
 };
 
-/** The input fields for specifying the shipping details for the order. */
+/**
+ * The input fields for specifying the shipping details for the draft order.
+ *
+ * > Note:
+ * > A custom shipping line includes a title and price with `shippingRateHandle` set to `nil`. A shipping line with a carrier-provided shipping rate (currently set via the Shopify admin) includes the shipping rate handle.
+ *
+ */
 export type ShippingLineInput = {
   /** Price of the shipping rate. */
   price?: InputMaybe<Scalars['Money']['input']>;
@@ -43806,7 +43802,7 @@ export type ShopUploadedImagesByIdsArgs = {
   imageIds: Array<Scalars['ID']['input']>;
 };
 
-/** The shop's billing address. */
+/** An address for a shop. */
 export type ShopAddress = Node & {
   __typename?: 'ShopAddress';
   /** The first line of the address. Typically the street address or PO Box number. */
@@ -43892,7 +43888,7 @@ export type ShopAddress = Node & {
 };
 
 
-/** The shop's billing address. */
+/** An address for a shop. */
 export type ShopAddressFormattedArgs = {
   withCompany?: InputMaybe<Scalars['Boolean']['input']>;
 };
@@ -48501,7 +48497,10 @@ export enum TranslatableResourceType {
    *         Translatable fields: `name`.
    */
   ProductOption = 'PRODUCT_OPTION',
-  /** An online store product variant. Translatable fields: `option1`, `option2`, `option3`. */
+  /**
+   * An online store product variant. Translatable fields: `option1`, `option2`, `option3`.
+   * @deprecated `PRODUCT_VARIANT` is deprecated, it is no longer a translatable resource type. Use `PRODUCT_OPTION_VALUE` instead.
+   */
   ProductVariant = 'PRODUCT_VARIANT',
   /** A selling plan. Translatable fields:`name`, `option1`, `option2`, `option3`, `description`. */
   SellingPlan = 'SELLING_PLAN',
@@ -50029,4 +50028,4 @@ export type GetDiscountNodesQuery = { __typename?: 'QueryRoot', discountNodes: {
 
 export const DiscountNodeFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"discountNode"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"DiscountNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"discount"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"DiscountAutomaticBasic"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"customerGets"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"discountClass"}},{"kind":"Field","name":{"kind":"Name","value":"endsAt"}},{"kind":"Field","name":{"kind":"Name","value":"minimumRequirement"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"DiscountMinimumQuantity"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"greaterThanOrEqualToQuantity"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"DiscountMinimumSubtotal"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"greaterThanOrEqualToSubtotal"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"currencyCode"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"shortSummary"}},{"kind":"Field","name":{"kind":"Name","value":"startsAt"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"summary"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"DiscountCodeBasic"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"appliesOncePerCustomer"}},{"kind":"Field","name":{"kind":"Name","value":"customerGets"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"discountClass"}},{"kind":"Field","name":{"kind":"Name","value":"endsAt"}},{"kind":"Field","name":{"kind":"Name","value":"shortSummary"}},{"kind":"Field","name":{"kind":"Name","value":"startsAt"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"summary"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}}]}}]}}]} as unknown as DocumentNode<DiscountNodeFragment, unknown>;
 export const SellingPlanGroupAddProductsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"SellingPlanGroupAddProducts"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"productIds"}},"type":{"kind":"NonNullType","type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sellingPlanGroupAddProducts"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}},{"kind":"Argument","name":{"kind":"Name","value":"productIds"},"value":{"kind":"Variable","name":{"kind":"Name","value":"productIds"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sellingPlanGroup"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}},{"kind":"Field","name":{"kind":"Name","value":"userErrors"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"field"}},{"kind":"Field","name":{"kind":"Name","value":"message"}}]}}]}}]}}]} as unknown as DocumentNode<SellingPlanGroupAddProductsMutation, SellingPlanGroupAddProductsMutationVariables>;
-export const GetDiscountNodesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getDiscountNodes"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"first"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}},"defaultValue":{"kind":"IntValue","value":"100"}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"query"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"discountNodes"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"Variable","name":{"kind":"Name","value":"first"}}},{"kind":"Argument","name":{"kind":"Name","value":"query"},"value":{"kind":"Variable","name":{"kind":"Name","value":"query"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"discountNode"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"discountNode"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"DiscountNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"discount"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"DiscountAutomaticBasic"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"customerGets"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"discountClass"}},{"kind":"Field","name":{"kind":"Name","value":"endsAt"}},{"kind":"Field","name":{"kind":"Name","value":"minimumRequirement"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"DiscountMinimumQuantity"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"greaterThanOrEqualToQuantity"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"DiscountMinimumSubtotal"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"greaterThanOrEqualToSubtotal"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"currencyCode"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"shortSummary"}},{"kind":"Field","name":{"kind":"Name","value":"startsAt"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"summary"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"DiscountCodeBasic"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"appliesOncePerCustomer"}},{"kind":"Field","name":{"kind":"Name","value":"customerGets"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"discountClass"}},{"kind":"Field","name":{"kind":"Name","value":"endsAt"}},{"kind":"Field","name":{"kind":"Name","value":"shortSummary"}},{"kind":"Field","name":{"kind":"Name","value":"startsAt"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"summary"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}}]}}]}}]} as unknown as DocumentNode<GetDiscountNodesQuery, GetDiscountNodesQueryVariables>;
+export const GetDiscountNodesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getDiscountNodes"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"first"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}},"defaultValue":{"kind":"IntValue","value":"32"}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"query"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"discountNodes"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"Variable","name":{"kind":"Name","value":"first"}}},{"kind":"Argument","name":{"kind":"Name","value":"query"},"value":{"kind":"Variable","name":{"kind":"Name","value":"query"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"discountNode"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"discountNode"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"DiscountNode"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"discount"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"DiscountAutomaticBasic"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"customerGets"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"discountClass"}},{"kind":"Field","name":{"kind":"Name","value":"endsAt"}},{"kind":"Field","name":{"kind":"Name","value":"minimumRequirement"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"DiscountMinimumQuantity"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"greaterThanOrEqualToQuantity"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"DiscountMinimumSubtotal"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"greaterThanOrEqualToSubtotal"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"currencyCode"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"shortSummary"}},{"kind":"Field","name":{"kind":"Name","value":"startsAt"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"summary"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"DiscountCodeBasic"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"appliesOncePerCustomer"}},{"kind":"Field","name":{"kind":"Name","value":"customerGets"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"discountClass"}},{"kind":"Field","name":{"kind":"Name","value":"endsAt"}},{"kind":"Field","name":{"kind":"Name","value":"shortSummary"}},{"kind":"Field","name":{"kind":"Name","value":"startsAt"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"summary"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}}]}}]}}]} as unknown as DocumentNode<GetDiscountNodesQuery, GetDiscountNodesQueryVariables>;
