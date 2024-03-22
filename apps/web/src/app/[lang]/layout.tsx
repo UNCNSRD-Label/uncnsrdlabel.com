@@ -14,6 +14,7 @@ import { createIntl } from "@formatjs/intl";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { Toaster } from "@uncnsrdlabel/components/atoms/sonner";
 import {
+  SITE_DOMAIN_WEB,
   cn,
   getIETFLanguageTagFromlocaleTag,
   getLocaleObjectFromIETFLanguageTag,
@@ -27,6 +28,8 @@ import localFont from "next/font/local";
 import { PropsWithChildren, Suspense } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
 import "../globals.css";
+
+const { NEXT_PUBLIC_PROTOCOL } = process.env;
 
 export async function generateStaticParams() {
   const availableBCP47LanguageTags = await getAvailableBCP47LanguageTags();
@@ -67,6 +70,7 @@ export async function generateMetadata({
       intl.formatMessage({ id: "global.metadata.keywords.swimsuit" }),
       intl.formatMessage({ id: "global.metadata.keywords.swimwear" }),
     ],
+    metadataBase: new URL(`${NEXT_PUBLIC_PROTOCOL}://${SITE_DOMAIN_WEB}`),
     openGraph: {
       ...baseMetadata.openGraph,
       description: intl.formatMessage({ id: "global.metadata.description" }),
@@ -156,7 +160,9 @@ export default async function Layout({
           <Suspense fallback={null}>
             <ShopifyCookies />
           </Suspense>
-          <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID!} />
+          <GoogleTagManager
+            gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID!}
+          />
           <VercelAnalytics />
           <GTMConsent />
         </AppProviders>
