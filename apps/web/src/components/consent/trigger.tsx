@@ -2,7 +2,7 @@ import { getDictionary } from "@/lib/dictionary";
 import { Suspense } from "react";
 import { ConsentDialog } from "./dialog";
 
-export function ConsentTrigger({ className, lang }: { className?: string; lang: Intl.BCP47LanguageTag; }) {
+export function ConsentTrigger({ className, lang }: { className?: string; lang: Navigator['language']; }) {
   const dictionary = getDictionary({ lang });
 
   return (

@@ -2,8 +2,8 @@
 
 import { CartProvider, ShopifyProvider } from "@shopify/hydrogen-react";
 import {
-  type CountryCode,
-  type LanguageCode,
+    type CountryCode,
+    type LanguageCode,
 } from "@shopify/hydrogen-react/storefront-api-types";
 import { getLocaleObjectFromIETFLanguageTag } from "@uncnsrdlabel/lib";
 import { PropsWithChildren } from "react";
@@ -18,7 +18,7 @@ export function AppShopifyProvider({
   children,
   lang = process.env.NEXT_PUBLIC_DEFAULT_LOCALE!,
 }: PropsWithChildren<{
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
 }>) {
   const localeTag = getLocaleObjectFromIETFLanguageTag(lang);
 

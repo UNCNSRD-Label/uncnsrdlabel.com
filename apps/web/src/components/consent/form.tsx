@@ -26,7 +26,7 @@ type ConsentDialogProps = {
   acceptAllConsents: () => void;
   denyAllAdditionalConsents: () => void;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   manageConsents: () => void;
 };
 

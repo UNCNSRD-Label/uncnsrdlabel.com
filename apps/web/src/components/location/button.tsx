@@ -18,7 +18,7 @@ export function LocationButton({
 }: {
   className?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   localizationDetails: Usable<
     ResultOf<typeof localizationDetailsQuery>["localization"]
   >;

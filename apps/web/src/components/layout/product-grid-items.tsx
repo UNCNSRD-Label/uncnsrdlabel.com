@@ -1,14 +1,14 @@
 import { Grid } from "@/components/grid";
 import { Tile } from "@/components/grid/tile";
 import {
-  breakpoints,
-  transitionDelays
+    breakpoints,
+    transitionDelays
 } from "@/lib/tailwind";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
-  getFragmentData,
-  productBasicFragment,
-  type FragmentType,
+    getFragmentData,
+    productBasicFragment,
+    type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { HIDDEN_PRODUCT_TAG } from "@uncnsrdlabel/lib";
 
@@ -17,7 +17,7 @@ export function ProductGridItems({
   limit = 128,
   productFragmentRefs,
 }: {
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   limit?: number;
   productFragmentRefs: FragmentType<typeof productBasicFragment>[];
 }) {

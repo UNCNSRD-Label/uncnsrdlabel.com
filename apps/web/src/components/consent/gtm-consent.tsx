@@ -16,7 +16,7 @@ export function GTMConsent() {
       value: "default",
       gtm: consentCookieData,
     });
-  }, []);
+  }, [consentCookieData]);
 
   return null;
 }

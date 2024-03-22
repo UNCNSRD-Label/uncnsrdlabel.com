@@ -18,7 +18,7 @@ function Submit({
 }: {
   className?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
@@ -43,7 +43,7 @@ export function NewsletterSignUpForm({
 }: {
   className?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 

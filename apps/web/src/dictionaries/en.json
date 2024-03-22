@@ -250,6 +250,12 @@
       "description": "Lorem ipsum",
       "title": "Locale settings"
     },
+    "MediaViewer": {
+      "alt": "Preview for media item {index} of {title}",
+      "title": "Scroll to media item {index} of {title}",
+      "CarouselPrevious": "Previous media item for {title}",
+      "CarouselNext": "Next media item for {title}"
+    },
     "Menu": {
       "categories": "Categories",
       "search": "Search",

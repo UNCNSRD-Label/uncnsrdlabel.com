@@ -10,10 +10,10 @@ import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
-  cartFragment,
-  getFragmentData,
-  imageFragment,
-  productBasicFragment,
+    cartFragment,
+    getFragmentData,
+    imageFragment,
+    productBasicFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { DEFAULT_OPTION, cn, createUrl } from "@uncnsrdlabel/lib";
 import Image from "next/image";
@@ -35,7 +35,7 @@ export function CartForm({
   cart?: ResultOf<typeof cartFragment> | null;
   container?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 

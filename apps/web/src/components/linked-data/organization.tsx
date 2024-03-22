@@ -1,9 +1,9 @@
 import {
-  getFragmentData,
-  getInContextVariables,
-  getShopifyGraphQL,
-  imageFragment,
-  shopDetailsQuery,
+    getFragmentData,
+    getInContextVariables,
+    getShopifyGraphQL,
+    imageFragment,
+    shopDetailsQuery,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { SITE_DOMAIN_WEB } from "@uncnsrdlabel/lib";
 import Script from "next/script";
@@ -14,7 +14,7 @@ export async function LinkedDataOrganization({
   lang,
 }: {
   id?: string;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
 }) {
   const inContextVariables = getInContextVariables(lang);
 

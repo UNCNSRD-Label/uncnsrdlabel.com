@@ -34,11 +34,10 @@ export const graphQLClient = new GraphQLClient(endpoint, {
   headers,
 });
 
-export function getInContextVariables(lang: Intl.BCP47LanguageTag = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Intl.BCP47LanguageTag): Exact<{
+export function getInContextVariables(lang: Navigator['language'] = process.env.NEXT_PUBLIC_DEFAULT_LOCALE as Navigator['language']): Exact<{
   country?: InputMaybe<CountryCode> | undefined,
   language?: InputMaybe<LanguageCode> | undefined,
 }> {
-  // @ts-expect-error Property 'getCanonicalLocales' does not exist on type 'typeof Intl'.
   const [canonicalLocale] = Intl.getCanonicalLocales(lang)
 
   const locale = new Intl.Locale(canonicalLocale);

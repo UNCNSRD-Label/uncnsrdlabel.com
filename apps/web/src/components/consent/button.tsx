@@ -13,7 +13,7 @@ export function ConsentButton({
 }: {
   className?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   onClick?: () => void;
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);

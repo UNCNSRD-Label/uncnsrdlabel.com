@@ -1,11 +1,11 @@
 import {
-  getLocalizationDetailsHandler
+    getLocalizationDetailsHandler
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import merge from "deepmerge";
 import { deepKeys, getProperty } from 'dot-prop';
 import { type ResolvedIntlConfig } from "react-intl";
 
-export const getDictionary = async ({ lang, namespace }: { lang: Intl.BCP47LanguageTag; namespace?: string }): Promise<ResolvedIntlConfig["messages"]> => {
+export const getDictionary = async ({ lang, namespace }: { lang: Navigator['language']; namespace?: string }): Promise<ResolvedIntlConfig["messages"]> => {
   if(!lang) {
     console.error("No lang in getDictionary")
   }

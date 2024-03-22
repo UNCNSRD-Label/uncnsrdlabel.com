@@ -2,22 +2,22 @@ import { getAggregateOffer, getOffer, getSize } from "@/lib/schema";
 import { type ResultOf } from "@graphql-typed-document-node/core";
 import { parseGid } from "@shopify/hydrogen";
 import {
-  getFragmentData,
-  getInContextVariables,
-  getShopifyGraphQL,
-  imageFragment,
-  localizationDetailsQuery,
-  productBasicFragment,
-  productDetailsFragment,
-  productVariantConnectionFragment,
-  productVariantFragment,
-  shopDetailsQuery,
+    getFragmentData,
+    getInContextVariables,
+    getShopifyGraphQL,
+    imageFragment,
+    localizationDetailsQuery,
+    productBasicFragment,
+    productDetailsFragment,
+    productVariantConnectionFragment,
+    productVariantFragment,
+    shopDetailsQuery,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import Script from "next/script";
 import {
-  ImageObject as ImageObjectSchema,
-  ProductGroup as ProductGroupSchema,
-  WithContext,
+    ImageObject as ImageObjectSchema,
+    ProductGroup as ProductGroupSchema,
+    WithContext,
 } from "schema-dts";
 
 export async function LinkedDataProductGroup({
@@ -26,7 +26,7 @@ export async function LinkedDataProductGroup({
   product,
 }: {
   id?: string;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   product: ResultOf<
     typeof productBasicFragment | typeof productDetailsFragment
   >;

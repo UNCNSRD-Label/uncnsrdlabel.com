@@ -4,13 +4,13 @@ import { Image } from "@/components/media/image";
 import { getDictionary } from "@/lib/dictionary";
 import { type ResultOf } from "@graphql-typed-document-node/core";
 import {
-  getFragmentData,
-  imageFragment,
-  productDetailsFragment,
-  productVariantConnectionFragment,
-  productVariantFragment,
-  type FragmentType,
-  type SellingPlanGroup,
+    getFragmentData,
+    imageFragment,
+    productDetailsFragment,
+    productVariantConnectionFragment,
+    productVariantFragment,
+    type FragmentType,
+    type SellingPlanGroup,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { PriceAndCompareAtPrice } from "../price-and-compare-at-price";
@@ -22,7 +22,7 @@ export function ProductCard({
   sizes,
 }: {
   className?: string;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
   sizes: string;
 }) {

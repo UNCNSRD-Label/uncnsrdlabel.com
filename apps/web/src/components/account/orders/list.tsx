@@ -3,11 +3,11 @@
 import { OrderSummary } from "@/components/account/orders/summary";
 import { useQuery } from "@tanstack/react-query";
 import {
-  customerFragment,
-  customerQuery,
-  getFragmentData,
-  getShopifyGraphQL,
-  orderFragment,
+    customerFragment,
+    customerQuery,
+    getFragmentData,
+    getShopifyGraphQL,
+    orderFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getQueryKey } from "@uncnsrdlabel/lib";
 import { getCookie } from "cookies-next";
@@ -19,7 +19,7 @@ export function Orders({
   lang,
 }: {
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
 }) {
   let customerAccessToken = undefined;
 

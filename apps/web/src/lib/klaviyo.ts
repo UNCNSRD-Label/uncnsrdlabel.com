@@ -12,7 +12,7 @@ export const headers = {
 export async function findUserByEmail(formData: FormData) {
     const custom_source = formData.get("custom_source") ?? "Website";
     const email = formData.get("email");
-    const lang = formData.get("lang") as Intl.BCP47LanguageTag;
+    const lang = formData.get("lang") as Navigator['language'];
     const phone_number = formData.get("phone_number");
 
     const dictionary = getDictionary({ lang });

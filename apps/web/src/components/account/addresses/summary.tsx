@@ -9,9 +9,9 @@ import { useQueryClient } from "@tanstack/react-query";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
-  customerFragment,
-  getFragmentData,
-  mailingAddressFragment,
+    customerFragment,
+    getFragmentData,
+    mailingAddressFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { Usable, use } from "react";
@@ -30,7 +30,7 @@ export function AddressSummary({
 }: {
   className?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   customer: ResultOf<typeof customerFragment>;
   mailingAddress: ResultOf<typeof mailingAddressFragment>;
   queryKey: any;

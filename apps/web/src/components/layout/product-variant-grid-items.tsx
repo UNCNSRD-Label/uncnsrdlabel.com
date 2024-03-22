@@ -3,19 +3,19 @@ import { Tile } from "@/components/grid/tile";
 import { transitionDelays } from "@/lib/tailwind";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
-  getFragmentData,
-  imageFragment,
-  productBasicFragment,
-  productVariantConnectionFragment,
-  productVariantFragment,
-  type FragmentType,
+    getFragmentData,
+    imageFragment,
+    productBasicFragment,
+    productVariantConnectionFragment,
+    productVariantFragment,
+    type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 
 export function ProductVariantGridItems({
   lang,
   productFragments,
 }: {
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   productFragments: FragmentType<typeof productBasicFragment>[];
 }) {
   return (

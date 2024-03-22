@@ -4,17 +4,17 @@ import { LoadingDots } from "@/components/loading/dots";
 import { createIntl } from "@formatjs/intl";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
-  type CartLine,
-  type CartLineCost,
-  type ComponentizableCartLine,
-  type Merchandise,
+    type CartLine,
+    type CartLineCost,
+    type ComponentizableCartLine,
+    type Merchandise,
 } from "@shopify/hydrogen/storefront-api-types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
-  cartQuery,
-  getShopifyGraphQL,
-  removeFromCartMutation
+    cartQuery,
+    getShopifyGraphQL,
+    removeFromCartMutation
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, getQueryKey } from "@uncnsrdlabel/lib";
 import { Usable, use, useCallback } from "react";
@@ -33,7 +33,7 @@ export function DeleteItemButton({
     cost: Pick<CartLineCost, "totalAmount">;
     merchandise: Pick<Merchandise, "id">;
   };
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 

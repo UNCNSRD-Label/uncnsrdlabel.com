@@ -23,7 +23,7 @@ export function LocationDialog({
   localizationDetails: Usable<ResultOf<typeof localizationDetailsQuery>['localization']>;
   className?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 

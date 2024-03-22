@@ -3,22 +3,22 @@
 import { LinkedDataProduct } from "@/components/linked-data/product";
 import { type ResultOf } from "@graphql-typed-document-node/core";
 import {
-  type ProductOption,
-  type ProductVariant,
+    type ProductOption,
+    type ProductVariant,
 } from "@shopify/hydrogen/storefront-api-types";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
-  getFragmentData,
-  getInContextVariables,
-  getShopifyGraphQL,
-  localizationDetailsQuery,
-  productDetailsFragment,
-  productVariantFragment,
-  shopDetailsQuery,
-  type FragmentType,
-  type MoneyV2,
-  type UnitPriceMeasurement
+    getFragmentData,
+    getInContextVariables,
+    getShopifyGraphQL,
+    localizationDetailsQuery,
+    productDetailsFragment,
+    productVariantFragment,
+    shopDetailsQuery,
+    type FragmentType,
+    type MoneyV2,
+    type UnitPriceMeasurement
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, createUrl, getQueryKey } from "@uncnsrdlabel/lib";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -31,7 +31,7 @@ export function VariantSelector({
   productDetailsFragmentRef,
   variants,
 }: {
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   options: ProductOption[];
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
   variants: ResultOf<typeof productVariantFragment>[];

@@ -15,7 +15,7 @@ export const getAlternativeLanguages = ({ localization, path }: {
     }[]
   }; path: string
 }) => {
-  const BCP47LanguageTags: Intl.BCP47LanguageTag[] = localization.availableCountries.flatMap((availableCountry) => availableCountry.availableLanguages.map((availableLanguage) => `${availableLanguage.isoCode.toLocaleLowerCase()}-${availableCountry.isoCode}` as Intl.BCP47LanguageTag))
+  const BCP47LanguageTags: Navigator['language'][] = localization.availableCountries.flatMap((availableCountry) => availableCountry.availableLanguages.map((availableLanguage) => `${availableLanguage.isoCode.toLocaleLowerCase()}-${availableCountry.isoCode}` as Navigator['language']))
 
   const languages: Record<string, string> = {};
 
@@ -36,13 +36,13 @@ export const getAvailableBCP47LanguageTags = async () => {
       availableLanguage.isoCode.toLocaleLowerCase() as LanguageCode,
   );
 
-  const shopifyBCP47LanguageTags: Intl.BCP47LanguageTag[] =
+  const shopifyBCP47LanguageTags: Navigator['language'][] =
     localization.availableCountries.flatMap((availableCountry) =>
       availableCountry.availableLanguages.map(
         (availableLanguage) =>
           `${availableLanguage.isoCode.toLocaleLowerCase()}-${
             availableCountry.isoCode
-          }` as Intl.BCP47LanguageTag,
+          }` as Navigator['language'],
       ),
     );
 

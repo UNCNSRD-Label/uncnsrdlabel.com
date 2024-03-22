@@ -7,7 +7,7 @@ export default async function SearchLayout({
 }: PropsWithChildren<LayoutProps>) {
   return (
     <>
-      <div className="bg-light relative mx-auto flex min-h-[100dvh] w-full flex-col justify-center gap-4 px-4 pb-32 pt-12 sm:pt-12 md:flex-row">
+      <div className="bg-light relative mx-auto flex min-h-[100dvh] w-full flex-col justify-center gap-4 px-4 pb-32 [&:has(+_.pt-safeTop)]:top-safeTop pt-16 md:flex-row">
         {children}
       </div>
       <Logo />

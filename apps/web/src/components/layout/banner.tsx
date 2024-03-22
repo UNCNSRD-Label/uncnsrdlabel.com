@@ -1,19 +1,19 @@
 import { convertSchemaToHtml } from "@thebeyondgroup/shopify-rich-text-renderer";
 import {
-  discountNodeFragment,
-  getDiscountNodesQuery,
-  getFragmentData,
-  getShopifyGraphQL as getShopifyAdminGraphQL,
+    discountNodeFragment,
+    getDiscountNodesQuery,
+    getFragmentData,
+    getShopifyGraphQL as getShopifyAdminGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-admin";
 import {
-  getInContextVariables,
-  getShopifyGraphQL as getShopifyStorefrontGraphQL,
-  metaObjectsQuery,
+    getInContextVariables,
+    getShopifyGraphQL as getShopifyStorefrontGraphQL,
+    metaObjectsQuery,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 import { use } from "react";
 
-const getDiscountNode = ({ lang }: { lang: Intl.BCP47LanguageTag }) => {
+const getDiscountNode = ({ lang }: { lang: Navigator['language'] }) => {
   let markup = null;
 
   const bannerPrefix = "Banner|";
@@ -71,7 +71,7 @@ const getDiscountNode = ({ lang }: { lang: Intl.BCP47LanguageTag }) => {
   return markup;
 }
 
-const getMetaobject = ({ lang }: { lang: Intl.BCP47LanguageTag }) => {
+const getMetaobject = ({ lang }: { lang: Navigator['language'] }) => {
   let markup = null;
 
   const inContextVariables = getInContextVariables(lang);
@@ -130,7 +130,7 @@ export const Banner = ({
   lang,
 }: {
   className?: string;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
 }) => {
   const discountNode = getDiscountNode({ lang });
 

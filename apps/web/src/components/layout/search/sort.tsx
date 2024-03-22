@@ -23,7 +23,7 @@ export function SortBy({
   className?: string;
   defaultSort: ProductCollectionSortItem | ProductSortItem;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   sortItems: ProductCollectionSortItem[] | ProductSortItem[];
   title?: string;
 }) {

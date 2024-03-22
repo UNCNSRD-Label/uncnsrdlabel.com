@@ -14,7 +14,7 @@ export function SearchButton({
 }: {
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
   isOpen: boolean;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
 }) {
   if (!lang) {
     console.error("No lang in SearchButton");

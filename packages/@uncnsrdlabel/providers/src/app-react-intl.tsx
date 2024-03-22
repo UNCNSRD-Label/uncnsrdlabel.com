@@ -9,8 +9,8 @@ export function AppIntlProvider({
   lang,
   messages,
 }: PropsWithChildren<{
-  defaultLocale: Intl.BCP47LanguageTag;
-  lang: Intl.BCP47LanguageTag;
+  defaultLocale: Navigator['language'];
+  lang: Navigator['language'];
   messages: ResolvedIntlConfig["messages"];
 }>) {
   return (

@@ -23,7 +23,7 @@ export function SidebarMenu({
   menu,
 }: {
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   menu: PartialDeep<
     Menu,
     {

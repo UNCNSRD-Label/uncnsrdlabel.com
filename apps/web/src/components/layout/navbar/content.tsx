@@ -18,7 +18,7 @@ export async function NavbarContent({
   lang,
   showLogo = false,
 }: {
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   showLogo?: boolean;
 }) {
   const dictionary = getDictionary({ lang });

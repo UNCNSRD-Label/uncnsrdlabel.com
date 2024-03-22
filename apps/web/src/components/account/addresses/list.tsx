@@ -6,11 +6,11 @@ import { createIntl } from "@formatjs/intl";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "@uncnsrdlabel/components/atoms/link";
 import {
-  customerFragment,
-  customerQuery,
-  getFragmentData,
-  getShopifyGraphQL,
-  mailingAddressFragment,
+    customerFragment,
+    customerQuery,
+    getFragmentData,
+    getShopifyGraphQL,
+    mailingAddressFragment,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { getQueryKey } from "@uncnsrdlabel/lib";
 import { getCookie } from "cookies-next";
@@ -22,7 +22,7 @@ export function Addresses({
   lang,
 }: {
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 

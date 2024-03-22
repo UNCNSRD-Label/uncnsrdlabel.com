@@ -8,7 +8,7 @@ export async function LocationTrigger({
   lang,
 }: {
   className?: string;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
 }) {
   const localizationDetailsHandler = getLocalizationDetailsHandler({ lang });
   const dictionary = getDictionary({ lang });

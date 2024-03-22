@@ -3,9 +3,9 @@
 import { ProductCard } from "@/components/product-card/card";
 import { breakpoints } from "@/lib/tailwind";
 import {
-  getInContextVariables,
-  productDetailsByHandleQuery,
-  useGetShopifyGraphQL,
+    getInContextVariables,
+    productDetailsByHandleQuery,
+    useGetShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 
 export function AddPremiumPackaging({
@@ -13,7 +13,7 @@ export function AddPremiumPackaging({
   lang,
 }: {
   className?: string;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
 }) {
   const handle = "premium-packaging";
 

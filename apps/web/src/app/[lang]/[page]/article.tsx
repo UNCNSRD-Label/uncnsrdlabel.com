@@ -12,7 +12,7 @@ import { cn, type ClassValue } from "@uncnsrdlabel/lib";
 import { CSSProperties, HTMLProps, useEffect, useState } from "react";
 
 export type ArticleProps = HTMLProps<HTMLElement> & {
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   pageFragmentRef: FragmentType<typeof pageFragment>;
 };
 

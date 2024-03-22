@@ -13,7 +13,7 @@ import { type ResolvedIntlConfig } from "react-intl";
 
 const { NEXT_PUBLIC_SITE_NAME } = process.env;
 
-export async function Footer({ lang }: { lang: Intl.BCP47LanguageTag }) {
+export async function Footer({ lang }: { lang: Navigator['language'] }) {
   const dictionary = getDictionary({ lang });
 
   const messages: ResolvedIntlConfig["messages"] = await dictionary;

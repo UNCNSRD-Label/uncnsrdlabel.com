@@ -4,7 +4,7 @@ import { NavbarContent } from "./content";
 type Props = {
   className?: string;
   blend?: boolean;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   showLogo?: boolean;
 };
 

@@ -22,7 +22,7 @@ function Submit({
 }: {
   className?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 
@@ -52,7 +52,7 @@ export function SignUpForBackInStockSubscriptionForm({
   className?: string;
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
   handle: string;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   options: ProductOption[];
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);

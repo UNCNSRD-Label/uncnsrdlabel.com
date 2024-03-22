@@ -9,22 +9,22 @@ import { Dialog, Transition } from "@headlessui/react";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
-  CartFragment,
-  cartFragment,
-  cartQuery,
-  getFragmentData,
-  getShopifyGraphQL,
+    CartFragment,
+    cartFragment,
+    cartQuery,
+    getFragmentData,
+    getShopifyGraphQL,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn, getQueryKey } from "@uncnsrdlabel/lib";
 import { getCookie } from "cookies-next";
 import {
-  Fragment,
-  Usable,
-  use,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
+    Fragment,
+    Usable,
+    use,
+    useCallback,
+    useEffect,
+    useRef,
+    useState,
 } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
 import { useTrack } from "use-analytics";
@@ -34,7 +34,7 @@ export function Cart({
   lang,
 }: {
   dictionary: Usable<ResolvedIntlConfig["messages"]>;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
 }) {
   const messages = use<ResolvedIntlConfig["messages"]>(dictionary);
 

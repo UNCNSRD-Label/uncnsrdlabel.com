@@ -15,7 +15,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
 const documents = {
     "\n  fragment discountNode on DiscountNode {\n    __typename\n    id\n    discount {\n      __typename\n      ... on DiscountAutomaticBasic {\n        __typename\n        customerGets {\n          value {\n            __typename\n          }\n        }\n        discountClass\n        endsAt\n        minimumRequirement {\n          ... on DiscountMinimumQuantity {\n            greaterThanOrEqualToQuantity\n          }\n          ... on DiscountMinimumSubtotal {\n            greaterThanOrEqualToSubtotal {\n              amount\n              currencyCode\n            }\n          }\n        }\n        shortSummary\n        startsAt\n        status\n        summary\n        title\n      }\n      ... on DiscountCodeBasic {\n        __typename\n        appliesOncePerCustomer\n        customerGets {\n          value {\n            __typename\n          }\n        }\n        discountClass\n        endsAt\n        shortSummary\n        startsAt\n        status\n        summary\n        title\n      }\n    }\n  }\n": types.DiscountNodeFragmentDoc,
     "\n  mutation SellingPlanGroupAddProducts($id: ID!, $productIds: [ID!]!) {\n    sellingPlanGroupAddProducts(id: $id, productIds: $productIds) {\n      sellingPlanGroup {\n        id\n      }\n      userErrors {\n        field\n        message\n      }\n    }\n  }\n": types.SellingPlanGroupAddProductsDocument,
-    "\n  query getDiscountNodes(\n    $first: Int = 100\n    $query: String!\n  ) {\n    discountNodes(first: $first, query: $query) {\n      edges {\n        node {\n          ...discountNode\n        }\n      }\n    }\n  }\n": types.GetDiscountNodesDocument,
+    "\n  query getDiscountNodes(\n    $first: Int = 32\n    $query: String!\n  ) {\n    discountNodes(first: $first, query: $query) {\n      edges {\n        node {\n          ...discountNode\n        }\n      }\n    }\n  }\n": types.GetDiscountNodesDocument,
 };
 
 /**
@@ -43,7 +43,7 @@ export function graphql(source: "\n  mutation SellingPlanGroupAddProducts($id: I
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query getDiscountNodes(\n    $first: Int = 100\n    $query: String!\n  ) {\n    discountNodes(first: $first, query: $query) {\n      edges {\n        node {\n          ...discountNode\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query getDiscountNodes(\n    $first: Int = 100\n    $query: String!\n  ) {\n    discountNodes(first: $first, query: $query) {\n      edges {\n        node {\n          ...discountNode\n        }\n      }\n    }\n  }\n"];
+export function graphql(source: "\n  query getDiscountNodes(\n    $first: Int = 32\n    $query: String!\n  ) {\n    discountNodes(first: $first, query: $query) {\n      edges {\n        node {\n          ...discountNode\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query getDiscountNodes(\n    $first: Int = 32\n    $query: String!\n  ) {\n    discountNodes(first: $first, query: $query) {\n      edges {\n        node {\n          ...discountNode\n        }\n      }\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

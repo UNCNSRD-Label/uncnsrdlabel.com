@@ -1,10 +1,10 @@
 import { MetafieldMapper } from "@/components/product/metafield-mapper";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@uncnsrdlabel/components/atoms/tabs";
 import {
-  getFragmentData,
-  productDetailsFragment,
-  productMetafieldFragment,
-  type FragmentType,
+    getFragmentData,
+    productDetailsFragment,
+    productMetafieldFragment,
+    type FragmentType,
 } from "@uncnsrdlabel/graphql-shopify-storefront";
 import { cn } from "@uncnsrdlabel/lib";
 
@@ -19,7 +19,7 @@ export function ProductDetailsTabs({
   excludedKeys?: string[];
   includedKeys?: string[];
   id?: string;
-  lang: Intl.BCP47LanguageTag;
+  lang: Navigator['language'];
   productDetailsFragmentRef: FragmentType<typeof productDetailsFragment>;
 }) {
   const product = getFragmentData(
