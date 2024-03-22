@@ -1,18 +1,18 @@
 import { type TypedDocumentNode } from "@graphql-typed-document-node/core";
 import {
-    type Exact,
-    type InputMaybe,
+  type Exact,
+  type InputMaybe,
 } from "@shopify/hydrogen-react/storefront-api-types";
 import {
-    QueryClient, useSuspenseQuery,
-    type UseSuspenseQueryResult
+  QueryClient, useSuspenseQuery,
+  type UseSuspenseQueryResult
 } from "@tanstack/react-query";
 import { formatErrorMessage, getQueryKey, isShopifyError, useGetLangProperties } from "@uncnsrdlabel/lib";
 import { GraphQLClient } from "graphql-request";
 import { cache } from "react";
 import {
-    type CountryCode,
-    type LanguageCode,
+  type CountryCode,
+  type LanguageCode,
 } from "./codegen/graphql";
 import { endpoint } from "./constants";
 
@@ -38,7 +38,6 @@ export function getInContextVariables(lang: Navigator['language'] = process.env.
   country?: InputMaybe<CountryCode> | undefined,
   language?: InputMaybe<LanguageCode> | undefined,
 }> {
-  // @ts-expect-error Property 'getCanonicalLocales' does not exist on type 'typeof Intl'.
   const [canonicalLocale] = Intl.getCanonicalLocales(lang)
 
   const locale = new Intl.Locale(canonicalLocale);
