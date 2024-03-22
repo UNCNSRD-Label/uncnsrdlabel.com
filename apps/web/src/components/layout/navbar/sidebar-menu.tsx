@@ -89,7 +89,7 @@ export function SidebarMenu({
                 open: { opacity: 1 },
                 closed: { opacity: 0 },
               }}
-              className="fixed inset-0 bg-black/30"
+              className="fixed inset-0 bg-dark/30"
               aria-hidden="true"
             />
             <div
@@ -114,7 +114,7 @@ export function SidebarMenu({
                   }}
                   variant="ghost"
                 >
-                  <div className="relative flex h-11 w-11 items-center justify-center border border-neutral-200 text-black transition-colors dark:border-neutral-700 dark:text-white">
+                  <div className="relative flex h-11 w-11 items-center justify-center border border-neutral-200 text-dark transition-colors dark:border-neutral-700 dark:text-light">
                     <CloseIcon className="icon h-5 stroke-inherit drop-shadow" />
                   </div>
                 </Button>

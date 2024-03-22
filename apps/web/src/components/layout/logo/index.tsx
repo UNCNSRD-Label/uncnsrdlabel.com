@@ -45,8 +45,8 @@ export function Logo({ blend, className, fill }: Props) {
               className={cn(
                 "h-8 fill-inherit transition duration-300 ease-in-out hover:scale-110 sm:h-10",
                 {
-                  "fill-white": fill === "light" || blend,
-                  "fill-black": fill === "dark",
+                  "fill-light": fill === "light" || blend,
+                  "fill-dark": fill === "dark",
                 },
               )}
             />

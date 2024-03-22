@@ -1,6 +1,6 @@
 import { cn } from "@uncnsrdlabel/lib";
 
-const dots = "animate-blink aspect-square bg-white block h-full rounded-full";
+const dots = "animate-blink aspect-square bg-light block h-full rounded-full";
 
 export const LoadingDots = ({ className }: { className?: string }) => {
   return (

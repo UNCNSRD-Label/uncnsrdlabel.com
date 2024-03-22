@@ -17,8 +17,8 @@ export const breakpoints = {
 } as const;
 
 export const themeColors = cn(
-  "fill-black stroke-black text-black bg-white",
-  "dark:fill-white dark:stroke-white dark:text-white dark:bg-black",
+  "fill-dark stroke-dark text-dark bg-light",
+  "dark:fill-light dark:stroke-light dark:text-light dark:bg-dark",
   "selection:bg-gray-500/50",
 );
 

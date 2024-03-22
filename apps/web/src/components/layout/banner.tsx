@@ -69,7 +69,7 @@ const getDiscountNode = ({ lang }: { lang: Navigator['language'] }) => {
   }
 
   return markup;
-}
+};
 
 const getMetaobject = ({ lang }: { lang: Navigator['language'] }) => {
   let markup = null;
@@ -107,13 +107,17 @@ const getMetaobject = ({ lang }: { lang: Navigator['language'] }) => {
 
   let formattedMarkup = richTextResponse;
 
-  if(richTextResponse.startsWith("<p>") && richTextResponse.endsWith("</p>") && richTextResponse.includes(" | ")) {
+  if (
+    richTextResponse.startsWith("<p>") &&
+    richTextResponse.endsWith("</p>") &&
+    richTextResponse.includes(" | ")
+  ) {
     formattedMarkup = `<ul>${richTextResponse.replaceAll("<p>", "<li>").replaceAll("</p>", "</li>").replaceAll(" | ", "</li><li class='hidden md:block'>|</li><li>")}</ul>`;
   }
 
   markup = (
     <div
-      className="text-center [&>ul]:flex [&>ul]:gap-x-4 [&>ul]:gap-y-1 sm:[&>ul]:gap-y-2 [&>ul]:flex-col md:[&>ul]:flex-row"
+      className="text-center [&>ul]:flex [&>ul]:flex-col [&>ul]:gap-x-4 [&>ul]:gap-y-1 sm:[&>ul]:gap-y-2 md:[&>ul]:flex-row"
       data-id={metaobject.id}
       data-type="MetaObject"
       dangerouslySetInnerHTML={{
@@ -151,13 +155,8 @@ export const Banner = ({
   }
 
   return (
-    <article
-      className={cn(
-        "bg-hotPink text-dark",
-        className,
-      )}
-    >
-      <div className="p-2 sm:p-4 grid snap-start place-content-center text-xs uppercase md:text-sm">
+    <article className={cn("bg-hotPink text-dark", className)}>
+      <div className="text-xxs grid snap-start place-content-center p-2 uppercase sm:p-4 sm:text-xs md:text-sm">
         {markup}
       </div>
     </article>

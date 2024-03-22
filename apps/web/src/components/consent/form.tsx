@@ -6,14 +6,14 @@ import * as Checkbox from "@radix-ui/react-checkbox";
 import { CheckIcon } from "@radix-ui/react-icons";
 import { Button } from "@uncnsrdlabel/components/atoms/button";
 import {
-  COOKIE_CONSENT,
-  acceptAllConsentSettings,
-  cn,
-  cookieOptions,
-  defaultConsentSettings,
-  denyAllAdditionalConsentSettings,
-  types,
-  type ConsentSettings,
+    COOKIE_CONSENT,
+    acceptAllConsentSettings,
+    cn,
+    cookieOptions,
+    defaultConsentSettings,
+    denyAllAdditionalConsentSettings,
+    types,
+    type ConsentSettings,
 } from "@uncnsrdlabel/lib";
 import { getCookie, setCookie } from "cookies-next";
 import { Usable, use, useState } from "react";
@@ -153,7 +153,7 @@ export function ConsentForm({
           key={consent.name || index}
         >
           <Checkbox.Root
-            className="h-4 w-4 rounded border border-solid border-black/100 bg-white stroke-black"
+            className="h-4 w-4 rounded border border-solid border-dark/100 bg-light stroke-dark"
             defaultChecked={consentSettings[consent.name] === "granted"}
             checked={consentSettings[consent.name] === "granted"}
             id={consent.name}

@@ -45,7 +45,7 @@ export const PriceAndCompareAtPrice = ({
       <Price
         amount={product.priceRange.minVariantPrice.amount}
         className={cn({
-          "text-red-600": product.compareAtPriceRange?.minVariantPrice.amount > product.priceRange?.minVariantPrice.amount,
+          "text-destructive": product.compareAtPriceRange?.minVariantPrice.amount > product.priceRange?.minVariantPrice.amount,
         })}
         currencyCode={product.priceRange.minVariantPrice.currencyCode}
         currencyCodeClassName={currencyCodeClassName}
@@ -55,7 +55,7 @@ export const PriceAndCompareAtPrice = ({
       {(product.compareAtPriceRange?.minVariantPrice.amount > product.priceRange?.minVariantPrice.amount) && (
         <Price
           amount={product.compareAtPriceRange.minVariantPrice.amount}
-          className="line-through decoration-red-600"
+          className="line-through decoration-destructive"
           currencyCode={
             product.compareAtPriceRange.minVariantPrice.currencyCode
           }

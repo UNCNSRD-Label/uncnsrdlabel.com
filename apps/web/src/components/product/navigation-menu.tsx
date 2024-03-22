@@ -25,7 +25,7 @@ export function NavigationMenu({
 
   return (
     <NavigationMenuPrimitive.Root
-      className={cn("text-light bg-black", className)}
+      className={cn("text-light bg-dark", className)}
     >
       <NavigationMenuPrimitive.List className="center m-0 grid w-full list-none grid-flow-col justify-stretch text-center uppercase">
         {sectionElements.map((sectionElement, index) => (

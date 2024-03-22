@@ -127,7 +127,7 @@ export function SignUpForBackInStockSubscriptionForm({
           aria-invalid={hasError ? "true" : "false"}
           autoComplete="email"
           className={cn("w-full px-4 py-2 placeholder:text-inherit", {
-            "border-red-500": hasError,
+            "border-destructive": hasError,
           })}
           name="email"
           placeholder={intl.formatMessage({

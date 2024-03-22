@@ -98,7 +98,7 @@ export function DeleteItemButton({
       {isPending ? (
         <LoadingDots />
       ) : (
-        <XMarkIcon className="hover:text-accent-3 mx-0.5 h-4 w-4 text-white dark:text-black" />
+        <XMarkIcon className="hover:text-accent-3 mx-0.5 h-4 w-4 text-light dark:text-dark" />
       )}
       <span aria-live="polite" className="sr-only" role="status">
         {status}
