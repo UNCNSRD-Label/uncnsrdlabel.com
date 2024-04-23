@@ -22,12 +22,14 @@ import {
 import { AppProviders } from "@uncnsrdlabel/providers";
 import config from "@uncnsrdlabel/tailwind-config";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Lato, Montserrat } from "next/font/google";
 import localFont from "next/font/local";
-import { PropsWithChildren, Suspense } from "react";
+import { PropsWithChildren } from "react";
 import { type ResolvedIntlConfig } from "react-intl";
 import "../globals.css";
+import "./taint";
 
 const { NEXT_PUBLIC_PROTOCOL } = process.env;
 
@@ -156,15 +158,18 @@ export default async function Layout({
           {children}
           <Footer lang={lang} />
           <Toaster />
+
+          <ShopifyCookies />
+
           <LinkedDataOrganization lang={lang} />
-          <Suspense fallback={null}>
-            <ShopifyCookies />
-          </Suspense>
+
           <GoogleTagManager
             gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID!}
           />
-          <VercelAnalytics />
           <GTMConsent />
+
+          <SpeedInsights />
+          <VercelAnalytics />
         </AppProviders>
       </body>
     </html>
