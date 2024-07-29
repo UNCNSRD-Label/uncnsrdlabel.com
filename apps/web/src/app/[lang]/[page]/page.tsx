@@ -16,6 +16,8 @@ import { Suspense } from "react";
 import { Article } from "./article";
 import { PageSectionModule } from "./page-section-module";
 
+export const revalidate = 900;
+
 export async function generateMetadata({
   params: { lang, page: handle },
 }: PageProps & {

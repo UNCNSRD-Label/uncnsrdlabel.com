@@ -20,6 +20,8 @@ import { type ResolvedIntlConfig } from "react-intl";
 import { Breadcrumb } from "./breadcrumb";
 import { RelatedProducts } from "./related-products";
 
+export const revalidate = 300;
+
 export async function generateMetadata({
   params: { handle, lang },
 }: PageProps): Promise<Metadata> {
