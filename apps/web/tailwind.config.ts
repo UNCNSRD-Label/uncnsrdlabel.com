@@ -3,8 +3,8 @@ import type { Config } from 'tailwindcss';
 
 export default {
   content: [
-    "../../packages/@uncnsrdlabel/*/dist/**/*.{js,ts,jsx,tsx}",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "../../packages/@uncnsrdlabel/*/src/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
   ],
   presets: [componentConfig],
   safelist: [
